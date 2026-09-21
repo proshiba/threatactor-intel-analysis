@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,9 +18,9 @@ BREEZE COMET(旧UNC5669)は、ブラジルの金融サービス、小売、eコ�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| UNC5669 | Google Threat Intelligence Group / Mandiant | exact | 高 | `source--breeze-comet--gtig-brazil-2026` | GTIGは「GTIG tracks this activity as BREEZE COMET (formerly UNC5669)」と記載しており、同一クラスタの旧指定子として明示している。ベンダー自身による改称であるためscopeはexactとする。 |
 | Plump Spider | 他ベンダーの公開報告(GTIGが参照) | overlapping | 中 | `source--breeze-comet--gtig-brazil-2026` | GTIGの記述は「This activity overlaps with operations publicly reported as Plump Spider and SHADOW-AETHER-064」であり、作戦の重複を述べるにとどまる。同一クラスタとの断定ではないためscopeはexactにしない。Plump Spiderを用いるベンダーの原報告は未確認である。 |
 | SHADOW-AETHER-064 | 他ベンダーの公開報告(GTIGが参照) | overlapping | 中 | `source--breeze-comet--gtig-brazil-2026` | 同上。作戦の重複としての言及であり、原報告は未確認である。 |
+| UNC5669 | Google Threat Intelligence Group / Mandiant | exact | 高 | `source--breeze-comet--gtig-brazil-2026` | GTIGは「GTIG tracks this activity as BREEZE COMET (formerly UNC5669)」と記載しており、同一クラスタの旧指定子として明示している。ベンダー自身による改称であるためscopeはexactとする。 |
 
 ## 帰属
 
@@ -39,7 +39,10 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Plump Spider | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as Plump Spider. | 中 | `source--breeze-comet--gtig-brazil-2026` |
+| SHADOW-AETHER-064 | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as SHADOW-AETHER-064. | 中 | `source--breeze-comet--gtig-brazil-2026` |
 
 ## ダイヤモンドモデル
 
@@ -88,11 +91,11 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--boatbeam | BOATBEAM | 443番ポートで偽のIIS HTTPSサーバーを起動するGo製バックドア。正規のWebサーバーを装ってバックドア通信を隠蔽し、特定のセッションCookieを受信したときにのみC2機能を有効化する。冗長化アーキテクチャの最終層を成す。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--cobaltspin | COBALTSPIN | Rustで書かれた軽量かつ回避性の高いネットワークトンネラー。WebSocket上にリバースSOCKS5プロキシを確立し、C2と内部標的の間でトラフィックを双方向に中継する。分割された金融ネットワークを移動し、内部ファイアウォールを越えた横展開を、検知を誘発しがちな常駐型の永続化機構なしで実現する。金融API基盤への持続的なネットワークアクセスの維持に用いられる。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
+| malware--kickplate | KICKPLATE | Windows Update Health Toolsを騙るNim製のカスタムバックドア。補助ペイロードの継続的な配信とホストレベルの永続化の強制に用いられる。SOCKS5トンネラーの制御、レジストリのスタートアップキーの更新、Windowsサービスの秘密裏な変更を行うコマンドを実行する。SYSTEM権限で動作するschtasks.exeによる標準の計画タスクと、ユーザーのスタートアップフォルダー内の悪性ショートカット(.lnk)の改変を補助的に併用する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--lightpaint | LIGHTPAINT | SoftEther等の正規VPNを導入し自動永続化するよう構成するJava製のカスタムバックドア。導入したVPNマネージャーからの全通信を許可するWindows Defenderファイアウォールの受信規則をプログラム的に追加し、その後Windows Networking Vpn Plugin Platformのイベントログを消去して接続のフォレンジック痕跡を抹消する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--mildfrost | MILDFROST | JVMのプロセス空間内に潜む受動型のJava JARバックドア。DnsCommandBeacon.classなどのクラスを用いて低速かつ隠密なDNSトンネルを確立する。フォールバックC2としても機能し、委譲されたサブドメインを動的に問い合わせて指示を受け取り、C++実行ファイルの新しいコピーを取得する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
-| malware--kickplate | KICKPLATE | Windows Update Health Toolsを騙るNim製のカスタムバックドア。補助ペイロードの継続的な配信とホストレベルの永続化の強制に用いられる。SOCKS5トンネラーの制御、レジストリのスタートアップキーの更新、Windowsサービスの秘密裏な変更を行うコマンドを実行する。SYSTEM権限で動作するschtasks.exeによる標準の計画タスクと、ユーザーのスタートアップフォルダー内の悪性ショートカット(.lnk)の改変を補助的に併用する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
-| malware--boatbeam | BOATBEAM | 443番ポートで偽のIIS HTTPSサーバーを起動するGo製バックドア。正規のWebサーバーを装ってバックドア通信を隠蔽し、特定のセッションCookieを受信したときにのみC2機能を有効化する。冗長化アーキテクチャの最終層を成す。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--realbreeze | REALBREEZE | カスタムのLDAP総当たりユーティリティ。可視性の低い環境で特権昇格に用いられる。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 
 ### ツール

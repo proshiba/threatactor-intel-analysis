@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-21T04:18:00Z",
+      "modified": "2026-09-21T08:16:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -90,7 +90,7 @@
         "history": "Op. Poisoned Hurricane",
         "capability_details": "China Chopper Webshell, PlugX, Mimikatz, Sakula",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=ベトナム、ロシア、中国、米国。標的地域=中東、欧州。日本は確認時に個別国として保持する。\n\nAerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway",
+        "targeting_details": "構造化ターゲット監査: 標的国=ベトナム、ロシア、中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nAerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -902,7 +902,7 @@
       "spec_version": "2.1",
       "id": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -916,14 +916,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-3b5c1885cc442243df7f",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--3b5c1885cc442243df7f05a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国系APT31（別名Altaire/Judgement Panda/Violet Typhoon等）、目的は政治・経済・軍事情報の収集。",
-      "x_reported_at": {
-        "value": "2025-11-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--zirconium",
@@ -984,6 +980,24 @@
           "source--daily-627b32691a33594d7d9a"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -991,14 +1005,12 @@
       "spec_version": "2.1",
       "id": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用",
       "description": "複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。",
-      "first_seen": "2026-08-28T00:00:00Z",
-      "last_seen": "2026-09-02T00:00:00Z",
       "external_references": [
         {
           "source_name": "proofpoint.com",
@@ -1007,14 +1019,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-8ce58d59eaf0a7bf846e",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--8ce58d59eaf0a7bf846e0be6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: 採用。独立した一次資料2本が当該アクターを実行主体として明記している。Proofpoint(2026-09-09公開)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」と記載し、Volexity(2026-09-09公開)も「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」として同一クラスターを指し、2026-09-01の初回メールと2026-09-02の2回目の標的型キャンペーンを観測している。Violet Typhoon は本プロファイルの canonical name であり、APT31 は scope: overlapping の別名として登録済みで、2025-11-24 の APT31 活動を既に採用した前例と整合する。BlueMoon は Chrome の CVE-2026-85046(V8 type confusion)、CVE-2026-87491(V8 sandbox escape)、Windows の CVE-2026-85880(カーネル権限昇格)を連鎖させる攻撃キットで、成功後は Chrome の親プロセスへコードを注入し curl でローダーを取得する。標的は Proofpoint によれば米国のNGO、鉱業、現物商品取引企業。活動期間は両資料が明示した観測日のみを採り、記事公開日および tech-memo 日次ファイルの日付は流用していない。同キットを用いた UNK_LateNight(米航空宇宙・防衛、ShadowPad)、UNK_DoubleCheck(ベトナム製造業)、UNK_QuietRacket(インドネシア・シンガポールの政府/コンサル/金融)、UTA0560(NGO、Volexity観測)は本アクターへの帰属が示されていないため取り込まず、unknown-clusters.json へ記録した。記事見出しはキット側を主題としているが、当該アクターが参加したキャンペーンそのものを指しており別クラスターの作戦ではないため activity_overrides は用いていない。",
-      "x_reported_at": {
-        "value": "2026-09-11T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--zirconium",
@@ -1082,35 +1090,51 @@
           "source--daily-4f5ca8613b6408a00d37"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-08-28T00:00:00Z",
+      "last_seen": "2026-09-02T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T08:16:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
-      "description": "Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
+      "name": "Violet Typhoon、オンプレミスSharePointのToolShellを悪用",
+      "description": "Microsoftは、Violet Typhoon（ZIRCONIUM/APT31）が2025年7月7日頃からオンプレミスSharePointの脆弱性を悪用したと報告した。同じ脆弱性はLinen TyphoonとStorm-2603にも別個に悪用されており、NNSAを含む個別被害組織をViolet Typhoonへ一括帰属する根拠は示されていない。",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
-          "external_id": "source--daily-0e75e392e2685f601677"
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025"
         }
       ],
       "x_profile_object_id": "activity--daily-f1508e67055f2e956163",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--f1508e67055f2e956163f49d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。",
-      "x_reported_at": {
-        "value": "2025-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftがViolet Typhoonへ帰属した活動範囲に限定。複数主体が同じ脆弱性を悪用したため、共通IOCだけで各被害を再帰属しない。",
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--zirconium",
@@ -1126,19 +1150,15 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--9137916c1796c538b660"
-          ]
+          "target_refs": [],
+          "victim_refs": []
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2025-07-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
           },
           "last_observed": {
             "value": null,
@@ -1147,121 +1167,45 @@
             "basis": "not-stated"
           },
           "reported_at": {
-            "value": "2025-08-05T00:00:00Z",
+            "value": "2025-07-22T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "ransomware-extortion",
-          "phases": [],
-          "results": [
-            "encryption"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [
-              "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-            ],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-0e75e392e2685f601677"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-21T02:05:26Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
-      "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-f8164c2182ec1f2d8e79",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--f8164c2182ec1f2d8e79e31a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。",
-      "x_reported_at": {
-        "value": "2025-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--zirconium",
-          "name": "ZIRCONIUM",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [
-            "target--country--united-states",
-            "target--targeting-audit--region--e8227dace5f726314dc9",
-            "target--targeting-audit--region--f6725e13c9b2e36ae217"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--bfa1750b45d1967b2dd7"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": "2025-07-24T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "intrusion",
           "phases": [],
           "results": [],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [
-              "target--country--united-states"
-            ],
-            "target_region_refs": [
-              "target--targeting-audit--region--e8227dace5f726314dc9",
-              "target--targeting-audit--region--f6725e13c9b2e36ae217"
-            ]
+            "target_country_refs": [],
+            "target_region_refs": []
           }
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-c9fa26bbe8d21f50b441"
+          "source--microsoft-toolshell-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2025-07-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2025-07-07T00:00:00Z"
     },
     {
       "type": "identity",
@@ -1359,50 +1303,6 @@
         }
       ],
       "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として中東が明示されている。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-09-21T01:54:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として欧州が明示されている。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441"
-        }
-      ],
-      "x_target_category": "regions",
       "x_confidence": "medium"
     },
     {
@@ -1612,115 +1512,6 @@
         "basis": "daily-news-file-date"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
-      "identity_class": "organization",
-      "description": "Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
-          "external_id": "source--daily-0e75e392e2685f601677"
-        }
-      ],
-      "x_profile_object_id": "victim--activity-rule--9137916c1796c538b660",
-      "x_disclosure_status": "aggregate",
-      "x_victim_type": "multiple-organizations",
-      "x_case_status": "reported",
-      "x_target_refs": [
-        "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-      ],
-      "x_malware_refs": [],
-      "x_ttp_refs": [],
-      "x_affected_assets": [
-        "サーバー"
-      ],
-      "x_impacts": [
-        {
-          "impact_type": "encryption",
-          "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢"
-        }
-      ],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_reported_at": {
-        "value": "2025-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_confidence": "medium",
-      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--57f64d79-e093-467d-99de-3988f7db75f1",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
-      "identity_class": "organization",
-      "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441"
-        }
-      ],
-      "x_profile_object_id": "victim--activity-rule--bfa1750b45d1967b2dd7",
-      "x_disclosure_status": "anonymous",
-      "x_victim_type": "unknown",
-      "x_case_status": "reported",
-      "x_target_refs": [
-        "target--country--united-states"
-      ],
-      "x_malware_refs": [],
-      "x_ttp_refs": [],
-      "x_affected_assets": [],
-      "x_impacts": [],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_reported_at": {
-        "value": "2025-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -3020,7 +2811,7 @@
       "spec_version": "2.1",
       "id": "relationship--2af7e5f4-de45-4e82-9377-e33b5fb1f2d0",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3028,14 +2819,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
       "description": "ZIRCONIUM targets ベトナム (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6449c7c9-a2aa-4462-bffa-90bd3123fee2",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3043,14 +2861,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--7903e903-1adf-4342-9a0a-a4343a893397",
       "description": "ZIRCONIUM targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--49fc10ac-61b5-4f1b-bf60-498efca3ca72",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3058,14 +2883,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
       "description": "ZIRCONIUM targets 中国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+          "external_id": "source--daily-0e75e392e2685f601677"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bb67053d-9bfd-45d9-b958-2cbed80303b8",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3073,44 +2905,31 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
       "description": "ZIRCONIUM targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ffc72d75-78d4-4045-aeba-59d699ebd90c",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
-      "target_ref": "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
-      "description": "ZIRCONIUM targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6e99ffcf-6871-4f01-9211-b950ae4c5192",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
-      "target_ref": "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
-      "description": "ZIRCONIUM targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--087afc6b-283a-425e-a13d-d7f36abdcae6",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3118,14 +2937,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
       "description": "ZIRCONIUM targets 運輸・航空・海運 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--96ec9c60-ceff-4d98-850d-71b66c002356",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3133,14 +2979,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
       "description": "ZIRCONIUM targets 非営利・市民社会 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--96614386-5e5c-4f2c-89d9-f6c10f6fb4ab",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3148,14 +3021,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
       "description": "ZIRCONIUM targets 製造・産業 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ba00fa72-ae8c-4499-b871-19cb1a8b26aa",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3163,14 +3063,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "description": "ZIRCONIUM targets Defense (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--abc7c181-9b1d-48df-8701-3e4d78b785d4",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3178,14 +3105,45 @@
       "source_ref": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
       "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "description": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 is attributed or linked to ZIRCONIUM.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--640c6a32-3f22-47c4-8500-2c7736b034f6",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3193,14 +3151,45 @@
       "source_ref": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
       "target_ref": "identity--7903e903-1adf-4342-9a0a-a4343a893397",
       "description": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 targets target--targeting-audit--country--1fe7ce46b222c13a06da.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8b62f6bf-cf77-4626-a75d-b39b0ece7a57",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3208,14 +3197,45 @@
       "source_ref": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
       "target_ref": "identity--453b125a-e472-4e49-a6e2-1d9d7a409163",
       "description": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 affected victim--activity-rule--03dce615119b36418765.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c4775778-f125-4b64-8325-e64485f00aae",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3223,14 +3243,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 is attributed or linked to ZIRCONIUM.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d2db1b04-2fb6-4f0f-8b03-ea3bdd594a45",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3238,14 +3291,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c45b7e43-638e-4360-801a-d3e041580156",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3253,14 +3339,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--d406c8e5b7fa7aeff7d2.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ce503340-445f-4ba4-9611-6994c7a8051e",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3268,14 +3387,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a9eaeb12-4c85-4124-bab0-73d6d96bab2d",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3283,14 +3435,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--sector--defense.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b932c103-dff8-4cd5-9aca-f3fee72e1948",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3298,14 +3483,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--targeting-audit--country--17ccb688a4f174f744c6.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b6515504-97b0-4142-84fc-f5633da350b0",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3313,14 +3531,47 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 uses ttp--activity-rule--a86dd406f18f33373746.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e6fcd4ad-324a-4ac7-9908-7a3574fc14ff",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3328,134 +3579,94 @@
       "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
       "target_ref": "identity--7d50a980-d718-40f9-ae87-a0ccd2ae8cb6",
       "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 affected victim--activity-rule--4d5fb1e290f1911f9a4c.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ece94f36-04f5-481e-b696-0eae5a52447d",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T08:16:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "attributed-to",
       "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
       "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
-      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 is attributed or linked to ZIRCONIUM.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ad86c646-9a30-4f7d-b168-2437cf297f77",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      "description": "Violet Typhoon、オンプレミスSharePointのToolShellを悪用 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025"
+        }
       ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
-      "target_ref": "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
-      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 targets target--activity-rule--country--95e363d6dfa8c6f2ecbb.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--66789d16-64d4-46cd-8141-398559502108",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
-      "target_ref": "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
-      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 affected victim--activity-rule--9137916c1796c538b660.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5aad674b-d84a-48b8-a3d2-ec850f6fe86e",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
-      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 is attributed or linked to ZIRCONIUM.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--cee5fe1a-4612-4292-b3ab-3d60074c15f9",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 targets target--country--united-states.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a046bc8b-bbf3-47bb-afe7-bc80fd420b75",
-      "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "target_ref": "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
-      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 targets target--targeting-audit--region--e8227dace5f726314dc9.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ecf14598-4c87-45e7-b182-6f14a6ed9abb",
-      "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "target_ref": "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
-      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 targets target--targeting-audit--region--f6725e13c9b2e36ae217.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--abd570bf-d4a0-4a62-b441-f79d3ee88aa3",
-      "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
-      "target_ref": "identity--57f64d79-e093-467d-99de-3988f7db75f1",
-      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 affected victim--activity-rule--bfa1750b45d1967b2dd7.",
-      "x_confidence": "medium"
+      "x_first_observed": {
+        "value": "2025-07-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-07-07T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--94684dc5-6542-450e-a0c6-89486817f6d0",
       "created": "2026-09-20T08:53:46Z",
-      "modified": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3463,14 +3674,41 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
       "description": "攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period",
+        "last": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-08-28T00:00:00Z",
+      "stop_time": "2026-09-02T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4807802d-5f49-4791-9ab9-8d4541fc9773",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3478,14 +3716,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to query the Registry for proxy settings.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--529f247b-db6e-4d1f-a8a9-d90a93f9e495",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3493,14 +3738,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to enumerate proxy settings in the target environment.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--441427ae-2e87-457d-bf6b-002064e3d024",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3508,14 +3760,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used multi-stage packers for exploit code.(Citation: Check Point APT31 February 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--31569089-bfff-4c51-bba7-11f78b98db30",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3523,14 +3782,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to capture the username on a compromised host in order to register it with C2.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dc6b7e92-0f1f-4a44-9f5e-fd62845ef221",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3538,14 +3804,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--a2ba504a-3982-41fb-b3bf-c3fabc4d3457",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has spoofed legitimate applications in phishing lures and changed file extensions to conceal  installation of malware.(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e1432eb7-028b-42b3-b171-ca47d2bd0cd6",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3553,14 +3826,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--17f0af66-6e30-4c8e-aa0a-bc6ed008102c",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has created a run key named <code>Dropbox Update Setup</code> to mask a persistence mechanism for a malicious binary.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c07f1718-b6e8-4b7d-a91a-6688bc3c23e8",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3568,14 +3848,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has exfiltrated files via the Dropbox API C2.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c2307a57-36c8-4dd1-b8c1-4acc733b73e8",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3583,14 +3870,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to open a Windows Command Shell on a remote host.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--091de9e9-252b-4f1c-b590-d4739005a75b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3598,14 +3892,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--76538ea8-8b2c-4beb-bdb1-5517e034e117",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used Python-based implants to interact with compromised hosts.(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5bca5cc9-5335-4a7a-9539-1f8d3ffdff64",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3613,14 +3914,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has exploited CVE-2017-0005 for local privilege escalation.(Citation: Check Point APT31 February 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6ffb4bdf-6c85-4a70-b874-92fdcbc37d55",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3628,14 +3936,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to capture the processor architecture of a compromised host in order to register it with C2.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8c1d6f94-4c89-415c-a07e-0fc590268d7b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3643,14 +3958,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--c4b24b10-9eb8-41e1-b43e-15ddef8a46d9",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has utilized an ORB (operational relay box) network – consisting compromised devices such as small office and home office (SOHO) routers, IoT devices, and leased virtual private servers (VPS) – to proxy traffic.(Citation: ORB Mandiant) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1cbd79fd-64ee-4ad9-8ebd-672be383bc85",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3658,14 +3980,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used Dropbox for C2 allowing upload and download of files as well as execution of arbitrary commands.(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b0224ee-4f7c-4daa-838a-3b430af6148a",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3673,14 +4002,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used tools to download malicious files to compromised hosts.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d135bcb-3800-4652-ab10-da0a490e320c",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3688,14 +4024,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--25a8014f-6881-420b-9d97-68f39026668e",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to capture the time on a compromised host in order to register it with C2.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a5ab52ca-5079-4206-a828-c8e3a7444938",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3703,14 +4046,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used the AES256 algorithm with a SHA1 derived key to decrypt exploit code.(Citation: Check Point APT31 February 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f4b419ec-f0fb-46a3-85f5-389f5dfe9435",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3718,14 +4068,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used malicious links in e-mails to lure victims into downloading malware.(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ec0a4e83-6bc8-463b-82d4-91983a3138e9",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3733,14 +4090,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--8c018cd4-07fb-48fc-a1ca-81ce84e03b72",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used the msiexec.exe command-line utility to download and execute malicious MSI files.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fb0e6b72-5e3b-4587-8d51-81edb0c6ecfa",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3748,14 +4112,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has created a Registry Run key named <code>Dropbox Update Setup</code> to establish persistence for a malicious Python binary.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cc69edc3-bf0c-4a79-9db6-2b20329d74cc",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3763,14 +4134,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used a tool to steal credentials from installed web browsers including Microsoft Internet Explorer and Google Chrome.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--129a3f48-57e1-4763-8959-f534cc8f11c6",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3778,14 +4156,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used malicious links in e-mails to deliver malware.(Citation: Microsoft Targeting Elections September 2020)(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5fd059b6-d64f-437c-8b74-335264534c9f",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3793,14 +4178,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has exfiltrated stolen data to Dropbox.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--02fd3b75-9937-428b-b8e6-c5f1f8acbeaa",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3808,14 +4200,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--2b2ec174-8d74-4b37-b58e-22946fa8cd2b",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used AES encrypted communications in C2.(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--86b19a55-0939-41eb-a380-bb17593e5c53",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3823,14 +4222,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has purchased domains for use in targeted campaigns.(Citation: Microsoft Targeting Elections September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c9c63d8-7cc6-4652-8d55-7b16e7e4de6d",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3838,14 +4244,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--6b65a723-72ea-4924-8a1f-c94cf823e2e3",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used GitHub to host malware linked in spearphishing e-mails.(Citation: Google Election Threats October 2020)(Citation: Zscaler APT31 Covid-19 October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a59d7a68-993b-48b9-8d2d-1c5050e44a23",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3853,14 +4266,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--9d8a1d0b-4efa-45c9-8d4b-a502fe391902",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has compromised network devices such as small office and home office (SOHO) routers and IoT devices for ORB (operational relay box) [Proxy](https://attack.mitre.org/techniques/T1090) networks.(Citation: ORB APT31)(Citation: ORB Mandiant) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0d6cdd83-0c16-49ae-8daf-be4e15b2f91b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3868,14 +4288,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--334c155d-b2cc-4672-a9f3-092b30c11e67",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) targeted presidential campaign staffers with credential phishing e-mails.(Citation: Google Election Threats October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--978cf999-d9f2-48d3-9e7c-73c0963603c7",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3883,14 +4310,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has used web beacons in e-mails to track hits to attacker-controlled URL's.(Citation: Microsoft Targeting Elections September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ac2eb220-dcef-47ba-90c9-eed7ee5fbf56",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3898,7 +4332,14 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "attack-pattern--2c5ed654-b6d1-47e4-b64f-089bb46aedbb",
       "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) has utilized an ORB (operational relay box) network – consisting compromised devices such as small office and home office (SOHO) routers, IoT devices, and leased virtual private servers (VPS) – to obfuscate the origin of C2 traffic.(Citation: ORB Mandiant) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -4188,7 +4629,7 @@
       "spec_version": "2.1",
       "id": "report--4be844d8-47a0-4214-b3e6-f6f46b5eb22e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-21T04:35:04Z",
+      "modified": "2026-09-21T08:16:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4197,27 +4638,22 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T04:35:04Z",
+      "published": "2026-09-21T08:16:06Z",
       "object_refs": [
         "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
         "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
         "campaign--29687754-934a-4530-8304-60b0dd151cc8",
         "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
-        "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
         "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
         "identity--7903e903-1adf-4342-9a0a-a4343a893397",
         "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
         "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-        "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
-        "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
         "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
         "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
         "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
         "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
         "identity--453b125a-e472-4e49-a6e2-1d9d7a409163",
         "identity--7d50a980-d718-40f9-ae87-a0ccd2ae8cb6",
-        "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
-        "identity--57f64d79-e093-467d-99de-3988f7db75f1",
         "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
         "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
         "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
@@ -4253,7 +4689,7 @@
         "indicator--fcc6d62b-6c58-4559-91c7-98766931419e",
         "indicator--f42dbeec-1962-495b-b5a7-a311091a073c"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

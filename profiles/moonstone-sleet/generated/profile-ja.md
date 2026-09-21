@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--moonstone-sleet`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Storm-1789 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Storm-1789 | Microsoft Threat Intelligence | exact | 高 | `source--microsoft-moonstone-sleet-2024` | Microsoft explicitly states that Moonstone Sleet was formerly Storm-1789. |
 
 ## 帰属
 
@@ -41,6 +41,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Lazarus Group | overlaps-with | The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. | 高 | `source--mitre-attack-19-2` |
+| Diamond Sleet | overlaps-with | Microsoft observed strong initial code and tradecraft overlap with Diamond Sleet, followed by Moonstone Sleet's shift to its own infrastructure and concurrent, distinct operations. | 高 | `source--microsoft-moonstone-sleet-2024` |
 
 ## ダイヤモンドモデル
 
@@ -93,7 +94,10 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--fakepenny | FakePenny | Custom Moonstone Sleet ransomware composed of a loader and encryptor. | 2024-04 | 2024-04 | 高 | `source--microsoft-moonstone-sleet-2024` |
 | malware--qilin | Qilin | [Qilin](https://attack.mitre.org/software/S1242) is a ransomware family operated as a ransomware-as-a-service (RaaS) that has been active since at least 2022. It includes variants written in Go and Rust capable of targeting Windows, Linux, and VMware ESXi environments. [Qilin](https://attack.mitre.org/software/S1242) shares functionality overlaps with [Black Basta](https://attack.mitre.org/software/S1070), [REvil](https://attack.mitre.org/software/S0496), and [BlackCat](https://attack.mitre.org/software/S1068) ransomware. [Qilin](https://attack.mitre.org/software/S1242) affiliates have targeted multiple entities worldwide with the majority of victims in the US, France, Canada, and the UK, primarily in the manufacturing, technology, financial services, and healthcare sectors.(Citation: Trend Micro Agenda Ransomware AUG 2022)(Citation: SentinelOne Qilin NOV 2022)(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025)(Citation: Trend Micro Agenda Ransomware OCT 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--splitloader | SplitLoader | Multi-stage loader delivered by trojanized PuTTY and malicious npm projects. | 2023-08 | 不明 | 高 | `source--microsoft-moonstone-sleet-2024` |
+| malware--youieload | YouieLoad | Custom in-memory loader delivered with the DeTankWar game. | 2024-02 | 2024-05 | 高 | `source--microsoft-moonstone-sleet-2024` |
 
 ### ツール
 
@@ -119,17 +123,17 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 | reported-activity | 不明 | 不明 | 2024-06-14 |  |  |  |  | 北朝鮮のMoonstone Sleetが悪意あるnpmコードを配布。 公開レジストリでコードを拡散し、攻撃対象を拡大。 航空宇宙、教育、ソフトウェア分野を標的に。 前に観測された攻撃ではWindowsのみだったが、新たに発見されたものではLinuxシステムを攻撃するための機能が追加。 オープンソースのエコシステムに大きな脅威。 | 高 | `source--daily-9b109b5f0fe055ebeba0` |
+| Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張 | reported-activity | 2024 | 2024 | 2024-06-13 |  | malware--splitloader |  |  | Checkmarxは、Moonstone Sleetが2024年第1・第2四半期に公開npmレジストリへ悪性パッケージを継続投入し、第2四半期には難読化とLinux対応を追加したと報告した。Microsoftも、偽の技術課題として悪性npmプロジェクトを配布し、SplitLoaderや資格情報窃取へつなげる活動を観測している。 | 高 | `source--checkmarx-moonstone-npm-2024`, `source--daily-9b109b5f0fe055ebeba0`, `source--microsoft-moonstone-sleet-2024` |
 | マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | ransomware-extortion | 2023-12 | 2023-12 | 2025-03-08 |  | malware--qilin |  | victim--activity-rule--a8eb7df35b3e91598d43 | マイクロソフトは、北朝鮮のハッカー集団「Moonstone Sleet」が、最近の限定的な攻撃でQilinランサムウェアを展開していると報告。 Moonstone Sleetは以前は独自のカスタムランサムウェアを使用していたが、今回初めてRaaSオペレーターが開発したランサムウェアを使用。 同グループは、トロイの木馬化されたソフトウェアや偽のソフトウェア開発会社を利用し、LinkedInやフリーランスネットワーク、Telegram、メールを通じて被害者と接触。 Qilinランサムウェアは2022年8月に「Agenda」として登場し、これまでに300以上の被害者を主張。 Qilinｈ2023年12月には攻撃が活発化し、VMware ESXi仮想マシンを標的とする高度なLinuxエンクリプターも使用するようになった。 | 中 | `source--daily-79065a5586e0fb17d444` |
-| マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | ransomware-extortion | 不明 | 不明 | 2024-05-29 | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--334f2276bd544e473f73 | マイクロソフトがMoonstone Sleet(以前はStorm-17)という北朝鮮のハッカーグループをFakePennyランサムウェア攻撃に関連付けた Moonstone Sleetは財政およびサイバー諜報を目的に活動している 当初はDiamond Sleetと多くの重複があったが、その後グループは独自のインフラとツールを使用するようになった 偽のソフトウェア企業を通じて攻撃を行うことが多い 攻撃の動機は金銭的利益と見られる。ただし、このグループが以前にサイバースパイ攻撃に関与していたことから情報収集にも重点をおいていることが示唆される | 高 | `source--daily-3361ec1dff6e8d1d939e` |
+| Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 | ransomware-extortion | 2024-04 | 2024-04 | 2024-05-28 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--fakepenny |  | victim--activity-rule--334f2276bd544e473f73 | Microsoftは、Moonstone Sleetが2024年2月に侵害した企業へ同年4月、独自のFakePennyランサムウェアを展開し660万米ドル相当のBitcoinを要求したと報告した。FakePennyはローダーと暗号化機能で構成され、Microsoftは金銭目的と評価している。 | 高 | `source--daily-3361ec1dff6e8d1d939e`, `source--microsoft-moonstone-sleet-2024` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 | Moonstone Sleet | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張 | Moonstone Sleet | SplitLoader | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 | マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | Moonstone Sleet | Qilin | 情報なし | 情報なし | 情報なし | 被害事例: マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | 中 |
-| マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | Moonstone Sleet | 情報なし | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | 高 |
+| Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 | Moonstone Sleet | FakePenny | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | 高 |
 
 
 
@@ -237,6 +241,8 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--checkmarx-moonstone-npm-2024 | A New North Korean Group Emerges, Disrupting the Open-Source Ecosystem | Checkmarx | 2024-06-13 | https://checkmarx.com/blog/a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--microsoft-moonstone-sleet-2024 | Moonstone Sleet emerges as new North Korean threat actor with new bag of tricks | Microsoft Threat Intelligence | 2024-05-28 | https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

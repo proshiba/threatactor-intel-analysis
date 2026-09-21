@@ -1,0 +1,279 @@
+{
+  "type": "bundle",
+  "id": "bundle--6ffbbba9-05fb-4367-a5b0-330eff240115",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--da569767-aa41-4726-b28e-14c1ff959543",
+      "created": "2026-09-21T02:11:26Z",
+      "modified": "2026-09-21T02:11:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "description": "Huntressは2026年、複数組織の調査を支援し、偽造・盗用した身元を使って正規従業員として採用された可能性が高い北朝鮮系リモートワーカー5人を特定した。 医療分野の3人はAstrill VPN、IPRoyal Proxy、WorkTitans B.V.などを利用し、位置情報を隠蔽していたほか、勤務時間や偽造身分証にも共通する異常が確認された。 金融分野ではPiKVMを使ったハードウェアレベルの遠隔操作、Guermok USBキャプチャカード、盗用・加工した顔写真など、過去のDPRK ITワーカー活動と重なる痕跡を確認した。 別の事例では、盗用した身元情報、Toffeeshare、VDO Ninja、音声・画面記録用Chrome拡張などを利用し、不正に雇用を得ていた可能性が高いと評価された。 Huntressは単一IOCだけではDPRK関与を証明できないため、端末、認証、ブラウザ、クラウド、勤務時間、身分証メタデータなど複数の兆候を組み合わせる必要があるとしている。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534"
+      ],
+      "external_references": [
+        {
+          "source_name": "huntress.com",
+          "description": "Local source: https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation",
+          "external_id": "source--daily-10f083232dfd566dc4f9",
+          "url": "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4f4f7399bd666d3fcdbd",
+      "x_activity_type": "reported-activity",
+      "x_stix_object_type": "grouping",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--4f4f7399bd666d3fcdbd74a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 原文(Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」、2026-08-26公開)をHTTP 200で取得して確認。冒頭に「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」とあり、本記事におけるFAMOUS CHOLLIMAは北朝鮮のリモートITワーカーそのものを指す。本文はHuntressが2026年に実施した複数の実調査を記述しており、助言記事にとどまらない直接観測を含む。具体的には、(1)オーストラリアのパートナーからの通報で、中国人を装った3名の従業員がAstrill VPN経由で繰り返し認証していた事案について6か月分のUnified Audit Logs、Exchange・SharePoint・サインイン等のイベント、ITDR認証記録を分析した事例、(2)2026年8月の金融サービス業の事案で、PiKVMおよびGuermok USB機器を接続したホストを対象に脅威ハンティングを行い、入社13日目の営業・マーケティング担当として登録された利用者が既存の身元を窃取または借用して不正に雇用を得たと判断した事例、である。PiKVM V4 Miniの接続はRealtek Audio Universal Serviceのイベント(2026-07-31、Huntress展開の約7日前)およびイベントID 6416で確認されている。activity_claimはcontext-only(タイトルが活動を主題としない体裁)だが、これはタイトルの体裁に基づく機械判定であり、本文が実行主体による具体的な不正就労活動を直接記述していることを原文で確認したうえで採用する。アクター照合について: 「Famous Chollima」はprofiles/contagious-interviewにもscope: broaderのaliasとして存在したため複数プロファイル一致となり、従前は本記事がcontagious-interviewへ誤って寄せられていた。FAMOUS CHOLLIMAの定義は北朝鮮政権への送金を目的とする不正就労全般であり、偽求人面接によるマルウェア配布キャンペーンであるContagious Interviewより広いという整理はcontagious-interview側のalias注記に既に記録されている。今回、当該定義に実質的に対応する本プロファイルへ scope: exact のaliasを登録し、解決先を一意に定めた。活動期間: 原文は個別事案の観測日を部分的にしか示さないため活動期間はunknownとし、tech-memo日次ファイルの日付(2026-09-01)をreported_atへ分離する。原文の公開日は2026-08-26である。PiKVM、Guermok USB、Astrill VPNは不正就労の運用に用いられた正規の機器・サービスであり、攻撃者専有のマルウェアではないためcapabilityとして登録しない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--dprk-it-workers",
+          "name": "DPRK IT Worker Schemes",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "reported-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-10f083232dfd566dc4f9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T02:11:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DPRK IT Worker Schemes",
+      "aliases": [],
+      "description": "A repository-level ecosystem profile for DPRK remote IT worker revenue-generation schemes. It represents the broader scheme/ecosystem described by U.S. law enforcement and is not an exact synonym for any single vendor-named adversary.",
+      "goals": [
+        "The schemes fraudulently obtain remote employment to generate revenue for the DPRK government."
+      ],
+      "external_references": [
+        {
+          "source_name": "U.S. Department of Justice",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote",
+          "external_id": "source--doj-dprk-it-worker-schemes-2025",
+          "url": "https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote"
+        }
+      ],
+      "x_profile_id": "actor--dprk-it-workers",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-generation schemes supporting the regime and WMD programs.",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--doj-dprk-it-worker-schemes-2025"
+        ],
+        "analyst_notes": "This attribution applies to the broader scheme/ecosystem, not every vendor-specific cluster name."
+      },
+      "x_free_text": {
+        "executive_summary": "北朝鮮のリモートITワーカーによる不正就労・収益獲得スキーム全体を表すecosystem profile。FAMOUS CHOLLIMAは別のvendor-specific Actorとして分離する。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=北米、西欧。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Famous Chollima exact aliasを削除し、独立Actorとのrelated-to関係へ変更。"
+      },
+      "x_osint_crosscheck_assessment": "no-match",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0b7786b0-2759-4b5c-b0c8-766ceebee982",
+      "created": "2026-09-21T02:11:26Z",
+      "modified": "2026-09-21T02:11:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Justice Department Announces Coordinated, Nationwide Actions to Combat North Korean Remote IT Workers' Illicit Revenue Generation Schemes",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-06-30T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "U.S. Department of Justice",
+          "external_id": "source--doj-dprk-it-worker-schemes-2025",
+          "url": "https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--doj-dprk-it-worker-schemes-2025",
+      "x_evidence_slice_scope": "grouping:actor--dprk-it-workers:activity--daily-4f4f7399bd666d3fcdbd",
+      "x_source_publisher": "U.S. Department of Justice",
+      "x_source_type": "government-law-enforcement",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--87c79727-5b33-4692-a04a-065717baa8c2",
+      "created": "2026-09-21T02:11:26Z",
+      "modified": "2026-09-21T02:11:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-01T00:00:00Z",
+      "object_refs": [
+        "grouping--da569767-aa41-4726-b28e-14c1ff959543"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "huntress.com",
+          "external_id": "source--daily-10f083232dfd566dc4f9",
+          "url": "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-10f083232dfd566dc4f9",
+      "x_evidence_slice_scope": "grouping:actor--dprk-it-workers:activity--daily-4f4f7399bd666d3fcdbd",
+      "x_source_publisher": "huntress.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7c6cb88c-439f-41eb-bf4a-0ee879952dea",
+      "created": "2026-09-21T02:11:26Z",
+      "modified": "2026-09-21T02:11:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DPRK IT Worker Schemes / 北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "description": "Huntressは2026年、複数組織の調査を支援し、偽造・盗用した身元を使って正規従業員として採用された可能性が高い北朝鮮系リモートワーカー5人を特定した。 医療分野の3人はAstrill VPN、IPRoyal Proxy、WorkTitans B.V.などを利用し、位置情報を隠蔽していたほか、勤務時間や偽造身分証にも共通する異常が確認された。 金融分野ではPiKVMを使ったハードウェアレベルの遠隔操作、Guermok USBキャプチャカード、盗用・加工した顔写真など、過去のDPRK ITワーカー活動と重なる痕跡を確認した。 別の事例では、盗用した身元情報、Toffeeshare、VDO Ninja、音声・画面記録用Chrome拡張などを利用し、不正に雇用を得ていた可能性が高いと評価された。 Huntressは単一IOCだけではDPRK関与を証明できないため、端末、認証、ブラウザ、クラウド、勤務時間、身分証メタデータなど複数の兆候を組み合わせる必要があるとしている。",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-21T02:11:26Z",
+      "object_refs": [
+        "grouping--da569767-aa41-4726-b28e-14c1ff959543",
+        "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+        "report--0b7786b0-2759-4b5c-b0c8-766ceebee982",
+        "report--87c79727-5b33-4692-a04a-065717baa8c2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "grouping",
+      "x_profile_id": "actor--dprk-it-workers",
+      "x_activity_id": "activity--daily-4f4f7399bd666d3fcdbd"
+    }
+  ]
+}

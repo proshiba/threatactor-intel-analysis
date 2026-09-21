@@ -1,0 +1,234 @@
+{
+  "type": "bundle",
+  "id": "bundle--8709ad2c-9cbc-4be6-a8da-d0947c645ab8",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ghostwriterの日次IOC観測",
+      "description": "AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign.",
+      "external_references": [
+        {
+          "source_name": "censys.com",
+          "description": "Local source: https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "external_id": "source--daily-264c4f3115e3e53b3d38",
+          "url": "https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-7a0b25de357249d75824",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--7a0b25de357249d75824f10b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URL(Censys blog)はHTTP 403で原文を直接確認できなかった。tech-memo要約とIOC CSV(限定なしのactor=UNC1151、28件のフィッシング証明書・ホスティングIP)は、CensysがUNC1151のGhostwriterキャンペーン基盤としてインフラを特定したと記載。UNC1151はGhostwriterキャンペーンの実行主体とされるベラルーシ関連クラスタのMandiant名でghostwriterプロファイルのoverlapping alias。直接検証できないため確度はmedium。攻撃期間は不明のままとする。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--ghostwriter",
+          "name": "Ghostwriter",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-264c4f3115e3e53b3d38"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "created": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ghostwriter",
+      "aliases": [],
+      "description": "Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--ghostwriter",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Operation Ghostwriter",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7a67bd78-e01d-4005-8934-6b75f1994543",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Ghostwriterの日次IOC観測 is attributed or linked to Ghostwriter.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "censys.com",
+          "description": "Local source: https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "external_id": "source--daily-264c4f3115e3e53b3d38",
+          "url": "https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--007d7b8a-2b13-467a-bf46-9c88b301650b",
+      "created": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ghostwriter / Ghostwriterの日次IOC観測",
+      "description": "AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign.",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T02:39:13Z",
+      "object_refs": [
+        "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
+        "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+        "relationship--7a67bd78-e01d-4005-8934-6b75f1994543"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--ghostwriter",
+      "x_activity_id": "activity--daily-7a0b25de357249d75824"
+    }
+  ]
+}

@@ -1126,7 +1126,7 @@
       "spec_version": "2.1",
       "id": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-21T03:17:46Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1140,14 +1140,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-2af1a13746c92e9b94dd",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--2af1a13746c92e9b94dd2acc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Kaspersky Securelist、2026-09-01公開)をHTTP 200で取得して確認。Attribution節に「We attribute this activity to Mirage Kitten with a high degree of confidence」と明記され、根拠としてRetrograde/MiniFast(MD5: 810F8E3B88EB05F710C09552941D6F56)との構造的類似、PollCatとRetrograde/MiniFastが共通のC2ハンドシェイク手順(ホスト情報を含むJSONをHTTP POSTし、HTTP 400を成功応答として扱う)を持つこと、WinHttpQueryAuthSchemes/WinHttpSetCredentialsをNULL資格情報で用いるプロキシ対応C2設計の一致、Azure WebsitesとCloudflare配下ドメインの組み合わせという既知TTP、およびアフリカ・中東という既知の地理的標的との整合が挙げられている。Mirage Kittenはunc1549のexact alias(canonical: UNC1549、別名Smoke Sandstorm、Nimbus Manticore)であり、原文サイドバーもこの対応を明示している。被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野。初期アクセスはLinkedIn等の求人プラットフォームで採用担当者を装い、トロイ化したコーディング課題(Front-Technical-Challenge.zip、MD5: 1EA83E4E4592B01E4ACAB63EB867BEE5)をAmazon S3から配布する。課題内にはトロイ化npmパッケージ colorized_terminal / pretty-log (いずれもv2.1.0)が同梱され、node_modules/.cache/.320697f1/index.js のインプラントを分離プロセスとして起動する。悪性VS Code拡張とgit hook注入による永続化も確認された。活動期間: 原文は個々の侵害の観測日を明示していないため活動期間はunknownとし、tech-memo日次ファイルの日付(2026-09-02)をreported_atへ分離する。インフラのドメイン作成日(2026-05-15〜2026-07-03)は登録日であって攻撃観測日ではないため活動期間へ流用しない。",
-      "x_reported_at": {
-        "value": "2026-09-02T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc1549",
@@ -1227,6 +1223,24 @@
           "source--daily-eac188700be16a552143"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -1234,14 +1248,12 @@
       "spec_version": "2.1",
       "id": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
       "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "unit42.paloaltonetworks.com",
@@ -1250,14 +1262,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-6b2a23bcddd9757abbb0",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--6b2a23bcddd9757abbb019a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2026-05-25T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc1549",
@@ -1335,14 +1343,34 @@
           "source--daily-96ac11961cae303bc9fd"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "created": "2026-08-27T03:17:09Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1356,14 +1384,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-cf787599b4873ec991bd",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--cf787599b4873ec991bd75ae から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Group-IB原文(公開2026-08-26、アクセス2026-08-27)を確認して承認。原文は「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」と明記し、記事全体で当該アクターを新規インフラ・ツールセットの実行主体として扱っている。Nimbus Manticoreはunc1549プロファイルのexact aliasであり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はKaspersky Securelist報告(2026-07-28)の既知IOCからのピボットで、原文は「The first sample discovery comes from investigating a known C2 IP (172[.]86[.]98[.]113) from the abovementioned Securelist report」「The third discovery comes as a result of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続する専用リバースSSHトンネルツールと、TWOSTROKEのC++亜種、およびlocat[.]sbs配下の国名風サブドメイン群からなる新規インフラである。確度は、単一ベンダーによるインフラピボットとコード類似に基づく帰属で被害組織の直接観測がないためmediumとする。活動期間は原文が観測日もキャンペーン期間も示さないためunknownとし、記載のコンパイル時刻(2018-09-26、2021-08-19)はOSINT_RULESに従い観測日へ流用しない。公開日2026-08-26とtech-memo日次ファイル日付2026-08-27はreported_atとして分離する。国名風サブドメインは原文が「The actual use of this infrastructure is still not clear at the time of this report since no related samples were identified so far」として用途未確定としているため、標的国・標的分野の根拠には用いない。IOC CSVのactor列は複合表記「Tortoiseshell (Mirage Kitten / UNC1549 / Nimbus Manticore)」であり、parse-daily/config.jsonのactor_value_aliasesでUNC1549へ明示対応付けした上で取り込む。複合表記のためis_safe_structured_matchでは自動承認されず、本判断で個別承認する。",
-      "x_reported_at": {
-        "value": "2026-08-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc1549",
@@ -1432,6 +1456,24 @@
           "source--daily-2f8e0aeaa133b750f976"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -1439,14 +1481,12 @@
       "spec_version": "2.1",
       "id": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦",
       "description": "IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "research.checkpoint.com",
@@ -1455,14 +1495,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-fbebead95e73f527d5d5",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--fbebead95e73f527d5d57ccf から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Check Point Research)を確認。Nimbus Manticore(IRGC関連、Google追跡名UNC1549)を実行主体として明記し、2026年2〜4月の防衛・航空・通信分野(欧州・中東・イスラエル・UAE、米国航空へ拡大)への攻撃を直接分析。Nimbus Manticoreはunc1549プロファイルのexact alias。SEOポイズニングと新型バックドアMiniFastを初観測。",
-      "x_reported_at": {
-        "value": "2026-05-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc1549",
@@ -1534,14 +1570,34 @@
           "source--daily-d9794d16b217472dc38d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1555,14 +1611,10 @@
         }
       ],
       "x_profile_object_id": "activity--mirage-kitten-middle-east-africa-2026",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "報告は被害国とツールの利用を明記するが、活動全体の開始日・終了日は明記しないためunknownとした。ArcBridge固有の初回確認月はcapability側に保持する。",
-      "x_reported_at": {
-        "value": "2026-07-28T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-stated"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc1549",
@@ -1675,6 +1727,24 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
       }
     },
     {
@@ -3123,7 +3193,7 @@
       "spec_version": "2.1",
       "id": "relationship--709b40e0-36da-4331-b46e-f653393ae550",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3131,14 +3201,40 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--7cc285db-7c6c-4514-b562-e44499691376",
       "description": "UNC1549 uses ArcBridge.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--43196c1f-e6d7-4429-a0d1-2c950871ce5e",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3146,14 +3242,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--6a959b8e-59a7-4265-a152-d6e3e8da935f",
       "description": "UNC1549 uses BridgeHead.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b18dc9f6-7e07-483f-ae4f-60b1d7ce859c",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3161,14 +3264,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--bd7530a3-68f1-4af3-8579-3222979fae29",
       "description": "UNC1549 uses NodeRabbit.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d2014dbf-67bd-4ed0-a96e-05811002b562",
       "created": "2026-08-27T03:17:09Z",
-      "modified": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3176,14 +3286,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--01550cd5-cc7f-4710-860c-16af83913f95",
       "description": "UNC1549 uses TWOSTROKE.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4216e4a6-2b5b-414e-8639-52670764261a",
       "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:34:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3191,14 +3308,41 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--2c07f586-c8cc-4474-bdad-59836f85273d",
       "description": "UNC1549 uses MiniFast.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--85b7c986-6215-43c4-9e14-2a0335aa2097",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3206,14 +3350,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--dac20aec-0031-4735-80cb-e3cb9a8dfe43",
       "description": "UNC1549 uses PollCat.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3782cda3-200e-45bf-8d5a-d8d230e945e8",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3221,14 +3372,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "malware--ab1d85a7-3b01-44f0-a9b4-b042c088331b",
       "description": "UNC1549 uses NightLedger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9f7d6e7d-5a5f-4184-8963-cd04191b7a1b",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3236,14 +3394,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "infrastructure--f2e9a9d1-39c0-4868-b052-9785ce6f09da",
       "description": "UNC1549 uses Cloud-hosted HTTPS/WebSocket C2.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--21d3b8c7-9ec2-4e35-b306-4161be4478d1",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3251,14 +3421,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
       "description": "UNC1549 targets アフガニスタン (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--02796a26-17d4-4678-b533-f442f37cf922",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3266,14 +3443,41 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
       "description": "UNC1549 targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--15ed87d7-7c43-439a-ba22-7a35fd86541b",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3281,14 +3485,41 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "description": "UNC1549 targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--637abd9c-1aee-4323-81e1-8e71e639cb82",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3296,14 +3527,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--307ba0bb-34a5-492c-a5f5-458119c368f4",
       "description": "UNC1549 targets エジプト (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0eff4532-e50f-4032-8bab-1be5051564c1",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3311,14 +3554,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--14a66fa3-bdec-4c28-bcfe-6d2a3e9d9306",
       "description": "UNC1549 targets エチオピア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--64b65e70-85c6-4245-afb3-c15b5883e244",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3326,14 +3581,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
       "description": "UNC1549 targets タンザニア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8924710d-8828-45d5-91fc-8e79cc18699d",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3341,14 +3603,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--acb56ebe-a5c9-43f1-89d7-125ae4edec61",
       "description": "UNC1549 targets パキスタン (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e9d1487e-66a0-423f-a2ae-4dcda96cc117",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3356,14 +3625,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--49401053-dc6e-4181-8aa9-beb8471f8c03",
       "description": "UNC1549 targets ブルキナファソ (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--255b48d5-bd8a-4fe3-83c9-43b1c77c3b63",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3371,14 +3647,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--0dcef978-00ea-4ba6-8f7b-9ad19036937a",
       "description": "UNC1549 targets ヨルダン (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eeb5181a-747b-4549-b05b-958395781c5e",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3386,14 +3669,46 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "description": "UNC1549 targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8144560f-41be-44d0-b1ad-be1456c93f3e",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3401,14 +3716,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--728e1d00-9ff2-4e66-a809-b62cfc454862",
       "description": "UNC1549 targets アフリカ (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d21301a6-b223-48a0-8445-eef4988128bc",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3416,14 +3743,66 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "UNC1549 targets 中東 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        },
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1c83b1fc-bc3c-4216-8261-f4c133c3d68b",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3431,14 +3810,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--ef8900b8-2c62-477b-90b9-091bf25993e8",
       "description": "UNC1549 targets 南アジア (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--43d5dc04-ace5-4398-9286-b98d63bfdad7",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3446,14 +3837,46 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
       "description": "UNC1549 targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6bf3468c-ffbc-497b-abce-1fe43e6e020e",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3461,14 +3884,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "UNC1549 targets 金融 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c906f654-13ed-4448-8f25-4bbd9323c174",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3476,14 +3906,31 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--a786f38c-0e04-4a9c-8161-cd9162ec17e6",
       "description": "UNC1549 targets Aerospace (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b38662a8-0b29-4734-aa88-83f6aca739f9",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3491,14 +3938,56 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "UNC1549 targets Aviation (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動); activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動); activity-period",
+        "last": "Check Point: 2026年4月まで観測; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2e694fdd-4269-4f21-ae29-662d31b828c6",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3506,14 +3995,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "description": "UNC1549 targets Defense (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--06e36c41-18a4-488d-a736-74e1be5c9a94",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3521,14 +4022,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--483197f7-8f08-43e4-8998-b0d0f66790eb",
       "description": "UNC1549 targets Financial Services (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3c677cad-e28b-40ec-9d48-8e5ceb7f14fd",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3536,14 +4044,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "UNC1549 targets Government (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0707c67a-664e-4351-9e5b-a0e377ed89e6",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3551,14 +4071,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--cf405014-0715-409d-a544-289d1cf47c6f",
       "description": "UNC1549 targets Telecommunications (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fdcd7e5d-cff6-41ac-95c4-0ddafc70da00",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3566,14 +4093,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 is attributed or linked to UNC1549.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ac8f1368-cb73-4ac9-bb26-3ccd6b303671",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3581,14 +4139,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "malware--bd7530a3-68f1-4af3-8579-3222979fae29",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 uses malware--daily-05c4e283c192f549b723.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2a70d84e-4b97-4c09-a207-31d86a51a369",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3596,14 +4185,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "malware--dac20aec-0031-4735-80cb-e3cb9a8dfe43",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 uses malware--daily-ad254c5697623cd6428f.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--306133f6-4af8-4b00-8b9b-07f65baee179",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3611,14 +4231,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--307ba0bb-34a5-492c-a5f5-458119c368f4",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--country--egypt.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--42021303-ea8c-46ee-bf9b-9f5f11aaa73c",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3626,14 +4277,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--14a66fa3-bdec-4c28-bcfe-6d2a3e9d9306",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--country--ethiopia.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9efdc9c5-1aca-4de5-87da-852d1fd5b965",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3641,14 +4323,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--728e1d00-9ff2-4e66-a809-b62cfc454862",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--region--africa.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--099d93f8-344f-4290-8e25-95e25834d83d",
       "created": "2026-09-21T03:17:46Z",
-      "modified": "2026-09-21T03:17:46Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3656,14 +4369,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--region--middle-east.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1ba38eab-b326-4aad-813d-dd79eb49b599",
       "created": "2026-09-19T00:00:53Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3671,14 +4415,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--a786f38c-0e04-4a9c-8161-cd9162ec17e6",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--sector--aerospace.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--51783427-e878-489d-abac-1f1cd0d97bc6",
       "created": "2026-09-19T00:00:53Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3686,14 +4461,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--sector--aviation.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c295a1a0-9a5d-4e4b-a641-447685c3eb26",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3701,14 +4507,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--targeting-audit--country--dfe4685c3d850f100942.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3efa3872-6da6-4bf6-bc4b-1ce4a3b4fd11",
       "created": "2026-09-19T00:00:53Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3716,14 +4553,45 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--0a3c0ec0-f32f-4521-b91b-de138f122114",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 affected victim--activity-rule--590d0a5c1af14161be04.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8ccb51e1-38b7-4cd8-ba0f-e2e1219518bb",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3731,14 +4599,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 is attributed or linked to UNC1549.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--991ad744-3146-461e-bfbd-b8fdaea17b9d",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3746,14 +4647,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2fc64ec9-55a1-4235-b1d1-46240fdab2ef",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3761,14 +4695,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--904728608f27c39df0df.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c540e088-0b7f-4d61-a1cd-d1a8c2f7c5a1",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3776,14 +4743,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--region--middle-east.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ffc18dde-caaf-4612-a009-8b7dff6b2ec3",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3791,14 +4791,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--targeting-audit--country--1d21569d1d3f9ade5d30.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e2a08719-fc0c-428e-85f9-0ad20947c2cc",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3806,14 +4839,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "attack-pattern--b6efb3cf-8d5d-4629-aebf-ea4176cf7f4b",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 uses ttp--activity-rule--58d557d2679ee65b66a5.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--341ce6bd-25e2-4de1-9ccb-72cfeb9eb45f",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3821,14 +4887,47 @@
       "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "target_ref": "identity--56046d96-a3cb-449d-bdfa-37a6d342b2c5",
       "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 affected victim--activity-rule--071152112a80d6125133.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--876cfa43-8e5c-4d3b-8ad2-66ab06395524",
       "created": "2026-08-27T03:17:09Z",
-      "modified": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3836,14 +4935,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 is attributed or linked to UNC1549.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e70f6dbf-7ce7-4b0b-9ad7-ac3828d1f5d2",
       "created": "2026-08-27T03:17:09Z",
-      "modified": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3851,14 +4981,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "malware--01550cd5-cc7f-4710-860c-16af83913f95",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 uses malware--daily-126c8af714f49766e231.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--43754e1f-bd30-435f-85f4-81b1b1ec54a4",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3866,14 +5027,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--region--middle-east.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f9934684-6ded-4338-9777-71864cfbbda7",
       "created": "2026-08-27T03:19:36Z",
-      "modified": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3881,14 +5073,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--sector--government.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--52cf72e9-6e09-4d8b-91c2-5549f358c8c8",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3896,14 +5119,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--targeting-audit--region--13f9cf21464b4deacca3.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a2416165-77f9-486c-ad08-cb2d2b1a607c",
       "created": "2026-08-27T03:19:36Z",
-      "modified": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3911,14 +5165,45 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 affected victim--activity-rule--a1b1f24e4aa40c393238.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d4ae033b-42af-4010-ae1a-9e22633b01f5",
       "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:34:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3926,14 +5211,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 is attributed or linked to UNC1549.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7d7c851b-d9ba-4c7e-932e-fe3a8edb4fbb",
       "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:34:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3941,14 +5259,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "malware--2c07f586-c8cc-4474-bdad-59836f85273d",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 uses malware--daily-8bf720ef2de5aceeae08.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a5a9b219-24c9-4b7d-98e6-90abad7f8e45",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3956,14 +5307,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d7d38cd5-1b9a-4754-b624-4499c06339e3",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3971,14 +5355,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--region--middle-east.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--80564406-5719-4ef7-b556-857711e5f3ca",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3986,14 +5403,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--sector--aviation.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--07f8c819-a7f3-434c-b039-855447441ec0",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4001,14 +5451,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--targeting-audit--region--13f9cf21464b4deacca3.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9eaa6c73-ccad-4233-bf53-f0ec6cef249c",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4016,14 +5499,47 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--e5780c24-96c2-43b1-a5be-ddd4815d0ab2",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 affected victim--activity-rule--8ea4f5b021a437bbcf9d.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f36ba7d5-7561-4f02-bbe6-cca101fcbab3",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4031,14 +5547,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 is attributed or linked to UNC1549.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3c506875-e68b-4595-a1b1-777e8a0b11e6",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4046,14 +5593,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "malware--7cc285db-7c6c-4514-b562-e44499691376",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--arcbridge.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8e7cd8f-2e88-42f7-9ce7-1f59de1d43c8",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4061,14 +5639,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "malware--6a959b8e-59a7-4265-a152-d6e3e8da935f",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--bridgehead.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8ea90b1c-044a-474d-80f2-ad0760f6c319",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4076,14 +5685,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "malware--ab1d85a7-3b01-44f0-a9b4-b042c088331b",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--nightledger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7d651032-b580-4073-a23b-100f342e126f",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4091,14 +5731,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "infrastructure--f2e9a9d1-39c0-4868-b052-9785ce6f09da",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses infrastructure--mirage-kitten-cloud-c2.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4a2cac57-9872-4646-8b45-2d86db6d79ac",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4106,14 +5777,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--247ac843-e9b9-4420-b6df-2536381e2303",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4121,14 +5823,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--49401053-dc6e-4181-8aa9-beb8471f8c03",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--burkina-faso.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b4337e2-d963-4438-8a9b-d338d864f64c",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4136,14 +5869,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--307ba0bb-34a5-492c-a5f5-458119c368f4",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--egypt.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33f180ab-3e0d-4847-a634-a46339d1f394",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4151,14 +5915,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--14a66fa3-bdec-4c28-bcfe-6d2a3e9d9306",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--ethiopia.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0ef19e20-e8f5-47d7-91dc-32fc2620f78e",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4166,14 +5961,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--0dcef978-00ea-4ba6-8f7b-9ad19036937a",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--jordan.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--53fe9e6a-e3cd-4ed4-86dd-1bc6b652140a",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4181,14 +6007,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--acb56ebe-a5c9-43f1-89d7-125ae4edec61",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--pakistan.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7b29ec90-329e-48f9-a896-b8f1ad3534db",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4196,14 +6053,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--tanzania.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6c863d87-8557-4c8d-bec4-d0a90a04425b",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4211,14 +6099,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--728e1d00-9ff2-4e66-a809-b62cfc454862",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--region--africa.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--342b2412-48ab-4e55-aced-342d450e17fc",
       "created": "2026-09-21T02:05:26Z",
-      "modified": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4226,14 +6145,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--region--middle-east.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2442871e-b1c5-4c07-9598-2aeadaa60a5e",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4241,14 +6191,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--a786f38c-0e04-4a9c-8161-cd9162ec17e6",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--aerospace.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--46cd3299-1500-47f1-8ddc-1658bc67107f",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4256,14 +6237,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--aviation.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bb71e29f-75b6-4f91-bb90-cfa1c1fa5a7e",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4271,14 +6283,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--defense.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--478e22de-9152-48c7-ad19-90bc3681f94f",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4286,14 +6329,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--483197f7-8f08-43e4-8998-b0d0f66790eb",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--financial-services.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b6f78ae3-d3bb-44ed-8a07-5fdcd69b5330",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4301,14 +6375,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--government.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2526e622-6d83-490b-9804-794f13e4417d",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4316,14 +6421,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--cf405014-0715-409d-a544-289d1cf47c6f",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--sector--telecommunications.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aaac993c-eadb-4636-ae51-e7b6c46ab716",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4331,14 +6467,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--02ee3b79-5143-4099-91ff-c93f7df5034d",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--activity-rule--543c54c03eee4074488f.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--671cfbd2-3458-43c3-ba13-95eeeea6a0c5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4346,14 +6513,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--4c3462ba-b8fd-406e-8128-9cc30058ea06",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--activity-rule--64e01cb31f20cb632f2c.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--003f9c94-245a-4dec-a009-d1106eb2cd6b",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4361,14 +6559,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--268c1727-b083-4089-852a-522081e8b177",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--activity-rule--eee5857560ca39325182.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e0a452a0-4ef8-4389-9ac2-d6f029a21279",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4376,14 +6605,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--28e74dbf-82be-47e5-957c-f997c918b3ac",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1057--nightledger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2add2823-fc44-4b20-b5f3-9823cc8e97d3",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4391,14 +6651,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--4e31de28-f922-4b1f-b6b5-673a46a9158e",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1071-001--mirage-kitten-2026.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f2c96b8c-8bea-414a-a219-ca910beb79d4",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4406,14 +6697,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--7284d9bc-3fb8-4f6e-801c-09f466c34ce3",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1082--nightledger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6e8499bf-2382-4b19-8e76-5d4c6511cdd5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4421,14 +6743,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--d25f7b43-4129-4f40-b05e-93639d6c450a",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1090--bridgehead.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--94e95ab8-e618-47f2-84ab-1274718c62c5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4436,14 +6789,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--7e7855e1-c1ec-4af2-965f-c06c37d1d782",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1113--nightledger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--82a68a3a-3240-4523-b927-406b0fca0f99",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4451,14 +6835,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--15a562fe-166d-4d6c-a5a7-8c470601499e",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1566-002--mirage-kitten-2026.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--42aa09af-67d2-4660-ba9e-b2c8264aad30",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4466,14 +6881,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "attack-pattern--668ad626-a3dc-4e62-9d95-9f48969beca6",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses ttp--t1574-001--nightledger.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6e729483-67f8-4ae3-94ac-152d92938bf9",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4481,14 +6927,45 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--fe4f341c-64cf-462f-a431-097cb21d7d03",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 affected victim--activity-rule--15a1bbc4304a95fa57dc.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d27d03b0-a3e4-4617-8526-e6f14ca85c5a",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4496,14 +6973,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--02ee3b79-5143-4099-91ff-c93f7df5034d",
       "description": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3ab7eec4-1628-4ee5-a1aa-64de257e612d",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4511,14 +6995,41 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--b6efb3cf-8d5d-4629-aebf-ea4176cf7f4b",
       "description": "同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a119c64c-92fb-45fb-8517-d68018a8da49",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4526,14 +7037,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--4c3462ba-b8fd-406e-8128-9cc30058ea06",
       "description": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--23a352e6-2ecf-4719-9db6-353b1e451499",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4541,14 +7059,21 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--268c1727-b083-4089-852a-522081e8b177",
       "description": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--83c8d067-08bd-416f-8851-a9b092c4e7b9",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4556,14 +7081,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--28e74dbf-82be-47e5-957c-f997c918b3ac",
       "description": "NightLedgerは実行中プロセスを列挙するコマンドを備える。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4237e472-5b76-486b-9d4a-d75207b11c95",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4571,14 +7108,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--4e31de28-f922-4b1f-b6b5-673a46a9158e",
       "description": "NightLedgerはHTTPS、ArcBridgeとBridgeHeadはWebSocketを用いてC2通信を行った。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e3c0dc92-0e30-4f04-9e5d-d1f24a8b1a0a",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4586,14 +7135,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--7284d9bc-3fb8-4f6e-801c-09f466c34ce3",
       "description": "NightLedgerは被害ホストのシステム情報を収集する偵察コマンドを備える。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dbc45a77-b5af-40c4-9d23-38eded9347de",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4601,14 +7162,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--d25f7b43-4129-4f40-b05e-93639d6c450a",
       "description": "BridgeHeadはWebSocket上でSOCKS5通信を中継し、ArcBridgeとともに企業プロキシ経由の接続に対応した。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aad8a555-16c9-4faa-ae90-66eabf92f3cb",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4616,14 +7189,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--7e7855e1-c1ec-4af2-965f-c06c37d1d782",
       "description": "NightLedgerは画面を取得してC2へ送るコマンドを備える。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--39d834f5-1ae4-4c2f-8c70-62688e9377e2",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4631,14 +7216,26 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--15a562fe-166d-4d6c-a5a7-8c470601499e",
       "description": "採用をテーマにした内容とビデオ会議サービスの類似ページを用い、第三者サービス上の悪性アーカイブへ標的を誘導した。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1a6a3b3c-3de9-4367-ba96-104d8a22dda3",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4646,7 +7243,19 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "attack-pattern--668ad626-a3dc-4e62-9d95-9f48969beca6",
       "description": "正規のAppVShNotify.exeにSspiCli.dllを読み込ませるDLL検索順序ハイジャックでNightLedgerを実行した。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -4728,7 +7337,7 @@
       "spec_version": "2.1",
       "id": "relationship--fa4b4b67-e351-40c1-af71-486e8cf68db7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4736,7 +7345,8 @@
       "source_ref": "indicator--60f7ae6e-4592-479a-abc1-363d32e8ee77",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4814,7 +7424,7 @@
       "spec_version": "2.1",
       "id": "relationship--4dc52025-de68-491e-8c62-0963cc0456d3",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4822,7 +7432,8 @@
       "source_ref": "indicator--94f86cae-e81f-4104-a489-a9a7e9251b01",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4900,7 +7511,7 @@
       "spec_version": "2.1",
       "id": "relationship--7313a0bb-2a07-4381-abb3-fc5f267b79b2",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4908,7 +7519,8 @@
       "source_ref": "indicator--bc65fe67-19ec-4cdb-93d2-a0064c247d1f",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4986,7 +7598,7 @@
       "spec_version": "2.1",
       "id": "relationship--02662d70-6083-46b5-a535-731205a3d78e",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4994,7 +7606,8 @@
       "source_ref": "indicator--999a0eb8-17d8-4008-aa4c-2fc194f5f895",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5072,7 +7685,7 @@
       "spec_version": "2.1",
       "id": "relationship--2a107f89-a6bd-4240-a85f-7c03782dca62",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5080,7 +7693,8 @@
       "source_ref": "indicator--bad2b776-c094-4a0f-83ed-fa0f20148912",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5158,7 +7772,7 @@
       "spec_version": "2.1",
       "id": "relationship--e9678c71-83fe-4b17-b055-e20c4ade9360",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5166,7 +7780,8 @@
       "source_ref": "indicator--cf86d6c4-b23d-4f84-af00-40f33a4a5863",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5244,7 +7859,7 @@
       "spec_version": "2.1",
       "id": "relationship--4891d3d0-d7ff-4dab-966f-fe13a0ed498e",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5252,7 +7867,8 @@
       "source_ref": "indicator--17f5cf94-b179-4715-bd7e-173d54f66963",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5330,7 +7946,7 @@
       "spec_version": "2.1",
       "id": "relationship--8a0635ef-f46a-4fde-b5d0-2fa6e69c2770",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5338,7 +7954,8 @@
       "source_ref": "indicator--f93cd7a7-d472-4145-aed2-bd40a59b90a4",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5416,7 +8033,7 @@
       "spec_version": "2.1",
       "id": "relationship--889c1544-9d75-49e0-9b50-4a30a1fabadc",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5424,7 +8041,8 @@
       "source_ref": "indicator--66670015-2a74-4b34-85f6-7ac90eef123b",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5502,7 +8120,7 @@
       "spec_version": "2.1",
       "id": "relationship--ae96205e-5765-40a9-91de-e547271c42c3",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5510,7 +8128,8 @@
       "source_ref": "indicator--d780e342-787f-40ec-9d04-7d6fb599127c",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5588,7 +8207,7 @@
       "spec_version": "2.1",
       "id": "relationship--f1ff6f3d-f8b5-4f29-aad6-fd232ee20aa1",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5596,7 +8215,8 @@
       "source_ref": "indicator--f66a5f35-1199-4456-98be-f6e9f112da4f",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5674,7 +8294,7 @@
       "spec_version": "2.1",
       "id": "relationship--9a0186e8-75ea-499e-9398-4b13636b6f0f",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5682,7 +8302,8 @@
       "source_ref": "indicator--bf368838-f3b2-4569-a2a6-dd7db30392e8",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5760,7 +8381,7 @@
       "spec_version": "2.1",
       "id": "relationship--80a2b2da-6ab4-41bf-9995-a86d73219956",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5768,7 +8389,8 @@
       "source_ref": "indicator--880e183c-ca16-4438-b284-94a3e65c0c90",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5846,7 +8468,7 @@
       "spec_version": "2.1",
       "id": "relationship--168fa610-e368-4347-86f0-7ac9393d37f1",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5854,7 +8476,8 @@
       "source_ref": "indicator--013f686a-3462-49c6-ad8c-a670515df002",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5932,7 +8555,7 @@
       "spec_version": "2.1",
       "id": "relationship--1899d235-31e0-469c-bbbb-4af18e2010e5",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5940,7 +8563,8 @@
       "source_ref": "indicator--349e416c-ca5f-4275-9740-a5c4c7fa70ee",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6018,7 +8642,7 @@
       "spec_version": "2.1",
       "id": "relationship--4a2b3146-023a-4536-bac2-b3410f9e88cd",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6026,7 +8650,8 @@
       "source_ref": "indicator--c748956a-aa0d-48d4-abb5-0ef847febf76",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6108,7 +8733,7 @@
       "spec_version": "2.1",
       "id": "relationship--935bfe03-d15d-4a3e-bcf3-4d9b59e0888f",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6116,7 +8741,8 @@
       "source_ref": "indicator--f39bd423-78a7-4357-b845-2952bd5b89f6",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6194,7 +8820,7 @@
       "spec_version": "2.1",
       "id": "relationship--d2c0fb10-0e2c-4fcf-a537-a5343bb9249f",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6202,7 +8828,8 @@
       "source_ref": "indicator--0972bb64-e0e5-4a0f-ae5a-1cc79133feb0",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6280,7 +8907,7 @@
       "spec_version": "2.1",
       "id": "relationship--a9f29551-b11e-418a-a2ac-9afcfbe7cf76",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6288,7 +8915,8 @@
       "source_ref": "indicator--0f64fd6b-7407-420f-8ca9-2c7f1ee58e35",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6370,7 +8998,7 @@
       "spec_version": "2.1",
       "id": "relationship--9f8323cb-4cf0-44c3-9ea3-afe2b4453985",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6378,7 +9006,8 @@
       "source_ref": "indicator--053eeb04-432e-419d-90be-7c83f9f945a5",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6456,7 +9085,7 @@
       "spec_version": "2.1",
       "id": "relationship--8165e1a5-1280-4ab2-bfce-8136d91cfd40",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6464,7 +9093,8 @@
       "source_ref": "indicator--3a61d5f4-50c8-4cd7-814c-c1f6a5c14a6a",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6542,7 +9172,7 @@
       "spec_version": "2.1",
       "id": "relationship--08b8bfbf-b9e9-46e2-818d-8906d000a8e7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6550,7 +9180,8 @@
       "source_ref": "indicator--47404088-1439-4437-9e8c-3ab579bea0c1",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6628,7 +9259,7 @@
       "spec_version": "2.1",
       "id": "relationship--2169e034-ad69-4ac3-be0c-e4afc8a45a39",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6636,7 +9267,8 @@
       "source_ref": "indicator--2035dc15-a284-4987-a8f1-f171feed4a44",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6714,7 +9346,7 @@
       "spec_version": "2.1",
       "id": "relationship--f345bf6f-a526-439c-badf-dedbe70c54f1",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6722,7 +9354,8 @@
       "source_ref": "indicator--c60bd03a-b386-4405-a9ce-4df24523383e",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6800,7 +9433,7 @@
       "spec_version": "2.1",
       "id": "relationship--2b625e15-11d2-4f05-8936-0d056ec975d1",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6808,7 +9441,8 @@
       "source_ref": "indicator--2ee653f0-ce54-4e08-833f-8601d0921255",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6886,7 +9520,7 @@
       "spec_version": "2.1",
       "id": "relationship--b505c207-aa82-4c34-8c2b-a27671eb34ff",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6894,7 +9528,8 @@
       "source_ref": "indicator--1cb6c560-99ac-4c08-afc2-2a935ff926f9",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6972,7 +9607,7 @@
       "spec_version": "2.1",
       "id": "relationship--2643d762-7eb9-433e-9c80-442b898f53a5",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6980,7 +9615,8 @@
       "source_ref": "indicator--c6e439f6-b5ea-4bf9-af36-cb4a30757303",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7058,7 +9694,7 @@
       "spec_version": "2.1",
       "id": "relationship--05f3aaff-f7a0-4e1d-8cf3-daaf950f45af",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7066,7 +9702,8 @@
       "source_ref": "indicator--1997da2a-6be5-4833-ad67-e19978a3b79b",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7144,7 +9781,7 @@
       "spec_version": "2.1",
       "id": "relationship--1ce4b10c-0168-4d6b-bc07-29a5d89d7a18",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7152,7 +9789,8 @@
       "source_ref": "indicator--33ad83f9-155f-4606-8e09-aa09ccfe777e",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7230,7 +9868,7 @@
       "spec_version": "2.1",
       "id": "relationship--02a9c9d8-be0c-4c82-9f2c-2d8c30c8da7b",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7238,7 +9876,8 @@
       "source_ref": "indicator--4cfbf7c6-7183-489d-a10e-0f1162012e3b",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7316,7 +9955,7 @@
       "spec_version": "2.1",
       "id": "relationship--2427d1c8-f134-471b-803d-d244f00bab09",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7324,7 +9963,8 @@
       "source_ref": "indicator--1808644e-c5e3-48cc-9879-9593e5e1a066",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7402,7 +10042,7 @@
       "spec_version": "2.1",
       "id": "relationship--a1c8e462-afae-47e0-b970-3b8f1102492c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7410,7 +10050,8 @@
       "source_ref": "indicator--eae1ba00-f29a-4cdd-a9ce-161d0ec522cb",
       "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7589,7 +10230,7 @@
         "indicator--eae1ba00-f29a-4cdd-a9ce-161d0ec522cb",
         "indicator--474408f0-0d89-4df9-9baa-5b222660c93d"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

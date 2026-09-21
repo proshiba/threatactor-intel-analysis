@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc5820`
 - 状態: draft
-- 更新日時: 2026-09-21T02:39:13Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -106,13 +106,13 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | intrusion | 不明 | 不明 | 2024-10-25 |  |  |  | victim--activity-rule--41b13ed1fc20995ddb16 | Mandiantは、Fortinet FortiManagerの脆弱性（CVE-2024-47575）が6月以降に50台以上のサーバーで悪用されていると報告。 Mandiantは、「UNC5820」と呼ばれる脅威アクターが、2024年6月27日からFortiManagerデバイスを悪用していることを発見。 攻撃者は未認証のAPIコマンドを利用し、FortiGateデバイスの構成情報を盗み出す。 侵害されたデバイスのメモリを分析したが、悪意のあるペイロードやシステムファイルの改ざんの兆候は見つからなかった。 攻撃者はデバイスからデータを抜き取ったが、このデバイスを使って、横方向に拡散したり、ネットワークに侵入したりした兆候はない。 Fortinetは既に修正パッチと緩和策を公開。 | 中 | `source--daily-ed6655e2b5b3dfb73449` |
+| UNC5820、FortiManager 50台超から構成情報を窃取 | intrusion | 2024-06-27 | 2024-09-23 | 2024-10-23 |  |  |  | victim--activity-rule--41b13ed1fc20995ddb16 | Mandiantは、UNC5820がCVE-2024-47575を悪用し、50台超のFortiManager機器を潜在的に侵害したと報告した。2024年6月27日と9月23日に同一指標の悪用を観測し、管理対象FortiGateの構成とユーザー情報を圧縮・流出させた。公開時点で横展開の証拠はなく、動機と所在も不明。 | 高 | `source--daily-ed6655e2b5b3dfb73449`, `source--mandiant-unc5820-fortimanager-2024` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | UNC5820 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | 中 |
+| UNC5820、FortiManager 50台超から構成情報を窃取 | UNC5820 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | 高 |
 
 
 
@@ -126,7 +126,7 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | 非公開 | anonymous | unknown | reported |  |  |  | サーバー |  | 不明 | 不明 | 2024-10-25 | 中 | `source--daily-ed6655e2b5b3dfb73449` |
+| 被害事例: Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | 非公開 | anonymous | unknown | reported |  |  |  | サーバー |  | 不明 | 不明 | 2024-10-25 | 中 | `source--daily-ed6655e2b5b3dfb73449`, `source--mandiant-unc5820-fortimanager-2024` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -166,6 +166,7 @@ TTPなし
 | source--unc5820--dbe57843e4e901ef | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
 | source--unc5820--ddd57eb55f808376 | 2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report |  | 2024 | summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mandiant-unc5820-fortimanager-2024 | Investigating FortiManager Zero-Day Exploitation (CVE-2024-47575) | Mandiant | 2024-10-23 | https://cloud.google.com/blog/topics/threat-intelligence/fortimanager-zero-day-exploitation-cve-2024-47575 | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

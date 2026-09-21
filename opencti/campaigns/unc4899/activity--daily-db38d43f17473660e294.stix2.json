@@ -1,0 +1,780 @@
+{
+  "type": "bundle",
+  "id": "bundle--c8bf7a97-6daf-4747-b2af-62a2df98c13d",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "File and Directory Discovery",
+      "description": "「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--5287d9830bb2ca5ae994",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-db38d43f17473660e294"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "created": "2026-07-27T11:04:38Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開",
+      "description": "北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。 LinkedInを通じて開発者に接触し、偽の求人情報やコーディング課題を装ってマルウェアを配布。 被害者は、GitHub上のトロイの木馬化されたPythonプロジェクトをダウンロード・実行するよう誘導され、これにより「RN Loader」および「RN Stealer」と呼ばれるマルウェアに感染。 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 攻撃は多段階で行われ、C2サーバーは被害者のIPアドレスや地理情報などに基づいてペイロードの配信を制御。 コード実行には、`yaml.load()`や`ejs.render()`などの手法を用いて検出を回避。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-db38d43f17473660e294",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--db38d43f17473660e2942452 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc4899",
+          "name": "UNC4899",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--5287d9830bb2ca5ae994"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--f0d8df51439c4d0f3a05",
+            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a255592b2e5fc1bdeb05"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-04-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Discovery"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--f0d8df51439c4d0f3a05"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-744b9664f686bf2ed5cd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "IT・ソフトウェア",
+      "identity_class": "class",
+      "description": "活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5793ff61-027f-4c82-99c5-923383735b9d",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-20T08:53:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開",
+      "identity_class": "organization",
+      "description": "北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。 LinkedInを通じて開発者に接触し、偽の求人情報やコーディング課題を装ってマルウェアを配布。 被害者は、GitHub上のトロイの木馬化されたPythonプロジェクトをダウンロード・実行するよう誘導され、これにより「RN Loader」および「RN Stealer」と呼ばれるマルウェアに感染。 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 攻撃は多段階で行われ、C2サーバーは被害者のIPアドレスや地理情報などに基づいてペイロードの配信を制御。 コード実行には、`yaml.load()`や`ejs.render()`などの手法を用いて検出を回避。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--a255592b2e5fc1bdeb05",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--f0d8df51439c4d0f3a05",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--5287d9830bb2ca5ae994"
+      ],
+      "x_affected_assets": [
+        "サーバー",
+        "クラウド／SaaS",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC4899",
+      "aliases": [
+        "TraderTraitor",
+        "PUKCHONG",
+        "Jade Sleet"
+      ],
+      "description": "UNC4899の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc4899",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "TraderTraitor",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        },
+        {
+          "name": "PUKCHONG",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        },
+        {
+          "name": "Jade Sleet",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC4899の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=インド、ブラジル、北朝鮮。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--6c08c511-f638-4a37-b178-ec73a1c275bf",
+      "created": "2026-09-20T08:53:45Z",
+      "modified": "2026-09-20T08:53:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Democratic People's Republic of Korea",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--f0d8df51439c4d0f3a05",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "PRK",
+      "x_opencti_reference_id": "location--a6cadfda-9224-49e3-bc67-f715c19c3fdb",
+      "x_opencti_aliases": [
+        "KP",
+        "PRK",
+        "北朝鮮"
+      ],
+      "latitude": 40.339852,
+      "longitude": 127.510093,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--01797708-a667-4bc7-b0a7-f5f011e78f08",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "target_ref": "identity--5793ff61-027f-4c82-99c5-923383735b9d",
+      "description": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 affected victim--activity-rule--a255592b2e5fc1bdeb05.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--058953af-74be-4ca8-a266-19a6bf7b768d",
+      "created": "2026-07-27T11:04:38Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "target_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "description": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 is attributed or linked to UNC4899.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--06e343c5-51e9-4d05-baf6-07243a77321a",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa",
+      "description": "「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6432e431-99c8-4835-8ec6-5e6e03fc3c0b",
+      "created": "2026-09-20T08:53:45Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "target_ref": "location--6c08c511-f638-4a37-b178-ec73a1c275bf",
+      "description": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 targets target--activity-rule--country--f0d8df51439c4d0f3a05.\n\nEvidence: 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--657979fe-bfde-40c8-b005-d1644f75a3e1",
+      "created": "2026-09-20T08:53:45Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "location--6c08c511-f638-4a37-b178-ec73a1c275bf",
+      "description": "UNC4899 targets 北朝鮮 (profile target category: countries).\n\nEvidence: 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72941b09-724c-45a1-8775-3e4937ef6ee6",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "description": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8b96b3a5-e78b-4e28-ac69-a408c44b50df",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "description": "UNC4899 targets IT・ソフトウェア (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a7112d5b-765c-4a30-8ba9-a4ab65079b95",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+      "target_ref": "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa",
+      "description": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 uses ttp--activity-rule--5287d9830bb2ca5ae994.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b66d8500-84a2-4fde-b067-bd5cd5e0bf8e",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-16T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa",
+        "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+        "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+        "identity--5793ff61-027f-4c82-99c5-923383735b9d",
+        "relationship--01797708-a667-4bc7-b0a7-f5f011e78f08",
+        "relationship--058953af-74be-4ca8-a266-19a6bf7b768d",
+        "relationship--06e343c5-51e9-4d05-baf6-07243a77321a",
+        "relationship--6432e431-99c8-4835-8ec6-5e6e03fc3c0b",
+        "relationship--657979fe-bfde-40c8-b005-d1644f75a3e1",
+        "relationship--72941b09-724c-45a1-8775-3e4937ef6ee6",
+        "relationship--8b96b3a5-e78b-4e28-ac69-a408c44b50df",
+        "relationship--a7112d5b-765c-4a30-8ba9-a4ab65079b95"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-744b9664f686bf2ed5cd",
+          "url": "https://thehackernews.com/2025/04/crypto-developers-targeted-by-python.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-744b9664f686bf2ed5cd",
+      "x_evidence_slice_scope": "campaign:actor--unc4899:activity--daily-db38d43f17473660e294",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a811805c-4afe-4b4b-ad04-e03e3b52a929",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC4899 / 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開",
+      "description": "北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。 LinkedInを通じて開発者に接触し、偽の求人情報やコーディング課題を装ってマルウェアを配布。 被害者は、GitHub上のトロイの木馬化されたPythonプロジェクトをダウンロード・実行するよう誘導され、これにより「RN Loader」および「RN Stealer」と呼ばれるマルウェアに感染。 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 攻撃は多段階で行われ、C2サーバーは被害者のIPアドレスや地理情報などに基づいてペイロードの配信を制御。 コード実行には、`yaml.load()`や`ejs.render()`などの手法を用いて検出を回避。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa",
+        "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
+        "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+        "identity--5793ff61-027f-4c82-99c5-923383735b9d",
+        "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+        "location--6c08c511-f638-4a37-b178-ec73a1c275bf",
+        "relationship--01797708-a667-4bc7-b0a7-f5f011e78f08",
+        "relationship--058953af-74be-4ca8-a266-19a6bf7b768d",
+        "relationship--06e343c5-51e9-4d05-baf6-07243a77321a",
+        "relationship--6432e431-99c8-4835-8ec6-5e6e03fc3c0b",
+        "relationship--657979fe-bfde-40c8-b005-d1644f75a3e1",
+        "relationship--72941b09-724c-45a1-8775-3e4937ef6ee6",
+        "relationship--8b96b3a5-e78b-4e28-ac69-a408c44b50df",
+        "relationship--a7112d5b-765c-4a30-8ba9-a4ab65079b95",
+        "report--b66d8500-84a2-4fde-b067-bd5cd5e0bf8e"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc4899",
+      "x_activity_id": "activity--daily-db38d43f17473660e294"
+    }
+  ]
+}

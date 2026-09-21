@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc5174`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:03Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -16,7 +16,9 @@ UNC5174の標準化プロファイル。リポジトリ内の専用資料3件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| CL-STA-1015 | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-react2shell-cl-sta-1015-2025` | Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor cluster mapping. It is retained as overlapping until scope stability is independently confirmed. |
 
 ## 帰属
 
@@ -33,7 +35,9 @@ Aliasなし
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| CL-STA-1015 | taxonomy-overlaps-with | Unit 42 maps its CL-STA-1015 activity cluster to UNC5174; the mapping is preserved as a cross-taxonomy overlap rather than a global exact identity. | 中 | `source--unit42-react2shell-cl-sta-1015-2025` |
 
 ## ダイヤモンドモデル
 
@@ -80,7 +84,10 @@ Aliasなし
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--snowlight | SNOWLIGHT | Linux dropper used to retrieve follow-on malware including VShell. | 不明 | 不明 | 高 | `source--unit42-react2shell-cl-sta-1015-2025` |
+| malware--vshell | VShell | Remote access trojan deployed after SNOWLIGHT. | 不明 | 不明 | 高 | `source--unit42-react2shell-cl-sta-1015-2025` |
 
 ### ツール
 
@@ -108,7 +115,7 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 | infrastructure-operation | 不明 | 不明 | 2025-04-16 | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--caea1296908bb424f92e | 中国系APTグループUNC5174がLinux向けにSNOWLIGHTマルウェアとVShellを展開 SNOWLIGHTはCベースのELF型ドロッパーで、メモリ上にVShell RATを展開 VShellはWebSocketを用いたC2通信が可能なファイルレス型RAT 攻撃には脆弱性（例：CVE-2024-8963など）を悪用して初期侵入 標的国は日本を含む20カ国以上に及び、政府・重要インフラが主な標的 | 中 | `source--daily-c5a9c42da8ab9e7b0010` |
 | ランサムウェア集団、SAP NetWeaver攻撃に参入 | ransomware-extortion | 不明 | 不明 | 2025-05-15 |  |  |  | victim--activity-rule--b0587ebaf67a29526988 | SAP NetWeaverの重大な脆弱性（CVE-2025-31324）を悪用した攻撃に、RansomEXXおよびBianLianランサムウェア集団が参入。 この脆弱性は、認証なしでのファイルアップロードを可能にし、リモートコード実行を許す。 ReliaQuestの分析により、BianLianが過去に使用したC2サーバーのIPアドレスとの関連が確認された。 RansomEXXは、PipeMagicバックドアやBrute Ratel C2フレームワークを利用し、攻撃を展開。 中国のAPTグループ（Chaya_004、UNC5221、UNC5174、CL-STA-0048）も同脆弱性を悪用し、少なくとも581のSAP NetWeaverインスタンスにバックドアを設置。 | 中 | `source--daily-c8f19538293e168bddbd` |
-| React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 | intrusion | 不明 | 不明 | 2025-12-08 |  |  |  | victim--activity-rule--8d6a477bac79692c0bf5 | React2Shell（CVE-2025-55182）が公表直後から悪用され、既に30超の組織侵害と7万7,664の脆弱IPが確認。 RSCの安全でないデシリアライズが原因で、Next.js等の実装に影響し、単一HTTP要求で未認証RCEが可能。 PoC公開後にスキャンが急増し、GreyNoiseは直近24時間で181の発信元を観測、複数国からの自動化攻撃が目立つ。 侵害では偵察やAWS資格情報窃取試行、23[.]235[.]188[.]3から第2段階PS取得、Cobalt Strike設置が報告。 CISAはKEVに追加し、即時の更新・再ビルド/再デプロイとPS/シェル実行痕跡のログ確認を助言。 | 中 | `source--daily-f47a43f682d4bb61a2bc` |
+| CL-STA-1015／UNC5174と整合するReact2Shell後続活動 | intrusion | 不明 | 不明 | 2025-12-12 |  | malware--snowlight, malware--vshell |  |  | Unit 42はReact2Shell（CVE-2025-55182）悪用後、CL-STA-1015と高い確度で整合する活動を観測した。攻撃者はcurl/wgetでsltシェルスクリプトをファイルレス実行し、SNOWLIGHTとVShellを展開した。React2Shell全体の侵害数や脆弱ホスト数は複数主体を含むため、このクラスタ固有の被害数・標的としては記録しない。 | 中 | `source--daily-f47a43f682d4bb61a2bc`, `source--gtig-react2shell-multiple-actors-2025`, `source--unit42-react2shell-cl-sta-1015-2025` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -116,7 +123,7 @@ Aliasなし
 |---|---|---|---|---|---|---|---|
 | 中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 | UNC5174 | 情報なし | 情報なし | 情報なし | 日本, 政府・行政 | 被害事例: 中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 | 中 |
 | ランサムウェア集団、SAP NetWeaver攻撃に参入 | UNC5174 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: ランサムウェア集団、SAP NetWeaver攻撃に参入 | 中 |
-| React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 | UNC5174 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 | 中 |
+| CL-STA-1015／UNC5174と整合するReact2Shell後続活動 | UNC5174 | SNOWLIGHT, VShell | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 
 
@@ -133,7 +140,6 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | クラウド／SaaS |  | 不明 | 不明 | 2025-12-08 | 中 | `source--daily-f47a43f682d4bb61a2bc` |
 | 被害事例: ランサムウェア集団、SAP NetWeaver攻撃に参入 | 非公開 | anonymous | unknown | reported |  |  |  |  | encryption: ランサムウェア集団、SAP NetWeaver攻撃に参入 | 不明 | 不明 | 2025-05-15 | 中 | `source--daily-c8f19538293e168bddbd` |
 | 被害事例: 中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--210dddb39397dbe50e91 |  |  |  |  | 不明 | 不明 | 2025-04-16 | 中 | `source--daily-c5a9c42da8ab9e7b0010` |
 
@@ -164,6 +170,7 @@ Aliasなし
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- React2Shell reporting contains multiple actor clusters. Unit 42 maps CL-STA-1015 to UNC5174, while GTIG separately tracks a SNOWLIGHT-using cluster as UNC6586; malware reuse alone must not merge those clusters.
 
 ## 出典
 
@@ -178,6 +185,8 @@ Aliasなし
 | source--unc5174--5b9b5bec8a63548a | readme |  | 不明 | UNC****/UNC5174/readme.md | repository-notes | TLP:CLEAR | 中 |
 | source--unc5174--626245061e5734b4 | VShell |  | 不明 | UNC****/UNC5174/VShell.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unit42-react2shell-cl-sta-1015-2025 | Exploitation of Critical Vulnerability in React Server Components | Palo Alto Networks Unit 42 | 2025-12-12 | https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--gtig-react2shell-multiple-actors-2025 | Multiple Threat Actors Exploit React2Shell (CVE-2025-55182) | Google Threat Intelligence Group | 2025-12-12 | https://cloud.google.com/blog/topics/threat-intelligence/threat-actors-exploit-react2shell-cve-2025-55182 | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

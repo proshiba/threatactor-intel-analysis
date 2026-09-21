@@ -511,14 +511,12 @@
       "spec_version": "2.1",
       "id": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "created": "2026-08-21T01:16:11Z",
-      "modified": "2026-09-19T00:00:52Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
       "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
-      "first_seen": "2013-01-01T00:00:00Z",
-      "last_seen": "2017-12-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "justice.gov",
@@ -527,14 +525,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-4d15dec07641eea42e80",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--4d15dec07641eea42e809f27 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 一次資料(米司法省 Office of Public Affairs のプレスリリース)の原文を確認した。WebFetchはHTTP 401のためUser-Agent付きcurlでHTTP 200・全文取得した。ページ上の日付表記は「Tuesday, August 18, 2026」であり、tech-memo日次ファイルの日付2026-08-20とは異なるため、公開日は2026-08-18としてreported_atへ分離する。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、次の理由で採用可と判断した。(1)原文が「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記している。(2)原文が「Nine of the 17 defendants charged in the S2 indictment were previously charged in a 7-count indictment announced in March 2018」と述べ、2018年3月起訴の再掲ではなく8名を追加した新たな追起訴であることが確認できるため、過去言及(historical-reference)には該当しない。(3)MITRE ATT&CK G0122のSilent Librarian記述自体がこのDOJ事件(DOJ Iran Indictments March 2018)を引用してクラスタを定義しており、本プロファイルのaliasにMabna Instituteが既に登録されている。ただしDOJは組織名「Mabna Institute」のみを用い、ベンダー呼称であるSilent LibrarianおよびCobalt Dickensは原文に一切現れない。プロファイル側のalias scopeもexactではなくoverlappingであり、Silent LibrarianはMabna Institute所属者による活動クラスタを指す呼称でMabna Institute社そのものと同一ではないため、confidenceはhighではなくmediumとする。活動期間は原文が「The campaign started in approximately 2013, continued through at least December 2017」と明示しているため、first_observed=2013(precision: year)・last_observed=2017-12(precision: month)をsource-statedで採用し、公開日2026-08-18は観測日へ流用しない。被害範囲は原文が米国内144大学・国外178大学・米国内私企業42社以上・国外私企業11社以上・米連邦および州政府機関5機関以上・NGO 2団体、教授アカウント10万件超を標的として約8,000件を侵害、31.5TB超の窃取、米国内大学の調達費用として34億ドル超と明記している。窃取データはMegapaper.ir・Gigapaper.irを通じてイラン国内へ販売された。HBOへの約600万ドル相当Bitcoin恐喝はMesriが別途 17 Cr. 689 (AJN) で訴追済みの事件として言及されている。法執行資料のためIOCおよびartifactの記載はなく、レコード側のiocs/artifactsは空のままとする。capability候補も生成されていない。activity_typeの自動分類は要約中のHBO恐喝への言及(「恐喝」)に反応してransomware-extortionを返すが、原文の主題はIRGCの指示による学術データ・知的財産の窃取であり分類が実態と合わないため、レビュー判断としてcyber-espionageを明示的に指定する。",
-      "x_reported_at": {
-        "value": "2026-08-20T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--silent-librarian",
@@ -598,7 +592,27 @@
           "source--daily-ac0aab951821b27df384"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2013-01-01T00:00:00Z",
+      "last_seen": "2017-12-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -1325,7 +1339,7 @@
       "spec_version": "2.1",
       "id": "relationship--33892f34-7902-453e-ac8d-68a237cc2ec1",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1333,14 +1347,41 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
       "description": "Silent Librarian targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e6c39322-728e-48cd-85aa-efe1ae1470f5",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1348,14 +1389,41 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
       "description": "Silent Librarian targets 非営利・市民社会 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d5821738-844e-4811-aa10-514cad58edcd",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1363,14 +1431,41 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "Silent Librarian targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eb3ce742-b7e9-47c3-8b3e-2841e6eca3e6",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1378,14 +1473,51 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "Silent Librarian targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a728cf4a-bdd5-4e5e-a437-b15aacc03ec6",
       "created": "2026-08-21T01:16:11Z",
-      "modified": "2026-08-21T01:16:11Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1393,14 +1525,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 is attributed or linked to Silent Librarian.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f777a8b3-9cee-4439-aab9-2cfc53016ad2",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1408,14 +1573,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 targets target--activity-rule--sector--d406c8e5b7fa7aeff7d2.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c357407b-6a89-4697-bd71-1bb2a0397278",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1423,14 +1621,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0d2c7c26-5176-463f-a688-2f807f8a171c",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1438,14 +1669,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 targets target--country--united-states.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e8242640-eeb6-405d-b4ca-10fedb6e1031",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1453,14 +1717,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 targets target--sector--government.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bbbe1abc-d227-4352-9b5f-9aefade299c6",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1468,14 +1765,47 @@
       "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
       "target_ref": "identity--eb7a4023-277b-46bf-9591-0a05f2edfc76",
       "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 affected victim--activity-rule--a3fd052f21deca13b807.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2013-01-01T00:00:00Z",
+      "stop_time": "2017-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8a6f268b-a283-47ea-9087-281d6384cdbf",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1483,14 +1813,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has used compromised credentials to obtain unauthorized access to online accounts.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3ee7a646-6893-4ef6-9843-2f34bcd8818f",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1498,14 +1835,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has used collected lists of names and e-mail accounts to use in password spraying attacks against private sector targets.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--da961b4e-0215-4087-b883-d2e789270d71",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1513,14 +1857,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--a9c5cbda-7ef4-4a3e-9157-c57f0fa12701",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has exfiltrated entire mailboxes from compromised accounts.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5bc4fc72-bed0-4ae4-9958-9ff67d07ae6a",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1528,14 +1879,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--306a6b7f-100e-46d6-ac53-50dc6b0f9541",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has set up auto forwarding rules on compromised e-mail accounts.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c0538a56-89a3-4efb-8702-9262404e62d9",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1543,14 +1901,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has acquired domains to establish credential harvesting pages, often spoofing the target organization and using free top level domains .TK, .ML, .GA, .CF, and .GQ.(Citation: DOJ Iran Indictments March 2018)(Citation: Phish Labs Silent Librarian)(Citation: Secureworks COBALT DICKENS August 2018)(Citation: Proofpoint TA407 September 2019)(Citation: Secureworks COBALT DICKENS September 2019)(Citation: Malwarebytes Silent Librarian October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8e74734b-b99c-416c-860b-780fe6642d42",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1558,14 +1923,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has established e-mail accounts to receive e-mails forwarded from compromised accounts.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d58d7c02-6441-4911-9191-2a304e74ed6f",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1573,14 +1945,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has obtained free and publicly available tools including SingleFile and HTTrack to copy login pages of targeted organizations.(Citation: Proofpoint TA407 September 2019)(Citation: Secureworks COBALT DICKENS September 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f7095360-f54b-4f1b-9328-6e5fd5b26d51",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1588,14 +1967,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--437600fd-5b24-440f-af0b-7b5a41dd0f0f",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has obtained free Let's Encrypt SSL certificates for use on their phishing pages.(Citation: Phish Labs Silent Librarian)(Citation: Secureworks COBALT DICKENS September 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4b9ee13f-a82e-44ec-b23c-9ffb76735a40",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1603,14 +1989,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--a77b0b8e-9f7a-4801-980b-7291d8262b4b",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has collected e-mail addresses from targeted organizations from open Internet searches.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--79bcf642-44c4-47ca-81d5-976e42ddf5bf",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1618,14 +2011,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--1b4233b2-03aa-40f8-915f-60063b07d763",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has collected lists of names for individuals from targeted organizations.(Citation: DOJ Iran Indictments March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d1a4cd48-d539-4468-86cc-2d6b8fd09f3f",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1633,14 +2033,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--a1e7547c-2dfe-43ec-ac40-eb7c5c0537d6",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has searched victim's websites to identify the interests and academic areas of targeted individuals and to scrape source code, branding, and organizational contact information for phishing pages.(Citation: DOJ Iran Indictments March 2018)(Citation: Phish Labs Silent Librarian)(Citation: Proofpoint TA407 September 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9cb1370e-ffc1-4830-883b-55be93f8475a",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1648,14 +2055,21 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has used links in e-mails to direct victims to credential harvesting websites designed to appear like the targeted organization's login page.(Citation: DOJ Iran Indictments March 2018)(Citation: Phish Labs Silent Librarian)(Citation: Secureworks COBALT DICKENS August 2018)(Citation: Proofpoint TA407 September 2019)(Citation: Secureworks COBALT DICKENS September 2019)(Citation: Malwarebytes Silent Librarian October 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0178e619-b1ff-433d-9db3-09403c5828bc",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1663,7 +2077,14 @@
       "source_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
       "target_ref": "attack-pattern--3893e512-7124-44ed-b278-026b2da1c426",
       "description": "[Silent Librarian](https://attack.mitre.org/groups/G0122) has cloned victim organization login pages and staged them for later use in credential harvesting campaigns. [Silent Librarian](https://attack.mitre.org/groups/G0122) has also made use of a variety of URL shorteners for these staged websites.(Citation: Secureworks COBALT DICKENS September 2019)(Citation: Malwarebytes Silent Librarian October 2020)(Citation: Proofpoint TA407 September 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
@@ -1719,7 +2140,7 @@
         "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
         "attack-pattern--3893e512-7124-44ed-b278-026b2da1c426"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

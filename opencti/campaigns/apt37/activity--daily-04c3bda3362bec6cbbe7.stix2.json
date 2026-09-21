@@ -1,0 +1,1123 @@
+{
+  "type": "bundle",
+  "id": "bundle--cb78d416-1a7d-412e-858a-642fdcda4ce6",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8d9e0c01-fdd1-4676-bc47-44e72e613ed1",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "One-Way Communication",
+      "description": "Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1102.003",
+          "url": "https://attack.mitre.org/techniques/T1102/003/"
+        },
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--c668e54ddd027a2bc60b",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-04c3bda3362bec6cbbe7"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "description": "北朝鮮APT37が主に韓国を標的としたキャンペーンで、JPEGに隠したRoKRAT新亜種でWindowsを侵害する攻撃を展開。 ZIP内LNKがバッチでPowerShell起動→XOR復号→シェルコード実行の多段手口。 mspaint.exe/notepad.exeへコード注入し、ファイルレス化で検知を回避。 Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。 対策はEDR、ユーザー訓練・端末管理、クラウド通信の能動監視。",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-04c3bda3362bec6cbbe7",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--04c3bda3362bec6cbbe7eb26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt37",
+          "name": "APT37",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--rokrat"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--c668e54ddd027a2bc60b"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--7d94c1412e3341c2d087"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-08-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--country--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-468e8f8090fe0064b1c4"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b31eb207-359f-4f07-a887-9dd891a77117",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "identity_class": "organization",
+      "description": "北朝鮮APT37が主に韓国を標的としたキャンペーンで、JPEGに隠したRoKRAT新亜種でWindowsを侵害する攻撃を展開。 ZIP内LNKがバッチでPowerShell起動→XOR復号→シェルコード実行の多段手口。 mspaint.exe/notepad.exeへコード注入し、ファイルレス化で検知を回避。 Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。 対策はEDR、ユーザー訓練・端末管理、クラウド通信の能動監視。",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--7d94c1412e3341c2d087",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--country--south-korea"
+      ],
+      "x_malware_refs": [
+        "malware--rokrat"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--c668e54ddd027a2bc60b"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+      "created": "2026-07-26T05:28:43Z",
+      "modified": "2026-09-21T03:52:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT37",
+      "aliases": [
+        "Group123",
+        "InkySquid",
+        "PLAIN NEPTUNE",
+        "Reaper",
+        "Ricochet Chollima",
+        "ScarCruft",
+        "TEMP.Reaper"
+      ],
+      "description": "[APT37](https://attack.mitre.org/groups/G0067) is a North Korean state-sponsored cyber espionage group that has been active since at least 2012. The group has targeted victims primarily in South Korea, but also in Japan, Vietnam, Russia, Nepal, China, India, Romania, Kuwait, and other parts of the Middle East. [APT37](https://attack.mitre.org/groups/G0067) has also been linked to the following campaigns between 2016-2018: Operation Daybreak, Operation Erebus, Golden Time, Evil New Year, Are you Happy?, FreeMilk, North Korean Human Rights, and Evil New Year 2018.(Citation: FireEye APT37 Feb 2018)(Citation: Securelist ScarCruft Jun 2016)(Citation: Talos Group123)\n\nNorth Korean group definitions are known to have significant overlap, and some security researchers report all North Korean state-sponsored cyber activity under the name [Lazarus Group](https://attack.mitre.org/groups/G0032) instead of tracking clusters or subgroups.",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt37",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Group123",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "InkySquid",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "PLAIN NEPTUNE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Reaper",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Ricochet Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ScarCruft",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TEMP.Reaper",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT37の標準化プロファイル。リポジトリ内の専用資料14件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human Rights; Evil New Year 2018; Operation Earth Kitsune",
+        "capability_details": "DOGCALL, HAPPYWORK, KARAE, SLOWDRIFT, SHUTTERSPEED, WINERACK, NavRAT, POORAIM, ROKRAT, CORALDECK, BLUELIGHT, Final1stspy, Cobalt Strike, SOUNDWAVE, ZUMKONG, RICECURRY, MILKDROP, GELCAPSULE, RUHAPPY, Flash Exploit CVE-2016-4117, KEVDROID, BabyShark, KimJongRAT, GOLDBACKDOOR",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=インド、カンボジア、クウェート、ネパール、ベトナム、ルーマニア、ロシア、中国、北朝鮮、日本、韓国。標的地域=南アジア、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nPrimarily South Korea – though also Japan, Vietnam and the Middle East – in various industry verticals, including chemicals, electronics, manufacturing, aerospace, automotive, and healthcare; Scarcruft Tracking: Russia, Nepal, South Korea, China, India, Kuwait and Romania",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--797a08de-c83c-4455-ba0d-a3e94ee2e5ed",
+      "created": "2026-07-26T05:28:43Z",
+      "modified": "2026-09-21T04:05:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Republic of Korea",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--country--south-korea",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "KOR",
+      "x_opencti_reference_id": "location--69b73a4d-de23-46cc-b870-326ba940bba0",
+      "x_opencti_aliases": [
+        "KOR",
+        "KR",
+        "韓国"
+      ],
+      "latitude": 35.907757,
+      "longitude": 127.766922,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--8006bcda-e08c-423c-9723-34a0fc86d0a3",
+      "created": "2026-07-26T05:28:43Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ROKRAT",
+      "description": "[ROKRAT](https://attack.mitre.org/software/S0240) is a cloud-based remote access tool (RAT) used by [APT37](https://attack.mitre.org/groups/G0067) to target victims in South Korea. [APT37](https://attack.mitre.org/groups/G0067) has used ROKRAT during several campaigns from 2016 through 2021.(Citation: Talos ROKRAT)(Citation: Talos Group123)(Citation: Volexity InkySquid RokRAT August 2021)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--rokrat",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "ROKRAT"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--04b21aad-4c5e-4471-b962-143c147cbddf",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "target_ref": "attack-pattern--8d9e0c01-fdd1-4676-bc47-44e72e613ed1",
+      "description": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 uses ttp--activity-rule--c668e54ddd027a2bc60b.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+      "created": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+      "target_ref": "location--797a08de-c83c-4455-ba0d-a3e94ee2e5ed",
+      "description": "APT37 targets 韓国 (profile target category: countries).\n\nEvidence: Targeting text mentions south korea.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/",
+          "external_id": "source--daily-24c4e22a7b0cd08d6063",
+          "url": "https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/"
+        },
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        },
+        {
+          "source_name": "The Hacker News",
+          "description": "Local source: https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
+          "external_id": "source--daily-5be59ed011b127efaaf3",
+          "url": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html"
+        },
+        {
+          "source_name": "Genians Security Center",
+          "description": "Local source: https://www.genians.co.kr/blog/threat_intelligence/k-messenger",
+          "external_id": "source--genians-apt37-k-messenger-2025",
+          "url": "https://www.genians.co.kr/blog/threat_intelligence/k-messenger"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/",
+          "external_id": "source--daily-24c4e22a7b0cd08d6063"
+        },
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4"
+        },
+        {
+          "source_name": "The Hacker News",
+          "description": "Local source: https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
+          "external_id": "source--daily-5be59ed011b127efaaf3"
+        },
+        {
+          "source_name": "Genians Security Center",
+          "description": "Local source: https://www.genians.co.kr/blog/threat_intelligence/k-messenger",
+          "external_id": "source--genians-apt37-k-messenger-2025"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-11-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-11-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2024-11-13T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4240031b-a5c0-49b7-ac57-0396865a3948",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+      "target_ref": "attack-pattern--8d9e0c01-fdd1-4676-bc47-44e72e613ed1",
+      "description": "Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53d3023f-b082-44ea-93dd-6561fe4a0a64",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "target_ref": "identity--b31eb207-359f-4f07-a887-9dd891a77117",
+      "description": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 affected victim--activity-rule--7d94c1412e3341c2d087.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "target_ref": "location--797a08de-c83c-4455-ba0d-a3e94ee2e5ed",
+      "description": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 targets target--country--south-korea.\n\nEvidence: Targeting text mentions south korea.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/",
+          "external_id": "source--daily-24c4e22a7b0cd08d6063"
+        },
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4"
+        },
+        {
+          "source_name": "The Hacker News",
+          "description": "Local source: https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
+          "external_id": "source--daily-5be59ed011b127efaaf3"
+        },
+        {
+          "source_name": "Genians Security Center",
+          "description": "Local source: https://www.genians.co.kr/blog/threat_intelligence/k-messenger",
+          "external_id": "source--genians-apt37-k-messenger-2025"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99762dc9-e310-43e5-b4fb-1aa1dae35e4e",
+      "created": "2026-07-26T05:28:43Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+      "target_ref": "malware--8006bcda-e08c-423c-9723-34a0fc86d0a3",
+      "description": "APT37 uses ROKRAT.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f96039ef-6fb2-42c4-afac-76ad58e00719",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "target_ref": "malware--8006bcda-e08c-423c-9723-34a0fc86d0a3",
+      "description": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 uses malware--rokrat.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fd754606-6d73-4005-98a0-7e12d6c459f6",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+      "target_ref": "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+      "description": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 is attributed or linked to APT37.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "description": "Local source: https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--02f7e2bf-d5c4-4e6d-be6d-e9c1384d833f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "malware--8006bcda-e08c-423c-9723-34a0fc86d0a3",
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb",
+        "relationship--99762dc9-e310-43e5-b4fb-1aa1dae35e4e"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0e3c5639-315b-4219-ad2f-55b705cc7ac5",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-08-16T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--8d9e0c01-fdd1-4676-bc47-44e72e613ed1",
+        "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+        "identity--b31eb207-359f-4f07-a887-9dd891a77117",
+        "relationship--04b21aad-4c5e-4471-b962-143c147cbddf",
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--4240031b-a5c0-49b7-ac57-0396865a3948",
+        "relationship--53d3023f-b082-44ea-93dd-6561fe4a0a64",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb",
+        "relationship--f96039ef-6fb2-42c4-afac-76ad58e00719",
+        "relationship--fd754606-6d73-4005-98a0-7e12d6c459f6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "iototsecnews.jp",
+          "external_id": "source--daily-468e8f8090fe0064b1c4",
+          "url": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-468e8f8090fe0064b1c4",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "iototsecnews.jp",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2797e0f7-db40-4df0-8a3d-a440451410f4",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "K 메신저로 유포된 'APT37' 그룹의 악성 HWP 사례 분석",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-02-03T00:00:00Z",
+      "object_refs": [
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Genians Security Center",
+          "external_id": "source--genians-apt37-k-messenger-2025",
+          "url": "https://www.genians.co.kr/blog/threat_intelligence/k-messenger"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--genians-apt37-k-messenger-2025",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "Genians Security Center",
+      "x_source_type": "vendor-threat-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--700f20e2-2822-4b78-92c7-d1164162fd66",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-02-04T00:00:00Z",
+      "object_refs": [
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "The Hacker News",
+          "external_id": "source--daily-5be59ed011b127efaaf3",
+          "url": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-5be59ed011b127efaaf3",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "The Hacker News",
+      "x_source_type": "news-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7d441b91-4e75-4297-b81b-96b87a514c85",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-11-12T00:00:00Z",
+      "object_refs": [
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-24c4e22a7b0cd08d6063",
+          "url": "https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-24c4e22a7b0cd08d6063",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a3a62deb-9503-4364-81d9-b24187fc9773",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt37:activity--daily-04c3bda3362bec6cbbe7",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ace8dcae-e80d-45b5-b1fa-c3d8d610a197",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT37 / JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "description": "北朝鮮APT37が主に韓国を標的としたキャンペーンで、JPEGに隠したRoKRAT新亜種でWindowsを侵害する攻撃を展開。 ZIP内LNKがバッチでPowerShell起動→XOR復号→シェルコード実行の多段手口。 mspaint.exe/notepad.exeへコード注入し、ファイルレス化で検知を回避。 Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。 対策はEDR、ユーザー訓練・端末管理、クラウド通信の能動監視。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--8d9e0c01-fdd1-4676-bc47-44e72e613ed1",
+        "campaign--ea3aa292-79db-40f5-9955-4a43d3191cc8",
+        "identity--b31eb207-359f-4f07-a887-9dd891a77117",
+        "intrusion-set--e4466c17-ecc0-43f9-ae73-e5a972c799bb",
+        "location--797a08de-c83c-4455-ba0d-a3e94ee2e5ed",
+        "malware--8006bcda-e08c-423c-9723-34a0fc86d0a3",
+        "relationship--04b21aad-4c5e-4471-b962-143c147cbddf",
+        "relationship--27a57803-9c93-4d8d-93f8-f4d8ba68fb53",
+        "relationship--4240031b-a5c0-49b7-ac57-0396865a3948",
+        "relationship--53d3023f-b082-44ea-93dd-6561fe4a0a64",
+        "relationship--719631e0-5d5a-44e3-982d-41381f4b56cb",
+        "relationship--99762dc9-e310-43e5-b4fb-1aa1dae35e4e",
+        "relationship--f96039ef-6fb2-42c4-afac-76ad58e00719",
+        "relationship--fd754606-6d73-4005-98a0-7e12d6c459f6",
+        "report--02f7e2bf-d5c4-4e6d-be6d-e9c1384d833f",
+        "report--0e3c5639-315b-4219-ad2f-55b705cc7ac5",
+        "report--2797e0f7-db40-4df0-8a3d-a440451410f4",
+        "report--700f20e2-2822-4b78-92c7-d1164162fd66",
+        "report--7d441b91-4e75-4297-b81b-96b87a514c85",
+        "report--a3a62deb-9503-4364-81d9-b24187fc9773"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt37",
+      "x_activity_id": "activity--daily-04c3bda3362bec6cbbe7"
+    }
+  ]
+}

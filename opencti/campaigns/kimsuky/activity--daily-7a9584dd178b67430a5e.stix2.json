@@ -1,0 +1,2023 @@
+{
+  "type": "bundle",
+  "id": "bundle--26bc289b-ba89-4b1c-9a3b-b1a452a70555",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-07-29T15:29:47Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "File and Directory Discovery",
+      "description": "操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--d97d1bd687c6c8f70793",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-7a9584dd178b67430a5e"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "created": "2026-07-27T11:04:32Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
+      "description": "北朝鮮のKimsukyグループがGomirマルウェアを使用。 攻撃は2024年初めに始まり、韓国政府機関を標的。 GomirはGoBearのLinux版で、持続性とC2通信を持つ。 マルウェアはroot権限で動作し、/var/log/syslogdにコピーされる。 マルウェアは17の操作をサポートしており、HTTP POSTリクエストで実行。 操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-7a9584dd178b67430a5e",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--7a9584dd178b67430a5e2600 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--kimsuky",
+          "name": "Kimsuky",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": [
+            "org--63rd-research-center",
+            "org--dprk-rgb"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--gobear",
+            "malware--gomir"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--d97d1bd687c6c8f70793"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--sector--4eba90b76b16e9d6d89b",
+            "target--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--643a32a3eac4d1304920"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2024-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2024-05-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Discovery"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-01bbfa4ce1d271e9e220"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3e7de695-4580-4e80-9065-530d114f6e7a",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
+      "identity_class": "organization",
+      "description": "北朝鮮のKimsukyグループがGomirマルウェアを使用。 攻撃は2024年初めに始まり、韓国政府機関を標的。 GomirはGoBearのLinux版で、持続性とC2通信を持つ。 マルウェアはroot権限で動作し、/var/log/syslogdにコピーされる。 マルウェアは17の操作をサポートしており、HTTP POSTリクエストで実行。 操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--643a32a3eac4d1304920",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--mitre-group--sector--4eba90b76b16e9d6d89b",
+        "target--south-korea"
+      ],
+      "x_malware_refs": [
+        "malware--gobear",
+        "malware--gomir"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--d97d1bd687c6c8f70793"
+      ],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "class",
+      "description": "The group initially targeted South Korean government agencies, think tanks, and subject-matter experts in various fields.",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        },
+        {
+          "source_name": "databreachtoday.com",
+          "description": "Local source: https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857",
+          "external_id": "source--daily-8c76eeb938a1170375af",
+          "url": "https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/02/north-korean-hackers-exploit-powershell.html",
+          "external_id": "source--daily-b859524205edbc7c576c",
+          "url": "https://thehackernews.com/2025/02/north-korean-hackers-exploit-powershell.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/",
+          "external_id": "source--daily-d930e3ca01c519bf5740",
+          "url": "https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--mitre-group--sector--4eba90b76b16e9d6d89b",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:24:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsuky",
+      "aliases": [
+        "APT43",
+        "Black Banshee",
+        "Earth Kumiho",
+        "Emerald Sleet",
+        "PatheticSlug",
+        "Sparkling Pisces",
+        "Springtail",
+        "TA427",
+        "Thallium",
+        "Velvet Chollima"
+      ],
+      "description": "[Kimsuky](https://attack.mitre.org/groups/G0094) is a Democratic People's Republic of Korea (DPRK)-based cyber espionage group that has been active since at least 2012. The group initially targeted South Korean government agencies, think tanks, and subject-matter experts in various fields. Its operations expanded to include the United Nations and organizations in the government, education, business services, and manufacturing sectors across the United States, Japan, Russia, and Europe. [Kimsuky](https://attack.mitre.org/groups/G0094) has focused collection on foreign policy and national security issues tied to the Korean Peninsula, nuclear policy, and sanctions. [Kimsuky](https://attack.mitre.org/groups/G0094) operations have overlapped with those of other North Korean state-sponsored cyber espionage actors as a result of ad hoc collaborations or other limited resource sharing.(Citation: EST Kimsuky April 2019)(Citation: Cybereason Kimsuky November 2020)(Citation: Malwarebytes Kimsuky June 2021)(Citation: CISA AA20-301A Kimsuky)(Citation: Mandiant APT43 March 2024)(Citation: Proofpoint TA427 April 2024) \n\n[Kimsuky](https://attack.mitre.org/groups/G0094) was assessed to be responsible for the 2014 Korea Hydro & Nuclear Power Co. compromise; other notable campaigns include Operation STOLEN PENCIL (2018), Operation Kabar Cobra (2019), and Operation Smoke Screen (2019).(Citation: Netscout Stolen Pencil Dec 2018)(Citation: EST Kimsuky SmokeScreen April 2019)(Citation: AhnLab Kimsuky Kabar Cobra Feb 2019) In 2023, [Kimsuky](https://attack.mitre.org/groups/G0094) was observed using commercial large language models (LLMs) to assist with vulnerability research, scripting, social engineering and reconnaissance.(Citation: MSFT-AI)\n\nDPRK threat actor cluster boundaries overlap in open source reporting, with some security researchers consolidating all attributed North Korean state-sponsored cyber activity under [Lazarus Group](https://attack.mitre.org/groups/G0032), rather than tracking operationally distinct subgroups.",
+      "goals": [
+        "認証情報とメールボックスを窃取し、信頼関係と連絡網を次の標的への足掛かりにする。",
+        "Actor-specific reporting explicitly describes espionage or intelligence collection.",
+        "北朝鮮の政策・外交・軍事・核開発上の意思決定に役立つ情報を収集する。"
+      ],
+      "external_references": [
+        {
+          "source_name": "FBI, DOS, NSA, NIS, NPA, MOFA",
+          "description": "Local source: kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf",
+          "external_id": "source--joint-csa-2023"
+        },
+        {
+          "source_name": "FBI, DOS, NSA",
+          "description": "Local source: kimsuky/Exploit Weak DMARC.pdf",
+          "external_id": "source--dmarc-2024"
+        }
+      ],
+      "x_profile_id": "actor--kimsuky",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "APT43",
+          "vendor": "MITRE ATT&CK",
+          "scope": "broader",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "APT43にはKimsukyより広い活動スコープが含まれる可能性がある。"
+        },
+        {
+          "name": "Black Banshee",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": ""
+        },
+        {
+          "name": "Earth Kumiho",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Official ATT&CK associated-group name. Vendor collection boundaries may differ, so exactness is not inferred."
+        },
+        {
+          "name": "Emerald Sleet",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "政府共同勧告は同一活動集合として扱うが、ベンダーの収集スコープ差を考慮する。"
+        },
+        {
+          "name": "PatheticSlug",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Official ATT&CK associated-group name. Vendor collection boundaries may differ, so exactness is not inferred."
+        },
+        {
+          "name": "Sparkling Pisces",
+          "vendor": "Palo Alto Networks",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--qax-2024"
+          ],
+          "analyst_notes": ""
+        },
+        {
+          "name": "Springtail",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Official ATT&CK associated-group name. Vendor collection boundaries may differ, so exactness is not inferred."
+        },
+        {
+          "name": "TA427",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": ""
+        },
+        {
+          "name": "Thallium",
+          "vendor": "Microsoft (legacy) / MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--joint-csa-2023",
+            "source--microsoft-actor-list",
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": ""
+        },
+        {
+          "name": "Velvet Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": ""
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [
+          {
+            "id": "org--dprk-rgb",
+            "name": "Reconnaissance General Bureau",
+            "relationship": "subordinate-to",
+            "confidence": "high",
+            "evidence_refs": [
+              "source--joint-csa-2023",
+              "source--dmarc-2024"
+            ],
+            "analyst_notes": ""
+          },
+          {
+            "id": "org--63rd-research-center",
+            "name": "63rd Research Center",
+            "relationship": "administratively-subordinate-to",
+            "confidence": "high",
+            "evidence_refs": [
+              "source--dmarc-2024"
+            ],
+            "analyst_notes": "2024年共同勧告の記載。"
+          }
+        ],
+        "assessment": "北朝鮮の偵察総局（RGB）に従属し、2024年共同勧告は第63研究センターへの行政的従属を記載する。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--joint-csa-2023",
+          "source--dmarc-2024"
+        ],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報アクターである。政策専門家、政府、外交、軍・防衛、研究、メディアを対象に、調査とペルソナ構築を伴う信頼醸成型スピアフィッシングを行い、認証情報、メール、非公開資料を窃取する。",
+        "history": "少なくとも2012年から活動。2019年のSmoke ScreenとAppleSeed、2020-2021年のOperation Newton、2022-2023年のDarkHorseとCovert Stalker、2023年のブラウザ拡張・Google Play悪用、2024年のDMARC悪用へと配送・収集能力を更新している。\n\n2025年5月から6月、FBIはKimsukyがQRコードを用いてシンクタンクや戦略助言組織を標的にし、偽Googleログイン等で認証情報を窃取する活動を観測した。",
+        "capability_details": "独自マルウェアと公開RAT、正規遠隔管理ツール、PowerShell等のスクリプトを混在させる。検知回避だけでなくアクセス再確立と運用量を重視する。",
+        "infrastructure_details": "類似ドメイン、無料メール、VPS、侵害Webサーバ、クラウドストレージ、GitHub、メールサービス自体をC2や配布に利用する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=イラン、ドイツ、ロシア、中国、日本、韓国。標的地域=アジア、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\n韓国が中心だが、米国、日本、ドイツを含む欧州へ拡大。組織規模より、政策情報や信頼ネットワークを持つ個人を重視する。",
+        "additional_notes": "未検証リークは中核評価に使用しない。IOCとartifactは観測イベント単位で別ファイルへ保存する。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--8bacc38e-ccc0-4393-ae51-087ca2301041",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T01:54:42Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Republic of Korea",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--south-korea",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "KOR",
+      "x_opencti_reference_id": "location--69b73a4d-de23-46cc-b870-326ba940bba0",
+      "x_opencti_aliases": [
+        "KOR",
+        "KR",
+        "韓国"
+      ],
+      "latitude": 35.907757,
+      "longitude": 127.766922,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--02c670d5-0256-4da6-b04c-fc72b5607d48",
+      "created": "2026-09-20T13:48:12Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GoBear",
+      "description": "[GoBear](https://attack.mitre.org/software/S1197) is a Go-based backdoor that abuses legitimate, stolen certificates for defense evasion purposes. [GoBear](https://attack.mitre.org/software/S1197) is exclusively linked to [Kimsuky](https://attack.mitre.org/groups/G0094) operations.(Citation: S2W Troll Stealer 2024)(Citation: Symantec Troll Stealer 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--gobear",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "GoBear"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--b2a47448-daf6-4020-a364-b8a5e3f43b50",
+      "created": "2026-09-20T13:48:12Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Gomir",
+      "description": "Gomir is a Linux backdoor variant of the Go-based malware [GoBear](https://attack.mitre.org/software/S1197), uniquely assoicated with [Kimsuky](https://attack.mitre.org/groups/G0094) operations.(Citation: Symantec Troll Stealer 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--gomir",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": [
+        "Gomir"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+      "description": "Kimsuky targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        },
+        {
+          "source_name": "databreachtoday.com",
+          "description": "Local source: https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857",
+          "external_id": "source--daily-8c76eeb938a1170375af",
+          "url": "https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/02/north-korean-hackers-exploit-powershell.html",
+          "external_id": "source--daily-b859524205edbc7c576c",
+          "url": "https://thehackernews.com/2025/02/north-korean-hackers-exploit-powershell.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/",
+          "external_id": "source--daily-d930e3ca01c519bf5740",
+          "url": "https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "location--8bacc38e-ccc0-4393-ae51-087ca2301041",
+      "description": "Kimsuky targets 韓国 (profile target category: countries).\n\nEvidence: 最重要の継続的対象。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html",
+          "external_id": "source--daily-00bf22365ce019ee25a6",
+          "url": "https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/n-korea-linked-kimsuky-shifts-to.html",
+          "external_id": "source--daily-0477636fe03aea54224d",
+          "url": "https://thehackernews.com/2024/03/n-korea-linked-kimsuky-shifts-to.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254",
+          "url": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
+          "external_id": "source--daily-a5ca98841868974d600b",
+          "url": "https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711",
+          "url": "https://asec.ahnlab.com/jp/95367/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/",
+          "external_id": "source--daily-b9be11e58ab6c82617ab",
+          "url": "https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
+          "external_id": "source--daily-f05f4888998c8f53f5ca",
+          "url": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant"
+        },
+        {
+          "source_name": "FBI, DOS, NSA, NIS, NPA, MOFA",
+          "description": "Local source: kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf",
+          "external_id": "source--joint-csa-2023"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Rapid7",
+          "description": "Local source: kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf",
+          "external_id": "source--rapid7-2024"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html",
+          "external_id": "source--daily-00bf22365ce019ee25a6"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/n-korea-linked-kimsuky-shifts-to.html",
+          "external_id": "source--daily-0477636fe03aea54224d"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
+          "external_id": "source--daily-a5ca98841868974d600b"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/",
+          "external_id": "source--daily-b9be11e58ab6c82617ab"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
+          "external_id": "source--daily-f05f4888998c8f53f5ca"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2012-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-reporting"
+      },
+      "x_last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-reporting",
+        "last": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2012-01-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--196cf62f-169a-4800-b5f9-866309e96c2a",
+      "created": "2026-09-20T13:48:12Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "malware--b2a47448-daf6-4020-a364-b8a5e3f43b50",
+      "description": "Kimsuky uses Gomir.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1fbacd10-2c32-479d-9b1e-e96f49be2051",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",
+      "description": "操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4a3bfd75-8cbb-458b-b8a3-1349b6787cd4",
+      "created": "2026-07-27T11:04:32Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 is attributed or linked to Kimsuky.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5642cd80-c04d-4691-aeb2-82c7f06eb702",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 targets target--mitre-group--sector--4eba90b76b16e9d6d89b.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6187d458-f148-4353-8be6-ebbc60fdb639",
+      "created": "2026-09-20T13:48:12Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "malware--02c670d5-0256-4da6-b04c-fc72b5607d48",
+      "description": "Kimsuky uses GoBear.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "location--8bacc38e-ccc0-4393-ae51-087ca2301041",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 targets target--south-korea.\n\nEvidence: 最重要の継続的対象。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html",
+          "external_id": "source--daily-00bf22365ce019ee25a6"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/n-korea-linked-kimsuky-shifts-to.html",
+          "external_id": "source--daily-0477636fe03aea54224d"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
+          "external_id": "source--daily-a5ca98841868974d600b"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/",
+          "external_id": "source--daily-b9be11e58ab6c82617ab"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
+          "external_id": "source--daily-f05f4888998c8f53f5ca"
+        },
+        {
+          "source_name": "FBI, DOS, NSA, NIS, NPA, MOFA",
+          "description": "Local source: kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf",
+          "external_id": "source--joint-csa-2023"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Rapid7",
+          "description": "Local source: kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf",
+          "external_id": "source--rapid7-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bb36dae4-aad6-4778-81d7-6623a7b820bc",
+      "created": "2026-09-21T03:52:12Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "malware--02c670d5-0256-4da6-b04c-fc72b5607d48",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 uses malware--gobear.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d8105e59-632d-4b5f-8338-f780c8e14dd2",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "identity--3e7de695-4580-4e80-9065-530d114f6e7a",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 affected victim--activity-rule--643a32a3eac4d1304920.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f0bdf6d1-b3a7-4e89-b08b-7dfc31a88e93",
+      "created": "2026-09-21T03:52:12Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "malware--b2a47448-daf6-4020-a364-b8a5e3f43b50",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 uses malware--gomir.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fc0bf250-c026-4eca-84dd-84083efee274",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+      "target_ref": "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",
+      "description": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 uses ttp--activity-rule--d97d1bd687c6c8f70793.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--21eef511-291e-43a1-9ef7-d3d284a3d5d8",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-05-17T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",
+        "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+        "identity--3e7de695-4580-4e80-9065-530d114f6e7a",
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832",
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--1fbacd10-2c32-479d-9b1e-e96f49be2051",
+        "relationship--4a3bfd75-8cbb-458b-b8a3-1349b6787cd4",
+        "relationship--5642cd80-c04d-4691-aeb2-82c7f06eb702",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86",
+        "relationship--bb36dae4-aad6-4778-81d7-6623a7b820bc",
+        "relationship--d8105e59-632d-4b5f-8338-f780c8e14dd2",
+        "relationship--f0bdf6d1-b3a7-4e89-b08b-7dfc31a88e93",
+        "relationship--fc0bf250-c026-4eca-84dd-84083efee274"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-01bbfa4ce1d271e9e220",
+          "url": "https://www.bleepingcomputer.com/news/security/kimsuky-hackers-deploy-new-linux-backdoor-in-attacks-on-south-korea/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-01bbfa4ce1d271e9e220",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2325e4a4-996d-4025-9537-d1daac32fd7d",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-02-13T00:00:00Z",
+      "object_refs": [
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-b859524205edbc7c576c",
+          "url": "https://thehackernews.com/2025/02/north-korean-hackers-exploit-powershell.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-b859524205edbc7c576c",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--298273c0-21ec-4d37-82a8-86cc40e701ea",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsukyは寛容なDMARCポリシーを利用してメールを偽装",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-04-17T00:00:00Z",
+      "object_refs": [
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "databreachtoday.com",
+          "external_id": "source--daily-8c76eeb938a1170375af",
+          "url": "https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-8c76eeb938a1170375af",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "databreachtoday.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--32a14742-7b7f-4e7f-b14d-07d12812b285",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "North Korea Using Social Engineering to Enable Hacking of Think Tanks, Academia, and Media",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2023-06-01T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "FBI, DOS, NSA, NIS, NPA, MOFA",
+          "external_id": "source--joint-csa-2023",
+          "description": "Repository source: kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--joint-csa-2023",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "FBI, DOS, NSA, NIS, NPA, MOFA",
+      "x_source_type": "government-advisory",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--39d333fa-0a0d-43c4-a86b-dc091ce54fec",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "North Korean Actors Exploit Weak DMARC Security Policies",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-05-02T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "FBI, DOS, NSA",
+          "external_id": "source--dmarc-2024",
+          "description": "Repository source: kimsuky/Exploit Weak DMARC.pdf"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--dmarc-2024",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "FBI, DOS, NSA",
+      "x_source_type": "government-advisory",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3f85022e-5992-4d0b-a1c1-09ef5faca83f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-30T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "enki.co.kr",
+          "external_id": "source--daily-f05f4888998c8f53f5ca",
+          "url": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f05f4888998c8f53f5ca",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "enki.co.kr",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--40ffb174-f569-4727-8042-65ed2bf97a92",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮のハッキンググループが韓国の防衛請負業者を侵害",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-04-24T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-b9be11e58ab6c82617ab",
+          "url": "https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-b9be11e58ab6c82617ab",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--59e0bbac-cdfa-4016-aa09-1aa570a28eb7",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-07-11T00:00:00Z",
+      "object_refs": [
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-d930e3ca01c519bf5740",
+          "url": "https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-d930e3ca01c519bf5740",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--685ec839-f62f-4f8f-873f-d3f5d188eec7",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-03-25T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-0477636fe03aea54224d",
+          "url": "https://thehackernews.com/2024/03/n-korea-linked-kimsuky-shifts-to.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0477636fe03aea54224d",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7286f13c-8d83-48a2-9e2f-e31d939ba152",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "またKimsuky？今度は水産食材の購入依頼書を装う",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-12T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "asec.ahnlab.com",
+          "external_id": "source--daily-ad51c0d6f2257de0c711",
+          "url": "https://asec.ahnlab.com/jp/95367/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-ad51c0d6f2257de0c711",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "asec.ahnlab.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--809f0980-933e-487b-8969-30e14a8a3b14",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮のハッカー、新たなGolangマルウェア「Durian」を暗号通貨企業に対して使用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-05-11T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-a5ca98841868974d600b",
+          "url": "https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-a5ca98841868974d600b",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a029f8c9-8ce5-4799-9226-df3aa37165e2",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsuky's Phishing and Payload Tactics",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-01-01T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Rapid7",
+          "external_id": "source--rapid7-2024",
+          "description": "Repository source: kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--rapid7-2024",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "Rapid7",
+      "x_source_type": "vendor-report",
+      "x_published_precision": "year",
+      "x_published_status": "known",
+      "x_published_basis": "document-copyright",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b933e72f-cb13-4cc6-a0f9-75e6b0b831f8",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "malware--02c670d5-0256-4da6-b04c-fc72b5607d48",
+        "malware--b2a47448-daf6-4020-a364-b8a5e3f43b50",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832",
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--196cf62f-169a-4800-b5f9-866309e96c2a",
+        "relationship--6187d458-f148-4353-8be6-ebbc60fdb639",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ba74bb8d-3c35-4fce-82f5-1ebf19afd210",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--df88a817-f4b3-46d3-a0ff-d82ca338bb20",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-25T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "enki.co.kr",
+          "external_id": "source--daily-540b98540d06df59f254",
+          "url": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-540b98540d06df59f254",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "enki.co.kr",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f08b90ec-1b5b-421a-82f9-12aaffc7aac0",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-08-06T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-444c87a0051642065f55",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-444c87a0051642065f55",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ff28dfef-b66b-499b-9604-76b029faaec1",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsuky、BlueKeep RDP脆弱性を悪用し、韓国と日本のシステムを侵害",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-22T00:00:00Z",
+      "object_refs": [
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-00bf22365ce019ee25a6",
+          "url": "https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-00bf22365ce019ee25a6",
+      "x_evidence_slice_scope": "campaign:actor--kimsuky:activity--daily-7a9584dd178b67430a5e",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7b3ae101-06ee-4aa1-8378-3edd9232e7fa",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsuky / Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
+      "description": "北朝鮮のKimsukyグループがGomirマルウェアを使用。 攻撃は2024年初めに始まり、韓国政府機関を標的。 GomirはGoBearのLinux版で、持続性とC2通信を持つ。 マルウェアはroot権限で動作し、/var/log/syslogdにコピーされる。 マルウェアは17の操作をサポートしており、HTTP POSTリクエストで実行。 操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",
+        "campaign--7dcf7a53-1fad-4dab-bb5d-68c073df554b",
+        "identity--3e7de695-4580-4e80-9065-530d114f6e7a",
+        "identity--d1e5ed0e-9306-4a3c-828f-72db0c3eed98",
+        "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+        "location--8bacc38e-ccc0-4393-ae51-087ca2301041",
+        "malware--02c670d5-0256-4da6-b04c-fc72b5607d48",
+        "malware--b2a47448-daf6-4020-a364-b8a5e3f43b50",
+        "relationship--12b86850-8c53-4cc4-8fb4-842f81bf5832",
+        "relationship--176d2614-a65c-4b67-9bcf-d6ff072dac26",
+        "relationship--196cf62f-169a-4800-b5f9-866309e96c2a",
+        "relationship--1fbacd10-2c32-479d-9b1e-e96f49be2051",
+        "relationship--4a3bfd75-8cbb-458b-b8a3-1349b6787cd4",
+        "relationship--5642cd80-c04d-4691-aeb2-82c7f06eb702",
+        "relationship--6187d458-f148-4353-8be6-ebbc60fdb639",
+        "relationship--890c54ad-f6c0-40a5-947c-00b7924d8f86",
+        "relationship--bb36dae4-aad6-4778-81d7-6623a7b820bc",
+        "relationship--d8105e59-632d-4b5f-8338-f780c8e14dd2",
+        "relationship--f0bdf6d1-b3a7-4e89-b08b-7dfc31a88e93",
+        "relationship--fc0bf250-c026-4eca-84dd-84083efee274",
+        "report--21eef511-291e-43a1-9ef7-d3d284a3d5d8",
+        "report--2325e4a4-996d-4025-9537-d1daac32fd7d",
+        "report--298273c0-21ec-4d37-82a8-86cc40e701ea",
+        "report--32a14742-7b7f-4e7f-b14d-07d12812b285",
+        "report--39d333fa-0a0d-43c4-a86b-dc091ce54fec",
+        "report--3f85022e-5992-4d0b-a1c1-09ef5faca83f",
+        "report--40ffb174-f569-4727-8042-65ed2bf97a92",
+        "report--59e0bbac-cdfa-4016-aa09-1aa570a28eb7",
+        "report--685ec839-f62f-4f8f-873f-d3f5d188eec7",
+        "report--7286f13c-8d83-48a2-9e2f-e31d939ba152",
+        "report--809f0980-933e-487b-8969-30e14a8a3b14",
+        "report--a029f8c9-8ce5-4799-9226-df3aa37165e2",
+        "report--b933e72f-cb13-4cc6-a0f9-75e6b0b831f8",
+        "report--ba74bb8d-3c35-4fce-82f5-1ebf19afd210",
+        "report--df88a817-f4b3-46d3-a0ff-d82ca338bb20",
+        "report--f08b90ec-1b5b-421a-82f9-12aaffc7aac0",
+        "report--ff28dfef-b66b-499b-9604-76b029faaec1"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--kimsuky",
+      "x_activity_id": "activity--daily-7a9584dd178b67430a5e"
+    }
+  ]
+}

@@ -1967,14 +1967,12 @@
       "spec_version": "2.1",
       "id": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
       "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
-      "first_seen": "2026-06-16T00:00:00Z",
-      "last_seen": "2026-06-17T00:00:00Z",
       "external_references": [
         {
           "source_name": "microsoft.com",
@@ -1983,14 +1981,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-0f684df47b88032d13f0",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--0f684df47b88032d13f03596 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog)を確認。「高信頼度をもって北朝鮮国家アクターSapphire Sleetに帰属する」と明記。@mastraスコープ140超のnpmパッケージ侵害、タイポスクワット依存easy-day-jsのpostinstall実行。標的は暗号資産・VC・ブロックチェーン。Sapphire Sleet→apt38はoverlapping aliasのため手動確認の上で対応付け(PR #17の前例)。",
-      "x_reported_at": {
-        "value": "2026-06-22T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt38",
@@ -2052,14 +2046,34 @@
           "source--daily-9658f03bb1aa2aaa44fd"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-06-16T00:00:00Z",
+      "last_seen": "2026-06-17T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2073,14 +2087,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-6f29076d3fe7460da80a",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--6f29076d3fe7460da80a6d03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URLはWAFによりレンダリング不可で原文を直接確認できなかった。tech-memo要約(一次ソース再確認済み)は、JUMPSECがBlueNoroffの稼働中フィッシング基盤のソースマップと攻撃用コードを直接取得・分析したと記載し、IOC CSVのactor列はBlueNoroff (high confidence)。直接検証できないため確度はhighへ上げずmediumとする。攻撃期間は不明のままとしreported_atへ分離。",
-      "x_reported_at": {
-        "value": "2026-07-25T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt38",
@@ -2142,21 +2152,37 @@
           "source--daily-44e7c8f8aa3a2ff5c023"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
-      "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-09-21T02:05:24Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
       "description": "Arctic Wolfは、北米のWeb3/暗号資産企業への侵入を、北朝鮮Lazarus傘下のBlueNoroffに高確度で帰属した。 攻撃者はFintech法務関係者を装い、Calendly招待内のタイポスクワットZoomリンクから偽会議へ誘導した。 偽Zoom/Teams画面は被害者のWebカメラ映像を窃取し、ClickFix型のクリップボード注入でPowerShellを実行させた。 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 攻撃者は盗んだ映像やAI生成画像を再利用し、100人以上を標的にした偽会議・ディープフェイク誘導基盤を構築していた。 標的の約80%が暗号資産やブロックチェーン金融に関連しており、そのうち約45%がCEOや創業者などの幹部層。",
-      "first_seen": "2025-05-01T00:00:00Z",
-      "last_seen": "2026-03-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "raw.githubusercontent.com",
@@ -2170,14 +2196,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-961f32783a2815c12691",
+      "x_activity_type": "intrusion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--961f32783a2815c126915b51 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Arctic Wolf)を確認。「複数の独立した証拠タイプに基づき高い確度(High Confidence)でBlueNoroffに帰属」と明記(インフラ重複、ツール・コード重複、社会工学手法、標的特性、時間パターン)。標的は100名超、80%が暗号資産・ブロックチェーンまたは隣接金融、41%が米国。BlueNoroffはLazarus傘下の金銭目的サブグループでapt38プロファイルのoverlapping alias。Sapphire Sleet/BlueNoroff→apt38への手動確認済み対応付けはPR #17の前例に従う。IOC付録(rtkwlf/wolf-tools)はconfig.jsonのactivity_reference_aliasesで同一活動へ集約。",
-      "x_reported_at": {
-        "value": "2026-04-30T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt38",
@@ -2252,21 +2274,39 @@
           "source--daily-f4d8b20e8b872b83b400"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-05-01T00:00:00Z",
+      "last_seen": "2026-03-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--fd01565f-10e9-4bbf-b0b1-00e60a1e608e",
       "created": "2026-08-01T23:18:25Z",
-      "modified": "2026-09-21T04:05:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害",
       "description": "Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
-      "first_seen": "2025-03-01T00:00:00Z",
-      "last_seen": "2026-03-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "AWS Security Blog",
@@ -2280,14 +2320,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-e7e43253a3ee354a7560",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "AWS一次資料は同一DPRK系アクターをSAPPHIRE SLEET、STARDUST CHOLLIMA、BlueNoroff、CageyChameleon、Alluring Piscesとして記載し、中程度の確度で帰属した。APT38という名称は本文にないため、MITRE G0082のAssociated Groupsを介したoverlappingスコープの活動として保持し、完全同一とは断定しない。",
-      "x_reported_at": {
-        "value": "2026-07-29T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt38",
@@ -2346,7 +2382,27 @@
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2025-03-01T00:00:00Z",
+      "last_seen": "2026-03-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -5177,7 +5233,7 @@
       "spec_version": "2.1",
       "id": "relationship--01c42bb4-237b-4a32-be32-7f5bb412b6dc",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5185,14 +5241,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--59c27349-4f57-452c-b9ca-42d5d1d1dc98",
       "description": "APT38 uses DarkComet.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5ba404d7-de87-4fdd-a847-2bed1827e2b8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5200,14 +5263,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--55e7ca23-7e8f-40b5-b9cc-2d342ee3b20f",
       "description": "APT38 uses ECCENTRICBANDWAGON.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--11a53bb5-d175-40e3-8ef0-3714a6a8d15f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5215,14 +5285,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--98e7335e-2661-435e-9e01-e28f64d1487c",
       "description": "APT38 uses HOPLIGHT.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f3db043e-5ed2-4828-bd04-0c75c536b1a0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5230,14 +5307,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--2c9576d9-547f-4001-bf96-6e2a2e5f789d",
       "description": "APT38 uses KillDisk.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b37b5d45-05bc-4e48-b2fd-c130ebcb5eb2",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5245,14 +5329,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--057f9b44-492e-4828-84b2-5616ad496b67",
       "description": "APT38 uses NukeSped.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9df0b4fe-2adf-44e2-9495-43f488e9d9de",
       "created": "2026-08-01T23:18:25Z",
-      "modified": "2026-08-01T23:18:25Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5260,14 +5351,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "malware--1403adac-c013-4bc9-afc0-54db19c49e5b",
       "description": "APT38 uses typo-crypto.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "AWS Security Blog",
+          "description": "Local source: https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+          "external_id": "source--daily-a7e2c22924a222a6eb0f"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5cb46523-8e24-4819-a4a3-e0e97efbbe3a",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5275,14 +5373,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "description": "APT38 uses Mimikatz.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--813c15ed-dc52-4294-8a96-7ac7ca990481",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5290,14 +5395,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
       "description": "APT38 uses Net.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9768bd48-f61e-4ce9-8180-d76601723c5e",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5305,14 +5417,46 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "identity--a44ccb0c-9ae4-491d-b42c-5fe1c6d92fe3",
       "description": "APT38 targets タイ (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f16fadf9-e199-4384-8579-a2c3fe1996ca",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5320,14 +5464,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "identity--f0a4ee3a-0495-4a6e-a1d8-7ed0b0946f35",
       "description": "APT38 targets 全世界 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5064918d-1dae-41b8-b6ee-051fc7b42078",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5335,14 +5486,46 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "identity--7d533d45-1426-4bfa-9e53-51c46b73b411",
       "description": "APT38 targets 法律 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5350,14 +5533,56 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
       "description": "APT38 targets 暗号資産・Web3 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd"
+        },
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Microsoft: 2026-06-17に発見・遮断; activity-period",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8a911d14-bae0-462e-9c22-686609a69c22",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5365,14 +5590,51 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "identity--1e625f99-075e-4cb1-834d-7151197e090c",
       "description": "APT38 targets 金融 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--43942fd8-b3cb-4da1-9b8f-6a52a57c83c6",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5380,14 +5642,47 @@
       "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け is attributed or linked to APT38.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--20473b13-06b3-43a5-82af-c0f2c621a7a9",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5395,14 +5690,47 @@
       "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
       "target_ref": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
       "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け targets target--mitre-group--sector--02706c11c1b12ef47b1c.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--09f47701-7d1e-467e-9461-379e4f602056",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5410,14 +5738,47 @@
       "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
       "target_ref": "identity--dafa34b5-a880-421f-8d3f-3be7d01e736e",
       "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け affected victim--activity-rule--99c6c1819178c8d97e7e.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--90f3df54-fe4b-4f10-8165-0fda2476bc5e",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5425,14 +5786,45 @@
       "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 is attributed or linked to APT38.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--17012ccd-4d03-4bc6-97df-0e131a00eed8",
       "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5440,14 +5832,45 @@
       "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
       "target_ref": "malware--057f9b44-492e-4828-84b2-5616ad496b67",
       "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 uses malware--daily-23df57c784215d7d89da.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7e7d2e8d-2096-43f8-986d-d3d60840b86c",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5455,14 +5878,45 @@
       "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
       "target_ref": "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
       "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 uses ttp--activity-rule--bd3f12cacbc8b9b1afa7.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c1d6f7ab-b743-4b31-84b7-8609de4b9663",
-      "created": "2026-08-07T10:34:09Z",
-      "modified": "2026-08-07T10:34:09Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5470,14 +5924,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 is attributed or linked to APT38.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d9f27794-5e8b-432b-acbf-35227354fead",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5485,14 +5977,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "identity--7d533d45-1426-4bfa-9e53-51c46b73b411",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 targets target--activity-rule--sector--adfe952bca03d050ae2b.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--464e9f71-37b9-4c6a-a501-1de1786845ee",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5500,14 +6030,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 targets target--mitre-group--sector--02706c11c1b12ef47b1c.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f1eff079-d95d-45ed-8484-cfd97c10ec5d",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5515,14 +6083,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "identity--1e625f99-075e-4cb1-834d-7151197e090c",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 targets target--mitre-group--sector--7cdebddafb57ca131caf.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a2a2be86-c6b0-4385-aa77-342c9a7ddd5d",
-      "created": "2026-09-21T02:05:24Z",
-      "modified": "2026-09-21T02:05:24Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5530,14 +6136,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "identity--a44ccb0c-9ae4-491d-b42c-5fe1c6d92fe3",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 targets target--targeting-audit--country--e58bd55e7497bcf2d501.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a52fe18-ca70-44e9-8c60-69f54cfb7e0f",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5545,14 +6189,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "attack-pattern--a36ec3d7-304b-49a3-b1e8-95dcea4253e8",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 uses ttp--activity-rule--30bbd6873322a0cdcb80.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4a9fd882-8851-40b1-89a1-a30be6aed114",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5560,14 +6242,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "attack-pattern--303e2360-6b84-434f-abed-84b96b351c37",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 uses ttp--activity-rule--e75e1a7df4b24db0a86e.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--74afa34e-f73d-4b5d-a57f-bc65bc37c15d",
-      "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "created": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5575,14 +6295,52 @@
       "source_ref": "campaign--a9e50227-a309-4c16-b887-4f2225a7d6c8",
       "target_ref": "identity--2d950f94-fe5a-4b69-a11e-d661b1632eb3",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 affected victim--activity-rule--79861f83ab72b247bac1.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3e8642a0-98c7-4b92-b35d-700f2a97d8ea",
       "created": "2026-08-01T23:18:25Z",
-      "modified": "2026-09-21T04:05:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5590,14 +6348,52 @@
       "source_ref": "campaign--fd01565f-10e9-4bbf-b0b1-00e60a1e608e",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害 is attributed or linked to APT38.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "AWS Security Blog",
+          "description": "Local source: https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+          "external_id": "source--daily-a7e2c22924a222a6eb0f"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-03-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1f6f458b-6aca-4dd2-9c52-26f7c9e23c07",
       "created": "2026-08-01T23:18:25Z",
-      "modified": "2026-09-21T04:05:54Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5605,14 +6401,52 @@
       "source_ref": "campaign--fd01565f-10e9-4bbf-b0b1-00e60a1e608e",
       "target_ref": "malware--1403adac-c013-4bc9-afc0-54db19c49e5b",
       "description": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害 uses malware--daily-f30dd669ecd1c3776828.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "AWS Security Blog",
+          "description": "Local source: https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+          "external_id": "source--daily-a7e2c22924a222a6eb0f"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-03-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c66e51ca-3cb7-41e4-8666-1fb57a5224b6",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5620,14 +6454,46 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a36ec3d7-304b-49a3-b1e8-95dcea4253e8",
       "description": "侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--162de04b-bf99-42b3-af7b-9c5dbdf98943",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5635,14 +6501,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
       "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cbfe6da4-22c5-43b2-a1f6-35720e373854",
       "created": "2026-08-07T10:35:22Z",
-      "modified": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5650,14 +6523,46 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--303e2360-6b84-434f-abed-84b96b351c37",
       "description": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--097b11dc-eaee-4f62-9a26-740e646117c8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5665,14 +6570,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has collected data from a compromised host.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--132e9357-4a16-4b2f-acf6-0aa208cf7578",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5680,14 +6592,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used several code packing methods such as Themida, Enigma, VMProtect, and Obsidium, to pack their implants.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c5bb2307-aed3-44d2-b590-585997210f61",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5695,14 +6614,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has identified primary users, currently logged in users, sets of users that commonly use a system, or inactive users.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f9c0763b-ca75-4079-a30e-f16ba3f5a037",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5710,14 +6636,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--400a4637-be11-491b-b62b-b0f1bd43ca22",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has renamed system utilities, such as `rundll32.exe` and `mshta.exe`, to avoid detection.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ea718b99-d3ab-4016-8477-e90954428871",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5725,14 +6658,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--948f50aa-19b6-4526-9b10-5a4d539c0a3d",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has put several spaces before a file extension to avoid detection and suspicion.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--368fd32c-7cd7-4664-a0ba-58462306cc89",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5740,14 +6680,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--1000efd0-5918-4be5-aa1d-477cef3a7212",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) installed a port monitoring tool, MAPMAKER, to print the active TCP connections on the local system.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--66971d46-56b4-4f5b-8d6d-fd378d5198b0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5755,14 +6702,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--ff62ad84-841e-4958-b65b-1ccc6f3ccb0b",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used cron to create pre-scheduled and periodic background jobs on a Linux system.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aeefa5b7-0a3e-4b7b-b558-5f2f7f04d0c3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5770,14 +6724,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used Task Scheduler to run programs at system startup or on a scheduled basis for persistence.(Citation: CISA AA20-239A BeagleBoyz August 2020) Additionally, [APT38](https://attack.mitre.org/groups/G0082) has used living-off-the-land scripts to execute a malicious script via a scheduled task.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ddc97715-85a2-4795-8879-6c011f499389",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5785,14 +6746,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a23c412e-bb7f-47a4-9d3d-9f625bf031c1",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has injected malicious payloads into the `explorer.exe` process.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--09145d9e-7b63-4a11-9298-eebd6bba9e79",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5800,14 +6768,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--8cab9024-143a-4bf6-95a6-5b8a98a46aa9",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) used a Trojan called KEYLIME to capture keystrokes from the victim’s machine.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3876a350-9955-49cc-a488-e4941ac095a6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5815,14 +6790,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) leveraged Sysmon to understand the processes, services in the organization.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9eee84aa-6406-481f-914f-6dc521c94b67",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5830,14 +6812,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used PowerShell to execute commands and other operational tasks.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0a8af84d-1cc4-4e03-b590-52b16dae8e12",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5845,14 +6834,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a command-line tunneler, NACHOCHEESE, to give them shell access to a victim’s machine.(Citation: FireEye APT38 Oct 2018) Additionally, [APT38](https://attack.mitre.org/groups/G0082) has used batch scripts.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5f8b68ce-182c-4b2d-8b2a-8f945eafde9d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5860,14 +6856,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used VBScript to execute commands and other operational tasks.(Citation: CISA AA20-239A BeagleBoyz August 2020)(Citation: 1 - appv)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b503cd79-b419-4ced-a474-d8af0b1ca333",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5875,14 +6878,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a utility called CLOSESHAVE that can securely delete a file from the system. They have also removed malware, tools, or other non-native files used during the intrusion to reduce their footprint or as part of the post-intrusion cleanup process.(Citation: FireEye APT38 Oct 2018)(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--39d08fcc-805c-444a-9801-3be869073232",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5890,14 +6900,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a1e252cc-9b79-4821-9319-d7d726d5c3c7",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has modified data timestamps to mimic files that are in the same folder on a compromised host.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--229bb652-2777-49c8-8bcc-f0247dba5927",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5905,14 +6922,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) used a backdoor, QUICKRIDE, to communicate to the C2 server over HTTP and HTTPS.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--00850473-f070-4f7f-a6e3-aba5da767386",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5920,14 +6944,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has attempted to get detailed information about a compromised host, including the operating system, version, patches, hotfixes, and service packs.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--616f4303-e262-4c7b-8c11-68c64ff6de03",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5935,14 +6966,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) have enumerated files and directories, or searched in specific locations within a compromised host.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cff8e287-2f53-4589-9f35-babec33c54e7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5950,14 +6988,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) used a backdoor, NESTEGG, that has the capability to download and upload files to and from a victim’s machine.(Citation: FireEye APT38 Oct 2018) Additionally, [APT38](https://attack.mitre.org/groups/G0082) has downloaded other payloads onto a victim’s machine.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--14b16e7b-5ef7-4d8a-8931-dc6518d2f9e9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5965,14 +7010,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--d095b9c1-ca61-4ed2-a20e-5d71f548bdb2",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used the Windows API to execute code within a victim's system.(Citation: CISA AA20-239A BeagleBoyz August 2020) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--388b60be-d819-4ffe-9281-9750d3748ce5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5980,14 +7032,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used brute force techniques to attempt account access when passwords are unknown or when password hashes are unavailable.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f658c25c-5992-4f7c-8c03-97a5f3bc4312",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5995,14 +7054,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--452b40d3-baa3-4757-8dbd-aab3fa4fa5ee",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) uses a tool called CLEANTOAD that has the capability to modify Registry keys.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bafa8f83-e41a-4bcb-a383-c5b56b838a7e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6010,14 +7076,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--022e7b68-1826-47b7-8584-fe15cbbe19c3",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) used a Trojan called KEYLIME to collect data from the clipboard.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--14d44068-d6c8-4d13-9203-7e8a8dc23b5b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6025,14 +7098,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--f5cf2c22-cedd-4156-88ce-5566cc4c0e30",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has enumerated network shares on a compromised host.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4f45c078-794d-4fd3-8315-e8b27f4e9657",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6040,14 +7120,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used the RC4 algorithm to decrypt configuration data. (Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--960fef82-aed2-4fe4-8af4-62e98bbab610",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6055,14 +7142,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--d8c681cd-f0f9-4ebe-940d-9a300228b200",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has conducted watering holes schemes to gain initial access to victims.(Citation: FireEye APT38 Oct 2018)(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f291e015-0893-42b0-bd0d-a1da8323a8c6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6070,14 +7164,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used links to execute a malicious Visual Basic script.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c2a32fd6-7cb0-47e6-8939-c128a48b56f1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6085,14 +7186,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[APT38](https://attack.mitre.org/groups/G0082)  has attempted to lure victims into enabling malicious macros within email attachments.(Citation: CISA AA20-239A BeagleBoyz August 2020) Additionally, [APT38](https://attack.mitre.org/groups/G0082) has used malicious Word documents and shortcut files.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--887fd70a-1809-4277-a09b-bc6582b386a3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6100,14 +7208,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--f0a2488f-d0af-4954-a9a4-7e8739b70e03",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has collected browser bookmark information to learn more about compromised hosts, obtain personal information about users, and acquire details about internal network resources.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--877247a4-3cc1-4a51-ab10-7f168047b657",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6115,14 +7230,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--8bce4f88-3898-4074-875a-8eeb80c602cd",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used CHM files to move concealed payloads.(Citation: Kaspersky Lazarus Under The Hood APR 2017)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d8285072-fa4b-4d7e-833f-df25b35f3b00",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6130,14 +7252,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--7c468083-c48e-4249-8c1a-396423817987",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a renamed version of `mshta.exe` to execute malicious HTML files.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--97355e6b-1b96-4cd7-a6de-e60cb22e085d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6145,14 +7274,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--8c018cd4-07fb-48fc-a1ca-81ce84e03b72",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used `msiexec.exe` to execute malicious files.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6ba4ef52-ddca-4e99-920a-18d6c1a9e662",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6160,14 +7296,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--8eb8a2e8-26b5-4ba6-a761-8694256053e2",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used rundll32.exe to execute binaries, scripts, and Control Panel Item files and to execute code via proxy to avoid triggering security tools.(Citation: CISA AA20-239A BeagleBoyz August 2020)(Citation: 1 - appv)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b472ca4-7ca8-4f28-b2cc-cfa207eeb107",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6175,14 +7318,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--60d32e51-8d09-40a6-81a3-0bc76c56749a",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has created a mutex to avoid duplicate execution.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d82c2f5a-df42-4848-bb5e-6dad39a7929e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6190,14 +7340,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--5380102d-98fe-4e62-aa61-7c8628378857",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a custom secure delete function to make deleted files unrecoverable.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1cdadbd3-eee7-4ab6-a62c-c104b9cd99f4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6205,14 +7362,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used Hermes ransomware to encrypt files with AES256.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0510311b-74b9-4dcc-948c-a35a812fbea9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6220,14 +7384,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--44d1b510-1f00-4364-9654-df683b6c4f0f",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used web shells for persistence or to ensure redundant access.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a1f2af22-c031-4f95-b918-b0cb5b9d797b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6235,14 +7406,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--ad0d52fc-0289-4fa8-8cac-130401551f8c",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has identified security software, configurations, defensive tools, and sensors installed on a compromised system.(Citation: CISA AA20-239A BeagleBoyz August 2020)(Citation: 1 - appv)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4a4d8db0-678a-48b5-871d-66e93834556e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6250,14 +7428,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--b287de19-e588-4d9c-9528-4cc221fc424e",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a custom MBR wiper named BOOTWRECK, which will initiate a system reboot after wiping the victim's MBR.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4dae3930-b00a-4002-be96-2fcb7967efeb",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6265,14 +7450,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--f21b71ca-7163-41be-9bea-97e30cafc9a1",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has installed a new Windows service to establish persistence.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9ceb2acd-864f-47c0-9698-990cfb7868bd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6280,14 +7472,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--3cb00c3b-d68e-4cc2-a813-2fc2db7f105d",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used the legitimate application `ieinstal.exe` to bypass UAC.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0d7e63b2-4a03-4a93-bf50-175149bfa4af",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6295,14 +7494,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--881dd0cb-dc15-44b5-9d25-d97d954b2817",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used ISO and VHD files to deploy malware and to bypass Mark-of-the-Web (MOTW) security measures.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5c29e8bf-9d54-4218-aa7b-dbbe3c6da4ae",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6310,14 +7516,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--7eff9e5b-9290-4b7a-94e1-d0790562d335",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used a custom MBR wiper named BOOTWRECK to render systems inoperable.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a1dbb67-b560-4723-b578-e7dc424297d7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6325,14 +7538,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--eca1b9cd-4cc3-47bd-bb03-5978c9826a44",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used DYEPACK to create, delete, and alter records in databases used for SWIFT transactions.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--16c0eea9-b3f8-4d47-b426-d578fb68c321",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6340,14 +7560,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--70aa16d4-0467-441e-9d5b-6d30f5a02573",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used DYEPACK to manipulate SWIFT messages en route to a printer.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aeccf10d-1535-4205-8900-edc1ec15794c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6355,14 +7582,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--5400b4e5-05c6-4089-921d-c5f56403ffa7",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has used DYEPACK.FOX to manipulate PDF data as it is accessed to remove traces of fraudulent SWIFT transactions from the data displayed to the end user.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c61006e8-0682-41da-a285-2a20d1c6850f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6370,14 +7604,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has conducted spearphishing campaigns using malicious email attachments.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8129aeda-bd8e-4c48-b083-db736dc12d31",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6385,14 +7626,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has created new services or modified existing ones to run executables, commands, or scripts.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ab3192e7-43fe-4d56-a6f5-e9fd391dba71",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6400,14 +7648,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has created fake domains to imitate legitimate venture capital or bank domains.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e55566da-1f8f-451b-aabf-d6b7d5e5ba0b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6415,14 +7670,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has obtained and used open-source tools such as [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: ESET Lazarus KillDisk April 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d8f5a393-7f48-4bf4-a0ee-874207830b2f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6430,14 +7692,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has unhooked DLLs to disable endpoint detection and response (EDR) or anti-virus (AV) tools.(Citation: 1 - appv) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c317a53a-49d1-4b77-b5cd-7666e801dd95",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6445,14 +7714,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) clears Window Event logs and Sysmon logs from the system.(Citation: FireEye APT38 Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--db6b1854-a032-4f4e-8442-bbfa6cd72c51",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6460,14 +7736,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--30a06543-ceb8-415f-bfb0-f8c2f2dd2046",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) have created firewall exemptions on specific ports, including ports 443, 6443, 8443, and 9443.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--24414a9c-6a07-4aeb-b83b-bfd3b7e9816c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6475,14 +7758,21 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--75952525-cec6-4dda-8c18-c268a09ca977",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) have created firewall exemptions on specific ports, including ports 443, 6443, 8443, and 9443. (Citation: CISA AA20-239A BeagleBoyz August 2020) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--07f73f9a-bbec-4a38-a573-c4993d97c73f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6490,7 +7780,14 @@
       "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "target_ref": "attack-pattern--95d8251f-5d5e-4d47-8b54-3bce0f9434e7",
       "description": "[APT38](https://attack.mitre.org/groups/G0082) has prepended a space to all of their terminal commands to operate without leaving traces in the HISTCONTROL environment.(Citation: CISA AA20-239A BeagleBoyz August 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -6586,7 +7883,7 @@
       "spec_version": "2.1",
       "id": "relationship--7aaa91ad-f406-437d-bd7d-040a622b4161",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6594,7 +7891,8 @@
       "source_ref": "indicator--a9371eba-b334-4185-8d8e-66cbb65a92b3",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6660,7 +7958,7 @@
       "spec_version": "2.1",
       "id": "relationship--3d6cec80-21c7-4063-bbdc-2a228ab53e61",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6668,7 +7966,8 @@
       "source_ref": "indicator--147b2329-822f-4362-bd95-32b8ff7e1303",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6734,7 +8033,7 @@
       "spec_version": "2.1",
       "id": "relationship--794707f2-be6e-4f14-a7fd-4f44567ddb30",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6742,7 +8041,8 @@
       "source_ref": "indicator--251b85a5-316f-46f0-bbd8-6bf2dfa4edd9",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6808,7 +8108,7 @@
       "spec_version": "2.1",
       "id": "relationship--b202eda6-9a19-45b6-bc0d-60b7a3687330",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6816,7 +8116,8 @@
       "source_ref": "indicator--cc5f3a09-8359-4cbc-b9bc-a0e0bd1eee21",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6882,7 +8183,7 @@
       "spec_version": "2.1",
       "id": "relationship--39849efa-0f94-4e7b-9948-adf6932e664f",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6890,7 +8191,8 @@
       "source_ref": "indicator--f573eefe-2364-4f06-b0d8-999978195365",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6956,7 +8258,7 @@
       "spec_version": "2.1",
       "id": "relationship--7803a108-9775-4e72-b642-11b1e98a216d",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6964,7 +8266,8 @@
       "source_ref": "indicator--c408a138-e2f1-479b-a7d4-4bf7efa08005",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7060,7 +8363,7 @@
       "spec_version": "2.1",
       "id": "relationship--91194841-f5e8-45a6-b7ed-c78045d04a3e",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7068,7 +8371,8 @@
       "source_ref": "indicator--4d50e506-8822-4b3b-8462-cd476e6704f3",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7134,7 +8438,7 @@
       "spec_version": "2.1",
       "id": "relationship--b35d4701-7e51-46e2-a56b-fc6c81cf2c64",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7142,7 +8446,8 @@
       "source_ref": "indicator--90da57ba-6f39-4359-a9c3-7ef6988c67bd",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7386,7 +8691,7 @@
       "spec_version": "2.1",
       "id": "relationship--4f0a03c8-65c6-4dad-ae0d-7d489f1d7bf9",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7394,7 +8699,8 @@
       "source_ref": "indicator--f78d7f70-6575-4183-89ac-c5b2c9965d3c",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7460,7 +8766,7 @@
       "spec_version": "2.1",
       "id": "relationship--886cc3f3-3e36-46ee-a220-8c48020860a5",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7468,7 +8774,8 @@
       "source_ref": "indicator--8ed8809e-13e5-4714-a2da-a9591c256b99",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7534,7 +8841,7 @@
       "spec_version": "2.1",
       "id": "relationship--54740364-6431-49d2-83c7-9e7b3113200e",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7542,7 +8849,8 @@
       "source_ref": "indicator--a163ebf3-4e79-485e-a1da-44c4270b3fb3",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7608,7 +8916,7 @@
       "spec_version": "2.1",
       "id": "relationship--2646adff-4598-40ee-b90f-c2c3ef546051",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7616,7 +8924,8 @@
       "source_ref": "indicator--c4564d8f-6073-4460-8b56-d87e11b9fff2",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7682,7 +8991,7 @@
       "spec_version": "2.1",
       "id": "relationship--29cd8043-d3c9-4f2c-9b11-289d768cb3c8",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7690,7 +8999,8 @@
       "source_ref": "indicator--c54d0621-e138-431d-acfc-b3a71dbaea2d",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7756,7 +9066,7 @@
       "spec_version": "2.1",
       "id": "relationship--fb86ecbd-4609-49cd-9417-3adf44468c1f",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7764,7 +9074,8 @@
       "source_ref": "indicator--8f9db451-bdd8-4a50-a708-4a80eeb95af9",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7860,7 +9171,7 @@
       "spec_version": "2.1",
       "id": "relationship--8c988c3c-a174-49af-8100-914aa05d4181",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7868,7 +9179,8 @@
       "source_ref": "indicator--e49a4409-6357-47b1-9496-480c0ada9fde",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7964,7 +9276,7 @@
       "spec_version": "2.1",
       "id": "relationship--6cea3f0c-7246-4ad3-8b1b-70a3bbe47438",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7972,7 +9284,8 @@
       "source_ref": "indicator--38a69529-d85f-4cbf-85ee-50d4a7eb500a",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9015,7 +10328,7 @@
       "spec_version": "2.1",
       "id": "relationship--1607e12e-e973-44bf-a61a-a4946a5ec4c3",
       "created": "2026-09-20T11:57:56Z",
-      "modified": "2026-09-20T11:57:56Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9023,7 +10336,8 @@
       "source_ref": "indicator--883db359-dc74-4e83-a21e-e161da382edf",
       "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
@@ -9047,7 +10361,7 @@
       "spec_version": "2.1",
       "id": "report--86d4d589-8a5d-4a01-ad4d-bf1cbec73364",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9056,7 +10370,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T04:38:04Z",
+      "published": "2026-09-21T08:15:06Z",
       "object_refs": [
         "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
         "malware--59c27349-4f57-452c-b9ca-42d5d1d1dc98",
@@ -9170,7 +10484,7 @@
         "indicator--55bee5d3-58f4-4f01-8729-5c006337afb0",
         "indicator--883db359-dc74-4e83-a21e-e161da382edf"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

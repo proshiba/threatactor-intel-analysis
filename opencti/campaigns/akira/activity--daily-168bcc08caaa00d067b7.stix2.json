@@ -1,0 +1,714 @@
+{
+  "type": "bundle",
+  "id": "bundle--1a1e2590-4cae-4554-a7f8-655178d3b8ab",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--21cbfd77-0f6f-4108-bd29-6f0889323eae",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exploit Public-Facing Application",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--9388646871131d17eebe",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--daily-168bcc08caaa00d067b7"
+      ],
+      "x_malware_refs": [
+        "malware--akira"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入",
+      "description": "FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。 攻撃はCVE-2024-40766をエクスプロイトして行い、ランサムウェアで攻撃する事例が少なくとも30件発生。 侵入後約10時間で暗号化が進むが、最速で1.5～2時間で完了。 VPNアクセスは既知のログインメッセージIDで監視可能。 一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-168bcc08caaa00d067b7",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--168bcc08caaa00d067b78e22 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--9388646871131d17eebe"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--efcb31ad5721ef88aa8b"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-10-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3c12eda093e5c59e0ee6"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dd3daf37-71a0-46f2-b238-0ba214b6e97b",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入",
+      "identity_class": "organization",
+      "description": "FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。 攻撃はCVE-2024-40766をエクスプロイトして行い、ランサムウェアで攻撃する事例が少なくとも30件発生。 侵入後約10時間で暗号化が進むが、最速で1.5～2時間で完了。 VPNアクセスは既知のログインメッセージIDで監視可能。 一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--efcb31ad5721ef88aa8b",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--akira"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--9388646871131d17eebe"
+      ],
+      "x_affected_assets": [
+        "VPN／リモートアクセス機器"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira",
+      "aliases": [
+        "GOLD SAHARA",
+        "Howling Scorpius",
+        "PUNK SPIDER"
+      ],
+      "description": "[Akira](https://attack.mitre.org/groups/G1024) is a ransomware variant and ransomware deployment entity active since at least March 2023.(Citation: Arctic Wolf Akira 2023) [Akira](https://attack.mitre.org/groups/G1024) uses compromised credentials to access single-factor external access mechanisms such as VPNs for initial access, then various publicly-available tools and techniques for lateral movement.(Citation: Arctic Wolf Akira 2023)(Citation: Secureworks GOLD SAHARA) [Akira](https://attack.mitre.org/groups/G1024) operations are associated with \"double extortion\" ransomware activity, where data is exfiltrated from victim environments prior to encryption, with threats to publish files if a ransom is not paid. Technical analysis of [Akira](https://attack.mitre.org/software/S1129) ransomware indicates variants capable of targeting Windows or VMWare ESXi hypervisors and multiple overlaps with [Conti](https://attack.mitre.org/software/S0575) ransomware.(Citation: BushidoToken Akira 2023)(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--akira",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "GOLD SAHARA",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Howling Scorpius",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "PUNK SPIDER",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "Megazord, Akira, Akira _v2, Rclone, Mimikatz, LaZagne, AdFind, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=カナダ、シリア。標的地域=北米、欧州。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira",
+      "description": "[Akira](https://attack.mitre.org/software/S1129) ransomware, written in C++, is most prominently (but not exclusively) associated with the ransomware-as-a-service entity [Akira](https://attack.mitre.org/groups/G1024). [Akira](https://attack.mitre.org/software/S1129) ransomware has been used in attacks across North America, Europe, and Australia, with a focus on critical infrastructure sectors including manufacturing, education, and IT services. [Akira](https://attack.mitre.org/software/S1129) ransomware employs hybrid encryption and threading to increase the speed and efficiency of encryption and runtime arguments for tailored attacks. Notable variants include Rust-based [Megazord](https://attack.mitre.org/software/S1191) for targeting Windows and [Akira _v2](https://attack.mitre.org/software/S1194) for targeting VMware ESXi servers.(Citation: Kersten Akira 2023)(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--akira",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "Akira"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akira uses Akira.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d41b3df-fd44-4635-b485-bd57a75ae058",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "target_ref": "attack-pattern--21cbfd77-0f6f-4108-bd29-6f0889323eae",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b5be7f0-fba3-4468-89d6-49adf60bd630",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 uses malware--akira.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c7cd4df-cb04-44e8-bf7e-68807c098635",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "identity--dd3daf37-71a0-46f2-b238-0ba214b6e97b",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 affected victim--activity-rule--efcb31ad5721ef88aa8b.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c57b7009-7536-4545-a6de-12d5f36d9b82",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 is attributed or linked to Akira.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cbad77d6-4b9a-4e7a-8315-fe51640cefb6",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "attack-pattern--21cbfd77-0f6f-4108-bd29-6f0889323eae",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 uses ttp--activity-rule--9388646871131d17eebe.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0ec3c950-9a36-4f15-b36c-12ff3e44b066",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "malware--a695430a-38fc-4086-8e38-d3932887e325",
+        "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--akira:activity--daily-168bcc08caaa00d067b7",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c7c209a3-e21f-4084-b6cf-fbe32f75a172",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-10-28T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--21cbfd77-0f6f-4108-bd29-6f0889323eae",
+        "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+        "identity--dd3daf37-71a0-46f2-b238-0ba214b6e97b",
+        "relationship--4d41b3df-fd44-4635-b485-bd57a75ae058",
+        "relationship--7b5be7f0-fba3-4468-89d6-49adf60bd630",
+        "relationship--8c7cd4df-cb04-44e8-bf7e-68807c098635",
+        "relationship--c57b7009-7536-4545-a6de-12d5f36d9b82",
+        "relationship--cbad77d6-4b9a-4e7a-8315-fe51640cefb6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6",
+          "url": "https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-3c12eda093e5c59e0ee6",
+      "x_evidence_slice_scope": "campaign:actor--akira:activity--daily-168bcc08caaa00d067b7",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1c39743e-a79a-4d1e-bead-68965ee0f1fd",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira / FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入",
+      "description": "FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。 攻撃はCVE-2024-40766をエクスプロイトして行い、ランサムウェアで攻撃する事例が少なくとも30件発生。 侵入後約10時間で暗号化が進むが、最速で1.5～2時間で完了。 VPNアクセスは既知のログインメッセージIDで監視可能。 一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "attack-pattern--21cbfd77-0f6f-4108-bd29-6f0889323eae",
+        "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+        "identity--dd3daf37-71a0-46f2-b238-0ba214b6e97b",
+        "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+        "malware--a695430a-38fc-4086-8e38-d3932887e325",
+        "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763",
+        "relationship--4d41b3df-fd44-4635-b485-bd57a75ae058",
+        "relationship--7b5be7f0-fba3-4468-89d6-49adf60bd630",
+        "relationship--8c7cd4df-cb04-44e8-bf7e-68807c098635",
+        "relationship--c57b7009-7536-4545-a6de-12d5f36d9b82",
+        "relationship--cbad77d6-4b9a-4e7a-8315-fe51640cefb6",
+        "report--0ec3c950-9a36-4f15-b36c-12ff3e44b066",
+        "report--c7c209a3-e21f-4084-b6cf-fbe32f75a172"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--akira",
+      "x_activity_id": "activity--daily-168bcc08caaa00d067b7"
+    }
+  ]
+}

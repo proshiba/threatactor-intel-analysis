@@ -888,14 +888,12 @@
       "spec_version": "2.1",
       "id": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-09-21T03:17:45Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード",
       "description": "Kasperskyは、2025年から2026年にかけてロシアとベラルーシの政府・商業組織を狙うCloud Atlasの活動を観測した。 攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。 PowerShowerは探索や横展開、Kerberoasting、資格情報窃取を行い、termsrv.dll改変で複数RDPセッションを可能にする。 VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 攻撃者はOpenSSH、RevSocks、Torを用いたトンネルで永続化とバックアップの制御チャネルを構築していた。 新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。",
-      "first_seen": "2025-07-01T00:00:00Z",
-      "last_seen": "2026-01-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "securelist.ru",
@@ -904,14 +902,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-eb7dc1cbaaf211545ed7",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--eb7dc1cbaaf211545ed730cd から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Kaspersky securelist.ru)を確認。Cloud Atlasを実行主体として2025年後半〜2026年初頭のロシア・ベラルーシの政府・外交機関への攻撃を直接分析。Cloud AtlasはInception(inceptionプロファイル)のoverlapping aliasで、両名は同一クラスタとして各ベンダーが対応付けており手動確認の上で採用。VBCloud/PowerShower/PowerCloudと公開ツール(SSH逆トンネル、ReverseSocks、Tor)の併用を明記。",
-      "x_reported_at": {
-        "value": "2026-05-26T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--inception",
@@ -985,7 +979,27 @@
           "source--daily-a049055857e706459add"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-07-01T00:00:00Z",
+      "last_seen": "2026-01-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -2347,7 +2361,7 @@
       "spec_version": "2.1",
       "id": "relationship--4eddce02-9f49-48cf-b5e4-09001856a801",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2355,14 +2369,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "malware--7a31e8bf-5047-4eb4-b3c6-dcf3780b49dc",
       "description": "Inception uses PowerCloud.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--af3ad339-e798-4cf7-b6d1-bcf1a6d104b8",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2370,14 +2411,26 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "malware--422608df-8a23-484b-a4c6-f4f5d089baef",
       "description": "Inception uses PowerShower.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6e41b1cb-9e4f-47d0-a6e1-1fadacc830e3",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2385,14 +2438,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "malware--03aa7383-16f3-43bf-96e1-8898319e5484",
       "description": "Inception uses RevSocks.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--620c851d-579c-49d7-92b1-7a57ccd28f86",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2400,14 +2480,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "malware--aed17600-1938-46f6-8310-205e1dd40a89",
       "description": "Inception uses VBCloud.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3cc9b10f-778b-41fd-8b71-ecd929fe7898",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2415,14 +2522,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "malware--238129d4-fbac-450e-a9af-5d7985c85d5d",
       "description": "Inception uses VBShower.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c502983c-df9f-4a7a-9e0f-fd4884aca8e8",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2430,14 +2544,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
       "description": "Inception uses LaZagne.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4609e764-ea72-4c90-9d67-016d3073794b",
       "created": "2026-09-21T03:17:45Z",
-      "modified": "2026-09-21T03:17:45Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2445,14 +2566,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--2056f9be-f27f-483c-b6db-c81eeeacbb70",
       "description": "Inception targets ベラルーシ (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--54d79c06-0667-447f-9764-cb8fec30a29e",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2460,14 +2608,51 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--50f3b1fb-ac4e-4383-bcb8-1680660438b4",
       "description": "Inception targets ロシア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a67e62b8-5b8f-4ec3-bfc4-74922e4df2e1",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2475,14 +2660,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--78f9036b-8386-449a-bb40-f2b6fb50cb92",
       "description": "Inception targets 米国 (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--52a4e514-5304-40d3-95bb-0035f2ef7cb2",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2490,14 +2682,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--dff06517-f9f4-4e3c-8d55-0e83a0bc28fe",
       "description": "Inception targets アジア (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a480927f-eb6a-4e05-988c-1c2681c321a7",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2505,14 +2704,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--7ff57e9d-cb21-4690-a1fb-092f005c4527",
       "description": "Inception targets アフリカ (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22aac46e-53a0-477f-a668-a80e9940da6d",
       "created": "2026-09-21T03:17:45Z",
-      "modified": "2026-09-21T03:17:45Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2520,14 +2726,31 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--a68d02f2-5ea6-4f0d-b6ee-876a5cff99c3",
       "description": "Inception targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0ec0c0e7-7902-435c-8c77-fec5eceea1d0",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2535,14 +2758,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--a9e27409-6293-4d7f-9ea6-cfbb014f5eba",
       "description": "Inception targets 欧州 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--06e02c30-ae53-4d21-9b51-4aceb7503e82",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2550,14 +2780,51 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "Inception targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dbe9f3c8-484f-4dff-94e4-edbe002b0c79",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2565,14 +2832,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード is attributed or linked to Inception.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d5ec1d34-1ee2-43cc-bfe2-47e622bda6e7",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2580,14 +2880,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "malware--03aa7383-16f3-43bf-96e1-8898319e5484",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses malware--daily-74ffce722b79d1d77a0a.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a7546a57-5d53-4a2c-90de-c41c4fd8449d",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2595,14 +2928,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "malware--aed17600-1938-46f6-8310-205e1dd40a89",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses malware--daily-849606416b313f470296.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c8712d29-985e-4952-ac85-20d6222bce98",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2610,14 +2976,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "malware--7a31e8bf-5047-4eb4-b3c6-dcf3780b49dc",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses malware--daily-977abf02a8093874d5ad.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--24e69912-43c6-4b36-8589-5beae1450f75",
       "created": "2026-08-07T10:34:14Z",
-      "modified": "2026-08-07T10:34:14Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2625,14 +3024,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "malware--422608df-8a23-484b-a4c6-f4f5d089baef",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses malware--powershower.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cfe1d380-fd9e-4aa9-9fb6-15000f62b9c5",
       "created": "2026-09-21T03:17:45Z",
-      "modified": "2026-09-21T03:17:45Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2640,14 +3072,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "identity--50f3b1fb-ac4e-4383-bcb8-1680660438b4",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード targets target--country--russia.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d93efa46-7ad4-4305-83ad-1ce68f0c1b73",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2655,14 +3120,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード targets target--sector--government.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9fe86582-e2a5-433a-ad78-99a9277e8c21",
       "created": "2026-09-21T03:17:45Z",
-      "modified": "2026-09-21T03:17:45Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2670,14 +3168,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "identity--2056f9be-f27f-483c-b6db-c81eeeacbb70",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード targets target--targeting-audit--country--fe25b1bcad855894e027.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--88b19c02-eabb-4432-b1c5-8bbe56f90188",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2685,14 +3216,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "attack-pattern--4e660270-5dcd-4b61-8fd9-2d55b7e16f6c",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses ttp--activity-rule--1654882a291124199026.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c9e7bb6d-0a0a-488c-b0ff-80a9952ec69b",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2700,14 +3264,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "attack-pattern--a19fb926-5ce2-41d0-bf20-50d2b8d55809",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード uses ttp--activity-rule--c0823aaec95f59d3a0a9.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--99598d41-b55d-4286-bc99-a5734d4b6110",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2715,14 +3312,47 @@
       "source_ref": "campaign--c5447bc8-7d1c-4004-a84f-01c7be2ea478",
       "target_ref": "identity--1d241f0f-1816-4ea6-95f9-c0e8961b8485",
       "description": "2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード affected victim--activity-rule--b450a9ea54e52cd62b68.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f3e652b4-f814-407d-b7fd-6748fdf53005",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2730,14 +3360,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--4e660270-5dcd-4b61-8fd9-2d55b7e16f6c",
       "description": "攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0157b6a5-9296-47fd-b35a-95f6e061cc13",
       "created": "2026-08-07T10:35:25Z",
-      "modified": "2026-08-07T10:35:25Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2745,14 +3402,41 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--a19fb926-5ce2-41d0-bf20-50d2b8d55809",
       "description": "新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/cloud-atlas-2026/115682/",
+          "external_id": "source--daily-a049055857e706459add"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Kaspersky: 2025年後半から。後半を7月へ正規化; activity-period",
+        "last": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b1bf390d-5249-41a6-ac6f-d7db09aba3cd",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2760,14 +3444,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "iscovering rogue Mimikatz processes can be tricky because, since its inception, defenders have only had to worry about detecting compiled binaries. Nowadays, l T1003.001: LSASS Memory",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--inception--f1cfea69304ea1b6",
+          "description": "Local source: actor_profile/evidence/inception.csv",
+          "external_id": "source--inception--f1cfea69304ea1b6"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3dc5392c-1bf3-4778-84be-7c45fd0cff3b",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2775,14 +3466,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) used a file hunting plugin to collect .txt, .pdf, .xls or .doc files from the infected host.(Citation: Kaspersky Cloud Atlas August 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cff769ff-bb5f-4904-9d77-4882e0049560",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2790,14 +3488,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has encrypted malware payloads dropped on victim machines with AES and RC4 encryption.(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--514607f0-3247-4730-8262-bb44f3188fc2",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2805,14 +3510,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used a reconnaissance module to identify active processes and other associated loaded modules.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b5554e0b-f0de-43e4-a12c-67358bfe0b10",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2820,14 +3532,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used PowerShell to execute malicious commands and payloads.(Citation: Unit 42 Inception November 2018)(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e6ebc619-d2c2-4a70-9aed-22d0bdfa3af3",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2835,14 +3554,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used VBScript to execute malicious commands and payloads.(Citation: Unit 42 Inception November 2018)(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--43c06ce8-048b-42fb-a187-fbd9744d571c",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2850,14 +3576,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--1ce974e7-734f-444b-92bd-b3d4982fa5ef",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used specific malware modules to gather domain membership.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--62753db9-3875-4cd8-bdbe-1a871849a94e",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2865,14 +3598,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used HTTP, HTTPS, and WebDav in network communications.(Citation: Kaspersky Cloud Atlas December 2014)(Citation: Unit 42 Inception November 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--788f667c-04f6-4368-ade2-f8e2502335ff",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2880,14 +3620,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used a reconnaissance module to gather information about the operating system and hardware on the infected host.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bfaa92ce-66b8-42e4-a284-ddb0bcfc8e07",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2895,14 +3642,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) used a file listing plugin to collect information about file and directories both on local and remote drives.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--53c52993-ad09-4590-a4d9-f706b9a54b56",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2910,14 +3664,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--c4b24b10-9eb8-41e1-b43e-15ddef8a46d9",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) used chains of compromised routers to proxy C2 communications between them and cloud service providers.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--80df3b33-09f6-4732-9dc5-6d9021fee181",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2925,14 +3686,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--cef95057-8b46-40d4-b1ba-ceca3f27b32d",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has incorporated at least five different cloud service providers into their C2 infrastructure including CloudMe.(Citation: Kaspersky Cloud Atlas December 2014)(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fa5c544b-4e49-4b53-8d6c-b25141d0a133",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2940,14 +3708,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--f2869783-2e60-4f4f-8373-9a6980476f95",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has exploited CVE-2012-0158, CVE-2014-1761, CVE-2017-11882 and CVE-2018-0802 for execution.(Citation: Kaspersky Cloud Atlas August 2019)(Citation: Kaspersky Cloud Atlas December 2014)(Citation: Symantec Inception Framework March 2018)(Citation: Unit 42 Inception November 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3993902f-ca09-47ca-823c-0645e368e386",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2955,14 +3730,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) lured victims into clicking malicious files for machine reconnaissance and to execute malware.(Citation: Kaspersky Cloud Atlas December 2014)(Citation: Kaspersky Cloud Atlas August 2019)(Citation: Symantec Inception Framework March 2018)(Citation: Unit 42 Inception November 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d0cbed37-2ebc-47cc-a0e0-5192c974fd89",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2970,14 +3752,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--7c468083-c48e-4249-8c1a-396423817987",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used malicious HTA files to drop and execute malware.(Citation: Kaspersky Cloud Atlas August 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a6ef72da-d92b-48ec-887b-daadd9ceb837",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2985,14 +3774,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--3cda1050-d26b-42a8-b932-09acb31e82b4",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has ensured persistence at system boot by setting the value <code>regsvr32 %path%\\ctfmonrn.dll /s</code>.(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9ac3cee6-905d-43e4-be71-c1eb6a0f9625",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3000,14 +3796,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--32e4c9e4-6467-4a0a-9168-6ff0d788bca9",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used decoy documents to load malicious remote payloads via HTTP.(Citation: Unit 42 Inception November 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c27bd2cb-2d9e-49c3-a25f-e1af1d70e2bb",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3015,14 +3818,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--a6ac02c8-63b4-4842-9fce-d28213b7c80f",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has enumerated installed software on compromised systems.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ac54ac81-a1ca-4fd2-b34f-0d1fe10145f8",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3030,14 +3840,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has maintained persistence by modifying Registry run key value \n <code>HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\</code>.(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8f2ad89e-5f35-4f95-b095-438bf95df22e",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3045,14 +3862,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) used a browser plugin to steal passwords and sessions from Internet Explorer, Chrome, Opera, Firefox, Torch, and Yandex.(Citation: Symantec Inception Framework March 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b9d3242-1a0c-4e73-ba66-98982cebec27",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3060,14 +3884,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has used weaponized documents attached to spearphishing emails for reconnaissance and initial compromise.(Citation: Kaspersky Cloud Atlas December 2014)(Citation: Symantec Inception Framework March 2018)(Citation: Unit 42 Inception November 2018)(Citation: Kaspersky Cloud Atlas August 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eff177ff-22cd-400c-8148-bbe67f5a9824",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3075,14 +3906,21 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--2b2ec174-8d74-4b37-b58e-22946fa8cd2b",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has encrypted network communications with AES.(Citation: Kaspersky Cloud Atlas December 2014)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f169e3bd-7de3-48b5-85ec-2485155d9813",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3090,7 +3928,14 @@
       "source_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[Inception](https://attack.mitre.org/groups/G0100) has obtained and used open-source tools such as [LaZagne](https://attack.mitre.org/software/S0349).(Citation: Kaspersky Cloud Atlas August 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -3156,7 +4001,7 @@
       "spec_version": "2.1",
       "id": "relationship--c168d50e-f1dd-4c32-a5ef-e01211f4dd31",
       "created": "2026-09-20T11:57:57Z",
-      "modified": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3164,7 +4009,8 @@
       "source_ref": "indicator--2147275c-0983-4ec6-abe4-1b88f9fa7bc9",
       "target_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3230,7 +4076,7 @@
       "spec_version": "2.1",
       "id": "relationship--b7feed6c-8b1e-4425-b5f5-7d17c8362056",
       "created": "2026-09-20T11:57:57Z",
-      "modified": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3238,7 +4084,8 @@
       "source_ref": "indicator--0600f4e2-0c1b-4ef4-8d55-846fa3006da9",
       "target_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3304,7 +4151,7 @@
       "spec_version": "2.1",
       "id": "relationship--2382c640-02bf-4a4e-8aec-98efbcc88ff9",
       "created": "2026-09-20T11:57:57Z",
-      "modified": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3312,7 +4159,8 @@
       "source_ref": "indicator--02e28490-fe93-41e4-b7b9-25a249e04529",
       "target_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3497,7 +4345,7 @@
       "spec_version": "2.1",
       "id": "relationship--1cc0cc43-6591-401d-bb71-2ee791867e7b",
       "created": "2026-09-20T11:57:57Z",
-      "modified": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3505,7 +4353,8 @@
       "source_ref": "indicator--8d0494dc-1d72-4b2d-8a80-953653564635",
       "target_ref": "intrusion-set--b5acc276-291c-4e09-8bdf-30ed1a98a28d",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
@@ -3588,7 +4437,7 @@
         "indicator--476451df-4300-458e-b43b-2d98b4d2e8c0",
         "indicator--8d0494dc-1d72-4b2d-8a80-953653564635"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

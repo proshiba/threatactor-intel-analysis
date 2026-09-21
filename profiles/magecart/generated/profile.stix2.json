@@ -129,7 +129,7 @@
       "spec_version": "2.1",
       "id": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -143,14 +143,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-bcf2e1dd42b8e1d500d6",
+      "x_activity_type": "campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--bcf2e1dd42b8e1d500d6f319 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。",
-      "x_reported_at": {
-        "value": "2026-06-06T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--magecart",
@@ -206,6 +202,24 @@
           "source--daily-5b3e49d018b8dff5644f"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -288,7 +302,7 @@
       "spec_version": "2.1",
       "id": "relationship--d055d7f7-df5a-4300-84e3-bb5ee298b94b",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -296,14 +310,21 @@
       "source_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "Magecart targets 金融 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--59027cef-4223-461c-a69c-e0e08c867b7f",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -311,14 +332,45 @@
       "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 is attributed or linked to Magecart.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--524665b8-d8e7-4e24-ac9c-8fd0a60fe623",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -326,14 +378,45 @@
       "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fba021b6-b820-41b1-83dc-ae32e7961436",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -341,7 +424,38 @@
       "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
       "target_ref": "identity--88d4c9ff-e08e-4f6a-bf20-4fdb5b802c2e",
       "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 affected victim--activity-rule--450ca787b4c7bb9ad8ac.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "indicator",
@@ -407,7 +521,7 @@
       "spec_version": "2.1",
       "id": "relationship--2eeed24d-228d-4b0a-a702-a5dd2af16597",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -415,7 +529,8 @@
       "source_ref": "indicator--416b63c4-5552-4e38-8d8f-dba9b6b95443",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -481,7 +596,7 @@
       "spec_version": "2.1",
       "id": "relationship--e8c1569b-ee2a-4b48-af9f-fc827086659c",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -489,7 +604,8 @@
       "source_ref": "indicator--549a6b0d-4002-40a7-966d-862fd57740fb",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -555,7 +671,7 @@
       "spec_version": "2.1",
       "id": "relationship--f6582336-d69a-4f1c-89ae-f240f001f4bf",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -563,7 +679,8 @@
       "source_ref": "indicator--0a3b25ab-d28d-41db-a16c-91d6001430c4",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -689,7 +806,7 @@
       "spec_version": "2.1",
       "id": "relationship--ec9d363d-382a-49a7-b7fb-66405fe13eba",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -697,7 +814,8 @@
       "source_ref": "indicator--1e1f0e67-711b-4915-a151-67bf105cb76e",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -763,7 +881,7 @@
       "spec_version": "2.1",
       "id": "relationship--2e75e41f-613f-4215-aa80-dcbfb6abbcf7",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -771,7 +889,8 @@
       "source_ref": "indicator--f4fc85c0-a762-414f-8d99-f6c655c2f328",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -837,7 +956,7 @@
       "spec_version": "2.1",
       "id": "relationship--dd153a5d-4822-4be7-a57a-28b796a91b4c",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -845,7 +964,8 @@
       "source_ref": "indicator--bfe565b1-d0df-4a69-8eec-6623acb2d5cc",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -911,7 +1031,7 @@
       "spec_version": "2.1",
       "id": "relationship--831570cb-2bb0-438c-941b-5fb6aee3f1aa",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -919,7 +1039,8 @@
       "source_ref": "indicator--8d13e9a8-67f7-431e-acab-c7e8c8a94d95",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -985,7 +1106,7 @@
       "spec_version": "2.1",
       "id": "relationship--5816d575-b30e-4c18-9fcb-8d4998cafaa2",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -993,7 +1114,8 @@
       "source_ref": "indicator--8745f05b-80c1-47f9-a034-0a97ee473522",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1059,7 +1181,7 @@
       "spec_version": "2.1",
       "id": "relationship--4ab099c1-c2ea-454a-8c26-bdfc8de608f0",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1067,7 +1189,8 @@
       "source_ref": "indicator--9f5ae1b3-3947-4de4-b3bf-d177e9bf1b47",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1133,7 +1256,7 @@
       "spec_version": "2.1",
       "id": "relationship--269d1fb9-3fe7-491d-b1ff-d93ec1d907e5",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1141,7 +1264,8 @@
       "source_ref": "indicator--d3fb0def-8a5e-4c63-9792-8d6cd3d2ef16",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1207,7 +1331,7 @@
       "spec_version": "2.1",
       "id": "relationship--6523bc57-3fab-4d81-a37c-94ff0ec082cc",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1215,7 +1339,8 @@
       "source_ref": "indicator--f947da8e-ccd0-4bd7-bd12-c2cb90d284cb",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1281,7 +1406,7 @@
       "spec_version": "2.1",
       "id": "relationship--0bf49848-7d44-4839-aa16-28ac0917d589",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1289,7 +1414,8 @@
       "source_ref": "indicator--6542e86f-0046-407f-aa75-458e48366b4d",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1355,7 +1481,7 @@
       "spec_version": "2.1",
       "id": "relationship--0b535a1b-893a-4b64-8a43-5e4e4fa009b8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1363,7 +1489,8 @@
       "source_ref": "indicator--80d852a0-7620-44f0-b626-d01c9d813e9f",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1429,7 +1556,7 @@
       "spec_version": "2.1",
       "id": "relationship--c9cec2cb-2fe8-43ee-afb1-7de80371a406",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1437,7 +1564,8 @@
       "source_ref": "indicator--261e7c66-f3b9-474d-a086-3ed4313094b0",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1503,7 +1631,7 @@
       "spec_version": "2.1",
       "id": "relationship--37677a34-8b0b-4bb0-b157-686150b3b519",
       "created": "2026-09-20T11:55:34Z",
-      "modified": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1511,7 +1639,8 @@
       "source_ref": "indicator--1b3eab8c-dd04-4edf-9c35-7c77c301cfec",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1961,7 +2090,7 @@
       "spec_version": "2.1",
       "id": "relationship--a6eb0ce4-6fb8-4713-a68e-d85ffac4db4a",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1969,7 +2098,8 @@
       "source_ref": "indicator--98d2e44c-4bf2-433c-8ce0-f05e6693a631",
       "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2751,7 +2881,7 @@
         "indicator--97ac950d-c2e3-46af-ba87-99621165bae7",
         "indicator--d2682827-915d-4caf-b595-8ed4b6fa3077"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

@@ -1,0 +1,670 @@
+{
+  "type": "bundle",
+  "id": "bundle--6190a313-9e3d-48fe-8707-0e4ab94d918e",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--fc00ac622b1fec8b44be",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--daily-848f359f9119eb58068d"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "description": "中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-848f359f9119eb58068d",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--848f359f9119eb58068d795e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt24",
+          "name": "APT24",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--fc00ac622b1fec8b44be"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--0c17dd6f4a5e07d5f7d6"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--38e46cd48137f4c95b60"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-11-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--0c17dd6f4a5e07d5f7d6"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3b162a1cedd89627cee"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--c0c491e5-3202-466d-b0c0-10c2ea791e33",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "identity_class": "organization",
+      "description": "中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--38e46cd48137f4c95b60",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--0c17dd6f4a5e07d5f7d6"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--fc00ac622b1fec8b44be"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT24",
+      "aliases": [
+        "COULEE",
+        "RAVINE CASTLE",
+        "UNC1088"
+      ],
+      "description": "APT24の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--apt24",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "COULEE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026"
+          ],
+          "analyst_notes": "同一原文が「previously known as COULEE, APT24」としてCOULEEを旧称に挙げている。GTIG自身の旧指定子であるためscopeはexactとする。"
+        },
+        {
+          "name": "RAVINE CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG原文の「RAVINE CASTLE, a PRC-nexus cyber espionage group previously known as COULEE, APT24」に基づく。APT24はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24)に沿った改称であり帰属の変更ではない。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "UNC1088",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "APT24の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=台湾。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Taiwan",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "TWA",
+      "x_opencti_reference_id": "location--d3a4164a-770f-4e67-aa4f-7285c908ff0c",
+      "x_opencti_aliases": [
+        "TW",
+        "TWA",
+        "TWN",
+        "台湾"
+      ],
+      "latitude": 25.105497,
+      "longitude": 121.597366,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "target_ref": "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+      "description": "APT24 targets 台湾 (profile target category: countries).\n\nEvidence: 活動「Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ddc00a8-9c3f-4ff9-b24d-b620b05b704a",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+      "target_ref": "identity--c0c491e5-3202-466d-b0c0-10c2ea791e33",
+      "description": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 affected victim--activity-rule--38e46cd48137f4c95b60.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--696d942d-2b20-4c0b-9d27-d6ad50fbdd50",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+      "target_ref": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "description": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 is attributed or linked to APT24.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c82d6a74-c595-44b7-b478-3c9856b09c3b",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+      "target_ref": "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+      "description": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 uses ttp--activity-rule--fc00ac622b1fec8b44be.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e2c8d273-3a4d-4cdb-8aca-75e9eceb14df",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+      "target_ref": "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+      "description": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 targets target--activity-rule--country--0c17dd6f4a5e07d5f7d6.\n\nEvidence: 活動「Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "target_ref": "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+      "description": "BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7ceae67c-6394-4a08-847d-3216fc38f1d9",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-11-22T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+        "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+        "identity--c0c491e5-3202-466d-b0c0-10c2ea791e33",
+        "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+        "relationship--2ddc00a8-9c3f-4ff9-b24d-b620b05b704a",
+        "relationship--696d942d-2b20-4c0b-9d27-d6ad50fbdd50",
+        "relationship--c82d6a74-c595-44b7-b478-3c9856b09c3b",
+        "relationship--e2c8d273-3a4d-4cdb-8aca-75e9eceb14df",
+        "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f3b162a1cedd89627cee",
+      "x_evidence_slice_scope": "campaign:actor--apt24:activity--daily-848f359f9119eb58068d",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--651719c5-a4ee-4bb4-8712-fc9becfdaef5",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT24 / Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "description": "中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+        "campaign--ed9f5ae0-2478-438c-81ba-2ba41209e435",
+        "identity--c0c491e5-3202-466d-b0c0-10c2ea791e33",
+        "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+        "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+        "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+        "relationship--2ddc00a8-9c3f-4ff9-b24d-b620b05b704a",
+        "relationship--696d942d-2b20-4c0b-9d27-d6ad50fbdd50",
+        "relationship--c82d6a74-c595-44b7-b478-3c9856b09c3b",
+        "relationship--e2c8d273-3a4d-4cdb-8aca-75e9eceb14df",
+        "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261",
+        "report--7ceae67c-6394-4a08-847d-3216fc38f1d9"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt24",
+      "x_activity_id": "activity--daily-848f359f9119eb58068d"
+    }
+  ]
+}

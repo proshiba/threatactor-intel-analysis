@@ -1,0 +1,637 @@
+{
+  "type": "bundle",
+  "id": "bundle--75de23d2-34a5-439c-8d6c-ffbe893c9c83",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-08-07T10:35:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--bd3f12cacbc8b9b1afa7",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-6f29076d3fe7460da80a"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "description": "JUMPSECは、ZoomやMicrosoft Teamsを装うBlueNoroffの稼働中フィッシング基盤から、誤って公開されたソースマップと攻撃用コードを取得・分析した。 乗っ取ったTelegramアカウントで信頼関係のある人物を装い、偽会議へ誘導してWebカメラ映像や暗号資産ウォレット情報を密かに収集する。 操作者は偽のSDK更新通知を表示し、ClickFix手法(クリップボードへ保存した悪性コマンドを被害者に実行させる手法)で、WindowsまたはmacOS用マルウェアを導入する。 WindowsではNukeSped系VBScript、macOSでは情報窃取マルウェアを展開し、端末情報、ブラウザー拡張、Chromeのキーチェーン鍵などを窃取する。 60件超のホスト名と10件のIPアドレスから成るCloudzy上の攻撃基盤が特定され、2026年7月24日時点でも多くが活動中と報告されている。",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-6f29076d3fe7460da80a",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--6f29076d3fe7460da80a6d03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URLはWAFによりレンダリング不可で原文を直接確認できなかった。tech-memo要約(一次ソース再確認済み)は、JUMPSECがBlueNoroffの稼働中フィッシング基盤のソースマップと攻撃用コードを直接取得・分析したと記載し、IOC CSVのactor列はBlueNoroff (high confidence)。直接検証できないため確度はhighへ上げずmediumとする。攻撃期間は不明のままとしreported_atへ分離。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt38",
+          "name": "APT38",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-23df57c784215d7d89da"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--bd3f12cacbc8b9b1afa7"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-44e7c8f8aa3a2ff5c023"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT38",
+      "aliases": [
+        "BeagleBoyz",
+        "Bluenoroff",
+        "COPERNICIUM",
+        "NICKEL GLADSTONE",
+        "Sapphire Sleet",
+        "Stardust Chollima"
+      ],
+      "description": "[APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. Significant operations include the 2016 Bank of Bangladesh heist, during which [APT38](https://attack.mitre.org/groups/G0082) stole $81 million, as well as attacks against Bancomext (Citation: FireEye APT38 Oct 2018) and Banco de Chile (Citation: FireEye APT38 Oct 2018); some of their attacks have been destructive.(Citation: CISA AA20-239A BeagleBoyz August 2020)(Citation: FireEye APT38 Oct 2018)(Citation: DOJ North Korea Indictment Feb 2021)(Citation: Kaspersky Lazarus Under The Hood Blog 2017)\n\nNorth Korean group definitions are known to have significant overlap, and some security researchers report all North Korean state-sponsored cyber activity under the name [Lazarus Group](https://attack.mitre.org/groups/G0032) instead of tracking clusters or subgroups.",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt38",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BeagleBoyz",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Bluenoroff",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "COPERNICIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NICKEL GLADSTONE",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Sapphire Sleet",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Stardust Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT38の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "HOPLIGHT, DarkComet, KillDisk, ECCENTRICBANDWAGON, VOLGMER, PEACHPIT, Net, Mimikatz",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=全世界。日本は確認時に個別国として保持する。\n\nKorean Peninsula, US Aerospace, SWIFT-fraud operations in East Asia",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--057f9b44-492e-4828-84b2-5616ad496b67",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-08-07T10:34:09Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "NukeSped",
+      "description": "APT38との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-23df57c784215d7d89da",
+      "x_confidence": "medium",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor",
+        "dropper",
+        "stealer"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--162de04b-bf99-42b3-af7b-9c5dbdf98943",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "target_ref": "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
+      "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17012ccd-4d03-4bc6-97df-0e131a00eed8",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+      "target_ref": "malware--057f9b44-492e-4828-84b2-5616ad496b67",
+      "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 uses malware--daily-23df57c784215d7d89da.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7e7d2e8d-2096-43f8-986d-d3d60840b86c",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+      "target_ref": "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
+      "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 uses ttp--activity-rule--bd3f12cacbc8b9b1afa7.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--90f3df54-fe4b-4f10-8165-0fda2476bc5e",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+      "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "description": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕 is attributed or linked to APT38.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b37b5d45-05bc-4e48-b2fd-c130ebcb5eb2",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "target_ref": "malware--057f9b44-492e-4828-84b2-5616ad496b67",
+      "description": "APT38 uses NukeSped.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "description": "Local source: https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--78134eda-4901-4489-bdcb-f87bce0bfbd6",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-25T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
+        "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+        "malware--057f9b44-492e-4828-84b2-5616ad496b67",
+        "relationship--162de04b-bf99-42b3-af7b-9c5dbdf98943",
+        "relationship--17012ccd-4d03-4bc6-97df-0e131a00eed8",
+        "relationship--7e7d2e8d-2096-43f8-986d-d3d60840b86c",
+        "relationship--90f3df54-fe4b-4f10-8165-0fda2476bc5e",
+        "relationship--b37b5d45-05bc-4e48-b2fd-c130ebcb5eb2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "jumpsec.com",
+          "external_id": "source--daily-44e7c8f8aa3a2ff5c023",
+          "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-44e7c8f8aa3a2ff5c023",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-6f29076d3fe7460da80a",
+      "x_source_publisher": "jumpsec.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c7389a1d-0818-4800-9cde-206e61de64f3",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-6f29076d3fe7460da80a",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c59a59c0-c029-498f-91d1-4e1fe4f25ce8",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT38 / 北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "description": "JUMPSECは、ZoomやMicrosoft Teamsを装うBlueNoroffの稼働中フィッシング基盤から、誤って公開されたソースマップと攻撃用コードを取得・分析した。 乗っ取ったTelegramアカウントで信頼関係のある人物を装い、偽会議へ誘導してWebカメラ映像や暗号資産ウォレット情報を密かに収集する。 操作者は偽のSDK更新通知を表示し、ClickFix手法(クリップボードへ保存した悪性コマンドを被害者に実行させる手法)で、WindowsまたはmacOS用マルウェアを導入する。 WindowsではNukeSped系VBScript、macOSでは情報窃取マルウェアを展開し、端末情報、ブラウザー拡張、Chromeのキーチェーン鍵などを窃取する。 60件超のホスト名と10件のIPアドレスから成るCloudzy上の攻撃基盤が特定され、2026年7月24日時点でも多くが活動中と報告されている。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--a753810a-6437-4a16-ba20-bac2578ac482",
+        "campaign--8f8a548c-e1ed-4908-96a9-6ad44a69a277",
+        "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+        "malware--057f9b44-492e-4828-84b2-5616ad496b67",
+        "relationship--162de04b-bf99-42b3-af7b-9c5dbdf98943",
+        "relationship--17012ccd-4d03-4bc6-97df-0e131a00eed8",
+        "relationship--7e7d2e8d-2096-43f8-986d-d3d60840b86c",
+        "relationship--90f3df54-fe4b-4f10-8165-0fda2476bc5e",
+        "relationship--b37b5d45-05bc-4e48-b2fd-c130ebcb5eb2",
+        "report--78134eda-4901-4489-bdcb-f87bce0bfbd6",
+        "report--c7389a1d-0818-4800-9cde-206e61de64f3"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt38",
+      "x_activity_id": "activity--daily-6f29076d3fe7460da80a"
+    }
+  ]
+}

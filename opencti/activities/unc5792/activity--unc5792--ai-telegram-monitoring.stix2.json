@@ -1,0 +1,301 @@
+{
+  "type": "bundle",
+  "id": "bundle--97950a2e-5c44-44bb-9f36-c4bda4879f02",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--773ef8f0-cc8d-49fa-8bd1-be68c126cab0",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AIを組み込んだ自動ボットによるTelegramチャンネル監視",
+      "description": "AIモデルを自動監視ボットへ統合し、ロシア当局が関心を持つ情報(治安上の脅威や過激派コンテンツなど)の観点からTelegramチャンネルを解析する活動。従来からTelegramボットによるチャンネル監視を行っていたが、APIキー連携の方法を調べ、メッセージを不審または中立に分類させ、構造化された報告形式で出力させる用途でAIを試用した。GoogleはGeminiの安全応答が作動したことを受け、当該活動に関連する資産を無効化する措置を取った。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "intrusion-set--329b530f-5406-4876-8d55-59134707a6ae"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai"
+        }
+      ],
+      "x_profile_object_id": "activity--unc5792--ai-telegram-monitoring",
+      "x_activity_type": "information-collection",
+      "x_stix_object_type": "grouping",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "GTIG原文(2026-09-08)を確認して作成。原文は観測日を示していないため活動期間はunknownとし、公開日はreported_atへ分離した。侵入を伴う攻撃ではなく公開チャンネルの監視・分類であるため activity_type は information-collection とする。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5792",
+          "name": "UNC5792",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "information-collection",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--329b530f-5406-4876-8d55-59134707a6ae",
+      "created": "2026-09-10T22:21:37Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5792",
+      "aliases": [
+        "Frontier Blizzard"
+      ],
+      "description": "ロシアを拠点とする脅威クラスタ。FBIとCISAの共同PSAは、Signalのバックアップ復旧キーを狙うフィッシング活動が「UNC5792およびUNC4221として公に追跡されている」と記載する。GTIGは別途、本クラスタがAIモデルを自動監視ボットへ組み込み、ロシア当局の関心事項の観点からTelegramチャンネルを解析していると報告している。メッセージングアプリの利用者アカウントとチャンネル情報の収集に一貫した関心を示す。",
+      "goals": [
+        "政府・軍関係者、政治家、ジャーナリスト、ウクライナの重要人物を対象に、暗号化メッセージングアプリ上の過去の会話内容を取得する。",
+        "ロシア当局が関心を持つ治安上の脅威や過激派コンテンツの観点から、Telegramチャンネルを継続的に監視・分類する。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Federal Bureau of Investigation / Cybersecurity and Infrastructure Security Agency",
+          "description": "Local source: https://www.ic3.gov/PSA/2026/PSA260626",
+          "external_id": "source--fbi-cisa-psa-signal-recovery-keys-2026",
+          "url": "https://www.ic3.gov/PSA/2026/PSA260626"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai"
+        }
+      ],
+      "x_profile_id": "actor--unc5792",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Frontier Blizzard",
+          "vendor": "Microsoft",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--osint-microsoft-threat-actor-mapping"
+          ],
+          "analyst_notes": "Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state-aligned",
+        "organizations": [],
+        "assessment": "GTIGは2026-09-08の報告で本クラスタを「UNC5792—a Russia-based threat group」と記述する。FBI・CISAの共同PSA(2026-06-26)は、Signalの復旧キーを狙う当該フィッシング活動をロシア情報機関に関連するものとして警告し、「To date, this activity has been publicly tracked as UNC5792 and UNC4221.」と述べる。PSAは追跡名を付与した組織を明示していない。特定の政府機関への所属を確定する記述は、確認したいずれの資料にもない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--fbi-cisa-psa-signal-recovery-keys-2026",
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "GTIGの「Russia-based」は拠点の記述であって国家支援の確定ではない。PSAはロシア情報機関関連の活動として警告するが、UNC5792という指定子と特定機関の対応は述べていない。sponsor_typeはstate-alignedとし、state-sponsoredとは区別する。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC5792はロシアを拠点とする脅威クラスタで、暗号化メッセージングアプリ利用者の通信内容取得を目的とする活動が観測されている。FBIとCISAの共同PSAは、Signalのサポート窓口を装って復旧キーを詐取し過去の会話を閲覧する手口を警告し、この活動がUNC5792およびUNC4221として公に追跡されていると述べる。GTIGは別途、AIモデルを組み込んだ自動ボットでTelegramチャンネルを解析し、ロシア当局の関心事項に沿う情報を構造化報告として出力させる試みを報告している。",
+        "history": "FBI・CISAは2026年3月に最初の告知を行い、2026-06-26のPSA(I-062626-PSA)でこれを更新した。GTIGは2026-09-08のAI脅威報告で、AIを組み込んだTelegram監視の事例として本クラスタを取り上げている。",
+        "capability_details": "確認できている能力はマルウェアではなく運用手法である。サポート窓口を装うソーシャルエンジニアリングにより、検証コード、アカウントPIN、バックアップ復旧キーを詐取する。復旧キーは攻撃者端末でのバックアップ復元を可能にし、過去の個人・グループ会話へのアクセスを与える。監視面ではTelegramボットにAIモデルを組み込み、メッセージの分類と報告生成を自動化している。",
+        "infrastructure_details": "公開されたインフラ指標はない。確認したいずれの資料もIOCを掲載していない。",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\n標的は現職および元職の米国・各国政府関係者、軍関係者、政治家、ジャーナリスト、およびウクライナの重要人物である。Telegram監視では、ロシア当局が関心を持つ治安上の脅威や過激派コンテンツが対象とされる。帰属国であるロシアは標的国として扱わない。",
+        "additional_notes": "本プロファイルは2026-09-10の日次チェックで未帰属クラスタ台帳から昇格したものであり、status は draft から開始する。profiles/unc4221 との統合は行っていない。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7edf3fd4-a82e-4a1d-a52b-9e9b2e8f39d0",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-08T00:00:00Z",
+      "object_refs": [
+        "grouping--773ef8f0-cc8d-49fa-8bd1-be68c126cab0",
+        "intrusion-set--329b530f-5406-4876-8d55-59134707a6ae"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-adversarial-ai-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-adversarial-ai-2026",
+      "x_evidence_slice_scope": "grouping:actor--unc5792:activity--unc5792--ai-telegram-monitoring",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ae2c8f93-0969-4760-81ce-36d98582c3c0",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Russian Cyber Actors Targeting Backup Recovery Keys of Encrypted Messaging Applications (I-062626-PSA)",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-26T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--329b530f-5406-4876-8d55-59134707a6ae"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Federal Bureau of Investigation / Cybersecurity and Infrastructure Security Agency",
+          "external_id": "source--fbi-cisa-psa-signal-recovery-keys-2026",
+          "url": "https://www.ic3.gov/PSA/2026/PSA260626"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--fbi-cisa-psa-signal-recovery-keys-2026",
+      "x_evidence_slice_scope": "grouping:actor--unc5792:activity--unc5792--ai-telegram-monitoring",
+      "x_source_publisher": "Federal Bureau of Investigation / Cybersecurity and Infrastructure Security Agency",
+      "x_source_type": "government-advisory",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ca8d8f95-98ad-4b1b-baf1-b12ddc4991f7",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5792 / AIを組み込んだ自動ボットによるTelegramチャンネル監視",
+      "description": "AIモデルを自動監視ボットへ統合し、ロシア当局が関心を持つ情報(治安上の脅威や過激派コンテンツなど)の観点からTelegramチャンネルを解析する活動。従来からTelegramボットによるチャンネル監視を行っていたが、APIキー連携の方法を調べ、メッセージを不審または中立に分類させ、構造化された報告形式で出力させる用途でAIを試用した。GoogleはGeminiの安全応答が作動したことを受け、当該活動に関連する資産を無効化する措置を取った。",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "grouping--773ef8f0-cc8d-49fa-8bd1-be68c126cab0",
+        "intrusion-set--329b530f-5406-4876-8d55-59134707a6ae",
+        "report--7edf3fd4-a82e-4a1d-a52b-9e9b2e8f39d0",
+        "report--ae2c8f93-0969-4760-81ce-36d98582c3c0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "grouping",
+      "x_profile_id": "actor--unc5792",
+      "x_activity_id": "activity--unc5792--ai-telegram-monitoring"
+    }
+  ]
+}

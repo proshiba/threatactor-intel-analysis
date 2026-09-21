@@ -1,0 +1,330 @@
+{
+  "type": "bundle",
+  "id": "bundle--3104934c-5d93-4f34-a0c1-5703a3434a05",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293の認証フィッシングドメイン",
+      "description": "米国務省を装う認証フォームやOAuthフィッシングページを設置した攻撃者管理ドメイン。GTIGのIOC表はdosportal[.]appとforeignrelations[.]usをUNC6293へ帰属し、いずれもPhishing domainと説明している。foreignrelations[.]usは2026年6月のOAuthフィッシングで「verification code」を要求するページとして図示されている。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "infra--unc6293-auth-phishing-domains",
+      "x_confidence": "high",
+      "x_analyst_notes": "原文はドメインの登録日・稼働期間を明記していないため期間はunknownとした。",
+      "infrastructure_types": [
+        "phishing-domain"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "created": "2026-08-21T01:25:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC7005",
+      "aliases": [
+        "STORM-2945"
+      ],
+      "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+      "x_profile_id": "actor--unc7005",
+      "x_profile_status": "draft",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-08-13T00:00:00Z"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "created": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293",
+      "aliases": [],
+      "description": "UNC6293はGoogle Threat Intelligence Group (GTIG)が追跡する、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。GTIGはUNC6293を「a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」とmoderate confidenceで評価している。主な手口は、米国務省(US State Department)の職員を装ってapp passwordを設定させ2要素認証を回避するフィッシングと、正規の認証フローを悪用するOAuthフィッシングである。1回あたりの標的は5名未満と小規模で、囮の主題は外交や今後の会議・会合に偏る。",
+      "first_seen": "2025-06-01T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z",
+      "goals": [
+        "GTIGはUNC6293を「suspected Russian cyber espionage」クラスタの一つとして扱い、ロシアにとって関心の対象となる個人のアカウント侵害を目的とする初期アクセス活動と説明している。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_id": "actor--unc6293",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」と、UNC6293を含む3クラスタのロシア関連性をhigh confidenceで評価している。一方で個別のロシア情報機関への帰属は行っておらず、UNC6293とICE RELIC(旧APT29)の関係は「moderate confidence」にとどまる。GTIG自身の表現も「suspected Russian cyber espionage threat clusters」である。本プロファイルでは国レベルの帰属をロシアとして採用し、スポンサー種別と具体的な機関帰属は確定していないものとして扱う。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルのロシア関連性はGTIGがhigh confidenceで述べているが、sponsor_typeを含むattributionブロック全体の確度としてはmediumとする。ICE RELIC経由の機関帰属(SVR等)は本資料からは確定できないためorganizationsは空のままとする。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC6293はGTIGが追跡するロシア関連の脅威クラスタで、米国務省職員を装ったapp passwordフィッシングとOAuthフィッシングにより、ロシアに批判的な著名個人のアカウントを侵害する初期アクセス活動を行う。GTIGはmoderate confidenceでICE RELIC(旧APT29)のサブクラスタと評価している。",
+        "history": "2025年6月にapp passwordフィッシングキャンペーンとして初めて報告され(Citizen Labも同時期に報告)、2025年10月には同一の画面写真を含むPDF囮文書を再利用しつつ、app passwordの送信先をメールから認証フォームへ変更した。2025年12月にはVolexityが外交を題材とする囮を報告している。2026年6月にはOAuthフィッシングを取り入れた。",
+        "capability_details": "固有マルウェアは報告されていない。攻撃はいずれも正規の認証フロー(app password、OAuth)の悪用による資格情報・トークンの取得に依存する。",
+        "infrastructure_details": "GTIGは、以前の分析時点より多くのUNC6293管理インフラを追跡できるようになったとしつつ、その規模は他のロシア諜報活動と比べて依然として限定的であると述べている。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を反映し、本プロファイルは初めて日付を持つ活動を得た。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "created": "2026-07-25T09:00:19Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29",
+      "aliases": [
+        "Blue Kitsune",
+        "Cozy Bear",
+        "CozyDuke",
+        "Dark Halo",
+        "ICECAP",
+        "ICE RELIC",
+        "IRON HEMLOCK",
+        "IRON RITUAL",
+        "Midnight Blizzard",
+        "NOBELIUM",
+        "NobleBaron",
+        "SolarStorm",
+        "The Dukes",
+        "UNC2452",
+        "UNC3524",
+        "YTTRIUM"
+      ],
+      "description": "[APT29](https://attack.mitre.org/groups/G0016) is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).(Citation: White House Imposing Costs RU Gov April 2021)(Citation: UK Gov Malign RIS Activity April 2021) They have operated since at least 2008, often targeting government networks in Europe and NATO member countries, research institutes, and think tanks. [APT29](https://attack.mitre.org/groups/G0016) reportedly compromised the Democratic National Committee starting in the summer of 2015.(Citation: F-Secure The Dukes)(Citation: GRIZZLY STEPPE JAR)(Citation: Crowdstrike DNC June 2016)(Citation: UK Gov UK Exposes Russia SolarWinds April 2021)\n\nIn April 2021, the US and UK governments attributed the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024) to the SVR; public statements included citations to [APT29](https://attack.mitre.org/groups/G0016), Cozy Bear, and The Dukes.(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021) Industry reporting also referred to the actors involved in this campaign as UNC2452, NOBELIUM, StellarParticle, Dark Halo, and SolarStorm.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Unit 42 SolarStorm December 2020)",
+      "x_profile_id": "actor--apt29",
+      "x_profile_status": "review",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--3b5ca3af-8e61-4df8-89a3-69f020ad8c3c",
+      "created": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "target_ref": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "description": "UNC6293 uses UNC6293の認証フィッシングドメイン.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
+      "created": "2026-07-25T11:07:07Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "related-to",
+      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "target_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "description": "GTIGはUNC7005について「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately due to its lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」と述べ、標的の重なりを認めつつ別クラスタとして追跡している。2026年5月下旬のUNC7005の作戦で使われた攻撃者メールアドレスは、2025年6月のUNC6293の作戦で使われたものとほぼ同一であった。",
+      "confidence": 60,
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_relationship_id": "relationship--unc6293-unc7005-overlap",
+      "x_profile_relationship_type": "shares-targeting-with",
+      "x_confidence": "medium",
+      "x_analyst_notes": "原文が明示的に別クラスタとして扱うため、overlaps-withではなくshares-targeting-withとする。メールアドレスの近似は運用上の重なりの示唆であり、同一性の根拠にはしない。",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-05-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2",
+      "created": "2026-07-25T11:07:07Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "part-of",
+      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "GTIGは「We assess with moderate confidence that UNC6293 is a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」と述べ、UNC6293をICE RELIC(旧APT29)の初期アクセス担当サブクラスタと評価している。また「several high-level TTPs used by UNC6293 and UNC7005 harken back to older, attributed ICE RELIC phishing operations between 2021 and 2024」として、標的業種(学術、NGO、外交、防衛)と地域の重なり、外交行事の招待やワインに関する特定の題材の再利用を根拠に挙げている。",
+      "confidence": 60,
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_relationship_id": "relationship--unc6293-ice-relic-subcluster",
+      "x_profile_relationship_type": "part-of",
+      "x_confidence": "medium",
+      "x_analyst_notes": "moderate confidenceの評価であり同一アクターの確定ではない。aliasとして統合せず関係として保持する(RULES.md 6条)。ICE RELICはGTIGによるAPT29の新呼称であり、対応する既存プロファイルはactor--apt29である。",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--51dd096b-cc60-4476-b257-b485149d7d7c",
+      "created": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-20T00:00:00Z",
+      "object_refs": [
+        "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+        "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+        "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
+        "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
+        "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-going-with-the-flows-2026",
+      "x_evidence_slice_scope": "actor:actor--unc6293",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--870bcc77-b9fd-4148-a412-ea58cc4f49b3",
+      "created": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293 OpenCTI Actor Profile",
+      "description": "UNC6293はGTIGが追跡するロシア関連の脅威クラスタで、米国務省職員を装ったapp passwordフィッシングとOAuthフィッシングにより、ロシアに批判的な著名個人のアカウントを侵害する初期アクセス活動を行う。GTIGはmoderate confidenceでICE RELIC(旧APT29)のサブクラスタと評価している。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-09-21T02:39:13Z",
+      "object_refs": [
+        "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+        "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+        "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+        "note--3b5ca3af-8e61-4df8-89a3-69f020ad8c3c",
+        "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
+        "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
+        "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2",
+        "report--51dd096b-cc60-4476-b257-b485149d7d7c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "actor",
+      "x_profile_id": "actor--unc6293"
+    }
+  ]
+}

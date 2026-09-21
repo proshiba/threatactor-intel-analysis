@@ -420,13 +420,12 @@
       "spec_version": "2.1",
       "id": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん",
       "description": "ハクティビスト集団Head Mareは、未更新のTrueConf Serverに存在する2件の脆弱性を連鎖させ、認証なしでSYSTEM権限のコード実行を実現した。 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 正規のTrueConf ClientインストーラーをPhantomCore入りの未署名版へ差し替え、接続した組織内ユーザーへ更新として配布した。 別のPhantomGraphバックドアはMicrosoft OneDriveをC2として命令を取得し、LSASSメモリダンプや偵察、リバースSSHトンネルを実行した。 Head Mareはロシアの計測機器、電子、運輸、エネルギー、IT、ソフトウェア開発分野を標的に複数の活動中キャンペーンを展開している。",
-      "first_seen": "2026-07-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "CISA",
@@ -445,14 +444,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-183fbfb9487ebc5f1327",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--183fbfb9487ebc5f1327949d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Kaspersky Securelist RU, 2026-08-07公開)を原文で確認。記事表題が「APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph」であり、Head Mareを実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)の連鎖悪用、locale.phpのWebシェル置換、正規クライアントインストーラーのPhantomCore入り未署名版への差し替え、PhantomGraphによるOneDrive C2・LSASSダンプ・リバースSSHトンネルを新規活動として採用する。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredで保持し、last_observedはunknownとする。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-10はreported_atとして分離する。Head Mareは本レコードの採用に合わせて新規プロファイルへ昇格した(Kaspersky 2024-09-02の初報と本報の2本を原文確認)。\nCVE採番と政府確認(2026-08-25追記): 本活動が悪用した未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)はCVE-2026-72529(認証欠如、CVSS 9.8)およびCVE-2026-72530(コード生成管理不備によるサンドボックス脱出、CVSS 9.0)として採番され、CISAが2026-08-20に実際の悪用を確認済みとしてKEVカタログへ追加した(是正期限 CVE-2026-72529: 2026-08-23、CVE-2026-72530: 2026-09-03)。KEVエントリとTrueConf公式アドバイザリはいずれもHead Mareを名指ししていないため、帰属根拠はKaspersky Securelist RU(2026-08-07)のままとする。本追記は日次レコード daily-record--8dc1376be22b7b2e6bddf5de(不採用)の確認過程で得た情報であり、同一活動の重複登録を避けるため新規Activityではなく既存Activityの出典として保存した。",
-      "x_reported_at": {
-        "value": "2026-08-10T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--head-mare",
@@ -537,20 +532,38 @@
           "source--trueconf-advisory-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-07-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開",
       "description": "Kasperskyは、2023年に出現したハクティビスト集団Head Mareが、ロシアとベラルーシの組織へ最大限の被害を与えることを目的に活動していると報告した。侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。侵害後はSliver、Mimikatz、ngrok、rsockstunを併用し、Windows環境ではLockBit、Linux/ESXi環境ではBabukのランサムウェアを展開する。資料には身代金要求の記載もあるが、Kasperskyは主たる目的を金銭ではなく被害の最大化と評価している。",
-      "first_seen": "2023-01-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "Kaspersky (Securelist)",
@@ -559,14 +572,10 @@
         }
       ],
       "x_profile_object_id": "activity--head-mare-russia-belarus-2024",
+      "x_activity_type": "hacktivism-ransomware",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "Kaspersky Securelist(2024-09-02)の原文確認に基づく。資料発行日はreported_atへ分離し、攻撃観測期間へ流用していない。活動終了時期の明示がないためlast_observedはunknownのままとする。",
-      "x_reported_at": {
-        "value": "2024-09-02T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--head-mare",
@@ -647,7 +656,26 @@
           "source--kaspersky-head-mare-2024"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2023-01-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -1829,7 +1857,7 @@
       "spec_version": "2.1",
       "id": "relationship--41e91874-5164-4d92-905e-941789bcd391",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1837,14 +1865,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "malware--735b1a23-0a49-4ed6-a6b3-0ff1c5ff9c66",
       "description": "Head Mare uses Babuk.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1ca4f902-05a7-43b0-9932-3d0a0389ab2d",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1852,14 +1887,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "malware--d9badeff-8e75-4606-a698-fcbcf6377bb0",
       "description": "Head Mare uses LockBit.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aa87c49f-dbab-4de4-916f-bf257efa7a4d",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1867,14 +1909,51 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "malware--924249f6-3ce3-4e4a-9b01-b4d8e159d19b",
       "description": "Head Mare uses PhantomCore.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated-discovery-month",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2023-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8dd25452-09a0-4f97-a3b5-c75e93478ef6",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1882,14 +1961,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "malware--2f798715-6c94-437a-906f-537fc6ad7f1a",
       "description": "Head Mare uses PhantomDL.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a82ff05d-b33d-42a3-9280-ffdbd5a0f7ee",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1897,14 +2002,45 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "malware--0a5e1af0-f221-414b-ab97-9eed85d967df",
       "description": "Head Mare uses PhantomGraph.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ef960619-f441-46e9-b11d-94545db26e16",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1912,14 +2048,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "tool--065d038d-1f29-4275-8d84-fe7791d1a92c",
       "description": "Head Mare uses Sliver.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--71c7664c-8ce8-4726-baa0-b41282e47ad0",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1927,14 +2070,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "description": "Head Mare uses Mimikatz.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dd0b9ac6-7cf8-4ee8-a2ae-4129208e8880",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1942,14 +2092,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "tool--489d09a7-ba8a-459c-8b9c-b047f6ed74e7",
       "description": "Head Mare uses ngrok.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--379f6338-0b74-46c1-b2f8-569e59f87a29",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1957,14 +2114,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "tool--ce90e6b3-fbfa-426e-8b4c-e20865bf1a8a",
       "description": "Head Mare uses rsockstun.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed2e4db1-09e4-4b6b-81d1-2166b2fd063b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1972,14 +2136,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--9eb485f3-7f17-4af2-8a53-02368d15790e",
       "description": "Head Mare targets ベラルーシ (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0dcecc2f-7143-4dc3-b123-2cde96b3bf27",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1987,14 +2177,61 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--30da54b6-5701-4f95-9ccd-d71f57dba4eb",
       "description": "Head Mare targets ロシア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated-discovery-month",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2023-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a2277512-164c-41f0-9eca-23cf37f7b953",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2002,14 +2239,41 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--3b9f9ce7-ff96-4833-80b2-93c69f327a16",
       "description": "Head Mare targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--40370827-0898-45ee-8c04-080a8541f38e",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2017,14 +2281,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--57fa6fc7-39ca-4570-9936-6e93d7b22aa4",
       "description": "Head Mare targets 電子 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d33a27fa-5978-48de-9539-6ba40c66bb5c",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2032,14 +2303,26 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--92923dbc-7d0d-454f-b5bc-32e42b904285",
       "description": "Head Mare targets エネルギー (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--80c902cd-ab26-4917-8224-40b1bff759aa",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2047,14 +2330,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--a873d01a-ca9e-4c2d-8048-365af1afd70e",
       "description": "Head Mare targets エンターテインメント (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--28cf0c27-705e-4508-9e4b-22caa15a91b2",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2062,14 +2352,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--86321dc3-43f2-44ce-b7fd-2e84b7c64b36",
       "description": "Head Mare targets 政府機関 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bfdbaf25-a1b8-4c38-afd3-232abbaf1ca0",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2077,14 +2374,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--fbc1eced-902b-456d-9a2f-a390549f73da",
       "description": "Head Mare targets 計測機器 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4b46c3b9-d591-4e0a-af87-02adf23cbb47",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2092,14 +2396,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--a8d71562-ede8-407e-a8b2-4894327ebf04",
       "description": "Head Mare targets IT (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b9475df-7c70-4aa6-a237-f10eef3800e4",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2107,14 +2418,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--c7a2d2fc-fd34-40e6-8315-6d35e4ba1789",
       "description": "Head Mare targets 製造 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4d1406c1-e57d-48c3-9725-b0e397db5c8d",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2122,14 +2440,21 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--9d3202be-619a-40a7-84c4-e2719a2b191d",
       "description": "Head Mare targets ソフトウェア開発 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9d1387ae-ff87-45bb-b7db-ad68857e4402",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2137,14 +2462,26 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "identity--7ea93910-f434-4278-b1fe-bea08884cc53",
       "description": "Head Mare targets 運輸 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fea53278-c7ad-4b4c-8a1f-0c3b38454eb3",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2152,14 +2489,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん is attributed or linked to Head Mare.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c93a842f-6dae-43b5-bcc9-36a8b3dcaa2f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2167,14 +2546,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "malware--924249f6-3ce3-4e4a-9b01-b4d8e159d19b",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses malware--phantomcore.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b0d4ba62-785a-4e50-ae31-943f26181b88",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2182,14 +2603,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "malware--0a5e1af0-f221-414b-ab97-9eed85d967df",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses malware--phantomgraph.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--13da81e9-986b-4881-8759-14aa7adc2dfc",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2197,14 +2660,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--30da54b6-5701-4f95-9ccd-d71f57dba4eb",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん targets target--head-mare--country--russia.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fbb4018b-0bca-4405-8892-a786da43997b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2212,14 +2717,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--92923dbc-7d0d-454f-b5bc-32e42b904285",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん targets target--head-mare--sector--energy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--56c2b7e7-6744-425b-9b3a-f7990e56dd7d",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2227,14 +2774,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--fbc1eced-902b-456d-9a2f-a390549f73da",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん targets target--head-mare--sector--instrumentation.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d5b87245-232d-4330-bee4-417d07c9384f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2242,14 +2831,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--9d3202be-619a-40a7-84c4-e2719a2b191d",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん targets target--head-mare--sector--software-development.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a7e77a29-14da-4df6-b96c-eede64da9fda",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2257,14 +2888,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--05961014-ab2f-496f-a8a1-7ccaf3c9f694",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--activity-rule--209e363ca5019e2456f9.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ce9b47fa-d541-4557-bca8-e4f470c75068",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2272,14 +2945,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--de8119a5-78c7-4f72-8d95-11d18237c2a5",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1003-001-lsass.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c5fb6e07-0214-426b-823d-5266c5874e35",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2287,14 +3002,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--88a4cbce-c22a-4661-82bb-8404227a18c9",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1102-onedrive.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--faa03079-12bb-4804-956b-bfb2f3c74e5e",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2302,14 +3059,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--9aacc948-f332-4416-8294-a52c57a6cc0e",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1190-trueconf.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8ca32fee-7185-4e9a-825d-7bd860fe3e88",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2317,14 +3116,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--303b0dae-0625-459d-8d7f-d137a546e9b3",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1195-002-installer.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--85857b0e-cd58-40a8-b6dc-04152ca6b5d2",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2332,14 +3173,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--a51e94d1-6a15-4bdf-bf98-521dcb552d0b",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1505-003-webshell.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--98ed620a-b5f2-483a-a567-8d21d7eda653",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2347,14 +3230,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "attack-pattern--76df702a-9e90-4148-af15-d32d43ab214a",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん uses ttp--head-mare-t1572-ssh.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ad3463fa-c458-47ce-920f-af0ec7c2b773",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2362,14 +3287,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--e7f0a86c-3e98-49de-974b-114449772da9",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん affected victim--activity-rule--2e3159757028597a3b7a.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a16f7a5c-6726-4ee3-9176-500b8a4bd004",
       "created": "2026-08-12T01:51:58Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2377,14 +3344,56 @@
       "source_ref": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "target_ref": "identity--0e81549f-15ff-4938-b4ec-4727f3c55c43",
       "description": "ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん affected victim--head-mare-trueconf-2026.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7ab5eea3-8dee-40c4-9f12-f88e7b497b37",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2392,14 +3401,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 is attributed or linked to Head Mare.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--84ab3038-a83b-42bc-a0e8-be088ecfc3ea",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2407,14 +3448,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "malware--735b1a23-0a49-4ed6-a6b3-0ff1c5ff9c66",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses malware--babuk.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f04ae26-3347-4e06-b695-ae24fcda1989",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2422,14 +3495,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "malware--d9badeff-8e75-4606-a698-fcbcf6377bb0",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses malware--lockbit.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f7330988-4b0f-479f-9ce4-66420ad1a3ea",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2437,14 +3542,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "malware--924249f6-3ce3-4e4a-9b01-b4d8e159d19b",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses malware--phantomcore.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--55bf417a-0fae-4991-a48b-5115d52f5841",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2452,14 +3589,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "malware--2f798715-6c94-437a-906f-537fc6ad7f1a",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses malware--phantomdl.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0a80eb6-0b74-4415-bba4-10f3283c7bf9",
       "created": "2026-09-21T02:05:25Z",
-      "modified": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2467,14 +3636,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "identity--9eb485f3-7f17-4af2-8a53-02368d15790e",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 targets target--head-mare--country--belarus.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bacdfeea-a259-4486-9410-cc6e58aac839",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2482,14 +3683,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "identity--30da54b6-5701-4f95-9ccd-d71f57dba4eb",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 targets target--head-mare--country--russia.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--48325ddc-d0b3-45ca-8c4a-c3586a69ce1b",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2497,14 +3730,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "attack-pattern--852cb417-a1b5-4be9-92e4-ebb598062527",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses ttp--activity-rule--3ea0a3504b02e6bc8bbe.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ad4dd02f-d70d-4913-ae40-2fbe5cd62742",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2512,14 +3777,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "attack-pattern--d9d370ef-1a64-457e-8474-6911f68b4ca2",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses ttp--activity-rule--b0ab12e48afcc3ea04d5.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--80e5e6ff-c614-4b6d-a117-c6b9d9ca056a",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2527,14 +3824,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "attack-pattern--60b3dae5-7f67-4cf6-986f-dc79ad7faa7e",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses ttp--activity-rule--e731ad0e92c25775432b.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5e97d619-b8d0-4853-825f-9833812a806b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2542,14 +3871,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "attack-pattern--2687ca7f-70ba-4c15-8b6d-eb8c37e84a9c",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses ttp--head-mare-t1203-winrar.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0a6edd41-b93e-4d42-88b0-47d2457c43a3",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2557,14 +3918,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "attack-pattern--27ddb264-368c-4962-9272-f162d374224f",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 uses ttp--head-mare-t1486-ransomware.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--97934ecf-921e-4c95-93b8-85e3b7968ccf",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2572,14 +3965,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "identity--a6ac53cd-7d29-45c2-bc09-c1e51eb74c5e",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 affected victim--activity-rule--4a3bbced4c7828f97e61.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4727acd8-5020-4003-9cfd-737a2f86d1f1",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2587,14 +4012,46 @@
       "source_ref": "campaign--8fa1f822-bf60-4848-903d-168f3c47d9f8",
       "target_ref": "identity--da784643-4f5f-4095-8f35-20b64d11eca8",
       "description": "ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 affected victim--head-mare-russia-belarus-2024.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--be6019ae-584a-4d9a-ad1d-fe4abd50de48",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2602,14 +4059,50 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--05961014-ab2f-496f-a8a1-7ccaf3c9f694",
       "description": "攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
+          "source_name": "securelist.ru",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated-discovery-month; activity-period",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month; activity-period",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8e57f03f-3f6b-4874-9a52-8330a4528ff7",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2617,14 +4110,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--852cb417-a1b5-4be9-92e4-ebb598062527",
       "description": "侵害後はSliver、Mimikatz、ngrok、rsockstunを併用し、Windows環境ではLockBit、Linux/ESXi環境ではBabukのランサムウェアを展開する。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d5fb9cb1-9f70-4b98-8ca5-b4743d27b245",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2632,14 +4151,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--d9d370ef-1a64-457e-8474-6911f68b4ca2",
       "description": "侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f2bcbf82-1b70-42aa-bcf4-2deb943b8cf4",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2647,14 +4192,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--60b3dae5-7f67-4cf6-986f-dc79ad7faa7e",
       "description": "侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1187b6e6-0570-4403-8bf4-d26ae3577901",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2662,14 +4233,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--de8119a5-78c7-4f72-8d95-11d18237c2a5",
       "description": "PhantomGraphがLSASSプロセスのメモリダンプを取得する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6924cd1d-086b-4e27-b5c9-89e8885063dd",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2677,14 +4274,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--88a4cbce-c22a-4661-82bb-8404227a18c9",
       "description": "PhantomGraphがMicrosoft OneDriveをC2として利用し、命令の取得と結果の返送を行う。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--21806079-7d0a-4bbe-8554-eff7901ce986",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2692,14 +4315,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--9aacc948-f332-4416-8294-a52c57a6cc0e",
       "description": "未更新のTrueConf Serverの脆弱性2件(KLCERT-26-057、KLCERT-26-058)を連鎖させ、認証なしでSYSTEM権限のコード実行を得る。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fef467b2-e0c2-458f-9bbe-f7ebc86ba19f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2707,14 +4356,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--303b0dae-0625-459d-8d7f-d137a546e9b3",
       "description": "正規のTrueConf ClientインストーラーをPhantomCore入りの未署名版へ差し替え、サーバーへ接続した組織内ユーザーへ更新として配布する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c10ece98-3a52-4bc5-ab7b-ee7056c47e95",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2722,14 +4397,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--2687ca7f-70ba-4c15-8b6d-eb8c37e84a9c",
       "description": "フィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、PhantomDL/PhantomCoreを実行させる。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d2cfc5fe-3d6e-4064-b3bc-f2f187a72ee9",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2737,14 +4438,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--27ddb264-368c-4962-9272-f162d374224f",
       "description": "Windows環境にLockBit、Linux/ESXi環境にBabukを展開してファイルを暗号化する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/head-mare-hacktivists/113555/",
+          "external_id": "source--kaspersky-head-mare-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "year",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--412d6848-29fc-45ad-8385-63cad26e7053",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2752,14 +4479,40 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--a51e94d1-6a15-4bdf-bf98-521dcb552d0b",
       "description": "TrueConf Server上のlocale.phpをWebシェルへ置換し、データベースアクセスと継続的な遠隔操作を維持する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6c9f91ae-141c-4663-9256-b7e1c068d4f6",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T03:50:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2767,7 +4520,33 @@
       "source_ref": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "target_ref": "attack-pattern--76df702a-9e90-4148-af15-d32d43ab214a",
       "description": "PhantomGraphがリバースSSHトンネルを確立し、侵害環境への継続的な到達性を確保する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated-discovery-month",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-07-01T00:00:00Z"
     },
     {
       "type": "note",
@@ -2843,7 +4622,7 @@
         "attack-pattern--a51e94d1-6a15-4bdf-bf98-521dcb552d0b",
         "attack-pattern--76df702a-9e90-4148-af15-d32d43ab214a"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

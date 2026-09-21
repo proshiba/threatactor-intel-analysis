@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--cl-sta-1015`
 - 状態: draft
-- 更新日時: 2026-09-21T02:11:26Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -16,7 +16,9 @@ CL-STA-1015の標準化プロファイル。リポジトリ内の専用資料1�
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| UNC5174 | Palo Alto Networks Unit 42 / Google Threat Intelligence Group | overlapping | 高 | `source--unit42-react2shell-cl-sta-1015-2025` | Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor cluster mapping. It is retained as overlapping until scope stability is independently confirmed. |
 
 ## 帰属
 
@@ -33,7 +35,9 @@ Aliasなし
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| UNC5174 | taxonomy-overlaps-with | Unit 42 maps its CL-STA-1015 activity cluster to UNC5174; the mapping is preserved as a cross-taxonomy overlap rather than a global exact identity. | 中 | `source--unit42-react2shell-cl-sta-1015-2025` |
 
 ## ダイヤモンドモデル
 
@@ -146,6 +150,7 @@ TTPなし
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- React2Shell reporting contains multiple actor clusters. Unit 42 maps CL-STA-1015 to UNC5174, while GTIG separately tracks a SNOWLIGHT-using cluster as UNC6586; malware reuse alone must not merge those clusters.
 
 ## 出典
 
@@ -154,6 +159,8 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--cl-sta-1015--4a07bee5758a444e | cl sta 1015 |  | 不明 | actor_profile/evidence/cl-sta-1015.csv | structured-data | TLP:CLEAR | 中 |
 | source--cl-sta-1015--9ef0c3337243e8ca | 20260311 |  | 2026-03-11 | parse-daily/.cache/tech-memo/daily-news/news/2026_01-03/20260311.md | repository-notes | TLP:CLEAR | 中 |
+| source--unit42-react2shell-cl-sta-1015-2025 | Exploitation of Critical Vulnerability in React Server Components | Palo Alto Networks Unit 42 | 2025-12-12 | https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--gtig-react2shell-multiple-actors-2025 | Multiple Threat Actors Exploit React2Shell (CVE-2025-55182) | Google Threat Intelligence Group | 2025-12-12 | https://cloud.google.com/blog/topics/threat-intelligence/threat-actors-exploit-react2shell-cve-2025-55182 | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

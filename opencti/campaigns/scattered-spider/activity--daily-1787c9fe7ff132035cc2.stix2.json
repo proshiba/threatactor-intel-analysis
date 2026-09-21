@@ -1,0 +1,1355 @@
+{
+  "type": "bundle",
+  "id": "bundle--bd448e01-5e30-4557-b1d5-ced84a350072",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--429be798-2f00-4c9c-bdcb-e352d8d61af9",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Inhibit System Recovery",
+      "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1490",
+          "url": "https://attack.mitre.org/techniques/T1490/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--6aab8c3f01da987f7d19",
+      "x_tactic": "Impact",
+      "x_activity_refs": [
+        "activity--daily-1787c9fe7ff132035cc2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "created": "2026-07-27T11:17:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大",
+      "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-1787c9fe7ff132035cc2",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--1787c9fe7ff132035cc2cde7 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Scattered SpiderがVMware ESXiを狙ったハッキングを拡大",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--scattered-spider",
+          "name": "Scattered Spider",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--6aab8c3f01da987f7d19"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--mitre-group--sector--61d17a0f32698969a06a"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--159259e1a54c3c95bbf7"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-07-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "Impact"
+          ],
+          "results": [
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-d395324d918e79d06dc6"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+      "created": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "小売・ホスピタリティ",
+      "identity_class": "class",
+      "description": "(Citation: MSTIC Octo Tempest Operations October 2023) The group initially targeted customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications and technology companies before expanding in 2023 to gaming, hospitality, retail, managed service provider (MSP), manufacturing, and financial sectors.",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/harrods-the-next-uk-retailer-targeted-in-a-cyberattack/",
+          "external_id": "source--daily-087eb7c60fcfe537fd54",
+          "url": "https://www.bleepingcomputer.com/news/security/harrods-the-next-uk-retailer-targeted-in-a-cyberattack/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/the-heat-wasnt-just-outside-cyber-attacks-spiked-in-summer-2025/",
+          "external_id": "source--daily-1f9abeeb494497e6757c",
+          "url": "https://www.bleepingcomputer.com/news/security/the-heat-wasnt-just-outside-cyber-attacks-spiked-in-summer-2025/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/uk-ncsc-cyberattacks-impacting-uk-retailers-are-a-wake-up-call/",
+          "external_id": "source--daily-8516c3813705dff8c58d",
+          "url": "https://www.bleepingcomputer.com/news/security/uk-ncsc-cyberattacks-impacting-uk-retailers-are-a-wake-up-call/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/",
+          "external_id": "source--daily-b562a237b8d95c792fb9",
+          "url": "https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--mitre-group--sector--61d17a0f32698969a06a",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a787ecc1-a1b6-48f5-975a-fac138445b33",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:36:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Scattered SpiderがVMware ESXiを狙ったハッキングを拡大",
+      "identity_class": "organization",
+      "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--159259e1a54c3c95bbf7",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--mitre-group--sector--61d17a0f32698969a06a"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--6aab8c3f01da987f7d19"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "class",
+      "description": "活動「Scattered SpiderがVMware ESXiを狙ったハッキングを拡大」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/qantas-discloses-cyberattack-amid-scattered-spider-aviation-breaches/",
+          "external_id": "source--daily-0a6ab6298790c80e707e",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-discloses-cyberattack-amid-scattered-spider-aviation-breaches/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/qantas-is-being-extorted-in-recent-data-theft-cyberattack/",
+          "external_id": "source--daily-73035cf449d00dd55adf",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-is-being-extorted-in-recent-data-theft-cyberattack/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/06/scattered-spider-understanding-help.html",
+          "external_id": "source--daily-7b838d61f8caea5e02cd",
+          "url": "https://thehackernews.com/2025/06/scattered-spider-understanding-help.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "created": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered Spider",
+      "aliases": [
+        "0ktapus",
+        "Muddled Libra",
+        "Octo Tempest",
+        "Roasted 0ktapus",
+        "Scatter Swine",
+        "Storm-0875",
+        "UNC3944"
+      ],
+      "description": "[Scattered Spider](https://attack.mitre.org/groups/G1015) is a native English-speaking cybercriminal group active since at least 2022. (Citation: CrowdStrike Scattered Spider Profile) (Citation: MSTIC Octo Tempest Operations October 2023) The group initially targeted customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications and technology companies before expanding in 2023 to gaming, hospitality, retail, managed service provider (MSP), manufacturing, and financial sectors. (Citation: MSTIC Octo Tempest Operations October 2023)\n[Scattered Spider](https://attack.mitre.org/groups/G1015) relies heavily on social engineering, including impersonating IT and help-desk staff, to gain initial access, bypass multi-factor authentication (MFA), and compromise enterprise networks. The group has adapted its tooling to evade endpoint detection and response (EDR) defenses and used ransomware for financial gain. (Citation: CISA Scattered Spider Advisory November 2023) (Citation: CrowdStrike Scattered Spider BYOVD January 2023) (Citation: Crowdstrike TELCO BPO Campaign December 2022)\n[Scattered Spider](https://attack.mitre.org/groups/G1015) had expanded into hybrid cloud and identity environments, using help-desk impersonation and MFA bypass to obtain administrator access in Okta, AWS, and Office 365. (Citation: Mandiant UNC3944 May 2025)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--scattered-spider",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "0ktapus",
+          "vendor": "FBI-CISA joint advisory",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--fbi-cisa-scattered-spider-2025",
+            "source--mandiant-unc3944-vsphere-2025"
+          ],
+          "analyst_notes": "The joint advisory and Mandiant describe cross-vendor overlap; retain separate collection boundaries instead of asserting universal identity."
+        },
+        {
+          "name": "Muddled Libra",
+          "vendor": "FBI-CISA joint advisory",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--fbi-cisa-scattered-spider-2025",
+            "source--mandiant-unc3944-vsphere-2025"
+          ],
+          "analyst_notes": "The joint advisory and Mandiant describe cross-vendor overlap; retain separate collection boundaries instead of asserting universal identity."
+        },
+        {
+          "name": "Octo Tempest",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Roasted 0ktapus",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Scatter Swine",
+          "vendor": "FBI-CISA joint advisory",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--fbi-cisa-scattered-spider-2025",
+            "source--mandiant-unc3944-vsphere-2025"
+          ],
+          "analyst_notes": "The joint advisory and Mandiant describe cross-vendor overlap; retain separate collection boundaries instead of asserting universal identity."
+        },
+        {
+          "name": "Storm-0875",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC3944",
+          "vendor": "Mandiant / FBI-CISA joint advisory",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--fbi-cisa-scattered-spider-2025",
+            "source--mandiant-unc3944-vsphere-2025"
+          ],
+          "analyst_notes": "The joint advisory and Mandiant describe cross-vendor overlap; retain separate collection boundaries instead of asserting universal identity."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Scattered Spiderの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "BlackCat, Raccoon Stealer, WarzoneRAT, Linpeas, ngrok, Rclone, ConnectWise, Mimikatz, LaZagne, Tor",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "United States of America",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "USA",
+      "x_opencti_reference_id": "location--dbac05fd-3616-4d7c-9bcd-e6b867c1f5be",
+      "x_opencti_aliases": [
+        "US",
+        "USA",
+        "米国"
+      ],
+      "latitude": 37.09024,
+      "longitude": -95.712891,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25284deb-897d-43c7-8fb7-b125214efeb2",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 targets target--activity-rule--country--6604ad21c713b8dfd8c7.\n\nEvidence: 活動「Scattered SpiderがVMware ESXiを狙ったハッキングを拡大」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/",
+          "external_id": "source--daily-b562a237b8d95c792fb9"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--279ee462-27e1-43db-b2d5-d02753ccdc49",
+      "created": "2026-07-27T11:17:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 is attributed or linked to Scattered Spider.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--506264c5-0864-4117-bae1-b045b9929847",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "Scattered Spider targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/qantas-discloses-cyberattack-amid-scattered-spider-aviation-breaches/",
+          "external_id": "source--daily-0a6ab6298790c80e707e",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-discloses-cyberattack-amid-scattered-spider-aviation-breaches/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/qantas-is-being-extorted-in-recent-data-theft-cyberattack/",
+          "external_id": "source--daily-73035cf449d00dd55adf",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-is-being-extorted-in-recent-data-theft-cyberattack/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/06/scattered-spider-understanding-help.html",
+          "external_id": "source--daily-7b838d61f8caea5e02cd",
+          "url": "https://thehackernews.com/2025/06/scattered-spider-understanding-help.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6143701e-5de8-4dd3-afae-96efadde5e17",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "attack-pattern--429be798-2f00-4c9c-bdcb-e352d8d61af9",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 uses ttp--activity-rule--6aab8c3f01da987f7d19.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--73446bfa-10a8-4efe-a300-bfa02fdadc71",
+      "created": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 targets target--mitre-group--sector--61d17a0f32698969a06a.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--867f9cd9-40cc-484d-b3e6-3eb5cabb27d8",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "target_ref": "attack-pattern--429be798-2f00-4c9c-bdcb-e352d8d61af9",
+      "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9d18373a-987c-49eb-8a9c-322f0ff7fd7e",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "target_ref": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "description": "Scattered Spider targets 米国 (profile target category: countries).\n\nEvidence: 活動「Scattered SpiderがVMware ESXiを狙ったハッキングを拡大」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/",
+          "external_id": "source--daily-b562a237b8d95c792fb9",
+          "url": "https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/",
+          "external_id": "source--daily-b562a237b8d95c792fb9"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a80825c9-3429-4afe-bbb7-9c0bdb99d357",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eeb10bd5-b425-4382-83fd-5ebd2c4615ce",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+      "target_ref": "identity--a787ecc1-a1b6-48f5-975a-fac138445b33",
+      "description": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 affected victim--activity-rule--159259e1a54c3c95bbf7.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f7e7f052-92d8-4636-934b-a92faaad4480",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+      "target_ref": "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+      "description": "Scattered Spider targets 小売・ホスピタリティ (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/harrods-the-next-uk-retailer-targeted-in-a-cyberattack/",
+          "external_id": "source--daily-087eb7c60fcfe537fd54",
+          "url": "https://www.bleepingcomputer.com/news/security/harrods-the-next-uk-retailer-targeted-in-a-cyberattack/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/the-heat-wasnt-just-outside-cyber-attacks-spiked-in-summer-2025/",
+          "external_id": "source--daily-1f9abeeb494497e6757c",
+          "url": "https://www.bleepingcomputer.com/news/security/the-heat-wasnt-just-outside-cyber-attacks-spiked-in-summer-2025/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/uk-ncsc-cyberattacks-impacting-uk-retailers-are-a-wake-up-call/",
+          "external_id": "source--daily-8516c3813705dff8c58d",
+          "url": "https://www.bleepingcomputer.com/news/security/uk-ncsc-cyberattacks-impacting-uk-retailers-are-a-wake-up-call/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/",
+          "external_id": "source--daily-b562a237b8d95c792fb9",
+          "url": "https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--15d2d547-d4ee-46a6-9401-48dfcc8bf870",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered Spider、ヘルプデスク詐欺を用いた攻撃手法とその対策",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-06-04T00:00:00Z",
+      "object_refs": [
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "relationship--506264c5-0864-4117-bae1-b045b9929847"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-7b838d61f8caea5e02cd",
+          "url": "https://thehackernews.com/2025/06/scattered-spider-understanding-help.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-7b838d61f8caea5e02cd",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--30e889b7-a7dd-4455-8a34-d48769fb4d0a",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "最近のデータ窃取サイバー攻撃でQantasが身代金要求を受ける",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-07-08T00:00:00Z",
+      "object_refs": [
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "relationship--506264c5-0864-4117-bae1-b045b9929847"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-73035cf449d00dd55adf",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-is-being-extorted-in-recent-data-theft-cyberattack/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-73035cf449d00dd55adf",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3bb7e47c-6135-4fd9-add3-1677d0e070e3",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered SpiderがVMware ESXiを狙ったハッキングを拡大",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-07-28T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--429be798-2f00-4c9c-bdcb-e352d8d61af9",
+        "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "identity--a787ecc1-a1b6-48f5-975a-fac138445b33",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "relationship--25284deb-897d-43c7-8fb7-b125214efeb2",
+        "relationship--279ee462-27e1-43db-b2d5-d02753ccdc49",
+        "relationship--506264c5-0864-4117-bae1-b045b9929847",
+        "relationship--6143701e-5de8-4dd3-afae-96efadde5e17",
+        "relationship--73446bfa-10a8-4efe-a300-bfa02fdadc71",
+        "relationship--867f9cd9-40cc-484d-b3e6-3eb5cabb27d8",
+        "relationship--9d18373a-987c-49eb-8a9c-322f0ff7fd7e",
+        "relationship--a80825c9-3429-4afe-bbb7-9c0bdb99d357",
+        "relationship--eeb10bd5-b425-4382-83fd-5ebd2c4615ce",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-d395324d918e79d06dc6",
+          "url": "https://www.bleepingcomputer.com/news/security/scattered-spider-is-running-a-vmware-esxi-hacking-spree/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-d395324d918e79d06dc6",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--55e393d4-1069-4c4a-8798-a171914f73c2",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--aa4f91cc-9dda-4ab6-9236-a1df0c1a2f93",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Harrods、英国小売業界を狙ったサイバー攻撃の次なる標的に",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-05-02T00:00:00Z",
+      "object_refs": [
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-087eb7c60fcfe537fd54",
+          "url": "https://www.bleepingcomputer.com/news/security/harrods-the-next-uk-retailer-targeted-in-a-cyberattack/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-087eb7c60fcfe537fd54",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--dc34b135-0fef-4158-b57c-f9949dc9a76b",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered Spider、米国小売業界への攻撃を開始",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-05-15T00:00:00Z",
+      "object_refs": [
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "relationship--25284deb-897d-43c7-8fb7-b125214efeb2",
+        "relationship--9d18373a-987c-49eb-8a9c-322f0ff7fd7e",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-b562a237b8d95c792fb9",
+          "url": "https://www.bleepingcomputer.com/news/security/google-scattered-spider-switches-targets-to-us-retail-chains/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-b562a237b8d95c792fb9",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e2d9c7c1-a562-4b22-99dc-cada5c461e48",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "英国NCSC：英国小売業者へのサイバー攻撃は警鐘となる",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-05-04T00:00:00Z",
+      "object_refs": [
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-8516c3813705dff8c58d",
+          "url": "https://www.bleepingcomputer.com/news/security/uk-ncsc-cyberattacks-impacting-uk-retailers-are-a-wake-up-call/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-8516c3813705dff8c58d",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ecf4d619-9563-4a03-a3b5-4beeb41ecaf3",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-07-03T00:00:00Z",
+      "object_refs": [
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "relationship--506264c5-0864-4117-bae1-b045b9929847"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-0a6ab6298790c80e707e",
+          "url": "https://www.bleepingcomputer.com/news/security/qantas-discloses-cyberattack-amid-scattered-spider-aviation-breaches/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0a6ab6298790c80e707e",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--fea91956-80b2-4d70-89f5-0798b76eb22a",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "暑かったのは気温だけではない——2025年夏にサイバー攻撃が急増",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-08-06T00:00:00Z",
+      "object_refs": [
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-1f9abeeb494497e6757c",
+          "url": "https://www.bleepingcomputer.com/news/security/the-heat-wasnt-just-outside-cyber-attacks-spiked-in-summer-2025/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-1f9abeeb494497e6757c",
+      "x_evidence_slice_scope": "campaign:actor--scattered-spider:activity--daily-1787c9fe7ff132035cc2",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e09d8ef1-b3b9-48ed-be31-7c81e5bc1081",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scattered Spider / Scattered SpiderがVMware ESXiを狙ったハッキングを拡大",
+      "description": "Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:16:06Z",
+      "object_refs": [
+        "attack-pattern--429be798-2f00-4c9c-bdcb-e352d8d61af9",
+        "campaign--e4ec9d5d-2f65-40e5-ad75-99755209c179",
+        "identity--1c73c8e4-b9ed-4534-86b3-3059dd49e28e",
+        "identity--a787ecc1-a1b6-48f5-975a-fac138445b33",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "intrusion-set--d584018e-620e-45e9-a198-65905443d8a7",
+        "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+        "relationship--25284deb-897d-43c7-8fb7-b125214efeb2",
+        "relationship--279ee462-27e1-43db-b2d5-d02753ccdc49",
+        "relationship--506264c5-0864-4117-bae1-b045b9929847",
+        "relationship--6143701e-5de8-4dd3-afae-96efadde5e17",
+        "relationship--73446bfa-10a8-4efe-a300-bfa02fdadc71",
+        "relationship--867f9cd9-40cc-484d-b3e6-3eb5cabb27d8",
+        "relationship--9d18373a-987c-49eb-8a9c-322f0ff7fd7e",
+        "relationship--a80825c9-3429-4afe-bbb7-9c0bdb99d357",
+        "relationship--eeb10bd5-b425-4382-83fd-5ebd2c4615ce",
+        "relationship--f7e7f052-92d8-4636-934b-a92faaad4480",
+        "report--15d2d547-d4ee-46a6-9401-48dfcc8bf870",
+        "report--30e889b7-a7dd-4455-8a34-d48769fb4d0a",
+        "report--3bb7e47c-6135-4fd9-add3-1677d0e070e3",
+        "report--55e393d4-1069-4c4a-8798-a171914f73c2",
+        "report--aa4f91cc-9dda-4ab6-9236-a1df0c1a2f93",
+        "report--dc34b135-0fef-4158-b57c-f9949dc9a76b",
+        "report--e2d9c7c1-a562-4b22-99dc-cada5c461e48",
+        "report--ecf4d619-9563-4a03-a3b5-4beeb41ecaf3",
+        "report--fea91956-80b2-4d70-89f5-0798b76eb22a"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--scattered-spider",
+      "x_activity_id": "activity--daily-1787c9fe7ff132035cc2"
+    }
+  ]
+}

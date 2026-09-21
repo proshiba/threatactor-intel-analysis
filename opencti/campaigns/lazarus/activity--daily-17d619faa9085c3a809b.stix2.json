@@ -1,0 +1,2163 @@
+{
+  "type": "bundle",
+  "id": "bundle--0a6089a3-6a70-4145-ba43-1968cfb3da6f",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--378bc61a-c12d-42ee-9331-793f3e5fcb30",
+      "created": "2026-08-12T01:51:49Z",
+      "modified": "2026-08-12T01:51:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DLL",
+      "description": "攻撃ではDLLサイドローディングによるMISTPEN展開と、改ざんPDFビューアSecurityPDFから新型バックドアTroyを実行する2系統が確認された。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1574.001",
+          "url": "https://attack.mitre.org/techniques/T1574/001/"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--f72d401e3b06b5c1bdf6",
+      "x_tactic": "Execution, Stealth",
+      "x_activity_refs": [
+        "activity--daily-17d619faa9085c3a809b"
+      ],
+      "x_malware_refs": [
+        "malware--daily-72fc2908cb3a63c273ab",
+        "malware--daily-9b70c82cf35bbeae2ce2",
+        "malware--troy"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき",
+      "description": "北朝鮮関連LazarusのOperation Dream Jobは、欧州やインドを中心に防衛・航空宇宙・航空企業を求人テーマのスピアフィッシングで標的としている。 攻撃ではDLLサイドローディングによるMISTPEN展開と、改ざんPDFビューアSecurityPDFから新型バックドアTroyを実行する2系統が確認された。 LazarusはWindows AFD.sysのゼロデイCVE-2026-68820を悪用してSYSTEM権限を取得し、FudModule v3.1でEDRなどの監視機能を無効化する。 MISTPENはOneDriveとMicrosoft Graph APIをC2に利用し、偵察、画面取得、権限昇格、ForestTigerなどの追加バックドア展開を行う。 攻撃者はCVE-2025-49113で侵害したRoundcubeやCMSへRelayShellを配置し、正規WebサーバーをC2中継ノードとして悪用している。 WindowsのAFD.sysに関する脆弱性(CVE-2026-68820)をゼロデイで悪用し、権限昇格とルートキットFudModuleの展開に用いていた。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-17d619faa9085c3a809b",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--17d619faa9085c3a809b0662 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Check Point Research, 2026-08-11公開)を確認。「Check Point Research is tracking a long-running campaign called Operation Dream Job, targeting organizations worldwide, with a particular focus on the defense sector. The campaign is affiliated to DPRK-linked Lazarus group.」と当該キャンペーンをLazarusへ明示的に帰属している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。求人テーマのスピアフィッシングから、DLLサイドローディングによるMISTPEN展開と改ざんPDFビューアSecurityPDFによるTroy実行の2系統、Windows AFD.sysのゼロデイCVE-2026-68820によるSYSTEM権限取得とFudModule v3.1でのEDR無効化、CVE-2025-49113で侵害したRoundcube等へのRelayShell設置によるC2中継を新規活動として採用する。活動期間は一次資料が明示する「early 2026以降」と「2026年7月の新キャンペーン観測」を採用し、記事公開日2026-08-11とtech-memo日次ファイル日付2026-08-12はreported_atとして分離する。CVE-2026-68820の日付(MSRC報告2026-07-28、CVE採番2026-08-05、修正2026-08-11)は脆弱性対応の経緯であり攻撃観測日には流用しない。留意点: Check Pointは本キャンペーンをLazarus大枠へ帰属しており、MISTPENを別サブクラスタ(UNC2970等)へ帰属する報告も存在するため、サブクラスタの統合は行わず両論を残す。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--lazarus",
+          "name": "Lazarus Group",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-0133b7d4917321711108",
+            "malware--daily-72fc2908cb3a63c273ab",
+            "malware--daily-9b70c82cf35bbeae2ce2",
+            "malware--daily-c0bd3ce2b32f1bd03687",
+            "malware--daily-e13e54bae9c9823dd167",
+            "malware--troy"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--f72d401e3b06b5c1bdf6"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--48cc6b4cc2919459aec9",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--osint--region--europe"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a0543b8e4303d9187413"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+            "precision": "year",
+            "status": "known",
+            "value": "2026-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-07-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--48cc6b4cc2919459aec9"
+            ],
+            "target_region_refs": [
+              "target--osint--region--europe"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-4d983faef4e4520ecf67"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-01-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--9d8d5f77-b5c2-4b9c-b7d0-8773538992cf",
+      "created": "2026-08-12T01:51:49Z",
+      "modified": "2026-09-21T02:39:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき",
+      "identity_class": "organization",
+      "description": "北朝鮮関連LazarusのOperation Dream Jobは、欧州やインドを中心に防衛・航空宇宙・航空企業を求人テーマのスピアフィッシングで標的としている。 攻撃ではDLLサイドローディングによるMISTPEN展開と、改ざんPDFビューアSecurityPDFから新型バックドアTroyを実行する2系統が確認された。 LazarusはWindows AFD.sysのゼロデイCVE-2026-68820を悪用してSYSTEM権限を取得し、FudModule v3.1でEDRなどの監視機能を無効化する。 MISTPENはOneDriveとMicrosoft Graph APIをC2に利用し、偵察、画面取得、権限昇格、ForestTigerなどの追加バックドア展開を行う。 攻撃者はCVE-2025-49113で侵害したRoundcubeやCMSへRelayShellを配置し、正規WebサーバーをC2中継ノードとして悪用している。 WindowsのAFD.sysに関する脆弱性(CVE-2026-68820)をゼロデイで悪用し、権限昇格とルートキットFudModuleの展開に用いていた。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--a0543b8e4303d9187413",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--osint--region--europe"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0133b7d4917321711108",
+        "malware--daily-72fc2908cb3a63c273ab",
+        "malware--daily-9b70c82cf35bbeae2ce2",
+        "malware--daily-c0bd3ce2b32f1bd03687",
+        "malware--daily-e13e54bae9c9823dd167",
+        "malware--troy"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--f72d401e3b06b5c1bdf6"
+      ],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "防衛・軍事",
+      "identity_class": "class",
+      "description": "活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--b94dc560a327b601965d",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "created": "2026-08-12T01:51:49Z",
+      "modified": "2026-08-12T01:51:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "class",
+      "description": "活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T03:17:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus Group",
+      "aliases": [
+        "Diamond Sleet",
+        "Guardians of Peace",
+        "HIDDEN COBRA",
+        "Labyrinth Chollima",
+        "NICKEL ACADEMY",
+        "ZINC"
+      ],
+      "description": "[Lazarus Group](https://attack.mitre.org/groups/G0032) is a North Korean state-sponsored cyber threat group attributed to the Reconnaissance General Bureau (RGB). (Citation: US-CERT HIDDEN COBRA June 2017) (Citation: Treasury North Korean Cyber Groups September 2019) [Lazarus Group](https://attack.mitre.org/groups/G0032) has been active since at least 2009 and is reportedly responsible for the November 2014 destructive wiper attack on Sony Pictures Entertainment, identified by Novetta as part of Operation Blockbuster. Malware used by [Lazarus Group](https://attack.mitre.org/groups/G0032) correlates to other reported campaigns, including Operation Flame, Operation 1Mission, Operation Troy, DarkSeoul, and Ten Days of Rain.(Citation: Novetta Blockbuster)\n\nNorth Korea’s cyber operations have shown a consistent pattern of adaptation, forming and reorganizing units as national priorities shift. These units frequently share personnel, infrastructure, malware, and tradecraft, making it difficult to attribute specific operations with high confidence. Public reporting often uses “Lazarus Group” as an umbrella term for multiple North Korean cyber operators conducting espionage, destructive attacks, and financially motivated campaigns.(Citation: Mandiant DPRK Laz Org Breakdown 2022)(Citation: Mandiant DPRK Groups 2023)(Citation: JPCert Blog Laz Subgroups 2025)\n\n",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection.",
+        "Financially motivated intrusion or fraud."
+      ],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--lazarus",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Diamond Sleet",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Guardians of Peace",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "HIDDEN COBRA",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Labyrinth Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NICKEL ACADEMY",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ZINC",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "Lazarus Groupの標準化プロファイル。リポジトリ内の専用資料27件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack; ThreatNeedle",
+        "capability_details": "BLINDINGCAN, Proxysvc, KEYMARBLE, ThreatNeedle, Bankshot, AuditCred, Dacls, HOPLIGHT, Volgmer, WannaCry, TYPEFRAME, TAINTEDSCRIBE, MagicRAT, RATANKBA, BADCALL, Cryptoistic, HotCroissant, HARDRAIN, AppleJeus, ECCENTRICBANDWAGON, Dtrack, FALLCHILL, Tdrop, Tdrop2, Troy, Destover, FallChill RAT, Hawup, Manuscrypt, WolfRAT, SheepRAT, HtDnDownLoader, RawDisk, netsh, Responder, route",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、インド、オーストラリア、チリ、トルコ、バングラデシュ、パキスタン、フィリピン、ベトナム、メキシコ、ロシア、台湾、日本、米国、英国、韓国。標的地域=アジア、オセアニア、中南米、中東、全世界、北米、南アジア、東アジア、東南アジア、欧州。日本は確認時に個別国として保持する。\n\n標的範囲は日本に限定されない。日本ではDMM Bitcoinを含む暗号資産関連の被害・標的情報があり、日本を個別国として保持する。MITRE ATT&CKはOperation Dream Jobの標的国として米国、イスラエル、オーストラリア、ロシア、インドを明記している。米財務省はWannaCryが少なくとも150か国に影響し、英国NHSが公表被害者だったと記載するほか、LazarusとBluenoroffによるバングラデシュ中央銀行への共同作戦、Bluenoroffによる南アジア・東アジア・東南アジア・中南米などの銀行への作戦を記録している。このため全世界を広域項目として収録し、確認できる国は個別国として併記する。Bluenoroff・Andarielを含む『Lazarus Group』の集合境界は資料ごとに異なるため、中核Lazarusとサブグループの事例は注記で区別する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--2ceb1ed8-30a4-49c4-9736-8aa248471323",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T02:20:31Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "India",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--48cc6b4cc2919459aec9",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "IND",
+      "x_opencti_reference_id": "location--7c193f95-f96b-42eb-8569-0834349b1bba",
+      "x_opencti_aliases": [
+        "IN",
+        "IND",
+        "インド"
+      ],
+      "latitude": 20.593684,
+      "longitude": 78.96288,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T03:17:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "欧州",
+      "description": "英国、ロシアでの被害・標的事例を集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html",
+          "external_id": "source--daily-3dc1e11040f649fe0198",
+          "url": "https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "description": "Local source: https://home.treasury.gov/news/press-releases/sm774",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--osint--region--europe",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "欧州",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--01360ab3-9cd0-4f45-a3ef-5ba829f171c7",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-08-12T01:50:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FudModule",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-0133b7d4917321711108",
+      "x_confidence": "high",
+      "x_analyst_notes": "CVE-2026-68820によるSYSTEM権限取得後に展開されるルートキットv3.1として本報告が直接分析している。",
+      "is_family": true,
+      "malware_types": [
+        "rootkit"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--52896536-b48b-4076-97e4-47d519ff8210",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-08-12T01:50:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "RelayShell",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-c0bd3ce2b32f1bd03687",
+      "x_confidence": "high",
+      "x_analyst_notes": "CVE-2025-49113で侵害したRoundcube等へ設置しC2中継に用いるPHP webshellとして本報告が直接分析している。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--63f5ab4a-5850-46ff-b9ae-2605d45072e5",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-08-12T01:50:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MISTPEN",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-9b70c82cf35bbeae2ce2",
+      "x_confidence": "high",
+      "x_analyst_notes": "DLLサイドローディングで展開されるインメモリダウンローダーとして本報告が直接分析している。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--73756146-671b-40c6-80aa-9ad757c94e8b",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-08-12T01:50:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SecurityPDF",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-72fc2908cb3a63c273ab",
+      "x_confidence": "high",
+      "x_analyst_notes": "細工PDFのペイロードを実行する改ざん済みPDFビューアとして本報告が直接分析している。",
+      "is_family": true,
+      "malware_types": [
+        "trojan"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--89a6d978-b96f-4ea9-82cd-eacdda9cc360",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-08-12T01:50:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ForestTiger",
+      "description": "Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-e13e54bae9c9823dd167",
+      "x_confidence": "high",
+      "x_analyst_notes": "MISTPENが展開する追加バックドアとして本報告が直接分析している。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--8c5f7796-8c52-4812-9647-08ddda24003a",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T02:20:31Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Troy",
+      "description": "The actor-mapping workbook lists this software or tool.",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_profile_object_id": "malware--troy",
+      "x_confidence": "medium",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "unknown"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--02b3a26f-940d-4e1e-902a-98feffa13291",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--63f5ab4a-5850-46ff-b9ae-2605d45072e5",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--daily-9b70c82cf35bbeae2ce2.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+      "description": "Lazarus Group targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html",
+          "external_id": "source--daily-3dc1e11040f649fe0198",
+          "url": "https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "description": "Local source: https://home.treasury.gov/news/press-releases/sm774",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-12-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ebf1a16-878d-4b53-96ba-57e93ac39933",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき is attributed or linked to Lazarus Group.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--38f1c68a-0ad9-432a-aa31-353061755b85",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+      "description": "Lazarus Group targets 防衛・軍事 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2019-09-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign; activity-period",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "first_precision": "second",
+        "last_precision": "month"
+      },
+      "start_time": "2019-09-01T04:00:00.000Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--527c2d3f-79b3-427f-9af1-a23992c0ba51",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--52896536-b48b-4076-97e4-47d519ff8210",
+      "description": "Lazarus Group uses RelayShell.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5ddf0536-b1c2-4a64-804b-168e3958fa7f",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--52896536-b48b-4076-97e4-47d519ff8210",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--daily-c0bd3ce2b32f1bd03687.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--751ad841-fad1-45da-88cc-6f2aa9685825",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--89a6d978-b96f-4ea9-82cd-eacdda9cc360",
+      "description": "Lazarus Group uses ForestTiger.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--776744fb-f883-4e91-b74e-4872ab2a77d8",
+      "created": "2026-07-29T22:48:52Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "location--2ceb1ed8-30a4-49c4-9736-8aa248471323",
+      "description": "Lazarus Group targets インド (profile target category: countries).\n\nEvidence: 活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2019-09-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign; activity-period",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "first_precision": "second",
+        "last_precision": "month"
+      },
+      "start_time": "2019-09-01T04:00:00.000Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b3b7ef8-faa0-4655-9040-c90a039326a9",
+      "created": "2026-08-12T01:52:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき targets target--activity-rule--sector--b94dc560a327b601965d.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80357bb5-d43b-4381-bf92-ce7cacd1e1d5",
+      "created": "2026-08-12T01:51:49Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "Lazarus Group targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」; activity-period",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9a8d997c-f1ee-49a5-92e3-7b1d2fb75174",
+      "created": "2026-08-12T01:52:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "identity--9d8d5f77-b5c2-4b9c-b7d0-8773538992cf",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき affected victim--activity-rule--a0543b8e4303d9187413.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5725618-05d7-4dd9-9d4d-94881c3bdb01",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--73756146-671b-40c6-80aa-9ad757c94e8b",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--daily-72fc2908cb3a63c273ab.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ac29ac0d-536e-4230-8721-5f1b9241e05c",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--8c5f7796-8c52-4812-9647-08ddda24003a",
+      "description": "Lazarus Group uses Troy.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--af90a341-6a62-4271-be67-9785fa3771d1",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--01360ab3-9cd0-4f45-a3ef-5ba829f171c7",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--daily-0133b7d4917321711108.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b0a1c541-657b-40d5-b5ec-35b8ebfd9f98",
+      "created": "2026-08-12T01:51:49Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "attack-pattern--378bc61a-c12d-42ee-9331-793f3e5fcb30",
+      "description": "攻撃ではDLLサイドローディングによるMISTPEN展開と、改ざんPDFビューアSecurityPDFから新型バックドアTroyを実行する2系統が確認された。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」; activity-period",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」; activity-period",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b0cfe77c-cfde-4807-b1a1-90205795f17d",
+      "created": "2026-08-12T01:52:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "location--2ceb1ed8-30a4-49c4-9736-8aa248471323",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき targets target--activity-rule--country--48cc6b4cc2919459aec9.\n\nEvidence: 活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ca71e59c-3ffb-44fd-8e41-74b199a06e4a",
+      "created": "2026-08-12T01:52:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "attack-pattern--378bc61a-c12d-42ee-9331-793f3e5fcb30",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses ttp--activity-rule--f72d401e3b06b5c1bdf6.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2c27b30-bd7f-4754-a440-adb40f46e190",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--8c5f7796-8c52-4812-9647-08ddda24003a",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--troy.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e76ffd63-72f3-4bed-b9a3-6c918b87723e",
+      "created": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき targets target--osint--region--europe.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e92b1373-7484-4606-a750-8559851ea55e",
+      "created": "2026-08-12T01:52:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e967e74f-55ad-4806-af5c-83266cc043b0",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--73756146-671b-40c6-80aa-9ad757c94e8b",
+      "description": "Lazarus Group uses SecurityPDF.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f25192ff-3ca0-4aab-a452-c27e5c79aabb",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+      "target_ref": "malware--89a6d978-b96f-4ea9-82cd-eacdda9cc360",
+      "description": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき uses malware--daily-e13e54bae9c9823dd167.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f2f134d8-2789-4b72-9391-5bb6d8c902d6",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--01360ab3-9cd0-4f45-a3ef-5ba829f171c7",
+      "description": "Lazarus Group uses FudModule.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9fa7244-7cde-4a90-9b2e-558b64318160",
+      "created": "2026-08-12T01:50:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+      "target_ref": "malware--63f5ab4a-5850-46ff-b9ae-2605d45072e5",
+      "description": "Lazarus Group uses MISTPEN.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "last": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0c18e5b0-3149-4baa-a07c-5103679447b2",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+        "relationship--38f1c68a-0ad9-432a-aa31-353061755b85",
+        "relationship--776744fb-f883-4e91-b74e-4872ab2a77d8",
+        "relationship--b0cfe77c-cfde-4807-b1a1-90205795f17d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-17d619faa9085c3a809b",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1bfab894-b28d-4c86-91cc-0ebf095497dd",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2019-09-13T00:00:00Z",
+      "object_refs": [
+        "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+        "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "U.S. Department of the Treasury",
+          "external_id": "source--treasury-dprk-groups-2019",
+          "url": "https://home.treasury.gov/news/press-releases/sm774"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--treasury-dprk-groups-2019",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-17d619faa9085c3a809b",
+      "x_source_publisher": "U.S. Department of the Treasury",
+      "x_source_type": "government-designation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--466fc0c7-8cc0-4309-8c5c-c99fb697ac58",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus Group、Marstech1 JavaScriptインプラントを用いた開発者への標的型攻撃を展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-02-16T00:00:00Z",
+      "object_refs": [
+        "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+        "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-3dc1e11040f649fe0198",
+          "url": "https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-3dc1e11040f649fe0198",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-17d619faa9085c3a809b",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--54535489-4288-4a95-b605-ef5c2bfb0914",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+        "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+        "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-17d619faa9085c3a809b",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ed072c96-f35d-41e8-b852-eb846ca97576",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-12T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--378bc61a-c12d-42ee-9331-793f3e5fcb30",
+        "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+        "identity--9d8d5f77-b5c2-4b9c-b7d0-8773538992cf",
+        "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+        "malware--01360ab3-9cd0-4f45-a3ef-5ba829f171c7",
+        "malware--52896536-b48b-4076-97e4-47d519ff8210",
+        "malware--63f5ab4a-5850-46ff-b9ae-2605d45072e5",
+        "malware--73756146-671b-40c6-80aa-9ad757c94e8b",
+        "malware--89a6d978-b96f-4ea9-82cd-eacdda9cc360",
+        "malware--8c5f7796-8c52-4812-9647-08ddda24003a",
+        "relationship--02b3a26f-940d-4e1e-902a-98feffa13291",
+        "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8",
+        "relationship--2ebf1a16-878d-4b53-96ba-57e93ac39933",
+        "relationship--38f1c68a-0ad9-432a-aa31-353061755b85",
+        "relationship--527c2d3f-79b3-427f-9af1-a23992c0ba51",
+        "relationship--5ddf0536-b1c2-4a64-804b-168e3958fa7f",
+        "relationship--751ad841-fad1-45da-88cc-6f2aa9685825",
+        "relationship--776744fb-f883-4e91-b74e-4872ab2a77d8",
+        "relationship--7b3b7ef8-faa0-4655-9040-c90a039326a9",
+        "relationship--80357bb5-d43b-4381-bf92-ce7cacd1e1d5",
+        "relationship--9a8d997c-f1ee-49a5-92e3-7b1d2fb75174",
+        "relationship--a5725618-05d7-4dd9-9d4d-94881c3bdb01",
+        "relationship--ac29ac0d-536e-4230-8721-5f1b9241e05c",
+        "relationship--af90a341-6a62-4271-be67-9785fa3771d1",
+        "relationship--b0a1c541-657b-40d5-b5ec-35b8ebfd9f98",
+        "relationship--b0cfe77c-cfde-4807-b1a1-90205795f17d",
+        "relationship--ca71e59c-3ffb-44fd-8e41-74b199a06e4a",
+        "relationship--d2c27b30-bd7f-4754-a440-adb40f46e190",
+        "relationship--e76ffd63-72f3-4bed-b9a3-6c918b87723e",
+        "relationship--e92b1373-7484-4606-a750-8559851ea55e",
+        "relationship--e967e74f-55ad-4806-af5c-83266cc043b0",
+        "relationship--f25192ff-3ca0-4aab-a452-c27e5c79aabb",
+        "relationship--f2f134d8-2789-4b72-9391-5bb6d8c902d6",
+        "relationship--f9fa7244-7cde-4a90-9b2e-558b64318160"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "external_id": "source--daily-4d983faef4e4520ecf67",
+          "url": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-4d983faef4e4520ecf67",
+      "x_evidence_slice_scope": "campaign:actor--lazarus:activity--daily-17d619faa9085c3a809b",
+      "x_source_publisher": "research.checkpoint.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--acdd0d77-b3e8-45c5-bb6c-44f903367c8e",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Lazarus Group / 夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき",
+      "description": "北朝鮮関連LazarusのOperation Dream Jobは、欧州やインドを中心に防衛・航空宇宙・航空企業を求人テーマのスピアフィッシングで標的としている。 攻撃ではDLLサイドローディングによるMISTPEN展開と、改ざんPDFビューアSecurityPDFから新型バックドアTroyを実行する2系統が確認された。 LazarusはWindows AFD.sysのゼロデイCVE-2026-68820を悪用してSYSTEM権限を取得し、FudModule v3.1でEDRなどの監視機能を無効化する。 MISTPENはOneDriveとMicrosoft Graph APIをC2に利用し、偵察、画面取得、権限昇格、ForestTigerなどの追加バックドア展開を行う。 攻撃者はCVE-2025-49113で侵害したRoundcubeやCMSへRelayShellを配置し、正規WebサーバーをC2中継ノードとして悪用している。 WindowsのAFD.sysに関する脆弱性(CVE-2026-68820)をゼロデイで悪用し、権限昇格とルートキットFudModuleの展開に用いていた。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:02Z",
+      "object_refs": [
+        "attack-pattern--378bc61a-c12d-42ee-9331-793f3e5fcb30",
+        "campaign--e79d4d48-c3b2-401e-a9ba-67762553fe7b",
+        "identity--9d8d5f77-b5c2-4b9c-b7d0-8773538992cf",
+        "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "intrusion-set--282922ac-4fa6-4252-8109-d577bc168c41",
+        "location--2ceb1ed8-30a4-49c4-9736-8aa248471323",
+        "location--ac1d03ca-11f6-45ca-84fd-891b1af95e8a",
+        "malware--01360ab3-9cd0-4f45-a3ef-5ba829f171c7",
+        "malware--52896536-b48b-4076-97e4-47d519ff8210",
+        "malware--63f5ab4a-5850-46ff-b9ae-2605d45072e5",
+        "malware--73756146-671b-40c6-80aa-9ad757c94e8b",
+        "malware--89a6d978-b96f-4ea9-82cd-eacdda9cc360",
+        "malware--8c5f7796-8c52-4812-9647-08ddda24003a",
+        "relationship--02b3a26f-940d-4e1e-902a-98feffa13291",
+        "relationship--23fd1f11-9704-442f-a8f7-b4885b2a3bc8",
+        "relationship--2ebf1a16-878d-4b53-96ba-57e93ac39933",
+        "relationship--38f1c68a-0ad9-432a-aa31-353061755b85",
+        "relationship--527c2d3f-79b3-427f-9af1-a23992c0ba51",
+        "relationship--5ddf0536-b1c2-4a64-804b-168e3958fa7f",
+        "relationship--751ad841-fad1-45da-88cc-6f2aa9685825",
+        "relationship--776744fb-f883-4e91-b74e-4872ab2a77d8",
+        "relationship--7b3b7ef8-faa0-4655-9040-c90a039326a9",
+        "relationship--80357bb5-d43b-4381-bf92-ce7cacd1e1d5",
+        "relationship--9a8d997c-f1ee-49a5-92e3-7b1d2fb75174",
+        "relationship--a5725618-05d7-4dd9-9d4d-94881c3bdb01",
+        "relationship--ac29ac0d-536e-4230-8721-5f1b9241e05c",
+        "relationship--af90a341-6a62-4271-be67-9785fa3771d1",
+        "relationship--b0a1c541-657b-40d5-b5ec-35b8ebfd9f98",
+        "relationship--b0cfe77c-cfde-4807-b1a1-90205795f17d",
+        "relationship--ca71e59c-3ffb-44fd-8e41-74b199a06e4a",
+        "relationship--d2c27b30-bd7f-4754-a440-adb40f46e190",
+        "relationship--e76ffd63-72f3-4bed-b9a3-6c918b87723e",
+        "relationship--e92b1373-7484-4606-a750-8559851ea55e",
+        "relationship--e967e74f-55ad-4806-af5c-83266cc043b0",
+        "relationship--f25192ff-3ca0-4aab-a452-c27e5c79aabb",
+        "relationship--f2f134d8-2789-4b72-9391-5bb6d8c902d6",
+        "relationship--f9fa7244-7cde-4a90-9b2e-558b64318160",
+        "report--0c18e5b0-3149-4baa-a07c-5103679447b2",
+        "report--1bfab894-b28d-4c86-91cc-0ebf095497dd",
+        "report--466fc0c7-8cc0-4309-8c5c-c99fb697ac58",
+        "report--54535489-4288-4a95-b605-ef5c2bfb0914",
+        "report--ed072c96-f35d-41e8-b852-eb846ca97576"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--lazarus",
+      "x_activity_id": "activity--daily-17d619faa9085c3a809b"
+    }
+  ]
+}

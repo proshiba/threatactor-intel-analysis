@@ -1005,7 +1005,7 @@
       "spec_version": "2.1",
       "id": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1019,14 +1019,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-99b5ac281926f2b2c7f5",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--99b5ac281926f2b2c7f58cbb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は、ロシアの連邦保安庁（FSB）と関連するColdRiver（別名：Star Blizzard、Callisto Group、Seaborgium）である。",
-      "x_reported_at": {
-        "value": "2025-05-09T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--callisto",
@@ -1097,6 +1093,24 @@
           "source--daily-000ea03bc7f9b3f702ec"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -2312,7 +2326,7 @@
       "spec_version": "2.1",
       "id": "relationship--ca31371f-12ed-4050-a139-3ce23aeeba97",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2320,14 +2334,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "malware--8a42d7d3-6621-42ca-a888-0cce5ff7cf0a",
       "description": "Callisto Group uses Spica.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8d0abf68-7ce7-4e52-b5a0-8462fab03d6b",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2335,14 +2356,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
       "description": "Callisto Group targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--503695b4-21c1-4bb6-aa74-e6ef198a9fd9",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2350,14 +2378,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "identity--4fe62a37-8a4d-49d1-842d-b36d32bee11a",
       "description": "Callisto Group targets NATO加盟国 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3fdeb92c-fd7e-43c0-8db6-50834a37d0e3",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2365,14 +2400,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "Callisto Group targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bc321404-61bc-4dbd-943d-e2ad9db7f424",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-27T11:04:30Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2380,14 +2422,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 is attributed or linked to Callisto Group.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e44d1a2e-b6a5-4fa0-b3da-ca74239acc53",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2395,14 +2468,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 targets target--activity-rule--country--72caf60a2fbce4a1be7a.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--264b7997-efb9-4a96-a37e-87c936ea8ac3",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2410,14 +2514,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e50577a-4eac-4901-bc44-e533b3d11fb0",
       "created": "2026-09-21T02:05:24Z",
-      "modified": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2425,14 +2560,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "identity--4fe62a37-8a4d-49d1-842d-b36d32bee11a",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 targets target--targeting-audit--region--08d97b9230a613ff9537.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--17458d50-878d-4312-86ca-008b51b8f861",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2440,14 +2606,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "attack-pattern--95c84095-9e4d-4370-a706-62608823b3e6",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 uses ttp--activity-rule--42d1e63e49f3cca5b345.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed4d6ede-eba0-4c46-9a2f-7736ed4d0b71",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2455,14 +2652,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "attack-pattern--16e79d23-399f-4130-92e8-6430341b2350",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 uses ttp--activity-rule--4eacc810da09c0b2b54d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ea4efd65-85c8-4a27-a283-a7dfd6586843",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2470,14 +2698,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "attack-pattern--5dc26162-b45e-4ad2-afd7-dc9e5ad21f97",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 uses ttp--activity-rule--714e895c938fc762d78b.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7cbf082a-1a4b-408e-8412-6635c47e60f4",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2485,14 +2744,45 @@
       "source_ref": "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
       "target_ref": "identity--51a8630f-4966-4de9-b5ca-833868ab67f6",
       "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 affected victim--activity-rule--c80973708fca655b5050.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ef4a9c60-f9be-4e5e-8a01-cbd116daedd1",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2500,14 +2790,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--95c84095-9e4d-4370-a706-62608823b3e6",
       "description": "スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fcadbdeb-2121-4a76-84d9-00e711331fb7",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2515,14 +2812,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--16e79d23-399f-4130-92e8-6430341b2350",
       "description": "このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--08eb95a1-98cd-4c97-84dc-14c452e6efeb",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2530,14 +2834,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--5dc26162-b45e-4ad2-afd7-dc9e5ad21f97",
       "description": "このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/",
+          "external_id": "source--daily-000ea03bc7f9b3f702ec"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6c3b81c4-4eb2-4a77-b301-0f40a9288e25",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2545,14 +2856,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used JavaScript to redirect victim traffic from an adversary controlled server to a server hosting the Evilginx phishing framework.(Citation: StarBlizzard) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--90e88136-4e75-4ccc-bfc1-ba6b9eafa2aa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2560,14 +2878,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used stolen credentials to sign into victim email accounts.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2d5e418c-5fc8-4929-9916-1b88398729f2",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2575,14 +2900,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has remotely accessed victims' email accounts to steal messages and attachments.(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dc570d3c-3cc4-4a0a-bec9-e5d8ecc34767",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2590,14 +2922,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--306a6b7f-100e-46d6-ac53-50dc6b0f9541",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has abused email forwarding rules to monitor the activities of a victim, steal information, and maintain persistent access after compromised credentials are reset.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b60c061-65f5-4d61-8e4f-3bf6bd300bd4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2605,14 +2944,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has lured targets into opening malicious .pdf files to deliver malware.(Citation: Google TAG COLDRIVER January 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cdaadf35-f21a-4c77-93fb-45849c70460e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2620,14 +2966,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--88cbabc2-0c05-4015-bf07-1690da8bd0db",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used EvilGinx to steal the session cookies of victims directed to\n phishing domains.(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ecf7841f-31ac-48ac-a953-2fab2886d8d5",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2635,14 +2988,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--dd16fb5b-db7e-4a01-916b-538d92804953",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has bypassed multi-factor authentication on victim email accounts by using session cookies stolen using EvilGinx.(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--064bb403-4e2b-4be0-ae75-d24e59f048ce",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2650,14 +3010,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails with malicious .pdf files to spread malware.(Citation: Google TAG COLDRIVER January 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--204e4d8c-c825-4a19-be70-6d58e6ac22e9",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2665,14 +3032,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--20c90beb-a909-4fae-84f9-9a250a8af703",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used HubSpot and MailerLite marketing platform services to hide the true sender of phishing emails.(Citation: StarBlizzard) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--745a7430-b445-403b-a830-e018d49f9262",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2680,14 +3054,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered domains using randomized words and with names resembling legitimate organizations.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a80ce596-bb35-4da0-9fd7-062b9e37caea",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2695,14 +3076,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--a3954372-83b8-4fa9-9b61-213e02c76236",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has established fraudulent profiles on professional networking sites to conduct reconnaissance.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--454d75a1-fca5-468c-8709-0108d29dfc0b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2710,14 +3098,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--99f5b3e2-d501-431e-83c0-23113a49218c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2725,14 +3120,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--7c7ad4fe-f77d-4431-a763-f87949294380",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used compromised email accounts to conduct spearphishing against\n contacts of the original victim.(Citation: CISA Star Blizzard Advisory December 2023)\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d0e551c9-d58e-41ff-bd4d-dc7c1f8f5b16",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2740,14 +3142,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has incorporated the open-source EvilGinx framework into their spearphishing activity.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b2f1e2a9-4df0-4327-ae10-2ae824f408db",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2755,14 +3164,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--23917098-5fdc-4339-867c-fc49c3b0f65a",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has identified ways to engage targets by researching potential victims' interests and social or professional contacts.(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d556ac2b-11f6-44f6-baf3-eb3a80c21e46",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2770,14 +3186,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--410e39c2-2801-4c79-9363-8fefa770ef83",
       "description": "\n[Star Blizzard](https://attack.mitre.org/groups/G1033) has used open-source research to identify information about victims to use in targeting.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--68e0788c-8d4a-4a85-9774-8451d08ad13f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2785,14 +3208,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--334c155d-b2cc-4672-a9f3-092b30c11e67",
       "description": "CYBERTHREATANALYSIS AppendixB—MitreATT&CKTechniques Tactic:Technique ATT&CKCode Reconnaissance: Phishingfor Information T1598 ResourceDevelopment: StageCapabilities T1608 About Insikt Group ® RecordedFuture’sInsikt Group, thecompany’sthreat researchdivision, comprisesanalystsandsecurityresearcherswithdeepgovernment, lawenforcement, military, andintelligenceagencyexperience. Their missionistoproduceinte",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--callisto--f45614e65d3b5aba",
+          "description": "Local source: Calisto/BlueCharlie_Continues_to_Deploy_New_Infrastructure_in_2023.pdf",
+          "external_id": "source--callisto--f45614e65d3b5aba"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2dbcd1ae-4774-48ca-b394-0e9970c92c2b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2800,14 +3230,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--47b952f9-1ac6-470c-b872-950320f15e12",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with attachments containing links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6d39aa67-a9fb-4160-bd92-b01cbec31709",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2815,14 +3252,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1daa9a38-fc1a-4ae2-a0a5-d604af32605b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2830,14 +3274,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--47fbeafa-884f-4331-97d2-3a4f3eaa494c",
       "description": "THREATANALYSIS AppendixB—MitreATT&CKTechniques Tactic:Technique ATT&CKCode Reconnaissance: Phishingfor Information T1598 ResourceDevelopment: StageCapabilities T1608 About Insikt Group ® RecordedFuture’sInsikt Group, thecompany’sthreat researchdivision, comprisesanalystsandsecurityresearcherswithdeepgovernment, lawenforcement, military, andintelligenceagencyexperience. Their missionistoproduceintelligencethat reducesriskfor clients, enablest",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--callisto--f45614e65d3b5aba",
+          "description": "Local source: Calisto/BlueCharlie_Continues_to_Deploy_New_Infrastructure_in_2023.pdf",
+          "external_id": "source--callisto--f45614e65d3b5aba"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ee01f720-35d5-4e19-b45d-8c62cb2f29b4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2845,14 +3296,21 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has uploaded malicious payloads to cloud storage sites.(Citation: Google TAG COLDRIVER January 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--079392b9-48a6-4ae0-a2f0-f77bc42b0f04",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2860,7 +3318,14 @@
       "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "target_ref": "attack-pattern--2c24f715-4577-4c2d-a5b5-cc2ec5e521b9",
       "description": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -2926,7 +3391,7 @@
       "spec_version": "2.1",
       "id": "relationship--6234380b-c1b9-46ab-9e23-1ef82cf49a29",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2934,7 +3399,8 @@
       "source_ref": "indicator--f212135a-d14c-4f75-a9a9-065aabf8bdc9",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3000,7 +3466,7 @@
       "spec_version": "2.1",
       "id": "relationship--babf7742-53a4-44d7-bb3e-a41db0ec7b01",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3008,7 +3474,8 @@
       "source_ref": "indicator--38844f71-d598-4bf7-b604-3b76e69a3452",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3074,7 +3541,7 @@
       "spec_version": "2.1",
       "id": "relationship--afd54df2-082a-41fb-ab05-ba3bee3e0d89",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3082,7 +3549,8 @@
       "source_ref": "indicator--329f889f-abc4-43dd-9869-77ee7844ee58",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3148,7 +3616,7 @@
       "spec_version": "2.1",
       "id": "relationship--619c8727-592a-484e-a8a9-3fe9ed2dafa7",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3156,7 +3624,8 @@
       "source_ref": "indicator--988ac1aa-870d-4ac2-b09c-08d0bacd56c0",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3222,7 +3691,7 @@
       "spec_version": "2.1",
       "id": "relationship--275acc20-c73e-41ef-b07b-aea5e027b34c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3230,7 +3699,8 @@
       "source_ref": "indicator--01016594-c689-442e-8e1e-c2edb135d236",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3296,7 +3766,7 @@
       "spec_version": "2.1",
       "id": "relationship--7c6c8672-815f-420f-9bba-3cff2af58d5a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3304,7 +3774,8 @@
       "source_ref": "indicator--59f03333-fef2-40a9-90c2-84ebfcbc6255",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3370,7 +3841,7 @@
       "spec_version": "2.1",
       "id": "relationship--5d498fc1-29ce-40b8-9b71-03562e873f74",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3378,7 +3849,8 @@
       "source_ref": "indicator--386d0b17-23bd-42a2-9d57-e9c97854ac77",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3444,7 +3916,7 @@
       "spec_version": "2.1",
       "id": "relationship--40afa667-1a55-4e42-866c-8dbbf3efef8a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3452,7 +3924,8 @@
       "source_ref": "indicator--b0e75e78-14b8-46c4-afb7-4dda73527636",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3518,7 +3991,7 @@
       "spec_version": "2.1",
       "id": "relationship--4abedae7-ff81-45ea-a073-0d75ca4134ab",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3526,7 +3999,8 @@
       "source_ref": "indicator--0cfe139e-6eda-4062-993c-4efa998349fe",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3592,7 +4066,7 @@
       "spec_version": "2.1",
       "id": "relationship--2cfa9aa2-bad0-4f18-b2d2-d28d01ba720b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3600,7 +4074,8 @@
       "source_ref": "indicator--a5d50a9d-d001-4608-b5e6-c6022181e4fb",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3726,7 +4201,7 @@
       "spec_version": "2.1",
       "id": "relationship--f0ea22b9-69cc-4587-8bee-056a4bee64c1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3734,7 +4209,8 @@
       "source_ref": "indicator--66f29f8b-75b3-4487-a86a-63704734cca4",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3800,7 +4276,7 @@
       "spec_version": "2.1",
       "id": "relationship--265a1a31-4171-4373-b209-0bd7bd6df7bb",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3808,7 +4284,8 @@
       "source_ref": "indicator--1106adc8-bd33-4b0b-bc31-6abc0adad5b1",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3874,7 +4351,7 @@
       "spec_version": "2.1",
       "id": "relationship--67603fcd-cacc-4290-84bd-c62438e02657",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3882,7 +4359,8 @@
       "source_ref": "indicator--8fc69880-775b-47d8-97af-63ec0559a6e9",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4038,7 +4516,7 @@
       "spec_version": "2.1",
       "id": "relationship--c322b522-ca6f-48b4-a63f-e397c07d4b40",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4046,7 +4524,8 @@
       "source_ref": "indicator--867dd7aa-0ff6-4440-bcb8-d9970e4b901b",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4112,7 +4591,7 @@
       "spec_version": "2.1",
       "id": "relationship--e8a75318-2b0d-441d-92e1-382d728e50d6",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4120,7 +4599,8 @@
       "source_ref": "indicator--1fb64d1d-45d6-4adb-9d29-daa87c56a735",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4186,7 +4666,7 @@
       "spec_version": "2.1",
       "id": "relationship--3b6d5acf-4709-40b6-9e7a-7aa013285fad",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4194,7 +4674,8 @@
       "source_ref": "indicator--86746d5a-441f-4cf0-bfd1-6eecbb1fdb69",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4290,7 +4771,7 @@
       "spec_version": "2.1",
       "id": "relationship--35299392-2e1e-408c-be1b-b01d468f30d1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4298,7 +4779,8 @@
       "source_ref": "indicator--f1253a82-60cd-4b19-a13f-384109f3a12d",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4364,7 +4846,7 @@
       "spec_version": "2.1",
       "id": "relationship--62c0d508-7d90-4086-be47-b248eed4c229",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4372,7 +4854,8 @@
       "source_ref": "indicator--54036f57-158d-4b24-ba06-e68da764c28a",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4438,7 +4921,7 @@
       "spec_version": "2.1",
       "id": "relationship--6044184d-f03f-4dc4-bc0a-60cce061c36a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4446,7 +4929,8 @@
       "source_ref": "indicator--e10f831c-b45e-4950-90b6-e12022b2fa99",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4512,7 +4996,7 @@
       "spec_version": "2.1",
       "id": "relationship--3b37d1f6-69ed-4755-a0f0-1758e724d3bd",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4520,7 +5004,8 @@
       "source_ref": "indicator--4e947d63-62d4-4445-ae47-d47a9510a5c3",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4586,7 +5071,7 @@
       "spec_version": "2.1",
       "id": "relationship--6b93b156-7cfc-42b2-8894-98357ee229f5",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4594,7 +5079,8 @@
       "source_ref": "indicator--fbecf9b4-0960-4a7e-80ed-d205dbed820d",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4660,7 +5146,7 @@
       "spec_version": "2.1",
       "id": "relationship--132e09a8-08a4-4e0e-bbea-23799ec3aad5",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4668,7 +5154,8 @@
       "source_ref": "indicator--96e996c6-e9ef-494a-8f1a-8b2c85f77f00",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4764,7 +5251,7 @@
       "spec_version": "2.1",
       "id": "relationship--39fd7019-c066-4fa9-946b-44a17f30e68a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4772,7 +5259,8 @@
       "source_ref": "indicator--cf1531cf-51cf-4a29-a593-6caa98250f7c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4838,7 +5326,7 @@
       "spec_version": "2.1",
       "id": "relationship--47d93a14-6930-479d-9b1a-19f929992419",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4846,7 +5334,8 @@
       "source_ref": "indicator--d57faf6c-caff-4b8d-afeb-012c51a9d3db",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4912,7 +5401,7 @@
       "spec_version": "2.1",
       "id": "relationship--f1ece66f-6bc2-4682-b96e-45ad02252bc5",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4920,7 +5409,8 @@
       "source_ref": "indicator--6067c885-3683-493e-875d-9360cf1f53c2",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5046,7 +5536,7 @@
       "spec_version": "2.1",
       "id": "relationship--9c16daa3-f617-4add-ac77-bcc98165c62d",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5054,7 +5544,8 @@
       "source_ref": "indicator--29ea1d8c-d89d-4fb8-b480-82d6f8817e7c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5150,7 +5641,7 @@
       "spec_version": "2.1",
       "id": "relationship--fae0af31-7f34-4afa-aff7-50bf8ae21768",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5158,7 +5649,8 @@
       "source_ref": "indicator--9890f9bc-2e0b-4851-9e4e-ff6041ca7c5f",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5224,7 +5716,7 @@
       "spec_version": "2.1",
       "id": "relationship--cf210c70-6d91-41b4-ba36-d58ae8cb3891",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5232,7 +5724,8 @@
       "source_ref": "indicator--c9f79b64-46d9-45e7-a8a9-b5a000a57220",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5298,7 +5791,7 @@
       "spec_version": "2.1",
       "id": "relationship--35f9c081-19e0-4353-97ad-fb7bb1b2bb7d",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5306,7 +5799,8 @@
       "source_ref": "indicator--6799b10c-c577-4d1b-b229-9a4f5fa8e2a7",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5372,7 +5866,7 @@
       "spec_version": "2.1",
       "id": "relationship--2b9e0c10-2a81-46b6-b959-40bf8ac39e6c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5380,7 +5874,8 @@
       "source_ref": "indicator--abe915ad-d327-4576-95ed-4a182513b10f",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5446,7 +5941,7 @@
       "spec_version": "2.1",
       "id": "relationship--cb17e10b-31f5-4992-ae70-5debc4441f1a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5454,7 +5949,8 @@
       "source_ref": "indicator--cbd8da00-3965-4887-afbe-5d725dac2680",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5520,7 +6016,7 @@
       "spec_version": "2.1",
       "id": "relationship--f0baee41-4daf-44e8-a890-a2b777ca29d5",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5528,7 +6024,8 @@
       "source_ref": "indicator--80370bee-54dc-43e8-ab73-5bd7607d6d11",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5624,7 +6121,7 @@
       "spec_version": "2.1",
       "id": "relationship--3b6420fa-4dba-4100-86ba-597bd6c16843",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5632,7 +6129,8 @@
       "source_ref": "indicator--1dbdb6d0-3118-4686-b70d-1680972b1301",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5698,7 +6196,7 @@
       "spec_version": "2.1",
       "id": "relationship--fb32eb81-54f2-46e7-a4ed-7a6e11abd0c5",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5706,7 +6204,8 @@
       "source_ref": "indicator--2998df8f-0a65-475e-8349-8ea688fe1eaf",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5802,7 +6301,7 @@
       "spec_version": "2.1",
       "id": "relationship--0607d94f-b63a-4c3c-ab14-95400db040e7",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5810,7 +6309,8 @@
       "source_ref": "indicator--6aa950ce-59f9-46de-835f-6321237f7c37",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5876,7 +6376,7 @@
       "spec_version": "2.1",
       "id": "relationship--e736679f-6a9a-42be-a8a7-ce582e04ca15",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5884,7 +6384,8 @@
       "source_ref": "indicator--00269f2e-1678-45f3-b3fe-7f47780cbea9",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5950,7 +6451,7 @@
       "spec_version": "2.1",
       "id": "relationship--7a273200-80fd-48e5-8257-982ac5c240e0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5958,7 +6459,8 @@
       "source_ref": "indicator--9644c357-f217-4f1b-87e5-a029d5efb391",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6024,7 +6526,7 @@
       "spec_version": "2.1",
       "id": "relationship--897dd1f5-22b4-4b74-9c6d-38b6cdee88fb",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6032,7 +6534,8 @@
       "source_ref": "indicator--3c7adc29-f31c-44a7-9f4c-05cfd2a1b561",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6128,7 +6631,7 @@
       "spec_version": "2.1",
       "id": "relationship--93605fd6-3589-4e8b-ab49-176f47cf644d",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6136,7 +6639,8 @@
       "source_ref": "indicator--682f857d-415b-4ff8-9d0b-1e47ed543c92",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6202,7 +6706,7 @@
       "spec_version": "2.1",
       "id": "relationship--cc544ee0-b9cc-446d-88d5-3251e3becb83",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6210,7 +6714,8 @@
       "source_ref": "indicator--ca875ac3-97ca-40d8-b7d3-bbe9526c7d82",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6276,7 +6781,7 @@
       "spec_version": "2.1",
       "id": "relationship--eb261465-5dc0-4aa5-85f1-7be1e78c804c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6284,7 +6789,8 @@
       "source_ref": "indicator--da8615f9-ae5c-4356-9c5c-2bceda90170c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6350,7 +6856,7 @@
       "spec_version": "2.1",
       "id": "relationship--e9852763-4321-454d-8900-e879cbf0c2e4",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6358,7 +6864,8 @@
       "source_ref": "indicator--890db707-561a-4b9b-8d77-90a24d0d2b30",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6454,7 +6961,7 @@
       "spec_version": "2.1",
       "id": "relationship--f226febf-9b42-4a14-a6cd-fffc530a4792",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6462,7 +6969,8 @@
       "source_ref": "indicator--06af5623-a32c-44aa-bcc1-d6260d98911c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6588,7 +7096,7 @@
       "spec_version": "2.1",
       "id": "relationship--618278bb-69f2-443e-9100-601c95286450",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6596,7 +7104,8 @@
       "source_ref": "indicator--ee3cbbdf-053c-4f36-87f8-8ec690929a8e",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6692,7 +7201,7 @@
       "spec_version": "2.1",
       "id": "relationship--0b29987d-2c00-4886-a73e-326500ad1a3c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6700,7 +7209,8 @@
       "source_ref": "indicator--a77433fa-4e45-420b-a8f2-bb8c287210d0",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6766,7 +7276,7 @@
       "spec_version": "2.1",
       "id": "relationship--5bb21b4f-606e-4b44-a158-3408483e5181",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6774,7 +7284,8 @@
       "source_ref": "indicator--9a35b57b-7e73-4230-be08-9dd64c9fc8f5",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6840,7 +7351,7 @@
       "spec_version": "2.1",
       "id": "relationship--db89a1ff-9eb7-4fbc-8970-2de10e76e640",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6848,7 +7359,8 @@
       "source_ref": "indicator--b28859a7-d187-4a42-850f-761816978f60",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6914,7 +7426,7 @@
       "spec_version": "2.1",
       "id": "relationship--176d005f-1f4f-4872-91b5-110c82b1d756",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6922,7 +7434,8 @@
       "source_ref": "indicator--02b610e9-c424-4df9-8397-09b700182cd4",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7018,7 +7531,7 @@
       "spec_version": "2.1",
       "id": "relationship--57b8b308-4689-4859-a9be-20e7b138c090",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7026,7 +7539,8 @@
       "source_ref": "indicator--36420c8e-d1c2-4f65-b756-50f52db55253",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7092,7 +7606,7 @@
       "spec_version": "2.1",
       "id": "relationship--a4673a4b-6e7b-41d3-9627-5e7f8506e24c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7100,7 +7614,8 @@
       "source_ref": "indicator--273ac048-8106-459c-9552-21a7c11fb122",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7166,7 +7681,7 @@
       "spec_version": "2.1",
       "id": "relationship--1123af99-2536-4c71-86d2-eca387bfe9d9",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7174,7 +7689,8 @@
       "source_ref": "indicator--6022bee5-9731-4467-8550-efc90db23a67",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7240,7 +7756,7 @@
       "spec_version": "2.1",
       "id": "relationship--fd915b29-7e0e-48a8-b2ae-c30ecd0ad82a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7248,7 +7764,8 @@
       "source_ref": "indicator--d270c0bb-cc3e-4e0f-9e70-8b6b259fad8e",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7314,7 +7831,7 @@
       "spec_version": "2.1",
       "id": "relationship--0c2d3f42-e080-4fcd-aac4-82f21123a5db",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7322,7 +7839,8 @@
       "source_ref": "indicator--c30c8298-c2e2-42cd-83c0-4e8df082fe4d",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7388,7 +7906,7 @@
       "spec_version": "2.1",
       "id": "relationship--5e35bddf-82c7-4f5e-bb85-39b843fab94b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7396,7 +7914,8 @@
       "source_ref": "indicator--b3dc0bad-bff8-4c2d-aaea-c7a35d8bbec5",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7492,7 +8011,7 @@
       "spec_version": "2.1",
       "id": "relationship--cdb7d9f0-d1d4-4664-9b03-3f7d8f894799",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7500,7 +8019,8 @@
       "source_ref": "indicator--7f5b2041-634b-4235-802d-5cb8eba44301",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7566,7 +8086,7 @@
       "spec_version": "2.1",
       "id": "relationship--f103117a-3c2b-401f-b9d6-dec96978448d",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7574,7 +8094,8 @@
       "source_ref": "indicator--64c80e30-ef05-4c1d-91f6-e224eebf7e01",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7640,7 +8161,7 @@
       "spec_version": "2.1",
       "id": "relationship--3cc62d10-a379-4cd8-90c9-85a9af6b29b1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7648,7 +8169,8 @@
       "source_ref": "indicator--e9a8ced2-c3f4-433e-8c0b-11ba640a0678",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7714,7 +8236,7 @@
       "spec_version": "2.1",
       "id": "relationship--71568b84-faa4-4098-a773-7f802e4480e1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7722,7 +8244,8 @@
       "source_ref": "indicator--01240564-1a0a-4d06-9c68-feea6cc664de",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7848,7 +8371,7 @@
       "spec_version": "2.1",
       "id": "relationship--df07c7f9-c025-47a5-a273-38eae403e256",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7856,7 +8379,8 @@
       "source_ref": "indicator--36f56fbb-89f9-410e-83d3-2e9eaa0533e1",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7922,7 +8446,7 @@
       "spec_version": "2.1",
       "id": "relationship--3299314b-f733-4651-a5be-439565b6a11c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7930,7 +8454,8 @@
       "source_ref": "indicator--1b605f23-ae26-48eb-88b0-dd44a5ea3c95",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7996,7 +8521,7 @@
       "spec_version": "2.1",
       "id": "relationship--6c4c13ac-858d-408c-a2e5-fdcabb87d90c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8004,7 +8529,8 @@
       "source_ref": "indicator--75758cbf-fb8a-45a0-a471-6a86a50964f6",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8070,7 +8596,7 @@
       "spec_version": "2.1",
       "id": "relationship--b493c720-e6dc-4e83-884b-854c9a8d7060",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8078,7 +8604,8 @@
       "source_ref": "indicator--128f768e-a111-411c-9299-889290cb613f",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8144,7 +8671,7 @@
       "spec_version": "2.1",
       "id": "relationship--9aa059ee-2709-498a-bb4b-67c64e3a2082",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8152,7 +8679,8 @@
       "source_ref": "indicator--969928bc-d5dc-4089-a586-21de1b3e42ef",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8218,7 +8746,7 @@
       "spec_version": "2.1",
       "id": "relationship--dd2c39b5-45d9-467c-b4fc-96f796b5e6e1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8226,7 +8754,8 @@
       "source_ref": "indicator--4ad7e215-a391-4a49-bff6-f62bbbb1bffd",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8292,7 +8821,7 @@
       "spec_version": "2.1",
       "id": "relationship--78589f48-a6b7-447c-921d-b076085b592a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8300,7 +8829,8 @@
       "source_ref": "indicator--0d9ab0c8-c204-4dd7-8162-4a873287c2e2",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8426,7 +8956,7 @@
       "spec_version": "2.1",
       "id": "relationship--ef9fbbb7-2be0-4af8-80a9-780f258c32e0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8434,7 +8964,8 @@
       "source_ref": "indicator--39c32d1d-84a9-4d50-a626-ae86c9ff3d2d",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8500,7 +9031,7 @@
       "spec_version": "2.1",
       "id": "relationship--69c94419-2479-45d8-aa10-858b369cf2b9",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8508,7 +9039,8 @@
       "source_ref": "indicator--07f00cd7-3189-454a-bc06-dc82c11428eb",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8574,7 +9106,7 @@
       "spec_version": "2.1",
       "id": "relationship--8274a951-2ad0-4cfb-97cc-6019efafe8bb",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8582,7 +9114,8 @@
       "source_ref": "indicator--d6a1fa44-1a07-4d96-8390-2eca04087bf0",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8648,7 +9181,7 @@
       "spec_version": "2.1",
       "id": "relationship--2d861919-483a-42e4-9c1f-1e7d169e73d0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8656,7 +9189,8 @@
       "source_ref": "indicator--e007e084-fec0-411a-b6c4-eea2672c8bbf",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8722,7 +9256,7 @@
       "spec_version": "2.1",
       "id": "relationship--cac508a5-3f7e-4120-ba71-a98d998b5179",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8730,7 +9264,8 @@
       "source_ref": "indicator--f31c2803-834b-48b0-83e5-4c72e9920aba",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8796,7 +9331,7 @@
       "spec_version": "2.1",
       "id": "relationship--dd1a87b8-0ba3-4c1e-979f-d17fc3c294b0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8804,7 +9339,8 @@
       "source_ref": "indicator--625c2ddb-07ca-427e-bded-af6e517c2734",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8870,7 +9406,7 @@
       "spec_version": "2.1",
       "id": "relationship--369958de-f498-4340-8ef4-97b2aa2fc493",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8878,7 +9414,8 @@
       "source_ref": "indicator--36ad2b75-03c3-42df-ad52-f00f55f1a72b",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -8944,7 +9481,7 @@
       "spec_version": "2.1",
       "id": "relationship--d2457367-e21f-474e-880d-0ae30e3b368c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8952,7 +9489,8 @@
       "source_ref": "indicator--5726b058-c184-49e8-90d5-4d30872722c8",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9018,7 +9556,7 @@
       "spec_version": "2.1",
       "id": "relationship--f4867ce6-8f57-48fd-85b5-3e300eb267b3",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9026,7 +9564,8 @@
       "source_ref": "indicator--7579478d-a075-4b2f-bf93-ad1a7e90ddc5",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9092,7 +9631,7 @@
       "spec_version": "2.1",
       "id": "relationship--34842c8a-27d4-4faa-bc80-86eca53363d1",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9100,7 +9639,8 @@
       "source_ref": "indicator--c223d8b6-5c01-43e0-99e4-7f39b1ab8da8",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9166,7 +9706,7 @@
       "spec_version": "2.1",
       "id": "relationship--44814524-623f-4fbe-bed7-b769d6b86bec",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9174,7 +9714,8 @@
       "source_ref": "indicator--30a2695b-1b47-4fc4-8267-9f7448fd93b9",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9240,7 +9781,7 @@
       "spec_version": "2.1",
       "id": "relationship--e94f4772-76ec-4c84-b324-9f801bc53204",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9248,7 +9789,8 @@
       "source_ref": "indicator--b597c712-9c09-4dce-921b-f5c692621c46",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9314,7 +9856,7 @@
       "spec_version": "2.1",
       "id": "relationship--681a23c0-6655-45a6-9204-88d91fc36bf9",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9322,7 +9864,8 @@
       "source_ref": "indicator--47484d81-cf36-4c1a-80d9-283f1a62c189",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9388,7 +9931,7 @@
       "spec_version": "2.1",
       "id": "relationship--c2b773a5-319d-4313-9d11-f1b44755695a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9396,7 +9939,8 @@
       "source_ref": "indicator--046546a6-0a14-4ce7-8c8f-4f6f1af60e17",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9462,7 +10006,7 @@
       "spec_version": "2.1",
       "id": "relationship--94ffecc1-1ae2-4d90-8692-11c0b6689927",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9470,7 +10014,8 @@
       "source_ref": "indicator--aa18dc49-f757-415f-9992-a271bbdfce43",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9536,7 +10081,7 @@
       "spec_version": "2.1",
       "id": "relationship--252c2825-c415-4a86-af25-55e8bc3aa4a9",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9544,7 +10089,8 @@
       "source_ref": "indicator--0a4b3faf-f950-4ea3-b345-25f1c10cea83",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9610,7 +10156,7 @@
       "spec_version": "2.1",
       "id": "relationship--cf59c853-e33c-4872-a1d6-1d6e57c864a6",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9618,7 +10164,8 @@
       "source_ref": "indicator--c3cf1921-0d64-439c-b9a4-0d8385c03094",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9684,7 +10231,7 @@
       "spec_version": "2.1",
       "id": "relationship--3b41ceb5-96f7-4426-b7eb-4dfeb54f4a83",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9692,7 +10239,8 @@
       "source_ref": "indicator--6d2b777a-acca-4a1f-b91f-393a5c07ae7f",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9758,7 +10306,7 @@
       "spec_version": "2.1",
       "id": "relationship--2308827e-51ee-4997-b72e-d0738c673563",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9766,7 +10314,8 @@
       "source_ref": "indicator--2a035d18-6d7a-44db-9a76-ab99560be1d7",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9832,7 +10381,7 @@
       "spec_version": "2.1",
       "id": "relationship--5c71a8d5-8fb6-4f0d-9aaa-437fee8e4c63",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9840,7 +10389,8 @@
       "source_ref": "indicator--c930b651-c003-4865-b757-66266e4e7c5e",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9906,7 +10456,7 @@
       "spec_version": "2.1",
       "id": "relationship--87eb09f8-860e-451f-9558-78972e07f23c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9914,7 +10464,8 @@
       "source_ref": "indicator--cd31978c-e79b-4826-b902-652ef27632d3",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -9980,7 +10531,7 @@
       "spec_version": "2.1",
       "id": "relationship--dbb01541-a1a7-4bdd-bcd3-220606e6f628",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9988,7 +10539,8 @@
       "source_ref": "indicator--6c6352be-5794-430a-8309-fe9f3385528d",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10054,7 +10606,7 @@
       "spec_version": "2.1",
       "id": "relationship--089911a4-d274-4f3d-9c00-01fda149bb5c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10062,7 +10614,8 @@
       "source_ref": "indicator--742cc0f2-d9f6-4f2f-bc3d-010ed756e5b3",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10128,7 +10681,7 @@
       "spec_version": "2.1",
       "id": "relationship--d7fbad46-cd59-4e9e-a5a9-4898881d8e2d",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10136,7 +10689,8 @@
       "source_ref": "indicator--a278e2f2-ccdd-48af-8941-287b4204713b",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10202,7 +10756,7 @@
       "spec_version": "2.1",
       "id": "relationship--35d0821d-286c-4b12-80a9-b5f4fc0bddd0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10210,7 +10764,8 @@
       "source_ref": "indicator--4b4ed569-36a0-4aa1-b84d-9f4c63ced803",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10276,7 +10831,7 @@
       "spec_version": "2.1",
       "id": "relationship--bc543386-505c-4b83-8c3f-59835d906f23",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10284,7 +10839,8 @@
       "source_ref": "indicator--78747c76-ff28-4fbb-9932-60926d75984a",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10410,7 +10966,7 @@
       "spec_version": "2.1",
       "id": "relationship--8598e5a4-8b0f-4a4c-9bed-0c5287065a6c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10418,7 +10974,8 @@
       "source_ref": "indicator--e5e31664-7a58-47a1-a9bc-44f379898a17",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10484,7 +11041,7 @@
       "spec_version": "2.1",
       "id": "relationship--025c500c-d635-4951-85cb-495482fbcfda",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10492,7 +11049,8 @@
       "source_ref": "indicator--174323b1-55a3-48c7-89aa-74087f563280",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10558,7 +11116,7 @@
       "spec_version": "2.1",
       "id": "relationship--fd4d1747-9e62-4f54-a522-a793c71e2bfb",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10566,7 +11124,8 @@
       "source_ref": "indicator--0de7b40e-de98-4137-b7d1-6d98b8195ca7",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10632,7 +11191,7 @@
       "spec_version": "2.1",
       "id": "relationship--cd9641b6-1750-4bae-ba30-6ceb24466b1b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10640,7 +11199,8 @@
       "source_ref": "indicator--91a5435f-fb75-44ed-888c-864284c5d2ee",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10706,7 +11266,7 @@
       "spec_version": "2.1",
       "id": "relationship--2d01c153-7a79-4b38-bf6e-372be3410bb2",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10714,7 +11274,8 @@
       "source_ref": "indicator--e81b43bd-fd65-4fa5-9194-a4e0da4cc686",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10780,7 +11341,7 @@
       "spec_version": "2.1",
       "id": "relationship--595c9f4d-88ce-46ef-af6b-b9c9d267d566",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10788,7 +11349,8 @@
       "source_ref": "indicator--297a7533-8b9e-4048-872f-55a7e75271d4",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10884,7 +11446,7 @@
       "spec_version": "2.1",
       "id": "relationship--3d3ede1f-fcd3-40f7-94d9-da74af6abe83",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10892,7 +11454,8 @@
       "source_ref": "indicator--2db867cb-17c2-43d4-bd99-af5a8965049e",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -10988,7 +11551,7 @@
       "spec_version": "2.1",
       "id": "relationship--4d3c00d6-c19b-41cb-ad6e-7c0415c92a1b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10996,7 +11559,8 @@
       "source_ref": "indicator--a465c54f-62ca-48a4-be5b-d720021c6474",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11062,7 +11626,7 @@
       "spec_version": "2.1",
       "id": "relationship--6889d5b8-5d36-4f78-96d5-6e7e0d633076",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11070,7 +11634,8 @@
       "source_ref": "indicator--e27c29d0-bb4d-4166-b074-50db400147a0",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11136,7 +11701,7 @@
       "spec_version": "2.1",
       "id": "relationship--df6dbb17-ec12-4cdb-88c9-ef52f10f8e8f",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11144,7 +11709,8 @@
       "source_ref": "indicator--659dd598-b37e-4708-a425-4f0fd900740f",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11210,7 +11776,7 @@
       "spec_version": "2.1",
       "id": "relationship--82f625d1-7f41-40ca-98f2-b1a6a35d92f6",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11218,7 +11784,8 @@
       "source_ref": "indicator--d02d9a2c-b132-40fc-8706-0ec9c1878107",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11314,7 +11881,7 @@
       "spec_version": "2.1",
       "id": "relationship--43d15a00-8329-4c3e-949a-7519903060fa",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11322,7 +11889,8 @@
       "source_ref": "indicator--07db7e24-0f7f-452f-8354-934330aababa",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11388,7 +11956,7 @@
       "spec_version": "2.1",
       "id": "relationship--14eb951d-29a4-43b9-9e7b-a6f9c26c1f33",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11396,7 +11964,8 @@
       "source_ref": "indicator--3522c94a-8017-4d87-8f5c-4f9b328bba2c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11462,7 +12031,7 @@
       "spec_version": "2.1",
       "id": "relationship--4805bd9a-2d3d-46f9-859f-8993b54821d4",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11470,7 +12039,8 @@
       "source_ref": "indicator--01c0b01d-2404-4fad-9716-03fc2495176c",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11536,7 +12106,7 @@
       "spec_version": "2.1",
       "id": "relationship--2913664f-ed59-4d47-95dc-30fadeb2a90b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11544,7 +12114,8 @@
       "source_ref": "indicator--2889f499-1d03-4b61-a011-6c238452f548",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11610,7 +12181,7 @@
       "spec_version": "2.1",
       "id": "relationship--84aa82d6-5706-469d-a8ff-44e1bba75350",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11618,7 +12189,8 @@
       "source_ref": "indicator--99312fdd-4cf6-45c7-bdec-c0cad734118a",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11714,7 +12286,7 @@
       "spec_version": "2.1",
       "id": "relationship--f9500b91-585b-40e5-a056-fe8ed514969c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11722,7 +12294,8 @@
       "source_ref": "indicator--04c766d5-fcef-42a7-bf0a-2458278ad013",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -11818,7 +12391,7 @@
       "spec_version": "2.1",
       "id": "relationship--3f8f5184-4f67-45a5-b696-bf6ac8bc7137",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11826,7 +12399,8 @@
       "source_ref": "indicator--dab52596-27b7-4515-b6a6-7c6daac84676",
       "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
@@ -12003,7 +12577,7 @@
         "indicator--04c766d5-fcef-42a7-bf0a-2458278ad013",
         "indicator--dab52596-27b7-4515-b6a6-7c6daac84676"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

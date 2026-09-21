@@ -583,14 +583,12 @@
       "spec_version": "2.1",
       "id": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃",
       "description": "スパイ集団Confuciusがフィッシングでパキスタンを標的化し、WooperStealerとAnondoorを投入。2013年以降活動。 2024年12月は.PPSXを開かせDLLサイドロードでWooperStealerを実行、感染を広げたとFortinetが報告。 2025年3月以降は.LNKを用いて悪性DLLを起動し情報窃取、8月の.LNKではAnondoor展開に切り替え。 Anondoorは外部C2へ端末情報を送信し、コマンド実行や画面取得、Chromeパスワード窃取などを実施。 KnownSecが2025年7月にAnondoor使用を観測。難読化とDLLサイドロードで検知回避する適応力が指摘。",
-      "first_seen": "2025-07-01T00:00:00Z",
-      "last_seen": "2025-07-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "thehackernews.com",
@@ -599,14 +597,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-824400f9d449ce9f1dcc",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--824400f9d449ce9f1dcc1697 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2025-10-03T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--confucius",
@@ -672,7 +666,27 @@
           "source--daily-1020ead2bd9b87a29746"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-07-01T00:00:00Z",
+      "last_seen": "2025-07-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -1735,7 +1749,7 @@
       "spec_version": "2.1",
       "id": "relationship--7a031341-f98d-47e2-9c36-3dd156d97649",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1743,14 +1757,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "malware--91c51845-f61b-4357-b746-35bb7273da41",
       "description": "Confucius uses WarzoneRAT.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d7f6f459-ca32-4912-b1fd-c50944992f76",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1758,14 +1779,40 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "identity--a064e899-eab8-40ce-9c7b-88ffd9e1ce0c",
       "description": "Confucius targets パキスタン (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cf438822-91dd-4f55-82cc-49d0d37a1228",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1773,14 +1820,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "identity--c83c3500-efa3-4203-9d16-7de2d478c504",
       "description": "Confucius targets 南アジア (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bf606983-2f22-42b4-94ac-fb81c7a14332",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1788,14 +1842,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "identity--c4fe5320-50f8-464e-83b1-524a5215d21c",
       "description": "Confucius targets 防衛・軍事 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--163f9540-d6ba-497a-b718-08793b7e3970",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1803,14 +1864,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "identity--7299c12c-2381-4348-a5bf-798909dc2467",
       "description": "Confucius targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3281dc85-d083-4159-ac27-7a9df87da5a8",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-07-27T11:04:31Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1818,14 +1886,46 @@
       "source_ref": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 is attributed or linked to Confucius.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6edeecdc-babf-4de5-8220-ac9a91bf9ce6",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1833,14 +1933,46 @@
       "source_ref": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "target_ref": "identity--a064e899-eab8-40ce-9c7b-88ffd9e1ce0c",
       "description": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 targets target--activity-rule--country--67ce22b843f136bff928.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--36de03d4-9007-4290-b2b8-a879b2fbe314",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1848,14 +1980,46 @@
       "source_ref": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "target_ref": "attack-pattern--4218dcc2-35ae-4e04-bab3-dd9d8c1cb35e",
       "description": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 uses ttp--activity-rule--5b28d97244888a45be87.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--010ebf93-d9cf-4733-affa-692f9235e84a",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1863,14 +2027,46 @@
       "source_ref": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "target_ref": "attack-pattern--9df4be1d-fb71-4f21-8ce4-2cf9c3c62cc4",
       "description": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 uses ttp--activity-rule--d73305668f0a6f75ed97.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--66fb8808-1bfd-47e7-b8d5-fa28da6accba",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1878,14 +2074,46 @@
       "source_ref": "campaign--48460a32-ef68-4358-8cf8-4b3dc3c7f3ca",
       "target_ref": "identity--c13f5fae-7ddf-4328-9830-e1c42ab3c107",
       "description": "Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 affected victim--activity-rule--a4fdf571878c0d84fab9.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--963fe3d0-0b90-4543-9beb-77a608a56990",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1893,14 +2121,40 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--4218dcc2-35ae-4e04-bab3-dd9d8c1cb35e",
       "description": "Anondoorは外部C2へ端末情報を送信し、コマンド実行や画面取得、Chromeパスワード窃取などを実施。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f5f38356-0d87-4fba-a127-f7a144ac5377",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1908,14 +2162,40 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--9df4be1d-fb71-4f21-8ce4-2cf9c3c62cc4",
       "description": "難読化とDLLサイドロードで検知回避する適応力が指摘。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html",
+          "external_id": "source--daily-1020ead2bd9b87a29746"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cbd18403-ac9b-42d6-9236-f5af602c49da",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1923,14 +2203,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has exfiltrated stolen files to its C2 server.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ffe71449-626a-4406-b030-f703bf321d51",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1938,14 +2225,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has created scheduled tasks to maintain persistence on a compromised host.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bd169ba9-003c-45be-b9b4-cce902354abf",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1953,14 +2247,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used PowerShell to execute malicious files and payloads.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e150650f-8194-450d-8bf4-7852106b23d2",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1968,14 +2269,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used VBScript to execute malicious code.(Citation: TrendMicro Confucius APT Feb 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5b294c6b-0edf-4b39-b2f7-4b3805f74dc0",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1983,14 +2291,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used HTTP for C2 communications.(Citation: Uptycs Confucius APT Jan 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7d2db4e2-b91c-416c-806f-eac6d42102ef",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1998,14 +2313,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer that checks the Document, Downloads, Desktop, and Picture folders for documents and images with specific extensions.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--81d98747-dfc9-4959-9ece-44ac9a00d94e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2013,14 +2335,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has downloaded additional files and payloads onto a compromised host following initial access.(Citation: Uptycs Confucius APT Jan 2021)(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--29c57dff-bcf7-463f-ac55-2069d6ae8aa9",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2028,14 +2357,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer to steal documents and images with the following extensions: txt, pdf, png, jpg, doc, xls, xlm, odp, ods, odt, rtf, ppt, xlsx, xlsm, docx, pptx, and jpeg.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b345f470-5edf-4ee0-8867-f772042c785a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2043,14 +2379,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--f2869783-2e60-4f4f-8373-9a6980476f95",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has exploited Microsoft Office vulnerabilities, including CVE-2015-1641, CVE-2017-11882, and CVE-2018-0802.(Citation: Uptycs Confucius APT Jan 2021)(Citation: TrendMicro Confucius APT Feb 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3d40ed61-0cf9-492c-b8a8-d4538f7064ea",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2058,14 +2401,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has lured victims into clicking on a malicious link sent through spearphishing.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e3f62b55-5722-4344-ab41-ebc76b57142a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2073,14 +2423,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has lured victims to execute malicious attachments included in crafted spearphishing emails related to current topics.(Citation: Uptycs Confucius APT Jan 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3c6a22b3-1154-4c0e-894c-dfb987bb409f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2088,14 +2445,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--7c468083-c48e-4249-8c1a-396423817987",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used mshta.exe to execute malicious VBScript.(Citation: TrendMicro Confucius APT Feb 2018) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a3fa19e2-7b7e-41b3-8a20-6ea31a2b36a9",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2103,14 +2467,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--32e4c9e4-6467-4a0a-9168-6ff0d788bca9",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used a weaponized Microsoft Word document with an embedded RTF exploit.(Citation: Uptycs Confucius APT Jan 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8469284-f256-4c12-8c69-3bff8f2e371f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2118,14 +2489,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has dropped malicious files into the startup folder `%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup` on a compromised host in order to maintain persistence.(Citation: Uptycs Confucius APT Jan 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ce9a628b-8b67-4493-bf7e-9fdbf67653c7",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2133,14 +2511,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has crafted and sent victims malicious attachments to gain initial access.(Citation: Uptycs Confucius APT Jan 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2accf669-d136-42e3-b379-052eee1b9c39",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2148,14 +2533,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has sent malicious links to victims through email campaigns.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--858d1dcf-4a32-47fa-99ae-bbaf79a78cb4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2163,14 +2555,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has exfiltrated victim data to cloud storage service accounts.(Citation: TrendMicro Confucius APT Feb 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--05d7adf3-8c44-434d-96c1-09a877847899",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2178,14 +2577,21 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--6b65a723-72ea-4924-8a1f-c94cf823e2e3",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has obtained cloud storage service accounts to host stolen data.(Citation: TrendMicro Confucius APT Feb 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--06d4e8e8-cb02-4826-b7b4-a92cbe03fa7b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2193,7 +2599,14 @@
       "source_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "target_ref": "attack-pattern--20fb7785-3e44-465e-bed0-c3ae4a4a92be",
       "description": "[Confucius](https://attack.mitre.org/groups/G0142) has used a file stealer that can examine system drives, including those other than the C drive.(Citation: TrendMicro Confucius APT Aug 2021)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -2259,7 +2672,7 @@
       "spec_version": "2.1",
       "id": "relationship--be0feefb-6109-49f8-925a-6549c25a7ae2",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2267,7 +2680,8 @@
       "source_ref": "indicator--692ca898-c9a9-4414-8431-6101b988687b",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2333,7 +2747,7 @@
       "spec_version": "2.1",
       "id": "relationship--2644b57a-fd0e-4fc0-a33b-17384ba2f86e",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2341,7 +2755,8 @@
       "source_ref": "indicator--00f9fe9f-29b0-4257-b34f-038f391c0561",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2407,7 +2822,7 @@
       "spec_version": "2.1",
       "id": "relationship--f7d93278-fddf-4656-ad85-abf6912d5f73",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2415,7 +2830,8 @@
       "source_ref": "indicator--2f69ac89-6e0a-4da2-8805-a9043a5ba269",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2481,7 +2897,7 @@
       "spec_version": "2.1",
       "id": "relationship--02cb75aa-0e21-4abb-9fa7-7087e890b781",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2489,7 +2905,8 @@
       "source_ref": "indicator--588a34ca-65f4-4f4f-b54f-23e1ec32a0c3",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2555,7 +2972,7 @@
       "spec_version": "2.1",
       "id": "relationship--b030971f-8688-42fa-b7e7-1316cb5ed4f0",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2563,7 +2980,8 @@
       "source_ref": "indicator--32e39a50-4698-4ee3-9721-bdc6ae24452a",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2629,7 +3047,7 @@
       "spec_version": "2.1",
       "id": "relationship--278aef19-0397-46c8-82c1-5a458d0fe56b",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2637,7 +3055,8 @@
       "source_ref": "indicator--6e3b8aee-1317-4d55-9f0f-c7509c847938",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2793,7 +3212,7 @@
       "spec_version": "2.1",
       "id": "relationship--aa5f433b-eae4-427c-82dc-f065660e3c97",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2801,7 +3220,8 @@
       "source_ref": "indicator--4e7427ab-e06f-4ff4-8619-090ac9ec0f88",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2927,7 +3347,7 @@
       "spec_version": "2.1",
       "id": "relationship--bdd817ec-f750-4a33-b047-0e602bda3752",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2935,7 +3355,8 @@
       "source_ref": "indicator--83a118fe-ac08-4683-b397-085f45c2ed56",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3001,7 +3422,7 @@
       "spec_version": "2.1",
       "id": "relationship--d2765be2-09b3-428e-ba23-e89a4b85ccf2",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3009,7 +3430,8 @@
       "source_ref": "indicator--739d974d-07ed-4519-9c52-2f25a297fe62",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3075,7 +3497,7 @@
       "spec_version": "2.1",
       "id": "relationship--9cc8cb07-1305-4eac-8661-fcd041692711",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3083,7 +3505,8 @@
       "source_ref": "indicator--91b4afcf-a672-481a-94ac-14530de2f4f1",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3149,7 +3572,7 @@
       "spec_version": "2.1",
       "id": "relationship--ada8a2a6-4357-4eb4-8a36-da061f142040",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3157,7 +3580,8 @@
       "source_ref": "indicator--0614e3af-dc56-4a49-9fb4-2baef2cd8206",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3519,7 +3943,7 @@
       "spec_version": "2.1",
       "id": "relationship--661ab39f-c64c-48d5-a38d-05e542050a92",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3527,7 +3951,8 @@
       "source_ref": "indicator--4af04088-d436-4801-bf9f-045d69b37b75",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3593,7 +4018,7 @@
       "spec_version": "2.1",
       "id": "relationship--5c428487-ff67-4f4d-a1b8-50322b93fabf",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3601,7 +4026,8 @@
       "source_ref": "indicator--a1c80894-2a14-4070-b9fc-7b14e11066a3",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3667,7 +4093,7 @@
       "spec_version": "2.1",
       "id": "relationship--1dfd0eb2-a52e-438f-8578-4583adef8e67",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3675,7 +4101,8 @@
       "source_ref": "indicator--376a1d0a-3e29-4774-892f-ea1cf2b86730",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -3860,7 +4287,7 @@
       "spec_version": "2.1",
       "id": "relationship--df38e09b-9fe4-4d00-b09f-fbaaf8604a09",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3868,7 +4295,8 @@
       "source_ref": "indicator--994054f9-6212-48ff-af91-9857ab0e1648",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4052,7 +4480,7 @@
       "spec_version": "2.1",
       "id": "relationship--fa99a95f-6351-45d6-8572-1de3ebc122a4",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4060,7 +4488,8 @@
       "source_ref": "indicator--212b93f6-3904-4a84-a90d-919896942f06",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4215,7 +4644,7 @@
       "spec_version": "2.1",
       "id": "relationship--3086c08e-30a1-4603-b6c0-ab54bcdde03e",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4223,7 +4652,8 @@
       "source_ref": "indicator--d2aeca10-8a71-40a6-8693-039c5710a198",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4319,7 +4749,7 @@
       "spec_version": "2.1",
       "id": "relationship--3f7dbe64-cab5-496c-8cf8-0becf9773552",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4327,7 +4757,8 @@
       "source_ref": "indicator--aef50edf-d8d3-49be-83cf-f4f390d0687b",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4482,7 +4913,7 @@
       "spec_version": "2.1",
       "id": "relationship--bb3d4880-e9c4-42b9-adb7-4fa15f375bac",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4490,7 +4921,8 @@
       "source_ref": "indicator--375903a3-9b4e-48dd-b8e7-50299cbb35de",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -4822,7 +5254,7 @@
       "spec_version": "2.1",
       "id": "relationship--e4fcf4a7-95d3-47b8-bd57-60a4a4f3505a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4830,7 +5262,8 @@
       "source_ref": "indicator--72b387ae-6042-4e94-b97e-bdc171fcdaaf",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5517,7 +5950,7 @@
       "spec_version": "2.1",
       "id": "relationship--6bb03580-8d66-4ef2-828f-ab12a1f3033f",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5525,7 +5958,8 @@
       "source_ref": "indicator--559e6cbc-35d7-4760-aea6-7d446db50162",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5591,7 +6025,7 @@
       "spec_version": "2.1",
       "id": "relationship--fe1173d5-1702-439c-85b8-ff5710bb0c0c",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5599,7 +6033,8 @@
       "source_ref": "indicator--e0b31bbb-0ba7-431d-af33-8a25609200df",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -5783,7 +6218,7 @@
       "spec_version": "2.1",
       "id": "relationship--d71c14c0-cd08-4c61-a729-ec80a0ed337a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5791,7 +6226,8 @@
       "source_ref": "indicator--11b4f04e-cd48-4d5f-8b27-6a482415ceca",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6035,7 +6471,7 @@
       "spec_version": "2.1",
       "id": "relationship--324c8d22-0554-498f-943e-a00cccaf16ac",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6043,7 +6479,8 @@
       "source_ref": "indicator--3ed11fb1-a61e-4e54-a8bc-e9961d5e0ac5",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6139,7 +6576,7 @@
       "spec_version": "2.1",
       "id": "relationship--46db22b4-5d2b-452f-bed2-72fcac5cddda",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6147,7 +6584,8 @@
       "source_ref": "indicator--f0ab6ec5-5f1a-4076-a3d1-e32535a5289c",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6213,7 +6651,7 @@
       "spec_version": "2.1",
       "id": "relationship--20b50cf7-1f9e-4f10-b3eb-fd2e98626499",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6221,7 +6659,8 @@
       "source_ref": "indicator--c2c84877-f187-4d5a-a305-9110164969e8",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6583,7 +7022,7 @@
       "spec_version": "2.1",
       "id": "relationship--698ff6c8-2f36-4d63-88f2-494614135915",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6591,7 +7030,8 @@
       "source_ref": "indicator--792cd152-1d7b-48ca-a457-336abe709fac",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6775,7 +7215,7 @@
       "spec_version": "2.1",
       "id": "relationship--a893bccb-68c6-408f-b30c-582736db6f7a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6783,7 +7223,8 @@
       "source_ref": "indicator--65c83812-50f5-4d7f-980d-e5afca449e38",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -6849,7 +7290,7 @@
       "spec_version": "2.1",
       "id": "relationship--030b0bb0-5122-4557-ac38-e994ad54902a",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T01:54:42Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6857,7 +7298,8 @@
       "source_ref": "indicator--33ce1099-1713-4342-93d7-c56dc9c43364",
       "target_ref": "intrusion-set--dba5d465-59c1-4018-8b6f-d946c58cbcb1",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -7193,7 +7635,7 @@
         "indicator--04ed34cc-e4b1-49a7-808a-9c1ea212a4b4",
         "indicator--1b0749a0-95bb-4c0b-bd96-c8bb288b99c7"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

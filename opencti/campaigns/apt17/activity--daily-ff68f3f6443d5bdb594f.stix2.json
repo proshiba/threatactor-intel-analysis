@@ -1,0 +1,754 @@
+{
+  "type": "bundle",
+  "id": "bundle--0762b9cd-e5cb-45da-9726-f17f06f9401b",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9942c7e5-173c-4d4b-abc4-842c9c2c0a2a",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Screen Capture",
+      "description": "9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1113",
+          "url": "https://attack.mitre.org/techniques/T1113/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--1da48b1cbdd35538df04",
+      "x_tactic": "Collection",
+      "x_activity_refs": [
+        "activity--daily-ff68f3f6443d5bdb594f"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に",
+      "description": "APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-ff68f3f6443d5bdb594f",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--ff68f3f6443d5bdb594f8693 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt17",
+          "name": "APT17",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--1da48b1cbdd35538df04"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--64be7cf4bac6c92be378",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--0b9807c88c5611b99ba0"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-07-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Collection"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--64be7cf4bac6c92be378"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b39a4a815a12eb24617a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0802d2d1-0e5c-4b40-a413-83f933fb8465",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に",
+      "identity_class": "organization",
+      "description": "APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--0b9807c88c5611b99ba0",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--64be7cf4bac6c92be378",
+        "target--sector--government"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--1da48b1cbdd35538df04"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:20:30Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Government",
+      "identity_class": "class",
+      "description": "Targeting text indicates the Government sector.",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--sector--government",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT17",
+      "aliases": [
+        "Deputy Dog"
+      ],
+      "description": "[APT17](https://attack.mitre.org/groups/G0025) is a China-based threat group that has conducted network intrusions against U.S. government entities, the defense industry, law firms, information technology companies, mining companies, and non-government organizations. (Citation: FireEye APT17)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--apt17",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Deputy Dog",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "APT17の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "BLACKCOFFEE, WEBCnC, Joy RAT, PlugX, Trojan.Naid, Backdoor.Moudoor, Backdoor.Vasport, Backdoor.Boda, Trojan.Hydraq, ZxShell, Sakula, China Chopper, DestroyRAT",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=イタリア。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nGovernment, defense & aerospace, industrial engineering, NGOs",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--0b39956c-5f0e-409b-8ec0-562e17beb1c7",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T01:54:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Italy",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--64be7cf4bac6c92be378",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "ITA",
+      "x_opencti_reference_id": "location--b4705466-c505-4d72-85f9-5593ec05eead",
+      "x_opencti_aliases": [
+        "IT",
+        "ITA",
+        "イタリア"
+      ],
+      "latitude": 41.87194,
+      "longitude": 12.56738,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--224872fd-6143-48a5-a114-d91736bfffd4",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に targets target--sector--government.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--299f9016-3262-4dae-8b0c-8b584b8635dd",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "target_ref": "identity--0802d2d1-0e5c-4b40-a413-83f933fb8465",
+      "description": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に affected victim--activity-rule--0b9807c88c5611b99ba0.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6dca299f-1db7-48a3-b305-3fa7d8875dfe",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+      "target_ref": "attack-pattern--9942c7e5-173c-4d4b-abc4-842c9c2c0a2a",
+      "description": "9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--775ca412-ac76-4e6e-a5d1-86e5958de6c1",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "APT17 targets Government (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8bab99f4-23b4-441d-87d1-4cbfdc65fa5e",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "target_ref": "attack-pattern--9942c7e5-173c-4d4b-abc4-842c9c2c0a2a",
+      "description": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に uses ttp--activity-rule--1da48b1cbdd35538df04.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--da05d1f4-468a-4ada-bbe1-3ce1fd743bdc",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "target_ref": "location--0b39956c-5f0e-409b-8ec0-562e17beb1c7",
+      "description": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に targets target--activity-rule--country--64be7cf4bac6c92be378.\n\nEvidence: 活動「中国関連APT17、イタリア企業を9002 RATマルウェアで標的に」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e8312bc9-ce57-4cc4-bdb9-262e8e8b15ea",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+      "target_ref": "location--0b39956c-5f0e-409b-8ec0-562e17beb1c7",
+      "description": "APT17 targets イタリア (profile target category: countries).\n\nEvidence: 活動「中国関連APT17、イタリア企業を9002 RATマルウェアで標的に」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ffcaf4b4-a70b-4882-b07f-070ccebb6704",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+      "target_ref": "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+      "description": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に is attributed or linked to APT17.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--61c43272-b826-4cd0-bdf7-e6e2d6d0ee03",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国関連APT17、イタリア企業を9002 RATマルウェアで標的に",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-07-18T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--9942c7e5-173c-4d4b-abc4-842c9c2c0a2a",
+        "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+        "identity--0802d2d1-0e5c-4b40-a413-83f933fb8465",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--224872fd-6143-48a5-a114-d91736bfffd4",
+        "relationship--299f9016-3262-4dae-8b0c-8b584b8635dd",
+        "relationship--6dca299f-1db7-48a3-b305-3fa7d8875dfe",
+        "relationship--775ca412-ac76-4e6e-a5d1-86e5958de6c1",
+        "relationship--8bab99f4-23b4-441d-87d1-4cbfdc65fa5e",
+        "relationship--da05d1f4-468a-4ada-bbe1-3ce1fd743bdc",
+        "relationship--e8312bc9-ce57-4cc4-bdb9-262e8e8b15ea",
+        "relationship--ffcaf4b4-a70b-4882-b07f-070ccebb6704"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-b39a4a815a12eb24617a",
+          "url": "https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-b39a4a815a12eb24617a",
+      "x_evidence_slice_scope": "campaign:actor--apt17:activity--daily-ff68f3f6443d5bdb594f",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--9b659538-c069-4542-9a44-9dd24dae905d",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT17 / 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に",
+      "description": "APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "attack-pattern--9942c7e5-173c-4d4b-abc4-842c9c2c0a2a",
+        "campaign--32a02774-9411-47c7-8b76-81ccf2aba39c",
+        "identity--0802d2d1-0e5c-4b40-a413-83f933fb8465",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "intrusion-set--5924f62f-8860-4562-ab22-ec7615ae2b15",
+        "location--0b39956c-5f0e-409b-8ec0-562e17beb1c7",
+        "relationship--224872fd-6143-48a5-a114-d91736bfffd4",
+        "relationship--299f9016-3262-4dae-8b0c-8b584b8635dd",
+        "relationship--6dca299f-1db7-48a3-b305-3fa7d8875dfe",
+        "relationship--775ca412-ac76-4e6e-a5d1-86e5958de6c1",
+        "relationship--8bab99f4-23b4-441d-87d1-4cbfdc65fa5e",
+        "relationship--da05d1f4-468a-4ada-bbe1-3ce1fd743bdc",
+        "relationship--e8312bc9-ce57-4cc4-bdb9-262e8e8b15ea",
+        "relationship--ffcaf4b4-a70b-4882-b07f-070ccebb6704",
+        "report--61c43272-b826-4cd0-bdf7-e6e2d6d0ee03"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt17",
+      "x_activity_id": "activity--daily-ff68f3f6443d5bdb594f"
+    }
+  ]
+}

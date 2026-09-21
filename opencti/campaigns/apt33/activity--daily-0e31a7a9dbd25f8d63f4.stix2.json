@@ -1,0 +1,476 @@
+{
+  "type": "bundle",
+  "id": "bundle--a7eed229-ca88-4146-8b18-b783b083b3ab",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Password Spraying",
+      "description": "2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1110.003",
+          "url": "https://attack.mitre.org/techniques/T1110/003/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--6150c1b75682e486b452",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--daily-0e31a7a9dbd25f8d63f4"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置",
+      "description": "APT33が新しいTicklerマルウェアを使用し、米国やUAEの政府・防衛機関のネットワークにバックドアを設置。 2024年4月から7月にかけて、情報収集活動の一環としてこの新しいマルウェアを使用。 2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。 Microsoftの調査により、Azureインフラを利用した攻撃が明らかに。 APT33はIRGC（イラン革命防衛隊）に関連しているとされる。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-0e31a7a9dbd25f8d63f4",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--0e31a7a9dbd25f8d63f42325 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt33",
+          "name": "APT33",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--6150c1b75682e486b452"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2024-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2024-08-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Credential Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f8c5f7e3f2497c4aec2e"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-04-01T00:00:00Z",
+      "last_seen": "2024-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT33",
+      "aliases": [
+        "BLEAK ION",
+        "Elfin",
+        "HOLMIUM",
+        "Peach Sandstorm"
+      ],
+      "description": "[APT33](https://attack.mitre.org/groups/G0064) is a suspected Iranian threat group that has carried out operations since at least 2013. The group has targeted organizations across multiple industries in the United States, Saudi Arabia, and South Korea, with a particular interest in the aviation and energy sectors.(Citation: FireEye APT33 Sept 2017)(Citation: FireEye APT33 Webinar Sept 2017)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--apt33",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BLEAK ION",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Elfin",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "HOLMIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Peach Sandstorm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Curated merge into the canonical MITRE Group profile."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "APT33の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Stonedrill/ Shamoon2.0",
+        "capability_details": "NETWIRE, StoneDrill, NanoCore, TURNEDUP, POWERTON, DEADWOOD, AutoIt backdoor, Shamoon, PUPYRAT, POSHC2 (.NET backdoor), Gpppassword, Quasar RAT, Remcos, SniffPass, DarkComet, AutoIt FTP tool, .NET FTP tool, PowerShell downloader (registry.ps1), POSHC2 backdoor, different keyloggers, Net, PowerSploit, Empire, PoshC2, Ruler, Mimikatz, LaZagne, Pupy, ftp",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=サウジアラビア、米国、韓国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nA threat actor used malware known as Shamoon 2.0 to exfiltrate and delete data from computers in the Saudi transportation sector. Commercial entities, Middle East, US, South Korea, DND focussed entities, Airlines, Airline suppliers.",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4090ec17-f4ba-4573-ba51-07b375737d15",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
+      "target_ref": "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
+      "description": "2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--78e4a25b-a917-4950-8565-e20b73dec44a",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
+      "target_ref": "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
+      "description": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 uses ttp--activity-rule--6150c1b75682e486b452.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c2af9700-884f-497f-9b8d-72297eb532f0",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
+      "target_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
+      "description": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 is attributed or linked to APT33.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--addf82b2-4451-4ce2-b1b4-4042539c928d",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-08-29T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
+        "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
+        "relationship--4090ec17-f4ba-4573-ba51-07b375737d15",
+        "relationship--78e4a25b-a917-4950-8565-e20b73dec44a",
+        "relationship--c2af9700-884f-497f-9b8d-72297eb532f0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e",
+          "url": "https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f8c5f7e3f2497c4aec2e",
+      "x_evidence_slice_scope": "campaign:actor--apt33:activity--daily-0e31a7a9dbd25f8d63f4",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--982ed10b-41b2-4ed3-9422-db64123c45ad",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT33 / APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置",
+      "description": "APT33が新しいTicklerマルウェアを使用し、米国やUAEの政府・防衛機関のネットワークにバックドアを設置。 2024年4月から7月にかけて、情報収集活動の一環としてこの新しいマルウェアを使用。 2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。 Microsoftの調査により、Azureインフラを利用した攻撃が明らかに。 APT33はIRGC（イラン革命防衛隊）に関連しているとされる。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:02Z",
+      "object_refs": [
+        "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
+        "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
+        "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
+        "relationship--4090ec17-f4ba-4573-ba51-07b375737d15",
+        "relationship--78e4a25b-a917-4950-8565-e20b73dec44a",
+        "relationship--c2af9700-884f-497f-9b8d-72297eb532f0",
+        "report--addf82b2-4451-4ce2-b1b4-4042539c928d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt33",
+      "x_activity_id": "activity--daily-0e31a7a9dbd25f8d63f4"
+    }
+  ]
+}

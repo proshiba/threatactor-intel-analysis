@@ -711,14 +711,12 @@
       "spec_version": "2.1",
       "id": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
       "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
-      "first_seen": "2020-01-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "oligo.security",
@@ -727,14 +725,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-5aa545c901df820c7aa2",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--5aa545c901df820c7aa23b26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--teampcp",
@@ -808,21 +802,39 @@
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2020-01-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T03:50:40Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
       "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-03-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
@@ -841,14 +853,10 @@
         }
       ],
       "x_profile_object_id": "activity--teampcp-oss-supply-chain-2026",
+      "x_activity_type": "supply-chain-cybercrime",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。",
-      "x_reported_at": {
-        "value": "2026-05-11T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--teampcp",
@@ -923,7 +931,27 @@
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-03-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -3161,7 +3189,7 @@
       "spec_version": "2.1",
       "id": "relationship--ae712b67-b709-48a7-8f79-44be36a21852",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3169,14 +3197,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--86f06a20-a3c3-4541-8c39-34308f05a381",
       "description": "TeamPCP uses CanisterWorm.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e207950-7af3-4c03-8fef-320480afe715",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3184,14 +3219,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
       "description": "TeamPCP uses DUSTMAKER.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f779d36b-8845-4e92-aeb0-3489b3fab1c6",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3199,14 +3241,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--483c419f-de7b-492e-a5ee-504ca59c9535",
       "description": "TeamPCP uses Mini Shai-Hulud.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6ce8982c-aa72-4ea0-8cbd-ed53aba654b9",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3214,14 +3263,40 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
       "description": "TeamPCP uses SANDCLOCK.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-02-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a9518544-c77f-4088-a71e-491ee36aba99",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3229,14 +3304,40 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
       "description": "TeamPCP uses ShadowRay 2.0 ペイロード.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-06-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--19ec861f-d10c-4ab1-87d0-a7c2a8ef39a7",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3244,14 +3345,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "malware--3c6d17fb-e577-40ba-a9d6-3824b11e3526",
       "description": "TeamPCP uses TeamPCP Cloud Stealer.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--00bdb7ca-86d7-45ef-b28b-72f36b4b68ca",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3259,14 +3367,41 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
       "description": "TeamPCP uses masscan.cloud / natalstatus.org 基盤.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--afd6d066-0bee-4a03-a13d-27b85ff0565e",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3274,14 +3409,26 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
       "description": "TeamPCP targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f8dc784e-c523-4984-870c-e891225e46f6",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3289,14 +3436,51 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "description": "TeamPCP targets IT・ソフトウェア (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c2a4f793-a6d3-493a-b611-3d5b056c2016",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3304,14 +3488,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--b8671f95-b83a-4f29-805f-52df2db7a49c",
       "description": "TeamPCP targets 暗号資産・Web3 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--32ecb4f2-172b-4e24-ae90-221cae2da2b3",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3319,14 +3510,26 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
       "description": "TeamPCP targets クラウド・AI基盤運用 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cdca3465-8383-4ab1-8680-5503108bf2ce",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3334,14 +3537,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
       "description": "TeamPCP targets フィンテック (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c9a7493-da4d-48bb-8e3c-187277298184",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3349,14 +3559,26 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
       "description": "TeamPCP targets オープンソースソフトウェア (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--62be941f-207c-4655-8754-e180e2c852f8",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3364,14 +3586,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 is attributed or linked to TeamPCP.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--29caa6d0-e1e0-4f5b-bd6b-515c138505e3",
       "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3379,14 +3634,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1059-004-ndt-sh.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c59d6ce1-9c7a-4053-963d-d275195d0c00",
       "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3394,14 +3682,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1190-exposed-services.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f832b9f0-0416-434b-b382-02623b08d317",
       "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3409,14 +3730,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1486-ransomware.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7bd1fdbe-19d4-4c09-863f-1dd0d34f7b75",
       "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3424,14 +3778,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--activity-rule--829e65b1ac18ce5ea420.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3e7c337f-ac6c-4616-93a8-4b55f63c69f7",
       "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3439,14 +3826,47 @@
       "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
       "target_ref": "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
       "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--teampcp-exposed-cloud-services.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a3cd563c-aee3-479c-a4a7-b2708198783b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3454,14 +3874,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 is attributed or linked to TeamPCP.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5a6cf06d-80ad-4950-b271-96cdf6252149",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3469,14 +3932,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses malware--dustmaker.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fc17149b-6ec3-44d0-9c56-b4b7b3cb5c60",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3484,14 +3990,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses malware--sandclock.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1519a847-db81-4df2-9618-e83efd9f9a59",
       "created": "2026-09-21T03:50:40Z",
-      "modified": "2026-09-21T03:50:40Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3499,14 +4048,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "malware--3c6d17fb-e577-40ba-a9d6-3824b11e3526",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses malware--teampcp-cloud-stealer.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8f01f7a-1c9b-4345-ae81-14607a849430",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3514,14 +4106,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses infra--masscan-cloud.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e07657e-5237-4e40-95db-78218ff6956a",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3529,14 +4164,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--710c6ce8-691c-4476-b9c4-c54fe826c399",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3544,14 +4222,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1195-002-oss-supply-chain.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f46ea036-eaef-4f98-a889-dafb531fb933",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3559,14 +4280,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1552-001-build-secrets.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0f9f9271-5f82-4c00-8959-52cef761e897",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3574,14 +4338,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 affected victim--activity-rule--36589755fc4094ee8555.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8f9c04b2-860f-4ea3-a529-e031181c8cf4",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3589,14 +4396,57 @@
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
       "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 affected victim--teampcp-oss-projects-2026.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d4d18a6b-068c-4485-bc93-35a6a93178bb",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3604,14 +4454,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has stolen source code from victim environments including Mistral AI.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dba24a57-a39e-4327-b373-b5153279845e",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3619,14 +4476,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--39eb7ee4-4170-4a8f-a488-4f66997f94f7",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has hidden malicious payloads in the frame data of WAV audio files.(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7f806ec7-287b-466c-89e8-66493eb8bc34",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3634,14 +4498,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has cloned GitHub commit metadata including the author name, email, committer, and timestamps to use for impostor commits.(Citation: Aqua Security Blog Trivy Compromise APR 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also used legitimate file names such as msbuild.exe and ringtone.wav to mask malicious payloads.(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3543e590-74cc-4856-a460-fc7448c835f6",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3649,14 +4520,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--1e61c8c4-aaad-4c08-936f-948f66cc1866",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has leveraged malware capable of execution via the Linux CLI.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--acda33bb-30e0-4e05-ad6b-4cb56fd98f56",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3664,14 +4542,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--76538ea8-8b2c-4beb-bdb1-5517e034e117",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has poisoned PyPi packages with malicious code and has used a 13 file modular Python framework for data collection.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--49abb993-1723-4bf6-b854-96cde32233f4",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3679,14 +4564,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used the JavaScript runtime for malware delivery and injected malicious JavaScript into OpenVSX extensions.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2b39bfa1-55c6-4e59-b37f-809b70f2660a",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3694,14 +4586,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--79cee994-1632-482e-944e-64f3055cf778",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has queried the Kubernetes API for local service account tokens and has used  `kubectl` for lateral movement.(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Wiz TeamPCP KICS MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a70cdca2-2f56-427d-bec1-f5523ec3e424",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3709,14 +4608,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised credentials associated with open source security scanning tools and used them to push malicious code to all the resources the tools had access to.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7460f70f-8275-4e46-be06-5c13f6bc10a1",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3724,14 +4630,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--c5e46297-4125-42a7-9755-46ec343ceee1",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used compromised credentials for GitHub and software package repositories, including privileged service accounts, to inject malicious code into CI/CD pipelines.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--630f0bf9-1e11-41b9-b80e-d355cdae60dd",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3739,14 +4652,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--76069ad9-afd4-44a5-84f3-4630f61a162a",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified settings to publish private Aqua Security repositories to GitHub as public.(Citation: Aqua Security Blog Trivy Compromise APR 2026)\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c8d301b-2999-444b-9d3f-619da7ec6695",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3754,14 +4674,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified legitimate software binaries to retrieve secondary payloads from C2.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93c1e1bb-f02d-4894-a429-1cf3d55fe341",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3769,14 +4696,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--671e9671-7f4c-497b-8e70-7ad33a3a6ca4",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised VS Code and Open VSX IDE extensions.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3252c6db-ed05-4e0f-a175-eb11a3ef5b2f",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3784,14 +4718,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has exploited misconfigurations in GitHub Actions and vulnerabilities such as CVE-2026-33634 in the Aqua Security Trivy scanner and CVE-2025-55182 (React2Shell) against vulnerable cloud endpoints.(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--753fd220-ad4b-4843-b79c-f91d54623ec0",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3799,14 +4740,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ee7a95b0-b49c-483d-a5a7-794805abb145",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has conducted coordinated supply chain attacks targeting open-source developer infrastructure including the NPM, VS Code, Docker, and PyPi ecosystems to compromise multiple software packages.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)(Citation: Google AI Threat Tracker MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eb9801e9-4fbd-4601-9b9d-f604442512cf",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3814,14 +4762,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--5380102d-98fe-4e62-aa61-7c8628378857",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has deployed privileged DaemonSets to delete files on Kubernetes clusters and has executed recursive file deletions on non-containerized hosts.(Citation: Palo Alto TeamPCP MAR 2026)\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b8cff61-418e-4c34-b33e-cd9085e6b38a",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3829,14 +4784,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has deployed ransomware and has announced partnerships with ransomware groups including Vect and CipherForce in online criminal forums.(Citation: Palo Alto TeamPCP MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8bfba2d2-2ca9-4c63-b74c-7aad9e01b371",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3844,14 +4806,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--2c734b0d-46c0-4c01-bdae-12580901f352",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to steal access tokens from targeted cloud and developer environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8d1d4975-573f-4471-9f0d-1cab5d32795c",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3859,14 +4828,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ae9c62ac-b00a-4af4-913e-215a86074425",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used the systemd user service for malware persistence in targeted environments.(Citation: Wiz TeamPCP KICS MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--70538c57-dc40-4845-9536-a43375c52800",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3874,14 +4850,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--12de9d2f-50da-4eec-b3db-f6dd0f6810cc",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified software packages with preinstall scripts to download and execute malicious payloads.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c94d698-ee41-44df-ab12-8d7c31e57f1b",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3889,14 +4872,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has dropped malware into the Windows Startup folder to establish persistence.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eb042d1d-b829-4bfd-86d6-1deb213a758e",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3904,14 +4894,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--d15ac92d-2db7-42cd-953a-c3e5996ba3cc",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used stolen access tokens to inject malicious code into CI/CD workflows and to exfiltrate sensitive data from cloud, developer, and container environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--17d5c2ff-50ed-4291-a55c-d24d46005040",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3919,14 +4916,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--10cb5c83-a52b-4a52-ac51-0cd256ef54a9",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to extract SSH and GPG keys from victim environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eef6656e-3f0d-46e0-9964-58dca93798e4",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3934,14 +4938,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--911f6a14-2e23-4eb8-b594-11550167aabe",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised legitimate software release workflows resulting in malicious packages receiving legitimate project cryptographic signing.(Citation: Trend Micro TeamPCP MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4e30ff58-7a18-4d27-93f4-c35e565c6149",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3949,14 +4960,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ee1e9d4d-a20e-4f31-86ea-778fddb5bf56",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to exfiltrate cloud secrets from targeted environments including AWS, GCP, and Azure.(Citation: Sysdig TeamPCP MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--41e29366-ed9b-4d5a-a12b-4b98304a3a56",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3964,14 +4982,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ab7a449c-e71e-4eb9-9353-a68449d921ea",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used a hidden .lock file to establish a 12 hour cooldown period between re-drops for installed malware.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e6175973-2c56-47c7-92bb-93ae87ae6be2",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3979,14 +5004,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--20c90beb-a909-4fae-84f9-9a250a8af703",
       "description": "In May 2026 [TeamPCP](https://attack.mitre.org/groups/G1056) announced co-ownership of the BreachForums cybercriminal forum claiming responsibility for platform operations, dispute resolution, personnel vetting, and hosting monetary contests.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dc06bc9b-1fb2-488d-b2ec-805f533142e3",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3994,14 +5026,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has registered domains resembling legitimate victim sites such as scan.aquasecurtiy[.]org, checkmarx[.]zone, and git-tanstack[.]com to mask C2 and exfiltration endpoints.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also set up a dark web leak site to post stolen data.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c1a051d8-9f2e-4da2-bf6a-0fc1166d5d4e",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4009,14 +5048,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--f4edb6fd-01e1-4781-8b95-e2dfe97e55fb",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has leased infrastructure specifically for offensive operations including Google assets in AS396982.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93a572c5-5740-4faf-92e1-3d9c8f7c7d4d",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4024,14 +5070,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--6b65a723-72ea-4924-8a1f-c94cf823e2e3",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has set up Clouflare Tunnels for malware C2.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also used the session messenger network for decentralized, encrypted exfiltration via  *.getsession[.]org to recipient  ID `05f9e609d79eed391015e11380dee4b5c9ead0b6e2e7f0134e6e51767a87323026`.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--37288ad0-0723-4db2-a042-4b2c3a78cd83",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4039,14 +5092,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--a3954372-83b8-4fa9-9b61-213e02c76236",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used its own Telegram channel and X accounts @pcpcats and @xploitrsturtle2 for external communications.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f97718b8-1160-4fa7-bde5-629e5cc8696f",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4054,14 +5114,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--8df14407-cbaf-45fd-b524-e1699b2b54f0",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has developed and deployed custom malware including [TeamPCP Cloud Stealer](https://attack.mitre.org/software/S9041), [CanisterWorm](https://attack.mitre.org/software/S9042), and [Mini Shai-Hulud](https://attack.mitre.org/software/S9043).(Citation: Wiz Trivy Compromise MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--40527f86-be2f-40bf-8479-7e1cc1ac0733",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4069,14 +5136,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has pushed GitHub commits that modified the actions/checkout to reference an imposter commit that downloaded malicious files from attacker-controlled C2 domains.(Citation: Aqua Security Trivy Compromise MAR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2dbd122d-4526-4252-83e8-26fd189d4268",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4084,14 +5158,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--e967681d-aa83-4a1a-8e14-3b14d14dd325",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has engaged in cryptocurrency mining and theft.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also partnered with ransomware and data theft extortion groups, sold leaked code, and crowdsourced supply chain compromises by open-sourcing their [Mini Shai-Hulud](https://attack.mitre.org/software/S9043) malware.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--045e10c2-11a3-4a3b-ae99-28915a5572af",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4099,14 +5180,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--a8180374-aba6-409a-9868-83b4995e451a",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised trusted CI/CD pipelines by injecting credential-stealing payloads into legitimate workflows and software packages including open-source security tools Trivy and KICS, and AI gateway LiteLLM.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)(Citation: Google AI Threat Tracker MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33d96656-a5e9-4002-9e38-2e0aaa9b7d14",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4114,14 +5202,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ed5d4ebc-8853-4cc2-bcd8-c586daccf98a",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) has created Dune-themed GitHub repositories using stolen tokens.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93a7315c-8f5a-4269-bb9e-0cc4cd4303a5",
       "created": "2026-09-20T13:48:09Z",
-      "modified": "2026-09-20T13:48:09Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4129,14 +5224,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--2c24f715-4577-4c2d-a5b5-cc2ec5e521b9",
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) impersonated legitimate maintainers to push imposter commits to the Aquasecurity Trivy scanner GitHub repository.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5b061ee4-07c2-4605-a132-57ac653e3545",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4144,14 +5246,40 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
       "description": "侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-06-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aa0acd83-6a64-43ca-830e-8b53cc6174d8",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4159,14 +5287,41 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
       "description": "Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "month"
+      },
+      "start_time": "2020-01-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b4ba123d-3153-414d-a7cd-e0656ca8515e",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4174,14 +5329,46 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
       "description": "侵害済みPyPIパッケージと悪意あるプルリクエストを起点にGitHubリポジトリとGitHub Actionsを侵害し、配布物へ悪性コードを埋め込む。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-03-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7088d457-e897-48af-85eb-7d227bc19f66",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4189,14 +5376,26 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
       "description": "侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3cbd622d-cf0f-4e4a-8328-2755b51ace55",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4204,7 +5403,33 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
       "description": "SANDCLOCK資格情報スティーラーをビルド環境へ埋め込み、AWSキーとGitHubトークンを窃取する。",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-02-01T00:00:00Z"
     },
     {
       "type": "note",
@@ -4301,7 +5526,7 @@
         "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
         "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

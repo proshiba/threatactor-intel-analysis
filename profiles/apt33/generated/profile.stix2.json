@@ -1743,14 +1743,12 @@
       "spec_version": "2.1",
       "id": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
       "created": "2026-07-27T11:04:29Z",
-      "modified": "2026-09-19T00:00:49Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置",
       "description": "APT33が新しいTicklerマルウェアを使用し、米国やUAEの政府・防衛機関のネットワークにバックドアを設置。 2024年4月から7月にかけて、情報収集活動の一環としてこの新しいマルウェアを使用。 2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。 Microsoftの調査により、Azureインフラを利用した攻撃が明らかに。 APT33はIRGC（イラン革命防衛隊）に関連しているとされる。",
-      "first_seen": "2024-04-01T00:00:00Z",
-      "last_seen": "2024-07-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -1759,14 +1757,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-0e31a7a9dbd25f8d63f4",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--0e31a7a9dbd25f8d63f42325 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2024-08-29T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt33",
@@ -1822,7 +1816,27 @@
           "source--daily-f8c5f7e3f2497c4aec2e"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-04-01T00:00:00Z",
+      "last_seen": "2024-07-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -3322,7 +3336,7 @@
       "spec_version": "2.1",
       "id": "relationship--86671fde-9fa0-4eef-9a01-1f6c9acd3f6d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3330,14 +3344,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--8634d3fb-b2f1-4834-adf7-32ebf7c58a4a",
       "description": "APT33 uses AutoIt backdoor.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2d89a8c6-d8d4-4855-b80d-a7bd89f4fb34",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3345,14 +3366,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--03c20098-d3d6-48d1-adef-3719e8794cee",
       "description": "APT33 uses DEADWOOD.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--464b748c-18d1-47da-906f-ed75505d29ee",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3360,14 +3388,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--f1794c77-a3ca-4a47-88b9-47e3eb6fa39f",
       "description": "APT33 uses NanoCore.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--019df93e-ebbe-4593-a80a-2f32f86bfbfb",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3375,14 +3410,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--d699ca19-89e1-40a8-804c-a2215f34fd97",
       "description": "APT33 uses NETWIRE.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--64d6e1c6-4256-4a51-b4aa-8423272ea6ab",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3390,14 +3432,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--5381da7c-3dd3-42a5-b251-f8abccaff9e2",
       "description": "APT33 uses POWERTON.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--adb3e0cb-2fd4-40f7-8f11-1eefc468412e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3405,14 +3454,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--279e4bc3-8c45-4ba1-a99b-07f6c424bb69",
       "description": "APT33 uses StoneDrill.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3df83b4b-8c48-4501-b36a-1029cba28696",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3420,14 +3476,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "malware--8dd87ef9-2a40-4deb-a892-eb8e764fd607",
       "description": "APT33 uses TURNEDUP.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d9d135e-c4ae-4ad0-9a5a-88f786969664",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3435,14 +3498,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--95d0f3cf-c40f-4c0b-8f1b-07de25852d6f",
       "description": "APT33 uses Empire.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4cc53cac-f268-4ed5-b6ce-ab06c44d191c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3450,14 +3520,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--3a4bfdfb-57f8-4520-ae6e-9f8cb2e1b722",
       "description": "APT33 uses ftp.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--86f7f421-2857-4883-910a-ccf9db1022cb",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3465,14 +3542,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
       "description": "APT33 uses LaZagne.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9d1ac73d-4d23-4323-b0aa-f34b24112da9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3480,14 +3564,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "description": "APT33 uses Mimikatz.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--46e9e5c6-5c3c-426d-8335-5e299993410c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3495,14 +3586,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
       "description": "APT33 uses Net.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f5822a7-ba51-46c7-ac14-d25ffddc36b9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3510,14 +3608,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--2a21acca-6220-4dbb-bdde-1dd0c4a284e3",
       "description": "APT33 uses PoshC2.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aed5361f-2f85-4214-8e66-2cdf8e36ba6c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3525,14 +3630,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--87d24b2c-f766-48f6-8763-714c451179d4",
       "description": "APT33 uses PowerSploit.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--acc5bbb2-b559-4351-96b4-1291427eb8b0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3540,14 +3652,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--bc65433f-72e6-4665-91b7-22a6c38c1222",
       "description": "APT33 uses Pupy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--14a54a4d-6a85-4863-88a2-99c045f99365",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3555,14 +3674,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "tool--9fea3efa-cfcd-42ed-a606-e9ba0e397b95",
       "description": "APT33 uses Ruler.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a893ec05-b0e8-4eeb-a32c-f1254b9e32a9",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3570,14 +3696,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "identity--c90e4969-d0bd-4917-9dfd-54b0158a72c2",
       "description": "APT33 targets サウジアラビア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3d9be4f4-f338-4aa8-98eb-e67bfa643a16",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3585,14 +3718,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "identity--5b1edbf2-c05e-4429-9785-54232b3361bc",
       "description": "APT33 targets 米国 (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--80bf41c7-929b-4741-97c0-2f6e1692cb6a",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3600,14 +3740,26 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
       "description": "APT33 targets 韓国 (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e0a09a6-4c0a-41f4-ba2b-5beac7c572d0",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3615,14 +3767,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "identity--96519546-bc00-4d1c-8afa-3e6380623982",
       "description": "APT33 targets 運輸・航空・海運 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5123dda8-d85a-490a-86f6-490a7a7e6848",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3630,14 +3789,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "identity--bf11530c-f4cc-4607-b2fc-6719789d0786",
       "description": "APT33 targets エネルギー (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c2af9700-884f-497f-9b8d-72297eb532f0",
       "created": "2026-07-27T11:04:29Z",
-      "modified": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3645,14 +3811,47 @@
       "source_ref": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
       "target_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "description": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 is attributed or linked to APT33.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--78e4a25b-a917-4950-8565-e20b73dec44a",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3660,14 +3859,47 @@
       "source_ref": "campaign--72e3f34a-37ba-45ae-a612-f3fc8ac11a8f",
       "target_ref": "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
       "description": "APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 uses ttp--activity-rule--6150c1b75682e486b452.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4090ec17-f4ba-4573-ba51-07b375737d15",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3675,14 +3907,41 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--cb154eb2-f3af-49aa-ade6-a162fcd75049",
       "description": "2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/",
+          "external_id": "source--daily-f8c5f7e3f2497c4aec2e"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2024-07-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9449e723-c5c8-424c-b7ab-de6032dbbd76",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3690,14 +3949,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349), [Mimikatz](https://attack.mitre.org/software/S0002), and ProcDump to dump credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed6e31f6-e40a-4f15-8c08-4164a46e0ce7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3705,14 +3971,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--a274589a-08ff-430d-b637-a25f8b4d9cb7",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349) to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6511a190-01a4-402d-9b93-0ef39e52af4b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3720,14 +3993,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--b0dba519-45ce-401b-a37d-254f41f610f8",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349) to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--65fb1b96-c9ef-414e-9d74-ec9d8ddca0af",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3735,14 +4015,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used base64 to encode payloads.(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--63ea3c9c-0fd8-46af-9d60-cbb71675fad7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3750,14 +4037,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--37df2566-aeaf-43aa-9761-66d0d7cf7741",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used SniffPass to collect credentials by sniffing network traffic.(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e9c57dee-dd82-448d-b281-bbfebf0e81d2",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3765,14 +4059,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--bafb7f8c-427e-4afa-aa71-4ba68ac7f462",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used FTP to exfiltrate files (separately from the C2 channel).(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2fb89a57-1f88-4123-9495-6360a674215c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3780,14 +4081,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has created a scheduled task to execute a .vbe file multiple times a day.(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7588f9f8-7f99-4dc8-b5d3-ee9e06e79f6a",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3795,14 +4103,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has utilized PowerShell to download files from the C2 server and run various scripts. (Citation: Symantec Elfin Mar 2019)(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--41d05955-8789-4cf3-9fad-35d81573dd1d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3810,14 +4125,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used VBScript to initiate the delivery of payloads.(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8aa8506d-6a3a-479c-bc88-fb92c23eb473",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3825,14 +4147,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a publicly available exploit for CVE-2017-0213 to escalate privileges on a local system.(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3ed80ee3-b458-4d90-b7db-bf3ba2e9d62d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3840,14 +4169,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used HTTP for command and control.(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3bf30ade-baaa-450a-8dda-22bb1afb57da",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3855,14 +4191,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used valid accounts for initial access and privilege escalation.(Citation: FireEye APT33 Webinar Sept 2017)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8db47aff-1494-4e54-8f22-068292372e9b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3870,14 +4213,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--c5e46297-4125-42a7-9755-46ec343ceee1",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used compromised Office 365 accounts in tandem with [Ruler](https://attack.mitre.org/software/S0358) in an attempt to gain control of endpoints.(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d80a4149-f091-4527-84aa-24ec13e659ba",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3885,14 +4235,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has downloaded additional files and programs from its C2 server.(Citation: Symantec Elfin Mar 2019)(Citation: Microsoft Holmium June 2020)\t\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d6dd4665-f97a-4129-8ebd-c87ec3011190",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3900,14 +4257,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used password spraying to gain access to target systems.(Citation: FireEye APT33 Guardrail)(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--84a0a635-c199-4d19-9f9d-4c41bd6a6d14",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3915,14 +4279,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--59e1f8bb-d7dc-43a1-a846-9aac9454642d",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used base64 to encode command and control traffic.(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b054ca38-293b-4568-8dde-c2e7240ebdf8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3930,14 +4301,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--f2869783-2e60-4f4f-8373-9a6980476f95",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has attempted to exploit a known vulnerability in WinRAR (CVE-2018-20250), and attempted to gain remote code execution via a security bypass vulnerability (CVE-2017-11774).(Citation: Symantec Elfin Mar 2019)(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--865f1dd7-5d2e-452f-bff0-7bdbc250ba0c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3945,14 +4323,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has lured users to click links to malicious HTML applications delivered via spearphishing emails.(Citation: FireEye APT33 Sept 2017)(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b955892-07cd-40e4-b388-e4949adfec68",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3960,14 +4345,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used malicious e-mail attachments to lure victims into executing malware.(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--19ca63c5-fc38-4337-9da5-cf826525e27c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3975,14 +4367,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--1bef545b-6975-4c78-ad5b-9a55549eec82",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has attempted to use WMI event subscriptions to establish persistence on compromised hosts.(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--39dd7ade-e66a-434f-9e74-122572e6afa5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3990,14 +4389,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has deployed a tool known as [DarkComet](https://attack.mitre.org/software/S0334) to the Startup folder of a victim, and used Registry run keys to gain persistence.(Citation: Symantec Elfin Mar 2019)(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--378f8d15-02d2-4037-8945-49f3ccf16987",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4005,14 +4411,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--28dc4c88-e7a1-4c89-9ca3-0061b6909ab3",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349) to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c54d4845-a422-448b-a0b3-5ddc655ecb2d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4020,14 +4433,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--278d56aa-ce97-4467-b2f4-a69a41e81354",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like Gpppassword to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--da3ccbc7-e42d-42b4-8fa5-b530b948f446",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4035,14 +4455,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349) to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--042d4299-a6ac-4a52-92e2-8561cfd5c038",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4050,14 +4477,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used a variety of publicly available tools like [LaZagne](https://attack.mitre.org/software/S0349) to gather credentials.(Citation: Symantec Elfin Mar 2019)(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e9e6c097-71b1-4831-8abc-5c5cdc5f77ea",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4065,14 +4499,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used WinRAR to compress data prior to exfil.(Citation: Symantec Elfin Mar 2019)\t\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22a842ac-86c0-4d93-a8e2-3305f55c539f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4080,14 +4521,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has sent spearphishing e-mails with archive attachments.(Citation: Microsoft Holmium June 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--734afab6-48a3-40fd-bbfc-58193531e514",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4095,14 +4543,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has sent spearphishing emails containing links to .hta files.(Citation: FireEye APT33 Sept 2017)(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0fa3aad2-4d3c-4275-9c16-7ada57b5a64e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4110,14 +4565,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--36aab7ff-faa2-463a-8aee-aa8edc729905",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used HTTP over TCP ports 808 and 880 for command and control.(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--61727329-d6c2-458f-ba1f-9a20e419db78",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4125,14 +4587,21 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--2b2ec174-8d74-4b37-b58e-22946fa8cd2b",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has used AES for encryption of command and control traffic.(Citation: FireEye APT33 Guardrail)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f287708c-290a-45d6-80c6-b8dd2bd99925",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4140,7 +4609,14 @@
       "source_ref": "intrusion-set--72055fbe-e3d6-4ee0-a6dd-4dd9dc2044f7",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[APT33](https://attack.mitre.org/groups/G0064) has obtained and leveraged publicly-available tools for early intrusion activities.(Citation: FireEye APT33 Guardrail)(Citation: Symantec Elfin Mar 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -4681,7 +5157,7 @@
         "indicator--e7d618cd-603f-402e-9b5e-4785439ccae9",
         "indicator--e5b090b9-01f0-4411-93e5-e3ace6984af0"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

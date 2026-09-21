@@ -1,0 +1,994 @@
+{
+  "type": "bundle",
+  "id": "bundle--7ce837a6-e427-4273-aed6-79d0ff491b6f",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "One-Way Communication",
+      "description": "FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1102.003",
+          "url": "https://attack.mitre.org/techniques/T1102/003/"
+        },
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--27317de8fad143103d24",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--unc4899-tradertraitor-india-it-services-2026"
+      ],
+      "x_malware_refs": [
+        "malware--flatroof",
+        "malware--roofdeck"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "identity_class": "organization",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--02cdbdef3e6b8d3a8be3",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--flatroof",
+        "malware--roofdeck"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--27317de8fad143103d24"
+      ],
+      "x_affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "incident",
+      "spec_version": "2.1",
+      "id": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_profile_object_id": "activity--unc4899-tradertraitor-india-it-services-2026",
+      "x_activity_type": "intrusion",
+      "x_stix_object_type": "incident",
+      "x_confidence": "medium",
+      "x_analyst_notes": "一次情報源の公開一覧巡回(SentinelLabs)で検知し、原文を確認して取り込んだ。tech-memo daily-news には未掲載であり、日次レビューキュー経由の取込ではない。原文は本侵害の実行主体を TraderTraitor と明記しており、製品・ベンダーの利用ではなく攻撃実行主体としての記述である。活動期間は原文が明示する観測日のみを用い、公開日 2026-09-18 は reported_at として分離した。被害組織名は原文に記載がないため victim_refs は空とする。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc4899",
+          "name": "UNC4899",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--flatroof",
+            "malware--roofdeck"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--27317de8fad143103d24"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--targeting-audit--country--a5e16727ee50a3229e2f"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--02cdbdef3e6b8d3a8be3"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+          },
+          "last_observed": {
+            "value": "2026-06-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+          },
+          "reported_at": {
+            "value": "2026-09-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--targeting-audit--country--a5e16727ee50a3229e2f"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC4899",
+      "aliases": [
+        "TraderTraitor",
+        "PUKCHONG",
+        "Jade Sleet"
+      ],
+      "description": "UNC4899の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc4899",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "TraderTraitor",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        },
+        {
+          "name": "PUKCHONG",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        },
+        {
+          "name": "Jade Sleet",
+          "vendor": "SentinelLabs",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--sentinellabs-tradertraitor-2026-09"
+          ],
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC4899の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=インド、ブラジル、北朝鮮。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--55a96c08-7abb-4097-9523-416937f3f1db",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "India",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--a5e16727ee50a3229e2f",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "IND",
+      "x_opencti_reference_id": "location--7c193f95-f96b-42eb-8569-0834349b1bba",
+      "x_opencti_aliases": [
+        "IN",
+        "IND",
+        "インド"
+      ],
+      "latitude": 20.593684,
+      "longitude": 78.96288,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FLATROOF",
+      "description": "ARM64 の Rust 製 macOS バックドア。\"SystemUpdate\" として配置され、ブラウザーデータ、ターミナル履歴、プロセス一覧、システムプロファイルを収集し Telegram 経由で外部送信する。次段ペイロードに対して Gatekeeper の検証を抑止する。SentinelLabs が以前 macOS.Gaslight として報告した実装と同一である。",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_profile_object_id": "malware--flatroof",
+      "x_confidence": "medium",
+      "x_analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。",
+      "is_family": true,
+      "malware_types": [
+        "macOS"
+      ],
+      "aliases": [
+        "FLATROOF",
+        "macOS.Gaslight"
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--6c4a366a-d582-440f-8c1d-611022aed385",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ROOFDECK",
+      "description": "ARM64 の Rust 製 macOS バックドア。C2 の探索に Nostr リレーネットワークを用いる。シェル実行、ファイル操作、LaunchAgents による永続化に対応し、埋め込んだ RSA 公開鍵でコマンドの署名を検証する。",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_profile_object_id": "malware--roofdeck",
+      "x_confidence": "medium",
+      "x_analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。",
+      "is_family": true,
+      "malware_types": [
+        "macOS"
+      ],
+      "aliases": [
+        "ROOFDECK"
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--49403a5e-4397-4db8-b47a-31fafe904012",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "location--55a96c08-7abb-4097-9523-416937f3f1db",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) targets target--targeting-audit--country--a5e16727ee50a3229e2f.\n\nEvidence: 活動「インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        },
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6d056820-c752-4360-a99d-40e4939db26c",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "malware--6c4a366a-d582-440f-8c1d-611022aed385",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses malware--roofdeck.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7e26da5d-0c5d-4781-8d89-23313599ff3c",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "location--55a96c08-7abb-4097-9523-416937f3f1db",
+      "description": "UNC4899 targets インド (profile target category: countries).\n\nEvidence: 活動「インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        },
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--843beec8-c926-41b4-b556-c23860728c9c",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "malware--6c4a366a-d582-440f-8c1d-611022aed385",
+      "description": "UNC4899 uses ROOFDECK.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 初回実行と C2 接続を観測した日 (05:00:41 UTC 以降)"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 初回実行と C2 接続を観測した日 (05:00:41 UTC 以降)",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-03-29T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ab99e7fa-69a0-47fb-a5c1-a790a8989b24",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) is attributed or linked to UNC4899.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b02a0919-fbee-42a5-a834-dd12d2c96dd1",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "description": "FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日; activity-period",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b4e2dd12-e3ad-45f0-b336-e64ad4e6a844",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses ttp--activity-rule--27317de8fad143103d24.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c31adabc-0aa1-4b32-833a-33d3f251457a",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) affected victim--activity-rule--02cdbdef3e6b8d3a8be3.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cf098e58-e080-4b04-bab3-e13612abe7ad",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+      "target_ref": "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses malware--flatroof.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 最後に観測された C2 ビーコンの日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--db699ce5-2383-4eec-ba4b-a47b46bd5ee5",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
+      "description": "UNC4899 uses FLATROOF.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-04-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 第3段階の配備と当初インプラントの削除が行われた日"
+      },
+      "x_temporal_basis": {
+        "first": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日",
+        "last": "SentinelLabs: 第3段階の配備と当初インプラントの削除が行われた日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-03-18T00:00:00Z",
+      "stop_time": "2026-04-20T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--9413fe45-0acf-41ba-bfa5-f8d312005ba1",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Don't Call Us, We'll Call Your APIs | TraderTraitor Backdoors Resurface on Victim With No Crypto Ties",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-18T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+        "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+        "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+        "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
+        "malware--6c4a366a-d582-440f-8c1d-611022aed385",
+        "relationship--49403a5e-4397-4db8-b47a-31fafe904012",
+        "relationship--6d056820-c752-4360-a99d-40e4939db26c",
+        "relationship--7e26da5d-0c5d-4781-8d89-23313599ff3c",
+        "relationship--843beec8-c926-41b4-b556-c23860728c9c",
+        "relationship--ab99e7fa-69a0-47fb-a5c1-a790a8989b24",
+        "relationship--b02a0919-fbee-42a5-a834-dd12d2c96dd1",
+        "relationship--b4e2dd12-e3ad-45f0-b336-e64ad4e6a844",
+        "relationship--c31adabc-0aa1-4b32-833a-33d3f251457a",
+        "relationship--cf098e58-e080-4b04-bab3-e13612abe7ad",
+        "relationship--db699ce5-2383-4eec-ba4b-a47b46bd5ee5"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09",
+          "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--sentinellabs-tradertraitor-2026-09",
+      "x_evidence_slice_scope": "incident:actor--unc4899:activity--unc4899-tradertraitor-india-it-services-2026",
+      "x_source_publisher": "SentinelLabs (SentinelOne)",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--8f7ccbae-de4c-43f1-b082-5b0d5067a2e2",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC4899 / インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+        "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+        "incident--8d4754fe-0d50-4227-8c70-4a7604ac36ba",
+        "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+        "location--55a96c08-7abb-4097-9523-416937f3f1db",
+        "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
+        "malware--6c4a366a-d582-440f-8c1d-611022aed385",
+        "relationship--49403a5e-4397-4db8-b47a-31fafe904012",
+        "relationship--6d056820-c752-4360-a99d-40e4939db26c",
+        "relationship--7e26da5d-0c5d-4781-8d89-23313599ff3c",
+        "relationship--843beec8-c926-41b4-b556-c23860728c9c",
+        "relationship--ab99e7fa-69a0-47fb-a5c1-a790a8989b24",
+        "relationship--b02a0919-fbee-42a5-a834-dd12d2c96dd1",
+        "relationship--b4e2dd12-e3ad-45f0-b336-e64ad4e6a844",
+        "relationship--c31adabc-0aa1-4b32-833a-33d3f251457a",
+        "relationship--cf098e58-e080-4b04-bab3-e13612abe7ad",
+        "relationship--db699ce5-2383-4eec-ba4b-a47b46bd5ee5",
+        "report--9413fe45-0acf-41ba-bfa5-f8d312005ba1"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "incident",
+      "x_profile_id": "actor--unc4899",
+      "x_activity_id": "activity--unc4899-tradertraitor-india-it-services-2026"
+    }
+  ]
+}

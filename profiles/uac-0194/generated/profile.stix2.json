@@ -129,7 +129,7 @@
       "spec_version": "2.1",
       "id": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -143,14 +143,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-1f015b78b237d64334f6",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--1f015b78b237d64334f68ab5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ウクライナを標的にしたロシアの攻撃グループUAC-0194による攻撃と特定",
-      "x_reported_at": {
-        "value": "2024-11-14T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--uac-0194",
@@ -213,6 +209,24 @@
           "source--daily-f0e69b17ee92aa7c00c6"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -367,7 +381,7 @@
       "spec_version": "2.1",
       "id": "relationship--44640870-b91d-4bd1-bb60-c889101d9882",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -375,14 +389,21 @@
       "source_ref": "intrusion-set--d1652657-d0e8-4cdd-84b4-169c44cc3a71",
       "target_ref": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
       "description": "UAC-0194 targets ウクライナ (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8878f97-af4e-4141-a1fb-0b5058675cba",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -390,14 +411,21 @@
       "source_ref": "intrusion-set--d1652657-d0e8-4cdd-84b4-169c44cc3a71",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "UAC-0194 targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--66ade638-74d4-46ba-81c0-933ed5c82800",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -405,14 +433,45 @@
       "source_ref": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "target_ref": "intrusion-set--d1652657-d0e8-4cdd-84b4-169c44cc3a71",
       "description": "Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 is attributed or linked to UAC-0194.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2f2f4f41-f7a0-4a32-9017-ca63eb58c383",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -420,14 +479,45 @@
       "source_ref": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "target_ref": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
       "description": "Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 targets target--activity-rule--country--36f1b9323d5faab92f39.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--37ba5076-8367-4c02-a2b1-86a8f4746f63",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -435,14 +525,45 @@
       "source_ref": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--491a5416-f151-4270-8b76-ccac777c9558",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -450,14 +571,45 @@
       "source_ref": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "target_ref": "attack-pattern--3d7dd06e-d8e2-4350-bf85-e427287264a8",
       "description": "Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 uses ttp--activity-rule--b83e6fdad771428695b9.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0ac17e5d-fac1-40a6-88bc-37d26582a2b8",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -465,14 +617,45 @@
       "source_ref": "campaign--eaf1d156-46d2-4009-95d0-4b837db2d2d0",
       "target_ref": "identity--dfddaf84-856c-428c-9f15-1157539dcd03",
       "description": "Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 affected victim--activity-rule--7e98c96c4a9ec0bb062d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-11-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8788d396-741c-474f-aaa3-232fb54f47e6",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -480,7 +663,14 @@
       "source_ref": "intrusion-set--d1652657-d0e8-4cdd-84b4-169c44cc3a71",
       "target_ref": "attack-pattern--3d7dd06e-d8e2-4350-bf85-e427287264a8",
       "description": "この攻撃は、フィッシングメールのリンクを介して教育省サーバーから拡散されていました。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/",
+          "external_id": "source--daily-f0e69b17ee92aa7c00c6"
+        }
+      ]
     },
     {
       "type": "note",
@@ -522,7 +712,7 @@
         "identity--dfddaf84-856c-428c-9f15-1157539dcd03",
         "attack-pattern--3d7dd06e-d8e2-4350-bf85-e427287264a8"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }
