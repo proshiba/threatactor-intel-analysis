@@ -686,7 +686,7 @@ class ActivityIntelligenceTests(unittest.TestCase):
             "basis": "source-publication",
         }
         profile = {
-            "schema_version": "1.3.0",
+            "schema_version": "1.4.0",
             "activities": [activity],
             "ttps": [],
             "victim_cases": [],

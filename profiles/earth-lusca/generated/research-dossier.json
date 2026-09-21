@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--earth-lusca",
   "actor_name": "Earth Lusca",
-  "profile_updated_at": "2026-09-21T04:35:02Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "canonical-present",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 2,
       "dated_activities": 1,
       "relationships": 2,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 1,
       "malware": 4,
       "activity_linked_malware": 1,
       "tools": 6,
@@ -179,6 +185,96 @@
         ],
         "target_actor_ref": "actor--winnti",
         "target_resolution": "catalog-profile"
+      }
+    ],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--earth-lusca-bthcam-driver",
+        "category": "malware",
+        "pivot_type": "driver-sha1",
+        "value": "bthcam.sys SHA1 44DC4A08C5EB0972C8E18B0E01284E06F09006BB",
+        "description": "DriverLoader/bthcam.sys used a leaked PastDSE certificate while loading encrypted drivers in FishMonger activity. The report describes telemetry from 2023-2024; its 2026 publication date is not an observation date.",
+        "stix_pattern": "[file:hashes.'SHA-1' = '44DC4A08C5EB0972C8E18B0E01284E06F09006BB']",
+        "attribution_scope": "shared",
+        "malware_refs": [
+          "malware--daily-f196d446e69f62aacb40"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [
+          "activity--daily-e4b448f8c69f2fc0456e"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:2c40a051a613191714f3a2be0a982de28797c5922ee344c49c3ee12d2026cd92"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--earth-lusca-bthcam-2023-2024",
+            "observed_at": {
+              "value": "2023-01-01T00:00:00Z",
+              "precision": "range",
+              "status": "known",
+              "basis": "telemetry-range-2023/2024"
+            },
+            "source_ref": "source--eset-fishmonger-sprysocks-windows-2026",
+            "activity_ref": "activity--daily-e4b448f8c69f2fc0456e",
+            "context": "ESET telemetry associated the DriverLoader hash with SprySOCKS for Windows activity during 2023-2024.",
+            "count": 1,
+            "count_basis": "documented-samples"
+          }
+        ],
+        "first_observed": {
+          "value": "2023-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "telemetry-range-start"
+        },
+        "last_observed": {
+          "value": "2024-12-31T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "telemetry-range-end"
+        },
+        "observation_count": 1,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "historical-only",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "One exact sample in a two-year telemetry range; no current file-intelligence check was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "edr",
+            "query": "file.sha1=44DC4A08C5EB0972C8E18B0E01284E06F09006BB OR file.name=bthcam.sys",
+            "purpose": "Find the exact DriverLoader sample and candidate filename reuse.",
+            "requires_validation": true,
+            "false_positive_notes": "Hash is strong; filename is weak. Validate encrypted-driver loading behavior, signer metadata and related SprySOCKS artifacts."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-fishmonger-sprysocks-windows-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--505e2d2d494a742f1dbfcb34",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Earth Lusca research retains the driver-sha1 pivot bthcam.sys SHA1 44DC4A08C5EB0972C8E18B0E01284E06F09006BB: DriverLoader/bthcam.sys used a leaked PastDSE certificate while loading encrypted drivers in FishMonger activity. The report describes telemetry from 2023-2024; its 2026 publication date is not an observation date.",
+            "evidence_refs": [
+              "source--eset-fishmonger-sprysocks-windows-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
       }
     ],
     "activity_timeline": [
@@ -4280,7 +4376,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 87,
+    "supported": 88,
     "partially-supported": 11
   },
   "evidence_catalog": {
@@ -5492,6 +5588,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--eset-fishmonger-sprysocks-windows-2026": {
+      "source_id": "source--eset-fishmonger-sprysocks-windows-2026",
+      "path": "https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/",
+      "title": "FishMonger's arsenal upgraded: SprySOCKS for Windows",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/"
     }
   },
   "research_gaps": [

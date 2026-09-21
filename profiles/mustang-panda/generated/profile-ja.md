@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -55,6 +55,18 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | LuminousMoth | overlaps-with | MITRE ATT&CK 19.2 tracks Mustang Panda (G0129) and LuminousMoth (G1014) separately and describes their connection as based on targeting, TTP, and infrastructure overlap. | 高 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -161,6 +173,36 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--reddelta-cloudflare-origin-ca-san | infrastructure | tls-origin-certificate-san-discovery | Cloudflare Origin CA certificate plus known RedDelta seed domain/SAN | generic | 100 | 1 | 1 | 2023-07 | 2024-12 | reobserved | unknown | 高 | `source--recorded-future-reddelta-cloudflare-2025` |
+| hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate | malware | malicious-driver-and-code-signing-certificate-serial | msagent.sys MD5 2d7c8780e97409770a9d4f31c66c9d63 or 9460e150e1981d5c165043520c5c12fe; signer Nanjing Ranyi Technology Co., Ltd.; certificate serial 3e:62:dc:5d:8d:61:2a:26:33:e7:6b:df:d6:07:19:dd | shared | 5 | 1 | 1 | 不明 | 不明 | reused | unknown | 高 | `source--daily-9232cff77ce0ef8f62b1` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--reddelta-cloudflare-origin-ca-san | pivot-observation--reddelta-origin-ca-2023-2024 | 2023-07-01T00:00:00Z | 100 | source-stated | activity--reddelta-modified-plugx-infection-chain-operations | source--recorded-future-reddelta-cloudflare-2025 | Certificate/SAN analysis identified a minimum of 100 actor-controlled domains over the campaign range. |
+| hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate | pivot-observation--coolclient-msagent-driver-late-2025-2026 | 不明 | 2 | documented-samples | activity--daily-b8b3301d837c22e89850 | source--daily-9232cff77ce0ef8f62b1 | Kaspersky listed two distinct MD5 values for msagent.sys and described the updated CoolClient investigation as occurring in late 2025 and 2026 across multiple intrusions. No exact deployment date was published, so the report date is not used as an observation date. |
+| hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate | pivot-observation--nanjing-ranyi-cert-older-malicious-drivers | 不明 | 3 | minimum-events | なし | source--daily-9232cff77ce0ef8f62b1 | Kaspersky found several older malicious drivers signed with the same certificate and compiled around 2013. 'Several' is represented only as a minimum of three samples; the compilation period and the certificate's August 2013-September 2014 validity are context, not operational observation dates. The source explicitly found no direct link from these samples to the CoolClient activity. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--reddelta-cloudflare-origin-ca-san | shodan | `port:443 ssl.cert.issuer.cn:"CloudFlare Origin SSL Certificate Authority" ssl.cert.subject.cn:"<known-seed-domain>"` | Pivot from a verified campaign seed into certificate SAN/subject reuse. | 要 | Never run or attribute on issuer alone. Require a verified seed/SAN and PlugX, registrar, victimology or timing corroboration. |
+| hunting-pivot--reddelta-cloudflare-origin-ca-san | censys | `host.services: (port = "443" and cert.names = "<known-seed-domain>")` | Inspect current certificate/SAN history around a verified seed. | 要 | Cloudflare Origin CA is broadly used by legitimate customers. Replace the placeholder only with a verified seed domain and corroborate certificate SANs, timing, malware configuration and victimology. |
+| hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate | file-intelligence | `authenticode.serial=3e62dc5d8d612a2633e76bdfd60719dd AND signer.organization="Nanjing Ranyi Technology Co., Ltd."` | Locate files signed with the documented certificate, then separate the two CoolClient driver samples from unrelated historical samples. | 要 | The certificate is shared by malicious drivers that Kaspersky could not link to CoolClient. Require the exact msagent.sys hashes or corroborating PDB, registry, service and IOCTL behavior before associating a result with CoolClient; never attribute the certificate holder. |
+| hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate | edr | `file.md5 IN (2d7c8780e97409770a9d4f31c66c9d63,9460e150e1981d5c165043520c5c12fe) OR (file.name="msagent.sys" AND registry.path CONTAINS "SYSTEM\\RNG\\Wid_H1deF5")` | Find the exact reported drivers or the distinctive driver filename plus stealth-configuration registry family. | 要 | The filename alone is not distinctive. Validate the signature serial, service creation, ToolTool/msagent device artifacts, IOCTLs such as 0x2221E0, and associated CoolClient components. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -377,11 +419,11 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 
 ## IOC／artifact概要
 
-- IOC値: 9件
-- IOC観測: 18件
+- IOC値: 24件
+- IOC観測: 33件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 6件（`artifacts.csv`）
+- 非IOC artifact観測: 19件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -473,6 +515,7 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--gtig-unc6384-captive-portal-2025 | Deception in Depth: PRC-Nexus Espionage Campaign Hijacks Web Traffic to Target Diplomats | Google Threat Intelligence Group | 2025-08-25 | https://cloud.google.com/blog/topics/threat-intelligence/prc-nexus-espionage-targets-diplomats | vendor-threat-research | TLP:CLEAR | 高 |
+| source--recorded-future-reddelta-cloudflare-2025 | RedDelta Abuses Cloudflare to Target Governments in Southeast Asia and Europe | Recorded Future Insikt Group | 2025-01-09 | https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-cn-2025-0109.pdf | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -46,6 +46,14 @@ SUPPORTED_SUFFIXES = {
     ".txt",
 }
 
+CERTIFICATE_HASH_ALGORITHMS = {"md5", "sha1", "sha256", "sha512"}
+CERTIFICATE_HASH_LENGTHS = {
+    "md5": 32,
+    "sha1": 40,
+    "sha256": 64,
+    "sha512": 128,
+}
+
 HASH_RE = re.compile(r"(?<![0-9A-Fa-f])(?:[0-9A-Fa-f][ :.-]?){32,128}(?![0-9A-Fa-f])")
 IPV4_RE = re.compile(r"(?<!\d)(?:\d{1,3}(?:\.|\[\.\]|\(\.\))){3}\d{1,3}(?!\d)")
 IPV6_RE = re.compile(r"(?<![0-9A-Fa-f:])(?:[0-9A-Fa-f]{1,4}:){2,7}[0-9A-Fa-f]{0,4}(?![0-9A-Fa-f:])")
@@ -672,6 +680,68 @@ def explicit_mapped_values(
     return iocs, artifacts
 
 
+def certificate_hash_algorithm(
+    record: dict[str, Any], metadata: dict[str, Any], kind: str
+) -> str | None:
+    """Return the explicitly mapped certificate digest algorithm, if present.
+
+    A certificate thumbprint is not a file hash.  Structured sources can map a
+    dedicated ``hash_algorithm`` column so a SHA-1 thumbprint is emitted as an
+    X.509 hash pattern rather than silently becoming SHA-256.  The legacy
+    SHA-256 default remains for existing manifests that do not provide this
+    optional column.
+    """
+
+    if kind != "certificate-fingerprint":
+        return None
+    column = metadata.get("field_map", {}).get("hash_algorithm")
+    if not column or not record.get("fields", {}).get(column):
+        return "sha256"
+    algorithm = re.sub(
+        r"[^a-z0-9]", "", record["fields"][column].strip().lower()
+    )
+    if algorithm not in CERTIFICATE_HASH_ALGORITHMS:
+        raise ValueError(
+            f"Unsupported certificate fingerprint algorithm: "
+            f"{record['fields'][column]}"
+        )
+    return algorithm
+
+
+def explicitly_excluded_ioc(
+    metadata: dict[str, Any], kind: str, normalized: str
+) -> bool:
+    """Apply a source-local, reviewable correction to heuristic extraction."""
+
+    for item in metadata.get("excluded_iocs", []):
+        excluded_kind = str(item.get("type", "")).lower()
+        excluded_value = normalize_observable(
+            excluded_kind, str(item.get("value", ""))
+        )
+        if excluded_kind == kind and excluded_value == normalized:
+            return True
+    return False
+
+
+def validate_certificate_fingerprint(
+    kind: str, normalized: str, hash_algorithm: str | None
+) -> None:
+    """Fail before aggregation when a certificate digest label is impossible."""
+
+    if kind != "certificate-fingerprint":
+        return
+    expected = CERTIFICATE_HASH_LENGTHS.get(str(hash_algorithm or ""))
+    if expected is None:
+        raise ValueError(
+            "certificate-fingerprint requires md5, sha1, sha256 or sha512"
+        )
+    if len(normalized) != expected:
+        raise ValueError(
+            f"certificate-fingerprint {hash_algorithm} requires {expected} "
+            f"hex characters, got {len(normalized)}"
+        )
+
+
 def classified_record_values(
     record: dict[str, Any], metadata: dict[str, Any]
 ) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]]]:
@@ -775,9 +845,9 @@ def main() -> int:
     )
 
     source_items = expand_sources(manifest, repository_root)
-    indicator_observations: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
-    indicator_raw: dict[tuple[str, str], str] = {}
-    indicator_dispositions: dict[tuple[str, str], set[str]] = defaultdict(set)
+    indicator_observations: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    indicator_raw: dict[tuple[str, str, str], str] = {}
+    indicator_dispositions: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     artifact_rows: list[dict[str, Any]] = []
     errors: list[dict[str, str]] = []
     processed = 0
@@ -822,16 +892,25 @@ def main() -> int:
                     normalized = normalize_observable(kind, raw)
                     if not normalized:
                         continue
-                    key = (kind, normalized)
+                    if explicitly_excluded_ioc(source, kind, normalized):
+                        continue
+                    hash_algorithm = certificate_hash_algorithm(record, source, kind)
+                    validate_certificate_fingerprint(
+                        kind, normalized, hash_algorithm
+                    )
+                    key = (kind, normalized, hash_algorithm or "")
                     location_json = json.dumps(record["location"], sort_keys=True)
                     observation = {
                         "observation_id": stable_id(
-                            "observation", actor_ref, kind, normalized,
+                            "observation", actor_ref, kind,
+                            hash_algorithm or "", normalized,
                             source["source_id"], location_json
                         ),
                         **common,
                         "raw_value": raw,
                     }
+                    if hash_algorithm:
+                        observation["hash_algorithm"] = hash_algorithm
                     if observation["observation_id"] not in {
                         item["observation_id"] for item in indicator_observations[key]
                     }:
@@ -889,7 +968,9 @@ def main() -> int:
             )
 
     indicators = []
-    for (kind, normalized), observations in sorted(indicator_observations.items()):
+    for (kind, normalized, hash_algorithm), observations in sorted(
+        indicator_observations.items()
+    ):
         campaigns = sorted(
             {ref for observation in observations for ref in observation["campaign_refs"]}
         )
@@ -902,19 +983,21 @@ def main() -> int:
         roles = sorted(
             {role for observation in observations for role in observation["roles"]}
         )
-        dispositions = indicator_dispositions[(kind, normalized)]
+        key = (kind, normalized, hash_algorithm)
+        dispositions = indicator_dispositions[key]
         disposition = (
             "confirmed" if "confirmed" in dispositions
             else "candidate" if "candidate" in dispositions
             else "rejected"
         )
-        indicators.append(
-            {
+        indicator = {
                 "indicator_id": stable_id("indicator", kind, normalized),
                 "type": kind,
-                "value": indicator_raw[(kind, normalized)],
+                "value": indicator_raw[key],
                 "normalized_value": normalized,
-                "stix_pattern": stix_pattern(kind, normalized),
+                "stix_pattern": stix_pattern(
+                    kind, normalized, hash_algorithm or None
+                ),
                 "disposition": disposition,
                 "first_observed": earliest_time(o["observed_at"] for o in observations),
                 "last_observed": latest_time(o["observed_at"] for o in observations),
@@ -933,7 +1016,9 @@ def main() -> int:
                     ),
                 ),
             }
-        )
+        if hash_algorithm:
+            indicator["hash_algorithm"] = hash_algorithm
+        indicators.append(indicator)
 
     # Deduplicate exact artifact observations, then annotate cross-campaign reuse.
     artifact_by_observation = {

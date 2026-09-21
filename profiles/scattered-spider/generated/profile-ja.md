@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--scattered-spider`
 - 状態: draft
-- 更新日時: 2026-09-21T08:16:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -44,6 +44,18 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | UNC6240 | related-to | [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). | 中 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -123,6 +135,30 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--scattered-spider-iqvw64-malicious-driver | malware | byovd-driver-and-signer | iqvw64.sys CVE-2015-2291 plus malicious driver SHA256 b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef | shared | 1 | 1 | 1 | 2022-12 | 2022-12 | single-observation | unknown | 中 | `source--crowdstrike-scattered-spider-byovd-2023` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--scattered-spider-iqvw64-malicious-driver | pivot-observation--scattered-spider-byovd-2022 | 2022-12 | 1 | documented-events | activity--c0027 | source--crowdstrike-scattered-spider-byovd-2023 | CrowdStrike documented the vulnerable Intel driver plus malicious mapped driver as one driver-chain observation during the June 2022-January 2023 campaign. Two components are not counted as two independent sightings. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--scattered-spider-iqvw64-malicious-driver | edr | `file.name=iqvw64.sys AND (child_or_mapped_file.sha256=b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef OR driver_load_after_exploit=true)` | Detect the vulnerable-driver-to-malicious-driver chain. | 要 | iqvw64.sys and the reported signing certificates are not actor-specific. Preserve the source's low-confidence campaign attribution and require exploitation/mapped-driver evidence. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -327,11 +363,11 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 0件（`artifacts.csv`）
+- 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -433,6 +469,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | source--mandiant-unc3944-vsphere-2025 | From Help Desk to Hypervisor: Defending Your VMware vSphere Estate from UNC3944 | Google Threat Intelligence Group / Mandiant | 2025-07-23 | https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944 | vendor-threat-research | TLP:CLEAR | 高 |
 | source--qantas-call-centre-incident-2025 | Qantas provides update on customer data cyber incident | Qantas Airways Limited | 2025-07-02 | https://investor.qantas.com/DownloadFile.axd?file=/Report/ComNews/20250702/02963135.pdf | first-party-incident-disclosure | TLP:CLEAR | 高 |
 | source--fbi-cisa-scattered-spider-2025 | Scattered Spider Joint Cybersecurity Advisory | FBI, CISA, and international partners | 2025-07-29 | https://www.fbi.gov/file-repository/cyber-alerts/scattered-spider-072925.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--crowdstrike-scattered-spider-byovd-2023 | SCATTERED SPIDER Exploits Windows Security Deficiencies with Bring-Your-Own-Vulnerable-Driver Tactic | CrowdStrike | 2023-01-10 | https://www.crowdstrike.com/en-us/blog/scattered-spider-attempts-to-avoid-detection-with-bring-your-own-vulnerable-driver-tactic/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

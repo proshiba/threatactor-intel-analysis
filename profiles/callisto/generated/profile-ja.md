@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -43,6 +43,32 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--fsb-center-18 | FSB Center 18 | organization | government-intelligence-organization | Russia | 不明 | 不明 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023`, `source--ncsc-star-blizzard-center18-2023` |
+| threat-actor-individual--andrey-korinets | Andrey Stanislavovich Korinets | threat-actor-individual | civilian-it-worker, alleged-domain-registrant, alleged-cooperator | Russia | 2016 | 2020 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023` |
+| threat-actor-individual--ruslan-peretyatko | Ruslan Aleksandrovich Peretyatko | threat-actor-individual | intelligence-officer, alleged-star-blizzard-operator | Russia | 2016-10 | 2022-10 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--andrey-korinets | alleged-cooperates-with | actor--callisto | Authorities allege Korinets registered and maintained infrastructure for Star Blizzard; this is cooperation, not Center 18 membership. | 2016 | 2020 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023` |
+| threat-actor-individual--ruslan-peretyatko | alleged-officer-of | organization--fsb-center-18 | U.S. authorities identify Peretyatko as a Center 18 officer. | 不明 | 不明 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023` |
+| threat-actor-individual--ruslan-peretyatko | alleged-participates-in | actor--callisto | U.S. authorities link Peretyatko to Star Blizzard spearphishing activity. | 2016-10 | 2022-10 | 高 | `source--doj-star-blizzard-center18-2023` |
+| actor--callisto | subordinate-to | organization--fsb-center-18 | NCSC assesses Star Blizzard, explicitly also known as Callisto Group, almost certainly subordinate to FSB Center 18. The organization and intrusion set remain separate objects; the relationship's start and end are not publicly established. | 不明 | 不明 | 高 | `source--doj-star-blizzard-center18-2023`, `source--treasury-star-blizzard-sanctions-2023`, `source--ncsc-star-blizzard-center18-2023` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Andrey Stanislavovich Korinets | indictment | U.S. District Court for the Northern District of California | 2023-12-05 | alleged | Indicted for alleged conspiracy to commit computer intrusion offenses. | `source--doj-star-blizzard-center18-2023` |
+| Andrey Stanislavovich Korinets | sanction | U.S. Department of the Treasury | 2023-12-07 | completed | Designated for supporting FSB-linked spearphishing operations. | `source--treasury-star-blizzard-sanctions-2023` |
+| Ruslan Aleksandrovich Peretyatko | indictment | U.S. District Court for the Northern District of California | 2023-12-05 | alleged | Indicted for alleged conspiracy to commit computer intrusion offenses. | `source--doj-star-blizzard-center18-2023` |
+| Ruslan Aleksandrovich Peretyatko | sanction | U.S. Department of the Treasury | 2023-12-07 | completed | Designated for participation in FSB-linked spearphishing operations. | `source--treasury-star-blizzard-sanctions-2023` |
 
 ## ダイヤモンドモデル
 
@@ -114,6 +140,24 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -218,6 +262,9 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-star-blizzard-center18-2023 | Two Russian Nationals Working with Russia's Federal Security Service Charged with Global Computer Intrusion Campaign | U.S. Department of Justice | 2023-12-07 | https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer | government-legal | TLP:CLEAR | 高 |
+| source--treasury-star-blizzard-sanctions-2023 | United States and the United Kingdom Sanction Members of Russian State Intelligence-Sponsored Advanced Persistent Threat Group | U.S. Department of the Treasury | 2023-12-07 | https://home.treasury.gov/news/press-releases/jy1962 | government-sanctions | TLP:CLEAR | 高 |
+| source--ncsc-star-blizzard-center18-2023 | UK and allies expose Russian intelligence services for cyber campaign of attempted political interference | UK National Cyber Security Centre | 2023-12-07 | https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference | government-assessment | TLP:CLEAR | 高 |
 
 ## 自由記述
 

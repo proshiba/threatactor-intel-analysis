@@ -27,6 +27,8 @@
           "confidence": {"type": "string"},
           "tlp": {"type": "string"},
           "allow_plain_domains": {"type": "boolean"},
+          "field_map": {"$ref": "#/$defs/fieldMap"},
+          "excluded_iocs": {"$ref": "#/$defs/excludedIocs"},
           "analyst_notes": {"type": "string"}
         }
       }
@@ -49,12 +51,42 @@
           "confidence": {"type": "string"},
           "tlp": {"type": "string"},
           "allow_plain_domains": {"type": "boolean"},
+          "field_map": {"$ref": "#/$defs/fieldMap"},
+          "excluded_iocs": {"$ref": "#/$defs/excludedIocs"},
           "analyst_notes": {"type": "string"}
         }
       }
     }
   },
   "$defs": {
+    "fieldMap": {
+      "type": "object",
+      "properties": {
+        "value": {"type": "string"},
+        "type": {"type": "string"},
+        "artifact_type": {"type": "string"},
+        "hash_algorithm": {"type": "string"},
+        "observed_at": {"type": "string"},
+        "campaign_refs": {"type": "string"},
+        "malware_refs": {"type": "string"},
+        "infrastructure_refs": {"type": "string"},
+        "roles": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "excludedIocs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "value", "reason"],
+        "properties": {
+          "type": {"enum": ["md5", "sha1", "sha256", "sha512", "ipv4", "ipv6", "domain", "url", "email", "certificate-fingerprint"]},
+          "value": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
     "defaults": {
       "type": "object",
       "required": ["confidence", "tlp", "campaign_refs", "malware_refs", "infrastructure_refs", "roles", "default_observed_at"],
@@ -65,6 +97,8 @@
         "malware_refs": {"type": "array", "items": {"type": "string"}},
         "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
         "roles": {"type": "array", "items": {"type": "string"}},
+        "field_map": {"$ref": "#/$defs/fieldMap"},
+        "excluded_iocs": {"$ref": "#/$defs/excludedIocs"},
         "default_observed_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"}
       }
     }

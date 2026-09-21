@@ -12,7 +12,7 @@ import copy
 from typing import Any
 
 
-SCHEMA_VERSION = "1.3.0"
+SCHEMA_VERSION = "1.4.0"
 DERIVATION_NOTE = "[activity-diamond-v1]"
 
 

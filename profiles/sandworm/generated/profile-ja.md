@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--sandworm`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:03Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -48,6 +48,44 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | APT28 | cooperates-with | Some Sandworm/GRU Unit 74455 operations were conducted with assistance from APT28/GRU Unit 26165. | 高 | `source--mitre-live-sandworm-2024` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--gru-unit-74455 | GRU Main Center for Special Technologies | organization | military-intelligence-organization | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| organization--ntc-vulkan | Vulkan LLC | organization | it-contractor, research-and-development | Russia | 不明 | 不明 | 中 | `source--mandiant-vulkan-sandworm-2023`, `source--eu-vulkan-sanctions-2023` |
+| threat-actor-individual--anatoliy-kovalev | Anatoliy Sergeyevich Kovalev | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--artem-ochichenko | Artem Valeryevich Ochichenko | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--pavel-frolov | Pavel Valeryevich Frolov | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--petr-pliskin | Petr Nikolayevich Pliskin | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--yuriy-andrienko | Yuriy Sergeyevich Andrienko | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--sergey-detistov | Sergey Vladimirovich Detistov | threat-actor-individual | military-intelligence-officer, alleged-sandworm-operator | Russia | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--yuriy-andrienko | alleged-member-of | actor--sandworm | The indictment alleges Andrienko participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--pavel-frolov | alleged-member-of | actor--sandworm | The indictment alleges Frolov participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--anatoliy-kovalev | alleged-member-of | actor--sandworm | The indictment alleges Kovalev participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--artem-ochichenko | alleged-member-of | actor--sandworm | The indictment alleges Ochichenko participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| threat-actor-individual--petr-pliskin | alleged-member-of | actor--sandworm | The indictment alleges Pliskin participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| actor--sandworm | operated-by | organization--gru-unit-74455 | U.S. authorities attribute the destructive Sandworm operations alleged in the indictment to GRU Unit 74455. The organization and intrusion set remain distinct, and the alleged November 2015-October 2019 conduct window is not a claim that the broader attribution ended in October 2019. | 2015-11 | 2019-10 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+| organization--ntc-vulkan | alleged-contractor-for | organization--gru-unit-74455 | Mandiant assessed leaked project documents as indicating that at least part of the Scan project, approximately 2018-2019, was contracted by Unit 74455; the leak was not conclusively authenticated and operational deployment was not proven. | 2018 | 2019 | 中 | `source--mandiant-vulkan-sandworm-2023` |
+| threat-actor-individual--sergey-detistov | alleged-member-of | actor--sandworm | The indictment alleges Detistov participated in Unit 74455/Sandworm operations. | 不明 | 不明 | 高 | `source--doj-sandworm-unit74455-indictment-2020` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Vulkan LLC | sanction | European Union | 2023-06-23 | completed | Listed by the European Union; the designation does not by itself prove operational deployment of leaked-project capabilities. | `source--eu-vulkan-sanctions-2023` |
+| Anatoliy Sergeyevich Kovalev | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
+| Artem Valeryevich Ochichenko | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
+| Pavel Valeryevich Frolov | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
+| Petr Nikolayevich Pliskin | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
+| Yuriy Sergeyevich Andrienko | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
+| Sergey Vladimirovich Detistov | indictment | U.S. District Court for the Western District of Pennsylvania | 2020-10-15 | alleged | Indicted for alleged destructive malware deployments and disruptive cyber operations. | `source--doj-sandworm-unit74455-indictment-2020` |
 
 ## ダイヤモンドモデル
 
@@ -151,6 +189,30 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--sandworm-cyclops-blink-tls-protocol-profile | infrastructure | compound-protocol-and-device-profile | WatchGuard appliance; non-standard TLS ports; per-device generated TLS keys/certificates; hardcoded C2 IP/port; OpenSSL 1.0.1f | actor-specific | 2 | 1 |  | 2019-06 | 不明 | reobserved | unknown | 高 | `source--ncsc-cyclops-blink-2022`, `source--ncsc-cyclops-blink-attribution-2022` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--sandworm-cyclops-blink-tls-protocol-profile | pivot-observation--cyclops-blink-two-samples-active-since-2019 | 2019-06 | 2 | documented-samples | なし | source--ncsc-cyclops-blink-2022 | The technical report analyzed two recently acquired Cyclops Blink samples and stated that the malware had been deployed since at least June 2019. Sample count is not an incident count, and acquisition/use end dates were not published. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--sandworm-cyclops-blink-tls-protocol-profile | shodan | `product:"WatchGuard" has_ssl:true -port:443` | Generate candidates for non-standard TLS on exposed WatchGuard devices before deeper configuration validation. | 要 | Uses Shodan's has_ssl boolean filter as reviewed on 2026-09-21. This is very broad and not actor-specific; require known vulnerable model/firmware, Cyclops Blink protocol/configuration or authoritative C2 corroboration. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -417,6 +479,11 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-sandworm-unit74455-indictment-2020 | Six Russian GRU Officers Charged in Connection with Worldwide Deployment of Destructive Malware and Other Disruptive Actions in Cyberspace | U.S. Department of Justice | 2020-10-19 | https://www.justice.gov/usao-wdpa/pr/six-russian-gru-officers-charged-connection-worldwide-deployment-destructive-malware | government-legal | TLP:CLEAR | 高 |
+| source--mandiant-vulkan-sandworm-2023 | Untangling the Russian Government's Cyber Operations with NTC Vulkan | Mandiant | 2023-03-30 | https://cloud.google.com/blog/topics/threat-intelligence/cyber-operations-russian-vulkan | vendor-research | TLP:CLEAR | 中 |
+| source--ncsc-cyclops-blink-2022 | Cyclops Blink Malware Analysis Report | NCSC, CISA, NSA and FBI | 2022-02-23 | https://www.ncsc.gov.uk/files/Cyclops-Blink-Malware-Analysis-Report.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--ncsc-cyclops-blink-attribution-2022 | Joint advisory shows new Sandworm malware Cyclops Blink replaces VPNFilter | UK National Cyber Security Centre | 2022-02-23 | https://www.ncsc.gov.uk/news/joint-advisory-shows-new-sandworm-malware-cyclops-blink-replaces-vpnfilter | government-advisory | TLP:CLEAR | 高 |
+| source--eu-vulkan-sanctions-2023 | Council Implementing Regulation (EU) 2023/1216 concerning restrictive measures in respect of actions undermining or threatening the territorial integrity, sovereignty and independence of Ukraine | European Union | 2023-06-23 | https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32023R1216 | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

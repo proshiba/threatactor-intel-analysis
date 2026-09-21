@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--apt29",
   "actor_name": "APT29",
-  "profile_updated_at": "2026-09-21T08:15:06Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "lead-only",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 17,
       "dated_activities": 6,
       "relationships": 0,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 1,
       "malware": 36,
       "activity_linked_malware": 15,
       "tools": 15,
@@ -80,6 +86,94 @@
     },
     "motivations": [],
     "relationships": [],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--apt29-wellmess-tunis-tls-dn",
+        "category": "infrastructure",
+        "pivot_type": "tls-subject-and-issuer-pattern",
+        "value": "subject C=Tunis, O=IT; issuer C=Tunis, O=IT, CN=*",
+        "description": "Censys documented 20 WellMess/WellMail-related hosts matching a distinctive self-signed TLS distinguished-name pattern in its December 2020 publication. The source does not state the underlying scan time, so the publication date is not recorded as an observation date and this remains a historical discovery seed rather than a current attribution rule.",
+        "stix_pattern": null,
+        "attribution_scope": "shared",
+        "malware_refs": [
+          "malware--wellmess"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [],
+        "indicator_refs": [],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--apt29-wellmess-censys-scan-time-unknown",
+            "observed_at": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "scan-time-not-stated"
+            },
+            "source_ref": "source--censys-apt29-wellmess-infrastructure-2020",
+            "activity_ref": null,
+            "context": "Censys reported that the query returned 20 hosts, but did not identify the scan timestamp. The count is one published snapshot, not 20 temporal reobservations.",
+            "count": 20,
+            "count_basis": "documented-hosts"
+          }
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "observation_count": 20,
+        "source_count": 1,
+        "activity_count": 0,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "One Censys result snapshot documented 20 hosts; the scan time and any later reuse or rotation are not established by the cited sources, and no current passive scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "censys",
+            "query": "443.https.tls.certificate.parsed.subject_dn:\"C=Tunis, O=IT\" AND 443.https.tls.certificate.parsed.issuer_dn:\"C=Tunis, O=IT, CN=*\"",
+            "purpose": "Historical legacy-Censys query for retrospective validation and translation to the current schema.",
+            "requires_validation": true,
+            "false_positive_notes": "Legacy syntax is no longer executable as-is. Require malware/configuration, infrastructure timing or victimology corroboration; the cited sources do not establish present use or a post-publication rotation date."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--censys-apt29-wellmess-infrastructure-2020",
+          "source--ncsc-apt29-wellmess-2020"
+        ],
+        "analyst_notes": "Certificate fields are a discovery pivot, not sufficient attribution. The scan time is unknown; the corrected 2020-12-07 report date is retained only in source metadata.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--fb2794f9cf19d548288d28d5",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "APT29 research retains the tls-subject-and-issuer-pattern pivot subject C=Tunis, O=IT; issuer C=Tunis, O=IT, CN=*: Censys documented 20 WellMess/WellMail-related hosts matching a distinctive self-signed TLS distinguished-name pattern in its December 2020 publication. The source does not state the underlying scan time, so the publication date is not recorded as an observation date and this remains a historical discovery seed rather than a current attribution rule.",
+            "evidence_refs": [
+              "source--censys-apt29-wellmess-infrastructure-2020",
+              "source--ncsc-apt29-wellmess-2020"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
     "activity_timeline": [
       {
         "activity_id": "activity--operation-ghost",
@@ -15119,7 +15213,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 356,
+    "supported": 357,
     "partially-supported": 32
   },
   "evidence_catalog": {
@@ -16275,6 +16369,56 @@
         "attribution-context"
       ],
       "analyst_notes": "The SEC names Unisys, Avaya, Check Point, and Mimecast and describes the intruder only as the threat actor likely behind the SolarWinds Orion hack. It supports the enforcement aftermath, not a fresh APT29 intrusion or a standalone exact-attribution claim."
+    },
+    "source--censys-apt29-wellmess-infrastructure-2020": {
+      "source_id": "source--censys-apt29-wellmess-infrastructure-2020",
+      "path": "https://censys.com/blog/advanced-persistent-infrastructure-tracking",
+      "title": "Advanced Persistent Infrastructure Tracking",
+      "publisher": "Censys",
+      "published_at": {
+        "value": "2020-12-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "Direct internet-scan research; legacy Censys field syntax is retained as historical evidence and must be translated before use. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://censys.com/blog/advanced-persistent-infrastructure-tracking"
+    },
+    "source--ncsc-apt29-wellmess-2020": {
+      "source_id": "source--ncsc-apt29-wellmess-2020",
+      "path": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf",
+      "title": "Advisory: APT29 targets COVID-19 vaccine development",
+      "publisher": "NCSC, CISA, NSA and CSE",
+      "published_at": {
+        "value": "2020-07-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf"
     }
   },
   "research_gaps": [

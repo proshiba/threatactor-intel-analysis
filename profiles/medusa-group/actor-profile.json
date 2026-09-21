@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "profile_id": "actor--medusa-group",
   "name": "Medusa Group",
   "status": "draft",
   "created_at": "2026-09-20T13:44:17Z",
-  "updated_at": "2026-09-21T04:18:00Z",
+  "updated_at": "2026-09-21T13:20:00Z",
   "languages": [
     "ja"
   ],
@@ -1881,6 +1881,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--elastic-abyssworker-2025",
+      "path": "https://www.elastic.co/security-labs/threat-command/abyssworker",
+      "title": "Shedding light on the ABYSSWORKER driver",
+      "publisher": "Elastic Security Labs",
+      "published_at": {
+        "value": "2025-03-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.elastic.co/security-labs/threat-command/abyssworker"
     }
   ],
   "assessment": {
@@ -1902,5 +1927,148 @@
     "infrastructure_details": "",
     "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "associated_entities": [],
+  "entity_relationships": [],
+  "hunting_pivots": [
+    {
+      "pivot_id": "hunting-pivot--medusa-abyssworker-driver-lineage",
+      "category": "malware",
+      "pivot_type": "malicious-driver-family-and-signing-cluster",
+      "value": "ABYSSWORKER/smuol.sys; SHA256 6a2a0f9c56ee9bf7b62e1d4e1929d13046cd78a93d8c607fe4728cc5b1e8d050 or b7703a59c39a0d2f7ef6422945aaeaaf061431af0533557246397551b8eed505; device \\device\\czx9umpTReqbOOKF",
+      "description": "Elastic found 12 ABYSSWORKER samples whose VirusTotal first-seen values ranged from 8 August 2024 through 24 February 2025, signed with six likely stolen/revoked certificate fingerprints. Those repository-ingest timestamps are telemetry context, not attack-observation dates. The certificates are shared across campaigns and are not Medusa-specific; the driver code, device/symlink, IOCTL behavior and exact hashes are stronger pivots.",
+      "stix_pattern": "[file:hashes.'SHA-256' = '6a2a0f9c56ee9bf7b62e1d4e1929d13046cd78a93d8c607fe4728cc5b1e8d050' OR file:hashes.'SHA-256' = 'b7703a59c39a0d2f7ef6422945aaeaaf061431af0533557246397551b8eed505']",
+      "attribution_scope": "shared",
+      "malware_refs": [
+        "malware--medusa-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "activity_refs": [],
+      "indicator_refs": [
+        "indicator--sha256:e6d06ece46c6125349ea077bd2a673784065c343ed8086e4700770642f9685f5",
+        "indicator--sha256:235a0540aa6d7fe6c266f58c9fffb755863fc772b7316f45792ace758a8dc3fc"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--abyssworker-vt-2024-2025",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "vt-first-seen-not-activity-observation"
+          },
+          "source_ref": "source--elastic-abyssworker-2025",
+          "activity_ref": null,
+          "context": "Elastic identified a dozen VirusTotal samples with repository first-seen values from 2024-08-08 through 2025-02-24. Those values bound corpus ingestion, not execution, deployment or incident time, so no activity observation date is asserted.",
+          "count": 12,
+          "count_basis": "documented-samples"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "activity-time-not-stated-vt-first-seen-excluded"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "activity-time-not-stated-vt-first-seen-excluded"
+      },
+      "observation_count": 12,
+      "source_count": 1,
+      "activity_count": 0,
+      "continuity": {
+        "assessment": "reobserved",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-21T13:20:00Z",
+        "basis": "Twelve samples across more than six months; VirusTotal first-seen is not execution time and no current telemetry was queried.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "edr",
+          "query": "file.sha256 IN (6a2a0f9c56ee9bf7b62e1d4e1929d13046cd78a93d8c607fe4728cc5b1e8d050,b7703a59c39a0d2f7ef6422945aaeaaf061431af0533557246397551b8eed505) OR device.name=\\device\\czx9umpTReqbOOKF",
+          "purpose": "Find exact samples and the distinctive device artifact.",
+          "requires_validation": true,
+          "false_positive_notes": "Certificate fingerprints are intentionally excluded from this query because they are shared across unrelated malware and the source does not state the hash algorithm."
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--elastic-abyssworker-2025"
+      ],
+      "analyst_notes": "POORTRY-to-ABYSSWORKER is a tool lineage, not proof that all campaigns share one actor."
+    },
+    {
+      "pivot_id": "hunting-pivot--medusa-abyssworker-signing-fingerprints",
+      "category": "malware",
+      "pivot_type": "code-signing-certificate-fingerprint-set-unspecified-algorithm",
+      "value": "51681b3c9e665dd0b29e257146d539dc (Foshan Gaoming Kedeyu Insulation Materials Co., Ltd); 7f67150fbb0d254e474284c7f7819c4f (FEI XIAO); 72881f10cd248a33e61243a9e150ec1d (Fuzhou Dingxin Trade Co., Ltd.); 75e8e7b9043b13df60e76499663021c1 (Changsha Hengxiang Information Technology Co., Ltd); 039347e61dec6f6398d4d46bf732656c (Xinjiang Yishilian Network Technology Co., Ltd); 4efa7e7bba65ec1ab774f2b31357d599 (Shenzhen Yundian Technology Co., Ltd)",
+      "description": "Elastic listed six fingerprints for likely stolen and revoked certificates used to sign the twelve known ABYSSWORKER samples. The source does not label the fingerprint algorithm, so these values are preserved without inventing an MD5/SHA label and are not emitted as STIX X.509 hash patterns. The named holders are potential certificate victims, not Medusa-associated organizations.",
+      "stix_pattern": null,
+      "attribution_scope": "generic",
+      "malware_refs": [
+        "malware--medusa-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "activity_refs": [],
+      "indicator_refs": [],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--abyssworker-six-signing-fingerprints-2024-2025",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "certificate-use-dates-not-stated-vt-first-seen-excluded"
+          },
+          "source_ref": "source--elastic-abyssworker-2025",
+          "activity_ref": null,
+          "context": "Six distinct certificate fingerprints were listed across a corpus of twelve samples whose VirusTotal first-seen values ranged from 2024-08-08 through 2025-02-24; per-certificate sample counts and exact certificate-use dates were not published, and repository first-seen is not treated as activity time.",
+          "count": 6,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "certificate-use-time-not-stated-vt-first-seen-excluded"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "certificate-use-time-not-stated-vt-first-seen-excluded"
+      },
+      "observation_count": 6,
+      "source_count": 1,
+      "activity_count": 0,
+      "continuity": {
+        "assessment": "unknown",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-21T13:20:00Z",
+        "basis": "The source says the certificates are shared across malware and campaigns, but does not publish per-certificate observation counts or current use.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "file-intelligence",
+          "query": "signing_certificate.fingerprint IN (51681b3c9e665dd0b29e257146d539dc,7f67150fbb0d254e474284c7f7819c4f,72881f10cd248a33e61243a9e150ec1d,75e8e7b9043b13df60e76499663021c1,039347e61dec6f6398d4d46bf732656c,4efa7e7bba65ec1ab774f2b31357d599)",
+          "purpose": "Retrospectively locate signed files, then pivot on ABYSSWORKER code, device names and IOCTL behavior.",
+          "requires_validation": true,
+          "false_positive_notes": "Pseudo-query requiring translation to the chosen file-intelligence platform. The source does not state the hash algorithm, and these certificates are shared across unrelated malware; never attribute by fingerprint or holder name alone."
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--elastic-abyssworker-2025"
+      ],
+      "analyst_notes": "No Organization relationships are generated for the certificate holders. Certificate revocation and validity metadata are not activity dates."
+    }
+  ]
 }

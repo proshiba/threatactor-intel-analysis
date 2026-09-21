@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--mustang-panda",
   "actor_name": "Mustang Panda",
-  "profile_updated_at": "2026-09-21T08:15:06Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "canonical-present",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 14,
       "dated_activities": 3,
       "relationships": 1,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 2,
+      "hunting_pivot_observations": 3,
       "malware": 20,
       "activity_linked_malware": 13,
       "tools": 5,
@@ -115,6 +121,209 @@
         ],
         "target_actor_ref": "actor--luminousmoth",
         "target_resolution": "catalog-profile"
+      }
+    ],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--reddelta-cloudflare-origin-ca-san",
+        "category": "infrastructure",
+        "pivot_type": "tls-origin-certificate-san-discovery",
+        "value": "Cloudflare Origin CA certificate plus known RedDelta seed domain/SAN",
+        "description": "Recorded Future used Cloudflare Origin CA certificate SANs to identify more than 100 actor-controlled domains across the July 2023-December 2024 operation. The issuer is ubiquitous and must only be used with known seed domains, SAN overlap and campaign context.",
+        "stix_pattern": null,
+        "attribution_scope": "generic",
+        "malware_refs": [
+          "malware--plugx"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [
+          "activity--reddelta-modified-plugx-infection-chain-operations"
+        ],
+        "indicator_refs": [],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--reddelta-origin-ca-2023-2024",
+            "observed_at": {
+              "value": "2023-07-01T00:00:00Z",
+              "precision": "range",
+              "status": "known",
+              "basis": "campaign-range-2023-07/2024-12"
+            },
+            "source_ref": "source--recorded-future-reddelta-cloudflare-2025",
+            "activity_ref": "activity--reddelta-modified-plugx-infection-chain-operations",
+            "context": "Certificate/SAN analysis identified a minimum of 100 actor-controlled domains over the campaign range.",
+            "count": 100,
+            "count_basis": "source-stated"
+          }
+        ],
+        "first_observed": {
+          "value": "2023-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "campaign-start"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "campaign-end"
+        },
+        "observation_count": 100,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "reobserved",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "At least 100 domains were source-stated across an 18-month operation; no 2026 passive scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "shodan",
+            "query": "port:443 ssl.cert.issuer.cn:\"CloudFlare Origin SSL Certificate Authority\" ssl.cert.subject.cn:\"<known-seed-domain>\"",
+            "purpose": "Pivot from a verified campaign seed into certificate SAN/subject reuse.",
+            "requires_validation": true,
+            "false_positive_notes": "Never run or attribute on issuer alone. Require a verified seed/SAN and PlugX, registrar, victimology or timing corroboration."
+          },
+          {
+            "platform": "censys",
+            "query": "host.services: (port = \"443\" and cert.names = \"<known-seed-domain>\")",
+            "purpose": "Inspect current certificate/SAN history around a verified seed.",
+            "requires_validation": true,
+            "false_positive_notes": "Cloudflare Origin CA is broadly used by legitimate customers. Replace the placeholder only with a verified seed domain and corroborate certificate SANs, timing, malware configuration and victimology."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--recorded-future-reddelta-cloudflare-2025"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--5549ac9f2ca6cf27f3a5821a",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Mustang Panda research retains the tls-origin-certificate-san-discovery pivot Cloudflare Origin CA certificate plus known RedDelta seed domain/SAN: Recorded Future used Cloudflare Origin CA certificate SANs to identify more than 100 actor-controlled domains across the July 2023-December 2024 operation. The issuer is ubiquitous and must only be used with known seed domains, SAN overlap and campaign context.",
+            "evidence_refs": [
+              "source--recorded-future-reddelta-cloudflare-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=generic; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "pivot_id": "hunting-pivot--mustang-panda-coolclient-msagent-signing-certificate",
+        "category": "malware",
+        "pivot_type": "malicious-driver-and-code-signing-certificate-serial",
+        "value": "msagent.sys MD5 2d7c8780e97409770a9d4f31c66c9d63 or 9460e150e1981d5c165043520c5c12fe; signer Nanjing Ranyi Technology Co., Ltd.; certificate serial 3e:62:dc:5d:8d:61:2a:26:33:e7:6b:df:d6:07:19:dd",
+        "description": "Kaspersky documented two msagent.sys samples in the latest CoolClient investigation and identified the driver's code-signing certificate by subject and serial. The same certificate also signed several older malicious drivers compiled around 2013, but Kaspersky found no evidence linking those older samples to CoolClient. This is a shared file-hunting pivot: it does not show that the expired certificate was newly used for signing during the late-2025/2026 intrusions, and the certificate holder is not attributed to Mustang Panda.",
+        "stix_pattern": "[x509-certificate:serial_number = '3e:62:dc:5d:8d:61:2a:26:33:e7:6b:df:d6:07:19:dd']",
+        "attribution_scope": "shared",
+        "malware_refs": [
+          "malware--coolclient"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [
+          "activity--daily-b8b3301d837c22e89850"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:25fffb94929de3cec9b33a1f168b7dbfe4def85b75b57963e5d68feed68443b1",
+          "indicator--sha256:0c127c574bc14463b02f628d30b60de8a520eb9775443169c9e2785a5c66f975"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--coolclient-msagent-driver-late-2025-2026",
+            "observed_at": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "source-stated-late-2025-and-2026-without-exact-sample-dates"
+            },
+            "source_ref": "source--daily-9232cff77ce0ef8f62b1",
+            "activity_ref": "activity--daily-b8b3301d837c22e89850",
+            "context": "Kaspersky listed two distinct MD5 values for msagent.sys and described the updated CoolClient investigation as occurring in late 2025 and 2026 across multiple intrusions. No exact deployment date was published, so the report date is not used as an observation date.",
+            "count": 2,
+            "count_basis": "documented-samples"
+          },
+          {
+            "observation_id": "pivot-observation--nanjing-ranyi-cert-older-malicious-drivers",
+            "observed_at": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "compile-period-and-certificate-validity-are-not-activity-observation-dates"
+            },
+            "source_ref": "source--daily-9232cff77ce0ef8f62b1",
+            "activity_ref": null,
+            "context": "Kaspersky found several older malicious drivers signed with the same certificate and compiled around 2013. 'Several' is represented only as a minimum of three samples; the compilation period and the certificate's August 2013-September 2014 validity are context, not operational observation dates. The source explicitly found no direct link from these samples to the CoolClient activity.",
+            "count": 3,
+            "count_basis": "minimum-events"
+          }
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "activity-time-not-stated-certificate-validity-and-compile-times-excluded"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "activity-time-not-stated-certificate-validity-and-compile-times-excluded"
+        },
+        "observation_count": 5,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "reused",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "The serial recurs across at least two current CoolClient driver samples and several older malicious drivers, but this is artifact-level certificate reuse rather than evidence of continued certificate validity, current signing or a shared actor; no current file-intelligence query was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "file-intelligence",
+            "query": "authenticode.serial=3e62dc5d8d612a2633e76bdfd60719dd AND signer.organization=\"Nanjing Ranyi Technology Co., Ltd.\"",
+            "purpose": "Locate files signed with the documented certificate, then separate the two CoolClient driver samples from unrelated historical samples.",
+            "requires_validation": true,
+            "false_positive_notes": "The certificate is shared by malicious drivers that Kaspersky could not link to CoolClient. Require the exact msagent.sys hashes or corroborating PDB, registry, service and IOCTL behavior before associating a result with CoolClient; never attribute the certificate holder."
+          },
+          {
+            "platform": "edr",
+            "query": "file.md5 IN (2d7c8780e97409770a9d4f31c66c9d63,9460e150e1981d5c165043520c5c12fe) OR (file.name=\"msagent.sys\" AND registry.path CONTAINS \"SYSTEM\\\\RNG\\\\Wid_H1deF5\")",
+            "purpose": "Find the exact reported drivers or the distinctive driver filename plus stealth-configuration registry family.",
+            "requires_validation": true,
+            "false_positive_notes": "The filename alone is not distinctive. Validate the signature serial, service creation, ToolTool/msagent device artifacts, IOCTLs such as 0x2221E0, and associated CoolClient components."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1"
+        ],
+        "analyst_notes": "The source-stated certificate validity period and approximate compilation period are not copied into first_observed or last_observed. Nanjing Ranyi Technology Co., Ltd. is retained only as a certificate subject; no Organization or actor relationship is generated. The two MD5 values are useful exact IOCs but are included here only as corroboration for the reusable signing/driver pivot.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--5e6c253c5837722f5047b0b8",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Mustang Panda research retains the malicious-driver-and-code-signing-certificate-serial pivot msagent.sys MD5 2d7c8780e97409770a9d4f31c66c9d63 or 9460e150e1981d5c165043520c5c12fe; signer Nanjing Ranyi Technology Co., Ltd.; certificate serial 3e:62:dc:5d:8d:61:2a:26:33:e7:6b:df:d6:07:19:dd: Kaspersky documented two msagent.sys samples in the latest CoolClient investigation and identified the driver's code-signing certificate by subject and serial. The same certificate also signed several older malicious drivers compiled around 2013, but Kaspersky found no evidence linking those older samples to CoolClient. This is a shared file-hunting pivot: it does not show that the expired certificate was newly used for signing during the late-2025/2026 intrusions, and the certificate holder is not attributed to Mustang Panda.",
+            "evidence_refs": [
+              "source--daily-9232cff77ce0ef8f62b1"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
       }
     ],
     "activity_timeline": [
@@ -9203,7 +9412,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 170,
+    "supported": 172,
     "partially-supported": 46
   },
   "evidence_catalog": {
@@ -9459,7 +9668,6 @@
     "source--daily-9232cff77ce0ef8f62b1": {
       "source_id": "source--daily-9232cff77ce0ef8f62b1",
       "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-      "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
       "title": "APT group HoneyMyte upgrades CoolClient: the backdoor gets a kernel-level Windows rootkit",
       "publisher": "Kaspersky GReAT / Securelist",
       "published_at": {
@@ -9473,7 +9681,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "accessed_at": "2026-09-21",
+      "accessed_at": null,
       "actor_scope": "exact",
       "claims_supported": [
         "identity",
@@ -9482,9 +9690,12 @@
         "capability",
         "targeting",
         "ttp",
-        "victim-case"
+        "victim-case",
+        "hunting-pivot",
+        "malware"
       ],
-      "analyst_notes": "Kaspersky explicitly describes HoneyMyte as also known as Mustang Panda and separately documents the CoolClient activity and victims. The source publication date is used instead of the daily-news file date."
+      "analyst_notes": "Kaspersky explicitly describes HoneyMyte as also known as Mustang Panda and separately documents the CoolClient activity, malware, victims and reusable driver/signing pivots. The source publication date is not used as an activity-observation date. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
     },
     "source--daily-a69a00355bf3c87debe0": {
       "source_id": "source--daily-a69a00355bf3c87debe0",
@@ -10719,6 +10930,31 @@
         "ioc"
       ],
       "analyst_notes": "GTIG attributes the campaign to UNC6384 and assesses that UNC6384 is associated with TEMP.Hex/Mustang Panda. GTIG does not call this Silk Typhoon and does not assert exact actor identity."
+    },
+    "source--recorded-future-reddelta-cloudflare-2025": {
+      "source_id": "source--recorded-future-reddelta-cloudflare-2025",
+      "path": "https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-cn-2025-0109.pdf",
+      "title": "RedDelta Abuses Cloudflare to Target Governments in Southeast Asia and Europe",
+      "publisher": "Recorded Future Insikt Group",
+      "published_at": {
+        "value": "2025-01-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-cn-2025-0109.pdf"
     }
   },
   "research_gaps": [

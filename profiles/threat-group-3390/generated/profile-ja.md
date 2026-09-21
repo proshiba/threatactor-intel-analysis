@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--threat-group-3390`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -44,6 +44,67 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--isoon | Anxun (i-Soon) Information Technology Co., Ltd. | organization | contract-hacking-company, data-broker, training-provider | China | 2016 | 2023 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| organization--shanghai-heiying | Shanghai Heiying Information Technology Company, Limited | organization | technology-company, cybercrime-enabling-company | China | 2010 | 不明 | 高 | `source--treasury-zhou-shanghai-heiying-2025` |
+| threat-actor-individual--chen-cheng | Chen Cheng | threat-actor-individual | chief-operating-officer, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--sheng-jing | Sheng Jing | threat-actor-individual | law-enforcement-officer, alleged-tasking-officer | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-liyu | Wang Liyu | threat-actor-individual | law-enforcement-officer, alleged-tasking-officer | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-zhe | Wang Zhe | threat-actor-individual | sales-director, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wu-haibo | Wu Haibo | threat-actor-individual | chief-executive, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--yin-kecheng | Yin Kecheng | threat-actor-individual | alleged-apt27-member, commercial-hacker | China | 2013-08 | 2024-12 | 高 | `source--doj-isoon-apt27-ecosystem-2025`, `source--treasury-yin-kecheng-2025` |
+| threat-actor-individual--zhou-shuai | Zhou Shuai | threat-actor-individual | alleged-apt27-member, data-broker, founder, majority-owner | China | 2018-06 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025`, `source--treasury-zhou-shanghai-heiying-2025` |
+| threat-actor-individual--liang-guodong | Liang Guodong | threat-actor-individual | employee, alleged-contract-hacker, infrastructure-acquisition | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--ma-li | Ma Li | threat-actor-individual | infrastructure-support-team-leader, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-yan-isoon | Wang Yan | threat-actor-individual | penetration-testing-team-leader, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--xu-liang | Xu Liang | threat-actor-individual | penetration-tester, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--zhou-weiwei | Zhou Weiwei | threat-actor-individual | technology-research-and-development-center-leader, alleged-contract-hacker | China | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--chen-cheng | officer-of | organization--isoon | DOJ identifies Chen as i-Soon COO. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| organization--isoon | overlapping-contract-hacking-ecosystem | actor--threat-group-3390 | DOJ places i-Soon activity in an APT27-associated contract-hacking ecosystem. This does not assert that all i-Soon operations are APT27 or that the labels are exact identities. | 2016 | 2023 | 中 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-zhe | officer-of | organization--isoon | DOJ identifies Wang Zhe as i-Soon sales director. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wu-haibo | officer-of | organization--isoon | DOJ identifies Wu as i-Soon CEO. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--yin-kecheng | formerly-employed-by | organization--shanghai-heiying | Treasury identifies Shanghai Heiying as Yin's former employer. | 不明 | 不明 | 高 | `source--treasury-zhou-shanghai-heiying-2025` |
+| threat-actor-individual--yin-kecheng | alleged-member-of | actor--threat-group-3390 | DOJ identifies Yin as an APT27 member. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--zhou-shuai | alleged-member-of | actor--threat-group-3390 | DOJ identifies Zhou as an APT27 member. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--zhou-shuai | founder-and-majority-owner-of | organization--shanghai-heiying | Treasury identifies Zhou as Shanghai Heiying's founder and majority owner. | 2010 | 不明 | 高 | `source--treasury-zhou-shanghai-heiying-2025` |
+| threat-actor-individual--zhou-shuai | alleged-sells-stolen-data-through | organization--isoon | DOJ alleges Zhou used i-Soon to sell data stolen by Yin. The relation is scoped to the charged data-broker activity. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--liang-guodong | employed-by | organization--isoon | The indictment identifies Liang as an i-Soon employee. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--ma-li | employed-by | organization--isoon | The indictment identifies Ma as the leader of i-Soon's Infrastructure Support Team. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-yan-isoon | employed-by | organization--isoon | The indictment identifies Wang Yan as the leader of an i-Soon penetration-testing team. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--xu-liang | employed-by | organization--isoon | The indictment identifies Xu as an i-Soon penetration tester. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--zhou-weiwei | employed-by | organization--isoon | The indictment identifies Zhou Weiwei as the leader of i-Soon's Technology Research and Development Center. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--wang-liyu | alleged-tasks | organization--isoon | DOJ alleges that Ministry of Public Security officer Wang Liyu tasked i-Soon to conduct computer intrusions and purchased stolen data from the company. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+| threat-actor-individual--sheng-jing | alleged-tasks | organization--isoon | DOJ alleges that Ministry of Public Security officer Sheng Jing tasked i-Soon to conduct computer intrusions and received stolen information from the company. | 不明 | 不明 | 高 | `source--doj-isoon-apt27-ecosystem-2025` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Shanghai Heiying Information Technology Company, Limited | sanction | U.S. Department of the Treasury | 2025-03-05 | completed | Designated for being owned or controlled by Zhou Shuai and associated malicious cyber activity. | `source--treasury-zhou-shanghai-heiying-2025` |
+| Chen Cheng | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Sheng Jing | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Wang Liyu | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Wang Zhe | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Wu Haibo | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Yin Kecheng | indictment | U.S. District Court for the District of Columbia | 2018-05-02 | alleged | Indicted on alleged wire fraud, aggravated identity theft and Computer Fraud and Abuse Act offenses for conduct between August 2013 and December 2015. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Yin Kecheng | indictment | U.S. District Court for the District of Columbia | 2023-03-28 | alleged | Indicted with Zhou Shuai on alleged conspiracy, wire fraud, Computer Fraud and Abuse Act, aggravated identity theft and money-laundering offenses for conduct between June 2018 and November 2020. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Yin Kecheng | sanction | U.S. Department of the Treasury | 2025-01-17 | completed | Designated for malicious cyber activity. | `source--treasury-yin-kecheng-2025` |
+| Zhou Shuai | indictment | U.S. District Court for the District of Columbia | 2023-03-28 | alleged | Indicted with Yin Kecheng on alleged conspiracy, wire fraud, Computer Fraud and Abuse Act, aggravated identity theft and money-laundering offenses for conduct between June 2018 and November 2020. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Zhou Shuai | sanction | U.S. Department of the Treasury | 2025-03-05 | completed | Designated for malicious cyber and data-broker activity. | `source--treasury-zhou-shanghai-heiying-2025` |
+| Liang Guodong | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Ma Li | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Wang Yan | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Xu Liang | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
+| Zhou Weiwei | indictment | U.S. District Court for the Southern District of New York | 2025-03-05 | alleged | Indictment unsealed alleging participation in computer-intrusion and wire-fraud conspiracies. | `source--doj-isoon-apt27-ecosystem-2025` |
 
 ## ダイヤモンドモデル
 
@@ -139,6 +200,24 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -293,6 +372,9 @@ A Tale of Two Targets
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-isoon-apt27-ecosystem-2025 | Justice Department Charges 12 Chinese Contract Hackers and Law Enforcement Officers in Global Computer Intrusion Campaigns | U.S. Department of Justice | 2025-03-05 | https://www.justice.gov/opa/pr/justice-department-charges-12-chinese-contract-hackers-and-law-enforcement-officers-global | government-legal | TLP:CLEAR | 高 |
+| source--treasury-yin-kecheng-2025 | Treasury Sanctions Cybersecurity Company Involved in Compromise of U.S. Critical Infrastructure | U.S. Department of the Treasury | 2025-01-17 | https://home.treasury.gov/news/press-releases/jy2792 | government-sanctions | TLP:CLEAR | 高 |
+| source--treasury-zhou-shanghai-heiying-2025 | Treasury Sanctions Chinese Cyber Actors for Targeting U.S. Government Systems | U.S. Department of the Treasury | 2025-03-05 | https://home.treasury.gov/news/press-releases/sb0042 | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

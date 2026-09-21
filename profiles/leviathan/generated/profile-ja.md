@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--leviathan`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -46,6 +46,36 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--hainan-xiandun | Hainan Xiandun Technology Development Co., Ltd. | organization | alleged-front-company, operational-cover | China | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--cheng-qingmin | Cheng Qingmin | threat-actor-individual | intelligence-officer, alleged-operation-manager | China | 不明 | 不明 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--ding-xiaoyang | Ding Xiaoyang | threat-actor-individual | intelligence-officer, alleged-operation-manager | China | 不明 | 不明 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--wu-shurong | Wu Shurong | threat-actor-individual | employee, malware-developer, alleged-operator | China | 不明 | 不明 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--zhu-yunmin | Zhu Yunmin | threat-actor-individual | intelligence-officer, alleged-operation-manager | China | 不明 | 不明 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--cheng-qingmin | alleged-coordinates | actor--leviathan | The indictment alleges Cheng coordinated and managed personnel supporting APT40 activity. | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--ding-xiaoyang | alleged-coordinates | actor--leviathan | The indictment alleges Ding coordinated and managed personnel supporting APT40 activity. | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| organization--hainan-xiandun | alleged-provides-cover-for | actor--leviathan | The indictment alleges Hainan Xiandun provided cover and support for the HSSD/APT40 operation. | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--wu-shurong | employed-by | organization--hainan-xiandun | The indictment identifies Wu as a Hainan Xiandun employee. | 不明 | 不明 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--wu-shurong | alleged-operator-of | actor--leviathan | The indictment alleges Wu developed malware, intruded into victims and supervised hackers in APT40 activity. | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+| threat-actor-individual--zhu-yunmin | alleged-coordinates | actor--leviathan | The indictment alleges Zhu coordinated and managed personnel supporting APT40 activity. | 2011 | 2018 | 高 | `source--doj-apt40-hainan-xiandun-2021` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Cheng Qingmin | indictment | U.S. District Court for the Southern District of California | 2021-05-28 | alleged | Indicted for alleged participation in the global computer-intrusion conspiracy. | `source--doj-apt40-hainan-xiandun-2021` |
+| Ding Xiaoyang | indictment | U.S. District Court for the Southern District of California | 2021-05-28 | alleged | Indicted for alleged participation in the global computer-intrusion conspiracy. | `source--doj-apt40-hainan-xiandun-2021` |
+| Wu Shurong | indictment | U.S. District Court for the Southern District of California | 2021-05-28 | alleged | Indicted for alleged participation in the global computer-intrusion conspiracy. | `source--doj-apt40-hainan-xiandun-2021` |
+| Zhu Yunmin | indictment | U.S. District Court for the Southern District of California | 2021-05-28 | alleged | Indicted for alleged participation in the global computer-intrusion conspiracy. | `source--doj-apt40-hainan-xiandun-2021` |
 
 ## ダイヤモンドモデル
 
@@ -133,6 +163,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -321,6 +369,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-apt40-hainan-xiandun-2021 | Four Chinese Nationals Working with the Ministry of State Security Charged with Global Computer Intrusion Campaign | U.S. Department of Justice | 2021-07-19 | https://www.justice.gov/usao-sdca/pr/four-chinese-nationals-working-ministry-state-security-charged-global-computer | government-legal | TLP:CLEAR | 高 |
 
 ## 自由記述
 

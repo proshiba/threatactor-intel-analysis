@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--akira`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:01Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -38,6 +38,18 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -115,6 +127,30 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--akira-rwdrv-hlpdrv-chain | malware | byovd-driver-chain | rwdrv.sys SHA256 16f83f056177c4ec24c7e99d01ca9d9d6713bd0497eeedb777a3ffefa99c97f0 -> hlpdrv.sys SHA256 bd1f381e5a3db22e88776b7873d4d2835e9a1ec620571d2b1da0c58f81c84a56; services mgdsrv/KMHLPSVC; device \Device\KMHLPDRV | shared | 2 | 1 |  | 2025-07-15 | 不明 | reobserved | unknown | 高 | `source--guidepoint-akira-driver-campaign-2025` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--akira-rwdrv-hlpdrv-chain | pivot-observation--akira-driver-cases-2025 | 2025-07-15 | 2 | minimum-events | なし | source--guidepoint-akira-driver-campaign-2025 | GuidePoint described repeated use across several recent IR cases; count is a conservative minimum of two because the exact case total was not disclosed. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--akira-rwdrv-hlpdrv-chain | edr | `(file.sha256=16f83f056177c4ec24c7e99d01ca9d9d6713bd0497eeedb777a3ffefa99c97f0 OR file.sha256=bd1f381e5a3db22e88776b7873d4d2835e9a1ec620571d2b1da0c58f81c84a56) OR service.name IN (mgdsrv,KMHLPSVC) OR device.name=\Device\KMHLPDRV` | Detect the exact driver chain and stable service/device artifacts. | 要 | rwdrv.sys is legitimate software. Require hlpdrv.sys, Defender policy modification, service/device artifacts or Akira intrusion context. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -231,11 +267,11 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 20件
-- IOC観測: 22件
+- IOC値: 22件
+- IOC観測: 24件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 17件
-- 非IOC artifact観測: 5件（`artifacts.csv`）
+- 非IOC artifact観測: 7件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -341,6 +377,7 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--guidepoint-akira-driver-campaign-2025 | GRITREP: Observed Malicious Driver Use Associated with Akira SonicWall Campaign | GuidePoint Security | 2025-08-05 | https://www.guidepointsecurity.com/blog/gritrep-akira-sonicwall/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

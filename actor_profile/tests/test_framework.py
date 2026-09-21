@@ -14,7 +14,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from common import normalize_observable, normalize_time, refang  # noqa: E402
+from common import normalize_observable, normalize_time, refang, stix_pattern  # noqa: E402
 from bootstrap_all_profiles import (  # noqa: E402
     alias_source_metadata,
     derive_actor_types,
@@ -34,12 +34,15 @@ from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
     canonical_reference_sets,
+    certificate_hash_algorithm,
     classified_record_values,
     classify_hash,
     extract_artifacts,
     extract_iocs,
+    explicitly_excluded_ioc,
     filter_canonical_refs,
     looks_like_hash,
+    validate_certificate_fingerprint,
 )
 
 
@@ -170,6 +173,69 @@ class AttackReferenceTests(unittest.TestCase):
 
 
 class ObservableBoundaryTests(unittest.TestCase):
+    def test_certificate_fingerprint_algorithm_controls_x509_pattern(self) -> None:
+        cases = {
+            "md5": ("MD5", "aa" * 16),
+            "sha1": ("SHA-1", "aa" * 20),
+            "sha256": ("SHA-256", "aa" * 32),
+            "sha512": ("SHA-512", "aa" * 64),
+        }
+        for algorithm, (stix_name, value) in cases.items():
+            with self.subTest(algorithm=algorithm):
+                self.assertEqual(
+                    stix_pattern("certificate-fingerprint", value, algorithm),
+                    f"[x509-certificate:hashes.'{stix_name}' = '{value}']",
+                )
+                validate_certificate_fingerprint(
+                    "certificate-fingerprint", value, algorithm
+                )
+
+    def test_structured_certificate_hash_algorithm_is_normalized(self) -> None:
+        record = {
+            "fields": {"digest_algorithm": "SHA-1"},
+        }
+        metadata = {"field_map": {"hash_algorithm": "digest_algorithm"}}
+        self.assertEqual(
+            certificate_hash_algorithm(
+                record, metadata, "certificate-fingerprint"
+            ),
+            "sha1",
+        )
+        self.assertIsNone(certificate_hash_algorithm(record, metadata, "sha1"))
+
+    def test_unsupported_certificate_hash_algorithm_is_rejected(self) -> None:
+        record = {"fields": {"digest_algorithm": "SHA-3"}}
+        metadata = {"field_map": {"hash_algorithm": "digest_algorithm"}}
+        with self.assertRaisesRegex(ValueError, "Unsupported certificate"):
+            certificate_hash_algorithm(
+                record, metadata, "certificate-fingerprint"
+            )
+
+    def test_certificate_algorithm_length_mismatch_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "requires 40 hex characters"):
+            validate_certificate_fingerprint(
+                "certificate-fingerprint", "aa" * 32, "sha1"
+            )
+
+    def test_reviewed_source_can_exclude_a_misclassified_hash(self) -> None:
+        metadata = {
+            "excluded_iocs": [
+                {
+                    "type": "sha1",
+                    "value": "DE:E2:B1:E9",
+                    "reason": "Reviewed as a certificate thumbprint.",
+                }
+            ]
+        }
+        self.assertTrue(
+            explicitly_excluded_ioc(metadata, "sha1", "dee2b1e9")
+        )
+        self.assertFalse(
+            explicitly_excluded_ioc(
+                metadata, "certificate-fingerprint", "dee2b1e9"
+            )
+        )
+
     def test_observable_links_only_reference_canonical_entities(self) -> None:
         profile = {
             "activities": [{"activity_id": "activity--kept"}],

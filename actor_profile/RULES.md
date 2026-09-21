@@ -1,6 +1,6 @@
 # 脅威アクタープロファイル作成規約
 
-規約バージョン: 1.1.0
+規約バージョン: 1.2.0
 
 ## 1. 基本原則
 
@@ -30,6 +30,8 @@ IDはアクター内で一意かつ安定させる。
 | Target | `target--think-tanks-academia` |
 | IOC | `indicator--sha256:<stable digest>` |
 | Observation | `observation--sha256:<stable digest>` |
+| Hunting Pivot | `hunting-pivot--<actor>-<stable name>` |
+| Pivot Observation | `pivot-observation--<stable name>` |
 
 表示名が変わっても既存IDを変更しない。
 
@@ -173,6 +175,48 @@ operator/groupを定義していなければActorとしてmaterializeしない�
 
 「同一アクター」と「ツール／インフラの重複」を分離する。関係には必ず説明、確度、
 証拠を付ける。
+
+### 6.1 関連企業・自然人・法的措置
+
+schema 1.4.0では、既存のActor profile（原則`intrusion-set`）とは別に、実在する企業、
+自然人、および人間の集団として十分に識別されたThreat Actor Groupを
+`associated_entities`へ保存する。
+
+- 法人格を持つ企業、研究機関、請負会社等は`entity_type: organization`、
+  `entity_id: organization--...`とする。企業名をAPTクラスタのaliasにしない。
+- 実在する自然人が攻撃実行、指揮、開発、仲介等へ関与したことを根拠付きで識別できる場合は
+  `entity_type: threat-actor-individual`、`entity_id: threat-actor-individual--...`とする。
+  同姓同名、ハンドル一致、勤務先だけでは同一人物または攻撃者と断定しない。
+- 犯罪シンジケート、国家機関内の実行者集団等、人間の集団として直接識別された対象は
+  `entity_type: threat-actor-group`、`entity_id: threat-actor-group--...`とする。
+  同名・aliasだけで既存Intrusion Setと統合せず、境界が部分的なら別オブジェクトのまま
+  `overlaps-with`等で結ぶ。
+- 企業・個人・Intrusion Set間の関係は`entity_relationships`へ保存する。雇用関係は
+  `employed-by`、役員・創業関係は`officer-of` / `founder-of`、攻撃クラスタへの参加を
+  原典が直接支持する場合だけ`member-of` / `operates`等を使用する。
+- Relationshipの向きは`個人 → employed-by/officer-of/founder-of → Organization`、
+  `個人 → member-of/operates → Threat Actor GroupまたはIntrusion Set`、
+  `Organization → supports/facilitates/front-company-for → 攻撃主体`、
+  `組織・当局 → tasks/directs → 個人または集団`を標準とする。原典が`alleged`、
+  `assessed`、`likely`等の留保を付ける場合は、動詞、説明、確度から留保を落とさない。
+- `個人 employed-by 企業`および`企業 supports Intrusion Set`から、個人の
+  `member-of Intrusion Set`を推移的に生成してはいけない。人物ごとの直接の根拠を要求する。
+- 起訴、訴追、制裁、逮捕、指名手配、有罪判決、量刑は対象entityの`legal_actions`へ保存する。
+  起訴状・訴追資料が主張する行為は有罪認定ではないため、`indictment` / `charge`の
+  `status`は`alleged`とする。後日の`conviction`や`sentencing`は別のlegal actionとして追加し、
+  過去の起訴レコードを有罪判決へ書き換えない。
+
+`legal_actions[].action_date`は起訴、制裁指定、逮捕等の法的措置日である。
+`associated_entities[].first_observed` / `last_observed`および
+`entity_relationships[].first_observed` / `last_observed`は、人物・企業または関係が実際に
+サイバー活動上の役割・関与で観測された期間であり、法人設立日、出生情報、単なる資料初出、
+法的措置日、資料公開日を代入しない。活動期間が不明ならunknownのままにし、起訴日から
+活動開始・終了を推定しない。
+
+同一の実在企業・自然人・Threat Actor Groupを複数profileへ収録する場合は同じ安定
+`entity_id`を使用し、名称、alias、entity type、identity-level description、legal action、
+evidence定義を一致させる。アクター固有の役割、関係、観測期間はentity本体へ混在させず、
+各profileの`entity_relationships`へ保存する。同じ`source_id`も同一定義を持たせる。
 
 ## 7. CapabilityとTTP
 
@@ -367,6 +411,82 @@ TLDとして実在するため、列挙すると本物のドメインを取り�
 3. source manifestの`default_observed_at`（資料が観測期間を明示する場合のみ）
 4. unknown
 
+### 8.5 Hunting Pivot
+
+`hunting_pivots`は、単発IOCとは別に、今後の検体・通信・公開インフラ調査で再利用できる
+探索属性を保存する。証明書fingerprint/serial/subject、TLS fingerprint、コード署名、
+driver、User-Agent、URI、port/serviceの組合せ、ASN/hosting傾向等が対象になり得る。
+IOCが1件存在することだけではHunting Pivotへ複製せず、再利用性、特徴性、調査目的、
+誤検知条件を説明できる場合だけ作成する。
+
+Pivotの根拠に正確なfile hash、IP、domain、URL等の通常IOCが含まれる場合、Pivotは
+`iocs.json`の代替にならない。同じ原典・Activity/Malware参照を持つIOC Observationも
+構造化Sourceから生成し、その`indicator_id`をPivotの`indicator_refs`へ必ず追加する。
+参照先IOC ObservationはPivotと同じ原典を持たなければならない。Pivot側では組合せ、
+継続性、探索目的、誤検知条件を付加する。
+証明書fingerprintを構造化IOCへ取り込む場合は`type: certificate-fingerprint`と
+`hash_algorithm`（`md5` / `sha1` / `sha256` / `sha512`）を別々に保存し、file hashへ
+分類しない。STIX X.509 patternのalgorithmはこの明示値から生成する。
+ただし、hash algorithmが原典で不明な証明書fingerprint、証明書serial、per-device生成値、
+複合的な挙動を推測したIOC型へ押し込んではならない。
+
+各Pivotは最低限、次を持つ。
+
+- `pivot_id`、`category`、`pivot_type`、`value`、`description`
+- 機械表現できる場合の`stix_pattern`。per-device証明書設計や複合的な運用特徴など、
+  単一の安全なpatternにできない場合は`null`
+- `attribution_scope`、関連するmalware/infrastructure/activity/indicatorの参照
+- `observations`、`first_observed`、`last_observed`
+- `observation_count`、`source_count`、`activity_count`
+- `continuity`、`hunt_queries`、`confidence`、`evidence_refs`、誤検知・留保
+
+`observations[].count`は、その観測レコードが根拠付きで表すイベント数であり、必ず
+`count_basis`（`documented-events`、`documented-samples`、`documented-hosts`、
+`documented-observables`、`minimum-events`、`source-stated`、`unknown`）と組にする。
+`observation_count`は各Observationの`count`の合計、`source_count`は一意な`source_ref`数、
+`activity_count`はnullでない一意な`activity_ref`数とする。記事中の言及回数、ページ数、
+同じReport sliceの数を攻撃件数へ変換しない。正確な件数が不明な「複数」は、根拠が許す
+下限値と`minimum-events`のbasisを使う。数の含意もない1件の記述は`count: 1`、
+`count_basis: unknown`として「1観測レコード」を表し、攻撃件数とは説明しない。
+
+非nullの`observations[].activity_ref`はすべて上位`activity_refs`へ含め、すべての
+`observations[].source_ref`は上位`evidence_refs`へ含める。Observation参照を件数計算だけに
+使わず、STIX Noteのobject/evidence参照にも反映する。
+
+`continuity.assessment`は過去の観測構造、`active_status`は評価日時点の利用状態であり、
+互いに独立する。値は次の意味で使う。
+
+- `single-observation`: Observationレコードが1件。レコード内countが複数でも継続観測ではない。
+- `reobserved`: 同じPivotを独立した時点、資料またはtelemetryで2回以上確認した。
+- `reused`: 原典が複数検体、hostまたは活動での再利用を明示した。
+- `historical-only`: 根拠の対象期間が過去に限定されるが、現在未使用とは断定しない。
+- `unknown`: 再利用性を評価できない。
+
+受動検索を実行した場合は`continuity.checks`へ実行時刻、platform、query、index/time window、
+結果件数・要約、analyst validation、根拠、限界を構造化する。`evaluated_at`は評価実施時刻であり
+攻撃観測時刻ではない。`active` / `inactive`は検証済みcheckと根拠がある場合だけ使用する。
+単一検索の0件だけで`inactive`にせず、廃止・撤去の明示または範囲を記録した反復確認が
+なければ`unknown`を維持する。
+
+Pivotの時間は活動観測の時間だけを`first_observed` / `last_observed`へ入れる。次は活動日ではない。
+
+- X.509証明書の`notBefore` / `notAfter`（証明書の有効期間）
+- Source公開日・アクセス日
+- VirusTotal等の`first-seen` / first submission（そのサービスでの初回確認）
+- Shodan/Censys等のscan時刻（公開サービス上のscan観測であり、攻撃実行時刻ではない）
+
+上記は用途に応じた別フィールドまたはObservationの`basis`へ保存し、相互に代用しない。
+現在も利用中であることを示すlive scan、現在のsample telemetry、または同等の明示的根拠が
+なければ`continuity.active_status`は`unknown`とする。検索を実行していない場合は
+`passive_scan_performed: false`とし、未検索を「現在観測なし」へ言い換えない。
+
+issuer、subjectの一般名、ASN、hosting provider、CDN、正規サービスroot、汎用port、
+offensive-security frameworkの既定値等はgeneric pivotであり、それ単独ではアクター固有の
+Indicatorでも関係根拠でもない。既知SAN/fingerprint、URI、sample設定、観測時間等との
+組合せ、必要な追加確認、誤検知条件を記録する。Shodan/Censys等の`hunt_queries`は候補生成用で、
+`requires_validation: true`と具体的な`false_positive_notes`を必須とする。クエリ結果を
+自動的にIOC、Infrastructure、Actor関係へ昇格しない。
+
 ## 9. 出典
 
 Sourceには以下を持たせる。
@@ -417,6 +537,10 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 ## 11. STIX出力
 
 - Actor: `intrusion-set`
+- 関連企業: `identity`（`identity_class: organization`）
+- 関連自然人: `threat-actor`（OpenCTIではThreat Actor Individualとして明示）
+- 関連Threat Actor Group: `threat-actor`（OpenCTIではThreat Actor Groupとして明示）
+- 法的措置: 対象entityを参照する`note`
 - Malware: `malware`
 - Tool: `tool`
 - Infrastructure: `infrastructure`
@@ -424,10 +548,19 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 - Activity: 明示した`stix_object_type`に従い`campaign`、`incident`、`grouping`
 - Targets/attribution organizations: `identity`
 - IOC: `indicator`
+- Hunting Pivot: STIX patternがある場合は`indicator`と`note`、ない場合は`note`のみ
 - 観測: `observed-data`と`note`、またはIndicatorの外部参照
 - 関係: `relationship`
 
 STIXに直接表しにくい精度、証拠、自由記述は`x_`カスタムプロパティとして保持する。
+
+正規データの`entity_relationships.relationship_type`は、`employed-by`、`founder-of`、
+`officer-of`、`member-of`、`supports`、`front-company-for`等の根拠に合う意味を保持する。
+OpenCTIがその動詞を安全に受理できない場合、STIX出力では`relationship_type: related-to`へ
+フォールバックし、元の動詞を`x_profile_relationship_type`、正規Relationship IDを
+`x_profile_relationship_id`へ保存する。説明、確度、出典、観測期間も保持し、互換性のために
+意味や証拠を捨てない。OpenCTIで受理できることを理由に、正規データ側の動詞を最初から
+`related-to`へ弱めてはいけない。
 
 `artifacts.csv`の非IOC artifactは、該当するSCOへ安全に変換できる場合だけSTIXへ含める。
 変換できないコマンドや文字列は、STIX `artifact` SCOへ無理に格納せず、`note`または
@@ -444,6 +577,9 @@ Incident/Grouping Bundleへ分割する。
   含める。アクター一般の利用実績から活動別マルウェア、TTP、標的を補完しない。
 - 各Bundleは`created_by_ref`、Relationshipの両端、Reportの`object_refs`をBundle内で解決し、
   標準TLP marking以外の参照切れを許可しない。
+- 複数Bundleへ同じSTIX IDを含める場合、そのSDO/SCOは`created` / `modified`を除く意味内容も
+  同一にする。プロファイル固有の説明・出典・期間を共有IDの本体へ混在させず、Relationship、
+  Noteまたはprofile-scoped IDへ置く。
 - Reportの`object_refs`にはRelationshipも含め、OpenCTI上で知識コンテナとして確認できるようにする。
 - 国・地域は`Location`、産業・役割は`identity_class: class`の`Identity`へ変換する。
 - 国は`reference/opencti-country-index.json`で固定したOpenCTI公式Countryの英語名、
@@ -543,7 +679,7 @@ ETDA、MISP、TIDAL等の集約データから得たcampaign、software、標的
 entity種別、活動との結び付き、観測期間を原典で確認したevidenceが必要である。
 
 
-## 14. 生成・エージェント用ガードレール
+## 16. 生成・エージェント用ガードレール
 
 自動生成、エージェント更新、日次取込、OSINT補完のすべてで次を必須とする。詳細と
 具体例は[GENERATION_RULES.md](GENERATION_RULES.md)を参照する。

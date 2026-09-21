@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--medusa-group`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -34,6 +34,18 @@ Aliasなし
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -108,6 +120,33 @@ Aliasなし
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--medusa-abyssworker-driver-lineage | malware | malicious-driver-family-and-signing-cluster | ABYSSWORKER/smuol.sys; SHA256 6a2a0f9c56ee9bf7b62e1d4e1929d13046cd78a93d8c607fe4728cc5b1e8d050 or b7703a59c39a0d2f7ef6422945aaeaaf061431af0533557246397551b8eed505; device \device\czx9umpTReqbOOKF | shared | 12 | 1 |  | 不明 | 不明 | reobserved | unknown | 高 | `source--elastic-abyssworker-2025` |
+| hunting-pivot--medusa-abyssworker-signing-fingerprints | malware | code-signing-certificate-fingerprint-set-unspecified-algorithm | 51681b3c9e665dd0b29e257146d539dc (Foshan Gaoming Kedeyu Insulation Materials Co., Ltd); 7f67150fbb0d254e474284c7f7819c4f (FEI XIAO); 72881f10cd248a33e61243a9e150ec1d (Fuzhou Dingxin Trade Co., Ltd.); 75e8e7b9043b13df60e76499663021c1 (Changsha Hengxiang Information Technology Co., Ltd); 039347e61dec6f6398d4d46bf732656c (Xinjiang Yishilian Network Technology Co., Ltd); 4efa7e7bba65ec1ab774f2b31357d599 (Shenzhen Yundian Technology Co., Ltd) | generic | 6 | 1 |  | 不明 | 不明 | unknown | unknown | 高 | `source--elastic-abyssworker-2025` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--medusa-abyssworker-driver-lineage | pivot-observation--abyssworker-vt-2024-2025 | 不明 | 12 | documented-samples | なし | source--elastic-abyssworker-2025 | Elastic identified a dozen VirusTotal samples with repository first-seen values from 2024-08-08 through 2025-02-24. Those values bound corpus ingestion, not execution, deployment or incident time, so no activity observation date is asserted. |
+| hunting-pivot--medusa-abyssworker-signing-fingerprints | pivot-observation--abyssworker-six-signing-fingerprints-2024-2025 | 不明 | 6 | documented-observables | なし | source--elastic-abyssworker-2025 | Six distinct certificate fingerprints were listed across a corpus of twelve samples whose VirusTotal first-seen values ranged from 2024-08-08 through 2025-02-24; per-certificate sample counts and exact certificate-use dates were not published, and repository first-seen is not treated as activity time. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--medusa-abyssworker-driver-lineage | edr | `file.sha256 IN (6a2a0f9c56ee9bf7b62e1d4e1929d13046cd78a93d8c607fe4728cc5b1e8d050,b7703a59c39a0d2f7ef6422945aaeaaf061431af0533557246397551b8eed505) OR device.name=\device\czx9umpTReqbOOKF` | Find exact samples and the distinctive device artifact. | 要 | Certificate fingerprints are intentionally excluded from this query because they are shared across unrelated malware and the source does not state the hash algorithm. |
+| hunting-pivot--medusa-abyssworker-signing-fingerprints | file-intelligence | `signing_certificate.fingerprint IN (51681b3c9e665dd0b29e257146d539dc,7f67150fbb0d254e474284c7f7819c4f,72881f10cd248a33e61243a9e150ec1d,75e8e7b9043b13df60e76499663021c1,039347e61dec6f6398d4d46bf732656c,4efa7e7bba65ec1ab774f2b31357d599)` | Retrospectively locate signed files, then pivot on ABYSSWORKER code, device names and IOCTL behavior. | 要 | Pseudo-query requiring translation to the chosen file-intelligence platform. The source does not state the hash algorithm, and these certificates are shared across unrelated malware; never attribute by fingerprint or holder name alone. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -195,11 +234,11 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 2件
+- IOC観測: 2件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 0件（`artifacts.csv`）
+- 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -222,6 +261,7 @@ Aliasなし
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--elastic-abyssworker-2025 | Shedding light on the ABYSSWORKER driver | Elastic Security Labs | 2025-03-20 | https://www.elastic.co/security-labs/threat-command/abyssworker | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

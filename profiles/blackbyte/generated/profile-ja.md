@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--blackbyte`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -36,6 +36,18 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -113,6 +125,30 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--blackbyte-four-driver-set-2024 | malware | byovd-driver-set-sha256 | RtCore64.sys=01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd; DBUtil_2_3.sys=0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5; zamguard64.sys=543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91; gdrv.sys=31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427 | shared | 4 | 1 | 1 | 不明 | 不明 | single-observation | unknown | 高 | `source--cisco-talos-blackbyte-drivers-2024` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--blackbyte-four-driver-set-2024 | pivot-observation--blackbyte-four-drivers-2024 | 不明 | 4 | documented-samples | activity--daily-ac992de1ba5a8e0e1661 | source--cisco-talos-blackbyte-drivers-2024 | Talos documented all four driver files in a new encryptor iteration and recent incident-response activity. The report publication month is not reused as the observation date. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--blackbyte-four-driver-set-2024 | edr | `file.sha256 IN (01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd,0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5,543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91,31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427)` | Find exact vulnerable drivers and correlate co-occurrence, service creation and subsequent ransomware execution. | 要 | Each driver can be legitimate or used by unrelated actors. Co-occurrence and BlackByte encryptor/behavioral evidence materially increase value. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -193,11 +229,11 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 8件
+- IOC値: 12件
+- IOC観測: 12件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 7件
-- 非IOC artifact観測: 32件（`artifacts.csv`）
+- 非IOC artifact観測: 36件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -373,6 +409,7 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--cisco-talos-blackbyte-drivers-2024 | BlackByte blends tried-and-true tradecraft with newly disclosed vulnerabilities to support ongoing attacks | Cisco Talos | 2024-08-28 | https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -546,6 +546,101 @@ def main() -> int:
                     counterevidence=[notes] if "counterevidence=" in notes else [],
                 )
             )
+        for entity in profile.get("associated_entities", []):
+            refs = entity.get("evidence_refs", [])
+            status, tier = verification_from_refs(refs, source_by_id)
+            claims.append(
+                claim(
+                    slug,
+                    "associated-entity",
+                    entity["entity_id"],
+                    (
+                        f"{entity['name']} is retained as a distinct "
+                        f"{entity['entity_type']} associated with the research "
+                        f"context for {profile['name']}: {entity['description']}"
+                    ),
+                    status,
+                    entity.get("confidence", "unknown"),
+                    refs,
+                    (
+                        f"Evidence tier={tier}; identity does not itself prove "
+                        "APT membership or operational participation."
+                    ),
+                )
+            )
+            for action in entity.get("legal_actions", []):
+                action_refs = action.get("evidence_refs", [])
+                action_status, action_tier = verification_from_refs(
+                    action_refs, source_by_id
+                )
+                claims.append(
+                    claim(
+                        slug,
+                        "legal-action",
+                        action["action_id"],
+                        (
+                            f"{action['authority']} recorded a "
+                            f"{action['action_type']} concerning {entity['name']}: "
+                            f"{action['description']}"
+                        ),
+                        action_status,
+                        entity.get("confidence", "unknown"),
+                        action_refs,
+                        (
+                            f"Evidence tier={action_tier}; legal status="
+                            f"{action['status']}. An indictment or charge is an "
+                            "allegation, not a conviction."
+                        ),
+                    )
+                )
+        for relationship in profile.get("entity_relationships", []):
+            refs = relationship.get("evidence_refs", [])
+            status, tier = verification_from_refs(refs, source_by_id)
+            claims.append(
+                claim(
+                    slug,
+                    "entity-relationship",
+                    relationship["relationship_id"],
+                    (
+                        f"{relationship['source_ref']} "
+                        f"{relationship['relationship_type']} "
+                        f"{relationship['target_ref']}: "
+                        f"{relationship['description']}"
+                    ),
+                    status,
+                    relationship.get("confidence", "unknown"),
+                    refs,
+                    (
+                        f"Evidence tier={tier}; relationship wording and "
+                        "temporal scope are preserved without membership "
+                        "propagation."
+                    ),
+                )
+            )
+        for pivot in profile.get("hunting_pivots", []):
+            refs = pivot.get("evidence_refs", [])
+            status, tier = verification_from_refs(refs, source_by_id)
+            claims.append(
+                claim(
+                    slug,
+                    "hunting-pivot",
+                    pivot["pivot_id"],
+                    (
+                        f"{profile['name']} research retains the "
+                        f"{pivot['pivot_type']} pivot {pivot['value']}: "
+                        f"{pivot['description']}"
+                    ),
+                    status,
+                    pivot.get("confidence", "unknown"),
+                    refs,
+                    (
+                        f"Evidence tier={tier}; attribution scope="
+                        f"{pivot['attribution_scope']}; active status="
+                        f"{pivot['continuity']['active_status']}; observation "
+                        "counts use their explicit count_basis."
+                    ),
+                )
+            )
         for field in (
             "malware",
             "tools",

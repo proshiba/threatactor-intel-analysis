@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--bitter",
   "actor_name": "BITTER",
-  "profile_updated_at": "2026-09-21T04:35:02Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "unknown",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 3,
       "dated_activities": 0,
       "relationships": 0,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 2,
       "malware": 1,
       "activity_linked_malware": 1,
       "tools": 0,
@@ -77,6 +83,104 @@
       }
     ],
     "relationships": [],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--bitter-android-creativefox-signing-lineage",
+        "category": "malware",
+        "pivot_type": "android-signing-certificate-subject-lineage",
+        "value": "CreativeFox certificate-subject variants and older Intelli-style subjects reused across malicious and Google Play applications",
+        "description": "Bitdefender linked malicious and store-hosted Android applications through shared signing-certificate and package metadata, with related certificate-subject structures visible in 2017-2018 samples and CreativeFox variants in 2020. Subject strings alone are weak; use exact certificate fingerprints from a verified seed and package/code similarity.",
+        "stix_pattern": null,
+        "attribution_scope": "shared",
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "activity_refs": [],
+        "indicator_refs": [],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--bitter-android-cert-2017-2018",
+            "observed_at": {
+              "value": "2017-01-01T00:00:00Z",
+              "precision": "range",
+              "status": "known",
+              "basis": "sample-range-2017/2018"
+            },
+            "source_ref": "source--bitdefender-bitter-android-2020",
+            "activity_ref": null,
+            "context": "Older Android samples shared related signing-certificate subject structures.",
+            "count": 2,
+            "count_basis": "minimum-events"
+          },
+          {
+            "observation_id": "pivot-observation--bitter-creativefox-2020",
+            "observed_at": {
+              "value": "2020-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "sample-year"
+            },
+            "source_ref": "source--bitdefender-bitter-android-2020",
+            "activity_ref": null,
+            "context": "CreativeFox variants linked malicious and Google Play applications using certificate and package metadata.",
+            "count": 2,
+            "count_basis": "minimum-events"
+          }
+        ],
+        "first_observed": {
+          "value": "2017-01-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "sample-range-2017/2018"
+        },
+        "last_observed": {
+          "value": "2020-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "sample-year"
+        },
+        "observation_count": 4,
+        "source_count": 1,
+        "activity_count": 0,
+        "continuity": {
+          "assessment": "reused",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "Certificate-subject conventions and signing relationships appeared across multiple Android sample generations; no current store/file scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "file-intelligence",
+            "query": "android.signer.subject CONTAINS \"CreativeFox\"",
+            "purpose": "Seed mobile-malware research before pivoting on the exact signer fingerprint and package lineage.",
+            "requires_validation": true,
+            "false_positive_notes": "Subject text is mutable and can collide. Require exact signer digest, package/code similarity, C2 and victimology corroboration."
+          }
+        ],
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--bitdefender-bitter-android-2020"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--7d325255fc5627749b34cce2",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "BITTER research retains the android-signing-certificate-subject-lineage pivot CreativeFox certificate-subject variants and older Intelli-style subjects reused across malicious and Google Play applications: Bitdefender linked malicious and store-hosted Android applications through shared signing-certificate and package metadata, with related certificate-subject structures visible in 2017-2018 samples and CreativeFox variants in 2020. Subject strings alone are weak; use exact certificate fingerprints from a verified seed and package/code similarity.",
+            "evidence_refs": [
+              "source--bitdefender-bitter-android-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
     "activity_timeline": [
       {
         "activity_id": "activity--daily-6408cf1dda686dc502da",
@@ -2072,7 +2176,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 34,
+    "supported": 35,
     "partially-supported": 22
   },
   "evidence_catalog": {
@@ -2583,6 +2687,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--bitdefender-bitter-android-2020": {
+      "source_id": "source--bitdefender-bitter-android-2020",
+      "path": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool",
+      "title": "BitterAPT Revisited: The Untold Evolution of an Android Espionage Tool",
+      "publisher": "Bitdefender",
+      "published_at": {
+        "value": "2020-06-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool"
     }
   },
   "research_gaps": [

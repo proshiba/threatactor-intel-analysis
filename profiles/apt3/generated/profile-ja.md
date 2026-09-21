@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -41,6 +41,33 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--guangzhou-boyusec | Guangzhou Bo Yu Information Technology Company Limited | organization | internet-security-company, alleged-contractor | China | 2013-11 | 不明 | 高 | `source--doj-boyusec-indictment-2017`, `source--recorded-future-apt3-mss-boyusec-2017` |
+| threat-actor-individual--dong-hao | Dong Hao | threat-actor-individual | founder, shareholder, executive, alleged-hacker | China | 2011 | 2017-05 | 高 | `source--doj-boyusec-indictment-2017` |
+| threat-actor-individual--wu-yingzhuo | Wu Yingzhuo | threat-actor-individual | founder, shareholder, alleged-hacker | China | 2011 | 2017-05 | 高 | `source--doj-boyusec-indictment-2017` |
+| threat-actor-individual--xia-lei | Xia Lei | threat-actor-individual | employee, alleged-hacker | China | 2011 | 2017-05 | 高 | `source--doj-boyusec-indictment-2017` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| organization--guangzhou-boyusec | alleged-operates | actor--apt3 | Recorded Future assessed with high confidence that Boyusec operated the APT3 intrusion set. This vendor attribution is kept separate from the DOJ indictment, which did not use the APT3 label. | 不明 | 不明 | 中 | `source--recorded-future-apt3-mss-boyusec-2017`, `source--doj-boyusec-indictment-2017` |
+| threat-actor-individual--dong-hao | officer-of | organization--guangzhou-boyusec | The indictment identifies Dong as a founder, equity owner, executive director and manager. | 不明 | 不明 | 高 | `source--doj-boyusec-indictment-2017` |
+| threat-actor-individual--wu-yingzhuo | founder-of | organization--guangzhou-boyusec | The indictment identifies Wu as a Boyusec founding member and equity owner. | 不明 | 不明 | 高 | `source--doj-boyusec-indictment-2017` |
+| threat-actor-individual--xia-lei | employed-by | organization--guangzhou-boyusec | The indictment identifies Xia as a Boyusec employee. | 不明 | 不明 | 高 | `source--doj-boyusec-indictment-2017` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Dong Hao | indictment | U.S. District Court for the Western District of Pennsylvania | 2017-09-13 | alleged | Indicted on computer intrusion, identity theft, trade-secret theft and related conspiracy allegations. | `source--doj-boyusec-indictment-2017` |
+| Wu Yingzhuo | indictment | U.S. District Court for the Western District of Pennsylvania | 2017-09-13 | alleged | Indicted on computer intrusion, identity theft, trade-secret theft and related conspiracy allegations. | `source--doj-boyusec-indictment-2017` |
+| Wu Yingzhuo | wanted | Federal Bureau of Investigation | 不明 | pending | Listed as wanted in connection with the indictment. | `source--doj-boyusec-indictment-2017` |
+| Xia Lei | indictment | U.S. District Court for the Western District of Pennsylvania | 2017-09-13 | alleged | Indicted on computer intrusion, identity theft, trade-secret theft and related conspiracy allegations. | `source--doj-boyusec-indictment-2017` |
 
 ## ダイヤモンドモデル
 
@@ -116,6 +143,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -227,6 +272,8 @@ Double Tap; Clandestine Wolf
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-boyusec-indictment-2017 | U.S. Charges Three Chinese Hackers Who Work at Internet Security Firm for Hacking Three Corporations for Commercial Advantage | U.S. Department of Justice | 2017-11-27 | https://www.justice.gov/usao-wdpa/pr/us-charges-three-chinese-hackers-who-work-internet-security-firm-hacking-three | government-legal | TLP:CLEAR | 高 |
+| source--recorded-future-apt3-mss-boyusec-2017 | Recorded Future Research Concludes Chinese Ministry of State Security Behind APT3 | Recorded Future | 2017-05-17 | https://www.recordedfuture.com/research/chinese-mss-behind-apt3 | vendor-research | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--storm-0501",
   "actor_name": "Storm-0501",
-  "profile_updated_at": "2026-09-21T04:18:00Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "lead-only",
@@ -19,6 +21,10 @@
       "activities": 2,
       "dated_activities": 0,
       "relationships": 0,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 2,
       "malware": 2,
       "activity_linked_malware": 1,
       "tools": 6,
@@ -77,6 +83,113 @@
       }
     ],
     "relationships": [],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--storm-0501-beacon-tls-http-profile",
+        "category": "infrastructure",
+        "pivot_type": "compound-c2-profile",
+        "value": "self-signed CN=Microsoft IT TLS CA 5; GET /kitten.gif; POST image_url; Chrome 80 fixed User-Agent",
+        "description": "A compound Cobalt Strike BEACON profile persisted across the Arcane/Sabbath rebrand. The TLS common name alone is not sufficient; require the self-signed certificate plus HTTP URI/parameter or fixed User-Agent corroboration.",
+        "stix_pattern": null,
+        "attribution_scope": "shared",
+        "malware_refs": [
+          "malware--cobalt-strike"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [],
+        "indicator_refs": [],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--unc2190-beacon-2020",
+            "observed_at": {
+              "value": "2020-07-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-use-since"
+            },
+            "source_ref": "source--mandiant-unc2190-sabbath-2021",
+            "activity_ref": null,
+            "context": "Mandiant stated that the group had used this BEACON profile and associated infrastructure since at least July 2020.",
+            "count": 1,
+            "count_basis": "unknown"
+          },
+          {
+            "observation_id": "pivot-observation--unc2190-beacon-2021",
+            "observed_at": {
+              "value": "2021-06-01T00:00:00Z",
+              "precision": "range",
+              "status": "known",
+              "basis": "source-stated-arcane-to-sabbath-rebrand-range-2021-06/2021-10"
+            },
+            "source_ref": "source--mandiant-unc2190-sabbath-2021",
+            "activity_ref": null,
+            "context": "Mandiant documented unchanged BEACON/profile and infrastructure characteristics across the Arcane-to-Sabbath rebrand, whose source-stated public-service contexts span June through October 2021. The November publication month is not reused as an observation date.",
+            "count": 1,
+            "count_basis": "unknown"
+          }
+        ],
+        "first_observed": {
+          "value": "2020-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-use-since"
+        },
+        "last_observed": {
+          "value": "2021-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sabbath-rebrand-context"
+        },
+        "observation_count": 2,
+        "source_count": 1,
+        "activity_count": 0,
+        "continuity": {
+          "assessment": "reused",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "The profile was documented as used since at least July 2020 and unchanged across the June-October 2021 Arcane-to-Sabbath rebrand; no current internet scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "shodan",
+            "query": "port:443 ssl.cert.subject.cn:\"Microsoft IT TLS CA 5\" ssl.cert.issuer.cn:\"Microsoft IT TLS CA 5\"",
+            "purpose": "Seed discovery of hosts presenting the documented self-signed certificate profile.",
+            "requires_validation": true,
+            "false_positive_notes": "Require /kitten.gif, image_url or fixed User-Agent corroboration before linking to UNC2190/Storm-0501. CN-only matches are insufficient."
+          },
+          {
+            "platform": "siem",
+            "query": "uri_path ENDSWITH \"/kitten.gif\" AND http.request.body CONTAINS \"image_url=\"",
+            "purpose": "Detect the compound HTTP profile in proxy telemetry.",
+            "requires_validation": true,
+            "false_positive_notes": "Correlate with the self-signed TLS CN and fixed User-Agent; either HTTP token alone can collide."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mandiant-unc2190-sabbath-2021"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--601593d328315e46a1c0b2f3",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-0501 research retains the compound-c2-profile pivot self-signed CN=Microsoft IT TLS CA 5; GET /kitten.gif; POST image_url; Chrome 80 fixed User-Agent: A compound Cobalt Strike BEACON profile persisted across the Arcane/Sabbath rebrand. The TLS common name alone is not sufficient; require the self-signed certificate plus HTTP URI/parameter or fixed User-Agent corroboration.",
+            "evidence_refs": [
+              "source--mandiant-unc2190-sabbath-2021"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
     "activity_timeline": [
       {
         "activity_id": "activity--daily-344d076434d80e855e99",
@@ -1474,7 +1587,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 55,
+    "supported": 56,
     "partially-supported": 5
   },
   "evidence_catalog": {
@@ -1906,6 +2019,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--mandiant-unc2190-sabbath-2021": {
+      "source_id": "source--mandiant-unc2190-sabbath-2021",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/sabbath-ransomware-affiliate/",
+      "title": "Kitten.gif: Meet the Sabbath Ransomware Affiliate Program, Again",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2021-11-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/sabbath-ransomware-affiliate/"
     }
   },
   "research_gaps": [

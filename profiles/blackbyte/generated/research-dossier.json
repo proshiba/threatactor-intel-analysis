@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--blackbyte",
   "actor_name": "BlackByte",
-  "profile_updated_at": "2026-09-21T04:18:00Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "lead-only",
@@ -19,6 +21,10 @@
       "activities": 1,
       "dated_activities": 0,
       "relationships": 0,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 1,
       "malware": 4,
       "activity_linked_malware": 0,
       "tools": 4,
@@ -51,6 +57,99 @@
     },
     "motivations": [],
     "relationships": [],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--blackbyte-four-driver-set-2024",
+        "category": "malware",
+        "pivot_type": "byovd-driver-set-sha256",
+        "value": "RtCore64.sys=01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd; DBUtil_2_3.sys=0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5; zamguard64.sys=543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91; gdrv.sys=31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427",
+        "description": "A BlackByte encryptor iteration reported by Talos in 2024 dropped four vulnerable drivers to disable security controls. The report did not state an exact incident date. The exact hashes are high-value endpoint pivots as a set, but the legitimate vulnerable drivers are widely reused by other actors and cannot independently attribute BlackByte.",
+        "stix_pattern": "[file:hashes.'SHA-256' = '01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd' OR file:hashes.'SHA-256' = '0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5' OR file:hashes.'SHA-256' = '543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91' OR file:hashes.'SHA-256' = '31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427']",
+        "attribution_scope": "shared",
+        "malware_refs": [
+          "malware--blackbyte-ransomware"
+        ],
+        "infrastructure_refs": [],
+        "activity_refs": [
+          "activity--daily-ac992de1ba5a8e0e1661"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:9de51cccdcc2f3f80f12678ce58f95f8f8d36dd80f118d7121cf10632f6ba993",
+          "indicator--sha256:73656ee87b650fcf98386522e47d4e76c35b8cdd101ef6e07895ed6cda415dd7",
+          "indicator--sha256:66c3e0eb6062f31dd056f7cdc4e9211c62c75373b3b59b96263a656d4326971a",
+          "indicator--sha256:b97b08d07a8f49360cd182d472b29cb78efbe3c98c9faa61df567330a9a69cbe"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--blackbyte-four-drivers-2024",
+            "observed_at": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "incident-date-not-stated-reported-in-2024"
+            },
+            "source_ref": "source--cisco-talos-blackbyte-drivers-2024",
+            "activity_ref": "activity--daily-ac992de1ba5a8e0e1661",
+            "context": "Talos documented all four driver files in a new encryptor iteration and recent incident-response activity. The report publication month is not reused as the observation date.",
+            "count": 4,
+            "count_basis": "documented-samples"
+          }
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "observation_count": 4,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "Four distinct driver files were documented together in one encryptor/incident-response observation; component count is not a claim that the full set was independently reobserved, and current use was not scanned.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "edr",
+            "query": "file.sha256 IN (01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd,0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5,543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91,31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427)",
+            "purpose": "Find exact vulnerable drivers and correlate co-occurrence, service creation and subsequent ransomware execution.",
+            "requires_validation": true,
+            "false_positive_notes": "Each driver can be legitimate or used by unrelated actors. Co-occurrence and BlackByte encryptor/behavioral evidence materially increase value."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisco-talos-blackbyte-drivers-2024"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c4bd3112dea2f3908e6a496a",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BlackByte research retains the byovd-driver-set-sha256 pivot RtCore64.sys=01aa278b07b58dc46c84bd0b1b5c8e9ee4e62ea0bf7a695862444af32e87f1fd; DBUtil_2_3.sys=0296e2ce999e67c76352613a718e11516fe1b0efc3ffdb8918fc999dd76a73a5; zamguard64.sys=543991ca8d1c65113dff039b85ae3f9a87f503daec30f46929fd454bc57e5a91; gdrv.sys=31f4cfb4c71da44120752721103a16512444c13c2ac2d857a7e6f13cb679b427: A BlackByte encryptor iteration reported by Talos in 2024 dropped four vulnerable drivers to disable security controls. The report did not state an exact incident date. The exact hashes are high-value endpoint pivots as a set, but the legitimate vulnerable drivers are widely reused by other actors and cannot independently attribute BlackByte.",
+            "evidence_refs": [
+              "source--cisco-talos-blackbyte-drivers-2024"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
     "activity_timeline": [
       {
         "activity_id": "activity--daily-ac992de1ba5a8e0e1661",
@@ -1201,7 +1300,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 61,
+    "supported": 62,
     "partially-supported": 1
   },
   "evidence_catalog": {
@@ -4056,6 +4155,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--cisco-talos-blackbyte-drivers-2024": {
+      "source_id": "source--cisco-talos-blackbyte-drivers-2024",
+      "path": "https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/",
+      "title": "BlackByte blends tried-and-true tradecraft with newly disclosed vulnerabilities to support ongoing attacks",
+      "publisher": "Cisco Talos",
+      "published_at": {
+        "value": "2024-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/"
     }
   },
   "research_gaps": [

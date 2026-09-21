@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--dprk-it-workers`
 - 状態: draft
-- 更新日時: 2026-09-21T02:11:26Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -38,6 +38,18 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Famous Chollima | related-to | FAMOUS CHOLLIMA is modeled as a CrowdStrike-named adversary conducting DPRK IT worker infiltration activity within the broader ecosystem represented by this profile. | 高 | `source--crowdstrike-famous-chollima-2026`, `source--doj-dprk-it-worker-schemes-2025` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -111,6 +123,24 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

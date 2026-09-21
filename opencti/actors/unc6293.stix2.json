@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "created": "2026-07-25T00:00:00Z",
-      "modified": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T13:20:00Z",
       "name": "Threat Actor Intelligence Profiles",
       "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
       "identity_class": "organization",
@@ -25,9 +25,9 @@
     {
       "type": "infrastructure",
       "spec_version": "2.1",
-      "id": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "id": "infrastructure--7469dbd4-8b78-439d-9a7a-0de832bcebd5",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -36,7 +36,7 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -54,8 +54,8 @@
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
-      "created": "2026-08-21T01:25:25Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -64,18 +64,63 @@
         "STORM-2945"
       ],
       "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-08-13T00:00:00Z",
+      "goals": [
+        "GTIGはUNC7005を「suspected Russian cyber espionage」クラスタの一つとして扱い、「individuals of interest to the Russian state」を標的とするhighly selectiveな作戦と説明している。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
       "x_profile_id": "actor--unc7005",
       "x_profile_status": "draft",
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-08-13T00:00:00Z"
+      "x_alias_assessments": [
+        {
+          "name": "STORM-2945",
+          "vendor": "Microsoft",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「UNC7005 (aka STORM-2945)」と明記した同一視である。ただしMicrosoftはStorm-2945を「Midnight Blizzardの運用サブクラスタ」として扱うのに対し、GTIGはUNC7005をICE RELIC(旧APT29)との関連をmoderate confidenceにとどめて別クラスタとして追跡しており、同じ指定子に対するクラスタ境界の評価がベンダー間で異なる。この差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。ICE RELIC(旧APT29)への接続はmoderate confidenceであり、具体的なロシア情報機関への帰属は行われていない。GTIG自身の表現は「suspected Russian」である。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。Microsoftが同一指定子(Storm-2945)をMidnight Blizzardのサブクラスタとして扱う点はスコープ評価の差であり、本プロファイルの帰属国とは矛盾しない。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC7005(Microsoft呼称: STORM-2945)はGTIGが2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。app passwordフィッシング、デバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。2026年7月に表面化した宿泊施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+        "history": "2026年2月にクラスタとして特定され、同月以降app passwordフィッシングを実施。4月下旬から大使館招待を題材とするデバイスコードフィッシングとMicrosoft認証を模倣するインフラの構築、5月にGLOBSECを装う作戦とウクライナ決議サミットを装うインフォスティーラー配布、5月から6月にWhatsAppを装う作戦、7月16日から23日にOWA題材ドメインの登録、7月31日以降Finnish Operations Centerを装うドメインの登録、8月6日から13日に欧州防衛産業向けのOAuthフィッシングを実施した。",
+        "capability_details": "マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、MaaSのVIDARとATOMIC。GTIGはCHERRYPIEの検体にLLM生成を示唆する痕跡が多数含まれると述べている。",
+        "infrastructure_details": "攻撃者管理ドメインの登録には複数のフリーメールアドレスが用いられ、chikolimdrid@gmail.comは2026年7月のOWA題材ドメイン3件とms365-live[.]comの登録に共通する。ms365-live[.]comとmy-invite[.]orgはいずれも104.194.159[.]150へ解決していた。",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、米国。標的地域=欧州。日本は確認時に個別国として保持する。\n\nウクライナ、西欧、米国の学術・外交・非営利分野の個人を主な標的とし、2026年8月には欧州の防衛産業に属するか関係する標的へ範囲を広げた。",
+        "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+      },
+      "x_osint_crosscheck_assessment": "possible-match",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -90,7 +135,7 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -126,8 +171,8 @@
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
-      "created": "2026-07-25T09:00:19Z",
-      "modified": "2026-09-21T08:15:06Z",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -151,14 +196,207 @@
         "YTTRIUM"
       ],
       "description": "[APT29](https://attack.mitre.org/groups/G0016) is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).(Citation: White House Imposing Costs RU Gov April 2021)(Citation: UK Gov Malign RIS Activity April 2021) They have operated since at least 2008, often targeting government networks in Europe and NATO member countries, research institutes, and think tanks. [APT29](https://attack.mitre.org/groups/G0016) reportedly compromised the Democratic National Committee starting in the summer of 2015.(Citation: F-Secure The Dukes)(Citation: GRIZZLY STEPPE JAR)(Citation: Crowdstrike DNC June 2016)(Citation: UK Gov UK Exposes Russia SolarWinds April 2021)\n\nIn April 2021, the US and UK governments attributed the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024) to the SVR; public statements included citations to [APT29](https://attack.mitre.org/groups/G0016), Cozy Bear, and The Dukes.(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021) Industry reporting also referred to the actors involved in this campaign as UNC2452, NOBELIUM, StellarParticle, Dark Halo, and SolarStorm.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Unit 42 SolarStorm December 2020)",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
       "x_profile_id": "actor--apt29",
       "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "Blue Kitsune",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Cozy Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "CozyDuke",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Dark Halo",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ICECAP",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "ICE RELIC",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "IRON HEMLOCK",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON RITUAL",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Midnight Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NOBELIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NobleBaron",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "SolarStorm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "The Dukes",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC2452",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC3524",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "YTTRIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT29の標準化プロファイル。リポジトリ内の専用資料19件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Operation Ghost\n\n2024年10月22日以降、APT29（Midnight Blizzard）は100超の組織の数千人へ署名済みRDP設定ファイルを送付した。標的が開くと攻撃者管理サーバーへ接続し、ローカルドライブ、クリップボード、周辺機器、認証機能等がリモート側へマッピングされた。",
+        "capability_details": "PowerDuke, reGeorg, GeminiDuke, HAMMERTOSS, CosmicDuke, EnvyScout, TEARDROP, WellMess, PolyglotDuke, RegDuke, QUIETEXIT, Raindrop, FatDuke, GoldMax, POSHSPY, MiniDuke, SeaDuke, FoggyWeb, WellMail, LiteDuke, VaporRage, Sibot, Cobalt Strike, SUNBURST, PinchDuke, OnionDuke, NativeZone, GoldFinder, TrailBlazer, SUNSPOT, BoomBox, CloudDuke, SoreFang, CozyCar, CozyDuke, SeaDaddy implant developed in Python and compiled with py2exe, AdobeARM, ATI-Agent, MiniDionis, Grizzly Steppe, Vernaldrop, Tadpole, Spikerush, Net, BloodHound, Sliver, Impacket, ipconfig, AADInternals, Tasklist, meek, ROADTools, Systeminfo, Mimikatz, SDelete, Tor, AdFind, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、オーストラリア、ドイツ、モンゴル、日本、米国、英国。標的地域=NATO加盟国、アジア、中東、全世界、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets government ministries and agencies in Europe, the US, Central Asia, East Africa, and the Middle East, associated with DNC attacks",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を確認し、GTIGの新呼称ICE RELICをaliasへ追加、ChocoShellの別名CHERRYPIEを追記、UNC6293・UNC7005とのサブクラスタ関係を関係として追加した。Storm-2945はGTIGがUNC7005として別クラスタで追跡しているため、本プロファイルのaliasへは追加していない。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "note",
       "spec_version": "2.1",
-      "id": "note--3b5ca3af-8e61-4df8-89a3-69f020ad8c3c",
+      "id": "note--16e6759c-8014-4683-924b-7cb655cbb02b",
       "created": "2026-07-25T15:23:09Z",
       "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
@@ -176,34 +414,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
-      "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-09-21T02:39:13Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
-      "target_ref": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
-      "description": "UNC6293 uses UNC6293の認証フィッシングドメイン.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026",
-          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
-        }
-      ],
-      "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
       "created": "2026-07-25T11:07:07Z",
-      "modified": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -215,8 +428,9 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026"
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
       ],
       "x_profile_relationship_id": "relationship--unc6293-unc7005-overlap",
@@ -224,6 +438,24 @@
       "x_confidence": "medium",
       "x_analyst_notes": "原文が明示的に別クラスタとして扱うため、overlaps-withではなくshares-targeting-withとする。メールアドレスの近似は運用上の重なりの示唆であり、同一性の根拠にはしない。",
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
       "start_time": "2026-02-01T00:00:00Z",
       "stop_time": "2026-05-01T00:00:00Z"
     },
@@ -232,7 +464,7 @@
       "spec_version": "2.1",
       "id": "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2",
       "created": "2026-07-25T11:07:07Z",
-      "modified": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -244,8 +476,9 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026"
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
       ],
       "x_profile_relationship_id": "relationship--unc6293-ice-relic-subcluster",
@@ -253,15 +486,76 @@
       "x_confidence": "medium",
       "x_analyst_notes": "moderate confidenceの評価であり同一アクターの確定ではない。aliasとして統合せず関係として保持する(RULES.md 6条)。ICE RELICはGTIGによるAPT29の新呼称であり、対応する既存プロファイルはactor--apt29である。",
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
       "start_time": "2025-06-01T00:00:00Z",
       "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9f4f902-fcb7-4f29-8a87-58f29e4e371e",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "target_ref": "infrastructure--7469dbd4-8b78-439d-9a7a-0de832bcebd5",
+      "description": "UNC6293 uses UNC6293の認証フィッシングドメイン.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--51dd096b-cc60-4476-b257-b485149d7d7c",
-      "created": "2026-09-21T02:39:13Z",
-      "modified": "2026-09-21T02:39:13Z",
+      "created": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -272,11 +566,12 @@
       ],
       "published": "2026-08-20T00:00:00Z",
       "object_refs": [
-        "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+        "infrastructure--7469dbd4-8b78-439d-9a7a-0de832bcebd5",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
         "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
-        "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
         "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
-        "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2"
+        "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2",
+        "relationship--f9f4f902-fcb7-4f29-8a87-58f29e4e371e"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -300,8 +595,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--870bcc77-b9fd-4148-a412-ea58cc4f49b3",
-      "created": "2026-09-21T02:39:13Z",
-      "modified": "2026-09-21T02:39:13Z",
+      "created": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -310,16 +605,16 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T02:39:13Z",
+      "published": "2026-09-21T13:20:00Z",
       "object_refs": [
-        "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+        "infrastructure--7469dbd4-8b78-439d-9a7a-0de832bcebd5",
         "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
         "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
         "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
-        "note--3b5ca3af-8e61-4df8-89a3-69f020ad8c3c",
-        "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
+        "note--16e6759c-8014-4683-924b-7cb655cbb02b",
         "relationship--8eefa458-022b-438a-9acd-4cd38519976d",
         "relationship--c8f43cc3-8c52-41d9-af67-507af1e7c2e2",
+        "relationship--f9f4f902-fcb7-4f29-8a87-58f29e4e371e",
         "report--51dd096b-cc60-4476-b257-b485149d7d7c"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",

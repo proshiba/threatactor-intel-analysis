@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--andariel`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -41,6 +41,18 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 |---|---|---|---|---|
 | Lazarus Group | part-of | MITRE considers Andariel a subset of Lazarus Group; U.S. Treasury also describes Andariel as a Lazarus subgroup controlled by the RGB. | 高 | `source--mitre-live-andariel-2024`, `source--treasury-dprk-groups-2019` |
 | APT45 | overlaps-with | Mandiant states that activity it attributes to APT45 has been publicly reported as Andariel, while treating vendor cluster boundaries as an attribution complication rather than asserting universal alias identity. | 高 | `source--mandiant-apt45-2024` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -116,6 +128,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

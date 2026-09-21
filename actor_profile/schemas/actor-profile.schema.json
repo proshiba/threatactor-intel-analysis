@@ -15,6 +15,9 @@
     "attribution",
     "motivations",
     "relationships",
+    "associated_entities",
+    "entity_relationships",
+    "hunting_pivots",
     "diamond_model",
     "capabilities",
     "activities",
@@ -26,7 +29,7 @@
     "free_text"
   ],
   "properties": {
-    "schema_version": {"const": "1.3.0"},
+    "schema_version": {"const": "1.4.0"},
     "profile_id": {"type": "string", "pattern": "^actor--[a-z0-9][a-z0-9-]*$"},
     "name": {"type": "string", "minLength": 1},
     "status": {"enum": ["draft", "review", "published", "deprecated"]},
@@ -69,6 +72,9 @@
     },
     "motivations": {"type": "array", "items": {"$ref": "#/$defs/motivation"}},
     "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "associated_entities": {"type": "array", "items": {"$ref": "#/$defs/associatedEntity"}},
+    "entity_relationships": {"type": "array", "items": {"$ref": "#/$defs/entityRelationship"}},
+    "hunting_pivots": {"type": "array", "items": {"$ref": "#/$defs/huntingPivot"}},
     "diamond_model": {
       "type": "object",
       "additionalProperties": false,
@@ -202,6 +208,144 @@
         "last_observed": {"$ref": "#/$defs/timePoint"},
         "evidence_refs": {"$ref": "#/$defs/referenceArray"},
         "analyst_notes": {"type": "string"}
+      }
+    },
+    "associatedEntity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_id", "name", "entity_type", "aliases", "description", "countries", "roles", "threat_actor_types", "first_observed", "last_observed", "legal_actions", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "entity_id": {"type": "string", "pattern": "^(organization|threat-actor-group|threat-actor-individual)--[a-z0-9][a-z0-9-]*$"},
+        "name": {"type": "string", "minLength": 1},
+        "entity_type": {"enum": ["organization", "threat-actor-group", "threat-actor-individual"]},
+        "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "description": {"type": "string"},
+        "countries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "roles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "threat_actor_types": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "legal_actions": {"type": "array", "items": {"$ref": "#/$defs/legalAction"}},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "legalAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "action_type", "authority", "action_date", "status", "description", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "action_id": {"type": "string", "pattern": "^legal-action--"},
+        "action_type": {"enum": ["indictment", "charge", "sanction", "arrest", "conviction", "sentencing", "wanted", "other"]},
+        "authority": {"type": "string"},
+        "action_date": {"$ref": "#/$defs/timePoint"},
+        "status": {"enum": ["alleged", "pending", "completed", "unknown"]},
+        "description": {"type": "string"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "entityRelationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relationship_id", "source_ref", "target_ref", "relationship_type", "description", "first_observed", "last_observed", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "relationship_id": {"type": "string", "pattern": "^entity-relationship--"},
+        "source_ref": {"type": "string"},
+        "target_ref": {"type": "string"},
+        "relationship_type": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "huntingPivot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pivot_id", "category", "pivot_type", "value", "description", "stix_pattern", "attribution_scope", "malware_refs", "infrastructure_refs", "activity_refs", "indicator_refs", "observations", "first_observed", "last_observed", "observation_count", "source_count", "activity_count", "continuity", "hunt_queries", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "pivot_id": {"type": "string", "pattern": "^hunting-pivot--"},
+        "category": {"enum": ["infrastructure", "malware", "identity", "behavior"]},
+        "pivot_type": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1},
+        "description": {"type": "string"},
+        "stix_pattern": {"type": ["string", "null"]},
+        "attribution_scope": {"enum": ["actor-specific", "shared", "generic", "unknown"]},
+        "malware_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "infrastructure_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "activity_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "indicator_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "observations": {"type": "array", "items": {"$ref": "#/$defs/pivotObservation"}},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "observation_count": {"type": "integer", "minimum": 0},
+        "source_count": {"type": "integer", "minimum": 0},
+        "activity_count": {"type": "integer", "minimum": 0},
+        "continuity": {"$ref": "#/$defs/pivotContinuity"},
+        "hunt_queries": {"type": "array", "items": {"$ref": "#/$defs/huntQuery"}},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "pivotObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation_id", "observed_at", "source_ref", "activity_ref", "context", "count", "count_basis"],
+      "properties": {
+        "observation_id": {"type": "string", "pattern": "^pivot-observation--"},
+        "observed_at": {"$ref": "#/$defs/timePoint"},
+        "source_ref": {"type": "string", "pattern": "^source--"},
+        "activity_ref": {"type": ["string", "null"]},
+        "context": {"type": "string"},
+        "count": {"type": "integer", "minimum": 1},
+        "count_basis": {"enum": ["documented-events", "documented-samples", "documented-hosts", "documented-observables", "minimum-events", "source-stated", "unknown"]}
+      }
+    },
+    "pivotContinuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessment", "active_status", "evaluated_at", "basis", "passive_scan_performed", "checks"],
+      "properties": {
+        "assessment": {"enum": ["reused", "reobserved", "historical-only", "single-observation", "unknown"]},
+        "active_status": {"enum": ["active", "inactive", "unknown"]},
+        "evaluated_at": {"type": "string", "format": "date-time"},
+        "basis": {"type": "string"},
+        "passive_scan_performed": {"type": "boolean"},
+        "checks": {"type": "array", "items": {"$ref": "#/$defs/continuityCheck"}}
+      }
+    },
+    "continuityCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "evaluated_at", "platform", "query", "index_or_time_window", "result_count", "result_summary", "analyst_validated", "evidence_refs", "limitations"],
+      "properties": {
+        "check_id": {"type": "string", "pattern": "^continuity-check--"},
+        "evaluated_at": {"type": "string", "format": "date-time"},
+        "platform": {"type": "string", "minLength": 1},
+        "query": {"type": "string", "minLength": 1},
+        "index_or_time_window": {"type": "string"},
+        "result_count": {"type": ["integer", "null"], "minimum": 0},
+        "result_summary": {"type": "string"},
+        "analyst_validated": {"type": "boolean"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "limitations": {"type": "string", "minLength": 1}
+      }
+    },
+    "huntQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platform", "query", "purpose", "requires_validation", "false_positive_notes"],
+      "properties": {
+        "platform": {"enum": ["shodan", "censys", "file-intelligence", "edr", "siem", "other"]},
+        "query": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string"},
+        "requires_validation": {"const": true},
+        "false_positive_notes": {"type": "string", "minLength": 1}
       }
     },
     "capability": {

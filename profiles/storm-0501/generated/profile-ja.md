@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--storm-0501`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -36,6 +36,18 @@ Aliasなし
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -113,6 +125,32 @@ Aliasなし
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--storm-0501-beacon-tls-http-profile | infrastructure | compound-c2-profile | self-signed CN=Microsoft IT TLS CA 5; GET /kitten.gif; POST image_url; Chrome 80 fixed User-Agent | shared | 2 | 1 |  | 2020-07 | 2021-10 | reused | unknown | 高 | `source--mandiant-unc2190-sabbath-2021` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--storm-0501-beacon-tls-http-profile | pivot-observation--unc2190-beacon-2020 | 2020-07 | 1 | unknown | なし | source--mandiant-unc2190-sabbath-2021 | Mandiant stated that the group had used this BEACON profile and associated infrastructure since at least July 2020. |
+| hunting-pivot--storm-0501-beacon-tls-http-profile | pivot-observation--unc2190-beacon-2021 | 2021-06-01T00:00:00Z | 1 | unknown | なし | source--mandiant-unc2190-sabbath-2021 | Mandiant documented unchanged BEACON/profile and infrastructure characteristics across the Arcane-to-Sabbath rebrand, whose source-stated public-service contexts span June through October 2021. The November publication month is not reused as an observation date. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--storm-0501-beacon-tls-http-profile | shodan | `port:443 ssl.cert.subject.cn:"Microsoft IT TLS CA 5" ssl.cert.issuer.cn:"Microsoft IT TLS CA 5"` | Seed discovery of hosts presenting the documented self-signed certificate profile. | 要 | Require /kitten.gif, image_url or fixed User-Agent corroboration before linking to UNC2190/Storm-0501. CN-only matches are insufficient. |
+| hunting-pivot--storm-0501-beacon-tls-http-profile | siem | `uri_path ENDSWITH "/kitten.gif" AND http.request.body CONTAINS "image_url="` | Detect the compound HTTP profile in proxy telemetry. | 要 | Correlate with the self-signed TLS CN and fixed User-Agent; either HTTP token alone can collide. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -235,6 +273,7 @@ Aliasなし
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mandiant-unc2190-sabbath-2021 | Kitten.gif: Meet the Sabbath Ransomware Affiliate Program, Again | Mandiant | 2021-11-29 | https://cloud.google.com/blog/topics/threat-intelligence/sabbath-ransomware-affiliate/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

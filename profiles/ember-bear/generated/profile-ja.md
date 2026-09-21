@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ember-bear`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -46,6 +46,77 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 |---|---|---|---|---|
 | Saint Bear | overlaps-with | [Ember Bear](https://attack.mitre.org/groups/G1003) is a Russian state-sponsored cyber espionage group that has been active since at least 2020, linked to Russia's General Staff Main Intelligence Directorate (GRU) 161st Specialist Training Center (Unit 29155).(Citation: CISA GRU29155 2024) [Ember Bear](https://attack.mitre.org/groups/G1003) has primarily focused operations against Ukrainian government and telecommunication entities, but has also operated against critical infrastructure entities in Europe and the Americas.(Citation: Cadet Blizzard emerges as novel threat actor) [Ember Bear](https://attack.mitre.org/groups/G1003) conducted the [WhisperGate](https://attack.mitre.org/software/S0689) destructive wiper attacks against Ukraine in early 2022.(Citation: CrowdStrike Ember Bear Profile March 2022)(Citation: Mandiant UNC2589 March 2022)(Citation: CISA GRU29155 2024) There is some confusion as to whether [Ember Bear](https://attack.mitre.org/groups/G1003) overlaps with another Russian-linked entity referred to as [Saint Bear](https://attack.mitre.org/groups/G1031). | 高 | `source--mitre-attack-19-2` |
 | Saint Bear | distinct-from | MITRE ATT&CK 19.2 states that Saint Bear and Ember Bear were confused in past reporting but exhibit distinct behaviors, tools, and targeting; shared naming must not merge the clusters. | 高 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--gru-unit-29155 | GRU Unit 29155 | organization | military-intelligence-organization | Russia | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026`, `source--uk-gru-cyber-profile-2026`, `source--uk-unit29155-sanctions-notice-2025-07-18`, `source--doj-unit29155-whispergate-2024` |
+| organization--impuls-llc | "Impuls" LLC | organization | operational-cover-provider, infrastructure-provider, recruiter | Russia | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026`, `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--evgeniy-bashev | Evgeniy Viktorovich Bashev | threat-actor-individual | company-owner, general-director, unit29155-member, recruiter | Russia | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026`, `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--sultan-omarov | Sultan Omarovich Omarov | threat-actor-individual | cybercriminal, externally-tasked-operator | Russia | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--yuriy-denisov | Yuriy Fedorovich Denisov | threat-actor-individual | military-intelligence-officer, unit29155-cyber-operations-commander, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--vladislav-borovkov | Vladislav Yevgenyevich Borovkov | threat-actor-individual | military-intelligence-officer, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--denis-denisenko | Denis Igorevich Denisenko | threat-actor-individual | military-intelligence-officer, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted`, `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| threat-actor-individual--dmitriy-goloshubov | Dmitriy Yuryevich Goloshubov | threat-actor-individual | military-intelligence-officer, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted`, `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| threat-actor-individual--nikolay-korchagin | Nikolay Aleksandrovich Korchagin | threat-actor-individual | military-intelligence-officer, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--amin-stigal | Amin Timovich Stigal | threat-actor-individual | civilian-co-conspirator, alleged-whispergate-operator | Russia | 2020-12 | 2024-08 | 高 | `source--doj-amin-stigal-indictment-pdf-2024`, `source--doj-amin-stigal-indictment-2024`, `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted` |
+| threat-actor-individual--dmitriy-voronov | Dmitriy Aleksandrovich Voronov | threat-actor-individual | military-intelligence-officer, proxy-tasking-officer | Russia | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--aleksandr-shepelev | Aleksandr Vladimirovich Shepelev | threat-actor-individual | military-intelligence-officer, proxy-tasking-officer | Russia | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--roman-puntus | Roman Aleksandrovich Puntus | threat-actor-individual | military-intelligence-officer, proxy-tasking-officer | Russia | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026`, `source--uk-russia-cyber-sanctions-2026` |
+| threat-actor-individual--vitaliy-shevchenko | Vitaliy Aleksandrovich Shevchenko | threat-actor-individual | unit29155-associate, cyber-officer | Russia | 不明 | 不明 | 高 | `source--uk-unit29155-sanctions-notice-2025-07-18`, `source--uk-gru-cyber-profile-2026` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--evgeniy-bashev | member-of | organization--gru-unit-29155 | EU authorities directly identify Bashev as a Unit 29155 member. | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026` |
+| threat-actor-individual--evgeniy-bashev | owns-and-leads | organization--impuls-llc | EU authorities identify Bashev as Impuls owner and general director. Relationship start is not publicly established. | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026` |
+| organization--impuls-llc | provides-technical-and-material-support-to | organization--gru-unit-29155 | EU and UK authorities state Impuls provided operational cover, infrastructure, payments, servers and recruitment support. The relationship period is unknown; company registration and sanctions dates are not substituted. | 不明 | 不明 | 高 | `source--eu-unit29155-impuls-sanctions-2026`, `source--uk-gru-cyber-profile-2026` |
+| threat-actor-individual--sultan-omarov | tasked-and-funded-by | organization--gru-unit-29155 | UK authorities identify Omarov as an external cybercriminal tasked and funded by Unit 29155 officers; no formal membership is asserted. | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026` |
+| threat-actor-individual--yuriy-denisov | alleged-officer-of | organization--gru-unit-29155 | DOJ identifies Denisov as a Unit 29155 colonel and commander of cyber operations. No relationship to the broader Ember Bear profile is inferred. | 不明 | 不明 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--vladislav-borovkov | alleged-officer-of | organization--gru-unit-29155 | DOJ identifies Borovkov as a Unit 29155 lieutenant assigned to cyber operations. No relationship to the broader Ember Bear profile is inferred. | 不明 | 不明 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--denis-denisenko | alleged-officer-of | organization--gru-unit-29155 | DOJ identifies Denisenko as a Unit 29155 lieutenant assigned to cyber operations. No relationship to the broader Ember Bear profile is inferred. | 不明 | 不明 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| threat-actor-individual--dmitriy-goloshubov | alleged-officer-of | organization--gru-unit-29155 | DOJ identifies Goloshubov as a Unit 29155 lieutenant assigned to cyber operations. No relationship to the broader Ember Bear profile is inferred. | 不明 | 不明 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| threat-actor-individual--nikolay-korchagin | alleged-officer-of | organization--gru-unit-29155 | DOJ identifies Korchagin as a Unit 29155 lieutenant assigned to cyber operations. No relationship to the broader Ember Bear profile is inferred. | 不明 | 不明 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| threat-actor-individual--amin-stigal | alleged-cooperates-with | organization--gru-unit-29155 | DOJ and FBI describe Stigal as a civilian co-conspirator acting with or on behalf of Unit 29155 officers; formal unit membership is not asserted. | 2020-12 | 2024-08 | 高 | `source--doj-unit29155-whispergate-2024`, `source--doj-unit29155-whispergate-indictment-2024`, `source--fbi-unit29155-wanted` |
+| threat-actor-individual--dmitriy-voronov | officer-of | organization--gru-unit-29155 | The UK identifies Voronov as a Unit 29155 military-intelligence officer involved in tasking and funding cybercriminal proxies. The full service period is not stated. | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026` |
+| threat-actor-individual--aleksandr-shepelev | officer-of | organization--gru-unit-29155 | The UK identifies Shepelev as a Unit 29155 military-intelligence officer involved in tasking and funding cybercriminal proxies. The full service period is not stated. | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026` |
+| threat-actor-individual--roman-puntus | officer-of | organization--gru-unit-29155 | The UK identifies Puntus as a Unit 29155 military-intelligence officer involved in tasking and funding cybercriminal proxies. The full service period is not stated. | 不明 | 不明 | 高 | `source--uk-gru-cyber-profile-2026` |
+| threat-actor-individual--vitaliy-shevchenko | associated-with | organization--gru-unit-29155 | The UK sanctions notice identifies Shevchenko as a Unit 29155 associate with prior involvement in a GRU cyber unit, while the UK cyber profile says he was recruited as a cyber officer. The sources do not state the full service period, so no relationship dates are supplied. | 不明 | 不明 | 高 | `source--uk-unit29155-sanctions-notice-2025-07-18`, `source--uk-gru-cyber-profile-2026` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| GRU Unit 29155 | sanction | United Kingdom | 2025-07-18 | completed | The United Kingdom designated the 161st Specialist Training Centre (GRU Unit 29155) under the Cyber sanctions regime. | `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| "Impuls" LLC | sanction | European Union | 2026-07-13 | completed | Designated for providing technical and material support to GRU Unit 29155. | `source--eu-unit29155-impuls-sanctions-2026` |
+| "Impuls" LLC | sanction | United Kingdom | 2026-07-13 | completed | Listed in the United Kingdom's joint cyber-sanctions announcement. | `source--uk-russia-cyber-sanctions-2026` |
+| Evgeniy Viktorovich Bashev | sanction | European Union | 2026-07-13 | completed | Designated for membership in and support to GRU Unit 29155. | `source--eu-unit29155-impuls-sanctions-2026` |
+| Evgeniy Viktorovich Bashev | sanction | United Kingdom | 2026-07-13 | completed | Listed by the United Kingdom in its joint cyber-sanctions package. | `source--uk-russia-cyber-sanctions-2026` |
+| Sultan Omarovich Omarov | sanction | United Kingdom | 2026-07-13 | completed | Listed by the United Kingdom among the individuals and entities sanctioned in the joint cyber package. | `source--uk-russia-cyber-sanctions-2026` |
+| Yuriy Fedorovich Denisov | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | Charged with conspiracy to commit computer intrusion and damage and wire fraud conspiracy. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Yuriy Fedorovich Denisov | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued after he was charged. | `source--fbi-unit29155-wanted` |
+| Yuriy Fedorovich Denisov | sanction | United Kingdom | 2025-07-18 | completed | The United Kingdom designated Denisov under the Cyber sanctions regime (UKSL CYB0082). | `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| Vladislav Yevgenyevich Borovkov | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | Charged with conspiracy to commit computer intrusion and damage and wire fraud conspiracy. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Vladislav Yevgenyevich Borovkov | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued after he was charged. | `source--fbi-unit29155-wanted` |
+| Vladislav Yevgenyevich Borovkov | sanction | United Kingdom | 2025-07-18 | completed | The United Kingdom designated Borovkov under the Cyber sanctions regime (UKSL CYB0086). | `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| Denis Igorevich Denisenko | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | Charged with conspiracy to commit computer intrusion and damage and wire fraud conspiracy. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Denis Igorevich Denisenko | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued after he was charged. | `source--fbi-unit29155-wanted` |
+| Denis Igorevich Denisenko | sanction | United Kingdom | 2025-12-04 | completed | The United Kingdom designated Denisenko under the Cyber sanctions regime (UKSL CYB0110). | `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| Dmitriy Yuryevich Goloshubov | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | Charged with conspiracy to commit computer intrusion and damage and wire fraud conspiracy. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Dmitriy Yuryevich Goloshubov | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued after he was charged. | `source--fbi-unit29155-wanted` |
+| Dmitriy Yuryevich Goloshubov | sanction | United Kingdom | 2025-12-04 | completed | The United Kingdom designated Goloshubov under the Cyber sanctions regime (UKSL CYB0111). | `source--uk-unit29155-officers-sanctions-notice-2025-12-04` |
+| Nikolay Aleksandrovich Korchagin | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | Charged with conspiracy to commit computer intrusion and damage and wire fraud conspiracy. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Nikolay Aleksandrovich Korchagin | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued after he was charged. | `source--fbi-unit29155-wanted` |
+| Nikolay Aleksandrovich Korchagin | sanction | United Kingdom | 2025-07-18 | completed | The United Kingdom designated Korchagin under the Cyber sanctions regime (UKSL CYB0083). | `source--uk-unit29155-sanctions-notice-2025-07-18` |
+| Amin Timovich Stigal | indictment | U.S. District Court for the District of Maryland | 2024-06-25 | alleged | Charged with conspiracy to hack into and destroy computer systems and data. | `source--doj-amin-stigal-indictment-pdf-2024`, `source--doj-amin-stigal-indictment-2024` |
+| Amin Timovich Stigal | indictment | U.S. District Court for the District of Maryland | 2024-08-07 | alleged | A superseding indictment added five GRU officers and wire-fraud conspiracy allegations. | `source--doj-unit29155-whispergate-indictment-2024`, `source--doj-unit29155-whispergate-2024` |
+| Amin Timovich Stigal | wanted | U.S. District Court for the District of Maryland | 2024-08-07 | pending | A federal arrest warrant was issued in connection with the superseding charges. | `source--fbi-unit29155-wanted` |
+| Dmitriy Aleksandrovich Voronov | sanction | United Kingdom | 2026-07-13 | completed | Listed by the United Kingdom in its joint cyber-sanctions package. | `source--uk-russia-cyber-sanctions-2026` |
+| Aleksandr Vladimirovich Shepelev | sanction | United Kingdom | 2026-07-13 | completed | Listed by the United Kingdom in its joint cyber-sanctions package. | `source--uk-russia-cyber-sanctions-2026` |
+| Roman Aleksandrovich Puntus | sanction | United Kingdom | 2026-07-13 | completed | Listed by the United Kingdom in its joint cyber-sanctions package. | `source--uk-russia-cyber-sanctions-2026` |
+| Vitaliy Aleksandrovich Shevchenko | sanction | United Kingdom | 2025-07-18 | completed | The United Kingdom designated Shevchenko under the Cyber sanctions regime (UKSL CYB0081). | `source--uk-unit29155-sanctions-notice-2025-07-18` |
 
 ## ダイヤモンドモデル
 
@@ -130,6 +201,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -284,6 +373,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-unit29155-whispergate-2024 | Five Russian GRU Officers and One Civilian Charged for Conspiring to Hack Ukrainian Government | U.S. Department of Justice | 2024-09-05 | https://www.justice.gov/archives/opa/pr/five-russian-gru-officers-and-one-civilian-charged-conspiring-hack-ukrainian-government | government-legal | TLP:CLEAR | 高 |
+| source--eu-unit29155-impuls-sanctions-2026 | Council Implementing Regulation (EU) 2026/1714 concerning restrictive measures against cyber-attacks | European Union | 2026-07-13 | https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202601714 | government-sanctions | TLP:CLEAR | 高 |
+| source--uk-gru-cyber-profile-2026 | Profile: GRU cyber and hybrid threat operations | Government of the United Kingdom | 2025-07-18 | https://www.gov.uk/government/publications/profile-gru-cyber-and-hybrid-threat-operations/profile-gru-cyber-and-hybrid-threat-operations | government-assessment | TLP:CLEAR | 高 |
+| source--uk-russia-cyber-sanctions-2026 | UK and EU strike Russian cyber networks with new sanctions | Government of the United Kingdom | 2026-07-13 | https://www.gov.uk/government/news/uk-and-eu-strike-russian-cyber-networks-with-new-sanctions | government-sanctions | TLP:CLEAR | 高 |
+| source--doj-unit29155-whispergate-indictment-2024 | Superseding Indictment: United States v. Amin Timovich Stigal et al. | U.S. District Court for the District of Maryland | 不明 | https://www.justice.gov/d9/2024-09/stigal_et_al._superseding_indictment.pdf | government-legal | TLP:CLEAR | 高 |
+| source--fbi-unit29155-wanted | GRU 29155 Cyber Actors | Federal Bureau of Investigation | 不明 | https://www.fbi.gov/wanted/cyber/gru-29155-cyber-actors | government-wanted-notice | TLP:CLEAR | 高 |
+| source--uk-unit29155-sanctions-notice-2025-07-18 | Financial Sanctions Notice: Cyber, 18 July 2025 | United Kingdom Office of Financial Sanctions Implementation | 2025-07-18 | https://assets.publishing.service.gov.uk/media/687e4bb692957f2ec567c5fc/Notice_Cyber_180725.pdf | government-sanctions | TLP:CLEAR | 高 |
+| source--uk-unit29155-officers-sanctions-notice-2025-12-04 | Financial Sanctions Notice: Cyber, 4 December 2025 | United Kingdom Office of Financial Sanctions Implementation | 2025-12-04 | https://assets.publishing.service.gov.uk/media/693173710cf0b7e681ff422c/Notice_Cyber_041225.pdf | government-sanctions | TLP:CLEAR | 高 |
+| source--doj-amin-stigal-indictment-2024 | Russian National Charged for Conspiring with Russian Military Intelligence to Destroy Ukrainian Government Computer Systems and Data | U.S. Department of Justice | 2024-06-26 | https://www.justice.gov/archives/opa/pr/russian-national-charged-conspiring-russia-military-intelligence-destroy-ukrainian | government-legal | TLP:CLEAR | 高 |
+| source--doj-amin-stigal-indictment-pdf-2024 | Indictment: United States v. Amin Timovich Stigal | U.S. District Court for the District of Maryland | 不明 | https://www.justice.gov/d9/2024-06/amin_stigal_unsealed_indictment_0.pdf | government-legal | TLP:CLEAR | 高 |
 
 ## 自由記述
 

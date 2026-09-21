@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc5976`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:03Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -38,6 +38,18 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | actor--unc7005 | related-to | GTIGはUNC5976について「We believe this cluster to be distinct from UNC6293 and UNC7005」「UNC5976 remains distinct from the UNC6293 and UNC7005 clusters, potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と明示的に別クラスタとしている。相違点として、事後侵害活動に住宅用プロキシーではなく専用インフラを用いること、およびICE RELIC関連クラスタよりマルウェアとツールの利用が顕著であることを挙げている。共通点は、ロシア関連性と認証フロー悪用への注力である。 | 中 | `source--gtig-going-with-the-flows-2026` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -112,6 +124,24 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 |---|---|---|---|---|---|---|
 | opcap--unc5976-oauth-token-harvesting | クラウド基盤を悪用したOAuthトークン収集の自動化 | 正規のOAuthログイン画面へ誘導したうえで、攻撃者が管理するクラウドプロジェクトへリダイレクトし、URLから認証トークンを取得して運用者が後から回収できるよう保存する。 | 2026-03 | 不明 | 高 | `source--gtig-going-with-the-flows-2026` |
 | opcap--unc5976-dedicated-post-compromise-infrastructure | 事後侵害活動への専用インフラの使用 | GTIGは「UNC5976 uses dedicated infrastructure for post-compromise activity rather than residential proxies」と述べ、ICE RELIC関連クラスタとの運用上の相違点として挙げている。 | 不明 | 不明 | 中 | `source--gtig-going-with-the-flows-2026` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

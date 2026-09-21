@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "profile_id": "actor--turla",
   "name": "Turla",
   "status": "draft",
   "created_at": "2026-07-25T09:00:45Z",
-  "updated_at": "2026-09-21T04:35:03Z",
+  "updated_at": "2026-09-21T13:20:00Z",
   "languages": [
     "ja"
   ],
@@ -5768,6 +5768,80 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--cisa-snake-turla-center16-2023",
+      "path": "https://www.cisa.gov/sites/default/files/2023-05/aa23-129a_snake_malware_2.pdf",
+      "title": "Hunting Russian Intelligence 'Snake' Malware",
+      "publisher": "CISA, FBI, NSA, NCSC and partner agencies",
+      "published_at": {
+        "value": "2023-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "relationship"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.cisa.gov/sites/default/files/2023-05/aa23-129a_snake_malware_2.pdf"
+    },
+    {
+      "source_id": "source--doj-operation-medusa-2023",
+      "path": "https://www.justice.gov/usao-edny/pr/justice-department-announces-court-authorized-disruption-snake-malware-network",
+      "title": "Justice Department Announces Court-Authorized Disruption of Snake Malware Network Controlled by Russia's Federal Security Service",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {
+        "value": "2023-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-operation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "relationship"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.justice.gov/usao-edny/pr/justice-department-announces-court-authorized-disruption-snake-malware-network"
+    },
+    {
+      "source_id": "source--doj-center16-dragonfly-indictment-2022",
+      "path": "https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting",
+      "title": "Four Russian Government Employees Charged in Two Historical Hacking Campaigns Targeting Critical Infrastructure Worldwide",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {
+        "value": "2022-03-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-legal",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity"
+      ],
+      "analyst_notes": "The conduct is alleged in an indictment and is not recorded as a conviction. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting"
     }
   ],
   "assessment": {
@@ -6078,5 +6152,73 @@
       ],
       "analyst_notes": "個別組織名の記載がないため集約事例として保存する。"
     }
-  ]
+  ],
+  "associated_entities": [
+    {
+      "entity_id": "organization--fsb-center-16",
+      "name": "FSB Center 16",
+      "entity_type": "organization",
+      "aliases": [
+        "Centre for Radio-Electronic Intelligence by Means of Communication",
+        "TsRRSS",
+        "Military Unit 71330"
+      ],
+      "description": "Russian Federal Security Service communications-intelligence organization, modeled separately from public operational clusters and malware families attributed to units within it.",
+      "countries": [
+        "Russia"
+      ],
+      "roles": [
+        "government-intelligence-organization"
+      ],
+      "threat_actor_types": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "legal_actions": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-snake-turla-center16-2023",
+        "source--doj-operation-medusa-2023",
+        "source--doj-center16-dragonfly-indictment-2022"
+      ],
+      "analyst_notes": ""
+    }
+  ],
+  "entity_relationships": [
+    {
+      "relationship_id": "entity-relationship--turla-subordinate-center16",
+      "source_ref": "actor--turla",
+      "target_ref": "organization--fsb-center-16",
+      "relationship_type": "subordinate-to",
+      "description": "U.S. and partner agencies attribute the Turla/Snake operational unit to FSB Center 16. Turla remains an intrusion set, Center 16 an organization, and Snake malware.",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-snake-turla-center16-2023",
+        "source--doj-operation-medusa-2023"
+      ],
+      "analyst_notes": "The source describes roughly twenty years of Snake activity and a 2023 infrastructure disruption, but neither date establishes the start or end of organizational subordination; relationship times remain unknown."
+    }
+  ],
+  "hunting_pivots": []
 }
