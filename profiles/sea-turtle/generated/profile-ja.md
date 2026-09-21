@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sea-turtle`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:18:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -46,16 +46,16 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Sea Turtle](https://attack.mitre.org/groups/G1041) is a Türkiye-linked threat actor active since at least 2017 performing espionage and service provider compromise operations against victims in Asia, Europe, and North America. [Sea Turtle](https://attack.mitre.org/groups/G1041) is notable for targeting registrars managing ccTLDs and complex DNS-based intrusions where the threat actor compromised DNS providers to hijack DNS resolution for ultimate victims, enabling [Sea Turtle](https://attack.mitre.org/groups/G1041) to spoof log in portals and other applications for credential collection.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2)(Citation: PWC Sea Turtle 2023)(Citation: Hunt Sea Turtle 2024) |
-| Capability | SnappyTCP, DNS hijacking, CVE-2009-1151, CVE-2014-6271, CVE-2017-3881, CVE-2017-6736, CVE-2017-12617, CVE-2018-0296, CVE-2018-7600, Drupalgeddon |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | industries: Ministries of foreign affairs, Military organizations, Intelligence agencies, Prominent energy organizations in US, Libya, Egypt, Lebanon, UAE, Albania, Cyprus, Turkey, Iraq, Jordan, Syria, Armenia, Sweden |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -89,15 +89,6 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--cve-2009-1151 | CVE-2009-1151 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2014-6271 | CVE-2014-6271 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-12617 | CVE-2017-12617 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-3881 | CVE-2017-3881 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-6736 | CVE-2017-6736 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2018-0296 | CVE-2018-0296 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2018-7600 | CVE-2018-7600 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--dns-hijacking | DNS hijacking | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--drupalgeddon | Drupalgeddon | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--snappytcp | SnappyTCP | [SnappyTCP](https://attack.mitre.org/software/S1163) is a web shell used by [Sea Turtle](https://attack.mitre.org/groups/G1041) between 2021 and 2023 against multiple victims. [SnappyTCP](https://attack.mitre.org/software/S1163) appears to be based on a public GitHub project that has since been removed from the code-sharing site. [SnappyTCP](https://attack.mitre.org/software/S1163) includes a simple reverse TCP shell for Linux and Unix environments with basic command and control capabilities.(Citation: PWC Sea Turtle 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -125,49 +116,20 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | phishing-campaign | 不明 | 不明 | 2025-05-13 |  |  |  |  | トルコ支援のサイバースパイグループMarbled Dustが、Output Messengerのゼロデイ脆弱性（CVE-2025-27920）を悪用。 この脆弱性はディレクトリトラバーサルにより、認証済み攻撃者が機密ファイルにアクセス可能。 攻撃者は未更新のOutput Messenger Server Managerを標的にマルウェアを展開。 感染後、通信の傍受、ユーザーのなりすまし、内部システムへのアクセスが可能となる。 脆弱性は2024年12月に修正済みだが、未更新のシステムが依然としてリスクに晒されている。 | 中 | `source--daily-cca0fa46e5e1b4b6bc18` |
-| Sea Turtle | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | Sea Turtle | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Sea Turtle | Sea Turtle | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Sea Turtle
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | アルバニア | Targeting text mentions albania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | アルメニア | Targeting text mentions armenia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | イラク | Targeting text mentions iraq. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | エジプト | Targeting text mentions egypt. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キプロス | レビュー済みアクターマッピングの標的欄に記録されたキプロスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | ギリシャ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シリア | Targeting text mentions syria. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スウェーデン | Targeting text mentions sweden. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | スーダン | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてスーダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ヨルダン | Targeting text mentions jordan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | リビア | レビュー済みアクターマッピングの標的欄に記録されたリビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | レバノン | Targeting text mentions lebanon. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | エジプト、スーダン、リビアで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、イラク、シリア、トルコ、ヨルダン、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 北アフリカ | エジプト、リビアで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南欧 | アルバニア、キプロス、ギリシャで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | アルバニア、オランダ、キプロス、ギリシャ、スイス、スウェーデン、トルコ、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -211,7 +173,7 @@ Sea Turtle
 - IOC観測: 4件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 2件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -238,12 +200,12 @@ Sea Turtle
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--sea-turtle--4e9bc8701f782970 | readme |  | 不明 | Seaturtle/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

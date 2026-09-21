@@ -4,7 +4,7 @@
   "name": "TeamPCP",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-09-20T13:48:09Z",
+  "updated_at": "2026-09-21T04:18:00Z",
   "languages": [
     "ja"
   ],
@@ -34,15 +34,14 @@
       },
       {
         "name": "PCPCat",
-        "vendor": "SentinelOne (SentinelLabs) / MITRE ATT&CK",
-        "scope": "unknown",
+        "vendor": "MITRE ATT&CK",
+        "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
           "source--mitre-attack-19-2",
-          "source--mitre-attack-g1056",
-          "source--sentinellabs-pcpjack-2026"
+          "source--mitre-attack-g1056"
         ],
-        "analyst_notes": "SentinelLabsが「early TeamPCP/PCPCat campaigns」と併記するが、対応関係の説明がないためスコープ不明として保持する。 Official MITRE ATT&CK associated-group name for G1056."
+        "analyst_notes": "MITRE ATT&CK lists PCPCat as an Associated Group for G1056. ATT&CK explicitly treats associated names as overlap signals rather than exact equivalence, so this alias remains overlapping."
       },
       {
         "name": "SHADOW-WATER-058",
@@ -78,19 +77,18 @@
       },
       {
         "name": "UNC6780",
-        "vendor": "Google Threat Intelligence Group / MITRE ATT&CK",
+        "vendor": "MITRE ATT&CK",
         "scope": "exact",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-ai-threat-tracker-2026-05",
-          "source--mitre-attack-19-2",
           "source--mitre-attack-g1056"
         ],
         "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056."
       }
     ],
     "actor_types": [
-      "cybercrime"
+      "cybercrime",
+      "financially-motivated"
     ],
     "first_seen": {
       "value": null,
@@ -106,7 +104,7 @@
     },
     "active": "yes",
     "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) is a financially-motivated, cloud-native threat group that has been active since at least September 2025. Initially focused on ransomware and cryptocurrency theft, [TeamPCP](https://attack.mitre.org/groups/G1056) shifted in early 2026 to systematic, worm-driven credential theft and software supply chain attacks targeting Continuous Integration and Continuous Delivery (CI/CD) workflows. [TeamPCP](https://attack.mitre.org/groups/G1056) has monetized access through extortion and through partnerships with ransomware actors including Vect and CipherForce.(Citation: Wiz TeamPCP Profile MAY 2026)(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)",
-    "analyst_notes": "2025年後半に公然化したが、Oligoは基盤の連続性から活動を2020年まで遡及している。"
+    "analyst_notes": "2025年後半に公然化したが、Oligoは基盤の連続性から活動を2020年まで遡及している。 2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
   },
   "attribution": {
     "countries": [],
@@ -130,16 +128,25 @@
         "source--sentinellabs-pcpjack-2026"
       ],
       "analyst_notes": ""
+    },
+    {
+      "type": "financial-gain",
+      "description": "Financially motivated intrusion or fraud.",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Derived from explicit MITRE ATT&CK actor description."
     }
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "金銭目的を公称するサイバー犯罪グループTeamPCP(GTIG命名 UNC6780)。国家帰属は不明。",
-    "capability": "露出サービスの自動探索とワーム型侵害、ShadowRay 2.0ペイロード、SANDCLOCK資格情報スティーラー、ランサムウェア、フィッシングページ。",
-    "infrastructure": "masscan.cloudとnatalstatus.orgを中心とするドメイン群、/EP9ts2/や/files/という特徴的な配置パス、複数のC2 IP。",
-    "victim": "インターネットへ露出したクラウド・AI基盤の運用組織、およびTrivy、Checkmarx、LiteLLM、BerriAIなどのオープンソースプロジェクト。",
-    "socio_political": "収益化のためランサムウェア・データ恐喝グループと提携する犯罪エコシステム。",
-    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -626,7 +633,8 @@
       ],
       "malware_refs": [
         "malware--dustmaker",
-        "malware--sandclock"
+        "malware--sandclock",
+        "malware--teampcp-cloud-stealer"
       ],
       "infrastructure_refs": [
         "infra--masscan-cloud"
@@ -649,7 +657,8 @@
         "capability": {
           "malware_refs": [
             "malware--dustmaker",
-            "malware--sandclock"
+            "malware--sandclock",
+            "malware--teampcp-cloud-stealer"
           ],
           "ttp_refs": [
             "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -739,7 +748,8 @@
       ],
       "malware_refs": [
         "malware--dustmaker",
-        "malware--sandclock"
+        "malware--sandclock",
+        "malware--teampcp-cloud-stealer"
       ],
       "ttp_refs": [
         "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -1106,8 +1116,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "標的国の明示がないため個別国は登録せず、広域表示のみとする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "標的国の明示がないため個別国は登録せず、広域表示のみとする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -2251,7 +2261,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--gtig-ai-threat-tracker-2026-05",
@@ -2269,7 +2286,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--oligo-teampcp-2026",
@@ -2287,7 +2317,21 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -2357,7 +2401,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--gtig-adversarial-ai-2026",
@@ -2407,7 +2464,8 @@
         "identity",
         "alias"
       ],
-      "analyst_notes": "Official ATT&CK Group G1056 associated-group names."
+      "analyst_notes": "Official ATT&CK Group G1056 associated-group names. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
     },
     {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
@@ -2504,7 +2562,7 @@
       "tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。",
       "GTIG 2026-09-08 は本アクターのOSSサプライチェーン侵害が「Since March 2026」継続していると述べるが、観測終了日を明示していない。activity--teampcp-oss-supply-chain-2026 の last_observed は初報に基づく2026年3月のままであり、2026年4月以降の継続期間は一次資料で確定していない。"
     ],
-    "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "プロファイル昇格は独立一次資料3本の確認と利用者承認に基づく。"
   },
   "free_text": {

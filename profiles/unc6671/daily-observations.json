@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--unc6671",
-  "updated_at": "2026-08-12T01:50:04Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "records": [
     {
       "record_id": "daily-record--0697f946d4469dc9883a5c9a",
@@ -17,15 +17,15 @@
         "raw_value": "UNC6671"
       },
       "activity": {
-        "title": "Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
-        "summary": "Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。",
+        "title": "UNC6671、vishingでSSO資格情報を窃取しSaaSデータを流出",
+        "summary": "Mandiantは、UNC6671が2026年1月初旬からIT担当者を装って電話し、偽の認証サイトでSSO資格情報とMFAコードを窃取したと報告した。侵入後はOktaからSharePointとOneDriveへアクセスした。手口はUNC6661と類似するが、後続の恐喝はShinyHunters名義ではなく異なるTox IDを使い、別の人物が関与する可能性がある。",
         "news_date": "2026-02-02",
         "news_url": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
-        "primary_url": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
+        "primary_url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
         "activity_reference": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
         "news_path": "daily-news/news/2026_01-03/20260202.md"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "iocs": [],
       "artifacts": [],
       "sources": [
@@ -33,21 +33,39 @@
           "url": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
           "source_path": "daily-news/news/2026_01-03/20260202.md",
           "source_type": "primary-report"
+        },
+        {
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+          "source_type": "primary-report"
         }
       ],
       "capability_decisions": [],
-      "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。",
+      "review_notes": "Mandiant/GTIG一次資料で再検証。UNC6661、UNC6671、UNC6240は提携・なりすましの可能性を残す別クラスタとして追跡される。UNC6671固有の侵入と、ブランドなしの後続恐喝だけに表示を限定した。",
       "activity_claim": {
-        "assessment": "candidate",
-        "actor_role": "unknown",
-        "match_location": "body",
-        "evidence_text": "- MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。",
+        "assessment": "strong-subject",
+        "actor_role": "operator",
+        "match_location": "primary-report",
+        "evidence_text": "Mandiant separately tracks UNC6671's January 2026 SSO and SaaS data-theft intrusion and its unbranded follow-on extortion.",
         "reasons": [
-          "名前一致はあるが実行主体を示す表現が不足している"
+          "ShinyHunters傘下名称ではなくUNC6671固有の活動へ限定"
         ],
-        "suggested_confidence": "low"
+        "suggested_confidence": "high"
       },
-      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "activity_period": {
+        "first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        }
+      }
     },
     {
       "record_id": "daily-record--88da96b89053f0ca0aa83f7d",

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-2077`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T02:39:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -120,29 +120,9 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | イタリア | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キューバ | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてキューバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジブチ | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてジブチが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドミニカ共和国 | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてドミニカ共和国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィジー | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてフィジーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボリビア | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてボリビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでStorm-2077の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | キューバ、ドミニカ共和国、ボリビアで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 台湾、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、カンボジア、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | イタリア、オランダ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | 活動「中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に」の記述で標的として明示された産業。 | 2024-06 | 2025-07 | 中 | `source--daily-86f6aba61d69ac9dcac7` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -160,7 +140,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

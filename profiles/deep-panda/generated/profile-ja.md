@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--deep-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:18:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,15 +18,11 @@ Deep Pandaの標準化プロファイル。リポジトリ内の専用資料1件
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT19 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Black Vine | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| Group 13 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | KungFu Kittens | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | PinkPanther | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| Sh3llCr3w | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Shell Crew | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | WebMasters | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| Winnti Group | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -47,17 +43,17 @@ Deep Pandaの標準化プロファイル。リポジトリ内の専用資料1件
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| APT19 | overlaps-with | 共有alias: APT19 | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
-| Hurricane Panda | overlaps-with | 共有alias: Black Vine | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
-| Winnti Group | overlaps-with | 共有alias: Winnti Group | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| APT19 | overlaps-with | 共有alias: APT19 | 低 | `source--mitre-attack-19-2` |
+| Hurricane Panda | overlaps-with | 共有alias: Black Vine | 低 | `source--mitre-attack-19-2` |
+| Winnti Group | overlaps-with | 共有alias: Winnti Group | 低 | `source--mitre-attack-19-2` |
 | APT19 | related-to | (Citation: FireEye APT19) Some analysts track [APT19](https://attack.mitre.org/groups/G0073) and [Deep Panda](https://attack.mitre.org/groups/G0009) as the same group, but it is unclear from open source information if the groups are the same. | 中 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Deep Panda](https://attack.mitre.org/groups/G0009) is a suspected Chinese threat group known to target many industries, including government, defense, financial, and telecommunications. (Citation: Alperovitch 2014) The intrusion into healthcare company Anthem has been attributed to [Deep Panda](https://attack.mitre.org/groups/G0009). (Citation: ThreatConnect Anthem) This group is also known as Shell Crew, WebMasters, KungFu Kittens, and PinkPanther. (Citation: RSA Shell Crew) [Deep Panda](https://attack.mitre.org/groups/G0009) also appears to be known as Black Vine based on the attribution of both group names to the Anthem intrusion. (Citation: Symantec Black Vine) Some analysts track [Deep Panda](https://attack.mitre.org/groups/G0009) and [APT19](https://attack.mitre.org/groups/G0073) as the same group, but it is unclear from open source information if the groups are the same. (Citation: ICIT China's Espionage Jul 2016) |
-| Capability | StreamEx, Derusbi, Sakula, Mivast, Sakula/Sakurel, Scanbox Framework, many Webshells including China Chopper, WCE, Net, Tasklist, Ping |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -65,7 +61,7 @@ Deep Pandaの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -110,13 +106,9 @@ Deep Pandaの標準化プロファイル。リポジトリ内の専用資料1件
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--derusbi | Derusbi | [Derusbi](https://attack.mitre.org/software/S0021) is malware used by multiple Chinese APT groups.(Citation: Novetta-Axiom)(Citation: ThreatConnect Anthem) Both Windows and Linux variants have been observed.(Citation: Fidelis Turbo) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--many-webshells-including-china-chopper | many Webshells including China Chopper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--mivast | Mivast | [Mivast](https://attack.mitre.org/software/S0080) is a backdoor that has been used by [Deep Panda](https://attack.mitre.org/groups/G0009). It was reportedly used in the Anthem breach. (Citation: Symantec Black Vine) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--sakula | Sakula | [Sakula](https://attack.mitre.org/software/S0074) is a remote access tool (RAT) that first surfaced in 2012 and was used in intrusions throughout 2015. (Citation: Dell Sakula) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--sakula-sakurel | Sakula/Sakurel | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--scanbox-framework | Scanbox Framework | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--streamex | StreamEx | [StreamEx](https://attack.mitre.org/software/S0142) is a malware family that has been used by [Deep Panda](https://attack.mitre.org/groups/G0009) since at least 2015. In 2016, it was distributed via legitimate compromised Korean websites. (Citation: Cylance Shell Crew Feb 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--wce | WCE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -144,17 +136,11 @@ Deep Pandaの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Anthem Hack | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| OPM | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Anthem Hack | Deep Panda | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| OPM | Deep Panda | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 OPM; Anthem Hack
 
@@ -162,25 +148,12 @@ OPM; Anthem Hack
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | イタリア | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | デンマーク | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてデンマークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでDeep Pandaの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | 構造化OSINTの被害地域フィールドでDeep Pandaの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | イタリア、デンマーク、ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | [Deep Panda](https://attack.mitre.org/groups/G0009) is a suspected Chinese threat group known to target many industries, including government, defense, financial, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 金融 | [Deep Panda](https://attack.mitre.org/groups/G0009) is a suspected Chinese threat group known to target many industries, including government, defense, financial, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 防衛・軍事 | [Deep Panda](https://attack.mitre.org/groups/G0009) is a suspected Chinese threat group known to target many industries, including government, defense, financial, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 情報通信 | [Deep Panda](https://attack.mitre.org/groups/G0009) is a suspected Chinese threat group known to target many industries, including government, defense, financial, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -207,7 +180,7 @@ OPM; Anthem Hack
 - IOC観測: 3件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 2件
-- 非IOC artifact観測: 36件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -221,6 +194,7 @@ OPM; Anthem Hack
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 4 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -237,7 +211,6 @@ OPM; Anthem Hack
 | source--deep-panda--1c0bdd899a50feb8 | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
 | source--deep-panda--e58111dd26ac06f8 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--deep-panda--a399e3de5f968aa1 | 004 |  | 不明 | summary/UNREDACTEDMagazine/004.pdf | report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
@@ -247,6 +220,7 @@ OPM; Anthem Hack
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

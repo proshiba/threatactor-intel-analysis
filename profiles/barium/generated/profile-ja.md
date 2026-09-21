@@ -1,8 +1,8 @@
 # BARIUM 脅威アクタープロファイル
 
 - プロファイルID: `actor--barium`
-- 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 状態: deprecated
+- 更新日時: 2026-09-21T03:50:42Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| BRONZE ATLAS | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| TG-2633 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -37,26 +33,22 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 ## 他アクターとの関係
 
-| 対象 | 関係 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|
-| Axiom | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--actor-mapping-workbook` |
-| LEAD | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--actor-mapping-workbook` |
-| PassCV | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--actor-mapping-workbook` |
+確認された関係なし
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Winnti, AceHash, PlugX, Webshells, ZxShell, ShadowPad |
+| Capability |  |
 | Infrastructure |  |
-| Victim | ThyssenKrupp, Gameforge, Valve, Teamviewer,Siemens, Sumitomo, BASF, Covestro, Shin-Etsu, Bayer, Roche |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -94,14 +86,7 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--winnti | Winnti | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--acehash | AceHash | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--plugx | PlugX | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--webshells | Webshells | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--zxshell | ZxShell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--shadowpad | ShadowPad | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -135,57 +120,9 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カタール | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スリランカ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | チリ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | デンマーク | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてデンマークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | バーレーン | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてバーレーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでBARIUMの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中南米 | チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、カタール、サウジアラビア、トルコ、バーレーンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | インド、スリランカ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | イタリア、スペインで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南米 | チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシア、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | イタリア、オランダ、スイス、スウェーデン、スペイン、デンマーク、トルコ、フィンランド、フランス、ポーランド、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -197,24 +134,23 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 12件
+- IOC値: 7件
+- IOC観測: 11件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
-- 非IOC artifact観測: 50件（`artifacts.csv`）
+- 要レビュー候補: 0件
+- 非IOC artifact観測: 4件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of APT41 (actor--apt41). | 高 | `source--mitre-attack-19-2` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 
@@ -244,6 +180,7 @@ TTPなし
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

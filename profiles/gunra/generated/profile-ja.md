@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gunra`
 - 状態: draft
-- 更新日時: 2026-08-25T22:27:44Z
+- 更新日時: 2026-09-21T03:50:38Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -43,16 +43,16 @@ Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | 金銭目的のRaaS運用主体Gunra。アフィリエイトと初期アクセスブローカーを募集して運用する。帰属国は不明。 |
-| Capability | Contiの流出ソースコードに由来するWindows/Linuxロッカー(ChaCha20 + RSA-4096、拡張子.ENCRT)、OneDrive/SharePoint窃取ツールmain.exe、Impacket(psexec/smbclient/secretsdump)、Mimikatz、Sliver、RClone、7-Zip、FileZilla、AnyDesk等の正規・公開ツール。 |
-| Infrastructure | Tor上のDLSと交渉ポータル、clearnetミラーdatapub[.]news、恐喝交渉用のProton/Gmailアドレスとの qTox ID、攻撃者管理サーバー群。 |
-| Victim | 南北アメリカ、欧州、中東、アフリカ、アジア太平洋の政府機関・重要インフラを含む10業種の組織。 |
-| Socio-political | ダークウェブフォーラムを通じたアフィリエイト募集と、ペネトレーションテスター・初期アクセスブローカーへの利益分配を伴う商業的なランサムウェアエコシステム。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -132,7 +132,7 @@ Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開 | intrusion | 不明 | 不明 | 2026-08-10 | target--gunra--country--south-korea | malware--gunra-ransomware | ttp--activity-rule--79e7281b8b02b45a190e, ttp--gunra-t1003, ttp--gunra-t1005, ttp--gunra-t1021-001, ttp--gunra-t1040, ttp--gunra-t1078-001, ttp--gunra-t1078-002, ttp--gunra-t1098, ttp--gunra-t1105, ttp--gunra-t1133, ttp--gunra-t1486, ttp--gunra-t1490, ttp--gunra-t1539, ttp--gunra-t1555, ttp--gunra-t1556-006, ttp--gunra-t1572 | victim--activity-rule--32917a8d98a0a8298a8e, victim--gunra-knpa-vdi | 韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はインターネット公開VPNゲートウェイの資格情報露出とSSHアクセス制御の不備を悪用して不正な遠隔アクセスを得た。ある被害組織では、アカウントロックアウト制御がないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、攻撃者管理サーバーからOpenSSHを取得してSSHトンネルで持続化した。ネットワーク管理者の端末を経由してSSL-VPN管理コンソールへアクセスし、インターネット側と社内側の双方に接続できる未使用アカウントの強制パスワード変更要件を回避する設定変更を行った。SSL-VPN機器のトラフィック制御機能を操作してVDI認証ポータル利用者の資格情報とセッション情報を収集し、窃取したセッションCookieでセッションハイジャックを行い内部VDI環境へ侵入、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。さらに認証処理ファイルを改変して攻撃者指定のOTP値でMFAを継続的に回避し、Hiwareのアクセス制御サーバーから共通鍵を窃取して全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。 | 高 | `source--cisa-aa26-222a-gunra` |
-| Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開 | ransomware-extortion | 2025-04 | 2026-07 | 2026-08-10 | target--gunra--region--global, target--gunra--sector--academia, target--gunra--sector--critical-manufacturing, target--gunra--sector--financial-services, target--gunra--sector--government, target--gunra--sector--healthcare, target--gunra--sector--media, target--gunra--sector--professional-services, target--gunra--sector--retail, target--gunra--sector--transportation, target--gunra--sector--utilities | malware--gunra-ransomware, malware--gunra-main-exe | ttp--activity-rule--733895bfebede80e9001, ttp--gunra-t1003-003, ttp--gunra-t1005, ttp--gunra-t1021-002, ttp--gunra-t1047, ttp--gunra-t1048, ttp--gunra-t1049, ttp--gunra-t1059-003, ttp--gunra-t1070-003, ttp--gunra-t1083, ttp--gunra-t1106, ttp--gunra-t1114, ttp--gunra-t1190, ttp--gunra-t1486, ttp--gunra-t1490, ttp--gunra-t1530, ttp--gunra-t1550-002, ttp--gunra-t1550-003, ttp--gunra-t1560, ttp--gunra-t1567, ttp--gunra-t1622, ttp--gunra-t1657 | victim--activity-rule--59bc376b01842d5405da, victim--gunra-dls-multi-sector | FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。 | 高 | `source--cisa-aa26-222a-gunra` |
+| Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開 | ransomware-extortion | 2025-04 | 2026-07 | 2026-08-10 | target--gunra--region--global, target--gunra--sector--academia, target--gunra--sector--critical-manufacturing, target--gunra--sector--financial-services, target--gunra--sector--government, target--gunra--sector--healthcare, target--gunra--sector--media, target--gunra--sector--professional-services, target--gunra--sector--retail, target--gunra--sector--transportation, target--gunra--sector--utilities | malware--gunra-main-exe, malware--gunra-ransomware | ttp--activity-rule--733895bfebede80e9001, ttp--gunra-t1003-003, ttp--gunra-t1005, ttp--gunra-t1021-002, ttp--gunra-t1047, ttp--gunra-t1048, ttp--gunra-t1049, ttp--gunra-t1059-003, ttp--gunra-t1070-003, ttp--gunra-t1083, ttp--gunra-t1106, ttp--gunra-t1114, ttp--gunra-t1190, ttp--gunra-t1486, ttp--gunra-t1490, ttp--gunra-t1530, ttp--gunra-t1550-002, ttp--gunra-t1550-003, ttp--gunra-t1560, ttp--gunra-t1567, ttp--gunra-t1622, ttp--gunra-t1657 | victim--activity-rule--59bc376b01842d5405da, victim--gunra-dls-multi-sector | FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。 | 高 | `source--cisa-aa26-222a-gunra` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -160,7 +160,7 @@ Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用�
 | sectors | 運輸・物流 | 勧告のIntended Audienceおよび被害業種一覧に明記されている。 | 不明 | 不明 | 高 | `source--cisa-aa26-222a-gunra` |
 | sectors | 公益事業 | 勧告のIntended Audienceおよび被害業種一覧に明記されている。 | 不明 | 不明 | 高 | `source--cisa-aa26-222a-gunra` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

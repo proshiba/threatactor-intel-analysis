@@ -33,10 +33,12 @@ from extract_mitre_relationships import relation_type  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
+    canonical_reference_sets,
     classified_record_values,
     classify_hash,
     extract_artifacts,
     extract_iocs,
+    filter_canonical_refs,
     looks_like_hash,
 )
 
@@ -168,6 +170,30 @@ class AttackReferenceTests(unittest.TestCase):
 
 
 class ObservableBoundaryTests(unittest.TestCase):
+    def test_observable_links_only_reference_canonical_entities(self) -> None:
+        profile = {
+            "activities": [{"activity_id": "activity--kept"}],
+            "capabilities": {
+                "malware": [{"id": "malware--kept"}],
+                "infrastructure": [{"id": "infra--kept"}],
+            },
+        }
+        related = {
+            "campaign_refs": ["activity--kept", "activity--lead-only"],
+            "malware_refs": ["malware--kept", "malware--lead-only"],
+            "infrastructure_refs": ["infra--kept", "infra--lead-only"],
+            "roles": ["c2"],
+        }
+
+        filtered = filter_canonical_refs(
+            related, canonical_reference_sets(profile)
+        )
+
+        self.assertEqual(filtered["campaign_refs"], ["activity--kept"])
+        self.assertEqual(filtered["malware_refs"], ["malware--kept"])
+        self.assertEqual(filtered["infrastructure_refs"], ["infra--kept"])
+        self.assertEqual(filtered["roles"], ["c2"])
+
     def test_ioc_types_are_kept_out_of_artifacts(self) -> None:
         # 192.0.2.0/24 などのドキュメント用レンジは伏字であって指標ではないため、
         # ここでは実際に到達し得るアドレスを使う。
@@ -226,6 +252,33 @@ class ObservableBoundaryTests(unittest.TestCase):
         )
         domains = {normalize_observable(kind, value) for kind, value, _ in values}
         self.assertEqual(domains, {"c2.example-actor.org"})
+
+    def test_repository_instruction_file_is_not_a_domain(self) -> None:
+        values = extract_iocs(
+            "IOC review follows AGENT.md; actual C2 is malicious-c2.com",
+            allow_plain_domains=False,
+            explicit_structured=False,
+        )
+        domains = {value for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(domains, {"malicious-c2.com"})
+
+    def test_evidence_map_provenance_is_not_an_actor_artifact(self) -> None:
+        record = {
+            "text": (
+                "APT Groups and Operations.xlsx row 85 Calypso "
+                "malware was 1.bat https://example.org/report.pdf"
+            ),
+            "location": {"row": 2},
+            "fields": {
+                "original_source_path": "APT Groups and Operations.xlsx",
+                "original_source_location": '{"row": 85}',
+                "matched_name": "Calypso",
+                "context_excerpt": "malware was 1.bat https://example.org/report.pdf",
+            },
+            "method": "csv-row",
+        }
+        _, artifacts = classified_record_values(record, {})
+        self.assertEqual(artifacts, [("file-name", "1.bat", "candidate")])
 
     def test_non_tld_file_names_are_not_domains(self) -> None:
         """実在しないTLDを持つ値はファイル名や文の断片であり domain にしない。"""

@@ -1,38 +1,41 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--apt43",
   "actor_name": "APT43",
-  "profile_updated_at": "2026-09-20T13:48:11Z",
+  "profile_updated_at": "2026-09-21T04:38:04Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "canonical-present",
-      "malware": "canonical-present",
+      "malware": "lead-only",
       "tools": "lead-only",
       "targets": "canonical-present",
       "motivations": "lead-only",
       "attribution": "canonical-present"
     },
     "canonical_counts": {
-      "activities": 4,
+      "activities": 2,
       "dated_activities": 0,
-      "relationships": 2,
-      "malware": 9,
+      "relationships": 1,
+      "malware": 0,
       "activity_linked_malware": 0,
       "tools": 0,
-      "targets": 14,
+      "targets": 7,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 1,
       "activities": 69,
-      "relationships": 2,
-      "malware": 39,
+      "relationships": 3,
+      "malware": 41,
       "tools": 12,
       "untyped_software": 0,
-      "targets": 28,
-      "motivations": 2
+      "targets": 29,
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -45,8 +48,7 @@
       "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
       "confidence": "medium",
       "evidence_refs": [
-        "source--mitre-attack-19-1",
-        "source--actor-mapping-workbook"
+        "source--mitre-attack-19-1"
       ],
       "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text.",
       "claim_assessments": [
@@ -57,7 +59,6 @@
           "confidence": "medium",
           "statement": "Attributed country or countries: North Korea.",
           "evidence_refs": [
-            "source--actor-mapping-workbook",
             "source--mitre-attack-19-1"
           ],
           "verification_rationale": "Evidence tier=knowledge-base. Community workbook-only attribution requires independent corroboration.",
@@ -70,7 +71,6 @@
           "confidence": "medium",
           "statement": "Sponsor classification: state.",
           "evidence_refs": [
-            "source--actor-mapping-workbook",
             "source--mitre-attack-19-1"
           ],
           "verification_rationale": "Evidence tier=knowledge-base; sponsor classification is audited separately from country labels.",
@@ -120,190 +120,11 @@
             ]
           }
         ],
-        "target_actor_ref": "actor--kimsuky"
-      },
-      {
-        "relationship_id": "relationship--apt43--alias-overlap--1a14dab2babbdb9e",
-        "target_actor": "Kimsuky",
-        "relationship_type": "overlaps-with",
-        "description": "共有alias: Kimsuky",
-        "confidence": "low",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "共有aliasに基づくtaxonomy overlap候補。同一主体であることを断定せず、ベンダーごとの追跡スコープ差を個別に確認する。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--73213f22529eb99f8943953c",
-            "category": "relationship",
-            "verification_status": "unresolved",
-            "confidence": "low",
-            "statement": "APT43 overlaps-with Kimsuky: 共有alias: Kimsuky",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "共有aliasに基づくtaxonomy overlap候補。同一主体であることを断定せず、ベンダーごとの追跡スコープ差を個別に確認する。",
-            "counterevidence": []
-          }
-        ],
-        "target_actor_ref": "actor--kimsuky"
+        "target_actor_ref": "actor--kimsuky",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [
-      {
-        "activity_id": "activity--daily-47a3435a13311fff4bdb",
-        "name": "FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告",
-        "activity_type": "phishing-campaign",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2026-01-10T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。",
-        "target_refs": [
-          "target--activity-rule--country--6604ad21c713b8dfd8c7"
-        ],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-4c3098e731ae81f16008"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--47a3435a13311fff4bdba862 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。",
-        "ttp_refs": [
-          "ttp--activity-rule--e8957cb3783e2d0ff76d"
-        ],
-        "victim_refs": [
-          "victim--activity-rule--4b583ac5e9ca93d7b2cd"
-        ],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--apt43",
-            "name": "APT43",
-            "attribution_countries": [
-              "North Korea"
-            ],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": [
-              "ttp--activity-rule--e8957cb3783e2d0ff76d"
-            ]
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [
-              "target--activity-rule--country--6604ad21c713b8dfd8c7"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--4b583ac5e9ca93d7b2cd"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2026-01-10T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "phishing-campaign",
-            "phases": [
-              "Initial Access"
-            ],
-            "results": [
-              "credential-theft"
-            ],
-            "direction": {
-              "source_countries": [
-                "North Korea"
-              ],
-              "target_country_refs": [
-                "target--activity-rule--country--6604ad21c713b8dfd8c7"
-              ],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-4c3098e731ae81f16008"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--e43c1bad68960c3da139320a",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 conducted or is associated with FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告: FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。",
-            "evidence_refs": [
-              "source--daily-4c3098e731ae81f16008"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [
-          {
-            "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "name": "米国"
-          }
-        ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--4b583ac5e9ca93d7b2cd",
-            "name": "aggregate"
-          }
-        ],
-        "techniques": [
-          {
-            "id": "ttp--activity-rule--e8957cb3783e2d0ff76d",
-            "technique_id": "T1566.002",
-            "name": "Spearphishing Link"
-          }
-        ]
-      },
       {
         "activity_id": "activity--daily-8231265f9c3d2cf3a6d5",
         "name": "北朝鮮のハッカー、弱いDMARCメールポリシーを悪用",
@@ -605,752 +426,11 @@
             "name": "Exploit Public-Facing Application"
           }
         ]
-      },
-      {
-        "activity_id": "activity--daily-ad2a0b8acf43d0efef90",
-        "name": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
-        "activity_type": "campaign",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-09-22T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-        "target_refs": [],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-dddef70e68c0dc59a5d3"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--ad2a0b8acf43d0efef90675b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-        "ttp_refs": [
-          "ttp--activity-rule--376a281097c3ea027f31"
-        ],
-        "victim_refs": [],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--apt43",
-            "name": "APT43",
-            "attribution_countries": [
-              "North Korea"
-            ],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": [
-              "ttp--activity-rule--376a281097c3ea027f31"
-            ]
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [],
-            "victim_refs": []
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-09-22T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "campaign",
-            "phases": [
-              "Execution"
-            ],
-            "results": [],
-            "direction": {
-              "source_countries": [
-                "North Korea"
-              ],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-dddef70e68c0dc59a5d3"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--0f34415d27415d47f75b03e0",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 conducted or is associated with 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布: 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-            "evidence_refs": [
-              "source--daily-dddef70e68c0dc59a5d3"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [],
-        "victims": [],
-        "techniques": [
-          {
-            "id": "ttp--activity-rule--376a281097c3ea027f31",
-            "technique_id": "T1204.004",
-            "name": "Malicious Copy and Paste"
-          }
-        ]
       }
     ],
-    "malware_usage": [
-      {
-        "id": "malware--eternal-suite-of-exploits",
-        "name": "Eternal suite of exploits",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--f8d1319b1c25c2184adeed14",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used Eternal suite of exploits.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--grease",
-        "name": "Grease",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--4958be4e297855a85f49d18f",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used Grease.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--kgh-spy",
-        "name": "KGH_SPY",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--2f3803f0bfee41b0ab2764a3",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used KGH_SPY.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--kportscan",
-        "name": "KPortScan",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--3be4a4de85e336fc65384279",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used KPortScan.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--mechanical",
-        "name": "Mechanical",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--69d0218e87d1949a2b68bd71",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used Mechanical.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--mimikatz",
-        "name": "Mimikatz",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--b926b685e00e00c087ef735f",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used Mimikatz.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--nirsoft-mailpassview-network-password-recovery-remote-desktop-passview-sniffpass-webbrowserpassview",
-        "name": "NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--f5452c85c5579461d7cb3950",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--procdump",
-        "name": "Procdump",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--684eebdcd3725c7770dea90a",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used Procdump.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
-        "id": "malware--psexec",
-        "name": "PsExec",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--d279795bc5623f958942e263",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 uses or has used PsExec.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      }
-    ],
+    "malware_usage": [],
     "tool_usage": [],
     "targets": [
-      {
-        "id": "target--targeting-audit--country--ffc91f1af6028da15f3c",
-        "name": "ウクライナ",
-        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてウクライナが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--3509a669ba59874f96dc0e52",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets country ウクライナ.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--c2bf6141c56a98427501",
-        "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてタイが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--d9cfcd96b063c8daeea60bb4",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets country タイ.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--863133d06351049426ea",
-        "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてドイツが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9242ad023777f60422cc4ddd",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets country ドイツ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--9cfbde0869fcc10279bd",
-        "name": "ベトナム",
-        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてベトナムが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9c6ad282646e8bac666689ed",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets country ベトナム.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
       {
         "id": "target--activity-rule--country--f35cd09db0a72555b38a",
         "name": "日本",
@@ -1369,10 +449,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-251ff3261ef519dfe8d5",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-251ff3261ef519dfe8d5"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--050a524f06183438e1e453e6",
@@ -1381,10 +460,9 @@
             "confidence": "medium",
             "statement": "APT43 targets country 日本.",
             "evidence_refs": [
-              "source--daily-251ff3261ef519dfe8d5",
-              "source--target-audit-etda-threat-group-cards"
+              "source--daily-251ff3261ef519dfe8d5"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -1396,7 +474,7 @@
       {
         "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "name": "米国",
-        "description": "活動「FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告」の記述で標的として明示された国・地域。",
+        "description": "活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1411,11 +489,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-251ff3261ef519dfe8d5",
-          "source--daily-4c3098e731ae81f16008",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-251ff3261ef519dfe8d5"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--f14ca73e788f03800ef82f75",
@@ -1424,17 +500,14 @@
             "confidence": "medium",
             "statement": "APT43 targets country 米国.",
             "evidence_refs": [
-              "source--daily-251ff3261ef519dfe8d5",
-              "source--daily-4c3098e731ae81f16008",
-              "source--target-audit-etda-threat-group-cards"
+              "source--daily-251ff3261ef519dfe8d5"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "countrie",
         "activity_refs": [
-          "activity--daily-47a3435a13311fff4bdb",
           "activity--daily-8231265f9c3d2cf3a6d5"
         ]
       },
@@ -1457,10 +530,9 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-251ff3261ef519dfe8d5",
-          "source--daily-444c87a0051642065f55",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-444c87a0051642065f55"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--2bf16bbd12e7090cf9861417",
@@ -1470,10 +542,9 @@
             "statement": "APT43 targets country 韓国.",
             "evidence_refs": [
               "source--daily-251ff3261ef519dfe8d5",
-              "source--daily-444c87a0051642065f55",
-              "source--target-audit-etda-threat-group-cards"
+              "source--daily-444c87a0051642065f55"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -1502,8 +573,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-251ff3261ef519dfe8d5",
-          "source--daily-444c87a0051642065f55",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-444c87a0051642065f55"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
         "claim_assessments": [
@@ -1515,88 +585,9 @@
             "statement": "APT43 targets region 東アジア.",
             "evidence_refs": [
               "source--daily-251ff3261ef519dfe8d5",
-              "source--daily-444c87a0051642065f55",
-              "source--target-audit-etda-threat-group-cards"
+              "source--daily-444c87a0051642065f55"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--1560d6941c7af9becb03",
-        "name": "東南アジア",
-        "description": "タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--a3ac549d3c76a7984faba48b",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets region 東南アジア.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--9b05a43fdfbebff4c143",
-        "name": "欧州",
-        "description": "構造化OSINTの被害地域フィールドでAPT43の標的範囲として欧州が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9f468fec6b2790c32224365b",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets region 欧州.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -1722,48 +713,23 @@
         "activity_refs": [
           "activity--daily-8231265f9c3d2cf3a6d5"
         ]
-      },
-      {
-        "id": "target--sector--government",
-        "name": "Government",
-        "description": "Targeting text indicates the Government sector.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity.",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9c41a772b623c92976a97ed8",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT43 targets sector Government.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": []
       }
     ]
   },
   "external_research_leads": {
+    "aliases": [
+      {
+        "name": "Kimsuky",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      }
+    ],
     "activities": [
       {
         "lead_id": "activity-lead--etda--fa47ee53e036951cd86b",
@@ -3892,9 +2858,595 @@
         ],
         "confidence": "low",
         "assessment": "MISP Galaxy relationship candidate. Review the original references and actor scopes before integration."
+      },
+      {
+        "relationship_id": "relationship--apt43--alias-overlap--1a14dab2babbdb9e",
+        "target_actor": "Kimsuky",
+        "relationship_type": "overlaps-with",
+        "description": "共有alias: Kimsuky",
+        "confidence": "low",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "共有aliasに基づくtaxonomy overlap候補。同一主体であることを断定せず、ベンダーごとの追跡スコープ差を個別に確認する。 Migrated from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
       }
     ],
     "malware": [
+      {
+        "id": "malware--eternal-suite-of-exploits",
+        "name": "Eternal suite of exploits",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "id": "malware--grease",
+        "name": "Grease",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "Grease",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--kgh-spy",
+        "name": "KGH_SPY",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "KGH_SPY",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          },
+          {
+            "software_id": "c1e1ab6a-d5ce-4520-98c5-c6df41005fd9",
+            "name": "KGH_SPY",
+            "description": "[KGH_SPY](https://app.tidalcyber.com/software/c1e1ab6a-d5ce-4520-98c5-c6df41005fd9) is a modular suite of tools used by [Kimsuky](https://app.tidalcyber.com/groups/37f317d8-02f0-43d4-8a7d-7a65ce8aadf1) for reconnaissance, information stealing, and backdoor capabilities. [KGH_SPY](https://app.tidalcyber.com/software/c1e1ab6a-d5ce-4520-98c5-c6df41005fd9) derived its name from PDB paths and internal names found in samples containing \"KGH\".<sup>[[Cybereason Kimsuky November 2020](https://app.tidalcyber.com/references/ecc2f5ad-b2a8-470b-b919-cb184d12d00f)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S0526",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--kportscan",
+        "name": "KPortScan",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "KPortScan",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--mechanical",
+        "name": "Mechanical",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "Mechanical",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--mimikatz",
+        "name": "Mimikatz",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "Mimikatz",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--nirsoft-mailpassview-network-password-recovery-remote-desktop-passview-sniffpass-webbrowserpassview",
+        "name": "NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "id": "malware--procdump",
+        "name": "Procdump",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "ProcDump",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
+      {
+        "id": "malware--psexec",
+        "name": "PsExec",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved",
+        "supporting_records": [
+          {
+            "value": "PsExec",
+            "dataset_entry": "Kimsuky, Velvet Chollima",
+            "source_urls": [
+              "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+              "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+              "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+              "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+              "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+              "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+              "https://asec.ahnlab.com/en/30532/",
+              "https://asec.ahnlab.com/en/60054/",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+              "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+              "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+              "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+              "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+              "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+              "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+              "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported"
+          }
+        ],
+        "source_urls": [
+          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+          "https://asec.ahnlab.com/en/30532/",
+          "https://asec.ahnlab.com/en/60054/",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+        ]
+      },
       {
         "value": "AppleSeed",
         "dataset_entry": "Kimsuky, Velvet Chollima",
@@ -3914,11 +3466,36 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://blog.malwarebytes.com/threat-analysis/2021/06/kimsuky-apt-continues-to-target-south-korean-government-using-appleseed-backdoor/"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "9df2e42e-b454-46ea-b50d-2f7d999f3d42",
+            "name": "AppleSeed",
+            "description": "[AppleSeed](https://app.tidalcyber.com/software/9df2e42e-b454-46ea-b50d-2f7d999f3d42) is a backdoor that has been used by [Kimsuky](https://app.tidalcyber.com/groups/37f317d8-02f0-43d4-8a7d-7a65ce8aadf1) to target South Korean government, academic, and commercial  targets since at least 2021.<sup>[[Malwarebytes Kimsuky June 2021](https://app.tidalcyber.com/references/9a497c56-f1d3-4889-8c1a-14b013f14668)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S0622",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://blog.malwarebytes.com/threat-analysis/2021/06/kimsuky-apt-continues-to-target-south-korean-government-using-appleseed-backdoor/"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "BabyShark",
@@ -3939,11 +3516,36 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "ebb824a2-abff-4bfd-87f0-d63cb02b62e6",
+            "name": "BabyShark",
+            "description": "[BabyShark](https://app.tidalcyber.com/software/ebb824a2-abff-4bfd-87f0-d63cb02b62e6) is a Microsoft Visual Basic (VB) script-based malware family that is believed to be associated with several North Korean campaigns. <sup>[[Unit42 BabyShark Feb 2019](https://app.tidalcyber.com/references/634404e3-e2c9-4872-a280-12d2be168cba)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S0414",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "BITTERSWEET",
@@ -4039,11 +3641,52 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://www.fireeye.com/blog/threat-research/2015/07/demonstrating_hustle.html",
+          "https://www.arbornetworks.com/blog/asert/musical-chairs-playing-tetris/",
+          "https://research.nccgroup.com/2018/04/17/decoding-network-data-from-a-gh0st-rat-variant/"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "269ef8f5-35c8-44ba-afe4-63f4c6431427",
+            "name": "gh0st RAT",
+            "description": "[gh0st RAT](https://app.tidalcyber.com/software/269ef8f5-35c8-44ba-afe4-63f4c6431427) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.<sup>[[FireEye Hacking Team](https://app.tidalcyber.com/references/c1e798b8-6771-4ba7-af25-69c640321e40)]</sup><sup>[[Arbor Musical Chairs Feb 2018](https://app.tidalcyber.com/references/bddf44bb-7a0a-498b-9831-7b73cf9a582e)]</sup><sup>[[Nccgroup Gh0st April 2018](https://app.tidalcyber.com/references/4476aa0a-b1ef-4ac6-9e44-5721a0b3e92b)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "macOS",
+              "Windows"
+            ],
+            "attack_id": "S0032",
+            "group_refs": [
+              "0a245c5e-c1a8-480f-8655-bb2594e3266b",
+              "2cc997b5-5076-4eef-9974-f54387614f46",
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1",
+              "502223ee-8947-42f8-a532-a3b3da12b7d9",
+              "60936d3c-37ed-4116-a407-868da3aa4446",
+              "79be2f31-5626-425e-844c-fd9c99e38fe5",
+              "90f4d3f9-3fe3-4a64-8dc1-172c6d037dca",
+              "a0c31021-b281-4c41-9855-436768299fe7",
+              "e343c1f1-458c-467b-bc4a-c1b97b2127e3",
+              "eadd78e3-3b5d-430a-b994-4360b172c871",
+              "f1477581-d485-403f-a95f-c56bf88c5d1e",
+              "f46d6ee9-9d1d-586a-9f2d-6bff8fb92910"
+            ],
+            "source_urls": [
+              "https://www.fireeye.com/blog/threat-research/2015/07/demonstrating_hustle.html",
+              "https://www.arbornetworks.com/blog/asert/musical-chairs-playing-tetris/",
+              "https://research.nccgroup.com/2018/04/17/decoding-network-data-from-a-gh0st-rat-variant/"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "Gold Dragon",
@@ -4064,61 +3707,36 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://www.mcafee.com/blogs/other-blogs/mcafee-labs/gold-dragon-widens-olympics-malware-attacks-gains-permanent-presence-on-victims-systems/"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "Grease",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "KGH_SPY",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "348fdeb5-6a74-4803-ac6e-e0133ecd7263",
+            "name": "Gold Dragon",
+            "description": "[Gold Dragon](https://app.tidalcyber.com/software/348fdeb5-6a74-4803-ac6e-e0133ecd7263) is a Korean-language, data gathering implant that was first observed in the wild in South Korea in July 2017. [Gold Dragon](https://app.tidalcyber.com/software/348fdeb5-6a74-4803-ac6e-e0133ecd7263) was used along with [Brave Prince](https://app.tidalcyber.com/software/51b27e2c-c737-4006-a657-195ea1a1f4f0) and [RunningRAT](https://app.tidalcyber.com/software/e8afda1f-fa83-4fc3-b6fb-7d5daca7173f) in operations targeting organizations associated with the 2018 Pyeongchang Winter Olympics. <sup>[[McAfee Gold Dragon](https://app.tidalcyber.com/references/4bdfa92b-cbbd-43e6-aa3e-422561ff8d7a)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S0249",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://www.mcafee.com/blogs/other-blogs/mcafee-labs/gold-dragon-widens-olympics-malware-attacks-gains-permanent-presence-on-victims-systems/"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "KimJongRAT",
@@ -4171,82 +3789,7 @@
         "verification_status": "partially-supported"
       },
       {
-        "value": "KPortScan",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
         "value": "MailPassView",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "Mechanical",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "Mimikatz",
         "dataset_entry": "Kimsuky, Velvet Chollima",
         "source_urls": [
           "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
@@ -4322,56 +3865,6 @@
       },
       {
         "value": "Network Password Recovery",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "ProcDump",
-        "dataset_entry": "Kimsuky, Velvet Chollima",
-        "source_urls": [
-          "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-          "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-          "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-          "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-          "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-          "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-          "https://asec.ahnlab.com/en/30532/",
-          "https://asec.ahnlab.com/en/60054/",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-          "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-          "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-          "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-          "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-          "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-          "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-        ],
-        "match_basis": "canonical-name",
-        "match_confidence": "high",
-        "verification_status": "partially-supported"
-      },
-      {
-        "value": "PsExec",
         "dataset_entry": "Kimsuky, Velvet Chollima",
         "source_urls": [
           "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
@@ -4589,11 +4082,36 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://www.zscaler.com/blogs/security-research/kimsuky-deploys-translatext-target-south-korean-academia#technical-analysis"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "6517296a-ec11-57c0-881c-6b62239ede92",
+            "name": "TRANSLATEXT",
+            "description": "[TRANSLATEXT](https://app.tidalcyber.com/software/6517296a-ec11-57c0-881c-6b62239ede92) is malware that is believed to be used by [Kimsuky](https://app.tidalcyber.com/groups/37f317d8-02f0-43d4-8a7d-7a65ce8aadf1).<sup>[[Zscaler Kimsuky TRANSLATEXT](https://app.tidalcyber.com/references/7ee5dc4e-1c53-5f12-806d-37b290c6f569)]</sup> [TRANSLATEXT](https://app.tidalcyber.com/software/6517296a-ec11-57c0-881c-6b62239ede92) masqueraded as a Google Translate extension for Google Chrome, but is actually a collection of four malicious Javascript files that perform defense evasion, information collection and exfiltration.<sup>[[Zscaler Kimsuky TRANSLATEXT](https://app.tidalcyber.com/references/7ee5dc4e-1c53-5f12-806d-37b290c6f569)]</sup> ",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S1201",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://www.zscaler.com/blogs/security-research/kimsuky-deploys-translatext-target-south-korean-academia#technical-analysis"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "Troll Stealer",
@@ -4614,11 +4132,38 @@
           "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
           "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
           "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+          "https://medium.com/s2wblog/kimsuky-disguised-as-a-korean-company-signed-with-a-valid-certificate-to-distribute-troll-stealer-cfa5d54314e2",
+          "https://www.security.com/threat-intelligence/springtail-kimsuky-backdoor-espionage"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "9d4c38dc-6549-5bde-9ce4-a54ae8ca596e",
+            "name": "Troll Stealer",
+            "description": "[Troll Stealer](https://app.tidalcyber.com/software/9d4c38dc-6549-5bde-9ce4-a54ae8ca596e) is an information stealer written in Go associated with [Kimsuky](https://app.tidalcyber.com/groups/37f317d8-02f0-43d4-8a7d-7a65ce8aadf1) operations. [Troll Stealer](https://app.tidalcyber.com/software/9d4c38dc-6549-5bde-9ce4-a54ae8ca596e) has typically been delivered through a dropper disguised as a legitimate security program installation file. [Troll Stealer](https://app.tidalcyber.com/software/9d4c38dc-6549-5bde-9ce4-a54ae8ca596e) features code similar to [AppleSeed](https://app.tidalcyber.com/software/9df2e42e-b454-46ea-b50d-2f7d999f3d42), also uniquely associated with [Kimsuky](https://app.tidalcyber.com/groups/37f317d8-02f0-43d4-8a7d-7a65ce8aadf1) operations.<sup>[[S2W Troll Stealer 2024](https://app.tidalcyber.com/references/5fbb0dcb-c882-597f-ade8-4b8afb8b55a8)]</sup><sup>[[Symantec Troll Stealer 2024](https://app.tidalcyber.com/references/ebb98b4b-062a-5b48-8318-e5f1244f907c)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S1196",
+            "group_refs": [
+              "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1"
+            ],
+            "source_urls": [
+              "https://medium.com/s2wblog/kimsuky-disguised-as-a-korean-company-signed-with-a-valid-certificate-to-distribute-troll-stealer-cfa5d54314e2",
+              "https://www.security.com/threat-intelligence/springtail-kimsuky-backdoor-espionage"
+            ],
+            "match_basis": "single-alias-intersection",
+            "match_confidence": "medium",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "VENOMBITE",
@@ -5374,6 +4919,12 @@
       }
     ],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -5668,6 +5219,125 @@
       ],
       "sectors": [
         {
+          "id": "target--sector--government",
+          "description": "Targeting text indicates the Government sector.",
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "analyst_notes": "Automatically structured from target text; review scope and granularity. Migrated from canonical because only aggregation/workbook evidence exists.",
+          "value": "Government",
+          "verification_status": "unresolved",
+          "supporting_records": [
+            {
+              "value": "Government",
+              "dataset_entry": "Kimsuky, Velvet Chollima",
+              "source_urls": [
+                "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+                "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+                "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+                "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+                "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+                "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+                "https://asec.ahnlab.com/en/30532/",
+                "https://asec.ahnlab.com/en/60054/",
+                "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+                "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+                "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+                "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+                "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+                "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+                "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+                "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            },
+            {
+              "value": "Government",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "verification_status": "partially-supported"
+            },
+            {
+              "value": "Government",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [
+                "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+                "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+                "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+                "https://youtu.be/hAsKp43AZmM?t=1027",
+                "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+                "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+                "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+                "https://attack.mitre.org/groups/G0086/",
+                "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+                "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+                "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+                "https://asec.ahnlab.com/en/57873/",
+                "https://asec.ahnlab.com/en/61082/",
+                "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+                "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+                "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+                "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+                "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ],
+          "source_urls": [
+            "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+            "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
+            "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+            "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+            "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
+            "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
+            "https://asec.ahnlab.com/en/30532/",
+            "https://asec.ahnlab.com/en/60054/",
+            "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
+            "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
+            "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+            "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
+            "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
+            "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
+            "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+            "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+            "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+            "https://youtu.be/hAsKp43AZmM?t=1027",
+            "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+            "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+            "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+            "https://attack.mitre.org/groups/G0086/",
+            "https://asec.ahnlab.com/en/57873/",
+            "https://asec.ahnlab.com/en/61082/",
+            "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+            "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+            "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+            "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+            "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+            "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
+          ]
+        },
+        {
           "value": "Defense",
           "dataset_entry": "Kimsuky, Velvet Chollima",
           "source_urls": [
@@ -5686,11 +5356,64 @@
             "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
             "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
             "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+            "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+            "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+            "https://youtu.be/hAsKp43AZmM?t=1027",
+            "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+            "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+            "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+            "https://attack.mitre.org/groups/G0086/",
+            "https://asec.ahnlab.com/en/57873/",
+            "https://asec.ahnlab.com/en/61082/",
+            "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+            "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+            "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+            "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+            "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+            "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Defense",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "verification_status": "partially-supported"
+            },
+            {
+              "value": "Defense",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [
+                "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+                "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+                "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+                "https://youtu.be/hAsKp43AZmM?t=1027",
+                "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+                "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+                "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+                "https://attack.mitre.org/groups/G0086/",
+                "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+                "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+                "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+                "https://asec.ahnlab.com/en/57873/",
+                "https://asec.ahnlab.com/en/61082/",
+                "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+                "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+                "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+                "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+                "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Education",
@@ -5715,7 +5438,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Education",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Energy",
@@ -5736,36 +5469,64 @@
             "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
             "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
             "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+            "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+            "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+            "https://youtu.be/hAsKp43AZmM?t=1027",
+            "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+            "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+            "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+            "https://attack.mitre.org/groups/G0086/",
+            "https://asec.ahnlab.com/en/57873/",
+            "https://asec.ahnlab.com/en/61082/",
+            "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+            "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+            "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+            "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+            "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+            "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
-        },
-        {
-          "value": "Government",
-          "dataset_entry": "Kimsuky, Velvet Chollima",
-          "source_urls": [
-            "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
-            "https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/",
-            "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
-            "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
-            "https://www.darkreading.com/operations/how-north-korean-apt-kimsuky-is-evolving-its-tactics/d/d-id/1340956",
-            "https://boho.or.kr/filedownload.do?attach_file_seq=2695&attach_file_id=EpF2695.pdf",
-            "https://asec.ahnlab.com/en/30532/",
-            "https://asec.ahnlab.com/en/60054/",
-            "https://asec.ahnlab.com/wp-content/uploads/2023/03/2022-Threat-Trend-Report-on-Kimsuky.pdf",
-            "https://asec.ahnlab.com/wp-content/uploads/2023/03/Unique-characteristics-of-Kimsuky-groups-spear-phishing-emails.pdf",
-            "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
-            "https://blog.google/threat-analysis-group/how-were-protecting-users-from-government-backed-attacks-from-north-korea/",
-            "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
-            "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
-            "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
-          ],
-          "match_basis": "canonical-name",
-          "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Energy",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "verification_status": "partially-supported"
+            },
+            {
+              "value": "Energy",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [
+                "https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/",
+                "https://www.cfr.org/interactive/cyber-operations/kimsuky",
+                "https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html",
+                "https://youtu.be/hAsKp43AZmM?t=1027",
+                "https://www.bloomberglaw.com/document/public/subdoc/X67FPNDOUBV9VOPS35A4864BFIU?imagename=1",
+                "https://www.netscout.com/blog/asert/stolen-pencil-campaign-targets-academia",
+                "https://unit42.paloaltonetworks.com/new-babyshark-malware-targets-u-s-national-security-think-tanks/",
+                "https://attack.mitre.org/groups/G0086/",
+                "https://us-cert.cisa.gov/ncas/alerts/aa20-301a",
+                "https://www.cybereason.com/blog/back-to-the-future-inside-the-kimsuky-kgh-spyware-suite",
+                "https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report",
+                "https://asec.ahnlab.com/en/57873/",
+                "https://asec.ahnlab.com/en/61082/",
+                "https://www.rewterz.com/rewterz-news/rewterz-threat-alert-north-korean-apt-kimsuky-aka-black-banshee-active-iocs-29/",
+                "https://www.sentinelone.com/labs/a-glimpse-into-future-scarcruft-campaigns-attackers-gather-strategic-intelligence-and-target-cybersecurity-professionals/",
+                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+                "https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-may-16b",
+                "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/springtail-kimsuky-backdoor-espionage",
+                "https://unit42.paloaltonetworks.com/kimsuky-new-keylogger-backdoor-variant/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Healthcare",
@@ -5840,7 +5601,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Think Tanks",
+              "dataset_entry": "Kimsuky",
+              "source_urls": [],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Ministry of Unification, Sejong Institute and Korea Institute for Defense Analyses",
@@ -6039,6 +5810,17 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
+      ],
+      "roles": [],
+      "legacy_workbook_text": [
+        {
+          "value": "This threat actor targets South Korean think tanks, industry, nuclear power operators, and the Ministry of Unification for espionage purposes.",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "verification_status": "unresolved",
+          "analyst_notes": "Legacy workbook targeting prose. Original actor scope and cited reports must be reviewed before canonical integration."
+        }
       ]
     },
     "motivations": [
@@ -6211,12 +5993,13 @@
         "match_confidence": "medium",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
+    "unresolved": 1,
     "supported": 86,
-    "partially-supported": 35
+    "partially-supported": 13
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -6289,7 +6072,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240504.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240504.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/nsa-warns-of-north-korean-hackers-exploiting-weak-dmarc-email-policies/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-444c87a0051642065f55": {
       "source_id": "source--daily-444c87a0051642065f55",
@@ -6307,7 +6098,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240806.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240806.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-4c3098e731ae81f16008": {
       "source_id": "source--daily-4c3098e731ae81f16008",
@@ -6325,7 +6125,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260110.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260110.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized. The January 2026 FBI FLASH attributes the May-June 2025 QR-code spearphishing only to Kimsuky and does not name APT43. The activity is already represented once as activity--kimsuky-quishing-2025 with the official FBI source; the two secondary daily records are not canonicalized.",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-about-kimsuky-hackers-using-qr-codes-to-phish-us-orgs/",
+      "accessed_at": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "corroboration"
+      ]
     },
     "source--daily-dddef70e68c0dc59a5d3": {
       "source_id": "source--daily-dddef70e68c0dc59a5d3",
@@ -6343,7 +6149,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250922.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250922.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. The article's BeaverTail/InvisibleFerret ClickFix campaign is attributed to Contagious Interview. Kimsuky/APT43 appears only in a separate later news item, so the main campaign is not copied across that actor boundary.",
+      "url": "https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html",
+      "accessed_at": null,
+      "actor_scope": "indirect",
+      "claims_supported": [
+        "context"
+      ]
     },
     "source--gtig-apt43-llm-access-2025": {
       "source_id": "source--gtig-apt43-llm-access-2025",
@@ -6388,7 +6200,12 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Mandiant defines APT43 from its own collection and notes collaboration with other DPRK operators."
+      "analyst_notes": "Mandiant defines APT43 from its own collection and notes collaboration with other DPRK operators.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
     },
     "source--mitre-live-kimsuky-2026": {
       "source_id": "source--mitre-live-kimsuky-2026",
@@ -6408,7 +6225,12 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Lists APT43 as an associated group name while warning that DPRK cluster boundaries overlap."
+      "analyst_notes": "Lists APT43 as an associated group name while warning that DPRK cluster boundaries overlap.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
     },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -6568,56 +6390,6 @@
       ],
       "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
-    "source--target-audit-misp-threat-actor": {
-      "source_id": "source--target-audit-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor victim geography fields",
-      "publisher": "MISP Project / Council on Foreign Relations",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
     "source--osint-misp-mitre-enterprise-intrusion-set": {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
@@ -6673,11 +6445,60 @@
         "motivation-lead"
       ],
       "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    "source--target-audit-misp-threat-actor": {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   },
   "research_gaps": [
     "Canonical activities exist, but their observation periods are unknown.",
-    "Malware is actor-linked only; campaign-specific use periods are unknown.",
     "Motivation remains unknown or unstructured."
   ]
 }

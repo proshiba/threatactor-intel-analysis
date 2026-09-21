@@ -1,38 +1,41 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--invisimole",
   "actor_name": "InvisiMole",
-  "profile_updated_at": "2026-09-20T13:48:12Z",
+  "profile_updated_at": "2026-09-21T04:35:02Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
-      "activities": "lead-only",
-      "relationships": "unknown",
-      "malware": "lead-only",
+      "activities": "canonical-present",
+      "relationships": "canonical-present",
+      "malware": "canonical-present",
       "tools": "unknown",
       "targets": "canonical-present",
-      "motivations": "lead-only",
-      "attribution": "unknown"
+      "motivations": "canonical-present",
+      "attribution": "lead-only"
     },
     "canonical_counts": {
-      "activities": 0,
-      "dated_activities": 0,
-      "relationships": 0,
-      "malware": 0,
-      "activity_linked_malware": 0,
+      "activities": 1,
+      "dated_activities": 1,
+      "relationships": 1,
+      "malware": 1,
+      "activity_linked_malware": 1,
       "tools": 0,
       "targets": 3,
-      "motivations": 0
+      "motivations": 1
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 2,
       "relationships": 0,
       "malware": 1,
       "tools": 0,
       "untyped_software": 0,
-      "targets": 6,
-      "motivations": 1
+      "targets": 7,
+      "motivations": 1,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -43,142 +46,427 @@
       "assessment": "",
       "confidence": "unknown",
       "evidence_refs": [],
-      "analyst_notes": "",
+      "analyst_notes": "The reviewed ESET source does not identify a sponsoring state or operator organization; attribution remains unknown.",
       "claim_assessments": []
     },
-    "motivations": [],
-    "relationships": [],
-    "activity_timeline": [],
-    "malware_usage": [],
+    "motivations": [
+      {
+        "type": "espionage",
+        "description": "ESET explicitly describes InvisiMole as a cyber-espionage group and documents extensive spying capabilities.",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "Motivation is source-stated, not inferred from geography.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b388758091b4cc130ff8db78",
+            "category": "motivation",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "InvisiMole has motivation espionage: ESET explicitly describes InvisiMole as a cyber-espionage group and documents extensive spying capabilities.",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; motivation is not inferred from sponsorship.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "relationship_id": "relationship--invisimole--gamaredon-delivery",
+        "target_actor": "actor--gamaredon",
+        "relationship_type": "cooperates-with",
+        "description": "ESET observed Gamaredon malware establishing initial access and delivering InvisiMole to a small, selected subset of targets. ESET explicitly treats the two as distinct groups with different TTPs.",
+        "confidence": "high",
+        "first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "Delivery cooperation does not establish exact identity or a part-of relationship.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--2b51b74e87463c13e408540c",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "InvisiMole cooperates-with actor--gamaredon: ESET observed Gamaredon malware establishing initial access and delivering InvisiMole to a small, selected subset of targets. ESET explicitly treats the two as distinct groups with different TTPs.",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Delivery cooperation does not establish exact identity or a part-of relationship.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": "actor--gamaredon",
+        "target_resolution": "catalog-profile"
+      }
+    ],
+    "activity_timeline": [
+      {
+        "activity_id": "activity--invisimole-eastern-europe-2019-2020",
+        "name": "InvisiMoleによる東欧の軍事・外交組織へのスパイ活動",
+        "activity_type": "cyber-espionage",
+        "first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "reported_at": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "document"
+        },
+        "description": "ESETは2019年後半から2020年6月18日の報告時点まで、東欧の少数の高位組織、特に軍事部門と政府・行政に属する外交使節団を標的とする攻撃を観測した。Gamaredonが先に侵入した端末の一部へ、より選別的にInvisiMoleを配布した。",
+        "target_refs": [
+          "target--activity-rule--sector--210dddb39397dbe50e91",
+          "target--activity-rule--sector--b94dc560a327b601965d",
+          "target--targeting-audit--region--e469a12091a1d97c652a"
+        ],
+        "malware_refs": [
+          "malware--invisimole"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [],
+        "victim_refs": [
+          "victim--activity-rule--1203af6b336e894538e2"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "The October start is a month-precision proxy for the source phrase 'late 2019'; it is not an exact start date.",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--invisimole",
+            "name": "InvisiMole",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--invisimole"
+            ],
+            "ttp_refs": []
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--activity-rule--sector--210dddb39397dbe50e91",
+              "target--activity-rule--sector--b94dc560a327b601965d",
+              "target--targeting-audit--region--e469a12091a1d97c652a"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--1203af6b336e894538e2"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2019-10-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2020-06-18T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-observed"
+            },
+            "reported_at": {
+              "value": "2020-06-18T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "document"
+            },
+            "activity_type": "cyber-espionage",
+            "phases": [],
+            "results": [
+              "espionage"
+            ],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": [
+                "target--targeting-audit--region--e469a12091a1d97c652a"
+              ]
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--eset-invisimole-hidden-arsenal-2020"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--2b159c98a01bafda0ef1f373",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "InvisiMole conducted or is associated with InvisiMoleによる東欧の軍事・外交組織へのスパイ活動: ESETは2019年後半から2020年6月18日の報告時点まで、東欧の少数の高位組織、特に軍事部門と政府・行政に属する外交使節団を標的とする攻撃を観測した。Gamaredonが先に侵入した端末の一部へ、より選別的にInvisiMoleを配布した。",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--invisimole",
+            "name": "InvisiMole"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+            "name": "政府・行政"
+          },
+          {
+            "id": "target--activity-rule--sector--b94dc560a327b601965d",
+            "name": "防衛・軍事"
+          },
+          {
+            "id": "target--targeting-audit--region--e469a12091a1d97c652a",
+            "name": "東欧"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--1203af6b336e894538e2",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": []
+      }
+    ],
+    "malware_usage": [
+      {
+        "id": "malware--invisimole",
+        "name": "InvisiMole",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "modular-spyware"
+        ],
+        "description": "同名グループが使用するモジュール型スパイウェア。RC2CLとRC2FMのバックドア、更新版のTCP/DNSダウンローダーを含む。",
+        "first_observed": {
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "The software label is intentionally separate from actor--invisimole.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--ddb242e6cb6c665989e09a17",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "InvisiMole uses or has used InvisiMole.",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--invisimole-eastern-europe-2019-2020",
+            "activity_name": "InvisiMoleによる東欧の軍事・外交組織へのスパイ活動",
+            "first_observed": {
+              "value": "2019-10-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2020-06-18T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-observed"
+            },
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
     "tool_usage": [],
     "targets": [
       {
-        "id": "target--country--ukraine",
-        "name": "ウクライナ",
-        "description": "Targeting text mentions ukraine.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--8aafa6d43fbdf0f9ff08d317",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "InvisiMole targets country ウクライナ.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--country--russia",
-        "name": "ロシア",
-        "description": "Targeting text mentions russia.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--178624f81a3a07428ce9ab35",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "InvisiMole targets country ロシア.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
         "id": "target--targeting-audit--region--e469a12091a1d97c652a",
         "name": "東欧",
-        "description": "構造化OSINTの被害地域フィールドでInvisiMoleの標的範囲として東欧が記録されている。",
+        "description": "活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的地域として東欧が明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--eset-invisimole-hidden-arsenal-2020"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--864926b87db262c3ed340437",
             "category": "target-region",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "InvisiMole targets region 東欧.",
             "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
+              "source--eset-invisimole-hidden-arsenal-2020"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--invisimole-eastern-europe-2019-2020"
+        ]
+      },
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--a00800711b2477606ae92111",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "InvisiMole targets sector 政府・行政.",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--invisimole-eastern-europe-2019-2020"
+        ]
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2020-06-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--eset-invisimole-hidden-arsenal-2020"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f4d62f0f50e12dbf69b2c4ed",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "InvisiMole targets sector 防衛・軍事.",
+            "evidence_refs": [
+              "source--eset-invisimole-hidden-arsenal-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--invisimole-eastern-europe-2019-2020"
+        ]
       }
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [
       {
         "lead_id": "activity-lead--etda--b98749a6c03ee98597c6",
@@ -270,6 +558,12 @@
     ],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -336,11 +630,36 @@
           "dataset_entry": "InvisiMole",
           "source_urls": [
             "https://www.welivesecurity.com/2018/06/07/invisimole-equipped-spyware-undercover/",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=InvisiMole&n=1"
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=InvisiMole&n=1",
+            "https://www.welivesecurity.com/2020/06/18/digging-up-invisimole-hidden-arsenal/"
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Government",
+              "dataset_entry": "InvisiMole",
+              "source_urls": [
+                "https://www.welivesecurity.com/2018/06/07/invisimole-equipped-spyware-undercover/",
+                "https://www.welivesecurity.com/2020/06/18/digging-up-invisimole-hidden-arsenal/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
+        }
+      ],
+      "roles": [],
+      "legacy_workbook_text": [
+        {
+          "value": "Russia, Ukraine",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "verification_status": "unresolved",
+          "analyst_notes": "Legacy workbook targeting prose. Original actor scope and cited reports must be reviewed before canonical integration."
         }
       ]
     },
@@ -402,12 +721,13 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 3
+    "unresolved": 1,
+    "supported": 9,
+    "partially-supported": 1
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -833,12 +1153,40 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    "source--eset-invisimole-hidden-arsenal-2020": {
+      "source_id": "source--eset-invisimole-hidden-arsenal-2020",
+      "path": "https://www.welivesecurity.com/2020/06/18/digging-up-invisimole-hidden-arsenal/",
+      "url": "https://www.welivesecurity.com/2020/06/18/digging-up-invisimole-hidden-arsenal/",
+      "archive_url": null,
+      "title": "Digging up InvisiMole's hidden arsenal",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2020-06-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "relationship",
+        "malware",
+        "targeting",
+        "motivation",
+        "ttp"
+      ],
+      "analyst_notes": "ESET directly distinguishes the InvisiMole group from its same-named malware and from Gamaredon, based on victim-side investigation and telemetry."
     }
   },
   "research_gaps": [
-    "No canonical actor-specific activity is structured.",
-    "No canonical cross-actor relationship is structured.",
-    "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]
 }

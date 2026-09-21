@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--copykittens`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| DarkHydrus | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| LazyMeerkat | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Slayer Kitten | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -41,22 +37,22 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| DarkHydrus | overlaps-with | 共有alias: DarkHydrus | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| DarkHydrus | overlaps-with | 共有alias: DarkHydrus | 低 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [CopyKittens](https://attack.mitre.org/groups/G0052) is an Iranian cyber espionage group that has been operating since at least 2013. It has targeted countries including Israel, Saudi Arabia, Turkey, the U.S., Jordan, and Germany. The group is responsible for the campaign known as Operation Wilted Tulip.(Citation: ClearSky CopyKittens March 2017)(Citation: ClearSky Wilted Tulip July 2017)(Citation: CopyKittens Nov 2015) |
-| Capability | TDTESS, Matryoshka, Cobalt Strike, TDTESS backdoor, Vminst, NetSrv, ZPP, Matryoshka v1 and Matryoshka v2, Empire |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Israel’s Ministry of Foreign Affairs and some well-known Israeli academic researchers specializing in Middle East Studies. Israel, Saudi Arabia, United States, Jordan, Germany |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -97,12 +93,7 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 |---|---|---|---|---|---|---|
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--matryoshka | Matryoshka | [Matryoshka](https://attack.mitre.org/software/S0167) is a malware framework used by [CopyKittens](https://attack.mitre.org/groups/G0052) that consists of a dropper, loader, and RAT. It has multiple versions; v1 was seen in the wild from July 2016 until January 2017. v2 has fewer commands and other minor differences. (Citation: ClearSky Wilted Tulip July 2017) (Citation: CopyKittens Nov 2015) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--matryoshka-v1-and-matryoshka-v2 | Matryoshka v1 and Matryoshka v2 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--netsrv | NetSrv | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--tdtess | TDTESS | [TDTESS](https://attack.mitre.org/software/S0164) is a 64-bit .NET binary backdoor used by [CopyKittens](https://attack.mitre.org/groups/G0052). (Citation: ClearSky Wilted Tulip July 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--tdtess-backdoor | TDTESS backdoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--vminst | Vminst | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--zpp | ZPP | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -128,15 +119,11 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Wilted Tulip | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Wilted Tulip | CopyKittens | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 Wilted Tulip
 
@@ -144,19 +131,16 @@ Wilted Tulip
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | イスラエル | Targeting text mentions israel. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラン | 構造化OSINTの被害国フィールドでCopyKittensの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | トルコ | MITRE ATT&CKのGroup概要でCopyKittensの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ヨルダン | Targeting text mentions jordan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | トルコ、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | イスラエル | Targeting text mentions israel. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | トルコ | MITRE ATT&CKのGroup概要でCopyKittensの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | ヨルダン | Targeting text mentions jordan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 中東 | イスラエル、サウジアラビア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 欧州 | トルコ、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -177,11 +161,11 @@ Wilted Tulip
 
 ## IOC／artifact概要
 
-- IOC値: 16件
-- IOC観測: 16件
+- IOC値: 13件
+- IOC観測: 20件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 12件
-- 非IOC artifact観測: 29件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -195,6 +179,7 @@ Wilted Tulip
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 3 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -214,11 +199,11 @@ Wilted Tulip
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

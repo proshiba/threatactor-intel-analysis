@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:09Z
+- 更新日時: 2026-09-21T04:18:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,11 +20,11 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 |---|---|---|---|---|---|
 | DeadCatx3 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | IronErn |  | overlapping | 中 | `source--oligo-teampcp-2026` | GitLabアカウント運用の重複を根拠とする関連であり、同一クラスタの確定ではない。 |
-| PCPCat | SentinelOne (SentinelLabs) / MITRE ATT&CK | unknown | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056`, `source--sentinellabs-pcpjack-2026` | SentinelLabsが「early TeamPCP/PCPCat campaigns」と併記するが、対応関係の説明がないためスコープ不明として保持する。 Official MITRE ATT&CK associated-group name for G1056. |
+| PCPCat | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | MITRE ATT&CK lists PCPCat as an Associated Group for G1056. ATT&CK explicitly treats associated names as overlap signals rather than exact equivalence, so this alias remains overlapping. |
 | SHADOW-WATER-058 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | ShellForce | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | TA-NATALSTATUS |  | overlapping | 中 | `source--oligo-teampcp-2026` | Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。 |
-| UNC6780 | Google Threat Intelligence Group / MITRE ATT&CK | exact | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | GTIGが「the cyber crime threat actor "TeamPCP" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056. |
+| UNC6780 | MITRE ATT&CK | exact | 高 | `source--mitre-attack-g1056` | GTIGが「the cyber crime threat actor "TeamPCP" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056. |
 
 ## 帰属
 
@@ -40,6 +40,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
 | financial | 資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |  |
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
@@ -49,16 +50,16 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | 金銭目的を公称するサイバー犯罪グループTeamPCP(GTIG命名 UNC6780)。国家帰属は不明。 |
-| Capability | 露出サービスの自動探索とワーム型侵害、ShadowRay 2.0ペイロード、SANDCLOCK資格情報スティーラー、ランサムウェア、フィッシングページ。 |
-| Infrastructure | masscan.cloudとnatalstatus.orgを中心とするドメイン群、/EP9ts2/や/files/という特徴的な配置パス、複数のC2 IP。 |
-| Victim | インターネットへ露出したクラウド・AI基盤の運用組織、およびTrivy、Checkmarx、LiteLLM、BerriAIなどのオープンソースプロジェクト。 |
-| Socio-political | 収益化のためランサムウェア・データ恐喝グループと提携する犯罪エコシステム。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -133,14 +134,14 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | infrastructure-operation | 2020 | 2026-04 | 2026-08-08 |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | victim--activity-rule--829e65b1ac18ce5ea420, victim--teampcp-exposed-cloud-services | Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。 | 高 | `source--daily-48f251212f832ab9b6df` |
-| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock, malware--teampcp-cloud-stealer | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | TeamPCP | ShadowRay 2.0 ペイロード | T1059.004 Unix Shell, T1190 Exploit Public-Facing Application, T1486 Data Encrypted for Impact | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及, インターネットへ露出したRay/Docker/Redis/React環境(集約) | 高 |
-| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | TeamPCP | DUSTMAKER, SANDCLOCK | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | IT・ソフトウェア | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | TeamPCP | DUSTMAKER, SANDCLOCK, TeamPCP Cloud Stealer | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | IT・ソフトウェア | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
 
 2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。
 
@@ -155,13 +156,13 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | sectors | フィンテック | Oligo資料がフィンテックアプリケーションを標的技術・分野として挙げている。 | 不明 | 不明 | 中 | `source--oligo-teampcp-2026` |
 | sectors | オープンソースソフトウェア | Trivy、Checkmarx、LiteLLM、BerriAIなどの配布網が侵害対象として明示されている。 | 不明 | 不明 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 
-選定ロジック: 国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | サーバー, エンドポイント, クラウド／SaaS, 開発環境／ソースコード | credential-theft: 初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。<br>encryption: 窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 2026-02 | 2026-03 | 2026-05-11 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock, malware--teampcp-cloud-stealer | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | サーバー, エンドポイント, クラウド／SaaS, 開発環境／ソースコード | credential-theft: 初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。<br>encryption: 窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 2026-02 | 2026-03 | 2026-05-11 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | 非公開 | anonymous | unknown | reported |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | エンドポイント, 開発環境／ソースコード | supply-chain: 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 | 2020 | 2026-04 | 2026-08-08 | 高 | `source--daily-48f251212f832ab9b6df` |
 | インターネットへ露出したRay/Docker/Redis/React環境(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--shadowray-2-0-payloads | ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1059-004-ndt-sh | Rayクラスタ, Redisサーバー, Dockerホスト, Kubernetes環境 | account-compromise: 侵害環境へのリバースシェルによる長期的な支配。<br>credential-theft: クラウド資格情報の窃取。<br>encryption: ランサムウェア展開による暗号化。 | 2020 | 2026-04 | 2026-08-05 | 高 | `source--oligo-teampcp-2026` |
 | Trivy、Checkmarx、LiteLLM、BerriAI | Trivy / Checkmarx / LiteLLM / BerriAI | named | multiple-organizations | reported |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | GitHubリポジトリ, GitHub Actionsワークフロー, PyPIパッケージ | supply-chain: オープンソース配布物とCIワークフローの汚染。<br>credential-theft: ビルド環境からのAWSキーとGitHubトークンの窃取。 | 2026-02 | 2026-03 | 2026-05-11 | 中 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |

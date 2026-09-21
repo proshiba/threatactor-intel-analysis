@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cyberav3ngers`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,15 +18,15 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT Iran | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Bauxite | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Hydro Kitten | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Mr. Soul | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Shahid Kaveh Group | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| APT Iran | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Bauxite | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Hydro Kitten | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Mr. Soul | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Shahid Kaveh Group | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
 | Soldiers of Soloman | MITRE ATT&CK / CISA / joint government advisory | exact | 高 | `source--mitre-attack-ics-19-2`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Soldiers of Solomon | catalog / CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| Storm-0784 | CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | The joint CISA advisory explicitly lists Storm-0784 as another name used for CyberAv3ngers. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
-| UNC5691 | CISA / joint government advisory | exact | 高 | `source--actor-mapping-workbook`, `source--cisa-aa23-335a` | The joint CISA advisory explicitly lists UNC5691 as another name used for CyberAv3ngers. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Soldiers of Solomon | catalog / CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | Alias scope must be reviewed before publication. The joint advisory explicitly lists this as another name used for CyberAv3ngers. |
+| Storm-0784 | CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | The joint CISA advisory explicitly lists Storm-0784 as another name used for CyberAv3ngers. |
+| UNC5691 | CISA / joint government advisory | exact | 高 | `source--cisa-aa23-335a` | The joint CISA advisory explicitly lists UNC5691 as another name used for CyberAv3ngers. |
 
 ## 帰属
 
@@ -49,7 +49,7 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | The [CyberAv3ngers](https://attack.mitre.org/groups/G1027) are a suspected Iranian Government Islamic Revolutionary Guard Corps (IRGC)-affiliated APT group. The [CyberAv3ngers](https://attack.mitre.org/groups/G1027) have been known to be active since at least 2020, with disputed and false claims of critical infrastructure compromises in Israel.(Citation: CISA AA23-335A IRGC-Affiliated December 2023)<br><br>In 2023, the [CyberAv3ngers](https://attack.mitre.org/groups/G1027) engaged in a global targeting and hacking of the Unitronics [Programmable Logic Controller (PLC)](https://attack.mitre.org/assets/A0003) with [Human-Machine Interface (HMI)](https://attack.mitre.org/assets/A0002). This PLC can be found in multiple sectors, including water and wastewater, energy, food and beverage manufacturing, and healthcare. The most notable feature of this attack was the defacement of the devices user interface.(Citation: CISA AA23-335A IRGC-Affiliated December 2023) |
+| Adversary |  |
 | Capability |  |
 | Infrastructure |  |
 | Victim |  |
@@ -58,7 +58,7 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -117,13 +117,13 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Unitronics Defacement Campaign | campaign | 2023-11-01T04:00:00.000Z | 2023-11-01T04:00:00.000Z | 不明 |  |  |  |  | The [Unitronics Defacement Campaign](https://attack.mitre.org/campaigns/C0031) was a collection of intrusions across multiple sectors by the [CyberAv3ngers](https://attack.mitre.org/groups/G1027), where threat actors engaged in a seemingly opportunistic and global targeting and defacement of Unitronics Vision Series [Programmable Logic Controller (PLC)](https://attack.mitre.org/assets/A0003) with [Human-Machine Interface (HMI)](https://attack.mitre.org/assets/A0002). The sectors that these PLCs can be commonly found in are water and wastewater, energy, food and beverage manufacturing, and healthcare. The most notable feature of this attack was the defacement of the PLCs' HMIs.(Citation: CISA AA23-335A IRGC-Affiliated December 2023)(Citation: Frank Bajak and Marc Levy December 2023) | 高 | `source--mitre-attack-ics-19-2` |
+| Unitronics Defacement Campaign | campaign | 2023-11-01T04:00:00.000Z | 2023-11-01T04:00:00.000Z | 不明 | target--targeting-audit--region--5e96999f685bc8ad59ef |  |  | victim--activity-rule--ba0ee9d239797df032ae | The [Unitronics Defacement Campaign](https://attack.mitre.org/campaigns/C0031) was a collection of intrusions across multiple sectors by the [CyberAv3ngers](https://attack.mitre.org/groups/G1027), where threat actors engaged in a seemingly opportunistic and global targeting and defacement of Unitronics Vision Series [Programmable Logic Controller (PLC)](https://attack.mitre.org/assets/A0003) with [Human-Machine Interface (HMI)](https://attack.mitre.org/assets/A0002). The sectors that these PLCs can be commonly found in are water and wastewater, energy, food and beverage manufacturing, and healthcare. The most notable feature of this attack was the defacement of the PLCs' HMIs.(Citation: CISA AA23-335A IRGC-Affiliated December 2023)(Citation: Frank Bajak and Marc Levy December 2023) | 高 | `source--mitre-attack-ics-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Unitronics Defacement Campaign | CyberAv3ngers | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| Unitronics Defacement Campaign | CyberAv3ngers | 情報なし | 情報なし | 情報なし | 全世界 | 被害事例: Unitronics Defacement Campaign | 高 |
 
 
 
@@ -131,16 +131,15 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アイルランド | 構造化OSINTの被害国フィールドでCyberAv3ngersの標的・被害国としてアイルランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでCyberAv3ngersの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでCyberAv3ngersの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 全世界 | 活動「Unitronics Defacement Campaign」の記述で標的地域として全世界が明示されている。 | 2023-11-01T04:00:00.000Z | 2023-11-01T04:00:00.000Z | 中 | `source--mitre-attack-ics-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Unitronics Defacement Campaign | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  |  | 2023-11-01T04:00:00.000Z | 2023-11-01T04:00:00.000Z | 不明 | 高 | `source--mitre-attack-ics-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -152,7 +151,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 29件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -195,8 +194,8 @@ TTPなし
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

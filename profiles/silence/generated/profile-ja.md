@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--silence`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -43,8 +43,8 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Silence](https://attack.mitre.org/groups/G0091) is a financially motivated threat actor targeting financial institutions in different countries. The group was first seen in June 2016. Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. They compromised various banking systems, including the Russian Central Bank's Automated Workstation Client, ATMs, and card processing.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: SecureList Silence Nov 2017)  |
-| Capability | Empire, Winexe, SDelete |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -52,7 +52,7 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -124,85 +124,17 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アイルランド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアイルランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アゼルバイジャン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルメニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アンティグア・バーブーダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアンティグア・バーブーダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ガーナ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてガーナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キプロス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ギリシャ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クロアチア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてクロアチアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ケニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてケニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | コスタリカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてコスタリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジブラルタル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジブラルタルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジャマイカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジャマイカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スリランカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | セルビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | セーシェル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてセーシェルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チリ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | バングラデシュ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パナマ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてパナマが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブルガリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ベリーズ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベリーズが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モルドバ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてモルドバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラトビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルクセンブルク | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてルクセンブルクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | ガーナ、ケニア、セーシェルで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | アンティグア・バーブーダ、コスタリカ、ジャマイカ、チリ、パナマ、ベリーズ、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、イスラエル、サウジアラビア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | インド、スリランカ、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南欧 | キプロス、ギリシャ、クロアチア、スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、台湾、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、シンガポール、タイ、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、チェコ、ブルガリア、ベラルーシ、ポーランド、モルドバ、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | アイルランド、ウクライナ、オランダ、オーストリア、キプロス、ギリシャ、クロアチア、ジブラルタル、スイス、スウェーデン、スペイン、セルビア、チェコ、トルコ、ドイツ、ノルウェー、フィンランド、フランス、ブルガリア、ベラルーシ、ベルギー、ポーランド、モルドバ、ラトビア、ルクセンブルク、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
+| countries | アゼルバイジャン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ウクライナ | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | カザフスタン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ベラルーシ | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ポーランド | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ロシア | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 東欧 | ウクライナ、ベラルーシ、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2` |
+| regions | 欧州 | ウクライナ、ベラルーシ、ポーランドで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2` |
 | sectors | 金融 | [Silence](https://attack.mitre.org/groups/G0091) is a financially motivated threat actor targeting financial institutions in different countries. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -247,7 +179,7 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 34件（`artifacts.csv`）
+- 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -285,11 +217,11 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

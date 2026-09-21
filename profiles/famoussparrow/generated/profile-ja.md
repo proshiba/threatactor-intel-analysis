@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--famoussparrow`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -115,13 +115,13 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | cyber-espionage | 2025-08 | 2026-06-17 | 2026-09-18 | target--activity-rule--sector--210dddb39397dbe50e91 | malware--daily-0304bc2996ed2600a585 | ttp--activity-rule--347ae49d2b4abd38cd88, ttp--activity-rule--3eb2cb2b43f6ff5058e1 | victim--activity-rule--1f2ead709658f7c05ba9 | 中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。 | 高 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
+| SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | cyber-espionage | 2025-08 | 2026-06-17 | 2026-09-18 | target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--country--0241a2eb55502ccf50d4, target--targeting-audit--country--10a5063a82e414b95408, target--targeting-audit--country--2cf29d18337a08e084d8, target--targeting-audit--country--40cd7a37e880686f66ac, target--targeting-audit--country--6a93aca55900d94aefce, target--targeting-audit--country--90eb33789aa52aea1f7e, target--targeting-audit--region--517128e07ed31657f60b | malware--daily-0304bc2996ed2600a585 | ttp--activity-rule--347ae49d2b4abd38cd88, ttp--activity-rule--3eb2cb2b43f6ff5058e1 | victim--activity-rule--1f2ead709658f7c05ba9 | 中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。 | 高 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | FamousSparrow | SparroWocky | T1083 File and Directory Discovery, T1574.001 DLL | 情報なし | 政府・行政 | 被害事例: SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | 高 |
+| SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | FamousSparrow | SparroWocky | T1083 File and Directory Discovery, T1574.001 DLL | 情報なし | 政府・行政, アルゼンチン, グアテマラ, ホンジュラス, ペルー, エクアドル, パナマ, 中南米 | 被害事例: SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド | 高 |
 
 2021年9月にESETが初報を公開し、ProxyLogon悪用によるホテル・政府・民間企業への攻撃を記述した。2022年以降は公開報告が途絶え活動停止とみられていたが、2024年7月にESETが米国の金融分野の業界団体で侵害を確認し、2025年3月の報告で未文書化のSparrowDoor 2版を公開した。2025年7月以降は標的をラテンアメリカへ集中させ、2025年8月から SparroWocky の展開を開始した。
 
@@ -129,51 +129,18 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルゼンチン | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルゼンチン | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 | countries | エクアドル | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エスワティニ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエスワティニが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エチオピア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエチオピアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | グアテマラ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | バングラデシュ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | グアテマラ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 | countries | パナマ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブルキナファソ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブルキナファソが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ベネズエラ | ESETは「we've seen the new backdoor deployed against governmental entities in Argentina, Ecuador, Guatemala, Honduras, Panama, Peru, Puerto Rico, and Venezuela.」として8か国・地域の政府機関を挙げる。 | 不明 | 不明 | 高 | `source--eset-famoussparrow-sparrowocky-2026` |
 | countries | ペルー | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 | countries | ホンジュラス | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | リトアニア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | オランダ、ドイツ、フランス、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026` |
+| regions | 南米 | アルゼンチン、エクアドル、ベネズエラ、ペルーで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026` |
 | sectors | 政府・行政 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的として明示された産業。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

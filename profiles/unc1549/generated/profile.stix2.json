@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-09-20T13:48:13Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -114,14 +114,14 @@
         "history": "2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。",
         "capability_details": "NightLedgerはDLL検索順序ハイジャックで起動するWindowsバックドアで、偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード等に対応する。ArcBridgeはDNS/TCPを、BridgeHeadはSOCKS5をWebSocketで中継し、両者とも企業プロキシを考慮する。",
         "infrastructure_details": "HTTPSおよびWebSocketを用い、Azure App Service、Cloudflare配下のホスト、標的に合わせた名称の独自ドメインを組み合わせる。IOCはiocs.json、通信パス、mutex、設定マーカー、User-Agent等はartifacts.csvに保存する。",
-        "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、アルバニア、イスラエル、インド、エジプト、エチオピア、タンザニア、トルコ、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
+        "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、イスラエル、エジプト、エチオピア、タンザニア、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
         "additional_notes": "Kasperskyが明示した別名はexactとして保持するが確度はmediumとし、他ベンダーの追跡名を根拠なく統合しない。IOCの観測日は不明のまま保持する。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--unc1549",
         "actor_name": "UNC1549",
-        "searched_at": "2026-09-20T13:47:46Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
             "gtig-threat-actor-naming",
@@ -1126,7 +1126,7 @@
       "spec_version": "2.1",
       "id": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T03:17:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1174,8 +1174,10 @@
             "target--country--egypt",
             "target--country--ethiopia",
             "target--region--africa",
+            "target--region--middle-east",
             "target--sector--aerospace",
-            "target--sector--aviation"
+            "target--sector--aviation",
+            "target--targeting-audit--country--dfe4685c3d850f100942"
           ],
           "victim_refs": [
             "victim--activity-rule--590d0a5c1af14161be04"
@@ -1211,10 +1213,12 @@
             ],
             "target_country_refs": [
               "target--country--egypt",
-              "target--country--ethiopia"
+              "target--country--ethiopia",
+              "target--targeting-audit--country--dfe4685c3d850f100942"
             ],
             "target_region_refs": [
-              "target--region--africa"
+              "target--region--africa",
+              "target--region--middle-east"
             ]
           }
         },
@@ -1230,7 +1234,7 @@
       "spec_version": "2.1",
       "id": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T02:05:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1277,7 +1281,9 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--activity-rule--country--904728608f27c39df0df"
+            "target--activity-rule--country--904728608f27c39df0df",
+            "target--region--middle-east",
+            "target--targeting-audit--country--1d21569d1d3f9ade5d30"
           ],
           "victim_refs": [
             "victim--activity-rule--071152112a80d6125133"
@@ -1316,9 +1322,12 @@
             ],
             "target_country_refs": [
               "target--activity-rule--country--6604ad21c713b8dfd8c7",
-              "target--activity-rule--country--904728608f27c39df0df"
+              "target--activity-rule--country--904728608f27c39df0df",
+              "target--targeting-audit--country--1d21569d1d3f9ade5d30"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east"
+            ]
           }
         },
         "confidence": "medium",
@@ -1333,7 +1342,7 @@
       "spec_version": "2.1",
       "id": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "created": "2026-08-27T03:17:09Z",
-      "modified": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T02:05:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1377,7 +1386,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--sector--government"
+            "target--region--middle-east",
+            "target--sector--government",
+            "target--targeting-audit--region--13f9cf21464b4deacca3"
           ],
           "victim_refs": [
             "victim--activity-rule--a1b1f24e4aa40c393238"
@@ -1410,7 +1421,10 @@
               "Iran"
             ],
             "target_country_refs": [],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east",
+              "target--targeting-audit--region--13f9cf21464b4deacca3"
+            ]
           }
         },
         "confidence": "medium",
@@ -1425,7 +1439,7 @@
       "spec_version": "2.1",
       "id": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T02:05:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1472,7 +1486,9 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--sector--aviation"
+            "target--region--middle-east",
+            "target--sector--aviation",
+            "target--targeting-audit--region--13f9cf21464b4deacca3"
           ],
           "victim_refs": [
             "victim--activity-rule--8ea4f5b021a437bbcf9d"
@@ -1507,7 +1523,10 @@
             "target_country_refs": [
               "target--activity-rule--country--6604ad21c713b8dfd8c7"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east",
+              "target--targeting-audit--region--13f9cf21464b4deacca3"
+            ]
           }
         },
         "confidence": "high",
@@ -1522,7 +1541,7 @@
       "spec_version": "2.1",
       "id": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:05:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1588,6 +1607,8 @@
             "target--country--jordan",
             "target--country--pakistan",
             "target--country--tanzania",
+            "target--region--africa",
+            "target--region--middle-east",
             "target--sector--aerospace",
             "target--sector--aviation",
             "target--sector--defense",
@@ -1642,7 +1663,10 @@
               "target--country--pakistan",
               "target--country--tanzania"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--africa",
+              "target--region--middle-east"
+            ]
           }
         },
         "confidence": "high",
@@ -1680,7 +1704,7 @@
       "spec_version": "2.1",
       "id": "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1692,33 +1716,6 @@
           "source_name": "unit42.paloaltonetworks.com",
           "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
           "external_id": "source--daily-96ac11961cae303bc9fd"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--969bc0b1-e461-4201-939b-153ef251bdf3",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アルバニア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてアルバニアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -1729,7 +1726,7 @@
       "spec_version": "2.1",
       "id": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1741,38 +1738,6 @@
           "source_name": "unit42.paloaltonetworks.com",
           "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
           "external_id": "source--daily-96ac11961cae303bc9fd"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1b80a932-0e2a-4b93-8fb0-b3dc0b807274",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "インド",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてインドが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -1783,7 +1748,7 @@
       "spec_version": "2.1",
       "id": "identity--307ba0bb-34a5-492c-a5f5-458119c368f4",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1791,11 +1756,6 @@
       "identity_class": "organization",
       "description": "BridgeHeadを含む侵害後活動が確認された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "securelist.com",
           "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
@@ -1815,7 +1775,7 @@
       "spec_version": "2.1",
       "id": "identity--14a66fa3-bdec-4c28-bcfe-6d2a3e9d9306",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1823,11 +1783,6 @@
       "identity_class": "organization",
       "description": "通信分野の被害組織が報告された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "securelist.com",
           "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
@@ -1847,7 +1802,7 @@
       "spec_version": "2.1",
       "id": "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1855,11 +1810,6 @@
       "identity_class": "organization",
       "description": "中小組織または政府関連組織を含む標的地域として報告された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
@@ -1872,31 +1822,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--d5b9c3e6-4d64-4e93-a73a-03fabd77a497",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "トルコ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてトルコが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--acb56ebe-a5c9-43f1-89d7-125ae4edec61",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1904,11 +1832,6 @@
       "identity_class": "organization",
       "description": "航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
@@ -1923,7 +1846,7 @@
       "spec_version": "2.1",
       "id": "identity--49401053-dc6e-4181-8aa9-beb8471f8c03",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1931,11 +1854,6 @@
       "identity_class": "organization",
       "description": "金融分野の被害組織が報告された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
@@ -1950,7 +1868,7 @@
       "spec_version": "2.1",
       "id": "identity--0dcef978-00ea-4ba6-8f7b-9ad19036937a",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1958,11 +1876,6 @@
       "identity_class": "organization",
       "description": "中小組織または政府関連組織を含む標的地域として報告された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
@@ -1977,7 +1890,7 @@
       "spec_version": "2.1",
       "id": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1994,11 +1907,6 @@
           "source_name": "research.checkpoint.com",
           "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
           "external_id": "source--daily-d9794d16b217472dc38d"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
         }
       ],
       "x_target_category": "countries",
@@ -2009,7 +1917,7 @@
       "spec_version": "2.1",
       "id": "identity--728e1d00-9ff2-4e66-a809-b62cfc454862",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2017,11 +1925,6 @@
       "identity_class": "organization",
       "description": "2026年報告で活動範囲の拡大が確認された地域。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "securelist.com",
           "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
@@ -2041,7 +1944,7 @@
       "spec_version": "2.1",
       "id": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
       "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T03:17:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2049,11 +1952,6 @@
       "identity_class": "organization",
       "description": "継続的な重点標的地域として報告された。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "group-ib.com",
           "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
@@ -2070,19 +1968,14 @@
           "external_id": "source--daily-d9794d16b217472dc38d"
         },
         {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143"
+        },
+        {
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
           "external_id": "source--kaspersky-mirage-kitten-2026"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
         },
         {
           "source_name": "source--unc1549--c47ef662fbdb6d88",
@@ -2098,19 +1991,14 @@
       "spec_version": "2.1",
       "id": "identity--ef8900b8-2c62-477b-90b9-091bf25993e8",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "南アジア",
       "identity_class": "organization",
-      "description": "アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+      "description": "アフガニスタン、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "securelist.com",
           "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
@@ -2120,11 +2008,6 @@
           "source_name": "Kaspersky GReAT",
           "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
           "external_id": "source--kaspersky-mirage-kitten-2026"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "regions",
@@ -2135,7 +2018,7 @@
       "spec_version": "2.1",
       "id": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-09-19T00:00:53Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2152,16 +2035,6 @@
           "source_name": "research.checkpoint.com",
           "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
           "external_id": "source--daily-d9794d16b217472dc38d"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
         }
       ],
       "x_target_category": "regions",
@@ -2361,7 +2234,7 @@
       "spec_version": "2.1",
       "id": "identity--56046d96-a3cb-449d-bdfa-37a6d342b2c5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2381,7 +2254,8 @@
       "x_case_status": "reported",
       "x_target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
-        "target--activity-rule--country--904728608f27c39df0df"
+        "target--activity-rule--country--904728608f27c39df0df",
+        "target--region--middle-east"
       ],
       "x_malware_refs": [],
       "x_ttp_refs": [
@@ -2420,7 +2294,7 @@
       "spec_version": "2.1",
       "id": "identity--fe4f341c-64cf-462f-a431-097cb21d7d03",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2446,6 +2320,8 @@
         "target--country--jordan",
         "target--country--pakistan",
         "target--country--tanzania",
+        "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
         "target--sector--aviation",
         "target--sector--defense",
@@ -2503,7 +2379,7 @@
       "spec_version": "2.1",
       "id": "identity--0a3c0ec0-f32f-4521-b91b-de138f122114",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T03:20:15Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2525,6 +2401,7 @@
         "target--country--egypt",
         "target--country--ethiopia",
         "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
         "target--sector--aviation"
       ],
@@ -2569,7 +2446,7 @@
       "spec_version": "2.1",
       "id": "identity--e5780c24-96c2-43b1-a5be-ddd4815d0ab2",
       "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2589,6 +2466,7 @@
       "x_case_status": "reported",
       "x_target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--region--middle-east",
         "target--sector--aviation"
       ],
       "x_malware_refs": [
@@ -2623,7 +2501,7 @@
       "spec_version": "2.1",
       "id": "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
       "created": "2026-08-27T03:19:36Z",
-      "modified": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2642,6 +2520,7 @@
       "x_victim_type": "multiple-organizations",
       "x_case_status": "reported",
       "x_target_refs": [
+        "target--region--middle-east",
         "target--sector--government"
       ],
       "x_malware_refs": [
@@ -3392,21 +3271,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--0bf0ea97-a631-437e-ae9a-10a2927104b8",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
-      "target_ref": "identity--969bc0b1-e461-4201-939b-153ef251bdf3",
-      "description": "UNC1549 targets アルバニア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--15ed87d7-7c43-439a-ba22-7a35fd86541b",
       "created": "2026-07-29T23:13:55Z",
       "modified": "2026-07-29T23:13:55Z",
@@ -3417,21 +3281,6 @@
       "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
       "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "description": "UNC1549 targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2bce0470-e9e6-41e3-a85d-a6816ed20c6f",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
-      "target_ref": "identity--1b80a932-0e2a-4b93-8fb0-b3dc0b807274",
-      "description": "UNC1549 targets インド (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -3478,21 +3327,6 @@
       "target_ref": "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
       "description": "UNC1549 targets タンザニア (profile target category: countries).",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--459cd51e-1214-4bfa-a4ee-dcf1fbc8dc4a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
-      "target_ref": "identity--d5b9c3e6-4d64-4e93-a73a-03fabd77a497",
-      "description": "UNC1549 targets トルコ (profile target category: countries).",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -3812,6 +3646,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--099d93f8-344f-4290-8e25-95e25834d83d",
+      "created": "2026-09-21T03:17:46Z",
+      "modified": "2026-09-21T03:17:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
+      "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
+      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--region--middle-east.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--1ba38eab-b326-4aad-813d-dd79eb49b599",
       "created": "2026-09-19T00:00:53Z",
       "modified": "2026-09-19T00:00:53Z",
@@ -3837,6 +3686,21 @@
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--sector--aviation.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c295a1a0-9a5d-4e4b-a641-447685c3eb26",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
+      "target_ref": "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
+      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--targeting-audit--country--dfe4685c3d850f100942.",
       "x_confidence": "high"
     },
     {
@@ -3902,6 +3766,36 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--c540e088-0b7f-4d61-a1cd-d1a8c2f7c5a1",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--region--middle-east.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ffc18dde-caaf-4612-a009-8b7dff6b2ec3",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--targeting-audit--country--1d21569d1d3f9ade5d30.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--e2a08719-fc0c-428e-85f9-0ad20947c2cc",
       "created": "2026-08-07T10:35:28Z",
       "modified": "2026-08-07T10:35:28Z",
@@ -3962,6 +3856,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--43754e1f-bd30-435f-85f4-81b1b1ec54a4",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--region--middle-east.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--f9934684-6ded-4338-9777-71864cfbbda7",
       "created": "2026-08-27T03:19:36Z",
       "modified": "2026-08-27T03:19:36Z",
@@ -3972,6 +3881,21 @@
       "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--sector--government.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--52cf72e9-6e09-4d8b-91c2-5549f358c8c8",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--targeting-audit--region--13f9cf21464b4deacca3.",
       "x_confidence": "medium"
     },
     {
@@ -4037,6 +3961,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--d7d38cd5-1b9a-4754-b624-4499c06339e3",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--region--middle-east.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--80564406-5719-4ef7-b556-857711e5f3ca",
       "created": "2026-08-07T10:35:28Z",
       "modified": "2026-08-07T10:35:28Z",
@@ -4047,6 +3986,21 @@
       "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
       "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
       "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--sector--aviation.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07f8c819-a7f3-434c-b039-855447441ec0",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "identity--1972e5c5-d22a-4fba-bb74-60f744ff8546",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--targeting-audit--region--13f9cf21464b4deacca3.",
       "x_confidence": "high"
     },
     {
@@ -4082,21 +4036,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--8ea90b1c-044a-474d-80f2-ad0760f6c319",
-      "created": "2026-07-29T14:09:02Z",
-      "modified": "2026-07-29T14:09:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
-      "target_ref": "malware--ab1d85a7-3b01-44f0-a9b4-b042c088331b",
-      "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--nightledger.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--3c506875-e68b-4595-a1b1-777e8a0b11e6",
       "created": "2026-07-29T14:09:02Z",
       "modified": "2026-07-29T14:09:02Z",
@@ -4122,6 +4061,21 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "malware--6a959b8e-59a7-4265-a152-d6e3e8da935f",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--bridgehead.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8ea90b1c-044a-474d-80f2-ad0760f6c319",
+      "created": "2026-07-29T14:09:02Z",
+      "modified": "2026-07-29T14:09:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
+      "target_ref": "malware--ab1d85a7-3b01-44f0-a9b4-b042c088331b",
+      "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 uses malware--nightledger.",
       "x_confidence": "high"
     },
     {
@@ -4242,6 +4196,36 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--country--tanzania.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6c863d87-8557-4c8d-bec4-d0a90a04425b",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
+      "target_ref": "identity--728e1d00-9ff2-4e66-a809-b62cfc454862",
+      "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--region--africa.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--342b2412-48ab-4e55-aced-342d450e17fc",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T02:05:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
+      "target_ref": "identity--43e2b5e9-6182-4b29-b47f-4a100b092399",
+      "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 targets target--region--middle-east.",
       "x_confidence": "high"
     },
     {
@@ -7492,7 +7476,7 @@
       "spec_version": "2.1",
       "id": "note--1963be75-0b04-4949-82ee-6b05a15a971f",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-20T11:57:58Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7502,14 +7486,14 @@
         "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 33
+      "x_artifact_observation_count": 26
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--f77518ca-db4c-41e4-ae57-d7a34ce507be",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-09-20T13:48:13Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7518,7 +7502,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T13:48:13Z",
+      "published": "2026-09-21T04:35:03Z",
       "object_refs": [
         "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
         "malware--7cc285db-7c6c-4514-b562-e44499691376",
@@ -7536,13 +7520,10 @@
         "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
         "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
         "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
-        "identity--969bc0b1-e461-4201-939b-153ef251bdf3",
         "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
-        "identity--1b80a932-0e2a-4b93-8fb0-b3dc0b807274",
         "identity--307ba0bb-34a5-492c-a5f5-458119c368f4",
         "identity--14a66fa3-bdec-4c28-bcfe-6d2a3e9d9306",
         "identity--30f008f9-7947-4da3-86a8-1339ce0d848d",
-        "identity--d5b9c3e6-4d64-4e93-a73a-03fabd77a497",
         "identity--acb56ebe-a5c9-43f1-89d7-125ae4edec61",
         "identity--49401053-dc6e-4181-8aa9-beb8471f8c03",
         "identity--0dcef978-00ea-4ba6-8f7b-9ad19036937a",

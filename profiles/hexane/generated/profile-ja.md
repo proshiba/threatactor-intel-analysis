@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--hexane`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,16 +48,16 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [HEXANE](https://attack.mitre.org/groups/G1001) is a cyber espionage threat group that has targeted oil & gas, telecommunications, aviation, and internet service provider organizations since at least 2017. Targeted companies have been located in the Middle East and Africa, including Israel, Saudi Arabia, Kuwait, Morocco, and Tunisia. [HEXANE](https://attack.mitre.org/groups/G1001)'s TTPs appear similar to [APT33](https://attack.mitre.org/groups/G0064) and [OilRig](https://attack.mitre.org/groups/G0049) but due to differences in victims and tools it is tracked as a separate entity.(Citation: Dragos Hexane)(Citation: Kaspersky Lyceum October 2021)(Citation: ClearSky Siamesekitten August 2021)(Citation: Accenture Lyceum Targets November 2021) |
-| Capability | DnsSystem, Shark, Milan, DanBot, Kevin, DanDrop, Invoke-Obfuscation, PowerShell, ipconfig, Empire, netstat, PoshC2, BITSAdmin, Mimikatz, Ping |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Middle East, Kuwait, South Africa |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -92,12 +92,9 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--danbot | DanBot | [DanBot](https://attack.mitre.org/software/S1014) is a first-stage remote access Trojan written in C# that has been used by [HEXANE](https://attack.mitre.org/groups/G1001) since at least 2018.(Citation: SecureWorks August 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--dandrop | DanDrop | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--dnssystem | DnsSystem | [DnsSystem](https://attack.mitre.org/software/S1021) is a .NET based DNS backdoor, which is a customized version of the open source tool DIG.net, that has been used by [HEXANE](https://attack.mitre.org/groups/G1001) since at least June 2022.(Citation: Zscaler Lyceum DnsSystem June 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--invoke-obfuscation | Invoke-Obfuscation | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--kevin | Kevin | [Kevin](https://attack.mitre.org/software/S1020) is a backdoor implant written in C++ that has been used by [HEXANE](https://attack.mitre.org/groups/G1001) since at least June 2020, including in operations against organizations in Tunisia.(Citation: Kaspersky Lyceum October 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--milan | Milan | [Milan](https://attack.mitre.org/software/S1015) is a backdoor implant based on [DanBot](https://attack.mitre.org/software/S1014) that was written in Visual C++ and .NET. [Milan](https://attack.mitre.org/software/S1015) has been used by [HEXANE](https://attack.mitre.org/groups/G1001) since at least June 2020.(Citation: ClearSky Siamesekitten August 2021)(Citation: Kaspersky Lyceum October 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--powershell | PowerShell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--shark | Shark | [Shark](https://attack.mitre.org/software/S1019) is a backdoor malware written in C# and .NET that is an updated version of [Milan](https://attack.mitre.org/software/S1015); it has been used by [HEXANE](https://attack.mitre.org/groups/G1001) since at least July 2021.(Citation: ClearSky Siamesekitten August 2021)(Citation: Accenture Lyceum Targets November 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -142,21 +139,14 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでHEXANEの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | Targeted companies have been located in the Middle East and Africa, including Israel, Saudi Arabia, Kuwait, Morocco, and Tunisia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | クウェート | レビュー済みアクターマッピングの標的欄に記録されたクウェートを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | MITRE ATT&CKのGroup概要でHEXANEの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | チュニジア | 構造化OSINTの被害国フィールドでHEXANEの標的・被害国としてチュニジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モロッコ | 構造化OSINTの被害国フィールドでHEXANEの標的・被害国としてモロッコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アフリカ | MITRE ATT&CKのGroup概要でHEXANEの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | 構造化OSINTの被害地域フィールドでHEXANEの標的範囲として中央アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | MITRE ATT&CKのGroup概要でHEXANEの標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北アフリカ | チュニジア、モロッコで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | Targeted companies have been located in the Middle East and Africa, including Israel, Saudi Arabia, Kuwait, Morocco, and Tunisia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | サウジアラビア | MITRE ATT&CKのGroup概要でHEXANEの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | アフリカ | MITRE ATT&CKのGroup概要でHEXANEの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でHEXANEの標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 運輸・航空・海運 | [HEXANE](https://attack.mitre.org/groups/G1001) is a cyber espionage threat group that has targeted oil & gas, telecommunications, aviation, and internet service provider organizations since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 情報通信 | [HEXANE](https://attack.mitre.org/groups/G1001) is a cyber espionage threat group that has targeted oil & gas, telecommunications, aviation, and internet service provider organizations since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -209,7 +199,7 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 - IOC観測: 2件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 65件（`artifacts.csv`）
+- 非IOC artifact観測: 10件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -251,12 +241,12 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

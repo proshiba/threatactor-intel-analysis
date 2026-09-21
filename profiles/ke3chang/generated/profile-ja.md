@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ke3chang`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT15 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| APT15 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BackdoorDiplomacy | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-playful-taurus-2023` | Unit 42 maps BackdoorDiplomacy to Playful Taurus/APT15; retained as overlapping because MITRE also tracks BackdoorDiplomacy as a distinct collection boundary. |
 | GREF | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Mirage | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
@@ -47,23 +47,23 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| BackdoorDiplomacy | overlaps-with | 共有alias: BackdoorDiplomacy | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| BackdoorDiplomacy | overlaps-with | 共有alias: BackdoorDiplomacy | 低 | `source--mitre-attack-19-2` |
 | Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Ke3chang](https://attack.mitre.org/groups/G0004) is a threat group attributed to actors operating out of China. [Ke3chang](https://attack.mitre.org/groups/G0004) has targeted oil, government, diplomatic, military, and NGOs in Central and South America, the Caribbean, Europe, and North America since at least 2010.(Citation: Mandiant Operation Ke3chang November 2014)(Citation: NCC Group APT15 Alive and Strong)(Citation: APT15 Intezer June 2018)(Citation: Microsoft NICKEL December 2021) |
-| Capability | Okrum, Neoichor, MirageFox, Mirage, (Nvidia program side-loading) PlugX, XSLCmd, TidePool, BS2005, RoyalCli, iWebRat, Russian-language decoy document, ENFAL, ENDCMD, QUICKHEAL, SOGU, CYFREE, NOISEMAKER, SWALLOWFLY, Turian Backdoor, Net, ipconfig, Tasklist, spwebmember, netstat, Systeminfo, Mimikatz, Ping |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | PH, VN, TW, US, UK, IT, PL, UN, SG, NATO - Gov, Political party |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -102,25 +102,9 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--bs2005 | BS2005 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cyfree | CYFREE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--endcmd | ENDCMD | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--enfal | ENFAL | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--iwebrat | iWebRat | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--mirage | Mirage | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--miragefox | MirageFox | [MirageFox](https://attack.mitre.org/software/S0280) is a remote access tool used against Windows systems. It appears to be an upgraded version of a tool known as Mirage, which is a RAT believed to originate in 2012. (Citation: APT15 Intezer June 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--neoichor | Neoichor | [Neoichor](https://attack.mitre.org/software/S0691) is C2 malware used by [Ke3chang](https://attack.mitre.org/groups/G0004) since at least 2019; similar malware families used by the group include Leeson and Numbldea.(Citation: Microsoft NICKEL December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--noisemaker | NOISEMAKER | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--nvidia-program-side-loading-plugx | (Nvidia program side-loading) PlugX | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--okrum | Okrum | [Okrum](https://attack.mitre.org/software/S0439) is a Windows backdoor that has been seen in use since December 2016 with strong links to [Ke3chang](https://attack.mitre.org/groups/G0004).(Citation: ESET Okrum July 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--quickheal | QUICKHEAL | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--royalcli | RoyalCli | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--russian-language-decoy-document | Russian-language decoy document | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sogu | SOGU | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--swallowfly | SWALLOWFLY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--tidepool | TidePool | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--turian-backdoor | Turian Backdoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--xslcmd | XSLCmd | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -155,13 +139,13 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-2` |
+| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | target--targeting-audit--region--2735c9cc3ba9991122c5, target--targeting-audit--region--39a36ccba764884f424f, target--targeting-audit--region--39b94b74ef93bf815722 |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 | victim--activity-rule--d6a21958cf344fc17684 | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | Ke3chang | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 情報なし | 情報なし | 高 |
+| SPACEHOP Activity | Ke3chang | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 北米, 中東, 欧州 | 被害事例: SPACEHOP Activity | 高 |
 
 
 
@@ -169,87 +153,21 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルゼンチン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてアルゼンチンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルバニア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてアルバニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イラン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エクアドル | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エルサルバドル | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてエルサルバドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ガーナ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてガーナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クウェート | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クロアチア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてクロアチアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | グアテマラ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | コロンビア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてコロンビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シリア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてシリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジャマイカ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてジャマイカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スリランカ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スロバキア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてスロバキアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チリ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トリニダード・トバゴ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてトリニダード・トバゴが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ドミニカ共和国 | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてドミニカ共和国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ナイジェリア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてナイジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ナミビア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてナミビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ハンガリー | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | バルバドス | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてバルバドスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パナマ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてパナマが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブルガリア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブータン | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてブータンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベネズエラ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてベネズエラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ペルー | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてペルーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ホンジュラス | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてホンジュラスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボスニア・ヘルツェゴビナ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてボスニア・ヘルツェゴビナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポルトガル | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてポルトガルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マリ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてマリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンテネグロ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてモンテネグロが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | リビア | 構造化OSINTの被害国フィールドでKe3changの標的・被害国としてリビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでKe3changの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでKe3changの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | レビュー済みアクターマッピングの標的欄に記録された英国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | NATO加盟国 | レビュー済みアクターマッピングの標的欄に記録されたNATO加盟国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アフリカ | エジプト、ガーナ、ナイジェリア、ナミビア、マリ、リビア、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | アルゼンチン、エクアドル、エルサルバドル、グアテマラ、コロンビア、ジャマイカ、チリ、トリニダード・トバゴ、ドミニカ共和国、バルバドス、パナマ、ブラジル、ベネズエラ、ペルー、ホンジュラス、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | ウズベキスタン、カザフスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | 活動「SPACEHOP Activity」の記述で標的地域として中東が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 北アフリカ | エジプト、リビアで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として北米が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、スリランカ、パキスタン、ブータンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | アルバニア、イタリア、クロアチア、ボスニア・ヘルツェゴビナ、ポルトガル、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として南米が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | スロバキア、チェコ、ハンガリー、ブルガリア、ポーランドで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として欧州が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州連合（EU） | 構造化OSINTの被害地域フィールドでKe3changの標的範囲として欧州連合（EU）が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中東 | 活動「SPACEHOP Activity」の記述で標的地域として中東が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
+| regions | 北米 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として北米が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| regions | 南米 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として南米が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 欧州 | MITRE ATT&CKのGroup概要でKe3changの標的範囲として欧州が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | [Ke3chang](https://attack.mitre.org/groups/G0004) has targeted oil, government, diplomatic, military, and NGOs in Central and South America, the Caribbean, Europe, and North America since at least 2010.(Citation: Mandiant Operation Ke3chang November 2014)(Citation: NCC Group APT15 Alive and Strong)(Citation: APT15 Intezer June 2018)(Cit | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 非営利・市民社会 | [Ke3chang](https://attack.mitre.org/groups/G0004) has targeted oil, government, diplomatic, military, and NGOs in Central and South America, the Caribbean, Europe, and North America since at least 2010.(Citation: Mandiant Operation Ke3chang November 2014)(Citation: NCC Group APT15 Alive and Strong)(Citation: APT15 Intezer June 2018)(Citation: Microsoft NICKEL Decembe | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 防衛・軍事 | [Ke3chang](https://attack.mitre.org/groups/G0004) has targeted oil, government, diplomatic, military, and NGOs in Central and South America, the Caribbean, Europe, and North America since at least 2010.(Citation: Mandiant Operation Ke3chang November 2014)(Citation: NCC Group APT15 Alive and Strong)(Citation: APT15 Intezer June 2018)(Citation: Microsoft NICKE | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: SPACEHOP Activity | 非公開 | anonymous | unknown | reported |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  |  | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -308,11 +226,11 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 8件
+- IOC値: 7件
+- IOC観測: 7件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 3件
-- 非IOC artifact観測: 110件（`artifacts.csv`）
+- 要レビュー候補: 2件
+- 非IOC artifact観測: 3件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -372,13 +290,13 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

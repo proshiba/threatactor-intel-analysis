@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ironhusky`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -40,7 +40,7 @@ Aliasなし
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | MysterySnail, CVE-2021-40449 |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -80,10 +80,7 @@ Aliasなし
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--cve-2021-40449 | CVE-2021-40449 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--mysterysnail | MysterySnail | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -109,13 +106,13 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 | malware--cve-2021-40449, malware--mysterysnail | ttp--activity-rule--29e8c3b9fe65c4959da7 | victim--activity-rule--b2806c55784b9aecd942 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
+| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--country--edf7163adf40c65945b5 |  | ttp--activity-rule--29e8c3b9fe65c4959da7 | victim--activity-rule--b2806c55784b9aecd942 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | IronHusky | CVE-2021-40449, MysterySnail | T1036 Masquerading | 情報なし | ロシア, 政府・行政 | 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 中 |
+| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | IronHusky | 情報なし | T1036 Masquerading | 情報なし | ロシア, 政府・行政, モンゴル | 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 中 |
 
 
 
@@ -123,17 +120,17 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | モンゴル | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df`, `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df`, `source--target-audit-etda-threat-group-cards` |
+| countries | モンゴル | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df` |
+| countries | ロシア | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 | sectors | 政府・行政 | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 | malware--cve-2021-40449, malware--mysterysnail | ttp--activity-rule--29e8c3b9fe65c4959da7 |  |  | 不明 | 不明 | 2025-04-20 | 中 | `source--daily-4fa6e9612d1bc97443df` |
+| 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--29e8c3b9fe65c4959da7 |  |  | 不明 | 不明 | 2025-04-20 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -148,7 +145,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 8件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

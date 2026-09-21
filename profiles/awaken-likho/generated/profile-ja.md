@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--awaken-likho`
 - 状態: draft
-- 更新日時: 2026-09-20T13:47:46Z
+- 更新日時: 2026-09-21T02:39:35Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -43,16 +43,16 @@ Awaken Likho(別称 Core Werewolf)は、2021年からロシアおよびベラル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | ロシア・ベラルーシの政府機関等を標的とするAPTグループAwaken Likho。帰属国は不明。 |
-| Capability | 独自バックドアTokenBuoy/TokenBuoySH、正規遠隔管理ソフトUltraVNC・MeshCentral(MeshAgent)の流用、Rcloneによる持ち出し。 |
-| Infrastructure | フィッシング配信基盤と攻撃者運用のMeshCentralサーバー。 |
-| Victim | ロシアおよびベラルーシの政府組織、政府請負業者、産業企業。 |
-| Socio-political | ロシア・ベラルーシの政府機能を対象とする継続的な諜報活動。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -124,14 +124,14 @@ Awaken Likho(別称 Core Werewolf)は、2021年からロシアおよびベラル
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン | espionage | 2024-06 | 2024-08 | 2024-10-07 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--dfc80b76cad93a318adc, target--awaken-likho--country--russia |  | ttp--activity-rule--00a1028961658cc699e8, ttp--activity-rule--57707f4efc5babf267b5, ttp--activity-rule--7fb90d3f61cc773bf69f, ttp--awaken-likho-t1053-005-scheduled-task, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1219-remote-tools | victim--activity-rule--1095b6e3f9313b47df2d, victim--awaken-likho-russian-government-2024 | Kasperskyは、Awaken Likhoが遠隔操作手段をUltraVNCからMeshCentralのエージェントMeshAgentへ切り替えたキャンペーンを報告した。被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。永続化はMeshAgentを起動するスケジュールタスクで行い、攻撃者のMeshCentralサーバーへの継続接続を維持する。標的はロシアの政府機関、その請負業者、産業企業である。 | 高 | `source--kaspersky-awaken-likho-2024` |
-| 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | espionage | 2026-01 | 2026-07 | 2026-08-07 | target--activity-rule--sector--210dddb39397dbe50e91, target--awaken-likho--country--russia | malware--tokenbuoy, malware--tokenbuoysh | ttp--activity-rule--66d044943eb633757eaf, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1566-001-rar, ttp--awaken-likho-t1567-002-rclone | victim--activity-rule--0dd4c80ea2dbdcd07971, victim--awaken-likho-russia-belarus-2026 | Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
+| 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | espionage | 2026-01 | 2026-07 | 2026-08-07 | target--activity-rule--sector--210dddb39397dbe50e91, target--awaken-likho--country--belarus, target--awaken-likho--country--russia | malware--tokenbuoy, malware--tokenbuoysh | ttp--activity-rule--66d044943eb633757eaf, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1566-001-rar, ttp--awaken-likho-t1567-002-rclone | victim--activity-rule--0dd4c80ea2dbdcd07971, victim--awaken-likho-russia-belarus-2026 | Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン | Awaken Likho | 情報なし | T1053.005 Scheduled Task, T1027 Obfuscated Files or Information, T1566.002 Spearphishing Link, T1053.005 Scheduled Task, T1204.002 Malicious File, T1219 Remote Access Software | 情報なし | 政府・行政, 製造・産業, ロシア | 被害事例: MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン, ロシアの政府機関・請負業者・産業企業(集約) | 高 |
-| 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | Awaken Likho | TokenBuoy, TokenBuoySH | T1560.001 Archive via Utility, T1204.002 Malicious File, T1566.001 Spearphishing Attachment, T1567.002 Exfiltration to Cloud Storage | 情報なし | 政府・行政, ロシア | 被害事例: 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃, ロシア・ベラルーシの政府組織(集約) | 高 |
+| 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | Awaken Likho | TokenBuoy, TokenBuoySH | T1560.001 Archive via Utility, T1204.002 Malicious File, T1566.001 Spearphishing Attachment, T1567.002 Exfiltration to Cloud Storage | 情報なし | 政府・行政, ベラルーシ, ロシア | 被害事例: 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃, ロシア・ベラルーシの政府組織(集約) | 高 |
 
 Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペーンではUltraVNCからMeshAgentへ切り替え、2024年10月に報告された。2026年前半から7月にかけて独自バックドアTokenBuoyとTokenBuoySHを投入し、2026年8月に報告された。
 
@@ -140,21 +140,21 @@ Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペ
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | ベラルーシ | 2026年資料が標的国として明示している。 | 2026-01 | 2026-07 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
-| countries | ロシア | 両資料が標的国として明示している。 | 2021-07 | 2026-07 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 両資料が標的国として明示している。 | 2021-07 | 2026-07 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
+| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | sectors | 政府・行政 | 活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。 | 2024-06 | 2026-07 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | sectors | 製造・産業 | 活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。 | 2024-06 | 2024-08 | 中 | `source--kaspersky-awaken-likho-2024` |
 | sectors | 政府機関 | 両資料が標的分野として明示している。 | 不明 | 不明 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | sectors | 政府請負業者 | 2024年資料が標的分野として明示している。 | 不明 | 不明 | 高 | `source--kaspersky-awaken-likho-2024` |
 | sectors | 産業企業 | 2024年資料が標的分野として明示している。 | 不明 | 不明 | 高 | `source--kaspersky-awaken-likho-2024` |
 
-選定ロジック: ロシアおよびベラルーシの政府機能とその周辺(請負業者、産業企業)を継続的に選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: ロシアおよびベラルーシの政府機能とその周辺(請負業者、産業企業)を継続的に選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--awaken-likho--country--russia | malware--tokenbuoy, malware--tokenbuoysh | ttp--activity-rule--66d044943eb633757eaf, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1566-001-rar, ttp--awaken-likho-t1567-002-rclone | メール／メールアカウント |  | 2026-01 | 2026-07 | 2026-08-07 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
+| 被害事例: 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--awaken-likho--country--belarus, target--awaken-likho--country--russia | malware--tokenbuoy, malware--tokenbuoysh | ttp--activity-rule--66d044943eb633757eaf, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1566-001-rar, ttp--awaken-likho-t1567-002-rclone | メール／メールアカウント |  | 2026-01 | 2026-07 | 2026-08-07 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | 被害事例: MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--dfc80b76cad93a318adc, target--awaken-likho--country--russia |  | ttp--activity-rule--00a1028961658cc699e8, ttp--activity-rule--57707f4efc5babf267b5, ttp--activity-rule--7fb90d3f61cc773bf69f, ttp--awaken-likho-t1053-005-scheduled-task, ttp--awaken-likho-t1204-002-sfx, ttp--awaken-likho-t1219-remote-tools | メール／メールアカウント, サーバー |  | 2024-06 | 2024-08 | 2024-10-07 | 高 | `source--kaspersky-awaken-likho-2024` |
 | ロシア・ベラルーシの政府組織(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--tokenbuoy, malware--tokenbuoysh | ttp--awaken-likho-t1566-001-rar, ttp--awaken-likho-t1567-002-rclone | Windows端末 | espionage: 独自バックドアによる継続的なアクセス。<br>data-theft: Rcloneによるデータ持ち出し。 | 2026-01 | 2026-07 | 2026-08-07 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | ロシアの政府機関・請負業者・産業企業(集約) | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--awaken-likho-t1219-remote-tools, ttp--awaken-likho-t1053-005-scheduled-task | Windows端末 | espionage: MeshAgentによる遠隔操作を通じた継続的なアクセス。 | 2024-06 | 2024-08 | 2024-10-07 | 高 | `source--kaspersky-awaken-likho-2024` |

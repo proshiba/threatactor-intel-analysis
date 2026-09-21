@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0145`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T03:50:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -44,16 +44,16 @@ CERT-UAは2件の資料でいずれも「кластером кіберзагро
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | CERT-UAが追跡するクラスタUAC-0145。CERT-UAはUAC-0002(Sandworm、APT44、Seashell Blizzard)のサブクラスタと位置付ける。本資料群は後援国を明示していない。 |
-| Capability | KALAMBUR、SUMBUR、TAMBUR、ローダーFLUIDLEECH/LOADLOOP、VBSドロッパーGHETTOVIBE、PowerShell偵察スクリプトSCOUTCURL、PythonバックドアFREAKYPOLL、ウェブインジェクトSMARTAXE、AndroidバックドアCOWARDDUCK、改変WireGuardクライアントSopraVPN。正規ツールとしてOpenSSH、TOR、RSYNC、cURLを併用する。 |
-| Infrastructure | 偽CAPTCHAを配信する侵害済みウェブサイト群、クローキングサービスCloaking.House、SopraVPNを配布するSourceForgeプロジェクト、Sopra SteriaとATLAS Business Groupを騙る偽企業ドメイン、コマンド取得に悪用される正規サービスとEthereumスマートコントラクト。 |
-| Victim | ウクライナの政府機関・軍と、企業リソースへ接続しうるシステム管理者・IT専門職個人。CERT-UAは通信事業者とIT企業に対して注意喚起している。 |
-| Socio-political | ウクライナの国家機関と防衛関連要員、およびそこへ接続しうる技術者個人を対象とする諜報活動。中央行政機関インフラへの破壊的攻撃の前提が作られた事例が報告されている。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -136,7 +136,7 @@ CERT-UAは2件の資料でいずれも「кластером кіберзагро
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 偽の採用プロセスによる社会工学と改変WireGuardクライアントSopraVPNの配布 | cyber-espionage | 2026-05 | 不明 | 2026-08-08 | target--uac-0145--country--ukraine, target--uac-0145--role--system-administrator, target--uac-0145--sector--information-technology, target--uac-0145--sector--telecommunications | malware--uac-0145-sopravpn | ttp--uac-0145-t1027, ttp--uac-0145-t1053-005, ttp--uac-0145-t1059-001, ttp--uac-0145-t1105, ttp--uac-0145-t1204-002, ttp--uac-0145-t1566-003, ttp--uac-0145-t1583-001, ttp--uac-0145-t1585-001, ttp--uac-0145-t1587-001, ttp--uac-0145-t1589-002, ttp--uac-0145-t1608-001, ttp--uac-0145-t1656 | victim--activity-rule--78b1925bf226403f16ea, victim--uac-0145-it-specialists-recruitment | 求人サイト上で候補者の履歴書を事前に調査したうえで、IT企業(例: ATLAS Business Group)を名乗って接触する。対象は通常システム管理者またはIT専門職である。最初のやり取りはサイト内チャットで行われ、その後Telegram等の連絡先が提示される。Telegramでは、あるプロジェクト(確認された事例ではSopra Steria Bulgaria)の一次選考を担当するというHR担当者との面談が行われ、勤務形態や英語力の確認とZoom会議のリンク提示が行われる。Zoom会議は実際に開催され、30〜35歳の男性が英語で対応する。並行して、技術面接に関する追加指示が電子メールで送られ、テスト課題の実施と称して「企業」VPNへWireGuard(Linux/Windows)で接続するための設定ファイルと、作業中の随伴用として別のZoom会議リンクが提供される。送信元アドレスmike.weitzman@soprasteria-bg[.]comは国際IT企業Sopra Steriaの地域オフィスを騙っている(正規ドメインはsoprasteria[.]com、soprasteria[.]bg)。提供された設定ファイルではVPN接続時にエラーが発生するため、攻撃者はSourceForge上に置いた独自の適応版VPNクライアント「SopraVPN」のダウンロードを勧める。リンクは「企業」の公式サイトsoprasteria-bg[.]com上の「Corporate VPN on Sourceforge」ボタンにある。 | 高 | `source--certua-6318863-uac-0145` |
-| 2026年7月時点の初期侵害ベクター群: トレント配布、Signal、ClickFix、Android | cyber-espionage | 2026-03 | 2026-07 | 2026-07-15 | target--uac-0145--country--ukraine, target--uac-0145--sector--defense, target--uac-0145--sector--government | malware--uac-0145-kalambur, malware--uac-0145-sumbur, malware--uac-0145-tambur, malware--uac-0145-ghettovibe, malware--uac-0145-scoutcurl, malware--uac-0145-fluidleech, malware--uac-0145-loadloop, malware--uac-0145-freakypoll, malware--uac-0145-smartaxe, malware--uac-0145-cowardduck | ttp--activity-rule--2faf5da270a809926a8c, ttp--activity-rule--3cc75c9b7f23052570a6, ttp--uac-0145-t1005, ttp--uac-0145-t1027, ttp--uac-0145-t1048, ttp--uac-0145-t1059-001, ttp--uac-0145-t1059-005, ttp--uac-0145-t1082, ttp--uac-0145-t1102, ttp--uac-0145-t1105, ttp--uac-0145-t1204-002, ttp--uac-0145-t1204-004, ttp--uac-0145-t1547-001, ttp--uac-0145-t1566-003, ttp--uac-0145-t1567-002, ttp--uac-0145-t1572, ttp--uac-0145-t1584-004 | victim--activity-rule--d4867e4a4ff96231fa56, victim--uac-0145-central-executive-authority | CERT-UAがウクライナのサイバーセキュリティ確保主体と連携して継続実施しているUAC-0145調査の、2026年7月時点での初期侵害ベクターまとめ。数年にわたり主要な手段の一つだったのは、トレントトラッカーからバックドア入りのWindowsおよびMicrosoft Officeインストーラーを利用者自身が導入する「受動的」侵害である。その後、とりわけ軍人を対象として、Signalで「アンチウイルス保護」の導入を持ちかける手口が拡大した。実行前に長時間の対話が行われ、指示の実行に対して金銭的報酬が提示される場合もある。この経路ではKALAMBUR、SUMBUR、TAMBURが用いられ、遠隔アクセスは主にOpenSSHとTORによるローカルポート(445、3389、22)のフォワーディングで確保された。Signal・WhatsAppの鍵とデータを窃取するプログラムも広まり、送出にはRSYNCが使用されうる。2026年春から夏にかけては、侵害済みウェブサイトで偽CAPTCHAを表示し、通過のためと称してPowerShellコマンドをターミナルで実行させるClickFixによる感染が確認された。このコマンドは例としてスタートアップへVBSファイルを保存するもので、その一種がGHETTOVIBEである。後続で投下されるSCOUTCURLが端末情報を収集して攻撃対象の重要度を判定する。ローダーとしてはFLUIDLEECHとLOADLOOPが、対応実施済みの被害端末からはPythonバックドアFREAKYPOLLが確認された。6〜7月にはClickFixの実装を10件超の侵害済みウェブリソースで詳細解析し、Cloaking.Houseの標準機能に加えて独自コードSMARTAXEが用いられていること、SMARTAXEが遠隔リソースのドメイン名をEthereumスマートコントラクトのeth_call呼び出しで動的に取得することが判明した。Androidに対しては、保護ツールを装ったAPKとして配布されるバックドアCOWARDDUCKが使用され、Dropbox APIでのファイル送出と、正規サービス上のオブジェクトを介したコマンド取得を行う。 | 高 | `source--certua-6318437-uac-0145` |
+| 2026年7月時点の初期侵害ベクター群: トレント配布、Signal、ClickFix、Android | cyber-espionage | 2026-03 | 2026-07 | 2026-07-15 | target--uac-0145--country--ukraine, target--uac-0145--sector--defense, target--uac-0145--sector--government | malware--uac-0145-cowardduck, malware--uac-0145-fluidleech, malware--uac-0145-freakypoll, malware--uac-0145-ghettovibe, malware--uac-0145-kalambur, malware--uac-0145-loadloop, malware--uac-0145-scoutcurl, malware--uac-0145-smartaxe, malware--uac-0145-sumbur, malware--uac-0145-tambur | ttp--activity-rule--2faf5da270a809926a8c, ttp--activity-rule--3cc75c9b7f23052570a6, ttp--uac-0145-t1005, ttp--uac-0145-t1027, ttp--uac-0145-t1048, ttp--uac-0145-t1059-001, ttp--uac-0145-t1059-005, ttp--uac-0145-t1082, ttp--uac-0145-t1102, ttp--uac-0145-t1105, ttp--uac-0145-t1204-002, ttp--uac-0145-t1204-004, ttp--uac-0145-t1547-001, ttp--uac-0145-t1566-003, ttp--uac-0145-t1567-002, ttp--uac-0145-t1572, ttp--uac-0145-t1584-004 | victim--activity-rule--d4867e4a4ff96231fa56, victim--uac-0145-central-executive-authority | CERT-UAがウクライナのサイバーセキュリティ確保主体と連携して継続実施しているUAC-0145調査の、2026年7月時点での初期侵害ベクターまとめ。数年にわたり主要な手段の一つだったのは、トレントトラッカーからバックドア入りのWindowsおよびMicrosoft Officeインストーラーを利用者自身が導入する「受動的」侵害である。その後、とりわけ軍人を対象として、Signalで「アンチウイルス保護」の導入を持ちかける手口が拡大した。実行前に長時間の対話が行われ、指示の実行に対して金銭的報酬が提示される場合もある。この経路ではKALAMBUR、SUMBUR、TAMBURが用いられ、遠隔アクセスは主にOpenSSHとTORによるローカルポート(445、3389、22)のフォワーディングで確保された。Signal・WhatsAppの鍵とデータを窃取するプログラムも広まり、送出にはRSYNCが使用されうる。2026年春から夏にかけては、侵害済みウェブサイトで偽CAPTCHAを表示し、通過のためと称してPowerShellコマンドをターミナルで実行させるClickFixによる感染が確認された。このコマンドは例としてスタートアップへVBSファイルを保存するもので、その一種がGHETTOVIBEである。後続で投下されるSCOUTCURLが端末情報を収集して攻撃対象の重要度を判定する。ローダーとしてはFLUIDLEECHとLOADLOOPが、対応実施済みの被害端末からはPythonバックドアFREAKYPOLLが確認された。6〜7月にはClickFixの実装を10件超の侵害済みウェブリソースで詳細解析し、Cloaking.Houseの標準機能に加えて独自コードSMARTAXEが用いられていること、SMARTAXEが遠隔リソースのドメイン名をEthereumスマートコントラクトのeth_call呼び出しで動的に取得することが判明した。Androidに対しては、保護ツールを装ったAPKとして配布されるバックドアCOWARDDUCKが使用され、Dropbox APIでのファイル送出と、正規サービス上のオブジェクトを介したコマンド取得を行う。 | 高 | `source--certua-6318437-uac-0145` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -151,29 +151,14 @@ CERT-UAはウクライナの主要なサイバーセキュリティ確保主体�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | イラン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ウクライナ | CERT-UAはウクライナのサイバーセキュリティ確保主体と連携してUAC-0145を継続調査しており、被害はウクライナ国内で観測されている。中央行政機関のインフラに対する破壊的サイバー攻撃の前提条件が作られた事例が報告されている。 | 2026-03 | 2026-07 | 高 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | リトアニア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ロシア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | コーカサス | アゼルバイジャン、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 中央アジア | カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 中東 | イスラエル、イランで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東欧 | ウクライナ、ベラルーシ、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | ウクライナ、ベラルーシ、ポーランド、リトアニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
+| countries | ウクライナ | CERT-UAはウクライナのサイバーセキュリティ確保主体と連携してUAC-0145を継続調査しており、被害はウクライナ国内で観測されている。中央行政機関のインフラに対する破壊的サイバー攻撃の前提条件が作られた事例が報告されている。 | 2026-03 | 2026-07 | 高 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145` |
 | sectors | 国防・軍 | Signalでの「アンチウイルス保護」導入を装った配布は、とりわけ軍人を対象として拡大したとCERT-UAが記載している。 | 不明 | 不明 | 高 | `source--certua-6318437-uac-0145` |
 | sectors | 政府機関 | トレント経由で侵害された端末が組織内ネットワークでの присутність確保と横展開に利用され、ウクライナ中央行政機関のインフラに対する破壊的攻撃の条件が作られた事例が少なくとも1件記載されている。 | 不明 | 不明 | 高 | `source--certua-6318437-uac-0145` |
 | sectors | IT企業 | 偽の求人・技術面接を通じてIT専門職へ接触する手口の対象。CERT-UAは通信事業者と並べてIT企業へ注意喚起している。 | 2026-05 | 不明 | 中 | `source--certua-6318863-uac-0145` |
 | sectors | 通信事業者 | CERT-UAは就職過程を悪用する社会工学について、とりわけ通信事業者・プロバイダーとIT企業に対し、管理対象端末からのみ企業リソースへ接続させるよう注意喚起している。 | 2026-05 | 不明 | 中 | `source--certua-6318863-uac-0145` |
 | roles | システム管理者・IT専門職 | 求人サイト上で履歴書を事前に調査したうえで接触する対象。CERT-UAは「як правило системним адміністратором/ІТ фахівцем」(通常はシステム管理者/IT専門職)と記載している。 | 2026-05 | 不明 | 高 | `source--certua-6318863-uac-0145` |
 
-選定ロジック: ウクライナの政府機関・軍と、そこへ接続しうるIT/通信分野の技術者個人の双方を対象とする。前者は組織ネットワークへの足がかりと破壊的攻撃の前提づくり、後者は管理者権限を持つ個人端末経由での企業リソース到達を狙う。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: ウクライナの政府機関・軍と、そこへ接続しうるIT/通信分野の技術者個人の双方を対象とする。前者は組織ネットワークへの足がかりと破壊的攻撃の前提づくり、後者は管理者権限を持つ個人端末経由での企業リソース到達を狙う。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

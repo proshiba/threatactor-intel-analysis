@@ -1,8 +1,8 @@
 # Vice Society 脅威アクタープロファイル
 
 - プロファイルID: `actor--vice-society`
-- 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 状態: deprecated
+- 更新日時: 2026-09-21T03:50:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -40,15 +40,15 @@ Aliasなし
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | PrintNightmare, HelloKitty and Zeppelin ransomware |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Education and research institutes |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -80,10 +80,7 @@ Aliasなし
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--hellokitty-and-zeppelin-ransomware | HelloKitty and Zeppelin ransomware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--printnightmare | PrintNightmare | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -107,38 +104,23 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | ransomware-extortion | 不明 | 不明 | 2024-09-19 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--260bd106ff4950e5430d |  |  | victim--activity-rule--ff2191c48399b7a73241 | Vanilla Tempest(別名:DEV-0832、Vice Society)は米国の医療機関にINCランサムウェアを使用した攻撃を実施。 攻撃の一環として、Gootloader経由でネットワーク侵入し、SupperマルウェアやAnyDeskを使用した。 攻撃により患者データベースのアクセスが失われ、予定の変更を余儀なくされた。 Vanilla Tempestはランサムウェアのアフィリエイトであり、BlackCat、Quantum Locker、Zeppelin、Rhysidaなどのさまざまなランサムウェアを使用。 Vanilla Tempestは他にも教育、製造業、IT分野を標的にしている。 | 中 | `source--daily-c1b12b52abae4635e5ea` |
-| Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | ransomware-extortion | 不明 | 不明 | 2025-10-17 | target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  | victim--activity-rule--aa28ddb3998708678c1e | Microsoftは10月上旬のRhysida連携攻撃を妨害し、偽Teamsインストーラ署名に使われた200超の証明書を失効させた。 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.]top等の偽サイトでOysterバックドアを配布した。 配布は9月下旬のマルバタイジングやSEOポイズニングで行われ、正規と同名MSTeamsSetup[.]exeで利用者を欺いた。 悪性インストーラは署名済みOysterを展開し、遠隔操作・情報窃取・追加ペイロード投下を可能にする。 同集団は金銭目的で教育・医療・IT・製造を頻繁に標的化し、近年は主にRhysidaを展開している。 | 中 | `source--daily-5287a969660d1bb7e309` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | Vice Society | 情報なし | 情報なし | 情報なし | 米国, 医療・ヘルスケア | 被害事例: Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | 中 |
-| Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | Vice Society | 情報なし | 情報なし | 情報なし | 医療・ヘルスケア, 製造・産業, 教育・研究 | 被害事例: Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | 中 |
+活動別ダイヤモンドモデルなし
 
 
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | 米国 | 活動「Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-c1b12b52abae4635e5ea` |
-| sectors | 医療・ヘルスケア | 活動「Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5287a969660d1bb7e309`, `source--daily-c1b12b52abae4635e5ea` |
-| sectors | 製造・産業 | 活動「Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5287a969660d1bb7e309` |
-| sectors | 教育・研究 | 活動「Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5287a969660d1bb7e309` |
-| sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  |  | encryption: Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | 不明 | 不明 | 2025-10-17 | 中 | `source--daily-5287a969660d1bb7e309` |
-| 被害事例: Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--260bd106ff4950e5430d |  |  |  | encryption: Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | 不明 | 不明 | 2024-09-19 | 中 | `source--daily-c1b12b52abae4635e5ea` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -150,21 +132,19 @@ TTPなし
 - IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 27件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of Vanilla Tempest (actor--vanilla-tempest). | 高 | `source--mitre-attack-19-2` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
-- Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
 
 ## 出典
 
@@ -191,6 +171,7 @@ TTPなし
 | source--vice-society--e007f780b44a14fb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
 | source--vice-society--e2e1bc5b0435feaa | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

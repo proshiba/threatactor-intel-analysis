@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--unc3569",
   "actor_name": "UNC3569",
-  "profile_updated_at": "2026-09-20T13:47:46Z",
+  "profile_updated_at": "2026-09-21T04:35:03Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -13,7 +13,7 @@
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "unknown",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 2,
@@ -26,13 +26,16 @@
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 0,
       "relationships": 0,
       "malware": 0,
       "tools": 0,
       "untyped_software": 0,
       "targets": 0,
-      "motivations": 0
+      "motivations": 0,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -186,9 +189,13 @@
         },
         "description": "Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。",
         "target_refs": [
-          "target--activity-rule--sector--210dddb39397dbe50e91"
+          "target--activity-rule--sector--210dddb39397dbe50e91",
+          "target--targeting-audit--country--39881b6f27f0986ea931",
+          "target--targeting-audit--region--af8e0b8ea3f352b88f87"
         ],
-        "malware_refs": [],
+        "malware_refs": [
+          "malware--daily-92623c41cfe9d6459335"
+        ],
         "infrastructure_refs": [],
         "confidence": "medium",
         "evidence_refs": [
@@ -209,7 +216,9 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--daily-92623c41cfe9d6459335"
+            ],
             "ttp_refs": [
               "ttp--activity-rule--d23ef70e9a6b6307bc52"
             ]
@@ -219,7 +228,9 @@
           },
           "victim": {
             "target_refs": [
-              "target--activity-rule--sector--210dddb39397dbe50e91"
+              "target--activity-rule--sector--210dddb39397dbe50e91",
+              "target--targeting-audit--country--39881b6f27f0986ea931",
+              "target--targeting-audit--region--af8e0b8ea3f352b88f87"
             ],
             "victim_refs": [
               "victim--activity-rule--b58e62cfdbc20134f3f1"
@@ -254,8 +265,12 @@
             ],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
+              "target_country_refs": [
+                "target--targeting-audit--country--39881b6f27f0986ea931"
+              ],
+              "target_region_refs": [
+                "target--targeting-audit--region--af8e0b8ea3f352b88f87"
+              ]
             }
           },
           "confidence": "medium",
@@ -278,11 +293,24 @@
             "counterevidence": []
           }
         ],
-        "malware": [],
+        "malware": [
+          {
+            "id": "malware--daily-92623c41cfe9d6459335",
+            "name": "GRAYRABBIT"
+          }
+        ],
         "targets": [
           {
             "id": "target--activity-rule--sector--210dddb39397dbe50e91",
             "name": "政府・行政"
+          },
+          {
+            "id": "target--targeting-audit--country--39881b6f27f0986ea931",
+            "name": "フィリピン"
+          },
+          {
+            "id": "target--targeting-audit--region--af8e0b8ea3f352b88f87",
+            "name": "アジア"
           }
         ],
         "victims": [
@@ -359,6 +387,25 @@
             "evidence_refs": [
               "source--daily-a44134da0f07029e3862"
             ]
+          },
+          {
+            "activity_id": "activity--daily-48716db321e86ff0f407",
+            "activity_name": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-c20a23c702af45ff32d4"
+            ]
           }
         ],
         "derived_first_observed": {
@@ -414,7 +461,9 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-48716db321e86ff0f407"
+        ]
       },
       {
         "id": "target--targeting-audit--region--af8e0b8ea3f352b88f87",
@@ -452,7 +501,9 @@
           }
         ],
         "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-48716db321e86ff0f407"
+        ]
       },
       {
         "id": "target--activity-rule--sector--210dddb39397dbe50e91",
@@ -497,16 +548,25 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [],
     "incident_types": [],
     "relationships": [],
     "malware": [],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [],
       "victims_or_geographies": [],
-      "sectors": []
+      "sectors": [],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [],
     "attribution": [
@@ -524,7 +584,8 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
     "unresolved": 2,
@@ -566,7 +627,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260914.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260914.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability"
+      ]
     },
     "source--daily-c20a23c702af45ff32d4": {
       "source_id": "source--daily-c20a23c702af45ff32d4",
@@ -584,7 +652,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--osint-misp-threat-actor": {
       "source_id": "source--osint-misp-threat-actor",

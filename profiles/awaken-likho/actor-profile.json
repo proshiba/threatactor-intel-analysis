@@ -4,7 +4,7 @@
   "name": "Awaken Likho",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-09-20T13:47:46Z",
+  "updated_at": "2026-09-21T02:39:35Z",
   "languages": [
     "ja"
   ],
@@ -67,12 +67,12 @@
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "ロシア・ベラルーシの政府機関等を標的とするAPTグループAwaken Likho。帰属国は不明。",
-    "capability": "独自バックドアTokenBuoy/TokenBuoySH、正規遠隔管理ソフトUltraVNC・MeshCentral(MeshAgent)の流用、Rcloneによる持ち出し。",
-    "infrastructure": "フィッシング配信基盤と攻撃者運用のMeshCentralサーバー。",
-    "victim": "ロシアおよびベラルーシの政府組織、政府請負業者、産業企業。",
-    "socio_political": "ロシア・ベラルーシの政府機能を対象とする継続的な諜報活動。",
-    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -472,6 +472,7 @@
       "description": "Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。",
       "target_refs": [
         "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--awaken-likho--country--belarus",
         "target--awaken-likho--country--russia"
       ],
       "malware_refs": [
@@ -514,6 +515,7 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--awaken-likho--country--belarus",
             "target--awaken-likho--country--russia"
           ],
           "victim_refs": [
@@ -554,6 +556,7 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [
+              "target--awaken-likho--country--belarus",
               "target--awaken-likho--country--russia"
             ],
             "target_region_refs": []
@@ -587,6 +590,7 @@
       ],
       "target_refs": [
         "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--awaken-likho--country--belarus",
         "target--awaken-likho--country--russia"
       ],
       "malware_refs": [
@@ -832,8 +836,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--kaspersky-awaken-likho-2024",
-          "source--kaspersky-awaken-likho-tokenbuoy-2026",
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
@@ -858,8 +861,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--kaspersky-awaken-likho-2024",
-          "source--kaspersky-awaken-likho-tokenbuoy-2026",
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       }
@@ -979,8 +981,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "ロシアおよびベラルーシの政府機能とその周辺(請負業者、産業企業)を継続的に選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "帰属国やインフラ所在国を標的国へ流用していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "ロシアおよびベラルーシの政府機能とその周辺(請負業者、産業企業)を継続的に選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "帰属国やインフラ所在国を標的国へ流用していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -1267,7 +1269,21 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。2021年7月からの追跡開始、UltraVNCからMeshAgentへの移行、2024年6〜8月のキャンペーン期間、「also named by other vendors as Core Werewolf」の記載を確認した。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。2021年7月からの追跡開始、UltraVNCからMeshAgentへの移行、2024年6〜8月のキャンペーン期間、「also named by other vendors as Core Werewolf」の記載を確認した。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--kaspersky-awaken-likho-tokenbuoy-2026",
@@ -1285,7 +1301,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。独自バックドアTokenBuoy/TokenBuoySHへの移行と2026年前半から7月までのキャンペーン期間を確認した。securelist.com には掲載がなく securelist.ru のみで公開されている。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。独自バックドアTokenBuoy/TokenBuoySHへの移行と2026年前半から7月までのキャンペーン期間を確認した。securelist.com には掲載がなく securelist.ru のみで公開されている。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -1395,7 +1424,7 @@
       "2026年キャンペーンの開始時期は資料の「2026年前半」という表現に基づく推定であり、月精度・status: inferredとしている。",
       "PseudoGamaredonという別称が二次情報に見られるが、原典を確認できていないため登録していない。"
     ],
-    "collection_notes": "Kaspersky Securelist(2024-10-07、英語)とSecurelist RU(2026-08-07、ロシア語)の2本の一次資料を原文で確認した。後者はsecurelist.comには掲載がない。本アクターはtech-memoの日次ニュースに未収録であり、IOCは取り込んでいない。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Kaspersky Securelist(2024-10-07、英語)とSecurelist RU(2026-08-07、ロシア語)の2本の一次資料を原文で確認した。後者はsecurelist.comには掲載がない。本アクターはtech-memoの日次ニュースに未収録であり、IOCは取り込んでいない。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "プロファイル昇格は2026-08-10の一次情報源確認と利用者承認に基づく。"
   },
   "free_text": {

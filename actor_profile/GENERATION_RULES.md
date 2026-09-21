@@ -238,11 +238,12 @@ python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 python3 actor_profile/scripts/migrate_curated_entity_boundaries.py --apply
 python3 actor_profile/scripts/apply_verified_alias_updates.py
 python3 actor_profile/scripts/sync_attack_reference.py
-
-python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 python3 actor_profile/scripts/build_tidal_activity_index.py
 python3 actor_profile/scripts/build_actor_research_dossiers.py

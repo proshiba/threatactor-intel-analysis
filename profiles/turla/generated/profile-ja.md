@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--turla`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,8 +53,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Turla](https://attack.mitre.org/groups/G0010) is a cyber espionage threat group that has been attributed to Russia's Federal Security Service (FSB).  They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. [Turla](https://attack.mitre.org/groups/G0010) is known for conducting watering hole and spearphishing campaigns, and leveraging in-house tools and malware, such as [Uroburos](https://attack.mitre.org/software/S0022).(Citation: Kaspersky Turla)(Citation: ESET Gazer Aug 2017)(Citation: CrowdStrike VENOMOUS BEAR)(Citation: ESET Turla Mosquito Jan 2018)(Citation: Joint Cybersecurity Advisory AA23-129A Snake Malware May 2023) |
-| Capability | KOPILUWAK, TinyTurla, HyperStack, Kazuar, LunarLoader, Epic, LightNeuron, Gazer, Uroburos, Crutch, Mosquito, LunarMail, Carbon, Penquin, ComRAT, PowerStallion, LunarWeb, Net, certutil, Tasklist, Arp, Empire, netstat, Systeminfo, Mimikatz, IronNetInjector, nbtstat, NBTscan, Reg, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -62,7 +62,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -161,18 +161,18 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | infrastructure-operation | 不明 | 不明 | 2026-05-18 |  | malware--kazuar | ttp--activity-rule--23f91b330aff86b4e245, ttp--activity-rule--a065ec3abbf8e6d486d8 | victim--activity-rule--5d49c32b8b1bf735cbd0 | ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 Microsoftの分析では、新しいKazuarはKernel、Bridge、Workerの3モジュールで構成され、感染環境内で役割を分担する。 Kernelはリーダーを選出し、非リーダー端末をサイレント化することで、C2との外部通信を減らして検知面を縮小する。 Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 Kazuarは150種類の設定項目を持ち、AMSI、ETW、WLDPのバイパスなど多様な回避機能も備えている。 | 高 | `source--daily-0e103138b331cf8b266a` |
-| ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | cyber-espionage | 不明 | 不明 | 2024-12-05 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--tinyturla |  | victim--activity-rule--fd84357d12102a31bedc | ロシアの国家支援グループTurlaが、パキスタンのAPT「Storm-0156」のインフラを乗っ取り、スパイ活動を実行。 Turlaは、Storm-0156の脅威アクターの既存のC2サーバーを利用し、Storm-0156が侵害していたアフガニスタンやインド政府機関を対象に攻撃を展開。 攻撃には、TinyTurlaバックドア、TwoDashバックドア、MiniPocketダウンローダーなどが使用された。 Storm-0156のマルウェアツール(CrimsonRATマルウェアとWainscotなど)や盗まれた認証情報も収集されていた。 Turlaは外国の標的からのデータの傍受、解読、収集を担当するロシア連邦保安庁（FSB）のCenter 16とつながりのある、ロシア国家が支援するハッキンググループ。高度なサイバー攻撃に長い歴史を持ち、世界中の政府や組織を標的にしている。 | 高 | `source--daily-7b8d62bd6d4144728793` |
+| ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | cyber-espionage | 不明 | 不明 | 2024-12-05 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--8b0d895cbce29b8afc51, target--targeting-audit--country--7baa960dc1a31085ebc9 | malware--tinyturla |  | victim--activity-rule--fd84357d12102a31bedc | ロシアの国家支援グループTurlaが、パキスタンのAPT「Storm-0156」のインフラを乗っ取り、スパイ活動を実行。 Turlaは、Storm-0156の脅威アクターの既存のC2サーバーを利用し、Storm-0156が侵害していたアフガニスタンやインド政府機関を対象に攻撃を展開。 攻撃には、TinyTurlaバックドア、TwoDashバックドア、MiniPocketダウンローダーなどが使用された。 Storm-0156のマルウェアツール(CrimsonRATマルウェアとWainscotなど)や盗まれた認証情報も収集されていた。 Turlaは外国の標的からのデータの傍受、解読、収集を担当するロシア連邦保安庁（FSB）のCenter 16とつながりのある、ロシア国家が支援するハッキンググループ。高度なサイバー攻撃に長い歴史を持ち、世界中の政府や組織を標的にしている。 | 高 | `source--daily-7b8d62bd6d4144728793` |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | cyber-espionage | 2024-03 | 2024-04 | 2024-12-12 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--227d97728274c9a45564 | malware--epic |  | victim--activity-rule--9899cfc7ca4bd10c1940 | ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。 MicrosoftとLumenの報告によれば、Turlaはパキスタンの脅威アクター「Storm-0156」のマルウェアとサーバーをハイジャックして使用している。 2024年3月から4月にかけて、TurlaはAmadeyボットネットや他のロシアのハッキンググループ「Storm-1837」のインフラを利用して、ウクライナのシステムに独自のマルウェア「Tavdig」や「KazuarV2」を展開した。 Microsoftは、TurlaがAmadeyのマルウェア・アズ・ア・サービス（MaaS）を使用したのか、またはAmadeyのコマンド・アンド・コントロール（C2）パネルに密かにアクセスしたのかは不明としている。 この手法は、Turlaが他のハッカーグループの背後に隠れて活動する一例である。 | 中 | `source--daily-785ae8d632612c179b8d` |
-| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | cyber-espionage | 2022-12 | 2025-11 | 2026-06-25 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--stockstay, malware--kazuar, malware--wildday, malware--diamondback | ttp--turla-stockstay-t1090-proxy, ttp--turla-stockstay-t1203-winrar, ttp--turla-stockstay-t1566-001, ttp--turla-stockstay-t1572-websocket | victim--activity-rule--48105cd9cb10230243b9, victim--turla-stockstay-ukraine-italy | Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。 | 高 | `source--gtig-stockstay-turla-2026` |
+| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | cyber-espionage | 2022-12 | 2025-11 | 2026-06-25 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--8b0d895cbce29b8afc51, target--targeting-audit--country--b79c8cdc24f6db0641a0 | malware--diamondback, malware--kazuar, malware--stockstay, malware--wildday | ttp--turla-stockstay-t1090-proxy, ttp--turla-stockstay-t1203-winrar, ttp--turla-stockstay-t1566-001, ttp--turla-stockstay-t1572-websocket | victim--activity-rule--48105cd9cb10230243b9, victim--turla-stockstay-ukraine-italy | Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。 | 高 | `source--gtig-stockstay-turla-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | Turla | Kazuar | T1083 File and Directory Discovery, T1113 Screen Capture | 情報なし | 情報なし | 被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | 高 |
-| ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | Turla | TinyTurla | 情報なし | 情報なし | インド, ロシア, 政府・行政 | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 高 |
+| ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | Turla | TinyTurla | 情報なし | 情報なし | インド, ロシア, 政府・行政, アフガニスタン | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 高 |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | Turla | Epic | 情報なし | 情報なし | ウクライナ, ロシア, 防衛・軍事 | 被害事例: ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | 中 |
-| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | Turla | DIAMONDBACK, Kazuar, STOCKSTAY, WILDDAY | T1090 Proxy, T1203 Exploitation for Client Execution, T1566.001 Spearphishing Attachment, T1572 Protocol Tunneling | 情報なし | ウクライナ, 政府・行政 | 被害事例: STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動, ウクライナの政府・軍組織およびイタリアの外交関連組織(集約) | 高 |
+| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | Turla | DIAMONDBACK, Kazuar, STOCKSTAY, WILDDAY | T1090 Proxy, T1203 Exploitation for Client Execution, T1566.001 Spearphishing Attachment, T1572 Protocol Tunneling | 情報なし | ウクライナ, 政府・行政, イタリア | 被害事例: STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動, ウクライナの政府・軍組織およびイタリアの外交関連組織(集約) | 高 |
 
 
 
@@ -180,86 +180,20 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アフガニスタン | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793`, `source--target-audit-etda-threat-group-cards` |
-| countries | アルジェリア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてアルジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルメニア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イエメン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてイエメンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イタリア | 活動「STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動」の記述で標的・被害国として明示されている。 | 2022-12 | 2025-11 | 中 | `source--gtig-stockstay-turla-2026`, `source--target-audit-etda-threat-group-cards` |
-| countries | イラク | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | 活動「ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に」の記述で標的として明示された国・地域。 | 2022-12 | 2025-11 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026`, `source--target-audit-etda-threat-group-cards` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ウルグアイ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてウルグアイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エクアドル | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エストニア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてエストニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カタール | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クウェート | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | シリア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてシリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジャマイカ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてジャマイカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | セルビア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タジキスタン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | チュニジア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてチュニジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チリ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | デンマーク | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてデンマークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルクメニスタン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてトルクメニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ハンガリー | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パラグアイ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてパラグアイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベネズエラ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてベネズエラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボツワナ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてボツワナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボリビア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてボリビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラトビア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでTurlaの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ロシア | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 2024-03 | 2024-04 | 中 | `source--daily-785ae8d632612c179b8d`, `source--daily-7b8d62bd6d4144728793`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでTurlaの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでTurlaの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでTurlaの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでTurlaの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでTurlaの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | アルジェリア、チュニジア、ボツワナ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | ウルグアイ、エクアドル、ジャマイカ、チリ、パラグアイ、ブラジル、ベネズエラ、ボリビア、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギス、タジキスタン、トルクメニスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | イエメン、イラク、イラン、カタール、クウェート、サウジアラビア、シリア、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北アフリカ | アルジェリア、チュニジアで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | イタリア、スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--gtig-stockstay-turla-2026`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | ウルグアイ、エクアドル、チリ、パラグアイ、ブラジル、ベネズエラ、ボリビアで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、ハンガリー、ベラルーシ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-785ae8d632612c179b8d`, `source--daily-7b8d62bd6d4144728793`, `source--gtig-stockstay-turla-2026`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | イタリア、ウクライナ、エストニア、オランダ、オーストリア、スイス、スウェーデン、スペイン、セルビア、デンマーク、ドイツ、ハンガリー、フィンランド、フランス、ベラルーシ、ベルギー、ポーランド、ラトビア、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | アフガニスタン | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
+| countries | イタリア | 活動「STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動」の記述で標的・被害国として明示されている。 | 2022-12 | 2025-11 | 中 | `source--gtig-stockstay-turla-2026` |
+| countries | インド | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
+| countries | ウクライナ | 活動「ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に」の記述で標的として明示された国・地域。 | 2022-12 | 2025-11 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026` |
+| countries | ロシア | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 2024-03 | 2024-04 | 中 | `source--daily-785ae8d632612c179b8d`, `source--daily-7b8d62bd6d4144728793` |
+| regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-785ae8d632612c179b8d`, `source--daily-7b8d62bd6d4144728793`, `source--gtig-stockstay-turla-2026` |
+| regions | 欧州 | イタリア、ウクライナで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026` |
 | sectors | 防衛・軍事 | They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. | 2024-03 | 2024-04 | 高 | `source--daily-785ae8d632612c179b8d`, `source--mitre-attack-19-2` |
 | sectors | 教育・研究 | They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. | 2022-12 | 2025-11 | 高 | `source--daily-7b8d62bd6d4144728793`, `source--gtig-stockstay-turla-2026`, `source--mitre-attack-19-2` |
 | sectors | 医療・ヘルスケア | They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -402,7 +336,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 - IOC観測: 151件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 62件
-- 非IOC artifact観測: 84件（`artifacts.csv`）
+- 非IOC artifact観測: 81件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -436,8 +370,6 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--turla--381349fb0cea34f0 | Penquins Moonlit Maze AppendixB |  | 不明 | Turla/2017/Penquins_Moonlit_Maze_AppendixB.pdf | report | TLP:CLEAR | 中 |
 | source--turla--3d5a4d35095a89d3 | README |  | 不明 | Turla/2014/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--6e90d1ef9571f3b1 | IOC |  | 不明 | Turla/IOC.TXT | text-data | TLP:CLEAR | 中 |
@@ -448,9 +380,11 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--gtig-stockstay-turla-2026 | STOCKSTAY Another Day: The Latest Addition to Turla's Intelligence Gathering Apparatus | Google Threat Intelligence Group | 2026-06-25 | https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering | vendor-research-report | TLP:CLEAR | 高 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

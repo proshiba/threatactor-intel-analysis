@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -33,11 +33,6 @@
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
           "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
         }
       ],
       "x_profile_id": "actor--apt34",
@@ -173,8 +168,7 @@
         "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
         "confidence": "medium",
         "evidence_refs": [
-          "source--mitre-attack-19-1",
-          "source--actor-mapping-workbook"
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
       },
@@ -183,14 +177,14 @@
         "history": "Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016～2019年にITインフラへ高可視性のディスク破壊攻撃を行ったイラン系グループの一つとして位置付けた。周辺記述は複数グループを扱うため、個別マルウェアの帰属は限定して記録した。",
         "capability_details": "SEASHARPEE, POWRUNER, PowerExchange, ODAgent, RDAT, ISMInjector, QUADAGENT, ZeroCleare, OopsIE, OilCheck, SampleCheck5000, OilBooster, Solar, RGDoor, Mango, BONDUPDATER, SideTwist, Helminth, ISMDoor, Clayslide, ALMA Communicator, customized Mimikatz, Invoke-Obfuscation, POWBAT, POWRUNER (PS Backdoor), malicious RTF files CVE-2017-0199 and CVE-2017-11882, ELVENDOOR, PLink, SSH Tunnels to Windows Servers, Webshells (TwoFace, DarkSeaGreenShell, LittleFace), PowDesk, Net, certutil, ipconfig, Tasklist, ngrok, netstat, Systeminfo, Mimikatz, LaZagne, Reg, ftp, PsExec",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アゼルバイジャン、アラブ首長国連邦、アルバニア、イスラエル、イラク、イラン、エジプト、オマーン、カタール、クウェート、サウジアラビア、トルコ、バーレーン、パキスタン、モーリシャス、ヨルダン、レバノン、中国、米国、英国。標的地域=アフリカ、中東、欧州。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、イラン。標的地域=中東。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt34",
         "actor_name": "APT34",
-        "searched_at": "2026-09-20T13:47:46Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
             "gtig-threat-actor-naming",
@@ -2489,18 +2483,6 @@
         },
         "malware_catalog_matches": [
           {
-            "profile_malware_id": "malware--alma-communicator",
-            "profile_name": "ALMA Communicator",
-            "entry_uuid": "a0881a0c-e677-495b-b475-290af09bb716",
-            "entry_value": "Alma Communicator",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.alma_communicator",
-              "https://unit42.paloaltonetworks.com/dns-tunneling-in-the-wild-overview-of-oilrigs-dns-tunneling/",
-              "https://researchcenter.paloaltonetworks.com/2017/11/unit42-oilrig-deploys-alma-communicator-dns-tunneling-trojan/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
             "profile_malware_id": "malware--bondupdater",
             "profile_name": "BONDUPDATER",
             "entry_uuid": "99600ba5-30a0-4ac8-8583-6288760b77c3",
@@ -2537,21 +2519,6 @@
               "http://researchcenter.paloaltonetworks.com/2016/10/unit42-oilrig-malware-campaign-updates-toolset-and-expands-targets/",
               "https://researchcenter.paloaltonetworks.com/2016/05/the-oilrig-campaign-attacks-on-saudi-arabian-organizations-deliver-helminth-backdoor/",
               "https://www.secureworks.com/research/threat-profiles/cobalt-gypsy"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--ismdoor",
-            "profile_name": "ISMDoor",
-            "entry_uuid": "e09d8dd6-6857-4607-a0ba-9c8d2a66083b",
-            "entry_value": "ISMDoor",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.ismdoor",
-              "http://www.clearskysec.com/greenbug/",
-              "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/greenbug-espionage-telco-south-asia",
-              "https://www.symantec.com/connect/blogs/greenbug-cyberespionage-group-targeting-middle-east-possible-links-shamoon",
-              "https://web.archive.org/web/20190331181353/https://www.symantec.com/connect/blogs/greenbug-cyberespionage-group-targeting-middle-east-possible-links-shamoon",
-              "https://unit42.paloaltonetworks.com/atoms/evasive-serpens/"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           },
@@ -2852,33 +2819,6 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--bf9e53ce-70be-461c-8f76-10d15f376b0c",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ALMA Communicator",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--alma-communicator",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--ec8242ef-d912-405a-9b3a-0bab27ec1ae6",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-09-20T13:48:11Z",
@@ -2904,114 +2844,6 @@
       "aliases": [
         "BONDUPDATER"
       ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--9a2f7094-852b-42b4-9d05-94b0fe18200a",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Clayslide",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--clayslide",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--1d61e364-57fb-44a3-ac0e-0f854aad3cea",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "customized Mimikatz",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--customized-mimikatz",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d4ca8a7a-2735-424e-8829-fca58b8a7d06",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "DarkSeaGreenShell",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--darkseagreenshell",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--843d7fd1-c1d2-48ed-b14a-ca00913cdffe",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ELVENDOOR",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--elvendoor",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
     },
     {
       "type": "malware",
@@ -3045,60 +2877,6 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--de52d9de-ac3f-4686-83cc-adef6b769615",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Invoke-Obfuscation",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--invoke-obfuscation",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ISMDoor",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--ismdoor",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--4902da69-a561-407f-ba86-74ed47463469",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-09-20T13:48:11Z",
@@ -3124,60 +2902,6 @@
       "aliases": [
         "ISMInjector"
       ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--2e4cab48-2df5-4938-8d30-1573fe87095b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "LittleFace)",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--littleface",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--a2877f39-5dd8-457e-a77f-3014ae07c175",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "malicious RTF files CVE-2017-0199 and CVE-2017-11882",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--malicious-rtf-files-cve-2017-0199-and-cve-2017-11882",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
     },
     {
       "type": "malware",
@@ -3327,87 +3051,6 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PLink",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--plink",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--6e57cff5-0160-4448-a4a0-65902fbb8f90",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "POWBAT",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--powbat",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d1a1342f-8725-4950-bb27-4724bc66d812",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PowDesk",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--powdesk",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--90c8b335-d7e4-425d-8d25-9a3215559d21",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-09-20T13:48:11Z",
@@ -3462,33 +3105,6 @@
       "aliases": [
         "POWRUNER"
       ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--21d2072b-b426-4823-b3d5-f357e9a57fb0",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "POWRUNER (PS Backdoor)",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--powruner-ps-backdoor",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
     },
     {
       "type": "malware",
@@ -3693,60 +3309,6 @@
       "aliases": [
         "Solar"
       ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "SSH Tunnels to Windows Servers",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--ssh-tunnels-to-windows-servers",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--aaa3482d-71b6-4a42-98b7-8289a044046a",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Webshells (TwoFace",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--webshells-twoface",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
     },
     {
       "type": "malware",
@@ -4405,75 +3967,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--33da6776-4ebb-4fdf-9d81-acac416cbac3",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アゼルバイジャン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアゼルバイジャンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6a99c67e-9fe0-4d09-849e-95ecda568a6e",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アラブ首長国連邦",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアラブ首長国連邦が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--b302b5bc-3d41-462d-955a-e497f4f10249",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アルバニア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアルバニアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T01:54:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4485,38 +3981,6 @@
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
           "external_id": "source--mitre-attack-19-2"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--466e7bd3-14de-4d0c-8579-989fd5c418ee",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-09-20T08:53:43Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラク",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてイラクが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -4547,369 +4011,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--bcd494cf-fd59-4e87-b025-804b795b8105",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "エジプト",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてエジプトが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--eff7facf-efc1-45af-b390-6deaf311caa6",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "オマーン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてオマーンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ac919ff7-e25a-4fd8-be7c-638f911b5e50",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "カタール",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてカタールが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--cf7e840a-1978-45e2-98e1-26a7fb0471ee",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "クウェート",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてクウェートが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ab5fde6b-f0ce-4cd4-b200-df7e7c935d98",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "サウジアラビア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてサウジアラビアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--523e165d-301c-46a2-9d7f-7e69a92d2f60",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "トルコ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてトルコが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--71851e71-9e84-471e-b91c-4faf915507b5",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "バーレーン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてバーレーンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--886c7785-ef38-4e9c-8642-b8442b9951e5",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-09-20T08:53:43Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "パキスタン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてパキスタンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--a07a8486-80cc-49e5-a874-2c2ad5fe44bd",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "モーリシャス",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてモーリシャスが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6c56bad0-f029-400b-9495-ab1e82a24b2e",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ヨルダン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてヨルダンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f7780055-6e95-4008-87fc-6b721d032348",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "レバノン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国としてレバノンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--4a421b24-2080-4418-828a-ba3b7b34b1a9",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国として中国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--03535284-805b-465c-9d22-1b91373a4939",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--b9242f99-6708-44cf-abbc-ecc879c0aede",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-09-20T08:53:43Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "英国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT34の標的・被害国として英国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--fcd391a7-d3c7-4c40-b699-04699793219f",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アフリカ",
-      "identity_class": "organization",
-      "description": "エジプト、モーリシャスで確認された標的・被害事例をアフリカとして集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--685f3b9b-367d-4547-a5d3-070f7ac6273f",
       "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T01:54:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4921,47 +4025,10 @@
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
           "external_id": "source--mitre-attack-19-2"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
         }
       ],
       "x_target_category": "regions",
       "x_confidence": "high"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c5071509-6e4a-47c3-a6a5-d54380896b8e",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "アルバニア、トルコ、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
     },
     {
       "type": "identity",
@@ -9511,21 +8578,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--0d3884ba-6811-45f0-936c-f2dfa7e748a8",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--bf9e53ce-70be-461c-8f76-10d15f376b0c",
-      "description": "APT34 uses ALMA Communicator.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--7009ac97-d236-414d-90e6-7c5a7131ce8b",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-07-25T15:22:54Z",
@@ -9537,66 +8589,6 @@
       "target_ref": "malware--ec8242ef-d912-405a-9b3a-0bab27ec1ae6",
       "description": "APT34 uses BONDUPDATER.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--03863c11-c7f6-42e2-9e6c-ba1a6d96e4b2",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--9a2f7094-852b-42b4-9d05-94b0fe18200a",
-      "description": "APT34 uses Clayslide.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6a057f8e-a6f9-4042-ac8d-d5ef61f1edcd",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--1d61e364-57fb-44a3-ac0e-0f854aad3cea",
-      "description": "APT34 uses customized Mimikatz.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ac0b26ca-6b36-4ad0-b026-812aae85f78b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--d4ca8a7a-2735-424e-8829-fca58b8a7d06",
-      "description": "APT34 uses DarkSeaGreenShell.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8ce3c6fe-e1a3-429d-9fcc-7a76326e4f86",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--843d7fd1-c1d2-48ed-b14a-ca00913cdffe",
-      "description": "APT34 uses ELVENDOOR.",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -9616,36 +8608,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--faa8cb8a-d446-4809-a744-615ec784b191",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--de52d9de-ac3f-4686-83cc-adef6b769615",
-      "description": "APT34 uses Invoke-Obfuscation.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9f3c80eb-79fa-4a5d-86b8-eefa94aa1210",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
-      "description": "APT34 uses ISMDoor.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--20eafdeb-c2d1-4404-9dbb-08a00062063d",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-07-25T15:22:54Z",
@@ -9657,36 +8619,6 @@
       "target_ref": "malware--4902da69-a561-407f-ba86-74ed47463469",
       "description": "APT34 uses ISMInjector.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--55289a83-d688-4396-8f6f-b1f33a0e0d5b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--2e4cab48-2df5-4938-8d30-1573fe87095b",
-      "description": "APT34 uses LittleFace).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e2b3d887-a42d-452c-9782-19fa8c178da0",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--a2877f39-5dd8-457e-a77f-3014ae07c175",
-      "description": "APT34 uses malicious RTF files CVE-2017-0199 and CVE-2017-11882.",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -9766,51 +8698,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--88f5e49a-9f82-4e34-99fc-30347668f19b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-      "description": "APT34 uses PLink.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--59266692-615f-4bd3-89ff-637d27e928ac",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--6e57cff5-0160-4448-a4a0-65902fbb8f90",
-      "description": "APT34 uses POWBAT.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--45156409-8e4d-450c-b9f3-79294aa7d37c",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--d1a1342f-8725-4950-bb27-4724bc66d812",
-      "description": "APT34 uses PowDesk.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--b6f59cf0-6aa4-4da3-b468-76409ee3c178",
       "created": "2026-07-25T15:22:54Z",
       "modified": "2026-07-25T15:22:54Z",
@@ -9837,21 +8724,6 @@
       "target_ref": "malware--ca2f9db6-226e-4a51-a1f5-60c3e6e1b869",
       "description": "APT34 uses POWRUNER.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fff4647e-156b-4f4e-974f-56722e860197",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--21d2072b-b426-4823-b3d5-f357e9a57fb0",
-      "description": "APT34 uses POWRUNER (PS Backdoor).",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -9957,36 +8829,6 @@
       "target_ref": "malware--aee24abe-1337-46ac-8105-559bc20d1c1f",
       "description": "APT34 uses Solar.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1037833f-f736-4057-be12-b61d6e489dd5",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-      "description": "APT34 uses SSH Tunnels to Windows Servers.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f418e3f8-d8f6-49a3-a505-b212026e65a3",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "malware--aaa3482d-71b6-4a42-98b7-8289a044046a",
-      "description": "APT34 uses Webshells (TwoFace.",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -10186,51 +9028,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--056c3de3-8d36-4aee-9ce4-8320668a3bd5",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--33da6776-4ebb-4fdf-9d81-acac416cbac3",
-      "description": "APT34 targets アゼルバイジャン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1078cd86-463f-46c5-a4de-63e3e75de6cc",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--6a99c67e-9fe0-4d09-849e-95ecda568a6e",
-      "description": "APT34 targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f0469b12-ceb3-4a24-8626-7ea255f179ba",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--b302b5bc-3d41-462d-955a-e497f4f10249",
-      "description": "APT34 targets アルバニア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--1518296b-3364-4abe-bfcc-1db163056eb9",
       "created": "2026-07-29T23:11:59Z",
       "modified": "2026-07-29T23:11:59Z",
@@ -10241,21 +9038,6 @@
       "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
       "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
       "description": "APT34 targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--593cb9b8-6d32-41aa-b77b-4b6a23ec2841",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--466e7bd3-14de-4d0c-8579-989fd5c418ee",
-      "description": "APT34 targets イラク (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -10276,231 +9058,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--83545fad-a078-47cb-8227-829cbef0c3bb",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--bcd494cf-fd59-4e87-b025-804b795b8105",
-      "description": "APT34 targets エジプト (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5c57ba75-498e-4dd2-9881-70b95c5344bd",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--eff7facf-efc1-45af-b390-6deaf311caa6",
-      "description": "APT34 targets オマーン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1bc9784d-6751-4792-a828-2ac3e1eda4de",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--ac919ff7-e25a-4fd8-be7c-638f911b5e50",
-      "description": "APT34 targets カタール (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--4360dc8e-5f98-4109-8bec-31c51a74c1e6",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--cf7e840a-1978-45e2-98e1-26a7fb0471ee",
-      "description": "APT34 targets クウェート (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1e420002-ab8f-416d-aa53-862bf6be47ef",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--ab5fde6b-f0ce-4cd4-b200-df7e7c935d98",
-      "description": "APT34 targets サウジアラビア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--45fc9e1d-6974-4ae3-955d-d16b17199969",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--523e165d-301c-46a2-9d7f-7e69a92d2f60",
-      "description": "APT34 targets トルコ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--15ccf028-23b8-433d-b845-3c3dbce91f34",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--71851e71-9e84-471e-b91c-4faf915507b5",
-      "description": "APT34 targets バーレーン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f48e9947-352b-4871-a1b1-7d673dd234ae",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--886c7785-ef38-4e9c-8642-b8442b9951e5",
-      "description": "APT34 targets パキスタン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2db6dbb6-44f4-4739-b0a9-78db63dbdfd5",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--a07a8486-80cc-49e5-a874-2c2ad5fe44bd",
-      "description": "APT34 targets モーリシャス (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--12034af8-2951-41af-b622-c5faf4daf461",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--6c56bad0-f029-400b-9495-ab1e82a24b2e",
-      "description": "APT34 targets ヨルダン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8e5e57d4-defb-4149-918c-4e82f5896d11",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--f7780055-6e95-4008-87fc-6b721d032348",
-      "description": "APT34 targets レバノン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--0631a017-6666-4710-ba6f-8bd2a3c39340",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--4a421b24-2080-4418-828a-ba3b7b34b1a9",
-      "description": "APT34 targets 中国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3d9ff44f-70ca-4274-af27-50753a11e117",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--03535284-805b-465c-9d22-1b91373a4939",
-      "description": "APT34 targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1c35763b-4ce6-4901-9f48-226f3a502233",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--b9242f99-6708-44cf-abbc-ecc879c0aede",
-      "description": "APT34 targets 英国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c8afa431-0b96-4d34-bf63-47a18a311bd4",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--fcd391a7-d3c7-4c40-b699-04699793219f",
-      "description": "APT34 targets アフリカ (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--c8d763e5-e79a-4606-bf9d-3539c9df65a3",
       "created": "2026-07-29T23:11:59Z",
       "modified": "2026-07-29T23:11:59Z",
@@ -10512,21 +9069,6 @@
       "target_ref": "identity--685f3b9b-367d-4547-a5d3-070f7ac6273f",
       "description": "APT34 targets 中東 (profile target category: regions).",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--907e4db8-dc18-48de-be95-9760293727ff",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-      "target_ref": "identity--c5071509-6e4a-47c3-a6a5-d54380896b8e",
-      "description": "APT34 targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -15865,7 +14407,7 @@
       "spec_version": "2.1",
       "id": "report--af963bd5-bb8a-4ec3-b8cf-47339d33ee21",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -15874,32 +14416,19 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T13:48:11Z",
+      "published": "2026-09-21T04:35:02Z",
       "object_refs": [
         "intrusion-set--0e6b28aa-0f19-4011-87eb-34836fb21dfa",
-        "malware--bf9e53ce-70be-461c-8f76-10d15f376b0c",
         "malware--ec8242ef-d912-405a-9b3a-0bab27ec1ae6",
-        "malware--9a2f7094-852b-42b4-9d05-94b0fe18200a",
-        "malware--1d61e364-57fb-44a3-ac0e-0f854aad3cea",
-        "malware--d4ca8a7a-2735-424e-8829-fca58b8a7d06",
-        "malware--843d7fd1-c1d2-48ed-b14a-ca00913cdffe",
         "malware--98c3f9d8-0766-45e2-9ffc-09fa4d63e6e0",
-        "malware--de52d9de-ac3f-4686-83cc-adef6b769615",
-        "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
         "malware--4902da69-a561-407f-ba86-74ed47463469",
-        "malware--2e4cab48-2df5-4938-8d30-1573fe87095b",
-        "malware--a2877f39-5dd8-457e-a77f-3014ae07c175",
         "malware--55424605-5f4b-4553-8de0-41d17c9d6c38",
         "malware--fc2a9da2-0454-44c1-a4bd-6ef88f7e3bac",
         "malware--395c3c65-3af7-4ab5-9011-27a4519e02b3",
         "malware--d71fa6cc-76bd-4493-b7bf-19ad586e2de5",
         "malware--58e421ef-933f-4fcd-8f5e-48dfd4252dfa",
-        "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-        "malware--6e57cff5-0160-4448-a4a0-65902fbb8f90",
-        "malware--d1a1342f-8725-4950-bb27-4724bc66d812",
         "malware--90c8b335-d7e4-425d-8d25-9a3215559d21",
         "malware--ca2f9db6-226e-4a51-a1f5-60c3e6e1b869",
-        "malware--21d2072b-b426-4823-b3d5-f357e9a57fb0",
         "malware--3a2de1c9-2c5d-4173-b814-3eafd5bb1f4f",
         "malware--8676ef48-af5f-4853-bae9-460f9a43da48",
         "malware--7ee9adf4-9efc-4ab6-950c-9dedaa85e2d8",
@@ -15907,8 +14436,6 @@
         "malware--9b8936fd-01cb-423b-91a2-96b8aba17aea",
         "malware--7ab507de-17b9-448d-a8a2-bf1f862ea652",
         "malware--aee24abe-1337-46ac-8105-559bc20d1c1f",
-        "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-        "malware--aaa3482d-71b6-4a42-98b7-8289a044046a",
         "malware--bd5d6482-f358-4d8c-9b42-4acf25edea5d",
         "tool--be53e920-2ed8-4d86-a073-18508c365d94",
         "tool--3a4bfdfb-57f8-4520-ae6e-9f8cb2e1b722",
@@ -15925,29 +14452,9 @@
         "campaign--b086dafb-c04b-4caa-93c3-323083b0e284",
         "campaign--bed5db68-e33a-4e0c-a18f-227b6a6a4ef7",
         "campaign--488c7ae9-3568-4ac2-be93-2bbe27cac2bf",
-        "identity--33da6776-4ebb-4fdf-9d81-acac416cbac3",
-        "identity--6a99c67e-9fe0-4d09-849e-95ecda568a6e",
-        "identity--b302b5bc-3d41-462d-955a-e497f4f10249",
         "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
-        "identity--466e7bd3-14de-4d0c-8579-989fd5c418ee",
         "identity--6f5109ef-e7a0-4e11-9cc7-69ea15776a71",
-        "identity--bcd494cf-fd59-4e87-b025-804b795b8105",
-        "identity--eff7facf-efc1-45af-b390-6deaf311caa6",
-        "identity--ac919ff7-e25a-4fd8-be7c-638f911b5e50",
-        "identity--cf7e840a-1978-45e2-98e1-26a7fb0471ee",
-        "identity--ab5fde6b-f0ce-4cd4-b200-df7e7c935d98",
-        "identity--523e165d-301c-46a2-9d7f-7e69a92d2f60",
-        "identity--71851e71-9e84-471e-b91c-4faf915507b5",
-        "identity--886c7785-ef38-4e9c-8642-b8442b9951e5",
-        "identity--a07a8486-80cc-49e5-a874-2c2ad5fe44bd",
-        "identity--6c56bad0-f029-400b-9495-ab1e82a24b2e",
-        "identity--f7780055-6e95-4008-87fc-6b721d032348",
-        "identity--4a421b24-2080-4418-828a-ba3b7b34b1a9",
-        "identity--03535284-805b-465c-9d22-1b91373a4939",
-        "identity--b9242f99-6708-44cf-abbc-ecc879c0aede",
-        "identity--fcd391a7-d3c7-4c40-b699-04699793219f",
         "identity--685f3b9b-367d-4547-a5d3-070f7ac6273f",
-        "identity--c5071509-6e4a-47c3-a6a5-d54380896b8e",
         "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
         "identity--86f90476-71ba-4533-a45f-1ac222ebce2e",
         "identity--36ec02cd-b4e0-4af5-a614-9f5023c2268d",

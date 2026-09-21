@@ -4,7 +4,7 @@
   "name": "Storm-2603",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T13:48:12Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -47,7 +47,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -180,7 +180,10 @@
         "basis": "daily-news-file-date"
       },
       "description": "中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
-      "target_refs": [],
+      "target_refs": [
+        "target--targeting-audit--region--69e0b1175c60b8a211cb",
+        "target--targeting-audit--region--6c0b59266dc90d2e8805"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
@@ -211,7 +214,10 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
+          "target_refs": [
+            "target--targeting-audit--region--69e0b1175c60b8a211cb",
+            "target--targeting-audit--region--6c0b59266dc90d2e8805"
+          ],
           "victim_refs": [
             "victim--activity-rule--2fb3ba4fffbab5417544"
           ]
@@ -245,7 +251,10 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--69e0b1175c60b8a211cb",
+              "target--targeting-audit--region--6c0b59266dc90d2e8805"
+            ]
           }
         },
         "confidence": "medium",
@@ -279,7 +288,9 @@
       },
       "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
       "target_refs": [
-        "target--activity-rule--country--6604ad21c713b8dfd8c7"
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--targeting-audit--region--69e0b1175c60b8a211cb",
+        "target--targeting-audit--region--6c0b59266dc90d2e8805"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -308,7 +319,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--targeting-audit--region--69e0b1175c60b8a211cb",
+            "target--targeting-audit--region--6c0b59266dc90d2e8805"
           ],
           "victim_refs": [
             "victim--activity-rule--b17097a14592b324966d"
@@ -341,7 +354,10 @@
             "target_country_refs": [
               "target--activity-rule--country--6604ad21c713b8dfd8c7"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--69e0b1175c60b8a211cb",
+              "target--targeting-audit--region--6c0b59266dc90d2e8805"
+            ]
           }
         },
         "confidence": "medium",
@@ -449,8 +465,8 @@
     ],
     "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -518,7 +534,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250805.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250805.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-5c143f1d91377b49cfcc",
@@ -536,7 +560,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-c9fa26bbe8d21f50b441",
@@ -554,7 +587,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -680,7 +721,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-2603.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-2603.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

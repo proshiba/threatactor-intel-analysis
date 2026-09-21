@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt34`
 - 状態: review
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -38,7 +38,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 - 国: Iran
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`
 
 ## モチベーション
 
@@ -54,16 +54,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [OilRig](https://attack.mitre.org/groups/G0049) is a suspected Iranian threat group that has targeted Middle Eastern and international victims since at least 2014. The group has targeted a variety of sectors, including financial, government, energy, chemical, and telecommunications. It appears the group carries out supply chain attacks, leveraging the trust relationship between organizations to attack their primary targets. The group works on behalf of the Iranian government based on infrastructure details that contain references to Iran, use of Iranian infrastructure, and targeting that aligns with nation-state interests.(Citation: FireEye APT34 Dec 2017)(Citation: Palo Alto OilRig April 2017)(Citation: ClearSky OilRig Jan 2017)(Citation: Palo Alto OilRig May 2016)(Citation: Palo Alto OilRig Oct 2016)(Citation: Unit42 OilRig Playbook 2023)(Citation: Unit 42 QUADAGENT July 2018) |
-| Capability | SEASHARPEE, POWRUNER, PowerExchange, ODAgent, RDAT, ISMInjector, QUADAGENT, ZeroCleare, OopsIE, OilCheck, SampleCheck5000, OilBooster, Solar, RGDoor, Mango, BONDUPDATER, SideTwist, Helminth, ISMDoor, Clayslide, ALMA Communicator, customized Mimikatz, Invoke-Obfuscation, POWBAT, POWRUNER (PS Backdoor), malicious RTF files CVE-2017-0199 and CVE-2017-11882, ELVENDOOR, PLink, SSH Tunnels to Windows Servers, Webshells (TwoFace, DarkSeaGreenShell, LittleFace), PowDesk, Net, certutil, ipconfig, Tasklist, ngrok, netstat, Systeminfo, Mimikatz, LaZagne, Reg, ftp, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
-| Socio-political | Iran |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -111,29 +111,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--alma-communicator | ALMA Communicator | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--bondupdater | BONDUPDATER | [BONDUPDATER](https://attack.mitre.org/software/S0360) is a PowerShell backdoor used by [OilRig](https://attack.mitre.org/groups/G0049). It was first observed in November 2017 during targeting of a Middle Eastern government organization, and an updated version was observed in August 2018 being used to target a government organization with spearphishing emails.(Citation: FireEye APT34 Dec 2017)(Citation: Palo Alto OilRig Sep 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--clayslide | Clayslide | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--customized-mimikatz | customized Mimikatz | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--darkseagreenshell | DarkSeaGreenShell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--elvendoor | ELVENDOOR | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--helminth | Helminth | [Helminth](https://attack.mitre.org/software/S0170) is a backdoor that has at least two variants - one written in VBScript and PowerShell that is delivered via a macros in Excel spreadsheets, and one that is a standalone Windows executable. (Citation: Palo Alto OilRig May 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--invoke-obfuscation | Invoke-Obfuscation | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--ismdoor | ISMDoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--isminjector | ISMInjector | [ISMInjector](https://attack.mitre.org/software/S0189) is a Trojan used to install another [OilRig](https://attack.mitre.org/groups/G0049) backdoor, ISMAgent. (Citation: OilRig New Delivery Oct 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--littleface | LittleFace) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--malicious-rtf-files-cve-2017-0199-and-cve-2017-11882 | malicious RTF files CVE-2017-0199 and CVE-2017-11882 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--mango | Mango | [Mango](https://attack.mitre.org/software/S1169) is a first-stage backdoor written in C#/.NET that was used by [OilRig](https://attack.mitre.org/groups/G0049) during the [Juicy Mix](https://attack.mitre.org/campaigns/C0044) campaign. [Mango](https://attack.mitre.org/software/S1169) is the successor to [Solar](https://attack.mitre.org/software/S1166) and includes additional exfiltration capabilities, the use of native APIs, and added detection evasion code.(Citation: ESET OilRig Campaigns Sep 2023) | 2022-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 高 | `source--mitre-attack-19-2` |
 | malware--odagent | ODAgent | [ODAgent](https://attack.mitre.org/software/S1170) is a C#/.NET downloader that has been used by [OilRig](https://attack.mitre.org/groups/G0049) since at least 2022 including against target organizations in Israel to download and execute payloads and to exfiltrate staged files.(Citation: ESET OilRig Downloaders DEC 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--oilbooster | OilBooster | [OilBooster](https://attack.mitre.org/software/S1172) is a downloader written in Microsoft Visual C/C++ that has been used by [OilRig](https://attack.mitre.org/groups/G0049) since at least 2022 including against target organizations in Israel to download and execute files and for exfiltration.(Citation: ESET OilRig Downloaders DEC 2023)    | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--oilcheck | OilCheck | [OilCheck](https://attack.mitre.org/software/S1171) is a C#/.NET downloader that has been used by [OilRig](https://attack.mitre.org/groups/G0049) since at least 2022 including against targets in Israel. [OilCheck](https://attack.mitre.org/software/S1171) uses draft messages created in a shared email account for C2 communication.(Citation: ESET OilRig Downloaders DEC 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--oopsie | OopsIE | [OopsIE](https://attack.mitre.org/software/S0264) is a Trojan used by [OilRig](https://attack.mitre.org/groups/G0049) to remotely execute commands as well as upload/download files to/from victims. (Citation: Unit 42 OopsIE! Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--plink | PLink | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--powbat | POWBAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--powdesk | PowDesk | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--powerexchange | PowerExchange | [PowerExchange](https://attack.mitre.org/software/S1173) is a PowerShell backdoor that has been used by [OilRig](https://attack.mitre.org/groups/G0049) since at least 2023 including against government targets in the Middle East.(Citation: Symantec Crambus OCT 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--powruner | POWRUNER | [POWRUNER](https://attack.mitre.org/software/S0184) is a PowerShell script that sends and receives commands to and from the C2 server. (Citation: FireEye APT34 Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--powruner-ps-backdoor | POWRUNER (PS Backdoor) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--quadagent | QUADAGENT | [QUADAGENT](https://attack.mitre.org/software/S0269) is a PowerShell backdoor used by [OilRig](https://attack.mitre.org/groups/G0049). (Citation: Unit 42 QUADAGENT July 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--rdat | RDAT | [RDAT](https://attack.mitre.org/software/S0495) is a backdoor used by the suspected Iranian threat group [OilRig](https://attack.mitre.org/groups/G0049). [RDAT](https://attack.mitre.org/software/S0495) was originally identified in 2017 and targeted companies in the telecommunications sector.(Citation: Unit42 RDAT July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--rgdoor | RGDoor | [RGDoor](https://attack.mitre.org/software/S0258) is a malicious Internet Information Services (IIS) backdoor developed in the C++ language. [RGDoor](https://attack.mitre.org/software/S0258) has been seen deployed on webservers belonging to the Middle East government organizations. [RGDoor](https://attack.mitre.org/software/S0258) provides backdoor access to compromised IIS servers. (Citation: Unit 42 RGDoor Jan 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -141,8 +128,6 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | malware--seasharpee | SEASHARPEE | [SEASHARPEE](https://attack.mitre.org/software/S0185) is a Web shell that has been used by [OilRig](https://attack.mitre.org/groups/G0049). (Citation: FireEye APT34 Webinar Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--sidetwist | SideTwist | [SideTwist](https://attack.mitre.org/software/S0610) is a C-based backdoor that has been used by [OilRig](https://attack.mitre.org/groups/G0049) since at least 2021.(Citation: Check Point APT34 April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--solar | Solar | [Solar](https://attack.mitre.org/software/S1166) is a C#/.NET backdoor that was used by [OilRig](https://attack.mitre.org/groups/G0049) during the [Outer Space](https://attack.mitre.org/campaigns/C0042) campaign to download, execute, and exfiltrate files.(Citation: ESET OilRig Campaigns Sep 2023) | 2021-01-01T05:00:00.000Z | 2021-12-01T05:00:00.000Z | 高 | `source--mitre-attack-19-2` |
-| malware--ssh-tunnels-to-windows-servers | SSH Tunnels to Windows Servers | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--webshells-twoface | Webshells (TwoFace | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--zerocleare | ZeroCleare | [ZeroCleare](https://attack.mitre.org/software/S1151) is a wiper malware that has been used in conjunction with the [RawDisk](https://attack.mitre.org/software/S0364) driver since at least 2019 by suspected Iran-nexus threat actors including activity targeting the energy and industrial sectors in the Middle East and political targets in Albania.(Citation: Microsoft Albanian Government Attacks September 2022)(Citation: CISA Iran Albanian Attacks September 2022)(Citation: Mandiant ROADSWEEP August 2022)(Citation: IBM ZeroCleare Wiper December 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -202,36 +187,16 @@ Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルバニア | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアルバニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 活動「Juicy Mix」の記述で標的として明示された国・地域。 | 2021-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラク | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 活動「Juicy Mix」の記述で標的として明示された国・地域。 | 2021-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | countries | イラン | The group works on behalf of the Iranian government based on infrastructure details that contain references to Iran, use of Iranian infrastructure, and targeting that aligns with nation-state interests.(Citation: FireEye APT34 Dec 2017)(Citation: Palo Alto OilRig April 2017)(Citation: ClearSky Oi | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オマーン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カタール | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | クウェート | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | バーレーン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてバーレーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モーリシャス | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてモーリシャスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | レバノン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | エジプト、モーリシャスで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | MITRE ATT&CKのGroup概要でAPT34の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | アルバニア、トルコ、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でAPT34の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 非営利・市民社会 | 活動「Juicy Mix」の記述で標的として明示された産業。 | 2022-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | sectors | エネルギー | The group has targeted a variety of sectors, including financial, government, energy, chemical, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | The group has targeted a variety of sectors, including financial, government, energy, chemical, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 金融 | The group has targeted a variety of sectors, including financial, government, energy, chemical, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 情報通信 | The group has targeted a variety of sectors, including financial, government, energy, chemical, and telecommunications. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -382,13 +347,13 @@ Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

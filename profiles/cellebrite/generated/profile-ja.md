@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cellebrite`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-21T02:11:26Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -42,7 +42,7 @@ Aliasなし
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Commercial device-access / digital-forensics technology. |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -118,7 +118,7 @@ Aliasなし
 
 ターゲット情報なし
 
-選定ロジック: No victim targeting is assigned to Cellebrite from customer-operated use of its products. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: No victim targeting is assigned to Cellebrite from customer-operated use of its products. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -134,7 +134,7 @@ TTPなし
 - IOC観測: 137件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 77件
-- 非IOC artifact観測: 24件（`artifacts.csv`）
+- 非IOC artifact観測: 17件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

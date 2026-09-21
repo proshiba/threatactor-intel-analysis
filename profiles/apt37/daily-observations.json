@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--apt37",
-  "updated_at": "2026-08-07T10:34:08Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "records": [
     {
       "record_id": "daily-record--04c3bda3362bec6cbbe7eb26",
@@ -2116,15 +2116,15 @@
         "raw_value": "APT37"
       },
       "activity": {
-        "title": "北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開",
-        "summary": "北朝鮮の脅威アクターが、偽の求人面接を装い、macOS向けのFERRETマルウェアを配布。 被害者は、仮想会議用ソフトウェアのインストールや更新を要求するエラーが表示。これに促され、悪意のあるソフトウェアをダウンロード。 この攻撃は、JavaScriptベースのBeaverTailマルウェアをドロップし、さらにPython製のバックドアであるInvisibleFerretを展開。 攻撃者は、LinkedIn上でリクルーターを装い、ターゲットにビデオ評価を完了するよう促す。 最終的に、Golangベースのバックドアと情報窃取ツールをドロップし、MetaMaskウォレットから資金を盗むことを目的としている。 BeaverTailマルウェアを含む悪意のあるnpmパッケージ（postcss-optimizer）も確認されている。このパッケージは、Windows、macOS、Linuxシステムを感染させることができ、非常に人気なpostcssライブラリを模倣",
+        "title": "APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散",
+        "summary": "Genians Security Centerは、APT37が2024年11月13日に韓国のKメッセンジャー団体チャットへ悪性HWP文書とZIP内のLNKを時間差で配布した活動を分析した。初期スピアフィッシング後に侵害端末で偵察・探索を行い、ログイン中のメッセンジャーを追加配布経路として悪用した。HWPのOLEとLNK内PowerShellからファイルレスで実行されるペイロードは、APT37のRoKRAT系列と特定された。",
         "news_date": "2025-02-05",
         "news_url": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
-        "primary_url": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
+        "primary_url": "https://www.genians.co.kr/blog/threat_intelligence/k-messenger",
         "activity_reference": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
         "news_path": "daily-news/news/2025_01-03/20250205.md"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "iocs": [],
       "artifacts": [],
       "sources": [
@@ -2132,21 +2132,39 @@
           "url": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
           "source_path": "daily-news/news/2025_01-03/20250205.md",
           "source_type": "primary-report"
+        },
+        {
+          "url": "https://www.genians.co.kr/blog/threat_intelligence/k-messenger",
+          "source_type": "primary-report"
         }
       ],
       "capability_decisions": [],
-      "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮と関連のあるAPT37（別名ScarCruft）と呼ばれる脅威アクターは、スピアフィッシングキャンペーンを通じてRokRATマルウェアを配布し、グループチャットで他のターゲットにも拡散させる活動も確認されている。",
+      "review_notes": "一次資料再検証: 日次記事の見出しと主題は別クラスタContagious InterviewのFERRET活動で、APT37は末尾の独立したニュース項目にだけ登場する。そのためactivity_overridesで、GeniansがAPT37へ直接帰属した2024-11-13のKメッセンジャー経由HWP/LNK・RoKRAT活動へ限定した。",
       "activity_claim": {
         "assessment": "strong-subject",
         "actor_role": "operator",
-        "match_location": "body",
-        "evidence_text": "- 北朝鮮と関連のあるAPT37（別名ScarCruft）と呼ばれる脅威アクターは、スピアフィッシングキャンペーンを通じてRokRATマルウェアを配布し、グループチャットで他のターゲットにも拡散させる活動も確認されている。",
+        "match_location": "primary-report",
+        "evidence_text": "Genians: HWP, LNK 악성코드를 활용한 APT37 그룹의 집요한 공격 전술 분석",
         "reasons": [
-          "要約の同一文でアクターが活動の実行主体として明記されている"
+          "APT37固有の一次分析へ活動表示を限定"
         ],
-        "suggested_confidence": "medium"
+        "suggested_confidence": "high"
       },
-      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "activity_period": {
+        "first_observed": {
+          "value": "2024-11-13T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Genians: K-messenger delivery"
+        },
+        "last_observed": {
+          "value": "2024-11-13T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Genians: K-messenger delivery"
+        }
+      }
     },
     {
       "record_id": "daily-record--d79ea67a0f7083db4a1c1676",

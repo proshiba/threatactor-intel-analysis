@@ -4,7 +4,7 @@
   "name": "QTFY",
   "status": "draft",
   "created_at": "2026-09-02T12:46:04Z",
-  "updated_at": "2026-09-20T13:48:12Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -115,7 +115,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": ""
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -383,12 +383,13 @@
         "target--activity-rule--sector--260bd106ff4950e5430d",
         "target--activity-rule--sector--b8d6639a1884e2bacaa4",
         "target--activity-rule--sector--b94dc560a327b601965d",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--targeting-audit--region--9774112d109d08f275a9"
       ],
       "malware_refs": [
         "malware--qscan",
-        "malware--qtrouter",
-        "malware--qtproxy"
+        "malware--qtproxy",
+        "malware--qtrouter"
       ],
       "infrastructure_refs": [
         "infrastructure--fast-labyrinth"
@@ -435,7 +436,8 @@
             "target--activity-rule--sector--260bd106ff4950e5430d",
             "target--activity-rule--sector--b8d6639a1884e2bacaa4",
             "target--activity-rule--sector--b94dc560a327b601965d",
-            "target--activity-rule--sector--e7608f51421ca8b1e297"
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--targeting-audit--region--9774112d109d08f275a9"
           ],
           "victim_refs": [
             "victim--activity-rule--547eb506c9eb1e68e54f"
@@ -474,7 +476,9 @@
               "target--activity-rule--country--6604ad21c713b8dfd8c7",
               "target--activity-rule--country--f9601e2d842c9a05202b"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--9774112d109d08f275a9"
+            ]
           }
         },
         "confidence": "medium",
@@ -651,28 +655,6 @@
     ],
     "regions": [
       {
-        "id": "target--targeting-audit--region--77085ca168fa4af772de",
-        "name": "アジア",
-        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジアが明示されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--qtfy--lumen-quartermaster"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
-      },
-      {
         "id": "target--targeting-audit--region--9774112d109d08f275a9",
         "name": "アジア太平洋",
         "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジア太平洋が明示されている。",
@@ -809,8 +791,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -861,7 +843,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260901.csv; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260901.csv; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-f3e970d5f0009ebe4c40",
@@ -879,7 +870,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--qtfy--lumen-quartermaster",
@@ -897,7 +901,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次情報源チェック(2026-09-02)でDOJプレスリリース本文の参照から辿って取得し、HTTP 200で原文を確認した。tech-memo daily-newsには未収録。Black Lotus Labsが1年間の追跡に基づき直接観測した技術報告であるため reliability は high とする。ただし報告本文に「QTFY」の語は存在せず、本プロファイルへの結び付けはDOJプレスリリースの参照に依拠する点を actor_scope 上の留保として記録する。"
+      "analyst_notes": "一次情報源チェック(2026-09-02)でDOJプレスリリース本文の参照から辿って取得し、HTTP 200で原文を確認した。tech-memo daily-newsには未収録。Black Lotus Labsが1年間の追跡に基づき直接観測した技術報告であるため reliability は high とする。ただし報告本文に「QTFY」の語は存在せず、本プロファイルへの結び付けはDOJプレスリリースの参照に依拠する点を actor_scope 上の留保として記録する。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -956,7 +973,7 @@
       "DOJプレスリリースは2026年8月28日に更新され、標的となった米政府機関を「被害者」ではなく「標的」とする趣旨の訂正が加えられている。本文末尾に「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された政府機関が実際に侵害されたことを意味しないため、victim_casesは作成していない。",
       "南京というIPジオロケーション上の所在は、Lumen自身が運用者の物理的所在を判定できないと明記している。"
     ],
-    "collection_notes": "2026-09-02の日次チェックで、tech-memo daily-news 2026-09-01収録のDOJプレスリリース(一次ソース)と、daily_check.py のunmatched_actor_values(IOC CSV actor列、観測4件)から検知した。DOJプレスリリース原文(2026-08-26公表・2026-08-28更新、Press Release Number 26-972)およびLumen Black Lotus Labs報告(2026-08-26)をそれぞれHTTP 200で取得して確認済み。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "2026-09-02の日次チェックで、tech-memo daily-news 2026-09-01収録のDOJプレスリリース(一次ソース)と、daily_check.py のunmatched_actor_values(IOC CSV actor列、観測4件)から検知した。DOJプレスリリース原文(2026-08-26公表・2026-08-28更新、Press Release Number 26-972)およびLumen Black Lotus Labs報告(2026-08-26)をそれぞれHTTP 200で取得して確認済み。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -964,7 +981,7 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "FBIが差し押さえたドメインは qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com である。いずれもQScanとQTRouterにハードコードされ、通信と認証に用いられていた。fastlink[.]ws はFast Labyrinth中継網でノードとして利用された中国の商用プロキシサービスであり、乗っ取られた正規サービス側の資産である点で他の3件と性質が異なる。QScanのタスクブローカーは mq-task.qt-proxy.org (154.64.238[.]222)、結果集約基盤は mq-result.qt-proxy.org (154.64.238[.]247) にある。走査ワーカーは30日周期で/24サブネットブロックを切り替え、閾値型の検知を回避する。",
-    "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=アジア、アジア太平洋。日本は確認時に個別国として保持する。\n\nDOJが標的として列挙したのは米国の連邦政府機関である。ただし2026年8月28日の訂正により、これらは「標的」であって「被害者」ではないことが明確化されており、侵害の成立を意味しない。Lumenの観測では、Fast Labyrinth経由のプロファイリングは世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、政府・防衛・公共部門ネットワークに集中し、米国・英国・アジア太平洋地域が中心である。米国では軍・防衛ネットワーク、通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が重点対象であり、地質・環境関連機関、欧州のインフラ、各国の司法ノードも関心対象とされる。これらはいずれも基盤経由で観測されたプロファイリング対象であり、侵害された組織の一覧ではない。",
+    "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=アジア太平洋。日本は確認時に個別国として保持する。\n\nDOJが標的として列挙したのは米国の連邦政府機関である。ただし2026年8月28日の訂正により、これらは「標的」であって「被害者」ではないことが明確化されており、侵害の成立を意味しない。Lumenの観測では、Fast Labyrinth経由のプロファイリングは世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、政府・防衛・公共部門ネットワークに集中し、米国・英国・アジア太平洋地域が中心である。米国では軍・防衛ネットワーク、通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が重点対象であり、地質・環境関連機関、欧州のインフラ、各国の司法ノードも関心対象とされる。これらはいずれも基盤経由で観測されたプロファイリング対象であり、侵害された組織の一覧ではない。",
     "additional_notes": ""
   }
 }

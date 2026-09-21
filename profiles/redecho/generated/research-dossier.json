@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--redecho",
   "actor_name": "RedEcho",
-  "profile_updated_at": "2026-09-20T13:48:00Z",
+  "profile_updated_at": "2026-09-21T04:18:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -11,9 +11,9 @@
       "relationships": "canonical-present",
       "malware": "canonical-present",
       "tools": "unknown",
-      "targets": "canonical-present",
+      "targets": "lead-only",
       "motivations": "lead-only",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 0,
@@ -22,17 +22,20 @@
       "malware": 1,
       "activity_linked_malware": 0,
       "tools": 0,
-      "targets": 1,
+      "targets": 0,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 1,
       "relationships": 0,
       "malware": 2,
       "tools": 0,
       "untyped_software": 0,
       "targets": 5,
-      "motivations": 2
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -84,7 +87,8 @@
             "counterevidence": []
           }
         ],
-        "target_actor_ref": "actor--apt41"
+        "target_actor_ref": "actor--apt41",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [],
@@ -148,48 +152,10 @@
       }
     ],
     "tool_usage": [],
-    "targets": [
-      {
-        "id": "target--targeting-audit--country--b00cfcf4a7ce3cbc7c71",
-        "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでRedEchoの標的・被害国としてインドが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--6675b1e86689a743f2373b55",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "RedEcho targets country インド.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      }
-    ]
+    "targets": []
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [
       {
         "campaign_id": "d7357476-a73c-5b5b-9bb9-95a3b379096f",
@@ -271,6 +237,12 @@
     ],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -298,7 +270,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Energy",
+              "dataset_entry": "RedEcho",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Maritime and Shipbuilding",
@@ -328,7 +310,9 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
-      ]
+      ],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -381,11 +365,11 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 10,
-    "partially-supported": 1
+    "supported": 10
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -538,31 +522,6 @@
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
     "source--osint-misp-mitre-enterprise-intrusion-set": {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
@@ -588,6 +547,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -644,41 +658,12 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   },
   "research_gaps": [
     "No canonical actor-specific activity is structured.",
     "Malware is actor-linked only; campaign-specific use periods are unknown.",
+    "No canonical target country, region, sector, or role is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]

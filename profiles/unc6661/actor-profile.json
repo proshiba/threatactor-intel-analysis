@@ -4,7 +4,7 @@
   "name": "UNC6661",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-29T23:12:01Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "languages": [
     "ja"
   ],
@@ -40,14 +40,61 @@
     "analyst_notes": ""
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc6661--verified--d39a36806921213d",
+      "target_actor": "UNC6671",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "GTIG tracks UNC6661, UNC6671, and UNC6240 separately within recent ShinyHunters-branded SaaS theft reporting to preserve possible partnership and impersonation boundaries.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Shared umbrella branding and TTPs do not establish exact identity; Mandiant notes indicators that separate individuals may be involved."
+    },
+    {
+      "relationship_id": "relationship--unc6661--verified--50f0e2c66ff23aba",
+      "target_actor": "UNC6240",
+      "relationship_type": "related-to",
+      "description": "GTIG attributes extortion following UNC6661 intrusions to UNC6240, based on negotiation-account and extortion-artifact overlaps.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Linked stages, retained as distinct GTIG threat clusters."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -64,8 +111,8 @@
     "regions": [],
     "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [],
   "sources": [
@@ -122,6 +169,35 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--gtig-shinyhunters-saas-clusters-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "title": "Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft",
+      "publisher": "Mandiant / Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-01-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GTIG deliberately tracks UNC6661, UNC6671, and UNC6240 separately to represent evolving partnerships and possible impersonation. UNC6671 used an unbranded extortion email and a different Tox ID."
     }
   ],
   "assessment": {

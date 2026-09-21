@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--tag-100`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -107,14 +107,14 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | infrastructure-operation | 2024-06 | 2025-07 | 2025-09-25 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--75984dc07e4edbef70d3 | Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。中国国家支援と評価。 2024年6月〜2025年7月にエッジデバイスを狙い侵入、Go製PanteganaやCobalt Strike、Spark RATを用いたと報告。 既知脆弱性を武器化しCheck Point/Cisco/Citrix/F5/Fortinet/Ivanti/PA/SonicWall製品から初期侵入。 ExpressVPNやWarp VPNでインフラを管理、LESLIELOADER変種でBeacon/RAT起動。政府・防衛・法律分野に拡大。 中米・米国・台湾・韓国などで活動。中国訪問前の南米政府のOWA狙いなど地政学的意図が示唆。 | 中 | `source--daily-86f6aba61d69ac9dcac7` |
-| TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | cyber-espionage | 不明 | 不明 | 2024-07-19 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--9e892f3b23fa5df3a882 | TAG-100はオープンソースツールを用いて世界中の政府および民間組織を標的にしたサイバースパイ活動を展開。 攻撃はCitrix、F5、Zimbra、Microsoft Exchangeなどの既知の脆弱性を悪用。 2024-4-16から、Palo Alto Networks GlobalProtectの脆弱性（CVE-2024-3400）を悪用した攻撃を広範に行っている。これはエクスプロイトが公開されてすぐ開始された。 攻撃の一環としてPantegana、Spark RAT、Cobalt Strike Beaconを展開。 攻撃対象はアフリカ、アジア、北米、南米、オセアニアなどの広範な業界を攻撃。対象には日本も含まれる。 | 高 | `source--daily-5867c0ebb17c5df135a7` |
+| TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | cyber-espionage | 不明 | 不明 | 2024-07-19 | target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--region--627e7d90232a6cb9bc36, target--targeting-audit--region--ad6206682dc3c11416fa, target--targeting-audit--region--dd50b0711450cbfaf7e8, target--targeting-audit--region--e27ef8f66ee6ed6a7f9a, target--targeting-audit--region--f21338aea6fe13daa996 |  |  | victim--activity-rule--9e892f3b23fa5df3a882 | TAG-100はオープンソースツールを用いて世界中の政府および民間組織を標的にしたサイバースパイ活動を展開。 攻撃はCitrix、F5、Zimbra、Microsoft Exchangeなどの既知の脆弱性を悪用。 2024-4-16から、Palo Alto Networks GlobalProtectの脆弱性（CVE-2024-3400）を悪用した攻撃を広範に行っている。これはエクスプロイトが公開されてすぐ開始された。 攻撃の一環としてPantegana、Spark RAT、Cobalt Strike Beaconを展開。 攻撃対象はアフリカ、アジア、北米、南米、オセアニアなどの広範な業界を攻撃。対象には日本も含まれる。 | 高 | `source--daily-5867c0ebb17c5df135a7` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | TAG-100 | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | 中 |
-| TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | TAG-100 | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | 高 |
+| TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | TAG-100 | 情報なし | 情報なし | 情報なし | 政府・行政, アジア, アフリカ, 北米, 南米, オセアニア | 被害事例: TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | 高 |
 
 
 
@@ -122,34 +122,14 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | イタリア | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キューバ | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてキューバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジブチ | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてジブチが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドミニカ共和国 | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてドミニカ共和国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィジー | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてフィジーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボリビア | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてボリビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでTAG-100の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | アジア | 活動「TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-5867c0ebb17c5df135a7` |
 | regions | アフリカ | 活動「TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施」の記述で標的地域としてアフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-5867c0ebb17c5df135a7` |
 | regions | オセアニア | 活動「TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施」の記述で標的地域としてオセアニアが明示されている。 | 不明 | 不明 | 中 | `source--daily-5867c0ebb17c5df135a7` |
-| regions | 中南米 | キューバ、ドミニカ共和国、ボリビアで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 北米 | 活動「TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施」の記述で標的地域として北米が明示されている。 | 不明 | 不明 | 中 | `source--daily-5867c0ebb17c5df135a7` |
 | regions | 南米 | 活動「TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施」の記述で標的地域として南米が明示されている。 | 不明 | 不明 | 中 | `source--daily-5867c0ebb17c5df135a7` |
-| regions | 東アジア | 台湾、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | インドネシア、カンボジア、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | イタリア、オランダ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | 活動「中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に」の記述で標的として明示された産業。 | 2024-06 | 2025-07 | 中 | `source--daily-5867c0ebb17c5df135a7`, `source--daily-86f6aba61d69ac9dcac7` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

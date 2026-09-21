@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--temp-hermit`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:01Z
+- 更新日時: 2026-09-21T04:15:52Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ TEMP.Hermitの標準化プロファイル。リポジトリ内の専用資料1�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| HERMIT NEPTUNE | catalog / Google Threat Intelligence Group | exact | 高 | `source--actor-mapping-workbook`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| HERMIT NEPTUNE | catalog / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -38,22 +38,21 @@ TEMP.Hermitの標準化プロファイル。リポジトリ内の専用資料1�
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | APT38 | overlaps-with | APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately. | 高 | `source--mandiant-apt38-temp-hermit-boundary-2018` |
-| APT38 | overlaps-with | APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately. | 高 | `source--mandiant-apt38-temp-hermit-boundary-2018` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | VOLGMER, PEACHPIT |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Korean Peninsula, US Aerospace, SWIFT-fraud operations in East Asia |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -85,10 +84,7 @@ TEMP.Hermitの標準化プロファイル。リポジトリ内の専用資料1�
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--volgmer | VOLGMER | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--peachpit | PEACHPIT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -122,13 +118,9 @@ TEMP.Hermitの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 東アジア | レビュー済みアクターマッピングの標的欄に記録された東アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -140,11 +132,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 2件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
-- 非IOC artifact観測: 24件（`artifacts.csv`）
+- 要レビュー候補: 0件
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

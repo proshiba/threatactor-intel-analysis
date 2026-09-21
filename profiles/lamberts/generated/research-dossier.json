@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--lamberts",
   "actor_name": "Lamberts",
-  "profile_updated_at": "2026-09-20T13:47:46Z",
+  "profile_updated_at": "2026-09-21T02:39:13Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -11,9 +11,9 @@
       "relationships": "lead-only",
       "malware": "unknown",
       "tools": "unknown",
-      "targets": "canonical-present",
+      "targets": "lead-only",
       "motivations": "unknown",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 0,
@@ -22,17 +22,20 @@
       "malware": 0,
       "activity_linked_malware": 0,
       "tools": 0,
-      "targets": 1,
+      "targets": 0,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 0,
       "relationships": 1,
       "malware": 0,
       "tools": 0,
       "untyped_software": 0,
-      "targets": 10,
-      "motivations": 0
+      "targets": 11,
+      "motivations": 0,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -51,48 +54,10 @@
     "activity_timeline": [],
     "malware_usage": [],
     "tool_usage": [],
-    "targets": [
-      {
-        "id": "target--targeting-audit--region--5861b144c4c0a161729b",
-        "name": "全世界",
-        "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲として全世界が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--8bbe9f56c2f3d369986069fb",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Lamberts targets region 全世界.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      }
-    ]
+    "targets": []
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [],
     "incident_types": [
       {
@@ -127,6 +92,12 @@
     "malware": [],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [],
       "victims_or_geographies": [
@@ -272,6 +243,17 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
+      ],
+      "roles": [],
+      "legacy_workbook_text": [
+        {
+          "value": "PRC",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "verification_status": "unresolved",
+          "analyst_notes": "Legacy workbook targeting prose. Original actor scope and cited reports must be reviewed before canonical integration."
+        }
       ]
     },
     "motivations": [],
@@ -295,12 +277,12 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
     "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 1
+    "supported": 1
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -435,31 +417,6 @@
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
     "source--target-audit-misp-threat-actor": {
       "source_id": "source--target-audit-misp-threat-actor",
       "path": "actor_profile/reference/osint/misp-threat-actor.json",
@@ -489,6 +446,7 @@
   "research_gaps": [
     "No canonical actor-specific activity is structured.",
     "No canonical cross-actor relationship is structured.",
+    "No canonical target country, region, sector, or role is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]

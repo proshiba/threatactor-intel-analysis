@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ghostwriter`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T02:39:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| UNC1151 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -50,7 +48,7 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -109,30 +107,20 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Ghostwriterの日次IOC観測 | phishing-campaign | 不明 | 不明 | 2026-06-27 |  |  |  |  | AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign. | 中 | `source--daily-264c4f3115e3e53b3d38` |
-| Operation Ghostwriter | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | Ghostwriterの日次IOC観測 | Ghostwriter | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Operation Ghostwriter | Ghostwriter | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Operation Ghostwriter
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | ウクライナ | 構造化OSINTの被害国フィールドでGhostwriterの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでGhostwriterの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでGhostwriterの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ラトビア | 構造化OSINTの被害国フィールドでGhostwriterの標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | リトアニア | 構造化OSINTの被害国フィールドでGhostwriterの標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東欧 | ウクライナ、ポーランドで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | ウクライナ、ドイツ、ポーランド、ラトビア、リトアニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -173,6 +161,7 @@ Operation Ghostwriter
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 1 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -186,7 +175,6 @@ Operation Ghostwriter
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述

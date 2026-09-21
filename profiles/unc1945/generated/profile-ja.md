@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1945`
 - 状態: draft
-- 更新日時: 2026-09-20T13:47:46Z
+- 更新日時: 2026-09-21T02:39:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,10 +16,7 @@ UNC1945の標準化プロファイル。リポジトリ内の専用資料1件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| DecisiveArchitect | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| LightBasin | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -43,15 +40,15 @@ UNC1945の標準化プロファイル。リポジトリ内の専用資料1件と
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Evilsun, Slapstick, Lemonstick, Logbleach, Oksolo, Openshackle, Pupyrat, Steelcorgi, Tinyshell, QEMU, PingPong |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Telecom |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -83,19 +80,7 @@ UNC1945の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--evilsun | Evilsun | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--slapstick | Slapstick | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--lemonstick | Lemonstick | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--logbleach | Logbleach | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--oksolo | Oksolo | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--openshackle | Openshackle | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--pupyrat | Pupyrat | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--steelcorgi | Steelcorgi | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--tinyshell | Tinyshell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--qemu | QEMU | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--pingpong | PingPong | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -129,11 +114,9 @@ UNC1945の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -149,7 +132,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 16件（`artifacts.csv`）
+- 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -163,6 +146,7 @@ TTPなし
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 2 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 

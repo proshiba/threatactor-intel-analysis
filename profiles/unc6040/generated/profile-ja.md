@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6040`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:01Z
+- 更新日時: 2026-09-21T04:38:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -35,7 +35,9 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| UNC6240 | related-to | GTIG tracks the initial Salesforce vishing and data theft as UNC6040 and the subsequent ShinyHunters-branded extortion as UNC6240; a partnership is possible but not established as exact identity. | 高 | `source--gtig-unc6040-salesforce-vishing-2025` |
 
 ## ダイヤモンドモデル
 
@@ -50,7 +52,7 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -111,7 +113,7 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | ransomware-extortion | 2025-05-29 | 2025-05-29 | 2025-08-26 | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | victim--activity-rule--83af84c95d1121969dec | サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 侵害は2025年5月29日発生、翌30日に検知・封じ込めを実施と説明。 氏名・住所・生年月日・運転免許番号・SSN下4桁などが流出。 8月22日から影響者へ通知、メイン州AGに通知サンプル提出。 攻撃はSalesforce悪用で、vishingと悪性OAuth連携→データ窃取・恐喝。 | 中 | `source--daily-8012423fa9a259605e9c` |
 | Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | ransomware-extortion | 不明 | 不明 | 2025-06-05 |  |  |  | victim--activity-rule--1fa6e836484db0ee9a8a | GoogleのThreat Intelligence Group（GTIG）は、UNC6040と追跡される脅威グループが、SalesforceのData Loaderアプリケーションを悪用したソーシャルエンジニアリング攻撃を展開していると報告。 攻撃者は、ITサポートを装って従業員に電話をかけ、改ざんされたData LoaderアプリケーションをSalesforce環境に接続させるよう誘導。 この手法により、攻撃者は機密情報へのアクセスを獲得し、他のクラウドサービスや内部ネットワークへの侵入も可能となる。 約20の組織が影響を受け、一部ではデータの窃取が成功している。 攻撃者は、被害者に恐喝を行うが、ShinyHuntersとの連携を主張し圧力を高める事例も観測されている。 | 中 | `source--daily-80e44f9cbc707f36952a` |
 | FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | ransomware-extortion | 不明 | 不明 | 2025-09-15 |  |  |  | victim--activity-rule--8c7205640a5b006f025c | FBIはUNC6040/UNC6395がSalesforce環境を侵害しデータ窃取・恐喝を行うとしてFLASHを公開、IOCの提供で防御強化を促した。 UNC6040は2024年末以降、偽IT支援やvishingで従業員を欺き、悪性Salesforce Data Loader OAuthアプリ（My Ticket Portal等）を接続させた。 接続後にAccounts/Contactsなどを大量流出させ、ShinyHuntersが恐喝に悪用。GoogleやAdidasなどの大手にも影響が及んだとされる。 UNC6395はSalesloft DriftのOAuth/リフレッシュトークンを悪用（8/8〜18頃）し、Salesforceのサポートケース情報を狙って侵害した。 流出データからAWS鍵やパスワード、Snowflakeトークン等を抽出し横展開。Salesloftはトークン失効と再認証を実施、被害は多数に及んだ。 | 高 | `source--daily-d18643e84905959f1988` |
-| ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | phishing-campaign | 不明 | 不明 | 2025-07-31 |  |  |  | victim--activity-rule--0afbad5604962472d1de | ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中 | 中 | `source--daily-636d2791761dd2b53914` |
+| UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取 | phishing-campaign | 不明 | 不明 | 2025-06-04 |  |  |  | victim--activity-rule--0afbad5604962472d1de | GTIGは、UNC6040がITサポートを装った音声フィッシングで従業員を誘導し、攻撃者管理のSalesforce接続アプリ（Data Loaderまたは同等のカスタムアプリ）を承認させ、大量のCRMデータを窃取したと報告した。GTIGは初期侵入・窃取をUNC6040、後続のShinyHunters名義の恐喝をUNC6240として分けて追跡しており、両者の提携可能性は示すが同一主体とは断定していない。 | 高 | `source--gtig-unc6040-salesforce-vishing-2025` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -120,7 +122,7 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | UNC6040 | 情報なし | 情報なし | 情報なし | 金融 | Salesforce攻撃後にFarmers Insurance | 中 |
 | Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | 中 |
 | FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | 高 |
-| ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | 中 |
+| UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: UNC6040によるSalesforceデータ窃取 | 高 |
 
 
 
@@ -130,13 +132,13 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|
 | sectors | 金融 | 活動「Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響」の記述で標的として明示された産業。 | 2025-05-29 | 2025-05-29 | 中 | `source--daily-8012423fa9a259605e9c` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | クラウド／SaaS | data-theft: ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害<br>credential-theft: ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中 | 不明 | 不明 | 2025-07-31 | 中 | `source--daily-636d2791761dd2b53914` |
+| 被害事例: UNC6040によるSalesforceデータ窃取 | 非公開 | anonymous | unknown | reported |  |  |  | クラウド／SaaS | data-theft: UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取 | 不明 | 不明 | 2025-06-04 | 高 | `source--gtig-unc6040-salesforce-vishing-2025` |
 | 被害事例: Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | クラウド／SaaS | data-theft: 約20の組織が影響を受け、一部ではデータの窃取が成功している。 | 不明 | 不明 | 2025-06-05 | 中 | `source--daily-80e44f9cbc707f36952a` |
 | 被害事例: Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | Salesforce攻撃後にFarmers Insurance | named | organization | reported | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | クラウド／SaaS | data-theft: サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 | 2025-05-29 | 2025-05-29 | 2025-08-26 | 中 | `source--daily-8012423fa9a259605e9c` |
 | 被害事例: FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | 非公開 | anonymous | unknown | reported |  |  |  | クラウド／SaaS | data-theft: FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | 不明 | 不明 | 2025-09-15 | 高 | `source--daily-d18643e84905959f1988` |
@@ -151,7 +153,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 6件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -181,6 +183,7 @@ TTPなし
 | source--unc6040--fa88612d0bc5ab99 | 2025 IC3Report |  | 2025 | cybercrime/2026/2025_IC3Report.pdf | report | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unc6040-salesforce-vishing-2025 | The Cost of a Call: From Voice Phishing to Data Extortion | Google Threat Intelligence Group | 2025-06-04 | https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

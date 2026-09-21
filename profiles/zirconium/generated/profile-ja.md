@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--zirconium`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T04:35:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,9 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT31 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| APT31 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| Judgement Panda | CERT-EU / ENISA | exact | 高 | `source--cert-eu-enisa-apt31-2023` | The joint CERT-EU/ENISA publication explicitly identifies APT31 as also known as Judgment Panda and Zirconium. |
+| Judgment Panda | CERT-EU / ENISA | exact | 高 | `source--cert-eu-enisa-apt31-2023` | The joint CERT-EU/ENISA publication explicitly identifies APT31 as also known as Judgment Panda and Zirconium. |
 | TIDE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Violet Typhoon | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-2` | Curated merge into the canonical MITRE Group profile. |
 
@@ -39,22 +41,22 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Hurricane Panda | overlaps-with | 共有alias: APT31, Zirconium, ZIRCONIUM | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| Hurricane Panda | overlaps-with | 共有alias: APT31, Zirconium, ZIRCONIUM | 低 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [ZIRCONIUM](https://attack.mitre.org/groups/G0128) is a threat group operating out of China, active since at least 2017, that has targeted individuals associated with the 2020 US presidential election and prominent leaders in the international affairs community.(Citation: Microsoft Targeting Elections September 2020)(Citation: Check Point APT31 February 2021) |
-| Capability | China Chopper Webshell, PlugX, Mimikatz, Sakula |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Aerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -87,12 +89,7 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--china-chopper-webshell | China Chopper Webshell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--mimikatz | Mimikatz | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--plugx | PlugX | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sakula | Sakula | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -118,21 +115,19 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | phishing-campaign | 不明 | 不明 | 2025-11-24 |  |  |  | victim--activity-rule--03dce615119b36418765 | 中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。 週末・祝日に活動を集中し、SNS上に暗号化コマンドを置く手口で秘匿性を強化。2022年末侵入例も言及。 フィッシングでLNKを起点にCloudyLoaderをDLLサイドロードし、Cobalt Strike展開が確認された。 SharpChromeやOwawa、LocalPlugX、CloudSorcerer等の多様なツールを使用し、タスク登録で永続化を確立。 | 中 | `source--daily-627b32691a33594d7d9a` |
-| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | phishing-campaign | 2026-08-28 | 2026-09-02 | 2026-09-11 | target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--dfc80b76cad93a318adc, target--sector--defense |  | ttp--activity-rule--a86dd406f18f33373746 | victim--activity-rule--4d5fb1e290f1911f9a4c | 複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。 | 高 | `source--daily-4f5ca8613b6408a00d37` |
+| 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | phishing-campaign | 不明 | 不明 | 2025-11-24 | target--targeting-audit--country--1fe7ce46b222c13a06da |  |  | victim--activity-rule--03dce615119b36418765 | 中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。 週末・祝日に活動を集中し、SNS上に暗号化コマンドを置く手口で秘匿性を強化。2022年末侵入例も言及。 フィッシングでLNKを起点にCloudyLoaderをDLLサイドロードし、Cobalt Strike展開が確認された。 SharpChromeやOwawa、LocalPlugX、CloudSorcerer等の多様なツールを使用し、タスク登録で永続化を確立。 | 中 | `source--daily-627b32691a33594d7d9a` |
+| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | phishing-campaign | 2026-08-28 | 2026-09-02 | 2026-09-11 | target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--dfc80b76cad93a318adc, target--sector--defense, target--targeting-audit--country--17ccb688a4f174f744c6 |  | ttp--activity-rule--a86dd406f18f33373746 | victim--activity-rule--4d5fb1e290f1911f9a4c | 複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。 | 高 | `source--daily-4f5ca8613b6408a00d37` |
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | ransomware-extortion | 不明 | 不明 | 2025-08-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--9137916c1796c538b660 | Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。 | 中 | `source--daily-0e75e392e2685f601677` |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--country--united-states |  |  | victim--activity-rule--bfa1750b45d1967b2dd7 | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
-| Op. Poisoned Hurricane | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--country--united-states, target--targeting-audit--region--e8227dace5f726314dc9, target--targeting-audit--region--f6725e13c9b2e36ae217 |  |  | victim--activity-rule--bfa1750b45d1967b2dd7 | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | ZIRCONIUM | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | 中 |
-| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | ZIRCONIUM | 情報なし | T1105 Ingress Tool Transfer | 情報なし | 運輸・航空・海運, 非営利・市民社会, 製造・産業, Defense | 被害事例: 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | 高 |
+| 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | ZIRCONIUM | 情報なし | 情報なし | 情報なし | ロシア | 被害事例: 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | 中 |
+| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | ZIRCONIUM | 情報なし | T1105 Ingress Tool Transfer | 情報なし | 運輸・航空・海運, 非営利・市民社会, 製造・産業, Defense, ベトナム | 被害事例: 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | 高 |
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | ZIRCONIUM | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 中 |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | ZIRCONIUM | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
-| Op. Poisoned Hurricane | ZIRCONIUM | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | ZIRCONIUM | 情報なし | 情報なし | 情報なし | 米国, 中東, 欧州 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
 
 Op. Poisoned Hurricane
 
@@ -140,45 +135,18 @@ Op. Poisoned Hurricane
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | オーストラリア | Targeting text mentions australia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | カナダ | Targeting text mentions canada. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | Targeting text mentions switzerland. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | スウェーデン | Targeting text mentions sweden. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | タイ | Targeting text mentions thailand. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでZIRCONIUMの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | Targeting text mentions norway. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | レビュー済みアクターマッピングの標的欄に記録されたフィンランドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | Targeting text mentions france. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | Targeting text mentions brazil. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | ベトナム | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的・被害国として明示されている。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでZIRCONIUMの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでZIRCONIUMの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 活動「中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-627b32691a33594d7d9a`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-627b32691a33594d7d9a` |
 | countries | 中国 | 活動「ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-0e75e392e2685f601677` |
-| countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-c9fa26bbe8d21f50b441`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | Targeting text mentions united kingdom. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アフリカ | レビュー済みアクターマッピングの標的欄に記録されたアフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--daily-c9fa26bbe8d21f50b441`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | regions | 中東 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-c9fa26bbe8d21f50b441`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | モンゴル、中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-0e75e392e2685f601677`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-4f5ca8613b6408a00d37` |
-| regions | 東欧 | チェコ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-627b32691a33594d7d9a`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-c9fa26bbe8d21f50b441`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 | sectors | 運輸・航空・海運 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
 | sectors | 非営利・市民社会 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
 | sectors | 製造・産業 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-28 | 2026-09-02 | 中 | `source--actor-mapping-workbook`, `source--daily-4f5ca8613b6408a00d37` |
-| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -226,11 +194,11 @@ Op. Poisoned Hurricane
 
 ## IOC／artifact概要
 
-- IOC値: 3件
-- IOC観測: 3件
+- IOC値: 4件
+- IOC観測: 5件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
-- 非IOC artifact観測: 64件（`artifacts.csv`）
+- 要レビュー候補: 4件
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -279,8 +247,6 @@ Op. Poisoned Hurricane
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--daily-0e75e392e2685f601677 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | bleepingcomputer.com | 2025-08-05 | https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-4f5ca8613b6408a00d37 | 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | proofpoint.com | 2026-09-11 | https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit | osint-report | TLP:CLEAR | 中 |
 | source--daily-627b32691a33594d7d9a | 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | thehackernews.com | 2025-11-24 | https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html | osint-report | TLP:CLEAR | 中 |
@@ -288,9 +254,12 @@ Op. Poisoned Hurricane
 | source--violet-typhoon--e700d40c0cc1e8d2 | violet typhoon |  | 不明 | actor_profile/evidence/violet-typhoon.csv | structured-data | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--judgement-panda--7c93e10e9598ec8f | judgement panda |  | 不明 | actor_profile/evidence/judgement-panda.csv | structured-data | TLP:CLEAR | 中 |
+| source--cert-eu-enisa-apt31-2023 | JP-23-01 - Sustained activity by specific threat actors | CERT-EU and ENISA | 2023-02-15 | https://cert.europa.eu/static/files/TLP-CLEAR-JointPublication-23-01.pdf | government-advisory | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

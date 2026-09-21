@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--aquatic-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -41,8 +41,8 @@ Aliasなし
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Aquatic Panda](https://attack.mitre.org/groups/G0143) is a suspected China-based threat group with a dual mission of intelligence collection and industrial espionage. Active since at least May 2020, [Aquatic Panda](https://attack.mitre.org/groups/G0143) has primarily targeted entities in the telecommunications, technology, and government sectors.(Citation: CrowdStrike AQUATIC PANDA December 2021) |
-| Capability | Winnti for Linux, Cobalt Strike, Winnti for Windows, njRAT, ShadowPad, Wevtutil |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -116,13 +116,13 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | cyber-espionage | 2022-01 | 2022-10 | 2025-03-22 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--activity-rule--country--2113be5c12a85bcb7b3b, target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--mitre-group--sector--b35d0af2e7c9f2e2e6ec | malware--shadowpad |  | victim--activity-rule--157e8e01ba0178ccb52b | 中国のAPTグループ「Aquatic Panda」は、2022年1月から10月にかけて、7つの組織を標的としたスパイ活動を行った。 標的には、台湾、ハンガリー、トルコ、タイ、フランス、米国の政府、カトリック慈善団体、NGO、シンクタンクが含まれていた。 攻撃には、ShadowPad、SodaMaster、Spyderなどのマルウェアが使用された。 Aquatic Pandaは、少なくとも2019年から活動している中国のサイバースパイ集団で、Winntiグループの一部とされる。 2022年の攻撃では、ScatterBee、ShadowPad、Spyder、SodaMaster、RPipeCommanderの5つのマルウェアファミリーが使用された。 この活動はESETによって「Operation FishMedley」とコードネームが付けられた。 | 高 | `source--daily-a9818c561227639f76fb` |
+| 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | cyber-espionage | 2022-01 | 2022-10 | 2025-03-22 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--activity-rule--country--2113be5c12a85bcb7b3b, target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--mitre-group--sector--b35d0af2e7c9f2e2e6ec, target--targeting-audit--country--001b6e6e2278638fd1ee, target--targeting-audit--country--cd001762e00784a601f1, target--targeting-audit--country--f780b295d2a23c2388ae | malware--shadowpad |  | victim--activity-rule--157e8e01ba0178ccb52b | 中国のAPTグループ「Aquatic Panda」は、2022年1月から10月にかけて、7つの組織を標的としたスパイ活動を行った。 標的には、台湾、ハンガリー、トルコ、タイ、フランス、米国の政府、カトリック慈善団体、NGO、シンクタンクが含まれていた。 攻撃には、ShadowPad、SodaMaster、Spyderなどのマルウェアが使用された。 Aquatic Pandaは、少なくとも2019年から活動している中国のサイバースパイ集団で、Winntiグループの一部とされる。 2022年の攻撃では、ScatterBee、ShadowPad、Spyder、SodaMaster、RPipeCommanderの5つのマルウェアファミリーが使用された。 この活動はESETによって「Operation FishMedley」とコードネームが付けられた。 | 高 | `source--daily-a9818c561227639f76fb` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | Aquatic Panda | ShadowPad | 情報なし | 情報なし | 台湾, フランス, 米国, 中国, 非営利・市民社会, 教育・研究, 政府・行政 | 被害事例: 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | 高 |
+| 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | Aquatic Panda | ShadowPad | 情報なし | 情報なし | 台湾, フランス, 米国, 中国, 非営利・市民社会, 教育・研究, 政府・行政, タイ, トルコ, ハンガリー | 被害事例: 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | 高 |
 
 
 
@@ -130,33 +130,21 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | タイ | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的・被害国として明示されている。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
+| countries | タイ | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的・被害国として明示されている。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
 | countries | トルコ | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的・被害国として明示されている。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ナイジェリア | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてナイジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ネパール | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | ハンガリー | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的・被害国として明示されている。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | フランス | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでAquatic Pandaの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 中東 | アラブ首長国連邦、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | モンゴル、中国、台湾、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | トルコ、ドイツ、ハンガリー、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb`, `source--target-audit-misp-threat-actor` |
+| countries | フランス | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
+| countries | 中国 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
+| countries | 台湾 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
+| countries | 米国 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された国・地域。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
+| regions | 東アジア | 中国、台湾で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb` |
+| regions | 欧州 | トルコ、ハンガリー、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a9818c561227639f76fb` |
 | sectors | 非営利・市民社会 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された産業。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
 | sectors | 教育・研究 | 活動「中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に」の記述で標的として明示された産業。 | 2022-01 | 2022-10 | 中 | `source--daily-a9818c561227639f76fb` |
 | sectors | 情報通信 | Active since at least May 2020, [Aquatic Panda](https://attack.mitre.org/groups/G0143) has primarily targeted entities in the telecommunications, technology, and government sectors.(Citation: CrowdStrike AQUATIC PANDA December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | Active since at least May 2020, [Aquatic Panda](https://attack.mitre.org/groups/G0143) has primarily targeted entities in the telecommunications, technology, and government sectors.(Citation: CrowdStrike AQUATIC PANDA December 2021) | 2022-01 | 2022-10 | 高 | `source--daily-a9818c561227639f76fb`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -210,7 +198,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 8件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -240,11 +228,11 @@ Aliasなし
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

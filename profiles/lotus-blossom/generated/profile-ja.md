@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lotus-blossom`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:18:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,11 +20,9 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 |---|---|---|---|---|---|
 | Bilbug | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | DRAGONFISH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| Esile | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | RADIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Raspberry Typhoon | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-2` | Curated merge into the canonical MITRE Group profile. |
 | Spring Dragon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| ST Group | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -43,24 +41,24 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| APT30 | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Naikon | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| APT30 | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1` |
+| Naikon | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1` |
 | Thrip | overlaps-with | MITRE ATT&CK 19.2 tracks Lotus Blossom (G0030) and Thrip (G0076) as separate Groups even though Thrip remains an associated name in the Lotus Blossom record; the shared name is therefore an overlap signal, not a safe exact alias. | 高 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Lotus Blossom](https://attack.mitre.org/groups/G0030) is a long-standing threat group largely targeting various entities in Asia since at least 2009. In addition to government and related targets, [Lotus Blossom](https://attack.mitre.org/groups/G0030) has also targeted entities such as digital certificate issuers.(Citation: Lotus Blossom Jun 2015)(Citation: Symantec Bilbug 2022)(Citation: Cisco LotusBlossom 2025) |
-| Capability | Emissary, Hannotog, Elise, Sagerunex, Elise Backdoor, Lstudio, CVE-2017-11882, certutil, Impacket, NBTscan, Ping, AdFind; RARSTONE, BACKSPACe, NETEAGLE, XSControl |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | satellite communications operator, Telecoms, and Defense Companies, Hong Kong |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -72,12 +70,16 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Raspberry Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | LOTUS PANDA | canonical-name | 高 | CN, China | https://securelist.com/blog/research/70726/the-spring-dragon-apt/<br>https://securelist.com/spring-dragon-updated-activity/79067/<br>https://www.cfr.org/interactive/cyber-operations/lotus-blossom |
+| misp-threat-actor | Thrip | single-alias-intersection | 中 | Unknown | https://www.cfr.org/interactive/cyber-operations/thrip<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets<br>https://attack.mitre.org/groups/G0076/ |
 | misp-threat-actor | Raspberry Typhoon | multiple-name-intersection | 高 | CN | https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1aFyW |
 | misp-microsoft-activity-group | Raspberry Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | Lotus Blossom - G0030 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0030<br>https://blog.talosintelligence.com/lotus-blossom-espionage-group/<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
+| misp-mitre-enterprise-intrusion-set | Thrip - G0076 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0076<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets |
 | misp-mitre-intrusion-set | Lotus Blossom - G0030 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0030<br>https://blog.talosintelligence.com/lotus-blossom-espionage-group/<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
+| misp-mitre-intrusion-set | Thrip - G0076 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0076<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets |
 | misp-360net | 一致なし |  |  |  |  |
 | misp-tidal-groups | Lotus Blossom | canonical-name | 高 | CN |  |
+| misp-tidal-groups | Thrip | single-alias-intersection | 中 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -99,17 +101,10 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--backspace | BACKSPACe | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-11882 | CVE-2017-11882 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--elise | Elise | [Elise](https://attack.mitre.org/software/S0081) is a custom backdoor Trojan that appears to be used exclusively by [Lotus Blossom](https://attack.mitre.org/groups/G0030). It is part of a larger group of tools referred to as LStudio, ST Group, and APT0LSTU.(Citation: Lotus Blossom Jun 2015)(Citation: Accenture Dragonfish Jan 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--elise-backdoor | Elise Backdoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--emissary | Emissary | [Emissary](https://attack.mitre.org/software/S0082) is a Trojan that has been used by [Lotus Blossom](https://attack.mitre.org/groups/G0030). It shares code with [Elise](https://attack.mitre.org/software/S0081), with both Trojans being part of a malware group referred to as LStudio.(Citation: Lotus Blossom Dec 2015) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--hannotog | Hannotog | [Hannotog](https://attack.mitre.org/software/S1211) is a type of backdoor malware uniquely assoicated with [Lotus Blossom](https://attack.mitre.org/groups/G0030) operations since at least 2022.(Citation: Symantec Bilbug 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--lstudio | Lstudio | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--neteagle | NETEAGLE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--rarstone | RARSTONE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--sagerunex | Sagerunex | [Sagerunex](https://attack.mitre.org/software/S1210) is a malware family exclusively associated with [Lotus Blossom](https://attack.mitre.org/groups/G0030) operations, with variants existing since at least 2016. Variations of [Sagerunex](https://attack.mitre.org/software/S1210) leverage non-traditional command and control mechanisms such as various web services.(Citation: Symantec Bilbug 2022)(Citation: Cisco LotusBlossom 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--xscontrol | XSControl | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -139,17 +134,11 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Camera Shy | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Naikon | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Camera Shy | Lotus Blossom | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Naikon | Lotus Blossom | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 
 
@@ -157,35 +146,10 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カンボジア | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ネパール | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブルネイ | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてブルネイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブータン | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてブータンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | マカオ | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてマカオが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラオス | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでLotus Blossomの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | アジア | MITRE ATT&CKのGroup概要でLotus Blossomの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| regions | 南アジア | インド、ネパール、ブータンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | マカオ、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | 構造化OSINTの被害地域フィールドでLotus Blossomの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 政府・行政 | In addition to government and related targets, [Lotus Blossom](https://attack.mitre.org/groups/G0030) has also targeted entities such as digital certificate issuers.(Citation: Lotus Blossom Jun 2015)(Citation: Symantec Bilbug 2022)(Citation: Cisco LotusBlossom 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -223,7 +187,7 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 51件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -237,6 +201,7 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 2 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -262,12 +227,12 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--raspberry-typhoon--03f2b2218e1568a1 | raspberry typhoon |  | 不明 | actor_profile/evidence/raspberry-typhoon.csv | structured-data | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--raspberry-typhoon--03f2b2218e1568a1 | raspberry typhoon |  | 不明 | actor_profile/evidence/raspberry-typhoon.csv | structured-data | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

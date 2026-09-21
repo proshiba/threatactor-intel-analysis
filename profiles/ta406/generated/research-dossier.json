@@ -1,38 +1,41 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--ta406",
   "actor_name": "TA406",
-  "profile_updated_at": "2026-09-20T13:48:12Z",
+  "profile_updated_at": "2026-09-21T04:38:04Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
-      "relationships": "lead-only",
+      "relationships": "canonical-present",
       "malware": "lead-only",
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "lead-only",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 2,
-      "dated_activities": 0,
-      "relationships": 0,
+      "dated_activities": 1,
+      "relationships": 1,
       "malware": 0,
       "activity_linked_malware": 0,
       "tools": 0,
-      "targets": 24,
+      "targets": 6,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 69,
       "relationships": 1,
       "malware": 33,
       "tools": 0,
       "untyped_software": 0,
       "targets": 27,
-      "motivations": 1
+      "motivations": 1,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -47,12 +50,13 @@
       "claim_assessments": []
     },
     "motivations": [],
-    "relationships": [],
-    "activity_timeline": [
+    "relationships": [
       {
-        "activity_id": "activity--daily-ed16c556a166870fdeb2",
-        "name": "Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
-        "activity_type": "infrastructure-operation",
+        "relationship_id": "relationship--ta406--verified--c1c28cb974eb68eb",
+        "target_actor": "Konni",
+        "relationship_type": "overlaps-with",
+        "description": "Proofpoint states that TA406 overlaps activity publicly tracked as Konni and Opal Sleet; Check Point directly attributes the January 2026 report's campaign to the KONNI cluster.",
+        "confidence": "medium",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -65,27 +69,69 @@
           "status": "unknown",
           "basis": "not-stated"
         },
+        "evidence_refs": [
+          "source--proofpoint-ta406-konni-boundary-2025",
+          "source--checkpoint-konni-ai-backdoor-2026"
+        ],
+        "analyst_notes": "Cross-vendor overlap retained; neither source establishes universal one-to-one identity between every TA406 and Konni observation.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--3f5790982ebbc0fc4a18ed84",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
+            "statement": "TA406 overlaps-with Konni: Proofpoint states that TA406 overlaps activity publicly tracked as Konni and Opal Sleet; Check Point directly attributes the January 2026 report's campaign to the KONNI cluster.",
+            "evidence_refs": [
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
+            ],
+            "verification_rationale": "Cross-vendor overlap retained; neither source establishes universal one-to-one identity between every TA406 and Konni observation.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": "actor--konni",
+        "target_resolution": "catalog-profile"
+      }
+    ],
+    "activity_timeline": [
+      {
+        "activity_id": "activity--daily-ed16c556a166870fdeb2",
+        "name": "KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布",
+        "activity_type": "infrastructure-operation",
+        "first_observed": {
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
         "reported_at": {
-          "value": "2026-01-26T00:00:00Z",
+          "value": "2026-01-22T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
+        "description": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから永続化・UAC回避・分析回避・C2タスク実行機能を持つPowerShellバックドアを展開する。2025年10月にアップロードされた初期亜種も確認され、検体投稿元は日本・豪州・インドを含むが、投稿元を被害国の確定値とはしない。Check PointはKONNIへ直接帰属し、ProofpointはTA406をKonni/Opal Sleet活動との重複として扱うため、TA406との完全同一性は断定しない。",
         "target_refs": [
           "target--activity-rule--sector--63c9fa67327d005b07b7",
-          "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          "target--activity-rule--sector--932f4928d5e1ec28e2df",
+          "target--targeting-audit--country--60ac93d5799e9eb12580",
+          "target--targeting-audit--country--75157eeb3ccdec29dfaa"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
-        "analyst_notes": "日次収集レコード daily-record--ed16c556a166870fdeb2a4ac から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。",
-        "ttp_refs": [
-          "ttp--activity-rule--3fad972c8e2a861c68a1"
-        ],
+        "analyst_notes": "Check Point一次分析で活動・期間・TTPを確認。TA406への対応はProofpointのcross-vendor overlapに基づき、exact aliasには昇格しない。",
+        "ttp_refs": [],
         "victim_refs": [
           "victim--activity-rule--0327ca792873c263402d"
         ],
@@ -98,9 +144,7 @@
           },
           "capability": {
             "malware_refs": [],
-            "ttp_refs": [
-              "ttp--activity-rule--3fad972c8e2a861c68a1"
-            ]
+            "ttp_refs": []
           },
           "infrastructure": {
             "infrastructure_refs": []
@@ -108,7 +152,9 @@
           "victim": {
             "target_refs": [
               "target--activity-rule--sector--63c9fa67327d005b07b7",
-              "target--activity-rule--sector--932f4928d5e1ec28e2df"
+              "target--activity-rule--sector--932f4928d5e1ec28e2df",
+              "target--targeting-audit--country--60ac93d5799e9eb12580",
+              "target--targeting-audit--country--75157eeb3ccdec29dfaa"
             ],
             "victim_refs": [
               "victim--activity-rule--0327ca792873c263402d"
@@ -116,10 +162,10 @@
           },
           "meta_features": {
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2025-10-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-sample-upload"
             },
             "last_observed": {
               "value": null,
@@ -128,27 +174,27 @@
               "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2026-01-26T00:00:00Z",
+              "value": "2026-01-22T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "infrastructure-operation",
-            "phases": [
-              "Execution",
-              "Persistence",
-              "Privilege Escalation"
-            ],
+            "phases": [],
             "results": [],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [],
+              "target_country_refs": [
+                "target--targeting-audit--country--60ac93d5799e9eb12580",
+                "target--targeting-audit--country--75157eeb3ccdec29dfaa"
+              ],
               "target_region_refs": []
             }
           },
           "confidence": "medium",
           "evidence_refs": [
-            "source--daily-96093ec62047a80740ea"
+            "source--checkpoint-konni-ai-backdoor-2026",
+            "source--proofpoint-ta406-konni-boundary-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
@@ -156,13 +202,14 @@
           {
             "claim_id": "claim--ecdbf63fe6bf6f0a0c70ff7c",
             "category": "activity",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
-            "statement": "TA406 conducted or is associated with Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に: 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
+            "statement": "TA406 conducted or is associated with KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布: Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから永続化・UAC回避・分析回避・C2タスク実行機能を持つPowerShellバックドアを展開する。2025年10月にアップロードされた初期亜種も確認され、検体投稿元は日本・豪州・インドを含むが、投稿元を被害国の確定値とはしない。Check PointはKONNIへ直接帰属し、ProofpointはTA406をKonni/Opal Sleet活動との重複として扱うため、TA406との完全同一性は断定しない。",
             "evidence_refs": [
-              "source--daily-96093ec62047a80740ea"
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
@@ -175,6 +222,14 @@
           {
             "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
             "name": "IT・ソフトウェア"
+          },
+          {
+            "id": "target--targeting-audit--country--60ac93d5799e9eb12580",
+            "name": "インド"
+          },
+          {
+            "id": "target--targeting-audit--country--75157eeb3ccdec29dfaa",
+            "name": "日本"
           }
         ],
         "victims": [
@@ -183,13 +238,7 @@
             "name": "anonymous"
           }
         ],
-        "techniques": [
-          {
-            "id": "ttp--activity-rule--3fad972c8e2a861c68a1",
-            "technique_id": "T1053.005",
-            "name": "Scheduled Task"
-          }
-        ]
+        "techniques": []
       },
       {
         "activity_id": "activity--daily-e8d56cd0b459da326e44",
@@ -216,11 +265,7 @@
         "description": "北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。",
         "target_refs": [
           "target--activity-rule--country--36f1b9323d5faab92f39",
-          "target--activity-rule--country--72caf60a2fbce4a1be7a",
-          "target--activity-rule--country--f0d8df51439c4d0f3a05",
-          "target--activity-rule--sector--210dddb39397dbe50e91",
-          "target--activity-rule--sector--b94dc560a327b601965d",
-          "target--activity-rule--sector--e7608f51421ca8b1e297"
+          "target--activity-rule--sector--210dddb39397dbe50e91"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -256,11 +301,7 @@
           "victim": {
             "target_refs": [
               "target--activity-rule--country--36f1b9323d5faab92f39",
-              "target--activity-rule--country--72caf60a2fbce4a1be7a",
-              "target--activity-rule--country--f0d8df51439c4d0f3a05",
-              "target--activity-rule--sector--210dddb39397dbe50e91",
-              "target--activity-rule--sector--b94dc560a327b601965d",
-              "target--activity-rule--sector--e7608f51421ca8b1e297"
+              "target--activity-rule--sector--210dddb39397dbe50e91"
             ],
             "victim_refs": [
               "victim--activity-rule--42003486e06fe6355c62"
@@ -296,9 +337,7 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [
-                "target--activity-rule--country--36f1b9323d5faab92f39",
-                "target--activity-rule--country--72caf60a2fbce4a1be7a",
-                "target--activity-rule--country--f0d8df51439c4d0f3a05"
+                "target--activity-rule--country--36f1b9323d5faab92f39"
               ],
               "target_region_refs": []
             }
@@ -330,24 +369,8 @@
             "name": "ウクライナ"
           },
           {
-            "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-            "name": "ロシア"
-          },
-          {
-            "id": "target--activity-rule--country--f0d8df51439c4d0f3a05",
-            "name": "北朝鮮"
-          },
-          {
             "id": "target--activity-rule--sector--210dddb39397dbe50e91",
             "name": "政府・行政"
-          },
-          {
-            "id": "target--activity-rule--sector--b94dc560a327b601965d",
-            "name": "防衛・軍事"
-          },
-          {
-            "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
-            "name": "教育・研究"
           }
         ],
         "victims": [
@@ -376,12 +399,12 @@
       {
         "id": "target--targeting-audit--country--60ac93d5799e9eb12580",
         "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国としてインドが記録されている。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
         },
         "last_observed": {
           "value": null,
@@ -391,303 +414,33 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--2a65054e2676b3557d83367f",
             "category": "target-country",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "TA406 targets country インド.",
             "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "countrie",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-ed16c556a166870fdeb2"
+        ]
       },
       {
         "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--cd9409dde53b34186b1a1c27",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country ウクライナ.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e",
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": [
-          "activity--daily-e8d56cd0b459da326e44"
-        ]
-      },
-      {
-        "id": "target--targeting-audit--country--8ec3ef6d86b043814655",
-        "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国としてタイが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--417d111e8bf7b689881a557b",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country タイ.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--cde1979469799f1c4134",
-        "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国としてドイツが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--3b739cd50121fb4ca81e2b8c",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country ドイツ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--9dfa7f6e66b1cf18c859",
-        "name": "フランス",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国としてフランスが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--ceae17ececd24ab553d07b85",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country フランス.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--14305cefd6e8453c188f",
-        "name": "ベトナム",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国としてベトナムが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--ca96830bbe948e280badc6cc",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country ベトナム.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "name": "ロシア",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--3b40a3cf2a676d25fba498e4",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country ロシア.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": [
-          "activity--daily-e8d56cd0b459da326e44"
-        ]
-      },
-      {
-        "id": "target--targeting-audit--country--502440984a0d2fe38d13",
-        "name": "中国",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として中国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--dd0c7e69e4d36c1da81171b3",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country 中国.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--activity-rule--country--f0d8df51439c4d0f3a05",
-        "name": "北朝鮮",
         "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": null,
@@ -708,11 +461,11 @@
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--3153530082f5380ce54a41d3",
+            "claim_id": "claim--cd9409dde53b34186b1a1c27",
             "category": "target-country",
             "verification_status": "partially-supported",
             "confidence": "medium",
-            "statement": "TA406 targets country 北朝鮮.",
+            "statement": "TA406 targets country ウクライナ.",
             "evidence_refs": [
               "source--daily-a70f8f04454a7b9e932e"
             ],
@@ -726,52 +479,14 @@
         ]
       },
       {
-        "id": "target--targeting-audit--country--8331c667937e53788013",
-        "name": "南アフリカ",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として南アフリカが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9b7ffa4f8e249416073c08e7",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country 南アフリカ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
         "id": "target--targeting-audit--country--75157eeb3ccdec29dfaa",
         "name": "日本",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として日本が記録されている。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
         },
         "last_observed": {
           "value": null,
@@ -781,345 +496,29 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--40d600f79a50a9eb0fc76146",
             "category": "target-country",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "TA406 targets country 日本.",
             "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--25c51a2db0b7f25e72f6",
-        "name": "米国",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として米国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--82828f6d0f9906c7e9b481ec",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country 米国.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--33bb632cc67d3f7ea092",
-        "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として英国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--591721f4514e45963362ef77",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country 英国.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--888eeace369d2f767b14",
-        "name": "韓国",
-        "description": "構造化OSINTの被害国フィールドでTA406の標的・被害国として韓国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--70dcc9dec74a1fb083b4372a",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets country 韓国.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--ac88b70cfd049300f3ea",
-        "name": "北米",
-        "description": "構造化OSINTの被害地域フィールドでTA406の標的範囲として北米が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--84625647b9d3ba1b69503ff6",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets region 北米.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--ce212653be9abc013cac",
-        "name": "東アジア",
-        "description": "中国、北朝鮮、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--6ace296c599e6c497d2e4e26",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets region 東アジア.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e",
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--959df907f92e23934b39",
-        "name": "東南アジア",
-        "description": "タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--afcf10c7f138e308ed396066",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets region 東南アジア.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--981b736ccd4d974cba59",
-        "name": "東欧",
-        "description": "ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--c4d506e132726bd498882cdf",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets region 東欧.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e",
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--089cb91af141024d0322",
-        "name": "欧州",
-        "description": "構造化OSINTの被害地域フィールドでTA406の標的範囲として欧州が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--e6a7945bc9c3aff311be9d51",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets region 欧州.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e",
-              "source--target-audit-etda-threat-group-cards",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-ed16c556a166870fdeb2"
+        ]
       },
       {
         "id": "target--activity-rule--sector--210dddb39397dbe50e91",
@@ -1164,35 +563,37 @@
       {
         "id": "target--activity-rule--sector--63c9fa67327d005b07b7",
         "name": "暗号資産・Web3",
-        "description": "活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
         "claim_assessments": [
           {
             "claim_id": "claim--4f60060b2cfdbad8f28fda0c",
             "category": "target-sector",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "TA406 targets sector 暗号資産・Web3.",
             "evidence_refs": [
-              "source--daily-96093ec62047a80740ea"
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -1204,35 +605,37 @@
       {
         "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
         "name": "IT・ソフトウェア",
-        "description": "活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
         "claim_assessments": [
           {
             "claim_id": "claim--c1067cd0fa84f6af0921cacc",
             "category": "target-sector",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "TA406 targets sector IT・ソフトウェア.",
             "evidence_refs": [
-              "source--daily-96093ec62047a80740ea"
+              "source--checkpoint-konni-ai-backdoor-2026",
+              "source--proofpoint-ta406-konni-boundary-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -1240,90 +643,11 @@
         "activity_refs": [
           "activity--daily-ed16c556a166870fdeb2"
         ]
-      },
-      {
-        "id": "target--activity-rule--sector--b94dc560a327b601965d",
-        "name": "防衛・軍事",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--85d8e2a9f45b48180fe6d9ae",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets sector 防衛・軍事.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": [
-          "activity--daily-e8d56cd0b459da326e44"
-        ]
-      },
-      {
-        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
-        "name": "教育・研究",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--7f911222a3aae3985403e711",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TA406 targets sector 教育・研究.",
-            "evidence_refs": [
-              "source--daily-a70f8f04454a7b9e932e"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": [
-          "activity--daily-e8d56cd0b459da326e44"
-        ]
       }
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [
       {
         "lead_id": "activity-lead--etda--fa47ee53e036951cd86b",
@@ -4242,6 +3566,12 @@
     ],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -4627,11 +3957,26 @@
             "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/",
             "https://www.rapid7.com/blog/post/2024/03/20/the-updated-apt-playbook-tales-from-the-kimsuky-threat-actor-group/",
             "https://media.defense.gov/2024/May/02/2003455483/-1/-1/0/CSA-NORTH-KOREAN-ACTORS-EXPLOIT-WEAK-DMARC.PDF",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1"
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Kimsuky%2C+Velvet+Chollima&n=1",
+            "https://www.proofpoint.com/us/blog/threat-insight/triple-threat-north-korea-aligned-ta406-scams-spies-and-steals",
+            "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front"
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Government",
+              "dataset_entry": "TA406",
+              "source_urls": [
+                "https://www.proofpoint.com/us/blog/threat-insight/triple-threat-north-korea-aligned-ta406-scams-spies-and-steals",
+                "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Healthcare",
@@ -4755,7 +4100,9 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
-      ]
+      ],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -4829,12 +4176,13 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 31
+    "unresolved": 1,
+    "supported": 8,
+    "partially-supported": 7
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -4871,7 +4219,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-a70f8f04454a7b9e932e": {
       "source_id": "source--daily-a70f8f04454a7b9e932e",
@@ -4889,7 +4246,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250514.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250514.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korea-ramps-up-cyberspying-in-ukraine-to-assess-war-risk/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -5082,11 +4448,67 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    "source--checkpoint-konni-ai-backdoor-2026": {
+      "source_id": "source--checkpoint-konni-ai-backdoor-2026",
+      "path": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
+      "url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
+      "title": "KONNI Adopts AI to Generate PowerShell Backdoors",
+      "publisher": "Check Point Research",
+      "published_at": {
+        "value": "2026-01-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Check Point attributes the analyzed campaign directly to the KONNI APT cluster and documents the blockchain-themed lures, October 2025 samples, and AI-assisted PowerShell backdoor. TA406 linkage is supported separately by Proofpoint's overlap statement."
+    },
+    "source--proofpoint-ta406-konni-boundary-2025": {
+      "source_id": "source--proofpoint-ta406-konni-boundary-2025",
+      "path": "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front",
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front",
+      "title": "TA406 Pivots to the Front",
+      "publisher": "Proofpoint Threat Research",
+      "published_at": {
+        "value": "2025-05-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "relationship",
+        "activity",
+        "attribution",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Proofpoint states that TA406 overlaps activity publicly tracked as Opal Sleet and Konni. This supports a cross-vendor overlap, not exact identity."
     }
   },
   "research_gaps": [
-    "Canonical activities exist, but their observation periods are unknown.",
-    "No canonical cross-actor relationship is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]

@@ -19,6 +19,8 @@ from common import load_json, normalize_time, stable_digest, unknown_time, utc_n
 GTIG_URL = "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
 GTIG_SOURCE_ID = "source--gtig-unified-actor-naming-2026"
 MICROSOFT_SOURCE_ID = "source--osint-microsoft-threat-actor-mapping"
+WHITE_COMPANY_CURATION_SOURCE_ID = "source--actor-census-curation-white-company"
+HONEYMYTE_SOURCE_ID = "source--daily-9232cff77ce0ef8f62b1"
 
 # (profile slug, previous GTIG names). The new GTIG name is the dictionary key.
 GTIG_MAPPINGS: dict[str, tuple[str, list[str]]] = {
@@ -123,6 +125,25 @@ SOURCES: dict[str, dict[str, Any]] = {
         "actor_scope": "exact",
         "claims_supported": ["identity", "alias", "relationship", "ttp"],
         "analyst_notes": "Official MITRE Enterprise ATT&CK 19.2 local compact index. Separate Group identifiers are treated as an entity boundary, not an exact alias assertion.",
+    },
+    WHITE_COMPANY_CURATION_SOURCE_ID: {
+        "source_id": WHITE_COMPANY_CURATION_SOURCE_ID,
+        "path": "actor_profile/actor-census-curation.json",
+        "url": "https://attack.mitre.org/groups/G0089/",
+        "title": "Analyst-reviewed White Company identity curation",
+        "publisher": "threatactor-intel-analysis maintainers",
+        "published_at": unknown_time(),
+        "language": "en",
+        "source_type": "analyst-curation",
+        "tlp": "TLP:CLEAR",
+        "reliability": "high",
+        "sha256": None,
+        "actor_scope": "exact",
+        "claims_supported": ["identity", "alias"],
+        "analyst_notes": (
+            "The local census spelling 'White Company' is matched to MITRE "
+            "ATT&CK Group G0089, whose canonical name is 'The White Company'."
+        ),
     },
     GTIG_SOURCE_ID: {
         "source_id": GTIG_SOURCE_ID,
@@ -252,6 +273,35 @@ SOURCES: dict[str, dict[str, Any]] = {
         "claims_supported": ["identity", "alias"],
         "analyst_notes": "The joint advisory identifies BlackTech as Palmerworm, TEMP.Overboard, Circuit Panda, and Radio Panda.",
     },
+    HONEYMYTE_SOURCE_ID: {
+        "source_id": HONEYMYTE_SOURCE_ID,
+        "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+        "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+        "title": "APT group HoneyMyte upgrades CoolClient: the backdoor gets a kernel-level Windows rootkit",
+        "publisher": "Kaspersky GReAT / Securelist",
+        "published_at": time_value("2026-08-14"),
+        "language": "en",
+        "source_type": "vendor-threat-research",
+        "tlp": "TLP:CLEAR",
+        "reliability": "high",
+        "sha256": None,
+        "accessed_at": "2026-09-21",
+        "actor_scope": "exact",
+        "claims_supported": [
+            "identity",
+            "alias",
+            "activity",
+            "capability",
+            "targeting",
+            "ttp",
+            "victim-case",
+        ],
+        "analyst_notes": (
+            "Kaspersky explicitly describes HoneyMyte as also known as Mustang "
+            "Panda and separately documents the CoolClient activity and victims. "
+            "The source publication date is used instead of the daily-news file date."
+        ),
+    },
     "source--cert-ua-uac0020-index": {
         "source_id": "source--cert-ua-uac0020-index",
         "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
@@ -314,8 +364,10 @@ def merge_alias(
     )
     if confidence == "high":
         existing["confidence"] = "high"
-    if scope == "exact":
-        existing["scope"] = "exact"
+    if scope == "exact" or (
+        existing.get("scope") == "unknown" and scope != "unknown"
+    ):
+        existing["scope"] = scope
     if vendor and vendor not in existing.get("vendor", ""):
         existing["vendor"] = " / ".join(x for x in (existing.get("vendor"), vendor) if x)
     if note and note not in existing.get("analyst_notes", ""):
@@ -362,7 +414,14 @@ def add_relationship(
     left["relationships"] = [
         item
         for item in left.get("relationships", [])
-        if item["relationship_id"] != relationship_id
+        if not (
+            item.get("relationship_id") == relationship_id
+            or (
+                normalized_name(item.get("target_actor", ""))
+                == normalized_name(record["target_actor"])
+                and item.get("relationship_type") == relationship_type
+            )
+        )
     ] + [record]
 
 
@@ -494,15 +553,32 @@ def main() -> int:
         )
         catalog_alias("blacktech", name)
 
+    mustang = profile("mustang-panda")
+    merge_source(mustang, HONEYMYTE_SOURCE_ID)
+    merge_alias(
+        mustang,
+        name="HoneyMyte",
+        vendor="Kaspersky GReAT",
+        scope="exact",
+        confidence="high",
+        source_id=HONEYMYTE_SOURCE_ID,
+        note=(
+            "Kaspersky explicitly states that the HoneyMyte APT group is also "
+            "known as Mustang Panda."
+        ),
+    )
+    catalog_alias("mustang-panda", "HoneyMyte")
+
     white_company = profile("white-company")
     merge_source(white_company, "source--mitre-attack-19-2")
+    merge_source(white_company, WHITE_COMPANY_CURATION_SOURCE_ID)
     merge_alias(
         white_company,
         name="White Company",
         vendor="MITRE ATT&CK / corpus curation",
         scope="exact",
         confidence="high",
-        source_id="source--mitre-attack-19-2",
+        source_id=WHITE_COMPANY_CURATION_SOURCE_ID,
         note=(
             "The corpus name without the leading article refers to the same "
             "Operation Shaheen actor canonicalized by MITRE as The White Company."

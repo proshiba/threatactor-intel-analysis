@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--mirrorface",
   "actor_name": "MirrorFace",
-  "profile_updated_at": "2026-09-20T13:48:12Z",
+  "profile_updated_at": "2026-09-21T04:35:02Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -13,7 +13,7 @@
       "tools": "canonical-present",
       "targets": "canonical-present",
       "motivations": "canonical-present",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 3,
@@ -26,13 +26,16 @@
       "motivations": 1
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 21,
       "relationships": 0,
       "malware": 46,
       "tools": 5,
       "untyped_software": 0,
       "targets": 46,
-      "motivations": 2
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -110,7 +113,8 @@
             "counterevidence": []
           }
         ],
-        "target_actor_ref": "actor--menupass"
+        "target_actor_ref": "actor--menupass",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [
@@ -636,7 +640,8 @@
         },
         "description": "中国と関連するサイバー攻撃グループMirrorFaceが、中央ヨーロッパの外交組織を標的に、新たなサイバースパイ活動「Operation AkaiRyū」を展開。 この攻撃では、カスタマイズされたAsyncRATの亜種と、以前APT10が使用していたバックドア「ANEL」を使用。 ANELの使用は、MirrorFaceが以前使用していたLODEINFOから切り替えた可能性を示すだけでなく、2018年後半または2019年頃に一度使用が中止されたANELが再び使用されたという点で重要。 攻撃手法として、スピアフィッシングメールを用いて、悪意のあるドキュメントやリンクを開かせ、マルウェアを展開。 攻撃者は、Visual Studio Codeのリモートトンネル機能を利用し、侵入したシステムへのステルスなアクセスを確立。 MirrorFaceは、以前は日本の組織を主な標的としていたが、今回の攻撃はその活動範囲の拡大を示唆。",
         "target_refs": [
-          "target--mitre-group--country--37778ff5178839a8849f"
+          "target--mitre-group--country--37778ff5178839a8849f",
+          "target--targeting-audit--region--fbc4981fcb09e2c62fbf"
         ],
         "malware_refs": [
           "malware--lodeinfo",
@@ -675,7 +680,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--mitre-group--country--37778ff5178839a8849f"
+              "target--mitre-group--country--37778ff5178839a8849f",
+              "target--targeting-audit--region--fbc4981fcb09e2c62fbf"
             ],
             "victim_refs": [
               "victim--activity-rule--ccf5ee5b782cacd2bcc6"
@@ -712,7 +718,9 @@
               "target_country_refs": [
                 "target--mitre-group--country--37778ff5178839a8849f"
               ],
-              "target_region_refs": []
+              "target_region_refs": [
+                "target--targeting-audit--region--fbc4981fcb09e2c62fbf"
+              ]
             }
           },
           "confidence": "high",
@@ -749,6 +757,10 @@
           {
             "id": "target--mitre-group--country--37778ff5178839a8849f",
             "name": "日本"
+          },
+          {
+            "id": "target--targeting-audit--region--fbc4981fcb09e2c62fbf",
+            "name": "欧州"
           }
         ],
         "victims": [
@@ -2126,10 +2138,9 @@
         "evidence_refs": [
           "source--daily-5e94939f6aa20488691a",
           "source--daily-7947b8d03c9ba0e3f2c3",
-          "source--mitre-attack-19-2",
-          "source--target-audit-etda-threat-group-cards"
+          "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--80e49ccc7e5884fb866ddf1c",
@@ -2140,8 +2151,7 @@
             "evidence_refs": [
               "source--daily-5e94939f6aa20488691a",
               "source--daily-7947b8d03c9ba0e3f2c3",
-              "source--mitre-attack-19-2",
-              "source--target-audit-etda-threat-group-cards"
+              "source--mitre-attack-19-2"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
@@ -2195,7 +2205,7 @@
       {
         "id": "target--targeting-audit--region--fbc4981fcb09e2c62fbf",
         "name": "欧州",
-        "description": "MITRE ATT&CKのGroup概要でMirrorFaceの標的範囲として欧州が明示されている。",
+        "description": "活動「中国関連のMirrorFace、ANELおよびAsyncRATを展開し新たなサイバースパイ活動を実施」の記述で標的地域として欧州が明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -2208,29 +2218,29 @@
           "status": "unknown",
           "basis": "not-stated"
         },
-        "confidence": "high",
+        "confidence": "medium",
         "evidence_refs": [
-          "source--daily-5e94939f6aa20488691a",
-          "source--mitre-attack-19-2"
+          "source--daily-5e94939f6aa20488691a"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--f4167822371264ad2ae03542",
             "category": "target-region",
-            "verification_status": "supported",
-            "confidence": "high",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
             "statement": "MirrorFace targets region 欧州.",
             "evidence_refs": [
-              "source--daily-5e94939f6aa20488691a",
-              "source--mitre-attack-19-2"
+              "source--daily-5e94939f6aa20488691a"
             ],
-            "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-c40529bdb22ceb255b99"
+        ]
       },
       {
         "id": "target--mitre-group--sector--0dcd10afc274a4917be0",
@@ -2471,6 +2481,7 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [
       {
         "lead_id": "activity-lead--etda--d418ed4a89a31f518a28",
@@ -3145,7 +3156,31 @@
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "77ac7bdb-9795-4eb4-8fe6-a1ddabeb2065",
+            "name": "LODEINFO",
+            "description": "A backdoor used by MirrorFace for espionage and exfiltration, capable of capturing screenshots, keylogging, killing processes, exfiltrating files, and executing additional files and commands.<sup>[[ESET MirrorFace December 14 2022](/references/e1896c15-8f19-43e4-96b0-cfd442966b28)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S3465",
+            "group_refs": [
+              "a59f3dd2-7685-4442-894c-bbb068540321"
+            ],
+            "source_urls": [
+              "https://www.welivesecurity.com/2022/12/14/unmasking-mirrorface-operation-liberalface-targeting-japanese-political-entities/"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "MirrorStealer",
@@ -3952,6 +3987,12 @@
       }
     ],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -4399,7 +4440,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Government",
+              "dataset_entry": "MirrorFace",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Aerospace",
@@ -4429,7 +4480,17 @@
           ],
           "match_basis": "single-alias-intersection",
           "match_confidence": "medium",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Defense",
+              "dataset_entry": "MirrorFace",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Energy",
@@ -4519,7 +4580,17 @@
           ],
           "match_basis": "single-alias-intersection",
           "match_confidence": "medium",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Media",
+              "dataset_entry": "MirrorFace",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "NGOs",
@@ -4613,7 +4684,9 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
-      ]
+      ],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -4703,11 +4776,12 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 107,
-    "partially-supported": 8
+    "supported": 106,
+    "partially-supported": 9
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -4744,7 +4818,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250319.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250319.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/03/china-linked-mirrorface-deploys-anel.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-7947b8d03c9ba0e3f2c3": {
       "source_id": "source--daily-7947b8d03c9ba0e3f2c3",
@@ -4762,7 +4845,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250110.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250110.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/mirrorface-hackers-targeting-japanese-govt-politicians-since-2019/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--mirrorface--53e785c48f775c1e": {
       "source_id": "source--mirrorface--53e785c48f775c1e",
@@ -4950,31 +5041,6 @@
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
     "source--osint-misp-mitre-enterprise-intrusion-set": {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
@@ -5000,6 +5066,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -5056,36 +5177,6 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   },
   "research_gaps": [

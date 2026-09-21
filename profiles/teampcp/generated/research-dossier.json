@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--teampcp",
   "actor_name": "TeamPCP",
-  "profile_updated_at": "2026-09-20T13:48:09Z",
+  "profile_updated_at": "2026-09-21T04:18:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -20,19 +20,22 @@
       "dated_activities": 2,
       "relationships": 0,
       "malware": 6,
-      "activity_linked_malware": 2,
+      "activity_linked_malware": 3,
       "tools": 0,
       "targets": 6,
-      "motivations": 1
+      "motivations": 2
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 0,
       "relationships": 0,
       "malware": 0,
       "tools": 0,
       "untyped_software": 0,
       "targets": 0,
-      "motivations": 0
+      "motivations": 0,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -85,6 +88,29 @@
               "source--sentinellabs-pcpjack-2026"
             ],
             "verification_rationale": "Evidence tier=research; motivation is not inferred from sponsorship.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "type": "financial-gain",
+        "description": "Financially motivated intrusion or fraud.",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": "Derived from explicit MITRE ATT&CK actor description.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--908b3f29b57c9dce8ec5f929",
+            "category": "motivation",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "TeamPCP has motivation financial-gain: Financially motivated intrusion or fraud.",
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ],
+            "verification_rationale": "Evidence tier=knowledge-base; motivation is not inferred from sponsorship.",
             "counterevidence": []
           }
         ]
@@ -278,7 +304,8 @@
         ],
         "malware_refs": [
           "malware--dustmaker",
-          "malware--sandclock"
+          "malware--sandclock",
+          "malware--teampcp-cloud-stealer"
         ],
         "infrastructure_refs": [
           "infra--masscan-cloud"
@@ -301,7 +328,8 @@
           "capability": {
             "malware_refs": [
               "malware--dustmaker",
-              "malware--sandclock"
+              "malware--sandclock",
+              "malware--teampcp-cloud-stealer"
             ],
             "ttp_refs": [
               "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -396,6 +424,10 @@
           {
             "id": "malware--sandclock",
             "name": "SANDCLOCK"
+          },
+          {
+            "id": "malware--teampcp-cloud-stealer",
+            "name": "TeamPCP Cloud Stealer"
           }
         ],
         "targets": [
@@ -801,20 +833,42 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--teampcp-oss-supply-chain-2026",
+            "activity_name": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
+            "first_observed": {
+              "value": "2026-02-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--gtig-adversarial-ai-2026",
+              "source--gtig-ai-threat-tracker-2026-05",
+              "source--sentinellabs-pcpjack-2026"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       }
     ],
     "tool_usage": [],
@@ -1062,23 +1116,33 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [],
     "incident_types": [],
     "relationships": [],
     "malware": [],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [],
       "victims_or_geographies": [],
-      "sectors": []
+      "sectors": [],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [],
-    "attribution": []
+    "attribution": [],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 77,
-    "partially-supported": 3
+    "supported": 80,
+    "partially-supported": 2
   },
   "evidence_catalog": {
     "source--daily-48f251212f832ab9b6df": {
@@ -1097,7 +1161,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     "source--gtig-ai-threat-tracker-2026-05": {
       "source_id": "source--gtig-ai-threat-tracker-2026-05",
@@ -1115,7 +1186,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--oligo-teampcp-2026": {
       "source_id": "source--oligo-teampcp-2026",
@@ -1133,7 +1217,21 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--osint-microsoft-threat-actor-mapping": {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -1203,7 +1301,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--gtig-adversarial-ai-2026": {
       "source_id": "source--gtig-adversarial-ai-2026",
@@ -1253,7 +1364,8 @@
         "identity",
         "alias"
       ],
-      "analyst_notes": "Official ATT&CK Group G1056 associated-group names."
+      "analyst_notes": "Official ATT&CK Group G1056 associated-group names. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
     },
     "source--osint-misp-mitre-enterprise-intrusion-set": {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",

@@ -4,7 +4,7 @@
   "name": "UNC6240",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T13:48:01Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "languages": [
     "ja"
   ],
@@ -24,11 +24,10 @@
       },
       {
         "name": "ShinyHunters",
-        "vendor": "Google Threat Intelligence Group / MITRE ATT&CK",
+        "vendor": "MITRE ATT&CK",
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-adversarial-ai-2026",
           "source--mitre-attack-19-2",
           "source--mitre-attack-g1057"
         ],
@@ -62,7 +61,7 @@
     },
     "active": "unknown",
     "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) is a cyber criminal collective that has been active since at least 2019 operating under the ShinyCorp persona. [ShinyHunters](https://attack.mitre.org/groups/G1057) has targeted multiple industries and geographic regions gathering legitimate credentials and personally identifiable information (PII) for resale or extortion of victims. [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). Public reporting has mentioned a variety of names for operations [ShinyHunters](https://attack.mitre.org/groups/G1057) members have reportedly conducted with members of other groups, including “Scattered Lapsus Hunters,” “Scattered Lapsus Shiny Hunters,” and “SLSH.”(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)(Citation: SOCRadar_ShinyHunters_Mar2024)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: Intel471_SH_Aug2021)(Citation: FBI_SHLMS_May2026)(Citation: Google_SHOracle_Jun2026)(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: Google Salesforce JUN 2025)",
-    "analyst_notes": ""
+    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
   },
   "attribution": {
     "countries": [],
@@ -120,6 +119,75 @@
         "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE relationship extraction: status=partially-supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
+    },
+    {
+      "relationship_id": "relationship--unc6240--verified--540efd482bbece80",
+      "target_actor": "UNC6040",
+      "relationship_type": "related-to",
+      "description": "GTIG tracks the initial Salesforce vishing and data theft as UNC6040 and the subsequent ShinyHunters-branded extortion as UNC6240; a partnership is possible but not established as exact identity.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-unc6040-salesforce-vishing-2025"
+      ],
+      "analyst_notes": "Sequential operational link with distinct tracking boundaries; do not treat ShinyHunters as an exact UNC6040 alias."
+    },
+    {
+      "relationship_id": "relationship--unc6240--verified--9c10bd416ad9ba2f",
+      "target_actor": "UNC6671",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "GTIG tracks UNC6661, UNC6671, and UNC6240 separately within recent ShinyHunters-branded SaaS theft reporting to preserve possible partnership and impersonation boundaries.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Shared umbrella branding and TTPs do not establish exact identity; Mandiant notes indicators that separate individuals may be involved."
+    },
+    {
+      "relationship_id": "relationship--unc6240--verified--484a2ce02dbb714a",
+      "target_actor": "UNC6661",
+      "relationship_type": "related-to",
+      "description": "GTIG attributes extortion following UNC6661 intrusions to UNC6240, based on negotiation-account and extortion-artifact overlaps.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Linked stages, retained as distinct GTIG threat clusters."
     }
   ],
   "diamond_model": {
@@ -128,7 +196,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -388,8 +456,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -1670,7 +1738,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260202.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260202.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8012423fa9a259605e9c",
@@ -1688,7 +1763,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250826.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250826.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--unc6240--2c7acfc0f73ec191",
@@ -1843,7 +1926,8 @@
         "identity",
         "alias"
       ],
-      "analyst_notes": "Official ATT&CK Group G1057 associated-group names."
+      "analyst_notes": "Official ATT&CK Group G1057 associated-group names. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -1924,6 +2008,63 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--gtig-unc6040-salesforce-vishing-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+      "title": "The Cost of a Call: From Voice Phishing to Data Extortion",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2025-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "GTIG attributes Salesforce vishing and initial data theft to UNC6040, but separately tracks the subsequent ShinyHunters-branded extortion as UNC6240. The report says a partnership is possible, not proven."
+    },
+    {
+      "source_id": "source--gtig-shinyhunters-saas-clusters-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "title": "Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft",
+      "publisher": "Mandiant / Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-01-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GTIG deliberately tracks UNC6661, UNC6671, and UNC6240 separately to represent evolving partnerships and possible impersonation. UNC6671 used an unbranded extortion email and a different Tox ID."
     }
   ],
   "assessment": {
@@ -1937,7 +2078,7 @@
       "parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters は本プロファイルへ統合(merged)したが、同台帳が保持する観測4件(Health-ISAC 2026-07-30、Brinks Home 2026-07-31、ReliaQuest 2026-08-26、McKesson SEC Form 8-K 2026-08-29)は活動としては取り込んでいない。被害組織3社の開示はいずれもShinyHuntersを名指ししておらず、帰属が攻撃者の犯行主張と報道に依存するためである。犯行主張のみを根拠とする活動を本リポジトリでどう扱うかの方針が未決であり、方針決定後に観測単位で再判断する。",
       "2026-09-14の走査で、フロリダ州DAVIDデータベース侵害について州当局の公式確認が得られた。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」と公表し、Plant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものを悪用された経路も示した。ただしFLHSMVは実行主体を「international cybercriminal organization」とのみ表現してShinyHuntersを名指しせず、同集団が主張する20万件超という件数も確認していない。すなわち確認されたのは侵害の発生であって帰属ではないため、犯行主張のみを根拠とする活動の扱いという上記の未決方針は解消していない。関連レコード(unc6240|https://x.com/flhsmv/status/2098239548660514979)は不採用として判断理由を保存している。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt37`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:38:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -33,7 +33,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 - 国: North Korea
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`
 
 ## モチベーション
 
@@ -51,16 +51,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [APT37](https://attack.mitre.org/groups/G0067) is a North Korean state-sponsored cyber espionage group that has been active since at least 2012. The group has targeted victims primarily in South Korea, but also in Japan, Vietnam, Russia, Nepal, China, India, Romania, Kuwait, and other parts of the Middle East. [APT37](https://attack.mitre.org/groups/G0067) has also been linked to the following campaigns between 2016-2018: Operation Daybreak, Operation Erebus, Golden Time, Evil New Year, Are you Happy?, FreeMilk, North Korean Human Rights, and Evil New Year 2018.(Citation: FireEye APT37 Feb 2018)(Citation: Securelist ScarCruft Jun 2016)(Citation: Talos Group123)<br><br>North Korean group definitions are known to have significant overlap, and some security researchers report all North Korean state-sponsored cyber activity under the name [Lazarus Group](https://attack.mitre.org/groups/G0032) instead of tracking clusters or subgroups. |
-| Capability | DOGCALL, HAPPYWORK, KARAE, SLOWDRIFT, SHUTTERSPEED, WINERACK, NavRAT, POORAIM, ROKRAT, CORALDECK, BLUELIGHT, Final1stspy, Cobalt Strike, SOUNDWAVE, ZUMKONG, RICECURRY, MILKDROP, GELCAPSULE, RUHAPPY, Flash Exploit CVE-2016-4117, KEVDROID, BabyShark, KimJongRAT, GOLDBACKDOOR |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Primarily South Korea – though also Japan, Vietnam and the Middle East – in various industry verticals, including chemicals, electronics, manufacturing, aerospace, automotive, and healthcare; Scarcruft Tracking: Russia, Nepal, South Korea, China, India, Kuwait and Romania |
-| Socio-political | North Korea |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -94,32 +94,21 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--babyshark | BabyShark | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--daily-397062646adc91061d4a | BirdCall | APT37との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2024 | 2026-05-05 | 高 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
 | malware--bluelight | BLUELIGHT | [BLUELIGHT](https://attack.mitre.org/software/S0657) is a remote access Trojan used by [APT37](https://attack.mitre.org/groups/G0067) that was first observed in early 2021.(Citation: Volexity InkySquid BLUELIGHT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--coraldeck | CORALDECK | [CORALDECK](https://attack.mitre.org/software/S0212) is an exfiltration tool used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--dogcall | DOGCALL | [DOGCALL](https://attack.mitre.org/software/S0213) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) that has been used to target South Korean government and military organizations in 2017. It is typically dropped using a Hangul Word Processor (HWP) exploit. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--final1stspy | Final1stspy | [Final1stspy](https://attack.mitre.org/software/S0355) is a dropper family that has been used to deliver [DOGCALL](https://attack.mitre.org/software/S0213).(Citation: Unit 42 Nokki Oct 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--flash-exploit-cve-2016-4117 | Flash Exploit CVE-2016-4117 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--gelcapsule | GELCAPSULE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--goldbackdoor | GOLDBACKDOOR | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--happywork | HAPPYWORK | [HAPPYWORK](https://attack.mitre.org/software/S0214) is a downloader used by [APT37](https://attack.mitre.org/groups/G0067) to target South Korean government and financial victims in November 2016. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--karae | KARAE | [KARAE](https://attack.mitre.org/software/S0215) is a backdoor typically used by [APT37](https://attack.mitre.org/groups/G0067) as first-stage malware. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--kevdroid | KEVDROID | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--kimjongrat | KimJongRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--milkdrop | MILKDROP | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--daily-c07163c7c1b6cc1b80eb | NarwhalRAT | APT37との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-82bdd80456957234d81b` |
 | malware--navrat | NavRAT | [NavRAT](https://attack.mitre.org/software/S0247) is a remote access tool designed to upload, download, and execute files. It has been observed in attacks targeting South Korea. (Citation: Talos NavRAT May 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--pooraim | POORAIM | [POORAIM](https://attack.mitre.org/software/S0216) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) in campaigns since at least 2014. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--ricecurry | RICECURRY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--rokrat | ROKRAT | [ROKRAT](https://attack.mitre.org/software/S0240) is a cloud-based remote access tool (RAT) used by [APT37](https://attack.mitre.org/groups/G0067) to target victims in South Korea. [APT37](https://attack.mitre.org/groups/G0067) has used ROKRAT during several campaigns from 2016 through 2021.(Citation: Talos ROKRAT)(Citation: Talos Group123)(Citation: Volexity InkySquid RokRAT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--ruhappy | RUHAPPY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--shutterspeed | SHUTTERSPEED | [SHUTTERSPEED](https://attack.mitre.org/software/S0217) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--slowdrift | SLOWDRIFT | [SLOWDRIFT](https://attack.mitre.org/software/S0218) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) against academic and strategic victims in South Korea. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--soundwave | SOUNDWAVE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--winerack | WINERACK | [WINERACK](https://attack.mitre.org/software/S0219) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--zumkong | ZUMKONG | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -145,43 +134,27 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Are you Happy? | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | infrastructure-operation | 不明 | 不明 | 2025-08-16 | target--country--south-korea | malware--rokrat | ttp--activity-rule--c668e54ddd027a2bc60b | victim--activity-rule--7d94c1412e3341c2d087 | 北朝鮮APT37が主に韓国を標的としたキャンペーンで、JPEGに隠したRoKRAT新亜種でWindowsを侵害する攻撃を展開。 ZIP内LNKがバッチでPowerShell起動→XOR復号→シェルコード実行の多段手口。 mspaint.exe/notepad.exeへコード注入し、ファイルレス化で検知を回避。 Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。 対策はEDR、ユーザー訓練・端末管理、クラウド通信の能動監視。 | 高 | `source--daily-468e8f8090fe0064b1c4` |
 | Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | phishing-campaign | 不明 | 不明 | 2026-06-16 |  | malware--daily-c07163c7c1b6cc1b80eb | ttp--activity-rule--3adf302f3671ba0415ec, ttp--activity-rule--651e8c74dca3cb33f22a |  | Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。 | 中 | `source--daily-82bdd80456957234d81b` |
-| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | reported-activity | 不明 | 不明 | 2025-12-04 |  |  |  |  | Microsoftは、国家支援/犯罪集団が悪用するWindows LNKのゼロデイ(CVE-2025-9491)に対し静かに「緩和」を実施。 脆弱性はLNKのTarget欄に空白を詰め引数を隠し実行させる手口で、利用者がLNKを開く操作を誘導されると成立。 攻撃者はメールで遮断される.LNKをZIP等に同梱して配布し、Ursnif・Gh0st RAT・TrickBot・PlugXなどを投下。 Trend Microは少なくとも11の国家系/犯罪集団（Mustang PandaやAPT37等）が悪用と報告、欧州外交官標的の事例も。 11月更新でTarget全表示に変更されたが完全修正ではなく、0patchが長文Target検知・警告の非公式修正を提供。 | 中 | `source--daily-79fb3689c96eb2761182` |
+| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | reported-activity | 不明 | 不明 | 2025-12-04 | target--targeting-audit--region--5992681acae78e590004 |  |  | victim--activity-rule--83ce48635ea3329b4a7a | Microsoftは、国家支援/犯罪集団が悪用するWindows LNKのゼロデイ(CVE-2025-9491)に対し静かに「緩和」を実施。 脆弱性はLNKのTarget欄に空白を詰め引数を隠し実行させる手口で、利用者がLNKを開く操作を誘導されると成立。 攻撃者はメールで遮断される.LNKをZIP等に同梱して配布し、Ursnif・Gh0st RAT・TrickBot・PlugXなどを投下。 Trend Microは少なくとも11の国家系/犯罪集団（Mustang PandaやAPT37等）が悪用と報告、欧州外交官標的の事例も。 11月更新でTarget全表示に変更されたが完全修正ではなく、0patchが長文Target検知・警告の非公式修正を提供。 | 中 | `source--daily-79fb3689c96eb2761182` |
 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | malware-campaign | 2024 | 2026-05-05 | 2026-05-06 | target--activity-rule--country--f0d8df51439c4d0f3a05 | malware--daily-397062646adc91061d4a, malware--rokrat |  | victim--activity-rule--edba50549fb5c44ad984 | 北朝鮮系APT37/ScarCruftは、ビデオゲーム基盤を侵害し、Android版BirdCallバックドアを配布した。 ESETによると、攻撃はYanbian地域の朝鮮民族コミュニティや北朝鮮脱北者を狙ったものとみられる。 sqgame系サイト上のAndroidゲームAPKがトロイの木馬化され、Windows更新経路ではRokRAT経由でBirdCallが展開された。 Android版BirdCallは連絡先、通話履歴、SMS、端末情報、文書、画像、秘密鍵を収集し、スクリーンショットや録音も行う。 Android版は2024年10月ごろ作成され、少なくとも7バージョンが確認され、2024年末ごろから攻撃が継続していた可能性がある。 | 高 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
-| 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | phishing-campaign | 不明 | 不明 | 2024-10-04 |  |  | ttp--activity-rule--2a1ce1684d6f7a91220b | victim--activity-rule--18860e466b214b6d3f98 | 北朝鮮のAPT37ハッカーグループが新たなバックドア「VeilShell」を使用し、カンボジアなど東南アジア諸国を標的にした。 VeilShellは、データ窃取や遠隔操作を可能にするPowerShellベースのマルウェア。 複数のステルス技術を使用し、持続的な攻撃を実行。 この活動はSHROUDED#SLEEPと名付けられており、Securonixは、InkySquid、Reaper、RedEyes、Ricochet Chollima、Ruby Sleet、ScarCruftとしても知られるAPT37の仕業であると考えている。 攻撃チェーンは、フィッシングメールで開始し、AppDomainManagerインジェクションと呼ばれる攻撃手法が用いられた。流れは以下。 lnk > powershell > d.exe+dll(load by AppDomainManager) > js > powershell(veilshell) | 中 | `source--daily-f00592605535c739c5c3` |
-| 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | malware-campaign | 不明 | 不明 | 2025-02-05 | target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | victim--activity-rule--fda753ceec6db594850c | 北朝鮮の脅威アクターが、偽の求人面接を装い、macOS向けのFERRETマルウェアを配布。 被害者は、仮想会議用ソフトウェアのインストールや更新を要求するエラーが表示。これに促され、悪意のあるソフトウェアをダウンロード。 この攻撃は、JavaScriptベースのBeaverTailマルウェアをドロップし、さらにPython製のバックドアであるInvisibleFerretを展開。 攻撃者は、LinkedIn上でリクルーターを装い、ターゲットにビデオ評価を完了するよう促す。 最終的に、Golangベースのバックドアと情報窃取ツールをドロップし、MetaMaskウォレットから資金を盗むことを目的としている。 BeaverTailマルウェアを含む悪意のあるnpmパッケージ（postcss-optimizer）も確認されている。このパッケージは、Windows、macOS、Linuxシステムを感染させることができ、非常に人気なpostcssライブラリを模倣 | 中 | `source--daily-5be59ed011b127efaaf3` |
+| 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | phishing-campaign | 不明 | 不明 | 2024-10-04 | target--targeting-audit--country--2e768f4401560421145e, target--targeting-audit--region--51f413f029baec29603a |  | ttp--activity-rule--2a1ce1684d6f7a91220b | victim--activity-rule--18860e466b214b6d3f98 | 北朝鮮のAPT37ハッカーグループが新たなバックドア「VeilShell」を使用し、カンボジアなど東南アジア諸国を標的にした。 VeilShellは、データ窃取や遠隔操作を可能にするPowerShellベースのマルウェア。 複数のステルス技術を使用し、持続的な攻撃を実行。 この活動はSHROUDED#SLEEPと名付けられており、Securonixは、InkySquid、Reaper、RedEyes、Ricochet Chollima、Ruby Sleet、ScarCruftとしても知られるAPT37の仕業であると考えている。 攻撃チェーンは、フィッシングメールで開始し、AppDomainManagerインジェクションと呼ばれる攻撃手法が用いられた。流れは以下。 lnk > powershell > d.exe+dll(load by AppDomainManager) > js > powershell(veilshell) | 中 | `source--daily-f00592605535c739c5c3` |
+| APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散 | malware-campaign | 2024-11-13 | 2024-11-13 | 2025-02-03 | target--country--south-korea | malware--rokrat |  | victim--activity-rule--fda753ceec6db594850c | Genians Security Centerは、APT37が2024年11月13日に韓国のKメッセンジャー団体チャットへ悪性HWP文書とZIP内のLNKを時間差で配布した活動を分析した。初期スピアフィッシング後に侵害端末で偵察・探索を行い、ログイン中のメッセンジャーを追加配布経路として悪用した。HWPのOLEとLNK内PowerShellからファイルレスで実行されるペイロードは、APT37のRoKRAT系列と特定された。 | 高 | `source--daily-5be59ed011b127efaaf3`, `source--genians-apt37-k-messenger-2025` |
 | APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | phishing-campaign | 不明 | 不明 | 2025-11-12 | target--country--south-korea |  |  | victim--activity-rule--5c6a103acdc9c5f18de0 | 北朝鮮系がGoogleのFind Hubを悪用し、標的のAndroid端末の位置把握とリモート初期化で痕跡消去を行う。 攻撃は主に韓国人を狙い、KakaoTalkで接触後、国税庁や警察を装うフィッシングと署名MSIでPCにRATを導入。 AutoIT経由で持続化とC2通信を設定し、Remcos/Quasar/RftRATでGoogleやNaver資格情報を奪取して設定変更。 奪取したGoogleアカウントでFind Hubにログインし、GPSを確認した上で端末を複数回ワイプし、回復や警告を妨害。 被害者のKakaoTalk PCセッションを乗っ取り、連絡先へ拡散。対策は2段階認証/パスキーや送信者の電話確認等。 | 高 | `source--daily-24c4e22a7b0cd08d6063` |
 | APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入 | infrastructure-operation | 不明 | 不明 | 2026-02-28 |  | malware--bluelight |  |  | 北朝鮮系APT37（ScarCruft等）が「Ruby Jumper」作戦で、新ツールにより隔離環境と接続環境間のデータ移送を実現 侵入は悪意あるWindowsショートカット（LNK）を起点にPowerShellを実行し、デコイ文書で注意をそらしつつペイロードを展開 RESTLEAFがZoho WorkDriveを使うC2でシェルコードを取得し、次段のRubyローダーSNAKEDROPPERをダウンロードさせる Ruby 3.3.0環境をUSB関連ユーティリティを偽装したusbspeed.exeとしてインストールし、正規のoperating_system.rbを改ざんしてタスクrubyupdatecheckで自動実行させる THUMBSBDがUSBに隠し領域を作って双方向の中継点化、VIRUSTASKがLNK置換で拡散し、FOOTWINE/BLUELIGHTで監視・窃取を行う | 高 | `source--daily-98a40a134fc3127db612` |
-| Erebus | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Evil New Year | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Evil New Year 2018 | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| FreeMilk | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Golden Time | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| North Korean Human Rights | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Operation Earth Kitsune | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Are you Happy? | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | APT37 | ROKRAT | T1102.003 One-Way Communication | 情報なし | 韓国 | 被害事例: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | 高 |
 | Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | APT37 | NarwhalRAT | T1059.001 PowerShell, T1059.006 Python | 情報なし | 情報なし | 情報なし | 中 |
-| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | APT37 | 情報なし | 情報なし | 情報なし | 欧州 | 被害事例: Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | 中 |
 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | APT37 | BirdCall, ROKRAT | 情報なし | 情報なし | 北朝鮮 | 被害事例: ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | 高 |
-| 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | APT37 | 情報なし | T1059.001 PowerShell | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | 中 |
-| 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | APT37 | 情報なし | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | 中 |
+| 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | APT37 | 情報なし | T1059.001 PowerShell | 情報なし | カンボジア, 東南アジア | 被害事例: 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | 中 |
+| APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散 | APT37 | ROKRAT | 情報なし | 情報なし | 韓国 | 被害事例: APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散 | 高 |
 | APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | APT37 | 情報なし | 情報なし | 情報なし | 韓国 | 被害事例: APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | 高 |
 | APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入 | APT37 | BLUELIGHT | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
-| Erebus | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Evil New Year | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Evil New Year 2018 | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| FreeMilk | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Golden Time | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| North Korean Human Rights | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Operation Earth Kitsune | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human Rights; Evil New Year 2018; Operation Earth Kitsune
 
@@ -189,37 +162,24 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | Targeting text mentions india. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3`, `source--target-audit-etda-threat-group-cards` |
-| countries | クウェート | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ネパール | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | Targeting text mentions vietnam. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラオス | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | Targeting text mentions romania. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
+| countries | インド | Targeting text mentions india. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | カンボジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3` |
+| countries | クウェート | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ネパール | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ベトナム | Targeting text mentions vietnam. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | ルーマニア | Targeting text mentions romania. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | countries | 北朝鮮 | 活動「ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布」の記述で標的として明示された国・地域。 | 2024 | 2026-05-05 | 中 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
-| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3` |
-| regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 南アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f00592605535c739c5c3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、北朝鮮、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f00592605535c739c5c3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東欧 | チェコ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 活動「Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-79fb3689c96eb2761182`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| sectors | 暗号資産・Web3 | 活動「北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5be59ed011b127efaaf3` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | 韓国 | Targeting text mentions south korea. | 2024-11-13 | 2024-11-13 | 高 | `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--daily-5be59ed011b127efaaf3`, `source--genians-apt37-k-messenger-2025`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 南アジア | インド、ネパールで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 東アジア | 中国、北朝鮮、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--daily-4961e6946e3ccac84312`, `source--daily-5be59ed011b127efaaf3`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66`, `source--genians-apt37-k-messenger-2025`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 東南アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 東欧 | ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 欧州 | 活動「Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--daily-79fb3689c96eb2761182` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -228,8 +188,9 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | 被害事例: 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--2a1ce1684d6f7a91220b | メール／メールアカウント | data-theft: VeilShellは、データ窃取や遠隔操作を可能にするPowerShellベースのマルウェア。 | 不明 | 不明 | 2024-10-04 | 中 | `source--daily-f00592605535c739c5c3` |
 | 被害事例: APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--country--south-korea |  |  | エンドポイント, モバイル端末 |  | 不明 | 不明 | 2025-11-12 | 高 | `source--daily-24c4e22a7b0cd08d6063` |
 | 被害事例: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | 非公開 | aggregate | multiple-organizations | reported | target--country--south-korea | malware--rokrat | ttp--activity-rule--c668e54ddd027a2bc60b | エンドポイント, クラウド／SaaS |  | 不明 | 不明 | 2025-08-16 | 高 | `source--daily-468e8f8090fe0064b1c4` |
+| 被害事例: Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | 非公開 | anonymous | unknown | reported |  |  |  |  |  | 不明 | 不明 | 2025-12-04 | 中 | `source--daily-79fb3689c96eb2761182` |
 | 被害事例: ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--f0d8df51439c4d0f3a05 | malware--daily-397062646adc91061d4a, malware--rokrat |  | エンドポイント, モバイル端末 |  | 2024 | 2026-05-05 | 2026-05-06 | 高 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
-| 被害事例: 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | ネットワーク機器 |  | 不明 | 不明 | 2025-02-05 | 中 | `source--daily-5be59ed011b127efaaf3` |
+| 被害事例: APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散 | 非公開 | anonymous | unknown | reported | target--country--south-korea | malware--rokrat |  | エンドポイント |  | 2024-11-13 | 2024-11-13 | 2025-02-03 | 高 | `source--daily-5be59ed011b127efaaf3`, `source--genians-apt37-k-messenger-2025` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -316,7 +277,7 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 - IOC観測: 463件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 61件
-- 非IOC artifact観測: 362件（`artifacts.csv`）
+- 非IOC artifact観測: 351件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -353,7 +314,7 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | source--daily-24c4e22a7b0cd08d6063 | APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | bleepingcomputer.com | 2025-11-12 | https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-468e8f8090fe0064b1c4 | JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | iototsecnews.jp | 2025-08-16 | https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-4961e6946e3ccac84312 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | welivesecurity.com | 2026-05-06 | https://www.welivesecurity.com/en/eset-research/rigged-game-scarcruft-compromises-gaming-platform-supply-chain-attack/ | osint-report | TLP:CLEAR | 中 |
-| source--daily-5be59ed011b127efaaf3 | 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | thehackernews.com | 2025-02-05 | https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-5be59ed011b127efaaf3 | 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | The Hacker News | 2025-02-04 | https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html | news-report | TLP:CLEAR | 中 |
 | source--daily-68fe928d58956df4f752 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 — IOC補助資料 | raw.githubusercontent.com | 不明 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.md5 | osint-report | TLP:CLEAR | 中 |
 | source--daily-79fb3689c96eb2761182 | Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | bleepingcomputer.com | 2025-12-04 | https://www.bleepingcomputer.com/news/microsoft/microsoft-mitigates-windows-lnk-flaw-exploited-as-zero-day/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-82bdd80456957234d81b | Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | genians.co.kr | 2026-06-16 | https://www.genians.co.kr/en/blog/threat_intelligence/narwhalrat | osint-report | TLP:CLEAR | 中 |
@@ -367,13 +328,14 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--genians-apt37-k-messenger-2025 | K 메신저로 유포된 'APT37' 그룹의 악성 HWP 사례 분석 | Genians Security Center | 2025-02-03 | https://www.genians.co.kr/blog/threat_intelligence/k-messenger | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

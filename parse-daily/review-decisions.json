@@ -319,9 +319,27 @@
     "review_status": "approved"
   },
   "apt37|https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮と関連のあるAPT37（別名ScarCruft）と呼ばれる脅威アクターは、スピアフィッシングキャンペーンを通じてRokRATマルウェアを配布し、グループチャットで他のターゲットにも拡散させる活動も確認されている。",
-    "review_status": "approved"
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_overrides": {
+      "title": "APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散",
+      "summary": "Genians Security Centerは、APT37が2024年11月13日に韓国のKメッセンジャー団体チャットへ悪性HWP文書とZIP内のLNKを時間差で配布した活動を分析した。初期スピアフィッシング後に侵害端末で偵察・探索を行い、ログイン中のメッセンジャーを追加配布経路として悪用した。HWPのOLEとLNK内PowerShellからファイルレスで実行されるペイロードは、APT37のRoKRAT系列と特定された。"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2024-11-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Genians: K-messenger delivery"
+      },
+      "last_observed": {
+        "value": "2024-11-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Genians: K-messenger delivery"
+      }
+    },
+    "review_notes": "一次資料再検証: 日次記事の見出しと主題は別クラスタContagious InterviewのFERRET活動で、APT37は末尾の独立したニュース項目にだけ登場する。そのためactivity_overridesで、GeniansがAPT37へ直接帰属した2024-11-13のKメッセンジャー経由HWP/LNK・RoKRAT活動へ限定した。"
   },
   "apt37|https://www.bleepingcomputer.com/news/microsoft/microsoft-mitigates-windows-lnk-flaw-exploited-as-zero-day/": {
     "confidence": "medium",
@@ -410,8 +428,26 @@
       }
     ],
     "confidence": "medium",
-    "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
-    "review_status": "approved"
+    "review_notes": "AWS一次資料を再確認。公開日は2026-07-29。typo-crypto（2025-03）、debug/chalk（2025-09）、axios（2026-03）を同一DPRK系アクターへmedium confidenceで帰属する。本文の名称はSAPPHIRE SLEET等でAPT38表記はないため、MITRE G0082を介したoverlappingスコープとして保持し完全同一とは断定しない。",
+    "review_status": "approved",
+    "activity_overrides": {
+      "title": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害",
+      "summary": "Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "AWS: typo-crypto compromise in March 2025"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "AWS: axios compromise in March 2026"
+      }
+    }
   },
   "apt38|https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/": {
     "capability_decisions": [
@@ -524,14 +560,14 @@
     "review_status": "approved"
   },
   "apt43|https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-    "review_status": "approved"
+    "review_status": "rejected",
+    "confidence": "high",
+    "review_notes": "記事の主題である2025年5月後半のClickFix・BeaverTail・InvisibleFerret活動はContagious Interviewへ帰属されている。Kimsuky/APT43は同じ記事の末尾にある別ニュース項目であり、主活動の実行主体ではないため、この日次候補は不採用。"
   },
   "apt43|https://www.bleepingcomputer.com/news/security/fbi-warns-about-kimsuky-hackers-using-qr-codes-to-phish-us-orgs/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。",
-    "review_status": "approved"
+    "review_status": "rejected",
+    "confidence": "high",
+    "review_notes": "FBI一次資料は2025年5〜6月のQRコード・スピアフィッシングをKimsukyへ帰属し、APT43を記載していない。APT43/Kimsukyのcross-vendor overlapだけを根拠に個別活動をAPT43へ複製しない。"
   },
   "apt43|https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/": {
     "confidence": "medium",
@@ -1042,11 +1078,6 @@
     "confidence": "low",
     "review_notes": "主張自体は妥当だが、同一の一次資料(Symantec, 2026-08-13公開)と当該2活動は2026-08-14の作業でprofiles/jewelbugを新規作成した際に原文から直接収録済みであり、本レコードは重複である。日次レコード経由で再度materializeすると同一活動が二重に登録されるため、rejectedとして重複登録を避ける。検知自体は正しく、Jewelbugプロファイル側のsource・activity・IOC 52件は既に反映されている。"
   },
-  "judgement-panda|https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国系APT31（別名Altaire/Judgement Panda/Violet Typhoon等）、目的は政治・経済・軍事情報の収集。",
-    "review_status": "approved"
-  },
   "kimsuky|https://asec.ahnlab.com/en/93151/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Pythonベースのバックドアを配布する悪性LNKファイルと配布手法の変化（Kimsukyグループ）",
@@ -1161,9 +1192,9 @@
     "review_status": "approved"
   },
   "kimsuky|https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-    "review_status": "approved"
+    "review_status": "rejected",
+    "confidence": "high",
+    "review_notes": "記事の主題である2025年5月後半のClickFix・BeaverTail・InvisibleFerret活動はContagious Interviewへ帰属されている。Kimsuky/APT43は同じ記事の末尾にある別ニュース項目であり、主活動の実行主体ではないため、この日次候補は不採用。"
   },
   "kimsuky|https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/": {
     "confidence": "medium",
@@ -1171,9 +1202,9 @@
     "review_status": "approved"
   },
   "kimsuky|https://www.bleepingcomputer.com/news/security/fbi-warns-about-kimsuky-hackers-using-qr-codes-to-phish-us-orgs/": {
+    "review_status": "rejected",
     "confidence": "high",
-    "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告",
-    "review_status": "approved"
+    "review_notes": "同一のFBI活動はactivity--kimsuky-quishing-2025として一次資料、観測期間、TTP、標的を構造化済み。二次記事由来の日次レコードは重複するため不採用。"
   },
   "kimsuky|https://www.bleepingcomputer.com/news/security/japan-warns-of-attacks-linked-to-north-korean-kimsuky-hackers/": {
     "confidence": "high",
@@ -1258,9 +1289,28 @@
     "review_status": "approved"
   },
   "konni|https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/": {
+    "review_status": "approved",
     "confidence": "high",
-    "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
-    "review_status": "approved"
+    "activity_overrides": {
+      "title": "KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布",
+      "summary": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから、永続化・UAC回避・分析回避・C2タスク実行機能を持つAI支援生成と評価されたPowerShellバックドアを展開する。",
+      "primary_url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated-sample-upload"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    "review_notes": "Check Point一次分析でKONNIへの活動帰属と2025年10月の初期亜種を確認。ProofpointはTA406をKonni/Opal Sleet活動とのoverlapとして扱うため、TA406ではmedium、Konniではhigh confidenceとし、exact aliasには昇格しない。"
   },
   "konni|https://www.bleepingcomputer.com/news/security/north-korea-ramps-up-cyberspying-in-ukraine-to-assess-war-risk/": {
     "confidence": "medium",
@@ -1768,9 +1818,28 @@
     "review_status": "approved"
   },
   "salt-typhoon|https://www.bleepingcomputer.com/news/security/salt-typhoon-uses-jumbledpath-malware-to-spy-on-us-telecom-networks/": {
+    "review_status": "approved",
     "confidence": "high",
-    "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ",
-    "review_status": "approved"
+    "activity_overrides": {
+      "title": "Salt Typhoon、通信事業者のネットワーク機器でJumbledPathを使用",
+      "summary": "Cisco Talosは、Salt Typhoonが米国の大手通信事業者へ侵入し、盗取した正規資格情報で複数ベンダーのネットワーク機器へアクセスしたと報告した。Go製ELFユーティリティJumbledPathは、離れたCisco機器でパケットキャプチャを行い、経路上のログを妨害し、暗号化した取得データを返送するために使用された。",
+      "primary_url": "https://blog.talosintelligence.com/salt-typhoon-analysis/"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    "review_notes": "Cisco Talos一次資料へ表示を限定。二次記事が併記した別調査の期間・地域と、一次資料で確認できないUNC2286の完全同一別名主張を除去した。"
   },
   "salt-typhoon|https://www.bleepingcomputer.com/news/security/telecom-giant-viasat-breached-by-chinas-salt-typhoon-hackers/": {
     "confidence": "high",
@@ -2057,9 +2126,28 @@
     "review_status": "approved"
   },
   "ta406|https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/": {
+    "review_status": "approved",
     "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。",
-    "review_status": "approved"
+    "activity_overrides": {
+      "title": "KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布",
+      "summary": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから、永続化・UAC回避・分析回避・C2タスク実行機能を持つAI支援生成と評価されたPowerShellバックドアを展開する。",
+      "primary_url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated-sample-upload"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    "review_notes": "Check Point一次分析でKONNIへの活動帰属と2025年10月の初期亜種を確認。ProofpointはTA406をKonni/Opal Sleet活動とのoverlapとして扱うため、TA406ではmedium、Konniではhigh confidenceとし、exact aliasには昇格しない。"
   },
   "ta406|https://www.bleepingcomputer.com/news/security/north-korea-ramps-up-cyberspying-in-ukraine-to-assess-war-risk/": {
     "confidence": "medium",
@@ -2230,11 +2318,6 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。",
     "review_status": "approved"
   },
-  "uac-0010|https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はGamaredon（ACTINUM、Armageddon、UAC-0010、BlueAlpha）で、ロシアFSBに関連し、目的はウクライナ標的のサイバースパイ活動。",
-    "review_status": "approved"
-  },
   "uac-0099|https://cert.gov.ua/article/6318634": {
     "capability_decisions": [
       {
@@ -2358,9 +2441,9 @@
     "review_status": "approved"
   },
   "unc2286|https://www.bleepingcomputer.com/news/security/salt-typhoon-uses-jumbledpath-malware-to-spy-on-us-telecom-networks/": {
+    "review_status": "rejected",
     "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国政府支援のハッキンググループであるSalt Typhoon（別名：Earth Estries、GhostEmperor、UNC2286）は、米国の通信プロバイダーを標的とし、カスタムマルウェア「JumbledPath」を使用してネットワークトラフィックを監視し、機密データを収集しています。",
-    "review_status": "approved"
+    "review_notes": "一次資料再検証: Cisco TalosはJumbledPath活動をSalt Typhoonへ帰属するがUNC2286を使用していない。共同CISA勧告もベンダー名は一対一対応しない場合があると明記し、UNC2286を列挙していない。二次記事だけの別名主張を根拠に活動を複製しない。"
   },
   "unc2428|https://thehackernews.com/2025/04/iran-linked-hackers-target-israel-with.html": {
     "confidence": "medium",
@@ -2547,9 +2630,28 @@
     "review_status": "approved"
   },
   "unc6040|https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ShinyHunters(UNC6040)：英語話者中心のデータ窃取・恐喝グループ",
-    "review_status": "approved"
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_overrides": {
+      "title": "UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取",
+      "summary": "GTIGは、UNC6040がITサポートを装った音声フィッシングで従業員を誘導し、攻撃者管理のSalesforce接続アプリを承認させてCRMデータを窃取したと報告した。GTIGは初期侵入・窃取をUNC6040、後続のShinyHunters名義の恐喝をUNC6240として分けて追跡し、提携の可能性は示すが同一主体とは断定していない。",
+      "primary_url": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    "review_notes": "GTIG一次資料で再検証。Salesforceへの音声フィッシングとデータ窃取はUNC6040、後続のShinyHunters名義の恐喝はUNC6240として別々に追跡されている。二次記事の『ShinyHunters(UNC6040)』という同一視を除去し、活動期間は推測しない。"
   },
   "unc6240|https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/": {
     "confidence": "medium",
@@ -2596,9 +2698,28 @@
     "review_status": "rejected"
   },
   "unc6671|https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。",
-    "review_status": "approved"
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_overrides": {
+      "title": "UNC6671、vishingでSSO資格情報を窃取しSaaSデータを流出",
+      "summary": "Mandiantは、UNC6671が2026年1月初旬からIT担当者を装って電話し、偽の認証サイトでSSO資格情報とMFAコードを窃取したと報告した。侵入後はOktaからSharePointとOneDriveへアクセスした。手口はUNC6661と類似するが、後続の恐喝はShinyHunters名義ではなく異なるTox IDを使い、別の人物が関与する可能性がある。",
+      "primary_url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    "review_notes": "Mandiant/GTIG一次資料で再検証。UNC6661、UNC6671、UNC6240は提携・なりすましの可能性を残す別クラスタとして追跡される。UNC6671固有の侵入と、ブランドなしの後続恐喝だけに表示を限定した。"
   },
   "unc6671|https://www.bleepingcomputer.com/news/security/new-blackfile-extortion-gang-targets-retail-and-hospitality-orgs/": {
     "confidence": "medium",
@@ -2616,9 +2737,9 @@
     "review_status": "approved"
   },
   "vanilla-tempest|https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は金銭目的のFox Tempestで、Vanilla Tempest、Storm-0501、Storm-2561、Storm-0249などが署名済みマルウェアを使用したと記載されている。",
-    "review_status": "approved"
+    "confidence": "high",
+    "review_notes": "一次資料再検証: 記事の主題・妨害対象はFox Tempestであり、Vanilla Tempestは同サービスの利用者として事例節に登場する。Fox Tempestのサービス運営・妨害をVanilla Tempest自身の独立活動として扱うのは主体誤認となるため不採用。Vanilla Tempestの署名済み偽Teams攻撃は既存活動へ一次資料を統合した。",
+    "review_status": "rejected"
   },
   "velvet-ant|https://thehackernews.com/2024/08/chinese-hackers-exploit-zero-day-cisco.html": {
     "confidence": "medium",
@@ -2643,16 +2764,6 @@
   "velvet-tempest|https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。",
-    "review_status": "approved"
-  },
-  "vice-society|https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.",
-    "review_status": "approved"
-  },
-  "vice-society|https://www.bleepingcomputer.com/news/microsoft/microsoft-vanilla-tempest-hit-healthcare-with-inc-ransomware/": {
-    "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Vanilla Tempest(別名:DEV-0832、Vice Society)は米国の医療機関にINCランサムウェアを使用した攻撃を実施。",
     "review_status": "approved"
   },
   "void-manticore|https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/": {
@@ -2702,9 +2813,27 @@
     "review_status": "approved"
   },
   "water-galura|https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html": {
+    "review_status": "approved",
     "confidence": "medium",
-    "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は「Qilin」ランサムウェアグループ（別名Gold Feather、Water Galura）で、2022年10月以降RaaSとして活動中",
-    "review_status": "approved"
+    "activity_overrides": {
+      "title": "Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加",
+      "summary": "Water Galuraが運営するQilin RaaSは、アフィリエイト向けパネルへ被害者に支払い圧力をかける「Call Lawyer」機能を追加した。公開集計ではQilinの被害主張が2025年4月に72件、5月に55件確認され、Rust/C製ペイロード、ネットワーク拡散、ログ消去、交渉自動化、DDoS、スパム、データ保管などを提供するサービスとして報告された。QilinはRaaS／ランサムウェア名であり、Water Galuraの無条件な別名としては扱わない。"
+    },
+    "activity_period": {
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated victim count"
+      },
+      "last_observed": {
+        "value": "2025-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated victim count"
+      }
+    },
+    "review_notes": "entity境界を再検証。The Hacker NewsはQilinグループをWater Galuraとも表記するが、MITRE ATT&CK G1050/S1242はWater Galura（GOLD FEATHER）を運営者、QilinをRaaS softwareとして分離する。activity_overridesもこの区別に合わせた。"
   },
   "unc1549|https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/": {
     "review_status": "approved",

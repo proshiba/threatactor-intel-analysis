@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt41`
 - 状態: review
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ APT41の標準化プロファイル。リポジトリ内の専用資料2件とMI
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| BARIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| BARIUM | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-2` | Curated merge into the canonical MITRE Group profile. |
 | Brass Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | HOODOO |  | vendor | 高 | `source--gtig-apt41-toughprogress-2025` |  |
 | SPIRE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
@@ -31,14 +31,14 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 - 国: China
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
 | espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
-| financial-gain | Financially motivated intrusion or fraud. | 低 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| financial-gain | Financially motivated intrusion or fraud. | 低 | `source--mitre-attack-19-2` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
 
 ## 他アクターとの関係
 
@@ -52,16 +52,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [APT41](https://attack.mitre.org/groups/G0096) is a threat group that researchers have assessed as Chinese state-sponsored espionage group that also conducts financially-motivated operations. Active since at least 2012, [APT41](https://attack.mitre.org/groups/G0096) has been observed targeting various industries, including but not limited to healthcare, telecom, technology, finance, education, retail and video game industries in 14 countries.(Citation: apt41_mandiant) Notable behaviors include using a wide range of malware and tools to complete mission objectives. [APT41](https://attack.mitre.org/groups/G0096) overlaps at least partially with public reporting on groups including BARIUM and [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)<br> |
-| Capability | DUSTTRAP, DUSTPAN, ASPXSpy, China Chopper, LightSpy, PlugX, KEYPLUG, Winnti for Linux, gh0st RAT, Derusbi, MESSAGETAP, Cobalt Strike, MOPSLED, ROCKBOOT, ZxShell, BLACKCOFFEE, njRAT, ShadowPad, CRACKSHOT, GEARSHIFT, HIGHNOON, JUMPALL, POISONPLUG, HOTCHAI, LATELUNCH, LIFEBOAT, LOWKEY, PACMAN, PHOTO, POTROAST, SAGEHIRE, SWEETCANDLE, SOGU, TERA, TIDYELF, WIDETONE, WINTERLOVE, XDoor, Xmrig, Net, certutil, PowerSploit, Impacket, ipconfig, Empire, dsquery, netstat, BITSAdmin, sqlmap, pwdump, Mimikatz, Ping, ftp |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
-| Socio-political | China |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -106,43 +106,22 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | malware--blackcoffee | BLACKCOFFEE | [BLACKCOFFEE](https://attack.mitre.org/software/S0069) is malware that has been used by several Chinese groups since at least 2013. (Citation: FireEye APT17) (Citation: FireEye Periscope March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--china-chopper | China Chopper | [China Chopper](https://attack.mitre.org/software/S0020) is a [Web Shell](https://attack.mitre.org/techniques/T1505/003) hosted on Web servers to provide access back into an enterprise network that does not rely on an infected system calling back to a remote command and control server.(Citation: Lee 2013) It has been used by several threat groups.(Citation: Dell TG-3390)(Citation: FireEye Periscope March 2018)(Citation: CISA AA21-200A APT40 July 2021)(Citation: Rapid7 HAFNIUM Mar 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 2021-05-01T04:00:00.000Z | 2024-06-30T22:00:00.000Z | 高 | `source--mitre-attack-19-2` |
-| malware--crackshot | CRACKSHOT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--derusbi | Derusbi | [Derusbi](https://attack.mitre.org/software/S0021) is malware used by multiple Chinese APT groups.(Citation: Novetta-Axiom)(Citation: ThreatConnect Anthem) Both Windows and Linux variants have been observed.(Citation: Fidelis Turbo) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--dustpan | DUSTPAN | [DUSTPAN](https://attack.mitre.org/software/S1158) is an in-memory dropper written in C/C++ used by [APT41](https://attack.mitre.org/groups/G0096) since 2021 that decrypts and executes an embedded payload.(Citation: Google Cloud APT41 2024)(Citation: Google Cloud APT41 2022) | 2023-01-31T23:00:00.000Z | 2024-06-30T22:00:00.000Z | 高 | `source--mitre-attack-19-2` |
 | malware--dusttrap | DUSTTRAP | [DUSTTRAP](https://attack.mitre.org/software/S1159) is a multi-stage plugin framework associated with [APT41](https://attack.mitre.org/groups/G0096) operations with multiple components.(Citation: Google Cloud APT41 2024) | 2023-01-31T23:00:00.000Z | 2024-06-30T22:00:00.000Z | 高 | `source--mitre-attack-19-2` |
-| malware--gearshift | GEARSHIFT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--highnoon | HIGHNOON | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--hotchai | HOTCHAI | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--jumpall | JUMPALL | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--keyplug | KEYPLUG | [KEYPLUG](https://attack.mitre.org/software/S1051) is a modular backdoor written in C++, with Windows and Linux variants, that has been used by [APT41](https://attack.mitre.org/groups/G0096) since at least June 2021.(Citation: Mandiant APT41) | 2021-05-01T04:00:00.000Z | 2022-02-01T05:00:00.000Z | 高 | `source--mitre-attack-19-2` |
-| malware--latelunch | LATELUNCH | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--lifeboat | LIFEBOAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--lightspy | LightSpy | First observed in 2018, LightSpy is a modular malware family that initially targeted iOS devices in Southern Asia before expanding to Android and macOS platforms. It consists of a downloader, a main executable that manages network communications, and functionality-specific modules, typically implemented as `.dylib` files (iOS, macOS) or `.apk` files (Android). LightSpy can collect VoIP call recordings, SMS messages, and credential stores, which are then exfiltrated to a command and control (C2) server.(Citation: MelikovBlackBerry LightSpy 2024)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--lowkey | LOWKEY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--messagetap | MESSAGETAP | [MESSAGETAP](https://attack.mitre.org/software/S0443) is a data mining malware family deployed by [APT41](https://attack.mitre.org/groups/G0096) into telecommunications networks to monitor and save SMS traffic from specific phone numbers, IMSI numbers, or that contain specific keywords. (Citation: FireEye MESSAGETAP October 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--mopsled | MOPSLED | [MOPSLED](https://attack.mitre.org/software/S1221) is a shellcode-based modular backdoor that has been used by China-nexus cyber espionage actors including [UNC3886](https://attack.mitre.org/groups/G1048) and [APT41](https://attack.mitre.org/groups/G0096).(Citation: Google Cloud Mandiant UNC3886 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--pacman | PACMAN | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--photo | PHOTO | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--plusdrop | PLUSDROP | DLL that decrypts and executes the next-stage payload in memory. | 2024-10 | 2024-10 | 高 | `source--gtig-apt41-toughprogress-2025` |
 | malware--plusinject | PLUSINJECT | Performs process hollowing in svchost.exe and injects TOUGHPROGRESS. | 2024-10 | 2024-10 | 高 | `source--gtig-apt41-toughprogress-2025` |
-| malware--poisonplug | POISONPLUG | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--potroast | POTROAST | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--rockboot | ROCKBOOT | [ROCKBOOT](https://attack.mitre.org/software/S0112) is a [Bootkit](https://attack.mitre.org/techniques/T1542/003) that has been used by an unidentified, suspected China-based group. (Citation: FireEye Bootkits) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--sagehire | SAGEHIRE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--shadowpad | ShadowPad | [ShadowPad](https://attack.mitre.org/software/S0596) is a modular backdoor that was first identified in a supply chain compromise of the NetSarang software in mid-July 2017. The malware was originally thought to be exclusively used by [APT41](https://attack.mitre.org/groups/G0096), but has since been observed to be used by various Chinese threat activity groups. (Citation: Recorded Future RedEcho Feb 2021)(Citation: Securelist ShadowPad Aug 2017)(Citation: Kaspersky ShadowPad Aug 2017)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--sogu | SOGU | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sweetcandle | SWEETCANDLE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--tera | TERA | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--tidyelf | TIDYELF | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--toughprogress | TOUGHPROGRESS | Memory-resident backdoor that executes commands and uses attacker-controlled Google Calendar events for encrypted C2. | 2024-10 | 2024-10 | 高 | `source--gtig-apt41-toughprogress-2025` |
-| malware--widetone | WIDETONE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--winnti-for-linux | Winnti for Linux | [Winnti for Linux](https://attack.mitre.org/software/S0430) is a trojan, seen since at least 2015, designed specifically for targeting Linux systems. Reporting indicates the winnti malware family is shared across a number of actors including [Winnti Group](https://attack.mitre.org/groups/G0044). The Windows variant is tracked separately under [Winnti for Windows](https://attack.mitre.org/software/S0141).(Citation: Chronicle Winnti for Linux May 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--winterlove | WINTERLOVE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--xdoor | XDoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--xmrig | Xmrig | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--zxshell | ZxShell | [ZxShell](https://attack.mitre.org/software/S0412) is a remote administration tool and backdoor that can be downloaded from the Internet, particularly from Chinese hacker websites. It has been used since at least 2004.(Citation: FireEye APT41 Aug 2019)(Citation: Talos ZxShell Oct 2014) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--mitre--s1052 | DEADEYE | [DEADEYE](https://attack.mitre.org/software/S1052) is a malware launcher that has been used by [APT41](https://attack.mitre.org/groups/G0096) since at least May 2021. [DEADEYE](https://attack.mitre.org/software/S1052) has variants that can either embed a payload inside a compiled binary (DEADEYE.EMBED) or append it to the end of a file (DEADEYE.APPEND).(Citation: Mandiant APT41) | 2021-05-01T04:00:00.000Z | 2022-02-01T05:00:00.000Z | 高 | `source--mitre-attack-19-2` |
 
@@ -195,7 +174,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 中国のAPT41が再び活動を再開し、企業を侵害 | intrusion | 不明 | 不明 | 2024-07-20 |  | malware--dustpan, malware--dusttrap |  | victim--activity-rule--245a1455d3e9d746af70 | APT41は世界中の複数の組織を侵害。 2023年以来、長期間にわたり不正アクセスを維持。機密データを抜き出すことに成功した。 イタリア、スペイン、台湾、トルコ、英国が主要ターゲット。 メディア、技術、自動車業界などが標的。 DUSTPANやDUSTTRAPなどのコードネームを持つカスタムツールと一般的な悪意のあるソフトウェアを使用。 | 高 | `source--daily-54c9607dee646f91a92f` |
 | Winntiの新ツール「UNAPIMON」がセキュリティソフトウェアからマルウェアを隠蔽 | malware-campaign | 不明 | 不明 | 2024-04-04 |  |  |  |  | Winnti（APT41）が「UNAPIMON」という未文書化マルウェアを使用 マルウェアはセキュリティソフトウェアの検出を回避する UNAPIMONはAPI関数のフックを解除して検出を逃れる この技術はマイクロソフトのDetoursツールを利用 Trend Microが報告、ユニークな回避手法と評価 | 中 | `source--daily-e4bbba7003815c78f3af` |
 | 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | infrastructure-operation | 不明 | 不明 | 2024-07-12 | target--sector--government |  | ttp--activity-rule--58206d09f24fc91cbbf9, ttp--activity-rule--a2c1d051b47c4140df1d | victim--activity-rule--54c16a0a1cf037960bc2 | 中国のAPT41がDodgeBoxとMoonWalkを用いてマルウェア攻撃を強化 DodgeBoxはMoonWalkバックドアを展開する新しいローダー MoonWalkはGoogle DriveをC2通信に利用 APT41は以前から企業や政府を標的にする活動で知られる DodgeBoxはDLLサイドローディングなどの技術を使用 | 高 | `source--daily-6f4ea1988c3e4d76819a` |
-| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | cyber-espionage | 2024-03 | 2024-03 | 2025-02-19 | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--fb803c0a91ed53ea76f9 | malware--china-chopper | ttp--activity-rule--8495e5c4e1c929b951ec | victim--activity-rule--ae4e24c85c3b100b67ad | 中国系の脅威アクターであるWinnti（APT41）が、2024年3月に日本の製造、素材、エネルギー企業を標的とした「RevivalStone」と呼ばれる新たなキャンペーンを展開しました。 この活動は、Trend Microが「Earth Freybug」として追跡し、Cybereasonが「Operation CuckooBees」として報告しているものと重複しており、APT41のサブグループとみられる。 Winntiは、セキュリティソフトを回避し、重要情報を収集するためのカスタムツールセットを使用し、ステルス性の高い攻撃を行うことで知られています。 最新の攻撃では、未特定のERPシステムのSQLインジェクション脆弱性を悪用し、China ChopperやBehinderといったWebシェルを展開しました。 さらに、共有アカウントを利用してマネージドサービスプロバイダー（MSP）に侵入し、そのインフラを利用して他の3つの組織にマルウェアを拡散させました。 | 高 | `source--daily-936c9eb49c4d8dd15bb1` |
+| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | cyber-espionage | 2024-03 | 2024-03 | 2025-02-19 | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--targeting-audit--country--fd4b6b2174977076f2db | malware--china-chopper | ttp--activity-rule--8495e5c4e1c929b951ec | victim--activity-rule--ae4e24c85c3b100b67ad | 中国系の脅威アクターであるWinnti（APT41）が、2024年3月に日本の製造、素材、エネルギー企業を標的とした「RevivalStone」と呼ばれる新たなキャンペーンを展開しました。 この活動は、Trend Microが「Earth Freybug」として追跡し、Cybereasonが「Operation CuckooBees」として報告しているものと重複しており、APT41のサブグループとみられる。 Winntiは、セキュリティソフトを回避し、重要情報を収集するためのカスタムツールセットを使用し、ステルス性の高い攻撃を行うことで知られています。 最新の攻撃では、未特定のERPシステムのSQLインジェクション脆弱性を悪用し、China ChopperやBehinderといったWebシェルを展開しました。 さらに、共有アカウントを利用してマネージドサービスプロバイダー（MSP）に侵入し、そのインフラを利用して他の3つの組織にマルウェアを拡散させました。 | 高 | `source--daily-936c9eb49c4d8dd15bb1` |
 | 中国のハッキンググループがサイバースパイ活動で協力 | cyber-espionage | 不明 | 不明 | 2024-06-06 |  |  |  |  | 中国の国家支援ハッカーがサイバースパイ活動で協力。Sophosが「Crimson Palace」として追跡。 Sophosの報告によると、新しいマルウェアと3つの活動クラスターが確認された。この活動クラスタは単一の組織の下で集中的に調整され運用されている可能性が高い。 Mustang Panda、APT41などのグループが関与。 主なターゲットは東南アジアの政府機関。 高度な調整と検出回避戦術が用いられている。 | 中 | `source--daily-5bfba001a636c0367a16` |
 | 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | reported-activity | 不明 | 不明 | 2024-08-02 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--mitre-group--sector--7c6d9d0cea82bb2a535f, target--sector--government | malware--cobalt-strike, malware--shadowpad |  | victim--activity-rule--44132c017907996cb8ad | 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | 高 | `source--daily-84e64bef4061ae862a75` |
 | 中国関与のAPT41、2025年交渉中に米通商当局者を標的 | phishing-campaign | 不明 | 不明 | 2025-09-11 |  |  |  |  | 米下院対中特別委がPRC関与の「進行中」の標的型スパイ活動を警告。 標点は通商政策・外交関係者、政府機関、業界団体、法律事務所など。 Moolenaar下院議員名義のメールでフィッシング。添付/リンクを開かせマルウェア展開を狙う。 目的は機微情報窃取。クラウド/開発者ツール悪用で痕跡隠蔽と持続化。 1月はZPMC名義の偽通知でM365資格情報窃取を試行。APT41関与と評価。 | 高 | `source--daily-455b7c4ce0212f6eaae6` |
@@ -214,7 +193,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 中国のAPT41が再び活動を再開し、企業を侵害 | APT41 | DUSTPAN, DUSTTRAP | 情報なし | 情報なし | 情報なし | 被害事例: 中国のAPT41が再び活動を再開し、企業を侵害 | 高 |
 | Winntiの新ツール「UNAPIMON」がセキュリティソフトウェアからマルウェアを隠蔽 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | APT41 | 情報なし | T1574.001 DLL, T1102.003 One-Way Communication | 情報なし | Government | 被害事例: 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | 高 |
-| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | APT41 | China Chopper | T1505.003 Web Shell | 情報なし | 日本, エネルギー | 被害事例: Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | 高 |
+| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | APT41 | China Chopper | T1505.003 Web Shell | 情報なし | 日本, エネルギー, 中国 | 被害事例: Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | 高 |
 | 中国のハッキンググループがサイバースパイ活動で協力 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | APT41 | Cobalt Strike, ShadowPad | 情報なし | 情報なし | 台湾, 教育・研究, Government | 被害事例: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | 高 |
 | 中国関与のAPT41、2025年交渉中に米通商当局者を標的 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
@@ -229,53 +208,12 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イタリア | 活動「APT41：イタリア産業を標的とするKeyPlugの脅威」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カタール | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スリランカ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | チリ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | デンマーク | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてデンマークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | バーレーン | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてバーレーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1`, `source--target-audit-misp-threat-actor` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでAPT41の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 活動「中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-84e64bef4061ae862a75`, `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 活動「C0017」の記述で標的として明示された国・地域。 | 2021-05-01T04:00:00.000Z | 2022-02-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでAPT41の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでAPT41の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでAPT41の標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中南米 | チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、カタール、サウジアラビア、トルコ、バーレーンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | インド、スリランカ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | イタリア、スペインで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南米 | チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-84e64bef4061ae862a75`, `source--daily-936c9eb49c4d8dd15bb1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシア、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | イタリア、オランダ、スイス、スウェーデン、スペイン、デンマーク、トルコ、フィンランド、フランス、ポーランド、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | イタリア | 活動「APT41：イタリア産業を標的とするKeyPlugの脅威」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9` |
+| countries | 中国 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
+| countries | 台湾 | 活動「中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-84e64bef4061ae862a75` |
+| countries | 日本 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
+| countries | 米国 | 活動「C0017」の記述で標的として明示された国・地域。 | 2021-05-01T04:00:00.000Z | 2022-02-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2` |
+| regions | 東アジア | 中国、台湾、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-84e64bef4061ae862a75`, `source--daily-936c9eb49c4d8dd15bb1` |
 | sectors | 運輸・航空・海運 | 活動「APT41 DUST」の記述で標的として明示された産業。 | 2023-01-31T23:00:00.000Z | 2024-06-30T22:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | sectors | 製造・産業 | 活動「APT41：イタリア産業を標的とするKeyPlugの脅威」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9` |
 | sectors | エネルギー | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的として明示された産業。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
@@ -285,7 +223,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | sectors | 医療・ヘルスケア | Active since at least 2012, [APT41](https://attack.mitre.org/groups/G0096) has been observed targeting various industries, including but not limited to healthcare, telecom, technology, finance, education, retail and video game industries in 14 countries.(Citation: apt41_mandiant) Notable behaviors include using a wide range of malware and tools to complete mission objectives. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | Government | The observed TOUGHPROGRESS campaign targeted multiple government entities. | 2024-10 | 2024-10 | 高 | `source--daily-6f4ea1988c3e4d76819a`, `source--daily-7e05524db14274790b02`, `source--daily-84e64bef4061ae862a75`, `source--gtig-apt41-toughprogress-2025` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -500,14 +438,28 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--barium--1f400a9d3f2e41f0 | barium |  | 不明 | actor_profile/evidence/barium.csv | structured-data | TLP:CLEAR | 中 |
+| source--barium--339c36d0d6a6db7b | hunting cobaltstrike beacons in the dark |  | 不明 | APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf | report | TLP:CLEAR | 中 |
+| source--barium--21422a698347bb8f | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--barium--81edbe1c428a9855 | A three beat waltz The ecosystem behind Chinese state sponsored cyber threats |  | 不明 | International Strategic/China/A-three-beat-waltz-The-ecosystem-behind-Chinese-state-sponsored-cyber-threats.pdf | report | TLP:CLEAR | 中 |
+| source--barium--e336c8205101f88f | china cyber report |  | 不明 | International Strategic/China/china-cyber-report.pdf | report | TLP:CLEAR | 中 |
+| source--barium--b2fc1a83e9e428da | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--barium--68a19d1b26dd988c | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--barium--db420ade9ac8e5ca | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--barium--aec9df3f01fe8a80 | APT blackberry mobile malware report |  | 不明 | summary/2020/APT-blackberry-mobile-malware-report.pdf | report | TLP:CLEAR | 中 |
+| source--barium--95457a1e86f185fa | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--barium--7c9ff3fad63d6fda | Modern Asian APT groups TTPs report eng |  | 不明 | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf | report | TLP:CLEAR | 中 |
+| source--barium--818ca3056deabc96 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--barium--eb48a9941711fdcc | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--barium--1daa9a873506d87b | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

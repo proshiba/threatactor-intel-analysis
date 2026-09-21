@@ -4,7 +4,7 @@
   "name": "Head Mare",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-09-20T13:47:46Z",
+  "updated_at": "2026-09-21T03:50:38Z",
   "languages": [
     "ja"
   ],
@@ -64,12 +64,12 @@
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "ロシア・ベラルーシ組織を標的とするハクティビスト集団Head Mare。国家帰属は不明。",
-    "capability": "独自バックドアPhantomDL/PhantomCore/PhantomGraph、LockBitとBabukのランサムウェア、Sliver、Mimikatz、ngrok、rsockstun。",
-    "infrastructure": "フィッシング配信基盤、侵害したTrueConf Server上のWebシェル、C2として悪用するMicrosoft OneDrive、リバースSSHトンネル先。",
-    "victim": "ロシアとベラルーシの政府機関、運輸、エネルギー、製造、エンターテインメント、計測機器、電子、IT、ソフトウェア開発分野の組織。",
-    "socio_political": "ロシア・ウクライナ戦争を背景とする対ロシア・ベラルーシのハクティビズム。",
-    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -673,13 +673,14 @@
       },
       "description": "Kasperskyは、2023年に出現したハクティビスト集団Head Mareが、ロシアとベラルーシの組織へ最大限の被害を与えることを目的に活動していると報告した。侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。侵害後はSliver、Mimikatz、ngrok、rsockstunを併用し、Windows環境ではLockBit、Linux/ESXi環境ではBabukのランサムウェアを展開する。資料には身代金要求の記載もあるが、Kasperskyは主たる目的を金銭ではなく被害の最大化と評価している。",
       "target_refs": [
+        "target--head-mare--country--belarus",
         "target--head-mare--country--russia"
       ],
       "malware_refs": [
-        "malware--phantomdl",
-        "malware--phantomcore",
+        "malware--babuk",
         "malware--lockbit",
-        "malware--babuk"
+        "malware--phantomcore",
+        "malware--phantomdl"
       ],
       "infrastructure_refs": [],
       "ttp_refs": [
@@ -720,6 +721,7 @@
         },
         "victim": {
           "target_refs": [
+            "target--head-mare--country--belarus",
             "target--head-mare--country--russia"
           ],
           "victim_refs": [
@@ -761,6 +763,7 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [
+              "target--head-mare--country--belarus",
               "target--head-mare--country--russia"
             ],
             "target_region_refs": []
@@ -852,6 +855,7 @@
         "activity--head-mare-russia-belarus-2024"
       ],
       "target_refs": [
+        "target--head-mare--country--belarus",
         "target--head-mare--country--russia"
       ],
       "malware_refs": [
@@ -1306,8 +1310,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "ロシアとベラルーシに所在する組織を地理条件で選定し、分野は広く取る。2026年は未更新のTrueConf Serverという共通基盤の露出を選定条件としている。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "帰属国やインフラ所在国を標的国へ流用していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "ロシアとベラルーシに所在する組織を地理条件で選定し、分野は広く取る。2026年は未更新のTrueConf Serverという共通基盤の露出を選定条件としている。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "帰属国やインフラ所在国を標的国へ流用していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -1701,7 +1705,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料をKEVカタログのJSONフィード(https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json、catalogVersion 2026.08.24)で確認した(アクセス日 2026-08-25)。CVE-2026-72529(CWE-306, Missing Authentication for Critical Function)とCVE-2026-72530(CWE-94, Code Injection)はいずれもdateAdded 2026-08-20で登録され、実際の悪用を政府機関が確認したことを示す。是正期限はCVE-2026-72529が2026-08-23、CVE-2026-72530が2026-09-03。knownRansomwareCampaignUseは双方Unknown。KEVエントリ自体はHead Mareを含むいかなる脅威アクターも名指ししていないため、本活動へのHead Mare帰属根拠はKaspersky Securelist RU(source--kaspersky-head-mare-trueconf-2026)のままとし、本Sourceは悪用事実とCVE採番の裏付けに限定する。KEVのnotesはKaspersky ICS-CERT勧告(2026-08-11)を参照している。"
+      "analyst_notes": "一次資料をKEVカタログのJSONフィード(https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json、catalogVersion 2026.08.24)で確認した(アクセス日 2026-08-25)。CVE-2026-72529(CWE-306, Missing Authentication for Critical Function)とCVE-2026-72530(CWE-94, Code Injection)はいずれもdateAdded 2026-08-20で登録され、実際の悪用を政府機関が確認したことを示す。是正期限はCVE-2026-72529が2026-08-23、CVE-2026-72530が2026-09-03。knownRansomwareCampaignUseは双方Unknown。KEVエントリ自体はHead Mareを含むいかなる脅威アクターも名指ししていないため、本活動へのHead Mare帰属根拠はKaspersky Securelist RU(source--kaspersky-head-mare-trueconf-2026)のままとし、本Sourceは悪用事実とCVE採番の裏付けに限定する。KEVのnotesはKaspersky ICS-CERT勧告(2026-08-11)を参照している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-fff05927bf91551e1b96",
@@ -1719,7 +1732,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260810.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260810.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--kaspersky-head-mare-2024",
@@ -1737,7 +1760,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。Head Mareの初出、標的国・分野、PhantomDL/PhantomCore、LockBit/Babuk、CVE-2023-38831の記載を確認した。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。Head Mareの初出、標的国・分野、PhantomDL/PhantomCore、LockBit/Babuk、CVE-2023-38831の記載を確認した。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.com/head-mare-hacktivists/113555/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--kaspersky-head-mare-trueconf-2026",
@@ -1755,7 +1791,19 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。Head Mareを実行主体として明記。securelist.com には掲載がなく securelist.ru のみで公開されている。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。Head Mareを実行主体として明記。securelist.com には掲載がなく securelist.ru のみで公開されている。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -1799,7 +1847,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "ベンダー公式アドバイザリを原文で確認した(アクセス日 2026-08-25)。CVE-2026-72529はCVSS 9.8で「A remote unauthenticated attacker connecting to TrueConf Server over 4307/TCP can invoke an undocumented critical function and execute an arbitrary script on the server.」、CVE-2026-72530はCVSS 9.0で「Improper management of code generation can allow an attacker who has achieved code execution in the TrueConf Server isolated environment to escape the sandbox and execute arbitrary commands on the underlying operating system.」と記載する。影響版はCVE-2026-72529が<5.3/5.3.x<5.3.9/5.4.x<5.4.9/5.5.x<5.5.5、CVE-2026-72530が<5.3.9/5.4.x<5.4.9/5.5.x<5.5.5。本アドバイザリは脅威アクター名も実際の悪用も記載していないため、帰属根拠には用いない。既存記述のKLCERT-26-057/058に対応するCVE採番を確定する用途に限る。"
+      "analyst_notes": "ベンダー公式アドバイザリを原文で確認した(アクセス日 2026-08-25)。CVE-2026-72529はCVSS 9.8で「A remote unauthenticated attacker connecting to TrueConf Server over 4307/TCP can invoke an undocumented critical function and execute an arbitrary script on the server.」、CVE-2026-72530はCVSS 9.0で「Improper management of code generation can allow an attacker who has achieved code execution in the TrueConf Server isolated environment to escape the sandbox and execute arbitrary commands on the underlying operating system.」と記載する。影響版はCVE-2026-72529が<5.3/5.3.x<5.3.9/5.4.x<5.4.9/5.5.x<5.5.5、CVE-2026-72530が<5.3.9/5.4.x<5.4.9/5.5.x<5.5.5。本アドバイザリは脅威アクター名も実際の悪用も記載していないため、帰属根拠には用いない。既存記述のKLCERT-26-057/058に対応するCVE採番を確定する用途に限る。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     }
   ],
   "assessment": {
@@ -1841,7 +1898,7 @@
       "露語のDFIR年次レポート(summary/2026/DFIR_otchet_za_polnyy_2025_final.pdf)に「Fairy Trickster (Head Mare)」の併記があるが、発行者と対応スコープを原典で確認できていないためaliasとして登録していない。",
       "PhantomDLとPhantomCoreの前後関係について、資料により記述が異なる可能性がある。"
     ],
-    "collection_notes": "Kaspersky Securelist(2024-09-02、英語)とSecurelist RU(2026-08-07、ロシア語)の2本の一次資料を原文で確認した。後者はsecurelist.comには掲載がない。IOCはtech-memoの2026-08-10収集分(一次ソースは同じsecurelist.ru記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Kaspersky Securelist(2024-09-02、英語)とSecurelist RU(2026-08-07、ロシア語)の2本の一次資料を原文で確認した。後者はsecurelist.comには掲載がない。IOCはtech-memoの2026-08-10収集分(一次ソースは同じsecurelist.ru記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "プロファイル昇格は2026-08-10の日次チェックでの検知と利用者承認に基づく。"
   },
   "free_text": {

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--zebrocy`
 - 状態: deprecated
-- 更新日時: 2026-09-20T12:20:32Z
+- 更新日時: 2026-09-21T02:11:28Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -112,51 +112,9 @@ Aliasなし
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | アルゼンチン | レビュー済みアクターマッピングの標的欄に記録されたアルゼンチンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | イタリア | レビュー済みアクターマッピングの標的欄に記録されたイタリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | インド | レビュー済みアクターマッピングの標的欄に記録されたインドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | インドネシア | レビュー済みアクターマッピングの標的欄に記録されたインドネシアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ウクライナ | レビュー済みアクターマッピングの標的欄に記録されたウクライナを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | エクアドル | レビュー済みアクターマッピングの標的欄に記録されたエクアドルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | カタール | レビュー済みアクターマッピングの標的欄に記録されたカタールを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | サウジアラビア | レビュー済みアクターマッピングの標的欄に記録されたサウジアラビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | スイス | レビュー済みアクターマッピングの標的欄に記録されたスイスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | セネガル | レビュー済みアクターマッピングの標的欄に記録されたセネガルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | セルビア | レビュー済みアクターマッピングの標的欄に記録されたセルビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | タイ | レビュー済みアクターマッピングの標的欄に記録されたタイを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | トルコ | レビュー済みアクターマッピングの標的欄に記録されたトルコを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ドイツ | レビュー済みアクターマッピングの標的欄に記録されたドイツを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | バングラデシュ | レビュー済みアクターマッピングの標的欄に記録されたバングラデシュを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | バーレーン | レビュー済みアクターマッピングの標的欄に記録されたバーレーンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | パキスタン | レビュー済みアクターマッピングの標的欄に記録されたパキスタンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | フィリピン | レビュー済みアクターマッピングの標的欄に記録されたフィリピンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | フランス | レビュー済みアクターマッピングの標的欄に記録されたフランスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ブルガリア | レビュー済みアクターマッピングの標的欄に記録されたブルガリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ルーマニア | レビュー済みアクターマッピングの標的欄に記録されたルーマニアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ロシア | レビュー済みアクターマッピングの標的欄に記録されたロシアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 中国 | レビュー済みアクターマッピングの標的欄に記録された中国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 北マケドニア | レビュー済みアクターマッピングの標的欄に記録された北マケドニアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 台湾 | レビュー済みアクターマッピングの標的欄に記録された台湾を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 日本 | レビュー済みアクターマッピングの標的欄に記録された日本を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 韓国 | レビュー済みアクターマッピングの標的欄に記録された韓国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 香港 | レビュー済みアクターマッピングの標的欄に記録された香港を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アフリカ | レビュー済みアクターマッピングの標的欄に記録されたアフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 中南米 | アルゼンチン、エクアドルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 中東 | アラブ首長国連邦、カタール、サウジアラビア、トルコ、バーレーンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 南アジア | インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 南欧 | イタリア、セルビア、北マケドニアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 南米 | アルゼンチン、エクアドルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 東南アジア | インドネシア、タイ、フィリピンで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 東欧 | ウクライナ、ブルガリア、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 欧州 | イタリア、ウクライナ、スイス、セルビア、トルコ、ドイツ、フランス、ブルガリア、ルーマニア、北マケドニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -172,7 +130,7 @@ TTPなし
 - IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 45件（`artifacts.csv`）
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

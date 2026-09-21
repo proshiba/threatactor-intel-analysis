@@ -22,6 +22,8 @@ from common import load_json, utc_now, write_json_atomic
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 MERGES = {
+    "barium": "apt41",
+    "judgement-panda": "zirconium",
     "peach-sandstorm": "apt33",
     "raspberry-typhoon": "lotus-blossom",
     "sangria-tempest": "fin7",
@@ -29,10 +31,14 @@ MERGES = {
     "unc5691": "cyberav3ngers",
     "storm-0784": "cyberav3ngers",
     "radio-panda": "blacktech",
+    "vice-society": "vanilla-tempest",
+    "uac-0010": "gamaredon",
 }
 EXCLUSIONS = {"zebrocy"}
 
 EVIDENCE_URLS = {
+    "barium": "https://attack.mitre.org/groups/G0096/",
+    "judgement-panda": "https://cert.europa.eu/static/files/TLP-CLEAR-JointPublication-23-01.pdf",
     "peach-sandstorm": "https://attack.mitre.org/groups/G0064/",
     "raspberry-typhoon": "https://attack.mitre.org/groups/G0030/",
     "sangria-tempest": "https://attack.mitre.org/groups/G0046/",
@@ -40,7 +46,103 @@ EVIDENCE_URLS = {
     "unc5691": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
     "storm-0784": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
     "radio-panda": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3539209/us-and-japanese-agencies-issue-advisory-about-china-linked-actors-hiding-in-rou/",
+    "vice-society": "https://www.microsoft.com/en-us/security/blog/2022/10/25/dev-0832-vice-society-opportunistic-ransomware-campaigns-impacting-us-education-sector/",
+    "uac-0010": "https://scpc.gov.ua/api/docs/19b0a96e-8c31-44bf-863e-cd3e0b651f22/19b0a96e-8c31-44bf-863e-cd3e0b651f22.pdf",
     "zebrocy": "https://attack.mitre.org/software/S0251/",
+}
+
+MICROSOFT_DEV0832_SOURCE = {
+    "source_id": "source--microsoft-dev0832-vice-society-2022",
+    "path": EVIDENCE_URLS["vice-society"],
+    "url": EVIDENCE_URLS["vice-society"],
+    "title": "DEV-0832 (Vice Society) opportunistic ransomware campaigns impacting US education sector",
+    "publisher": "Microsoft Threat Intelligence",
+    "published_at": {
+        "value": "2022-10-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication",
+    },
+    "accessed_at": "2026-09-21T00:00:00Z",
+    "language": "en",
+    "source_type": "vendor-threat-research",
+    "tlp": "TLP:CLEAR",
+    "reliability": "high",
+    "sha256": None,
+    "actor_scope": "exact",
+    "claims_supported": [
+        "identity",
+        "alias",
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+    ],
+    "analyst_notes": (
+        "Microsoft explicitly states that DEV-0832 is also known as Vice Society "
+        "and that DEV-0832 is now tracked as Vanilla Tempest."
+    ),
+}
+
+CERT_EU_APT31_SOURCE = {
+    "source_id": "source--cert-eu-enisa-apt31-2023",
+    "path": EVIDENCE_URLS["judgement-panda"],
+    "url": EVIDENCE_URLS["judgement-panda"],
+    "title": "JP-23-01 - Sustained activity by specific threat actors",
+    "publisher": "CERT-EU and ENISA",
+    "published_at": {
+        "value": "2023-02-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication",
+    },
+    "accessed_at": "2026-09-21T00:00:00Z",
+    "language": "en",
+    "source_type": "government-advisory",
+    "tlp": "TLP:CLEAR",
+    "reliability": "high",
+    "sha256": None,
+    "actor_scope": "exact",
+    "claims_supported": ["identity", "alias", "attribution", "activity", "targeting"],
+    "analyst_notes": (
+        "The joint CERT-EU/ENISA publication explicitly names APT31 as also "
+        "known as Judgment Panda and Zirconium."
+    ),
+}
+
+SCPC_UAC0010_SOURCE = {
+    "source_id": "source--scpc-uac0010-gamaredon-2023",
+    "path": EVIDENCE_URLS["uac-0010"],
+    "url": EVIDENCE_URLS["uac-0010"],
+    "title": "Another UAC-0010 Story",
+    "publisher": "State Cyber Protection Centre of Ukraine",
+    "published_at": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-publication",
+    },
+    "accessed_at": "2026-09-21T00:00:00Z",
+    "language": "en",
+    "source_type": "government-technical-report",
+    "tlp": "TLP:CLEAR",
+    "reliability": "high",
+    "sha256": None,
+    "actor_scope": "exact",
+    "claims_supported": [
+        "identity",
+        "alias",
+        "attribution",
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc",
+    ],
+    "analyst_notes": (
+        "Ukraine's State Cyber Protection Centre explicitly identifies the "
+        "Russian-sponsored UAC-0010 group as also known as Gamaredon and Armageddon."
+    ),
 }
 
 
@@ -158,6 +260,21 @@ def merge_profiles(
             result["sources"].append(copied)
             source_ids[copied["source_id"]] = copied
             source_by_key[_source_key(copied)] = copied
+
+    primary_sources = {
+        "vice-society": MICROSOFT_DEV0832_SOURCE,
+        "judgement-panda": CERT_EU_APT31_SOURCE,
+        "uac-0010": SCPC_UAC0010_SOURCE,
+    }
+    if source_slug in primary_sources:
+        primary = copy.deepcopy(primary_sources[source_slug])
+        existing = source_ids.get(primary["source_id"]) or source_by_key.get(
+            _source_key(primary)
+        )
+        if existing is None:
+            result["sources"].append(primary)
+            source_ids[primary["source_id"]] = primary
+            source_by_key[_source_key(primary)] = primary
 
     for category in result["capabilities"]:
         if not isinstance(result["capabilities"][category], list):
@@ -296,6 +413,27 @@ def merge_profiles(
             "The joint U.S.-Japan advisory explicitly identifies Radio Panda "
             "as another name for BlackTech."
         )
+    elif source_slug == "vice-society":
+        alias_vendor = "Microsoft Threat Intelligence"
+        alias_source_ids = [MICROSOFT_DEV0832_SOURCE["source_id"]]
+        alias_note = (
+            "Microsoft explicitly states that DEV-0832 is also known as Vice "
+            "Society and that DEV-0832 is now tracked as Vanilla Tempest."
+        )
+    elif source_slug == "judgement-panda":
+        alias_vendor = "CERT-EU / ENISA"
+        alias_source_ids = [CERT_EU_APT31_SOURCE["source_id"]]
+        alias_note = (
+            "The joint CERT-EU/ENISA publication explicitly identifies APT31 "
+            "as also known as Judgment Panda and Zirconium."
+        )
+    elif source_slug == "uac-0010":
+        alias_vendor = "State Cyber Protection Centre of Ukraine"
+        alias_source_ids = [SCPC_UAC0010_SOURCE["source_id"]]
+        alias_note = (
+            "Ukraine's State Cyber Protection Centre explicitly identifies "
+            "UAC-0010 as also known as Gamaredon and Armageddon."
+        )
     else:
         alias_vendor = "MITRE ATT&CK / Microsoft"
         alias_source_ids = ["source--mitre-attack-19-2"]
@@ -329,6 +467,74 @@ def merge_profiles(
             alias.get("evidence_refs", []), alias_source_ids
         )
         alias["analyst_notes"] = alias_note
+
+    if source_slug == "vice-society":
+        for extra_name in ("DEV-0832", "VICE SPIDER"):
+            extra = next(
+                (
+                    item
+                    for item in aliases
+                    if normalized_name(item["name"]) == normalized_name(extra_name)
+                ),
+                None,
+            )
+            record = {
+                "name": extra_name,
+                "vendor": "Microsoft Threat Intelligence",
+                "scope": "exact",
+                "confidence": "high",
+                "evidence_refs": [MICROSOFT_DEV0832_SOURCE["source_id"]],
+                "analyst_notes": alias_note,
+            }
+            if extra is None:
+                aliases.append(record)
+            else:
+                extra.update(record)
+
+    if source_slug == "judgement-panda":
+        extra_name = "Judgment Panda"
+        extra = next(
+            (
+                item
+                for item in aliases
+                if normalized_name(item["name"]) == normalized_name(extra_name)
+            ),
+            None,
+        )
+        record = {
+            "name": extra_name,
+            "vendor": "CERT-EU / ENISA",
+            "scope": "exact",
+            "confidence": "high",
+            "evidence_refs": [CERT_EU_APT31_SOURCE["source_id"]],
+            "analyst_notes": alias_note,
+        }
+        if extra is None:
+            aliases.append(record)
+        else:
+            extra.update(record)
+
+    if source_slug == "uac-0010":
+        extra = next(
+            (
+                item
+                for item in aliases
+                if normalized_name(item["name"]) == normalized_name("Armageddon")
+            ),
+            None,
+        )
+        record = {
+            "name": "Armageddon",
+            "vendor": "State Cyber Protection Centre of Ukraine",
+            "scope": "exact",
+            "confidence": "high",
+            "evidence_refs": [SCPC_UAC0010_SOURCE["source_id"]],
+            "analyst_notes": alias_note,
+        }
+        if extra is None:
+            aliases.append(record)
+        else:
+            extra.update(record)
 
     note = (
         f"2026-09 entity-boundary migration: actor--{source_slug} was merged into "
@@ -399,6 +605,18 @@ def deprecated_profile(
             for item in result.get("sources", [])
             if "CSA_BLACKTECH" in item.get("path", "")
         ] or ["source--actor-mapping-workbook"]
+    elif source_slug in {"vice-society", "judgement-panda", "uac-0010"}:
+        primary_sources = {
+            "vice-society": MICROSOFT_DEV0832_SOURCE,
+            "judgement-panda": CERT_EU_APT31_SOURCE,
+            "uac-0010": SCPC_UAC0010_SOURCE,
+        }
+        primary = copy.deepcopy(primary_sources[source_slug])
+        if primary["source_id"] not in {
+            item["source_id"] for item in result.get("sources", [])
+        }:
+            result.setdefault("sources", []).append(primary)
+        evidence_refs = [primary["source_id"]]
     if is_software:
         mitre_source = {
             "source_id": "source--mitre-zebrocy-s0251",
@@ -520,6 +738,39 @@ def migrate_review_decisions(path: Path) -> int:
     return changed
 
 
+def migrate_catalog(path: Path) -> int:
+    """Remove merged duplicate actors while retaining their discovery provenance."""
+    catalog = load_json(path)
+    actors = catalog.get("actors", [])
+    by_slug = {item["slug"]: item for item in actors}
+    changed = 0
+    for source_slug, target_slug in MERGES.items():
+        source = by_slug.get(source_slug)
+        target = by_slug.get(target_slug)
+        if source is None or target is None:
+            continue
+        for key in (
+            "aliases",
+            "source_dirs",
+            "reported_sources",
+            "census_actor_ids",
+            "actor_types",
+        ):
+            values = source.get(key, [])
+            if key == "aliases":
+                values = [source.get("name", ""), *values]
+            target[key] = _merge_scalar_lists(
+                target.get(key, []), [item for item in values if item]
+            )
+        actors.remove(source)
+        del by_slug[source_slug]
+        changed += 1
+    if changed:
+        actors.sort(key=lambda item: item["slug"])
+        write_json_atomic(path, catalog)
+    return changed
+
+
 def migrate_inbound_relationships(root: Path) -> int:
     """Retarget relationships that still name a merged legacy identity."""
     canonical_names = {
@@ -616,7 +867,95 @@ def repair_merged_aliases(root: Path) -> int:
                 "The joint U.S.-Japan advisory explicitly identifies Radio "
                 "Panda as another name for BlackTech."
             )
-        if alias != before:
+        elif source_slug == "vice-society":
+            alias["vendor"] = "Microsoft Threat Intelligence"
+            alias["scope"] = "exact"
+            alias["confidence"] = "high"
+            alias["evidence_refs"] = [MICROSOFT_DEV0832_SOURCE["source_id"]]
+            alias["analyst_notes"] = (
+                "Microsoft explicitly states that DEV-0832 is also known as "
+                "Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+            )
+        elif source_slug == "judgement-panda":
+            alias["vendor"] = "CERT-EU / ENISA"
+            alias["scope"] = "exact"
+            alias["confidence"] = "high"
+            alias["evidence_refs"] = [CERT_EU_APT31_SOURCE["source_id"]]
+            alias["analyst_notes"] = (
+                "The joint CERT-EU/ENISA publication explicitly identifies "
+                "APT31 as also known as Judgment Panda and Zirconium."
+            )
+        elif source_slug == "uac-0010":
+            alias["vendor"] = "State Cyber Protection Centre of Ukraine"
+            alias["scope"] = "exact"
+            alias["confidence"] = "high"
+            alias["evidence_refs"] = [SCPC_UAC0010_SOURCE["source_id"]]
+            alias["analyst_notes"] = (
+                "Ukraine's State Cyber Protection Centre explicitly identifies "
+                "UAC-0010 as also known as Gamaredon and Armageddon."
+            )
+        extra_records: list[dict[str, Any]] = []
+        if source_slug == "vice-society":
+            extra_records = [
+                {
+                    "name": name,
+                    "vendor": "Microsoft Threat Intelligence",
+                    "scope": "exact",
+                    "confidence": "high",
+                    "evidence_refs": [MICROSOFT_DEV0832_SOURCE["source_id"]],
+                    "analyst_notes": (
+                        "Microsoft explicitly states that DEV-0832 is also known as "
+                        "Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+                    ),
+                }
+                for name in ("DEV-0832", "VICE SPIDER")
+            ]
+        elif source_slug == "judgement-panda":
+            extra_records = [
+                {
+                    "name": "Judgment Panda",
+                    "vendor": "CERT-EU / ENISA",
+                    "scope": "exact",
+                    "confidence": "high",
+                    "evidence_refs": [CERT_EU_APT31_SOURCE["source_id"]],
+                    "analyst_notes": (
+                        "The joint CERT-EU/ENISA publication explicitly identifies "
+                        "APT31 as also known as Judgment Panda and Zirconium."
+                    ),
+                }
+            ]
+        elif source_slug == "uac-0010":
+            extra_records = [
+                {
+                    "name": "Armageddon",
+                    "vendor": "State Cyber Protection Centre of Ukraine",
+                    "scope": "exact",
+                    "confidence": "high",
+                    "evidence_refs": [SCPC_UAC0010_SOURCE["source_id"]],
+                    "analyst_notes": (
+                        "Ukraine's State Cyber Protection Centre explicitly identifies "
+                        "UAC-0010 as also known as Gamaredon and Armageddon."
+                    ),
+                }
+            ]
+        extras_changed = False
+        for record in extra_records:
+            extra = next(
+                (
+                    item
+                    for item in target.get("actor", {}).get("aliases", [])
+                    if normalized_name(item.get("name", ""))
+                    == normalized_name(record["name"])
+                ),
+                None,
+            )
+            if extra is None:
+                target["actor"].setdefault("aliases", []).append(record)
+                extras_changed = True
+            elif extra != record:
+                extra.update(record)
+                extras_changed = True
+        if alias != before or extras_changed:
             target["updated_at"] = utc_now()
             write_json_atomic(target_path, target)
             changed_targets.add(target_slug)
@@ -626,6 +965,9 @@ def repair_merged_aliases(root: Path) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=REPO_ROOT)
+    parser.add_argument(
+        "--catalog", type=Path, default=Path("actor_profile/corpus-catalog.json")
+    )
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
     root = args.repository_root.resolve()
@@ -671,7 +1013,9 @@ def main() -> int:
     decision_changes = 0
     inbound_relationship_changes = 0
     merged_alias_repairs = 0
+    catalog_merges = 0
     if args.apply:
+        catalog_merges = migrate_catalog(root / args.catalog)
         decision_changes = migrate_review_decisions(
             root / "parse-daily" / "review-decisions.json"
         )
@@ -685,6 +1029,7 @@ def main() -> int:
                 "review_decisions_rekeyed": decision_changes,
                 "inbound_relationship_profiles_changed": inbound_relationship_changes,
                 "merged_alias_profiles_repaired": merged_alias_repairs,
+                "catalog_profiles_merged": catalog_merges,
             },
             ensure_ascii=False,
             indent=2,

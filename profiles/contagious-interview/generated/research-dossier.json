@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--contagious-interview",
   "actor_name": "Contagious Interview",
-  "profile_updated_at": "2026-09-20T13:48:11Z",
+  "profile_updated_at": "2026-09-21T04:38:04Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -13,12 +13,12 @@
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "canonical-present",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 15,
-      "dated_activities": 2,
-      "relationships": 1,
+      "dated_activities": 3,
+      "relationships": 2,
       "malware": 7,
       "activity_linked_malware": 5,
       "tools": 0,
@@ -26,13 +26,16 @@
       "motivations": 2
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 18,
       "relationships": 0,
       "malware": 4,
       "tools": 0,
       "untyped_software": 0,
       "targets": 0,
-      "motivations": 1
+      "motivations": 1,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -135,7 +138,47 @@
             "counterevidence": []
           }
         ],
-        "target_actor_ref": "actor--famous-chollima"
+        "target_actor_ref": "actor--famous-chollima",
+        "target_resolution": "catalog-profile"
+      },
+      {
+        "relationship_id": "relationship--contagious-interview--verified--fcc6c7000d3a29fb",
+        "target_actor": "UNC5342",
+        "relationship_type": "taxonomy-overlaps-with",
+        "description": "GTIG tracks UNC5342 as the threat actor using EtherHiding in the campaign Palo Alto Networks named Contagious Interview; MITRE models Contagious Interview as a threat group rather than a campaign.",
+        "confidence": "high",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "evidence_refs": [
+          "source--gtig-unc5342-etherhiding-2025"
+        ],
+        "analyst_notes": "Taxonomy boundary retained: the source links actor activity to the named campaign but does not establish a universal exact alias.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--13d34837faffd5567d839f41",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "Contagious Interview taxonomy-overlaps-with UNC5342: GTIG tracks UNC5342 as the threat actor using EtherHiding in the campaign Palo Alto Networks named Contagious Interview; MITRE models Contagious Interview as a threat group rather than a campaign.",
+            "evidence_refs": [
+              "source--gtig-unc5342-etherhiding-2025"
+            ],
+            "verification_rationale": "Taxonomy boundary retained: the source links actor activity to the named campaign but does not establish a universal exact alias.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": "actor--unc5342",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [
@@ -163,7 +206,9 @@
         },
         "description": "北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 v4では、Google ChromeやBraveブラウザ、MetaMask、iCloud Keychainからの認証情報窃取機能が追加。 仮想環境（VMware、VirtualBox、Microsoft、QEMU）での実行を検出し、解析を回避する機能を搭載。 マルウェアは、npmパッケージ、GitHub/Bitbucketのリポジトリ、偽のビデオ会議アプリを通じて配布。 「DriverMinUpdate.app」などの偽アプリを用いたmacOS向けの情報窃取も確認されている。",
         "target_refs": [],
-        "malware_refs": [],
+        "malware_refs": [
+          "malware--ottercookie"
+        ],
         "infrastructure_refs": [],
         "confidence": "medium",
         "evidence_refs": [
@@ -252,7 +297,12 @@
             "counterevidence": []
           }
         ],
-        "malware": [],
+        "malware": [
+          {
+            "id": "malware--ottercookie",
+            "name": "OtterCookie"
+          }
+        ],
         "targets": [],
         "victims": [
           {
@@ -265,6 +315,138 @@
             "id": "ttp--activity-rule--437616c0b22d107a1a92",
             "technique_id": "T1555.003",
             "name": "Credentials from Web Browsers"
+          }
+        ]
+      },
+      {
+        "activity_id": "activity--daily-ad821db17bd56b3397be",
+        "name": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
+        "activity_type": "campaign",
+        "first_observed": {
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "reported_at": {
+          "value": "2025-09-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
+        "target_refs": [],
+        "malware_refs": [
+          "malware--beavertail",
+          "malware--invisibleferret"
+        ],
+        "infrastructure_refs": [],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gitlab-contagious-interview-clickfix-2025"
+        ],
+        "analyst_notes": "GitLab一次分析に基づき、2025年5月から試験展開されたClickFix経由のBeaverTail/InvisibleFerret活動をContagious Interviewの活動として保持する。同じ二次記事の後半にあるKimsuky/APT43の別キャンペーンとは分離した。",
+        "ttp_refs": [
+          "ttp--activity-rule--4db999f75969a8979172"
+        ],
+        "victim_refs": [],
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--contagious-interview",
+            "name": "Contagious Interview",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--beavertail",
+              "malware--invisibleferret"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--4db999f75969a8979172"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [],
+            "victim_refs": []
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2025-05-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-observed"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "reported_at": {
+              "value": "2025-09-17T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "campaign",
+            "phases": [
+              "Execution"
+            ],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--daily-dddef70e68c0dc59a5d3",
+            "source--gitlab-contagious-interview-clickfix-2025"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--62e82921c9b65a92a3b70842",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Contagious Interview conducted or is associated with 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布: 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
+            "evidence_refs": [
+              "source--gitlab-contagious-interview-clickfix-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--beavertail",
+            "name": "BeaverTail"
+          },
+          {
+            "id": "malware--invisibleferret",
+            "name": "InvisibleFerret"
+          }
+        ],
+        "targets": [],
+        "victims": [],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--4db999f75969a8979172",
+            "technique_id": "T1204.004",
+            "name": "Malicious Copy and Paste"
           }
         ]
       },
@@ -298,8 +480,8 @@
         "malware_refs": [
           "malware--beavertail",
           "malware--invisibleferret",
-          "malware--ottercookie",
           "malware--ottercandy",
+          "malware--ottercookie",
           "malware--stoatwaffle"
         ],
         "infrastructure_refs": [],
@@ -403,12 +585,12 @@
             "name": "InvisibleFerret"
           },
           {
-            "id": "malware--ottercookie",
-            "name": "OtterCookie"
-          },
-          {
             "id": "malware--ottercandy",
             "name": "OtterCandy"
+          },
+          {
+            "id": "malware--ottercookie",
+            "name": "OtterCookie"
           },
           {
             "id": "malware--stoatwaffle",
@@ -457,7 +639,8 @@
         },
         "description": "北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化 Socket Threat ResearchがBeaverTailインフォスティーラーとInvisibleFerretバックドアを検出 24アカウントから公開、累計4,000回超ダウンロード、6パッケージが現存 これらのパッケージの多くは、タイポスクワッティング（スペルミスを利用して正規のパッケージを装うこと）や既知の信頼できるライブラリを模倣 攻撃者はLinkedInで面接を偽装しGoogle Docs経由でテスト課題と共にパッケージを配布 求職者は、コードをコンテナ化された環境ではなく、自身のOS上で実行するように圧力をかけられることが多く、画面共有中に実行を促されることもある",
         "target_refs": [
-          "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          "target--activity-rule--sector--932f4928d5e1ec28e2df",
+          "target--targeting-audit--country--9b6d295bda7abdd8257f"
         ],
         "malware_refs": [
           "malware--beavertail",
@@ -492,7 +675,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--activity-rule--sector--932f4928d5e1ec28e2df"
+              "target--activity-rule--sector--932f4928d5e1ec28e2df",
+              "target--targeting-audit--country--9b6d295bda7abdd8257f"
             ],
             "victim_refs": [
               "victim--activity-rule--6f11b2b6322cd2dec974"
@@ -522,7 +706,9 @@
             "results": [],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [],
+              "target_country_refs": [
+                "target--targeting-audit--country--9b6d295bda7abdd8257f"
+              ],
               "target_region_refs": []
             }
           },
@@ -560,6 +746,10 @@
           {
             "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
             "name": "IT・ソフトウェア"
+          },
+          {
+            "id": "target--targeting-audit--country--9b6d295bda7abdd8257f",
+            "name": "タイ"
           }
         ],
         "victims": [
@@ -1768,7 +1958,8 @@
         "description": "北朝鮮系「Contagious Interview」集団がBeaverTailとOtterCookieの機能を収斂、進化させたJS系マルウェア運用が確認。 OtterCookieはキー入力記録・画面撮影モジュールを新搭載し、取得データをC2へ送信する改良版（v5）が観測された。 Google/MandiantはEtherHidingでBSCやEthereumから次段階ペイロード取得と報告し、国家支援勢力の初事例と位置づけ。 スリランカ企業の端末で感染を確認。偽求人の課題でBitbucket配布のNode.jsアプリ「Chessfi」を導入させたのが起点。 npmには8/20公開の悪性依存「node-nvm-ssh」が混入し6日後に削除、計306回ダウンロード。VS Code拡張やQt派生など多様な配布形態も示唆。",
         "target_refs": [],
         "malware_refs": [
-          "malware--beavertail"
+          "malware--beavertail",
+          "malware--ottercookie"
         ],
         "infrastructure_refs": [],
         "confidence": "medium",
@@ -1787,7 +1978,8 @@
           },
           "capability": {
             "malware_refs": [
-              "malware--beavertail"
+              "malware--beavertail",
+              "malware--ottercookie"
             ],
             "ttp_refs": []
           },
@@ -1850,142 +2042,15 @@
           {
             "id": "malware--beavertail",
             "name": "BeaverTail"
+          },
+          {
+            "id": "malware--ottercookie",
+            "name": "OtterCookie"
           }
         ],
         "targets": [],
         "victims": [],
         "techniques": []
-      },
-      {
-        "activity_id": "activity--daily-ad821db17bd56b3397be",
-        "name": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
-        "activity_type": "campaign",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-09-22T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-        "target_refs": [],
-        "malware_refs": [
-          "malware--beavertail",
-          "malware--invisibleferret"
-        ],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-dddef70e68c0dc59a5d3"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--ad821db17bd56b3397be231d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮連関のLazarus下位クラスター（Contagious Interview/ClickFake Interview）と評価。",
-        "ttp_refs": [
-          "ttp--activity-rule--4db999f75969a8979172"
-        ],
-        "victim_refs": [],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--contagious-interview",
-            "name": "Contagious Interview",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [
-              "malware--beavertail",
-              "malware--invisibleferret"
-            ],
-            "ttp_refs": [
-              "ttp--activity-rule--4db999f75969a8979172"
-            ]
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [],
-            "victim_refs": []
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-09-22T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "campaign",
-            "phases": [
-              "Execution"
-            ],
-            "results": [],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-dddef70e68c0dc59a5d3"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--62e82921c9b65a92a3b70842",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Contagious Interview conducted or is associated with 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布: 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
-            "evidence_refs": [
-              "source--daily-dddef70e68c0dc59a5d3"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [
-          {
-            "id": "malware--beavertail",
-            "name": "BeaverTail"
-          },
-          {
-            "id": "malware--invisibleferret",
-            "name": "InvisibleFerret"
-          }
-        ],
-        "targets": [],
-        "victims": [],
-        "techniques": [
-          {
-            "id": "ttp--activity-rule--4db999f75969a8979172",
-            "technique_id": "T1204.004",
-            "name": "Malicious Copy and Paste"
-          }
-        ]
       },
       {
         "activity_id": "activity--daily-9b3e802e4795ffa8fefb",
@@ -2013,7 +2078,9 @@
         "target_refs": [
           "target--activity-rule--sector--932f4928d5e1ec28e2df"
         ],
-        "malware_refs": [],
+        "malware_refs": [
+          "malware--ottercookie"
+        ],
         "infrastructure_refs": [],
         "confidence": "medium",
         "evidence_refs": [
@@ -2032,7 +2099,9 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--ottercookie"
+            ],
             "ttp_refs": []
           },
           "infrastructure": {
@@ -2094,7 +2163,12 @@
             "counterevidence": []
           }
         ],
-        "malware": [],
+        "malware": [
+          {
+            "id": "malware--ottercookie",
+            "name": "OtterCookie"
+          }
+        ],
         "targets": [
           {
             "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
@@ -2254,10 +2328,10 @@
             "activity_id": "activity--daily-ad821db17bd56b3397be",
             "activity_name": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2025-05-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-observed"
             },
             "last_observed": {
               "value": null,
@@ -2266,7 +2340,7 @@
               "basis": "not-stated"
             },
             "evidence_refs": [
-              "source--daily-dddef70e68c0dc59a5d3"
+              "source--gitlab-contagious-interview-clickfix-2025"
             ]
           },
           {
@@ -2290,7 +2364,7 @@
           }
         ],
         "derived_first_observed": {
-          "value": "2025-12-01T00:00:00Z",
+          "value": "2025-05-01T00:00:00Z",
           "precision": "month",
           "status": "inferred",
           "basis": "explicit-linked-activity-period"
@@ -2485,10 +2559,10 @@
             "activity_id": "activity--daily-ad821db17bd56b3397be",
             "activity_name": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2025-05-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-observed"
             },
             "last_observed": {
               "value": null,
@@ -2497,7 +2571,7 @@
               "basis": "not-stated"
             },
             "evidence_refs": [
-              "source--daily-dddef70e68c0dc59a5d3"
+              "source--gitlab-contagious-interview-clickfix-2025"
             ]
           },
           {
@@ -2521,7 +2595,7 @@
           }
         ],
         "derived_first_observed": {
-          "value": "2025-12-01T00:00:00Z",
+          "value": "2025-05-01T00:00:00Z",
           "precision": "month",
           "status": "inferred",
           "basis": "explicit-linked-activity-period"
@@ -2652,6 +2726,44 @@
           }
         ],
         "activity_observations": [
+          {
+            "activity_id": "activity--daily-78d8958cbdce563148fa",
+            "activity_name": "北朝鮮系ハッカー、BeaverTailとOtterCookieを統合した高度なJSマルウェアを展開",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-e8f48a18d1cc39fa808c"
+            ]
+          },
+          {
+            "activity_id": "activity--daily-9b3e802e4795ffa8fefb",
+            "activity_name": "新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-47e80e1dc37b49447e5b"
+            ]
+          },
           {
             "activity_id": "activity--daily-e98674dd97bf22866f7f",
             "activity_name": "OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加",
@@ -2876,7 +2988,9 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-019e5cc3a9bb7ac76a1a"
+        ]
       },
       {
         "id": "target--activity-rule--country--f35cd09db0a72555b38a",
@@ -3058,6 +3172,7 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [
       {
         "lead_id": "activity-lead--etda--4d0407fa00574118b300",
@@ -3710,10 +3825,18 @@
     ],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [],
       "victims_or_geographies": [],
-      "sectors": []
+      "sectors": [],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -3792,10 +3915,11 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 78,
+    "supported": 79,
     "partially-supported": 36
   },
   "evidence_catalog": {
@@ -4175,7 +4299,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.jamf.com/blog/flexibleferret-malware-continues-to-adapt/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     "source--daily-2a32ed98e1bd6d1661b4": {
       "source_id": "source--daily-2a32ed98e1bd6d1661b4",
@@ -4193,7 +4323,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250626.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250626.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/new-wave-of-fake-interviews-use-35-npm-packages-to-spread-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-3b508815c5f991656dcb": {
       "source_id": "source--daily-3b508815c5f991656dcb",
@@ -4211,7 +4349,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260804.md; source commit: 6ceacdb02b89dba752e7c2c8281af0c950095f3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260804.md; source commit: 6ceacdb02b89dba752e7c2c8281af0c950095f3e; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-47e80e1dc37b49447e5b": {
       "source_id": "source--daily-47e80e1dc37b49447e5b",
@@ -4229,7 +4375,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241227.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241227.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-56f1f7edcfb3f507fe75": {
       "source_id": "source--daily-56f1f7edcfb3f507fe75",
@@ -4247,7 +4401,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250512.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250512.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/05/ottercookie-v4-adds-vm-detection-and.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-828c717719b991a7c676": {
       "source_id": "source--daily-828c717719b991a7c676",
@@ -4265,7 +4427,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260409.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260409.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-93581ba9dc03b85be996": {
       "source_id": "source--daily-93581ba9dc03b85be996",
@@ -4283,7 +4454,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260702.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260702.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://socket.dev/blog/polinrider-north-korea-linked-supply-chain-campaign-expands",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-b84641d39a296b1d232d": {
       "source_id": "source--daily-b84641d39a296b1d232d",
@@ -4301,7 +4480,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240831.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240831.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2024/08/north-korean-hackers-target-developers.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-cdb23aca8de000a4d647": {
       "source_id": "source--daily-cdb23aca8de000a4d647",
@@ -4319,7 +4506,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251115.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251115.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/11/north-korean-hackers-turn-json-services.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-cf8c33fcf3e4b3907567": {
       "source_id": "source--daily-cf8c33fcf3e4b3907567",
@@ -4337,7 +4532,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250426.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250426.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/04/north-korean-hackers-spread-malware-via.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-d00e6abeb3390b2c40e7": {
       "source_id": "source--daily-d00e6abeb3390b2c40e7",
@@ -4355,7 +4558,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250716.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250716.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/07/north-korean-hackers-flood-npm-registry.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-dddef70e68c0dc59a5d3": {
       "source_id": "source--daily-dddef70e68c0dc59a5d3",
@@ -4373,7 +4584,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250922.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250922.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp"
+      ]
     },
     "source--daily-e8f48a18d1cc39fa808c": {
       "source_id": "source--daily-e8f48a18d1cc39fa808c",
@@ -4391,7 +4609,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251018.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251018.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/10/north-korean-hackers-combine-beavertail.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     "source--daily-f258b76090beb4d8cca9": {
       "source_id": "source--daily-f258b76090beb4d8cca9",
@@ -4409,7 +4633,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -4512,7 +4744,11 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "原文を確認(アクセス日 2026-08-12)。「The adversary primarily conducts operations to illicitly obtain freelance or full-time equivalent (FTE) work to earn a salary that can be funneled to North Korea.」と定義し、community identifiersにContagious Interviewを含む。ベンダー独自のクラスタ定義であり、政府帰属とは分離して扱う。"
+      "analyst_notes": "原文を確認(アクセス日 2026-08-12)。「The adversary primarily conducts operations to illicitly obtain freelance or full-time equivalent (FTE) work to earn a salary that can be funneled to North Korea.」と定義し、community identifiersにContagious Interviewを含む。ベンダー独自のクラスタ定義であり、政府帰属とは分離して扱う。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "relationship"
+      ]
     },
     "source--npa-waterplum-joint-advisory-2026-09": {
       "source_id": "source--npa-waterplum-joint-advisory-2026-09",
@@ -4624,6 +4860,65 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--gtig-unc5342-etherhiding-2025": {
+      "source_id": "source--gtig-unc5342-etherhiding-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
+      "title": "DPRK Adopts EtherHiding: Nation-State Malware Hiding on Blockchains",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2025-10-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GTIG tracks UNC5342 as the threat actor incorporating EtherHiding into the social-engineering campaign Palo Alto Networks named Contagious Interview. MITRE separately models Contagious Interview as Group G1052, so the repository preserves both records with a taxonomy relationship."
+    },
+    "source--gitlab-contagious-interview-clickfix-2025": {
+      "source_id": "source--gitlab-contagious-interview-clickfix-2025",
+      "path": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
+      "url": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
+      "title": "Tech Note - BeaverTail variant distributed via malicious repositories and ClickFix lure",
+      "publisher": "GitLab Threat Intelligence",
+      "published_at": {
+        "value": "2025-09-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GitLab directly observed the ClickFix infrastructure and BeaverTail/InvisibleFerret samples from May 2025 and associates their operators with identifiers including Contagious Interview and Famous Chollima."
     }
   },
   "research_gaps": [

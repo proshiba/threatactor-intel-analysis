@@ -4,9 +4,12 @@
 Inputs are intentionally evidence preserving:
 
 * reviewed profile activities and ATT&CK group summaries;
-* high-confidence actor matches in the existing OSINT cross-check files;
-* structured victim-geography fields from MISP/ETDA datasets;
 * actor-specific primary-source curation.
+
+MISP/ETDA cross-check fields and legacy workbook prose are inspected for the
+audit report only.  They are aggregation/repository leads, so they must not be
+written into the canonical ``targets`` collection without original-source
+curation.
 
 Attribution countries, infrastructure locations, and countries that merely
 issued attribution statements are not treated as victim countries.
@@ -47,6 +50,38 @@ DEFAULT_REPORT = DEFAULT_PROFILES / "targeting-audit.json"
 GENERATED_PREFIX = "target--targeting-audit--"
 DERIVATION_NOTE = "[targeting-scope-audit-v1]"
 TARGETING_LINE_PREFIX = "構造化ターゲット監査:"
+TARGET_SELECTION_LOGIC = (
+    "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした"
+    "個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値は"
+    "external research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、"
+    "日本は確認できた場合に地域表示とは別に個別保持する。"
+)
+LEGACY_TARGET_SELECTION_LOGIC = (
+    "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、"
+    "および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。"
+    "帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは"
+    "別に個別保持する。"
+)
+TARGET_DERIVATION_NOTE = (
+    f"{DERIVATION_NOTE} 地域は明示記述または複数の個別国から導出する。"
+    "導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は"
+    "原典確認前にcanonicalへ昇格しない。"
+)
+LEGACY_TARGET_DERIVATION_NOTE = (
+    f"{DERIVATION_NOTE} 地域は明示記述または複数の個別国から導出する。"
+    "導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、"
+    "ベンダー間のアクター集合境界差を保持する。"
+)
+LEGACY_TARGET_NOTES = (
+    "Structured targets are extracted from workbook prose and require review.",
+    "No structured target statement was available in the mapping workbook.",
+)
+NONCANONICAL_SOURCE_PREFIXES = (
+    "source--actor-mapping-workbook",
+    "source--osint-etda",
+    "source--osint-misp",
+    "source--target-audit-",
+)
 
 CONFIDENCE_RANK = {"unknown": 0, "low": 1, "medium": 2, "high": 3}
 AMBIGUOUS_TEXT_ALIASES = {"korea", "korean"}
@@ -174,7 +209,13 @@ def time_max(
 def compile_literal(alias: str) -> re.Pattern[str]:
     escaped = re.escape(alias)
     if re.search(r"[A-Za-z0-9]", alias):
-        return re.compile(rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])", re.IGNORECASE)
+        # Treat underscores as identifier characters.  Without this guard a
+        # filename such as Talking_Points_for_China.exe is misread as a victim
+        # country merely because the surrounding sentence describes an attack.
+        return re.compile(
+            rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])",
+            re.IGNORECASE,
+        )
     return re.compile(escaped)
 
 
@@ -254,7 +295,18 @@ class Geography:
     ) -> tuple[set[str], set[str]]:
         countries: set[str] = set()
         regions: set[str] = set()
+        # Resolve overlapping literal spans before applying semantic context.
+        # Without longest-span selection, Japanese 「東南アジア」 also matches
+        # the embedded literals 「南アジア」 and 「アジア」.
+        mentioned_countries = {
+            entry["name"] for entry, _ in self._mentions(text, self.countries)
+        }
+        mentioned_regions = {
+            entry["name"] for entry, _ in self._mentions(text, self.regions)
+        }
         for entry in self.countries:
+            if entry["name"] not in mentioned_countries:
+                continue
             match = (
                 mitre_target_match(
                     text,
@@ -274,6 +326,8 @@ class Geography:
             if match is not None:
                 countries.add(entry["name"])
         for entry in self.regions:
+            if entry["name"] not in mentioned_regions:
+                continue
             match = (
                 mitre_target_match(
                     text,
@@ -320,6 +374,7 @@ def candidate() -> dict[str, Any]:
         "description_priority": -1,
         "notes": set(),
         "origins": set(),
+        "activity_ids": set(),
     }
 
 
@@ -333,6 +388,7 @@ def add_candidate(
     description_priority: int,
     note: str,
     origin: str,
+    activity_id: str | None = None,
     first_observed: dict[str, Any] | None = None,
     last_observed: dict[str, Any] | None = None,
 ) -> None:
@@ -345,6 +401,8 @@ def add_candidate(
     if note:
         item["notes"].add(note)
     item["origins"].add(origin)
+    if activity_id:
+        item["activity_ids"].add(activity_id)
     item["first_observed"] = time_min(
         item["first_observed"], first_observed or unknown_time()
     )
@@ -361,11 +419,21 @@ def cleanup_generated(profile: dict[str, Any]) -> None:
         if item.get("id", "").startswith(GENERATED_PREFIX)
     }
     for category in ("countries", "regions"):
-        profile["targets"][category] = [
-            item
-            for item in profile["targets"].get(category, [])
-            if item.get("id") not in removed
-        ]
+        retained: list[dict[str, Any]] = []
+        for item in profile["targets"].get(category, []):
+            if item.get("id") in removed:
+                continue
+            refs = [
+                ref
+                for ref in item.get("evidence_refs", [])
+                if not ref.startswith(NONCANONICAL_SOURCE_PREFIXES)
+            ]
+            if item.get("evidence_refs") and not refs:
+                removed.add(item["id"])
+                continue
+            item["evidence_refs"] = refs
+            retained.append(item)
+        profile["targets"][category] = retained
     replace_refs(profile, {item: None for item in removed})
 
 
@@ -522,6 +590,21 @@ def ensure_source(profile: dict[str, Any], source: dict[str, Any]) -> None:
     profile["sources"].append(copy.deepcopy(source))
 
 
+def link_activity_target(
+    profile: dict[str, Any], candidate_item: dict[str, Any], target_id: str
+) -> None:
+    activity_ids = candidate_item.get("activity_ids", set())
+    if not activity_ids:
+        return
+    for activity in profile.get("activities", []):
+        if activity.get("activity_id") not in activity_ids:
+            continue
+        refs = activity.setdefault("target_refs", [])
+        if target_id not in refs:
+            refs.append(target_id)
+        activity["target_refs"] = sorted(set(refs))
+
+
 def catalog_group_map(catalog: dict[str, Any]) -> dict[str, str]:
     return {
         item["slug"]: item["mitre_group_id"]
@@ -611,6 +694,11 @@ def collect_activities(
             actor_pattern=compiled_rules.get("_actor_pattern"),
             mitre=False,
         )
+        excluded_names = compiled_rules.get(
+            "_activity_target_exclusions", {}
+        ).get(activity.get("activity_id"), set())
+        country_names -= excluded_names
+        region_names -= excluded_names
         for name in country_names:
             add_candidate(
                 countries,
@@ -628,6 +716,7 @@ def collect_activities(
                 description_priority=2,
                 note="活動記述の標的文脈から構造化。",
                 origin="activity",
+                activity_id=activity.get("activity_id"),
                 first_observed=activity.get("first_observed"),
                 last_observed=activity.get("last_observed"),
             )
@@ -648,77 +737,10 @@ def collect_activities(
                 description_priority=2,
                 note="活動記述の標的文脈から構造化。",
                 origin="activity",
+                activity_id=activity.get("activity_id"),
                 first_observed=activity.get("first_observed"),
                 last_observed=activity.get("last_observed"),
             )
-
-
-def collect_reviewed_targeting_text(
-    profile: dict[str, Any],
-    geography: Geography,
-    countries: dict[str, dict[str, Any]],
-    regions: dict[str, dict[str, Any]],
-) -> None:
-    """Structure geography already preserved in the dedicated target notes.
-
-    Historical bootstrap profiles copied this field from the reviewed actor
-    mapping workbook but did not always materialize its countries and regions.
-    The generated audit summary is excluded so repeated runs cannot feed their
-    own output back into the profile.
-    """
-
-    source_id = "source--actor-mapping-workbook"
-    if not any(
-        item.get("source_id") == source_id for item in profile.get("sources", [])
-    ):
-        return
-    text = "\n".join(
-        line
-        for line in profile.get("free_text", {})
-        .get("targeting_details", "")
-        .splitlines()
-        if not line.startswith(TARGETING_LINE_PREFIX)
-    ).strip()
-    if not text:
-        return
-    country_names = {
-        entry["name"] for entry, _ in geography._mentions(text, geography.countries)
-    }
-    # "US" is intentionally not a global case-insensitive country alias:
-    # doing so would confuse the English pronoun "us" in arbitrary prose.
-    if re.search(r"(?<![A-Za-z0-9])US(?![A-Za-z0-9])", text):
-        country_names.add("米国")
-    region_names = {
-        entry["name"] for entry, _ in geography._mentions(text, geography.regions)
-    }
-    for name in country_names:
-        add_candidate(
-            countries,
-            name,
-            evidence_refs=[source_id],
-            confidence="medium",
-            description=(
-                "レビュー済みアクターマッピングの標的欄に記録された"
-                f"{name}を構造化した。"
-            ),
-            description_priority=1,
-            note="既存の標的専用自由記述から構造化。",
-            origin="reviewed-targeting-text",
-        )
-    for name in region_names:
-        add_candidate(
-            regions,
-            name,
-            evidence_refs=[source_id],
-            confidence="medium",
-            description=(
-                "レビュー済みアクターマッピングの標的欄に記録された"
-                f"{name}を構造化した。"
-            ),
-            description_priority=1,
-            note="既存の標的専用自由記述から構造化。",
-            origin="reviewed-targeting-text",
-        )
 
 
 def load_dataset_indexes() -> dict[str, dict[str, dict[str, Any]]]:
@@ -908,27 +930,25 @@ def update_targeting_text(profile: dict[str, Any]) -> None:
 
 
 def append_audit_notes(profile: dict[str, Any]) -> None:
-    logic = (
-        "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした"
-        "個別補正、および高確度でアクター照合できた構造化OSINTの被害地理"
-        "フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、"
-        "日本は確認できた場合に地域表示とは別に個別保持する。"
+    selection_logic = profile["targets"].get("selection_logic", "")
+    for generated in (LEGACY_TARGET_SELECTION_LOGIC, TARGET_SELECTION_LOGIC):
+        selection_logic = selection_logic.replace(generated, "")
+    selection_logic = " ".join(selection_logic.split())
+    profile["targets"]["selection_logic"] = " ".join(
+        value for value in (selection_logic, TARGET_SELECTION_LOGIC) if value
     )
-    if not profile["targets"].get("selection_logic"):
-        profile["targets"]["selection_logic"] = logic
-    elif logic not in profile["targets"]["selection_logic"]:
-        profile["targets"]["selection_logic"] = (
-            profile["targets"]["selection_logic"].rstrip() + " " + logic
-        )
-    note = (
-        f"{DERIVATION_NOTE} 地域は明示記述または複数の個別国から導出する。"
-        "導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、"
-        "ベンダー間のアクター集合境界差を保持する。"
+
+    notes = profile["targets"].get("analyst_notes", "")
+    for generated in (
+        *LEGACY_TARGET_NOTES,
+        LEGACY_TARGET_DERIVATION_NOTE,
+        TARGET_DERIVATION_NOTE,
+    ):
+        notes = notes.replace(generated, "")
+    notes = " ".join(notes.split())
+    profile["targets"]["analyst_notes"] = " ".join(
+        value for value in (notes, TARGET_DERIVATION_NOTE) if value
     )
-    if DERIVATION_NOTE not in profile["targets"].get("analyst_notes", ""):
-        profile["targets"]["analyst_notes"] = (
-            profile["targets"].get("analyst_notes", "").rstrip() + " " + note
-        ).strip()
 
 
 def process_profile(
@@ -954,26 +974,29 @@ def process_profile(
     regions: dict[str, dict[str, Any]] = {}
     collect_mitre(profile, group, geography, compiled_rules, countries, regions)
     collect_activities(profile, geography, compiled_rules, countries, regions)
-    collect_reviewed_targeting_text(profile, geography, countries, regions)
-    used_sources, unresolved, raw_values = collect_crosscheck(
+    lead_countries: dict[str, dict[str, Any]] = {}
+    lead_regions: dict[str, dict[str, Any]] = {}
+    lead_sources, unresolved, raw_values = collect_crosscheck(
         profile,
         crosscheck,
         dataset_indexes,
         geography,
-        countries,
-        regions,
+        lead_countries,
+        lead_regions,
     )
-    used_sources |= collect_curation(profile, curation, countries, regions)
-    for source_id in used_sources:
+    for source_id in lead_sources:
         for spec in DATASETS.values():
             if spec["source_id"] == source_id:
                 ensure_source(profile, spec["source"])
                 break
+    used_sources = collect_curation(profile, curation, countries, regions)
     for name, item in countries.items():
-        upsert_target(profile, "countries", name, item)
+        target = upsert_target(profile, "countries", name, item)
+        link_activity_target(profile, item, target["id"])
     derive_regions(profile, geography, regions)
     for name, item in regions.items():
-        upsert_target(profile, "regions", name, item)
+        target = upsert_target(profile, "regions", name, item)
+        link_activity_target(profile, item, target["id"])
     dedupe_targets(profile, "countries")
     dedupe_targets(profile, "regions")
     profile["targets"]["countries"].sort(key=lambda item: item["name"])
@@ -1006,6 +1029,7 @@ def process_profile(
         "countries_added": sorted(set(after_countries) - set(before_countries)),
         "regions_added": sorted(set(after_regions) - set(before_regions)),
         "sources_used": sorted(used_sources),
+        "external_lead_sources": sorted(lead_sources),
         "raw_osint_value_count": len(raw_values),
         "unresolved_osint_values": sorted(unresolved),
         "flags": flags,

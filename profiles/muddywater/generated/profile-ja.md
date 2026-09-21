@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--muddywater`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -27,7 +27,7 @@ MuddyWaterの標準化プロファイル。リポジトリ内の専用資料5件
 | Seedworm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Static Kitten | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | TA450 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| TEMP.Zagros | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| TEMP.Zagros | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -36,7 +36,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 - 国: Iran
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`
 
 ## モチベーション
 
@@ -52,16 +52,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [MuddyWater](https://attack.mitre.org/groups/G0069) is a cyber espionage group assessed to be a subordinate element within Iran's Ministry of Intelligence and Security (MOIS).(Citation: CYBERCOM Iranian Intel Cyber January 2022) Since at least 2017, [MuddyWater](https://attack.mitre.org/groups/G0069) has targeted a range of government and private organizations across sectors, including telecommunications, local government, finance, defense, and oil and natural gas organizations, in the Middle East (specifically the UAE and Saudi Arabia), Asia, Africa, Europe, and North America. [MuddyWater](https://attack.mitre.org/groups/G0069) has reused domains dating back to October 2025, and has a preference for NameCheap and Hosterdaddy Private Limited (AS136557). In late 2025 and early 2026, [MuddyWater](https://attack.mitre.org/groups/G0069) used commercial satellite internet (i.e., Starlink) for command and control (C2) communication. (Citation: FalconFeeds_Iran_Mar2026)(Citation: Huntio_IranInfra_Mar2026)(Citation: Unit 42 MuddyWater Nov 2017)(Citation: Symantec MuddyWater Dec 2018)(Citation: ClearSky MuddyWater Nov 2018)(Citation: ClearSky MuddyWater June 2019)(Citation: Reaqta MuddyWater November 2017)(Citation: DHS CISA AA22-055A MuddyWater February 2022)(Citation: Talos MuddyWater Jan 2022)(Citation: NaumaanProofpoint_GlobalClickFix_April2025)(Citation: ESET_MuddyWater_Dec2025)(Citation: SymantecCarbonBlack_Seedworm_Mar2026)    |
-| Capability | Tsundere Botnet, RustyWater, SHARPSTATS, MuddyViper, Fooder, Mori, LP-Notes, PowGoop, STARWHALE, POWERSTATS, Small Sieve, PoweMuddy, ScreenConnect, MoriAgent, Pudpoul, Thanos Ransomware, Covicli, RemoteUtilities, PowerSploit, Empire, Rclone, Out1, ConnectWise, Mimikatz, LaZagne, CrackMapExec, Koadic |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | individuals in Asia and the Middle East, government and defense entities in Central and Southwest Asia |
-| Socio-political | Iran |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -95,22 +95,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--covicli | Covicli | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--fooder | Fooder | [Fooder](https://attack.mitre.org/software/S9033) is a custom 64-bit C/C++ loader used by [MuddyWater](https://attack.mitre.org/groups/G0069) that can decrypt and reflectively load embedded payloads such as a go-socks5 proxy utility, the open-source HackBrowserData infostealer, or the [MuddyViper](https://attack.mitre.org/software/S9032) backdoor. [Fooder](https://attack.mitre.org/software/S9033) has frequently masqueraded as an entertainment executable, such as the Snake game (e.g., `Snake_Game.exe`).(Citation: ESET_MuddyWater_Dec2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--lp-notes | LP-Notes | [LP-Notes](https://attack.mitre.org/software/S9036) is a C/C++ Windows credential stealer used by [MuddyWater](https://attack.mitre.org/groups/G0069). [LP-Notes](https://attack.mitre.org/software/S9036) was named after the `lp-notes.txt` file that is used to store stolen credentials.(Citation: ESET_MuddyWater_Dec2025)   | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--mori | Mori | [Mori](https://attack.mitre.org/software/S1047) is a backdoor that has been used by [MuddyWater](https://attack.mitre.org/groups/G0069) since at least January 2022.(Citation: DHS CISA AA22-055A MuddyWater February 2022)(Citation: CYBERCOM Iranian Intel Cyber January 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--moriagent | MoriAgent | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--muddyviper | MuddyViper | [MuddyViper](https://attack.mitre.org/software/S9032) is custom backdoor written in C and C++ used by [MuddyWater](https://attack.mitre.org/groups/G0069) for command and control (C2) communications and persistence. [MuddyViper](https://attack.mitre.org/software/S9032) is loaded by [Fooder](https://attack.mitre.org/software/S9033) and sends frequent messages to the C2 server.(Citation: ESET_MuddyWater_Dec2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--powemuddy | PoweMuddy | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--powerstats | POWERSTATS | [POWERSTATS](https://attack.mitre.org/software/S0223) is a PowerShell-based first stage backdoor used by [MuddyWater](https://attack.mitre.org/groups/G0069). (Citation: Unit 42 MuddyWater Nov 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--powgoop | PowGoop | [PowGoop](https://attack.mitre.org/software/S1046) is a loader that consists of a DLL loader and a PowerShell-based downloader; it has been used by [MuddyWater](https://attack.mitre.org/groups/G0069) as their main loader.(Citation: DHS CISA AA22-055A MuddyWater February 2022)(Citation: CYBERCOM Iranian Intel Cyber January 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--pudpoul | Pudpoul | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--rustywater | RustyWater | [RustyWater](https://attack.mitre.org/software/S9037) is a Rust-based implant used by [MuddyWater](https://attack.mitre.org/groups/G0069). Historically, [MuddyWater](https://attack.mitre.org/groups/G0069) has used PowerShell-based tools and [RustyWater](https://attack.mitre.org/software/S9037) reflects a shift in tooling, demonstrating better techniques for defense evasion and reverse engineering.(Citation: CloudSEK_RustyWater_Jan2026) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--screenconnect | ScreenConnect | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--sharpstats | SHARPSTATS | [SHARPSTATS](https://attack.mitre.org/software/S0450) is a .NET backdoor used by [MuddyWater](https://attack.mitre.org/groups/G0069) since at least 2019.(Citation: TrendMicro POWERSTATS V3 June 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--small-sieve | Small Sieve | [Small Sieve](https://attack.mitre.org/software/S1035) is a Telegram Bot API-based Python backdoor that has been distributed using a Nullsoft Scriptable Install System (NSIS) Installer; it has been used by [MuddyWater](https://attack.mitre.org/groups/G0069) since at least January 2022.(Citation: DHS CISA AA22-055A MuddyWater February 2022)(Citation: NCSC GCHQ Small Sieve Jan 2022)<br><br>Security researchers have also noted [Small Sieve](https://attack.mitre.org/software/S1035)'s use by UNC3313, which may be associated with [MuddyWater](https://attack.mitre.org/groups/G0069).(Citation: Mandiant UNC3313 Feb 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--starwhale | STARWHALE | [STARWHALE](https://attack.mitre.org/software/S1037) is Windows Script File (WSF) backdoor that has been used by [MuddyWater](https://attack.mitre.org/groups/G0069), possibly since at least November 2021; there is also a [STARWHALE](https://attack.mitre.org/software/S1037) variant written in Golang with similar capabilities. Security researchers have also noted the use of [STARWHALE](https://attack.mitre.org/software/S1037) by UNC3313, which may be associated with [MuddyWater](https://attack.mitre.org/groups/G0069).(Citation: Mandiant UNC3313 Feb 2022)(Citation: DHS CISA AA22-055A MuddyWater February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--thanos-ransomware | Thanos Ransomware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--tsundere-botnet | Tsundere Botnet | [Tsundere Botnet](https://attack.mitre.org/software/S9034) is a botnet first reported in mid-2025 that is delivered via MSI installer or a PowerShell script. It leverages Node.js and JavaScript for payload delivery and execution, and uses smart contracts on the blockchain to host command and control (C2) addresses. [Tsundere Botnet](https://attack.mitre.org/software/S9034) is attributed to a likely Russian-speaking threat actor.<br><br>A variant named DinDoor has been linked to [MuddyWater](https://attack.mitre.org/groups/G0069) operations and uses the Deno runtime for execution rather than Node.js.(Citation: Checkpoint_MOISCyberCrime_Mar2026)(Citation: SOCRadar_MuddyWaterDindoor_Mar2026)(Citation: CAL_MuddyWater_Mar2026)(Citation: SecureListUbiedo_Tsundere_Nov2025)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -148,29 +142,25 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| BlackWater | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | phishing-campaign | 不明 | 不明 | 2025-04-18 | target--activity-rule--country--72caf60a2fbce4a1be7a |  | ttp--activity-rule--8a62cee39ddda59204db, ttp--activity-rule--b151f73dbd3a8fe978b9 | victim--activity-rule--2e097805778cd4de90a6 | 中国・イラン・ロシア・北朝鮮支援のAPTがClickFixを用いたフィッシング攻撃を展開。 TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 TA450 (MuddyWater): イランに関連するこのグループは、持続的なアクセスを維持するために、Levelなどの正当なリモート監視および管理 (RMM) ソフトウェアを悪用するためにClickFixを利用 UNK_RemoteRogue: 2024年末に確認されたこのロシアの可能性のあるグループは、侵害された可能性のあるZimbraサーバーから送信された、Microsoft Officeドキュメントへのリンクを含むおとりメールを使用してClickFixを使用 PowerShellコマンドを利用しQuasar RATやRMMソフトを導入。 日本大使館を装った誘導や、YouTube動画を含む偽ページなどを利用。 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | phishing-campaign | 不明 | 不明 | 2025-04-18 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--targeting-audit--country--169ce28cf348ddf208c5, target--targeting-audit--country--ed51b87320b46297d306 |  | ttp--activity-rule--8a62cee39ddda59204db, ttp--activity-rule--b151f73dbd3a8fe978b9 | victim--activity-rule--2e097805778cd4de90a6 | 中国・イラン・ロシア・北朝鮮支援のAPTがClickFixを用いたフィッシング攻撃を展開。 TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 TA450 (MuddyWater): イランに関連するこのグループは、持続的なアクセスを維持するために、Levelなどの正当なリモート監視および管理 (RMM) ソフトウェアを悪用するためにClickFixを利用 UNK_RemoteRogue: 2024年末に確認されたこのロシアの可能性のあるグループは、侵害された可能性のあるZimbraサーバーから送信された、Microsoft Officeドキュメントへのリンクを含むおとりメールを使用してClickFixを使用 PowerShellコマンドを利用しQuasar RATやRMMソフトを導入。 日本大使館を装った誘導や、YouTube動画を含む偽ページなどを利用。 | 中 | `source--daily-07ef6046e1668f840b3a` |
 | MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | ransomware-extortion | 不明 | 不明 | 2025-08-12 |  |  | ttp--activity-rule--b9cb4278ced315a8fcc2 | victim--activity-rule--c39933a0c415d45dc683 | ProferoがDarkBitの暗号化を解読し、2023年の被害企業で無償復旧に成功。 攻撃はVMware ESXiを暗号化。加害者は親イラン系を装い80BTC要求、交渉拒否し影響工作。 イスラエル当局はDarkBitをイラン支援APT「MuddyWater」と関連付け。 鍵生成のエントロピーが低く、タイムスタンプ併用で鍵空間を数十億通りに縮小。 VMDKヘッダと疎な構造を活用し多数のデータを復元。公開デクリプタは未提供。 | 高 | `source--daily-949ebd7fa1bed210b3ea` |
 | MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | ransomware-extortion | 不明 | 不明 | 2026-05-07 |  |  |  | victim--activity-rule--7b33e99334977e206b23 | イラン系MuddyWaterは、Microsoft Teamsのソーシャルエンジニアリングで侵入し、Chaosランサムウェア攻撃を装った。 攻撃では認証情報窃取、永続化、リモートアクセス、データ流出、恐喝メール、Chaosリークサイト掲載が行われた。 Rapid7は、ランサムウェア要素は諜報活動の隠蔽と帰属妨害のために使われた可能性が高いと評価した。 攻撃者はQuick Assist風フィッシングやローカルテキスト入力で認証情報を奪い、RDP、DWAgent、AnyDeskで永続化した。 ms_upd.exeがMicrosoft WebView2アプリを装うGame.exeバックドアを投下し、コマンド実行やファイル操作などを可能にした。 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
 | 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | phishing-campaign | 不明 | 不明 | 2024-07-16 | target--activity-rule--country--904728608f27c39df0df, target--activity-rule--sector--5403aec9c83d6a925f61 |  |  | victim--activity-rule--2649a00662971dc4307e | MuddyWaterハッキンググループが新しいBugSleepマルウェアを使用。 マルウェアはフィッシングメールを通じて配布。 イスラエル他様々な国で、政府機関、航空会社、メディアなどを標的としている。 Egnyteのファイル共有プラットフォームを利用。 Microsoft EdgeやGoogle Chromeなどのプロセスにインジェクトされる。 | 高 | `source--daily-b7b35ebe9f7da71be64d` |
-| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | phishing-campaign | 不明 | 不明 | 2025-10-24 | target--sector--government |  | ttp--activity-rule--243b88fbeb77593a10aa | victim--activity-rule--c82368fb1efd6f7470ed | Group-IBは国家支援のイラン系MuddyWaterがPhoenix v4を用い、100超の政府機関を標的にしたと報告。 8月19日からNordVPN経由の侵害アカウントでフィッシングを展開、中東および北アフリカの政府・国際機関へ送信、24日にC2停止。 添付WordのVBAがFakeUpdateローダーを書き込み、C:\ProgramData\sysprocupdate.exe生成とレジストリ変更で持続化。 Phoenix v4はCOM永続化を追加しWinHTTPでC2通信、スリープ/アップロード/ダウンロード/シェル等のコマンドを実装。 攻撃基盤ではPDQやAction1 RMMも確認。Chrome等のブラウザ資格情報窃取ツールで情報収集を実施。 | 中 | `source--daily-d22b60937b867ca96947` |
-| イラン系ハッカー、大手韓国電子メーカーを標的に | cyber-espionage | 2026-02 | 2026-02 | 2026-05-15 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297, target--sector--government |  | ttp--activity-rule--9ec6997a03bc56042379, ttp--activity-rule--f5ac9f5f4870df904875, ttp--activity-rule--fb868c07a0a02c9cf751 | victim--activity-rule--1634a387c73e6503f854 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
+| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | phishing-campaign | 不明 | 不明 | 2025-10-24 | target--sector--government, target--targeting-audit--region--96b0fbd7cc539d5734aa, target--targeting-audit--region--a32876cfd18bcb6aa90b |  | ttp--activity-rule--243b88fbeb77593a10aa | victim--activity-rule--c82368fb1efd6f7470ed | Group-IBは国家支援のイラン系MuddyWaterがPhoenix v4を用い、100超の政府機関を標的にしたと報告。 8月19日からNordVPN経由の侵害アカウントでフィッシングを展開、中東および北アフリカの政府・国際機関へ送信、24日にC2停止。 添付WordのVBAがFakeUpdateローダーを書き込み、C:\ProgramData\sysprocupdate.exe生成とレジストリ変更で持続化。 Phoenix v4はCOM永続化を追加しWinHTTPでC2通信、スリープ/アップロード/ダウンロード/シェル等のコマンドを実装。 攻撃基盤ではPDQやAction1 RMMも確認。Chrome等のブラウザ資格情報窃取ツールで情報収集を実施。 | 中 | `source--daily-d22b60937b867ca96947` |
+| イラン系ハッカー、大手韓国電子メーカーを標的に | cyber-espionage | 2026-02 | 2026-02 | 2026-05-15 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297, target--sector--government, target--targeting-audit--region--484daf9164cc33b9f6f7, target--targeting-audit--region--a32876cfd18bcb6aa90b |  | ttp--activity-rule--9ec6997a03bc56042379, ttp--activity-rule--f5ac9f5f4870df904875, ttp--activity-rule--fb868c07a0a02c9cf751 | victim--activity-rule--1634a387c73e6503f854 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
 | イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | phishing-campaign | 不明 | 不明 | 2024-04-13 | target--activity-rule--country--904728608f27c39df0df |  |  | victim--activity-rule--413bff8e6c421ef97bec | MuddyWaterが新C2ツール「DarkBeatC2」を採用 主にイスラエルの機関を対象に攻撃 攻撃はスピアフィッシングメールから開始 DarkBeatC2を介して追加ペイロードと通信 脅威活動は少なくとも2017年から活動中 | 高 | `source--daily-deef5a66e14d100f87cf` |
-| Operation Quicksand | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| BlackWater | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | MuddyWater | 情報なし | T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア | 被害事例: 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | 中 |
+| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | MuddyWater | 情報なし | T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア, 中国, イラン | 被害事例: 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | 中 |
 | MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | MuddyWater | 情報なし | T1486 Data Encrypted for Impact | 情報なし | 情報なし | 被害事例: MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | 高 |
 | MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | 中 |
 | 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | MuddyWater | 情報なし | 情報なし | 情報なし | イスラエル, メディア・報道 | 被害事例: 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | 高 |
-| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | MuddyWater | 情報なし | T1071.001 Web Protocols | 情報なし | Government | 被害事例: イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | 中 |
-| イラン系ハッカー、大手韓国電子メーカーを標的に | MuddyWater | 情報なし | T1574.001 DLL, T1113 Screen Capture, T1059.001 PowerShell | 情報なし | 韓国, 製造・産業, 教育・研究, Government | 被害事例: イラン系ハッカー、大手韓国電子メーカーを標的に | 高 |
+| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | MuddyWater | 情報なし | T1071.001 Web Protocols | 情報なし | Government, 北アフリカ, 中東 | 被害事例: イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | 中 |
+| イラン系ハッカー、大手韓国電子メーカーを標的に | MuddyWater | 情報なし | T1574.001 DLL, T1113 Screen Capture, T1059.001 PowerShell | 情報なし | 韓国, 製造・産業, 教育・研究, Government, アジア, 中東 | 被害事例: イラン系ハッカー、大手韓国電子メーカーを標的に | 高 |
 | イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | MuddyWater | 情報なし | 情報なし | 情報なし | イスラエル | 被害事例: イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | 高 |
-| Operation Quicksand | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 BlackWater; Operation Quicksand
 
@@ -178,59 +168,25 @@ BlackWater; Operation Quicksand
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | MITRE ATT&CKのGroup概要でMuddyWaterの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アルメニア | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 活動「新しいBugSleepマルウェア、MuddyWater攻撃に展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b7b35ebe9f7da71be64d`, `source--daily-deef5a66e14d100f87cf`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラク | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラン | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ウクライナ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オマーン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カタール | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クウェート | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | MITRE ATT&CKのGroup概要でMuddyWaterの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スーダン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてスーダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タジキスタン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タンザニア | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてタンザニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チュニジア | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてチュニジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | バーレーン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてバーレーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポルトガル | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてポルトガルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マリ | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてマリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラオス | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | レバノン | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards` |
+| countries | アラブ首長国連邦 | MITRE ATT&CKのGroup概要でMuddyWaterの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | イスラエル | 活動「新しいBugSleepマルウェア、MuddyWater攻撃に展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b7b35ebe9f7da71be64d`, `source--daily-deef5a66e14d100f87cf` |
+| countries | イラン | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| countries | サウジアラビア | MITRE ATT&CKのGroup概要でMuddyWaterの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ロシア | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a` |
 | countries | 中国 | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでMuddyWaterの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 韓国 | 活動「イラン系ハッカー、大手韓国電子メーカーを標的に」の記述で標的として明示された国・地域。 | 2026-02 | 2026-02 | 中 | `source--daily-ad0ed26155c84becbe19` |
-| regions | アジア | MITRE ATT&CKのGroup概要でMuddyWaterの標的範囲としてアジアが明示されている。 | 2026-02 | 2026-02 | 高 | `source--actor-mapping-workbook`, `source--daily-ad0ed26155c84becbe19`, `source--mitre-attack-19-2` |
-| regions | アフリカ | 活動「イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に」の記述で標的地域としてアフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-d22b60937b867ca96947`, `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | MITRE ATT&CKのGroup概要でMuddyWaterの標的範囲として中東が明示されている。 | 2026-02 | 2026-02 | 高 | `source--actor-mapping-workbook`, `source--daily-07ef6046e1668f840b3a`, `source--daily-ad0ed26155c84becbe19`, `source--daily-b7b35ebe9f7da71be64d`, `source--daily-d22b60937b867ca96947`, `source--daily-deef5a66e14d100f87cf`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北アフリカ | 活動「イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に」の記述で標的地域として北アフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-d22b60937b867ca96947`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | アジア | MITRE ATT&CKのGroup概要でMuddyWaterの標的範囲としてアジアが明示されている。 | 2026-02 | 2026-02 | 高 | `source--daily-ad0ed26155c84becbe19`, `source--mitre-attack-19-2` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でMuddyWaterの標的範囲として中東が明示されている。 | 2026-02 | 2026-02 | 高 | `source--daily-07ef6046e1668f840b3a`, `source--daily-ad0ed26155c84becbe19`, `source--daily-b7b35ebe9f7da71be64d`, `source--daily-d22b60937b867ca96947`, `source--daily-deef5a66e14d100f87cf`, `source--mitre-attack-19-2` |
+| regions | 北アフリカ | 活動「イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に」の記述で標的地域として北アフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-d22b60937b867ca96947` |
 | regions | 東アジア | 中国、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--daily-ad0ed26155c84becbe19` |
-| regions | 東南アジア | タイ、ラオスで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | ウクライナ、オランダ、オーストリア、トルコ、ベラルーシ、ポルトガルで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | メディア・報道 | 活動「新しいBugSleepマルウェア、MuddyWater攻撃に展開」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-b7b35ebe9f7da71be64d` |
 | sectors | 製造・産業 | 活動「イラン系ハッカー、大手韓国電子メーカーを標的に」の記述で標的として明示された産業。 | 2026-02 | 2026-02 | 中 | `source--daily-ad0ed26155c84becbe19` |
 | sectors | 教育・研究 | 活動「イラン系ハッカー、大手韓国電子メーカーを標的に」の記述で標的として明示された産業。 | 2026-02 | 2026-02 | 中 | `source--daily-ad0ed26155c84becbe19` |
 | sectors | 情報通信 | Ministry of Intelligence and Security (MOIS).(Citation: CYBERCOM Iranian Intel Cyber January 2022) Since at least 2017, [MuddyWater](https://attack.mitre.org/groups/G0069) has targeted a range of government and private organizations across sectors, including telecommunications, local government, finance, defense, and oil and natural gas organizations, in the Middle East (specifically the UAE and Saudi Arabia), Asia, Africa, Europe, and North America. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
-| sectors | Government | Targeting text indicates the Government sector. | 2026-02 | 2026-02 | 中 | `source--actor-mapping-workbook`, `source--daily-ad0ed26155c84becbe19`, `source--daily-d22b60937b867ca96947`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Government | Targeting text indicates the Government sector. | 2026-02 | 2026-02 | 中 | `source--daily-ad0ed26155c84becbe19`, `source--daily-d22b60937b867ca96947`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -330,7 +286,7 @@ BlackWater; Operation Quicksand
 - IOC観測: 218件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 69件
-- 非IOC artifact観測: 42件（`artifacts.csv`）
+- 非IOC artifact観測: 38件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -368,13 +324,13 @@ BlackWater; Operation Quicksand
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

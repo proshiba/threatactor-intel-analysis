@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt28`
 - 状態: review
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:01Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,7 +21,7 @@ APT28の標準化プロファイル。リポジトリ内の専用資料30件とM
 | BlueDelta | Recorded Future | overlapping | 中 | `source--daily-6bb5f30d0037bd12215d` | Recorded Future Insikt Groupは「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」として、BlueDeltaをAPT28・Fancy Bear・Forest Blizzardと重複するクラスタと位置付けている。原文の表現は「overlaps with」であり同一クラスタの断定ではないため、scopeはexactではなくoverlappingとする。confidenceは原文自身がmoderate confidenceと明示しているためmedium。 |
 | Fancy Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Forest Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| FROZENLAKE | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| FROZENLAKE | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Group 74 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | GruesomeLarch | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | IRON TWILIGHT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
@@ -43,7 +43,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 - 国: Russia
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`
 
 ## モチベーション
 
@@ -59,16 +59,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [APT28](https://attack.mitre.org/groups/G0007) is a threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) 85th Main Special Service Center (GTsSS) military unit 26165.(Citation: NSA/FBI Drovorub August 2020)(Citation: Cybersecurity Advisory GRU Brute Force Campaign July 2021) This group has been active since at least 2004.(Citation: DOJ GRU Indictment Jul 2018)(Citation: Ars Technica GRU indictment Jul 2018)(Citation: Crowdstrike DNC June 2016)(Citation: FireEye APT28)(Citation: SecureWorks TG-4127)(Citation: FireEye APT28 January 2017)(Citation: GRIZZLY STEPPE JAR)(Citation: Sofacy DealersChoice)(Citation: Palo Alto Sofacy 06-2018)(Citation: Symantec APT28 Oct 2018)(Citation: ESET Zebrocy May 2019)<br><br>[APT28](https://attack.mitre.org/groups/G0007) reportedly compromised the Hillary Clinton campaign, the Democratic National Committee, and the Democratic Congressional Campaign Committee in 2016 in an attempt to interfere with the U.S. presidential election.(Citation: Crowdstrike DNC June 2016) In 2018, the US indicted five GRU Unit 26165 officers associated with [APT28](https://attack.mitre.org/groups/G0007) for cyber operations (including close-access operations) conducted between 2014 and 2018 against the World Anti-Doping Agency (WADA), the US Anti-Doping Agency, a US nuclear facility, the Organization for the Prohibition of Chemical Weapons (OPCW), the Spiez Swiss Chemicals Laboratory, and other organizations.(Citation: US District Court Indictment GRU Oct 2018) Some of these were conducted with the assistance of GRU Unit 74455, which is also referred to as [Sandworm Team](https://attack.mitre.org/groups/G0034).  |
-| Capability | Downdelph, reGeorg, OLDBAIT, Fysbis, XAgentOSX, CORESHELL, XTunnel, JHUHUGIT, DealersChoice, Drovorub, Zebrocy, USBStealer, LoJax, LAMEHUG, CHOPSTICK, Cannon, HIDEDRV, Komplex, ADVSTORESHELL, SOURFACE, Sofacy, XAgent, WinIDS, Foozer, DownRange, Sedreco Dropper, Sednit, Sedkit, HideDrv (Rootkit), SeduUploader, Net, certutil, Forfiles, Winexe, Responder, Mimikatz, Koadic, cipher.exe, Tor, Wevtutil |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | United States government, Romania, Poland, Jordan, Ukraine, Turkey |
-| Socio-political | Russia |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -109,12 +109,9 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | malware--coreshell | CORESHELL | [CORESHELL](https://attack.mitre.org/software/S0137) is a downloader used by [APT28](https://attack.mitre.org/groups/G0007). The older versions of this malware are known as SOURFACE and newer versions as CORESHELL.(Citation: FireEye APT28) (Citation: FireEye APT28 January 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--dealerschoice | DealersChoice | [DealersChoice](https://attack.mitre.org/software/S0243) is a Flash exploitation framework used by [APT28](https://attack.mitre.org/groups/G0007). (Citation: Sofacy DealersChoice) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--downdelph | Downdelph | [Downdelph](https://attack.mitre.org/software/S0134) is a first-stage downloader written in Delphi that has been used by [APT28](https://attack.mitre.org/groups/G0007) in rare instances between 2013 and 2015. (Citation: ESET Sednit Part 3) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--downrange | DownRange | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--drovorub | Drovorub | [Drovorub](https://attack.mitre.org/software/S0502) is a Linux malware toolset comprised of an agent, client, server, and kernel modules, that has been used by [APT28](https://attack.mitre.org/groups/G0007).(Citation: NSA/FBI Drovorub August 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--foozer | Foozer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--fysbis | Fysbis | [Fysbis](https://attack.mitre.org/software/S0410) is a Linux-based backdoor used by [APT28](https://attack.mitre.org/groups/G0007) that dates back to at least 2014.(Citation: Fysbis Palo Alto Analysis) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--hidedrv | HIDEDRV | [HIDEDRV](https://attack.mitre.org/software/S0135) is a rootkit used by [APT28](https://attack.mitre.org/groups/G0007). It has been deployed along with [Downdelph](https://attack.mitre.org/software/S0134) to execute and hide that malware. (Citation: ESET Sednit Part 3) (Citation: Sekoia HideDRV Oct 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--hidedrv-rootkit | HideDrv (Rootkit) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--daily-a2706b008c9d9f2ded81 | HOOKEDGE | APT28との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2025-09 | 2026-07 | 中 | `source--daily-6bb5f30d0037bd12215d` |
 | malware--jhuhugit | JHUHUGIT | [JHUHUGIT](https://attack.mitre.org/software/S0044) is malware used by [APT28](https://attack.mitre.org/groups/G0007). It is based on Carberp source code and serves as reconnaissance malware. (Citation: Kaspersky Sofacy) (Citation: F-Secure Sofacy 2015) (Citation: ESET Sednit Part 1) (Citation: FireEye APT28 January 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--komplex | Komplex | [Komplex](https://attack.mitre.org/software/S0162) is a backdoor that has been used by [APT28](https://attack.mitre.org/groups/G0007) on OS X and appears to be developed in a similar manner to [XAgentOSX](https://attack.mitre.org/software/S0161) (Citation: XAgentOSX 2017) (Citation: Sofacy Komplex Trojan). | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -122,15 +119,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | malware--lojax | LoJax | [LoJax](https://attack.mitre.org/software/S0397) is a UEFI rootkit used by [APT28](https://attack.mitre.org/groups/G0007) to persist remote access software on targeted systems.(Citation: ESET LoJax Sept 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--oldbait | OLDBAIT | [OLDBAIT](https://attack.mitre.org/software/S0138) is a credential harvester used by [APT28](https://attack.mitre.org/groups/G0007). (Citation: FireEye APT28) (Citation: FireEye APT28 January 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--regeorg | reGeorg | [reGeorg](https://attack.mitre.org/software/S1187) is an open-source web shell written in Python that can be used as a proxy to bypass firewall rules and tunnel data in and out of targeted networks.(Citation: Fortinet reGeorg MAR 2019)(Citation: GitHub reGeorg 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--sedkit | Sedkit | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sednit | Sednit | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sedreco-dropper | Sedreco Dropper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--seduuploader | SeduUploader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sofacy | Sofacy | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--sourface | SOURFACE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--usbstealer | USBStealer | [USBStealer](https://attack.mitre.org/software/S0136) is malware that has been used by [APT28](https://attack.mitre.org/groups/G0007) since at least 2005 to extract information from air-gapped networks. It does not have the capability to communicate over the Internet and has been used in conjunction with [ADVSTORESHELL](https://attack.mitre.org/software/S0045). (Citation: ESET Sednit USBStealer 2014) (Citation: Kaspersky Sofacy) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--winids | WinIDS | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--xagent | XAgent | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--xagentosx | XAgentOSX | [XAgentOSX](https://attack.mitre.org/software/S0161) is a trojan that has been used by [APT28](https://attack.mitre.org/groups/G0007)  on OS X and appears to be a port of their standard [CHOPSTICK](https://attack.mitre.org/software/S0023) or XAgent trojan. (Citation: XAgentOSX 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--xtunnel | XTunnel | [XTunnel](https://attack.mitre.org/software/S0117) a VPN-like network proxy tool that can relay traffic between a C2 server and a victim. It was first seen in May 2013 and reportedly used by [APT28](https://attack.mitre.org/groups/G0007) during the compromise of the Democratic National Committee. (Citation: Crowdstrike DNC June 2016) (Citation: Invincea XTunnel) (Citation: ESET Sednit Part 2) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--zebrocy | Zebrocy | [Zebrocy](https://attack.mitre.org/software/S0251) is a Trojan that has been used by [APT28](https://attack.mitre.org/groups/G0007) since at least November 2015. The malware comes in several programming language variants, including C++, Delphi, AutoIt, C#, VB.NET, and Golang. (Citation: Palo Alto Sofacy 06-2018)(Citation: Unit42 Cannon Nov 2018)(Citation: Unit42 Sofacy Dec 2018)(Citation: CISA Zebrocy Oct 2020)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -163,7 +152,9 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 ### 脆弱性
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| vulnerability--cve-2026-21510 | CVE-2026-21510 | Windows Shell security-feature bypass used with CVE-2026-21513 in a weaponized LNK exploitation chain. | 2025-12 | 2026-01 | 高 | `source--akamai-apt28-cve-2026-21510` |
 
 ### 運用能力
 
@@ -175,26 +166,19 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | APT28 SOHO Router DNS Hijacking Network | infrastructure-campaign | 不明 | 2026-04-07 | 2026-04-07 | target--sector--critical-infrastructure, target--sector--defense, target--sector--government |  | ttp--t1584--apt28-dns-hijacking-network | victim--activity-rule--165c68a285610237c663 | The U.S. Department of Justice and FBI disrupted the U.S. portion of a router network controlled by GRU Military Unit 26165 (APT28) and used for DNS hijacking. | 高 | `source--doj-apt28-dns-disruption-2026` |
 | APT28 Nearest Neighbor Campaign | campaign | 2022-02-01T05:00:00.000Z | 2024-11-01T04:00:00.000Z | 2026-05-12 |  |  | ttp--activity-rule--99cdb94941b26a76fdef, ttp--mitre-campaign--105a5301d3af80d3427f, ttp--mitre-campaign--19970d37822a4b8f9d08, ttp--mitre-campaign--2a8c2246d5a47e39e78e, ttp--mitre-campaign--51f8ac9eee7f3ba58257, ttp--mitre-campaign--55d71012f9393e339fb0, ttp--mitre-campaign--7d6d258196ce9cb0d356, ttp--mitre-campaign--8972e9489ed89d578090, ttp--mitre-campaign--8d6eee616860f373fb9f, ttp--mitre-campaign--a144df0eea50ac6c7db2, ttp--mitre-campaign--b33d093ca52fb6180deb, ttp--mitre-campaign--b49dee47c9ef81a8c5a7, ttp--mitre-campaign--b596a800d5f9307dc3b5, ttp--mitre-campaign--ba48470ce49c4142d95d, ttp--mitre-campaign--be5e9f1fce16a8351767, ttp--mitre-campaign--cf0b095ee0d199552bcf, ttp--mitre-campaign--d14c4fb33f8705c58af6, ttp--mitre-campaign--d1e1947460c7e3d276b5, ttp--mitre-campaign--dd688b066bae0bcda3af |  | [APT28 Nearest Neighbor Campaign](https://attack.mitre.org/campaigns/C0051) was conducted by [APT28](https://attack.mitre.org/groups/G0007) from early February 2022 to November 2024 against organizations and individuals with expertise on Ukraine. APT28 primarily leveraged living-off-the-land techniques, while leveraging the zero-day exploitation of CVE-2022-38028. Notably, APT28 leveraged Wi-Fi networks in close proximity to the intended target to gain initial access to the victim environment. By daisy-chaining multiple compromised organizations nearby the intended target, APT28 discovered dual-homed systems (with both a wired and wireless network connection) to enable Wi-Fi and use compromised credentials to connect to the victim network.(Citation: Nearest Neighbor Volexity) | 高 | `source--mitre-attack-19-2` |
-| Bundestag | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Burisma | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | infrastructure-operation | 2024-03 | 2024-03 | 2025-06-25 | target--country--ukraine, target--sector--government |  | ttp--activity-rule--057137483fb37739d49f, ttp--activity-rule--f29dd0ccc96d69d27e96 | victim--activity-rule--4f814ba410cbff3d2838 | APT28がSignalチャットを利用し、ウクライナ政府機関を標的に新たなマルウェア攻撃を実施。 CERT-UAが2024年3月に最初の攻撃を発見し、2025年5月に政府メールへの不正アクセスを確認。 マルウェアローダ「Covenant」がマクロ付き文書「Акт.doc」で配布され、DLLとWAVファイルをダウンロード。BeardShellとSlimAgentというマルウェアを動かす。 「BeardShell」はPowerShellスクリプトをダウンロード・復号化し実行し、Icedrive API経由でC2へ通信。 「SlimAgent」はスクリーンショットを取得してAES/RSAで暗号化し、別ツール経由でC2に送信。 | 高 | `source--daily-ddc816726b2dc0d3951a` |
-| 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | disruptive-activity | 不明 | 不明 | 2026-04-08 |  |  |  | victim--activity-rule--82f26dc841b6fb191451 | 国際法執行機関と民間企業は、MikroTik や TP-Link ルーターのローカル通信を乗っ取り、Microsoft 資格情報を盗む FrostArmada を妨害した。 この作戦は主に SOHO ルーターの DNS 設定を書き換え、攻撃者管理の VPS を DNS リゾルバ化して認証トラフィックを AitM プロキシへ転送していた。 被害者側で見える兆候は主に無効な TLS 証明書警告だけで、これを無視すると Microsoft ログイン情報や OAuth トークンが中間点で収集された。 2025年12月時点で 120 か国 18,000 台に感染が拡大し、政府機関、法執行機関、IT・ホスティング事業者、自前サーバー運用組織が主な標的とされた。 Microsoft、Black Lotus Labs、FBI、米司法省、ポーランド政府の連携で攻撃インフラは停止され、記事は証明書ピンニングや公開面の縮小を推奨している。 | 中 | `source--daily-80bc2958ff74558cec03` |
-| ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | phishing-campaign | 不明 | 不明 | 2024-05-11 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--sector--government |  | ttp--activity-rule--9fb1b6eb685d8b345e1d | victim--activity-rule--940ab9848967274fdb1b | ロシアGRUに関連するAPT28がポーランド政府機関を標的 大規模フィッシングキャンペーンで攻撃、偽のリンクを使用 被害者がリンクをクリックすると悪意のある実行ファイルがダウンロードされる APT28は過去にも多数の高プロファイルなサイバー攻撃を行っている NATOとEUはAPT28の長期間のサイバー間諜活動を非難 | 中 | `source--daily-7aa505bacba82f6edc63` |
-| NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | reported-activity | 不明 | 不明 | 2024-05-04 | target--activity-rule--country--de0df51cff4adf4fc20b, target--sector--government |  |  | victim--activity-rule--bf8a9cd20d8cccaf37a0 | NATOとEUがAPT28によるサイバー攻撃を非難。 ドイツの社会民主党実行委員会に対する攻撃が確認。 攻撃は複数のヨーロッパ国の政府機関を標的とする。 チェコの外務省もAPT28による攻撃を確認。 ロシアは国際的な義務を尊重し悪質な活動を停止すべき、と米国国務省が声明を発表。 | 中 | `source--daily-bc559406ecce56eed6a1` |
+| 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | disruptive-activity | 不明 | 不明 | 2026-04-08 | target--country--poland |  |  | victim--activity-rule--82f26dc841b6fb191451 | 国際法執行機関と民間企業は、MikroTik や TP-Link ルーターのローカル通信を乗っ取り、Microsoft 資格情報を盗む FrostArmada を妨害した。 この作戦は主に SOHO ルーターの DNS 設定を書き換え、攻撃者管理の VPS を DNS リゾルバ化して認証トラフィックを AitM プロキシへ転送していた。 被害者側で見える兆候は主に無効な TLS 証明書警告だけで、これを無視すると Microsoft ログイン情報や OAuth トークンが中間点で収集された。 2025年12月時点で 120 か国 18,000 台に感染が拡大し、政府機関、法執行機関、IT・ホスティング事業者、自前サーバー運用組織が主な標的とされた。 Microsoft、Black Lotus Labs、FBI、米司法省、ポーランド政府の連携で攻撃インフラは停止され、記事は証明書ピンニングや公開面の縮小を推奨している。 | 中 | `source--daily-80bc2958ff74558cec03` |
+| ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | phishing-campaign | 不明 | 不明 | 2024-05-11 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--country--poland, target--sector--government |  | ttp--activity-rule--9fb1b6eb685d8b345e1d | victim--activity-rule--940ab9848967274fdb1b | ロシアGRUに関連するAPT28がポーランド政府機関を標的 大規模フィッシングキャンペーンで攻撃、偽のリンクを使用 被害者がリンクをクリックすると悪意のある実行ファイルがダウンロードされる APT28は過去にも多数の高プロファイルなサイバー攻撃を行っている NATOとEUはAPT28の長期間のサイバー間諜活動を非難 | 中 | `source--daily-7aa505bacba82f6edc63` |
+| NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | reported-activity | 不明 | 不明 | 2024-05-04 | target--activity-rule--country--de0df51cff4adf4fc20b, target--sector--government, target--targeting-audit--country--c383c27febc2ce66acf9, target--targeting-audit--region--3235de4bd3e541b78894 |  |  | victim--activity-rule--bf8a9cd20d8cccaf37a0 | NATOとEUがAPT28によるサイバー攻撃を非難。 ドイツの社会民主党実行委員会に対する攻撃が確認。 攻撃は複数のヨーロッパ国の政府機関を標的とする。 チェコの外務省もAPT28による攻撃を確認。 ロシアは国際的な義務を尊重し悪質な活動を停止すべき、と米国国務省が声明を発表。 | 中 | `source--daily-bc559406ecce56eed6a1` |
 | フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | phishing-campaign | 不明 | 不明 | 2025-04-30 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc, target--sector--government |  |  | victim--activity-rule--90ebaab475be51a62703 | フランス政府はAPT28が過去4年間に12の仏機関を標的にしたと発表。 攻撃対象は防衛産業、研究機関、官公庁、金融関連機関など。 APT28は無料ホスティングやVPN等の安価な外部インフラを使用。 主にRoundcubeの脆弱性悪用や無料のウェブサービスを利用したフィッシング攻撃を行っていた。 2024年以降は戦略的情報の窃取が主な目的とされる。 | 高 | `source--daily-239915c4cbbd5198fbc4` |
-| CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | reported-activity | 不明 | 不明 | 2026-04-30 |  |  |  | victim--activity-rule--00277baa4211a83e77d8 | CISAは、ゼロデイ攻撃で悪用されたWindows脆弱性CVE-2026-32202への対処を米連邦機関に命じた。 Akamaiによると、この欠陥はMicrosoftが2月に修正したCVE-2026-21510の不完全な修正後に残ったもの。 自動解析されるLNKファイルを通じ、ゼロクリックで認証情報窃取につながる可能性があると説明されている。 Microsoftは、悪用に成功したリモート攻撃者が未修正システム上の一部機微情報を閲覧できると説明している。 CISAはCVE-2026-32202をKEVカタログに追加し、連邦機関に5月12日までの修正を求めた。 | 中 | `source--daily-7ba97251f8ecb9b8c790` |
-| BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | phishing-campaign | 2025-09 | 2026-07 | 2026-08-29 | target--activity-rule--sector--b94dc560a327b601965d, target--country--romania, target--sector--government | malware--daily-a2706b008c9d9f2ded81 |  | victim--activity-rule--8d86f0d5dccd6738b121 | Recorded FutureのInsikt Groupは、2025年9月末から2026年4月初旬にBlueDeltaがルーマニア、スペイン、トルコの政府・外交・防衛関連組織を狙った攻撃を確認した。 攻撃では外交テーマなどのマクロ有効Word文書をスピアフィッシングで送り、軽量なWindowsバッチ型バックドア「HOOKEDGE」を展開して永続化した。 HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 Insikt Groupはコード、TTP、インフラ、標的傾向から、中程度の確度でロシアGRU系BlueDelta（APT28／Fancy Bear／Forest Blizzard）の活動と評価している。 | 中 | `source--daily-6bb5f30d0037bd12215d` |
-| 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | cyber-espionage | 不明 | 不明 | 2025-05-16 | target--country--ukraine |  | ttp--activity-rule--89f456d6a62c12cbae97 | victim--activity-rule--05192f84f365017b985e | ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
-| ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | intrusion | 不明 | 不明 | 2024-11-23 | target--country--united-states |  | ttp--activity-rule--da4d3511b3c4aefa6a9f | victim--activity-rule--49967a74cfacaf36fc89 | ロシアのAPT28（Fancy Bear）が、米国企業のWi-Fiネットワークを遠隔から侵害。 「隣接ネットワーク攻撃」という攻撃を用い、数千マイル離れた場所からアメリカの企業のWiFiネットワークに侵入。 近隣の建物の脆弱な組織を侵害し、これを経由して標的のWi-Fiにアクセス。 攻撃者は、標的の無線ネットワークへの橋渡し役となる、近くの建物の組織に目をつけた。別の組織に侵入し、有線と無線の両方の接続を持つデュアルホームデバイスをネットワーク上で探すアイデア。このデバイスを使い、攻撃者はその無線アダプターを使って標的の企業WiFiに接続。 2022年2月、Volexity社がワシントンD.C.の顧客ネットワークでこの攻撃を発見。 元々は標的の公開サーバへのパスワードスプレー攻撃をしたが、MFAが有効であったため失敗。しかしWi-FiではMFAは無効だったため、この攻撃を使い標的のWi-Fi資格情報を取得し、侵入。 | 中 | `source--daily-f49400c70df01a232fe3` |
-| APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | phishing-campaign | 不明 | 不明 | 2024-03-19 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--country--ukraine, target--sector--government |  |  | victim--activity-rule--88f4203bfc9e275b1341 | APT28は、政府・NGOを装ったフィッシングキャンペーンを展開 IBM X-Forceが報告、様々なドキュメントを餌に使用 ウクライナ政府やポーランド機関等を標的にカスタムバックドアを展開 「search-ms:」URIを利用し、WebDAVサーバーからマルウェアをダウンロードさせる MASEPIE, OCEANMAP, STEELHOOK等のマルウェアを使用し情報窃取 | 高 | `source--daily-e4e1690a6e0a90a04bc2` |
+| APT28によるCVE-2026-21510／CVE-2026-21513悪用活動 | cyber-espionage | 2025-12 | 2026-01 | 2026-04-30 | target--country--ukraine |  |  | victim--activity-rule--00277baa4211a83e77d8 | CERT-UAによればAPT28は2025年12月、ウクライナおよび複数のEU諸国を標的に、細工したLNKファイル内でCVE-2026-21513とCVE-2026-21510を組み合わせ、SmartScreen等を回避してリモートDLLを実行した。AkamaiはこのAPT28エクスプロイトを2026年1月に検知した。後続のCVE-2026-32202は不完全な修正から生じた別脆弱性であり、MicrosoftはAPT28との関連証拠を確認していない。 | 高 | `source--akamai-apt28-cve-2026-21510`, `source--daily-7ba97251f8ecb9b8c790` |
+| BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | phishing-campaign | 2025-09 | 2026-07 | 2026-08-29 | target--activity-rule--sector--b94dc560a327b601965d, target--country--romania, target--country--turkey, target--sector--government, target--targeting-audit--country--26a12be8931da14e6e50 | malware--daily-a2706b008c9d9f2ded81 |  | victim--activity-rule--8d86f0d5dccd6738b121 | Recorded FutureのInsikt Groupは、2025年9月末から2026年4月初旬にBlueDeltaがルーマニア、スペイン、トルコの政府・外交・防衛関連組織を狙った攻撃を確認した。 攻撃では外交テーマなどのマクロ有効Word文書をスピアフィッシングで送り、軽量なWindowsバッチ型バックドア「HOOKEDGE」を展開して永続化した。 HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 Insikt Groupはコード、TTP、インフラ、標的傾向から、中程度の確度でロシアGRU系BlueDelta（APT28／Fancy Bear／Forest Blizzard）の活動と評価している。 | 中 | `source--daily-6bb5f30d0037bd12215d` |
+| 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | cyber-espionage | 不明 | 不明 | 2025-05-16 | target--country--ukraine, target--targeting-audit--country--2958e5242a8b9525701a, target--targeting-audit--country--7c49db2288d7bd5abff5, target--targeting-audit--country--edef43a2d8834237d751 |  | ttp--activity-rule--89f456d6a62c12cbae97 | victim--activity-rule--05192f84f365017b985e | ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
+| ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | intrusion | 不明 | 不明 | 2024-11-23 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--country--united-states |  | ttp--activity-rule--da4d3511b3c4aefa6a9f | victim--activity-rule--49967a74cfacaf36fc89 | ロシアのAPT28（Fancy Bear）が、米国企業のWi-Fiネットワークを遠隔から侵害。 「隣接ネットワーク攻撃」という攻撃を用い、数千マイル離れた場所からアメリカの企業のWiFiネットワークに侵入。 近隣の建物の脆弱な組織を侵害し、これを経由して標的のWi-Fiにアクセス。 攻撃者は、標的の無線ネットワークへの橋渡し役となる、近くの建物の組織に目をつけた。別の組織に侵入し、有線と無線の両方の接続を持つデュアルホームデバイスをネットワーク上で探すアイデア。このデバイスを使い、攻撃者はその無線アダプターを使って標的の企業WiFiに接続。 2022年2月、Volexity社がワシントンD.C.の顧客ネットワークでこの攻撃を発見。 元々は標的の公開サーバへのパスワードスプレー攻撃をしたが、MFAが有効であったため失敗。しかしWi-FiではMFAは無効だったため、この攻撃を使い標的のWi-Fi資格情報を取得し、侵入。 | 中 | `source--daily-f49400c70df01a232fe3` |
+| APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | phishing-campaign | 不明 | 不明 | 2024-03-19 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--country--poland, target--country--ukraine, target--country--united-states, target--sector--government, target--targeting-audit--region--0a6dd71287620a124734, target--targeting-audit--region--3235de4bd3e541b78894 |  |  | victim--activity-rule--88f4203bfc9e275b1341 | APT28は、政府・NGOを装ったフィッシングキャンペーンを展開 IBM X-Forceが報告、様々なドキュメントを餌に使用 ウクライナ政府やポーランド機関等を標的にカスタムバックドアを展開 「search-ms:」URIを利用し、WebDAVサーバーからマルウェアをダウンロードさせる MASEPIE, OCEANMAP, STEELHOOK等のマルウェアを使用し情報窃取 | 高 | `source--daily-e4e1690a6e0a90a04bc2` |
 | ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | intrusion | 2025-11 | 2025-11 | 2026-03-20 | target--country--ukraine, target--sector--government |  | ttp--activity-rule--6a13bd24bd8299680b47 | victim--activity-rule--f90ccf54d8b95b5c4f2d | ロシア軍情報機関GRUと結び付けられる国家支援型のAPT28が、ウクライナ政府機関を狙う攻撃でZimbra Collaboration Suiteの脆弱性を悪用していた。 問題のCVE-2025-66376は保存型XSSで、2025年11月上旬に修正済みだが、認証不要の攻撃者が悪用してRCEやメールアカウント侵害に至る可能性がある。 CISAはこの脆弱性を既知悪用脆弱性カタログへ追加し、米連邦文民機関に対して2週間以内にサーバーを保護するよう命じた。 Seqrite Labsによれば、この攻撃は「Operation GhostMail」と呼ばれ、標的の一つにはウクライナ国家水路庁が含まれていた。 攻撃メールは添付や不審リンクを含まず、HTML本文内の難読化JavaScriptだけで資格情報、セッショントークン、2FAバックアップコード、過去90日分のメールを窃取した。 | 高 | `source--daily-46653690978a5163e9ec` |
 | APT28、Covenantオープンソースツールのカスタマイズ版を展開 | cyber-espionage | 不明 | 不明 | 2026-03-11 | target--country--ukraine |  |  | victim--activity-rule--3f67b12db0d14a137881 | ロシア政府支援のAPT28は、長期的なスパイ活動のために、オープンソースのCovenantを大幅に改変した独自版を使用していると報じられた。 ESETは、APT28が2024年4月以降にBeardShellとCovenantの2種類のインプラントを使い、ウクライナ軍関係者を長期監視していたと分析した。 最近の攻撃では、Microsoft OfficeのCVE-2026-21509を悪用する悪性DOCファイルを通じて、ウクライナの中央行政機関が標的になったとされる。 調査の端緒は、キー入力、クリップボード、画面キャプチャーを取得できるSlimAgentが、ウクライナ政府システム上で見つかったことだった。 改変版Covenantには、端末特性に結び付く識別子、検知回避向けの実行制御、クラウドベース通信の追加があり、2025年7月以降はFilenも使われた。 | 高 | `source--daily-4a00e2733e94c16c2bcd` |
 | Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | malware-campaign | 不明 | 不明 | 2024-04-23 | target--country--ukraine |  |  | victim--activity-rule--63fa59976c0fe677f01b | ロシアのAPT28がWindowsプリントスプーラーの脆弱性(CVE-2022-38028)を悪用 未知のツール「GooseEgg」を使用して特権昇格と情報窃盗 Microsoftが修正済みの脆弱性を悪用していると警告 攻撃はウクライナや西欧の組織が標的 GooseEggは他のマルウェアの起動やコマンド実行を可能に | 高 | `source--daily-f296ca3b0e389a7fa9d4` |
-| DNC Hack | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| EFF Attack | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| OpOlympics | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Russian Doll | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| TV5 Monde "Cyber Caliphate" | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -202,26 +186,19 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 |---|---|---|---|---|---|---|---|
 | APT28 SOHO Router DNS Hijacking Network | APT28 | 情報なし | T1584 Compromise Infrastructure | Compromised SOHO Router DNS Hijacking Network | Critical Infrastructure, Defense and Military, Government | 被害事例: APT28 SOHO Router DNS Hijacking Network | 高 |
 | APT28 Nearest Neighbor Campaign | APT28 | 情報なし | T1078 Valid Accounts, T1074.001 Local Data Staging, T1059.003 Windows Command Shell, T1584 Compromise Infrastructure, T1059.001 PowerShell, T1021.001 Remote Desktop Protocol, T1140 Deobfuscate/Decode Files or Information, T1560.001 Archive via Utility, T1090.001 Internal Proxy, T1003.002 Security Account Manager, T1669 Wi-Fi Networks, T1567 Exfiltration Over Web Service, T1686.003 Windows Host Firewall, T1016.002 Wi-Fi Discovery, T1006 Direct Volume Access, T1110.003 Password Spraying, T1561.001 Disk Content Wipe, T1003.003 NTDS, T1021.002 SMB/Windows Admin Shares | 情報なし | 情報なし | 情報なし | 高 |
-| Bundestag | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Burisma | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | APT28 | 情報なし | T1113 Screen Capture, T1059.001 PowerShell | 情報なし | ウクライナ, Government | 被害事例: APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | 高 |
-| 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | 中 |
-| ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | APT28 | 情報なし | T1566.002 Spearphishing Link | 情報なし | ロシア, Government | 被害事例: ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | 中 |
-| NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | APT28 | 情報なし | 情報なし | 情報なし | ドイツ, Government | 被害事例: NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | 中 |
+| 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | APT28 | 情報なし | 情報なし | 情報なし | ポーランド | 被害事例: 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | 中 |
+| ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | APT28 | 情報なし | T1566.002 Spearphishing Link | 情報なし | ロシア, ポーランド, Government | 被害事例: ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | 中 |
+| NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | APT28 | 情報なし | 情報なし | 情報なし | ドイツ, Government, チェコ, 欧州 | 被害事例: NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | 中 |
 | フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | APT28 | 情報なし | 情報なし | 情報なし | 金融, 防衛・軍事, 製造・産業, Government | 被害事例: フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | 高 |
-| CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | 中 |
-| BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | APT28 | HOOKEDGE | 情報なし | 情報なし | 防衛・軍事, ルーマニア, Government | 被害事例: BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | 中 |
-| 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | APT28 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | ウクライナ | 被害事例: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | 中 |
-| ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | APT28 | 情報なし | T1110.003 Password Spraying | 情報なし | 米国 | 被害事例: ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | 中 |
-| APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | APT28 | 情報なし | 情報なし | 情報なし | 非営利・市民社会, ウクライナ, Government | 被害事例: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | 高 |
+| APT28によるCVE-2026-21510／CVE-2026-21513悪用活動 | APT28 | 情報なし | 情報なし | 情報なし | ウクライナ | 被害事例: APT28によるCVE-2026-21510／CVE-2026-21513悪用活動 | 高 |
+| BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | APT28 | HOOKEDGE | 情報なし | 情報なし | 防衛・軍事, ルーマニア, トルコ, Government, スペイン | 被害事例: BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | 中 |
+| 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | APT28 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | ウクライナ, カメルーン, セルビア, ギリシャ | 被害事例: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | 中 |
+| ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | APT28 | 情報なし | T1110.003 Password Spraying | 情報なし | ロシア, 米国 | 被害事例: ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | 中 |
+| APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | APT28 | 情報なし | 情報なし | 情報なし | 非営利・市民社会, ポーランド, ウクライナ, 米国, Government, アジア, 欧州 | 被害事例: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | 高 |
 | ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | APT28 | 情報なし | T1027 Obfuscated Files or Information | 情報なし | ウクライナ, Government | 被害事例: ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | 高 |
 | APT28、Covenantオープンソースツールのカスタマイズ版を展開 | APT28 | 情報なし | 情報なし | 情報なし | ウクライナ | 被害事例: APT28、Covenantオープンソースツールのカスタマイズ版を展開 | 高 |
 | Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | APT28 | 情報なし | 情報なし | 情報なし | ウクライナ | 被害事例: Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | 高 |
-| DNC Hack | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| EFF Attack | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| OpOlympics | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Russian Doll | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| TV5 Monde "Cyber Caliphate" | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOlympics; Burisma
 
@@ -231,101 +208,48 @@ Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOl
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルメニア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イラク | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イラン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウガンダ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてウガンダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | Targeting text mentions ukraine. | 2024-03 | 2025-11 | 中 | `source--actor-mapping-workbook`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | Targeting text mentions ukraine. | 2024-03 | 2026-01 | 中 | `source--akamai-apt28-cve-2026-21510`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-7ba97251f8ecb9b8c790`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4` |
 | countries | カメルーン | 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
-| countries | キプロス | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ギリシャ | 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
-| countries | クロアチア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてクロアチアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スイス | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 活動「BlueDelta、防衛・外交組織をHOOKEDGEで標的化」の記述で標的・被害国として明示されている。 | 2025-09 | 2026-07 | 中 | `source--daily-6bb5f30d0037bd12215d`, `source--target-audit-etda-threat-group-cards` |
-| countries | スロバキア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてスロバキアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 活動「BlueDelta、防衛・外交組織をHOOKEDGEで標的化」の記述で標的・被害国として明示されている。 | 2025-09 | 2026-07 | 中 | `source--daily-6bb5f30d0037bd12215d` |
 | countries | セルビア | 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
-| countries | タイ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タジキスタン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | チリ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | Targeting text mentions turkey. | 2025-09 | 2026-07 | 中 | `source--actor-mapping-workbook`, `source--daily-6bb5f30d0037bd12215d`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ドイツ | 活動「NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-bc559406ecce56eed6a1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ノルウェー | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ハンガリー | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | フランス | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブルガリア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ポーランド | Targeting text mentions poland. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-7aa505bacba82f6edc63`, `source--daily-80bc2958ff74558cec03`, `source--daily-e4e1690a6e0a90a04bc2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | メキシコ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | モンテネグロ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてモンテネグロが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | Targeting text mentions jordan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ラトビア | 構造化OSINTの被害国フィールドでAPT28の標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | Targeting text mentions romania. | 2025-09 | 2026-07 | 中 | `source--actor-mapping-workbook`, `source--daily-6bb5f30d0037bd12215d`, `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 活動「ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7aa505bacba82f6edc63` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでAPT28の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでAPT28の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでAPT28の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-f49400c70df01a232fe3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでAPT28の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでAPT28の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | NATO加盟国 | 構造化OSINTの被害地域フィールドでAPT28の標的範囲としてNATO加盟国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | アジア太平洋 | 構造化OSINTの被害地域フィールドでAPT28の標的範囲としてアジア太平洋が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | アフリカ | ウガンダ、カメルーン、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2`, `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中南米 | チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | ウズベキスタン、カザフスタン、タジキスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | アラブ首長国連邦、イラク、イラン、サウジアラビア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-6bb5f30d0037bd12215d`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f49400c70df01a232fe3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | イタリア、キプロス、ギリシャ、クロアチア、スペイン、セルビア、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-6bb5f30d0037bd12215d`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | モンゴル、中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、スロバキア、ハンガリー、ブルガリア、ベラルーシ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-80bc2958ff74558cec03`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | 構造化OSINTの被害地域フィールドでAPT28の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-80bc2958ff74558cec03`, `source--daily-bc559406ecce56eed6a1`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | チェコ | 活動「NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-bc559406ecce56eed6a1` |
+| countries | トルコ | Targeting text mentions turkey. | 2025-09 | 2026-07 | 中 | `source--daily-6bb5f30d0037bd12215d` |
+| countries | ドイツ | 活動「NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-bc559406ecce56eed6a1` |
+| countries | ポーランド | Targeting text mentions poland. | 不明 | 不明 | 中 | `source--daily-7aa505bacba82f6edc63`, `source--daily-80bc2958ff74558cec03`, `source--daily-e4e1690a6e0a90a04bc2` |
+| countries | ルーマニア | Targeting text mentions romania. | 2025-09 | 2026-07 | 中 | `source--daily-6bb5f30d0037bd12215d` |
+| countries | ロシア | 活動「ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7aa505bacba82f6edc63`, `source--daily-f49400c70df01a232fe3` |
+| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 高 | `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f49400c70df01a232fe3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | アジア | 活動「APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-e4e1690a6e0a90a04bc2` |
+| regions | 南欧 | ギリシャ、スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-6bb5f30d0037bd12215d` |
+| regions | 東欧 | ウクライナ、チェコ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--akamai-apt28-cve-2026-21510`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-7ba97251f8ecb9b8c790`, `source--daily-80bc2958ff74558cec03`, `source--daily-bc559406ecce56eed6a1`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4`, `source--daily-f49400c70df01a232fe3` |
+| regions | 欧州 | 活動「NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--akamai-apt28-cve-2026-21510`, `source--daily-0f31344d55ee8f1d9bd2`, `source--daily-46653690978a5163e9ec`, `source--daily-4a00e2733e94c16c2bcd`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-7ba97251f8ecb9b8c790`, `source--daily-80bc2958ff74558cec03`, `source--daily-bc559406ecce56eed6a1`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2`, `source--daily-f296ca3b0e389a7fa9d4` |
 | sectors | 金融 | 活動「フランス、ロシアのAPT28による12件のサイバー攻撃を非難」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-239915c4cbbd5198fbc4` |
 | sectors | 防衛・軍事 | 活動「フランス、ロシアのAPT28による12件のサイバー攻撃を非難」の記述で標的として明示された産業。 | 2025-09 | 2026-07 | 中 | `source--daily-239915c4cbbd5198fbc4`, `source--daily-6bb5f30d0037bd12215d` |
 | sectors | 非営利・市民社会 | 活動「APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-e4e1690a6e0a90a04bc2` |
 | sectors | 製造・産業 | 活動「フランス、ロシアのAPT28による12件のサイバー攻撃を非難」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-239915c4cbbd5198fbc4` |
 | sectors | Critical Infrastructure | The disrupted infrastructure supported targeting of worldwide critical-infrastructure interests. | 不明 | 2026-04-07 | 高 | `source--doj-apt28-dns-disruption-2026` |
 | sectors | Defense and Military | The disrupted infrastructure supported targeting of individuals and organizations in the military sector. | 不明 | 2026-04-07 | 高 | `source--doj-apt28-dns-disruption-2026` |
-| sectors | Government | Targeting text indicates the Government sector. | 2024-03 | 2026-07 | 中 | `source--actor-mapping-workbook`, `source--daily-239915c4cbbd5198fbc4`, `source--daily-46653690978a5163e9ec`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-bc559406ecce56eed6a1`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2` |
+| sectors | Government | Targeting text indicates the Government sector. | 2024-03 | 2026-07 | 中 | `source--daily-239915c4cbbd5198fbc4`, `source--daily-46653690978a5163e9ec`, `source--daily-6bb5f30d0037bd12215d`, `source--daily-7aa505bacba82f6edc63`, `source--daily-bc559406ecce56eed6a1`, `source--daily-ddc816726b2dc0d3951a`, `source--daily-e4e1690a6e0a90a04bc2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | 非公開 | anonymous | unknown | reported |  |  |  |  | data-theft: 自動解析されるLNKファイルを通じ、ゼロクリックで認証情報窃取につながる可能性があると説明されている。<br>credential-theft: 自動解析されるLNKファイルを通じ、ゼロクリックで認証情報窃取につながる可能性があると説明されている。 | 不明 | 不明 | 2026-04-30 | 中 | `source--daily-7ba97251f8ecb9b8c790` |
+| 被害事例: APT28によるCVE-2026-21510／CVE-2026-21513悪用活動 | 非公開 | aggregate | multiple-organizations | reported | target--country--ukraine |  |  |  |  | 2025-12 | 2026-01 | 2026-04-30 | 高 | `source--akamai-apt28-cve-2026-21510`, `source--daily-7ba97251f8ecb9b8c790` |
 | 被害事例: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | 非公開 | aggregate | multiple-organizations | reported | target--country--ukraine |  | ttp--activity-rule--89f456d6a62c12cbae97 | メール／メールアカウント, サーバー | espionage: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | 不明 | 不明 | 2025-05-16 | 中 | `source--daily-0f31344d55ee8f1d9bd2` |
 | 被害事例: APT28 SOHO Router DNS Hijacking Network | 非公開 | anonymous | unknown | reported | target--sector--critical-infrastructure, target--sector--defense, target--sector--government |  | ttp--t1584--apt28-dns-hijacking-network | ネットワーク機器 |  | 不明 | 2026-04-07 | 2026-04-07 | 高 | `source--doj-apt28-dns-disruption-2026` |
 | 被害事例: APT28、Covenantオープンソースツールのカスタマイズ版を展開 | 非公開 | anonymous | unknown | reported | target--country--ukraine |  |  | エンドポイント, クラウド／SaaS | espionage: ロシア政府支援のAPT28は、長期的なスパイ活動のために、オープンソースのCovenantを大幅に改変した独自版を使用していると報じられた。 | 不明 | 不明 | 2026-03-11 | 高 | `source--daily-4a00e2733e94c16c2bcd` |
-| 被害事例: ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | 非公開 | aggregate | multiple-organizations | reported | target--country--united-states |  | ttp--activity-rule--da4d3511b3c4aefa6a9f |  |  | 不明 | 不明 | 2024-11-23 | 中 | `source--daily-f49400c70df01a232fe3` |
+| 被害事例: ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--country--united-states |  | ttp--activity-rule--da4d3511b3c4aefa6a9f |  |  | 不明 | 不明 | 2024-11-23 | 中 | `source--daily-f49400c70df01a232fe3` |
 | 被害事例: APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | 非公開 | anonymous | unknown | reported | target--country--ukraine, target--sector--government |  | ttp--activity-rule--057137483fb37739d49f, ttp--activity-rule--f29dd0ccc96d69d27e96 | メール／メールアカウント |  | 2024-03 | 2024-03 | 2025-06-25 | 高 | `source--daily-ddc816726b2dc0d3951a` |
 | 被害事例: Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | 非公開 | aggregate | multiple-organizations | reported | target--country--ukraine |  |  |  |  | 不明 | 不明 | 2024-04-23 | 高 | `source--daily-f296ca3b0e389a7fa9d4` |
-| 被害事例: 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | メール／メールアカウント, サーバー, ネットワーク機器 | credential-theft: 被害者側で見える兆候は主に無効な TLS 証明書警告だけで、これを無視すると Microsoft ログイン情報や OAuth トークンが中間点で収集された。 | 不明 | 不明 | 2026-04-08 | 中 | `source--daily-80bc2958ff74558cec03` |
-| 被害事例: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--country--ukraine, target--sector--government |  |  | サーバー |  | 不明 | 不明 | 2024-03-19 | 高 | `source--daily-e4e1690a6e0a90a04bc2` |
-| 被害事例: BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d, target--country--romania, target--sector--government | malware--daily-a2706b008c9d9f2ded81 |  |  | data-theft: HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。<br>espionage: 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 | 2025-09 | 2026-07 | 2026-08-29 | 中 | `source--daily-6bb5f30d0037bd12215d` |
+| 被害事例: 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | 非公開 | aggregate | multiple-organizations | reported | target--country--poland |  |  | メール／メールアカウント, サーバー, ネットワーク機器 | credential-theft: 被害者側で見える兆候は主に無効な TLS 証明書警告だけで、これを無視すると Microsoft ログイン情報や OAuth トークンが中間点で収集された。 | 不明 | 不明 | 2026-04-08 | 中 | `source--daily-80bc2958ff74558cec03` |
+| 被害事例: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--country--poland, target--country--ukraine, target--country--united-states, target--sector--government |  |  | サーバー |  | 不明 | 不明 | 2024-03-19 | 高 | `source--daily-e4e1690a6e0a90a04bc2` |
+| 被害事例: BlueDelta、防衛・外交組織をHOOKEDGEで標的化 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d, target--country--romania, target--country--turkey, target--sector--government | malware--daily-a2706b008c9d9f2ded81 |  |  | data-theft: HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。<br>espionage: 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 | 2025-09 | 2026-07 | 2026-08-29 | 中 | `source--daily-6bb5f30d0037bd12215d` |
 | 被害事例: フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc, target--sector--government |  |  | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2025-04-30 | 高 | `source--daily-239915c4cbbd5198fbc4` |
-| 被害事例: ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--sector--government |  | ttp--activity-rule--9fb1b6eb685d8b345e1d |  |  | 不明 | 不明 | 2024-05-11 | 中 | `source--daily-7aa505bacba82f6edc63` |
+| 被害事例: ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--country--poland, target--sector--government |  | ttp--activity-rule--9fb1b6eb685d8b345e1d |  |  | 不明 | 不明 | 2024-05-11 | 中 | `source--daily-7aa505bacba82f6edc63` |
 | 被害事例: NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--de0df51cff4adf4fc20b, target--sector--government |  |  |  |  | 不明 | 不明 | 2024-05-04 | 中 | `source--daily-bc559406ecce56eed6a1` |
 | 被害事例: ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | 非公開 | anonymous | unknown | reported | target--country--ukraine, target--sector--government |  | ttp--activity-rule--6a13bd24bd8299680b47 | メール／メールアカウント, サーバー | credential-theft: 攻撃メールは添付や不審リンクを含まず、HTML本文内の難読化JavaScriptだけで資格情報、セッショントークン、2FAバックアップコード、過去90日分のメールを窃取した。<br>account-compromise: 問題のCVE-2025-66376は保存型XSSで、2025年11月上旬に修正済みだが、認証不要の攻撃者が悪用してRCEやメールアカウント侵害に至る可能性がある。 | 2025-11 | 2025-11 | 2026-03-20 | 高 | `source--daily-46653690978a5163e9ec` |
 
@@ -532,7 +456,7 @@ Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOl
 - IOC観測: 1651件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 112件
-- 非IOC artifact観測: 777件（`artifacts.csv`）
+- 非IOC artifact観測: 701件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -549,6 +473,7 @@ Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOl
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- CVE-2026-32202はAPT28へ帰属しない。Microsoftは2026-04-30時点で同CVEをAPT28に結び付ける証拠を確認しておらず、APT28が2025-12に悪用したのはCVE-2026-21510である。
 
 ## 出典
 
@@ -607,14 +532,15 @@ Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOl
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--akamai-apt28-cve-2026-21510 | A Shortcut to Coercion: Incomplete Patch of APT28's Zero-Day Leads to CVE-2026-32202 | Akamai Security Research | 2026-04-23 | https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202 | vendor-technical-report | TLP:CLEAR | 高 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

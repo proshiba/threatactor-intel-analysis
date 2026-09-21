@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--violet-typhoon`
 - 状態: deprecated
-- 更新日時: 2026-09-20T12:20:31Z
+- 更新日時: 2026-09-21T02:11:28Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -113,34 +113,9 @@ Op. Poisoned Hurricane
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | インド | レビュー済みアクターマッピングの標的欄に記録されたインドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | オーストラリア | レビュー済みアクターマッピングの標的欄に記録されたオーストラリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | カナダ | レビュー済みアクターマッピングの標的欄に記録されたカナダを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | レビュー済みアクターマッピングの標的欄に記録されたスイスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | スウェーデン | レビュー済みアクターマッピングの標的欄に記録されたスウェーデンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | タイ | レビュー済みアクターマッピングの標的欄に記録されたタイを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | レビュー済みアクターマッピングの標的欄に記録されたノルウェーを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | レビュー済みアクターマッピングの標的欄に記録されたフィンランドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | レビュー済みアクターマッピングの標的欄に記録されたフランスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | レビュー済みアクターマッピングの標的欄に記録されたブラジルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 日本 | レビュー済みアクターマッピングの標的欄に記録された日本を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | レビュー済みアクターマッピングの標的欄に記録された英国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | レビュー済みアクターマッピングの標的欄に記録された韓国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アフリカ | レビュー済みアクターマッピングの標的欄に記録されたアフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | モンゴル、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | チェコ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | スイス、スウェーデン、チェコ、ノルウェー、フィンランド、フランス、ベラルーシ、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -156,7 +131,7 @@ TTPなし
 - IOC観測: 2件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 2件
-- 非IOC artifact観測: 64件（`artifacts.csv`）
+- 非IOC artifact観測: 5件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -186,8 +161,6 @@ TTPなし
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--violet-typhoon--040d5e209d18d19f | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
 | source--violet-typhoon--059b0fa08ad0a4be | CERTFR 2024 CTI 002 |  | 2024 | summary/2024/CERTFR-2024-CTI-002.pdf | report | TLP:CLEAR | 中 |
 | source--violet-typhoon--163160447c94fa3c | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
@@ -211,6 +184,7 @@ TTPなし
 | source--violet-typhoon--ed95283c2cdc128f | Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics |  | 不明 | summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf | report | TLP:CLEAR | 中 |
 | source--violet-typhoon--ede2b5cedcace249 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--violet-typhoon--ef64906e87bab725 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

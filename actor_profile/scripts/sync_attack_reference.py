@@ -26,6 +26,7 @@ from common import load_json, unknown_time, utc_now, write_json_atomic
 
 OLD_SOURCE_ID = "source--mitre-attack-19-1"
 CURRENT_SOURCE_ID = "source--mitre-attack-19-2"
+DEFAULT_CURATION = Path("actor_profile/actor-census-curation.json")
 
 
 def source_record(source_id: str, *, historical: bool = False) -> dict[str, Any]:
@@ -68,21 +69,53 @@ def source_record(source_id: str, *, historical: bool = False) -> dict[str, Any]
     }
 
 
-def sync_aliases(profile: dict[str, Any], group: dict[str, Any]) -> None:
+def boundary_aliases(
+    curation: dict[str, Any], canonical_name: str
+) -> set[str]:
+    """Return names explicitly kept separate from this canonical actor."""
+    canonical_key = normalized_name(canonical_name)
+    blocked: set[str] = set()
+    for boundary in curation.get("identity_boundaries", []):
+        names = boundary.get("names", [])
+        keys = {normalized_name(name): name for name in names}
+        if canonical_key not in keys:
+            continue
+        blocked.update(
+            name for key, name in keys.items() if key != canonical_key
+        )
+    return blocked
+
+
+def sync_aliases(
+    profile: dict[str, Any],
+    group: dict[str, Any],
+    *,
+    blocked_aliases: set[str] | None = None,
+) -> None:
+    blocked = {normalized_name(name) for name in blocked_aliases or set()}
     current = {
         normalized_name(name): name
         for name in group.get("aliases", [])
         if normalized_name(name)
+        and normalized_name(name) not in blocked
         and normalized_name(name)
         != normalized_name(profile["actor"].get("canonical_name", ""))
     }
     aliases = []
     for item in profile["actor"].get("aliases", []):
         key = normalized_name(item.get("name", ""))
+        if key in blocked:
+            continue
         refs = set(item.get("evidence_refs", []))
+        reviewed_exact = (
+            item.get("scope") == "exact"
+            and item.get("confidence") == "high"
+            and bool(refs - {OLD_SOURCE_ID, CURRENT_SOURCE_ID})
+        )
         if key in current:
-            refs.discard(OLD_SOURCE_ID)
-            refs.add(CURRENT_SOURCE_ID)
+            refs -= {OLD_SOURCE_ID, CURRENT_SOURCE_ID}
+            if not reviewed_exact:
+                refs.add(CURRENT_SOURCE_ID)
         elif refs & {OLD_SOURCE_ID, CURRENT_SOURCE_ID}:
             refs -= {OLD_SOURCE_ID, CURRENT_SOURCE_ID}
             if not refs:
@@ -107,13 +140,20 @@ def sync_aliases(profile: dict[str, Any], group: dict[str, Any]) -> None:
             aliases.append(item)
             by_name[key] = item
         else:
-            item["evidence_refs"] = sorted(
-                set(item.get("evidence_refs", [])) | {CURRENT_SOURCE_ID}
+            refs = set(item.get("evidence_refs", []))
+            reviewed_exact = (
+                item.get("scope") == "exact"
+                and item.get("confidence") == "high"
+                and bool(refs - {OLD_SOURCE_ID, CURRENT_SOURCE_ID})
             )
-            if "MITRE ATT&CK" not in item.get("vendor", ""):
-                item["vendor"] = " / ".join(
-                    part for part in (item.get("vendor", ""), "MITRE ATT&CK") if part
-                )
+            if not reviewed_exact:
+                item["evidence_refs"] = sorted(refs | {CURRENT_SOURCE_ID})
+                if "MITRE ATT&CK" not in item.get("vendor", ""):
+                    item["vendor"] = " / ".join(
+                        part
+                        for part in (item.get("vendor", ""), "MITRE ATT&CK")
+                        if part
+                    )
     profile["actor"]["aliases"] = sorted(
         aliases, key=lambda item: normalized_name(item.get("name", ""))
     )
@@ -306,7 +346,12 @@ def sync_campaigns(
 
 
 def sync_current_profile(
-    profile: dict[str, Any], actor: dict[str, Any], group: dict[str, Any], attack: dict[str, Any]
+    profile: dict[str, Any],
+    actor: dict[str, Any],
+    group: dict[str, Any],
+    attack: dict[str, Any],
+    *,
+    blocked_aliases: set[str] | None = None,
 ) -> None:
     had_old_source = any(
         item.get("source_id") == OLD_SOURCE_ID for item in profile.get("sources", [])
@@ -322,7 +367,7 @@ def sync_current_profile(
     profile["actor"]["description"] = group.get("description", "")
     profile["actor"]["first_seen"] = time_point(group.get("first_seen"), "mitre-attack")
     profile["actor"]["last_seen"] = time_point(group.get("last_seen"), "mitre-attack")
-    sync_aliases(profile, group)
+    sync_aliases(profile, group, blocked_aliases=blocked_aliases)
     sync_capabilities(profile, group, attack)
     sync_general_ttps(profile, group, attack)
     sync_campaigns(profile, group, attack)
@@ -353,10 +398,12 @@ def main() -> int:
     parser.add_argument("--catalog", type=Path, default=Path("actor_profile/corpus-catalog.json"))
     parser.add_argument("--attack", type=Path, default=Path("actor_profile/reference/attack-index.json"))
     parser.add_argument("--profiles-root", type=Path, default=Path("profiles"))
+    parser.add_argument("--curation", type=Path, default=DEFAULT_CURATION)
     args = parser.parse_args()
 
     catalog = load_json(args.catalog)
     attack = load_json(args.attack)
+    curation = load_json(args.curation) if args.curation.exists() else {}
     stats = {"current": 0, "historical": 0, "unmapped": 0}
     for actor in catalog.get("actors", []):
         path = args.profiles_root / actor["slug"] / "actor-profile.json"
@@ -366,7 +413,15 @@ def main() -> int:
         group_id = actor.get("mitre_group_id", "")
         group = attack.get("groups", {}).get(group_id)
         if group:
-            sync_current_profile(profile, actor, group, attack)
+            sync_current_profile(
+                profile,
+                actor,
+                group,
+                attack,
+                blocked_aliases=boundary_aliases(
+                    curation, profile["actor"].get("canonical_name", actor["name"])
+                ),
+            )
             stats["current"] += 1
         elif any(
             item.get("source_id") == OLD_SOURCE_ID for item in profile.get("sources", [])

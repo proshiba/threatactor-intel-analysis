@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-20T13:47:46Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,7 +54,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -124,13 +124,13 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | intrusion | 2024 | 2026 | 2026-09-01 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--570d54d1d21fab6540a9 | malware--cobaltspin, malware--lightpaint, malware--mildfrost, malware--kickplate, malware--boatbeam, malware--realbreeze | ttp--activity-rule--2b2ebbe6402eafb1b795 | victim--activity-rule--c411e51fdcb57e39118a | ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。 | 高 | `source--breeze-comet--gtig-brazil-2026` |
+| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | intrusion | 2024 | 2026 | 2026-09-01 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--570d54d1d21fab6540a9, target--targeting-audit--country--204596d5a0a7a4b3a19e | malware--boatbeam, malware--cobaltspin, malware--kickplate, malware--lightpaint, malware--mildfrost, malware--realbreeze | ttp--activity-rule--2b2ebbe6402eafb1b795 | victim--activity-rule--c411e51fdcb57e39118a | ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | BREEZE COMET | BOATBEAM, COBALTSPIN, KICKPLATE, LIGHTPAINT, MILDFROST, REALBREEZE | T1110.003 Password Spraying | 情報なし | 政府・行政, 金融, 小売・ホスピタリティ | 被害事例: ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | 高 |
+| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | BREEZE COMET | BOATBEAM, COBALTSPIN, KICKPLATE, LIGHTPAINT, MILDFROST, REALBREEZE | T1110.003 Password Spraying | 情報なし | 政府・行政, 金融, 小売・ホスピタリティ, ブラジル | 被害事例: ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | 高 |
 
 
 
@@ -143,7 +143,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | sectors | 金融 | 活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。 | 2024 | 2026 | 中 | `source--breeze-comet--gtig-brazil-2026` |
 | sectors | 小売・ホスピタリティ | 活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。 | 2024 | 2026 | 中 | `source--breeze-comet--gtig-brazil-2026` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

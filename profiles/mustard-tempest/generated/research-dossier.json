@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--mustard-tempest",
   "actor_name": "Mustard Tempest",
-  "profile_updated_at": "2026-09-20T13:48:00Z",
+  "profile_updated_at": "2026-09-21T04:35:03Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -13,7 +13,7 @@
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "lead-only",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 2,
@@ -22,17 +22,20 @@
       "malware": 2,
       "activity_linked_malware": 1,
       "tools": 0,
-      "targets": 2,
+      "targets": 1,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 1,
       "activities": 18,
       "relationships": 1,
       "malware": 20,
       "tools": 0,
       "untyped_software": 0,
       "targets": 5,
-      "motivations": 2
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -84,7 +87,8 @@
             "counterevidence": []
           }
         ],
-        "target_actor_ref": "actor--indrik-spider"
+        "target_actor_ref": "actor--indrik-spider",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [
@@ -111,7 +115,9 @@
           "basis": "daily-news-file-date"
         },
         "description": "HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
-        "target_refs": [],
+        "target_refs": [
+          "target--targeting-audit--country--d256b517220d4474b4b9"
+        ],
         "malware_refs": [],
         "infrastructure_refs": [],
         "confidence": "medium",
@@ -120,7 +126,9 @@
         ],
         "analyst_notes": "日次収集レコード daily-record--da12b59b38f6c23396266b03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
         "ttp_refs": [],
-        "victim_refs": [],
+        "victim_refs": [
+          "victim--activity-rule--fcba4528860f9fca5a44"
+        ],
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--mustard-tempest",
@@ -136,8 +144,12 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [],
-            "victim_refs": []
+            "target_refs": [
+              "target--targeting-audit--country--d256b517220d4474b4b9"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--fcba4528860f9fca5a44"
+            ]
           },
           "meta_features": {
             "first_observed": {
@@ -163,7 +175,9 @@
             "results": [],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [],
+              "target_country_refs": [
+                "target--targeting-audit--country--d256b517220d4474b4b9"
+              ],
               "target_region_refs": []
             }
           },
@@ -188,8 +202,18 @@
           }
         ],
         "malware": [],
-        "targets": [],
-        "victims": [],
+        "targets": [
+          {
+            "id": "target--targeting-audit--country--d256b517220d4474b4b9",
+            "name": "ロシア"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--fcba4528860f9fca5a44",
+            "name": "anonymous"
+          }
+        ],
         "techniques": []
       },
       {
@@ -481,49 +505,26 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--4346151f4b2a1086f85a",
-        "name": "全世界",
-        "description": "構造化OSINTの被害地域フィールドでMustard Tempestの標的範囲として全世界が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--dc057dd0c5134897001d2a48",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Mustard Tempest targets region 全世界.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-da12b59b38f6c2339626"
+        ]
       }
     ]
   },
   "external_research_leads": {
+    "aliases": [
+      {
+        "name": "Purple Vallhund",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      }
+    ],
     "activities": [
       {
         "lead_id": "activity-lead--etda--b09d7dd61cc7b163d6a9",
@@ -1144,11 +1145,88 @@
           "https://blog.truesec.com/2021/05/05/are-the-notorious-cyber-criminals-evil-corp-actually-russian-spies/",
           "https://www.secureworks.com/research/threat-profiles/gold-winter",
           "https://www.mandiant.com/resources/unc2165-shifts-to-evade-sanctions",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Indrik+Spider&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Indrik+Spider&n=1",
+          "https://web.archive.org/web/20210825130434/https://cobaltstrike.com/downloads/csmanual38.pdf"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "9b6bcbba-3ab4-4a4c-a233-cd12254823f6",
+            "name": "Cobalt Strike",
+            "description": "[Cobalt Strike](https://app.tidalcyber.com/software/9b6bcbba-3ab4-4a4c-a233-cd12254823f6) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.<sup>[[cobaltstrike manual](https://app.tidalcyber.com/references/43277d05-0aa4-4cee-ac41-6f03a49851a9)]</sup>\n\nIn addition to its own capabilities, [Cobalt Strike](https://app.tidalcyber.com/software/9b6bcbba-3ab4-4a4c-a233-cd12254823f6) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://app.tidalcyber.com/software/b8e7c0b4-49e4-4e8d-9467-b17f305ddf16).<sup>[[cobaltstrike manual](https://app.tidalcyber.com/references/43277d05-0aa4-4cee-ac41-6f03a49851a9)]</sup>",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "macOS",
+              "Linux",
+              "Windows"
+            ],
+            "attack_id": "S0154",
+            "group_refs": [
+              "013fdfdc-aa32-4779-8f6e-7920615cbf66",
+              "0898e7cb-118e-5eeb-b856-04e56ed18182",
+              "0b431229-036f-4157-a1da-ff16dfc095f8",
+              "0f41da7d-1e47-58fe-ba6e-ee658a985e1b",
+              "16a65ee9-cd60-4f04-ba34-f2f45fcfc666",
+              "1d751794-ce94-4936-bf45-4ab86d0e3b6e",
+              "2e2d3e75-1160-4ba5-80cc-8e7685fcfc44",
+              "33159d02-a1ce-49ec-a381-60b069db66f7",
+              "393da13e-016c-41a3-9d89-b33173adecbf",
+              "3c7ad595-1940-40fc-b9ca-3e649c1e5d87",
+              "4173c301-0307-458d-89dd-2583e94247ec",
+              "4348c510-50fc-4448-ab8d-c8cededd19ff",
+              "4a4641b1-7686-49da-8d83-00d8013f4b47",
+              "4c3e48b9-4426-4271-a7af-c3dfad79f447",
+              "4c8288fd-df9f-48b7-911b-19651074561d",
+              "502223ee-8947-42f8-a532-a3b3da12b7d9",
+              "5216ac81-da4c-4b87-86ce-b90a651f1048",
+              "58db02e6-d908-47c2-bc82-ed58ada61331",
+              "60f686d0-ae3d-5662-af32-119217dee2a7",
+              "646e35d2-75de-4c1d-8ad3-616d3e155c5e",
+              "6636ab8d-871f-4353-a1a5-81c8d7cacca4",
+              "6a8f5eca-8ecc-4bff-9c5f-5380e044ed5b",
+              "6d6ed42c-760c-4964-a81e-1d4df06a8800",
+              "713e2963-fbf4-406f-a8cf-6a4489d90439",
+              "79be2f31-5626-425e-844c-fd9c99e38fe5",
+              "7f52cadb-7a12-4b9d-9290-1ef02123fbe4",
+              "86b97a39-49c3-431e-bcc8-f4e13dbfcdf5",
+              "8e059c6b-d278-5454-a234-a8ad69feb66c",
+              "94794e7b-8b54-4be8-885a-fd1009425ed5",
+              "94f5c644-d36a-59b0-b7e2-7a1d3413443d",
+              "9d665cc1-8ecc-4064-8221-c74bd6ffd97a",
+              "9dc09b70-b1c0-45d1-94a8-490943c69166",
+              "a58f147b-1f02-427d-a375-c4246335cb20",
+              "b10aa4c0-10a1-5e08-8d9d-82ce95d45e6a",
+              "b3220638-6682-4a4e-ab64-e7dc4202a3f1",
+              "b8a349a6-cde1-4d95-b20f-44c62bbfc786",
+              "c0fe9859-e8de-4ce1-bc3c-b489e914a145",
+              "ca93af75-0ffa-4df4-b86a-92d4d50e496e",
+              "de72d564-6487-4cf3-be3e-0a961cf15d5d",
+              "e1e72810-4661-54c7-b05e-859128fb327d",
+              "e75a1b98-be68-467f-a8df-bcb7671543b3",
+              "eadd78e3-3b5d-430a-b994-4360b172c871",
+              "ebf63407-9772-4f38-93ad-48b8c9bb0bcf",
+              "ecdbd431-d62b-4b30-8663-b1ecb4304ec0",
+              "ee2da206-2532-44e3-a343-d66e9bfdbca0",
+              "f17d1768-9563-539a-8d3a-e3e9500658bf",
+              "f2b31240-0b4a-4fa4-82a4-6bb00e146e75",
+              "f9f9358a-f708-4794-af35-784c532427cf",
+              "fac6fbf1-935f-4106-ad8b-c8fd8389dd38",
+              "fb93231d-2ae4-45da-9dea-4c372a11f322",
+              "fcaadc12-7c17-4946-a9dc-976ed610854c"
+            ],
+            "source_urls": [
+              "https://web.archive.org/web/20210825130434/https://cobaltstrike.com/downloads/csmanual38.pdf"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "Cridex",
@@ -1382,11 +1460,43 @@
           "https://blog.truesec.com/2021/05/05/are-the-notorious-cyber-criminals-evil-corp-actually-russian-spies/",
           "https://www.secureworks.com/research/threat-profiles/gold-winter",
           "https://www.mandiant.com/resources/unc2165-shifts-to-evade-sanctions",
-          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Indrik+Spider&n=1"
+          "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Indrik+Spider&n=1",
+          "https://www.sentinelone.com/labs/socgholish-diversifies-and-expands-its-malware-staging-infrastructure-to-counter-defenders/",
+          "https://www.proofpoint.com/us/blog/threat-insight/part-1-socgholish-very-real-threat-very-fake-update",
+          "https://redcanary.com/threat-detection-report/threats/socgholish/",
+          "https://www.secureworks.com/research/threat-profiles/gold-prelude"
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
-        "verification_status": "partially-supported"
+        "verification_status": "partially-supported",
+        "supporting_records": [
+          {
+            "software_id": "ab84f259-9b9a-51d8-a68a-2bcd7512d760",
+            "name": "SocGholish",
+            "description": "[SocGholish](https://app.tidalcyber.com/software/ab84f259-9b9a-51d8-a68a-2bcd7512d760) is a JavaScript-based loader malware that has been used since at least 2017. It has been observed in use against multiple sectors globally for initial access, primarily through drive-by-downloads masquerading as software updates. SocGholish is operated by [Mustard Tempest](https://app.tidalcyber.com/groups/0898e7cb-118e-5eeb-b856-04e56ed18182) and its access has been sold to groups including [Indrik Spider](https://app.tidalcyber.com/groups/3c7ad595-1940-40fc-b9ca-3e649c1e5d87) for downloading secondary RAT and ransomware payloads.<sup>[[SentinelOne SocGholish Infrastructure November 2022](https://app.tidalcyber.com/references/8a26eeb6-6f80-58f1-b773-b38835c6781d)]</sup><sup>[[SocGholish-update](https://app.tidalcyber.com/references/01d9c3ba-29e2-5090-b399-0e7adf50a6b9)]</sup><sup>[[Red Canary SocGholish March 2024](https://app.tidalcyber.com/references/70fa26e4-109c-5a48-b9fd-ac8b9acf2cf3)]</sup><sup>[[Secureworks Gold Prelude Profile](https://app.tidalcyber.com/references/b16ae37d-5244-5c1e-92a9-e494b5a9ef49)]</sup> ",
+            "software_type": [
+              "malware"
+            ],
+            "platforms": [
+              "Windows"
+            ],
+            "attack_id": "S1124",
+            "group_refs": [
+              "0898e7cb-118e-5eeb-b856-04e56ed18182",
+              "3c7ad595-1940-40fc-b9ca-3e649c1e5d87"
+            ],
+            "source_urls": [
+              "https://www.sentinelone.com/labs/socgholish-diversifies-and-expands-its-malware-staging-infrastructure-to-counter-defenders/",
+              "https://www.proofpoint.com/us/blog/threat-insight/part-1-socgholish-very-real-threat-very-fake-update",
+              "https://redcanary.com/threat-detection-report/threats/socgholish/",
+              "https://www.secureworks.com/research/threat-profiles/gold-prelude"
+            ],
+            "match_basis": "canonical-name",
+            "match_confidence": "high",
+            "verification_status": "partially-supported",
+            "temporal_assessment": "unknown; actor-level aggregation lead"
+          }
+        ]
       },
       {
         "value": "WastedLoader",
@@ -1425,6 +1535,12 @@
     ],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -1515,7 +1631,9 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
-      ]
+      ],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -1575,11 +1693,12 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
     "supported": 21,
-    "partially-supported": 6
+    "partially-supported": 5
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -1616,7 +1735,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250808.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250808.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/08/socgholish-malware-spread-via-ad-tools.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     "source--daily-766a563d30b306b7681d": {
       "source_id": "source--daily-766a563d30b306b7681d",
@@ -1634,7 +1759,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2024/12/horns-campaign-delivers-rats-via-fake.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting"
+      ]
     },
     "source--mustard-tempest--0a466fea7e0945f8": {
       "source_id": "source--mustard-tempest--0a466fea7e0945f8",
@@ -1946,31 +2078,6 @@
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
     "source--osint-misp-mitre-enterprise-intrusion-set": {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
@@ -1996,6 +2103,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -2052,36 +2214,6 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   },
   "research_gaps": [

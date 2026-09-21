@@ -4,7 +4,7 @@
   "name": "Salt Typhoon",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-20T13:48:12Z",
+  "updated_at": "2026-09-21T04:38:06Z",
   "languages": [
     "ja"
   ],
@@ -41,14 +41,39 @@
     "analyst_notes": ""
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--salt-typhoon--verified--46769e042b6cb297",
+      "target_actor": "UNC2286",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "A secondary report maps UNC2286 to Salt Typhoon; primary Cisco reporting documents Salt Typhoon without UNC2286, and the joint CISA advisory warns that industry tracking names may not correlate one-to-one.",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--daily-976395d39cbe624f587e",
+        "source--cisa-aa25-239a-salt-typhoon-boundary"
+      ],
+      "analyst_notes": "Provisional taxonomy overlap only. Do not duplicate Salt Typhoon activity under UNC2286 or promote the mapping to an exact alias without primary evidence."
+    }
+  ],
   "diamond_model": {
-    "adversary": "[Salt Typhoon](https://attack.mitre.org/groups/G1045) is a People's Republic of China (PRC) state-backed actor that has been active since at least 2019 and responsible for numerous compromises of network infrastructure at major U.S. telecommunication and internet service providers (ISP).(Citation: US Dept. of Treasury Salt Typhoon JAN 2025)(Citation: Cisco Salt Typhoon FEB 2025)\n",
-    "capability": "JumbledPath",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -76,6 +101,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--cisco-talos-salt-typhoon-jumbledpath-2025",
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
@@ -489,29 +515,29 @@
     },
     {
       "activity_id": "activity--daily-4e15138dd5323d6e8406",
-      "name": "Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ",
+      "name": "Salt Typhoon、通信事業者のネットワーク機器でJumbledPathを使用",
       "activity_type": "cyber-espionage",
       "first_observed": {
-        "value": "2024-12-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "last_observed": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2025-02-21T00:00:00Z",
+        "value": "2025-02-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "description": "中国政府支援のハッキンググループであるSalt Typhoon（別名：Earth Estries、GhostEmperor、UNC2286）は、米国の通信プロバイダーを標的とし、カスタムマルウェア「JumbledPath」を使用してネットワークトラフィックを監視し、機密データを収集しています。 Salt Typhoonは、2019年以降活動しており、主に政府機関や通信会社への侵入を行っています。 最近、米国当局は、Salt TyphoonがVerizon、AT&T、Lumen Technologies、T-Mobileなどの米国の主要通信プロバイダーへの侵入に成功し、一部の政府関係者のプライベートな通信や裁判所認可の盗聴要求に関する情報を盗み取ったと確認しました。 さらに、Recorded FutureのInsikt Groupは、Salt Typhoonが2024年12月から2025年1月の間に、米国、南米、インドを含む1,000台以上のCiscoネットワークデバイスを標的にしたと報告しています。 Cisco Talosは、Salt Typhoonのハッカーが主に盗まれた認証情報を使用して、コアネットワークインフラストラクチャに侵入し、一部のケースでは3年以上にわたり活動していたと明らかにしました。",
+      "description": "Cisco Talosは、Salt Typhoonが米国の大手通信事業者を侵害し、盗取した正規資格情報で複数ベンダーのネットワーク機器へ長期間アクセスしたと報告した。攻撃者は設定情報や認証トラフィックを収集し、侵害機器を踏み台として横展開した。Go製ELFユーティリティJumbledPathは、離れたCisco機器でパケットキャプチャを実行し、経路上のログを消去・阻害して暗号化済み取得データを返送するために使われた。",
       "target_refs": [
-        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--sector--97fa6f38a056d42117be",
         "target--mitre-group--country--41795735fc0e57933c4e"
       ],
       "malware_refs": [
@@ -520,9 +546,9 @@
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
-        "source--daily-976395d39cbe624f587e"
+        "source--cisco-talos-salt-typhoon-jumbledpath-2025"
       ],
-      "analyst_notes": "日次収集レコード daily-record--4e15138dd5323d6e8406c8b4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "analyst_notes": "Cisco Talos一次資料に限定。二次記事が混在させたRedMikeの別キャンペーン期間・地域と、未確認のUNC2286 exact-alias主張を除去した。",
       "ttp_refs": [],
       "victim_refs": [
         "victim--activity-rule--0dca98f829c8d2966945"
@@ -545,7 +571,7 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--country--48cc6b4cc2919459aec9",
+            "target--activity-rule--sector--97fa6f38a056d42117be",
             "target--mitre-group--country--41795735fc0e57933c4e"
           ],
           "victim_refs": [
@@ -554,22 +580,22 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": "2024-12-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
           "last_observed": {
-            "value": "2025-01-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
           "reported_at": {
-            "value": "2025-02-21T00:00:00Z",
+            "value": "2025-02-20T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "cyber-espionage",
           "phases": [],
@@ -577,7 +603,6 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [
-              "target--activity-rule--country--48cc6b4cc2919459aec9",
               "target--mitre-group--country--41795735fc0e57933c4e"
             ],
             "target_region_refs": []
@@ -585,7 +610,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-976395d39cbe624f587e"
+          "source--cisco-talos-salt-typhoon-jumbledpath-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -713,7 +738,9 @@
       },
       "description": "ホワイトハウスが中国のハッカー「Salt Typhoon」による米国通信企業の9件目の侵害を確認。 Salt Typhoonは、東南アジアを中心に政府機関や通信企業を狙うサイバー諜報活動グループ。 侵害の詳細調査は継続中で、暗号化メッセージアプリの推奨などの対応策を実施。 バイデン政権が、中国のハッカーの活動をネットワーク内で発見するためのガイダンスを発表した後、この新たな被害者が発見された。 米政府は中国通信企業への規制強化や関連機器の使用禁止を検討。 新たな法案や規制が通信ネットワークのセキュリティ強化を目指す。",
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91"
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--mitre-group--country--41795735fc0e57933c4e",
+        "target--targeting-audit--region--3890201cdd06ccfe8bb0"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -742,7 +769,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91"
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--mitre-group--country--41795735fc0e57933c4e",
+            "target--targeting-audit--region--3890201cdd06ccfe8bb0"
           ],
           "victim_refs": [
             "victim--activity-rule--74c5dc09345513dc8a05"
@@ -774,8 +803,12 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
+            "target_country_refs": [
+              "target--mitre-group--country--41795735fc0e57933c4e"
+            ],
+            "target_region_refs": [
+              "target--targeting-audit--region--3890201cdd06ccfe8bb0"
+            ]
           }
         },
         "confidence": "medium",
@@ -1401,7 +1434,8 @@
         "target--activity-rule--country--48cc6b4cc2919459aec9",
         "target--activity-rule--country--f9601e2d842c9a05202b",
         "target--activity-rule--sector--97fa6f38a056d42117be",
-        "target--mitre-group--country--41795735fc0e57933c4e"
+        "target--mitre-group--country--41795735fc0e57933c4e",
+        "target--targeting-audit--region--538c63fa4f177265bb0e"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1437,7 +1471,8 @@
             "target--activity-rule--country--48cc6b4cc2919459aec9",
             "target--activity-rule--country--f9601e2d842c9a05202b",
             "target--activity-rule--sector--97fa6f38a056d42117be",
-            "target--mitre-group--country--41795735fc0e57933c4e"
+            "target--mitre-group--country--41795735fc0e57933c4e",
+            "target--targeting-audit--region--538c63fa4f177265bb0e"
           ],
           "victim_refs": [
             "victim--activity-rule--7ab2089e0707ef1c4e90"
@@ -1474,7 +1509,9 @@
               "target--activity-rule--country--f9601e2d842c9a05202b",
               "target--mitre-group--country--41795735fc0e57933c4e"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--538c63fa4f177265bb0e"
+            ]
           }
         },
         "confidence": "medium",
@@ -1879,75 +1916,9 @@
   "targets": {
     "countries": [
       {
-        "id": "target--targeting-audit--country--aa5e6ef7f4656f360758",
-        "name": "アフガニスタン",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてアフガニスタンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--dea18de077e3867cc731",
-        "name": "アルゼンチン",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてアルゼンチンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--3697bc0d6b88edf3de79",
-        "name": "イスラエル",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてイスラエルが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
         "id": "target--activity-rule--country--48cc6b4cc2919459aec9",
         "name": "インド",
-        "description": "活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的として明示された国・地域。",
+        "description": "活動「中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": "2024-12-01T00:00:00Z",
           "precision": "month",
@@ -1962,121 +1933,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-976395d39cbe624f587e",
-          "source--daily-f6737c6dffa112b7b406",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-f6737c6dffa112b7b406"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--8f6dc611839f940d8c6c",
-        "name": "インドネシア",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてインドネシアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--efc02b381d8ac195d68a",
-        "name": "エジプト",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてエジプトが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--9a31ab7926d537b89e21",
-        "name": "エスワティニ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてエスワティニが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--085d48c6c6b05f9ea738",
-        "name": "エチオピア",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてエチオピアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--ef203594e0ea95612154",
-        "name": "オランダ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてオランダが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--activity-rule--country--ee55e5e8faa5dd675d7b",
@@ -2096,340 +1955,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-66a6db2a9826ffe94b34",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-66a6db2a9826ffe94b34"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--192176fe5ef23050c798",
-        "name": "グアテマラ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてグアテマラが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--f070279aed38eafbd786",
-        "name": "サウジアラビア",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてサウジアラビアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--39f75999d32e9189e9f4",
-        "name": "シンガポール",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてシンガポールが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--4d47ecfb87a2e9a20c85",
-        "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてタイが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--339336a71024d80a3fc7",
-        "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてドイツが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--c33ea0a09a7a052bd8fa",
-        "name": "バングラデシュ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてバングラデシュが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--a7cd5220b79f6edfbe8b",
-        "name": "パキスタン",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてパキスタンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--ff3a7d244059ae963d35",
-        "name": "フィリピン",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてフィリピンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--d856ce9aebe5b9abadf8",
-        "name": "フランス",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてフランスが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--020e35376f7ddefa99df",
-        "name": "ブラジル",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてブラジルが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--5be680d7d7adaf032bec",
-        "name": "ブルキナファソ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてブルキナファソが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--e5252170dc2b55026de9",
-        "name": "ベトナム",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてベトナムが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--7b359494c31d32275ac4",
-        "name": "マレーシア",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてマレーシアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--c39c5287f1b3103022ee",
-        "name": "メキシコ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてメキシコが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--097934324f8c2e517dc8",
-        "name": "リトアニア",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国としてリトアニアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
@@ -2455,50 +1983,6 @@
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--dd0620f595780e097abc",
-        "name": "南アフリカ",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国として南アフリカが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--16f34c4a8cfcd494c485",
-        "name": "台湾",
-        "description": "構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国として台湾が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
         "id": "target--mitre-group--country--41795735fc0e57933c4e",
         "name": "米国",
         "description": "[Salt Typhoon](https://attack.mitre.org/groups/G1045) is a People's Republic of China (PRC) state-backed actor that has been active since at least 2019 and responsible for numerous compromises of network infrastructure at major U.S. telecommunication and internet service providers (ISP).(Citation: US Dept.",
@@ -2516,22 +2000,22 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--cisco-talos-salt-typhoon-jumbledpath-2025",
           "source--daily-109114cb275f6abbc31b",
           "source--daily-201526278f12b51ceb69",
           "source--daily-6148d7a5b4eb95ec4071",
+          "source--daily-6489f1d71026c247f5db",
           "source--daily-66a6db2a9826ffe94b34",
           "source--daily-783a5f048c1b5f5d1e87",
           "source--daily-8261fb78f465363bd3b1",
           "source--daily-8e9e2a4c037c66bd65a0",
           "source--daily-8f2935254e84a399c0e6",
-          "source--daily-976395d39cbe624f587e",
           "source--daily-a83c00a6ec644814b818",
           "source--daily-ee88cbba9f3a1d88bf3a",
           "source--daily-f6737c6dffa112b7b406",
-          "source--mitre-attack-19-2",
-          "source--target-audit-etda-threat-group-cards"
+          "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--activity-rule--country--f9601e2d842c9a05202b",
@@ -2551,105 +2035,16 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-f6737c6dffa112b7b406",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-f6737c6dffa112b7b406"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [
       {
-        "id": "target--targeting-audit--region--7851779e77a414cc3d2c",
-        "name": "アジア",
-        "description": "活動「ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける」の記述で標的地域としてアジアが明示されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-6489f1d71026c247f5db"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
-      },
-      {
-        "id": "target--targeting-audit--region--d0f9d6d23f4b72d046b4",
-        "name": "アフリカ",
-        "description": "エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--d0707c580e05b186db00",
-        "name": "中南米",
-        "description": "アルゼンチン、グアテマラ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--14de0f8672bdfb6196e1",
-        "name": "中東",
-        "description": "イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
         "id": "target--targeting-audit--region--0097738315504376f9ee",
         "name": "北米",
-        "description": "カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。",
+        "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -2664,52 +2059,27 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--cisco-talos-salt-typhoon-jumbledpath-2025",
           "source--daily-109114cb275f6abbc31b",
           "source--daily-201526278f12b51ceb69",
           "source--daily-6148d7a5b4eb95ec4071",
+          "source--daily-6489f1d71026c247f5db",
           "source--daily-66a6db2a9826ffe94b34",
           "source--daily-783a5f048c1b5f5d1e87",
           "source--daily-8261fb78f465363bd3b1",
           "source--daily-8e9e2a4c037c66bd65a0",
           "source--daily-8f2935254e84a399c0e6",
-          "source--daily-976395d39cbe624f587e",
           "source--daily-a83c00a6ec644814b818",
           "source--daily-ee88cbba9f3a1d88bf3a",
           "source--daily-f6737c6dffa112b7b406",
-          "source--mitre-attack-19-2",
-          "source--target-audit-etda-threat-group-cards"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
-        "id": "target--targeting-audit--region--c8cf6500a9dfbfe956f6",
-        "name": "南アジア",
-        "description": "活動「ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける」の記述で標的地域として南アジアが明示されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-6489f1d71026c247f5db",
-          "source--daily-976395d39cbe624f587e",
-          "source--daily-f6737c6dffa112b7b406",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
         "id": "target--targeting-audit--region--538c63fa4f177265bb0e",
         "name": "南米",
-        "description": "活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的地域として南米が明示されている。",
+        "description": "活動「中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害」の記述で標的地域として南米が明示されている。",
         "first_observed": {
           "value": "2024-12-01T00:00:00Z",
           "precision": "month",
@@ -2724,35 +2094,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-976395d39cbe624f587e",
-          "source--daily-f6737c6dffa112b7b406",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-f6737c6dffa112b7b406"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--dac7375a770701cdb063",
-        "name": "東アジア",
-        "description": "中国、台湾で確認された標的・被害事例を東アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-6148d7a5b4eb95ec4071",
-          "source--daily-ee88cbba9f3a1d88bf3a",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--region--3890201cdd06ccfe8bb0",
@@ -2772,33 +2116,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-6489f1d71026c247f5db",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-6489f1d71026c247f5db"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--26457e861df0822a889a",
-        "name": "欧州",
-        "description": "オランダ、ドイツ、フランス、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-f6737c6dffa112b7b406",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "sectors": [
@@ -2850,6 +2170,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--cisco-talos-salt-typhoon-jumbledpath-2025",
           "source--daily-201526278f12b51ceb69",
           "source--daily-66a6db2a9826ffe94b34",
           "source--daily-783a5f048c1b5f5d1e87",
@@ -2886,8 +2207,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -3362,7 +2683,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241212.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241212.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/wyden-proposes-bill-to-secure-us-telecoms-after-salt-typhoon-hacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-201526278f12b51ceb69",
@@ -3380,7 +2709,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250426.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250426.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-seeks-help-to-unmask-salt-typhoon-hackers-behind-telecom-breaches/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-5ec4eadaaf818bc23030",
@@ -3398,7 +2735,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250624.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250624.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/canada-says-salt-typhoon-hacked-telecom-firm-via-cisco-flaw/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-6148d7a5b4eb95ec4071",
@@ -3416,7 +2761,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250107.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250107.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/charter-and-windstream-among-nine-us-telecoms-hacked-by-china/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-6489f1d71026c247f5db",
@@ -3434,7 +2787,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241229.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241229.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/white-house-links-ninth-telecom-breach-to-chinese-hackers/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-66a6db2a9826ffe94b34",
@@ -3452,7 +2813,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241115.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241115.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/chinese-hackers-compromised-us-government-officials-private-communications-in-recent-telecom-breach/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-783a5f048c1b5f5d1e87",
@@ -3470,7 +2839,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241008.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241008.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/atandt-verizon-reportedly-hacked-to-target-us-govt-wiretapping-platform/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8261fb78f465363bd3b1",
@@ -3488,7 +2865,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250620.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250620.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/telecom-giant-viasat-breached-by-chinas-salt-typhoon-hackers/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8a40a46ef3af6ea86c29",
@@ -3506,7 +2891,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250828.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250828.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/global-salt-typhoon-hacking-campaigns-linked-to-chinese-tech-firms/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8e9e2a4c037c66bd65a0",
@@ -3524,7 +2917,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/us-shares-tips-to-block-hackers-behind-recent-telecom-breaches/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8f2935254e84a399c0e6",
@@ -3542,7 +2943,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241219.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241219.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/cisa-urges-switch-to-signal-like-encrypted-messaging-apps-after-telecom-hacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-913106da6e5b8618db5e",
@@ -3560,7 +2969,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250103.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250103.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/atandt-and-verizon-say-networks-secure-after-salt-typhoon-breach/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     {
       "source_id": "source--daily-976395d39cbe624f587e",
@@ -3578,7 +2993,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250221.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250221.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/salt-typhoon-uses-jumbledpath-malware-to-spy-on-us-telecom-networks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-a83c00a6ec644814b818",
@@ -3596,7 +3019,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241206.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241206.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/white-house-salt-typhoon-hacked-telcos-in-dozens-of-countries/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-b63b619b8242c38ce6a8",
@@ -3614,7 +3045,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/salt-typhoon-hackers-backdoor-telcos-with-new-ghostspider-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-ee88cbba9f3a1d88bf3a",
@@ -3632,7 +3071,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250118.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250118.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/fcc-orders-telecoms-to-secure-their-networks-after-salt-tyhpoon-hacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-f2e6a61340cf29da66e3",
@@ -3650,7 +3097,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/chinese-hackers-breached-t-mobiles-routers-to-scope-out-network/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-f6737c6dffa112b7b406",
@@ -3668,7 +3123,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250216.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250216.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/chinese-hackers-breach-more-us-telecoms-via-unpatched-cisco-routers/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -4107,31 +3571,6 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
-    {
       "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
@@ -4156,6 +3595,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     {
       "source_id": "source--mitre-attack-19-1",
@@ -4214,34 +3708,63 @@
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
     {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
+      "source_id": "source--cisa-aa25-239a-salt-typhoon-boundary",
+      "path": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-239a",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-239a",
+      "title": "Countering Chinese State-Sponsored Actors Compromise of Networks Worldwide to Feed Global Espionage System",
+      "publisher": "CISA and international partners",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
       },
-      "accessed_at": "2026-09-20T13:47:46Z",
+      "accessed_at": "2026-09-21T00:00:00Z",
       "language": "en",
-      "source_type": "structured-osint-aggregation",
+      "source_type": "government-advisory",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
       "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
+        "activity",
+        "attribution",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
       ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "analyst_notes": "The joint advisory says the activity partially overlaps with several industry names, including Salt Typhoon, and explicitly warns that vendor groupings may not correlate one-to-one. It does not list UNC2286."
+    },
+    {
+      "source_id": "source--cisco-talos-salt-typhoon-jumbledpath-2025",
+      "path": "https://blog.talosintelligence.com/salt-typhoon-analysis/",
+      "url": "https://blog.talosintelligence.com/salt-typhoon-analysis/",
+      "title": "Weathering the storm: In the midst of a Typhoon",
+      "publisher": "Cisco Talos",
+      "published_at": {
+        "value": "2025-02-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Cisco Talos attributes the investigated telecommunications campaign to Salt Typhoon and documents JumbledPath. It does not identify UNC2286."
     }
   ],
   "assessment": {
@@ -4253,7 +3776,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/salt-typhoon.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/salt-typhoon.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -4261,7 +3784,7 @@
     "history": "",
     "capability_details": "JumbledPath",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アルゼンチン、イスラエル、インド、インドネシア、エジプト、エスワティニ、エチオピア、オランダ、カナダ、グアテマラ、サウジアラビア、シンガポール、タイ、ドイツ、バングラデシュ、パキスタン、フィリピン、フランス、ブラジル、ブルキナファソ、ベトナム、マレーシア、メキシコほか6か国。標的地域=アジア、アフリカ、中南米、中東、北米、南アジア、南米、東アジア、東南アジア、欧州。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=インド、カナダ、中国、米国、英国。標的地域=北米、南米、東南アジア。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -4310,48 +3833,50 @@
     },
     {
       "victim_case_id": "victim--activity-rule--0dca98f829c8d2966945",
-      "name": "被害事例: Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ",
+      "name": "被害事例: Salt Typhoonによる通信事業者ネットワーク侵害",
       "victim_name": null,
-      "disclosure_status": "anonymous",
-      "victim_type": "unknown",
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "中国政府支援のハッキンググループであるSalt Typhoon（別名：Earth Estries、GhostEmperor、UNC2286）は、米国の通信プロバイダーを標的とし、カスタムマルウェア「JumbledPath」を使用してネットワークトラフィックを監視し、機密データを収集しています。 Salt Typhoonは、2019年以降活動しており、主に政府機関や通信会社への侵入を行っています。 最近、米国当局は、Salt TyphoonがVerizon、AT&T、Lumen Technologies、T-Mobileなどの米国の主要通信プロバイダーへの侵入に成功し、一部の政府関係者のプライベートな通信や裁判所認可の盗聴要求に関する情報を盗み取ったと確認しました。 さらに、Recorded FutureのInsikt Groupは、Salt Typhoonが2024年12月から2025年1月の間に、米国、南米、インドを含む1,000台以上のCiscoネットワークデバイスを標的にしたと報告しています。 Cisco Talosは、Salt Typhoonのハッカーが主に盗まれた認証情報を使用して、コアネットワークインフラストラクチャに侵入し、一部のケースでは3年以上にわたり活動していたと明らかにしました。",
+      "description": "Cisco Talosは、Salt Typhoonが米国の大手通信事業者を侵害し、盗取した正規資格情報で複数ベンダーのネットワーク機器へ長期間アクセスしたと報告した。攻撃者は設定情報や認証トラフィックを収集し、侵害機器を踏み台として横展開した。Go製ELFユーティリティJumbledPathは、離れたCisco機器でパケットキャプチャを実行し、経路上のログを消去・阻害して暗号化済み取得データを返送するために使われた。",
       "activity_refs": [
         "activity--daily-4e15138dd5323d6e8406"
       ],
       "target_refs": [
-        "target--activity-rule--country--48cc6b4cc2919459aec9",
-        "target--mitre-group--country--41795735fc0e57933c4e"
+        "target--mitre-group--country--41795735fc0e57933c4e",
+        "target--activity-rule--sector--97fa6f38a056d42117be"
       ],
       "malware_refs": [
         "malware--jumbledpath"
       ],
       "ttp_refs": [],
-      "affected_assets": [],
+      "affected_assets": [
+        "ネットワーク機器"
+      ],
       "impacts": [],
       "first_observed": {
-        "value": "2024-12-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "last_observed": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2025-02-21T00:00:00Z",
+        "value": "2025-02-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--daily-976395d39cbe624f587e"
+        "source--cisco-talos-salt-typhoon-jumbledpath-2025"
       ],
-      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+      "analyst_notes": "Cisco Talos一次資料に限定。二次記事が混在させたRedMikeの別キャンペーン期間・地域と、未確認のUNC2286 exact-alias主張を除去した。"
     },
     {
       "victim_case_id": "victim--activity-rule--0e5d66c1a45d1edd74fe",
@@ -4642,7 +4167,8 @@
         "activity--daily-8995f476bade589bc43e"
       ],
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91"
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--mitre-group--country--41795735fc0e57933c4e"
       ],
       "malware_refs": [],
       "ttp_refs": [],

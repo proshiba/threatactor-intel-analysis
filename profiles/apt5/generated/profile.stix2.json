@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--84ed728b-704d-4d73-922e-cacc7c380b45",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18,8 +18,6 @@
         "Keyhole Panda",
         "MANGANESE",
         "Mulberry Typhoon",
-        "TABCTENG",
-        "temp.bottle",
         "UNC2630"
       ],
       "description": "[APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. [APT5](https://attack.mitre.org/groups/G1023) has displayed advanced tradecraft and significant interest in compromising networking devices and their underlying software including through the use of zero-day exploits.(Citation: NSA APT5 Citrix Threat Hunting December 2022)(Citation: Microsoft East Asia Threats September 2023)(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021)(Citation: FireEye Southeast Asia Threat Landscape March 2015)(Citation: Mandiant Advanced Persistent Threats)  ",
@@ -81,26 +79,6 @@
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
         {
-          "name": "TABCTENG",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "temp.bottle",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
           "name": "UNC2630",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
@@ -125,14 +103,14 @@
         "history": "",
         "capability_details": "PACEMAKER, RAPIDPULSE, gh0st RAT, Skeleton Key, PULSECHECK, PoisonIvy, SLIGHTPULSE, SLOWPULSE, Net, Tasklist, PcShare, netstat, Mimikatz",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東、北米、東南アジア、欧州。日本は確認時に個別国として保持する。\n\nElectronics & Communications",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東、北米、欧州。日本は確認時に個別国として保持する。\n\nElectronics & Communications",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt5",
         "actor_name": "APT5",
-        "searched_at": "2026-09-20T13:47:46Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
             "gtig-threat-actor-naming",
@@ -1622,7 +1600,7 @@
       "spec_version": "2.1",
       "id": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1666,8 +1644,14 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
-          "victim_refs": []
+          "target_refs": [
+            "target--targeting-audit--region--5d5a069e358898f16a0d",
+            "target--targeting-audit--region--867de21bf7db0bc21026",
+            "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--d6a21958cf344fc17684"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -1698,7 +1682,11 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--5d5a069e358898f16a0d",
+              "target--targeting-audit--region--867de21bf7db0bc21026",
+              "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1"
+            ]
           }
         },
         "confidence": "high",
@@ -1747,28 +1735,6 @@
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
           "external_id": "source--mitre-attack-19-2"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--3413635f-a919-4652-9af3-4d2a72b977b6",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東南アジア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでAPT5の標的範囲として東南アジアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "regions",
@@ -1839,6 +1805,60 @@
       ],
       "x_target_category": "sectors",
       "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--6233ccfb-2c90-4c2c-9890-4ea0f4271b73",
+      "created": "2026-09-21T02:39:39Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: SPACEHOP Activity",
+      "identity_class": "organization",
+      "description": "[SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant) ",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--d6a21958cf344fc17684",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--mitre-campaign--112fc404df45e8c65691",
+        "ttp--mitre-campaign--2ef8f61f7414a7f69103",
+        "ttp--mitre-campaign--7a27636068cfdd7f8de3",
+        "ttp--mitre-campaign--f601a10c008df6514421"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2019-01-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2024-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
       "type": "attack-pattern",
@@ -3495,21 +3515,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--b003dc57-147a-49fb-83d7-0e5d8c9b7a77",
-      "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--84ed728b-704d-4d73-922e-cacc7c380b45",
-      "target_ref": "identity--3413635f-a919-4652-9af3-4d2a72b977b6",
-      "description": "APT5 targets 東南アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--16e8fa42-178a-412b-afff-89644bfd7790",
       "created": "2026-07-29T23:11:59Z",
       "modified": "2026-07-29T23:11:59Z",
@@ -3570,6 +3575,51 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--272549e3-3597-45d7-a917-b92368f12cbe",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T02:05:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
+      "target_ref": "identity--af8030b2-b9f4-434f-ba15-978ccddffc95",
+      "description": "SPACEHOP Activity targets target--targeting-audit--region--5d5a069e358898f16a0d.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--28b30dd5-4f24-496b-afa9-d48d2f4da19a",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T02:05:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
+      "target_ref": "identity--29c5beed-5f49-4b25-b545-36a0c2a6cf10",
+      "description": "SPACEHOP Activity targets target--targeting-audit--region--867de21bf7db0bc21026.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25359b9a-9453-49be-9ac6-4e6fb5677da6",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T02:05:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
+      "target_ref": "identity--00df69ea-b2ab-4ffc-abcd-99461924bfc0",
+      "description": "SPACEHOP Activity targets target--targeting-audit--region--f89d8fcb1e16a8e9e7e1.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--1af1fe2a-1f6b-4b62-8600-3c9e53988f55",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-07-29T15:20:22Z",
@@ -3625,6 +3675,21 @@
       "source_ref": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
       "target_ref": "attack-pattern--a007ce8f-6417-407c-b93c-e77e8fdd0810",
       "description": "SPACEHOP Activity uses ttp--mitre-campaign--f601a10c008df6514421.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--28eb1261-0c32-4cee-ab6f-ab7712d4f61c",
+      "created": "2026-09-21T02:39:39Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
+      "target_ref": "identity--6233ccfb-2c90-4c2c-9890-4ea0f4271b73",
+      "description": "SPACEHOP Activity affected victim--activity-rule--d6a21958cf344fc17684.",
       "x_confidence": "high"
     },
     {
@@ -4127,7 +4192,7 @@
       "spec_version": "2.1",
       "id": "note--f5a79228-fdeb-4479-b15a-2a331bde43c1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4137,14 +4202,14 @@
         "intrusion-set--84ed728b-704d-4d73-922e-cacc7c380b45"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 34
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--26be03cd-f648-40cd-8a3e-6cafa046b12b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T13:48:11Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4153,7 +4218,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T13:48:11Z",
+      "published": "2026-09-21T04:35:02Z",
       "object_refs": [
         "intrusion-set--84ed728b-704d-4d73-922e-cacc7c380b45",
         "malware--4a92103c-8848-49e2-bf87-71cd90ab6156",
@@ -4172,10 +4237,10 @@
         "campaign--2d80bd59-1a65-42ed-bcae-6749a43fd287",
         "identity--af8030b2-b9f4-434f-ba15-978ccddffc95",
         "identity--00df69ea-b2ab-4ffc-abcd-99461924bfc0",
-        "identity--3413635f-a919-4652-9af3-4d2a72b977b6",
         "identity--29c5beed-5f49-4b25-b545-36a0c2a6cf10",
         "identity--d9f6fc42-bdc5-47da-bfe6-b63c73d1109e",
         "identity--9c4df220-6c17-4001-8f7b-153b9f1d6be9",
+        "identity--6233ccfb-2c90-4c2c-9890-4ea0f4271b73",
         "attack-pattern--6aa17bc0-1b88-43df-acf2-d546540e8ce4",
         "attack-pattern--410cb000-ddd6-4043-9dcc-b275e22efa83",
         "attack-pattern--ec4e61ad-661c-4b1a-a507-460f3a882646",

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sidewinder`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -44,16 +44,16 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Sidewinder](https://attack.mitre.org/groups/G0121) is a suspected Indian threat actor group that has been active since at least 2012. They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020) |
-| Capability | SideWinder.AntiBot.Script, Koadic |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Military, Govenment, Pakistan, "South Asian countries" |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -85,9 +85,7 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--sidewinder-antibot-script | SideWinder.AntiBot.Script | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -115,13 +113,13 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | phishing-campaign | 不明 | 不明 | 2025-03-12 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  |  | victim--activity-rule--420c73fd3c412b28226f | SideWinderと呼ばれる高度な持続的脅威（APT）グループが、南アジア、東南アジア、中東、アフリカの海事および物流企業を主な標的にしている。 2024年に観測された攻撃は、バングラデシュ、カンボジア、ジブチ、エジプト、アラブ首長国連邦、ベトナムに及び、原子力発電所や原子力エネルギーインフラ、電気通信、コンサルティング、ITサービス企業、不動産代理店、ホテルも標的となっている。 攻撃手法は、スピアフィッシングメールを介して、Microsoft Officeの既知の脆弱性（CVE-2017-11882）を悪用し、最終的にStealerBotと呼ばれるマルウェアを展開する。 SideWinderは、セキュリティソフトウェアの検出を回避し、感染したシステム上での持続性を延ばすために、ツールセットを継続的に改良している。 同グループは、インドの標的を攻撃しており、以前はインド起源の可能性が指摘されていた。 | 高 | `source--daily-da76d64966b546f28391` |
+| SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | phishing-campaign | 不明 | 不明 | 2025-03-12 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--targeting-audit--country--503f4baff80a397a2068, target--targeting-audit--country--5acaf13fe45091bd0bea, target--targeting-audit--country--837f77c17c0dde3cd183, target--targeting-audit--country--874ccacd59d1da50f528, target--targeting-audit--country--d9ae9a8ad23e203680af, target--targeting-audit--country--e2f8121e55e51519038f, target--targeting-audit--region--53e8207d6e675f3ee0e3, target--targeting-audit--region--60b627ac831bfa315db5, target--targeting-audit--region--8268eb4a3eb8b9857c0a, target--targeting-audit--region--83dcc20c09396f697d3e, target--targeting-audit--region--ea9aa694a6e8d6baa271 |  |  | victim--activity-rule--420c73fd3c412b28226f | SideWinderと呼ばれる高度な持続的脅威（APT）グループが、南アジア、東南アジア、中東、アフリカの海事および物流企業を主な標的にしている。 2024年に観測された攻撃は、バングラデシュ、カンボジア、ジブチ、エジプト、アラブ首長国連邦、ベトナムに及び、原子力発電所や原子力エネルギーインフラ、電気通信、コンサルティング、ITサービス企業、不動産代理店、ホテルも標的となっている。 攻撃手法は、スピアフィッシングメールを介して、Microsoft Officeの既知の脆弱性（CVE-2017-11882）を悪用し、最終的にStealerBotと呼ばれるマルウェアを展開する。 SideWinderは、セキュリティソフトウェアの検出を回避し、感染したシステム上での持続性を延ばすために、ツールセットを継続的に改良している。 同グループは、インドの標的を攻撃しており、以前はインド起源の可能性が指摘されていた。 | 高 | `source--daily-da76d64966b546f28391` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | Sidewinder | 情報なし | 情報なし | 情報なし | インド, 運輸・航空・海運, エネルギー | 被害事例: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | 高 |
+| SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | Sidewinder | 情報なし | 情報なし | 情報なし | インド, 運輸・航空・海運, エネルギー, ベトナム, アラブ首長国連邦, ジブチ, バングラデシュ, カンボジア, エジプト, 東南アジア, アフリカ, 中東, アジア, 南アジア | 被害事例: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | 高 |
 
 
 
@@ -129,34 +127,26 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アラブ首長国連邦 | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
+| countries | アラブ首長国連邦 | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
 | countries | インド | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
-| countries | エジプト | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| countries | カタール | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| countries | ジブチ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| countries | スリランカ | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ネパール | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | バングラデシュ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| countries | ブータン | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてブータンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モルディブ | 構造化OSINTの被害国フィールドでSidewinderの標的・被害国としてモルディブが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | エジプト | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| countries | カンボジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| countries | ジブチ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| countries | バングラデシュ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | ベトナム | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| countries | 中国 | They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | regions | アジア | MITRE ATT&CKのGroup概要でSidewinderの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--daily-da76d64966b546f28391`, `source--mitre-attack-19-2` |
-| regions | アフリカ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域としてアフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-da76d64966b546f28391`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域としてアフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| regions | 中東 | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
+| regions | 南アジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 東南アジア | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
 | sectors | 運輸・航空・海運 | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
 | sectors | エネルギー | 活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-da76d64966b546f28391` |
 | sectors | 政府・行政 | They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -274,13 +264,13 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 | source--sidewinder--0ae2943d4dd4a373 | RagaSerpent SideWinder Adjacent Tax Audit Cluster MultiCountry Targeted Chain |  | 不明 | sidewinder/RagaSerpent SideWinder-Adjacent Tax Audit Cluster MultiCountry Targeted Chain.pdf | report | TLP:CLEAR | 中 |
 | source--sidewinder--1d23a413a917d260 | global perspective of the sidewinder apt |  | 不明 | sidewinder/global-perspective-of-the-sidewinder-apt.pdf | report | TLP:CLEAR | 中 |
 | source--sidewinder--64e1d418ba54a0af | readme |  | 不明 | sidewinder/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

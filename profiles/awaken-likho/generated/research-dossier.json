@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--awaken-likho",
   "actor_name": "Awaken Likho",
-  "profile_updated_at": "2026-09-20T13:47:46Z",
+  "profile_updated_at": "2026-09-21T02:39:35Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -26,13 +26,16 @@
       "motivations": 1
     },
     "external_lead_counts": {
+      "aliases": 0,
       "activities": 0,
       "relationships": 0,
       "malware": 0,
       "tools": 0,
       "untyped_software": 0,
       "targets": 2,
-      "motivations": 1
+      "motivations": 1,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -300,6 +303,7 @@
         "description": "Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。",
         "target_refs": [
           "target--activity-rule--sector--210dddb39397dbe50e91",
+          "target--awaken-likho--country--belarus",
           "target--awaken-likho--country--russia"
         ],
         "malware_refs": [
@@ -342,6 +346,7 @@
           "victim": {
             "target_refs": [
               "target--activity-rule--sector--210dddb39397dbe50e91",
+              "target--awaken-likho--country--belarus",
               "target--awaken-likho--country--russia"
             ],
             "victim_refs": [
@@ -382,6 +387,7 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [
+                "target--awaken-likho--country--belarus",
                 "target--awaken-likho--country--russia"
               ],
               "target_region_refs": []
@@ -427,6 +433,10 @@
           {
             "id": "target--activity-rule--sector--210dddb39397dbe50e91",
             "name": "政府・行政"
+          },
+          {
+            "id": "target--awaken-likho--country--belarus",
+            "name": "ベラルーシ"
           },
           {
             "id": "target--awaken-likho--country--russia",
@@ -820,7 +830,9 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--awaken-likho-tokenbuoy-2026"
+        ]
       },
       {
         "id": "target--awaken-likho--country--russia",
@@ -841,8 +853,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--kaspersky-awaken-likho-2024",
-          "source--kaspersky-awaken-likho-tokenbuoy-2026",
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
@@ -854,8 +865,7 @@
             "statement": "Awaken Likho targets country ロシア.",
             "evidence_refs": [
               "source--kaspersky-awaken-likho-2024",
-              "source--kaspersky-awaken-likho-tokenbuoy-2026",
-              "source--target-audit-etda-threat-group-cards"
+              "source--kaspersky-awaken-likho-tokenbuoy-2026"
             ],
             "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
@@ -886,8 +896,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--kaspersky-awaken-likho-2024",
-          "source--kaspersky-awaken-likho-tokenbuoy-2026",
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
         "claim_assessments": [
@@ -899,8 +908,7 @@
             "statement": "Awaken Likho targets region 東欧.",
             "evidence_refs": [
               "source--kaspersky-awaken-likho-2024",
-              "source--kaspersky-awaken-likho-tokenbuoy-2026",
-              "source--target-audit-etda-threat-group-cards"
+              "source--kaspersky-awaken-likho-tokenbuoy-2026"
             ],
             "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
@@ -1111,12 +1119,19 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [],
     "activities": [],
     "incident_types": [],
     "relationships": [],
     "malware": [],
     "tools": [],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -1148,7 +1163,9 @@
           "match_confidence": "high",
           "verification_status": "partially-supported"
         }
-      ]
+      ],
+      "roles": [],
+      "legacy_workbook_text": []
     },
     "motivations": [
       {
@@ -1165,7 +1182,8 @@
         "verification_status": "partially-supported"
       }
     ],
-    "attribution": []
+    "attribution": [],
+    "assessments": []
   },
   "claim_audit_counts": {
     "unresolved": 1,
@@ -1188,7 +1206,21 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。2021年7月からの追跡開始、UltraVNCからMeshAgentへの移行、2024年6〜8月のキャンペーン期間、「also named by other vendors as Core Werewolf」の記載を確認した。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。2021年7月からの追跡開始、UltraVNCからMeshAgentへの移行、2024年6〜8月のキャンペーン期間、「also named by other vendors as Core Werewolf」の記載を確認した。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--kaspersky-awaken-likho-tokenbuoy-2026": {
       "source_id": "source--kaspersky-awaken-likho-tokenbuoy-2026",
@@ -1206,7 +1238,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。独自バックドアTokenBuoy/TokenBuoySHへの移行と2026年前半から7月までのキャンペーン期間を確認した。securelist.com には掲載がなく securelist.ru のみで公開されている。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。独自バックドアTokenBuoy/TokenBuoySHへの移行と2026年前半から7月までのキャンペーン期間を確認した。securelist.com には掲載がなく securelist.ru のみで公開されている。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",

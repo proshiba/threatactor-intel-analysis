@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--qtfy`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ QTFYは、中国国家安全部と人民解放軍を顧客とする中国国家�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -118,14 +118,14 @@ QTFYは、中国国家安全部と人民解放軍を顧客とする中国国家�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 | intrusion | 不明 | 不明 | 2026-09-01 | target--activity-rule--sector--210dddb39397dbe50e91 | malware--qscan, malware--qtrouter | ttp--activity-rule--dad2781185b18bbdcf37 | victim--activity-rule--015651a588ad0e25bc2c | 米司法省は、中国国家支援グループQTFYによる攻撃について、NASAやFRB、司法省など複数の米政府機関を「被害者」ではなく「標的」とするよう過去の発表を訂正した。 QTFYは中国企業Nanjing Xinjiuwei Network Technologyに所属し、中国国家安全部からの支払いを受けて北京のためにサイバー活動を実施しているとみられる。 同グループは2018年頃から活動し、QScanとQTRouterを用いて脆弱なIoT機器を侵害し、攻撃元を隠蔽するOperational Relay Boxネットワークを構築してきた。 2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。 FBIはQScanとQTRouterが使用する3ドメインを差し押さえて機能を停止させたが、訂正により標的となった全組織が実際に侵害されたわけではないことが明確化された。 | 高 | `source--daily-0a5826ce9e99e3db29e4`, `source--daily-f3e970d5f0009ebe4c40` |
-| クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | infrastructure-operation | 不明 | 不明 | 2026-08-26 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--f9601e2d842c9a05202b, target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297 | malware--qscan, malware--qtrouter, malware--qtproxy |  | victim--activity-rule--547eb506c9eb1e68e54f | Black Lotus Labsが1年間追跡した、サイバー諜報活動を支える基盤提供者の作戦。偵察(QScan)、プロキシ統制(QTProxy)、運用経路(Fast Labyrinth)、アクセス管理(QTRouter)を再利用可能なサービス層として統合し、下流の複数アクターへ帰属困難な通信路と標的検証テレメトリを同時提供する。Fast Labyrinthの通信を背景ノイズで絞り込むと、特定の戦略分野に限定した profiling キャンペーンが現れる。標的には世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、各国の政府・防衛・公共部門ネットワークが含まれ、とりわけ米国、英国、アジア太平洋地域の機関が対象となっている。米国では軍・防衛ネットワークが重点的にプロファイルされ、稼働中の通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が注視されている。地質・環境関連の政府機関、および世界各地の司法ノードと欧州のインフラも関心対象である。攻撃者は公開された開発環境の境界、未修正のクラウドストレージ、認証情報窃取に着目している。 | 中 | `source--qtfy--lumen-quartermaster` |
+| クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | infrastructure-operation | 不明 | 不明 | 2026-08-26 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--f9601e2d842c9a05202b, target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297, target--targeting-audit--region--9774112d109d08f275a9 | malware--qscan, malware--qtproxy, malware--qtrouter |  | victim--activity-rule--547eb506c9eb1e68e54f | Black Lotus Labsが1年間追跡した、サイバー諜報活動を支える基盤提供者の作戦。偵察(QScan)、プロキシ統制(QTProxy)、運用経路(Fast Labyrinth)、アクセス管理(QTRouter)を再利用可能なサービス層として統合し、下流の複数アクターへ帰属困難な通信路と標的検証テレメトリを同時提供する。Fast Labyrinthの通信を背景ノイズで絞り込むと、特定の戦略分野に限定した profiling キャンペーンが現れる。標的には世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、各国の政府・防衛・公共部門ネットワークが含まれ、とりわけ米国、英国、アジア太平洋地域の機関が対象となっている。米国では軍・防衛ネットワークが重点的にプロファイルされ、稼働中の通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が注視されている。地質・環境関連の政府機関、および世界各地の司法ノードと欧州のインフラも関心対象である。攻撃者は公開された開発環境の境界、未修正のクラウドストレージ、認証情報窃取に着目している。 | 中 | `source--qtfy--lumen-quartermaster` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 | QTFY | QScan, QTRouter | T1190 Exploit Public-Facing Application | 情報なし | 政府・行政 | 被害事例: 米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 | 高 |
-| クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | QTFY | QScan, QTProxy, QTRouter | 情報なし | Fast Labyrinth | 米国, 英国, 医療・ヘルスケア, 運輸・航空・海運, 防衛・軍事, 教育・研究 | 被害事例: クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | 中 |
+| クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | QTFY | QScan, QTProxy, QTRouter | 情報なし | Fast Labyrinth | 米国, 英国, 医療・ヘルスケア, 運輸・航空・海運, 防衛・軍事, 教育・研究, アジア太平洋 | 被害事例: クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) | 中 |
 
 
 
@@ -135,7 +135,6 @@ QTFYは、中国国家安全部と人民解放軍を顧客とする中国国家�
 |---|---|---|---|---|---|---|
 | countries | 米国 | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
 | countries | 英国 | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
-| regions | アジア | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
 | regions | アジア太平洋 | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジア太平洋が明示されている。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
 | sectors | 政府・行政 | 活動「米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-0a5826ce9e99e3db29e4`, `source--daily-f3e970d5f0009ebe4c40` |
 | sectors | 医療・ヘルスケア | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
@@ -143,7 +142,7 @@ QTFYは、中国国家安全部と人民解放軍を顧客とする中国国家�
 | sectors | 防衛・軍事 | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
 | sectors | 教育・研究 | 活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--qtfy--lumen-quartermaster` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

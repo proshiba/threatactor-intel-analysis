@@ -4,7 +4,7 @@
   "name": "UNC6671",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T13:47:46Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "languages": [
     "ja"
   ],
@@ -40,14 +40,61 @@
     "analyst_notes": ""
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc6671--verified--d2f7436f8f5d770d",
+      "target_actor": "UNC6240",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "GTIG tracks UNC6661, UNC6671, and UNC6240 separately within recent ShinyHunters-branded SaaS theft reporting to preserve possible partnership and impersonation boundaries.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Shared umbrella branding and TTPs do not establish exact identity; Mandiant notes indicators that separate individuals may be involved."
+    },
+    {
+      "relationship_id": "relationship--unc6671--verified--feedb80b23839396",
+      "target_actor": "UNC6661",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "GTIG tracks UNC6661, UNC6671, and UNC6240 separately within recent ShinyHunters-branded SaaS theft reporting to preserve possible partnership and impersonation boundaries.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-shinyhunters-saas-clusters-2026"
+      ],
+      "analyst_notes": "Shared umbrella branding and TTPs do not establish exact identity; Mandiant notes indicators that separate individuals may be involved."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -61,13 +108,13 @@
   "activities": [
     {
       "activity_id": "activity--daily-0697f946d4469dc9883a",
-      "name": "Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
+      "name": "UNC6671、vishingでSSO資格情報を窃取しSaaSデータを流出",
       "activity_type": "ransomware-extortion",
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
         "value": null,
@@ -76,20 +123,20 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2026-02-02T00:00:00Z",
+        "value": "2026-01-30T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "description": "Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。",
+      "description": "Mandiantは、UNC6671が2026年1月初旬からIT担当者を装って電話し、被害組織を偽の認証サイトへ誘導してSSO資格情報とMFAコードを窃取したと報告した。侵入後はOktaアカウントへアクセスし、PowerShellを用いてSharePointとOneDriveの機密データを取得した。手口はUNC6661と類似する一方、UNC6671に続く恐喝メールはShinyHunters名義ではなく、異なるTox IDを使用しており、Mandiantは別の人物が関与する可能性を示している。",
       "target_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--daily-02e1336153d9062de8f2"
+        "source--gtig-shinyhunters-saas-clusters-2026"
       ],
-      "analyst_notes": "日次収集レコード daily-record--0697f946d4469dc9883a5c9a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。",
+      "analyst_notes": "ShinyHunters-branded activity is an umbrella description. GTIG's separate UNC6671 cluster boundary and unbranded extortion detailを採用。",
       "ttp_refs": [],
       "victim_refs": [
         "victim--activity-rule--a246d00432371496b99a"
@@ -116,10 +163,10 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
           },
           "last_observed": {
             "value": null,
@@ -128,10 +175,10 @@
             "basis": "not-stated"
           },
           "reported_at": {
-            "value": "2026-02-02T00:00:00Z",
+            "value": "2026-01-30T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "ransomware-extortion",
           "phases": [],
@@ -144,9 +191,9 @@
             "target_region_refs": []
           }
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-02e1336153d9062de8f2"
+          "source--gtig-shinyhunters-saas-clusters-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -272,7 +319,8 @@
       },
       "description": "2026年2月以降、金銭目的の新たな脅威グループBlackFileが、小売・ホスピタリティ業界を狙うデータ窃取と恐喝攻撃に関与していると報告された。 攻撃者は企業のITヘルプデスクを装い、偽の社内ログインページへ誘導して従業員の認証情報とワンタイムパスコードを盗み出す。 盗んだ認証情報で自分たちの端末を登録してMFAを回避し、社内ディレクトリを悪用して幹部レベルのアカウントへアクセスを広げる。 その後、SalesforceやSharePointの標準APIで「confidential」や「SSN」を含む文書を持ち出し、闇サイト公開や高額な恐喝要求につなげる。 被害企業の従業員や幹部にはスワッティングも行われており、RH-ISACは電話対応手順強化と発信者確認の徹底を勧告している。",
       "target_refs": [
-        "target--activity-rule--sector--570d54d1d21fab6540a9"
+        "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "target--targeting-audit--country--0051ba349f4de879afc7"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -301,7 +349,8 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--570d54d1d21fab6540a9"
+            "target--activity-rule--sector--570d54d1d21fab6540a9",
+            "target--targeting-audit--country--0051ba349f4de879afc7"
           ],
           "victim_refs": [
             "victim--activity-rule--c73d93cb0373fa6407ec"
@@ -333,7 +382,9 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--targeting-audit--country--0051ba349f4de879afc7"
+            ],
             "target_region_refs": []
           }
         },
@@ -418,8 +469,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [],
   "sources": [
@@ -457,7 +508,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260202.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260202.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-0f56214542b30c75b57a",
@@ -475,7 +533,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260807.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260807.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-2c44dcb080c9a145473f",
@@ -493,7 +559,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260425.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260425.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/new-blackfile-extortion-gang-targets-retail-and-hospitality-orgs/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -556,6 +630,35 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--gtig-shinyhunters-saas-clusters-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+      "title": "Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft",
+      "publisher": "Mandiant / Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-01-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GTIG deliberately tracks UNC6661, UNC6671, and UNC6240 separately to represent evolving partnerships and possible impersonation. UNC6671 used an unbranded extortion email and a different Tox ID."
     }
   ],
   "assessment": {
@@ -567,7 +670,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6671.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6671.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -635,12 +738,12 @@
     },
     {
       "victim_case_id": "victim--activity-rule--a246d00432371496b99a",
-      "name": "被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
+      "name": "被害事例: UNC6671によるSSO・SaaSデータ窃取",
       "victim_name": null,
-      "disclosure_status": "anonymous",
-      "victim_type": "unknown",
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。",
+      "description": "Mandiantは、UNC6671が2026年1月初旬からIT担当者を装って電話し、被害組織を偽の認証サイトへ誘導してSSO資格情報とMFAコードを窃取したと報告した。侵入後はOktaアカウントへアクセスし、PowerShellを用いてSharePointとOneDriveの機密データを取得した。手口はUNC6661と類似する一方、UNC6671に続く恐喝メールはShinyHunters名義ではなく、異なるTox IDを使用しており、Mandiantは別の人物が関与する可能性を示している。",
       "activity_refs": [
         "activity--daily-0697f946d4469dc9883a"
       ],
@@ -648,19 +751,19 @@
       "malware_refs": [],
       "ttp_refs": [],
       "affected_assets": [
-        "クラウド／SaaS"
+        "メール／メールアカウント"
       ],
       "impacts": [
         {
           "impact_type": "data-theft",
-          "description": "Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述"
+          "description": "UNC6671、vishingでSSO資格情報を窃取しSaaSデータを流出"
         }
       ],
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
         "value": null,
@@ -669,16 +772,16 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2026-02-02T00:00:00Z",
+        "value": "2026-01-30T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--daily-02e1336153d9062de8f2"
+        "source--gtig-shinyhunters-saas-clusters-2026"
       ],
-      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+      "analyst_notes": "ShinyHunters-branded activity is an umbrella description. GTIG's separate UNC6671 cluster boundary and unbranded extortion detailを採用。"
     },
     {
       "victim_case_id": "victim--activity-rule--c73d93cb0373fa6407ec",

@@ -1,9 +1,13 @@
 import json
+import sys
 import unittest
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "actor_profile" / "scripts"))
+
+from apply_verified_alias_updates import merge_alias  # noqa: E402
 
 
 class EntityBoundaryTests(unittest.TestCase):
@@ -11,6 +15,35 @@ class EntityBoundaryTests(unittest.TestCase):
         return json.loads(
             (ROOT / "profiles" / slug / "actor-profile.json").read_text(encoding="utf-8")
         )
+
+    def test_reviewed_overlap_replaces_unknown_alias_scope(self) -> None:
+        profile = {
+            "actor": {
+                "canonical_name": "Example",
+                "aliases": [
+                    {
+                        "name": "Example Alias",
+                        "vendor": "legacy",
+                        "scope": "unknown",
+                        "confidence": "low",
+                        "evidence_refs": ["source--legacy"],
+                        "analyst_notes": "Unreviewed.",
+                    }
+                ],
+            }
+        }
+        merge_alias(
+            profile,
+            name="Example Alias",
+            vendor="MITRE ATT&CK",
+            scope="overlapping",
+            confidence="high",
+            source_id="source--mitre",
+            note="Reviewed overlap.",
+        )
+        alias = profile["actor"]["aliases"][0]
+        self.assertEqual(alias["scope"], "overlapping")
+        self.assertEqual(alias["confidence"], "high")
 
     def test_software_names_are_not_active_actor_catalog_entries(self) -> None:
         catalog = json.loads(
@@ -31,12 +64,16 @@ class EntityBoundaryTests(unittest.TestCase):
         )
         by_slug = {item["slug"]: item for item in catalog["actors"]}
         merges = {
+            "barium": ("apt41", "BARIUM"),
+            "judgement-panda": ("zirconium", "Judgement Panda"),
             "peach-sandstorm": ("apt33", "Peach Sandstorm"),
             "raspberry-typhoon": ("lotus-blossom", "Raspberry Typhoon"),
             "sangria-tempest": ("fin7", "Sangria Tempest"),
             "violet-typhoon": ("zirconium", "Violet Typhoon"),
             "radio-panda": ("blacktech", "Radio Panda"),
             "white-company-fefa7c0a": ("white-company", "White Company"),
+            "vice-society": ("vanilla-tempest", "Vice Society"),
+            "uac-0010": ("gamaredon", "UAC-0010"),
         }
         for duplicate, (canonical, alias) in merges.items():
             self.assertNotIn(duplicate, by_slug)
@@ -66,12 +103,16 @@ class EntityBoundaryTests(unittest.TestCase):
 
     def test_merged_legacy_profiles_are_deprecated_and_data_is_preserved(self) -> None:
         merges = {
+            "barium": "apt41",
+            "judgement-panda": "zirconium",
             "peach-sandstorm": "apt33",
             "raspberry-typhoon": "lotus-blossom",
             "sangria-tempest": "fin7",
             "violet-typhoon": "zirconium",
             "radio-panda": "blacktech",
             "white-company-fefa7c0a": "white-company",
+            "vice-society": "vanilla-tempest",
+            "uac-0010": "gamaredon",
         }
         for duplicate, canonical in merges.items():
             legacy = self.load_profile(duplicate)
@@ -87,6 +128,27 @@ class EntityBoundaryTests(unittest.TestCase):
             )
 
         zirconium = self.load_profile("zirconium")
+        judgment = next(
+            item for item in zirconium["actor"]["aliases"]
+            if item["name"] == "Judgment Panda"
+        )
+        self.assertEqual(judgment["scope"], "exact")
+        self.assertEqual(
+            judgment["evidence_refs"],
+            ["source--cert-eu-enisa-apt31-2023"],
+        )
+
+        gamaredon = self.load_profile("gamaredon")
+        armageddon = next(
+            item for item in gamaredon["actor"]["aliases"]
+            if item["name"] == "Armageddon"
+        )
+        self.assertEqual(armageddon["scope"], "exact")
+        self.assertEqual(
+            armageddon["evidence_refs"],
+            ["source--scpc-uac0010-gamaredon-2023"],
+        )
+
         activity_names = {item["name"] for item in zirconium["activities"]}
         self.assertIn(
             "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用",
@@ -169,6 +231,27 @@ class EntityBoundaryTests(unittest.TestCase):
             }
             self.assertFalse(targets & deprecated_names, actor["slug"])
 
+    def test_active_profiles_do_not_duplicate_relationship_semantics(self) -> None:
+        catalog = json.loads(
+            (ROOT / "actor_profile" / "corpus-catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        for actor in catalog["actors"]:
+            profile = self.load_profile(actor["slug"])
+            keys = [
+                (
+                    "".join(
+                        character.casefold()
+                        for character in item.get("target_actor", "")
+                        if character.isalnum()
+                    ),
+                    item.get("relationship_type"),
+                )
+                for item in profile.get("relationships", [])
+            ]
+            self.assertEqual(len(keys), len(set(keys)), actor["slug"])
+
     def test_spacecobra_uses_gravityrat_as_malware(self) -> None:
         profile = self.load_profile("spacecobra")
         self.assertEqual(profile["actor"]["canonical_name"], "SpaceCobra")
@@ -176,6 +259,111 @@ class EntityBoundaryTests(unittest.TestCase):
             "GravityRAT",
             {item["name"] for item in profile["capabilities"]["malware"]},
         )
+
+    def test_honeymyte_is_a_verified_mustang_panda_alias(self) -> None:
+        profile = self.load_profile("mustang-panda")
+        alias = next(
+            item for item in profile["actor"]["aliases"]
+            if item["name"] == "HoneyMyte"
+        )
+        self.assertEqual(alias["vendor"], "Kaspersky GReAT")
+        self.assertEqual(alias["scope"], "exact")
+        self.assertEqual(alias["confidence"], "high")
+        self.assertEqual(
+            alias["evidence_refs"],
+            ["source--daily-9232cff77ce0ef8f62b1"],
+        )
+        source = next(
+            item for item in profile["sources"]
+            if item["source_id"] == "source--daily-9232cff77ce0ef8f62b1"
+        )
+        self.assertEqual(source["published_at"]["value"], "2026-08-14T00:00:00Z")
+        self.assertIn("alias", source["claims_supported"])
+
+    def test_promethium_actor_is_distinct_from_strongpity_malware(self) -> None:
+        catalog = json.loads(
+            (ROOT / "actor_profile" / "corpus-catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        entry = next(item for item in catalog["actors"] if item["slug"] == "strongpity")
+        self.assertEqual(entry["name"], "PROMETHIUM")
+        self.assertIn("StrongPity", entry["aliases"])
+
+        profile = self.load_profile("strongpity")
+        self.assertEqual(profile["name"], "PROMETHIUM")
+        self.assertEqual(profile["actor"]["canonical_name"], "PROMETHIUM")
+        alias = next(
+            item
+            for item in profile["actor"]["aliases"]
+            if item["name"] == "StrongPity"
+        )
+        self.assertEqual(alias["scope"], "overlapping")
+        self.assertIn(
+            "StrongPity",
+            {item["name"] for item in profile["capabilities"]["malware"]},
+        )
+
+    def test_unc7005_part_of_relationship_has_both_vendor_boundaries(self) -> None:
+        profile = self.load_profile("unc7005")
+        relationship = next(
+            item
+            for item in profile["relationships"]
+            if item["relationship_id"]
+            == "relationship--unc7005-ice-relic-connection"
+        )
+        self.assertEqual(relationship["relationship_type"], "part-of")
+        self.assertEqual(
+            set(relationship["evidence_refs"]),
+            {
+                "source--gtig-going-with-the-flows-2026",
+                "source--microsoft-captivecrunch-2026",
+            },
+        )
+
+    def test_same_name_actor_and_malware_entities_have_primary_evidence(self) -> None:
+        expected = {
+            "invisimole": (
+                "InvisiMole",
+                "source--eset-invisimole-hidden-arsenal-2020",
+            ),
+            "konni": ("KONNI", "source--unit42-fractured-statue-2020"),
+            "nettraveler": (
+                "NetTraveler",
+                "source--kaspersky-nettraveler-2013",
+            ),
+        }
+        for slug, (malware_name, source_id) in expected.items():
+            profile = self.load_profile(slug)
+            self.assertTrue(profile["actor"]["description"], slug)
+            self.assertIn(
+                source_id,
+                {item["source_id"] for item in profile["sources"]},
+                slug,
+            )
+            malware = next(
+                item
+                for item in profile["capabilities"]["malware"]
+                if item["name"].casefold() == malware_name.casefold()
+            )
+            self.assertIn(source_id, malware["evidence_refs"], slug)
+            self.assertTrue(profile["activities"], slug)
+
+        invisimole = self.load_profile("invisimole")
+        self.assertIn(
+            ("actor--gamaredon", "cooperates-with"),
+            {
+                (item["target_actor"], item["relationship_type"])
+                for item in invisimole["relationships"]
+            },
+        )
+        nettraveler = self.load_profile("nettraveler")
+        danti = next(
+            item
+            for item in nettraveler["relationships"]
+            if item["target_actor"] == "actor--danti"
+        )
+        self.assertEqual(danti["confidence"], "low")
 
     def test_greenbug_volatile_kitten_and_calypso_aliases_are_scoped(self) -> None:
         greenbug = self.load_profile("greenbug")
@@ -185,10 +373,22 @@ class EntityBoundaryTests(unittest.TestCase):
         )
         calypso = self.load_profile("calypso")
         names = {item["name"] for item in calypso["actor"]["aliases"]}
-        self.assertEqual(names, {"Bronze Medley", "Red Lamassu"})
+        self.assertEqual(names, {"Red Lamassu"})
         self.assertNotIn("Comment Crew", names)
         self.assertNotIn("Mirage", names)
         self.assertNotIn("Pitty Tiger", names)
+
+        research_leads = json.loads(
+            (ROOT / "actor_profile" / "manual-research-leads.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        alias_leads = research_leads["actors"]["calypso"]["aliases"]
+        bronze_medley = next(
+            item for item in alias_leads if item["name"] == "Bronze Medley"
+        )
+        self.assertEqual(bronze_medley["scope"], "overlapping")
+        self.assertEqual(bronze_medley["verification_status"], "unresolved")
 
     def test_famous_chollima_is_not_exact_alias_of_broad_profiles(self) -> None:
         workers = self.load_profile("dprk-it-workers")
@@ -348,6 +548,18 @@ class EntityBoundaryTests(unittest.TestCase):
                 item["name"] for item in self.load_profile(slug)["actor"]["aliases"]
             }
             self.assertTrue(names <= aliases, f"{slug}: {sorted(names - aliases)}")
+
+        teampcp_aliases = {
+            item["name"]: item
+            for item in self.load_profile("teampcp")["actor"]["aliases"]
+        }
+        self.assertEqual(teampcp_aliases["PCPCat"]["scope"], "overlapping")
+
+        carberp_aliases = {
+            item["name"]: item
+            for item in self.load_profile("carberb")["actor"]["aliases"]
+        }
+        self.assertEqual(carberp_aliases["Carberb"]["scope"], "exact")
 
     def test_cyberav3ngers_absorbs_exact_unc5691_identity(self) -> None:
         cyber = self.load_profile("cyberav3ngers")

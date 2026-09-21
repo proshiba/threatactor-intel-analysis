@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt5`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,8 +23,6 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | Keyhole Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | MANGANESE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Mulberry Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| TABCTENG | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| temp.bottle | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | UNC2630 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
@@ -50,16 +48,16 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. [APT5](https://attack.mitre.org/groups/G1023) has displayed advanced tradecraft and significant interest in compromising networking devices and their underlying software including through the use of zero-day exploits.(Citation: NSA APT5 Citrix Threat Hunting December 2022)(Citation: Microsoft East Asia Threats September 2023)(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021)(Citation: FireEye Southeast Asia Threat Landscape March 2015)(Citation: Mandiant Advanced Persistent Threats)   |
-| Capability | PACEMAKER, RAPIDPULSE, gh0st RAT, Skeleton Key, PULSECHECK, PoisonIvy, SLIGHTPULSE, SLOWPULSE, Net, Tasklist, PcShare, netstat, Mimikatz |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Electronics & Communications |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -133,13 +131,13 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-2` |
+| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | target--targeting-audit--region--5d5a069e358898f16a0d, target--targeting-audit--region--867de21bf7db0bc21026, target--targeting-audit--region--f89d8fcb1e16a8e9e7e1 |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 | victim--activity-rule--d6a21958cf344fc17684 | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | APT5 | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 情報なし | 情報なし | 高 |
+| SPACEHOP Activity | APT5 | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 中東, 欧州, 北米 | 被害事例: SPACEHOP Activity | 高 |
 
 
 
@@ -149,16 +147,17 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 |---|---|---|---|---|---|---|
 | regions | 中東 | 活動「SPACEHOP Activity」の記述で標的地域として中東が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | regions | 北米 | 活動「SPACEHOP Activity」の記述で標的地域として北米が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
-| regions | 東南アジア | 構造化OSINTの被害地域フィールドでAPT5の標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | 活動「SPACEHOP Activity」の記述で標的地域として欧州が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | sectors | 防衛・軍事 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 情報通信 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: SPACEHOP Activity | 非公開 | anonymous | unknown | reported |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  |  | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -204,7 +203,7 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 34件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -218,6 +217,7 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 2 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -238,13 +238,13 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

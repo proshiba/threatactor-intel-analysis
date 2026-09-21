@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,7 +19,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | COLD RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
-| COLDRIVER | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| COLDRIVER | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | SEABORGIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Star Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | TA446 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
@@ -48,8 +48,8 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Star Blizzard](https://attack.mitre.org/groups/G1033) is a cyber espionage and influence group originating in Russia that has been active since at least 2019. [Star Blizzard](https://attack.mitre.org/groups/G1033) campaigns align closely with Russian state interests and have included persistent phishing and credential theft against academic, defense, government, NGO, and think tank organizations in NATO countries, particularly the US and the UK.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)<br> |
-| Capability | Spica |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -57,7 +57,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -119,13 +119,13 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297, target--targeting-audit--region--08d97b9230a613ff9537 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | Callisto Group | 情報なし | T1105 Ingress Tool Transfer, T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア, 教育・研究 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 中 |
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | Callisto Group | 情報なし | T1105 Ingress Tool Transfer, T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア, 教育・研究, NATO加盟国 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 中 |
 
 
 
@@ -133,22 +133,11 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | レバノン | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ロシア | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | NATO加盟国 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec`, `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | 構造化OSINTの被害地域フィールドでCallisto Groupの標的範囲としてコーカサスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 構造化OSINTの被害地域フィールドでCallisto Groupの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 | sectors | 教育・研究 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -192,7 +181,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 - IOC観測: 139件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -222,13 +211,13 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

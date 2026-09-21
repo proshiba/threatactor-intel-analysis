@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-1811`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:09Z
+- 更新日時: 2026-09-21T04:18:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -41,8 +41,8 @@ Aliasなし
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Storm-1811](https://attack.mitre.org/groups/G1046) is a financially-motivated entity linked to [Black Basta](https://attack.mitre.org/software/S1070) ransomware deployment. [Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake "help desk" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)(Citation: RedCanary June Insights 2024) |
-| Capability | Black Basta, Cobalt Strike, QakBot, Impacket, BITSAdmin, Quick Assist, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -117,29 +117,27 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | ransomware-extortion | 不明 | 不明 | 2024-05-16 | target--mitre-group--sector--6ace32369b881a0c4d24 | malware--black-basta | ttp--activity-rule--d7c3d4655179616e68af | victim--activity-rule--4510836a063ad9eed051 | Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
+| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | ransomware-extortion | 不明 | 不明 | 2024-05-16 |  | malware--black-basta | ttp--activity-rule--d7c3d4655179616e68af | victim--activity-rule--4510836a063ad9eed051 | Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | Storm-1811 | Black Basta | T1059.003 Windows Command Shell | 情報なし | 製造・産業 | 被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 中 |
+| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | Storm-1811 | Black Basta | T1059.003 Windows Command Shell | 情報なし | 情報なし | 被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 中 |
 
 
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | 製造・産業 | [Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake "help desk" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email | 不明 | 不明 | 高 | `source--daily-1ba1d9f38d8366b3c0a3`, `source--mitre-attack-19-2` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--sector--6ace32369b881a0c4d24 | malware--black-basta | ttp--activity-rule--d7c3d4655179616e68af | メール／メールアカウント | encryption: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 不明 | 不明 | 2024-05-16 | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
+| 被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 非公開 | aggregate | multiple-organizations | reported |  | malware--black-basta | ttp--activity-rule--d7c3d4655179616e68af | メール／メールアカウント | encryption: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 不明 | 不明 | 2024-05-16 | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -184,7 +182,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 9件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -214,9 +212,9 @@ Aliasなし
 | source--storm-1811--b047318da9540fcf | storm 1811 |  | 不明 | actor_profile/evidence/storm-1811.csv | structured-data | TLP:CLEAR | 中 |
 | source--storm-1811--f48ceffd73aa076f | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

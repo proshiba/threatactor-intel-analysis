@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--konni",
-  "updated_at": "2026-07-27T11:17:24Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "records": [
     {
       "record_id": "daily-record--23024095c33771cf0ad3b640",
@@ -155,11 +155,11 @@
         "raw_value": "Konni"
       },
       "activity": {
-        "title": "Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
-        "summary": "北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
+        "title": "KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布",
+        "summary": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから、永続化・UAC回避・分析回避・C2タスク実行機能を持つAI支援生成と評価されたPowerShellバックドアを展開する。",
         "news_date": "2026-01-26",
         "news_url": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
-        "primary_url": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
+        "primary_url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
         "activity_reference": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
         "news_path": "daily-news/news/2026_01-03/20260126.md"
       },
@@ -171,21 +171,39 @@
           "url": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
           "source_path": "daily-news/news/2026_01-03/20260126.md",
           "source_type": "primary-report"
+        },
+        {
+          "url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
+          "source_type": "primary-report"
         }
       ],
       "capability_decisions": [],
-      "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
+      "review_notes": "Check Point一次分析でKONNIへの活動帰属と2025年10月の初期亜種を確認。ProofpointはTA406をKonni/Opal Sleet活動とのoverlapとして扱うため、TA406ではmedium、Konniではhigh confidenceとし、exact aliasには昇格しない。",
       "activity_claim": {
         "assessment": "strong-subject",
         "actor_role": "operator",
-        "match_location": "title",
-        "evidence_text": "Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
+        "match_location": "primary-report",
+        "evidence_text": "Check Point directly attributes the campaign to KONNI; Proofpoint states that TA406 overlaps Konni activity.",
         "reasons": [
-          "exact名が活動を主題とする記事タイトルに明記されている"
+          "一次資料の直接帰属とcross-vendor境界を分離"
         ],
         "suggested_confidence": "high"
       },
-      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "activity_period": {
+        "first_observed": {
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        }
+      }
     }
   ]
 }

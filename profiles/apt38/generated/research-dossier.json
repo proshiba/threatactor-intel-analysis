@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--apt38",
   "actor_name": "APT38",
-  "profile_updated_at": "2026-09-20T13:48:11Z",
+  "profile_updated_at": "2026-09-21T04:38:04Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -17,22 +17,25 @@
     },
     "canonical_counts": {
       "activities": 4,
-      "dated_activities": 2,
+      "dated_activities": 3,
       "relationships": 3,
-      "malware": 8,
+      "malware": 6,
       "activity_linked_malware": 2,
       "tools": 2,
-      "targets": 26,
+      "targets": 5,
       "motivations": 0
     },
     "external_lead_counts": {
+      "aliases": 4,
       "activities": 24,
       "relationships": 4,
-      "malware": 8,
+      "malware": 10,
       "tools": 3,
       "untyped_software": 0,
-      "targets": 65,
-      "motivations": 2
+      "targets": 67,
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -45,8 +48,7 @@
       "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
       "confidence": "medium",
       "evidence_refs": [
-        "source--mitre-attack-19-1",
-        "source--actor-mapping-workbook"
+        "source--mitre-attack-19-1"
       ],
       "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text.",
       "claim_assessments": [
@@ -57,7 +59,6 @@
           "confidence": "medium",
           "statement": "Attributed country or countries: North Korea.",
           "evidence_refs": [
-            "source--actor-mapping-workbook",
             "source--mitre-attack-19-1"
           ],
           "verification_rationale": "Evidence tier=knowledge-base. Community workbook-only attribution requires independent corroboration.",
@@ -70,7 +71,6 @@
           "confidence": "medium",
           "statement": "Sponsor classification: state.",
           "evidence_refs": [
-            "source--actor-mapping-workbook",
             "source--mitre-attack-19-1"
           ],
           "verification_rationale": "Evidence tier=knowledge-base; sponsor classification is audited separately from country labels.",
@@ -120,45 +120,8 @@
             ]
           }
         ],
-        "target_actor_ref": "actor--lazarus"
-      },
-      {
-        "relationship_id": "relationship--apt38--verified-overlap--b20d7dc1c91abbe7",
-        "target_actor": "TEMP.Hermit",
-        "relationship_type": "overlaps-with",
-        "description": "APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately.",
-        "confidence": "high",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "evidence_refs": [
-          "source--mandiant-apt38-temp-hermit-boundary-2018"
-        ],
-        "analyst_notes": "Primary-source-verified taxonomy boundary; this relationship must not be converted into an exact alias.",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--af51cf2b8e5de61b2de3c542",
-            "category": "relationship",
-            "verification_status": "partially-supported",
-            "confidence": "high",
-            "statement": "APT38 overlaps-with TEMP.Hermit: APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately.",
-            "evidence_refs": [
-              "source--mandiant-apt38-temp-hermit-boundary-2018"
-            ],
-            "verification_rationale": "Primary-source-verified taxonomy boundary; this relationship must not be converted into an exact alias.",
-            "counterevidence": []
-          }
-        ],
-        "target_actor_ref": "actor--temp-hermit"
+        "target_actor_ref": "actor--lazarus",
+        "target_resolution": "catalog-profile"
       },
       {
         "relationship_id": "relationship--apt38--verified-boundary--eaae9cec64540423",
@@ -196,10 +159,172 @@
             "counterevidence": []
           }
         ],
-        "target_actor_ref": "actor--temp-hermit"
+        "target_actor_ref": "actor--temp-hermit",
+        "target_resolution": "catalog-profile"
+      },
+      {
+        "relationship_id": "relationship--apt38--verified--e8cfffb982f318b0",
+        "target_actor": "TA444",
+        "relationship_type": "overlaps-with",
+        "description": "Proofpoint tracks TA444 as a distinct cluster and states that APT38 heavily overlaps with it; Huntress also uses TA444/BlueNoroff naming for the June 2025 intrusion.",
+        "confidence": "high",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "evidence_refs": [
+          "source--proofpoint-ta444-2023",
+          "source--huntress-bluenoroff-macos-2025"
+        ],
+        "analyst_notes": "Cross-vendor cluster overlap; do not collapse TA444 and APT38 into an unqualified exact identity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--3802ee9931eb69ea92af56fe",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "APT38 overlaps-with TA444: Proofpoint tracks TA444 as a distinct cluster and states that APT38 heavily overlaps with it; Huntress also uses TA444/BlueNoroff naming for the June 2025 intrusion.",
+            "evidence_refs": [
+              "source--huntress-bluenoroff-macos-2025",
+              "source--proofpoint-ta444-2023"
+            ],
+            "verification_rationale": "Cross-vendor cluster overlap; do not collapse TA444 and APT38 into an unqualified exact identity.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": "actor--ta444",
+        "target_resolution": "catalog-profile"
       }
     ],
     "activity_timeline": [
+      {
+        "activity_id": "activity--daily-e7e43253a3ee354a7560",
+        "name": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害",
+        "activity_type": "infrastructure-operation",
+        "first_observed": {
+          "value": "2025-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "reported_at": {
+          "value": "2026-07-29T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
+        "target_refs": [],
+        "malware_refs": [
+          "malware--daily-f30dd669ecd1c3776828"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [],
+        "victim_refs": [],
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-a7e2c22924a222a6eb0f",
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": "AWS一次資料は同一DPRK系アクターをSAPPHIRE SLEET、STARDUST CHOLLIMA、BlueNoroff、CageyChameleon、Alluring Piscesとして記載し、中程度の確度で帰属した。APT38という名称は本文にないため、MITRE G0082のAssociated Groupsを介したoverlappingスコープの活動として保持し、完全同一とは断定しない。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--apt38",
+            "name": "APT38",
+            "attribution_countries": [
+              "North Korea"
+            ],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--daily-f30dd669ecd1c3776828"
+            ],
+            "ttp_refs": []
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [],
+            "victim_refs": []
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2025-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "reported_at": {
+              "value": "2026-07-29T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "infrastructure-operation",
+            "phases": [],
+            "results": [],
+            "direction": {
+              "source_countries": [
+                "North Korea"
+              ],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-a7e2c22924a222a6eb0f",
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c5a39d42db3832c7062fdaf8",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "APT38 conducted or is associated with Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害: Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
+            "evidence_refs": [
+              "source--daily-a7e2c22924a222a6eb0f",
+              "source--mitre-attack-19-2"
+            ],
+            "verification_rationale": "Evidence tier=knowledge-base; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--daily-f30dd669ecd1c3776828",
+            "name": "typo-crypto"
+          }
+        ],
+        "targets": [],
+        "victims": [],
+        "techniques": []
+      },
       {
         "activity_id": "activity--daily-961f32783a2815c12691",
         "name": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
@@ -226,7 +351,8 @@
         "target_refs": [
           "target--activity-rule--sector--adfe952bca03d050ae2b",
           "target--mitre-group--sector--02706c11c1b12ef47b1c",
-          "target--mitre-group--sector--7cdebddafb57ca131caf"
+          "target--mitre-group--sector--7cdebddafb57ca131caf",
+          "target--targeting-audit--country--e58bd55e7497bcf2d501"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -266,7 +392,8 @@
             "target_refs": [
               "target--activity-rule--sector--adfe952bca03d050ae2b",
               "target--mitre-group--sector--02706c11c1b12ef47b1c",
-              "target--mitre-group--sector--7cdebddafb57ca131caf"
+              "target--mitre-group--sector--7cdebddafb57ca131caf",
+              "target--targeting-audit--country--e58bd55e7497bcf2d501"
             ],
             "victim_refs": [
               "victim--activity-rule--79861f83ab72b247bac1"
@@ -304,7 +431,9 @@
               "source_countries": [
                 "North Korea"
               ],
-              "target_country_refs": [],
+              "target_country_refs": [
+                "target--targeting-audit--country--e58bd55e7497bcf2d501"
+              ],
               "target_region_refs": []
             }
           },
@@ -343,6 +472,10 @@
           {
             "id": "target--mitre-group--sector--7cdebddafb57ca131caf",
             "name": "金融"
+          },
+          {
+            "id": "target--targeting-audit--country--e58bd55e7497bcf2d501",
+            "name": "タイ"
           }
         ],
         "victims": [
@@ -487,143 +620,6 @@
         "victims": [
           {
             "id": "victim--activity-rule--99c6c1819178c8d97e7e",
-            "name": "aggregate"
-          }
-        ],
-        "techniques": []
-      },
-      {
-        "activity_id": "activity--daily-e7e43253a3ee354a7560",
-        "name": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
-        "activity_type": "infrastructure-operation",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2026-07-31T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
-        "target_refs": [
-          "target--activity-rule--sector--dfc80b76cad93a318adc"
-        ],
-        "malware_refs": [
-          "malware--daily-f30dd669ecd1c3776828"
-        ],
-        "infrastructure_refs": [],
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--b9fb787506a406311592"
-        ],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a7e2c22924a222a6eb0f"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--e7e43253a3ee354a756068f0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--apt38",
-            "name": "APT38",
-            "attribution_countries": [
-              "North Korea"
-            ],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [
-              "malware--daily-f30dd669ecd1c3776828"
-            ],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [
-              "target--activity-rule--sector--dfc80b76cad93a318adc"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--b9fb787506a406311592"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2026-07-31T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "infrastructure-operation",
-            "phases": [],
-            "results": [
-              "supply-chain"
-            ],
-            "direction": {
-              "source_countries": [
-                "North Korea"
-              ],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-a7e2c22924a222a6eb0f"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--c5a39d42db3832c7062fdaf8",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 conducted or is associated with Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定: Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
-            "evidence_refs": [
-              "source--daily-a7e2c22924a222a6eb0f"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [
-          {
-            "id": "malware--daily-f30dd669ecd1c3776828",
-            "name": "typo-crypto"
-          }
-        ],
-        "targets": [
-          {
-            "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
-            "name": "製造・産業"
-          }
-        ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--b9fb787506a406311592",
             "name": "aggregate"
           }
         ],
@@ -1071,58 +1067,6 @@
         "temporal_assessment": "activity-linked"
       },
       {
-        "id": "malware--peachpit",
-        "name": "PEACHPIT",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--d43ba09a644ef6fb264ae7eb",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 uses or has used PEACHPIT.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
-      },
-      {
         "id": "malware--daily-f30dd669ecd1c3776828",
         "name": "typo-crypto",
         "aliases": [],
@@ -1151,102 +1095,51 @@
           {
             "claim_id": "claim--9e4c2006632007085225f8bd",
             "category": "capability-malware",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "APT38 uses or has used typo-crypto.",
             "evidence_refs": [
               "source--daily-a7e2c22924a222a6eb0f"
             ],
-            "verification_rationale": "Evidence tier=repository.",
+            "verification_rationale": "Evidence tier=research.",
             "counterevidence": []
           }
         ],
         "activity_observations": [
           {
             "activity_id": "activity--daily-e7e43253a3ee354a7560",
-            "activity_name": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
+            "activity_name": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害",
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2025-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
             },
             "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
             },
             "evidence_refs": [
-              "source--daily-a7e2c22924a222a6eb0f"
+              "source--daily-a7e2c22924a222a6eb0f",
+              "source--mitre-attack-19-2"
             ]
           }
         ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "temporal_assessment": "activity-linked"
-      },
-      {
-        "id": "malware--volgmer",
-        "name": "VOLGMER",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--e7f9bd5acf82f3e70d1656e3",
-            "category": "capability-malware",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 uses or has used VOLGMER.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation.",
-            "counterevidence": []
-          }
-        ],
-        "activity_observations": [],
-        "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
       }
     ],
     "tool_usage": [
@@ -1366,160 +1259,6 @@
     ],
     "targets": [
       {
-        "id": "target--targeting-audit--country--e16c0146f1d76625c693",
-        "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてインドが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--bd23b6d28eefa290a860b583",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country インド.",
-            "evidence_refs": [
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--9915330b40f296b91f38",
-        "name": "オーストラリア",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてオーストラリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--67c3baae00e93224da021e78",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country オーストラリア.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--a8fb2a1bae084e770ec0",
-        "name": "カナダ",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてカナダが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--07477f510ed22df256c6ec62",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country カナダ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--0ed45a786d37953008e7",
-        "name": "グアテマラ",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてグアテマラが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--636d9fb892b809cf2161c989",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country グアテマラ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
         "id": "target--targeting-audit--country--e58bd55e7497bcf2d501",
         "name": "タイ",
         "description": "活動「BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化」の記述で標的・被害国として明示されている。",
@@ -1538,10 +1277,9 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-bc8cdd6b896b84863be3",
-          "source--daily-f4d8b20e8b872b83b400",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-f4d8b20e8b872b83b400"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--c75be9433915f61a90484b83",
@@ -1551,441 +1289,16 @@
             "statement": "APT38 targets country タイ.",
             "evidence_refs": [
               "source--daily-bc8cdd6b896b84863be3",
-              "source--daily-f4d8b20e8b872b83b400",
-              "source--target-audit-misp-threat-actor"
+              "source--daily-f4d8b20e8b872b83b400"
             ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
         "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--5f5c345afc34085945ac",
-        "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてドイツが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--1080aa09d04452bc06620cb0",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country ドイツ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--476cdd9e55a0776458bd",
-        "name": "バングラデシュ",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてバングラデシュが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--d9645167b17024c87691a0b2",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country バングラデシュ.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--fd55d9a3f857a24ba9c7",
-        "name": "フランス",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてフランスが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--74598eb089eccd6b07e81938",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country フランス.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--515fdd27c6eb7b3e7147",
-        "name": "ブラジル",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてブラジルが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--bbfe70e1530770bbda7e1c40",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country ブラジル.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--d67a0424135ebd397abe",
-        "name": "中国",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国として中国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--2d798b780cb87f93c61cc011",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 中国.",
-            "evidence_refs": [
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--92a3b7d7ed33fcdf2b60",
-        "name": "日本",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国として日本が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--d22272f3d86053fce879c3f8",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 日本.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--9d7e9cdf1092effc7654",
-        "name": "米国",
-        "description": "レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--a00f9ad8a86e74276310f6dc",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 米国.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--ca05981e67022ac116df",
-        "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国として英国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--8bead70a172ba66da6cbd644",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 英国.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--685ca7eee821064f38df",
-        "name": "韓国",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国として韓国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--7ac60508901c9ca83aa28d9b",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 韓国.",
-            "evidence_refs": [
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--country--5d5d2e8271749c2c9491",
-        "name": "香港",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国として香港が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--dbe96b6a4ff285da6a601053",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets country 香港.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--0e90481b2212dbd40fd0",
-        "name": "中南米",
-        "description": "グアテマラ、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--b5064b94a3c608845a7215ef",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets region 中南米.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--daily-961f32783a2815c12691"
+        ]
       },
       {
         "id": "target--targeting-audit--region--908785ff9e505547ca40",
@@ -2019,168 +1332,6 @@
               "source--mitre-attack-19-2"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--4c96228f1906c1311d1d",
-        "name": "北米",
-        "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--8d1b1fe92447f76db37e2fc1",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets region 北米.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--826f96ab5182e487185b",
-        "name": "南アジア",
-        "description": "インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--6884d3905ea1cd6eeb5f5ebd",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets region 南アジア.",
-            "evidence_refs": [
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--0b9f4bcdb3ea4fc34d16",
-        "name": "東アジア",
-        "description": "レビュー済みアクターマッピングの標的欄に記録された東アジアを構造化した。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-misp-360net",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--cae054e7f57e361cb9b66d58",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets region 東アジア.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook",
-              "source--target-audit-misp-360net",
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--a9cbc6654f1cb07c03c3",
-        "name": "欧州",
-        "description": "ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--7d6c00d7a72ea3bf6a824723",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets region 欧州.",
-            "evidence_refs": [
-              "source--target-audit-misp-threat-actor"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -2227,46 +1378,6 @@
         "category": "sector",
         "activity_refs": [
           "activity--daily-961f32783a2815c12691"
-        ]
-      },
-      {
-        "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
-        "name": "製造・産業",
-        "description": "活動「Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a7e2c22924a222a6eb0f"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--04fd04a507951ad26fb59cf4",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets sector 製造・産業.",
-            "evidence_refs": [
-              "source--daily-a7e2c22924a222a6eb0f"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": [
-          "activity--daily-e7e43253a3ee354a7560"
         ]
       },
       {
@@ -2359,48 +1470,56 @@
         "activity_refs": [
           "activity--daily-961f32783a2815c12691"
         ]
-      },
-      {
-        "id": "target--sector--defense",
-        "name": "Defense",
-        "description": "Targeting text indicates the Defense sector.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity.",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--0a5f6485ce9163134271ef82",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT38 targets sector Defense.",
-            "evidence_refs": [
-              "source--actor-mapping-workbook"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": []
       }
     ]
   },
   "external_research_leads": {
+    "aliases": [
+      {
+        "name": "COPERNICIUM (Microsoft)",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "name": "ElectricFish",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "name": "Genie Spider",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "name": "TA444 (Proofpoint)",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      }
+    ],
     "activities": [
       {
         "lead_id": "activity-lead--etda--87ab83e463b1f8a35a2e",
@@ -3331,6 +2450,56 @@
     ],
     "malware": [
       {
+        "id": "malware--peachpit",
+        "name": "PEACHPIT",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "id": "malware--volgmer",
+        "name": "VOLGMER",
+        "aliases": [],
+        "types": [],
+        "description": "The actor-mapping workbook lists this software or tool.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
         "value": "FASTCash",
         "dataset_entry": "BeagleBoyz",
         "source_urls": [
@@ -3682,6 +2851,12 @@
       }
     ],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -5493,6 +4668,29 @@
       ],
       "sectors": [
         {
+          "id": "target--sector--defense",
+          "description": "Targeting text indicates the Defense sector.",
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "analyst_notes": "Automatically structured from target text; review scope and granularity. Migrated from canonical because only aggregation/workbook evidence exists.",
+          "value": "Defense",
+          "verification_status": "unresolved"
+        },
+        {
           "value": "Financial",
           "dataset_entry": "BeagleBoyz",
           "source_urls": [
@@ -5538,10 +4736,158 @@
         {
           "value": "Government",
           "dataset_entry": "APT38",
-          "source_urls": [],
+          "source_urls": [
+            "https://threatpost.com/operation-blockbuster-coalition-ties-destructive-attacks-to-lazarus-group/116422/",
+            "https://www.us-cert.gov/ncas/alerts/TA17-164A",
+            "https://www.us-cert.gov/ncas/alerts/TA17-318A",
+            "https://www.us-cert.gov/ncas/alerts/TA17-318B",
+            "https://securelist.com/operation-applejeus/87553/",
+            "https://securelist.com/lazarus-under-the-hood/77908/",
+            "https://www.us-cert.gov/HIDDEN-COBRA-North-Korean-Malicious-Cyber-Activity",
+            "https://www.mcafee.com/enterprise/en-us/assets/white-papers/wp-dissecting-operation-troy.pdf",
+            "https://www.bleepingcomputer.com/news/security/north-korean-hackers-are-up-to-no-good-again/",
+            "https://www.cfr.org/interactive/cyber-operations/lazarus-group",
+            "https://www.cfr.org/interactive/cyber-operations/operation-ghostsecret",
+            "https://www.cfr.org/interactive/cyber-operations/compromise-cryptocurrency-exchanges-south-korea",
+            "https://www.bleepingcomputer.com/news/security/lazarus-group-deploys-its-first-mac-malware-in-cryptocurrency-exchange-hack/",
+            "https://content.fireeye.com/apt/rpt-apt38",
+            "https://blog.malwarebytes.com/threat-analysis/2019/03/the-advanced-persistent-threat-files-lazarus-group/",
+            "https://www.theguardian.com/world/2009/jul/08/south-korea-cyber-attack",
+            "https://web.archive.org/web/20131123012339/https://www.symantec.com/connect/blogs/trojankoredos-comes-unwelcomed-surprise",
+            "https://www.nytimes.com/2013/03/21/world/asia/south-korea-computer-network-crashes.html",
+            "https://web.archive.org/web/20130607233212/https://www.symantec.com/connect/blogs/south-korean-financial-companies-targeted-castov",
+            "https://web.archive.org/web/20130701021735/https://www.symantec.com/connect/blogs/four-years-darkseoul-cyberattacks-against-south-korea-continue-anniversary-korean-war",
+            "https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/the-hack-of-sony-pictures-what-you-need-to-know",
+            "https://blog.trendmicro.com/trendlabs-security-intelligence/new-killdisk-variant-hits-financial-organizations-in-latin-america/",
+            "https://www.welivesecurity.com/2018/04/03/lazarus-killdisk-central-american-casino/",
+            "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/hidden-cobra-targets-turkish-financial-sector-new-bankshot-implant/",
+            "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/analyzing-operation-ghostsecret-attack-seeks-to-steal-data-worldwide/",
+            "https://www.us-cert.gov/ncas/analysis-reports/AR19-129A",
+            "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/operation-sharpshooter-targets-global-defense-critical-infrastructure/",
+            "https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/",
+            "https://www.theregister.co.uk/2019/04/10/lazarus_group_malware/",
+            "https://www.operationblockbuster.com/wp-content/uploads/2016/02/Operation-Blockbuster-Report.pdf",
+            "https://www.justice.gov/opa/pr/north-korean-regime-backed-programmer-charged-conspiracy-conduct-multiple-cyber-attacks-and",
+            "https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/a-look-into-the-lazarus-groups-operations",
+            "https://www.kaspersky.com/about/press-releases/2017_chasing-lazarus-a-hunt-for-the-infamous-hackers-to-prevent-large-bank-robberies",
+            "https://medium.com/threat-intel/lazarus-attacks-wannacry-5fdeddee476c",
+            "https://attack.mitre.org/groups/G0032/",
+            "https://threatpost.com/lazarus-apt-spinoff-linked-to-banking-hacks/124746/",
+            "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=5b9850b9-0fdd-48a9-b595-9234207ae7df&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments",
+            "https://www.bankinfosecurity.com/vietnamese-bank-blocks-1-million-online-heist-a-9105",
+            "https://www.reuters.com/article/us-cyber-heist-swift-specialreport-idUSKCN0YB0DD",
+            "https://web.archive.org/web/20160527050022/https://www.symantec.com/connect/blogs/swift-attackers-malware-linked-more-financial-attacks",
+            "https://symantec-blogs.broadcom.com/blogs/threat-intelligence/fastcash-lazarus-atm-malware",
+            "https://blog.trendmicro.com/trendlabs-security-intelligence/what-we-can-learn-from-the-bangladesh-central-bank-cyber-heist/",
+            "https://www.symantec.com/connect/blogs/attackers-target-dozens-global-banks-new-malware",
+            "https://baesystemsai.blogspot.com/2017/10/taiwan-heist-lazarus-tools.html",
+            "https://www.bloomberg.com/news/articles/2018-05-29/mexico-foiled-a-110-million-bank-heist-then-kept-it-a-secret",
+            "https://threatpost.com/banco-de-chile-wiper-attack-just-a-cover-for-10m-swift-heist/132796/",
+            "https://www.darkreading.com/attacks-breaches/north-korean-hacking-group-steals-$135-million-from-indian-bank-/d/d-id/1332678",
+            "https://www.zdnet.com/article/north-korean-hackers-infiltrate-chiles-atm-network-after-skype-job-interview/",
+            "https://blogs.jpcert.or.jp/en/2020/08/Lazarus-malware.html",
+            "https://www.secureworks.com/research/threat-profiles/nickel-gladstone",
+            "https://blogs.jpcert.or.jp/en/2020/09/BLINDINGCAN.html",
+            "https://www.welivesecurity.com/2020/11/16/lazarus-supply-chain-attack-south-korea/",
+            "https://dragos.com/adversaries.html",
+            "https://dragos.com/media/2017-Review-Industrial-Control-System-Threats.pdf",
+            "https://www.cfr.org/interactive/cyber-operations/covellite",
+            "https://www.hvs-consulting.de/lazarus-report/",
+            "https://github.com/hvs-consulting/ioc_signatures/tree/main/Lazarus_APT37",
+            "https://blogs.jpcert.or.jp/en/2021/01/Lazarus_tools.html",
+            "https://blogs.jpcert.or.jp/en/2021/01/Lazarus_malware2.html",
+            "https://attack.mitre.org/groups/G0082",
+            "https://attack.mitre.org/groups/G0032",
+            "https://www.microsoft.com/en-us/security/blog/2022/12/06/dev-0139-launches-targeted-attacks-against-the-cryptocurrency-industry/",
+            "https://www.proofpoint.com/us/blog/threat-insight/ta444-apt-startup-aimed-at-your-funds",
+            "https://www.proofpoint.com/us/blog/threat-insight/above-fold-and-your-inbox-tracing-state-aligned-activity-targeting-journalists",
+            "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+            "https://www.securonix.com/blog/securonix-threat-labs-monthly-intelligence-insights-june-2023/",
+            "https://us-cert.cisa.gov/ncas/alerts/aa21-048a",
+            "https://www.microsoft.com/en-us/security/blog/2024/08/30/north-korean-threat-actor-citrine-sleet-exploiting-chromium-zero-day/"
+          ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Government",
+              "dataset_entry": "Lazarus Group",
+              "source_urls": [
+                "https://threatpost.com/operation-blockbuster-coalition-ties-destructive-attacks-to-lazarus-group/116422/",
+                "https://www.us-cert.gov/ncas/alerts/TA17-164A",
+                "https://www.us-cert.gov/ncas/alerts/TA17-318A",
+                "https://www.us-cert.gov/ncas/alerts/TA17-318B",
+                "https://securelist.com/operation-applejeus/87553/",
+                "https://securelist.com/lazarus-under-the-hood/77908/",
+                "https://www.us-cert.gov/HIDDEN-COBRA-North-Korean-Malicious-Cyber-Activity",
+                "https://www.mcafee.com/enterprise/en-us/assets/white-papers/wp-dissecting-operation-troy.pdf",
+                "https://www.bleepingcomputer.com/news/security/north-korean-hackers-are-up-to-no-good-again/",
+                "https://www.cfr.org/interactive/cyber-operations/lazarus-group",
+                "https://www.cfr.org/interactive/cyber-operations/operation-ghostsecret",
+                "https://www.cfr.org/interactive/cyber-operations/compromise-cryptocurrency-exchanges-south-korea",
+                "https://www.bleepingcomputer.com/news/security/lazarus-group-deploys-its-first-mac-malware-in-cryptocurrency-exchange-hack/",
+                "https://content.fireeye.com/apt/rpt-apt38",
+                "https://blog.malwarebytes.com/threat-analysis/2019/03/the-advanced-persistent-threat-files-lazarus-group/",
+                "https://www.theguardian.com/world/2009/jul/08/south-korea-cyber-attack",
+                "https://web.archive.org/web/20131123012339/https://www.symantec.com/connect/blogs/trojankoredos-comes-unwelcomed-surprise",
+                "https://www.nytimes.com/2013/03/21/world/asia/south-korea-computer-network-crashes.html",
+                "https://web.archive.org/web/20130607233212/https://www.symantec.com/connect/blogs/south-korean-financial-companies-targeted-castov",
+                "https://web.archive.org/web/20130701021735/https://www.symantec.com/connect/blogs/four-years-darkseoul-cyberattacks-against-south-korea-continue-anniversary-korean-war",
+                "https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/the-hack-of-sony-pictures-what-you-need-to-know",
+                "https://blog.trendmicro.com/trendlabs-security-intelligence/new-killdisk-variant-hits-financial-organizations-in-latin-america/",
+                "https://www.welivesecurity.com/2018/04/03/lazarus-killdisk-central-american-casino/",
+                "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/hidden-cobra-targets-turkish-financial-sector-new-bankshot-implant/",
+                "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/analyzing-operation-ghostsecret-attack-seeks-to-steal-data-worldwide/",
+                "https://www.us-cert.gov/ncas/analysis-reports/AR19-129A",
+                "https://securingtomorrow.mcafee.com/other-blogs/mcafee-labs/operation-sharpshooter-targets-global-defense-critical-infrastructure/",
+                "https://securelist.com/cryptocurrency-businesses-still-being-targeted-by-lazarus/90019/",
+                "https://www.theregister.co.uk/2019/04/10/lazarus_group_malware/",
+                "https://www.operationblockbuster.com/wp-content/uploads/2016/02/Operation-Blockbuster-Report.pdf",
+                "https://www.justice.gov/opa/pr/north-korean-regime-backed-programmer-charged-conspiracy-conduct-multiple-cyber-attacks-and",
+                "https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/a-look-into-the-lazarus-groups-operations",
+                "https://www.kaspersky.com/about/press-releases/2017_chasing-lazarus-a-hunt-for-the-infamous-hackers-to-prevent-large-bank-robberies",
+                "https://medium.com/threat-intel/lazarus-attacks-wannacry-5fdeddee476c",
+                "https://attack.mitre.org/groups/G0032/",
+                "https://threatpost.com/lazarus-apt-spinoff-linked-to-banking-hacks/124746/",
+                "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=5b9850b9-0fdd-48a9-b595-9234207ae7df&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments",
+                "https://www.bankinfosecurity.com/vietnamese-bank-blocks-1-million-online-heist-a-9105",
+                "https://www.reuters.com/article/us-cyber-heist-swift-specialreport-idUSKCN0YB0DD",
+                "https://web.archive.org/web/20160527050022/https://www.symantec.com/connect/blogs/swift-attackers-malware-linked-more-financial-attacks",
+                "https://symantec-blogs.broadcom.com/blogs/threat-intelligence/fastcash-lazarus-atm-malware",
+                "https://blog.trendmicro.com/trendlabs-security-intelligence/what-we-can-learn-from-the-bangladesh-central-bank-cyber-heist/",
+                "https://www.symantec.com/connect/blogs/attackers-target-dozens-global-banks-new-malware",
+                "https://baesystemsai.blogspot.com/2017/10/taiwan-heist-lazarus-tools.html",
+                "https://www.bloomberg.com/news/articles/2018-05-29/mexico-foiled-a-110-million-bank-heist-then-kept-it-a-secret",
+                "https://threatpost.com/banco-de-chile-wiper-attack-just-a-cover-for-10m-swift-heist/132796/",
+                "https://www.darkreading.com/attacks-breaches/north-korean-hacking-group-steals-$135-million-from-indian-bank-/d/d-id/1332678",
+                "https://www.zdnet.com/article/north-korean-hackers-infiltrate-chiles-atm-network-after-skype-job-interview/",
+                "https://blogs.jpcert.or.jp/en/2020/08/Lazarus-malware.html",
+                "https://www.secureworks.com/research/threat-profiles/nickel-gladstone",
+                "https://blogs.jpcert.or.jp/en/2020/09/BLINDINGCAN.html",
+                "https://www.welivesecurity.com/2020/11/16/lazarus-supply-chain-attack-south-korea/",
+                "https://dragos.com/adversaries.html",
+                "https://dragos.com/media/2017-Review-Industrial-Control-System-Threats.pdf",
+                "https://www.cfr.org/interactive/cyber-operations/covellite",
+                "https://www.hvs-consulting.de/lazarus-report/",
+                "https://github.com/hvs-consulting/ioc_signatures/tree/main/Lazarus_APT37",
+                "https://blogs.jpcert.or.jp/en/2021/01/Lazarus_tools.html",
+                "https://blogs.jpcert.or.jp/en/2021/01/Lazarus_malware2.html",
+                "https://attack.mitre.org/groups/G0082",
+                "https://attack.mitre.org/groups/G0032",
+                "https://www.microsoft.com/en-us/security/blog/2022/12/06/dev-0139-launches-targeted-attacks-against-the-cryptocurrency-industry/",
+                "https://www.proofpoint.com/us/blog/threat-insight/ta444-apt-startup-aimed-at-your-funds",
+                "https://www.proofpoint.com/us/blog/threat-insight/above-fold-and-your-inbox-tracing-state-aligned-activity-targeting-journalists",
+                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+                "https://www.securonix.com/blog/securonix-threat-labs-monthly-intelligence-insights-june-2023/",
+                "https://us-cert.cisa.gov/ncas/alerts/aa21-048a",
+                "https://www.microsoft.com/en-us/security/blog/2024/08/30/north-korean-threat-actor-citrine-sleet-exploiting-chromium-zero-day/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Hospitality Leisure",
@@ -5635,6 +4981,17 @@
           "match_basis": "canonical-name",
           "match_confidence": "high",
           "verification_status": "partially-supported"
+        }
+      ],
+      "roles": [],
+      "legacy_workbook_text": [
+        {
+          "value": "Korean Peninsula, US Aerospace, SWIFT-fraud operations in East Asia",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "verification_status": "unresolved",
+          "analyst_notes": "Legacy workbook targeting prose. Original actor scope and cited reports must be reviewed before canonical integration."
         }
       ]
     },
@@ -5831,11 +5188,12 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 78,
-    "partially-supported": 44
+    "supported": 80,
+    "partially-supported": 14
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -6844,7 +6202,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260725.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260725.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "ttp"
+      ]
     },
     "source--daily-9658f03bb1aa2aaa44fd": {
       "source_id": "source--daily-9658f03bb1aa2aaa44fd",
@@ -6862,25 +6228,44 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260622.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260622.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     "source--daily-a7e2c22924a222a6eb0f": {
       "source_id": "source--daily-a7e2c22924a222a6eb0f",
-      "path": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+      "path": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
       "title": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
-      "publisher": "aws.amazon.com",
+      "publisher": "AWS Security Blog",
       "published_at": {
-        "value": "2026-07-31T00:00:00Z",
+        "value": "2026-07-29T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "language": "unknown",
-      "source_type": "osint-report",
+      "language": "en",
+      "source_type": "vendor-threat-research",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
+      "reliability": "high",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "AWS attributes the package compromises with medium confidence to a DPRK-linked cluster tracked under several vendor names. APT38 mapping uses MITRE G0082 and remains scoped as overlapping.",
+      "url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ]
     },
     "source--daily-bc8cdd6b896b84863be3": {
       "source_id": "source--daily-bc8cdd6b896b84863be3",
@@ -6898,7 +6283,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260430.csv; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260430.csv; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--daily-f4d8b20e8b872b83b400": {
       "source_id": "source--daily-f4d8b20e8b872b83b400",
@@ -6916,7 +6310,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260430.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260430.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     "source--doj-dprk-conspiracy-2021": {
       "source_id": "source--doj-dprk-conspiracy-2021",
@@ -6936,7 +6339,12 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Treats activity researchers label Lazarus Group and APT38 as participants in one alleged conspiracy; this does not erase private-sector cluster distinctions."
+      "analyst_notes": "Treats activity researchers label Lazarus Group and APT38 as participants in one alleged conspiracy; this does not erase private-sector cluster distinctions.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
     },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -7094,6 +6502,112 @@
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
+    "source--treasury-dprk-groups-2019": {
+      "source_id": "source--treasury-dprk-groups-2019",
+      "path": "https://home.treasury.gov/news/press-releases/sm774",
+      "url": "https://home.treasury.gov/news/press-releases/sm774",
+      "title": "Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups",
+      "publisher": "U.S. Department of the Treasury",
+      "published_at": {
+        "value": "2019-09-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-07-25T00:00:00Z",
+      "language": "en",
+      "source_type": "government-designation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Calls Bluenoroff and Andariel sub-groups of Lazarus and attributes all three to the RGB.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
+    },
+    "source--mandiant-apt38-temp-hermit-boundary-2018": {
+      "source_id": "source--mandiant-apt38-temp-hermit-boundary-2018",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/",
+      "title": "APT38: Details on New North Korean Regime-Backed Threat Group",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2018-10-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity-boundary",
+        "relationship"
+      ],
+      "analyst_notes": "Mandiant describes APT38 activity as disparate from TEMP.Hermit despite shared resources. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
+    },
+    "source--osint-misp-mitre-enterprise-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
     "source--target-audit-misp-360net": {
       "source_id": "source--target-audit-misp-360net",
       "path": "actor_profile/reference/osint/misp-360net.json",
@@ -7143,76 +6657,6 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    "source--treasury-dprk-groups-2019": {
-      "source_id": "source--treasury-dprk-groups-2019",
-      "path": "https://home.treasury.gov/news/press-releases/sm774",
-      "url": "https://home.treasury.gov/news/press-releases/sm774",
-      "title": "Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups",
-      "publisher": "U.S. Department of the Treasury",
-      "published_at": {
-        "value": "2019-09-13T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "document"
-      },
-      "accessed_at": "2026-07-25T00:00:00Z",
-      "language": "en",
-      "source_type": "government-designation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Calls Bluenoroff and Andariel sub-groups of Lazarus and attributes all three to the RGB."
-    },
-    "source--mandiant-apt38-temp-hermit-boundary-2018": {
-      "source_id": "source--mandiant-apt38-temp-hermit-boundary-2018",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/",
-      "title": "APT38: Details on New North Korean Regime-Backed Threat Group",
-      "publisher": "Mandiant",
-      "published_at": {
-        "value": "2018-10-03T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "vendor-threat-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "identity-boundary",
-        "relationship"
-      ],
-      "analyst_notes": "Mandiant describes APT38 activity as disparate from TEMP.Hermit despite shared resources."
-    },
-    "source--osint-misp-mitre-enterprise-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -7270,35 +6714,66 @@
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
+    "source--huntress-bluenoroff-macos-2025": {
+      "source_id": "source--huntress-bluenoroff-macos-2025",
+      "path": "https://www.huntress.com/blog/inside-bluenoroff-web3-intrusion-analysis",
+      "url": "https://www.huntress.com/blog/inside-bluenoroff-web3-intrusion-analysis",
+      "title": "Inside the BlueNoroff Web3 macOS Intrusion Analysis",
+      "publisher": "Huntress",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-06-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
       },
-      "accessed_at": "2026-09-20T13:47:46Z",
+      "accessed_at": "2026-09-21T00:00:00Z",
       "language": "en",
-      "source_type": "structured-osint-aggregation",
+      "source_type": "vendor-threat-research",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
       "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
+        "identity",
+        "alias",
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc",
+        "victim-case"
       ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "analyst_notes": "Huntress attributes the June 2025 intrusion to TA444/BlueNoroff with high confidence and enumerates the recovered macOS implants."
+    },
+    "source--proofpoint-ta444-2023": {
+      "source_id": "source--proofpoint-ta444-2023",
+      "path": "https://www.proofpoint.com/uk/blog/threat-insight/ta444-apt-startup-aimed-at-your-funds",
+      "url": "https://www.proofpoint.com/uk/blog/threat-insight/ta444-apt-startup-aimed-at-your-funds",
+      "title": "TA444: The APT Startup Aimed at Acquisition (of Your Funds)",
+      "publisher": "Proofpoint Threat Research",
+      "published_at": {
+        "value": "2023-01-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "attribution",
+        "relationship",
+        "capability",
+        "targeting"
+      ],
+      "analyst_notes": "Proofpoint defines TA444 as its own cluster and explicitly says APT38 heavily overlaps with TA444; this supports overlap, not exact identity."
     }
   },
   "research_gaps": [

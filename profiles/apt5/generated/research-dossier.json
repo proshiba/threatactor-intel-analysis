@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T13:51:16Z",
+  "generated_at": "2026-09-21T04:38:32Z",
   "actor_ref": "actor--apt5",
   "actor_name": "APT5",
-  "profile_updated_at": "2026-09-20T13:48:11Z",
+  "profile_updated_at": "2026-09-21T04:35:02Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -13,7 +13,7 @@
       "tools": "canonical-present",
       "targets": "canonical-present",
       "motivations": "canonical-present",
-      "attribution": "unknown"
+      "attribution": "lead-only"
     },
     "canonical_counts": {
       "activities": 1,
@@ -22,17 +22,20 @@
       "malware": 8,
       "activity_linked_malware": 0,
       "tools": 5,
-      "targets": 6,
+      "targets": 5,
       "motivations": 1
     },
     "external_lead_counts": {
+      "aliases": 2,
       "activities": 2,
       "relationships": 0,
       "malware": 9,
       "tools": 5,
       "untyped_software": 0,
-      "targets": 10,
-      "motivations": 2
+      "targets": 11,
+      "motivations": 2,
+      "other_capabilities": 0,
+      "assessments": 0
     }
   },
   "canonical": {
@@ -92,7 +95,11 @@
           "basis": "mitre-attack-campaign"
         },
         "description": "[SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant) ",
-        "target_refs": [],
+        "target_refs": [
+          "target--targeting-audit--region--5d5a069e358898f16a0d",
+          "target--targeting-audit--region--867de21bf7db0bc21026",
+          "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1"
+        ],
         "malware_refs": [],
         "infrastructure_refs": [],
         "confidence": "high",
@@ -112,7 +119,9 @@
           "ttp--mitre-campaign--7a27636068cfdd7f8de3",
           "ttp--mitre-campaign--f601a10c008df6514421"
         ],
-        "victim_refs": [],
+        "victim_refs": [
+          "victim--activity-rule--d6a21958cf344fc17684"
+        ],
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--apt5",
@@ -133,8 +142,14 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [],
-            "victim_refs": []
+            "target_refs": [
+              "target--targeting-audit--region--5d5a069e358898f16a0d",
+              "target--targeting-audit--region--867de21bf7db0bc21026",
+              "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--d6a21958cf344fc17684"
+            ]
           },
           "meta_features": {
             "first_observed": {
@@ -165,7 +180,11 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [],
-              "target_region_refs": []
+              "target_region_refs": [
+                "target--targeting-audit--region--5d5a069e358898f16a0d",
+                "target--targeting-audit--region--867de21bf7db0bc21026",
+                "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1"
+              ]
             }
           },
           "confidence": "high",
@@ -189,8 +208,26 @@
           }
         ],
         "malware": [],
-        "targets": [],
-        "victims": [],
+        "targets": [
+          {
+            "id": "target--targeting-audit--region--5d5a069e358898f16a0d",
+            "name": "中東"
+          },
+          {
+            "id": "target--targeting-audit--region--867de21bf7db0bc21026",
+            "name": "欧州"
+          },
+          {
+            "id": "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1",
+            "name": "北米"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--d6a21958cf344fc17684",
+            "name": "anonymous"
+          }
+        ],
         "techniques": [
           {
             "id": "ttp--mitre-campaign--112fc404df45e8c65691",
@@ -991,7 +1028,9 @@
           }
         ],
         "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--spacehop-activity"
+        ]
       },
       {
         "id": "target--targeting-audit--region--f89d8fcb1e16a8e9e7e1",
@@ -1029,45 +1068,9 @@
           }
         ],
         "category": "region",
-        "activity_refs": []
-      },
-      {
-        "id": "target--targeting-audit--region--246e320c0b9e9aff8eea",
-        "name": "東南アジア",
-        "description": "構造化OSINTの被害地域フィールドでAPT5の標的範囲として東南アジアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--16a5c9ac3193bb6ec6ab93b5",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT5 targets region 東南アジア.",
-            "evidence_refs": [
-              "source--target-audit-etda-threat-group-cards"
-            ],
-            "verification_rationale": "Evidence tier=aggregation; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--spacehop-activity"
+        ]
       },
       {
         "id": "target--targeting-audit--region--867de21bf7db0bc21026",
@@ -1105,7 +1108,9 @@
           }
         ],
         "category": "region",
-        "activity_refs": []
+        "activity_refs": [
+          "activity--spacehop-activity"
+        ]
       },
       {
         "id": "target--mitre-group--sector--39efd12add87fd46e1ea",
@@ -1186,6 +1191,30 @@
     ]
   },
   "external_research_leads": {
+    "aliases": [
+      {
+        "name": "TABCTENG",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      },
+      {
+        "name": "temp.bottle",
+        "vendor": "catalog",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Alias scope must be reviewed before publication. Moved from canonical because only aggregation/workbook evidence exists.",
+        "verification_status": "unresolved"
+      }
+    ],
     "activities": [
       {
         "lead_id": "activity-lead--etda--a7660366c0f571726a43",
@@ -1713,6 +1742,12 @@
       }
     ],
     "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
     "targets": {
       "countries": [
         {
@@ -1738,7 +1773,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Defense",
+              "dataset_entry": "APT5",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "High-Tech",
@@ -1749,7 +1794,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "High Tech",
+              "dataset_entry": "APT5",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Industrial",
@@ -1767,11 +1822,43 @@
           "dataset_entry": "APT 5, Keyhole Panda",
           "source_urls": [
             "https://www.fireeye.com/content/dam/fireeye-www/current-threats/pdfs/rpt-southeast-asia-threat-landscape.pdf",
-            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+5%2C+Keyhole+Panda&n=1"
+            "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+5%2C+Keyhole+Panda&n=1",
+            "https://www.fireeye.com/current-threats/apt-groups.html",
+            "https://www.secureworks.com/research/threat-profiles/bronze-fleetwood",
+            "https://www.mandiant.com/resources/insights/apt-groups",
+            "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWMFIi",
+            "http://internal-www.fireeye.com/blog/threat-research/2021/04/suspected-apt-actors-leverage-bypass-techniques-pulse-secure-zero-day.html",
+            "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Technology",
+              "dataset_entry": "APT5",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            },
+            {
+              "value": "Technology",
+              "dataset_entry": "APT5",
+              "source_urls": [
+                "https://www.fireeye.com/current-threats/apt-groups.html",
+                "https://www.fireeye.com/content/dam/fireeye-www/current-threats/pdfs/rpt-southeast-asia-threat-landscape.pdf",
+                "https://www.secureworks.com/research/threat-profiles/bronze-fleetwood",
+                "https://www.mandiant.com/resources/insights/apt-groups",
+                "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWMFIi",
+                "http://internal-www.fireeye.com/blog/threat-research/2021/04/suspected-apt-actors-leverage-bypass-techniques-pulse-secure-zero-day.html",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Telecommunications",
@@ -1782,7 +1869,17 @@
           ],
           "match_basis": "canonical-name",
           "match_confidence": "high",
-          "verification_status": "partially-supported"
+          "verification_status": "partially-supported",
+          "supporting_records": [
+            {
+              "value": "Telecommunications",
+              "dataset_entry": "APT5",
+              "source_urls": [],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "verification_status": "partially-supported"
+            }
+          ]
         },
         {
           "value": "Aerospace",
@@ -1831,6 +1928,17 @@
           "match_basis": "canonical-name",
           "match_confidence": "high",
           "verification_status": "partially-supported"
+        }
+      ],
+      "roles": [],
+      "legacy_workbook_text": [
+        {
+          "value": "Electronics & Communications",
+          "evidence_refs": [
+            "source--actor-mapping-workbook"
+          ],
+          "verification_status": "unresolved",
+          "analyst_notes": "Legacy workbook targeting prose. Original actor scope and cited reports must be reviewed before canonical integration."
         }
       ]
     },
@@ -1948,11 +2056,12 @@
         "match_confidence": "high",
         "verification_status": "partially-supported"
       }
-    ]
+    ],
+    "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 61,
-    "partially-supported": 4
+    "supported": 62,
+    "partially-supported": 1
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -2265,31 +2374,6 @@
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
     "source--gtig-unified-actor-naming-2026": {
       "source_id": "source--gtig-unified-actor-naming-2026",
       "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
@@ -2312,7 +2396,8 @@
         "identity",
         "alias"
       ],
-      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
     },
     "source--osint-gtig-threat-actor-naming": {
       "source_id": "source--osint-gtig-threat-actor-naming",
@@ -2365,6 +2450,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -2421,36 +2561,6 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   },
   "research_gaps": [

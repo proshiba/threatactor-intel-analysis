@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sandworm`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,10 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT44 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| APT44 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BlackEnergy (Group) | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | ELECTRUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| FROZENBARENTS | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| FROZENBARENTS | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | IRIDIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | IRON VIKING | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Quedagh | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
@@ -53,8 +53,8 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Sandworm Team](https://attack.mitre.org/groups/G0034) is a destructive threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) Main Center for Special Technologies (GTsST) military unit 74455.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) This group has been active since at least 2009.(Citation: iSIGHT Sandworm 2014)(Citation: CrowdStrike VOODOO BEAR)(Citation: USDOJ Sandworm Feb 2020)(Citation: NCSC Sandworm Feb 2020)<br><br>In October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, the 2018 operation against the Organisation for the Prohibition of Chemical Weapons, and attacks against the country of Georgia in 2018 and 2019.(Citation: US District Court Indictment GRU Unit 74455 October 2020)(Citation: UK NCSC Olympic Attacks October 2020) Some of these were conducted with the assistance of GRU Unit 26165, which is also referred to as [APT28](https://attack.mitre.org/groups/G0007).(Citation: US District Court Indictment GRU Oct 2018) |
-| Capability | AcidRain, Exaramel for Windows, Exaramel for Linux, Prestige, Bad Rabbit, GreyEnergy, Olympic Destroyer, P.A.S. Webshell, AcidPour, BlackEnergy, NotPetya, VPNFilter, Industroyer2, Kapeka, Cobalt Strike, Cyclops Blink, Neo-reGeorg, KillDisk, Industroyer, Net, Impacket, Empire, PoshC2, Mimikatz, Invoke-PSImage, SDelete, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -62,7 +62,7 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -158,7 +158,7 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2015 Ukraine Electric Power Attack | campaign | 2015-12-01T05:00:00.000Z | 2016-01-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--blackenergy, malware--killdisk | ttp--mitre-campaign--1281447a5f535b9114a2, ttp--mitre-campaign--17005dd0c8c16e5be680, ttp--mitre-campaign--1a2d718b4e649c614ece, ttp--mitre-campaign--47bb488b3e085b44b7c4, ttp--mitre-campaign--491c52dfaedde51676fb, ttp--mitre-campaign--5078ea3285a8191484f5, ttp--mitre-campaign--63f3f6a7b08e32a0f080, ttp--mitre-campaign--6e19619d66bbc4f9ec81, ttp--mitre-campaign--759c4ee1cfc52a0f1804, ttp--mitre-campaign--89cf7671428b735d8496, ttp--mitre-campaign--c33668a3b92e961e3620, ttp--mitre-campaign--c655814b66082e732d95, ttp--mitre-campaign--d7ab6c3434222a0f0b76, ttp--mitre-campaign--e3314084ee124d5a3de9, ttp--mitre-campaign--e630923ca5d0e5ca8d6c, ttp--mitre-campaign--e8bbf9ed3ea3f483007d, ttp--mitre-campaign--ee9d72e8c5b3b4f13173 | victim--activity-rule--15a349b4a2a50b80b096 | [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [BlackEnergy](https://attack.mitre.org/software/S0089) (specifically BlackEnergy3) and [KillDisk](https://attack.mitre.org/software/S0607) to target and disrupt transmission and distribution substations within the Ukrainian power grid. This campaign was the first major public attack conducted against the Ukrainian power grid by Sandworm Team. | 高 | `source--mitre-attack-19-2` |
 | 2016 Ukraine Electric Power Attack | campaign | 2016-12-01T05:00:00.000Z | 2016-12-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--industroyer | ttp--mitre-campaign--0808a5f721fc9739018c, ttp--mitre-campaign--09dd82029839ec2f0d84, ttp--mitre-campaign--2711c3ecb6acab51d70e, ttp--mitre-campaign--3466816706460fbb5ea1, ttp--mitre-campaign--38c0c6cb61490fe20456, ttp--mitre-campaign--46a2fea2d1ff4a0ed2ea, ttp--mitre-campaign--48ec862ddf8eeebcc74a, ttp--mitre-campaign--49517c3e3a7b53149446, ttp--mitre-campaign--50215a75343dd8b45ebf, ttp--mitre-campaign--509999cb7652555f740e, ttp--mitre-campaign--6a12d879eada5172b76e, ttp--mitre-campaign--6b85bc17467bacba709d, ttp--mitre-campaign--938d55456b450c88d9a6, ttp--mitre-campaign--a092ff531690d12efcea, ttp--mitre-campaign--a140322aa6e851643b09, ttp--mitre-campaign--b20a3043800be03e5cd9, ttp--mitre-campaign--c799552b5a4d3f27ffd9, ttp--mitre-campaign--ccb8c4946d5b793ec891, ttp--mitre-campaign--d03adb437385260a3b95, ttp--mitre-campaign--d23829763b40a9ae78e9, ttp--mitre-campaign--d9c36a103343a3168f38 | victim--activity-rule--794363c7c1607abb35e1 | [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [Industroyer](https://attack.mitre.org/software/S0604) malware to target and disrupt distribution substations within the Ukrainian power grid. This campaign was the second major public attack conducted against Ukraine by [Sandworm Team](https://attack.mitre.org/groups/G0034).(Citation: ESET Industroyer)(Citation: Dragos Crashoverride 2018) | 高 | `source--mitre-attack-19-2` |
-| 2022 Ukraine Electric Power Attack | campaign | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | 2026-05-12 | target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--mitre--s0693 | ttp--mitre-campaign--19d57d58e081faa6399b, ttp--mitre-campaign--1a38d311e6b4273f7086, ttp--mitre-campaign--20af3052278ea089c06e, ttp--mitre-campaign--2a7ead277c26952c4ada, ttp--mitre-campaign--4a9ee1707a9708cf2df9, ttp--mitre-campaign--4cdbfe58903ecf7c5c2d, ttp--mitre-campaign--b4b52fcb30a487fbe586, ttp--mitre-campaign--c37e189c56fe37be6940, ttp--mitre-campaign--d32528608476ec6872de, ttp--mitre-campaign--f47ec8f564f8c0884b16 | victim--activity-rule--308953c477a22260027d | The [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign that used a combination of GOGETTER, Neo-REGEORG, [CaddyWiper](https://attack.mitre.org/software/S0693), and living of the land (LotL) techniques to gain access to a Ukrainian electric utility to send unauthorized commands from their SCADA system.(Citation: Mandiant-Sandworm-Ukraine-2022)(Citation: Dragos-Sandworm-Ukraine-2022)  | 高 | `source--mitre-attack-19-2` |
+| 2022 Ukraine Electric Power Attack | campaign | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | 2026-05-12 | target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--mitre--s0693, malware--neo-regeorg | ttp--mitre-campaign--19d57d58e081faa6399b, ttp--mitre-campaign--1a38d311e6b4273f7086, ttp--mitre-campaign--20af3052278ea089c06e, ttp--mitre-campaign--2a7ead277c26952c4ada, ttp--mitre-campaign--4a9ee1707a9708cf2df9, ttp--mitre-campaign--4cdbfe58903ecf7c5c2d, ttp--mitre-campaign--b4b52fcb30a487fbe586, ttp--mitre-campaign--c37e189c56fe37be6940, ttp--mitre-campaign--d32528608476ec6872de, ttp--mitre-campaign--f47ec8f564f8c0884b16 | victim--activity-rule--308953c477a22260027d | The [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign that used a combination of GOGETTER, Neo-REGEORG, [CaddyWiper](https://attack.mitre.org/software/S0693), and living of the land (LotL) techniques to gain access to a Ukrainian electric utility to send unauthorized commands from their SCADA system.(Citation: Mandiant-Sandworm-Ukraine-2022)(Citation: Dragos-Sandworm-Ukraine-2022)  | 高 | `source--mitre-attack-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -166,7 +166,7 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 |---|---|---|---|---|---|---|---|
 | 2015 Ukraine Electric Power Attack | Sandworm Team | BlackEnergy, KillDisk | T1070.004 File Deletion, T1133 External Remote Services, T1218.011 Rundll32, T1040 Network Sniffing, T1112 Modify Registry, T1056.001 Keylogging, T1204.002 Malicious File, T1136.002 Domain Account, T1078 Valid Accounts, T1685 Disable or Modify Tools, T1055 Process Injection, T1071.001 Web Protocols, T1570 Lateral Tool Transfer, T1566.001 Spearphishing Attachment, T1105 Ingress Tool Transfer, T1059.005 Visual Basic, T1018 Remote System Discovery | 情報なし | エネルギー, ウクライナ | 被害事例: 2015 Ukraine Electric Power Attack | 高 |
 | 2016 Ukraine Electric Power Attack | Sandworm Team | Industroyer | T1554 Compromise Host Software Binary, T1036.010 Masquerade Account Name, T1027 Obfuscated Files or Information, T1136.002 Domain Account, T1543.003 Windows Service, T1098 Account Manipulation, T1685.001 Disable or Modify Windows Event Log, T1110 Brute Force, T1059.005 Visual Basic, T1021.002 SMB/Windows Admin Shares, T1027.002 Software Packing, T1505.001 SQL Stored Procedures, T1136 Create Account, T1003.001 LSASS Memory, T1036.008 Masquerade File Type, T1059.001 PowerShell, T1036.005 Match Legitimate Resource Name or Location, T1018 Remote System Discovery, T1047 Windows Management Instrumentation, T1570 Lateral Tool Transfer, T1059.003 Windows Command Shell | 情報なし | エネルギー, ウクライナ | 被害事例: 2016 Ukraine Electric Power Attack | 高 |
-| 2022 Ukraine Electric Power Attack | Sandworm Team | CaddyWiper | T1484.001 Group Policy Modification, T1485 Data Destruction, T1572 Protocol Tunneling, T1570 Lateral Tool Transfer, T1053.005 Scheduled Task, T1095 Non-Application Layer Protocol, T1036.004 Masquerade Task or Service, T1543.002 Systemd Service, T1059.001 PowerShell, T1505.003 Web Shell | 情報なし | ウクライナ | 被害事例: 2022 Ukraine Electric Power Attack | 高 |
+| 2022 Ukraine Electric Power Attack | Sandworm Team | CaddyWiper, Neo-reGeorg | T1484.001 Group Policy Modification, T1485 Data Destruction, T1572 Protocol Tunneling, T1570 Lateral Tool Transfer, T1053.005 Scheduled Task, T1095 Non-Application Layer Protocol, T1036.004 Masquerade Task or Service, T1543.002 Systemd Service, T1059.001 PowerShell, T1505.003 Web Shell | 情報なし | ウクライナ | 被害事例: 2022 Ukraine Electric Power Attack | 高 |
 
 
 
@@ -174,86 +174,21 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルゼンチン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてアルゼンチンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アンゴラ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてアンゴラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イラン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | In October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack | 2015-12-01T05:00:00.000Z | 2022-10-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オマーン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ガーナ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてガーナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | コロンビア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてコロンビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてシリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | セルビア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | デンマーク | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてデンマークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ナイジェリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてナイジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ハンガリー | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パラグアイ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてパラグアイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | ack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, the 2018 operation against the Organisation for the Prohibition of Chemical Weapons, and attacks against the country of Georg | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | ブルガリア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ペルー | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてペルーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポルトガル | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてポルトガルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ポーランド | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モルドバ | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてモルドバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ラトビア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | リトアニア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ルクセンブルク | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてルクセンブルクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでSandworm Teamの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | アンゴラ、エジプト、ガーナ、ナイジェリアで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | コーカサス | アゼルバイジャン、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中南米 | アルゼンチン、コロンビア、パラグアイ、ペルーで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | イスラエル、イラン、オマーン、シリア、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ウクライナ | In October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack | 2015-12-01T05:00:00.000Z | 2022-10-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| countries | フランス | ack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, the 2018 operation against the Organisation for the Prohibition of Chemical Weapons, and attacks against the country of Georg | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | regions | 全世界 | MITRE ATT&CKのGroup概要でSandworm Teamの標的範囲として全世界が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南欧 | イタリア、スペイン、セルビア、ポルトガルで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | アルゼンチン、コロンビア、パラグアイ、ペルーで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | カンボジア、タイ、ベトナム、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、チェコ、ハンガリー、ブルガリア、ベラルーシ、ポーランド、モルドバ、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | イタリア、ウクライナ、オランダ、オーストリア、スウェーデン、スペイン、セルビア、チェコ、デンマーク、トルコ、ドイツ、ノルウェー、ハンガリー、フランス、ブルガリア、ベラルーシ、ベルギー、ポルトガル、ポーランド、モルドバ、ラトビア、リトアニア、ルクセンブルク、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ウクライナ、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2` |
 | sectors | エネルギー | 活動「2015 Ukraine Electric Power Attack」の記述で標的として明示された産業。 | 2015-12-01T05:00:00.000Z | 2016-12-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | In October 2020, the US indicted six GRU Unit 74455 officers associated with [Sandworm Team](https://attack.mitre.org/groups/G0034) for the following cyber operations: the 2015 and 2016 attacks against Ukrainian electrical companies and government organizations, the 2017 worldwide [NotPetya](https://attack.mitre.org/software/S0368) attack, targeting of the 2017 French presidential campaign, the 2018 [Olympic Destroyer](https://attack.mitre.org/software/S0365) attack against the Winter Olympic Games, th | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: 2015 Ukraine Electric Power Attack | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--blackenergy, malware--killdisk | ttp--mitre-campaign--1281447a5f535b9114a2, ttp--mitre-campaign--17005dd0c8c16e5be680, ttp--mitre-campaign--1a2d718b4e649c614ece, ttp--mitre-campaign--47bb488b3e085b44b7c4, ttp--mitre-campaign--491c52dfaedde51676fb, ttp--mitre-campaign--5078ea3285a8191484f5, ttp--mitre-campaign--63f3f6a7b08e32a0f080, ttp--mitre-campaign--6e19619d66bbc4f9ec81, ttp--mitre-campaign--759c4ee1cfc52a0f1804, ttp--mitre-campaign--89cf7671428b735d8496, ttp--mitre-campaign--c33668a3b92e961e3620, ttp--mitre-campaign--c655814b66082e732d95, ttp--mitre-campaign--d7ab6c3434222a0f0b76, ttp--mitre-campaign--e3314084ee124d5a3de9, ttp--mitre-campaign--e630923ca5d0e5ca8d6c, ttp--mitre-campaign--e8bbf9ed3ea3f483007d, ttp--mitre-campaign--ee9d72e8c5b3b4f13173 |  |  | 2015-12-01T05:00:00.000Z | 2016-01-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
-| 被害事例: 2022 Ukraine Electric Power Attack | 非公開 | anonymous | unknown | reported | target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--mitre--s0693 | ttp--mitre-campaign--19d57d58e081faa6399b, ttp--mitre-campaign--1a38d311e6b4273f7086, ttp--mitre-campaign--20af3052278ea089c06e, ttp--mitre-campaign--2a7ead277c26952c4ada, ttp--mitre-campaign--4a9ee1707a9708cf2df9, ttp--mitre-campaign--4cdbfe58903ecf7c5c2d, ttp--mitre-campaign--b4b52fcb30a487fbe586, ttp--mitre-campaign--c37e189c56fe37be6940, ttp--mitre-campaign--d32528608476ec6872de, ttp--mitre-campaign--f47ec8f564f8c0884b16 | OT／ICS |  | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
+| 被害事例: 2022 Ukraine Electric Power Attack | 非公開 | anonymous | unknown | reported | target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--mitre--s0693, malware--neo-regeorg | ttp--mitre-campaign--19d57d58e081faa6399b, ttp--mitre-campaign--1a38d311e6b4273f7086, ttp--mitre-campaign--20af3052278ea089c06e, ttp--mitre-campaign--2a7ead277c26952c4ada, ttp--mitre-campaign--4a9ee1707a9708cf2df9, ttp--mitre-campaign--4cdbfe58903ecf7c5c2d, ttp--mitre-campaign--b4b52fcb30a487fbe586, ttp--mitre-campaign--c37e189c56fe37be6940, ttp--mitre-campaign--d32528608476ec6872de, ttp--mitre-campaign--f47ec8f564f8c0884b16 | OT／ICS |  | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 | 被害事例: 2016 Ukraine Electric Power Attack | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--country--6b8417df90fa6a76d0d9 | malware--industroyer | ttp--mitre-campaign--0808a5f721fc9739018c, ttp--mitre-campaign--09dd82029839ec2f0d84, ttp--mitre-campaign--2711c3ecb6acab51d70e, ttp--mitre-campaign--3466816706460fbb5ea1, ttp--mitre-campaign--38c0c6cb61490fe20456, ttp--mitre-campaign--46a2fea2d1ff4a0ed2ea, ttp--mitre-campaign--48ec862ddf8eeebcc74a, ttp--mitre-campaign--49517c3e3a7b53149446, ttp--mitre-campaign--50215a75343dd8b45ebf, ttp--mitre-campaign--509999cb7652555f740e, ttp--mitre-campaign--6a12d879eada5172b76e, ttp--mitre-campaign--6b85bc17467bacba709d, ttp--mitre-campaign--938d55456b450c88d9a6, ttp--mitre-campaign--a092ff531690d12efcea, ttp--mitre-campaign--a140322aa6e851643b09, ttp--mitre-campaign--b20a3043800be03e5cd9, ttp--mitre-campaign--c799552b5a4d3f27ffd9, ttp--mitre-campaign--ccb8c4946d5b793ec891, ttp--mitre-campaign--d03adb437385260a3b95, ttp--mitre-campaign--d23829763b40a9ae78e9, ttp--mitre-campaign--d9c36a103343a3168f38 |  |  | 2016-12-01T05:00:00.000Z | 2016-12-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -430,7 +365,7 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 - IOC観測: 587件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 165件
-- 非IOC artifact観測: 183件（`artifacts.csv`）
+- 非IOC artifact観測: 181件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -474,14 +409,14 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

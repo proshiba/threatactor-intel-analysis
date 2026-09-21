@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6240`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:01Z
+- 更新日時: 2026-09-21T04:38:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,7 +19,7 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Bling Libra | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1057` | Official MITRE ATT&CK associated-group name for G1057. |
-| ShinyHunters | Google Threat Intelligence Group / MITRE ATT&CK | overlapping | 高 | `source--gtig-adversarial-ai-2026`, `source--mitre-attack-19-2`, `source--mitre-attack-g1057` | GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057. |
+| ShinyHunters | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1057` | GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057. |
 | Storm-3127 | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
@@ -41,6 +41,9 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|
 | Scattered Spider | related-to | [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). | 中 | `source--mitre-attack-19-2` |
 | LAPSUS$ | related-to | [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). | 中 | `source--mitre-attack-19-2` |
+| UNC6040 | related-to | GTIG tracks the initial Salesforce vishing and data theft as UNC6040 and the subsequent ShinyHunters-branded extortion as UNC6240; a partnership is possible but not established as exact identity. | 高 | `source--gtig-unc6040-salesforce-vishing-2025` |
+| UNC6671 | taxonomy-overlaps-with | GTIG tracks UNC6661, UNC6671, and UNC6240 separately within recent ShinyHunters-branded SaaS theft reporting to preserve possible partnership and impersonation boundaries. | 高 | `source--gtig-shinyhunters-saas-clusters-2026` |
+| UNC6661 | related-to | GTIG attributes extortion following UNC6661 intrusions to UNC6240, based on negotiation-account and extortion-artifact overlaps. | 高 | `source--gtig-shinyhunters-saas-clusters-2026` |
 
 ## ダイヤモンドモデル
 
@@ -55,7 +58,7 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -133,7 +136,7 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|
 | sectors | 金融 | 活動「Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響」の記述で標的として明示された産業。 | 2025-05-29 | 2025-05-29 | 中 | `source--daily-8012423fa9a259605e9c` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -199,7 +202,7 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 - IOC観測: 22件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 5件
-- 非IOC artifact観測: 32件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -233,6 +236,8 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--gtig-unc6040-salesforce-vishing-2025 | The Cost of a Call: From Voice Phishing to Data Extortion | Google Threat Intelligence Group | 2025-06-04 | https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion | vendor-threat-research | TLP:CLEAR | 高 |
+| source--gtig-shinyhunters-saas-clusters-2026 | Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft | Mandiant / Google Threat Intelligence Group | 2026-01-30 | https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

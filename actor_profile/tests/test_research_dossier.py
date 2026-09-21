@@ -12,6 +12,8 @@ from build_actor_research_dossiers import (  # noqa: E402
     explicit_time,
     linked_period,
     malware_records,
+    merge_value_leads,
+    resolve_target_actor,
 )
 
 
@@ -25,6 +27,46 @@ def point(value: str | None) -> dict:
 
 
 class ResearchDossierTests(unittest.TestCase):
+    def test_duplicate_leads_preserve_curated_evidence_and_supporting_record(
+        self,
+    ) -> None:
+        curated = {
+            "name": "Example Malware",
+            "evidence_refs": ["source--workbook"],
+            "verification_status": "unresolved",
+        }
+        aggregation = {
+            "value": "Example Malware",
+            "source_urls": ["https://example.test/report"],
+            "verification_status": "partially-supported",
+        }
+
+        merged = merge_value_leads([curated], [aggregation])
+
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["evidence_refs"], ["source--workbook"])
+        self.assertEqual(
+            merged[0]["source_urls"], ["https://example.test/report"]
+        )
+        self.assertEqual(merged[0]["supporting_records"], [aggregation])
+
+    def test_relationship_target_resolves_profile_id_or_name(self) -> None:
+        actor = {"slug": "example", "name": "Example"}
+        by_name = {"example": actor}
+        by_id = {"actor--example": actor}
+        self.assertEqual(
+            resolve_target_actor("actor--example", by_name, by_id),
+            ("actor--example", "catalog-profile"),
+        )
+        self.assertEqual(
+            resolve_target_actor("Example", by_name, by_id),
+            ("actor--example", "catalog-profile"),
+        )
+        self.assertEqual(
+            resolve_target_actor("External Cluster", by_name, by_id),
+            (None, "external-name-only"),
+        )
+
     def test_aggregation_time_can_be_marked_inferred(self) -> None:
         result = explicit_time(
             "2024-03-01",

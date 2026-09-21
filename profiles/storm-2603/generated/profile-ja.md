@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-2603`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -107,16 +107,16 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | ransomware-extortion | 不明 | 不明 | 2025-08-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--c1764ef2f19cd9e2befc | Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。 | 中 | `source--daily-0e75e392e2685f601677` |
-| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | ransomware-extortion | 不明 | 不明 | 2025-07-24 |  |  | ttp--activity-rule--af1214636f4d588f7138 | victim--activity-rule--2fb3ba4fffbab5417544 | 中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告 | 中 | `source--daily-5c143f1d91377b49cfcc` |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | victim--activity-rule--b17097a14592b324966d | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
+| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | ransomware-extortion | 不明 | 不明 | 2025-07-24 | target--targeting-audit--region--69e0b1175c60b8a211cb, target--targeting-audit--region--6c0b59266dc90d2e8805 |  | ttp--activity-rule--af1214636f4d588f7138 | victim--activity-rule--2fb3ba4fffbab5417544 | 中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告 | 中 | `source--daily-5c143f1d91377b49cfcc` |
+| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--targeting-audit--region--69e0b1175c60b8a211cb, target--targeting-audit--region--6c0b59266dc90d2e8805 |  |  | victim--activity-rule--b17097a14592b324966d | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | Storm-2603 | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 中 |
-| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | Storm-2603 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | 中 |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | Storm-2603 | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
+| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | Storm-2603 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 中東, 欧州 | 被害事例: Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | 中 |
+| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | Storm-2603 | 情報なし | 情報なし | 情報なし | 米国, 中東, 欧州 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
 
 
 
@@ -129,7 +129,7 @@ Aliasなし
 | regions | 中東 | 活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-5c143f1d91377b49cfcc`, `source--daily-c9fa26bbe8d21f50b441` |
 | regions | 欧州 | 活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--daily-5c143f1d91377b49cfcc`, `source--daily-c9fa26bbe8d21f50b441` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -151,7 +151,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

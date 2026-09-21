@@ -4,7 +4,7 @@
   "name": "UAC-0099",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T13:48:13Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -47,7 +47,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -378,7 +378,10 @@
         "basis": "daily-news-file-date"
       },
       "description": "ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--598ee8d6d22873efc495"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
@@ -411,7 +414,10 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--598ee8d6d22873efc495"
+          ],
           "victim_refs": [
             "victim--activity-rule--f9da9dc6b868f567f3c8"
           ]
@@ -448,7 +454,9 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
             "target_region_refs": []
           }
         },
@@ -470,13 +478,13 @@
           "value": "2025-06-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period"
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "last_observed": {
           "value": "2025-09-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period"
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
@@ -490,6 +498,28 @@
     ],
     "regions": [],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--598ee8d6d22873efc495",
+        "name": "農業・食品",
+        "description": "活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2025-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-acae91555bc1bc0a4220"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
         "name": "運輸・航空・海運",
@@ -538,8 +568,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -697,7 +727,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260912.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260912.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-acae91555bc1bc0a4220",
@@ -715,7 +753,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251107.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251107.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-b6ba84745cdc81a329c5",
@@ -733,7 +780,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cert.gov.ua/article/6318634",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-d7f23202e68f653b1ad9",
@@ -751,7 +808,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://x.com/ESETresearch/status/2092885120562741652",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-cert-ua-uac-index",
@@ -905,7 +970,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/uac-0099.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/uac-0099.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -1022,7 +1087,10 @@
       "activity_refs": [
         "activity--daily-e526344e9500f358b6b5"
       ],
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--598ee8d6d22873efc495"
+      ],
       "malware_refs": [],
       "ttp_refs": [
         "ttp--activity-rule--5178b790ed1002745052",

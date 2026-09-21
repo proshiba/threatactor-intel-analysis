@@ -4,7 +4,7 @@
   "name": "Konni",
   "status": "draft",
   "created_at": "2026-07-25T09:00:54Z",
-  "updated_at": "2026-09-20T13:48:12Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "languages": [
     "ja"
   ],
@@ -15,10 +15,10 @@
       "threat-group"
     ],
     "first_seen": {
-      "value": null,
-      "precision": "unknown",
-      "status": "unknown",
-      "basis": "not-stated"
+      "value": "2014-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
     },
     "last_seen": {
       "value": null,
@@ -27,8 +27,8 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": ""
+    "description": "Konni Groupは、同名のKONNI RATを使用した活動から命名された活動集合である。Unit 42は、KONNI RATを使わないもののTTPが強く重なる作戦も含め、アクター側をKonni Groupとして追跡している。",
+    "analyst_notes": "2026-09 entity-boundary review: Konni is retained as an actor label, while KONNI is separately modeled as malware. Unit 42 cautions that public TTP reporting creates copycat and false-flag attribution risk."
   },
   "attribution": {
     "countries": [],
@@ -37,20 +37,191 @@
     "assessment": "",
     "confidence": "unknown",
     "evidence_refs": [],
-    "analyst_notes": ""
+    "analyst_notes": "North Korea-themed targeting and links to North Korean interests do not by themselves establish a sponsoring state; sponsor attribution remains unknown."
   },
-  "motivations": [],
-  "relationships": [],
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "Unit 42 describes sustained information-stealing campaigns and targeting of government and North Korea-linked individuals.",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--unit42-fractured-statue-2020"
+      ],
+      "analyst_notes": "The operational objective is explicit; state sponsorship is not inferred."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--konni--verified--7bc1dbbbd88ce8bf",
+      "target_actor": "TA406",
+      "relationship_type": "overlaps-with",
+      "description": "Proofpoint states that TA406 overlaps activity publicly tracked as Konni and Opal Sleet; Check Point directly attributes the January 2026 report's campaign to the KONNI cluster.",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--proofpoint-ta406-konni-boundary-2025",
+        "source--checkpoint-konni-ai-backdoor-2026"
+      ],
+      "analyst_notes": "Cross-vendor overlap retained; neither source establishes universal one-to-one identity between every TA406 and Konni observation."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--carrotball",
+        "name": "CARROTBALL",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "downloader"
+        ],
+        "description": "Unit 42がKonni Groupの活動で確認したCARROTBALLマルウェア。",
+        "first_observed": {
+          "value": "2019-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2019-10-31T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
+        ],
+        "analyst_notes": "Observation dates are limited to the periods stated in this source."
+      },
+      {
+        "id": "malware--carrotbat",
+        "name": "CARROTBAT",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "downloader"
+        ],
+        "description": "Unit 42がKonni Groupの活動で確認したCARROTBATマルウェア。",
+        "first_observed": {
+          "value": "2018-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2019-10-31T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
+        ],
+        "analyst_notes": "Observation dates are limited to the periods stated in this source."
+      },
+      {
+        "id": "malware--konni",
+        "name": "KONNI",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "remote-access-trojan"
+        ],
+        "description": "Unit 42がKonni Groupの活動で確認したKONNIマルウェア。",
+        "first_observed": {
+          "value": "2014-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2017-12-31T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
+        ],
+        "analyst_notes": "The malware entity is distinct from the Konni Group actor label."
+      },
+      {
+        "id": "malware--nokki",
+        "name": "NOKKI",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "malware"
+        ],
+        "description": "Unit 42がKonni Groupの活動で確認したNOKKIマルウェア。",
+        "first_observed": {
+          "value": "2018-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
+        ],
+        "analyst_notes": "Observation dates are limited to the periods stated in this source."
+      },
+      {
+        "id": "malware--syscon",
+        "name": "SYSCON",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "remote-access-trojan"
+        ],
+        "description": "Unit 42がKonni Groupの活動で確認したSYSCONマルウェア。",
+        "first_observed": {
+          "value": "2019-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2019-10-31T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
+        ],
+        "analyst_notes": "Observation dates are limited to the periods stated in this source."
+      }
+    ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
@@ -82,7 +253,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。 メール内の偽装URLはad.doubleclick.net経由の正規広告トラフィックに見せかけ、侵害WordPressへ誘導して不正ZIPを取得させる。 ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 不可視テキストのパディングでAI検知を回避し、や1×1ピクセルの透過画像を使って開封を追跡、C2識別子「endServer9688」「endClient9688」など内部アーティファクトも確認。 攻撃者は北朝鮮人権団体や金融機関への成りすましで信用を獲得し、取引確認書や通知文書に偽装した誘導を行う。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6cb716c577f256f44a3e"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
@@ -93,7 +266,9 @@
       "ttp_refs": [
         "ttp--activity-rule--8874df6d75dd53844b7d"
       ],
-      "victim_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--ee2a9cdcfc4e4e4ad73d"
+      ],
       "diamond_model": {
         "adversary": {
           "actor_ref": "actor--konni",
@@ -111,8 +286,12 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
-          "victim_refs": []
+          "target_refs": [
+            "target--activity-rule--country--6cb716c577f256f44a3e"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--ee2a9cdcfc4e4e4ad73d"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -140,7 +319,9 @@
           "results": [],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--activity-rule--country--6cb716c577f256f44a3e"
+            ],
             "target_region_refs": []
           }
         },
@@ -176,11 +357,7 @@
       "description": "北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。",
       "target_refs": [
         "target--activity-rule--country--36f1b9323d5faab92f39",
-        "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "target--activity-rule--country--f0d8df51439c4d0f3a05",
-        "target--activity-rule--sector--210dddb39397dbe50e91",
-        "target--activity-rule--sector--b94dc560a327b601965d",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+        "target--activity-rule--sector--210dddb39397dbe50e91"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -216,11 +393,7 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--36f1b9323d5faab92f39",
-            "target--activity-rule--country--72caf60a2fbce4a1be7a",
-            "target--activity-rule--country--f0d8df51439c4d0f3a05",
-            "target--activity-rule--sector--210dddb39397dbe50e91",
-            "target--activity-rule--sector--b94dc560a327b601965d",
-            "target--activity-rule--sector--e7608f51421ca8b1e297"
+            "target--activity-rule--sector--210dddb39397dbe50e91"
           ],
           "victim_refs": [
             "victim--activity-rule--2e0d34b8d92fddc23fdc"
@@ -256,9 +429,7 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [
-              "target--activity-rule--country--36f1b9323d5faab92f39",
-              "target--activity-rule--country--72caf60a2fbce4a1be7a",
-              "target--activity-rule--country--f0d8df51439c4d0f3a05"
+              "target--activity-rule--country--36f1b9323d5faab92f39"
             ],
             "target_region_refs": []
           }
@@ -375,13 +546,13 @@
     },
     {
       "activity_id": "activity--daily-647f622408c58cbd428c",
-      "name": "Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
+      "name": "KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布",
       "activity_type": "infrastructure-operation",
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated-sample-upload"
       },
       "last_observed": {
         "value": null,
@@ -390,27 +561,27 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2026-01-26T00:00:00Z",
+        "value": "2026-01-22T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "description": "北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
+      "description": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから永続化・UAC回避・分析回避・C2タスク実行機能を持つPowerShellバックドアを展開する。2025年10月にアップロードされた初期亜種も確認され、検体投稿元は日本・豪州・インドを含むが、投稿元を被害国の確定値とはしない。Check PointはKONNIへ直接帰属し、ProofpointはTA406をKonni/Opal Sleet活動との重複として扱うため、TA406との完全同一性は断定しない。",
       "target_refs": [
         "target--activity-rule--sector--63c9fa67327d005b07b7",
-        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+        "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "target--targeting-audit--country--6f732ffcb5e7be0ccb47",
+        "target--targeting-audit--country--f63c50e68288d7ada0d3"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
-        "source--daily-96093ec62047a80740ea"
+        "source--checkpoint-konni-ai-backdoor-2026",
+        "source--proofpoint-ta406-konni-boundary-2025"
       ],
-      "analyst_notes": "日次収集レコード daily-record--647f622408c58cbd428c2cbc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
-      "ttp_refs": [
-        "ttp--activity-rule--7f8cf8af7ca879bb493f",
-        "ttp--activity-rule--e73e2a355fda877065d3"
-      ],
+      "analyst_notes": "Check Point一次分析で活動・期間・TTPを確認。TA406への対応はProofpointのcross-vendor overlapに基づき、exact aliasには昇格しない。",
+      "ttp_refs": [],
       "victim_refs": [
         "victim--activity-rule--3313dadf412423edd869"
       ],
@@ -423,10 +594,7 @@
         },
         "capability": {
           "malware_refs": [],
-          "ttp_refs": [
-            "ttp--activity-rule--7f8cf8af7ca879bb493f",
-            "ttp--activity-rule--e73e2a355fda877065d3"
-          ]
+          "ttp_refs": []
         },
         "infrastructure": {
           "infrastructure_refs": []
@@ -434,7 +602,9 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--sector--63c9fa67327d005b07b7",
-            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+            "target--activity-rule--sector--932f4928d5e1ec28e2df",
+            "target--targeting-audit--country--6f732ffcb5e7be0ccb47",
+            "target--targeting-audit--country--f63c50e68288d7ada0d3"
           ],
           "victim_refs": [
             "victim--activity-rule--3313dadf412423edd869"
@@ -442,10 +612,10 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2025-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated-sample-upload"
           },
           "last_observed": {
             "value": null,
@@ -454,28 +624,133 @@
             "basis": "not-stated"
           },
           "reported_at": {
-            "value": "2026-01-26T00:00:00Z",
+            "value": "2026-01-22T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "infrastructure-operation",
-          "phases": [
-            "Execution",
-            "Persistence",
-            "Privilege Escalation",
-            "Stealth"
-          ],
+          "phases": [],
           "results": [],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--targeting-audit--country--6f732ffcb5e7be0ccb47",
+              "target--targeting-audit--country--f63c50e68288d7ada0d3"
+            ],
             "target_region_refs": []
           }
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--konni-fractured-statue-2019",
+      "name": "Fractured Statueキャンペーン",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2019-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2019-10-31T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2020-01-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "description": "Unit 42は2019年7月から10月、米国政府機関と朝鮮半島情勢に職業上関係する米国外の外国人を標的としたスピアフィッシングを観測した。ロシア語の朝鮮半島情勢を題材に、CARROTBATまたはCARROTBALLからSYSCONを配布した。",
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--carrotbat",
+        "malware--carrotball",
+        "malware--syscon"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--7a8170be712b1017963d"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--unit42-fractured-statue-2020"
+      ],
+      "analyst_notes": "Unit 42 assesses the Konni Group link with moderate confidence because public TTP details could enable copycat or false-flag activity.",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--konni",
+          "name": "Konni",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--carrotball",
+            "malware--carrotbat",
+            "malware--syscon"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--sector--210dddb39397dbe50e91"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--7a8170be712b1017963d"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2019-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2019-10-31T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2020-01-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "document"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -483,6 +758,29 @@
   ],
   "targets": {
     "countries": [
+      {
+        "id": "target--targeting-audit--country--6f732ffcb5e7be0ccb47",
+        "name": "インド",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
       {
         "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
@@ -506,14 +804,14 @@
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "name": "ロシア",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。",
+        "id": "target--targeting-audit--country--f63c50e68288d7ada0d3",
+        "name": "日本",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload"
         },
         "last_observed": {
           "value": null,
@@ -523,14 +821,37 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「Fractured Statueキャンペーン」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2019-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2019-10-31T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--unit42-fractured-statue-2020"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--activity-rule--country--f0d8df51439c4d0f3a05",
-        "name": "北朝鮮",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。",
+        "id": "target--activity-rule--country--6cb716c577f256f44a3e",
+        "name": "韓国",
+        "description": "活動「Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -545,17 +866,16 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-04ea119cefbe5973a36c",
-          "source--daily-a70f8f04454a7b9e932e"
+          "source--daily-04ea119cefbe5973a36c"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [
       {
-        "id": "target--targeting-audit--region--f342294c454ac2a03656",
-        "name": "東欧",
-        "description": "ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "id": "target--targeting-audit--region--540e79b0102e1832e1e6",
+        "name": "東アジア",
+        "description": "日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -570,7 +890,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--daily-04ea119cefbe5973a36c",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       }
@@ -581,86 +903,67 @@
         "name": "政府・行政",
         "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-10-31T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
+          "source--daily-a70f8f04454a7b9e932e",
+          "source--unit42-fractured-statue-2020"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
         "id": "target--activity-rule--sector--63c9fa67327d005b07b7",
         "name": "暗号資産・Web3",
-        "description": "活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
         "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
         "name": "IT・ソフトウェア",
-        "description": "活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。",
+        "description": "活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-sample-upload; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96093ec62047a80740ea"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
-      },
-      {
-        "id": "target--activity-rule--sector--b94dc560a327b601965d",
-        "name": "防衛・軍事",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
+          "source--checkpoint-konni-ai-backdoor-2026",
+          "source--proofpoint-ta406-konni-boundary-2025"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
@@ -685,33 +988,11 @@
           "source--daily-22cb41823695505fc8c4"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
-      },
-      {
-        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
-        "name": "教育・研究",
-        "description": "活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-a70f8f04454a7b9e932e"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -740,35 +1021,6 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-a70f8f04454a7b9e932e"
-      ],
-      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
-    },
-    {
-      "ttp_id": "ttp--activity-rule--7f8cf8af7ca879bb493f",
-      "tactic": "Execution, Persistence, Privilege Escalation",
-      "technique_id": "T1053.005",
-      "technique_name": "Scheduled Task",
-      "observed_behavior": "CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。",
-      "activity_refs": [
-        "activity--daily-647f622408c58cbd428c"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-96093ec62047a80740ea"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -856,35 +1108,6 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-22cb41823695505fc8c4"
-      ],
-      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
-    },
-    {
-      "ttp_id": "ttp--activity-rule--e73e2a355fda877065d3",
-      "tactic": "Stealth",
-      "technique_id": "T1027",
-      "technique_name": "Obfuscated Files or Information",
-      "observed_behavior": "バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
-      "activity_refs": [
-        "activity--daily-647f622408c58cbd428c"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-96093ec62047a80740ea"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -1810,7 +2033,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260120.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260120.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cybersecuritynews.com/new-spear-phishing-attack-abusing-google-ads/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp"
+      ]
     },
     {
       "source_id": "source--daily-22cb41823695505fc8c4",
@@ -1828,7 +2059,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260317.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260317.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.genians.co.kr/en/blog/threat_intelligence/kakaotalk",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-96093ec62047a80740ea",
@@ -1846,7 +2086,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-a70f8f04454a7b9e932e",
@@ -1864,7 +2113,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250514.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250514.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korea-ramps-up-cyberspying-in-ukraine-to-assess-war-risk/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--konni--079e51a056632f53",
@@ -2069,6 +2327,94 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--unit42-fractured-statue-2020",
+      "path": "https://unit42.paloaltonetworks.com/the-fractured-statue-campaign-u-s-government-targeted-in-spear-phishing-attacks/",
+      "url": "https://unit42.paloaltonetworks.com/the-fractured-statue-campaign-u-s-government-targeted-in-spear-phishing-attacks/",
+      "archive_url": null,
+      "title": "The Fractured Statue Campaign: U.S. Government Agency Targeted in Spear-Phishing Attacks",
+      "publisher": "Palo Alto Networks Unit 42",
+      "published_at": {
+        "value": "2020-01-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "malware",
+        "targeting",
+        "motivation",
+        "attribution"
+      ],
+      "analyst_notes": "Unit 42 explicitly explains the overloaded Konni label: it began as a RAT name and is also used for a broader activity group."
+    },
+    {
+      "source_id": "source--checkpoint-konni-ai-backdoor-2026",
+      "path": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
+      "url": "https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/",
+      "title": "KONNI Adopts AI to Generate PowerShell Backdoors",
+      "publisher": "Check Point Research",
+      "published_at": {
+        "value": "2026-01-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Check Point attributes the analyzed campaign directly to the KONNI APT cluster and documents the blockchain-themed lures, October 2025 samples, and AI-assisted PowerShell backdoor."
+    },
+    {
+      "source_id": "source--proofpoint-ta406-konni-boundary-2025",
+      "path": "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front",
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front",
+      "title": "TA406 Pivots to the Front",
+      "publisher": "Proofpoint Threat Research",
+      "published_at": {
+        "value": "2025-05-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "relationship",
+        "activity",
+        "attribution",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Proofpoint states that TA406 overlaps activity publicly tracked as Opal Sleet and Konni. This supports a cross-vendor overlap, not exact identity."
     }
   ],
   "assessment": {
@@ -2080,15 +2426,15 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: konni\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: konni\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "Konniの標準化プロファイル。リポジトリ内の専用資料7件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+    "executive_summary": "Konni Groupは同名RATに由来する活動集合で、2014年以降の情報窃取作戦と、KONNI、NOKKI、CARROTBAT、CARROTBALL、SYSCON等の利用が報告されている。アクター名とマルウェア名を分離し、個別作戦の帰属確度を保持する。",
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、ロシア、北朝鮮。標的地域=東欧。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=インド、ウクライナ、日本、米国、韓国。標的地域=東アジア。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -2105,11 +2451,7 @@
       ],
       "target_refs": [
         "target--activity-rule--country--36f1b9323d5faab92f39",
-        "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "target--activity-rule--country--f0d8df51439c4d0f3a05",
-        "target--activity-rule--sector--210dddb39397dbe50e91",
-        "target--activity-rule--sector--b94dc560a327b601965d",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+        "target--activity-rule--sector--210dddb39397dbe50e91"
       ],
       "malware_refs": [],
       "ttp_refs": [
@@ -2151,12 +2493,12 @@
     },
     {
       "victim_case_id": "victim--activity-rule--3313dadf412423edd869",
-      "name": "被害事例: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に",
+      "name": "被害事例: KONNIによるブロックチェーン技術者標的化",
       "victim_name": null,
       "disclosure_status": "anonymous",
       "victim_type": "unknown",
       "case_status": "reported",
-      "description": "北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。",
+      "description": "Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから永続化・UAC回避・分析回避・C2タスク実行機能を持つPowerShellバックドアを展開する。2025年10月にアップロードされた初期亜種も確認され、検体投稿元は日本・豪州・インドを含むが、投稿元を被害国の確定値とはしない。Check PointはKONNIへ直接帰属し、ProofpointはTA406をKonni/Opal Sleet活動との重複として扱うため、TA406との完全同一性は断定しない。",
       "activity_refs": [
         "activity--daily-647f622408c58cbd428c"
       ],
@@ -2165,17 +2507,14 @@
         "target--activity-rule--sector--932f4928d5e1ec28e2df"
       ],
       "malware_refs": [],
-      "ttp_refs": [
-        "ttp--activity-rule--7f8cf8af7ca879bb493f",
-        "ttp--activity-rule--e73e2a355fda877065d3"
-      ],
+      "ttp_refs": [],
       "affected_assets": [],
       "impacts": [],
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated-sample-upload"
       },
       "last_observed": {
         "value": null,
@@ -2184,16 +2523,17 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2026-01-26T00:00:00Z",
+        "value": "2026-01-22T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--daily-96093ec62047a80740ea"
+        "source--checkpoint-konni-ai-backdoor-2026",
+        "source--proofpoint-ta406-konni-boundary-2025"
       ],
-      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+      "analyst_notes": "Check Point一次分析で活動・期間・TTPを確認。TA406への対応はProofpointのcross-vendor overlapに基づき、exact aliasには昇格しない。"
     },
     {
       "victim_case_id": "victim--activity-rule--624fced7f6106b0b0296",
@@ -2239,6 +2579,102 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-22cb41823695505fc8c4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--7a8170be712b1017963d",
+      "name": "被害事例: Fractured Statueキャンペーン",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Unit 42は2019年7月から10月、米国政府機関と朝鮮半島情勢に職業上関係する米国外の外国人を標的としたスピアフィッシングを観測した。ロシア語の朝鮮半島情勢を題材に、CARROTBATまたはCARROTBALLからSYSCONを配布した。",
+      "activity_refs": [
+        "activity--konni-fractured-statue-2019"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--carrotball",
+        "malware--carrotbat",
+        "malware--syscon"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "OT／ICS"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2019-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2019-10-31T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2020-01-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--unit42-fractured-statue-2020"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--ee2a9cdcfc4e4e4ad73d",
+      "name": "被害事例: Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。 メール内の偽装URLはad.doubleclick.net経由の正規広告トラフィックに見せかけ、侵害WordPressへ誘導して不正ZIPを取得させる。 ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 不可視テキストのパディングでAI検知を回避し、や1×1ピクセルの透過画像を使って開封を追跡、C2識別子「endServer9688」「endClient9688」など内部アーティファクトも確認。 攻撃者は北朝鮮人権団体や金融機関への成りすましで信用を獲得し、取引確認書や通知文書に偽装した誘導を行う。",
+      "activity_refs": [
+        "activity--daily-23024095c33771cf0ad3"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6cb716c577f256f44a3e"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--8874df6d75dd53844b7d"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-01-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-04ea119cefbe5973a36c"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     }

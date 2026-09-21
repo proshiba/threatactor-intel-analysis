@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--earth-lusca`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,8 +50,8 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Earth Lusca](https://attack.mitre.org/groups/G1006) is a suspected China-based cyber espionage group that has been active since at least April 2019. [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022)<br><br>[Earth Lusca](https://attack.mitre.org/groups/G1006) has used malware commonly used by other Chinese threat groups, including [APT41](https://attack.mitre.org/groups/G0096) and the [Winnti Group](https://attack.mitre.org/groups/G0044) cluster, however security researchers assess [Earth Lusca](https://attack.mitre.org/groups/G1006)'s techniques and infrastructure are separate.(Citation: TrendMicro EarthLusca 2022) |
-| Capability | Winnti for Linux, Cobalt Strike, ShadowPad, certutil, PowerSploit, Tasklist, Nltest, Mimikatz, NBTscan |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -59,7 +59,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -131,14 +131,14 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | cyber-espionage | 不明 | 不明 | 2024-03-15 | target--mitre-group--country--229770f82a3ccca1f9d3 |  |  | victim--activity-rule--da89d11ebe8549dd9c9c | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 | `source--daily-4c4674e1b8568e329ce6` |
-| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | target--activity-rule--country--67ce22b843f136bff928, target--mitre-group--country--229770f82a3ccca1f9d3, target--mitre-group--sector--cae03348db9509019d3e | malware--daily-f196d446e69f62aacb40 |  | victim--activity-rule--139409ab845111706d30 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | target--activity-rule--country--67ce22b843f136bff928, target--mitre-group--country--229770f82a3ccca1f9d3, target--mitre-group--sector--cae03348db9509019d3e, target--targeting-audit--country--10aa77920418e8e3bcfa, target--targeting-audit--country--aa0254ecfbcf1fa6de8b | malware--daily-f196d446e69f62aacb40 |  | victim--activity-rule--139409ab845111706d30 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | Earth Lusca | 情報なし | 情報なし | 情報なし | 台湾 | 被害事例: 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 |
-| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | Earth Lusca | SprySOCKS | 情報なし | 情報なし | パキスタン, 台湾, 政府・行政 | 被害事例: SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | 高 |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | Earth Lusca | SprySOCKS | 情報なし | 情報なし | パキスタン, 台湾, 政府・行政, タイ, ホンジュラス | 被害事例: SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | 高 |
 
 
 
@@ -146,26 +146,26 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | タイ | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ドイツ | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ナイジェリア | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ネパール | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | アラブ首長国連邦 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | オーストラリア | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | タイ | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
+| countries | ドイツ | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ナイジェリア | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ネパール | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | countries | パキスタン | 活動「SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用」の記述で標的として明示された国・地域。 | 2023 | 2024 | 中 | `source--daily-ff80b256acceafc23ada` |
-| countries | フィリピン | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | フランス | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベトナム | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | モンゴル | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 2023 | 2024 | 高 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでEarth Luscaの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | モンゴル、中国、台湾、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | ドイツ、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フィリピン | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | フランス | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ベトナム | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | ホンジュラス | 活動「SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用」の記述で標的・被害国として明示されている。 | 2023 | 2024 | 中 | `source--daily-ff80b256acceafc23ada` |
+| countries | モンゴル | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | 中国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | 台湾 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 2023 | 2024 | 高 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
+| countries | 米国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| countries | 香港 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 南アジア | ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
+| regions | 東アジア | モンゴル、中国、台湾、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
+| regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
+| regions | 欧州 | ドイツ、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-2` |
 | sectors | 暗号資産・Web3 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | メディア・報道 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 非営利・市民社会 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -173,7 +173,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | sectors | 政府・行政 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-2` |
 | sectors | 教育・研究 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -235,11 +235,11 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## IOC／artifact概要
 
-- IOC値: 19件
-- IOC観測: 22件
+- IOC値: 17件
+- IOC観測: 17件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 8件
-- 非IOC artifact観測: 106件（`artifacts.csv`）
+- 要レビュー候補: 6件
+- 非IOC artifact観測: 14件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -313,12 +313,12 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

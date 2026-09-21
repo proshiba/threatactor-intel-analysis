@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blacktech`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,8 +20,8 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|
 | CAVERN CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Circuit Panda | NSA / joint government advisory | exact | 高 | `source--nsa-blacktech-2023` | The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
-| Palmerworm | MITRE ATT&CK / NSA / joint government advisory | exact | 高 | `source--mitre-attack-19-2`, `source--nsa-blacktech-2023` | Alias scope must be reviewed before publication. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
-| Radio Panda | NSA / joint government advisory | exact | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--nsa-blacktech-2023` | The joint U.S.-Japan advisory explicitly identifies Radio Panda as another name for BlackTech. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
+| Palmerworm | MITRE ATT&CK / NSA / joint government advisory | exact | 高 | `source--nsa-blacktech-2023` | Alias scope must be reviewed before publication. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
+| Radio Panda | NSA / joint government advisory | exact | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--nsa-blacktech-2023` | The joint U.S.-Japan advisory explicitly identifies Radio Panda as another name for BlackTech. |
 | TEMP.Overboard | Google Threat Intelligence Group / NSA / joint government advisory | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--nsa-blacktech-2023` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
 
 ## 帰属
@@ -47,16 +47,16 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [BlackTech](https://attack.mitre.org/groups/G0098) is a suspected Chinese cyber espionage group that has primarily targeted organizations in East Asia--particularly Taiwan, Japan, and Hong Kong--and the US since at least 2013. [BlackTech](https://attack.mitre.org/groups/G0098) has used a combination of custom malware, dual-use tools, and living off the land tactics to compromise media, construction, engineering, electronics, and financial company networks.(Citation: TrendMicro BlackTech June 2017)(Citation: Symantec Palmerworm Sep 2020)(Citation: Reuters Taiwan BlackTech August 2020) |
-| Capability | Flagpro, TSCookie, Kivars, PLEAD, Waterbear, BendyBear, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | targets in East Asia, particularly Taiwan, and occasionally, Japan and Hong Kong |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -91,7 +91,6 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--bendybear | BendyBear | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--daily-b09eb7de4094c12dd639 | BlueShell | BlackTechとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | malware--flagpro | Flagpro | [Flagpro](https://attack.mitre.org/software/S0696) is a Windows-based, first-stage downloader that has been used by [BlackTech](https://attack.mitre.org/groups/G0098) since at least October 2020. It has primarily been used against defense, media, and communications companies in Japan.(Citation: NTT Security Flagpro new December 2021)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--kivars | Kivars | [Kivars](https://attack.mitre.org/software/S0437) is a modular remote access tool (RAT), derived from the Bifrost RAT, that was used by [BlackTech](https://attack.mitre.org/groups/G0098) in a 2010 campaign.(Citation: TrendMicro BlackTech June 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -125,23 +124,17 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 |  | malware--waterbear |  |  | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
-| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--a880b3c2a984d91381dc | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
+| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 | target--targeting-audit--region--ef701b8739b72540ffaa | malware--waterbear |  | victim--activity-rule--b1dd7c61c18a8fde59fe | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
+| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--region--ef701b8739b72540ffaa |  |  | victim--activity-rule--a880b3c2a984d91381dc | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
 | APTグループが使用するBlueShell亜種の分析 | disruptive-activity | 不明 | 不明 | 2026-08-01 |  | malware--daily-b09eb7de4094c12dd639 | ttp--activity-rule--053c40a51e41a666f966 | victim--activity-rule--09f2709e41fc6ff19fd5 | IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。 | 高 | `source--daily-2a35db86e8f078946ab5` |
-| PLEAD | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Shrouded Crossbow | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Waterbear | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | BlackTech | Waterbear | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | BlackTech | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 高 |
+| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | BlackTech | Waterbear | 情報なし | 情報なし | アジア太平洋 | 被害事例: 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | 中 |
+| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | BlackTech | 情報なし | 情報なし | 情報なし | 政府・行政, アジア太平洋 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 高 |
 | APTグループが使用するBlueShell亜種の分析 | BlackTech | BlueShell | T1090 Proxy | 情報なし | 情報なし | 被害事例: APTグループが使用するBlueShell亜種の分析 | 高 |
-| PLEAD | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Shrouded Crossbow | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Waterbear | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 PLEAD; Shrouded Crossbow; Waterbear
 
@@ -149,17 +142,13 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 中国 | 構造化OSINTの被害国フィールドでBlackTechの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 台湾 | Targeting text mentions taiwan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでBlackTechの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 香港 | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | アジア | MITRE ATT&CKのGroup概要でBlackTechの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--daily-1dfee7d2a70ba1432540`, `source--daily-718b90e4e11c27f888d6`, `source--mitre-attack-19-2` |
+| countries | 台湾 | Targeting text mentions taiwan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | regions | アジア太平洋 | 活動「中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開」の記述で標的地域としてアジア太平洋が明示されている。 | 不明 | 不明 | 中 | `source--daily-1dfee7d2a70ba1432540`, `source--daily-718b90e4e11c27f888d6` |
-| regions | 東アジア | MITRE ATT&CKのGroup概要でBlackTechの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | MITRE ATT&CKのGroup概要でBlackTechの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | sectors | 政府・行政 | 活動「BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1dfee7d2a70ba1432540` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -167,6 +156,7 @@ PLEAD; Shrouded Crossbow; Waterbear
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: APTグループが使用するBlueShell亜種の分析 | 非公開 | aggregate | multiple-organizations | reported |  | malware--daily-b09eb7de4094c12dd639 | ttp--activity-rule--053c40a51e41a666f966 | エンドポイント |  | 不明 | 不明 | 2026-08-01 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2024-04-20 | 高 | `source--daily-1dfee7d2a70ba1432540` |
+| 被害事例: 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | 非公開 | anonymous | unknown | reported |  | malware--waterbear |  |  |  | 不明 | 不明 | 2024-05-18 | 中 | `source--daily-718b90e4e11c27f888d6` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -241,16 +231,16 @@ PLEAD; Shrouded Crossbow; Waterbear
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--nsa-blacktech-2023 | U.S. and Japanese Agencies Issue Advisory about BlackTech | NSA | 2023-09-27 | https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3539209/us-and-japanese-agencies-issue-advisory-about-china-linked-actors-hiding-in-rou/ | government-advisory | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--radio-panda--b03c6ae427a5b789 | radio panda |  | 不明 | actor_profile/evidence/radio-panda.csv | structured-data | TLP:CLEAR | 中 |
 | source--radio-panda--55abd31c10e03798 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

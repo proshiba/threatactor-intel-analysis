@@ -99,6 +99,7 @@ Python 3で実行できます。PDF・XLSXを新たに取り込む場合は、`p
 
 ```bash
 # 活動情報を更新した後、全件の標的国・地域を再監査
+python3 actor_profile/scripts/apply_primary_source_corrections.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--menupass`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,16 +21,11 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 | APT10 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | BRONZE RIVERSIDE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Cicada | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| Cloud Hopper | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | CVNX | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| DEV-0401 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | HOGFISH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| MenuPass Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | POTASSIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Red Apollo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Stone Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| TA429 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| TALONITE | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -49,23 +44,23 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Cinnamon Tempest | overlaps-with | 共有alias: DEV-0401 | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| Cinnamon Tempest | overlaps-with | 共有alias: DEV-0401 | 低 | `source--mitre-attack-19-2` |
 | MirrorFace | overlaps-with | [MirrorFace](https://attack.mitre.org/groups/G1054) is a People's Republic of China (PRC)-aligned cyberespionage actor believed to be a subgroup under the [menuPass](https://attack.mitre.org/groups/G0045) umbrella based on targeting, tools, and infrastructure overlaps. | 高 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [menuPass](https://attack.mitre.org/groups/G0045) is a threat group that has been active since at least 2006. Individual members of [menuPass](https://attack.mitre.org/groups/G0045) are known to have acted in association with the Chinese Ministry of State Security's (MSS) Tianjin State Security Bureau and worked for the Huaying Haitai Science and Technology Development Company.(Citation: DOJ APT10 Dec 2018)(Citation: District Court of NY APT10 Indictment December 2018)<br><br>[menuPass](https://attack.mitre.org/groups/G0045) has targeted healthcare, defense, aerospace, finance, maritime, biotechnology, energy, and government sectors globally, with an emphasis on Japanese organizations. In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ APT10 Dec 2018)(Citation: District Court of NY APT10 Indictment December 2018) |
-| Capability | RedLeaves, Ecipekac, EvilGrab, SNUGRIDE, FYAnti, HUI Loader, PlugX, P8RAT, SodaMaster, Cobalt Strike, PoisonIvy, ChChes, UPPERCUT, IEChecker, Quasar, Trochilus, UPPERCUT (aka ANEL), StoneNetLoader, Net, certutil, PowerSploit, Impacket, pwdump, Mimikatz, Ping, cmd, esentutl, QuasarRAT, AdFind, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Healthcare; Pharma, Defense, Aerospace, Government, MSP, |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -111,18 +106,13 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 | malware--evilgrab | EvilGrab | [EvilGrab](https://attack.mitre.org/software/S0152) is a malware family with common reconnaissance capabilities. It has been deployed by [menuPass](https://attack.mitre.org/groups/G0045) via malicious Microsoft Office documents as part of spearphishing campaigns. (Citation: PWC Cloud Hopper Technical Annex April 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--fyanti | FYAnti | [FYAnti](https://attack.mitre.org/software/S0628) is a loader that has been used by [menuPass](https://attack.mitre.org/groups/G0045) since at least 2020, including to deploy [QuasarRAT](https://attack.mitre.org/software/S0262).(Citation: Securelist APT10 March 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--hui-loader | HUI Loader | [HUI Loader](https://attack.mitre.org/software/S1097) is a custom DLL loader that has been used since at least 2015 by China-based threat groups including [Cinnamon Tempest](https://attack.mitre.org/groups/G1021) and [menuPass](https://attack.mitre.org/groups/G0045) to deploy malware on compromised hosts. [HUI Loader](https://attack.mitre.org/software/S1097) has been observed in campaigns loading [SodaMaster](https://attack.mitre.org/software/S0627), [PlugX](https://attack.mitre.org/software/S0013), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Komplex](https://attack.mitre.org/software/S0162), and several strains of ransomware.(Citation: SecureWorks BRONZE STARLIGHT Ransomware Operations June 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--iechecker | IEChecker | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--p8rat | P8RAT | [P8RAT](https://attack.mitre.org/software/S0626) is a fileless malware used by [menuPass](https://attack.mitre.org/groups/G0045) to download and execute payloads since at least 2020.(Citation: Securelist APT10 March 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--quasar | Quasar | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--redleaves | RedLeaves | [RedLeaves](https://attack.mitre.org/software/S0153) is a malware family used by [menuPass](https://attack.mitre.org/groups/G0045). The code overlaps with [PlugX](https://attack.mitre.org/software/S0013) and may be based upon the open source tool Trochilus. (Citation: PWC Cloud Hopper Technical Annex April 2017) (Citation: FireEye APT10 April 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--snugride | SNUGRIDE | [SNUGRIDE](https://attack.mitre.org/software/S0159) is a backdoor that has been used by [menuPass](https://attack.mitre.org/groups/G0045) as first stage malware. (Citation: FireEye APT10 April 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--sodamaster | SodaMaster | [SodaMaster](https://attack.mitre.org/software/S0627) is a fileless malware used by [menuPass](https://attack.mitre.org/groups/G0045) to download and execute payloads since at least 2020.(Citation: Securelist APT10 March 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--stonenetloader | StoneNetLoader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--trochilus | Trochilus | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--uppercut | UPPERCUT | [UPPERCUT](https://attack.mitre.org/software/S0275) is a 32-bit HTTP-based backdoor that has been used by [menuPass](https://attack.mitre.org/groups/G0045) since at least 2017.(Citation: FireEye APT10 Sept 2018) Once thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045), [UPPERCUT](https://attack.mitre.org/software/S0275) was also observed being used by [menuPass](https://attack.mitre.org/groups/G0045)-associated [MirrorFace](https://attack.mitre.org/groups/G1054) during [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060).(Citation: Trend Micro Earth Kasha Anel NOV 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--uppercut-aka-anel | UPPERCUT (aka ANEL) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -159,19 +149,11 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| ChessMaster | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Cloud Hopper | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Dust Storm | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| ChessMaster | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Cloud Hopper | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Dust Storm | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 Dust Storm; Cloud Hopper; ChessMaster
 
@@ -179,53 +161,32 @@ Dust Storm; Cloud Hopper; ChessMaster
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アラブ首長国連邦 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カナダ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スウェーデン | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | タイ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィンランド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | フランス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ブラジル | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンテネグロ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてモンテネグロが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アラブ首長国連邦 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | インド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | カナダ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | スイス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | スウェーデン | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | ドイツ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | フィンランド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | フランス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | ブラジル | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | 日本 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2` |
+| countries | 米国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
+| countries | 英国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018` |
 | regions | アジア | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--uk-apt10-global-campaign-2018` |
-| regions | 中東 | アラブ首長国連邦、イスラエル、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
 | regions | 全世界 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--uk-apt10-global-campaign-2018` |
-| regions | 北米 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--uk-apt10-global-campaign-2018` |
-| regions | 南欧 | イタリア、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | シンガポール、タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--uk-apt10-global-campaign-2018` |
+| regions | 北米 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--uk-apt10-global-campaign-2018` |
+| regions | 欧州 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-2`, `source--uk-apt10-global-campaign-2018` |
 | sectors | 製造・産業 | In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ APT10 Dec 2018)( | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 運輸・航空・海運 | [menuPass](https://attack.mitre.org/groups/G0045) has targeted healthcare, defense, aerospace, finance, maritime, biotechnology, energy, and government sectors globally, with an emphasis on Japanese organizations. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 教育・研究 | In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ APT10 Dec 2018)(Citation: District Court of NY APT10 Indic | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | IT・ソフトウェア | In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ AP | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | エネルギー | [menuPass](https://attack.mitre.org/groups/G0045) has targeted healthcare, defense, aerospace, finance, maritime, biotechnology, energy, and government sectors globally, with an emphasis on Japanese organizations. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -284,11 +245,11 @@ Dust Storm; Cloud Hopper; ChessMaster
 
 ## IOC／artifact概要
 
-- IOC値: 4件
-- IOC観測: 4件
+- IOC値: 3件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 4件
-- 非IOC artifact観測: 74件（`artifacts.csv`）
+- 要レビュー候補: 3件
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -302,6 +263,7 @@ Dust Storm; Cloud Hopper; ChessMaster
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 5 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -336,11 +298,11 @@ Dust Storm; Cloud Hopper; ChessMaster
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--doj-apt10-global-campaign-2018 | Two Chinese Hackers Associated With the Ministry of State Security Charged with Global Computer Intrusion Campaigns | U.S. Department of Justice | 2018-12-20 | https://www.justice.gov/archives/opa/pr/two-chinese-hackers-associated-ministry-state-security-charged-global-computer-intrusion | government-legal-announcement | TLP:CLEAR | 高 |
 | source--uk-apt10-global-campaign-2018 | UK and allies reveal global scale of Chinese cyber campaign | UK Government / NCSC | 2018-12-20 | https://www.gov.uk/government/news/uk-and-allies-reveal-global-scale-of-chinese-cyber-campaign | government-attribution-statement | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

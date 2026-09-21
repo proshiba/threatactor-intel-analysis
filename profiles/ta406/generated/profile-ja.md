@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta406`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:38:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -33,7 +33,9 @@ Aliasなし
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Konni | overlaps-with | Proofpoint states that TA406 overlaps activity publicly tracked as Konni and Opal Sleet; Check Point directly attributes the January 2026 report's campaign to the KONNI cluster. | 中 | `source--proofpoint-ta406-konni-boundary-2025`, `source--checkpoint-konni-ai-backdoor-2026` |
 
 ## ダイヤモンドモデル
 
@@ -48,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -108,15 +110,15 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | phishing-campaign | 不明 | 不明 | 2025-05-14 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--3b783b9995900a730cd6, ttp--activity-rule--a6b49b799bed2d732b35 | victim--activity-rule--42003486e06fe6355c62 | 北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | infrastructure-operation | 不明 | 不明 | 2026-01-26 | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--3fad972c8e2a861c68a1 | victim--activity-rule--0327ca792873c263402d | 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。 | 中 | `source--daily-96093ec62047a80740ea` |
+| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | phishing-campaign | 不明 | 不明 | 2025-05-14 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--3b783b9995900a730cd6, ttp--activity-rule--a6b49b799bed2d732b35 | victim--activity-rule--42003486e06fe6355c62 | 北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布 | infrastructure-operation | 2025-10 | 不明 | 2026-01-22 | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df, target--targeting-audit--country--60ac93d5799e9eb12580, target--targeting-audit--country--75157eeb3ccdec29dfaa |  |  | victim--activity-rule--0327ca792873c263402d | Check Point Researchは、KONNIに関連付けたフィッシング活動で、ブロックチェーン関連の開発者・エンジニアを狙うおとり文書と悪性LNKを確認した。LNKはPowerShellローダから永続化・UAC回避・分析回避・C2タスク実行機能を持つPowerShellバックドアを展開する。2025年10月にアップロードされた初期亜種も確認され、検体投稿元は日本・豪州・インドを含むが、投稿元を被害国の確定値とはしない。Check PointはKONNIへ直接帰属し、ProofpointはTA406をKonni/Opal Sleet活動との重複として扱うため、TA406との完全同一性は断定しない。 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | TA406 | 情報なし | T1059.001 PowerShell, T1566.002 Spearphishing Link | 情報なし | ウクライナ, ロシア, 北朝鮮, 政府・行政, 防衛・軍事, 教育・研究 | 被害事例: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 中 |
-| Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | TA406 | 情報なし | T1053.005 Scheduled Task | 情報なし | 暗号資産・Web3, IT・ソフトウェア | 被害事例: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | 中 |
+| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | TA406 | 情報なし | T1059.001 PowerShell, T1566.002 Spearphishing Link | 情報なし | ウクライナ, 政府・行政 | 被害事例: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 中 |
+| KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布 | TA406 | 情報なし | 情報なし | 情報なし | 暗号資産・Web3, IT・ソフトウェア, インド, 日本 | 被害事例: KONNIによるブロックチェーン技術者標的化 | 中 |
 
 
 
@@ -124,46 +126,27 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | 構造化OSINTの被害国フィールドでTA406の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ウクライナ | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e`, `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでTA406の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでTA406の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | フランス | 構造化OSINTの被害国フィールドでTA406の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでTA406の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでTA406の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 北朝鮮 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでTA406の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでTA406の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでTA406の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでTA406の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでTA406の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北米 | 構造化OSINTの被害地域フィールドでTA406の標的範囲として北米が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | 中国、北朝鮮、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | 構造化OSINTの被害地域フィールドでTA406の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インド | 活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。 | 2025-10 | 不明 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
+| countries | ウクライナ | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| countries | 日本 | 活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的・被害国として明示されている。 | 2025-10 | 不明 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
 | sectors | 政府・行政 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| sectors | 暗号資産・Web3 | 活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
-| sectors | IT・ソフトウェア | 活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
-| sectors | 防衛・軍事 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| sectors | 教育・研究 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| sectors | 暗号資産・Web3 | 活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。 | 2025-10 | 2025-10 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
+| sectors | IT・ソフトウェア | 活動「KONNI、ブロックチェーン技術者へAI支援生成のPowerShellバックドアを配布」の記述で標的として明示された産業。 | 2025-10 | 2025-10 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--3fad972c8e2a861c68a1 |  |  | 不明 | 不明 | 2026-01-26 | 中 | `source--daily-96093ec62047a80740ea` |
-| 被害事例: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--3b783b9995900a730cd6, ttp--activity-rule--a6b49b799bed2d732b35 | メール／メールアカウント | espionage: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 不明 | 不明 | 2025-05-14 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| 被害事例: KONNIによるブロックチェーン技術者標的化 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df |  |  |  |  | 2025-10 | 不明 | 2026-01-22 | 中 | `source--checkpoint-konni-ai-backdoor-2026`, `source--proofpoint-ta406-konni-boundary-2025` |
+| 被害事例: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--3b783b9995900a730cd6, ttp--activity-rule--a6b49b799bed2d732b35 | メール／メールアカウント | espionage: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 不明 | 不明 | 2025-05-14 | 中 | `source--daily-a70f8f04454a7b9e932e` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Execution | T1059.001 | PowerShell | リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 |  | activity--daily-e8d56cd0b459da326e44 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 |  | activity--daily-ed16c556a166870fdeb2 | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
 | Initial Access | T1566.002 | Spearphishing Link | フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 |  | activity--daily-e8d56cd0b459da326e44 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
 
 ## IOC／artifact概要
@@ -172,7 +155,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 11件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -203,6 +186,8 @@ Aliasなし
 | source--ta406--f6af5ad229019991 | ta406 |  | 不明 | actor_profile/evidence/ta406.csv | structured-data | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--checkpoint-konni-ai-backdoor-2026 | KONNI Adopts AI to Generate PowerShell Backdoors | Check Point Research | 2026-01-22 | https://research.checkpoint.com/2026/konni-targets-developers-with-ai-malware/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--proofpoint-ta406-konni-boundary-2025 | TA406 Pivots to the Front | Proofpoint Threat Research | 2025-05-13 | https://www.proofpoint.com/us/blog/threat-insight/ta406-pivots-front | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

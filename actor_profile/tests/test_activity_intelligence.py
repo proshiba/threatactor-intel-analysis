@@ -23,6 +23,7 @@ from enrich_activity_intelligence import (  # noqa: E402
     compile_rules,
     contains_evidence_reference,
     enrich_explicit_activity_period,
+    link_explicit_activity_malware,
 )
 from migrate_activity_model import migrate  # noqa: E402
 
@@ -91,6 +92,36 @@ class ActivityIntelligenceTests(unittest.TestCase):
             "analyst_notes": "",
         }
 
+    def test_explicit_existing_malware_is_linked_to_activity(self) -> None:
+        profile = self.profile("Example Actor")
+        profile["capabilities"]["malware"] = [
+            {
+                "id": "malware--example",
+                "name": "ExampleLoader",
+                "aliases": [],
+            }
+        ]
+        activity = self.activity(
+            "Example Actor campaign",
+            "Example Actor deployed ExampleLoader to affected systems.",
+        )
+        added = link_explicit_activity_malware(profile, activity, self.rules)
+        self.assertEqual(added, ["malware--example"])
+        self.assertEqual(activity["malware_refs"], ["malware--example"])
+
+    def test_actor_software_name_collision_is_not_inferred(self) -> None:
+        profile = self.profile("KONNI")
+        profile["capabilities"]["malware"] = [
+            {"id": "malware--konni", "name": "KONNI", "aliases": []}
+        ]
+        activity = self.activity(
+            "KONNI campaign",
+            "KONNI targeted researchers using a phishing document.",
+        )
+        added = link_explicit_activity_malware(profile, activity, self.rules)
+        self.assertEqual(added, [])
+        self.assertEqual(activity["malware_refs"], [])
+
     def test_multi_actor_article_does_not_mix_following_actor_behavior(self) -> None:
         profile = self.profile("Kimsuky", ["TA427"])
         activity = self.activity(
@@ -120,6 +151,18 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("台湾", countries)
         self.assertNotIn("中国", countries)
 
+    def test_possessive_country_actor_phrase_is_not_a_victim_country(self) -> None:
+        profile = self.profile("Mustang Panda")
+        activity = self.activity(
+            "ASEANへの諜報活動",
+            "中国のAPTグループMustang PandaがASEAN加盟国を標的にした。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("中国", countries)
+
     def test_attribution_country_with_niyoru_phrase_is_not_a_victim_country(
         self,
     ) -> None:
@@ -136,6 +179,45 @@ class ActivityIntelligenceTests(unittest.TestCase):
         countries = {item["name"] for item in profile["targets"]["countries"]}
         self.assertIn("米国", countries)
         self.assertNotIn("中国", countries)
+
+    def test_government_backing_phrase_is_not_a_country_or_sector_target(
+        self,
+    ) -> None:
+        profile = self.profile("Volt Typhoon")
+        activity = self.activity(
+            "Volt Typhoonがボットネットを再構築",
+            (
+                "中国政府支援のこのハッカー集団はSOHOルーターを狙い、"
+                "米国の通信事業者を標的にした。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        sectors = {item["name"] for item in profile["targets"]["sectors"]}
+        self.assertIn("米国", countries)
+        self.assertNotIn("中国", countries)
+        self.assertIn("情報通信", sectors)
+        self.assertNotIn("政府・行政", sectors)
+
+    def test_english_government_backing_phrase_is_not_a_sector_target(
+        self,
+    ) -> None:
+        profile = self.profile("Example Actor")
+        activity = self.activity(
+            "Campaign against telecom providers",
+            (
+                "Chinese government-backed hackers targeted telecommunications "
+                "providers in the United States."
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        sectors = {item["name"] for item in profile["targets"]["sectors"]}
+        self.assertIn("情報通信", sectors)
+        self.assertNotIn("政府・行政", sectors)
 
     def test_backing_country_phrase_is_not_a_victim_country(self) -> None:
         """「Xを背景とするグループ」は支援国側の記述であり被害国ではない。
@@ -177,6 +259,115 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("台湾", countries)
         self.assertNotIn("米国", countries)
 
+    def test_political_subject_matter_is_not_a_victim_country(self) -> None:
+        profile = self.profile("Kimsuky")
+        activity = self.activity(
+            "韓国の学術機関への攻撃",
+            (
+                "北朝鮮のハッカーグループKimsukyが、韓国の学術機関を標的にした。"
+                "北朝鮮の政治問題に焦点を当てた学術関係者が特に狙われた。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("韓国", countries)
+        self.assertNotIn("北朝鮮", countries)
+
+    def test_multiple_names_for_same_actor_do_not_truncate_activity_text(
+        self,
+    ) -> None:
+        profile = self.profile("Mustang Panda", ["HoneyMyte"])
+        activity = self.activity(
+            "HoneyMyte activity",
+            (
+                "HoneyMyte (Mustang Panda) deployed CoolClient. "
+                "The actor established persistence. "
+                "It collected credentials. "
+                "It concealed command traffic. "
+                "Victims in Pakistan and Russia were confirmed."
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertEqual(countries, {"パキスタン", "ロシア"})
+
+    def test_actor_name_after_target_clause_does_not_hide_victim_country(self) -> None:
+        profile = self.profile("Konni")
+        activity = self.activity(
+            "Poseidon campaign",
+            (
+                "韓国組織を狙うKonni APTの作戦を確認した。"
+                "攻撃者は北朝鮮人権団体への成りすましで信用を獲得した。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("韓国", countries)
+        self.assertNotIn("北朝鮮", countries)
+
+    def test_campaign_origin_and_related_country_are_not_victim_countries(
+        self,
+    ) -> None:
+        profile = self.profile("Example Actor")
+        activity = self.activity(
+            "欧州外交組織への攻撃",
+            (
+                "北朝鮮の攻撃キャンペンが確認された。"
+                "中国と関連するサイバー攻撃グループは、ドイツの外交組織を標的にした。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ドイツ", countries)
+        self.assertNotIn("北朝鮮", countries)
+        self.assertNotIn("中国", countries)
+
+    def test_geopolitical_deployment_and_request_are_not_victim_countries(
+        self,
+    ) -> None:
+        profile = self.profile("Konni")
+        activity = self.activity(
+            "ウクライナ政府を狙う活動",
+            (
+                "Konniはウクライナ政府機関を標的にした。目的は北朝鮮軍の"
+                "ウクライナ派遣に伴うリスクとロシアからの追加要請を分析することだった。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ウクライナ", countries)
+        self.assertNotIn("北朝鮮", countries)
+        self.assertNotIn("ロシア", countries)
+
+    def test_reviewed_activity_target_exclusions_override_text_matches(self) -> None:
+        profile = self.profile("Example Actor")
+        activity = self.activity(
+            "複数業種への攻撃",
+            "攻撃者は日本の防衛組織と米国政府機関を標的にした。",
+        )
+        rules = copy.deepcopy(self.rules)
+        rules["_activity_target_exclusions"] = {
+            activity["activity_id"]: {"日本", "防衛・軍事"}
+        }
+
+        add_targets(profile, activity, rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        sectors = {item["name"] for item in profile["targets"]["sectors"]}
+        self.assertEqual(countries, {"米国"})
+        self.assertIn("政府・行政", sectors)
+        self.assertNotIn("防衛・軍事", sectors)
+
     def test_victim_side_it_workers_keep_their_country(self) -> None:
         """「Xの IT労働者」は被害側であり、帰属文脈として除外しない。"""
         profile = self.profile("Contagious Interview")
@@ -189,6 +380,57 @@ class ActivityIntelligenceTests(unittest.TestCase):
 
         countries = {item["name"] for item in profile["targets"]["countries"]}
         self.assertIn("日本", countries)
+
+    def test_country_possessive_victim_phrase_with_nerau_is_kept(self) -> None:
+        profile = self.profile("UNC3753")
+        activity = self.activity(
+            "法律事務所への攻撃",
+            "UNC3753は米国の法律事務所を偽ITサポート通話で積極的に狙っている。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("米国", countries)
+
+    def test_country_sector_disruption_title_is_target_context(self) -> None:
+        profile = self.profile("Example Actor")
+        activity = self.activity(
+            "攻撃者がウクライナの穀物セクターを妨害",
+            "データワイパーによる破壊活動が確認された。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ウクライナ", countries)
+
+    def test_targeted_policy_professionals_keep_their_country(self) -> None:
+        profile = self.profile("Mustang Panda")
+        activity = self.activity(
+            "政策関係者への攻撃",
+            "Mustang Pandaは韓国・米国の政策／外交関係者を狙った。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertEqual(countries, {"韓国", "米国"})
+
+    def test_social_engineering_is_not_manufacturing_sector(self) -> None:
+        profile = self.profile("FIN6")
+        activity = self.activity(
+            "採用担当者への攻撃",
+            (
+                "FIN6 used social engineering against recruiters. "
+                "攻撃者はソーシャルエンジニアリングで採用担当者を狙った。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        sectors = {item["name"] for item in profile["targets"]["sectors"]}
+        self.assertNotIn("製造・産業", sectors)
 
     def test_nationality_of_perpetrators_is_not_a_victim_country(self) -> None:
         profile = self.profile("Silent Librarian")

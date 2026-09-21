@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5976`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -43,16 +43,16 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | UNC5976。GTIGが2026年3月から追跡する、認証に重点を置くロシア関連の諜報クラスタ。UNC6293およびUNC7005とは別クラスタとされ、異なるロシア情報機関との整合の可能性が指摘されている。 |
-| Capability | 偽ファイル共有ページとクラウドプロジェクトを組み合わせたOAuthトークン収集の自動化。悪性Excelプラグイン HEADRUSH からHTAダウンローダーへ至る感染連鎖。事後侵害活動には住宅用プロキシーではなく専用インフラを用いる。 |
-| Infrastructure | ファイル共有を思わせる名称の購入ドメインと、対応する攻撃者管理のクラウドプロジェクト。無効化後およそ3か月で少なくとも12件の新規ドメインを再構築しており、Google以外の事業者への移行が進んでいると評価されている。 |
-| Victim | 軍、航空宇宙、防衛産業基盤、NGO・シンクタンク。地理的にはウクライナとアルメニアへの偏りが指摘される。HEADRUSHの配布ではウクライナの研究機関を装い、ウクライナの航空宇宙・画像関連企業が標的となった可能性がある。 |
-| Socio-political | GTIGは3クラスタのロシア関連性をhigh confidenceで評価し、UNC5976については異なる戦略的任務と、別のロシア情報機関との整合の可能性を指摘している。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -136,7 +136,7 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | countries | アルメニア | GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。 | 不明 | 不明 | 高 | `source--gtig-going-with-the-flows-2026` |
 | countries | ウクライナ | GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。 | 2026-04 | 2026-04 | 高 | `source--gtig-going-with-the-flows-2026` |
 
-選定ロジック: 標的国・地域・業種は、GTIG原文がUNC5976について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域・業種は、GTIG原文がUNC5976について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--revil`
 - 状態: deprecated
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-21T02:11:27Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -114,7 +114,7 @@ Deprecated entity conflation; no state sponsor is asserted for this legacy profi
 
 ターゲット情報なし
 
-選定ロジック: Deprecated legacy actor profile; no canonical target assertions. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Deprecated legacy actor profile; no canonical target assertions. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -126,11 +126,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 9件
+- IOC値: 10件
+- IOC観測: 11件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 5件
-- 非IOC artifact観測: 108件（`artifacts.csv`）
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

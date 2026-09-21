@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--transparent-tribe`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:13Z
+- 更新日時: 2026-09-21T04:35:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -44,16 +44,16 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Transparent Tribe](https://attack.mitre.org/groups/G0134) is a suspected Pakistan-based threat group that has been active since at least 2013, primarily targeting diplomatic, defense, and research organizations in India and Afghanistan.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020)(Citation: Talos Transparent Tribe May 2021) |
-| Capability | Crimson, DarkComet, ObliqueRAT, Peppy, njRAT, Crimson RAT, Limepad |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Government of India diplomatic and military |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -88,9 +88,7 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--crimson | Crimson | [Crimson](https://attack.mitre.org/software/S0115) is a remote access Trojan that has been used by [Transparent Tribe](https://attack.mitre.org/groups/G0134) since at least 2016.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020) | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 高 | `source--mitre-attack-19-2` |
-| malware--crimson-rat | Crimson RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--darkcomet | DarkComet | [DarkComet](https://attack.mitre.org/software/S0334) is a Windows remote administration tool and backdoor.(Citation: TrendMicro DarkComet Sept 2014)(Citation: Malwarebytes DarkComet March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| malware--limepad | Limepad | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--obliquerat | ObliqueRAT | [ObliqueRAT](https://attack.mitre.org/software/S0644) is a remote access trojan, similar to [Crimson](https://attack.mitre.org/software/S0115), that has been in use by [Transparent Tribe](https://attack.mitre.org/groups/G0134) since at least 2020.(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--peppy | Peppy | [Peppy](https://attack.mitre.org/software/S0643) is a Python-based remote access Trojan, active since at least 2012, with similarities to [Crimson](https://attack.mitre.org/software/S0115).(Citation: Proofpoint Operation Transparent Tribe March 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -123,8 +121,7 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | C0011 | campaign | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 2026-05-12 | target--country--india, target--sector--government | malware--crimson | ttp--mitre-campaign--2190b7f723ca8b505db8, ttp--mitre-campaign--316336d66e0779a09423, ttp--mitre-campaign--491f3c666f93e55402d6, ttp--mitre-campaign--588e8190abaf6ad385cd, ttp--mitre-campaign--7d63f0df6c08571978c6, ttp--mitre-campaign--9b709fe37ae48a5728e2, ttp--mitre-campaign--ad8a4a3eb993f5fe638e, ttp--mitre-campaign--f324682b1c519c6387c3 | victim--activity-rule--d28e41b1d16aa4dca383 | [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)  | 高 | `source--mitre-attack-19-2` |
 | ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | malware-campaign | 不明 | 不明 | 2025-05-13 | target--country--india, target--sector--defense |  | ttp--activity-rule--9f71c23b587163876322 | victim--activity-rule--a0e47c664c46d16a865d | ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
-| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | infrastructure-operation | 2026-08-20 | 2026-09-01 | 2026-09-19 | target--country--india, target--sector--defense, target--sector--government | malware--daily-1d97d5ffd61e5802a06e, malware--daily-2b114530a9ff0ce2fd56 | ttp--activity-rule--020762fe457528c8574b, ttp--activity-rule--129d02cbbb4b2b22994d, ttp--activity-rule--2e6dcc75ce17ffa11a68 | victim--activity-rule--ff3a3b7d94a3e670bdd0 | Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。 | 中 | `source--daily-08ae19a58641703181dc` |
-| Operation C-Major | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | infrastructure-operation | 2026-08-20 | 2026-09-01 | 2026-09-19 | target--country--india, target--sector--defense, target--sector--government, target--targeting-audit--country--bbb723409f1dd4f40a48 | malware--daily-1d97d5ffd61e5802a06e, malware--daily-2b114530a9ff0ce2fd56 | ttp--activity-rule--020762fe457528c8574b, ttp--activity-rule--129d02cbbb4b2b22994d, ttp--activity-rule--2e6dcc75ce17ffa11a68 | victim--activity-rule--ff3a3b7d94a3e670bdd0 | Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。 | 中 | `source--daily-08ae19a58641703181dc` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -132,8 +129,7 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 |---|---|---|---|---|---|---|---|
 | C0011 | Transparent Tribe | Crimson | T1204.002 Malicious File, T1204.001 Malicious Link, T1566.001 Spearphishing Attachment, T1587.003 Digital Certificates, T1583.001 Domains, T1566.002 Spearphishing Link, T1608.001 Upload Malware, T1059.005 Visual Basic | 情報なし | インド, Government | 被害事例: C0011 | 高 |
 | ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | Transparent Tribe | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | インド, Defense | 被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | 中 |
-| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | Transparent Tribe | RUSTYMOVE, RUSTYSHADE | T1053.005 Scheduled Task, T1059.001 PowerShell, T1102.003 One-Way Communication | 情報なし | インド, Defense, Government | 被害事例: Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | 中 |
-| Operation C-Major | Transparent Tribe | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | Transparent Tribe | RUSTYMOVE, RUSTYSHADE | T1053.005 Scheduled Task, T1059.001 PowerShell, T1102.003 One-Way Communication | 情報なし | インド, Defense, Government, アフガニスタン | 被害事例: Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | 中 |
 
 Operation C-Major
 
@@ -141,49 +137,13 @@ Operation C-Major
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アフガニスタン | 活動「Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開」の記述で標的・被害国として明示されている。 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc`, `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イラン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | Targeting text mentions india. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 高 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| countries | オマーン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オランダ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ケニア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてケニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スウェーデン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ネパール | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブルガリア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ボツワナ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてボツワナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アフリカ | ケニア、ボツワナで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、イラン、オマーン、サウジアラビア、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| regions | 東アジア | モンゴル、中国、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | チェコ、ブルガリア、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 構造化OSINTの被害地域フィールドでTransparent Tribeの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-20 | 2026-09-01 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
-| sectors | Government | Targeting text indicates the Government sector. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | アフガニスタン | 活動「Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開」の記述で標的・被害国として明示されている。 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc` |
+| countries | インド | Targeting text mentions india. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 高 | `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| sectors | Government | Targeting text indicates the Government sector. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -258,7 +218,7 @@ Operation C-Major
 - IOC観測: 545件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 84件
-- 非IOC artifact観測: 72件（`artifacts.csv`）
+- 非IOC artifact観測: 62件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -286,16 +246,16 @@ Operation C-Major
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--transparent-tribe--0f08047cfac5b7bb | README |  | 不明 | APT36/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--transparent-tribe--3fb4d998121e8765 | transparent tribe threat insight en2020 |  | 2020 | TransparentTribe/transparent-tribe-threat-insight-en2020.pdf | report | TLP:CLEAR | 中 |
 | source--transparent-tribe--8c7cc7c46f9a6fd9 | transparent tribe apt36 cc network tradecraft report |  | 不明 | APT36/transparent-tribe-apt36-cc-network-tradecraft-report.pdf | report | TLP:CLEAR | 中 |
 | source--transparent-tribe--be73ac7ec108bc35 | README |  | 不明 | TransparentTribe/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -4,7 +4,7 @@
   "name": "Vanilla Tempest",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T13:48:13Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "languages": [
     "ja"
   ],
@@ -13,13 +13,33 @@
     "aliases": [
       {
         "name": "DEV-0832",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
+        "vendor": "Microsoft Threat Intelligence",
+        "scope": "exact",
+        "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--microsoft-dev0832-vice-society-2022"
         ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
+        "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+      },
+      {
+        "name": "Vice Society",
+        "vendor": "Microsoft Threat Intelligence",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+      },
+      {
+        "name": "VICE SPIDER",
+        "vendor": "Microsoft Threat Intelligence",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
       }
     ],
     "actor_types": [
@@ -39,7 +59,7 @@
     },
     "active": "unknown",
     "description": "",
-    "analyst_notes": ""
+    "analyst_notes": "2026-09 entity-boundary migration: actor--vice-society was merged into actor--vanilla-tempest after primary-source exact-identity verification."
   },
   "attribution": {
     "countries": [],
@@ -48,20 +68,256 @@
     "assessment": "",
     "confidence": "unknown",
     "evidence_refs": [],
-    "analyst_notes": ""
+    "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--vanilla-tempest--verified--46c1545645f32bac",
+      "target_actor": "Fox Tempest",
+      "relationship_type": "uses-service-of",
+      "description": "Vanilla Tempest used Fox Tempest's malware-signing-as-a-service to obtain fraudulently signed Teams installers carrying Oyster and, in some intrusions, Rhysida ransomware.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--daily-1f90e973408c7fac0a86"
+      ],
+      "analyst_notes": "The actors remain separate: Fox Tempest provided the signing service; Vanilla Tempest conducted downstream intrusions."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--blackcat",
+        "name": "BlackCat",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "Linux"
+        ],
+        "description": "Ransomware payload used by DEV-0832.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--oyster",
+        "name": "Oyster",
+        "aliases": [
+          "Broomstick"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "Modular multistage backdoor deployed from trojanized Teams installers; it provides persistence, C2, host discovery, and follow-on delivery.",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-1f90e973408c7fac0a86"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--portstarter",
+        "name": "PortStarter",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Go backdoor used by DEV-0832 to alter firewall settings and open ports for C2.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--quantumlocker",
+        "name": "QuantumLocker",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Ransomware payload used by DEV-0832.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--redalert",
+        "name": "RedAlert",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Ransomware variant used by DEV-0832 in late September 2022.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--rhysida",
+        "name": "Rhysida",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Ransomware deployed by Vanilla Tempest in some intrusions using the same Fox Tempest-signed Teams-installer process.",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-1f90e973408c7fac0a86"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--systembc",
+        "name": "SystemBC",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Commodity backdoor and proxy used in DEV-0832 intrusions.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--zeppelin",
+        "name": "Zeppelin",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "Ransomware family and basis of a Vice Society-branded variant used by DEV-0832.",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      }
+    ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
@@ -97,7 +353,11 @@
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "target--activity-rule--sector--260bd106ff4950e5430d"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--blackcat",
+        "malware--rhysida",
+        "malware--zeppelin"
+      ],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
@@ -116,7 +376,11 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--blackcat",
+            "malware--rhysida",
+            "malware--zeppelin"
+          ],
           "ttp_refs": []
         },
         "infrastructure": {
@@ -171,110 +435,20 @@
       }
     },
     {
-      "activity_id": "activity--daily-c535922b3c89d69acd5c",
-      "name": "Microsoftプラットフォームを悪用してマルウェアに署名していたサイバー犯罪サービスが妨害される",
-      "activity_type": "disruptive-activity",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "reported_at": {
-        "value": "2026-05-21T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "Microsoftは、Artifact Signingを悪用してマルウェア用の不正なコード署名証明書を生成するMSaaS運営「Fox Tempest」を妨害した。 Fox Tempestは1,000件超の証明書と数百のAzureテナント・サブスクリプションを作成していたとされる。 Microsoftはsignspace[.]cloudを差し押さえ、関連する数百台の仮想マシンをオフライン化し、基盤へのアクセスを遮断した。 このサービスはOyster、Lumma Stealer、Vidar、Rhysida、Akira、INC、Qilin、BlackByteなどの活動に関連していた。 署名済みマルウェアはMicrosoft Teams、AnyDesk、PuTTY、Webexなど正規ソフトを装って配布されていた。",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-1f90e973408c7fac0a86"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--c535922b3c89d69acd5cd17a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は金銭目的のFox Tempestで、Vanilla Tempest、Storm-0501、Storm-2561、Storm-0249などが署名済みマルウェアを使用したと記載されている。",
-      "ttp_refs": [],
-      "victim_refs": [
-        "victim--activity-rule--680c09627006db7a0e67"
-      ],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--vanilla-tempest",
-          "name": "Vanilla Tempest",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--680c09627006db7a0e67"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": "2026-05-21T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "disruptive-activity",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-1f90e973408c7fac0a86"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
       "activity_id": "activity--daily-cdd28b7e4efb97edb05f",
-      "name": "Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害",
+      "name": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布",
       "activity_type": "ransomware-extortion",
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "reported_at": {
         "value": "2025-10-17T00:00:00Z",
@@ -282,19 +456,19 @@
         "status": "known",
         "basis": "daily-news-file-date"
       },
-      "description": "Microsoftは10月上旬のRhysida連携攻撃を妨害し、偽Teamsインストーラ署名に使われた200超の証明書を失効させた。 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.]top等の偽サイトでOysterバックドアを配布した。 配布は9月下旬のマルバタイジングやSEOポイズニングで行われ、正規と同名MSTeamsSetup[.]exeで利用者を欺いた。 悪性インストーラは署名済みOysterを展開し、遠隔操作・情報窃取・追加ペイロード投下を可能にする。 同集団は金銭目的で教育・医療・IT・製造を頻繁に標的化し、近年は主にRhysidaを展開している。",
-      "target_refs": [
-        "target--activity-rule--sector--260bd106ff4950e5430d",
-        "target--activity-rule--sector--dfc80b76cad93a318adc",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      "description": "Vanilla Tempestは遅くとも2025年6月からFox TempestのMSaaSへトロイ化したMicrosoft Teamsインストーラを持ち込み、不正署名済みバイナリを正規広告、マルバタイジング、SEOポイズニング経由で配布した。偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。Microsoftは2025年10月に関連する200超の証明書を失効させた。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--oyster",
+        "malware--rhysida"
       ],
-      "malware_refs": [],
       "infrastructure_refs": [],
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
+        "source--daily-1f90e973408c7fac0a86",
         "source--daily-5287a969660d1bb7e309"
       ],
-      "analyst_notes": "日次収集レコード daily-record--cdd28b7e4efb97edb05f973b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.",
+      "analyst_notes": "MicrosoftのFox Tempest一次報告にあるVanilla Tempest事例へ主体を限定して統合。Fox Tempest自体のサービス運営・妨害はVanilla Tempestの活動として扱わず、uses-service-of関係として分離した。",
       "ttp_refs": [],
       "victim_refs": [
         "victim--activity-rule--f98095af9352ea1ab8e2"
@@ -307,34 +481,33 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--oyster",
+            "malware--rhysida"
+          ],
           "ttp_refs": []
         },
         "infrastructure": {
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--sector--260bd106ff4950e5430d",
-            "target--activity-rule--sector--dfc80b76cad93a318adc",
-            "target--activity-rule--sector--e7608f51421ca8b1e297"
-          ],
+          "target_refs": [],
           "victim_refs": [
             "victim--activity-rule--f98095af9352ea1ab8e2"
           ]
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
           },
           "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2025-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
           },
           "reported_at": {
             "value": "2025-10-17T00:00:00Z",
@@ -353,9 +526,119 @@
             "target_region_refs": []
           }
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
+          "source--daily-1f90e973408c7fac0a86",
           "source--daily-5287a969660d1bb7e309"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--microsoft-dev0832-education-2022",
+      "name": "DEV-0832／Vanilla Tempestによる2022年の教育機関向け恐喝活動",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": "2022-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2022-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2022-10-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "MicrosoftはDEV-0832（現Vanilla Tempest、Vice Society）が2022年7月から10月に米国を中心とする教育機関へランサムウェアと恐喝活動を実施したと報告した。同集団はBlackCat、QuantumLocker、Zeppelin、Vice Society固有Zeppelin亜種、RedAlertを切り替え、SystemBCとPortStarterも使用した。過去の機会的攻撃には地方政府と小売も含まれる。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--blackcat",
+        "malware--portstarter",
+        "malware--quantumlocker",
+        "malware--redalert",
+        "malware--systembc",
+        "malware--zeppelin"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--ad048966393781a542ab"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-dev0832-vice-society-2022"
+      ],
+      "analyst_notes": "活動期間はMicrosoftが明記する2022年7月〜10月に限定。アクターの最古活動時期（2021年6月頃）とは分離した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--vanilla-tempest",
+          "name": "Vanilla Tempest",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--blackcat",
+            "malware--portstarter",
+            "malware--quantumlocker",
+            "malware--redalert",
+            "malware--systembc",
+            "malware--zeppelin"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--570d54d1d21fab6540a9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--ad048966393781a542ab"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2022-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2022-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2022-10-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -389,6 +672,28 @@
     "regions": [],
     "sectors": [
       {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「DEV-0832／Vanilla Tempestによる2022年の教育機関向け恐喝活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--microsoft-dev0832-vice-society-2022"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--activity-rule--sector--260bd106ff4950e5430d",
         "name": "医療・ヘルスケア",
         "description": "活動「Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃」の記述で標的として明示された産業。",
@@ -406,59 +711,36 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-5287a969660d1bb7e309",
           "source--daily-c1b12b52abae4635e5ea"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
-        "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
-        "name": "製造・産業",
-        "description": "活動「Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害」の記述で標的として明示された産業。",
+        "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "name": "小売・ホスピタリティ",
+        "description": "活動「DEV-0832／Vanilla Tempestによる2022年の教育機関向け恐喝活動」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-10-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-5287a969660d1bb7e309"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
-      },
-      {
-        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
-        "name": "教育・研究",
-        "description": "活動「Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-5287a969660d1bb7e309"
+          "source--microsoft-dev0832-vice-society-2022"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [],
   "sources": [
@@ -481,24 +763,6 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--daily-1f90e973408c7fac0a86",
-      "path": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
-      "title": "Microsoftプラットフォームを悪用してマルウェアに署名していたサイバー犯罪サービスが妨害される",
-      "publisher": "microsoft.com",
-      "published_at": {
-        "value": "2026-05-21T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260521.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
       "source_id": "source--daily-5287a969660d1bb7e309",
       "path": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
       "title": "Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害",
@@ -514,7 +778,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251017.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251017.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-c1b12b52abae4635e5ea",
@@ -532,7 +804,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240919.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240919.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-vanilla-tempest-hit-healthcare-with-inc-ransomware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -695,6 +975,297 @@
         "motivation-lead"
       ],
       "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--vice-society--000985ff0c99e8d0",
+      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
+      "title": "Secureworks NC3 2022StateoftheThreat",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--096e6a5ab122cf81",
+      "path": "summary/2024/2024-security-report.pdf",
+      "title": "2024 security report",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--378bd77c1a55d9ff",
+      "path": "summary/2024/2024_Trustwave_Public_Sector_Threat_Landscape.pdf",
+      "title": "2024 Trustwave Public Sector Threat Landscape",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--442c439e9d287b2f",
+      "path": "summary/2024/state-of-the-threat-report-2024.pdf",
+      "title": "state of the threat report 2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--4f2821a5f3b2de05",
+      "path": "summary/2025/Global Threat Report 2025.pdf",
+      "title": "Global Threat Report 2025",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--640b74e7279a78c6",
+      "path": "summary/2023/RedReport2023-Picus.pdf",
+      "title": "RedReport2023 Picus",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--6ec9e1c9c889aebe",
+      "path": "summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf",
+      "title": "group ib hi tech crime trends 2022 2023 ru",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "invalid-calendar-date:filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--77ff6bce69a046a1",
+      "path": "cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf",
+      "title": "Semiannual+Ransomware+Report+ +H1+2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--78abb303ef02d1f9",
+      "path": "summary/2023/2022cyberComprehensiveSituationObservationManual.pdf",
+      "title": "2022cyberComprehensiveSituationObservationManual",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--a6e96b7f3b48daa9",
+      "path": "summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf",
+      "title": "Symantec Ransomware Threat Landscape 2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--c6993c45964e8808",
+      "path": "summary/2023/MDDR_FINAL_2023_1004.pdf",
+      "title": "MDDR FINAL 2023 1004",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-10-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--vice-society--cbb2021149e25c3a",
+      "path": "actor_profile/evidence/vice-society.csv",
+      "title": "vice society",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--vice-society--e007f780b44a14fb",
+      "path": "summary/2023/positive-research-2023-eng.pdf",
+      "title": "positive research 2023 eng",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--microsoft-dev0832-vice-society-2022",
+      "path": "https://www.microsoft.com/en-us/security/blog/2022/10/25/dev-0832-vice-society-opportunistic-ransomware-campaigns-impacting-us-education-sector/",
+      "url": "https://www.microsoft.com/en-us/security/blog/2022/10/25/dev-0832-vice-society-opportunistic-ransomware-campaigns-impacting-us-education-sector/",
+      "title": "DEV-0832 (Vice Society) opportunistic ransomware campaigns impacting US education sector",
+      "publisher": "Microsoft Threat Intelligence",
+      "published_at": {
+        "value": "2022-10-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "activity",
+        "capability",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Microsoft states that DEV-0832 is also known as Vice Society and is now tracked as Vanilla Tempest; the report documents its 2022 campaigns."
+    },
+    {
+      "source_id": "source--daily-1f90e973408c7fac0a86",
+      "path": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+      "title": "Exposing Fox Tempest: A malware-signing service operation",
+      "publisher": "Microsoft Threat Intelligence",
+      "published_at": {
+        "value": "2026-05-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "infrastructure"
+      ],
+      "analyst_notes": "The report concerns Fox Tempest, but its Vanilla Tempest case study directly documents Vanilla Tempest's use of the signing service."
     }
   ],
   "assessment": {
@@ -704,9 +1275,10 @@
       "Automatically mapped aliases, targets, and workbook software require analyst review."
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Vendor cluster boundaries may differ from the canonical name used here.",
+      "1 alias lead(s) remain non-canonical pending original-source review."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/vanilla-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/vanilla-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -733,7 +1305,11 @@
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "target--activity-rule--sector--260bd106ff4950e5430d"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--blackcat",
+        "malware--rhysida",
+        "malware--zeppelin"
+      ],
       "ttp_refs": [],
       "affected_assets": [],
       "impacts": [
@@ -767,81 +1343,95 @@
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
-      "victim_case_id": "victim--activity-rule--680c09627006db7a0e67",
-      "name": "被害事例: Microsoftプラットフォームを悪用してマルウェアに署名していたサイバー犯罪サービスが妨害される",
+      "victim_case_id": "victim--activity-rule--ad048966393781a542ab",
+      "name": "被害事例: DEV-0832／Vanilla Tempestによる2022年の教育機関向け恐喝活動",
       "victim_name": null,
       "disclosure_status": "anonymous",
       "victim_type": "unknown",
       "case_status": "reported",
-      "description": "Microsoftは、Artifact Signingを悪用してマルウェア用の不正なコード署名証明書を生成するMSaaS運営「Fox Tempest」を妨害した。 Fox Tempestは1,000件超の証明書と数百のAzureテナント・サブスクリプションを作成していたとされる。 Microsoftはsignspace[.]cloudを差し押さえ、関連する数百台の仮想マシンをオフライン化し、基盤へのアクセスを遮断した。 このサービスはOyster、Lumma Stealer、Vidar、Rhysida、Akira、INC、Qilin、BlackByteなどの活動に関連していた。 署名済みマルウェアはMicrosoft Teams、AnyDesk、PuTTY、Webexなど正規ソフトを装って配布されていた。",
+      "description": "MicrosoftはDEV-0832（現Vanilla Tempest、Vice Society）が2022年7月から10月に米国を中心とする教育機関へランサムウェアと恐喝活動を実施したと報告した。同集団はBlackCat、QuantumLocker、Zeppelin、Vice Society固有Zeppelin亜種、RedAlertを切り替え、SystemBCとPortStarterも使用した。過去の機会的攻撃には地方政府と小売も含まれる。",
       "activity_refs": [
-        "activity--daily-c535922b3c89d69acd5c"
-      ],
-      "target_refs": [],
-      "malware_refs": [],
-      "ttp_refs": [],
-      "affected_assets": [],
-      "impacts": [],
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "reported_at": {
-        "value": "2026-05-21T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-1f90e973408c7fac0a86"
-      ],
-      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
-    },
-    {
-      "victim_case_id": "victim--activity-rule--f98095af9352ea1ab8e2",
-      "name": "被害事例: Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害",
-      "victim_name": null,
-      "disclosure_status": "aggregate",
-      "victim_type": "multiple-organizations",
-      "case_status": "reported",
-      "description": "Microsoftは10月上旬のRhysida連携攻撃を妨害し、偽Teamsインストーラ署名に使われた200超の証明書を失効させた。 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.]top等の偽サイトでOysterバックドアを配布した。 配布は9月下旬のマルバタイジングやSEOポイズニングで行われ、正規と同名MSTeamsSetup[.]exeで利用者を欺いた。 悪性インストーラは署名済みOysterを展開し、遠隔操作・情報窃取・追加ペイロード投下を可能にする。 同集団は金銭目的で教育・医療・IT・製造を頻繁に標的化し、近年は主にRhysidaを展開している。",
-      "activity_refs": [
-        "activity--daily-cdd28b7e4efb97edb05f"
+        "activity--microsoft-dev0832-education-2022"
       ],
       "target_refs": [
-        "target--activity-rule--sector--260bd106ff4950e5430d",
-        "target--activity-rule--sector--dfc80b76cad93a318adc",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--570d54d1d21fab6540a9"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--blackcat",
+        "malware--portstarter",
+        "malware--quantumlocker",
+        "malware--redalert",
+        "malware--systembc",
+        "malware--zeppelin"
+      ],
       "ttp_refs": [],
       "affected_assets": [],
       "impacts": [
         {
           "impact_type": "encryption",
-          "description": "Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害"
+          "description": "MicrosoftはDEV-0832（現Vanilla Tempest、Vice Society）が2022年7月から10月に米国を中心とする教育機関へランサムウェアと恐喝活動を実施したと報告した。"
         }
       ],
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2022-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2022-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2022-10-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-dev0832-vice-society-2022"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--f98095af9352ea1ab8e2",
+      "name": "被害事例: Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Vanilla Tempestは遅くとも2025年6月からFox TempestのMSaaSへトロイ化したMicrosoft Teamsインストーラを持ち込み、不正署名済みバイナリを正規広告、マルバタイジング、SEOポイズニング経由で配布した。偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。Microsoftは2025年10月に関連する200超の証明書を失効させた。",
+      "activity_refs": [
+        "activity--daily-cdd28b7e4efb97edb05f"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--oyster",
+        "malware--rhysida"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
       "reported_at": {
         "value": "2025-10-17T00:00:00Z",
@@ -849,8 +1439,9 @@
         "status": "known",
         "basis": "daily-news-file-date"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
+        "source--daily-1f90e973408c7fac0a86",
         "source--daily-5287a969660d1bb7e309"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"

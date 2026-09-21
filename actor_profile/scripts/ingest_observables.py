@@ -81,6 +81,15 @@ IANA_TLDS_PATH = (
 )
 # IANAの委任TLDではないが、指標として正当な名前空間。
 SPECIAL_USE_TLDS = frozenset({"onion", "i2p", "bit", "exit"})
+SOURCE_DOCUMENT_NAMES = frozenset({
+    "agent.md",
+    "agents.md",
+    "changelog.md",
+    "contributing.md",
+    "license.md",
+    "readme.md",
+    "security.md",
+})
 
 
 def _load_reference_list(path: Path, key: str) -> frozenset[str]:
@@ -316,6 +325,37 @@ def structured_metadata(
     return result
 
 
+def canonical_reference_sets(profile: dict[str, Any]) -> dict[str, set[str]]:
+    return {
+        "campaign_refs": {
+            item["activity_id"]
+            for item in profile.get("activities", [])
+            if item.get("activity_id")
+        },
+        "malware_refs": {
+            item["id"]
+            for item in profile.get("capabilities", {}).get("malware", [])
+            if item.get("id")
+        },
+        "infrastructure_refs": {
+            item["id"]
+            for item in profile.get("capabilities", {}).get("infrastructure", [])
+            if item.get("id")
+        },
+    }
+
+
+def filter_canonical_refs(
+    related: dict[str, list[str]], allowed: dict[str, set[str]] | None
+) -> dict[str, list[str]]:
+    if allowed is None:
+        return related
+    result = dict(related)
+    for field, valid in allowed.items():
+        result[field] = [ref for ref in result.get(field, []) if ref in valid]
+    return result
+
+
 NON_HASH_WORD_RE = re.compile(rb"[A-Za-z0-9 _./$\\-]{10,}")
 
 
@@ -460,6 +500,8 @@ def plausible_domain(raw: str) -> bool:
     # ``www[.]ru`` OCR fragment must not pass ingestion and then become the
     # single-label host ``ru`` when validation strips the conventional prefix.
     value = host_of(raw).strip(".")
+    if value in SOURCE_DOCUMENT_NAMES:
+        return False
     labels = value.split(".")
     if len(labels) < 2:
         return False
@@ -572,33 +614,36 @@ def extract_artifacts(
     # command/path is an actor-specific artifact. Structured mappings may confirm;
     # heuristic PDF/text extraction remains reviewable.
     disposition = "confirmed" if explicit_structured else "candidate"
+    # A report URL or provenance link is not evidence that the actor used the
+    # basename at the end of that URL. IOC extraction handles URLs separately.
+    artifact_text = URL_RE.sub(" ", text)
 
-    for match in NAMED_PIPE_RE.finditer(text):
+    for match in NAMED_PIPE_RE.finditer(artifact_text):
         artifact_match("named-pipe", match.group(), disposition, results)
-    for match in PDB_RE.finditer(text):
+    for match in PDB_RE.finditer(artifact_text):
         artifact_match("pdb-path", match.group(), disposition, results)
-    for match in REGISTRY_RE.finditer(text):
+    for match in REGISTRY_RE.finditer(artifact_text):
         artifact_match("registry-key", match.group(), disposition, results)
-    for match in WINDOWS_PATH_RE.finditer(text):
+    for match in WINDOWS_PATH_RE.finditer(artifact_text):
         value = match.group()
         if value.lower().endswith(".pdb"):
             continue
         artifact_match("file-path", value, disposition, results)
-    for match in UNIX_PATH_RE.finditer(text):
+    for match in UNIX_PATH_RE.finditer(artifact_text):
         artifact_match("file-path", match.group(), disposition, results)
-    for match in FILE_NAME_RE.finditer(text):
+    for match in FILE_NAME_RE.finditer(artifact_text):
         value = match.group().strip()
         if "\\" in value or "/" in value:
             continue
         artifact_match("file-name", value, disposition, results)
-    for line in text.splitlines():
+    for line in artifact_text.splitlines():
         if COMMAND_MARKER_RE.search(line):
             artifact_match("command", short_context(line, 1000), disposition, results)
-    string_match = STRING_CONTEXT_RE.search(text)
+    string_match = STRING_CONTEXT_RE.search(artifact_text)
     if string_match:
         artifact_match("sample-string", string_match.group(1), disposition, results)
-    if MUTEX_CONTEXT_RE.search(text):
-        match = re.search(r"mutex\s*[:=]\s*([^\s,;]{2,200})", text, re.IGNORECASE)
+    if MUTEX_CONTEXT_RE.search(artifact_text):
+        match = re.search(r"mutex\s*[:=]\s*([^\s,;]{2,200})", artifact_text, re.IGNORECASE)
         if match:
             artifact_match("mutex", match.group(1), disposition, results)
     return results
@@ -638,13 +683,24 @@ def classified_record_values(
         # MD5 or a URI path into a file path.
         return mapped_iocs, mapped_artifacts
     explicit = record["method"] == "stix-indicator"
+    text = record["text"]
+    # Actor evidence-map CSVs carry provenance columns beside the actual
+    # excerpt. Those paths and review metadata describe collection, not actor
+    # observables, and must not be parsed as IOC/artifact values.
+    fields = record.get("fields", {})
+    if fields.get("context_excerpt") and {
+        "original_source_path",
+        "original_source_location",
+        "matched_name",
+    }.issubset(fields):
+        text = fields["context_excerpt"]
     return (
         extract_iocs(
-            record["text"],
+            text,
             allow_plain_domains=bool(metadata.get("allow_plain_domains", False)),
             explicit_structured=explicit,
         ),
-        extract_artifacts(record["text"], explicit_structured=explicit),
+        extract_artifacts(text, explicit_structured=explicit),
     )
 
 
@@ -701,6 +757,12 @@ def main() -> int:
     if not repository_root.is_dir():
         raise ValueError(f"Repository root is not a directory: {repository_root}")
     actor_ref = manifest["actor_ref"]
+    profile_path = manifest_path.parent / "actor-profile.json"
+    allowed_refs = None
+    if profile_path.exists():
+        profile = load_json(profile_path)
+        if profile.get("profile_id") == actor_ref:
+            allowed_refs = canonical_reference_sets(profile)
     iocs_output = (
         args.iocs_output.resolve()
         if args.iocs_output
@@ -740,7 +802,9 @@ def main() -> int:
                 source_published = normalize_time(
                     source.get("published_at"), basis="source-publication"
                 )
-                related = structured_metadata(record, source)
+                related = filter_canonical_refs(
+                    structured_metadata(record, source), allowed_refs
+                )
                 common = {
                     "observed_at": observed_at,
                     "source_published_at": source_published,

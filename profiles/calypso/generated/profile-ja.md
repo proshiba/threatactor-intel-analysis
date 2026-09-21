@@ -2,39 +2,38 @@
 
 - プロファイルID: `actor--calypso`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-Calypsoの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+PwCとLumenの一次資料でRed Lamassu（Calypso）の通信事業者標的活動とShowboat／JFMBackdoorの利用を確認したプロファイル。
 
 ## アクター名とAlias
 
 - 正規名: **Calypso**
-- 初回観測: 不明
-- 最終観測: 不明
-- 活動状態: unknown
+- 初回観測: 2019
+- 最終観測: 2026-05-12
+- 活動状態: yes
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Bronze Medley | SecureWorks | overlapping | 中 | `source--osint-etda-threat-group-cards` | ETDA Threat Group Cards maps Bronze Medley (SecureWorks) to Calypso (Positive Technologies). |
-| Red Lamassu | Lumen Black Lotus Labs | exact | 中 | `source--daily-350d930382dd3ed9f923` | Lumen reporting cited in the reviewed daily activity describes the cluster as Calypso, aka Red Lamassu. |
+| Red Lamassu | PwC Threat Intelligence | exact | 高 | `source--pwc-red-lamassu-jfmbackdoor-2026` | PwC explicitly calls Red Lamassu a.k.a. Calypso. |
 
 ## 帰属
 
-ETDA Threat Group Cards lists Calypso as China-linked. This geographic attribution is kept separate from any state-sponsorship claim.
+PwC describes Red Lamassu (Calypso) as a China-based threat actor, likely operating from Sichuan Province. This does not establish state sponsorship.
 
 - 国: China
 - スポンサー種別: unknown
-- 確度: 中
-- 証拠: `source--osint-etda-threat-group-cards`
+- 確度: 高
+- 証拠: `source--pwc-red-lamassu-jfmbackdoor-2026`
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | ETDA describes the group's motivation as information theft and espionage. | 中 | `source--osint-etda-threat-group-cards` | Aggregated actor card. |
+| espionage | PwC states that Red Lamassu uses persistent access for long-term intelligence collection. | 高 | `source--pwc-red-lamassu-jfmbackdoor-2026` | Actor-specific vendor reporting; not inferred from geography. |
 
 ## 他アクターとの関係
 
@@ -45,15 +44,15 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | WEBC2, BISCUIT and many others |
+| Capability |  |
 | Infrastructure |  |
-| Victim | U.S. cybersecurity firm Mandiant, later purchased by FireEye, released a report in February 2013 that exposed one of China's cyber espionage units, Unit 61398. The group, which FireEye called APT1, is a unit within China's People's Liberation Army (PLA) that has been linked to a wide range of cyber operations targeting U.S. private sector entities for espionage purposes. The comprehensive report detailed evidence connecting APT1 and the PLA, offered insight into APT1's operational malware and methodologies, and provided timelines of the espionage it conducted. |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -85,7 +84,10 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--showboat | Showboat | Modular Linux post-exploitation framework with remote shell, file-transfer, process-hiding, persistence, and SOCKS5 proxy functions. | 2022 | 2026-04 | 高 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
+| malware--jfmbackdoor | JFMBackdoor | Windows backdoor delivered through DLL side-loading with shell, file, proxy, screenshot, service, registry, and self-removal functions. | 2025-07 | 2025-10 | 高 | `source--pwc-red-lamassu-jfmbackdoor-2026` |
 
 ### ツール
 
@@ -111,13 +113,13 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | cyber-espionage | 不明 | 不明 | 2026-05-22 | target--activity-rule--sector--97fa6f38a056d42117be |  | ttp--activity-rule--20b1bae9b0c6bca32748, ttp--activity-rule--7f1ef34595aa281d7470, ttp--activity-rule--b2ce07fcea1c942aa118 | victim--activity-rule--72a9b284ae5c1aa7f781 | 中国系サイバースパイ活動が、Linux向けShowboatとWindows向けJFMBackdoorで通信事業者を標的化。 活動は少なくとも2022年半ばから続き、アジア太平洋と中東の組織を狙い、Calypso(別名、Red Lamassu)に帰属。 攻撃者は複数の通信事業者風ドメインを用意し、標的組織になりすますインフラを使用していた。 Showboatはモジュール式のフレームワークで、侵害後の永続化、情報収集、ファイル転送、プロセス隠蔽、SOCKS5プロキシ機能を備える。 JFMBackdoorは多機能な諜報用マルウェアで、DLLサイドローディングで読み込まれ、リバースシェル、ファイル操作、画面取得、痕跡削除などが可能。 | 中 | `source--daily-350d930382dd3ed9f923` |
+| Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動 | cyber-espionage | 2022 | 2026-04 | 2026-05-21 | target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--country--3ca3d60e45034ec96db8, target--targeting-audit--country--9bd6c490d9ab834d3cb1, target--targeting-audit--region--36e323894552b9e99bb2 | malware--jfmbackdoor, malware--showboat |  | victim--activity-rule--72a9b284ae5c1aa7f781 | PwCはRed Lamassu（別名Calypso）を追跡し、アジアの通信・政府組織を標的にしていると報告した。PwCが確認した2025年7月から10月の公開ディレクトリには、WindowsバックドアJFMBackdoorと、LumenがShowboatと命名したLinuxマルウェアが共存した。LumenはShowboat関連活動を少なくとも2022年半ばから追跡し、アフガニスタンとアゼルバイジャンの被害通信を確認した。 | 高 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | Calypso | 情報なし | T1090 Proxy, T1083 File and Directory Discovery, T1574.001 DLL | 情報なし | 情報通信 | 被害事例: 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | 中 |
+| Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動 | Calypso | JFMBackdoor, Showboat | 情報なし | 情報なし | 政府・行政, アゼルバイジャン, アフガニスタン, アジア | 被害事例: Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動 | 高 |
 
 
 
@@ -125,65 +127,46 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タイ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モンゴル | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 中央アジア | カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | モンゴル、中国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | ウクライナ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | ウクライナ、トルコ、ベラルーシで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| sectors | 情報通信 | 活動「中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-350d930382dd3ed9f923` |
-| sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アゼルバイジャン | 活動「Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動」の記述で標的・被害国として明示されている。 | 2022 | 2026-04 | 中 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
+| countries | アフガニスタン | 活動「Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動」の記述で標的・被害国として明示されている。 | 2022 | 2026-04 | 中 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
+| regions | アジア | 活動「Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動」の記述で標的地域としてアジアが明示されている。 | 2022 | 2026-04 | 中 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
+| sectors | 政府・行政 | 活動「Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動」の記述で標的として明示された産業。 | 2022 | 2026-04 | 中 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--97fa6f38a056d42117be |  | ttp--activity-rule--20b1bae9b0c6bca32748, ttp--activity-rule--7f1ef34595aa281d7470, ttp--activity-rule--b2ce07fcea1c942aa118 |  | espionage: 中国系サイバースパイ活動が、Linux向けShowboatとWindows向けJFMBackdoorで通信事業者を標的化。 | 不明 | 不明 | 2026-05-22 | 中 | `source--daily-350d930382dd3ed9f923` |
+| 被害事例: Red LamassuによるShowboat／JFMBackdoor通信事業者侵入活動 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91 | malware--jfmbackdoor, malware--showboat |  |  |  | 2022 | 2026-04 | 2026-05-21 | 高 | `source--daily-350d930382dd3ed9f923`, `source--pwc-red-lamassu-jfmbackdoor-2026` |
 
 ## MITRE ATT&CK Matrixデータ
 
-| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|
-| Command And Control | T1090 | Proxy | Showboatはモジュール式のフレームワークで、侵害後の永続化、情報収集、ファイル転送、プロセス隠蔽、SOCKS5プロキシ機能を備える。 |  | activity--daily-651f2178af4ab3c90c96 | 不明 | 不明 | 中 | `source--daily-350d930382dd3ed9f923` |
-| Discovery | T1083 | File and Directory Discovery | JFMBackdoorは多機能な諜報用マルウェアで、DLLサイドローディングで読み込まれ、リバースシェル、ファイル操作、画面取得、痕跡削除などが可能。 |  | activity--daily-651f2178af4ab3c90c96 | 不明 | 不明 | 中 | `source--daily-350d930382dd3ed9f923` |
-| Execution, Stealth | T1574.001 | DLL | JFMBackdoorは多機能な諜報用マルウェアで、DLLサイドローディングで読み込まれ、リバースシェル、ファイル操作、画面取得、痕跡削除などが可能。 |  | activity--daily-651f2178af4ab3c90c96 | 不明 | 不明 | 中 | `source--daily-350d930382dd3ed9f923` |
+TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 10件
-- IOC観測: 10件
+- IOC値: 4件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
-- 非IOC artifact観測: 58件（`artifacts.csv`）
+- 要レビュー候補: 0件
+- 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
 | 判断 | 確度 | 証拠 | 補足 |
 |---|---|---|---|
-| Calypso is retained as a separate espionage cluster with Bronze Medley and Red Lamassu as scoped cross-vendor names; APT1/Comment Crew, Mirage, and Pitty Tiger are not treated as aliases. | 中 | `source--osint-etda-threat-group-cards`, `source--daily-350d930382dd3ed9f923` | Corrected after alias/entity review. |
+| Calypso is retained as a separate espionage cluster; PwC explicitly uses Red Lamassu as an alternate name, while Bronze Medley remains an aggregation lead. | 高 | `source--pwc-red-lamassu-jfmbackdoor-2026` | APT1/Comment Crew, Mirage, and Pitty Tiger are not aliases. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
+- Bronze Medley equivalence still requires the original SecureWorks source.
+- State sponsorship remains unknown.
 
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 1 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -206,15 +189,15 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 | source--calypso--a663e4b258965c58 | china cyber report |  | 不明 | International Strategic/China/china-cyber-report.pdf | report | TLP:CLEAR | 中 |
 | source--calypso--cbe1bfe741302951 | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
 | source--calypso--e04640fed1c55bf5 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--daily-350d930382dd3ed9f923 | 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | lumen.com | 2026-05-22 | https://www.lumen.com/blog/en-us/introducing-showboat-a-new-malware-family-taunts-defenses-and-targets-international-telecom-firms | osint-report | TLP:CLEAR | 中 |
+| source--daily-350d930382dd3ed9f923 | Introducing Showboat: A new malware family taunts defenses and targets international telecom firms | Lumen Black Lotus Labs | 2026-05-21 | https://www.lumen.com/blog/en-us/introducing-showboat-a-new-malware-family-taunts-defenses-and-targets-international-telecom-firms | vendor-technical-report | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--pwc-red-lamassu-jfmbackdoor-2026 | Open Directory, Open Season: Inside Red Lamassu's JFMBackdoor | PwC Threat Intelligence | 2026-05-21 | https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/red-lamassu-open-season.html | vendor-technical-report | TLP:CLEAR | 高 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -134,6 +134,14 @@ python3 actor_profile/scripts/apply_verified_alias_updates.py
 # 現行ATT&CKへ同期し、非掲載IDの根拠は履歴索引へ固定
 python3 actor_profile/scripts/sync_attack_reference.py
 
+# 活動を再構造化した後、証拠境界と一次資料レビュー済み補正を最後に反映
+python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
+python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
+
 # IOC/artifact取込、Markdown/STIX生成、検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3
 
@@ -194,11 +202,15 @@ python3 actor_profile/scripts/build_cert_ua_index.py
 # canonical name、alias、MITRE ID、帰属候補を全プロファイルで照合
 python3 actor_profile/scripts/crosscheck_all_actors.py
 
-# 主張台帳と人間向けMarkdown／STIXを再生成
-python3 actor_profile/scripts/build_claim_audits.py
+# 活動を更新し、集約・旧ワークブックだけの主張を調査候補層へ隔離
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
+
+# 根拠付きの標的、活動単位Diamond、主張台帳、人間向けMarkdown／STIXを再生成
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 
 # TIDAL/MISPのcampaign・software関係を要原典確認の索引へ変換し、全actor調査票を生成
@@ -210,12 +222,16 @@ python3 actor_profile/scripts/build_actor_research_dossiers.py
 external research lead層を分離します。集約データの名称、期間、malware、標的、動機、帰属は
 原典レビュー前にcanonicalへ昇格しません。全体の充足状況は
 `profiles/research-summary.json`と`profiles/research-summary.csv`で確認できます。
+旧canonical層から隔離した未検証の関係・標的・動機・帰属は
+`actor_profile/manual-research-leads.json`に保持し、調査票のexternal research lead層へ
+統合します。削除ではなく、出典原文を確認するまでの保留です。
 
-`enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、高確度で
-アクター照合できたMISP／ETDAの被害地理フィールド、レビュー済み一次資料補正を
-標的国・地域へ統合します。帰属国、C2の所在国、帰属表明を行った国は標的として
-扱いません。広域活動は`全世界`等の地域を保持し、日本の被害が確認できる場合は
-地域表示とは別に`日本`を個別保持します。複数の個別国から導出した地域は
+`enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、レビュー済み
+一次資料補正を標的国・地域へ統合します。MISP／ETDAおよび旧ワークブックの
+被害地理フィールドは調査候補として監査しますが、原典確認前にcanonicalへは
+統合しません。帰属国、C2の所在国、帰属表明を行った国は標的として扱いません。
+広域活動は`全世界`等の地域を保持し、日本の被害が確認できる場合は地域表示とは
+別に`日本`を個別保持します。複数の個別国から導出した地域は
 「域内全体が標的だった」という意味ではなく、UIでの集約表示用です。
 
 監査結果は`profiles/targeting-audit.json`に保存されます。

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt45`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:11Z
+- 更新日時: 2026-09-21T04:38:04Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -35,7 +35,9 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Andariel | overlaps-with | Mandiant states that activity it attributes to APT45 has been publicly reported as Andariel, while treating vendor cluster boundaries as an attribution complication rather than asserting universal alias identity. | 高 | `source--mandiant-apt45-2024` |
 
 ## ダイヤモンドモデル
 
@@ -50,7 +52,7 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -127,7 +129,7 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | countries | 韓国 | 活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
 | sectors | 製造・産業 | 活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -148,7 +150,7 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 23件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -185,6 +187,7 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--mandiant-apt45-2024 | APT45: North Korea's Digital Military Machine | Mandiant | 2024-07-25 | https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

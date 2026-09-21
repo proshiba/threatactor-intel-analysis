@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--inception`
 - 状態: draft
-- 更新日時: 2026-09-20T13:48:12Z
+- 更新日時: 2026-09-21T04:35:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,8 @@ Inceptionの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Blue Odin | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Cloud Atlas | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Inception Framework | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| MITRE: G0100 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -46,16 +44,16 @@ Inceptionの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Inception](https://attack.mitre.org/groups/G0100) is a cyber espionage group active since at least 2014. The group has targeted multiple industries and governmental entities primarily in Russia, but has also been active in the United States and throughout Europe, Asia, Africa, and the Middle East.(Citation: Unit 42 Inception November 2018)(Citation: Symantec Inception Framework March 2018)(Citation: Kaspersky Cloud Atlas December 2014) |
-| Capability | PowerShower, VBShower, LaZagne |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | This threat actor targets governments and diplomatic organizations for espionage purposes. Suspected Operator in Ukraine working for Russia or its allies. |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T13:47:46Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -121,17 +119,13 @@ Inceptionの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Cloud Atlas | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | phishing-campaign | 2025-07 | 2026-01 | 2026-05-26 | target--sector--government | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 | victim--activity-rule--b450a9ea54e52cd62b68 | Kasperskyは、2025年から2026年にかけてロシアとベラルーシの政府・商業組織を狙うCloud Atlasの活動を観測した。 攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。 PowerShowerは探索や横展開、Kerberoasting、資格情報窃取を行い、termsrv.dll改変で複数RDPセッションを可能にする。 VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 攻撃者はOpenSSH、RevSocks、Torを用いたトンネルで永続化とバックアップの制御チャネルを構築していた。 新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。 | 高 | `source--daily-a049055857e706459add` |
-| Red October | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | phishing-campaign | 2025-07 | 2026-01 | 2026-05-26 | target--country--russia, target--sector--government, target--targeting-audit--country--fe25b1bcad855894e027 | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 | victim--activity-rule--b450a9ea54e52cd62b68 | Kasperskyは、2025年から2026年にかけてロシアとベラルーシの政府・商業組織を狙うCloud Atlasの活動を観測した。 攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。 PowerShowerは探索や横展開、Kerberoasting、資格情報窃取を行い、termsrv.dll改変で複数RDPセッションを可能にする。 VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 攻撃者はOpenSSH、RevSocks、Torを用いたトンネルで永続化とバックアップの制御チャネルを構築していた。 新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。 | 高 | `source--daily-a049055857e706459add` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Cloud Atlas | Inception | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | Inception | RevSocks, VBCloud, PowerCloud, PowerShower | T1059.001 PowerShell, T1087 Account Discovery | 情報なし | Government | 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 高 |
-| Red October | Inception | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | Inception | RevSocks, VBCloud, PowerCloud, PowerShower | T1059.001 PowerShell, T1087 Account Discovery | 情報なし | ロシア, Government, ベラルーシ | 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 高 |
 
 Red October; Cloud Atlas
 
@@ -139,78 +133,22 @@ Red October; Cloud Atlas
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アルメニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イタリア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウガンダ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてウガンダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オマーン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストリア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | カタール | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてカタールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キプロス | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | キルギス | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ギリシャ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ケニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてケニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ジョージア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スリナム | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてスリナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スロベニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてスロベニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タジキスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | タンザニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてタンザニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | トルクメニスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてトルクメニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パラグアイ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてパラグアイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベネズエラ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてベネズエラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベラルーシ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ポルトガル | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてポルトガルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | モザンビーク | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてモザンビークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モルドバ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてモルドバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モロッコ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてモロッコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | リトアニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | レバノン | 構造化OSINTの被害国フィールドでInceptionの標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでInceptionの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | The group has targeted multiple industries and governmental entities primarily in Russia, but has also been active in the United States and throughout Europe, Asia, Africa, and the Middle East.(Citation: Unit 42 Inception November 2018)(Citation: Symantec Inception Framework March 2018)(Citation: Kaspersky Cloud Atlas December 2014) | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでInceptionの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ベラルーシ | 活動「2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード」の記述で標的・被害国として明示されている。 | 2025-07 | 2026-01 | 中 | `source--daily-a049055857e706459add` |
+| countries | ロシア | Targeting text mentions russia. | 2025-07 | 2026-01 | 高 | `source--daily-a049055857e706459add`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | 米国 | The group has targeted multiple industries and governmental entities primarily in Russia, but has also been active in the United States and throughout Europe, Asia, Africa, and the Middle East.(Citation: Unit 42 Inception November 2018)(Citation: Symantec Inception Framework March 2018)(Citation: Kaspersky Cloud Atlas December 2014) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | regions | アジア | MITRE ATT&CKのGroup概要でInceptionの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| regions | アフリカ | MITRE ATT&CKのGroup概要でInceptionの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中南米 | スリナム、パラグアイ、ブラジル、ベネズエラで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギス、タジキスタン、トルクメニスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 中東 | アラブ首長国連邦、イラン、オマーン、カタール、サウジアラビア、トルコ、ヨルダン、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | イタリア、キプロス、ギリシャ、スロベニア、ポルトガルで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南米 | スリナム、パラグアイ、ブラジル、ベネズエラで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | インドネシア、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東欧 | ウクライナ、チェコ、ベラルーシ、モルドバ、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | MITRE ATT&CKのGroup概要でInceptionの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Government | Targeting text indicates the Government sector. | 2025-07 | 2026-01 | 中 | `source--actor-mapping-workbook`, `source--daily-a049055857e706459add`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | アフリカ | MITRE ATT&CKのGroup概要でInceptionの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a049055857e706459add`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 欧州 | MITRE ATT&CKのGroup概要でInceptionの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | Government | Targeting text indicates the Government sector. | 2025-07 | 2026-01 | 中 | `source--daily-a049055857e706459add`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 非公開 | aggregate | multiple-organizations | reported | target--sector--government | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 |  | data-theft: VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 | 2025-07 | 2026-01 | 2026-05-26 | 高 | `source--daily-a049055857e706459add` |
+| 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 非公開 | aggregate | multiple-organizations | reported | target--country--russia, target--sector--government | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 |  | data-theft: VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 | 2025-07 | 2026-01 | 2026-05-26 | 高 | `source--daily-a049055857e706459add` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -244,11 +182,11 @@ Red October; Cloud Atlas
 
 ## IOC／artifact概要
 
-- IOC値: 6件
-- IOC観測: 10件
+- IOC値: 5件
+- IOC観測: 7件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
-- 非IOC artifact観測: 69件（`artifacts.csv`）
+- 要レビュー候補: 1件
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -262,6 +200,7 @@ Red October; Cloud Atlas
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 2 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -306,12 +245,12 @@ Red October; Cloud Atlas
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -10,6 +10,7 @@ activity without mistaking it for a verified actor-specific assertion.
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import json
 import re
@@ -22,6 +23,7 @@ from common import load_json, stable_digest, unknown_time, utc_now, write_json_a
 
 URL_RE = re.compile(r"https?://[^\s<>]+")
 KNOWN_STATUSES = {"known", "inferred"}
+TARGETING_LINE_PREFIX = "構造化ターゲット監査:"
 
 
 def normalized(value: str) -> str:
@@ -280,14 +282,28 @@ def field_leads(matches: list[dict[str, Any]], key: str) -> list[dict[str, Any]]
 
 def merge_value_leads(*collections: list[dict[str, Any]]) -> list[dict[str, Any]]:
     result: list[dict[str, Any]] = []
-    seen: set[str] = set()
+    by_key: dict[str, dict[str, Any]] = {}
     for collection in collections:
         for item in collection:
             key = normalized(str(item.get("value") or item.get("name") or ""))
-            if not key or key in seen:
+            if not key:
                 continue
-            seen.add(key)
-            result.append(item)
+            existing = by_key.get(key)
+            if existing is None:
+                existing = copy.deepcopy(item)
+                by_key[key] = existing
+                result.append(existing)
+                continue
+            if item == existing or item in existing.get("supporting_records", []):
+                continue
+            existing.setdefault("supporting_records", []).append(copy.deepcopy(item))
+            for field in ("evidence_refs", "source_urls"):
+                values = [
+                    *existing.get(field, []),
+                    *item.get(field, []),
+                ]
+                if values:
+                    existing[field] = list(dict.fromkeys(values))
     return result
 
 
@@ -368,6 +384,46 @@ def evidence_refs_in(value: Any) -> set[str]:
     return refs
 
 
+def resolve_target_actor(
+    value: str,
+    catalog_by_name: dict[str, dict[str, Any]],
+    catalog_by_id: dict[str, dict[str, Any]],
+) -> tuple[str | None, str]:
+    target = catalog_by_id.get(value) or catalog_by_name.get(normalized(value))
+    if target:
+        return f"actor--{target['slug']}", "catalog-profile"
+    return None, "external-name-only"
+
+
+def workbook_target_leads(profile: dict[str, Any]) -> list[dict[str, Any]]:
+    source_id = "source--actor-mapping-workbook"
+    if not any(
+        source.get("source_id") == source_id
+        for source in profile.get("sources", [])
+    ):
+        return []
+    text = "\n".join(
+        line
+        for line in profile.get("free_text", {})
+        .get("targeting_details", "")
+        .splitlines()
+        if not line.startswith(TARGETING_LINE_PREFIX)
+    ).strip()
+    if not text:
+        return []
+    return [
+        {
+            "value": text,
+            "evidence_refs": [source_id],
+            "verification_status": "unresolved",
+            "analyst_notes": (
+                "Legacy workbook targeting prose. Original actor scope and cited "
+                "reports must be reviewed before canonical integration."
+            ),
+        }
+    ]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -380,6 +436,11 @@ def main() -> int:
         default=Path("actor_profile/reference/osint/tidal-activity-index.json"),
     )
     parser.add_argument(
+        "--manual-leads",
+        type=Path,
+        default=Path("actor_profile/manual-research-leads.json"),
+    )
+    parser.add_argument(
         "--summary", type=Path, default=Path("profiles/research-summary.json")
     )
     parser.add_argument(
@@ -389,7 +450,15 @@ def main() -> int:
 
     catalog = load_json(args.catalog)
     tidal = load_json(args.tidal_index)
+    manual_leads = (
+        load_json(args.manual_leads).get("actors", {})
+        if args.manual_leads.exists()
+        else {}
+    )
     catalog_by_name = {normalized(item["name"]): item for item in catalog["actors"]}
+    catalog_by_id = {
+        f"actor--{item['slug']}": item for item in catalog["actors"]
+    }
     generated_at = utc_now()
     summary_rows: list[dict[str, Any]] = []
     coverage_counts: Counter[str] = Counter()
@@ -401,6 +470,7 @@ def main() -> int:
         audit = load_json(actor_root / "claim-audit.json")
         crosscheck = load_json(actor_root / "osint-crosscheck.json")
         claims = claim_index(audit)
+        curated_leads = manual_leads.get(slug, {})
         targets, target_names = target_records(profile, claims)
         activities = activity_records(profile, claims, target_names)
         malware = malware_records(profile, claims)
@@ -408,8 +478,13 @@ def main() -> int:
         relationships = []
         for relation in profile.get("relationships", []):
             record = attach_claims(relation, claims, "relationship_id")
-            target = catalog_by_name.get(normalized(str(relation.get("target_actor", ""))))
-            record["target_actor_ref"] = f"actor--{target['slug']}" if target else None
+            target_ref, resolution = resolve_target_actor(
+                str(relation.get("target_actor", "")),
+                catalog_by_name,
+                catalog_by_id,
+            )
+            record["target_actor_ref"] = target_ref
+            record["target_resolution"] = resolution
             relationships.append(record)
 
         etda_matches = crosscheck.get("actor_matches", {}).get(
@@ -426,26 +501,39 @@ def main() -> int:
             for match in matches
         ]
         external_campaigns, external_software = tidal_leads(tidal_matches, tidal)
-        external_activities = [
-            *etda_activity_leads(etda_matches),
-            *external_campaigns,
+        external_aliases = merge_value_leads(curated_leads.get("aliases", []))
+        external_activities = merge_value_leads(
+            curated_leads.get("activities", []),
+            etda_activity_leads(etda_matches),
+            external_campaigns,
+        )
+        external_relationships = [
+            *crosscheck.get("relationship_candidates", []),
+            *curated_leads.get("relationships", []),
         ]
-        external_relationships = crosscheck.get("relationship_candidates", [])
         external_targets = {
             "countries": merge_value_leads(
+                curated_leads.get("targets", {}).get("countries", []),
                 field_leads(aggregation_matches, "observed-countries"),
             ),
-            "victims_or_geographies": field_leads(
-                aggregation_matches, "cfr-suspected-victims"
+            "victims_or_geographies": merge_value_leads(
+                curated_leads.get("targets", {}).get("regions", []),
+                field_leads(aggregation_matches, "cfr-suspected-victims"),
             ),
             "sectors": merge_value_leads(
+                curated_leads.get("targets", {}).get("sectors", []),
                 field_leads(aggregation_matches, "observed-sectors"),
                 field_leads(aggregation_matches, "target_categories"),
                 field_leads(aggregation_matches, "cfr-target-category"),
                 field_leads(aggregation_matches, "targeted-sector"),
             ),
+            "roles": merge_value_leads(
+                curated_leads.get("targets", {}).get("roles", []),
+            ),
+            "legacy_workbook_text": workbook_target_leads(profile),
         }
         external_motivations = merge_value_leads(
+            curated_leads.get("motivations", []),
             field_leads(aggregation_matches, "motivation"),
             field_leads(aggregation_matches, "observed_motivations"),
         )
@@ -454,6 +542,7 @@ def main() -> int:
             aggregation_matches, "cfr-type-of-incident"
         )
         external_malware = merge_value_leads(
+            curated_leads.get("capabilities", {}).get("malware", []),
             aggregated_software,
             [
                 item
@@ -461,16 +550,45 @@ def main() -> int:
                 if "malware" in item.get("software_type", [])
             ],
         )
-        external_tools = [
-            item
-            for item in external_software
-            if "tool" in item.get("software_type", [])
-        ]
+        external_tools = merge_value_leads(
+            curated_leads.get("capabilities", {}).get("tools", []),
+            [
+                item
+                for item in external_software
+                if "tool" in item.get("software_type", [])
+            ],
+        )
         external_untyped_software = [
             item
             for item in external_software
             if not set(item.get("software_type", [])) & {"malware", "tool"}
         ]
+        external_other_capabilities = {
+            category: curated_leads.get("capabilities", {}).get(category, [])
+            for category in (
+                "infrastructure",
+                "delivery_formats",
+                "vulnerabilities",
+                "operational_capabilities",
+            )
+        }
+        external_assessments = curated_leads.get("assessment", [])
+        external_attribution = [
+            {
+                "dataset": dataset_id,
+                "entry_value": match.get("entry_value"),
+                "countries": match.get("countries", []),
+                "sponsor": match.get("research_data", {}).get("sponsor"),
+                "source_urls": match.get("refs", []),
+                "match_basis": match.get("match_basis"),
+                "match_confidence": match.get("match_confidence"),
+                "verification_status": "partially-supported",
+            }
+            for dataset_id, matches in crosscheck.get("actor_matches", {}).items()
+            for match in matches
+            if match.get("countries")
+            or match.get("research_data", {}).get("sponsor")
+        ] + curated_leads.get("attribution", [])
 
         gaps = []
         if not activities:
@@ -530,7 +648,7 @@ def main() -> int:
             "tools": "canonical-present" if tools else "lead-only" if external_tools else "unknown",
             "targets": "canonical-present" if targets else "lead-only" if any(external_targets.values()) else "unknown",
             "motivations": "canonical-present" if profile.get("motivations") else "lead-only" if external_motivations else "unknown",
-            "attribution": "canonical-present" if attribution.get("evidence_refs") else "unknown",
+            "attribution": "canonical-present" if attribution.get("evidence_refs") else "lead-only" if external_attribution else "unknown",
         }
         coverage_counts.update(dimension_status.values())
         dossier = {
@@ -563,6 +681,7 @@ def main() -> int:
                     "motivations": len(profile.get("motivations", [])),
                 },
                 "external_lead_counts": {
+                    "aliases": len(external_aliases),
                     "activities": len(external_activities),
                     "relationships": len(external_relationships),
                     "malware": len(external_malware),
@@ -570,34 +689,26 @@ def main() -> int:
                     "untyped_software": len(external_untyped_software),
                     "targets": sum(len(items) for items in external_targets.values()),
                     "motivations": len(external_motivations),
+                    "other_capabilities": sum(
+                        len(items) for items in external_other_capabilities.values()
+                    ),
+                    "assessments": len(external_assessments),
                 },
             },
             "canonical": canonical,
             "external_research_leads": {
+                "aliases": external_aliases,
                 "activities": external_activities,
                 "incident_types": external_incident_types,
                 "relationships": external_relationships,
                 "malware": external_malware,
                 "tools": external_tools,
                 "untyped_software": external_untyped_software,
+                "other_capabilities": external_other_capabilities,
                 "targets": external_targets,
                 "motivations": external_motivations,
-                "attribution": [
-                    {
-                        "dataset": dataset_id,
-                        "entry_value": match.get("entry_value"),
-                        "countries": match.get("countries", []),
-                        "sponsor": match.get("research_data", {}).get("sponsor"),
-                        "source_urls": match.get("refs", []),
-                        "match_basis": match.get("match_basis"),
-                        "match_confidence": match.get("match_confidence"),
-                        "verification_status": "partially-supported",
-                    }
-                    for dataset_id, matches in crosscheck.get("actor_matches", {}).items()
-                    for match in matches
-                    if match.get("countries")
-                    or match.get("research_data", {}).get("sponsor")
-                ],
+                "attribution": external_attribution,
+                "assessments": external_assessments,
             },
             "claim_audit_counts": audit.get("counts", {}),
             "evidence_catalog": sources,
@@ -612,6 +723,7 @@ def main() -> int:
                 **{f"{key}_status": value for key, value in dimension_status.items()},
                 **dossier["coverage"]["canonical_counts"],
                 "external_activity_leads": len(external_activities),
+                "external_alias_leads": len(external_aliases),
                 "external_relationship_leads": len(external_relationships),
                 "external_malware_leads": len(external_malware),
                 "external_tool_leads": len(external_tools),
@@ -636,6 +748,7 @@ def main() -> int:
                 "targets",
                 "motivations",
                 "external_activity_leads",
+                "external_alias_leads",
                 "external_relationship_leads",
                 "external_malware_leads",
                 "external_tool_leads",

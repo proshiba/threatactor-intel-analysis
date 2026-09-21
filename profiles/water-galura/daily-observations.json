@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--water-galura",
-  "updated_at": "2026-07-27T11:17:27Z",
+  "updated_at": "2026-09-21T04:38:04Z",
   "records": [
     {
       "record_id": "daily-record--e30bc3c3abfd77cddd949226",
@@ -17,8 +17,8 @@
         "raw_value": "Water Galura"
       },
       "activity": {
-        "title": "Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加",
-        "summary": "QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与",
+        "title": "Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加",
+        "summary": "Water Galuraが運営するQilin RaaSは、アフィリエイト向けパネルへ被害者に支払い圧力をかける「Call Lawyer」機能を追加した。公開集計ではQilinの被害主張が2025年4月に72件、5月に55件確認され、Rust/C製ペイロード、ネットワーク拡散、ログ消去、交渉自動化、DDoS、スパム、データ保管などを提供するサービスとして報告された。QilinはRaaS／ランサムウェア名であり、Water Galuraの無条件な別名としては扱わない。",
         "news_date": "2025-06-21",
         "news_url": "https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html",
         "primary_url": "https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html",
@@ -36,18 +36,32 @@
         }
       ],
       "capability_decisions": [],
-      "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は「Qilin」ランサムウェアグループ（別名Gold Feather、Water Galura）で、2022年10月以降RaaSとして活動中",
+      "review_notes": "entity境界を再検証。The Hacker NewsはQilinグループをWater Galuraとも表記するが、MITRE ATT&CK G1050/S1242はWater Galura（GOLD FEATHER）を運営者、QilinをRaaS softwareとして分離する。activity_overridesもこの区別に合わせた。",
       "activity_claim": {
-        "assessment": "candidate",
-        "actor_role": "unknown",
+        "assessment": "strong-subject",
+        "actor_role": "raas-operator",
         "match_location": "body",
-        "evidence_text": "- 攻撃者は「Qilin」ランサムウェアグループ（別名Gold Feather、Water Galura）で、2022年10月以降RaaSとして活動中",
+        "evidence_text": "MITRE ATT&CK: Water Galura are the operators of the Qilin RaaS.",
         "reasons": [
-          "名前一致はあるが実行主体を示す表現が不足している"
+          "運営者Water GaluraとSoftware Qilinを分離"
         ],
-        "suggested_confidence": "low"
+        "suggested_confidence": "medium"
       },
-      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "activity_period": {
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated victim count"
+        },
+        "last_observed": {
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated victim count"
+        }
+      }
     }
   ]
 }

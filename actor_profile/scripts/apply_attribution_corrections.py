@@ -153,10 +153,12 @@ def target(
     }
 
 
-def meta_activity(actor_name: str, description: str, target_refs: list[str]) -> dict[str, Any]:
+def meta_activity(
+    slug: str, actor_name: str, description: str, target_refs: list[str]
+) -> dict[str, Any]:
     return {
-        "activity_id": "activity--meta-syria-disruption-2021",
-        "name": "Meta Syrian network disruption (October 2021)",
+        "activity_id": f"activity--meta-{slug}-disruption-2021",
+        "name": f"Meta {actor_name} network disruption (October 2021)",
         "activity_type": "cyber-espionage",
         "first_observed": normalize_time("2021-10", basis="source-stated"),
         "last_observed": normalize_time("2021-10", basis="source-stated"),
@@ -184,7 +186,7 @@ def add_meta_manifest(slug: str, malware_refs: list[str]) -> None:
         "source_id": META_SOURCE_ID,
         "path": excerpt,
         "published_at": normalize_time("2021-11-16", basis="document"),
-        "campaign_refs": ["activity--meta-syria-disruption-2021"],
+        "campaign_refs": [f"activity--meta-{slug}-disruption-2021"],
         "malware_refs": malware_refs,
         "infrastructure_refs": [],
         "roles": [],
@@ -479,7 +481,35 @@ def correct_syrian_actor(slug: str) -> None:
             "SandroRAT, and SSLove against opposition-linked targets."
         )
         malware_refs = ["malware--sslove", "malware--sandrorat"]
+    legacy_activity_id = "activity--meta-syria-disruption-2021"
+    activity_id = f"activity--meta-{slug}-disruption-2021"
+
+    def replace_legacy_activity_ref(value: Any) -> Any:
+        if isinstance(value, dict):
+            return {
+                key: replace_legacy_activity_ref(item)
+                for key, item in value.items()
+            }
+        if isinstance(value, list):
+            return [replace_legacy_activity_ref(item) for item in value]
+        if isinstance(value, str):
+            return value.replace(legacy_activity_id, activity_id)
+        return value
+
+    profile = replace_legacy_activity_ref(profile)
+    profile["activities"] = [
+        item
+        for item in profile["activities"]
+        if item.get("activity_id") != activity_id
+    ]
+    profile["victim_cases"] = [
+        item
+        for item in profile.get("victim_cases", [])
+        if activity_id not in item.get("activity_refs", [])
+    ]
+
     activity = meta_activity(
+        slug,
         actor_name,
         activity_description,
         ["target--country--syria"],
@@ -557,6 +587,10 @@ def correct_syrian_actor(slug: str) -> None:
     materialize_profile_diamonds(profile)
     profile["updated_at"] = utc_now()
     write_json_atomic(path, profile)
+    iocs_path = PROFILES_ROOT / slug / "iocs.json"
+    if iocs_path.exists():
+        iocs = json.loads(iocs_path.read_text(encoding="utf-8"))
+        write_json_atomic(iocs_path, replace_legacy_activity_ref(iocs))
     add_meta_manifest(slug, malware_refs)
 
 
