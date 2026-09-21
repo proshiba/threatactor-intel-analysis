@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -45,6 +45,18 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | Lazarus Group | overlaps-with | Government sources connect Bluenoroff/APT38 and Lazarus under the RGB and a common conspiracy, while industry reporting preserves APT38 as a financially focused cluster. | 高 | `source--treasury-dprk-groups-2019`, `source--doj-dprk-conspiracy-2021` |
 | TEMP.Hermit | overlaps-with | APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately. | 高 | `source--mandiant-apt38-temp-hermit-boundary-2018` |
 | TA444 | overlaps-with | Proofpoint tracks TA444 as a distinct cluster and states that APT38 heavily overlaps with it; Huntress also uses TA444/BlueNoroff naming for the June 2025 intrusion. | 高 | `source--proofpoint-ta444-2023`, `source--huntress-bluenoroff-macos-2025` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -129,6 +141,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

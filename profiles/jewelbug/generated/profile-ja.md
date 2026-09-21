@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--jewelbug`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -13,7 +13,7 @@ Jewelbug(別名Earth Alux、REF7707、CL-STA-0049)は、Symantecが2026-08-13に
 
 - 正規名: **Jewelbug**
 - 初回観測: 不明
-- 最終観測: 2026-08-13
+- 最終観測: 不明
 - 活動状態: yes
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
@@ -41,6 +41,18 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -130,6 +142,24 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 | opcap--jewelbug-seo-poisoning | SEOポイズニングとクリックボットによる検索順位操作 | 40台超のCMSサーバー、AI生成ページ、クリックボット、クローキングを組み合わせて検索結果を操作する。 | 不明 | 不明 | 高 | `source--symantec-jewelbug-2026` |
 | opcap--jewelbug-detection-monitoring | VirusTotal評価の定期確認による検知状況の監視 | 12時間ごとに自らの検体の評価を確認する。 | 不明 | 不明 | 高 | `source--symantec-jewelbug-2026` |
 | opcap--jewelbug-vpn-split-tunneling | 中国本土向け宛先を迂回するVPNスプリットトンネリング | 運用者の所在を秘匿しつつ中国本土のフィルタリングを回避する構成。帰属評価の根拠のひとつでもある。 | 不明 | 不明 | 高 | `source--symantec-jewelbug-2026` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

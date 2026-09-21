@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--lazarus`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -52,6 +52,18 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | Kimsuky | overlaps-with | DPRK threat actor cluster boundaries overlap in open source reporting, with some security researchers consolidating all attributed North Korean state-sponsored cyber activity under [Lazarus Group](https://attack.mitre.org/groups/G0032), rather than tracking operationally distinct subgroups. | 高 | `source--mitre-attack-19-2` |
 | Moonstone Sleet | overlaps-with | The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. | 高 | `source--mitre-attack-19-2` |
 | AppleJeus | related-to | Associated with the broader [Lazarus Group](https://attack.mitre.org/groups/G0032) umbrella of actors, [AppleJeus](https://attack.mitre.org/groups/G1049) has been active since at least 2018 and is closely aligned in resources with TEMP.hermit, another DPRK-affiliated group under the same umbrella.(Citation: dtex DPRK 2025 structure ITworkers) The group’s primary mission is to generate and launder revenue to provide financial support to the government. | 中 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -168,6 +180,33 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--lazarus-dbutil-driver-2021 | malware | vulnerable-driver-sha1 | DBUtil_2_3.sys SHA1 C948AE14761095E4D76B55D9DE86412258BE7AFD; CVE-2021-21551 | shared | 1 | 1 |  | 2021-09-01T00:00:00Z | 2021-09-01T00:00:00Z | historical-only | unknown | 高 | `source--eset-lazarus-amazon-themed-2022` |
+| hunting-pivot--lazarus-lamera-code-signing-cert | malware | code-signing-certificate-fingerprint | LAMERA CORPORATION LIMITED certificate SHA256 CD27DAA4BED5C1CFD02B43C1322829DC5396D545F3912B9694FC5A2499D5089E; SHA1 6D0BFFE68BC8992B60DC294EC68DD2B44A5FC6F4; serial 879fa942f9f097b74fd6f7dabcf1745a | shared | 1 | 1 |  | 2022-10-01T00:00:00Z | 2022-10-01T00:00:00Z | single-observation | unknown | 高 | `source--withsecure-lazarus-no-pineapple-2023` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--lazarus-dbutil-driver-2021 | pivot-observation--lazarus-dbutil-autumn-2021 | 2021-09-01T00:00:00Z | 1 | documented-samples | なし | source--eset-lazarus-amazon-themed-2022 | ESET documented the driver in the Dutch/Belgian aerospace campaign. |
+| hunting-pivot--lazarus-lamera-code-signing-cert | pivot-observation--lazarus-lamera-q4-2022 | 2022-10-01T00:00:00Z | 1 | unknown | なし | source--withsecure-lazarus-no-pineapple-2023 | WithSecure reported several signed binaries; exact sample count was not stated, so this record counts one documented cluster observation. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--lazarus-dbutil-driver-2021 | edr | `file.sha1=C948AE14761095E4D76B55D9DE86412258BE7AFD OR (file.name=DBUtil_2_3.sys AND exploit.cve=CVE-2021-21551)` | Detect the exact driver or exploitation chain. | 要 | DBUtil is legitimate vulnerable software and appears in multiple actor campaigns. Require companion malware, service/process behavior and timing. |
+| hunting-pivot--lazarus-lamera-code-signing-cert | file-intelligence | `authenticode.certificate.sha256=CD27DAA4BED5C1CFD02B43C1322829DC5396D545F3912B9694FC5A2499D5089E OR authenticode.certificate.sha1=6D0BFFE68BC8992B60DC294EC68DD2B44A5FC6F4` | Find files signed by the exact reported certificate. | 要 | Certificate use may include legitimate or unrelated signed files. Validate malware lineage, signing timestamp and incident context. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -453,11 +492,11 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 
 ## IOC／artifact概要
 
-- IOC値: 1162件
-- IOC観測: 1403件
+- IOC値: 1165件
+- IOC観測: 1406件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 338件
-- 非IOC artifact観測: 1117件（`artifacts.csv`）
+- 非IOC artifact観測: 1118件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -529,6 +568,8 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--eset-lazarus-amazon-themed-2022 | Amazon-themed campaigns of Lazarus in the Netherlands and Belgium | ESET Research | 2022-09-30 | https://www.welivesecurity.com/2022/09/30/amazon-themed-campaigns-lazarus-netherlands-belgium/ | vendor-research | TLP:CLEAR | 高 |
+| source--withsecure-lazarus-no-pineapple-2023 | No Pineapple! DPRK Targeting of Medical Research and Technology Sector | WithSecure | 2023-02-02 | https://labs.withsecure.com/content/dam/labs/docs/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

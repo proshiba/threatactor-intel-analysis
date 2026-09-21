@@ -163,6 +163,77 @@ def render_markdown(
             if relationship_rows
             else "確認された関係なし",
             "",
+            "## 関連する企業・個人",
+            "",
+        ]
+    )
+    entity_rows = [
+        [
+            item["entity_id"],
+            item["name"],
+            item["entity_type"],
+            ", ".join(item.get("roles", [])),
+            ", ".join(item.get("countries", [])),
+            time_label(item["first_observed"]),
+            time_label(item["last_observed"]),
+            confidence_label(item["confidence"]),
+            refs_label(item["evidence_refs"], sources),
+        ]
+        for item in profile.get("associated_entities", [])
+    ]
+    entity_relationship_rows = [
+        [
+            item["source_ref"],
+            item["relationship_type"],
+            item["target_ref"],
+            item["description"],
+            time_label(item["first_observed"]),
+            time_label(item["last_observed"]),
+            confidence_label(item["confidence"]),
+            refs_label(item["evidence_refs"], sources),
+        ]
+        for item in profile.get("entity_relationships", [])
+    ]
+    legal_action_rows = [
+        [
+            entity["name"],
+            action["action_type"],
+            action["authority"],
+            time_label(action["action_date"]),
+            action["status"],
+            action["description"],
+            refs_label(action["evidence_refs"], sources),
+        ]
+        for entity in profile.get("associated_entities", [])
+        for action in entity.get("legal_actions", [])
+    ]
+    lines.extend(
+        [
+            table(
+                ["ID", "名称", "種別", "役割", "国", "初回", "最終", "確度", "証拠"],
+                entity_rows,
+            )
+            if entity_rows
+            else "関連エンティティなし",
+            "",
+            "### エンティティ関係",
+            "",
+            table(
+                ["起点", "関係", "終点", "説明", "初回", "最終", "確度", "証拠"],
+                entity_relationship_rows,
+            )
+            if entity_relationship_rows
+            else "確認された関係なし",
+            "",
+            "### 法的措置",
+            "",
+            table(
+                ["対象", "措置", "当局", "日付", "状態", "説明", "証拠"],
+                legal_action_rows,
+            )
+            if legal_action_rows
+            else "確認された法的措置なし",
+            "",
             "## ダイヤモンドモデル",
             "",
             table(
@@ -289,6 +360,119 @@ def render_markdown(
                 "",
             ]
         )
+    lines.extend(["## C2・マルウェア ハンティング・ピボット", ""])
+    pivot_rows = [
+        [
+            item["pivot_id"],
+            item["category"],
+            item["pivot_type"],
+            item["value"],
+            item["attribution_scope"],
+            item["observation_count"],
+            item["source_count"],
+            item["activity_count"],
+            time_label(item["first_observed"]),
+            time_label(item["last_observed"]),
+            item["continuity"]["assessment"],
+            item["continuity"]["active_status"],
+            confidence_label(item["confidence"]),
+            refs_label(item["evidence_refs"], sources),
+        ]
+        for item in profile.get("hunting_pivots", [])
+    ]
+    observation_rows = [
+        [
+            pivot["pivot_id"],
+            item["observation_id"],
+            time_label(item["observed_at"]),
+            item["count"],
+            item["count_basis"],
+            item.get("activity_ref") or "なし",
+            item["source_ref"],
+            item["context"],
+        ]
+        for pivot in profile.get("hunting_pivots", [])
+        for item in pivot.get("observations", [])
+    ]
+    hunt_query_rows = [
+        [
+            pivot["pivot_id"],
+            query["platform"],
+            f"`{query['query']}`",
+            query["purpose"],
+            "要" if query["requires_validation"] else "不要",
+            query["false_positive_notes"],
+        ]
+        for pivot in profile.get("hunting_pivots", [])
+        for query in pivot.get("hunt_queries", [])
+    ]
+    continuity_check_rows = [
+        [
+            pivot["pivot_id"],
+            check["check_id"],
+            check["evaluated_at"],
+            check["platform"],
+            f"`{check['query']}`",
+            check["index_or_time_window"] or "不明",
+            (
+                str(check["result_count"])
+                if check["result_count"] is not None
+                else "不明"
+            ),
+            check["result_summary"],
+            "済" if check["analyst_validated"] else "未検証",
+            refs_label(check["evidence_refs"], sources),
+            check["limitations"],
+        ]
+        for pivot in profile.get("hunting_pivots", [])
+        for check in pivot.get("continuity", {}).get("checks", [])
+    ]
+    lines.extend(
+        [
+            table(
+                [
+                    "ID", "分類", "型", "値", "帰属範囲", "観測数", "出典数",
+                    "活動数", "初回", "最終", "継続評価", "稼働評価", "確度", "証拠",
+                ],
+                pivot_rows,
+            )
+            if pivot_rows
+            else "構造化されたハンティング・ピボットなし",
+            "",
+            "### 観測根拠",
+            "",
+            table(
+                ["Pivot", "観測ID", "観測時期", "数", "数の根拠", "活動", "出典", "文脈"],
+                observation_rows,
+            )
+            if observation_rows
+            else "観測記録なし",
+            "",
+            "### ハントクエリ",
+            "",
+            table(
+                ["Pivot", "基盤", "クエリ", "目的", "検証", "誤検知上の注意"],
+                hunt_query_rows,
+            )
+            if hunt_query_rows
+            else "クエリなし",
+            "",
+            "### 継続利用チェック",
+            "",
+            table(
+                [
+                    "Pivot", "Check ID", "評価時刻", "基盤", "実行クエリ",
+                    "Index/期間", "結果数", "結果概要", "分析検証", "根拠", "限界",
+                ],
+                continuity_check_rows,
+            )
+            if continuity_check_rows
+            else "実行済みの受動検索・継続利用チェックなし",
+            "",
+            "`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。",
+            "",
+        ]
+    )
     lines.extend(["## 攻撃活動の履歴", ""])
     activity_rows = [
         [
@@ -597,13 +781,18 @@ def external_refs(
         source = source_by_id.get(source_id)
         if not source:
             continue
-        result.append(
-            {
-                "source_name": source.get("publisher") or source_id,
-                "description": f"Local source: {source.get('path', '')}",
-                "external_id": source_id,
-            }
+        path = source.get("path", "")
+        reference = {
+            "source_name": source.get("publisher") or source_id,
+            "description": f"Source: {path}",
+            "external_id": source_id,
+        }
+        url = source.get("url") or (
+            path if path.startswith(("https://", "http://")) else None
         )
+        if url:
+            reference["url"] = url
+        result.append(reference)
     return result
 
 
@@ -614,11 +803,7 @@ def relationship_time_properties(
 ) -> dict[str, Any]:
     """Preserve temporal provenance without treating publication as validity."""
 
-    if (
-        not (first_observed or {}).get("value")
-        and not (last_observed or {}).get("value")
-        and reported_at is None
-    ):
+    if first_observed is None and last_observed is None and reported_at is None:
         return {}
     first = first_observed or {}
     last = last_observed or {}
@@ -694,6 +879,87 @@ def render_stix(
     object_id_by_profile_id: dict[str, str] = {
         profile["profile_id"]: intrusion["id"]
     }
+    for entity in profile.get("associated_entities", []):
+        if entity["entity_type"] == "organization":
+            kind = "identity"
+            extra: dict[str, Any] = {
+                "name": entity["name"],
+                "identity_class": "organization",
+                "description": entity["description"],
+                "x_opencti_aliases": entity.get("aliases", []),
+            }
+        elif entity["entity_type"] == "threat-actor-individual":
+            kind = "threat-actor"
+            extra = {
+                "name": entity["name"],
+                "aliases": entity.get("aliases", []),
+                "description": entity["description"],
+                "threat_actor_types": entity.get("threat_actor_types")
+                or ["unknown"],
+                # OpenCTI uses one STIX Threat Actor SDO for both groups and
+                # individuals; these extension fields select the individual
+                # specialization during ingestion.
+                "resource_level": "individual",
+                "x_opencti_type": "Threat-Actor-Individual",
+            }
+        else:
+            kind = "threat-actor"
+            extra = {
+                "name": entity["name"],
+                "aliases": entity.get("aliases", []),
+                "description": entity["description"],
+                "threat_actor_types": entity.get("threat_actor_types")
+                or ["unknown"],
+                # OpenCTI defaults STIX Threat Actor objects to the Group
+                # specialization, but the explicit extension prevents an
+                # importer or later transform from treating the type as
+                # ambiguous.  "organization" is a valid STIX resource level
+                # for an organized cybercrime or state-backed group.
+                "resource_level": "organization",
+                "x_opencti_type": "Threat-Actor-Group",
+            }
+        extra.update(
+            {
+                "external_references": external_refs(
+                    entity["evidence_refs"], source_by_id
+                ),
+                "x_profile_object_id": entity["entity_id"],
+                "x_entity_type": entity["entity_type"],
+                "x_countries": entity.get("countries", []),
+                "x_entity_roles": entity.get("roles", []),
+                "x_first_observed": entity["first_observed"],
+                "x_last_observed": entity["last_observed"],
+                "x_confidence": entity["confidence"],
+                "x_analyst_notes": entity.get("analyst_notes", ""),
+            }
+        )
+        obj = stix_base(kind, entity["entity_id"], now, extra)
+        objects.append(obj)
+        object_id_by_profile_id[entity["entity_id"]] = obj["id"]
+        for action in entity.get("legal_actions", []):
+            objects.append(
+                stix_base(
+                    "note",
+                    action["action_id"],
+                    now,
+                    {
+                        "abstract": (
+                            f"{action['action_type']}: {entity['name']}"
+                        ),
+                        "content": action["description"],
+                        "object_refs": [obj["id"]],
+                        "external_references": external_refs(
+                            action["evidence_refs"], source_by_id
+                        ),
+                        "x_profile_legal_action_id": action["action_id"],
+                        "x_legal_action_type": action["action_type"],
+                        "x_legal_authority": action["authority"],
+                        "x_legal_action_date": action["action_date"],
+                        "x_legal_status": action["status"],
+                        "x_analyst_notes": action.get("analyst_notes", ""),
+                    },
+                )
+            )
     capability_kind = {
         "malware": "malware",
         "tools": "tool",
@@ -929,6 +1195,42 @@ def render_stix(
             )
         )
 
+    opencti_safe_entity_relationships = {"part-of", "related-to"}
+    for item in profile.get("entity_relationships", []):
+        source_ref = object_id_by_profile_id.get(item["source_ref"])
+        target_ref = object_id_by_profile_id.get(item["target_ref"])
+        if not source_ref or not target_ref:
+            continue
+        original_type = item["relationship_type"]
+        relationship_type = (
+            original_type
+            if original_type in opencti_safe_entity_relationships
+            else "related-to"
+        )
+        objects.append(
+            stix_base(
+                "relationship",
+                item["relationship_id"],
+                now,
+                {
+                    "relationship_type": relationship_type,
+                    "source_ref": source_ref,
+                    "target_ref": target_ref,
+                    "description": item["description"],
+                    "external_references": external_refs(
+                        item["evidence_refs"], source_by_id
+                    ),
+                    "x_profile_relationship_id": item["relationship_id"],
+                    "x_profile_relationship_type": original_type,
+                    "x_confidence": item["confidence"],
+                    "x_analyst_notes": item.get("analyst_notes", ""),
+                    **relationship_time_properties(
+                        item["first_observed"], item["last_observed"]
+                    ),
+                },
+            )
+        )
+
     for category in ("malware", "tools", "infrastructure"):
         for item in profile["capabilities"][category]:
             add_relationship(
@@ -1038,6 +1340,93 @@ def render_stix(
             ttp["last_observed"],
         )
 
+    for pivot in profile.get("hunting_pivots", []):
+        pivot_object_refs = [intrusion["id"]]
+        for ref in (
+            pivot.get("malware_refs", [])
+            + pivot.get("infrastructure_refs", [])
+            + pivot.get("activity_refs", [])
+        ):
+            if ref in object_id_by_profile_id:
+                pivot_object_refs.append(object_id_by_profile_id[ref])
+        for ref in pivot.get("indicator_refs", []):
+            pivot_object_refs.append(stix_id("indicator", ref))
+
+        pattern = pivot.get("stix_pattern")
+        if pattern:
+            observed_values = [
+                observation["observed_at"].get("value")
+                for observation in pivot.get("observations", [])
+                if observation["observed_at"].get("value")
+            ]
+            valid_from = min(observed_values) if observed_values else profile["created_at"]
+            pivot_indicator = stix_base(
+                "indicator",
+                pivot["pivot_id"],
+                now,
+                {
+                    "name": f"Hunting pivot: {pivot['pivot_type']}",
+                    "description": pivot["description"],
+                    "pattern": pattern,
+                    "pattern_type": "stix",
+                    "pattern_version": "2.1",
+                    "valid_from": valid_from,
+                    "indicator_types": ["anomalous-activity"],
+                    "external_references": external_refs(
+                        pivot["evidence_refs"], source_by_id
+                    ),
+                    "x_profile_object_id": pivot["pivot_id"],
+                    "x_hunting_pivot": True,
+                    "x_pivot_category": pivot["category"],
+                    "x_pivot_type": pivot["pivot_type"],
+                    "x_pivot_value": pivot["value"],
+                    "x_attribution_scope": pivot["attribution_scope"],
+                    "x_first_observed": pivot["first_observed"],
+                    "x_last_observed": pivot["last_observed"],
+                    "x_observation_count": pivot["observation_count"],
+                    "x_source_count": pivot["source_count"],
+                    "x_activity_count": pivot["activity_count"],
+                    "x_continuity": pivot["continuity"],
+                    "x_hunt_queries": pivot["hunt_queries"],
+                    "x_confidence": pivot["confidence"],
+                    "x_analyst_notes": pivot.get("analyst_notes", ""),
+                },
+            )
+            objects.append(pivot_indicator)
+            pivot_object_refs.append(pivot_indicator["id"])
+            object_id_by_profile_id[pivot["pivot_id"]] = pivot_indicator["id"]
+
+        objects.append(
+            stix_base(
+                "note",
+                f"hunting-note:{pivot['pivot_id']}",
+                now,
+                {
+                    "abstract": f"Hunting pivot: {pivot['pivot_type']}",
+                    "content": pivot["description"],
+                    "object_refs": sorted(set(pivot_object_refs)),
+                    "external_references": external_refs(
+                        pivot["evidence_refs"], source_by_id
+                    ),
+                    "x_profile_hunting_pivot_id": pivot["pivot_id"],
+                    "x_pivot_category": pivot["category"],
+                    "x_pivot_type": pivot["pivot_type"],
+                    "x_pivot_value": pivot["value"],
+                    "x_attribution_scope": pivot["attribution_scope"],
+                    "x_observations": pivot["observations"],
+                    "x_first_observed": pivot["first_observed"],
+                    "x_last_observed": pivot["last_observed"],
+                    "x_observation_count": pivot["observation_count"],
+                    "x_source_count": pivot["source_count"],
+                    "x_activity_count": pivot["activity_count"],
+                    "x_continuity": pivot["continuity"],
+                    "x_hunt_queries": pivot["hunt_queries"],
+                    "x_confidence": pivot["confidence"],
+                    "x_analyst_notes": pivot.get("analyst_notes", ""),
+                },
+            )
+        )
+
     if iocs:
         for indicator in iocs.get("indicators", []):
             indicator_stix_id = stix_id("indicator", indicator["indicator_id"])
@@ -1070,6 +1459,8 @@ def render_stix(
                     "x_observations": indicator["observations"],
                 },
             )
+            if indicator.get("hash_algorithm"):
+                obj["x_hash_algorithm"] = indicator["hash_algorithm"]
             objects.append(obj)
             if indicator["disposition"] == "confirmed":
                 add_relationship(

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc6293`
 - 状態: draft
-- 更新日時: 2026-09-21T02:39:13Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -39,6 +39,18 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 |---|---|---|---|---|
 | actor--apt29 | part-of | GTIGは「We assess with moderate confidence that UNC6293 is a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」と述べ、UNC6293をICE RELIC(旧APT29)の初期アクセス担当サブクラスタと評価している。また「several high-level TTPs used by UNC6293 and UNC7005 harken back to older, attributed ICE RELIC phishing operations between 2021 and 2024」として、標的業種(学術、NGO、外交、防衛)と地域の重なり、外交行事の招待やワインに関する特定の題材の再利用を根拠に挙げている。 | 中 | `source--gtig-going-with-the-flows-2026` |
 | actor--unc7005 | shares-targeting-with | GTIGはUNC7005について「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately due to its lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」と述べ、標的の重なりを認めつつ別クラスタとして追跡している。2026年5月下旬のUNC7005の作戦で使われた攻撃者メールアドレスは、2025年6月のUNC6293の作戦で使われたものとほぼ同一であった。 | 中 | `source--gtig-going-with-the-flows-2026` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -111,6 +123,24 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 |---|---|---|---|---|---|---|
 | opcap--unc6293-app-password-phishing | app passwordフィッシングによる2要素認証回避 | 標的に特定の名称のapp password(安全性の低いアプリや端末へアクセスを許可するパスコード)を設定させ、その値を窃取することで2要素認証を経ずにアカウントへアクセスする。設定手順は画面写真を含むPDF囮文書で提示される。 | 2025-06 | 2025-10 | 高 | `source--gtig-going-with-the-flows-2026` |
 | opcap--unc6293-oauth-phishing | 正規OAuth認証フローを悪用したトークン窃取 | 標的に外部プロバイダーでの正規ログインを行わせたうえで、完全なURLまたは「verification code」の共有を求め、提供された値を用いてアカウントへのアクセス権を得る。 | 2026-06 | 2026-06 | 高 | `source--gtig-going-with-the-flows-2026` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

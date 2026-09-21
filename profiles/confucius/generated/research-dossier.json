@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--confucius",
   "actor_name": "Confucius",
-  "profile_updated_at": "2026-09-21T04:35:02Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "canonical-present",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "lead-only",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 1,
       "dated_activities": 1,
       "relationships": 1,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 1,
       "malware": 1,
       "activity_linked_malware": 0,
       "tools": 0,
@@ -115,6 +121,99 @@
         ],
         "target_actor_ref": "actor--patchwork",
         "target_resolution": "catalog-profile"
+      }
+    ],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--confucius-asyncrat-tls-certificate",
+        "category": "infrastructure",
+        "pivot_type": "tls-certificate-sha1",
+        "value": "DEE2B1E9F3FD0FD8171648A3B528A85577C49FFA; CN=AsyncRAT Server; serial 00B27593843DC41AC674EA5021879CF5",
+        "description": "Exact AsyncRAT TLS certificate reported with fiesta.kozow.com:4567 in Operation Tibbar. Use the fingerprint first, then subject/serial as secondary discovery pivots. Current activity is unknown.",
+        "stix_pattern": "[x509-certificate:hashes.'SHA-1' = 'DEE2B1E9F3FD0FD8171648A3B528A85577C49FFA']",
+        "attribution_scope": "shared",
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "activity_refs": [],
+        "indicator_refs": [
+          "indicator--sha256:c9a2543db4b1983ecf65d3070b279ebce629400ff312c2cd4b9c89f408ff2119"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--confucius-tibbar-asyncrat-cert",
+            "observed_at": {
+              "value": "2020-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "report-described-operation-year"
+            },
+            "source_ref": "source--qianxin-confucius-operation-tibbar-2020",
+            "activity_ref": null,
+            "context": "Certificate paired with fiesta.kozow.com:4567 in the Operation Tibbar report.",
+            "count": 1,
+            "count_basis": "documented-events"
+          }
+        ],
+        "first_observed": {
+          "value": "2020-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "report-described-operation-year"
+        },
+        "last_observed": {
+          "value": "2020-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "report-described-operation-year"
+        },
+        "observation_count": 1,
+        "source_count": 1,
+        "activity_count": 0,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "One source-backed operation; no live Shodan/Censys query was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "shodan",
+            "query": "ssl.cert.fingerprint:\"DEE2B1E9F3FD0FD8171648A3B528A85577C49FFA\"",
+            "purpose": "Locate services presenting the exact historical certificate.",
+            "requires_validation": true,
+            "false_positive_notes": "AsyncRAT certificates can be copied or reused by unrelated operators; validate port, domain, sample configuration and observation time."
+          },
+          {
+            "platform": "censys",
+            "query": "host.services.cert.fingerprint_sha1 = \"DEE2B1E9F3FD0FD8171648A3B528A85577C49FFA\"",
+            "purpose": "Search current or historical host services by the exact SHA-1 fingerprint.",
+            "requires_validation": true,
+            "false_positive_notes": "Current Censys Platform field syntax as reviewed on 2026-09-21; do not infer Confucius from the certificate alone. Corroborate service, port, domain and sample configuration."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--qianxin-confucius-operation-tibbar-2020"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--626e59cde7d4852ff89f5b84",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Confucius research retains the tls-certificate-sha1 pivot DEE2B1E9F3FD0FD8171648A3B528A85577C49FFA; CN=AsyncRAT Server; serial 00B27593843DC41AC674EA5021879CF5: Exact AsyncRAT TLS certificate reported with fiesta.kozow.com:4567 in Operation Tibbar. Use the fingerprint first, then subject/serial as secondary discovery pivots. Current activity is unknown.",
+            "evidence_refs": [
+              "source--qianxin-confucius-operation-tibbar-2020"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
       }
     ],
     "activity_timeline": [
@@ -1101,7 +1200,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 28,
+    "supported": 29,
     "partially-supported": 6
   },
   "evidence_catalog": {
@@ -1374,6 +1473,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--qianxin-confucius-operation-tibbar-2020": {
+      "source_id": "source--qianxin-confucius-operation-tibbar-2020",
+      "path": "https://ti.qianxin.com/uploads/2020/09/17/69da886eecc7087e9dac2d3ea4c66ba8.pdf",
+      "title": "Operation Tibbar: A retaliatory targeted attack from South Asian APT Group Confucius",
+      "publisher": "Qianxin Threat Intelligence Center",
+      "published_at": {
+        "value": "2020-09-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://ti.qianxin.com/uploads/2020/09/17/69da886eecc7087e9dac2d3ea4c66ba8.pdf"
     }
   },
   "research_gaps": [

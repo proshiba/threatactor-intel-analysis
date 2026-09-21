@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "profile_id": "actor--akira",
   "name": "Akira",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-21T04:35:01Z",
+  "updated_at": "2026-09-21T13:20:00Z",
   "languages": [
     "ja"
   ],
@@ -4745,6 +4745,31 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--guidepoint-akira-driver-campaign-2025",
+      "path": "https://www.guidepointsecurity.com/blog/gritrep-akira-sonicwall/",
+      "title": "GRITREP: Observed Malicious Driver Use Associated with Akira SonicWall Campaign",
+      "publisher": "GuidePoint Security",
+      "published_at": {
+        "value": "2025-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.guidepointsecurity.com/blog/gritrep-akira-sonicwall/"
     }
   ],
   "assessment": {
@@ -5648,6 +5673,81 @@
         "source--daily-3c12eda093e5c59e0ee6"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "associated_entities": [],
+  "entity_relationships": [],
+  "hunting_pivots": [
+    {
+      "pivot_id": "hunting-pivot--akira-rwdrv-hlpdrv-chain",
+      "category": "malware",
+      "pivot_type": "byovd-driver-chain",
+      "value": "rwdrv.sys SHA256 16f83f056177c4ec24c7e99d01ca9d9d6713bd0497eeedb777a3ffefa99c97f0 -> hlpdrv.sys SHA256 bd1f381e5a3db22e88776b7873d4d2835e9a1ec620571d2b1da0c58f81c84a56; services mgdsrv/KMHLPSVC; device \\Device\\KMHLPDRV",
+      "description": "GuidePoint observed repeated use of legitimate rwdrv.sys followed by malicious hlpdrv.sys in multiple Akira incident-response cases from at least 15 July 2025. Correlate exact hashes, service names, device/symlink and Defender policy modification.",
+      "stix_pattern": "[file:hashes.'SHA-256' = '16f83f056177c4ec24c7e99d01ca9d9d6713bd0497eeedb777a3ffefa99c97f0' OR file:hashes.'SHA-256' = 'bd1f381e5a3db22e88776b7873d4d2835e9a1ec620571d2b1da0c58f81c84a56']",
+      "attribution_scope": "shared",
+      "malware_refs": [
+        "malware--akira"
+      ],
+      "infrastructure_refs": [],
+      "activity_refs": [],
+      "indicator_refs": [
+        "indicator--sha256:6e1ba4af874bc16007c2f3c9a5a2558e4a8a9e5b30b7032d79a0319ac44a0e9f",
+        "indicator--sha256:3115b728c3afdf403203fd77002835e7233c6480893464e1a864391ecaa0feac"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--akira-driver-cases-2025",
+          "observed_at": {
+            "value": "2025-07-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "earliest-source-stated-observation"
+          },
+          "source_ref": "source--guidepoint-akira-driver-campaign-2025",
+          "activity_ref": null,
+          "context": "GuidePoint described repeated use across several recent IR cases; count is a conservative minimum of two because the exact case total was not disclosed.",
+          "count": 2,
+          "count_basis": "minimum-events"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-07-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-source-stated-observation"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "latest-incident-date-not-stated"
+      },
+      "observation_count": 2,
+      "source_count": 1,
+      "activity_count": 0,
+      "continuity": {
+        "assessment": "reobserved",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-21T13:20:00Z",
+        "basis": "Repeated across multiple 2025 incident-response cases; no post-publication telemetry was queried.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "edr",
+          "query": "(file.sha256=16f83f056177c4ec24c7e99d01ca9d9d6713bd0497eeedb777a3ffefa99c97f0 OR file.sha256=bd1f381e5a3db22e88776b7873d4d2835e9a1ec620571d2b1da0c58f81c84a56) OR service.name IN (mgdsrv,KMHLPSVC) OR device.name=\\Device\\KMHLPDRV",
+          "purpose": "Detect the exact driver chain and stable service/device artifacts.",
+          "requires_validation": true,
+          "false_positive_notes": "rwdrv.sys is legitimate software. Require hlpdrv.sys, Defender policy modification, service/device artifacts or Akira intrusion context."
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--guidepoint-akira-driver-campaign-2025"
+      ],
+      "analyst_notes": ""
     }
   ]
 }

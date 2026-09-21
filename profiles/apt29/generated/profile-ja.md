@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt29`
 - 状態: review
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -51,6 +51,18 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -182,6 +194,30 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--apt29-wellmess-tunis-tls-dn | infrastructure | tls-subject-and-issuer-pattern | subject C=Tunis, O=IT; issuer C=Tunis, O=IT, CN=* | shared | 20 | 1 |  | 不明 | 不明 | single-observation | unknown | 高 | `source--censys-apt29-wellmess-infrastructure-2020`, `source--ncsc-apt29-wellmess-2020` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--apt29-wellmess-tunis-tls-dn | pivot-observation--apt29-wellmess-censys-scan-time-unknown | 不明 | 20 | documented-hosts | なし | source--censys-apt29-wellmess-infrastructure-2020 | Censys reported that the query returned 20 hosts, but did not identify the scan timestamp. The count is one published snapshot, not 20 temporal reobservations. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--apt29-wellmess-tunis-tls-dn | censys | `443.https.tls.certificate.parsed.subject_dn:"C=Tunis, O=IT" AND 443.https.tls.certificate.parsed.issuer_dn:"C=Tunis, O=IT, CN=*"` | Historical legacy-Censys query for retrospective validation and translation to the current schema. | 要 | Legacy syntax is no longer executable as-is. Require malware/configuration, infrastructure timing or victimology corroboration; the cited sources do not establish present use or a post-publication rotation date. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -622,6 +658,8 @@ Operation Ghost
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--sec-solarwinds-disclosure-enforcement-2024 | SEC Charges Four Companies With Misleading Cyber Disclosures | U.S. Securities and Exchange Commission | 2024-10-22 | https://www.sec.gov/newsroom/press-releases/2024-174 | government-press-release | TLP:CLEAR | 高 |
+| source--censys-apt29-wellmess-infrastructure-2020 | Advanced Persistent Infrastructure Tracking | Censys | 2020-12-07 | https://censys.com/blog/advanced-persistent-infrastructure-tracking | vendor-research | TLP:CLEAR | 高 |
+| source--ncsc-apt29-wellmess-2020 | Advisory: APT29 targets COVID-19 vaccine development | NCSC, CISA, NSA and CSE | 2020-07-16 | https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf | government-advisory | TLP:CLEAR | 高 |
 
 ## 自由記述
 

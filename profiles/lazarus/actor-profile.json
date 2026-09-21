@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "profile_id": "actor--lazarus",
   "name": "Lazarus Group",
   "status": "draft",
   "created_at": "2026-07-25T09:00:55Z",
-  "updated_at": "2026-09-21T04:35:02Z",
+  "updated_at": "2026-09-21T13:20:00Z",
   "languages": [
     "ja"
   ],
@@ -9700,6 +9700,56 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--eset-lazarus-amazon-themed-2022",
+      "path": "https://www.welivesecurity.com/2022/09/30/amazon-themed-campaigns-lazarus-netherlands-belgium/",
+      "title": "Amazon-themed campaigns of Lazarus in the Netherlands and Belgium",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2022-09-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.welivesecurity.com/2022/09/30/amazon-themed-campaigns-lazarus-netherlands-belgium/"
+    },
+    {
+      "source_id": "source--withsecure-lazarus-no-pineapple-2023",
+      "path": "https://labs.withsecure.com/content/dam/labs/docs/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf",
+      "title": "No Pineapple! DPRK Targeting of Medical Research and Technology Sector",
+      "publisher": "WithSecure",
+      "published_at": {
+        "value": "2023-02-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://labs.withsecure.com/content/dam/labs/docs/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf"
     }
   ],
   "assessment": {
@@ -10146,6 +10196,147 @@
         "source--daily-e91cff6491073bc4c828"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "associated_entities": [],
+  "entity_relationships": [],
+  "hunting_pivots": [
+    {
+      "pivot_id": "hunting-pivot--lazarus-dbutil-driver-2021",
+      "category": "malware",
+      "pivot_type": "vulnerable-driver-sha1",
+      "value": "DBUtil_2_3.sys SHA1 C948AE14761095E4D76B55D9DE86412258BE7AFD; CVE-2021-21551",
+      "description": "Lazarus used the vulnerable Dell DBUtil driver in an autumn 2021 campaign to disable security products. DBUtil is reused by many unrelated actors; the exact hash plus exploit behavior and campaign context are required.",
+      "stix_pattern": "[file:hashes.'SHA-1' = 'C948AE14761095E4D76B55D9DE86412258BE7AFD']",
+      "attribution_scope": "shared",
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "activity_refs": [],
+      "indicator_refs": [
+        "indicator--sha256:b3ef2743a63dcfb565234996220c93f121e3e166382c3f6e3363b8fc9f306129"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--lazarus-dbutil-autumn-2021",
+          "observed_at": {
+            "value": "2021-09-01T00:00:00Z",
+            "precision": "range",
+            "status": "known",
+            "basis": "source-stated-autumn-2021"
+          },
+          "source_ref": "source--eset-lazarus-amazon-themed-2022",
+          "activity_ref": null,
+          "context": "ESET documented the driver in the Dutch/Belgian aerospace campaign.",
+          "count": 1,
+          "count_basis": "documented-samples"
+        }
+      ],
+      "first_observed": {
+        "value": "2021-09-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated-autumn-2021"
+      },
+      "last_observed": {
+        "value": "2021-09-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated-autumn-2021"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 0,
+      "continuity": {
+        "assessment": "historical-only",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-21T13:20:00Z",
+        "basis": "One 2021 Lazarus campaign observation; the driver is broadly shared and no current file query was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "edr",
+          "query": "file.sha1=C948AE14761095E4D76B55D9DE86412258BE7AFD OR (file.name=DBUtil_2_3.sys AND exploit.cve=CVE-2021-21551)",
+          "purpose": "Detect the exact driver or exploitation chain.",
+          "requires_validation": true,
+          "false_positive_notes": "DBUtil is legitimate vulnerable software and appears in multiple actor campaigns. Require companion malware, service/process behavior and timing."
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--eset-lazarus-amazon-themed-2022"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "pivot_id": "hunting-pivot--lazarus-lamera-code-signing-cert",
+      "category": "malware",
+      "pivot_type": "code-signing-certificate-fingerprint",
+      "value": "LAMERA CORPORATION LIMITED certificate SHA256 CD27DAA4BED5C1CFD02B43C1322829DC5396D545F3912B9694FC5A2499D5089E; SHA1 6D0BFFE68BC8992B60DC294EC68DD2B44A5FC6F4; serial 879fa942f9f097b74fd6f7dabcf1745a",
+      "description": "Several binaries in the Q4 2022 intrusion were signed with a LAMERA CORPORATION LIMITED certificate. Certificate validity (2022-11-02 through 2039-12-31) is certificate metadata and is not the activity period.",
+      "stix_pattern": "[x509-certificate:hashes.'SHA-256' = 'CD27DAA4BED5C1CFD02B43C1322829DC5396D545F3912B9694FC5A2499D5089E']",
+      "attribution_scope": "shared",
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "activity_refs": [],
+      "indicator_refs": [
+        "indicator--sha256:063b10caa110f9f1b3e42dcbec51efb5c1bdc3cfc308033b5863f1a823048920",
+        "indicator--sha256:14093e8423ff15540c8657f8d9d68c790a0ce5ce132bd3532d681d55d6f1ce9f"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--lazarus-lamera-q4-2022",
+          "observed_at": {
+            "value": "2022-10-01T00:00:00Z",
+            "precision": "range",
+            "status": "known",
+            "basis": "incident-range-q4-2022"
+          },
+          "source_ref": "source--withsecure-lazarus-no-pineapple-2023",
+          "activity_ref": null,
+          "context": "WithSecure reported several signed binaries; exact sample count was not stated, so this record counts one documented cluster observation.",
+          "count": 1,
+          "count_basis": "unknown"
+        }
+      ],
+      "first_observed": {
+        "value": "2022-10-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "incident-range-q4-2022"
+      },
+      "last_observed": {
+        "value": "2022-10-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "incident-range-q4-2022"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 0,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-21T13:20:00Z",
+        "basis": "One incident report covering multiple binaries; no current certificate reputation query was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "file-intelligence",
+          "query": "authenticode.certificate.sha256=CD27DAA4BED5C1CFD02B43C1322829DC5396D545F3912B9694FC5A2499D5089E OR authenticode.certificate.sha1=6D0BFFE68BC8992B60DC294EC68DD2B44A5FC6F4",
+          "purpose": "Find files signed by the exact reported certificate.",
+          "requires_validation": true,
+          "false_positive_notes": "Certificate use may include legitimate or unrelated signed files. Validate malware lineage, signing timestamp and incident context."
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--withsecure-lazarus-no-pineapple-2023"
+      ],
+      "analyst_notes": ""
     }
   ]
 }

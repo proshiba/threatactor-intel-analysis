@@ -9,6 +9,7 @@ import ipaddress
 import json
 import re
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -30,6 +31,13 @@ from ingest_observables import (
 
 PUBLICATION_BASIS = re.compile(
     r"(?:publication|published|report(?:ed)?[-_ ]?date|daily-news-file-date)",
+    re.IGNORECASE,
+)
+NON_ACTIVITY_OBSERVATION_BASIS = re.compile(
+    r"(?:"
+    r"(?:vt|virustotal)[-_ ]?first[-_ ]?seen"
+    r"|certificate[-_ ]?(?:validity|not[-_ ]?before|not[-_ ]?after)"
+    r")",
     re.IGNORECASE,
 )
 
@@ -67,13 +75,47 @@ def validate_time(
     if value.get("value"):
         try:
             normalized = str(value["value"]).replace("Z", "+00:00")
-            from datetime import datetime
-
             datetime.fromisoformat(normalized)
         except ValueError:
             issue(issues, "error", location, "invalid ISO 8601 time")
     if warn_unknown and value.get("status") == "unknown":
         issue(issues, "warning", location, "observation time is unknown")
+
+
+def validate_time_order(
+    first: Any,
+    last: Any,
+    location: str,
+    issues: list[Issue],
+) -> None:
+    """Reject a known first timestamp that is later than the known last one."""
+
+    if not isinstance(first, dict) or not isinstance(last, dict):
+        return
+    first_value = first.get("value")
+    last_value = last.get("value")
+    if not first_value or not last_value:
+        return
+
+    def normalized_datetime(value: Any) -> datetime:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(timezone.utc)
+
+    try:
+        first_datetime = normalized_datetime(first_value)
+        last_datetime = normalized_datetime(last_value)
+    except (TypeError, ValueError):
+        # validate_time reports malformed values at their precise locations.
+        return
+    if first_datetime > last_datetime:
+        issue(
+            issues,
+            "error",
+            location,
+            "first observation time cannot be later than last observation time",
+        )
 
 
 def validate_observation_time(
@@ -94,6 +136,41 @@ def validate_observation_time(
             "error",
             location,
             "publication/report date cannot be used as an observation date",
+        )
+    if (
+        isinstance(value, dict)
+        and value.get("value")
+        and NON_ACTIVITY_OBSERVATION_BASIS.search(
+            str(value.get("basis", ""))
+        )
+    ):
+        issue(
+            issues,
+            "error",
+            location,
+            "repository first-seen or certificate-validity metadata cannot "
+            "be used as an activity observation date",
+        )
+
+
+def validate_legal_action_time(
+    value: Any,
+    location: str,
+    issues: list[Issue],
+) -> None:
+    """Validate a legal event date without substituting source publication."""
+
+    validate_time(value, location, issues)
+    if (
+        isinstance(value, dict)
+        and value.get("value")
+        and PUBLICATION_BASIS.search(str(value.get("basis", "")))
+    ):
+        issue(
+            issues,
+            "error",
+            location,
+            "source publication date cannot be used as a legal action date",
         )
 
 
@@ -135,15 +212,16 @@ def check_evidence_refs(
 def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, set[str]]:
     required = {
         "schema_version", "profile_id", "name", "status", "created_at", "updated_at",
-        "actor", "attribution", "motivations", "relationships", "diamond_model",
+        "actor", "attribution", "motivations", "relationships",
+        "associated_entities", "entity_relationships", "hunting_pivots", "diamond_model",
         "capabilities", "activities", "victim_cases", "targets", "ttps", "sources",
         "assessment", "free_text",
     }
     missing = required - set(profile)
     for key in sorted(missing):
         issue(issues, "error", "$", f"missing top-level field: {key}")
-    if profile.get("schema_version") != "1.3.0":
-        issue(issues, "error", "$.schema_version", "expected 1.3.0")
+    if profile.get("schema_version") != "1.4.0":
+        issue(issues, "error", "$.schema_version", "expected 1.4.0")
     if not re.match(r"^actor--[a-z0-9][a-z0-9-]*$", profile.get("profile_id", "")):
         issue(issues, "error", "$.profile_id", "invalid profile ID")
 
@@ -157,8 +235,15 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
             issue(issues, "warning", f"$.sources[{index}].path", "source path is empty")
 
     actor = profile.get("actor", {})
-    validate_time(actor.get("first_seen"), "$.actor.first_seen", issues)
-    validate_time(actor.get("last_seen"), "$.actor.last_seen", issues)
+    validate_observation_time(
+        actor.get("first_seen"), "$.actor.first_seen", issues
+    )
+    validate_observation_time(
+        actor.get("last_seen"), "$.actor.last_seen", issues
+    )
+    validate_time_order(
+        actor.get("first_seen"), actor.get("last_seen"), "$.actor", issues
+    )
     alias_names: set[str] = set()
     for index, alias in enumerate(actor.get("aliases", [])):
         lowered = alias.get("name", "").lower()
@@ -192,6 +277,103 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
                     f"$.relationships[{index}].{key}",
                     issues,
                 )
+        validate_time_order(
+            relationship.get("first_observed"),
+            relationship.get("last_observed"),
+            f"$.relationships[{index}]",
+            issues,
+        )
+
+    associated_entities = profile.get("associated_entities", [])
+    entity_ids = check_unique_ids(
+        associated_entities, "entity_id", "$.associated_entities", issues
+    )
+    for index, entity in enumerate(associated_entities):
+        location = f"$.associated_entities[{index}]"
+        entity_id = entity.get("entity_id", "")
+        entity_type = entity.get("entity_type")
+        expected_prefix = {
+            "organization": "organization--",
+            "threat-actor-individual": "threat-actor-individual--",
+            "threat-actor-group": "threat-actor-group--",
+        }.get(entity_type)
+        if expected_prefix and not entity_id.startswith(expected_prefix):
+            issue(
+                issues,
+                "error",
+                f"{location}.entity_id",
+                f"{entity_type} ID must start with {expected_prefix}",
+            )
+        if entity_type == "organization" and entity.get("threat_actor_types"):
+            issue(
+                issues,
+                "error",
+                f"{location}.threat_actor_types",
+                "organization cannot have threat_actor_types",
+            )
+        validate_observation_time(
+            entity.get("first_observed"), f"{location}.first_observed", issues
+        )
+        validate_observation_time(
+            entity.get("last_observed"), f"{location}.last_observed", issues
+        )
+        validate_time_order(
+            entity.get("first_observed"),
+            entity.get("last_observed"),
+            location,
+            issues,
+        )
+        check_evidence_refs(entity, location, source_ids, issues)
+        legal_actions = entity.get("legal_actions", [])
+        check_unique_ids(
+            legal_actions, "action_id", f"{location}.legal_actions", issues
+        )
+        for action_index, action in enumerate(legal_actions):
+            action_location = f"{location}.legal_actions[{action_index}]"
+            validate_legal_action_time(
+                action.get("action_date"),
+                f"{action_location}.action_date",
+                issues,
+            )
+            check_evidence_refs(action, action_location, source_ids, issues)
+
+    entity_relationships = profile.get("entity_relationships", [])
+    entity_relationship_ids = check_unique_ids(
+        entity_relationships,
+        "relationship_id",
+        "$.entity_relationships",
+        issues,
+    )
+    valid_entity_refs = {profile.get("profile_id", ""), *entity_ids}
+    for index, relationship in enumerate(entity_relationships):
+        location = f"$.entity_relationships[{index}]"
+        for ref_key in ("source_ref", "target_ref"):
+            if relationship.get(ref_key) not in valid_entity_refs:
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.{ref_key}",
+                    f"dangling entity reference: {relationship.get(ref_key)}",
+                )
+        if relationship.get("source_ref") == relationship.get("target_ref"):
+            issue(issues, "error", location, "entity relationship cannot be self-referential")
+        validate_observation_time(
+            relationship.get("first_observed"),
+            f"{location}.first_observed",
+            issues,
+        )
+        validate_observation_time(
+            relationship.get("last_observed"),
+            f"{location}.last_observed",
+            issues,
+        )
+        validate_time_order(
+            relationship.get("first_observed"),
+            relationship.get("last_observed"),
+            location,
+            issues,
+        )
+        check_evidence_refs(relationship, location, source_ids, issues)
 
     capabilities = profile.get("capabilities", {})
     capability_ids: dict[str, set[str]] = {}
@@ -210,6 +392,12 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for index, item in enumerate(items):
             validate_observation_time(item.get("first_observed"), f"$.capabilities.{category}[{index}].first_observed", issues)
             validate_observation_time(item.get("last_observed"), f"$.capabilities.{category}[{index}].last_observed", issues)
+            validate_time_order(
+                item.get("first_observed"),
+                item.get("last_observed"),
+                f"$.capabilities.{category}[{index}]",
+                issues,
+            )
             check_evidence_refs(item, f"$.capabilities.{category}[{index}]", source_ids, issues)
 
     activities = profile.get("activities", [])
@@ -222,6 +410,194 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     for category in ("countries", "regions", "sectors", "roles"):
         target_items.extend(profile.get("targets", {}).get(category, []))
     target_ids = check_unique_ids(target_items, "id", "$.targets.*", issues)
+
+    hunting_pivots = profile.get("hunting_pivots", [])
+    hunting_pivot_ids = check_unique_ids(
+        hunting_pivots, "pivot_id", "$.hunting_pivots", issues
+    )
+    indicator_ref_pattern = re.compile(r"^indicator--")
+    for index, pivot in enumerate(hunting_pivots):
+        location = f"$.hunting_pivots[{index}]"
+        validate_observation_time(
+            pivot.get("first_observed"), f"{location}.first_observed", issues
+        )
+        validate_observation_time(
+            pivot.get("last_observed"), f"{location}.last_observed", issues
+        )
+        validate_time_order(
+            pivot.get("first_observed"),
+            pivot.get("last_observed"),
+            location,
+            issues,
+        )
+        check_evidence_refs(pivot, location, source_ids, issues)
+        for ref in pivot.get("malware_refs", []):
+            if ref not in capability_ids.get("malware", set()):
+                issue(issues, "error", f"{location}.malware_refs", f"dangling malware reference: {ref}")
+        for ref in pivot.get("infrastructure_refs", []):
+            if ref not in capability_ids.get("infrastructure", set()):
+                issue(issues, "error", f"{location}.infrastructure_refs", f"dangling infrastructure reference: {ref}")
+        for ref in pivot.get("activity_refs", []):
+            if ref not in activity_ids:
+                issue(issues, "error", f"{location}.activity_refs", f"dangling activity reference: {ref}")
+        for ref in pivot.get("indicator_refs", []):
+            if not indicator_ref_pattern.match(ref):
+                issue(issues, "error", f"{location}.indicator_refs", f"invalid indicator reference: {ref}")
+
+        observations = pivot.get("observations", [])
+        check_unique_ids(
+            observations, "observation_id", f"{location}.observations", issues
+        )
+        observation_total = 0
+        observation_sources: set[str] = set()
+        observation_activities: set[str] = set()
+        for observation_index, observation in enumerate(observations):
+            observation_location = (
+                f"{location}.observations[{observation_index}]"
+            )
+            validate_observation_time(
+                observation.get("observed_at"),
+                f"{observation_location}.observed_at",
+                issues,
+            )
+            source_ref = observation.get("source_ref")
+            if source_ref not in source_ids:
+                issue(
+                    issues,
+                    "error",
+                    f"{observation_location}.source_ref",
+                    f"dangling source reference: {source_ref}",
+                )
+            elif source_ref:
+                observation_sources.add(source_ref)
+            activity_ref = observation.get("activity_ref")
+            if activity_ref is not None:
+                if activity_ref not in activity_ids:
+                    issue(
+                        issues,
+                        "error",
+                        f"{observation_location}.activity_ref",
+                        f"dangling activity reference: {activity_ref}",
+                    )
+                else:
+                    observation_activities.add(activity_ref)
+            observation_total += observation.get("count", 0)
+        missing_evidence_sources = observation_sources - set(
+            pivot.get("evidence_refs", [])
+        )
+        if missing_evidence_sources:
+            issue(
+                issues,
+                "error",
+                f"{location}.evidence_refs",
+                "pivot evidence_refs must include every observation source: "
+                + ", ".join(sorted(missing_evidence_sources)),
+            )
+        missing_activity_refs = observation_activities - set(
+            pivot.get("activity_refs", [])
+        )
+        if missing_activity_refs:
+            issue(
+                issues,
+                "error",
+                f"{location}.activity_refs",
+                "pivot activity_refs must include every observation activity: "
+                + ", ".join(sorted(missing_activity_refs)),
+            )
+        expected_counts = {
+            "observation_count": observation_total,
+            "source_count": len(observation_sources),
+            "activity_count": len(observation_activities),
+        }
+        for count_key, expected in expected_counts.items():
+            if pivot.get(count_key) != expected:
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.{count_key}",
+                    f"expected {expected} from observation records",
+                )
+        continuity = pivot.get("continuity", {})
+        assessment = continuity.get("assessment")
+        if assessment == "single-observation" and len(observations) != 1:
+            issue(
+                issues,
+                "error",
+                f"{location}.continuity",
+                "single-observation requires exactly one observation record; "
+                "that record may count multiple samples or observables",
+            )
+        if assessment in {"reused", "reobserved"} and observation_total < 2:
+            issue(issues, "error", f"{location}.continuity", f"{assessment} requires at least two documented observations")
+        checks = continuity.get("checks", [])
+        check_unique_ids(
+            checks, "check_id", f"{location}.continuity.checks", issues
+        )
+        for check_index, check in enumerate(checks):
+            check_location = (
+                f"{location}.continuity.checks[{check_index}]"
+            )
+            try:
+                datetime.fromisoformat(
+                    str(check.get("evaluated_at", "")).replace("Z", "+00:00")
+                )
+            except ValueError:
+                issue(
+                    issues,
+                    "error",
+                    f"{check_location}.evaluated_at",
+                    "invalid ISO 8601 evaluation time",
+                )
+            for source_ref in check.get("evidence_refs", []):
+                if source_ref not in source_ids:
+                    issue(
+                        issues,
+                        "error",
+                        f"{check_location}.evidence_refs",
+                        f"dangling source reference: {source_ref}",
+                    )
+        passive_scan_performed = continuity.get("passive_scan_performed")
+        if passive_scan_performed is True and not checks:
+            issue(
+                issues,
+                "error",
+                f"{location}.continuity.checks",
+                "a performed passive scan requires a structured check record",
+            )
+        if checks and passive_scan_performed is not True:
+            issue(
+                issues,
+                "error",
+                f"{location}.continuity.passive_scan_performed",
+                "structured continuity checks require passive_scan_performed=true",
+            )
+        if continuity.get("active_status") in {"active", "inactive"} and not any(
+            check.get("analyst_validated")
+            and check.get("evidence_refs")
+            for check in checks
+        ):
+            issue(
+                issues,
+                "error",
+                f"{location}.continuity.active_status",
+                "active/inactive status requires a validated, evidenced continuity check",
+            )
+        for query_index, query in enumerate(pivot.get("hunt_queries", [])):
+            query_location = f"{location}.hunt_queries[{query_index}]"
+            if query.get("requires_validation") is not True:
+                issue(
+                    issues,
+                    "error",
+                    f"{query_location}.requires_validation",
+                    "hunt results must require analyst validation",
+                )
+            if not str(query.get("false_positive_notes", "")).strip():
+                issue(
+                    issues,
+                    "error",
+                    f"{query_location}.false_positive_notes",
+                    "hunt query must document false-positive conditions",
+                )
 
     for index, activity in enumerate(activities):
         stix_type = activity.get("stix_object_type")
@@ -251,6 +627,12 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
             )
         validate_observation_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
         validate_observation_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
+        validate_time_order(
+            activity.get("first_observed"),
+            activity.get("last_observed"),
+            f"$.activities[{index}]",
+            issues,
+        )
         validate_time(activity.get("reported_at"), f"$.activities[{index}].reported_at", issues)
         check_evidence_refs(activity, f"$.activities[{index}]", source_ids, issues)
         for ref in activity.get("target_refs", []):
@@ -282,6 +664,12 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         location = f"$.victim_cases[{index}]"
         for key in ("first_observed", "last_observed"):
             validate_observation_time(victim.get(key), f"{location}.{key}", issues)
+        validate_time_order(
+            victim.get("first_observed"),
+            victim.get("last_observed"),
+            location,
+            issues,
+        )
         validate_time(victim.get("reported_at"), f"{location}.reported_at", issues)
         check_evidence_refs(victim, location, source_ids, issues)
         for ref in victim.get("activity_refs", []):
@@ -298,6 +686,12 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for index, target in enumerate(profile.get("targets", {}).get(category, [])):
             validate_observation_time(target.get("first_observed"), f"$.targets.{category}[{index}].first_observed", issues)
             validate_observation_time(target.get("last_observed"), f"$.targets.{category}[{index}].last_observed", issues)
+            validate_time_order(
+                target.get("first_observed"),
+                target.get("last_observed"),
+                f"$.targets.{category}[{index}]",
+                issues,
+            )
             check_evidence_refs(target, f"$.targets.{category}[{index}]", source_ids, issues)
 
     ttps = profile.get("ttps", [])
@@ -309,6 +703,12 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
             issue(issues, "warning", f"$.ttps[{index}].observed_behavior", "observed behavior is empty")
         validate_observation_time(ttp.get("first_observed"), f"$.ttps[{index}].first_observed", issues)
         validate_observation_time(ttp.get("last_observed"), f"$.ttps[{index}].last_observed", issues)
+        validate_time_order(
+            ttp.get("first_observed"),
+            ttp.get("last_observed"),
+            f"$.ttps[{index}]",
+            issues,
+        )
         check_evidence_refs(ttp, f"$.ttps[{index}]", source_ids, issues)
         for ref in ttp.get("activity_refs", []):
             if ref not in activity_ids:
@@ -383,6 +783,9 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         "target_ids": target_ids,
         "victim_ids": victim_ids,
         "relationship_ids": relationship_ids,
+        "entity_ids": entity_ids,
+        "entity_relationship_ids": entity_relationship_ids,
+        "hunting_pivot_ids": hunting_pivot_ids,
         "ttp_ids": ttp_ids,
     }
 
@@ -396,6 +799,46 @@ def check_indicator_is_observable(
     TLDを持つ抽出失敗値を検出する。詳細は RULES.md 8. IOCモデルを参照。
     """
     ioc_type = indicator.get("type")
+    if ioc_type == "certificate-fingerprint":
+        algorithm = indicator.get("hash_algorithm")
+        expected_names = {
+            "md5": "MD5",
+            "sha1": "SHA-1",
+            "sha256": "SHA-256",
+            "sha512": "SHA-512",
+        }
+        if algorithm not in expected_names:
+            issue(
+                issues,
+                "error",
+                location,
+                "certificate-fingerprint requires an explicit hash_algorithm",
+            )
+            return
+        expected_length = {
+            "md5": 32,
+            "sha1": 40,
+            "sha256": 64,
+            "sha512": 128,
+        }[algorithm]
+        normalized_value = indicator.get("normalized_value", "")
+        if len(normalized_value) != expected_length:
+            issue(
+                issues,
+                "error",
+                location,
+                f"certificate fingerprint {algorithm} requires "
+                f"{expected_length} hex characters",
+            )
+        marker = f"hashes.'{expected_names[algorithm]}'"
+        if marker not in indicator.get("stix_pattern", ""):
+            issue(
+                issues,
+                "error",
+                location,
+                "certificate fingerprint STIX pattern does not match hash_algorithm",
+            )
+        return
     if ioc_type not in {"url", "domain", "email"}:
         return
     value = indicator.get("normalized_value") or indicator.get("value") or ""
@@ -468,8 +911,22 @@ def validate_iocs(
             issue(issues, "error", location, "seen_in_multiple_campaigns is inconsistent")
         if sorted(indicator.get("campaign_refs", [])) != campaigns:
             issue(issues, "error", location, "campaign_refs aggregate is inconsistent")
-        validate_time(indicator.get("first_observed"), f"{location}.first_observed", issues)
-        validate_time(indicator.get("last_observed"), f"{location}.last_observed", issues)
+        validate_observation_time(
+            indicator.get("first_observed"),
+            f"{location}.first_observed",
+            issues,
+        )
+        validate_observation_time(
+            indicator.get("last_observed"),
+            f"{location}.last_observed",
+            issues,
+        )
+        validate_time_order(
+            indicator.get("first_observed"),
+            indicator.get("last_observed"),
+            location,
+            issues,
+        )
         if indicator.get("disposition") == "candidate":
             issue(issues, "warning", location, "candidate IOC requires analyst review")
         check_indicator_is_observable(indicator, location, issues)
@@ -479,7 +936,12 @@ def validate_iocs(
             if obs_id in observation_ids:
                 issue(issues, "error", obs_location, f"duplicate observation ID: {obs_id}")
             observation_ids.add(obs_id)
-            validate_time(observation.get("observed_at"), f"{obs_location}.observed_at", issues, warn_unknown=True)
+            validate_observation_time(
+                observation.get("observed_at"),
+                f"{obs_location}.observed_at",
+                issues,
+                warn_unknown=True,
+            )
             validate_time(observation.get("source_published_at"), f"{obs_location}.source_published_at", issues)
             if observation.get("source_id") not in valid_source_ids:
                 issue(issues, "error", obs_location, f"unknown source_id: {observation.get('source_id')}")
@@ -546,7 +1008,7 @@ def validate_artifacts(
         if row["observed_at_status"] == "unknown":
             issue(issues, "warning", f"artifacts:{row['observation_id']}", "observation time is unknown")
         else:
-            validate_time(
+            validate_observation_time(
                 {
                     "value": row["observed_at"],
                     "precision": row["observed_at_precision"],

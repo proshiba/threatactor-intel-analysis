@@ -100,6 +100,51 @@ cloud/CDN、hosting providerにも適用します。
 既存のGOLD SOUTHFIELDのようなoperator profileがある場合、software名とactor名を
 機械的に同一化してはいけません。
 
+schema 1.4.0で実在する企業・自然人または人間の集団を追加するときは、既存Actor profileを
+置き換えず`associated_entities`へ保存します。
+
+- 企業その他の法人は`organization--...` / `entity_type: organization`とし、OpenCTIでは
+  Organizationへ変換します。
+- 攻撃実行、指揮、開発、仲介等へ関与した実在自然人は
+  `threat-actor-individual--...` / `entity_type: threat-actor-individual`とし、OpenCTIでは
+  Threat Actor Individualへ変換します。
+- 犯罪シンジケート等、人間の集団として根拠付きで識別された対象は
+  `threat-actor-group--...` / `entity_type: threat-actor-group`とし、OpenCTIでは
+  Threat Actor Groupへ変換します。既存Intrusion Setと名前が重なっても別objectにし、
+  根拠が部分一致なら`overlaps-with`等で結びます。
+- APT名、ベンダー追跡クラスタ、部署を、実在企業や自然人へ名前一致だけで置換しません。
+- 同じ実在entityまたはSourceを複数profileへ再掲する場合は同じ安定IDと同一定義を使います。
+  profile固有の関係・役割・期間はentity本体でなく`entity_relationships`へ置きます。
+
+### 企業・個人・攻撃クラスタの関係
+
+`entity_relationships`は原典が直接支持する最小の関係だけを保存します。次の推論は禁止です。
+
+```text
+個人 employed-by 企業
+企業 supports APT-X
+→ 個人 member-of APT-X
+```
+
+勤務、役員、創業、株式保有、委託、支援、指揮、クラスタ参加はそれぞれ別の主張です。
+雇用関係が確認できても、本人による当該APT活動への参加を示す証拠がなければ
+`member-of`や`operates`を生成しません。逆に、個人のAPT参加が確認できても、推測した
+勤務先や政府組織を補いません。
+
+関係の向きは、個人から勤務先・所属先、支援企業から支援対象、tasking組織からtasked対象を
+基本とします。原典がalleged/assessed/likelyと述べる関係を確定動詞へ強めません。
+
+### 起訴・制裁等の法的情報
+
+法的措置は`associated_entities[].legal_actions`へ保存します。起訴または訴追の事実を
+記録する場合でも、起訴状中の行為は未確定の主張なので`action_type: indictment`または
+`charge`、`status: alleged`とします。政府資料の信頼度が高いことと、被告人の有罪が
+確定していることを混同しません。制裁、逮捕、有罪判決、量刑は別actionとして保持します。
+
+`legal_actions[].action_date`、Sourceの`published_at`、entity・Relationshipの
+`first_observed` / `last_observed`、Activityの期間は相互に代用しません。例えば起訴日を
+攻撃の`last_observed`へ、制裁日をAPT membershipの開始日へコピーしてはいけません。
+
 
 ### Entity境界の追加ルール
 
@@ -205,7 +250,61 @@ lifecycle claim 1件だけを保持し、現行コレクション集計から除
 各ruleには`reason`と`evidence_urls`を必須とし、再生成時も自動推定よりcurationを優先します。
 既存profileのstable IDを維持する必要がある場合は`slug`を明示します。
 
-## 11. Agent preflight checklist
+## 11. Hunting Pivotの生成
+
+`hunting_pivots`はIOC一覧の別表示ではない。生成処理は、すべてのIOC、証明書、ASN、port、
+driver名を一律にPivotへ昇格してはいけない。原典が探索上の特徴を説明しているか、複数時点・
+複数活動での再利用が確認されているか、または単発でも防御的な再検索方法と誤検知条件を
+明示できる場合に限って候補を作る。単発のIP/domain/hashそのものは`iocs.json`に保持する。
+
+Pivotに正確なfile hash、IP、domain、URL等が含まれる場合、その原子的な値は構造化Sourceから
+通常のIOC Observationにも取り込み、生成された`indicator_id`をPivotの`indicator_refs`へ
+必ず追加する。参照先IOCとPivotは同じ原典を共有しなければならない。Pivotだけにhashを
+埋め込んで`iocs.json`から欠落させない。
+証明書fingerprintは`certificate-fingerprint`として取り込み、原典が明示した
+`hash_algorithm`からX.509 patternを生成する。SHA-1 thumbprintをfile SHA-1へ、または
+algorithm不明のfingerprintやserialをX.509 SHA-256へ誤変換してはならない。
+heuristic抽出済みの値を原典レビューで誤分類と確認した場合は、該当Source manifestの
+`excluded_iocs`に元のtype、値、理由を記録し、正しい型の構造化Sourceへ移す。値だけを
+無言で削除したり、actor全体の同値IOCを一律に抑止したりしない。
+
+生成・集計時は次を守る。
+
+1. Observationごとの`count`と`count_basis`を保持し、`observation_count`はcountの合計とする。
+   行数・引用数・ページ数をイベント数にしない。単位が明示されない既定値は`unknown`とし、
+   `documented-events`へ自動昇格しない。
+2. `source_count`は一意な`source_ref`、`activity_count`は一意な非null `activity_ref`から算出する。
+   同じ原典のBundle sliceや同じ活動の再掲を別件として数えない。Observationの非null
+   `activity_ref`と`source_ref`は、それぞれ上位`activity_refs`と`evidence_refs`にも含める。
+3. 証明書の有効期間、Source公開日、VirusTotal等のfirst-seen、scan時刻を攻撃活動日へコピーしない。
+   時間の意味を`basis`に残し、活動時点が不明ならunknownのままにする。
+4. live scanまたは現在のtelemetryを実際に確認していない限り、
+   `continuity.active_status`を`active`へしない。既定は`unknown`であり、検索未実施なら
+   `passive_scan_performed: false`とする。検索を実施した場合は`continuity.checks`へ実行時刻、
+   platform、query、index/time window、結果、analyst validation、根拠、限界を保存する。
+   `reused` / `reobserved`は過去の観測構造であり、現在の`active`を意味しない。単一の0件検索を
+   `inactive`の根拠にしない。
+5. issuer、ASN、hosting provider、CDN、port、正規サービス、Cobalt Strike等の汎用特徴を
+   actor-specificへ自動昇格しない。複合条件と追加検証が必要なgeneric pivotとして扱う。
+6. Shodan/Censys等の検索式は自動スキャン命令ではなく、analyst向け候補生成式である。
+   `requires_validation: true`と`false_positive_notes`を必須にし、field schema変更も確認する。
+7. 同じPivot値の共有はActor同一性・協力・帰属を意味しない。必要ならGroupingへ観測集合として
+   含めるが、追加証拠なしにActor Relationshipを生成しない。
+
+STIX生成では、安全な`stix_pattern`があるPivotをIndicatorとNoteの両方へ変換し、観測・件数・
+continuity・query・留保をNoteにも完全に残す。patternが`null`の複合特徴、per-device生成証明書、
+再現不能な設計特徴はNoteだけにし、架空のfingerprintや広すぎるpatternを作らない。
+この生成ロジックを変更するときは、単発IOCとの分離、count集計、unknown active status、
+generic pivot、Indicator/Note境界の回帰テストを同じ変更へ含める。
+
+OpenCTI Bundleの分割では、同じSTIX IDへ異なるprofile固有description、evidence、観測情報を
+載せてはいけない。TTP観測、Indicator assertion、Capability、Activity、標的・被害等のclaimは
+profile namespaceの安定IDにし、共有するCountry・entity・atomic SCOはprofile固有情報を除いた
+同一objectとして再利用する。Actor Relationship endpointは対象profileの完全なActor objectを
+再利用し、簡略stubで同じIDを上書きしない。NoteをBundleごとに参照縮約する場合はslice固有IDを
+使う。生成後は全Bundle横断で同一IDのbyte同一性を検証し、差分をfirst-winsで隠さずerrorにする。
+
+## 12. Agent preflight checklist
 
 プロファイルまたは生成コードを変更するエージェントは、commit前に次を確認します。
 
@@ -213,10 +312,20 @@ lifecycle claim 1件だけを保持し、現行コレクション集計から除
 - [ ] state-sponsoredをespionageへ変換していない
 - [ ] vendor/productをadversaryへ変換していない
 - [ ] software/campaign/organizationをactorとして新設していない
+- [ ] 企業をOrganization、根拠付きで識別した自然人をThreat Actor Individualとして分離した
+- [ ] 雇用・役員・創業関係からAPT membershipを推論していない
+- [ ] indictment / chargeを`status: alleged`として扱い、有罪認定と混同していない
+- [ ] 法的措置日を活動日・entity関係期間へコピーしていない
 - [ ] ActivityごとにCampaign / Incident / Groupingを明示し、全件Campaign化していない
 - [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
 - [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
 - [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
+- [ ] 単発IOCを理由なくHunting Pivotへ複製していない
+- [ ] Pivotのcount basisとsource/activity countを別々に集計した
+- [ ] 証明書有効期間・公開日・VT first-seen・scan時刻を活動日へ転用していない
+- [ ] live evidenceなしに`active_status: active`としていない
+- [ ] generic issuer/ASN/service/portをactor-specificとして扱っていない
+- [ ] Shodan/Censys queryをanalyst validation必須としている
 - [ ] alias一致だけでexact identityにしていない
 - [ ] unresolved/partial claimを確定値へ昇格していない
 - [ ] actor-specific evidence_refが重要主張に付いている
@@ -224,7 +333,7 @@ lifecycle claim 1件だけを保持し、現行コレクション集計から除
 - [ ] 回帰テストを追加または実行した
 - [ ] 生成物と集計を再生成した
 
-## 12. 変更後の推奨実行順
+## 13. 変更後の推奨実行順
 
 ```bash
 python3 -m unittest discover -s actor_profile/tests -v

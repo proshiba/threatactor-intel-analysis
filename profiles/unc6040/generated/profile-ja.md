@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc6040`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -38,6 +38,18 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | UNC6240 | related-to | GTIG tracks the initial Salesforce vishing and data theft as UNC6040 and the subsequent ShinyHunters-branded extortion as UNC6240; a partnership is possible but not established as exact identity. | 高 | `source--gtig-unc6040-salesforce-vishing-2025` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -105,6 +117,24 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

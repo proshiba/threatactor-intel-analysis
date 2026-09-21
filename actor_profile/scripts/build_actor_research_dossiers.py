@@ -475,6 +475,18 @@ def main() -> int:
         activities = activity_records(profile, claims, target_names)
         malware = malware_records(profile, claims)
         tools = malware_records(profile, claims, "tools")
+        associated_entities = [
+            attach_claims(item, claims, "entity_id")
+            for item in profile.get("associated_entities", [])
+        ]
+        entity_relationships = [
+            attach_claims(item, claims, "relationship_id")
+            for item in profile.get("entity_relationships", [])
+        ]
+        hunting_pivots = [
+            attach_claims(item, claims, "pivot_id")
+            for item in profile.get("hunting_pivots", [])
+        ]
         relationships = []
         for relation in profile.get("relationships", []):
             record = attach_claims(relation, claims, "relationship_id")
@@ -628,6 +640,9 @@ def main() -> int:
                 for item in profile.get("motivations", [])
             ],
             "relationships": relationships,
+            "associated_entities": associated_entities,
+            "entity_relationships": entity_relationships,
+            "hunting_pivots": hunting_pivots,
             "activity_timeline": activities,
             "malware_usage": malware,
             "tool_usage": tools,
@@ -644,6 +659,8 @@ def main() -> int:
         dimension_status = {
             "activities": "canonical-present" if activities else "lead-only" if external_activities else "unknown",
             "relationships": "canonical-present" if relationships else "lead-only" if external_relationships else "unknown",
+            "associated_entities": "canonical-present" if associated_entities or entity_relationships else "unknown",
+            "hunting_pivots": "canonical-present" if hunting_pivots else "unknown",
             "malware": "canonical-present" if malware else "lead-only" if external_malware else "unknown",
             "tools": "canonical-present" if tools else "lead-only" if external_tools else "unknown",
             "targets": "canonical-present" if targets else "lead-only" if any(external_targets.values()) else "unknown",
@@ -672,6 +689,13 @@ def main() -> int:
                         for item in activities
                     ),
                     "relationships": len(relationships),
+                    "associated_entities": len(associated_entities),
+                    "entity_relationships": len(entity_relationships),
+                    "hunting_pivots": len(hunting_pivots),
+                    "hunting_pivot_observations": sum(
+                        len(item.get("observations", []))
+                        for item in hunting_pivots
+                    ),
                     "malware": len(malware),
                     "activity_linked_malware": sum(
                         bool(item["activity_observations"]) for item in malware
@@ -742,6 +766,10 @@ def main() -> int:
                 "activities",
                 "dated_activities",
                 "relationships",
+                "associated_entities",
+                "entity_relationships",
+                "hunting_pivots",
+                "hunting_pivot_observations",
                 "malware",
                 "activity_linked_malware",
                 "tools",

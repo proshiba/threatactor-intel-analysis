@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--zirconium`
 - 状態: draft
-- 更新日時: 2026-09-21T08:16:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -42,6 +42,47 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Hurricane Panda | overlaps-with | 共有alias: APT31, Zirconium, ZIRCONIUM | 低 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--wuhan-xrz | Wuhan Xiaoruizhi Science and Technology Company Limited | organization | front-company, operational-support | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024`, `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+| threat-actor-individual--cheng-feng | Cheng Feng | threat-actor-individual | alleged-apt31-member, malware-tester, infrastructure-operator | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--ni-gaobin | Ni Gaobin | threat-actor-individual | alleged-apt31-member, infrastructure-operator | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024`, `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+| threat-actor-individual--peng-yaowen | Peng Yaowen | threat-actor-individual | alleged-apt31-member, reconnaissance-operator | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--sun-xiaohui | Sun Xiaohui | threat-actor-individual | alleged-apt31-member, malware-tester, infrastructure-operator, reconnaissance-operator | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--weng-ming | Weng Ming | threat-actor-individual | alleged-apt31-member, malware-tester, infrastructure-operator | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--xiong-wang | Xiong Wang | threat-actor-individual | alleged-apt31-member, malware-tester | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--zhao-guangzong | Zhao Guangzong | threat-actor-individual | alleged-apt31-member, malware-tester | China | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024`, `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--cheng-feng | alleged-member-of | actor--zirconium | DOJ directly identifies Cheng as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--ni-gaobin | alleged-member-of | actor--zirconium | DOJ directly identifies Ni as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--peng-yaowen | alleged-member-of | actor--zirconium | DOJ directly identifies Peng as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--sun-xiaohui | alleged-member-of | actor--zirconium | DOJ directly identifies Sun as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--weng-ming | alleged-member-of | actor--zirconium | DOJ directly identifies Weng as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| organization--wuhan-xrz | supports | actor--zirconium | U.S. authorities describe Wuhan XRZ as a front company supporting APT31 activity. | 2010 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024`, `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+| threat-actor-individual--xiong-wang | alleged-member-of | actor--zirconium | DOJ directly identifies Xiong as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+| threat-actor-individual--zhao-guangzong | alleged-member-of | actor--zirconium | DOJ directly identifies Zhao as an APT31 member. | 不明 | 不明 | 高 | `source--doj-apt31-wuhan-xrz-2024` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Wuhan Xiaoruizhi Science and Technology Company Limited | sanction | U.S. Department of the Treasury | 2024-03-25 | completed | Designated for its role in APT31 malicious cyber operations. | `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+| Cheng Feng | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Ni Gaobin | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Ni Gaobin | sanction | U.S. Department of the Treasury | 2024-03-25 | completed | Designated for involvement in APT31 activity. | `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
+| Peng Yaowen | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Sun Xiaohui | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Weng Ming | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Xiong Wang | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Zhao Guangzong | indictment | U.S. District Court for the Eastern District of New York | 2024-03-25 | alleged | Charged for alleged participation in APT31 computer intrusions. | `source--doj-apt31-wuhan-xrz-2024` |
+| Zhao Guangzong | sanction | U.S. Department of the Treasury | 2024-03-25 | completed | Designated for involvement in APT31 activity. | `source--treasury-apt31-wuhan-xrz-sanctions-2024` |
 
 ## ダイヤモンドモデル
 
@@ -110,6 +151,24 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -255,6 +314,8 @@ Op. Poisoned Hurricane
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--microsoft-toolshell-2025 | Disrupting active exploitation of on-premises SharePoint vulnerabilities | Microsoft Threat Intelligence | 2025-07-22 | https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--doj-apt31-wuhan-xrz-2024 | Seven Hackers Associated with Chinese Government Charged with Computer Intrusions Targeting Perceived Critics of China and U.S. Businesses and Politicians | U.S. Department of Justice | 2024-03-25 | https://www.justice.gov/archives/opa/pr/seven-hackers-associated-chinese-government-charged-computer-intrusions-targeting-perceived | government-legal | TLP:CLEAR | 高 |
+| source--treasury-apt31-wuhan-xrz-sanctions-2024 | Treasury Sanctions China-Linked Hackers for Targeting U.S. Critical Infrastructure | U.S. Department of the Treasury | 2024-03-25 | https://home.treasury.gov/news/press-releases/jy2205 | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

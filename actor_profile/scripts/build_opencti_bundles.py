@@ -18,7 +18,13 @@ from pathlib import Path
 from typing import Any
 
 from common import load_json, write_json_atomic
-from render_profile import TLP_CLEAR, external_refs, stix_base, stix_id
+from render_profile import (
+    TLP_CLEAR,
+    external_refs,
+    relationship_time_properties,
+    stix_base,
+    stix_id,
+)
 from stix_modeling import activity_stix_object_type
 
 
@@ -128,12 +134,14 @@ def observable_object(indicator: dict[str, Any]) -> dict[str, Any] | None:
         "spec_version": "2.1",
         "id": stix_id(stix_type, key),
         "object_marking_refs": [TLP_CLEAR],
-        "x_profile_indicator_id": indicator["indicator_id"],
-        "x_campaign_refs": indicator.get("campaign_refs", []),
-        "x_disposition": indicator.get("disposition", "unknown"),
     }
     if stix_type == "x509-certificate":
         algorithm = {
+            "md5": "MD5",
+            "sha1": "SHA-1",
+            "sha256": "SHA-256",
+            "sha512": "SHA-512",
+        }.get(indicator.get("hash_algorithm")) or {
             32: "MD5",
             40: "SHA-1",
             64: "SHA-256",
@@ -143,6 +151,123 @@ def observable_object(indicator: dict[str, Any]) -> dict[str, Any] | None:
     else:
         result["value"] = value
     return result
+
+
+PROFILE_SCOPED_OBJECT_TYPES = {
+    "attack-pattern",
+    "campaign",
+    "grouping",
+    "incident",
+    "indicator",
+    "infrastructure",
+    "malware",
+    "note",
+    "relationship",
+    "tool",
+}
+
+
+def profile_scoped_stix_id(profile_id: str, kind: str, object_id: str) -> str:
+    """Return a stable ID for knowledge whose semantics belong to one profile.
+
+    Canonical profile IDs such as ``ttp--T1059.003`` and
+    ``malware--powershell`` are intentionally human-readable and can occur in
+    more than one actor profile.  Their rendered descriptions, evidence and
+    observation metadata are actor-specific, so reusing a bare STIX ID would
+    make OpenCTI overwrite one profile's SDO with another profile's content.
+    """
+
+    return stix_id(kind, f"{profile_id}:{object_id}")
+
+
+def scope_profile_owned_objects(
+    profile: dict[str, Any], objects: list[dict[str, Any]]
+) -> None:
+    """Namespace profile-owned SDO/SRO IDs and rewrite their references.
+
+    Globally reusable objects (the canonical Intrusion Set, associated legal
+    entities, verified Locations and atomic SCOs) keep their shared IDs.  TTP
+    rows, capabilities, activities, Indicators and evidence containers remain
+    actor-scoped because the canonical model stores profile-specific claims in
+    those objects.
+    """
+
+    target_and_victim_refs = {
+        item["id"]
+        for category in ("countries", "regions", "sectors", "roles")
+        for item in profile.get("targets", {}).get(category, [])
+    } | {
+        item["victim_case_id"] for item in profile.get("victim_cases", [])
+    }
+    rewrites: dict[str, str] = {}
+    for obj in objects:
+        kind = obj.get("type", "")
+        profile_object_id = obj.get("x_profile_object_id")
+        is_profile_identity = (
+            kind == "identity"
+            and profile_object_id in target_and_victim_refs
+        )
+        if kind not in PROFILE_SCOPED_OBJECT_TYPES and not is_profile_identity:
+            continue
+        old_id = obj["id"]
+        rewrites[old_id] = profile_scoped_stix_id(
+            profile["profile_id"], kind, old_id
+        )
+
+    for obj in objects:
+        obj["id"] = rewrites.get(obj["id"], obj["id"])
+        for key in REFERENCE_FIELDS:
+            if obj.get(key) in rewrites:
+                obj[key] = rewrites[obj[key]]
+        for key in REFERENCE_LIST_FIELDS:
+            if key in obj:
+                obj[key] = [rewrites.get(ref, ref) for ref in obj[key]]
+
+
+def normalize_shared_object_versions(records: list[dict[str, Any]]) -> None:
+    """Make every deliberately shared object byte-identical across profiles.
+
+    ``created`` and ``modified`` are version metadata, not a reason to emit
+    conflicting definitions for one STIX ID.  Profile-owned objects have
+    already been namespaced; any remaining semantic disagreement is therefore
+    a generator error and is rejected rather than resolved by arbitrary
+    first-wins behavior.
+    """
+
+    by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for record in records:
+        for obj in record["objects"]:
+            by_id[obj["id"]].append(obj)
+    for object_id, objects in by_id.items():
+        if len(objects) < 2:
+            continue
+        semantic_versions = {
+            json.dumps(
+                {
+                    key: value
+                    for key, value in obj.items()
+                    if key not in {"created", "modified"}
+                },
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            for obj in objects
+        }
+        if len(semantic_versions) != 1:
+            raise ValueError(
+                "shared STIX ID has conflicting semantics after profile "
+                f"scoping: {object_id}"
+            )
+        created_values = [obj["created"] for obj in objects if obj.get("created")]
+        modified_values = [
+            obj["modified"] for obj in objects if obj.get("modified")
+        ]
+        for obj in objects:
+            if created_values:
+                obj["created"] = min(created_values)
+            if modified_values:
+                obj["modified"] = max(modified_values)
 
 
 def indicator_temporal_properties(
@@ -420,6 +545,7 @@ def prepare_profile_objects(
             infrastructure_relations[relation["id"]] = relation
     prepared.extend(observable_by_id.values())
     prepared.extend(infrastructure_relations.values())
+    scope_profile_owned_objects(profile, prepared)
     return prepared, id_rewrites
 
 
@@ -537,7 +663,20 @@ def actor_relationship_objects(
         if target_ref == source_ref:
             unresolved.append(item["relationship_id"])
             continue
-        stubs[target_ref] = actor_stub(target_profile, producer_ref)
+        target_actor = next(
+            (
+                obj
+                for obj in target_record.get("objects", [])
+                if obj.get("id") == target_ref
+            ),
+            None,
+        )
+        # Reuse the canonical, fully prepared actor object so the same STIX ID
+        # has byte-identical content in the target's own Actor/Activity bundles
+        # and in bundles that merely need it as a relationship endpoint.
+        stubs[target_ref] = copy.deepcopy(
+            target_actor or actor_stub(target_profile, producer_ref)
+        )
         original_type = item.get("relationship_type") or "related-to"
         relationship_type = (
             original_type
@@ -559,12 +698,11 @@ def actor_relationship_objects(
             "x_analyst_notes": item.get("analyst_notes", ""),
             "created_by_ref": producer_ref,
         }
-        first = item.get("first_observed", {}).get("value")
-        last = item.get("last_observed", {}).get("value")
-        if first:
-            extra["start_time"] = first
-        if last and (not first or last > first):
-            extra["stop_time"] = last
+        extra.update(
+            relationship_time_properties(
+                item.get("first_observed"), item.get("last_observed")
+            )
+        )
         relationship = stix_base(
             "relationship",
             item["relationship_id"],
@@ -743,13 +881,16 @@ def build_actor_bundle(
 ) -> tuple[dict[str, Any], list[str]]:
     profile = record["profile"]
     objects = record["objects"]
+    profile_ids = profile_object_index(profile, objects)
     activity_ids = {
-        stix_id(activity_stix_object_type(item), item["activity_id"])
+        profile_ids[item["activity_id"]]
         for item in profile.get("activities", [])
+        if item["activity_id"] in profile_ids
     }
     victim_ids = {
-        stix_id("identity", item["victim_case_id"])
+        profile_ids[item["victim_case_id"]]
         for item in profile.get("victim_cases", [])
+        if item["victim_case_id"] in profile_ids
     }
     selected: list[dict[str, Any]] = []
     selected_ids: set[str] = set()
@@ -773,6 +914,29 @@ def build_actor_bundle(
             continue
         selected.append(obj)
         selected_ids.add(obj["id"])
+
+    # Notes can legitimately connect an actor-wide hunting pivot to a modeled
+    # activity.  Activities are exported in their own bundles, however, so an
+    # actor bundle must retain only the Note references that are present in
+    # that actor bundle.  Work on copies because the same prepared objects are
+    # reused when the per-activity bundles are built later.
+    scoped_selected: list[dict[str, Any]] = []
+    for obj in selected:
+        scoped = copy.deepcopy(obj)
+        if "object_refs" in scoped:
+            original_refs = scoped["object_refs"]
+            scoped["object_refs"] = [
+                ref for ref in scoped["object_refs"] if ref in selected_ids
+            ]
+            if (
+                scoped.get("type") == "note"
+                and scoped["object_refs"] != original_refs
+            ):
+                scoped["id"] = stix_id(
+                    scoped["type"], f"{obj['id']}:slice:actor"
+                )
+        scoped_selected.append(scoped)
+    selected = scoped_selected
     selected.extend(
         obj
         for obj in relationships
@@ -850,15 +1014,39 @@ def build_activity_bundle(
     primary_type = activity_stix_object_type(activity)
     profile_ids = profile_object_index(profile, objects)
     dependency_ids = campaign_dependency_profile_ids(profile, activity)
+    activity_ref = profile_ids[activity["activity_id"]]
+    all_activity_ids = {
+        profile_ids[item["activity_id"]]
+        for item in profile.get("activities", [])
+        if item["activity_id"] in profile_ids
+    }
     wanted_ids = {
         stix_id("intrusion-set", profile["profile_id"]),
-        stix_id(primary_type, activity["activity_id"]),
+        activity_ref,
         *(
             profile_ids[item]
             for item in dependency_ids
             if item in profile_ids
         ),
     }
+    # Hunting Notes are shared evidence containers. Include a Note and its
+    # Indicator/dependency references in the activity slice when the Note
+    # explicitly names this activity, while excluding references to any other
+    # activity that the same cross-campaign pivot may also cover.
+    activity_hunting_notes = [
+        obj
+        for obj in objects
+        if obj.get("type") == "note"
+        and obj.get("x_profile_hunting_pivot_id")
+        and activity_ref in obj.get("object_refs", [])
+    ]
+    for note in activity_hunting_notes:
+        wanted_ids.add(note["id"])
+        wanted_ids.update(
+            ref
+            for ref in note.get("object_refs", [])
+            if ref == activity_ref or ref not in all_activity_ids
+        )
     campaign_indicators = [
         obj
         for obj in objects
@@ -874,22 +1062,50 @@ def build_activity_bundle(
             if profile_ref in profile_ids:
                 wanted_ids.add(profile_ids[profile_ref])
 
-    # SCOs carry the canonical Indicator ID, while the Indicator SDO uses a
-    # deterministic STIX ID. Match through the raw canonical dataset.
-    selected_indicator_ids = {
-        item["indicator_id"]
-        for item in record.get("iocs", {}).get("indicators", [])
-        if activity["activity_id"] in item.get("campaign_refs", [])
-    }
-    for obj in objects:
-        if obj.get("x_profile_indicator_id") in selected_indicator_ids:
-            wanted_ids.add(obj["id"])
+    # Atomic SCOs are deliberately profile-neutral. Reconstruct their stable
+    # IDs from the selected canonical IOC records rather than storing actor or
+    # campaign metadata on the shared SCO itself.
+    for indicator in record.get("iocs", {}).get("indicators", []):
+        if activity["activity_id"] not in indicator.get("campaign_refs", []):
+            continue
+        observable = observable_object(indicator)
+        if observable and indicator.get("infrastructure_refs"):
+            wanted_ids.add(observable["id"])
 
     selected = [
         obj
         for obj in objects
         if obj.get("type") != "relationship" and obj.get("id") in wanted_ids
     ]
+    selected_ids = {obj["id"] for obj in selected}
+    selected = [
+        {
+            **copy.deepcopy(obj),
+            **(
+                {
+                    "object_refs": [
+                        ref
+                        for ref in obj.get("object_refs", [])
+                        if ref in selected_ids
+                    ]
+                }
+                if "object_refs" in obj
+                else {}
+            ),
+        }
+        for obj in selected
+    ]
+    original_by_id = {obj["id"]: obj for obj in objects}
+    for obj in selected:
+        original = original_by_id[obj["id"]]
+        if (
+            obj.get("type") == "note"
+            and obj.get("object_refs") != original.get("object_refs")
+        ):
+            obj["id"] = stix_id(
+                obj["type"],
+                f"{original['id']}:slice:{primary_type}:{activity['activity_id']}",
+            )
     # A Grouping is an evidence container, not a claim that every co-contained
     # object is directly related.  Keep all SROs out of Grouping bundles; an
     # analyst may promote a supported relation later in an actor/campaign bundle.
@@ -902,7 +1118,6 @@ def build_activity_bundle(
             and obj.get("target_ref") in wanted_ids
         )
 
-    activity_ref = stix_id(primary_type, activity["activity_id"])
     existing_relationship_ids = {obj["id"] for obj in selected}
     for indicator in campaign_indicators:
         if primary_type == "grouping":
@@ -1104,6 +1319,27 @@ def validate_bundle(
     return errors
 
 
+def validate_shared_object_definitions(
+    bundle: dict[str, Any], definitions: dict[str, str]
+) -> list[str]:
+    """Reject two different definitions of one STIX ID across bundles."""
+
+    errors: list[str] = []
+    for obj in bundle.get("objects", []):
+        serialized = json.dumps(
+            obj,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        previous = definitions.setdefault(obj["id"], serialized)
+        if previous != serialized:
+            errors.append(
+                f"shared STIX ID has conflicting bundle definitions: {obj['id']}"
+            )
+    return errors
+
+
 def safe_activity_filename(activity_id: str) -> str:
     value = re.sub(r"[^a-zA-Z0-9._-]+", "-", activity_id).strip("-.")
     return f"{value or 'activity'}.stix2.json"
@@ -1201,7 +1437,11 @@ def main() -> int:
             f"invalid or empty OpenCTI country index: {country_index_path}"
         )
 
-    records = load_records(catalog_path, profiles_root, set(args.actor or []))
+    wanted = set(args.actor or [])
+    # Always prepare the complete corpus. Shared Locations/entities and the
+    # producer object must not acquire different versions merely because a
+    # targeted ``--actor`` export was requested.
+    records = load_records(catalog_path, profiles_root, set())
     if not records:
         raise SystemExit("no actor profiles selected")
     created = min(
@@ -1220,21 +1460,33 @@ def main() -> int:
         )
         record["objects"] = objects
         record["id_rewrites"] = rewrites
+    normalize_shared_object_versions(records)
 
     by_profile_id, by_name = build_actor_index(records)
+    selected_records = [
+        record for record in records if not wanted or record["slug"] in wanted
+    ]
+    if not selected_records:
+        raise SystemExit("no actor profiles selected")
     expected_paths: set[Path] = set()
     actor_entries: list[dict[str, Any]] = []
     campaign_entries: list[dict[str, Any]] = []
     activity_entries: list[dict[str, Any]] = []
     unresolved_relationships: list[dict[str, str]] = []
+    shared_object_definitions: dict[str, str] = {}
     max_size = 0
-    for record in records:
+    for record in selected_records:
         profile = record["profile"]
         slug = record["slug"]
         actor_bundle, unresolved = build_actor_bundle(
             record, producer, by_profile_id, by_name
         )
         actor_errors = validate_bundle(actor_bundle, expected_scope="actor")
+        actor_errors.extend(
+            validate_shared_object_definitions(
+                actor_bundle, shared_object_definitions
+            )
+        )
         if actor_errors:
             raise ValueError(f"invalid actor bundle {slug}: {actor_errors[:10]}")
         actor_path = output_root / "actors" / f"{slug}.stix2.json"
@@ -1269,6 +1521,11 @@ def main() -> int:
             activity_bundle = build_activity_bundle(record, activity, producer)
             activity_errors = validate_bundle(
                 activity_bundle, expected_scope=primary_type
+            )
+            activity_errors.extend(
+                validate_shared_object_definitions(
+                    activity_bundle, shared_object_definitions
+                )
             )
             if activity_errors:
                 raise ValueError(

@@ -18,11 +18,18 @@ from build_opencti_bundles import (  # noqa: E402
     build_actor_index,
     build_activity_bundle,
     build_campaign_bundle,
+    normalize_shared_object_versions,
     prepare_profile_objects,
+    profile_scoped_stix_id,
     producer_identity,
     validate_bundle,
+    validate_shared_object_definitions,
 )
-from render_profile import stix_base, stix_id  # noqa: E402
+from render_profile import (  # noqa: E402
+    relationship_time_properties,
+    stix_base,
+    stix_id,
+)
 
 
 NOW = "2026-09-21T00:00:00Z"
@@ -449,6 +456,23 @@ class OpenCTIBundleTests(unittest.TestCase):
             "source--example",
         )
 
+    def test_unknown_relationship_period_remains_explicit_metadata(self) -> None:
+        properties = relationship_time_properties(
+            point(),
+            {
+                **point(),
+                "basis": "relationship-end-not-stated",
+            },
+        )
+
+        self.assertEqual(properties["x_first_observed"]["status"], "unknown")
+        self.assertEqual(
+            properties["x_temporal_basis"]["last"],
+            "relationship-end-not-stated",
+        )
+        self.assertNotIn("start_time", properties)
+        self.assertNotIn("stop_time", properties)
+
     def test_actor_bundle_keeps_unscoped_iocs_and_actor_relationship_scope(self) -> None:
         related = {"slug": "related", "profile": related_profile()}
         by_id, by_name = build_actor_index([self.record, related])
@@ -474,6 +498,216 @@ class OpenCTIBundleTests(unittest.TestCase):
         )
         self.assertEqual(relation["start_time"], CREATED)
         self.assertNotIn("stop_time", relation)
+        self.assertEqual(relation["x_first_observed"], point(CREATED))
+        self.assertEqual(relation["x_last_observed"], point(CREATED))
+        self.assertEqual(
+            relation["x_temporal_basis"],
+            {
+                "first": "source-stated",
+                "last": "source-stated",
+                "first_precision": "day",
+                "last_precision": "day",
+            },
+        )
+
+    def test_actor_relationship_unknown_period_is_machine_readable(self) -> None:
+        profile = copy.deepcopy(self.profile)
+        profile["relationships"][0]["first_observed"] = point()
+        profile["relationships"][0]["last_observed"] = {
+            **point(),
+            "basis": "relationship-end-not-stated",
+        }
+        record = {**self.record, "profile": profile}
+        related = {"slug": "related", "profile": related_profile()}
+        by_id, by_name = build_actor_index([record, related])
+
+        bundle, unresolved = build_actor_bundle(
+            record, self.producer, by_id, by_name
+        )
+
+        self.assertEqual(unresolved, [])
+        relation = next(
+            item
+            for item in bundle["objects"]
+            if item.get("x_profile_relationship_id")
+            == "relationship--example-related"
+        )
+        self.assertEqual(relation["x_first_observed"]["status"], "unknown")
+        self.assertEqual(relation["x_last_observed"]["status"], "unknown")
+        self.assertEqual(
+            relation["x_temporal_basis"]["last"],
+            "relationship-end-not-stated",
+        )
+        self.assertNotIn("start_time", relation)
+        self.assertNotIn("stop_time", relation)
+
+    def test_actor_relationship_reuses_full_target_actor_object(self) -> None:
+        related = {"slug": "related", "profile": related_profile()}
+        target_ref = stix_id("intrusion-set", "actor--related")
+        target_actor = stix_base(
+            "intrusion-set",
+            "actor--related",
+            NOW,
+            {
+                "name": "Related Actor",
+                "description": "Full canonical actor definition.",
+                "aliases": ["Related Alias"],
+                "goals": ["Documented goal"],
+                "x_profile_id": "actor--related",
+                "x_profile_status": "review",
+                "x_attribution": {"sponsor_type": "unknown"},
+                "created_by_ref": self.producer["id"],
+            },
+        )
+        related["objects"] = [target_actor]
+        by_id, by_name = build_actor_index([self.record, related])
+
+        bundle, unresolved = build_actor_bundle(
+            self.record, self.producer, by_id, by_name
+        )
+
+        self.assertEqual(unresolved, [])
+        exported = next(item for item in bundle["objects"] if item["id"] == target_ref)
+        self.assertEqual(exported, target_actor)
+
+    def test_actor_bundle_prunes_activity_refs_from_hunting_note(self) -> None:
+        record = copy.deepcopy(self.record)
+        actor_ref = stix_id("intrusion-set", self.profile["profile_id"])
+        campaign_ref = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "campaign",
+            stix_id("campaign", "activity--example-operation"),
+        )
+        note = stix_base(
+            "note",
+            "hunting-note:example",
+            NOW,
+            {
+                "abstract": "Hunting pivot",
+                "content": "Pivot evidence shared with a campaign bundle.",
+                "object_refs": [actor_ref, campaign_ref],
+                "x_profile_hunting_pivot_id": "hunting-pivot--example",
+            },
+        )
+        note["created_by_ref"] = self.producer["id"]
+        record["objects"].append(note)
+        by_id, by_name = build_actor_index([record])
+
+        bundle, _ = build_actor_bundle(
+            record, self.producer, by_id, by_name
+        )
+
+        exported_note = next(
+            item
+            for item in bundle["objects"]
+            if item.get("x_profile_hunting_pivot_id")
+            == "hunting-pivot--example"
+        )
+        self.assertEqual(exported_note["object_refs"], [actor_ref])
+        self.assertEqual(validate_bundle(bundle, expected_scope="actor"), [])
+
+        activity_bundle = build_campaign_bundle(
+            record,
+            record["profile"]["activities"][0],
+            self.producer,
+        )
+        activity_note = next(
+            item
+            for item in activity_bundle["objects"]
+            if item.get("x_profile_hunting_pivot_id")
+            == "hunting-pivot--example"
+        )
+        self.assertEqual(
+            set(activity_note["object_refs"]), {actor_ref, campaign_ref}
+        )
+        self.assertNotEqual(exported_note["id"], activity_note["id"])
+        self.assertEqual(
+            validate_bundle(activity_bundle, expected_scope="campaign"), []
+        )
+
+    def test_profile_claims_are_namespaced_and_shared_sdos_are_identical(self) -> None:
+        other_profile = copy.deepcopy(self.profile)
+        other_profile["profile_id"] = "actor--other-example"
+        other_profile["name"] = "Other Example Actor"
+        other_profile["actor"]["canonical_name"] = "Other Example Actor"
+        other_profile["updated_at"] = "2026-09-22T00:00:00Z"
+        other_bundle = fixture_bundle(other_profile)
+        other_bundle["objects"][0]["name"] = "Other Example Actor"
+        other_iocs = copy.deepcopy(self.record["iocs"])
+        other_objects, _ = prepare_profile_objects(
+            other_profile,
+            other_iocs,
+            other_bundle,
+            self.producer["id"],
+            COUNTRY_INDEX,
+        )
+        records = [
+            self.record,
+            {
+                "slug": "other-example",
+                "profile": other_profile,
+                "iocs": other_iocs,
+                "objects": other_objects,
+            },
+        ]
+
+        normalize_shared_object_versions(records)
+
+        original_ttp = next(
+            item
+            for item in self.record["objects"]
+            if item.get("x_profile_object_id") == "ttp--example"
+        )
+        other_ttp = next(
+            item
+            for item in other_objects
+            if item.get("x_profile_object_id") == "ttp--example"
+        )
+        self.assertNotEqual(original_ttp["id"], other_ttp["id"])
+
+        original_country = next(
+            item
+            for item in self.record["objects"]
+            if item.get("x_profile_object_id") == "target--country-example"
+        )
+        other_country = next(
+            item
+            for item in other_objects
+            if item.get("x_profile_object_id") == "target--country-example"
+        )
+        self.assertEqual(original_country, other_country)
+
+        definitions: dict[str, str] = {}
+        for record in records:
+            for item in record["objects"]:
+                serialized = json.dumps(
+                    item, sort_keys=True, ensure_ascii=False
+                )
+                previous = definitions.setdefault(item["id"], serialized)
+                self.assertEqual(previous, serialized, item["id"])
+
+    def test_cross_bundle_validator_rejects_same_id_with_different_content(self) -> None:
+        definitions: dict[str, str] = {}
+        first = {
+            "type": "bundle",
+            "objects": [
+                stix_base(
+                    "attack-pattern",
+                    "shared-example",
+                    NOW,
+                    {"name": "Shared technique", "description": "First"},
+                )
+            ],
+        }
+        second = copy.deepcopy(first)
+        second["objects"][0]["description"] = "Conflicting"
+
+        self.assertEqual(
+            validate_shared_object_definitions(first, definitions), []
+        )
+        errors = validate_shared_object_definitions(second, definitions)
+        self.assertEqual(len(errors), 1)
+        self.assertIn(first["objects"][0]["id"], errors[0])
 
     def test_unresolved_actor_relationship_is_retained_as_note(self) -> None:
         by_id, by_name = build_actor_index([self.record])
@@ -513,7 +747,11 @@ class OpenCTIBundleTests(unittest.TestCase):
             item["id"] for item in bundle["objects"] if item["type"] == "relationship"
         }
         self.assertTrue(relationship_ids <= set(report["object_refs"]))
-        campaign_ref = stix_id("campaign", "activity--example-operation")
+        campaign_ref = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "campaign",
+            stix_id("campaign", "activity--example-operation"),
+        )
         campaign = next(
             item for item in bundle["objects"] if item["id"] == campaign_ref
         )
@@ -559,8 +797,16 @@ class OpenCTIBundleTests(unittest.TestCase):
         record = copy.deepcopy(self.record)
         activity = record["profile"]["activities"][0]
         activity["stix_object_type"] = "incident"
-        old_id = stix_id("campaign", activity["activity_id"])
-        new_id = stix_id("incident", activity["activity_id"])
+        old_id = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "campaign",
+            stix_id("campaign", activity["activity_id"]),
+        )
+        new_id = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "incident",
+            stix_id("incident", activity["activity_id"]),
+        )
         for obj in record["objects"]:
             if obj.get("id") == old_id:
                 obj["type"] = "incident"
@@ -584,8 +830,16 @@ class OpenCTIBundleTests(unittest.TestCase):
         activity = record["profile"]["activities"][0]
         activity["stix_object_type"] = "grouping"
         activity["grouping_context"] = "suspicious-activity"
-        old_id = stix_id("campaign", activity["activity_id"])
-        new_id = stix_id("grouping", activity["activity_id"])
+        old_id = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "campaign",
+            stix_id("campaign", activity["activity_id"]),
+        )
+        new_id = profile_scoped_stix_id(
+            self.profile["profile_id"],
+            "grouping",
+            stix_id("grouping", activity["activity_id"]),
+        )
         converted: list[dict[str, object]] = []
         for obj in record["objects"]:
             if obj.get("type") == "relationship" and old_id in {

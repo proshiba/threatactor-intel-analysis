@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--turla`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:03Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -48,6 +48,22 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--fsb-center-16 | FSB Center 16 | organization | government-intelligence-organization | Russia | 不明 | 不明 | 高 | `source--cisa-snake-turla-center16-2023`, `source--doj-operation-medusa-2023`, `source--doj-center16-dragonfly-indictment-2022` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| actor--turla | subordinate-to | organization--fsb-center-16 | U.S. and partner agencies attribute the Turla/Snake operational unit to FSB Center 16. Turla remains an intrusion set, Center 16 an organization, and Snake malware. | 不明 | 不明 | 高 | `source--cisa-snake-turla-center16-2023`, `source--doj-operation-medusa-2023` |
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -155,6 +171,24 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -385,6 +419,9 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--cisa-snake-turla-center16-2023 | Hunting Russian Intelligence 'Snake' Malware | CISA, FBI, NSA, NCSC and partner agencies | 2023-05-09 | https://www.cisa.gov/sites/default/files/2023-05/aa23-129a_snake_malware_2.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--doj-operation-medusa-2023 | Justice Department Announces Court-Authorized Disruption of Snake Malware Network Controlled by Russia's Federal Security Service | U.S. Department of Justice | 2023-05-09 | https://www.justice.gov/usao-edny/pr/justice-department-announces-court-authorized-disruption-snake-malware-network | government-operation | TLP:CLEAR | 高 |
+| source--doj-center16-dragonfly-indictment-2022 | Four Russian Government Employees Charged in Two Historical Hacking Campaigns Targeting Critical Infrastructure Worldwide | U.S. Department of Justice | 2022-03-24 | https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting | government-legal | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--temp-veles`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:00Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -36,6 +36,29 @@ TEMP.Velesの標準化プロファイル。リポジトリ内の専用資料1件
 ## 他アクターとの関係
 
 確認された関係なし
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--tsniikhm | Central Scientific Research Institute of Chemistry and Mechanics | organization | state-research-institute, malware-development-support | Russia | 不明 | 不明 | 高 | `source--doj-tsniikhm-triton-2022`, `source--treasury-tsniikhm-triton-2022` |
+| threat-actor-individual--evgeny-gladkikh | Evgeny Viktorovich Gladkikh | threat-actor-individual | research-institute-employee, alleged-triton-operator | Russia | 2017-05 | 2018-07 | 高 | `source--doj-tsniikhm-triton-2022`, `source--treasury-tsniikhm-triton-2022` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--evgeny-gladkikh | employed-by | organization--tsniikhm | DOJ and Treasury identify Gladkikh as a TsNIIKhM Applied Developments Center employee. | 不明 | 不明 | 高 | `source--doj-tsniikhm-triton-2022`, `source--treasury-tsniikhm-triton-2022` |
+| threat-actor-individual--evgeny-gladkikh | alleged-participates-in | actor--temp-veles | DOJ alleges Gladkikh participated in Triton attacks; Mandiant separately maps the Triton intrusion activity to TEMP.Veles. The person-to-cluster relationship is therefore an analytical crosswalk, not wording used in the indictment. | 2017-05 | 2018-07 | 中 | `source--doj-tsniikhm-triton-2022`, `source--mandiant-temp-veles-tsniikhm-2018` |
+| organization--tsniikhm | likely-supports | actor--temp-veles | Mandiant assesses with high confidence that TsNIIKhM supported the intrusion activity it tracks as TEMP.Veles; later U.S. government sources independently attribute Triton development and deployment support to the institute without using the TEMP.Veles label. The institute and intrusion set remain separate objects. | 不明 | 不明 | 高 | `source--mandiant-temp-veles-tsniikhm-2018`, `source--doj-tsniikhm-triton-2022`, `source--treasury-tsniikhm-triton-2022` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Central Scientific Research Institute of Chemistry and Mechanics | sanction | U.S. Department of the Treasury | 2020-10-23 | completed | Designated for connection to Triton malware and attacks on industrial safety systems. | `source--treasury-tsniikhm-triton-2022` |
+| Evgeny Viktorovich Gladkikh | indictment | U.S. District Court for the District of Columbia | 2021-06 | alleged | Indicted for alleged computer intrusions and attempts involving industrial control systems. | `source--doj-tsniikhm-triton-2022` |
+| Evgeny Viktorovich Gladkikh | sanction | U.S. Department of the Treasury | 2022-03-31 | completed | Designated for participation in Triton-related cyber activity. | `source--treasury-tsniikhm-triton-2022` |
 
 ## ダイヤモンドモデル
 
@@ -106,6 +129,24 @@ TEMP.Velesの標準化プロファイル。リポジトリ内の専用資料1件
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -210,6 +251,9 @@ TEMP.Velesの標準化プロファイル。リポジトリ内の専用資料1件
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-tsniikhm-triton-2022 | Four Russian Government Employees Charged in Two Historical Hacking Campaigns Targeting Critical Infrastructure Worldwide | U.S. Department of Justice | 2022-03-24 | https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting | government-legal | TLP:CLEAR | 高 |
+| source--treasury-tsniikhm-triton-2022 | Treasury Targets Sanctions Evasion Networks and Russian Technology Companies Enabling Putin’s War | U.S. Department of the Treasury | 2022-03-31 | https://home.treasury.gov/news/press-releases/jy0692 | government-sanctions | TLP:CLEAR | 高 |
+| source--mandiant-temp-veles-tsniikhm-2018 | TRITON Attribution: Russian Government-Owned Lab Most Likely Built Custom Intrusion Tools for TRITON Attackers | Mandiant | 2018-10-23 | https://cloud.google.com/blog/topics/threat-intelligence/triton-attribution-russian-government-owned-lab-most-likely-built-tools | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

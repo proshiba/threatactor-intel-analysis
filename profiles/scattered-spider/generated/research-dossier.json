@@ -1,14 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T12:36:06Z",
+  "generated_at": "2026-09-21T15:42:48Z",
   "actor_ref": "actor--scattered-spider",
   "actor_name": "Scattered Spider",
-  "profile_updated_at": "2026-09-21T08:16:06Z",
+  "profile_updated_at": "2026-09-21T13:20:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "canonical-present",
+      "associated_entities": "unknown",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "canonical-present",
       "targets": "canonical-present",
@@ -19,6 +21,10 @@
       "activities": 22,
       "dated_activities": 4,
       "relationships": 1,
+      "associated_entities": 0,
+      "entity_relationships": 0,
+      "hunting_pivots": 1,
+      "hunting_pivot_observations": 1,
       "malware": 3,
       "activity_linked_malware": 0,
       "tools": 7,
@@ -89,6 +95,94 @@
         ],
         "target_actor_ref": "actor--unc6240",
         "target_resolution": "catalog-profile"
+      }
+    ],
+    "associated_entities": [],
+    "entity_relationships": [],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--scattered-spider-iqvw64-malicious-driver",
+        "category": "malware",
+        "pivot_type": "byovd-driver-and-signer",
+        "value": "iqvw64.sys CVE-2015-2291 plus malicious driver SHA256 b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef",
+        "description": "CrowdStrike blocked a campaign use of Intel iqvw64.sys to map a malicious kernel driver. Some samples used a Global Software LLC certificate or a self-signed WDKTestCert; those certificates circulated beyond this actor, and the campaign attribution was explicitly low confidence.",
+        "stix_pattern": "[file:hashes.'SHA-256' = 'b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef']",
+        "attribution_scope": "shared",
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "activity_refs": [
+          "activity--c0027"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:0ec2082c9243455b5e7324197f44334ad43b77813b0ec8a07e8729e294a9c82f"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--scattered-spider-byovd-2022",
+            "observed_at": {
+              "value": "2022-12-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "campaign-observation"
+            },
+            "source_ref": "source--crowdstrike-scattered-spider-byovd-2023",
+            "activity_ref": "activity--c0027",
+            "context": "CrowdStrike documented the vulnerable Intel driver plus malicious mapped driver as one driver-chain observation during the June 2022-January 2023 campaign. Two components are not counted as two independent sightings.",
+            "count": 1,
+            "count_basis": "documented-events"
+          }
+        ],
+        "first_observed": {
+          "value": "2022-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "campaign-observation"
+        },
+        "last_observed": {
+          "value": "2022-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "campaign-observation"
+        },
+        "observation_count": 1,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-21T13:20:00Z",
+          "basis": "One low-confidence attributed campaign observation was documented; two driver components do not establish reuse, and no current telemetry was queried.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "edr",
+            "query": "file.name=iqvw64.sys AND (child_or_mapped_file.sha256=b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef OR driver_load_after_exploit=true)",
+            "purpose": "Detect the vulnerable-driver-to-malicious-driver chain.",
+            "requires_validation": true,
+            "false_positive_notes": "iqvw64.sys and the reported signing certificates are not actor-specific. Preserve the source's low-confidence campaign attribution and require exploitation/mapped-driver evidence."
+          }
+        ],
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--crowdstrike-scattered-spider-byovd-2023"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--58946ca263a0ff63d8fd32b1",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "Scattered Spider research retains the byovd-driver-and-signer pivot iqvw64.sys CVE-2015-2291 plus malicious driver SHA256 b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef: CrowdStrike blocked a campaign use of Intel iqvw64.sys to map a malicious kernel driver. Some samples used a Global Software LLC certificate or a self-signed WDKTestCert; those certificates circulated beyond this actor, and the campaign attribution was explicitly low confidence.",
+            "evidence_refs": [
+              "source--crowdstrike-scattered-spider-byovd-2023"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
       }
     ],
     "activity_timeline": [
@@ -7754,7 +7848,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 123,
+    "supported": 124,
     "partially-supported": 48
   },
   "evidence_catalog": {
@@ -9558,6 +9652,31 @@
         "ioc"
       ],
       "analyst_notes": "The joint advisory lists cross-industry tracking names and updated TTPs. The names are retained as overlaps because vendor cluster boundaries need not be globally one-to-one."
+    },
+    "source--crowdstrike-scattered-spider-byovd-2023": {
+      "source_id": "source--crowdstrike-scattered-spider-byovd-2023",
+      "path": "https://www.crowdstrike.com/en-us/blog/scattered-spider-attempts-to-avoid-detection-with-bring-your-own-vulnerable-driver-tactic/",
+      "title": "SCATTERED SPIDER Exploits Windows Security Deficiencies with Bring-Your-Own-Vulnerable-Driver Tactic",
+      "publisher": "CrowdStrike",
+      "published_at": {
+        "value": "2023-01-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "malware"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "url": "https://www.crowdstrike.com/en-us/blog/scattered-spider-attempts-to-avoid-detection-with-bring-your-own-vulnerable-driver-tactic/"
     }
   },
   "research_gaps": [

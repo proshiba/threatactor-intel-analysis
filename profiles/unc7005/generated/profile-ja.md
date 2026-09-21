@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc7005`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:03Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -41,6 +41,18 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 |---|---|---|---|---|
 | actor--apt29 | part-of | GTIGは「Similarly we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」「GTIG assesses with moderate confidence that UNC6293 and UNC7005 are related to a subcluster of ICE RELIC that we associate with initial access operations」と述べている。根拠として、学術・NGO・外交・防衛という標的業種と地域の重なり、および外交行事の招待やワインに関する特定の題材が2021年から2024年のICE RELICのフィッシング作戦で文書化されていることを挙げている。 MicrosoftはStorm-2945をMidnight Blizzardの運用サブクラスタと明記している。 | 中 | `source--gtig-going-with-the-flows-2026`, `source--microsoft-captivecrunch-2026` |
 | actor--unc6293 | shares-targeting-with | GTIGは「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately」と述べる。2026年5月下旬の大規模フィッシング作戦で使われた攻撃者メールアドレスは、2025年6月のUNC6293の作戦で使われたものとほぼ同一であった。app passwordフィッシングの社会工学的手口も類似するが、UNC7005は1標的ごとに固有のapp password名を用いる点で異なる。 | 中 | `source--gtig-going-with-the-flows-2026` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -120,6 +132,24 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | opcap--unc7005-per-target-app-passwords | 標的ごとに固有のapp passwordを用いるフィッシング | app passwordフィッシングにおいて、観測されたほぼ全事例で標的ごとに固有のapp password名を用いる。名称は、標的が従事しているとされる活動の種類(安全なファイル共有等)や、なりすまし対象の組織名に合わせて構成される。 | 2026-02 | 不明 | 高 | `source--gtig-going-with-the-flows-2026` |
 | opcap--unc7005-device-code-phishing | MicrosoftおよびWhatsAppのデバイスコードフィッシング | Microsoftアカウントに対するデバイスコードフィッシングと、WhatsAppアカウントを攻撃者管理端末へ連携させる手口を用いる。題材は標的の分野に関連する著名団体との通話招待や、外交行事・会議への招待である。 | 2026-04 | 2026-06 | 高 | `source--gtig-going-with-the-flows-2026` |
 | opcap--unc7005-analysis-evasion | 着信端末のフィンガープリントによる自動解析回避 | フィッシングページ閲覧時に画面解像度、タイムゾーン、言語、プラットフォーム、CPUコア数、メモリー量、タッチ点数を収集して/fingerprintへPOSTし、自動スキャナーによるアクセスを判別する。2026年6月には、登録ページに自動解析の検知・回避を試みるスクリプトを追加した。 | 2026-05 | 2026-06 | 高 | `source--gtig-going-with-the-flows-2026` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

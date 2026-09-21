@@ -221,8 +221,25 @@ def normalize_observable(kind: str, value: str) -> str:
     return re.sub(r"\s+", " ", cleaned).strip()
 
 
-def stix_pattern(kind: str, normalized: str) -> str:
+CERTIFICATE_HASH_ALGORITHMS = {
+    "md5": "MD5",
+    "sha1": "SHA-1",
+    "sha256": "SHA-256",
+    "sha512": "SHA-512",
+}
+
+
+def stix_pattern(
+    kind: str, normalized: str, hash_algorithm: str | None = None
+) -> str:
     escaped = normalized.replace("\\", "\\\\").replace("'", "\\'")
+    certificate_algorithm = CERTIFICATE_HASH_ALGORITHMS.get(
+        str(hash_algorithm or "sha256").lower()
+    )
+    if kind == "certificate-fingerprint" and not certificate_algorithm:
+        raise ValueError(
+            f"Unsupported certificate fingerprint algorithm: {hash_algorithm}"
+        )
     mapping = {
         "md5": f"[file:hashes.'MD5' = '{escaped}']",
         "sha1": f"[file:hashes.'SHA-1' = '{escaped}']",
@@ -233,7 +250,9 @@ def stix_pattern(kind: str, normalized: str) -> str:
         "domain": f"[domain-name:value = '{escaped}']",
         "url": f"[url:value = '{escaped}']",
         "email": f"[email-addr:value = '{escaped}']",
-        "certificate-fingerprint": f"[x509-certificate:hashes.'SHA-256' = '{escaped}']",
+        "certificate-fingerprint": (
+            f"[x509-certificate:hashes.'{certificate_algorithm}' = '{escaped}']"
+        ),
     }
     return mapping[kind]
 

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt41`
 - 状態: review
-- 更新日時: 2026-09-21T08:16:05Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -47,6 +47,51 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | Winnti Group | overlaps-with | MITRE states that APT41 overlaps at least partially with public reporting on Winnti Group. | 高 | `source--mitre-live-apt41-2025` |
 | Earth Lusca | related-to | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used malware commonly used by other Chinese threat groups, including [APT41](https://attack.mitre.org/groups/G0096) and the [Winnti Group](https://attack.mitre.org/groups/G0044) cluster, however security researchers assess [Earth Lusca](https://attack.mitre.org/groups/G1006)'s techniques and infrastructure are separate.(Citation: TrendMicro EarthLusca 2022) | 中 | `source--mitre-attack-19-2` |
 | RedEcho | overlaps-with | [RedEcho](https://attack.mitre.org/groups/G1042) overlaps with various other PRC-linked threat groups, such as [APT41](https://attack.mitre.org/groups/G0096), and is linked to [ShadowPad](https://attack.mitre.org/software/S0596) malware use through shared infrastructure.(Citation: RecordedFuture RedEcho 2021)(Citation: RecordedFuture RedEcho 2022) | 高 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--chengdu-404 | Chengdu 404 Network Technology Co., Ltd. | organization | technology-company, alleged-operational-support | China | 2014-05 | 2020-08 | 高 | `source--doj-apt41-chengdu404-2020` |
+| organization--sea-gamer-mall | SEA Gamer Mall SDN BHD | organization | digital-goods-business, alleged-criminal-monetization-channel | Malaysia | 2014-06 | 2018-12 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--fu-qiang | Fu Qiang | threat-actor-individual | manager, alleged-apt41-member | China | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--jiang-lizhi | Jiang Lizhi | threat-actor-individual | executive, alleged-apt41-member, operator | China | 2014-05 | 2020-08 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--ling-yang-ching | Ling Yang Ching | threat-actor-individual | chief-product-officer, shareholder, alleged-criminal-facilitator | Malaysia | 不明 | 不明 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--qian-chuan | Qian Chuan | threat-actor-individual | president, alleged-apt41-member | China | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--tan-dailin | Tan Dailin | threat-actor-individual | alleged-apt41-member, alleged-hacker | China | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--wong-ong-hua | Wong Ong Hua | threat-actor-individual | founder, chief-executive, alleged-criminal-facilitator | Malaysia | 不明 | 不明 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--zhang-haoran | Zhang Haoran | threat-actor-individual | alleged-apt41-member, alleged-hacker | China | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| organization--chengdu-404 | alleged-supports | actor--apt41 | U.S. prosecutors allege Chengdu 404 personnel conducted operations associated with APT41. | 2014-05 | 2020-08 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--fu-qiang | employed-by | organization--chengdu-404 | The indictment identifies Fu as a Chengdu 404 manager. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--fu-qiang | alleged-member-of | actor--apt41 | U.S. prosecutors identify Fu as an APT41 actor. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--jiang-lizhi | alleged-member-of | actor--apt41 | U.S. prosecutors identify Jiang as an APT41 actor. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--jiang-lizhi | officer-of | organization--chengdu-404 | The indictment identifies Jiang as a Chengdu 404 vice president. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--ling-yang-ching | officer-of | organization--sea-gamer-mall | The indictment identifies Ling as SEA Gamer Mall chief product officer and shareholder. | 不明 | 不明 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--qian-chuan | alleged-member-of | actor--apt41 | U.S. prosecutors identify Qian as an APT41 actor. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--qian-chuan | officer-of | organization--chengdu-404 | The indictment identifies Qian as Chengdu 404 president. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| organization--sea-gamer-mall | alleged-criminal-monetization-cooperation | actor--apt41 | The indictment alleges SEA Gamer Mall executives cooperated with Zhang and Tan to monetize stolen video-game assets from June 2014 through December 2018. This is activity-scoped criminal cooperation, not group membership. | 2014-06 | 2018-12 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--tan-dailin | alleged-member-of | actor--apt41 | U.S. prosecutors identify Tan as an APT41/BARIUM member. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+| threat-actor-individual--wong-ong-hua | officer-of | organization--sea-gamer-mall | The indictment identifies Wong as SEA Gamer Mall founder and CEO. | 不明 | 不明 | 高 | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| threat-actor-individual--zhang-haoran | alleged-member-of | actor--apt41 | U.S. prosecutors identify Zhang as an APT41/BARIUM member. | 不明 | 不明 | 高 | `source--doj-apt41-chengdu404-2020` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Fu Qiang | indictment | U.S. District Court for the District of Columbia | 2020-08-11 | alleged | Indicted for alleged racketeering, money laundering, fraud, identity theft and computer-intrusion offenses. | `source--doj-apt41-chengdu404-2020` |
+| Jiang Lizhi | indictment | U.S. District Court for the District of Columbia | 2020-08-11 | alleged | Indicted for alleged racketeering, money laundering, fraud, identity theft and computer-intrusion offenses. | `source--doj-apt41-chengdu404-2020` |
+| Ling Yang Ching | arrest | Malaysian authorities at the request of the United States | 2020-09-14 | completed | Arrested in Malaysia in connection with the U.S. indictment. | `source--doj-apt41-chengdu404-2020` |
+| Ling Yang Ching | indictment | U.S. District Court for the District of Columbia | 2020-08-18 | alleged | Charged with alleged racketeering and money-laundering conspiracy related to stolen game assets. | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| Qian Chuan | indictment | U.S. District Court for the District of Columbia | 2020-08-11 | alleged | Indicted for alleged racketeering, money laundering, fraud, identity theft and computer-intrusion offenses. | `source--doj-apt41-chengdu404-2020` |
+| Tan Dailin | indictment | U.S. District Court for the District of Columbia | 2019-08-15 | alleged | Indicted on alleged computer-fraud and wire-fraud conspiracy, wire fraud, aggravated identity theft, money laundering and Computer Fraud and Abuse Act offenses. | `source--doj-apt41-chengdu404-2020` |
+| Wong Ong Hua | arrest | Malaysian authorities at the request of the United States | 2020-09-14 | completed | Arrested in Malaysia in connection with the U.S. indictment. | `source--doj-apt41-chengdu404-2020` |
+| Wong Ong Hua | indictment | U.S. District Court for the District of Columbia | 2020-08-18 | alleged | Charged with alleged racketeering and money-laundering conspiracy related to stolen game assets. | `source--doj-apt41-sea-gamer-mall-indictment-2020` |
+| Zhang Haoran | indictment | U.S. District Court for the District of Columbia | 2019-08-15 | alleged | Indicted on alleged computer-fraud and wire-fraud conspiracy, wire fraud, aggravated identity theft, money laundering and Computer Fraud and Abuse Act offenses. | `source--doj-apt41-chengdu404-2020` |
 
 ## ダイヤモンドモデル
 
@@ -167,6 +212,37 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--apt41-dusttrap-alean-tour-cert-serial | malware | code-signing-certificate-serial | 05:fa:8a:72:da:46:07:4f:de:1e:34:c7:46:61:ee:00 (subject organization OOO ALEAN-TOUR) | shared | 1 | 1 | 1 | 不明 | 不明 | single-observation | unknown | 高 | `source--mandiant-apt41-arisen-from-dust-2024` |
+| hunting-pivot--apt41-dusttrap-ccr-cert-serial | malware | code-signing-certificate-serial | 6f:97:f1:3d:a5:5e:9f:70:a6:92:7e:d1:b3:3e:ee:ee (subject organization CCR INC) | shared | 1 | 1 | 1 | 不明 | 不明 | single-observation | unknown | 高 | `source--mandiant-apt41-arisen-from-dust-2024` |
+| hunting-pivot--apt41-gala-lab-cert-serial | malware | code-signing-certificate-serial | 0a:2c:bf:9b:18:fe:1b:20:b9:4e:ca:c4:b0:78:b8:c1 (subject organization Gala Lab Corp.) | shared | 2 | 1 | 1 | 2020 | 不明 | reused | unknown | 高 | `source--mandiant-apt41-arisen-from-dust-2024` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--apt41-dusttrap-alean-tour-cert-serial | pivot-observation--apt41-alean-dusttrap-2024 | 不明 | 1 | documented-samples | activity--apt41-dust | source--mandiant-apt41-arisen-from-dust-2024 | Mandiant identified the certificate on a DUSTTRAP component in a report published in 2024 about activity underway since 2023; neither the report year nor the campaign window is treated as the component's observation date. |
+| hunting-pivot--apt41-dusttrap-ccr-cert-serial | pivot-observation--apt41-ccr-dusttrap-2024 | 不明 | 1 | documented-samples | activity--apt41-dust | source--mandiant-apt41-arisen-from-dust-2024 | Mandiant identified the certificate on a DUSTTRAP component in a report published in 2024 about activity underway since 2023; neither the report year nor the campaign window is treated as the component's observation date. |
+| hunting-pivot--apt41-gala-lab-cert-serial | pivot-observation--gala-cert-unc3914-2020 | 2020 | 1 | documented-events | なし | source--mandiant-apt41-arisen-from-dust-2024 | Certificate observed in a UNC3914 operation; retained only as cross-cluster certificate history. |
+| hunting-pivot--apt41-gala-lab-cert-serial | pivot-observation--gala-cert-dusttrap-2024 | 不明 | 1 | documented-samples | activity--apt41-dust | source--mandiant-apt41-arisen-from-dust-2024 | Certificate observed on a DUSTTRAP component reported in 2024; the report year and broader campaign window are retained as context, not converted to an observation date. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--apt41-dusttrap-alean-tour-cert-serial | file-intelligence | `authenticode.serial=05fa8a72da46074fde1e34c74661ee00 AND signer.organization="OOO ALEAN-TOUR"` | Find files signed by the reported stolen certificate. | 要 | Require DUSTTRAP code/configuration corroboration; do not attribute the certificate holder. |
+| hunting-pivot--apt41-dusttrap-ccr-cert-serial | file-intelligence | `authenticode.serial=6f97f13da55e9f70a6927ed1b33eeeee AND signer.organization="CCR INC"` | Find files signed by the reported stolen certificate. | 要 | Validate hash, DUSTTRAP behavior and signing time. The named organization is a likely certificate victim, not an attributed attacker. |
+| hunting-pivot--apt41-gala-lab-cert-serial | file-intelligence | `authenticode.serial=0a2cbf9b18fe1b20b94ecac4b078b8c1 AND signer.organization="Gala Lab Corp."` | Find historical and new files sharing the stolen certificate. | 要 | Shared certificate evidence cannot establish an APT41-UNC3914 relationship. Validate sample lineage independently. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -464,8 +540,11 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--barium--1daa9a873506d87b | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mandiant-apt41-arisen-from-dust-2024 | APT41 Has Arisen From the DUST | Mandiant | 2024-07-18 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust | vendor-threat-research | TLP:CLEAR | 高 |
+| source--mandiant-apt41-arisen-from-dust-2024 | APT41 Has Arisen From the DUST | Mandiant | 2024-07-18 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust | vendor-research | TLP:CLEAR | 高 |
 | source--cisco-talos-apt41-taiwan-institute-2024 | Chinese hacking group APT41 compromised Taiwanese government-affiliated research institute with ShadowPad and Cobalt Strike | Cisco Talos | 2024-08-01 | https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--doj-apt41-chengdu404-2020 | Seven International Cyber Defendants, Including APT41 Actors, Charged In Connection With Computer Intrusion Campaigns Against More Than 100 Victims Globally | U.S. Department of Justice | 2020-09-16 | https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer | government-legal | TLP:CLEAR | 高 |
+| source--doj-apt41-sea-gamer-mall-indictment-2020 | United States v. Wong Ong Hua and Ling Yang Ching indictment | U.S. Department of Justice | 2020-09-16 | https://www.justice.gov/archives/opa/press-release/file/1317211/dl | government-legal | TLP:CLEAR | 高 |
+| source--mandiant-apt41-dual-use-2019 | APT41: A Dual Espionage and Cyber Crime Operation | Mandiant | 2019-08-07 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

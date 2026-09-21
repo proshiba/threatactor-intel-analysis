@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "created": "2026-07-25T00:00:00Z",
-      "modified": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T13:20:00Z",
       "name": "Threat Actor Intelligence Profiles",
       "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
       "identity_class": "organization",
@@ -25,9 +25,9 @@
     {
       "type": "infrastructure",
       "spec_version": "2.1",
-      "id": "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+      "id": "infrastructure--e22c7c02-a956-4041-9361-8f78e3a10aca",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -36,7 +36,7 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -55,8 +55,8 @@
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
-      "created": "2026-08-21T01:25:25Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -65,18 +65,63 @@
         "STORM-2945"
       ],
       "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-08-13T00:00:00Z",
+      "goals": [
+        "GTIGはUNC7005を「suspected Russian cyber espionage」クラスタの一つとして扱い、「individuals of interest to the Russian state」を標的とするhighly selectiveな作戦と説明している。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
       "x_profile_id": "actor--unc7005",
       "x_profile_status": "draft",
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-08-13T00:00:00Z"
+      "x_alias_assessments": [
+        {
+          "name": "STORM-2945",
+          "vendor": "Microsoft",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「UNC7005 (aka STORM-2945)」と明記した同一視である。ただしMicrosoftはStorm-2945を「Midnight Blizzardの運用サブクラスタ」として扱うのに対し、GTIGはUNC7005をICE RELIC(旧APT29)との関連をmoderate confidenceにとどめて別クラスタとして追跡しており、同じ指定子に対するクラスタ境界の評価がベンダー間で異なる。この差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。ICE RELIC(旧APT29)への接続はmoderate confidenceであり、具体的なロシア情報機関への帰属は行われていない。GTIG自身の表現は「suspected Russian」である。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。Microsoftが同一指定子(Storm-2945)をMidnight Blizzardのサブクラスタとして扱う点はスコープ評価の差であり、本プロファイルの帰属国とは矛盾しない。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC7005(Microsoft呼称: STORM-2945)はGTIGが2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。app passwordフィッシング、デバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。2026年7月に表面化した宿泊施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+        "history": "2026年2月にクラスタとして特定され、同月以降app passwordフィッシングを実施。4月下旬から大使館招待を題材とするデバイスコードフィッシングとMicrosoft認証を模倣するインフラの構築、5月にGLOBSECを装う作戦とウクライナ決議サミットを装うインフォスティーラー配布、5月から6月にWhatsAppを装う作戦、7月16日から23日にOWA題材ドメインの登録、7月31日以降Finnish Operations Centerを装うドメインの登録、8月6日から13日に欧州防衛産業向けのOAuthフィッシングを実施した。",
+        "capability_details": "マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、MaaSのVIDARとATOMIC。GTIGはCHERRYPIEの検体にLLM生成を示唆する痕跡が多数含まれると述べている。",
+        "infrastructure_details": "攻撃者管理ドメインの登録には複数のフリーメールアドレスが用いられ、chikolimdrid@gmail.comは2026年7月のOWA題材ドメイン3件とms365-live[.]comの登録に共通する。ms365-live[.]comとmy-invite[.]orgはいずれも104.194.159[.]150へ解決していた。",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、米国。標的地域=欧州。日本は確認時に個別国として保持する。\n\nウクライナ、西欧、米国の学術・外交・非営利分野の個人を主な標的とし、2026年8月には欧州の防衛産業に属するか関係する標的へ範囲を広げた。",
+        "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+      },
+      "x_osint_crosscheck_assessment": "possible-match",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-09-21T02:39:41Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -91,7 +136,7 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -128,7 +173,7 @@
       "spec_version": "2.1",
       "id": "location--0348dcd9-34b5-4ff1-8b55-e55cffb5bc3b",
       "created": "2026-08-21T01:45:24Z",
-      "modified": "2026-08-21T01:45:24Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -152,8 +197,8 @@
       "type": "location",
       "spec_version": "2.1",
       "id": "location--594a193e-06ff-439b-93f2-e072203e1822",
-      "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:45:24Z",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -176,9 +221,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+      "id": "malware--70d89991-5638-4958-bdac-a38d2b0b1e22",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -187,7 +232,7 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -208,7 +253,7 @@
     {
       "type": "note",
       "spec_version": "2.1",
-      "id": "note--02d08513-715a-4e5f-b0d2-75f8c423663b",
+      "id": "note--173759c2-8fd8-46b7-a251-26b02c3814c5",
       "created": "2026-08-21T01:36:26Z",
       "modified": "2026-08-21T01:36:26Z",
       "object_marking_refs": [
@@ -226,21 +271,157 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+      "id": "relationship--24774829-a5f4-46a0-9c56-3d3f9ad3950c",
       "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
-      "target_ref": "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+      "target_ref": "infrastructure--e22c7c02-a956-4041-9361-8f78e3a10aca",
+      "description": "UNC5976 uses ファイル共有を装うOAuthフィッシングドメインとクラウドプロジェクト.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-03-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--403ec3f3-5bd6-42a5-af7f-f45b2ebf981e",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "UNC5976 targets ウクライナ (profile target category: countries).\n\nEvidence: GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
+      "created": "2026-08-21T01:25:25Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "related-to",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "description": "GTIGはUNC5976について「We believe this cluster to be distinct from UNC6293 and UNC7005」「UNC5976 remains distinct from the UNC6293 and UNC7005 clusters, potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と明示的に別クラスタとしている。相違点として、事後侵害活動に住宅用プロキシーではなく専用インフラを用いること、およびICE RELIC関連クラスタよりマルウェアとツールの利用が顕著であることを挙げている。共通点は、ロシア関連性と認証フロー悪用への注力である。",
+      "confidence": 60,
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_relationship_id": "relationship--unc5976-unc6293-unc7005-distinct",
+      "x_profile_relationship_type": "related-to",
+      "x_confidence": "medium",
+      "x_analyst_notes": "同一性や協力関係を示す関係ではなく、同一資料で並置され明示的に区別されたクラスタであることを記録する。将来の誤統合を防ぐための記録であり、related-toを用いる(RULES.md 6条・13条)。",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-03-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--813c7fb5-b7e5-4ef8-8014-d9ff932ce5ae",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "malware--70d89991-5638-4958-bdac-a38d2b0b1e22",
       "description": "UNC5976 uses HEADRUSH.",
       "x_confidence": "high",
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
@@ -270,87 +451,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
-      "created": "2026-08-21T01:25:25Z",
-      "modified": "2026-09-21T04:35:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "related-to",
-      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
-      "target_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
-      "description": "GTIGはUNC5976について「We believe this cluster to be distinct from UNC6293 and UNC7005」「UNC5976 remains distinct from the UNC6293 and UNC7005 clusters, potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と明示的に別クラスタとしている。相違点として、事後侵害活動に住宅用プロキシーではなく専用インフラを用いること、およびICE RELIC関連クラスタよりマルウェアとツールの利用が顕著であることを挙げている。共通点は、ロシア関連性と認証フロー悪用への注力である。",
-      "confidence": 60,
-      "external_references": [
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026"
-        }
-      ],
-      "x_profile_relationship_id": "relationship--unc5976-unc6293-unc7005-distinct",
-      "x_profile_relationship_type": "related-to",
-      "x_confidence": "medium",
-      "x_analyst_notes": "同一性や協力関係を示す関係ではなく、同一資料で並置され明示的に区別されたクラスタであることを記録する。将来の誤統合を防ぐための記録であり、related-toを用いる(RULES.md 6条・13条)。",
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "start_time": "2026-03-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
-      "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-09-21T04:35:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
-      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
-      "description": "UNC5976 targets ウクライナ (profile target category: countries).\n\nEvidence: GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026",
-          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
-        },
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026"
-        }
-      ],
-      "x_first_observed": {
-        "value": "2026-04-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "source-stated; activity-period"
-      },
-      "x_last_observed": {
-        "value": "2026-04-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "source-stated; activity-period"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated; activity-period",
-        "last": "source-stated; activity-period",
-        "first_precision": "month",
-        "last_precision": "month"
-      },
-      "start_time": "2026-04-01T00:00:00Z",
-      "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
+      "id": "relationship--dcd0c15b-dcbe-4a7c-acc6-cd18c18296c6",
       "created": "2026-08-21T01:45:24Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -362,46 +465,16 @@
       "external_references": [
         {
           "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026",
-          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
-        },
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
-          "external_id": "source--gtig-going-with-the-flows-2026"
-        }
-      ],
-      "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d",
-      "created": "2026-08-21T01:36:26Z",
-      "modified": "2026-09-21T04:35:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
-      "target_ref": "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
-      "description": "UNC5976 uses ファイル共有を装うOAuthフィッシングドメインとクラウドプロジェクト.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
           "external_id": "source--gtig-going-with-the-flows-2026",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
         }
       ],
       "x_first_observed": {
-        "value": "2026-03-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "source-stated"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "x_last_observed": {
         "value": null,
@@ -410,12 +483,11 @@
         "basis": "not-stated"
       },
       "x_temporal_basis": {
-        "first": "source-stated",
+        "first": "not-stated",
         "last": "not-stated",
-        "first_precision": "month",
+        "first_precision": "unknown",
         "last_precision": "unknown"
       },
-      "start_time": "2026-03-01T00:00:00Z",
       "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
@@ -423,8 +495,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--3091b680-9bad-4940-9c12-5dbe838f7465",
-      "created": "2026-09-21T04:35:03Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "created": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -435,14 +507,15 @@
       ],
       "published": "2026-08-20T00:00:00Z",
       "object_refs": [
-        "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+        "infrastructure--e22c7c02-a956-4041-9361-8f78e3a10aca",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
         "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
-        "malware--be43e353-b731-4044-8ddb-1aad8920b610",
-        "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+        "malware--70d89991-5638-4958-bdac-a38d2b0b1e22",
+        "relationship--24774829-a5f4-46a0-9c56-3d3f9ad3950c",
+        "relationship--403ec3f3-5bd6-42a5-af7f-f45b2ebf981e",
         "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
-        "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
-        "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
-        "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d"
+        "relationship--813c7fb5-b7e5-4ef8-8014-d9ff932ce5ae",
+        "relationship--dcd0c15b-dcbe-4a7c-acc6-cd18c18296c6"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -466,8 +539,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--c7c747ae-9c45-400d-b889-b185d71dc1a7",
-      "created": "2026-09-21T04:35:03Z",
-      "modified": "2026-09-21T04:35:03Z",
+      "created": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-21T13:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -476,20 +549,20 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T04:35:03Z",
+      "published": "2026-09-21T13:20:00Z",
       "object_refs": [
-        "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+        "infrastructure--e22c7c02-a956-4041-9361-8f78e3a10aca",
         "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
         "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
         "location--0348dcd9-34b5-4ff1-8b55-e55cffb5bc3b",
         "location--594a193e-06ff-439b-93f2-e072203e1822",
-        "malware--be43e353-b731-4044-8ddb-1aad8920b610",
-        "note--02d08513-715a-4e5f-b0d2-75f8c423663b",
-        "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+        "malware--70d89991-5638-4958-bdac-a38d2b0b1e22",
+        "note--173759c2-8fd8-46b7-a251-26b02c3814c5",
+        "relationship--24774829-a5f4-46a0-9c56-3d3f9ad3950c",
+        "relationship--403ec3f3-5bd6-42a5-af7f-f45b2ebf981e",
         "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
-        "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
-        "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
-        "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d",
+        "relationship--813c7fb5-b7e5-4ef8-8014-d9ff932ce5ae",
+        "relationship--dcd0c15b-dcbe-4a7c-acc6-cd18c18296c6",
         "report--3091b680-9bad-4940-9c12-5dbe838f7465"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",

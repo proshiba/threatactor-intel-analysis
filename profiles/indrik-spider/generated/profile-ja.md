@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--indrik-spider`
 - 状態: draft
-- 更新日時: 2026-09-21T04:18:10Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -42,6 +42,127 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 |---|---|---|---|---|
 | TA505 | overlaps-with | 共有alias: Evil Corp, Indrik Spider | 低 | `source--mitre-attack-19-1` |
 | Mustard Tempest | related-to | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has partnered with [Indrik Spider](https://attack.mitre.org/groups/G0119) to provide access for the download of additional malware including LockBit, [WastedLocker](https://attack.mitre.org/software/S0612), and remote access tools.(Citation: Microsoft Ransomware as a Service)(Citation: Microsoft Threat Actor Naming July 2023)(Citation: Secureworks Gold Prelude Profile)(Citation: SocGholish-update) | 中 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--russian-fsb | Federal Security Service of the Russian Federation | organization | government-intelligence-organization | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--treasury-evil-corp-fsb-enablers-2024` |
+| organization--solar-invest | Solar-Invest LLC | organization | commercial-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| organization--vympel-assistance | Vympel-Assistance LLC | organization | commercial-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--aleksandr-ryzhenkov | Aleksandr Viktorovich Ryzhenkov | threat-actor-individual | evil-corp-second-in-command, cybercriminal | Russia | 2017-06 | 不明 | 高 | `source--fbi-ryzhenkov-wanted`, `source--doj-ryzhenkov-ransomware-2024`, `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--eduard-benderskiy | Eduard Vitalevich Benderskiy | threat-actor-individual | former-intelligence-officer, evil-corp-enabler, company-owner | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--igor-turashev | Igor Olegovich Turashev | threat-actor-individual | evil-corp-administrator, cybercriminal | Russia | 不明 | 不明 | 高 | `source--doj-yakubets-turashev-indictment-2019`, `source--doj-yakubets-turashev-2019`, `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--maksim-yakubets | Maksim Viktorovich Yakubets | threat-actor-individual | evil-corp-leader, cybercriminal, state-tasked-operator | Russia | 2009-05 | 不明 | 高 | `source--doj-yakubets-turashev-indictment-2019`, `source--doj-yakubets-turashev-2019`, `source--treasury-evil-corp-sanctions-2019`, `source--treasury-evil-corp-fsb-enablers-2024`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-group--evil-corp | Evil Corp | threat-actor-group | cybercriminal-organization, malware-operator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--treasury-evil-corp-fsb-enablers-2024`, `source--mitre-attack-19-2`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--viktor-yakubets | Viktor Grigoryevich Yakubets | threat-actor-individual | evil-corp-member, technical-procurement-support | Russia | 2020 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--sergey-ryzhenkov | Sergey Viktorovich Ryzhenkov | threat-actor-individual | evil-corp-member, malware-development-support | Russia | 2019 | 2020 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--aleksey-shchetinin | Aleksey Yevgenevich Shchetinin | threat-actor-individual | evil-corp-member, financial-facilitator | Russia | 2017 | 2018 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--beyat-ramazanov | Beyat Enverovich Ramazanov | threat-actor-individual | evil-corp-member, general-support | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--vadim-pogodin | Vadim Gennadievich Pogodin | threat-actor-individual | evil-corp-member, ransomware-operator | Russia | 2020 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| organization--biznes-stolitsa | Biznes-Stolitsa, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| organization--optima-ooo | Optima, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| organization--treid-invest | Treid-Invest, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| organization--tsao-ooo | TSAO, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| organization--vertikal-ooo | Vertikal, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| organization--yunikom-ooo | Yunikom, OOO | organization | commercial-company, evil-corp-member-owned-company | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | Denis Igorevich Gusev | threat-actor-individual | evil-corp-senior-member, financial-facilitator, company-director | Russia | 2017 | 2018 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--dmitriy-smirnov | Dmitriy Konstantinovich Smirnov | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--artem-yakubets | Artem Viktorovich Yakubets | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--ivan-tuchkov | Ivan Dmitriyevich Tuchkov | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--andrey-plotnitskiy | Andrey Plotnitskiy | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--dmitriy-slobodskoy | Dmitriy Alekseyevich Slobodskoy | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--kirill-slobodskoy | Kirill Alekseyevich Slobodskoy | threat-actor-individual | evil-corp-core-member | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--aleksei-bashlikov | Aleksei Bashlikov | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--ruslan-zamulko | Ruslan Zamulko | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--david-guberman | David Guberman | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--carlos-alvares | Carlos Alvares | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--georgios-manidis | Georgios Manidis | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--tatiana-shevchuk | Tatiana Shevchuk | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--azamat-safarov | Azamat Safarov | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--gulsara-burkhonova | Gulsara Burkhonova | threat-actor-individual | evil-corp-financial-facilitator | Russia | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--eduard-benderskiy | owns-and-leads | organization--solar-invest | Treasury identifies Benderskiy as founder, 100-percent owner and general director. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--eduard-benderskiy | owns-and-leads | organization--vympel-assistance | Treasury identifies Benderskiy as founder, 100-percent owner and general director. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--maksim-yakubets | works-for-on-cyber-tasking | organization--russian-fsb | Treasury states Yakubets worked for the FSB by 2017 and performed state cyber tasks. The specific FSB center is not identified. | 2017 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-group--evil-corp | overlaps-with | actor--indrik-spider | MITRE ATT&CK lists Evil Corp as an overlapping alias for the Indrik Spider tracking cluster. This preserves the vendor-boundary overlap without asserting exact identity between the human group and the intrusion set. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| threat-actor-individual--maksim-yakubets | leads | threat-actor-group--evil-corp | Treasury identifies Yakubets as Evil Corp's leader and states that he supervised the group's malicious cyber activity as of 2017. | 2017 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--igor-turashev | administrator-of | threat-actor-group--evil-corp | Treasury states Turashev served as an administrator for Yakubets, controlled Dridex as of 2015 and helped Evil Corp exploit victim networks as of 2017. | 2015 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--eduard-benderskiy | enables | threat-actor-group--evil-corp | Treasury identifies Benderskiy as a key enabler of Evil Corp's relationship with the Russian state and says he protected the group after the December 2019 sanctions. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--aleksandr-ryzhenkov | second-in-command-of | threat-actor-group--evil-corp | Treasury identifies Ryzhenkov as Yakubets's long-term associate and Evil Corp second-in-command, and states that he oversaw group operations from at least mid-2017. | 2017-06 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--viktor-yakubets | member-of | threat-actor-group--evil-corp | Treasury directly identifies Viktor Yakubets as an Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--sergey-ryzhenkov | member-of | threat-actor-group--evil-corp | Treasury directly identifies Sergey Ryzhenkov as an Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--aleksey-shchetinin | member-of | threat-actor-group--evil-corp | Treasury directly identifies Shchetinin as an Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--beyat-ramazanov | member-of | threat-actor-group--evil-corp | Treasury directly identifies Ramazanov as an Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--vadim-pogodin | member-of | threat-actor-group--evil-corp | Treasury directly identifies Pogodin as an Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--eduard-benderskiy | formerly-officer-of | organization--russian-fsb | Treasury directly identifies Benderskiy as a former FSB Spetsnaz officer. His service dates and specific FSB component are not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-fsb-enablers-2024` |
+| threat-actor-individual--denis-gusev | senior-member-of | threat-actor-group--evil-corp | Treasury directly identifies Gusev as a senior Evil Corp member. The cited 2017 and 2018 conduct observations do not establish the full membership period, so relationship times remain unknown. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--dmitriy-smirnov | member-of | threat-actor-group--evil-corp | Treasury directly identifies Smirnov as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--artem-yakubets | member-of | threat-actor-group--evil-corp | Treasury directly identifies Artem Yakubets as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--ivan-tuchkov | member-of | threat-actor-group--evil-corp | Treasury directly identifies Tuchkov as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--andrey-plotnitskiy | member-of | threat-actor-group--evil-corp | Treasury directly identifies Plotnitskiy as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--dmitriy-slobodskoy | member-of | threat-actor-group--evil-corp | Treasury directly identifies Dmitriy Slobodskoy as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--kirill-slobodskoy | member-of | threat-actor-group--evil-corp | Treasury directly identifies Kirill Slobodskoy as an additional core Evil Corp member. The full membership period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--aleksei-bashlikov | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Bashlikov as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--ruslan-zamulko | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Zamulko as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--david-guberman | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Guberman as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--carlos-alvares | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Alvares as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--georgios-manidis | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Manidis as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--tatiana-shevchuk | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Shevchuk as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify her as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--azamat-safarov | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Safarov as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify him as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--gulsara-burkhonova | provides-financial-and-material-assistance-to | threat-actor-group--evil-corp | Treasury directly identifies Burkhonova as a financial facilitator providing financial and material assistance to Evil Corp; it does not identify her as a core member. The assistance period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--biznes-stolitsa | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--optima-ooo | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--treid-invest | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--tsao-ooo | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--vertikal-ooo | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| threat-actor-individual--denis-gusev | owns-or-controls | organization--yunikom-ooo | Treasury identifies Gusev as general director of the company and designated it as owned or controlled by him. The ownership/control period is not stated. | 不明 | 不明 | 高 | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Solar-Invest LLC | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | OFAC designated Solar-Invest LLC as owned or controlled by, or acting for or on behalf of, Eduard Benderskiy. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Vympel-Assistance LLC | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | OFAC designated Vympel-Assistance LLC as owned or controlled by, or acting for or on behalf of, Eduard Benderskiy. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Aleksandr Viktorovich Ryzhenkov | indictment | U.S. District Court for the Northern District of Texas | 不明 | alleged | A federal indictment charged Ryzhenkov with alleged ransomware and money-laundering offenses; DOJ unsealed it on 2024-10-01, but the cited public sources do not state its return date. | `source--fbi-ryzhenkov-wanted`, `source--doj-ryzhenkov-ransomware-2024` |
+| Aleksandr Viktorovich Ryzhenkov | wanted | U.S. District Court for the Northern District of Texas | 2023-03-22 | pending | A federal arrest warrant was issued after Ryzhenkov was charged. | `source--fbi-ryzhenkov-wanted` |
+| Aleksandr Viktorovich Ryzhenkov | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for Evil Corp and ransomware activity. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Eduard Vitalevich Benderskiy | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for enabling Evil Corp and facilitating its relationship with the Russian state. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Igor Olegovich Turashev | indictment | U.S. District Court for the Western District of Pennsylvania | 2019-11-12 | alleged | A federal indictment concerning alleged Bugat/Dridex cybercrime was filed on 2019-11-12 and unsealed on 2019-12-05. | `source--doj-yakubets-turashev-indictment-2019`, `source--doj-yakubets-turashev-2019` |
+| Igor Olegovich Turashev | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | Designated for Evil Corp activity. | `source--treasury-evil-corp-sanctions-2019` |
+| Maksim Viktorovich Yakubets | indictment | U.S. District Court for the Western District of Pennsylvania | 2019-11-12 | alleged | A federal indictment concerning alleged Bugat/Dridex cybercrime was filed on 2019-11-12 and unsealed on 2019-12-05. | `source--doj-yakubets-turashev-indictment-2019`, `source--doj-yakubets-turashev-2019` |
+| Maksim Viktorovich Yakubets | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | Designated as Evil Corp's leader and for malicious cyber activity. | `source--treasury-evil-corp-sanctions-2019` |
+| Evil Corp | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Evil Corp for malicious cyber-enabled activity associated with Dridex. | `source--treasury-evil-corp-sanctions-2019` |
+| Viktor Grigoryevich Yakubets | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for materially supporting Evil Corp. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Sergey Viktorovich Ryzhenkov | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for materially supporting Evil Corp. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Aleksey Yevgenevich Shchetinin | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for materially supporting Evil Corp. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Beyat Enverovich Ramazanov | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for materially supporting Evil Corp. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Vadim Gennadievich Pogodin | sanction | U.S. Department of the Treasury | 2024-10-01 | completed | Designated for materially supporting Evil Corp. | `source--treasury-evil-corp-fsb-enablers-2024` |
+| Biznes-Stolitsa, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Optima, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Treid-Invest, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| TSAO, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Vertikal, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Yunikom, OOO | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated the company for being owned or controlled by Denis Gusev. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Denis Igorevich Gusev | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Gusev for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Dmitriy Konstantinovich Smirnov | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Smirnov for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Artem Viktorovich Yakubets | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Artem Yakubets for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Ivan Dmitriyevich Tuchkov | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Tuchkov for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Andrey Plotnitskiy | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Plotnitskiy for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Dmitriy Alekseyevich Slobodskoy | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Dmitriy Slobodskoy for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Kirill Alekseyevich Slobodskoy | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Kirill Slobodskoy for acting for or on behalf of and providing material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Aleksei Bashlikov | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Bashlikov for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Ruslan Zamulko | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Zamulko for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| David Guberman | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Guberman for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Carlos Alvares | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Alvares for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Georgios Manidis | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Manidis for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Tatiana Shevchuk | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Shevchuk for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Azamat Safarov | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Safarov for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
+| Gulsara Burkhonova | sanction | U.S. Department of the Treasury | 2019-12-05 | completed | OFAC designated Burkhonova for providing financial and material assistance to Evil Corp. | `source--treasury-evil-corp-sanctions-2019`, `source--ofac-evil-corp-sdn-update-2019` |
 
 ## ダイヤモンドモデル
 
@@ -124,6 +245,24 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -250,6 +389,13 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--treasury-evil-corp-fsb-enablers-2024 | Treasury Sanctions Members of the Russia-Based Cybercriminal Group Evil Corp in Tri-Lateral Action with the United Kingdom and Australia | U.S. Department of the Treasury | 2024-10-01 | https://home.treasury.gov/news/press-releases/jy2623 | government-sanctions | TLP:CLEAR | 高 |
+| source--treasury-evil-corp-sanctions-2019 | Treasury Sanctions Evil Corp, the Russia-Based Cybercriminal Group Behind Dridex Malware | U.S. Department of the Treasury | 2019-12-05 | https://home.treasury.gov/news/press-releases/sm845 | government-sanctions | TLP:CLEAR | 高 |
+| source--doj-yakubets-turashev-2019 | Russian National Charged with Decade-Long Series of Hacking and Bank Fraud Offenses Resulting in Tens of Millions in Losses and Second Russian National Charged with Involvement in Deployment of Bugat Malware | U.S. Department of Justice | 2019-12-05 | https://www.justice.gov/archives/opa/pr/russian-national-charged-decade-long-series-hacking-and-bank-fraud-offenses-resulting-tens | government-legal | TLP:CLEAR | 高 |
+| source--doj-ryzhenkov-ransomware-2024 | Russian National Indicted for Series of Ransomware Attacks | U.S. Department of Justice | 2024-10-01 | https://www.justice.gov/archives/opa/pr/russian-national-indicted-series-ransomware-attacks | government-legal | TLP:CLEAR | 高 |
+| source--fbi-ryzhenkov-wanted | Aleksandr Ryzhenkov | Federal Bureau of Investigation | 不明 | https://www.fbi.gov/wanted/cyber/aleksandr-ryzhenkov | government-wanted-notice | TLP:CLEAR | 高 |
+| source--doj-yakubets-turashev-indictment-2019 | Indictment: United States v. Maksim Yakubets and Igor Turashev | U.S. District Court for the Western District of Pennsylvania | 不明 | https://www.justice.gov/d9/press-releases/attachments/2019/12/05/final_yakubetsturashev_indictment_wdpa_0.pdf | government-legal | TLP:CLEAR | 高 |
+| source--ofac-evil-corp-sdn-update-2019 | Cyber-related Designations; Counter Terrorism Designation Removal | U.S. Department of the Treasury, Office of Foreign Assets Control | 2019-12-05 | https://ofac.treasury.gov/recent-actions/20191205 | government-sanctions-list | TLP:CLEAR | 高 |
 
 ## 自由記述
 

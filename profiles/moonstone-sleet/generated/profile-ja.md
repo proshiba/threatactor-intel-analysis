@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--moonstone-sleet`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -42,6 +42,18 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 |---|---|---|---|---|
 | Lazarus Group | overlaps-with | The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. | 高 | `source--mitre-attack-19-2` |
 | Diamond Sleet | overlaps-with | Microsoft observed strong initial code and tradecraft overlap with Diamond Sleet, followed by Moonstone Sleet's shift to its own infrastructure and concurrent, distinct operations. | 高 | `source--microsoft-moonstone-sleet-2024` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -118,6 +130,24 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

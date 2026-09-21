@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--kimsuky`
 - 状態: review
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -54,6 +54,18 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | Lazarus Group | shares-tools-with | PEBBLEDASH等の再利用はDPRK内部のツール共有または開発者再配置の可能性を示す。 | 中 | `source--blurred-attribution`, `source--qax-2024` |
 | Lazarus Group | overlaps-with | DPRK threat actor cluster boundaries overlap in open source reporting, with some security researchers consolidating all attributed North Korean state-sponsored cyber activity under [Lazarus Group](https://attack.mitre.org/groups/G0032), rather than tracking operationally distinct subgroups. | 高 | `source--mitre-attack-19-2` |
 | APT43 | overlaps-with | MITRE treats APT43 as an associated Kimsuky group name, while Mandiant defines APT43 using its own collection scope. The overlap is well supported, but exact one-to-one identity is not. | 高 | `source--mitre-live-kimsuky-2026`, `source--mandiant-apt43-2023` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -169,6 +181,24 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | opcap--trust-building-phishing | Trust-building Spearphishing | 複数回の無害な連絡で信頼を築き、後続で悪性リンクや文書を送る。 | 2012 | 2025 | 高 | `source--joint-csa-2023`, `source--dmarc-2024` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

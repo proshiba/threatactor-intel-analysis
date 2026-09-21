@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--menupass`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -46,6 +46,36 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 |---|---|---|---|---|
 | Cinnamon Tempest | overlaps-with | 共有alias: DEV-0401 | 低 | `source--mitre-attack-19-2` |
 | MirrorFace | overlaps-with | [MirrorFace](https://attack.mitre.org/groups/G1054) is a People's Republic of China (PRC)-aligned cyberespionage actor believed to be a subgroup under the [menuPass](https://attack.mitre.org/groups/G0045) umbrella based on targeting, tools, and infrastructure overlaps. | 高 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--tianjin-huaying-haitai | Tianjin Huaying Haitai Science and Technology Development Co. Ltd | organization | technology-company, alleged-operational-support | China | 不明 | 不明 | 高 | `source--doj-apt10-huaying-indictment-2018`, `source--eu-apt10-huaying-sanctions-2026` |
+| threat-actor-individual--gao-qiang | Gao Qiang | threat-actor-individual | employee, c2-infrastructure-associate | China | 不明 | 不明 | 高 | `source--eu-apt10-huaying-sanctions-2026` |
+| threat-actor-individual--zhang-shilong | Zhang Shilong | threat-actor-individual | employee, alleged-apt10-member, malware-developer | China | 2006 | 2018 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+| threat-actor-individual--zhu-hua | Zhu Hua | threat-actor-individual | employee, alleged-apt10-member | China | 2006 | 2018 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--gao-qiang | associated-with | actor--menupass | The EU listing links Gao to APT10 command-and-control infrastructure; this is not promoted to full group membership. | 不明 | 不明 | 高 | `source--eu-apt10-huaying-sanctions-2026` |
+| threat-actor-individual--gao-qiang | employed-by | organization--tianjin-huaying-haitai | The EU listing identifies Gao as a Huaying employee. | 不明 | 不明 | 高 | `source--eu-apt10-huaying-sanctions-2026` |
+| organization--tianjin-huaying-haitai | supports | actor--menupass | U.S. and EU authorities identify Huaying as supporting APT10/Cloud Hopper operations. | 不明 | 不明 | 高 | `source--doj-apt10-huaying-indictment-2018`, `source--eu-apt10-huaying-sanctions-2026` |
+| threat-actor-individual--zhang-shilong | employed-by | organization--tianjin-huaying-haitai | The indictment identifies Zhang as a Huaying employee. | 不明 | 不明 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+| threat-actor-individual--zhang-shilong | alleged-member-of | actor--menupass | The indictment alleges Zhang was a member of APT10. | 2006 | 2018 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+| threat-actor-individual--zhu-hua | employed-by | organization--tianjin-huaying-haitai | The indictment identifies Zhu as a Huaying employee. | 不明 | 不明 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+| threat-actor-individual--zhu-hua | alleged-member-of | actor--menupass | The indictment alleges Zhu was a member of APT10. | 2006 | 2018 | 高 | `source--doj-apt10-huaying-indictment-2018` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Tianjin Huaying Haitai Science and Technology Development Co. Ltd | sanction | European Union | 2020-07-30 | completed | Listed under EU cyber sanctions for support to the Cloud Hopper/APT10 operation. | `source--eu-apt10-huaying-sanctions-2026` |
+| Gao Qiang | sanction | European Union | 2020-07-30 | completed | Listed under EU cyber sanctions for involvement with APT10 infrastructure. | `source--eu-apt10-huaying-sanctions-2026` |
+| Zhang Shilong | indictment | U.S. District Court for the Southern District of New York | 2018-12-17 | alleged | Indicted for conspiracy to commit computer intrusions, wire fraud and aggravated identity theft. | `source--doj-apt10-huaying-indictment-2018` |
+| Zhu Hua | indictment | U.S. District Court for the Southern District of New York | 2018-12-17 | alleged | Indicted for conspiracy to commit computer intrusions, wire fraud and aggravated identity theft. | `source--doj-apt10-huaying-indictment-2018` |
 
 ## ダイヤモンドモデル
 
@@ -146,6 +176,24 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -303,6 +351,8 @@ Dust Storm; Cloud Hopper; ChessMaster
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--doj-apt10-huaying-indictment-2018 | Two Chinese Hackers Associated With the Ministry of State Security Charged with Global Computer Intrusion Campaigns | U.S. Department of Justice | 2018-12-20 | https://www.justice.gov/usao-sdny/pr/two-chinese-hackers-associated-ministry-state-security-charged-global-computer | government-legal | TLP:CLEAR | 高 |
+| source--eu-apt10-huaying-sanctions-2026 | Council Decision (CFSP) 2026/1079 concerning restrictive measures against cyber-attacks | European Union | 2026-05-29 | https://eur-lex.europa.eu/eli/dec/2026/1079/oj/eng/pdf | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -43,6 +43,18 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 |---|---|---|---|---|
 | Plump Spider | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as Plump Spider. | 中 | `source--breeze-comet--gtig-brazil-2026` |
 | SHADOW-AETHER-064 | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as SHADOW-AETHER-064. | 中 | `source--breeze-comet--gtig-brazil-2026` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -122,6 +134,24 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 |---|---|---|---|---|---|---|
 | capability--breeze-comet--llm-assisted-tooling | LLMによる作戦スクリプトの生成 | 大規模言語モデルを用いて、ネットワーク偵察、資格情報の検証、大量展開、被害組織ごとのピボット、データ抽出のためのカスタムスクリプトを高速に作成する。回収されたスクリプトは高度に個別化され機能するが、人間特有の癖に乏しく、展開されたコード構造、冗長な説明コメント、定型的な実行ヘッダーに強く依存している。 | 不明 | 不明 | 中 | `source--breeze-comet--gtig-brazil-2026` |
 | capability--breeze-comet--physical-rogue-device | 小売店舗ネットワークへの不正ハードウェア設置 | 2025年に、小売店舗のネットワークへ不正なハードウェア機器を直接接続して足がかりを確立する手口が初めて観測された。このネットワークアクセスから内部システムへ横展開し、Netcatとカスタムスクリプトを取得して外部のオープンディレクトリから後続のポストエクスプロイトフレームワークを引き込む。 | 2025 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 

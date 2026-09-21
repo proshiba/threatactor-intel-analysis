@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--earth-lusca`
 - 状態: draft
-- 更新日時: 2026-09-21T04:35:02Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -45,6 +45,18 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 |---|---|---|---|---|
 | APT41 | related-to | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used malware commonly used by other Chinese threat groups, including [APT41](https://attack.mitre.org/groups/G0096) and the [Winnti Group](https://attack.mitre.org/groups/G0044) cluster, however security researchers assess [Earth Lusca](https://attack.mitre.org/groups/G1006)'s techniques and infrastructure are separate.(Citation: TrendMicro EarthLusca 2022) | 中 | `source--mitre-attack-19-2` |
 | Winnti Group | related-to | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used malware commonly used by other Chinese threat groups, including [APT41](https://attack.mitre.org/groups/G0096) and the [Winnti Group](https://attack.mitre.org/groups/G0044) cluster, however security researchers assess [Earth Lusca](https://attack.mitre.org/groups/G1006)'s techniques and infrastructure are separate.(Citation: TrendMicro EarthLusca 2022) | 中 | `source--mitre-attack-19-2` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -125,6 +137,30 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--earth-lusca-bthcam-driver | malware | driver-sha1 | bthcam.sys SHA1 44DC4A08C5EB0972C8E18B0E01284E06F09006BB | shared | 1 | 1 | 1 | 2023 | 2024 | historical-only | unknown | 高 | `source--eset-fishmonger-sprysocks-windows-2026` |
+
+### 観測根拠
+
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--earth-lusca-bthcam-driver | pivot-observation--earth-lusca-bthcam-2023-2024 | 2023-01-01T00:00:00Z | 1 | documented-samples | activity--daily-e4b448f8c69f2fc0456e | source--eset-fishmonger-sprysocks-windows-2026 | ESET telemetry associated the DriverLoader hash with SprySOCKS for Windows activity during 2023-2024. |
+
+### ハントクエリ
+
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--earth-lusca-bthcam-driver | edr | `file.sha1=44DC4A08C5EB0972C8E18B0E01284E06F09006BB OR file.name=bthcam.sys` | Find the exact DriverLoader sample and candidate filename reuse. | 要 | Hash is strong; filename is weak. Validate encrypted-driver loading behavior, signer metadata and related SprySOCKS artifacts. |
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -235,11 +271,11 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## IOC／artifact概要
 
-- IOC値: 17件
-- IOC観測: 17件
+- IOC値: 18件
+- IOC観測: 18件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 6件
-- 非IOC artifact観測: 14件（`artifacts.csv`）
+- 非IOC artifact観測: 15件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -319,6 +355,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--eset-fishmonger-sprysocks-windows-2026 | FishMonger's arsenal upgraded: SprySOCKS for Windows | ESET Research | 2026-06-16 | https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

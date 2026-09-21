@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--salt-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-21T08:16:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -36,6 +36,28 @@ Aliasなし
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | UNC2286 | taxonomy-overlaps-with | A secondary report maps UNC2286 to Salt Typhoon; primary Cisco reporting documents Salt Typhoon without UNC2286, and the joint CISA advisory warns that industry tracking names may not correlate one-to-one. | 中 | `source--daily-976395d39cbe624f587e`, `source--cisa-aa25-239a-salt-typhoon-boundary` |
+
+## 関連する企業・個人
+
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| organization--sichuan-juxinhe | Sichuan Juxinhe Network Technology Co., Ltd. | organization | cybersecurity-company, cyber-products-and-services-provider, directly-involved-in-salt-typhoon-exploitation | China | 不明 | 不明 | 高 | `source--treasury-salt-typhoon-juxinhe-2025`, `source--cisa-aa25-239a-salt-typhoon-boundary` |
+| organization--beijing-huanyu-tianqiong | Beijing Huanyu Tianqiong Information Technology Co., Ltd. | organization | cyber-products-and-services-provider, intelligence-service-supplier, linked-commercial-ecosystem-entity | China | 不明 | 不明 | 高 | `source--cisa-aa25-239a-salt-typhoon-boundary` |
+| organization--sichuan-zhixin-ruijie | Sichuan Zhixin Ruijie Network Technology Co., Ltd. | organization | cyber-products-and-services-provider, intelligence-service-supplier, linked-commercial-ecosystem-entity | China | 不明 | 不明 | 高 | `source--cisa-aa25-239a-salt-typhoon-boundary` |
+
+### エンティティ関係
+
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| organization--sichuan-juxinhe | directly-involved-in | actor--salt-typhoon | OFAC states that Sichuan Juxinhe had direct involvement in exploitation of U.S. telecommunications and internet-service-provider companies associated with Salt Typhoon. The company remains a separate Organization, not an alias of the intrusion set. | 不明 | 不明 | 高 | `source--treasury-salt-typhoon-juxinhe-2025`, `source--cisa-aa25-239a-salt-typhoon-boundary` |
+| organization--beijing-huanyu-tianqiong | associated-with-partially-overlapping-activity | actor--salt-typhoon | The joint advisory links Beijing Huanyu Tianqiong to the broader PRC APT activity described there. That activity partially overlaps the industry label Salt Typhoon among several labels; the advisory explicitly does not assert a one-to-one mapping. | 不明 | 不明 | 中 | `source--cisa-aa25-239a-salt-typhoon-boundary` |
+| organization--sichuan-zhixin-ruijie | associated-with-partially-overlapping-activity | actor--salt-typhoon | The joint advisory links Sichuan Zhixin Ruijie to the broader PRC APT activity described there. That activity partially overlaps the industry label Salt Typhoon among several labels; the advisory explicitly does not assert a one-to-one mapping. | 不明 | 不明 | 中 | `source--cisa-aa25-239a-salt-typhoon-boundary` |
+
+### 法的措置
+
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Sichuan Juxinhe Network Technology Co., Ltd. | sanction | U.S. Department of the Treasury, Office of Foreign Assets Control | 2025-01-17 | completed | Designated for direct involvement in cyber-enabled activity affecting U.S. telecommunications and internet-service-provider infrastructure associated with Salt Typhoon. | `source--treasury-salt-typhoon-juxinhe-2025` |
 
 ## ダイヤモンドモデル
 
@@ -107,6 +129,24 @@ Aliasなし
 ### 運用能力
 
 未確認
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
@@ -290,6 +330,7 @@ Aliasなし
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--cisa-aa25-239a-salt-typhoon-boundary | Countering Chinese State-Sponsored Actors Compromise of Networks Worldwide to Feed Global Espionage System | CISA and international partners | 2025-08-27 | https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-239a | government-advisory | TLP:CLEAR | 高 |
 | source--cisco-talos-salt-typhoon-jumbledpath-2025 | Weathering the storm: In the midst of a Typhoon | Cisco Talos | 2025-02-20 | https://blog.talosintelligence.com/salt-typhoon-analysis/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--treasury-salt-typhoon-juxinhe-2025 | Treasury Sanctions Company Associated with Salt Typhoon and Hacker Associated with Treasury Compromise | U.S. Department of the Treasury | 2025-01-17 | https://home.treasury.gov/news/press-releases/jy2792 | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

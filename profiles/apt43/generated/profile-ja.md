@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt43`
 - 状態: review
-- 更新日時: 2026-09-21T08:15:06Z
-- 構造バージョン: 1.3.0
+- 更新日時: 2026-09-21T13:20:00Z
+- 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
 
@@ -36,6 +36,18 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Kimsuky | overlaps-with | MITRE treats APT43 as an associated Kimsuky group name, while Mandiant defines APT43 using its own collection scope. The overlap is well supported, but exact one-to-one identity is not. | 高 | `source--mitre-live-kimsuky-2026`, `source--mandiant-apt43-2023` |
+
+## 関連する企業・個人
+
+関連エンティティなし
+
+### エンティティ関係
+
+確認された関係なし
+
+### 法的措置
+
+確認された法的措置なし
 
 ## ダイヤモンドモデル
 
@@ -111,6 +123,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | capability--apt43-public-llm-access | Access to Public LLM Tools | GTIG detected APT43 actors accessing multiple publicly available LLM tools. The source did not establish what APT43 intended to do with them. | 不明 | 不明 | 高 | `source--gtig-apt43-llm-access-2025` |
+
+## C2・マルウェア ハンティング・ピボット
+
+構造化されたハンティング・ピボットなし
+
+### 観測根拠
+
+観測記録なし
+
+### ハントクエリ
+
+クエリなし
+
+### 継続利用チェック
+
+実行済みの受動検索・継続利用チェックなし
+
+`active_status` は明示的なテレメトリまたはスキャン根拠がない限り `unknown` です。出典公開日は観測時刻に転用していません。
 
 ## 攻撃活動の履歴
 
