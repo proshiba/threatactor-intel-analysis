@@ -7,30 +7,18 @@
       "spec_version": "2.1",
       "id": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Bohrium",
-      "aliases": [
-        "Smoke Sandstorm"
-      ],
+      "aliases": [],
       "description": "Bohriumの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--bohrium",
-      "x_alias_assessments": [
-        {
-          "name": "Smoke Sandstorm",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        }
-      ],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -45,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、アルバニア、イスラエル、インド、トルコ。標的地域=中東、欧州。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--bohrium",
         "actor_name": "Bohrium",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -63,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -73,6 +63,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "1f9277fa-f9e5-4a0b-a2a0-2179ddc62c86",
@@ -109,7 +100,44 @@
                 "https://www.microsoft.com/en-us/security/security-insider/smoke-sandstorm",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+TA455%2C+Smoke+Sandstorm&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2021",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Aerospace",
+                  "Aviation",
+                  "Defense"
+                ],
+                "observed-countries": [
+                  "Albania",
+                  "India",
+                  "Israel",
+                  "Turkey",
+                  "UAE",
+                  "Middle East"
+                ],
+                "tools": [
+                  "LIGHTRAIL",
+                  "MINIBIKE",
+                  "MINIBUS",
+                  "SlugResin",
+                  "SnailResin"
+                ],
+                "operations": [
+                  {
+                    "date": "2022-06",
+                    "activity": "When Cats Fly: Suspected Iranian Threat Actor UNC1549 Targets Israeli and Middle East Aerospace and Defense Sectors\nhttps://www.mandiant.com/resources/blog/suspected-iranian-unc1549-targets-israel-middle-east"
+                  },
+                  {
+                    "date": "2023-09",
+                    "activity": "Operation “Iranian Dream Job”\nIranian “Dream Job” Campaign 11.24\nhttps://www.clearskysec.com/wp-content/uploads/2024/11/Iranian-Dream-Job-ver1.pdf"
+                  }
+                ],
+                "last-card-change": "2024-12-29"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -139,7 +167,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -190,7 +219,33 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "United States",
+                  "Israel",
+                  "Middle East",
+                  "Europe"
+                ],
+                "cfr-target-category": [
+                  "Defense",
+                  "Government",
+                  "Military",
+                  "Finance",
+                  "Energy",
+                  "Healthcare",
+                  "Pharmaceuticals",
+                  "Telecoms",
+                  "High-Tech",
+                  "Media",
+                  "NGOs",
+                  "Civil Society",
+                  "Legal",
+                  "Rail",
+                  "Transportation"
+                ],
+                "cfr-type-of-incident": "Espionage"
+              }
             },
             {
               "entry_uuid": "111efc97-6a93-487b-8cb3-1e890ac51066",
@@ -231,7 +286,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -268,12 +324,14 @@
                 "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide",
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [
@@ -328,270 +386,70 @@
       }
     },
     {
-      "type": "identity",
+      "type": "indicator",
       "spec_version": "2.1",
-      "id": "identity--f26d9724-31c7-49b9-8094-4e98d427b804",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "indicator--46990e7f-d489-458a-83c9-c5ad74be3ef9",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "アラブ首長国連邦",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでBohriumの標的・被害国としてアラブ首長国連邦が記録されている。",
-      "external_references": [
+      "name": "md5: 1ea83e4e4592b01e4acab63eb867bee5",
+      "pattern": "[file:hashes.'MD5' = '1ea83e4e4592b01e4acab63eb867bee5']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
         {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "observation_id": "observation--sha256:22c61f5ba5f78afaf4fad4dc809da50878d6601a9efe51e56806e7250302688c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--bohrium--ffc8b58cbb25f4b6",
+          "source_path": "actor_profile/evidence/bohrium.csv",
+          "source_location": {
+            "row": 14
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/.review_notes\"} Smoke Sandstorm 答として扱う)を持つこと、WinHttpQueryAuthSchemes/WinHttpSetCredentialsをNULL資格情報で用いるプロキシ対応C2設計の一致、Azure WebsitesとCloudflare配下ドメインの組み合わせという既知TTP、およびアフリカ・中東という既知の地理的標的との整合が挙げられている。Mirage Kittenはunc1549のexact alias(canonical: UNC1549、別名Smoke Sandstorm、Nimbus Manticore)であり、原文サイドバーもこの対応を明示している。被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野。初期アクセスはLinkedIn",
+          "analyst_notes": "",
+          "raw_value": "1ea83e4e4592b01e4acab63eb867bee5"
         }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--fae94220-5ba1-48b6-bab2-5c8848b781e1",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アルバニア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでBohriumの標的・被害国としてアルバニアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d4064fbb-cd81-457e-b92c-e62213531895",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イスラエル",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでBohriumの標的・被害国としてイスラエルが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c1675998-c7df-4d63-bc97-a91d964979c0",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "インド",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでBohriumの標的・被害国としてインドが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--8d32a74b-54e6-41c4-abad-419a18730454",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "トルコ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでBohriumの標的・被害国としてトルコが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--7cc4b5cd-b248-4ba1-b14c-7309755d8bf3",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでBohriumの標的範囲として中東が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--562d41fc-37f4-4c9e-9133-a5537b23391a",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "アルバニア、トルコで確認された標的・被害事例を欧州として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ca726176-36c6-4f74-8c09-94749273607e",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--f26d9724-31c7-49b9-8094-4e98d427b804",
-      "description": "Bohrium targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fcf1aaf7-e534-4072-8507-cae15a88e556",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--fae94220-5ba1-48b6-bab2-5c8848b781e1",
-      "description": "Bohrium targets アルバニア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9743e8ea-3ed7-44bb-b02d-e545510fccf6",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--d4064fbb-cd81-457e-b92c-e62213531895",
-      "description": "Bohrium targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--aaf06b08-0712-49a5-ae19-8b32413224c7",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--c1675998-c7df-4d63-bc97-a91d964979c0",
-      "description": "Bohrium targets インド (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b11486c2-afb1-4d93-835a-aa3a5b6edcfd",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--8d32a74b-54e6-41c4-abad-419a18730454",
-      "description": "Bohrium targets トルコ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--be9b057d-82c3-41fb-acc7-d761232219b6",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--7cc4b5cd-b248-4ba1-b14c-7309755d8bf3",
-      "description": "Bohrium targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--91cc2cb2-e251-4ab7-9baf-489b15ade62e",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-      "target_ref": "identity--562d41fc-37f4-4c9e-9133-a5537b23391a",
-      "description": "Bohrium targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--d0065a4f-174b-4c70-83fc-82b993b9a5aa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -601,14 +459,14 @@
         "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 18
+      "x_artifact_observation_count": 3
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--35464576-d1a1-47dd-87a3-bdb9f4d7d9c4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -617,18 +475,12 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--1f6aeab2-026b-4054-bf38-409f6c402bfd",
-        "identity--f26d9724-31c7-49b9-8094-4e98d427b804",
-        "identity--fae94220-5ba1-48b6-bab2-5c8848b781e1",
-        "identity--d4064fbb-cd81-457e-b92c-e62213531895",
-        "identity--c1675998-c7df-4d63-bc97-a91d964979c0",
-        "identity--8d32a74b-54e6-41c4-abad-419a18730454",
-        "identity--7cc4b5cd-b248-4ba1-b14c-7309755d8bf3",
-        "identity--562d41fc-37f4-4c9e-9133-a5537b23391a"
+        "indicator--46990e7f-d489-458a-83c9-c5ad74be3ef9"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--scarlet-mimic",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "MobileOrder, FakeM, CallMe, Psylo",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=チベット。日本は確認時に個別国として保持する。\n\nUyghur and Tibetan activists as well as those who are interested in their causes",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nUyghur and Tibetan activists as well as those who are interested in their causes",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--scarlet-mimic",
         "actor_name": "Scarlet Mimic",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "d130ffbe-6498-4559-9b16-58fb88146c45",
@@ -86,7 +90,40 @@
                 "https://unit42.paloaltonetworks.com/scarlet-mimic-years-long-espionage-targets-minority-activists/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Scarlet+Mimic&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2015",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-countries": [
+                  "Tibetan and Uyghur activists as well as those who are interested in their causes"
+                ],
+                "tools": [
+                  "BrutishCommand",
+                  "CallMe",
+                  "CrypticConvo",
+                  "Elirks",
+                  "FakeFish",
+                  "FakeHighFive",
+                  "FakeM",
+                  "FullThrottle",
+                  "HTran",
+                  "MobileOrder",
+                  "PiggyBack",
+                  "Psylo",
+                  "RaidBase",
+                  "SkiBoot",
+                  "SubtractThis"
+                ],
+                "operations": [
+                  {
+                    "date": "2022-08",
+                    "activity": "CPR analyzes A 7-year mobile surveillance campaign targeting largest minority in China\nhttps://blog.checkpoint.com/2022/09/22/cpr-analyzes-a-7-year-mobile-surveillance-campaign-targeting-largest-minority-in-china/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -128,7 +165,12 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "targeted-sector": [
+                  "Activists"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
@@ -150,10 +192,10 @@
                 "Scarlet Mimic"
               ],
               "countries": [],
-              "description": "Scarlet Mimic is a threat group that has targeted minority rights activists. This group has not been directly linked to a government source, but the group's motivations appear to overlap with those of the Chinese government. While there is some overlap between IP addresses used by Scarlet Mimic and Putter Panda, it has not been concluded that the groups are the same. (Citation: Scarlet Mimic Jan 2016)",
+              "description": "[Scarlet Mimic](https://attack.mitre.org/groups/G0029) is a threat group that has targeted minority rights activists. This group has not been directly linked to a government source, but the group's motivations appear to overlap with those of the Chinese government. While there is some overlap between IP addresses used by [Scarlet Mimic](https://attack.mitre.org/groups/G0029) and [Putter Panda](https://attack.mitre.org/groups/G0024), it has not been concluded that the groups are the same. (Citation: Scarlet Mimic Jan 2016)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0029",
-                "http://researchcenter.paloaltonetworks.com/2016/01/scarlet-mimic-years-long-espionage-targets-minority-activists/"
+                "http://researchcenter.paloaltonetworks.com/2016/01/scarlet-mimic-years-long-espionage-targets-minority-activists/",
+                "https://attack.mitre.org/groups/G0029"
               ],
               "related": [
                 {
@@ -164,13 +206,27 @@
                   "type": "similar"
                 },
                 {
+                  "dest-uuid": "463f68f1-5cde-4dc2-a831-68b73488f8f4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "77eae145-55db-4519-8ae5-77b0c7215d69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bb3c1098-d654-4620-bf40-694386d28921",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cb7bcf6f-085f-41db-81ee-4b68481661b5",
+                  "type": "uses"
+                },
+                {
                   "dest-uuid": "dfb5fa9b-3051-4b97-8035-08f80aef945b",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-intrusion-set": [
@@ -224,10 +280,39 @@
                   "dest-uuid": "dfb5fa9b-3051-4b97-8035-08f80aef945b",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "6c1bdc51-f633-4512-8b20-04a11c2d97f4",
+              "entry_value": "Scarlet Mimic",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "scarletmimic",
+                  "profile_value": "Scarlet Mimic",
+                  "dataset_value": "Scarlet Mimic"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Scarlet Mimic"
+              ],
+              "countries": [],
+              "description": "[Scarlet Mimic](https://app.tidalcyber.com/groups/6c1bdc51-f633-4512-8b20-04a11c2d97f4) is a threat group that has targeted minority rights activists. This group has not been directly linked to a government source, but the group's motivations appear to overlap with those of the Chinese government. While there is some overlap between IP addresses used by [Scarlet Mimic](https://app.tidalcyber.com/groups/6c1bdc51-f633-4512-8b20-04a11c2d97f4) and [Putter Panda](https://app.tidalcyber.com/groups/6005f4a9-fe26-4237-a44e-3f6cbb1fe75c), it has not been concluded that the groups are the same. <sup>[[Scarlet Mimic Jan 2016](https://app.tidalcyber.com/references/f84a5b6d-3af1-45b1-ac55-69ceced8735f)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "target_categories": [
+                  "Human Rights"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -268,65 +353,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "MobileOrder",
-      "description": "[MobileOrder](https://attack.mitre.org/software/S0079) is a Trojan intended to compromise Android mobile devices. It has been used by [Scarlet Mimic](https://attack.mitre.org/groups/G0029). (Citation: Scarlet Mimic Jan 2016)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--mobileorder",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "FakeM",
-      "description": "[FakeM](https://attack.mitre.org/software/S0076) is a shellcode-based Windows backdoor that has been used by [Scarlet Mimic](https://attack.mitre.org/groups/G0029). (Citation: Scarlet Mimic Jan 2016)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--fakem",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "FakeM"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--979316fe-1527-4149-8028-8412842386b3",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -336,7 +365,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--callme",
@@ -353,9 +382,65 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
+      "created": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FakeM",
+      "description": "[FakeM](https://attack.mitre.org/software/S0076) is a shellcode-based Windows backdoor that has been used by [Scarlet Mimic](https://attack.mitre.org/groups/G0029). (Citation: Scarlet Mimic Jan 2016)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--fakem",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "FakeM"
+      ]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
+      "created": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MobileOrder",
+      "description": "[MobileOrder](https://attack.mitre.org/software/S0079) is a Trojan intended to compromise Android mobile devices. It has been used by [Scarlet Mimic](https://attack.mitre.org/groups/G0029). (Citation: Scarlet Mimic Jan 2016)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--mobileorder",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "unknown"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--7197c91b-31a1-4d58-bf25-bb136d9916c3",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -365,7 +450,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--psylo",
@@ -382,36 +467,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--c6d4dd59-681b-4995-8785-ffa4059fc6a5",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "チベット",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録されたチベットを構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--40e8e091-991b-4045-a220-8adbc5ca857c",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-20T13:48:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -422,40 +480,18 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
       "x_confidence": "high"
     },
     {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--00b98e38-926b-4b8c-9e9c-44b23706d4d1",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Nonprofit and Civil Society",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Nonprofit and Civil Society sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--127e4d63-c44f-4193-a8b4-6aaed0ae56be",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -470,7 +506,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-002--general",
@@ -496,39 +532,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--09c34dce-28de-49e8-93c3-22e8231fbaa5",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
-      "target_ref": "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
-      "description": "Scarlet Mimic uses MobileOrder.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--47b9a0a8-0ac5-452f-8f1f-b1dda12c63e9",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
-      "target_ref": "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
-      "description": "Scarlet Mimic uses FakeM.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--bd05b5f1-23c5-448b-a3ea-09b30037ae9f",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -536,14 +542,65 @@
       "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
       "target_ref": "malware--979316fe-1527-4149-8028-8412842386b3",
       "description": "Scarlet Mimic uses CallMe.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--47b9a0a8-0ac5-452f-8f1f-b1dda12c63e9",
+      "created": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
+      "target_ref": "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
+      "description": "Scarlet Mimic uses FakeM.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--09c34dce-28de-49e8-93c3-22e8231fbaa5",
+      "created": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
+      "target_ref": "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
+      "description": "Scarlet Mimic uses MobileOrder.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ccbbd8c6-acef-46a3-988b-f3e6891bbb27",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -551,29 +608,21 @@
       "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
       "target_ref": "malware--7197c91b-31a1-4d58-bf25-bb136d9916c3",
       "description": "Scarlet Mimic uses Psylo.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e7735596-f728-483c-9a8d-2508d3637aa8",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
-      "target_ref": "identity--c6d4dd59-681b-4995-8785-ffa4059fc6a5",
-      "description": "Scarlet Mimic targets チベット (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a13274c2-617d-4c7e-b8f3-ea89ee034e61",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -581,29 +630,21 @@
       "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
       "target_ref": "identity--40e8e091-991b-4045-a220-8adbc5ca857c",
       "description": "Scarlet Mimic targets 非営利・市民社会 (profile target category: sectors).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--34384ae8-5916-44aa-8547-2d42561901dc",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
-      "target_ref": "identity--00b98e38-926b-4b8c-9e9c-44b23706d4d1",
-      "description": "Scarlet Mimic targets Nonprofit and Civil Society (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d8ce7f2b-e058-4ae6-8f89-424f0515a469",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -611,14 +652,21 @@
       "source_ref": "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
       "target_ref": "attack-pattern--127e4d63-c44f-4193-a8b4-6aaed0ae56be",
       "description": "[Scarlet Mimic](https://attack.mitre.org/groups/G0029) has used the left-to-right override character in self-extracting RAR archive spearphishing attachment file names.(Citation: Scarlet Mimic Jan 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--c7939ddf-e01f-41bf-97c7-7d30398ef074",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -628,14 +676,14 @@
         "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 20
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--2543c501-cb2e-4dfb-ad55-8e25a41bfb59",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -644,19 +692,17 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--e79ff186-f6ca-4036-9aca-814f3c4f91cd",
-        "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
-        "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
         "malware--979316fe-1527-4149-8028-8412842386b3",
+        "malware--d275a161-4805-4893-8f79-9cbbbdfd1bcb",
+        "malware--dbe6ffa8-f391-4c63-badb-52dba25db3bb",
         "malware--7197c91b-31a1-4d58-bf25-bb136d9916c3",
-        "identity--c6d4dd59-681b-4995-8785-ffa4059fc6a5",
         "identity--40e8e091-991b-4045-a220-8adbc5ca857c",
-        "identity--00b98e38-926b-4b8c-9e9c-44b23706d4d1",
         "attack-pattern--127e4d63-c44f-4193-a8b4-6aaed0ae56be"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

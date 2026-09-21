@@ -7,17 +7,31 @@
       "spec_version": "2.1",
       "id": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT45",
-      "aliases": [],
+      "aliases": [
+        "GRASS NEPTUNE"
+      ],
       "description": "APT45の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--apt45",
-      "x_alias_assessments": [],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "GRASS NEPTUNE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        }
+      ],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -39,9 +53,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt45",
         "actor_name": "APT45",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,15 +65,49 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
-            "APT45"
+            "APT45",
+            "GRASS NEPTUNE"
           ],
           "mitre_group_id": null
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-grass-neptune",
+              "entry_value": "GRASS NEPTUNE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt45",
+                  "profile_value": "APT45",
+                  "dataset_value": "APT45"
+                },
+                {
+                  "normalized": "grassneptune",
+                  "profile_value": "GRASS NEPTUNE",
+                  "dataset_value": "GRASS NEPTUNE"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GRASS NEPTUNE",
+                "APT45"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT45.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "00089621-cabc-421a-b2ce-3fd18f6bfa9c",
@@ -94,7 +143,124 @@
                 "https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+Andariel%2C+Silent+Chollima&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2009",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "operations": [
+                  {
+                    "date": "2014",
+                    "activity": "Operation “BLACKMINE”\nTarget: South Korean organizations.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2014",
+                    "activity": "Operation “GHOSTRAT”\nTarget: Defense industry.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2014",
+                    "activity": "Operation “XEDA”\nTarget: Foreign defense industries.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2015",
+                    "activity": "Operation “INITROY”/Phase 1\nTarget: South Korean organizations.\nMethod: Information theft/early phase operation."
+                  },
+                  {
+                    "date": "2015",
+                    "activity": "Operation “DESERTWOLF”/Phase 3\nTarget: South Korean defense industry.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2015",
+                    "activity": "Operation “BLACKSHEEP”/Phase 3.\nTarget: Defense industry.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2016",
+                    "activity": "Operation “INITROY”/Phase 2\nTarget: South Korean organizations.\nMethod: Information theft/early phase operation."
+                  },
+                  {
+                    "date": "2016",
+                    "activity": "Operation “VANXATM”\nTarget: ATM companies.\nMethod: Financial theft/BPC."
+                  },
+                  {
+                    "date": "2017",
+                    "activity": "Operation “Mayday”\nTarget: South Koran Financial Company.\nMethod: Information theft and espionage."
+                  },
+                  {
+                    "date": "2018-06",
+                    "activity": "Operation “GoldenAxe”\nhttps://blog.trendmicro.com/trendlabs-security-intelligence/new-andariel-reconnaissance-tactics-hint-at-next-targets/"
+                  },
+                  {
+                    "date": "2021-04",
+                    "activity": "Lazarus APT conceals malicious code within BMP image to drop its RAT\nhttps://blog.malwarebytes.com/malwarebytes-news/2021/04/lazarus-apt-conceals-malicious-code-within-bmp-file-to-drop-its-rat/\nhttps://securelist.com/andariel-evolves-to-target-south-korea-with-ransomware/102811/"
+                  },
+                  {
+                    "date": "2021-06",
+                    "activity": "Andariel evolves to target South Korea with ransomware\nhttps://securelist.com/andariel-evolves-to-target-south-korea-with-ransomware/102811/"
+                  },
+                  {
+                    "date": "2022-02",
+                    "activity": "Stonefly: North Korea-linked Spying Operation Continues to Hit High-value Targets\nhttps://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/stonefly-north-korea-espionage"
+                  },
+                  {
+                    "date": "2022-08",
+                    "activity": "Andariel deploys DTrack and Maui ransomware\nhttps://securelist.com/andariel-deploys-dtrack-and-maui-ransomware/107063/"
+                  },
+                  {
+                    "date": "2022-10",
+                    "activity": "DPRK hacking groups breach South Korean defense contractors\nhttps://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/"
+                  },
+                  {
+                    "date": "2023-03",
+                    "activity": "Operation “Blacksmith”\nOperation Blacksmith: Lazarus targets organizations worldwide using novel Telegram-based malware written in DLang\nhttps://blog.talosintelligence.com/lazarus_new_rats_dlang_and_telegram/"
+                  },
+                  {
+                    "date": "2023-06",
+                    "activity": "Andariel’s silly mistakes and a new malware family\nhttps://securelist.com/lazarus-andariel-mistakes-and-easyrat/110119/"
+                  },
+                  {
+                    "date": "2023-10",
+                    "activity": "Multiple North Korean threat actors exploiting the TeamCity CVE-2023-42793 vulnerability\nhttps://www.microsoft.com/en-us/security/blog/2023/10/18/multiple-north-korean-threat-actors-exploiting-the-teamcity-cve-2023-42793-vulnerability/"
+                  },
+                  {
+                    "date": "2023-11",
+                    "activity": "Circumstances of an Attack Exploiting an Asset Management Program (Andariel Group)\nhttps://asec.ahnlab.com/en/59073/"
+                  },
+                  {
+                    "date": "2023-11",
+                    "activity": "Circumstances of the Andariel Group Exploiting an Apache ActiveMQ Vulnerability (CVE-2023-46604)\nhttps://asec.ahnlab.com/en/59318/"
+                  },
+                  {
+                    "date": "2023-12",
+                    "activity": "North Korean hackers stole anti-aircraft system data from South Korean firm\nhttps://therecord.media/north-korea-hackers-stole-anti-aircraft-system-data"
+                  },
+                  {
+                    "date": "2024-03",
+                    "activity": "Andariel Group Exploiting Korean Asset Management Solutions (MeshAgent)\nhttps://asec.ahnlab.com/en/63192/"
+                  },
+                  {
+                    "date": "2024-04",
+                    "activity": "North Korean hackers exploit VPN update flaw to install malware\nhttps://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/"
+                  },
+                  {
+                    "date": "2024-05",
+                    "activity": "Analysis of APT Attack Cases Using Dora RAT Against Korean Companies (Andariel Group)\nhttps://asec.ahnlab.com/en/66088/"
+                  },
+                  {
+                    "date": "2024-08",
+                    "activity": "Stonefly: Extortion Attacks Continue Against U.S. Targets\nhttps://www.security.com/threat-intelligence/stonefly-north-korea-extortion"
+                  },
+                  {
+                    "date": "2024 Mid",
+                    "activity": "Analysis of Attack Cases Against Korean Solutions by the Andariel Group (SmallTiger)\nhttps://asec.ahnlab.com/en/85400/"
+                  },
+                  {
+                    "date": "2024-10",
+                    "activity": "Jumpy Pisces Engages in Play Ransomware\nhttps://unit42.paloaltonetworks.com/north-korean-threat-group-play-ransomware/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -130,7 +296,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -143,21 +310,29 @@
                   "normalized": "apt45",
                   "profile_value": "APT45",
                   "dataset_value": "APT45"
+                },
+                {
+                  "normalized": "grassneptune",
+                  "profile_value": "GRASS NEPTUNE",
+                  "dataset_value": "GRASS NEPTUNE"
                 }
               ],
               "match_basis": "canonical-name",
               "match_confidence": "high",
               "candidate_names": [
-                "APT45"
+                "APT45",
+                "GRASS NEPTUNE"
               ],
               "countries": [
                 "KP"
               ],
               "description": "APT45 is a North Korean cyber threat actor that has been active since at least 2009. They have conducted espionage campaigns targeting government agencies and defense industries, as well as financially-motivated operations, including ransomware development. APT45 has targeted critical infrastructure, financial organizations, nuclear research facilities, and healthcare and pharmaceutical companies. They use a mix of publicly available tools, modified malware, and custom malware families in their operations.",
               "refs": [
-                "https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine"
+                "https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -193,12 +368,14 @@
               "refs": [
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -229,7 +406,7 @@
       "spec_version": "2.1",
       "id": "campaign--6a316678-f4f1-4157-a88a-d97815dbf7e7",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -243,14 +420,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-1ab7e5aa9fc7ccba6849",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--1ab7e5aa9fc7ccba6849cc58 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト",
-      "x_reported_at": {
-        "value": "2024-07-26T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt45",
@@ -307,6 +480,24 @@
           "source--daily-e35da9939e754bf10218"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -314,7 +505,7 @@
       "spec_version": "2.1",
       "id": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -328,14 +519,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-a0afddb5a69c4389af0b",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--a0afddb5a69c4389af0b9fff から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。",
-      "x_reported_at": {
-        "value": "2024-08-06T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt45",
@@ -398,6 +585,24 @@
           "source--daily-444c87a0051642065f55"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -608,7 +813,7 @@
       "spec_version": "2.1",
       "id": "relationship--bb88eddc-282c-4949-ad26-1f697dcd5a6b",
       "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -616,14 +821,21 @@
       "source_ref": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "target_ref": "identity--f80e73e5-fb9d-4932-a51d-77cb2691bf18",
       "description": "APT45 targets 韓国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--87ec420a-d5c4-4b98-9df3-bae222f3ea29",
       "created": "2026-07-29T23:11:59Z",
-      "modified": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -631,14 +843,21 @@
       "source_ref": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
       "description": "APT45 targets 製造・産業 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--db2b6ed5-5340-420f-8027-5a2dfe5225a7",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-27T11:04:30Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -646,14 +865,45 @@
       "source_ref": "campaign--6a316678-f4f1-4157-a88a-d97815dbf7e7",
       "target_ref": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "description": "北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト is attributed or linked to APT45.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/north-korean-hackers-shift-from-cyber.html",
+          "external_id": "source--daily-e35da9939e754bf10218"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f185dff3-5dbf-4afc-94e5-662682e56279",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -661,14 +911,45 @@
       "source_ref": "campaign--6a316678-f4f1-4157-a88a-d97815dbf7e7",
       "target_ref": "identity--c9a1ed59-34a2-4e42-85cb-512c0fb2f3da",
       "description": "北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト affected victim--activity-rule--3fc2bc4c3d84f7161583.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/07/north-korean-hackers-shift-from-cyber.html",
+          "external_id": "source--daily-e35da9939e754bf10218"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c57a8ea2-9f33-4529-8673-82a8b0e57331",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-27T11:04:30Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -676,14 +957,45 @@
       "source_ref": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "target_ref": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール is attributed or linked to APT45.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--332ef986-9e8d-44bd-89db-f152dc8c8c99",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -691,14 +1003,45 @@
       "source_ref": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "target_ref": "identity--f80e73e5-fb9d-4932-a51d-77cb2691bf18",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール targets target--activity-rule--country--6cb716c577f256f44a3e.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--67835221-42a0-4120-ae99-f0500d99d339",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -706,14 +1049,45 @@
       "source_ref": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール targets target--activity-rule--sector--dfc80b76cad93a318adc.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--da91174b-c198-42ea-939e-b8dd701824d4",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -721,14 +1095,45 @@
       "source_ref": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "target_ref": "attack-pattern--5f3e4ad8-8f0a-42e7-9e5a-9e5690a7ad00",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール uses ttp--activity-rule--53a28d47982cd79a8719.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--64a2c0bb-37f9-4a8c-9bc4-be6f28247375",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -736,14 +1141,45 @@
       "source_ref": "campaign--f4fe8309-b322-4176-916d-2781d59b33bf",
       "target_ref": "identity--a037b919-7620-46c2-b731-8926db5e994f",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール affected victim--activity-rule--c4d401b281a00a4bcbd2.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3be4f76d-56e5-4762-b8b4-9898beca841c",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:38:04Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -751,14 +1187,21 @@
       "source_ref": "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
       "target_ref": "attack-pattern--5f3e4ad8-8f0a-42e7-9e5a-9e5690a7ad00",
       "description": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+          "external_id": "source--daily-444c87a0051642065f55"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--f171fd4f-3d42-47eb-950e-489f19d8d393",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -768,14 +1211,14 @@
         "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 22
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--b40853a6-5b44-4202-85ff-0222acdb4953",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -784,7 +1227,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T08:15:06Z",
       "object_refs": [
         "intrusion-set--c6ae5d13-1d7b-4c1e-be81-d5d5fdd8ed89",
         "campaign--6a316678-f4f1-4157-a88a-d97815dbf7e7",
@@ -795,7 +1238,7 @@
         "identity--a037b919-7620-46c2-b731-8926db5e994f",
         "attack-pattern--5f3e4ad8-8f0a-42e7-9e5a-9e5690a7ad00"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

@@ -23,6 +23,7 @@ from daily_common import (
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "actor_profile" / "scripts"))
 from activity_diamond import build_activity_diamond  # noqa: E402
+from stix_modeling import default_stix_object_type  # noqa: E402
 
 FILE_NAME_SEARCH = re.compile(
     r"([^/\\\s]+\.(?:exe|dll|sys|ps1|bat|cmd|js|jse|vbs|hta|lnk|"
@@ -243,10 +244,17 @@ def activity_entry(
         }
         | set(_mentioned_profile_refs(profile, "malware", text))
     )
+    activity_type = activity_type_for(record)
+    stix_object_type = default_stix_object_type(activity_type)
     modeled = {
         "activity_id": activity_id_for(record),
         "name": record["activity"]["title"],
-        "activity_type": activity_type_for(record),
+        "activity_type": activity_type,
+        "stix_object_type": stix_object_type,
+        "grouping_context": (
+            "suspicious-activity" if stix_object_type == "grouping" else None
+        ),
+        "activity_refs": [],
         "first_observed": first,
         "last_observed": last,
         "reported_at": time_point(

@@ -1,0 +1,1957 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-21T04:38:32Z",
+  "actor_ref": "actor--gunra",
+  "actor_name": "Gunra",
+  "profile_updated_at": "2026-09-21T03:50:38Z",
+  "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
+  "coverage": {
+    "dimensions": {
+      "activities": "canonical-present",
+      "relationships": "unknown",
+      "malware": "canonical-present",
+      "tools": "canonical-present",
+      "targets": "canonical-present",
+      "motivations": "canonical-present",
+      "attribution": "canonical-present"
+    },
+    "canonical_counts": {
+      "activities": 2,
+      "dated_activities": 1,
+      "relationships": 0,
+      "malware": 2,
+      "activity_linked_malware": 2,
+      "tools": 9,
+      "targets": 12,
+      "motivations": 1
+    },
+    "external_lead_counts": {
+      "aliases": 0,
+      "activities": 0,
+      "relationships": 0,
+      "malware": 0,
+      "tools": 0,
+      "untyped_software": 0,
+      "targets": 0,
+      "motivations": 0,
+      "other_capabilities": 0,
+      "assessments": 0
+    }
+  },
+  "canonical": {
+    "attribution": {
+      "countries": [],
+      "sponsor_type": "criminal",
+      "organizations": [],
+      "assessment": "共同勧告は金銭目的のサイバー犯罪(financially motivated cybercriminals)向けのRaaSと記載するのみで、帰属国もスポンサーも示していない。被害国やインフラ所在国から攻撃元国を推定しない。",
+      "confidence": "unknown",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "韓国国家警察庁(KNPA)が共同署名機関に含まれ韓国内の被害事例を提供しているが、これは被害地であって攻撃元ではない。",
+      "claim_assessments": [
+        {
+          "claim_id": "claim--d8208686c322c9652a5c4095",
+          "category": "attribution",
+          "verification_status": "supported",
+          "confidence": "unknown",
+          "statement": "Sponsor classification: criminal.",
+          "evidence_refs": [
+            "source--cisa-aa26-222a-gunra"
+          ],
+          "verification_rationale": "Evidence tier=authoritative; sponsor classification is audited separately from country labels.",
+          "counterevidence": []
+        }
+      ]
+    },
+    "motivations": [
+      {
+        "type": "financial-gain",
+        "description": "データ窃取と暗号化を組み合わせた二重恐喝により身代金を得ることを目的とする。身代金交渉は数千万米ドル規模から開始されると勧告が記載している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--6a62d9c2d6bf4a59231d57fe",
+            "category": "motivation",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra has motivation financial-gain: データ窃取と暗号化を組み合わせた二重恐喝により身代金を得ることを目的とする。身代金交渉は数千万米ドル規模から開始されると勧告が記載している。",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; motivation is not inferred from sponsorship.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "activity_timeline": [
+      {
+        "activity_id": "activity--gunra-raas-2025-2026",
+        "name": "Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開",
+        "activity_type": "ransomware-extortion",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "reported_at": {
+          "value": "2026-08-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。",
+        "target_refs": [
+          "target--gunra--region--global",
+          "target--gunra--sector--academia",
+          "target--gunra--sector--critical-manufacturing",
+          "target--gunra--sector--financial-services",
+          "target--gunra--sector--government",
+          "target--gunra--sector--healthcare",
+          "target--gunra--sector--media",
+          "target--gunra--sector--professional-services",
+          "target--gunra--sector--retail",
+          "target--gunra--sector--transportation",
+          "target--gunra--sector--utilities"
+        ],
+        "malware_refs": [
+          "malware--gunra-main-exe",
+          "malware--gunra-ransomware"
+        ],
+        "infrastructure_refs": [
+          "infrastructure--gunra-dls"
+        ],
+        "ttp_refs": [
+          "ttp--activity-rule--733895bfebede80e9001",
+          "ttp--gunra-t1003-003",
+          "ttp--gunra-t1005",
+          "ttp--gunra-t1021-002",
+          "ttp--gunra-t1047",
+          "ttp--gunra-t1048",
+          "ttp--gunra-t1049",
+          "ttp--gunra-t1059-003",
+          "ttp--gunra-t1070-003",
+          "ttp--gunra-t1083",
+          "ttp--gunra-t1106",
+          "ttp--gunra-t1114",
+          "ttp--gunra-t1190",
+          "ttp--gunra-t1486",
+          "ttp--gunra-t1490",
+          "ttp--gunra-t1530",
+          "ttp--gunra-t1550-002",
+          "ttp--gunra-t1550-003",
+          "ttp--gunra-t1560",
+          "ttp--gunra-t1567",
+          "ttp--gunra-t1622",
+          "ttp--gunra-t1657"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--59bc376b01842d5405da",
+          "victim--gunra-dls-multi-sector"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "共同勧告AA26-222A(2026-08-10公開)の原文確認に基づく。活動期間は勧告が明示する2025年4月の初観測と、DLSの.onionアドレスが2026年7月まで観測されている記載を採用した。資料発行日はreported_atへ分離している。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--gunra",
+            "name": "Gunra",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--gunra-main-exe",
+              "malware--gunra-ransomware"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--733895bfebede80e9001",
+              "ttp--gunra-t1003-003",
+              "ttp--gunra-t1005",
+              "ttp--gunra-t1021-002",
+              "ttp--gunra-t1047",
+              "ttp--gunra-t1048",
+              "ttp--gunra-t1049",
+              "ttp--gunra-t1059-003",
+              "ttp--gunra-t1070-003",
+              "ttp--gunra-t1083",
+              "ttp--gunra-t1106",
+              "ttp--gunra-t1114",
+              "ttp--gunra-t1190",
+              "ttp--gunra-t1486",
+              "ttp--gunra-t1490",
+              "ttp--gunra-t1530",
+              "ttp--gunra-t1550-002",
+              "ttp--gunra-t1550-003",
+              "ttp--gunra-t1560",
+              "ttp--gunra-t1567",
+              "ttp--gunra-t1622",
+              "ttp--gunra-t1657"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": [
+              "infrastructure--gunra-dls"
+            ]
+          },
+          "victim": {
+            "target_refs": [
+              "target--gunra--region--global",
+              "target--gunra--sector--academia",
+              "target--gunra--sector--critical-manufacturing",
+              "target--gunra--sector--financial-services",
+              "target--gunra--sector--government",
+              "target--gunra--sector--healthcare",
+              "target--gunra--sector--media",
+              "target--gunra--sector--professional-services",
+              "target--gunra--sector--retail",
+              "target--gunra--sector--transportation",
+              "target--gunra--sector--utilities"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--59bc376b01842d5405da",
+              "victim--gunra-dls-multi-sector"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2025-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-07-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "reported_at": {
+              "value": "2026-08-10T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "ransomware-extortion",
+            "phases": [
+              "Collection",
+              "Credential Access",
+              "Defense Evasion",
+              "Discovery",
+              "Execution",
+              "Exfiltration",
+              "Impact",
+              "Initial Access",
+              "Lateral Movement"
+            ],
+            "results": [
+              "data-theft",
+              "encryption"
+            ],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": [
+                "target--gunra--region--global"
+              ]
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cisa-aa26-222a-gunra"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c63da09dabcd0aec185659f1",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra conducted or is associated with Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開: FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--gunra-main-exe",
+            "name": "main.exe"
+          },
+          {
+            "id": "malware--gunra-ransomware",
+            "name": "Gunra"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--gunra--region--global",
+            "name": "全世界"
+          },
+          {
+            "id": "target--gunra--sector--academia",
+            "name": "学術"
+          },
+          {
+            "id": "target--gunra--sector--critical-manufacturing",
+            "name": "重要製造業・建設"
+          },
+          {
+            "id": "target--gunra--sector--financial-services",
+            "name": "金融サービス・保険"
+          },
+          {
+            "id": "target--gunra--sector--government",
+            "name": "政府サービス・施設"
+          },
+          {
+            "id": "target--gunra--sector--healthcare",
+            "name": "医療・公衆衛生"
+          },
+          {
+            "id": "target--gunra--sector--media",
+            "name": "メディア・通信"
+          },
+          {
+            "id": "target--gunra--sector--professional-services",
+            "name": "専門サービス・非営利"
+          },
+          {
+            "id": "target--gunra--sector--retail",
+            "name": "小売"
+          },
+          {
+            "id": "target--gunra--sector--transportation",
+            "name": "運輸・物流"
+          },
+          {
+            "id": "target--gunra--sector--utilities",
+            "name": "公益事業"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--59bc376b01842d5405da",
+            "name": "aggregate"
+          },
+          {
+            "id": "victim--gunra-dls-multi-sector",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--733895bfebede80e9001",
+            "technique_id": "T1190",
+            "name": "Exploit Public-Facing Application"
+          },
+          {
+            "id": "ttp--gunra-t1003-003",
+            "technique_id": "T1003.003",
+            "name": "OS Credential Dumping: NTDS"
+          },
+          {
+            "id": "ttp--gunra-t1005",
+            "technique_id": "T1005",
+            "name": "Data from Local System"
+          },
+          {
+            "id": "ttp--gunra-t1021-002",
+            "technique_id": "T1021.002",
+            "name": "Remote Services: SMB/Windows Admin Shares"
+          },
+          {
+            "id": "ttp--gunra-t1047",
+            "technique_id": "T1047",
+            "name": "Windows Management Instrumentation"
+          },
+          {
+            "id": "ttp--gunra-t1048",
+            "technique_id": "T1048",
+            "name": "Exfiltration Over Alternative Protocol"
+          },
+          {
+            "id": "ttp--gunra-t1049",
+            "technique_id": "T1049",
+            "name": "System Network Connections Discovery"
+          },
+          {
+            "id": "ttp--gunra-t1059-003",
+            "technique_id": "T1059.003",
+            "name": "Command and Scripting Interpreter: Windows Command Shell"
+          },
+          {
+            "id": "ttp--gunra-t1070-003",
+            "technique_id": "T1070.003",
+            "name": "Indicator Removal: Clear Command History"
+          },
+          {
+            "id": "ttp--gunra-t1083",
+            "technique_id": "T1083",
+            "name": "File and Directory Discovery"
+          },
+          {
+            "id": "ttp--gunra-t1106",
+            "technique_id": "T1106",
+            "name": "Native API"
+          },
+          {
+            "id": "ttp--gunra-t1114",
+            "technique_id": "T1114",
+            "name": "Email Collection"
+          },
+          {
+            "id": "ttp--gunra-t1190",
+            "technique_id": "T1190",
+            "name": "Exploit Public-Facing Application"
+          },
+          {
+            "id": "ttp--gunra-t1486",
+            "technique_id": "T1486",
+            "name": "Data Encrypted for Impact"
+          },
+          {
+            "id": "ttp--gunra-t1490",
+            "technique_id": "T1490",
+            "name": "Inhibit System Recovery"
+          },
+          {
+            "id": "ttp--gunra-t1530",
+            "technique_id": "T1530",
+            "name": "Data from Cloud Storage"
+          },
+          {
+            "id": "ttp--gunra-t1550-002",
+            "technique_id": "T1550.002",
+            "name": "Use Alternate Authentication Material: Pass the Hash"
+          },
+          {
+            "id": "ttp--gunra-t1550-003",
+            "technique_id": "T1550.003",
+            "name": "Use Alternate Authentication Material: Pass the Ticket"
+          },
+          {
+            "id": "ttp--gunra-t1560",
+            "technique_id": "T1560",
+            "name": "Archive Collected Data"
+          },
+          {
+            "id": "ttp--gunra-t1567",
+            "technique_id": "T1567",
+            "name": "Exfiltration Over Web Service"
+          },
+          {
+            "id": "ttp--gunra-t1622",
+            "technique_id": "T1622",
+            "name": "Debugger Evasion"
+          },
+          {
+            "id": "ttp--gunra-t1657",
+            "technique_id": "T1657",
+            "name": "Financial Theft"
+          }
+        ]
+      },
+      {
+        "activity_id": "activity--gunra-knpa-vdi-intrusion-2025",
+        "name": "KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開",
+        "activity_type": "intrusion",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "reported_at": {
+          "value": "2026-08-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はインターネット公開VPNゲートウェイの資格情報露出とSSHアクセス制御の不備を悪用して不正な遠隔アクセスを得た。ある被害組織では、アカウントロックアウト制御がないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、攻撃者管理サーバーからOpenSSHを取得してSSHトンネルで持続化した。ネットワーク管理者の端末を経由してSSL-VPN管理コンソールへアクセスし、インターネット側と社内側の双方に接続できる未使用アカウントの強制パスワード変更要件を回避する設定変更を行った。SSL-VPN機器のトラフィック制御機能を操作してVDI認証ポータル利用者の資格情報とセッション情報を収集し、窃取したセッションCookieでセッションハイジャックを行い内部VDI環境へ侵入、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。さらに認証処理ファイルを改変して攻撃者指定のOTP値でMFAを継続的に回避し、Hiwareのアクセス制御サーバーから共通鍵を窃取して全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。",
+        "target_refs": [
+          "target--gunra--country--south-korea"
+        ],
+        "malware_refs": [
+          "malware--gunra-ransomware"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [
+          "ttp--activity-rule--79e7281b8b02b45a190e",
+          "ttp--gunra-t1003",
+          "ttp--gunra-t1005",
+          "ttp--gunra-t1021-001",
+          "ttp--gunra-t1040",
+          "ttp--gunra-t1078-001",
+          "ttp--gunra-t1078-002",
+          "ttp--gunra-t1098",
+          "ttp--gunra-t1105",
+          "ttp--gunra-t1133",
+          "ttp--gunra-t1486",
+          "ttp--gunra-t1490",
+          "ttp--gunra-t1539",
+          "ttp--gunra-t1555",
+          "ttp--gunra-t1556-006",
+          "ttp--gunra-t1572"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--32917a8d98a0a8298a8e",
+          "victim--gunra-knpa-vdi"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "共同勧告AA26-222AのKNPA観測部分に基づく。勧告は本事例の攻撃時期を明示していないため活動期間はunknownとし、資料発行日をreported_atへ分離した。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--gunra",
+            "name": "Gunra",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--gunra-ransomware"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--79e7281b8b02b45a190e",
+              "ttp--gunra-t1003",
+              "ttp--gunra-t1005",
+              "ttp--gunra-t1021-001",
+              "ttp--gunra-t1040",
+              "ttp--gunra-t1078-001",
+              "ttp--gunra-t1078-002",
+              "ttp--gunra-t1098",
+              "ttp--gunra-t1105",
+              "ttp--gunra-t1133",
+              "ttp--gunra-t1486",
+              "ttp--gunra-t1490",
+              "ttp--gunra-t1539",
+              "ttp--gunra-t1555",
+              "ttp--gunra-t1556-006",
+              "ttp--gunra-t1572"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--gunra--country--south-korea"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--32917a8d98a0a8298a8e",
+              "victim--gunra-knpa-vdi"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "reported_at": {
+              "value": "2026-08-10T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "intrusion",
+            "phases": [
+              "Collection",
+              "Command and Control",
+              "Credential Access",
+              "Defense Evasion",
+              "Impact",
+              "Initial Access",
+              "Lateral Movement",
+              "Persistence"
+            ],
+            "results": [
+              "credential-theft",
+              "data-theft",
+              "encryption"
+            ],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [
+                "target--gunra--country--south-korea"
+              ],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cisa-aa26-222a-gunra"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--ae4d3173b76591596a659bc5",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra conducted or is associated with KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開: 韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はインターネット公開VPNゲートウェイの資格情報露出とSSHアクセス制御の不備を悪用して不正な遠隔アクセスを得た。ある被害組織では、アカウントロックアウト制御がないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、攻撃者管理サーバーからOpenSSHを取得してSSHトンネルで持続化した。ネットワーク管理者の端末を経由してSSL-VPN管理コンソールへアクセスし、インターネット側と社内側の双方に接続できる未使用アカウントの強制パスワード変更要件を回避する設定変更を行った。SSL-VPN機器のトラフィック制御機能を操作してVDI認証ポータル利用者の資格情報とセッション情報を収集し、窃取したセッションCookieでセッションハイジャックを行い内部VDI環境へ侵入、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。さらに認証処理ファイルを改変して攻撃者指定のOTP値でMFAを継続的に回避し、Hiwareのアクセス制御サーバーから共通鍵を窃取して全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--gunra-ransomware",
+            "name": "Gunra"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--gunra--country--south-korea",
+            "name": "韓国"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--32917a8d98a0a8298a8e",
+            "name": "aggregate"
+          },
+          {
+            "id": "victim--gunra-knpa-vdi",
+            "name": "anonymous"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--79e7281b8b02b45a190e",
+            "technique_id": "T1490",
+            "name": "Inhibit System Recovery"
+          },
+          {
+            "id": "ttp--gunra-t1003",
+            "technique_id": "T1003",
+            "name": "OS Credential Dumping"
+          },
+          {
+            "id": "ttp--gunra-t1005",
+            "technique_id": "T1005",
+            "name": "Data from Local System"
+          },
+          {
+            "id": "ttp--gunra-t1021-001",
+            "technique_id": "T1021.001",
+            "name": "Remote Services: Remote Desktop Protocol"
+          },
+          {
+            "id": "ttp--gunra-t1040",
+            "technique_id": "T1040",
+            "name": "Network Sniffing"
+          },
+          {
+            "id": "ttp--gunra-t1078-001",
+            "technique_id": "T1078.001",
+            "name": "Valid Accounts: Default Accounts"
+          },
+          {
+            "id": "ttp--gunra-t1078-002",
+            "technique_id": "T1078.002",
+            "name": "Valid Accounts: Domain Accounts"
+          },
+          {
+            "id": "ttp--gunra-t1098",
+            "technique_id": "T1098",
+            "name": "Account Manipulation"
+          },
+          {
+            "id": "ttp--gunra-t1105",
+            "technique_id": "T1105",
+            "name": "Ingress Tool Transfer"
+          },
+          {
+            "id": "ttp--gunra-t1133",
+            "technique_id": "T1133",
+            "name": "External Remote Services"
+          },
+          {
+            "id": "ttp--gunra-t1486",
+            "technique_id": "T1486",
+            "name": "Data Encrypted for Impact"
+          },
+          {
+            "id": "ttp--gunra-t1490",
+            "technique_id": "T1490",
+            "name": "Inhibit System Recovery"
+          },
+          {
+            "id": "ttp--gunra-t1539",
+            "technique_id": "T1539",
+            "name": "Steal Web Session Cookie"
+          },
+          {
+            "id": "ttp--gunra-t1555",
+            "technique_id": "T1555",
+            "name": "Credentials from Password Stores"
+          },
+          {
+            "id": "ttp--gunra-t1556-006",
+            "technique_id": "T1556.006",
+            "name": "Modify Authentication Process: Multi-Factor Authentication"
+          },
+          {
+            "id": "ttp--gunra-t1572",
+            "technique_id": "T1572",
+            "name": "Protocol Tunneling"
+          }
+        ]
+      }
+    ],
+    "malware_usage": [
+      {
+        "id": "malware--gunra-ransomware",
+        "name": "Gunra",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "Linux",
+          "ransomware"
+        ],
+        "description": "二重恐喝型ランサムウェア。マルチスレッドでChaCha20 + RSA-4096により全ボリュームを暗号化し、暗号化済みファイルへ拡張子.ENCRTを付与する(2025年7月の1検体では.CRYPT)。各ディレクトリへ身代金メモR3ADM3.txtを書き込む。FindFirstFileW/FindNextFileWでA〜Zの全ドライブを走査し、システムディレクトリと.exe/.dll/.sys等を除外する二段フィルタを持つ。IsDebuggerPresentによるデバッガ検知を備え、ネットワーク通信を伴わない自己完結型である。2025年半ばにLinux版が追加された。",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告は2022年に流出したContiのソースコードに基づく、または強い影響を受けていると評価している。Conti自体との運用主体の同一性は主張していない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--27883148caa6094528df14cd",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used Gunra.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--gunra-knpa-vdi-intrusion-2025",
+            "activity_name": "KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ]
+          },
+          {
+            "activity_id": "activity--gunra-raas-2025-2026",
+            "activity_name": "Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開",
+            "first_observed": {
+              "value": "2025-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-07-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--gunra-main-exe",
+        "name": "main.exe",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "exfiltration-tool"
+        ],
+        "description": "Microsoft OneDriveとSharePointから被害データを持ち出すためにGunraが使用した悪性実行ファイル。勧告は2件のSHA256を掲載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "汎用的なファイル名であり、ハッシュ値と併せてのみ同定に用いる。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--cfb9562212d0b4a42e672eec",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used main.exe.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--gunra-raas-2025-2026",
+            "activity_name": "Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開",
+            "first_observed": {
+              "value": "2025-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-07-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
+    "tool_usage": [
+      {
+        "id": "tool--gunra-archivers",
+        "name": "7-Zip / WinRAR",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "持ち出し前の圧縮アーカイブ作成に使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--55e56c255916f6c5f4bdc064",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used 7-Zip / WinRAR.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-amass",
+        "name": "Amass",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "ネットワークマッピングと情報収集に使用する偵察ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--d5b4d6091a87b77ea69daea1",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "Gunra uses or has used Amass.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-rmm",
+        "name": "AnyDesk / Google Remote Desktop / MobaXterm",
+        "aliases": [],
+        "types": [
+          "public-tool",
+          "rmm"
+        ],
+        "description": "遠隔アクセスと持続化に流用される正規のリモート管理・接続ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告のLeveraged Toolsは「悪性と断定せず調査せよ」と注記しているため、確度をmediumとする。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--db6705a59672c5250186fcad",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "Gunra uses or has used AnyDesk / Google Remote Desktop / MobaXterm.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-filezilla",
+        "name": "FileZilla",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "代替プロトコル経由でのデータ持ち出しに使用するFTPクライアント。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--114059d1fd7b9252a46fa8bf",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used FileZilla.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-impacket",
+        "name": "Impacket",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "psexec.py / smbclient.py によるSMB経由の横展開と、secretsdump.py によるドメインコントローラーからのNTDS資格情報ダンプに使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--dbdfc5a1cd114a7664b9a25a",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used Impacket.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-mimikatz",
+        "name": "Mimikatz",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "Windowsからの認証情報の取得に使用する後侵害ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c99dbeb90425720c019cb818",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used Mimikatz.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-openssh",
+        "name": "OpenSSH",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "攻撃者管理の外部サーバーから取得し、侵害システム間のSSHトンネルと持続化に使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c8b814fac03c3b8ef05cfd80",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used OpenSSH.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-rclone",
+        "name": "RClone",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "クラウドストレージ間のファイル操作に用いるコマンドラインツール。データ持ち出しに使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--78065b6086c254c92e213d98",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used RClone.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      },
+      {
+        "id": "tool--gunra-sliver",
+        "name": "Sliver",
+        "aliases": [],
+        "types": [
+          "public-tool",
+          "c2-framework"
+        ],
+        "description": "遠隔操作に用いるペネトレーションテスト用C2フレームワーク。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--fd5fdcd47f3439b8e53a3c02",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra uses or has used Sliver.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      }
+    ],
+    "targets": [
+      {
+        "id": "target--gunra--country--south-korea",
+        "name": "韓国",
+        "description": "韓国国家警察庁(KNPA)が共同署名機関として国内の被害事例(SSL-VPN管理者アカウント侵害からVDI環境への侵入とDB/NASの暗号化)を提供している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告はKNPAが観測した被害事例として記載する。被害国であり攻撃元国ではない。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--eeb82b8ff4d32e8f2992f2b9",
+            "category": "target-country",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "Gunra targets country 韓国.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "countrie",
+        "activity_refs": [
+          "activity--gunra-knpa-vdi-intrusion-2025"
+        ]
+      },
+      {
+        "id": "target--gunra--region--global",
+        "name": "全世界",
+        "description": "勧告は被害組織がAmericas、Europe、Middle East、Africa、Asia-Pacificにまたがると記載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "個別国の明示は韓国のみ。広域表示であり域内の全国家が標的だったことを意味しない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--007cfac221f32f7a1af46b1f",
+            "category": "target-region",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets region 全世界.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "region",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--academia",
+        "name": "学術",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--bb58c2a0bb053fe4f035f0e5",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 学術.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--critical-manufacturing",
+        "name": "重要製造業・建設",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--462caa6607e500347319522b",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 重要製造業・建設.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--financial-services",
+        "name": "金融サービス・保険",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--7d12cb8ae61b34059f6b0bf0",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 金融サービス・保険.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--government",
+        "name": "政府サービス・施設",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--771b209ddc44a76db9e31e8c",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 政府サービス・施設.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--healthcare",
+        "name": "医療・公衆衛生",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--5243d5aaa1597db4f34b06fc",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 医療・公衆衛生.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--media",
+        "name": "メディア・通信",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--3643cbbebc7f732e239d7b91",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector メディア・通信.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--professional-services",
+        "name": "専門サービス・非営利",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--70eca1e14eac094c2b63d3d6",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 専門サービス・非営利.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--retail",
+        "name": "小売",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--2140ea4dd5f761475a8213e4",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 小売.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--transportation",
+        "name": "運輸・物流",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f8d787ced5ec4792ee6276fc",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 運輸・物流.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      },
+      {
+        "id": "target--gunra--sector--utilities",
+        "name": "公益事業",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b7fa2c3e8d59c90133ee62a8",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Gunra targets sector 公益事業.",
+            "evidence_refs": [
+              "source--cisa-aa26-222a-gunra"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--gunra-raas-2025-2026"
+        ]
+      }
+    ]
+  },
+  "external_research_leads": {
+    "aliases": [],
+    "activities": [],
+    "incident_types": [],
+    "relationships": [],
+    "malware": [],
+    "tools": [],
+    "untyped_software": [],
+    "other_capabilities": {
+      "infrastructure": [],
+      "delivery_formats": [],
+      "vulnerabilities": [],
+      "operational_capabilities": []
+    },
+    "targets": {
+      "countries": [],
+      "victims_or_geographies": [],
+      "sectors": [],
+      "roles": [],
+      "legacy_workbook_text": []
+    },
+    "motivations": [],
+    "attribution": [],
+    "assessments": []
+  },
+  "claim_audit_counts": {
+    "unresolved": 2,
+    "supported": 76
+  },
+  "evidence_catalog": {
+    "source--cisa-aa26-222a-gunra": {
+      "source_id": "source--cisa-aa26-222a-gunra",
+      "path": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+      "title": "#StopRansomware: Gunra Ransomware (AA26-222A)",
+      "publisher": "FBI / CISA / DC3 / NSA / USSS / 韓国国家警察庁(KNPA)",
+      "published_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(PDF版 https://media.defense.gov/2026/Aug/10/2003976697/-1/-1/0/CSA_STOPRANSOMWARE_GUNRA_RANSOMWARE.PDF 全21ページ、アクセス日 2026-08-12)。HTML版はデータセンターIPからのアクセスが403で拒否されるため、同一内容のPDF版を参照した。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
+    }
+  },
+  "research_gaps": [
+    "No canonical cross-actor relationship is structured."
+  ]
+}

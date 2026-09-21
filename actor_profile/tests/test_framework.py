@@ -6,6 +6,7 @@ from __future__ import annotations
 import sys
 import unittest
 import json
+from collections import defaultdict
 from itertools import groupby
 from pathlib import Path
 
@@ -14,20 +15,185 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
-from bootstrap_all_profiles import alias_source_metadata, derive_actor_types, derive_motivations  # noqa: E402
-from materialize_actor_census import actor_types as census_actor_types, identity_curation_rule  # noqa: E402
+from bootstrap_all_profiles import (  # noqa: E402
+    alias_source_metadata,
+    derive_actor_types,
+    derive_motivations,
+    normalized_name,
+)
+from materialize_actor_census import (  # noqa: E402
+    actor_types as census_actor_types,
+    has_trusted_attack_reference,
+    identity_curation_rule,
+    normalized_unique_names,
+)
+from build_actor_census import add_identity, resolve_mention_identities  # noqa: E402
+from build_attack_reference import active_object  # noqa: E402
+from extract_mitre_relationships import relation_type  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
+    canonical_reference_sets,
     classified_record_values,
     classify_hash,
     extract_artifacts,
     extract_iocs,
+    filter_canonical_refs,
     looks_like_hash,
 )
 
 
+class ActorCensusIdentityTests(unittest.TestCase):
+    def test_distinct_attack_group_ids_do_not_merge_on_shared_alias(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        first = add_identity(
+            identities,
+            alias_index,
+            name="Ember Bear",
+            aliases=["UAC-0056"],
+            mitre_id="G1003",
+        )
+        second = add_identity(
+            identities,
+            alias_index,
+            name="Saint Bear",
+            aliases=["UAC-0056"],
+            mitre_id="G1031",
+        )
+        self.assertNotEqual(first, second)
+        self.assertEqual(len(identities), 2)
+
+    def test_ambiguous_workbook_row_does_not_create_or_merge_identity(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        add_identity(identities, alias_index, name="Windshift", mitre_id="G0112")
+        add_identity(
+            identities, alias_index, name="The White Company", mitre_id="G0089"
+        )
+        actor_id = add_identity(
+            identities,
+            alias_index,
+            name="Broad workbook row",
+            aliases=["Windshift", "The White Company"],
+        )
+        self.assertEqual(actor_id, "")
+        self.assertEqual(len(identities), 2)
+
+    def test_curated_identity_can_survive_ambiguous_aliases(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        add_identity(identities, alias_index, name="One", aliases=["Shared One"])
+        add_identity(identities, alias_index, name="Two", aliases=["Shared Two"])
+        actor_id = add_identity(
+            identities,
+            alias_index,
+            name="Curated Three",
+            aliases=["Shared One", "Shared Two"],
+            preserve_on_ambiguous=True,
+        )
+        self.assertTrue(actor_id)
+        self.assertEqual(len(identities), 3)
+
+    def test_reference_only_official_attack_group_is_materializable(self) -> None:
+        self.assertTrue(
+            has_trusted_attack_reference(
+                {
+                    "reference_evidence": [
+                        {
+                            "source": "MITRE Enterprise ATT&CK 19.2",
+                            "external_id": "G0076",
+                        }
+                    ]
+                }
+            )
+        )
+        self.assertFalse(
+            has_trusted_attack_reference(
+                {
+                    "reference_evidence": [
+                        {"source": "MISP threat-actor galaxy", "external_id": "x"}
+                    ]
+                }
+            )
+        )
+
+    def test_short_official_attack_group_name_is_retained(self) -> None:
+        identities = {}
+        actor_id = add_identity(
+            identities,
+            defaultdict(set),
+            name="RTM",
+            mitre_id="G0048",
+        )
+        self.assertEqual(actor_id, "actor-census--mitre:G0048")
+        self.assertEqual(identities[actor_id]["canonical_name"], "RTM")
+
+    def test_canonical_name_wins_over_ambiguous_alias(self) -> None:
+        identities = {
+            "actor--canonical": {"canonical_name": "Thrip"},
+            "actor--overlap": {"canonical_name": "Lotus Blossom"},
+        }
+        self.assertEqual(
+            resolve_mention_identities(
+                "Thrip", identities, identities
+            ),
+            {"actor--canonical"},
+        )
+
+    def test_ambiguous_noncanonical_alias_is_not_duplicated(self) -> None:
+        identities = {
+            "actor--one": {"canonical_name": "Saint Bear"},
+            "actor--two": {"canonical_name": "Ember Bear"},
+        }
+        self.assertEqual(
+            resolve_mention_identities(
+                "UAC-0056", identities, identities
+            ),
+            set(),
+        )
+
+
+class AttackReferenceTests(unittest.TestCase):
+    def test_deprecated_and_revoked_objects_are_not_active(self) -> None:
+        self.assertFalse(active_object({"x_mitre_deprecated": True}))
+        self.assertFalse(active_object({"revoked": True}))
+        self.assertTrue(active_object({"revoked": False, "x_mitre_deprecated": False}))
+
+    def test_explicit_distinct_cluster_language_is_not_generic_overlap(self) -> None:
+        self.assertEqual(
+            relation_type(
+                "Analysis of behaviors, tools, and targeting indicates these are distinct clusters."
+            ),
+            ("distinct-from", "high", "supported"),
+        )
+
+
 class ObservableBoundaryTests(unittest.TestCase):
+    def test_observable_links_only_reference_canonical_entities(self) -> None:
+        profile = {
+            "activities": [{"activity_id": "activity--kept"}],
+            "capabilities": {
+                "malware": [{"id": "malware--kept"}],
+                "infrastructure": [{"id": "infra--kept"}],
+            },
+        }
+        related = {
+            "campaign_refs": ["activity--kept", "activity--lead-only"],
+            "malware_refs": ["malware--kept", "malware--lead-only"],
+            "infrastructure_refs": ["infra--kept", "infra--lead-only"],
+            "roles": ["c2"],
+        }
+
+        filtered = filter_canonical_refs(
+            related, canonical_reference_sets(profile)
+        )
+
+        self.assertEqual(filtered["campaign_refs"], ["activity--kept"])
+        self.assertEqual(filtered["malware_refs"], ["malware--kept"])
+        self.assertEqual(filtered["infrastructure_refs"], ["infra--kept"])
+        self.assertEqual(filtered["roles"], ["c2"])
+
     def test_ioc_types_are_kept_out_of_artifacts(self) -> None:
         # 192.0.2.0/24 などのドキュメント用レンジは伏字であって指標ではないため、
         # ここでは実際に到達し得るアドレスを使う。
@@ -87,6 +253,33 @@ class ObservableBoundaryTests(unittest.TestCase):
         domains = {normalize_observable(kind, value) for kind, value, _ in values}
         self.assertEqual(domains, {"c2.example-actor.org"})
 
+    def test_repository_instruction_file_is_not_a_domain(self) -> None:
+        values = extract_iocs(
+            "IOC review follows AGENT.md; actual C2 is malicious-c2.com",
+            allow_plain_domains=False,
+            explicit_structured=False,
+        )
+        domains = {value for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(domains, {"malicious-c2.com"})
+
+    def test_evidence_map_provenance_is_not_an_actor_artifact(self) -> None:
+        record = {
+            "text": (
+                "APT Groups and Operations.xlsx row 85 Calypso "
+                "malware was 1.bat https://example.org/report.pdf"
+            ),
+            "location": {"row": 2},
+            "fields": {
+                "original_source_path": "APT Groups and Operations.xlsx",
+                "original_source_location": '{"row": 85}',
+                "matched_name": "Calypso",
+                "context_excerpt": "malware was 1.bat https://example.org/report.pdf",
+            },
+            "method": "csv-row",
+        }
+        _, artifacts = classified_record_values(record, {})
+        self.assertEqual(artifacts, [("file-name", "1.bat", "candidate")])
+
     def test_non_tld_file_names_are_not_domains(self) -> None:
         """実在しないTLDを持つ値はファイル名や文の断片であり domain にしない。"""
         values = extract_iocs(
@@ -128,6 +321,26 @@ class ObservableBoundaryTests(unittest.TestCase):
         )
         urls = {value for kind, value, _ in values if kind == "url"}
         self.assertEqual(urls, {"https://evil-c2.net/gate"})
+
+    def test_ocr_concatenated_emails_are_dropped(self) -> None:
+        """PDF抽出で本文が連結されたメール値をIOCにしない。"""
+        values = extract_iocs(
+            "IOC: zeg888@gmail[.]comisnamed; valid zeg888@gmail[.]com",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        emails = {normalize_observable(kind, value) for kind, value, _ in values if kind == "email"}
+        self.assertEqual(emails, {"zeg888@gmail.com"})
+
+    def test_www_plus_public_suffix_fragments_are_dropped(self) -> None:
+        """www[.]ru のような登録可能名を含まないOCR断片をIOCにしない。"""
+        values = extract_iocs(
+            "IOC: www[.]ru www[.]gmail www[.]malicious-c2.com",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        domains = {normalize_observable(kind, value) for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(domains, {"malicious-c2.com"})
 
 
 class HashClassificationTests(unittest.TestCase):
@@ -365,6 +578,14 @@ class GenerationGuardrailTests(unittest.TestCase):
         )
         self.assertEqual(identity_curation_rule(curation, "REvil")["action"], "exclude")
 
+    def test_census_aliases_are_deduplicated_after_normalization(self) -> None:
+        self.assertEqual(
+            normalized_unique_names(
+                ["DNSCALC", "DNSCalc", "RoyalAPT", "Royal APT", "GREF"]
+            ),
+            ["DNSCALC", "RoyalAPT", "GREF"],
+        )
+
     def test_catalog_alias_does_not_inherit_mitre_evidence(self) -> None:
         group = {"aliases": ["Hecamede"]}
         self.assertEqual(
@@ -436,11 +657,39 @@ class CollectionTests(unittest.TestCase):
         )
         slugs = [actor["slug"] for actor in catalog["actors"]]
         self.assertEqual(len(slugs), len(set(slugs)))
+        active_profile_slugs = {
+            path.parent.name
+            for path in (root / "profiles").glob("*/actor-profile.json")
+            if json.loads(path.read_text(encoding="utf-8"))["status"]
+            != "deprecated"
+        }
+        self.assertEqual(
+            set(slugs),
+            active_profile_slugs,
+            "The catalog must include every active profile and exclude deprecated tombstones.",
+        )
         for actor in catalog["actors"]:
+            normalized_catalog_aliases = [
+                normalized_name(alias) for alias in actor.get("aliases", [])
+            ]
+            self.assertEqual(
+                len(normalized_catalog_aliases),
+                len(set(normalized_catalog_aliases)),
+                f"normalized duplicate catalog alias: {actor['slug']}",
+            )
             profile_path = root / "profiles" / actor["slug"] / "actor-profile.json"
             self.assertTrue(profile_path.is_file(), actor["slug"])
             profile = json.loads(profile_path.read_text(encoding="utf-8"))
             self.assertEqual(profile["profile_id"], f"actor--{actor['slug']}")
+            normalized_profile_aliases = [
+                normalized_name(alias["name"])
+                for alias in profile["actor"]["aliases"]
+            ]
+            self.assertEqual(
+                len(normalized_profile_aliases),
+                len(set(normalized_profile_aliases)),
+                f"normalized duplicate profile alias: {actor['slug']}",
+            )
             self.assertFalse(
                 any(
                     alias["name"].lower().startswith(("http://", "https://"))

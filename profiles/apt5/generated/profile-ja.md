@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt5`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:02Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,13 +18,12 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| BRONZE FLEETWOOD | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Keyhole Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Manganese | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Mulberry Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TABCTENG | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| temp.bottle | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| UNC2630 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| BASALT CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| BRONZE FLEETWOOD | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Keyhole Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| MANGANESE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Mulberry Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| UNC2630 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -39,7 +38,7 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -49,30 +48,32 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. [APT5](https://attack.mitre.org/groups/G1023) has displayed advanced tradecraft and significant interest in compromising networking devices and their underlying software including through the use of zero-day exploits.(Citation: NSA APT5 Citrix Threat Hunting December 2022)(Citation: Microsoft East Asia Threats September 2023)(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021)(Citation: FireEye Southeast Asia Threat Landscape March 2015)(Citation: Mandiant Advanced Persistent Threats)   |
-| Capability | PACEMAKER, RAPIDPULSE, gh0st RAT, Skeleton Key, PULSECHECK, PoisonIvy, SLIGHTPULSE, SLOWPULSE, Net, Tasklist, PcShare, netstat, Mimikatz |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Electronics & Communications |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | BASALT CASTLE | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | APT 5, Keyhole Panda | canonical-name | 高 | China | https://www.fireeye.com/content/dam/fireeye-www/current-threats/pdfs/rpt-southeast-asia-threat-landscape.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+5%2C+Keyhole+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Mulberry Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT5 | canonical-name | 高 | CN | https://www.fireeye.com/current-threats/apt-groups.html<br>https://www.fireeye.com/content/dam/fireeye-www/current-threats/pdfs/rpt-southeast-asia-threat-landscape.pdf<br>https://www.secureworks.com/research/threat-profiles/bronze-fleetwood |
 | misp-threat-actor | UNC2630 | single-alias-intersection | 中 | CN | https://www.fireeye.com/blog/threat-research/2021/05/updates-on-chinese-apt-compromising-pulse-secure-vpn-devices.html<br>http://internal-www.fireeye.com/blog/threat-research/2021/04/suspected-apt-actors-leverage-bypass-techniques-pulse-secure-zero-day.html |
 | misp-microsoft-activity-group | Mulberry Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | APT5 - G1023 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1023<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://media.defense.gov/2022/Dec/13/2003131586/-1/-1/0/CSA-APT5-CITRIXADC-V1.PDF |
 | misp-mitre-intrusion-set | APT5 - G1023 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1023<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://media.defense.gov/2022/Dec/13/2003131586/-1/-1/0/CSA-APT5-CITRIXADC-V1.PDF |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | APT5 | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -91,24 +92,24 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--pacemaker | PACEMAKER | [PACEMAKER](https://attack.mitre.org/software/S1109) is a credential stealer that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including activity against US Defense Industrial Base (DIB) companies.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--rapidpulse | RAPIDPULSE | [RAPIDPULSE](https://attack.mitre.org/software/S1113) is a web shell that exists as a modification to a legitimate Pulse Secure file that has been used by [APT5](https://attack.mitre.org/groups/G1023) since at least 2021.(Citation: Mandiant Pulse Secure Update May 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--skeleton-key | Skeleton Key | [Skeleton Key](https://attack.mitre.org/software/S0007) is malware used to inject false credentials into domain controllers with the intent of creating a backdoor password. (Citation: Dell Skeleton) Functionality similar to [Skeleton Key](https://attack.mitre.org/software/S0007) is included as a module in [Mimikatz](https://attack.mitre.org/software/S0002). | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--pulsecheck | PULSECHECK | [PULSECHECK](https://attack.mitre.org/software/S1108) is a web shell written in Perl that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against Pulse Secure VPNs at US Defense Industrial Base (DIB) companies.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--slightpulse | SLIGHTPULSE | [SLIGHTPULSE](https://attack.mitre.org/software/S1110) is a web shell that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against Pulse Secure VPNs at US Defense Industrial Base (DIB) entities.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--slowpulse | SLOWPULSE | [SLOWPULSE](https://attack.mitre.org/software/S1104) is a malware that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against U.S. Defense Industrial Base (DIB) companies. [SLOWPULSE](https://attack.mitre.org/software/S1104) has several variants and can modify legitimate Pulse Secure VPN files in order to log credentials and bypass single and two-factor authentication flows.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--pacemaker | PACEMAKER | [PACEMAKER](https://attack.mitre.org/software/S1109) is a credential stealer that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including activity against US Defense Industrial Base (DIB) companies.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--pulsecheck | PULSECHECK | [PULSECHECK](https://attack.mitre.org/software/S1108) is a web shell written in Perl that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against Pulse Secure VPNs at US Defense Industrial Base (DIB) companies.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--rapidpulse | RAPIDPULSE | [RAPIDPULSE](https://attack.mitre.org/software/S1113) is a web shell that exists as a modification to a legitimate Pulse Secure file that has been used by [APT5](https://attack.mitre.org/groups/G1023) since at least 2021.(Citation: Mandiant Pulse Secure Update May 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--skeleton-key | Skeleton Key | [Skeleton Key](https://attack.mitre.org/software/S0007) is malware used to inject false credentials into domain controllers with the intent of creating a backdoor password. (Citation: Dell Skeleton) Functionality similar to [Skeleton Key](https://attack.mitre.org/software/S0007) is included as a module in [Mimikatz](https://attack.mitre.org/software/S0002). | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--slightpulse | SLIGHTPULSE | [SLIGHTPULSE](https://attack.mitre.org/software/S1110) is a web shell that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against Pulse Secure VPNs at US Defense Industrial Base (DIB) entities.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--slowpulse | SLOWPULSE | [SLOWPULSE](https://attack.mitre.org/software/S1104) is a malware that was used by [APT5](https://attack.mitre.org/groups/G1023) as early as 2020 including against U.S. Defense Industrial Base (DIB) companies. [SLOWPULSE](https://attack.mitre.org/software/S1104) has several variants and can modify legitimate Pulse Secure VPN files in order to log credentials and bypass single and two-factor authentication flows.(Citation: Mandiant Pulse Secure Zero-Day April 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--net | Net | The [Net](https://attack.mitre.org/software/S0039) utility is a component of the Windows operating system. It is used in command-line operations for control of users, groups, services, and network connections. (Citation: Microsoft Net Utility)<br><br>[Net](https://attack.mitre.org/software/S0039) has a great deal of functionality, (Citation: Savill 1999) much of which is useful for an adversary, such as gathering system and network information for Discovery, moving laterally through [SMB/Windows Admin Shares](https://attack.mitre.org/techniques/T1021/002) using <code>net use</code> commands, and interacting with services. The net1.exe utility is executed for certain functionality when net.exe is run and can be used directly in commands such as <code>net1 user</code>. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--tasklist | Tasklist | The [Tasklist](https://attack.mitre.org/software/S0057) utility displays a list of applications and services with their Process IDs (PID) for all tasks running on either a local or a remote computer. It is packaged with Windows operating systems and can be executed from the command-line interface. (Citation: Microsoft Tasklist) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--pcshare | PcShare | [PcShare](https://attack.mitre.org/software/S1050) is an open source remote access tool that has been modified and used by Chinese threat actors, most notably during the FunnyDream campaign since late 2018.(Citation: Bitdefender FunnyDream Campaign November 2020)(Citation: GitHub PcShare 2014) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--netstat | netstat | [netstat](https://attack.mitre.org/software/S0104) is an operating system utility that displays active TCP connections, listening ports, and network statistics. (Citation: TechNet Netstat) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--net | Net | The [Net](https://attack.mitre.org/software/S0039) utility is a component of the Windows operating system. It is used in command-line operations for control of users, groups, services, and network connections. (Citation: Microsoft Net Utility)<br><br>[Net](https://attack.mitre.org/software/S0039) has a great deal of functionality, (Citation: Savill 1999) much of which is useful for an adversary, such as gathering system and network information for Discovery, moving laterally through [SMB/Windows Admin Shares](https://attack.mitre.org/techniques/T1021/002) using <code>net use</code> commands, and interacting with services. The net1.exe utility is executed for certain functionality when net.exe is run and can be used directly in commands such as <code>net1 user</code>. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--netstat | netstat | [netstat](https://attack.mitre.org/software/S0104) is an operating system utility that displays active TCP connections, listening ports, and network statistics. (Citation: TechNet Netstat) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--pcshare | PcShare | [PcShare](https://attack.mitre.org/software/S1050) is an open source remote access tool that has been modified and used by Chinese threat actors, most notably during the FunnyDream campaign since late 2018.(Citation: Bitdefender FunnyDream Campaign November 2020)(Citation: GitHub PcShare 2014) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--tasklist | Tasklist | The [Tasklist](https://attack.mitre.org/software/S0057) utility displays a list of applications and services with their Process IDs (PID) for all tasks running on either a local or a remote computer. It is packaged with Windows operating systems and can be executed from the command-line interface. (Citation: Microsoft Tasklist) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -130,13 +131,13 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-1` |
+| SPACEHOP Activity | campaign | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | target--targeting-audit--region--5d5a069e358898f16a0d, target--targeting-audit--region--867de21bf7db0bc21026, target--targeting-audit--region--f89d8fcb1e16a8e9e7e1 |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 | victim--activity-rule--d6a21958cf344fc17684 | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nexus cyber threat actors – such as [APT5](https://attack.mitre.org/groups/G1023) and [Ke3chang](https://attack.mitre.org/groups/G0004) – to perform network reconnaissance scanning and vulnerability exploitation. SPACEHOP Activity has historically targeted entities in North America, Europe, and the Middle East.(Citation: ORB Mandiant)  | 高 | `source--mitre-attack-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| SPACEHOP Activity | APT5 | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 情報なし | 情報なし | 高 |
+| SPACEHOP Activity | APT5 | 情報なし | T1583.003 Virtual Private Server, T1588.002 Tool, T1190 Exploit Public-Facing Application, T1090.003 Multi-hop Proxy | 情報なし | 中東, 欧州, 北米 | 被害事例: SPACEHOP Activity | 高 |
 
 
 
@@ -144,56 +145,57 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| regions | 中東 | 活動「SPACEHOP Activity」の記述で標的地域として中東が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-1` |
-| regions | 北米 | 活動「SPACEHOP Activity」の記述で標的地域として北米が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-1` |
-| regions | 東南アジア | 構造化OSINTの被害地域フィールドでAPT5の標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 活動「SPACEHOP Activity」の記述で標的地域として欧州が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-1` |
-| sectors | 防衛・軍事 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 情報通信 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 中東 | 活動「SPACEHOP Activity」の記述で標的地域として中東が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
+| regions | 北米 | 活動「SPACEHOP Activity」の記述で標的地域として北米が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
+| regions | 欧州 | 活動「SPACEHOP Activity」の記述で標的地域として欧州が明示されている。 | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 中 | `source--mitre-attack-19-2` |
+| sectors | 防衛・軍事 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 情報通信 | [APT5](https://attack.mitre.org/groups/G1023) is a China-based espionage actor that has been active since at least 2007 primarily targeting the telecommunications, aerospace, and defense industries throughout the U.S., Europe, and Asia. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: SPACEHOP Activity | 非公開 | anonymous | unknown | reported |  |  | ttp--mitre-campaign--112fc404df45e8c65691, ttp--mitre-campaign--2ef8f61f7414a7f69103, ttp--mitre-campaign--7a27636068cfdd7f8de3, ttp--mitre-campaign--f601a10c008df6514421 |  |  | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Resource Development | T1583.003 | Virtual Private Server | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has used acquired Virtual Private Servers as control systems for devices within the ORB network.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) leverages a C2 framework sourced from a publicly-available Github repository for administration of relay nodes.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has enabled the exploitation of CVE-2022-27518 and CVE-2022-27518 for illegitimate access.(Citation: NSA APT5 Citrix Threat Hunting December 2022)(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.003 | Multi-hop Proxy | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has routed traffic through chains of compromised network devices to proxy C2 communications.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.001 | LSASS Memory | [APT5](https://attack.mitre.org/groups/G1023) has used the Task Manager process to target LSASS process memory in order to obtain NTLM password hashes. [APT5](https://attack.mitre.org/groups/G1023) has also dumped clear text passwords and hashes from memory using [Mimikatz](https://attack.mitre.org/software/S0002) hosted through an RDP mapped drive.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.002 | Security Account Manager | [APT5](https://attack.mitre.org/groups/G1023) has copied and exfiltrated the SAM Registry hive from targeted systems.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | [APT5](https://attack.mitre.org/groups/G1023) has moved laterally throughout victim environments using RDP.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.004 | SSH | [APT5](https://attack.mitre.org/groups/G1023) has used SSH for lateral movement in compromised environments including for enabling access to ESXi host servers.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [APT5](https://attack.mitre.org/groups/G1023) has named exfiltration archives to mimic Windows Updates at times using filenames with a `KB<digits>.zip` pattern.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to collect data on web requests from Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.003 | Cron | [APT5](https://attack.mitre.org/groups/G1023) has made modifications to the crontab file including in `/var/cron/tabs/`.(Citation: NSA APT5 Citrix Threat Hunting December 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | [APT5](https://attack.mitre.org/groups/G1023) has used the CLEANPULSE utility to insert command line strings into a targeted process to alter its functionality.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.001 | Keylogging | [APT5](https://attack.mitre.org/groups/G1023) has used malware with keylogging capabilities to monitor the communications of targeted entities.(Citation: FireEye Southeast Asia Threat Landscape March 2015)(Citation: Mandiant Advanced Persistent Threats) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used Windows-based utilities to carry out tasks including tasklist.exe. (Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [APT5](https://attack.mitre.org/groups/G1023) has used PowerShell to accomplish tasks within targeted environments.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [APT5](https://attack.mitre.org/groups/G1023) has used cmd.exe for execution on compromised systems.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070 | Indicator Removal | [APT5](https://attack.mitre.org/groups/G1023) has used the THINBLOOD utility to clear SSL VPN log files located at `/home/runtime/logs`.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.003 | Clear Command History | [APT5](https://attack.mitre.org/groups/G1023) has cleared the command history on targeted ESXi servers.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | [APT5](https://attack.mitre.org/groups/G1023) has deleted scripts and web shells to evade detection.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.006 | Timestomp | [APT5](https://attack.mitre.org/groups/G1023) has modified file timestamps.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.001 | Local Data Staging | [APT5](https://attack.mitre.org/groups/G1023) has staged data on compromised systems prior to exfiltration often in `C:\Users\Public`.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [APT5](https://attack.mitre.org/groups/G1023) has used legitimate account credentials to move laterally through compromised environments.(Citation: Mandiant Pulse Secure Zero-Day April 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.004 | Cloud Accounts | [APT5](https://attack.mitre.org/groups/G1023) has accessed Microsoft M365 cloud environments using stolen credentials. (Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to discover files with .css, .jpg, .png, .gif, .ico, .js, and .jsp extensions in Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1098.007 | Additional Local or Domain Groups | [APT5](https://attack.mitre.org/groups/G1023) has created their own accounts with Local Administrator privileges to maintain access to systems with short-cycle credential rotation.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136.001 | Local Account | [APT5](https://attack.mitre.org/groups/G1023) has created Local Administrator accounts to maintain access to systems with short-cycle credential rotation.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [APT5](https://attack.mitre.org/groups/G1023) has exploited vulnerabilities in externally facing software and devices including Pulse Secure VPNs and Citrix Application Delivery Controllers.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021)(Citation: NSA APT5 Citrix Threat Hunting December 2022) (Citation: Microsoft East Asia Threats September 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | [APT5](https://attack.mitre.org/groups/G1023) has installed multiple web shells on compromised servers including on Pulse Secure VPN appliances.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1554 | Compromise Host Software Binary | [APT5](https://attack.mitre.org/groups/G1023) has modified legitimate binaries and scripts for Pulse Secure VPNs including the legitimate DSUpgrade.pm file to install the ATRIUM webshell for persistence.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | [APT5](https://attack.mitre.org/groups/G1023) has used the JAR/ZIP file format for exfiltrated files.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.005 | Botnet | [APT5](https://attack.mitre.org/groups/G1023) has acquired a network of compromised systems – specifically an ORB (operational relay box) network – for follow on activities.(Citation: ORB Mandiant)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1654 | Log Enumeration | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to parse and extract information from Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | [APT5](https://attack.mitre.org/groups/G1023) has used the CLEANPULSE utility to insert command line strings into a targeted process to prevent certain log events from occurring.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.003 | Virtual Private Server | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has used acquired Virtual Private Servers as control systems for devices within the ORB network.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) leverages a C2 framework sourced from a publicly-available Github repository for administration of relay nodes.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has enabled the exploitation of CVE-2022-27518 and CVE-2022-27518 for illegitimate access.(Citation: NSA APT5 Citrix Threat Hunting December 2022)(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1090.003 | Multi-hop Proxy | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052) has routed traffic through chains of compromised network devices to proxy C2 communications.(Citation: ORB Mandiant) |  | activity--spacehop-activity | 2019-01-01T05:00:00.000Z | 2024-05-01T04:00:00.000Z | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1003.001 | LSASS Memory | [APT5](https://attack.mitre.org/groups/G1023) has used the Task Manager process to target LSASS process memory in order to obtain NTLM password hashes. [APT5](https://attack.mitre.org/groups/G1023) has also dumped clear text passwords and hashes from memory using [Mimikatz](https://attack.mitre.org/software/S0002) hosted through an RDP mapped drive.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1003.002 | Security Account Manager | [APT5](https://attack.mitre.org/groups/G1023) has copied and exfiltrated the SAM Registry hive from targeted systems.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [APT5](https://attack.mitre.org/groups/G1023) has moved laterally throughout victim environments using RDP.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1021.004 | SSH | [APT5](https://attack.mitre.org/groups/G1023) has used SSH for lateral movement in compromised environments including for enabling access to ESXi host servers.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [APT5](https://attack.mitre.org/groups/G1023) has named exfiltration archives to mimic Windows Updates at times using filenames with a `KB<digits>.zip` pattern.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1049 | System Network Connections Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to collect data on web requests from Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.003 | Cron | [APT5](https://attack.mitre.org/groups/G1023) has made modifications to the crontab file including in `/var/cron/tabs/`.(Citation: NSA APT5 Citrix Threat Hunting December 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [APT5](https://attack.mitre.org/groups/G1023) has used the CLEANPULSE utility to insert command line strings into a targeted process to alter its functionality.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056.001 | Keylogging | [APT5](https://attack.mitre.org/groups/G1023) has used malware with keylogging capabilities to monitor the communications of targeted entities.(Citation: FireEye Southeast Asia Threat Landscape March 2015)(Citation: Mandiant Advanced Persistent Threats) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1057 | Process Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used Windows-based utilities to carry out tasks including tasklist.exe. (Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [APT5](https://attack.mitre.org/groups/G1023) has used PowerShell to accomplish tasks within targeted environments.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [APT5](https://attack.mitre.org/groups/G1023) has used cmd.exe for execution on compromised systems.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070 | Indicator Removal | [APT5](https://attack.mitre.org/groups/G1023) has used the THINBLOOD utility to clear SSL VPN log files located at `/home/runtime/logs`.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.003 | Clear Command History | [APT5](https://attack.mitre.org/groups/G1023) has cleared the command history on targeted ESXi servers.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.004 | File Deletion | [APT5](https://attack.mitre.org/groups/G1023) has deleted scripts and web shells to evade detection.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.006 | Timestomp | [APT5](https://attack.mitre.org/groups/G1023) has modified file timestamps.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1074.001 | Local Data Staging | [APT5](https://attack.mitre.org/groups/G1023) has staged data on compromised systems prior to exfiltration often in `C:\Users\Public`.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [APT5](https://attack.mitre.org/groups/G1023) has used legitimate account credentials to move laterally through compromised environments.(Citation: Mandiant Pulse Secure Zero-Day April 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.004 | Cloud Accounts | [APT5](https://attack.mitre.org/groups/G1023) has accessed Microsoft M365 cloud environments using stolen credentials. (Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1083 | File and Directory Discovery | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to discover files with .css, .jpg, .png, .gif, .ico, .js, and .jsp extensions in Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1098.007 | Additional Local or Domain Groups | [APT5](https://attack.mitre.org/groups/G1023) has created their own accounts with Local Administrator privileges to maintain access to systems with short-cycle credential rotation.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1136.001 | Local Account | [APT5](https://attack.mitre.org/groups/G1023) has created Local Administrator accounts to maintain access to systems with short-cycle credential rotation.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [APT5](https://attack.mitre.org/groups/G1023) has exploited vulnerabilities in externally facing software and devices including Pulse Secure VPNs and Citrix Application Delivery Controllers.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021)(Citation: NSA APT5 Citrix Threat Hunting December 2022) (Citation: Microsoft East Asia Threats September 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1505.003 | Web Shell | [APT5](https://attack.mitre.org/groups/G1023) has installed multiple web shells on compromised servers including on Pulse Secure VPN appliances.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1554 | Compromise Host Software Binary | [APT5](https://attack.mitre.org/groups/G1023) has modified legitimate binaries and scripts for Pulse Secure VPNs including the legitimate DSUpgrade.pm file to install the ATRIUM webshell for persistence.(Citation: Mandiant Pulse Secure Zero-Day April 2021)(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1560.001 | Archive via Utility | [APT5](https://attack.mitre.org/groups/G1023) has used the JAR/ZIP file format for exfiltrated files.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.005 | Botnet | [APT5](https://attack.mitre.org/groups/G1023) has acquired a network of compromised systems – specifically an ORB (operational relay box) network – for follow on activities.(Citation: ORB Mandiant)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1654 | Log Enumeration | [APT5](https://attack.mitre.org/groups/G1023) has used the BLOODMINE utility to parse and extract information from Pulse Secure Connect logs.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [APT5](https://attack.mitre.org/groups/G1023) has used the CLEANPULSE utility to insert command line strings into a targeted process to prevent certain log events from occurring.(Citation: Mandiant Pulse Secure Update May 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -201,7 +203,7 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 34件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -215,12 +217,12 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- 2 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt5--70a3d94a1efd3c31 | apt5 |  | 不明 | actor_profile/evidence/apt5.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt5--613ee589ea3dcaf6 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
@@ -236,7 +238,13 @@ APT5の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

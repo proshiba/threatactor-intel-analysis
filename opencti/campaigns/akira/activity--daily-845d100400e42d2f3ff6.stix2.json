@@ -1,0 +1,722 @@
+{
+  "type": "bundle",
+  "id": "bundle--ca565b40-3d59-41be-be4a-15d7728c7394",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-845d100400e42d2f3ff6",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--845d100400e42d2f3ff65b7c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--targeting-audit--country--9200289a0e9fa1079a1b"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--2f20859af17320f58e01"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-09-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2024-09-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2024-10-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--targeting-audit--country--9200289a0e9fa1079a1b"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-29f74832270318181f72"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-09-01T00:00:00Z",
+      "last_seen": "2024-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0353ff98-b677-48eb-8be3-05921d260c61",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:29:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "identity_class": "organization",
+      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--2f20859af17320f58e01",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--akira"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "VPN／リモートアクセス機器",
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira",
+      "aliases": [
+        "GOLD SAHARA",
+        "Howling Scorpius",
+        "PUNK SPIDER"
+      ],
+      "description": "[Akira](https://attack.mitre.org/groups/G1024) is a ransomware variant and ransomware deployment entity active since at least March 2023.(Citation: Arctic Wolf Akira 2023) [Akira](https://attack.mitre.org/groups/G1024) uses compromised credentials to access single-factor external access mechanisms such as VPNs for initial access, then various publicly-available tools and techniques for lateral movement.(Citation: Arctic Wolf Akira 2023)(Citation: Secureworks GOLD SAHARA) [Akira](https://attack.mitre.org/groups/G1024) operations are associated with \"double extortion\" ransomware activity, where data is exfiltrated from victim environments prior to encryption, with threats to publish files if a ransom is not paid. Technical analysis of [Akira](https://attack.mitre.org/software/S1129) ransomware indicates variants capable of targeting Windows or VMWare ESXi hypervisors and multiple overlaps with [Conti](https://attack.mitre.org/software/S0575) ransomware.(Citation: BushidoToken Akira 2023)(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--akira",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "GOLD SAHARA",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Howling Scorpius",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "PUNK SPIDER",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "Megazord, Akira, Akira _v2, Rclone, Mimikatz, LaZagne, AdFind, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=カナダ、シリア。標的地域=北米、欧州。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--68f92909-62d6-4938-8a6c-22085498779f",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Syrian Arab Republic",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--9200289a0e9fa1079a1b",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "SYR",
+      "x_opencti_reference_id": "location--66e2d6bc-026a-4e09-97b8-a9a6c2c1b208",
+      "x_opencti_aliases": [
+        "SY",
+        "SYR",
+        "シリア"
+      ],
+      "latitude": 34.802075,
+      "longitude": 38.996815,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira",
+      "description": "[Akira](https://attack.mitre.org/software/S1129) ransomware, written in C++, is most prominently (but not exclusively) associated with the ransomware-as-a-service entity [Akira](https://attack.mitre.org/groups/G1024). [Akira](https://attack.mitre.org/software/S1129) ransomware has been used in attacks across North America, Europe, and Australia, with a focus on critical infrastructure sectors including manufacturing, education, and IT services. [Akira](https://attack.mitre.org/software/S1129) ransomware employs hybrid encryption and threading to increase the speed and efficiency of encryption and runtime arguments for tailored attacks. Notable variants include Rust-based [Megazord](https://attack.mitre.org/software/S1191) for targeting Windows and [Akira _v2](https://attack.mitre.org/software/S1194) for targeting VMware ESXi servers.(Citation: Kersten Akira 2023)(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--akira",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "Akira"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akira uses Akira.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cd8deac-04c0-4e74-82b6-55f364c640a8",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "location--68f92909-62d6-4938-8a6c-22085498779f",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 targets target--targeting-audit--country--9200289a0e9fa1079a1b.\n\nEvidence: 活動「AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用」の記述で標的・被害国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 is attributed or linked to Akira.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8000c64f-5c4e-40a8-812f-e0a53e75273b",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "target_ref": "location--68f92909-62d6-4938-8a6c-22085498779f",
+      "description": "Akira targets シリア (profile target category: countries).\n\nEvidence: 活動「AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-09-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a4b66aed-f4c2-4454-897b-a615c6b6b57a",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "identity--0353ff98-b677-48eb-8be3-05921d260c61",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 affected victim--activity-rule--2f20859af17320f58e01.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 uses malware--akira.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2024-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--41a14e94-9beb-412e-b63b-b88734ea2e23",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "malware--a695430a-38fc-4086-8e38-d3932887e325",
+        "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--akira:activity--daily-845d100400e42d2f3ff6",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ede6cfa4-4ee5-4ba8-812a-a63a4f362b17",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-10-14T00:00:00Z",
+      "object_refs": [
+        "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+        "identity--0353ff98-b677-48eb-8be3-05921d260c61",
+        "relationship--3cd8deac-04c0-4e74-82b6-55f364c640a8",
+        "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
+        "relationship--8000c64f-5c4e-40a8-812f-e0a53e75273b",
+        "relationship--a4b66aed-f4c2-4454-897b-a615c6b6b57a",
+        "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-29f74832270318181f72",
+          "url": "https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-29f74832270318181f72",
+      "x_evidence_slice_scope": "campaign:actor--akira:activity--daily-845d100400e42d2f3ff6",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--64d624cf-8cfb-4437-9e01-9c6422d3f5fb",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira / AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+        "identity--0353ff98-b677-48eb-8be3-05921d260c61",
+        "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+        "location--68f92909-62d6-4938-8a6c-22085498779f",
+        "malware--a695430a-38fc-4086-8e38-d3932887e325",
+        "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763",
+        "relationship--3cd8deac-04c0-4e74-82b6-55f364c640a8",
+        "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
+        "relationship--8000c64f-5c4e-40a8-812f-e0a53e75273b",
+        "relationship--a4b66aed-f4c2-4454-897b-a615c6b6b57a",
+        "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af",
+        "report--41a14e94-9beb-412e-b63b-b88734ea2e23",
+        "report--ede6cfa4-4ee5-4ba8-812a-a63a4f362b17"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--akira",
+      "x_activity_id": "activity--daily-845d100400e42d2f3ff6"
+    }
+  ]
+}

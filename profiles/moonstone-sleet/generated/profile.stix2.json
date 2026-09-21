@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22,16 +22,17 @@
       ],
       "external_references": [],
       "x_profile_id": "actor--moonstone-sleet",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Storm-1789",
-          "vendor": "MITRE ATT&CK",
-          "scope": "overlapping",
+          "vendor": "Microsoft Threat Intelligence",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--microsoft-moonstone-sleet-2024"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "Microsoft explicitly states that Moonstone Sleet was formerly Storm-1789."
         }
       ],
       "x_attribution": {
@@ -48,16 +49,17 @@
         "history": "",
         "capability_details": "Qilin",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=インド、オーストラリア、カナダ、グアテマラ、タイ、ドイツ、バングラデシュ、フランス、ブラジル、中国、日本、米国、英国、韓国、香港。標的地域=中南米、北米、南アジア、東アジア、欧州。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--moonstone-sleet",
         "actor_name": "Moonstone Sleet",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -66,6 +68,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -76,6 +79,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "30664418-5b20-40ce-8554-d1fb27cd21e7",
@@ -109,7 +113,29 @@
                 "https://checkmarx.com/blog/a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Moonstone+Sleet&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2023",
+                "motivation": [
+                  "Information theft and espionage",
+                  "Financial gain"
+                ],
+                "operations": [
+                  {
+                    "date": "2024-07",
+                    "activity": "Stressed Pungsan: DPRK-aligned threat actor leverages npm for initial access\nhttps://securitylabs.datadoghq.com/articles/stressed-pungsan-dprk-aligned-threat-actor-leverages-npm-for-initial-access/"
+                  },
+                  {
+                    "date": "2024-08",
+                    "activity": "North Korea Still Attacking Developers via npm\nhttps://blog.phylum.io/north-korea-still-attacking-developers-via-npm/"
+                  },
+                  {
+                    "date": "2025-02",
+                    "activity": "Microsoft: North Korean hackers join Qilin ransomware gang\nhttps://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/"
+                  }
+                ],
+                "last-card-change": "2025-04-21"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -144,7 +170,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -344,7 +371,38 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "South Korea",
+                  "Bangladesh Bank",
+                  "Sony Pictures Entertainment",
+                  "United States",
+                  "Thailand",
+                  "France",
+                  "China",
+                  "Hong Kong",
+                  "United Kingdom",
+                  "Guatemala",
+                  "Canada",
+                  "Bangladesh",
+                  "Japan",
+                  "India",
+                  "Germany",
+                  "Brazil",
+                  "Thailand",
+                  "Australia",
+                  "Cryptocurrency exchanges in South Korea"
+                ],
+                "cfr-target-category": [
+                  "Government",
+                  "Private sector"
+                ],
+                "cfr-type-of-incident": [
+                  "Espionage",
+                  "Sabotage"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [
@@ -379,10 +437,168 @@
               "refs": [
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "e6db1e55-b199-4b6b-8633-989345ee45e0",
+              "entry_value": "Moonstone Sleet - G1036",
+              "external_id": "G1036",
+              "matched_names": [
+                {
+                  "normalized": "moonstonesleet",
+                  "profile_value": "Moonstone Sleet",
+                  "dataset_value": "Moonstone Sleet"
+                },
+                {
+                  "normalized": "storm1789",
+                  "profile_value": "Storm-1789",
+                  "dataset_value": "Storm-1789"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Moonstone Sleet",
+                "Storm-1789"
+              ],
+              "countries": [],
+              "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) is a North Korean-linked threat actor executing both financially motivated attacks and espionage operations. The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. [Moonstone Sleet](https://attack.mitre.org/groups/G1036) is notable for creating fake companies and personas to interact with victim entities, as well as developing unique malware such as a variant delivered via a fully functioning game.(Citation: Microsoft Moonstone Sleet 2024)",
+              "refs": [
+                "https://attack.mitre.org/groups/G1036",
+                "https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03d7999c-1f4c-42cc-8373-e7690d318104",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0533ab23-3f7d-463f-9bd8-634d27e4dee1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0d91b3c0-5e50-47c3-949a-2a796f04d144",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "212306d8-efa4-44c9-8c2d-ed3d2e224aa0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2d3f5b3c-54ca-4f4d-bb1f-849346d31230",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ee16395-03f0-4690-a32e-69ce9ada0f9e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40f5caa0-4cb7-4117-89fc-d421bb493df3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5e4a2073-9643-44cb-a0b5-e7f4048446c7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65013dd2-bc61-43e3-afb5-a14c4fa7437a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "69f897fd-12a9-4c89-ad6a-46d2f3c38262",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "79da0971-3147-4af6-a4f5-e8cd447cd795",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "937e4772-8441-4e4a-8bf0-8d447d667e23",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b1ccd744-3f78-4a0e-9bb2-2002057f7928",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b80d107d-fa0d-4b60-9684-b0433e8bdba0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bd369cd9-abb8-41ce-b5bb-fff23ee86c00",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cca0ccb6-a068-4574-a722-b1556f86833a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e23d2777-b85d-44fc-861e-9149d399fbb9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "edadea33-549c-4ed1-9783-8f5a5853cbdf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f1951e8a-500e-4a26-8803-76d95c4554b4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f6ad61ee-65f3-4bd0-a3f5-2f0accb36317",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "e6db1e55-b199-4b6b-8633-989345ee45e0",
@@ -537,10 +753,48 @@
                   "dest-uuid": "f6ad61ee-65f3-4bd0-a3f5-2f0accb36317",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "33a5fa48-89ee-5c0b-9c9c-e0ee69032fca",
+              "entry_value": "Moonstone Sleet",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "moonstonesleet",
+                  "profile_value": "Moonstone Sleet",
+                  "dataset_value": "Moonstone Sleet"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Moonstone Sleet"
+              ],
+              "countries": [
+                "KP"
+              ],
+              "description": "[Moonstone Sleet](https://app.tidalcyber.com/groups/33a5fa48-89ee-5c0b-9c9c-e0ee69032fca) is a North Korean-linked threat actor executing both financially motivated attacks and espionage operations. The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://app.tidalcyber.com/groups/0bc66e95-de93-4de7-b415-4041b7191f08), but has differentiated its tradecraft since 2023. [Moonstone Sleet](https://app.tidalcyber.com/groups/33a5fa48-89ee-5c0b-9c9c-e0ee69032fca) is notable for creating fake companies and personas to interact with victim entities, as well as developing unique malware such as a variant delivered via a fully functioning game.<sup>[[Microsoft Moonstone Sleet 2024](https://app.tidalcyber.com/references/b9ee14c9-75fe-552e-81b5-a1fd5aa916d7)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage",
+                  "Financial Gain"
+                ],
+                "target_categories": [
+                  "Aerospace",
+                  "Defense",
+                  "Education",
+                  "Technology"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -640,9 +894,36 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--d3e57639-f214-441b-9d05-7f7d87d984b0",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FakePenny",
+      "description": "Custom Moonstone Sleet ransomware composed of a loader and encryptor.",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_profile_object_id": "malware--fakepenny",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--af35e26a-0941-4935-a96d-f1ac0673ca1b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -652,7 +933,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--qilin",
@@ -670,32 +951,92 @@
       ]
     },
     {
-      "type": "campaign",
+      "type": "malware",
       "spec_version": "2.1",
-      "id": "campaign--98944f83-3f54-41f7-a30c-ca035405bc8c",
-      "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "malware--47f3be97-1d63-46b1-9f2f-d5082623dafa",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大",
-      "description": "北朝鮮のMoonstone Sleetが悪意あるnpmコードを配布。 公開レジストリでコードを拡散し、攻撃対象を拡大。 航空宇宙、教育、ソフトウェア分野を標的に。 前に観測された攻撃ではWindowsのみだったが、新たに発見されたものではLinuxシステムを攻撃するための機能が追加。 オープンソースのエコシステムに大きな脅威。",
+      "name": "SplitLoader",
+      "description": "Multi-stage loader delivered by trojanized PuTTY and malicious npm projects.",
       "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_profile_object_id": "malware--splitloader",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--effcc8ce-29d6-4423-9f1f-3f31e98d4ecb",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "YouieLoad",
+      "description": "Custom in-memory loader delivered with the DeTankWar game.",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_profile_object_id": "malware--youieload",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--98944f83-3f54-41f7-a30c-ca035405bc8c",
+      "created": "2026-09-21T04:18:00Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張",
+      "description": "Checkmarxは、Moonstone Sleetが2024年第1・第2四半期に公開npmレジストリへ悪性パッケージを継続投入し、第2四半期には難読化とLinux対応を追加したと報告した。Microsoftも、偽の技術課題として悪性npmプロジェクトを配布し、SplitLoaderや資格情報窃取へつなげる活動を観測している。",
+      "external_references": [
+        {
+          "source_name": "Checkmarx",
+          "description": "Local source: https://checkmarx.com/blog/a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/",
+          "external_id": "source--checkmarx-moonstone-npm-2024"
+        },
         {
           "source_name": "darkreading.com",
           "description": "Local source: https://www.darkreading.com/cyberattacks-data-breaches/north-koreas-moonstone-sleet-widens-distribution-of-malicious-code-packages",
           "external_id": "source--daily-9b109b5f0fe055ebeba0"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
         }
       ],
       "x_profile_object_id": "activity--daily-7319b51d47c031c67b7d",
+      "x_activity_type": "reported-activity",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--7319b51d47c031c67b7dbc3b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大",
-      "x_reported_at": {
-        "value": "2024-06-14T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
+      "x_analyst_notes": "四半期単位の記述を日付へ過剰変換せず、2024年内の活動としてyear精度で保持。Jade Sleet等の別DPRKクラスタと同一主体とは扱わない。",
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--moonstone-sleet",
@@ -704,7 +1045,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--splitloader"
+          ],
           "ttp_refs": []
         },
         "infrastructure": {
@@ -716,22 +1059,22 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2024-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "source-stated"
           },
           "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2024-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "source-stated"
           },
           "reported_at": {
-            "value": "2024-06-14T00:00:00Z",
+            "value": "2024-06-13T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "reported-activity",
           "phases": [],
@@ -744,24 +1087,44 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-9b109b5f0fe055ebeba0"
+          "source--checkmarx-moonstone-npm-2024",
+          "source--daily-9b109b5f0fe055ebeba0",
+          "source--microsoft-moonstone-sleet-2024"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-06-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2024-01-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--615e111f-fd6c-4bd1-9f51-cc0fb40bef1e",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加",
       "description": "マイクロソフトは、北朝鮮のハッカー集団「Moonstone Sleet」が、最近の限定的な攻撃でQilinランサムウェアを展開していると報告。 Moonstone Sleetは以前は独自のカスタムランサムウェアを使用していたが、今回初めてRaaSオペレーターが開発したランサムウェアを使用。 同グループは、トロイの木馬化されたソフトウェアや偽のソフトウェア開発会社を利用し、LinkedInやフリーランスネットワーク、Telegram、メールを通じて被害者と接触。 Qilinランサムウェアは2022年8月に「Agenda」として登場し、これまでに300以上の被害者を主張。 Qilinｈ2023年12月には攻撃が活発化し、VMware ESXi仮想マシンを標的とする高度なLinuxエンクリプターも使用するようになった。",
-      "first_seen": "2023-12-01T00:00:00Z",
-      "last_seen": "2023-12-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -770,14 +1133,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-7d5193094ac379f8a64d",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--7d5193094ac379f8a64dfbf9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - マイクロソフトは、北朝鮮のハッカー集団「Moonstone Sleet」が、最近の限定的な攻撃でQilinランサムウェアを展開していると報告。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2025-03-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--moonstone-sleet",
@@ -835,35 +1194,56 @@
           "source--daily-79065a5586e0fb17d444"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "x_first_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2025-03-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2023-12-01T00:00:00Z",
+      "last_seen": "2023-12-01T00:00:00Z"
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける",
-      "description": "マイクロソフトがMoonstone Sleet(以前はStorm-17)という北朝鮮のハッカーグループをFakePennyランサムウェア攻撃に関連付けた Moonstone Sleetは財政およびサイバー諜報を目的に活動している 当初はDiamond Sleetと多くの重複があったが、その後グループは独自のインフラとツールを使用するようになった 偽のソフトウェア企業を通じて攻撃を行うことが多い 攻撃の動機は金銭的利益と見られる。ただし、このグループが以前にサイバースパイ攻撃に関与していたことから情報収集にも重点をおいていることが示唆される",
+      "name": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開",
+      "description": "Microsoftは、Moonstone Sleetが2024年2月に侵害した企業へ同年4月、独自のFakePennyランサムウェアを展開し660万米ドル相当のBitcoinを要求したと報告した。FakePennyはローダーと暗号化機能で構成され、Microsoftは金銭目的と評価している。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
           "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
         }
       ],
       "x_profile_object_id": "activity--daily-bf96dfd17fad7ae3914b",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--bf96dfd17fad7ae3914b369a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける",
-      "x_reported_at": {
-        "value": "2024-05-29T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
+      "x_analyst_notes": "ランサムウェア展開月を活動期間とし、先行侵害月はdescriptionへ分離。",
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--moonstone-sleet",
@@ -872,7 +1252,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--fakepenny"
+          ],
           "ttp_refs": []
         },
         "infrastructure": {
@@ -888,22 +1270,22 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2024-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
           },
           "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
+            "value": "2024-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
           },
           "reported_at": {
-            "value": "2024-05-29T00:00:00Z",
+            "value": "2024-05-28T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "ransomware-extortion",
           "phases": [],
@@ -919,450 +1301,31 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-3361ec1dff6e8d1d939e"
+          "source--daily-3361ec1dff6e8d1d939e",
+          "source--microsoft-moonstone-sleet-2024"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--fa362db8-3bf4-4e56-8b7e-e29a23849a6f",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "インド",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてインドが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d7329b5c-cb78-48fe-aaa3-28081f8ba4c5",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "オーストラリア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてオーストラリアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--62a712ff-b8a5-4ceb-a23d-4b7698f3f252",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "カナダ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてカナダが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--5372ca40-f1a9-44b7-ba8f-4e952ddfe3fa",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "グアテマラ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてグアテマラが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6a6cfa0b-b561-48e8-9cf8-ba6774e6e2ba",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "タイ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてタイが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1be525b2-5474-49e8-8b31-bd9cbecf6c71",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ドイツ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてドイツが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c69db291-2034-4de7-a4c4-033c02e67a67",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "バングラデシュ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてバングラデシュが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--72c708cd-1a54-48e3-9847-124f30dca247",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "フランス",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてフランスが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--30c2ec5f-348c-4795-b9ec-91555a3055e6",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ブラジル",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国としてブラジルが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0ac1e49c-289a-4623-a7e4-f783780ef97a",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として中国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--9c47878a-2bbe-4feb-9681-b3efd0f0be5e",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "日本",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として日本が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--5b62ee41-52be-4782-ba24-0c3711771f9c",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6876866a-7041-4dbc-9626-eb9d12666392",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "英国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として英国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--29326d3d-b271-4e8a-9b9d-d91c021622ae",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "韓国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として韓国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ba245e05-382a-4c7b-b87c-dcd61791454c",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "香港",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでMoonstone Sleetの標的・被害国として香港が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--7e1fafac-1ee8-4fe5-a696-b605fee26f43",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中南米",
-      "identity_class": "organization",
-      "description": "グアテマラ、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d6c76f3e-981a-4ab4-8ee0-0f256fb13033",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "北米",
-      "identity_class": "organization",
-      "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ba6ab9c0-312f-4e7e-857a-602015d4b2d4",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "南アジア",
-      "identity_class": "organization",
-      "description": "インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--dbcb6dc1-7f43-4fa8-8117-8fa33778b04d",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東アジア",
-      "identity_class": "organization",
-      "description": "中国、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--5c0d5bad-3884-4824-8cf9-82682ea49ed9",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
+      },
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-05-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2024-04-01T00:00:00Z",
+      "last_seen": "2024-04-01T00:00:00Z"
     },
     {
       "type": "identity",
@@ -1509,7 +1472,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1524,7 +1487,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -1552,7 +1515,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1567,7 +1530,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1016--general",
@@ -1595,7 +1558,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1610,7 +1573,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027--general",
@@ -1638,7 +1601,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--84a67b36-2e6f-4afe-8e5e-b4cabc84517e",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1653,7 +1616,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-009--general",
@@ -1681,7 +1644,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1696,7 +1659,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-013--general",
@@ -1724,7 +1687,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1739,7 +1702,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1033--general",
@@ -1767,7 +1730,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1782,7 +1745,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1053-005--general",
@@ -1810,7 +1773,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1825,7 +1788,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1071-001--general",
@@ -1853,7 +1816,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1868,7 +1831,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1082--general",
@@ -1896,7 +1859,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1911,7 +1874,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1105--general",
@@ -1939,7 +1902,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1954,7 +1917,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1140--general",
@@ -1982,7 +1945,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--fa496c01-d3af-405d-bcee-3464314baa6d",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1997,7 +1960,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1195-002--general",
@@ -2025,7 +1988,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2040,7 +2003,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -2068,7 +2031,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f0a2488f-d0af-4954-a9a4-7e8739b70e03",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2083,7 +2046,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1217--general",
@@ -2111,7 +2074,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2126,7 +2089,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1486--general",
@@ -2154,7 +2117,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2169,7 +2132,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547-001--general",
@@ -2197,7 +2160,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2212,7 +2175,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-001--general",
@@ -2240,7 +2203,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--dddee679-7a46-474b-bf1b-ccdc64685e36",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2255,7 +2218,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-003--general",
@@ -2283,7 +2246,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2298,7 +2261,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1569-002--general",
@@ -2326,7 +2289,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2341,7 +2304,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-001--general",
@@ -2369,7 +2332,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5197e629-1cf6-4045-9d96-9e86c5047890",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2384,7 +2347,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-003--general",
@@ -2412,7 +2375,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a3954372-83b8-4fa9-9b61-213e02c76236",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2427,7 +2390,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1585-001--general",
@@ -2455,7 +2418,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2470,7 +2433,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1585-002--general",
@@ -2498,7 +2461,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--9e823cb5-c35c-4553-a6e5-07cb74f3ddf7",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2513,7 +2476,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1587--general",
@@ -2541,7 +2504,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--8df14407-cbaf-45fd-b524-e1699b2b54f0",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2556,7 +2519,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1587-001--general",
@@ -2584,7 +2547,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a77b0b8e-9f7a-4801-980b-7291d8262b4b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2599,7 +2562,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1589-002--general",
@@ -2627,7 +2590,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6407a91c-9150-4bf9-9621-a6a3b34124ee",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2642,7 +2605,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1591--general",
@@ -2670,7 +2633,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--334c155d-b2cc-4672-a9f3-092b30c11e67",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2685,7 +2648,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1598--general",
@@ -2713,7 +2676,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2728,7 +2691,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1598-003--general",
@@ -2756,7 +2719,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2771,7 +2734,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1608-001--general",
@@ -2797,9 +2760,50 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--42701a5b-aed1-4ab9-9afb-73169e7cbbf8",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
+      "target_ref": "malware--d3e57639-f214-441b-9d05-7f7d87d984b0",
+      "description": "Moonstone Sleet uses FakePenny.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--1bc2440f-811c-44a2-920b-ed56763a7109",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2807,314 +2811,104 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "malware--af35e26a-0941-4935-a96d-f1ac0673ca1b",
       "description": "Moonstone Sleet uses Qilin.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--762e16c4-f46f-4d0b-85ed-7968d0ce6907",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "relationship--27111666-3490-488b-b123-522411c76bf4",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--fa362db8-3bf4-4e56-8b7e-e29a23849a6f",
-      "description": "Moonstone Sleet targets インド (profile target category: countries).",
-      "x_confidence": "medium"
+      "target_ref": "malware--47f3be97-1d63-46b1-9f2f-d5082623dafa",
+      "description": "Moonstone Sleet uses SplitLoader.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2023-08-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--1d8a6839-7db1-4766-a32e-af28fe9a4192",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "relationship--269ab033-a208-4830-b0b3-4a960fc0df8c",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--d7329b5c-cb78-48fe-aaa3-28081f8ba4c5",
-      "description": "Moonstone Sleet targets オーストラリア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fb65eb9c-abba-4966-9362-757827345d55",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      "target_ref": "malware--effcc8ce-29d6-4423-9f1f-3f31e98d4ecb",
+      "description": "Moonstone Sleet uses YouieLoad.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--62a712ff-b8a5-4ceb-a23d-4b7698f3f252",
-      "description": "Moonstone Sleet targets カナダ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c91ea5ad-fb16-4ee0-b793-0c7a1ab0a603",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--5372ca40-f1a9-44b7-ba8f-4e952ddfe3fa",
-      "description": "Moonstone Sleet targets グアテマラ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a2154aaa-60ab-4815-bc13-13a4abd620fe",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--6a6cfa0b-b561-48e8-9cf8-ba6774e6e2ba",
-      "description": "Moonstone Sleet targets タイ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--56cb8089-8622-4b6b-82a5-fa99a7d911b5",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--1be525b2-5474-49e8-8b31-bd9cbecf6c71",
-      "description": "Moonstone Sleet targets ドイツ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a0f1d5ed-96dc-4ed0-9964-ab5cb30c7d30",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--c69db291-2034-4de7-a4c4-033c02e67a67",
-      "description": "Moonstone Sleet targets バングラデシュ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--bed0f44d-bd66-4e4b-a4bc-19b6736227b3",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--72c708cd-1a54-48e3-9847-124f30dca247",
-      "description": "Moonstone Sleet targets フランス (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9589777b-bb3e-412d-93db-638853e71fa6",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--30c2ec5f-348c-4795-b9ec-91555a3055e6",
-      "description": "Moonstone Sleet targets ブラジル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c3c685ac-27c7-4051-af89-2d600922f928",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--0ac1e49c-289a-4623-a7e4-f783780ef97a",
-      "description": "Moonstone Sleet targets 中国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a5afd67c-93ed-4697-b3e0-afa114ba19e4",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--9c47878a-2bbe-4feb-9681-b3efd0f0be5e",
-      "description": "Moonstone Sleet targets 日本 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7ff961a3-25a7-4060-9c12-a98a613c5c71",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--5b62ee41-52be-4782-ba24-0c3711771f9c",
-      "description": "Moonstone Sleet targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d7c07d58-c5d4-432c-a3bf-15501f2a8824",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--6876866a-7041-4dbc-9626-eb9d12666392",
-      "description": "Moonstone Sleet targets 英国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c27d653c-d9e0-4258-9707-883c5fc37060",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--29326d3d-b271-4e8a-9b9d-d91c021622ae",
-      "description": "Moonstone Sleet targets 韓国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8593ec92-9e9d-4f46-9613-272dc42b2ae4",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--ba245e05-382a-4c7b-b87c-dcd61791454c",
-      "description": "Moonstone Sleet targets 香港 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--91db9758-d276-4e49-8efb-ea59460dc770",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--7e1fafac-1ee8-4fe5-a696-b605fee26f43",
-      "description": "Moonstone Sleet targets 中南米 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--58d047e6-509b-4615-a3af-a47bb8351c4a",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--d6c76f3e-981a-4ab4-8ee0-0f256fb13033",
-      "description": "Moonstone Sleet targets 北米 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2d42736e-ad9a-4713-ab3a-ba4edb833fce",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--ba6ab9c0-312f-4e7e-857a-602015d4b2d4",
-      "description": "Moonstone Sleet targets 南アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7161f9aa-85aa-49b4-9034-38ad38156606",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--dbcb6dc1-7f43-4fa8-8117-8fa33778b04d",
-      "description": "Moonstone Sleet targets 東アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--4f4df923-860b-44e5-a908-3887dc2b2462",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "target_ref": "identity--5c0d5bad-3884-4824-8cf9-82682ea49ed9",
-      "description": "Moonstone Sleet targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_first_observed": {
+        "value": "2024-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-02-01T00:00:00Z",
+      "stop_time": "2024-05-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--15fbba65-a370-4ead-a175-46a06e85e975",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3122,29 +2916,135 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "description": "Moonstone Sleet targets IT・ソフトウェア (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
+          "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0673b769-3069-4e4d-951a-f415c496b1dd",
-      "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-27T11:04:33Z",
+      "created": "2026-09-21T04:18:00Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "attributed-to",
       "source_ref": "campaign--98944f83-3f54-41f7-a30c-ca035405bc8c",
       "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "description": "北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 is attributed or linked to Moonstone Sleet.",
-      "x_confidence": "high"
+      "description": "Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張 is attributed or linked to Moonstone Sleet.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Checkmarx",
+          "description": "Local source: https://checkmarx.com/blog/a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/",
+          "external_id": "source--checkmarx-moonstone-npm-2024"
+        },
+        {
+          "source_name": "darkreading.com",
+          "description": "Local source: https://www.darkreading.com/cyberattacks-data-breaches/north-koreas-moonstone-sleet-widens-distribution-of-malicious-code-packages",
+          "external_id": "source--daily-9b109b5f0fe055ebeba0"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-06-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ab75771d-9e7c-4d42-bd4c-6e77fe68be8f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--98944f83-3f54-41f7-a30c-ca035405bc8c",
+      "target_ref": "malware--47f3be97-1d63-46b1-9f2f-d5082623dafa",
+      "description": "Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張 uses malware--splitloader.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Checkmarx",
+          "description": "Local source: https://checkmarx.com/blog/a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/",
+          "external_id": "source--checkmarx-moonstone-npm-2024"
+        },
+        {
+          "source_name": "darkreading.com",
+          "description": "Local source: https://www.darkreading.com/cyberattacks-data-breaches/north-koreas-moonstone-sleet-widens-distribution-of-malicious-code-packages",
+          "external_id": "source--daily-9b109b5f0fe055ebeba0"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2024-06-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cfd96576-6b7f-4a7d-9cb2-9b30d6df2940",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3152,14 +3052,46 @@
       "source_ref": "campaign--615e111f-fd6c-4bd1-9f51-cc0fb40bef1e",
       "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "description": "マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 is attributed or linked to Moonstone Sleet.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/",
+          "external_id": "source--daily-79065a5586e0fb17d444"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-03-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2900355d-cdf0-4478-bd5b-f8b0601fa96b",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3167,14 +3099,46 @@
       "source_ref": "campaign--615e111f-fd6c-4bd1-9f51-cc0fb40bef1e",
       "target_ref": "malware--af35e26a-0941-4935-a96d-f1ac0673ca1b",
       "description": "マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 uses malware--qilin.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/",
+          "external_id": "source--daily-79065a5586e0fb17d444"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-03-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7def46e9-3fd6-45a4-a890-badb31e2e6f0",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3182,59 +3146,254 @@
       "source_ref": "campaign--615e111f-fd6c-4bd1-9f51-cc0fb40bef1e",
       "target_ref": "identity--3d92520e-f19c-4509-851a-adfa7932ac33",
       "description": "マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 affected victim--activity-rule--a8eb7df35b3e91598d43.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/",
+          "external_id": "source--daily-79065a5586e0fb17d444"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-03-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2023-12-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d2c5d665-39af-4938-b443-b63336db6157",
       "created": "2026-07-27T11:04:33Z",
-      "modified": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "attributed-to",
       "source_ref": "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
       "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
-      "description": "マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける is attributed or linked to Moonstone Sleet.",
-      "x_confidence": "high"
+      "description": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 is attributed or linked to Moonstone Sleet.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
+          "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-05-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-04-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ca4d0156-9dea-4ae4-ab74-19cfe32874f4",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
+      "target_ref": "malware--d3e57639-f214-441b-9d05-7f7d87d984b0",
+      "description": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 uses malware--fakepenny.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
+          "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-05-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--34bf2936-6271-49f8-aae3-f6560299b151",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
       "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
-      "description": "マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
-      "x_confidence": "high"
+      "description": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
+          "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-05-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2e4c4289-3a38-4344-85f5-7d566c23aac4",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
       "target_ref": "identity--e729805a-d977-41fb-a06c-4013357072b9",
-      "description": "マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける affected victim--activity-rule--334f2276bd544e473f73.",
-      "x_confidence": "high"
+      "description": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開 affected victim--activity-rule--334f2276bd544e473f73.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/",
+          "external_id": "source--daily-3361ec1dff6e8d1d939e"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/",
+          "external_id": "source--microsoft-moonstone-sleet-2024"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2024-05-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2024-04-01T00:00:00Z"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--09c2f51d-7721-4049-b3ed-41f7bd276bd7",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3242,14 +3401,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved credentials from LSASS memory.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8916e648-0143-4355-b342-7318328b040d",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3257,14 +3423,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim network configuration.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--47f4713a-9fd0-465d-976a-1df3311d9e53",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3272,14 +3445,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivers encrypted payloads in pieces that are then combined together to form a new portable executable (PE) file during installation.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5e6a6c52-397c-4318-aae7-dc055929bdef",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3287,14 +3467,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--84a67b36-2e6f-4afe-8e5e-b4cabc84517e",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) embedded payloads in trojanized software for follow-on execution.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3f722f1a-173e-47e7-800d-2e13016daa1b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3302,14 +3489,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used encrypted payloads within files for follow-on execution and defense evasion.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0add4778-1c3f-4a9f-a569-d1a8d6aa017f",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3317,14 +3511,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed various malware such as YouieLoader that can perform system user discovery actions.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--982cd617-2a2f-41e5-a10d-414aa798fe69",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3332,14 +3533,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) used scheduled tasks for program execution during initial access to victim machines.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d8a04f16-5cc1-4d5c-9744-c48ba3ac3a17",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3347,14 +3555,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) used curl to connect to adversary-controlled infrastructure and retrieve additional payloads.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--20acbe85-f89d-46ba-a728-ffd3c1ca193e",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3362,14 +3577,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim systems.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a49437a7-a078-4bdc-847d-2be6ba5dbc39",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3377,14 +3599,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved a final stage payload from command and control infrastructure during initial installation on victim systems.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--204cb9cb-ee18-4838-a1f6-166dbf2e7a38",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3392,14 +3621,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered payloads using multiple rounds of obfuscation and encoding to evade defenses and analysis.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8082f4dc-782f-47a8-9b77-b363909960b1",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3407,14 +3643,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--fa496c01-d3af-405d-bcee-3464314baa6d",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has distributed a trojanized version of PuTTY software for initial access to victims.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a9c3d93b-34b8-46fb-a733-81c14a26b821",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3422,14 +3665,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) relied on users interacting with malicious files, such as a trojanized PuTTY installer, for initial execution.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--806b31f9-b8ca-4494-9cf4-7ff0e704da30",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3437,14 +3687,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--f0a2488f-d0af-4954-a9a4-7e8739b70e03",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed malware such as YouieLoader capable of capturing victim system browser information.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--359460bb-53d1-46d6-8bf8-d86c7383f514",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3452,14 +3709,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has deployed ransomware in victim environments.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8f81038a-41ed-45b3-873a-ba26074ab9ae",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3467,14 +3731,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) used registry run keys for process execution during initial victim infection.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b8e8b6a2-5bd3-400d-884f-67ce9adc533c",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3482,14 +3753,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered various payloads to victims as spearphishing attachments.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c9b07ed6-50b7-43c2-aa2d-c46092db2567",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3497,14 +3775,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--dddee679-7a46-474b-bf1b-ccdc64685e36",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used social media services to spear phish victims to deliver trojainized software.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--99b5396d-2cc4-4a2e-937a-40a1f48f3571",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3512,14 +3797,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) used intermediate loader malware such as YouieLoader and SplitLoader that create malicious services.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d1621f51-ce4f-45e3-9c24-1b915d461d8a",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3527,14 +3819,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered domains to develop effective personas for fake companies used in phishing activity.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a62d11a0-2fbd-4574-b423-e4380e919bef",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3542,14 +3841,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--5197e629-1cf6-4045-9d96-9e86c5047890",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered virtual private servers to host payloads for download.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--13f4b142-7eaf-418a-92aa-1edeb065d80c",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3557,14 +3863,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--a3954372-83b8-4fa9-9b61-213e02c76236",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created social media accounts to interact with victims.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--019a75be-7ed0-48db-9304-8814b5b4c702",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3572,14 +3885,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created email accounts to interact with victims, including for phishing purposes.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b8a664e4-6a24-427b-b412-782fb98f5c01",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3587,14 +3907,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--9e823cb5-c35c-4553-a6e5-07cb74f3ddf7",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) developed malicious npm packages for delivery to or retrieval by victims.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fdb76a73-08df-468e-845a-0bc669808733",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3602,14 +3929,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--8df14407-cbaf-45fd-b524-e1699b2b54f0",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has developed custom malware, including a malware delivery mechanism masquerading as a legitimate game.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f119b3ea-a907-47f2-b51b-bdd8364fcf10",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3617,14 +3951,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--a77b0b8e-9f7a-4801-980b-7291d8262b4b",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) gathered victim email address information for follow-on phishing activity.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4552e03b-fa81-4583-a7b4-eb11fbc64522",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3632,14 +3973,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--6407a91c-9150-4bf9-9621-a6a3b34124ee",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim organizations through email and social media interaction.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--011acc34-00a5-4e82-967e-b4742548cd7b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3647,14 +3995,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--334c155d-b2cc-4672-a9f3-092b30c11e67",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) has interacted with victims to gather information via email.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--57758336-0860-4def-8da9-e40f2c2f3d0d",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3662,14 +4017,21 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) used spearphishing messages containing items such as tracking pixels to determine if users interacted with malicious messages.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6dfc7dfe-4a25-48cd-8485-6baf13b0d02e",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3677,14 +4039,276 @@
       "source_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
       "target_ref": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "description": "[Moonstone Sleet](https://attack.mitre.org/groups/G1036) staged malicious capabilities online for follow-on download by victims or malware.(Citation: Microsoft Moonstone Sleet 2024)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b3942971-09a7-4c87-bfc7-f06011cd8ddc",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: defitankland.com",
+      "pattern": "[domain-name:value = 'defitankland.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9e2dc5ad2d7d176ba9e45ba85705c0e02add3fe9012d2d3924eadb3dd7072bd7",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--moonstone-sleet--057dc52f1759be32",
+          "source_path": "actor_profile/evidence/moonstone-sleet.csv",
+          "source_location": {
+            "row": 17
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf {\"page\": 25} Moonstone Sleet tablished a fake company called C.C. Waterfall to promote a fully functional but malicious online game that the actors developed called , “DeTankWar,” which was a fraudulent copy of a real game, ”DeFi Tank Land.” The Moonstone Sleet actors publicized their fake game in social media spoofing the legitimate domain ”defitankland[.",
+          "analyst_notes": "",
+          "raw_value": "defitankland[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1b2ab3d5-cb13-4e51-9e92-31e52ded5883",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b3942971-09a7-4c87-bfc7-f06011cd8ddc",
+      "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--11aecb97-f6a4-4eeb-9f91-5c9b517d64c7",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: defitankzone.com",
+      "pattern": "[domain-name:value = 'defitankzone.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e2e71d275bfc32f8f59f3e68b9555e4403c0cd8446ce9b1c225499cdc90e7380",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--moonstone-sleet--057dc52f1759be32",
+          "source_path": "actor_profile/evidence/moonstone-sleet.csv",
+          "source_location": {
+            "row": 17
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf {\"page\": 25} Moonstone Sleet tablished a fake company called C.C. Waterfall to promote a fully functional but malicious online game that the actors developed called , “DeTankWar,” which was a fraudulent copy of a real game, ”DeFi Tank Land.” The Moonstone Sleet actors publicized their fake game in social media spoofing the legitimate domain ”defitankland[.",
+          "analyst_notes": "",
+          "raw_value": "defitankzone[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b55c74ce-791d-4c48-91c1-32f991874046",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--11aecb97-f6a4-4eeb-9f91-5c9b517d64c7",
+      "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6ecd7ccd-1182-4bd2-bc6b-d8bad045842a",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: detankwar.com",
+      "pattern": "[domain-name:value = 'detankwar.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:977bbc239dea5be80a6171851148f6832ca2421645ddea4079d784dc5e205233",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--moonstone-sleet--057dc52f1759be32",
+          "source_path": "actor_profile/evidence/moonstone-sleet.csv",
+          "source_location": {
+            "row": 16
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf {\"page\": 25} Moonstone Sleet ssociated site, detankwar[.]com, with the aim to obtain device and account credentials from victims and steal cryptocurrency according to an MSMT Participating State .60 During the same period, according to Microsoft, Moonstone Sleet actors established a fake company called C.C. Waterfall to promote a fully functional but malic",
+          "analyst_notes": "",
+          "raw_value": "detankwar[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:2b68a34ad59c1e808b930aa43f4d6630882e69dfe348b5884de44a41409aa214",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--moonstone-sleet--057dc52f1759be32",
+          "source_path": "actor_profile/evidence/moonstone-sleet.csv",
+          "source_location": {
+            "row": 17
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf {\"page\": 25} Moonstone Sleet tablished a fake company called C.C. Waterfall to promote a fully functional but malicious online game that the actors developed called , “DeTankWar,” which was a fraudulent copy of a real game, ”DeFi Tank Land.” The Moonstone Sleet actors publicized their fake game in social media spoofing the legitimate domain ”defitankland[.",
+          "analyst_notes": "",
+          "raw_value": "detankwar[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--56709ef1-9c6f-4816-8f29-88ddd4d1d217",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6ecd7ccd-1182-4bd2-bc6b-d8bad045842a",
+      "target_ref": "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--d6a67aed-7939-48b4-8bb7-d99f664ddb83",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3694,14 +4318,14 @@
         "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 32
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--b0311ee5-91d8-4481-8a8e-7ba363d1e9c8",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3710,33 +4334,16 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T08:15:06Z",
       "object_refs": [
         "intrusion-set--03af5758-2021-4286-8bfe-04d2eed16c3c",
+        "malware--d3e57639-f214-441b-9d05-7f7d87d984b0",
         "malware--af35e26a-0941-4935-a96d-f1ac0673ca1b",
+        "malware--47f3be97-1d63-46b1-9f2f-d5082623dafa",
+        "malware--effcc8ce-29d6-4423-9f1f-3f31e98d4ecb",
         "campaign--98944f83-3f54-41f7-a30c-ca035405bc8c",
         "campaign--615e111f-fd6c-4bd1-9f51-cc0fb40bef1e",
         "campaign--4e486bc3-0583-48c7-bd75-c170598aaf37",
-        "identity--fa362db8-3bf4-4e56-8b7e-e29a23849a6f",
-        "identity--d7329b5c-cb78-48fe-aaa3-28081f8ba4c5",
-        "identity--62a712ff-b8a5-4ceb-a23d-4b7698f3f252",
-        "identity--5372ca40-f1a9-44b7-ba8f-4e952ddfe3fa",
-        "identity--6a6cfa0b-b561-48e8-9cf8-ba6774e6e2ba",
-        "identity--1be525b2-5474-49e8-8b31-bd9cbecf6c71",
-        "identity--c69db291-2034-4de7-a4c4-033c02e67a67",
-        "identity--72c708cd-1a54-48e3-9847-124f30dca247",
-        "identity--30c2ec5f-348c-4795-b9ec-91555a3055e6",
-        "identity--0ac1e49c-289a-4623-a7e4-f783780ef97a",
-        "identity--9c47878a-2bbe-4feb-9681-b3efd0f0be5e",
-        "identity--5b62ee41-52be-4782-ba24-0c3711771f9c",
-        "identity--6876866a-7041-4dbc-9626-eb9d12666392",
-        "identity--29326d3d-b271-4e8a-9b9d-d91c021622ae",
-        "identity--ba245e05-382a-4c7b-b87c-dcd61791454c",
-        "identity--7e1fafac-1ee8-4fe5-a696-b605fee26f43",
-        "identity--d6c76f3e-981a-4ab4-8ee0-0f256fb13033",
-        "identity--ba6ab9c0-312f-4e7e-857a-602015d4b2d4",
-        "identity--dbcb6dc1-7f43-4fa8-8117-8fa33778b04d",
-        "identity--5c0d5bad-3884-4824-8cf9-82682ea49ed9",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
         "identity--e729805a-d977-41fb-a06c-4013357072b9",
         "identity--3d92520e-f19c-4509-851a-adfa7932ac33",
@@ -3769,9 +4376,12 @@
         "attack-pattern--6407a91c-9150-4bf9-9621-a6a3b34124ee",
         "attack-pattern--334c155d-b2cc-4672-a9f3-092b30c11e67",
         "attack-pattern--e107add6-3947-4d7a-bfe0-5c94815528e3",
-        "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7"
+        "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
+        "indicator--b3942971-09a7-4c87-bfc7-f06011cd8ddc",
+        "indicator--11aecb97-f6a4-4eeb-9f91-5c9b517d64c7",
+        "indicator--6ecd7ccd-1182-4bd2-bc6b-d8bad045842a"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

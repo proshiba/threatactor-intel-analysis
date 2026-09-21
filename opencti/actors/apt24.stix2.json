@@ -1,0 +1,312 @@
+{
+  "type": "bundle",
+  "id": "bundle--4c95dc13-619f-49f7-a71d-ac8151ca14aa",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--fc00ac622b1fec8b44be",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--daily-848f359f9119eb58068d"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT24",
+      "aliases": [
+        "COULEE",
+        "RAVINE CASTLE",
+        "UNC1088"
+      ],
+      "description": "APT24の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--apt24",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "COULEE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026"
+          ],
+          "analyst_notes": "同一原文が「previously known as COULEE, APT24」としてCOULEEを旧称に挙げている。GTIG自身の旧指定子であるためscopeはexactとする。"
+        },
+        {
+          "name": "RAVINE CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG原文の「RAVINE CASTLE, a PRC-nexus cyber espionage group previously known as COULEE, APT24」に基づく。APT24はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24)に沿った改称であり帰属の変更ではない。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "UNC1088",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "APT24の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=台湾。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Taiwan",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "TWA",
+      "x_opencti_reference_id": "location--d3a4164a-770f-4e67-aa4f-7285c908ff0c",
+      "x_opencti_aliases": [
+        "TW",
+        "TWA",
+        "TWN",
+        "台湾"
+      ],
+      "latitude": 25.105497,
+      "longitude": 121.597366,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--32e6a059-c894-467d-bc00-180f3a6ae400",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T01:54:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "target_ref": "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+      "description": "APT24 targets 台湾 (profile target category: countries).\n\nEvidence: 活動「Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+      "target_ref": "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+      "description": "BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f8112cff-2cd1-4312-a9d3-db6e53b55a2f",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-11-22T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+        "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+        "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-f3b162a1cedd89627cee",
+          "url": "https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f3b162a1cedd89627cee",
+      "x_evidence_slice_scope": "actor:actor--apt24",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--66ab1ca0-a8d9-4cb8-b767-a0a4c884c077",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT24 OpenCTI Actor Profile",
+      "description": "APT24の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "attack-pattern--3aade074-d094-448a-8858-de0eb6b70581",
+        "intrusion-set--403b6955-34cb-441b-8be9-5885ba013aa0",
+        "location--cc94c3b4-608b-4a58-9bf1-43c42b209c03",
+        "note--32e6a059-c894-467d-bc00-180f3a6ae400",
+        "relationship--2c2f41a9-27b3-46e6-b49b-5a9d30b7ab09",
+        "relationship--faaab04a-d500-4a7f-8fc9-95273b4c7261",
+        "report--f8112cff-2cd1-4312-a9d3-db6e53b55a2f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "actor",
+      "x_profile_id": "actor--apt24"
+    }
+  ]
+}

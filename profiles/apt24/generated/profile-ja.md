@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt24`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:01Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,8 +18,9 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| RAVINE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「RAVINE CASTLE, a PRC-nexus cyber espionage group previously known as COULEE, APT24」に基づく。APT24はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24)に沿った改称であり帰属の変更ではない。 |
 | COULEE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | 同一原文が「previously known as COULEE, APT24」としてCOULEEを旧称に挙げている。GTIG自身の旧指定子であるためscopeはexactとする。 |
+| RAVINE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-unified-actor-naming-2026` | GTIG原文の「RAVINE CASTLE, a PRC-nexus cyber espionage group previously known as COULEE, APT24」に基づく。APT24はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24)に沿った改称であり帰属の変更ではない。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| UNC1088 | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -51,20 +52,23 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: なし
+- 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | RAVINE CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Canary Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT24 | canonical-name | 高 | CN | http://blog.airbuscybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>http://blog.cassidiancybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2014/2014.07.11.Pitty_Tiger/Pitty_Tiger_Final_Report.pdf |
+| misp-threat-actor | UNC1088 | multiple-name-intersection | 高 | CN | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/ |
 | misp-microsoft-activity-group | Canary Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -123,7 +127,7 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 |---|---|---|---|---|---|---|
 | countries | 台湾 | 活動「Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-f3b162a1cedd89627cee` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -143,7 +147,7 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -170,6 +174,8 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

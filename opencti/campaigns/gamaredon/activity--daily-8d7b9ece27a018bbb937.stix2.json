@@ -1,0 +1,1254 @@
+{
+  "type": "bundle",
+  "id": "bundle--8b012aa2-0c04-4697-b8a4-c07b5b576285",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e44a9f70-ae11-497c-b6be-327d002efea0",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:29:47Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--c156a9757ac6d6ce11ab",
+      "x_tactic": "Execution, Persistence, Privilege Escalation",
+      "x_activity_refs": [
+        "activity--daily-8d7b9ece27a018bbb937"
+      ],
+      "x_malware_refs": [
+        "malware--daily-d2f92cab7d572d733a5d"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "created": "2026-07-26T06:00:42Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-8d7b9ece27a018bbb937",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--8d7b9ece27a018bbb93763c3 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Sekoiaの活動分析に基づく。追跡名称と帰属範囲は他資料との比較時に分離して扱う。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gamaredon",
+          "name": "Gamaredon",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-d2f92cab7d572d733a5d",
+            "malware--daily-dee986e090a2e04cffbb"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--c156a9757ac6d6ce11ab"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--mitre-group--sector--52029eb0de30cafe0b41"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a5e83e9e93b643449173"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2026-06-03T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f9666a37c61d10f83b24"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-01-01T00:00:00Z",
+      "last_seen": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3af57f0e-a2f4-4497-9950-0647b6ba7f64",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:36:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "identity_class": "organization",
+      "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--a5e83e9e93b643449173",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--mitre-group--sector--52029eb0de30cafe0b41"
+      ],
+      "x_malware_refs": [
+        "malware--daily-d2f92cab7d572d733a5d",
+        "malware--daily-dee986e090a2e04cffbb"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--c156a9757ac6d6ce11ab"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "class",
+      "description": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) is a suspected Russian cyber espionage group that has targeted military, law enforcement, judiciary, non-profit, and non-governmental organizations in Ukraine since at least 2013.",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--mitre-group--sector--52029eb0de30cafe0b41",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Gamaredon",
+      "aliases": [
+        "ACTINIUM",
+        "Aqua Blizzard",
+        "Armageddon",
+        "DEV-0157",
+        "Gamaredon Group",
+        "IRON TILDEN",
+        "NastyShrew",
+        "Primitive Bear",
+        "Shuckworm",
+        "UAC-0010"
+      ],
+      "description": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) is a suspected Russian cyber espionage group that has targeted military, law enforcement, judiciary, non-profit, and non-governmental organizations in Ukraine since at least 2013. The name [Gamaredon Group](https://attack.mitre.org/groups/G0047) derives from a misspelling of the word \"Armageddon,\" found in early campaigns.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Symantec Shuckworm January 2022)(Citation: Microsoft Actinium February 2022)\n\nIn November 2021, the Ukrainian government publicly attributed [Gamaredon Group](https://attack.mitre.org/groups/G0047) to Russia’s Federal Security Service (FSB) Center 18, an assessment later supported by multiple independent cybersecurity researchers. (Citation: Bleepingcomputer Gamardeon FSB November 2021)(Citation: Microsoft Actinium February 2022)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--gamaredon",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "ACTINIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Aqua Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Armageddon",
+          "vendor": "State Cyber Protection Centre of Ukraine",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--scpc-uac0010-gamaredon-2023"
+          ],
+          "analyst_notes": "Ukraine's State Cyber Protection Centre explicitly identifies UAC-0010 as also known as Gamaredon and Armageddon."
+        },
+        {
+          "name": "DEV-0157",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Gamaredon Group",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON TILDEN",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NastyShrew",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Primitive Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Shuckworm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UAC-0010",
+          "vendor": "State Cyber Protection Centre of Ukraine",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--scpc-uac0010-gamaredon-2023"
+          ],
+          "analyst_notes": "Ukraine's State Cyber Protection Centre explicitly identifies UAC-0010 as also known as Gamaredon and Armageddon."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "QuietSieve, Pteranodon, PowerPunch, Remcos, Ping, Reg",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T01:54:42Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ukraine",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--36f1b9323d5faab92f39",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "UKR",
+      "x_opencti_reference_id": "location--e5f054fc-fc63-46f3-8d63-1f93e0cb7801",
+      "x_opencti_aliases": [
+        "UA",
+        "UKR",
+        "ウクライナ"
+      ],
+      "latitude": 48.379433,
+      "longitude": 31.16558,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--353a7c89-f102-413b-a02c-df3b60fca766",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:42Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GammaPhish",
+      "description": "Gamaredonとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-dee986e090a2e04cffbb",
+      "x_confidence": "medium",
+      "x_analyst_notes": "報告対象のGamaredonツールとして扱われている。",
+      "is_family": true,
+      "malware_types": [
+        "dropper"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--6827225c-241b-4d02-9430-d787aa3329ca",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:42Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GammaWorm",
+      "description": "Gamaredonとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-d2f92cab7d572d733a5d",
+      "x_confidence": "medium",
+      "x_analyst_notes": "報告対象のGamaredonツールとして扱われている。",
+      "is_family": true,
+      "malware_types": [
+        "worm"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--05f81625-cca6-4bc7-a499-b49b1538969b",
+      "created": "2026-08-07T10:35:24Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "identity--3af57f0e-a2f4-4497-9950-0647b6ba7f64",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm affected victim--activity-rule--a5e83e9e93b643449173.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2243fb9c-1482-4bdf-9286-89be17ad7eea",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "malware--6827225c-241b-4d02-9430-d787aa3329ca",
+      "description": "Gamaredon uses GammaWorm.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ea5a234-2f8d-4325-b964-89b6e2a24218",
+      "created": "2026-07-26T06:00:42Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "malware--6827225c-241b-4d02-9430-d787aa3329ca",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm uses malware--daily-d2f92cab7d572d733a5d.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--364871be-0d21-4b60-be73-a68ae0ec8655",
+      "created": "2026-08-07T10:35:24Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm targets target--mitre-group--sector--52029eb0de30cafe0b41.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4863529f-1f88-4b1e-be59-04a63cef4249",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+      "description": "Gamaredon targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4be4cfbb-a13b-41de-a8aa-363e3d4a6f7a",
+      "created": "2026-07-26T06:00:42Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "malware--353a7c89-f102-413b-a02c-df3b60fca766",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm uses malware--daily-dee986e090a2e04cffbb.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4c175bd1-2c9a-45b3-a79e-378da113aac4",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm targets target--activity-rule--country--36f1b9323d5faab92f39.\n\nEvidence: 活動「FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6626c04c-6a5a-47e4-8274-76c91520b8c6",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "attack-pattern--e44a9f70-ae11-497c-b6be-327d002efea0",
+      "description": "GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "Gamaredon targets ウクライナ (profile target category: countries).\n\nEvidence: 活動「FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80e31332-67a5-42ae-8086-a086836a5434",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "malware--353a7c89-f102-413b-a02c-df3b60fca766",
+      "description": "Gamaredon uses GammaPhish.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b4ed4063-bd85-4b35-b0bd-ecb73d26def6",
+      "created": "2026-07-26T06:00:42Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm is attributed or linked to Gamaredon.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c6e423e1-6b3f-4cef-bdaa-a0074e164c50",
+      "created": "2026-08-07T10:35:24Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+      "target_ref": "attack-pattern--e44a9f70-ae11-497c-b6be-327d002efea0",
+      "description": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm uses ttp--activity-rule--c156a9757ac6d6ce11ab.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1514ad29-dade-4bab-a0f6-0c5bddf571c8",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-03T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--e44a9f70-ae11-497c-b6be-327d002efea0",
+        "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+        "identity--3af57f0e-a2f4-4497-9950-0647b6ba7f64",
+        "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+        "malware--353a7c89-f102-413b-a02c-df3b60fca766",
+        "malware--6827225c-241b-4d02-9430-d787aa3329ca",
+        "relationship--05f81625-cca6-4bc7-a499-b49b1538969b",
+        "relationship--2243fb9c-1482-4bdf-9286-89be17ad7eea",
+        "relationship--2ea5a234-2f8d-4325-b964-89b6e2a24218",
+        "relationship--364871be-0d21-4b60-be73-a68ae0ec8655",
+        "relationship--4863529f-1f88-4b1e-be59-04a63cef4249",
+        "relationship--4be4cfbb-a13b-41de-a8aa-363e3d4a6f7a",
+        "relationship--4c175bd1-2c9a-45b3-a79e-378da113aac4",
+        "relationship--6626c04c-6a5a-47e4-8274-76c91520b8c6",
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+        "relationship--80e31332-67a5-42ae-8086-a086836a5434",
+        "relationship--b4ed4063-bd85-4b35-b0bd-ecb73d26def6",
+        "relationship--c6e423e1-6b3f-4cef-bdaa-a0074e164c50"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f9666a37c61d10f83b24",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-8d7b9ece27a018bbb937",
+      "x_source_publisher": "blog.sekoia.io",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d8a10cae-6536-401b-a650-b0fa72f315c0",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+        "relationship--4863529f-1f88-4b1e-be59-04a63cef4249"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-8d7b9ece27a018bbb937",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e5e69fdb-abc4-463d-93ec-06cb1bf4dfb2",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-11T00:00:00Z",
+      "object_refs": [
+        "relationship--4c175bd1-2c9a-45b3-a79e-378da113aac4",
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-ae1b297bcc282623fbff",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-8d7b9ece27a018bbb937",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4e562057-34e7-4cd3-992d-859b98dc8153",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Gamaredon / FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:02Z",
+      "object_refs": [
+        "attack-pattern--e44a9f70-ae11-497c-b6be-327d002efea0",
+        "campaign--3886b3e9-781b-4e91-ab55-251a260b23d3",
+        "identity--3af57f0e-a2f4-4497-9950-0647b6ba7f64",
+        "identity--40843abf-aecd-4f59-9488-5ac120413bdc",
+        "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+        "location--594a193e-06ff-439b-93f2-e072203e1822",
+        "malware--353a7c89-f102-413b-a02c-df3b60fca766",
+        "malware--6827225c-241b-4d02-9430-d787aa3329ca",
+        "relationship--05f81625-cca6-4bc7-a499-b49b1538969b",
+        "relationship--2243fb9c-1482-4bdf-9286-89be17ad7eea",
+        "relationship--2ea5a234-2f8d-4325-b964-89b6e2a24218",
+        "relationship--364871be-0d21-4b60-be73-a68ae0ec8655",
+        "relationship--4863529f-1f88-4b1e-be59-04a63cef4249",
+        "relationship--4be4cfbb-a13b-41de-a8aa-363e3d4a6f7a",
+        "relationship--4c175bd1-2c9a-45b3-a79e-378da113aac4",
+        "relationship--6626c04c-6a5a-47e4-8274-76c91520b8c6",
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+        "relationship--80e31332-67a5-42ae-8086-a086836a5434",
+        "relationship--b4ed4063-bd85-4b35-b0bd-ecb73d26def6",
+        "relationship--c6e423e1-6b3f-4cef-bdaa-a0074e164c50",
+        "report--1514ad29-dade-4bab-a0f6-0c5bddf571c8",
+        "report--d8a10cae-6536-401b-a650-b0fa72f315c0",
+        "report--e5e69fdb-abc4-463d-93ec-06cb1bf4dfb2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--gamaredon",
+      "x_activity_id": "activity--daily-8d7b9ece27a018bbb937"
+    }
+  ]
+}

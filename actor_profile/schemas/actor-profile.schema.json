@@ -26,7 +26,7 @@
     "free_text"
   ],
   "properties": {
-    "schema_version": {"const": "1.2.0"},
+    "schema_version": {"const": "1.3.0"},
     "profile_id": {"type": "string", "pattern": "^actor--[a-z0-9][a-z0-9-]*$"},
     "name": {"type": "string", "minLength": 1},
     "status": {"enum": ["draft", "review", "published", "deprecated"]},
@@ -222,11 +222,20 @@
     },
     "activity": {
       "type": "object",
-      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "ttp_refs", "victim_refs", "diamond_model", "confidence", "evidence_refs", "analyst_notes"],
+      "required": ["activity_id", "name", "activity_type", "stix_object_type", "grouping_context", "activity_refs", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "ttp_refs", "victim_refs", "diamond_model", "confidence", "evidence_refs", "analyst_notes"],
       "properties": {
         "activity_id": {"type": "string", "pattern": "^activity--"},
         "name": {"type": "string"},
         "activity_type": {"type": "string"},
+        "stix_object_type": {"enum": ["campaign", "incident", "grouping"]},
+        "grouping_context": {
+          "enum": ["suspicious-activity", "malware-analysis", "unspecified", null]
+        },
+        "activity_refs": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^activity--"},
+          "uniqueItems": true
+        },
         "first_observed": {"$ref": "#/$defs/timePoint"},
         "last_observed": {"$ref": "#/$defs/timePoint"},
         "reported_at": {"$ref": "#/$defs/timePoint"},
@@ -388,6 +397,11 @@
       "properties": {
         "source_id": {"type": "string", "pattern": "^source--"},
         "path": {"type": "string"},
+        "url": {"type": "string"},
+        "accessed_at": {"type": ["string", "null"]},
+        "actor_scope": {"type": "string"},
+        "claims_supported": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "archive_url": {"type": ["string", "null"]},
         "title": {"type": "string"},
         "publisher": {"type": "string"},
         "published_at": {"$ref": "#/$defs/timePoint"},

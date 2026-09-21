@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--8008ecd8-2b33-4670-9565-31104e8fc346",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--unc5537",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -39,9 +40,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--unc5537",
         "actor_name": "UNC5537",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "469b78ee-1184-44c7-ad9d-4abe1ef60a18",
@@ -86,7 +90,14 @@
                 "https://krebsonsecurity.com/2025/02/u-s-soldier-charged-in-att-hack-searched-can-hacking-be-treason/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=UNC5537&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2024",
+                "motivation": [
+                  "Financial gain"
+                ],
+                "last-card-change": "2025-03-02"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -114,13 +125,50 @@
                 "https://research.checkpoint.com/2024/17th-june-threat-intelligence-report/",
                 "https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "809c288d-2dec-4c34-8ac1-f91d227ddfbd",
+              "entry_value": "UNC5537",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "unc5537",
+                  "profile_value": "UNC5537",
+                  "dataset_value": "UNC5537"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "UNC5537"
+              ],
+              "countries": [],
+              "description": "UNC5537 is a threat actor believed to be responsible for compromising a large number of database instances belonging to customers of Snowflake, a multi-cloud data warehousing platform, in Q2 2024. Initial access was largely achieved using stolen customer credentials compromised previously via infostealer malware. Actors sought to monetize their access by selling victim data on underground forums and by extorting victims. Researchers believe UNC5537 is comprised of members based in North America and at least one member in Turkey, and it has targeted hundreds of organizations globally.<sup>[[Google Cloud June 10 2024](/references/0afe3662-b55c-4189-9c9a-2be55a9b6a70)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Financial Gain"
+                ],
+                "target_categories": [
+                  "Automotive",
+                  "Banks",
+                  "Entertainment",
+                  "Financial Services",
+                  "Retail",
+                  "Technology"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -151,7 +199,7 @@
       "spec_version": "2.1",
       "id": "campaign--ff8856f3-a68e-48d6-8691-1bbcfeac4847",
       "created": "2026-07-27T11:17:27Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -165,14 +213,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-1eb1adfc1ea55f955b15",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--1eb1adfc1ea55f955b157752 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃にはShinyHuntersやUNC5537（Scattered Spider）などのAPTグループが関与していた。",
-      "x_reported_at": {
-        "value": "2025-06-11T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc5537",
@@ -226,6 +270,24 @@
           "source--daily-50b897d744561404ee8d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -233,7 +295,7 @@
       "spec_version": "2.1",
       "id": "campaign--bef63b7d-d3b0-476d-840b-ea84b836e451",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -247,14 +309,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-f6b5a36b2eaaa8dfbbf6",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--f6b5a36b2eaaa8dfbbf6d199 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はUNC5537と特定",
-      "x_reported_at": {
-        "value": "2024-06-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc5537",
@@ -306,6 +364,24 @@
           "source--daily-e8268dd0f05d0e93b4d0"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-06-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -362,7 +438,7 @@
       "spec_version": "2.1",
       "id": "relationship--8ba3366e-ef5f-48de-94a0-baf78c9c5869",
       "created": "2026-07-27T11:17:27Z",
-      "modified": "2026-07-27T11:17:27Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -370,14 +446,45 @@
       "source_ref": "campaign--ff8856f3-a68e-48d6-8691-1bbcfeac4847",
       "target_ref": "intrusion-set--8008ecd8-2b33-4670-9565-31104e8fc346",
       "description": "Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 is attributed or linked to UNC5537.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/stolen-ticketmaster-data-from-snowflake-attacks-briefly-for-sale-again/",
+          "external_id": "source--daily-50b897d744561404ee8d"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--760f63ad-b0e3-4476-b56c-4c3572deae60",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -385,14 +492,45 @@
       "source_ref": "campaign--ff8856f3-a68e-48d6-8691-1bbcfeac4847",
       "target_ref": "identity--ddbebad5-fe36-4be3-87c3-3e316c684323",
       "description": "Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 affected victim--activity-rule--45487905e25cd639cdeb.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/stolen-ticketmaster-data-from-snowflake-attacks-briefly-for-sale-again/",
+          "external_id": "source--daily-50b897d744561404ee8d"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--14d30265-2a3a-417d-9f01-0e689810bc0d",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-27T11:04:38Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -400,14 +538,45 @@
       "source_ref": "campaign--bef63b7d-d3b0-476d-840b-ea84b836e451",
       "target_ref": "intrusion-set--8008ecd8-2b33-4670-9565-31104e8fc346",
       "description": "Pure Storage、Snowflakeアカウントのハッキング後にデータ侵害を確認 is attributed or linked to UNC5537.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/pure-storage-confirms-data-breach-after-snowflake-account-hack/",
+          "external_id": "source--daily-e8268dd0f05d0e93b4d0"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--a4f9f55e-6f0f-4518-ba12-56b8c8a87010",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -417,14 +586,14 @@
         "intrusion-set--8008ecd8-2b33-4670-9565-31104e8fc346"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 7
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--83ba85dc-de26-43fb-a27a-b5fff6beb9ee",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -433,14 +602,14 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--8008ecd8-2b33-4670-9565-31104e8fc346",
         "campaign--ff8856f3-a68e-48d6-8691-1bbcfeac4847",
         "campaign--bef63b7d-d3b0-476d-840b-ea84b836e451",
         "identity--ddbebad5-fe36-4be3-87c3-3e316c684323"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

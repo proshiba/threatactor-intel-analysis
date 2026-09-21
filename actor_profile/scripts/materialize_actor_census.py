@@ -33,6 +33,19 @@ COUNTRY_ORIGINS = {
 }
 
 
+def normalized_unique_names(names: list[str]) -> list[str]:
+    """Deduplicate display variants while preserving the first sourced spelling."""
+    result: list[str] = []
+    seen: set[str] = set()
+    for name in names:
+        key = normalized_name(name)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        result.append(name)
+    return result
+
+
 def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
     preferred = next((item for item in items if item.get("mitre_group_id")), items[0])
     result = {
@@ -45,7 +58,8 @@ def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
         "mentions": [],
     }
     seen_mentions: set[str] = set()
-    for item in items:
+    ordered_items = [preferred, *(item for item in items if item is not preferred)]
+    for item in ordered_items:
         result["actor_ids"].append(item["actor_id"])
         result["aliases"].extend(item.get("aliases", []))
         result["origins"].extend(item.get("origins", []))
@@ -55,8 +69,9 @@ def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
             if key not in seen_mentions:
                 seen_mentions.add(key)
                 result["mentions"].append(mention)
-    for key in ("actor_ids", "aliases", "origins"):
+    for key in ("actor_ids", "origins"):
         result[key] = list(dict.fromkeys(result[key]))
+    result["aliases"] = normalized_unique_names(result["aliases"])
     result["reference_evidence"] = list(
         {
             json.dumps(item, sort_keys=True, ensure_ascii=False): item
@@ -106,6 +121,48 @@ def identity_curation_rule(curation: dict[str, Any], canonical_name: str) -> dic
     return curation.get("identities", {}).get(normalized_name(canonical_name), {})
 
 
+def has_trusted_attack_reference(item: dict[str, Any]) -> bool:
+    """Return whether a reference-only identity has an official ATT&CK anchor."""
+    return any(
+        str(ref.get("source", "")).startswith("MITRE ") and ref.get("external_id")
+        for ref in item.get("reference_evidence", [])
+    )
+
+
+def write_evidence_csv(
+    path: Path,
+    mentions: list[dict[str, Any]],
+    *,
+    lineterminator: str = "\n",
+) -> None:
+    """Write one deterministic actor-scoped evidence window."""
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        options: dict[str, Any] = {
+            "fieldnames": [
+                "original_source_path",
+                "original_source_location",
+                "matched_name",
+                "context_excerpt",
+            ]
+        }
+        options["lineterminator"] = lineterminator
+        writer = csv.DictWriter(stream, **options)
+        writer.writeheader()
+        for mention in mentions:
+            writer.writerow(
+                {
+                    "original_source_path": mention["source_path"],
+                    "original_source_location": json.dumps(
+                        mention["source_location"],
+                        ensure_ascii=False,
+                        sort_keys=True,
+                    ),
+                    "matched_name": mention["matched_name"],
+                    "context_excerpt": mention["context_excerpt"],
+                }
+            )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=Path.cwd())
@@ -140,7 +197,8 @@ def main() -> int:
     catalog["actors"] = [
         item
         for item in catalog["actors"]
-        if item.get("profile_basis") != "actor-scoped-census-evidence"
+        if item.get("profile_basis")
+        not in {"actor-scoped-census-evidence", "official-attack-reference"}
     ]
     existing_slugs = {item["slug"] for item in catalog["actors"]}
     used_slugs = set(existing_slugs)
@@ -148,6 +206,7 @@ def main() -> int:
     accepted_raw: list[dict[str, Any]] = []
     rejected: list[dict[str, Any]] = []
     represented: list[dict[str, Any]] = []
+    curated_merges: list[tuple[dict[str, Any], dict[str, Any]]] = []
     for item in census["actors"]:
         rule = identity_curation_rule(curation, item["canonical_name"])
         if rule.get("action") == "exclude":
@@ -162,6 +221,7 @@ def main() -> int:
             )
             continue
         if rule.get("action") == "merge":
+            curated_merges.append((item, rule))
             represented.append(
                 {
                     "actor_id": item["actor_id"],
@@ -170,15 +230,6 @@ def main() -> int:
                     "reason": "curated-merge-into-existing-profile",
                     "curation_reason": rule.get("reason", ""),
                     "evidence_urls": rule.get("evidence_urls", []),
-                }
-            )
-            continue
-        if not item.get("mentions"):
-            rejected.append(
-                {
-                    "actor_id": item["actor_id"],
-                    "canonical_name": item["canonical_name"],
-                    "reason": "reference-only-no-corpus-mention",
                 }
             )
             continue
@@ -192,6 +243,16 @@ def main() -> int:
                 }
             )
             continue
+        if not item.get("mentions"):
+            if not has_trusted_attack_reference(item):
+                rejected.append(
+                    {
+                        "actor_id": item["actor_id"],
+                        "canonical_name": item["canonical_name"],
+                        "reason": "reference-only-no-corpus-mention",
+                    }
+                )
+                continue
         sources = {ref["source"] for ref in item.get("reference_evidence", [])}
         if sources == {"corpus-pattern-discovery"} and not VALID_DISCOVERED_ID.fullmatch(
             item["canonical_name"]
@@ -229,52 +290,36 @@ def main() -> int:
         else:
             slug = unique_slug(canonical_name, item.get("mitre_group_id"), used_slugs)
         relative_evidence = (Path(args.evidence_root) / f"{slug}.csv").as_posix()
-        evidence_path = root / relative_evidence
-        with evidence_path.open("w", encoding="utf-8", newline="") as stream:
-            writer = csv.DictWriter(
-                stream,
-                fieldnames=[
-                    "original_source_path",
-                    "original_source_location",
-                    "matched_name",
-                    "context_excerpt",
-                ],
-            )
-            writer.writeheader()
-            for mention in item["mentions"]:
-                writer.writerow(
-                    {
-                        "original_source_path": mention["source_path"],
-                        "original_source_location": json.dumps(
-                            mention["source_location"],
-                            ensure_ascii=False,
-                            sort_keys=True,
-                        ),
-                        "matched_name": mention["matched_name"],
-                        "context_excerpt": mention["context_excerpt"],
-                    }
-                )
+        source_dirs: list[str] = []
+        if item["mentions"]:
+            evidence_path = root / relative_evidence
+            write_evidence_csv(evidence_path, item["mentions"])
+            source_dirs.append(relative_evidence)
         original_sources = sorted(
             {mention["source_path"] for mention in item["mentions"]}
         )
-        aliases = [
+        aliases = normalized_unique_names([
             alias
             for alias in item["aliases"]
             if normalized_name(alias) != normalized_name(original_canonical_name)
-        ]
+        ])
         if "aliases" in rule:
-            aliases = list(rule["aliases"])
+            aliases = normalized_unique_names(list(rule["aliases"]))
         elif canonical_name != original_canonical_name:
             aliases = list(dict.fromkeys([original_canonical_name, *aliases]))
         entry = {
             "slug": slug,
             "name": canonical_name,
             "aliases": aliases,
-            "source_dirs": [relative_evidence],
+            "source_dirs": source_dirs,
             "reported_sources": original_sources,
             "census_actor_ids": item["actor_ids"],
             "actor_types": rule.get("actor_types", actor_types(item["origins"])),
-            "profile_basis": "actor-scoped-census-evidence",
+            "profile_basis": (
+                "actor-scoped-census-evidence"
+                if item["mentions"]
+                else "official-attack-reference"
+            ),
         }
         if rule:
             entry["curation"] = {
@@ -286,11 +331,66 @@ def main() -> int:
         added_entries.append(entry)
 
     catalog["actors"].extend(added_entries)
+    entries_by_slug = {entry["slug"]: entry for entry in catalog["actors"]}
+    for item, rule in curated_merges:
+        target_slug = rule["target_slug"]
+        target = entries_by_slug.get(target_slug)
+        if target is None:
+            raise ValueError(
+                f"curated merge target is not an active catalog entry: {target_slug}"
+            )
+        evidence_name = (
+            f"{target_slug}--merged--"
+            f"{stable_digest(normalized_name(item['canonical_name']))[:12]}.csv"
+        )
+        relative_evidence = (Path(args.evidence_root) / evidence_name).as_posix()
+        write_evidence_csv(
+            root / relative_evidence,
+            item.get("mentions", []),
+            lineterminator="\n",
+        )
+        target["source_dirs"] = list(
+            dict.fromkeys([*target.get("source_dirs", []), relative_evidence])
+        )
+        target["reported_sources"] = sorted(
+            set(target.get("reported_sources", []))
+            | {mention["source_path"] for mention in item.get("mentions", [])}
+        )
+        target["census_actor_ids"] = list(
+            dict.fromkeys(
+                [*target.get("census_actor_ids", []), item["actor_id"]]
+            )
+        )
+        # The census can contain aggregation aliases whose scope has not been
+        # reviewed.  Do not promote those into the canonical catalog entry.
+        # Start from the target profile's evidence-scoped aliases and add only
+        # the curated merge identity itself.
+        profile_path = root / "profiles" / target_slug / "actor-profile.json"
+        reviewed_aliases = target.get("aliases", [])
+        if profile_path.is_file():
+            target_profile = load_json(profile_path)
+            reviewed_aliases = [
+                alias["name"] for alias in target_profile["actor"].get("aliases", [])
+            ]
+        merged_names = [item["canonical_name"]]
+        target["aliases"] = list(
+            dict.fromkeys(
+                [
+                    *reviewed_aliases,
+                    *(
+                        name
+                        for name in merged_names
+                        if normalized_name(name) != normalized_name(target["name"])
+                    ),
+                ]
+            )
+        )
     catalog["actors"].sort(key=lambda item: item["slug"])
     catalog["description"] = (
         "Corpus catalog covering every evidence-backed actor identity named in "
-        "the original report corpus. Actor-scoped evidence files prevent broad "
-        "multi-actor reports from contaminating IOC attribution."
+        "the report corpus plus current official ATT&CK Groups. Actor-scoped "
+        "evidence files prevent broad multi-actor reports from contaminating "
+        "IOC attribution; reference-only ATT&CK entries remain explicitly marked."
     )
     write_json_atomic(catalog_path, catalog)
     decisions = {
@@ -319,7 +419,10 @@ def main() -> int:
                 "name": entry["name"],
                 "census_actor_ids": entry["census_actor_ids"],
                 "reported_source_count": len(entry["reported_sources"]),
-                "evidence_path": entry["source_dirs"][0],
+                "evidence_path": (
+                    entry["source_dirs"][0] if entry["source_dirs"] else None
+                ),
+                "profile_basis": entry["profile_basis"],
             }
             for entry in added_entries
         ],

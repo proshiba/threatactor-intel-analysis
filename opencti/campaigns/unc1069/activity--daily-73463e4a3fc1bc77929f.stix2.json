@@ -1,0 +1,763 @@
+{
+  "type": "bundle",
+  "id": "bundle--ae90df61-3d9b-4375-a1ce-42ec28e6de6a",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--b2086146-cd67-438e-a912-07f63ea96575",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--06795e7a0f3ad5e02bee",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-73463e4a3fc1bc77929f"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃",
+      "description": "北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。 被害者はTelegramで暗号資産企業幹部の乗っ取られたアカウントから接触され、Calendly経由で偽Zoom会議へ誘導。 深層偽造（ディープフェイク）映像と「音声不具合」詐称で、Webページ上のコマンド実行を促し感染チェーンを開始。 AppleScript実行の痕跡後にMach-Oを展開し、WAVESHAPER等7種のmacOSマルウェアでC2通信や追加ペイロード実行を実施。 DEEPBREATHはTCC回避でKeychain等を窃取し、目的は暗号資産窃取と被害者情報を使った将来の詐欺/誘導の強化とされる。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-73463e4a3fc1bc77929f",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--73463e4a3fc1bc77929f31fa から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はUNC1069（2018年から追跡）とされ、動機は金銭目的で暗号資産/金融分野を標的化している",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1069",
+          "name": "UNC1069",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--06795e7a0f3ad5e02bee"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--63c9fa67327d005b07b7",
+            "target--activity-rule--sector--dfc80b76cad93a318adc"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--aeea41b300f37025e36e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-02-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Execution"
+          ],
+          "results": [
+            "financial-loss"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-16dc3c27175f6cbffe47"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3ea8a9d2-d675-4e40-929b-52caf42fed24",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃",
+      "identity_class": "organization",
+      "description": "北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。 被害者はTelegramで暗号資産企業幹部の乗っ取られたアカウントから接触され、Calendly経由で偽Zoom会議へ誘導。 深層偽造（ディープフェイク）映像と「音声不具合」詐称で、Webページ上のコマンド実行を促し感染チェーンを開始。 AppleScript実行の痕跡後にMach-Oを展開し、WAVESHAPER等7種のmacOSマルウェアでC2通信や追加ペイロード実行を実施。 DEEPBREATHはTCC回避でKeychain等を窃取し、目的は暗号資産窃取と被害者情報を使った将来の詐欺/誘導の強化とされる。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--aeea41b300f37025e36e",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--63c9fa67327d005b07b7",
+        "target--activity-rule--sector--dfc80b76cad93a318adc"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--06795e7a0f3ad5e02bee"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "financial-loss",
+          "description": "被害者はTelegramで暗号資産企業幹部の乗っ取られたアカウントから接触され、Calendly経由で偽Zoom会議へ誘導。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "暗号資産・Web3",
+      "identity_class": "class",
+      "description": "活動「北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--63c9fa67327d005b07b7",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "class",
+      "description": "活動「北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--dfc80b76cad93a318adc",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "created": "2026-07-25T15:23:06Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1069",
+      "aliases": [
+        "MASAN",
+        "MIDNIGHT NEPTUNE"
+      ],
+      "description": "UNC1069の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc1069",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "MASAN",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "MIDNIGHT NEPTUNE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG原文の「MIDNIGHT NEPTUNE, financially motivated North Korea-nexus threat clusters formerly tracked as UNC1069」に基づく。UNC1069はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。原文が「threat clusters」と複数形で述べる点は、MIDNIGHT NEPTUNEが複数クラスタを束ねる可能性を示すため analyst_notes として残す。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC1069の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--04aa78ba-d961-45cf-a30b-f08fe32c5a97",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "target_ref": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
+      "description": "UNC1069 targets 暗号資産・Web3 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0783ff49-4fc2-4512-8888-f1fae81b52cd",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "UNC1069 targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1f0157ed-b747-4c00-aa5a-0b50a84e37f1",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "target_ref": "identity--3ea8a9d2-d675-4e40-929b-52caf42fed24",
+      "description": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 affected victim--activity-rule--aeea41b300f37025e36e.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--267c0fe5-aabd-45dd-8a56-7083e975550e",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "target_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "description": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 is attributed or linked to UNC1069.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--627b105b-8a74-4f76-b5c8-ea8af5d42d38",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "target_ref": "attack-pattern--b2086146-cd67-438e-a912-07f63ea96575",
+      "description": "北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--645b536e-880b-40cd-8c64-d302f7f26b35",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "target_ref": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
+      "description": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 targets target--activity-rule--sector--63c9fa67327d005b07b7.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7c391f10-ccdd-4364-8511-2eabc862be25",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9e160333-5b41-4b43-9787-ba516c1d9849",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+      "target_ref": "attack-pattern--b2086146-cd67-438e-a912-07f63ea96575",
+      "description": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 uses ttp--activity-rule--06795e7a0f3ad5e02bee.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b09d8926-9b6b-4714-9032-9322274df3ab",
+      "created": "2026-09-21T04:15:52Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-02-11T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--b2086146-cd67-438e-a912-07f63ea96575",
+        "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+        "identity--3ea8a9d2-d675-4e40-929b-52caf42fed24",
+        "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+        "relationship--04aa78ba-d961-45cf-a30b-f08fe32c5a97",
+        "relationship--0783ff49-4fc2-4512-8888-f1fae81b52cd",
+        "relationship--1f0157ed-b747-4c00-aa5a-0b50a84e37f1",
+        "relationship--267c0fe5-aabd-45dd-8a56-7083e975550e",
+        "relationship--627b105b-8a74-4f76-b5c8-ea8af5d42d38",
+        "relationship--645b536e-880b-40cd-8c64-d302f7f26b35",
+        "relationship--7c391f10-ccdd-4364-8511-2eabc862be25",
+        "relationship--9e160333-5b41-4b43-9787-ba516c1d9849"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-16dc3c27175f6cbffe47",
+          "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-16dc3c27175f6cbffe47",
+      "x_evidence_slice_scope": "campaign:actor--unc1069:activity--daily-73463e4a3fc1bc77929f",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--85be32ab-af80-45d7-bb9b-d11b51da2634",
+      "created": "2026-09-21T04:15:52Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1069 / 北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃",
+      "description": "北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。 被害者はTelegramで暗号資産企業幹部の乗っ取られたアカウントから接触され、Calendly経由で偽Zoom会議へ誘導。 深層偽造（ディープフェイク）映像と「音声不具合」詐称で、Webページ上のコマンド実行を促し感染チェーンを開始。 AppleScript実行の痕跡後にMach-Oを展開し、WAVESHAPER等7種のmacOSマルウェアでC2通信や追加ペイロード実行を実施。 DEEPBREATHはTCC回避でKeychain等を窃取し、目的は暗号資産窃取と被害者情報を使った将来の詐欺/誘導の強化とされる。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:15:52Z",
+      "object_refs": [
+        "attack-pattern--b2086146-cd67-438e-a912-07f63ea96575",
+        "campaign--33b589f2-86bb-4ea6-8550-61fd9c7eb08b",
+        "identity--3ea8a9d2-d675-4e40-929b-52caf42fed24",
+        "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+        "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+        "relationship--04aa78ba-d961-45cf-a30b-f08fe32c5a97",
+        "relationship--0783ff49-4fc2-4512-8888-f1fae81b52cd",
+        "relationship--1f0157ed-b747-4c00-aa5a-0b50a84e37f1",
+        "relationship--267c0fe5-aabd-45dd-8a56-7083e975550e",
+        "relationship--627b105b-8a74-4f76-b5c8-ea8af5d42d38",
+        "relationship--645b536e-880b-40cd-8c64-d302f7f26b35",
+        "relationship--7c391f10-ccdd-4364-8511-2eabc862be25",
+        "relationship--9e160333-5b41-4b43-9787-ba516c1d9849",
+        "report--b09d8926-9b6b-4714-9032-9322274df3ab"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc1069",
+      "x_activity_id": "activity--daily-73463e4a3fc1bc77929f"
+    }
+  ]
+}

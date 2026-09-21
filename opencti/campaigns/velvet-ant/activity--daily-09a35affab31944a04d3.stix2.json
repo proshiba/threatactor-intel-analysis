@@ -1,0 +1,522 @@
+{
+  "type": "bundle",
+  "id": "bundle--af913fc5-c1de-411a-9815-884f47122961",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ce7ecddf-1e56-4ee7-a170-cfbe1c4353b9",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Proxy",
+      "description": "GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1090",
+          "url": "https://attack.mitre.org/techniques/T1090/"
+        },
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--462aca794e009c519612",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-09a35affab31944a04d3"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+      "created": "2026-07-27T11:04:39Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏",
+      "description": "Sygniaは、中国関連脅威アクターVelvet Antによる「Operation Highland」の侵害調査を公開した。 最古のフォレンジック痕跡は2016年で、攻撃者はインターネット接続のない内部ネットワークに約10年潜伏していた。 攻撃者は外部公開サーバーからITネットワークを経由し、分離された重要インフラ環境へ多段階で到達した。 GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。 改ざんされたpam_unix.soやssh/sshd/scpにより、認証回避、認証情報窃取、キーロギング、永続化が実現されていた。",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-09a35affab31944a04d3",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--09a35affab31944a04d3d149 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--velvet-ant",
+          "name": "Velvet Ant",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--462aca794e009c519612"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--6a22babfe69272249c1b"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-2458b73767c4166d02ee"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ee17af70-1370-4044-8a6f-07c587708edd",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏",
+      "identity_class": "organization",
+      "description": "Sygniaは、中国関連脅威アクターVelvet Antによる「Operation Highland」の侵害調査を公開した。 最古のフォレンジック痕跡は2016年で、攻撃者はインターネット接続のない内部ネットワークに約10年潜伏していた。 攻撃者は外部公開サーバーからITネットワークを経由し、分離された重要インフラ環境へ多段階で到達した。 GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。 改ざんされたpam_unix.soやssh/sshd/scpにより、認証回避、認証情報窃取、キーロギング、永続化が実現されていた。",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--6a22babfe69272249c1b",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--462aca794e009c519612"
+      ],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "改ざんされたpam_unix.soやssh/sshd/scpにより、認証回避、認証情報窃取、キーロギング、永続化が実現されていた。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--fffb1154-d80c-4566-8cad-f9a27bcadcc9",
+      "created": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Velvet Ant",
+      "aliases": [],
+      "description": "[Velvet Ant](https://attack.mitre.org/groups/G1047) is a threat actor operating since at least 2021. [Velvet Ant](https://attack.mitre.org/groups/G1047) is associated with complex persistence mechanisms, the targeting of network devices and appliances during operations, and the use of zero day exploits.(Citation: Sygnia VelvetAnt 2024A)(Citation: Sygnia VelvetAnt 2024B)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--velvet-ant",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Velvet Antの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "PlugX, Impacket",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3995d8c4-a65d-4c26-80c5-a1cf1693b4e7",
+      "created": "2026-07-27T11:04:39Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+      "target_ref": "intrusion-set--fffb1154-d80c-4566-8cad-f9a27bcadcc9",
+      "description": "Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏 is attributed or linked to Velvet Ant.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7fec26c8-f34c-48f3-928f-d88510ffda3c",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+      "target_ref": "attack-pattern--ce7ecddf-1e56-4ee7-a170-cfbe1c4353b9",
+      "description": "Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏 uses ttp--activity-rule--462aca794e009c519612.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9740cb76-ff97-4414-8416-5113f4179657",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+      "target_ref": "identity--ee17af70-1370-4044-8a6f-07c587708edd",
+      "description": "Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏 affected victim--activity-rule--6a22babfe69272249c1b.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eb2eb453-7b06-4946-abc9-9fdf44fd707d",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--fffb1154-d80c-4566-8cad-f9a27bcadcc9",
+      "target_ref": "attack-pattern--ce7ecddf-1e56-4ee7-a170-cfbe1c4353b9",
+      "description": "GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "description": "Local source: https://www.sygnia.co/blog/operation-highland-velvet-ant/",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b8fc76ce-5387-4407-9c9e-f796bb55f912",
+      "created": "2026-09-21T04:18:00Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-16T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--ce7ecddf-1e56-4ee7-a170-cfbe1c4353b9",
+        "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+        "identity--ee17af70-1370-4044-8a6f-07c587708edd",
+        "relationship--3995d8c4-a65d-4c26-80c5-a1cf1693b4e7",
+        "relationship--7fec26c8-f34c-48f3-928f-d88510ffda3c",
+        "relationship--9740cb76-ff97-4414-8416-5113f4179657",
+        "relationship--eb2eb453-7b06-4946-abc9-9fdf44fd707d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "sygnia.co",
+          "external_id": "source--daily-2458b73767c4166d02ee",
+          "url": "https://www.sygnia.co/blog/operation-highland-velvet-ant/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-2458b73767c4166d02ee",
+      "x_evidence_slice_scope": "campaign:actor--velvet-ant:activity--daily-09a35affab31944a04d3",
+      "x_source_publisher": "sygnia.co",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4a610ad8-953e-4c21-affc-a054e51833d8",
+      "created": "2026-09-21T04:18:00Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Velvet Ant / Velvet Antの「Operation Highland」：中国関連アクターが内部ネットワークへ侵入し検知されず潜伏",
+      "description": "Sygniaは、中国関連脅威アクターVelvet Antによる「Operation Highland」の侵害調査を公開した。 最古のフォレンジック痕跡は2016年で、攻撃者はインターネット接続のない内部ネットワークに約10年潜伏していた。 攻撃者は外部公開サーバーからITネットワークを経由し、分離された重要インフラ環境へ多段階で到達した。 GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。 改ざんされたpam_unix.soやssh/sshd/scpにより、認証回避、認証情報窃取、キーロギング、永続化が実現されていた。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:18:00Z",
+      "object_refs": [
+        "attack-pattern--ce7ecddf-1e56-4ee7-a170-cfbe1c4353b9",
+        "campaign--31e6a918-8757-4714-a2bf-42187b777782",
+        "identity--ee17af70-1370-4044-8a6f-07c587708edd",
+        "intrusion-set--fffb1154-d80c-4566-8cad-f9a27bcadcc9",
+        "relationship--3995d8c4-a65d-4c26-80c5-a1cf1693b4e7",
+        "relationship--7fec26c8-f34c-48f3-928f-d88510ffda3c",
+        "relationship--9740cb76-ff97-4414-8416-5113f4179657",
+        "relationship--eb2eb453-7b06-4946-abc9-9fdf44fd707d",
+        "report--b8fc76ce-5387-4407-9c9e-f796bb55f912"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--velvet-ant",
+      "x_activity_id": "activity--daily-09a35affab31944a04d3"
+    }
+  ]
+}

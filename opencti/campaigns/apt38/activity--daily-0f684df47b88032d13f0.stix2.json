@@ -1,0 +1,753 @@
+{
+  "type": "bundle",
+  "id": "bundle--1996b82e-f1dd-4305-b6a4-ceb325d6f0e1",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-0f684df47b88032d13f0",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--0f684df47b88032d13f03596 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog)を確認。「高信頼度をもって北朝鮮国家アクターSapphire Sleetに帰属する」と明記。@mastraスコープ140超のnpmパッケージ侵害、タイポスクワット依存easy-day-jsのpostinstall実行。標的は暗号資産・VC・ブロックチェーン。Sapphire Sleet→apt38はoverlapping aliasのため手動確認の上で対応付け(PR #17の前例)。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt38",
+          "name": "APT38",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--sector--02706c11c1b12ef47b1c"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--99c6c1819178c8d97e7e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-06-16T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Microsoft: 2026-06-17に発見・遮断",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-06-17T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-06-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9658f03bb1aa2aaa44fd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-06-16T00:00:00Z",
+      "last_seen": "2026-06-17T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+      "created": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "暗号資産・Web3",
+      "identity_class": "class",
+      "description": "ial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide.",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        },
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3",
+          "url": "https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400",
+          "url": "https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--mitre-group--sector--02706c11c1b12ef47b1c",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dafa34b5-a880-421f-8d3f-3be7d01e736e",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-08-07T10:35:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "identity_class": "organization",
+      "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--99c6c1819178c8d97e7e",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--mitre-group--sector--02706c11c1b12ef47b1c"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT38",
+      "aliases": [
+        "BeagleBoyz",
+        "Bluenoroff",
+        "COPERNICIUM",
+        "NICKEL GLADSTONE",
+        "Sapphire Sleet",
+        "Stardust Chollima"
+      ],
+      "description": "[APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. Significant operations include the 2016 Bank of Bangladesh heist, during which [APT38](https://attack.mitre.org/groups/G0082) stole $81 million, as well as attacks against Bancomext (Citation: FireEye APT38 Oct 2018) and Banco de Chile (Citation: FireEye APT38 Oct 2018); some of their attacks have been destructive.(Citation: CISA AA20-239A BeagleBoyz August 2020)(Citation: FireEye APT38 Oct 2018)(Citation: DOJ North Korea Indictment Feb 2021)(Citation: Kaspersky Lazarus Under The Hood Blog 2017)\n\nNorth Korean group definitions are known to have significant overlap, and some security researchers report all North Korean state-sponsored cyber activity under the name [Lazarus Group](https://attack.mitre.org/groups/G0032) instead of tracking clusters or subgroups.",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt38",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BeagleBoyz",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Bluenoroff",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "COPERNICIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NICKEL GLADSTONE",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Sapphire Sleet",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Stardust Chollima",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "North Korea"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT38の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "HOPLIGHT, DarkComet, KillDisk, ECCENTRICBANDWAGON, VOLGMER, PEACHPIT, Net, Mimikatz",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=全世界。日本は確認時に個別国として保持する。\n\nKorean Peninsula, US Aerospace, SWIFT-fraud operations in East Asia",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--09f47701-7d1e-467e-9461-379e4f602056",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+      "target_ref": "identity--dafa34b5-a880-421f-8d3f-3be7d01e736e",
+      "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け affected victim--activity-rule--99c6c1819178c8d97e7e.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20473b13-06b3-43a5-82af-c0f2c621a7a9",
+      "created": "2026-08-07T10:35:22Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+      "target_ref": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+      "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け targets target--mitre-group--sector--02706c11c1b12ef47b1c.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43942fd8-b3cb-4da1-9b8f-6a52a57c83c6",
+      "created": "2026-08-07T10:34:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+      "target_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け is attributed or linked to APT38.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "last": "Microsoft: 2026-06-17に発見・遮断",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-16T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9",
+      "created": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+      "target_ref": "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+      "description": "APT38 targets 暗号資産・Web3 (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        },
+        {
+          "source_name": "raw.githubusercontent.com",
+          "description": "Local source: https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+          "external_id": "source--daily-bc8cdd6b896b84863be3",
+          "url": "https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md"
+        },
+        {
+          "source_name": "arcticwolf.com",
+          "description": "Local source: https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+          "external_id": "source--daily-f4d8b20e8b872b83b400",
+          "url": "https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "last": "Microsoft: 2026-06-17に発見・遮断; activity-period",
+        "first_precision": "month",
+        "last_precision": "day"
+      },
+      "start_time": "2025-05-01T00:00:00Z",
+      "stop_time": "2026-06-17T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--38d29eb3-0638-4ba6-804b-b83865061240",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-22T00:00:00Z",
+      "object_refs": [
+        "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+        "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+        "identity--dafa34b5-a880-421f-8d3f-3be7d01e736e",
+        "relationship--09f47701-7d1e-467e-9461-379e4f602056",
+        "relationship--20473b13-06b3-43a5-82af-c0f2c621a7a9",
+        "relationship--43942fd8-b3cb-4da1-9b8f-6a52a57c83c6",
+        "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "external_id": "source--daily-9658f03bb1aa2aaa44fd",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-9658f03bb1aa2aaa44fd",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-0f684df47b88032d13f0",
+      "x_source_publisher": "microsoft.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3c81c751-7b68-4d8f-a7c3-648c7142d46b",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-0f684df47b88032d13f0",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4e8b8739-1a38-4891-8f14-f0506c08cf70",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-04-30T00:00:00Z",
+      "object_refs": [
+        "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+        "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "arcticwolf.com",
+          "external_id": "source--daily-f4d8b20e8b872b83b400",
+          "url": "https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f4d8b20e8b872b83b400",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-0f684df47b88032d13f0",
+      "x_source_publisher": "arcticwolf.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7caba695-5510-4a1e-baab-74fb9854983c",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+        "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--apt38:activity--daily-0f684df47b88032d13f0",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--87e0bd8b-1476-40fb-9977-ee2795e937a8",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT38 / Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "campaign--3495af51-a863-4077-a34f-b4c220cb024d",
+        "identity--0bd6f4fd-61c3-4952-88cd-d0591ab9c299",
+        "identity--dafa34b5-a880-421f-8d3f-3be7d01e736e",
+        "intrusion-set--7840cf96-8bfd-4ad3-b140-675fb48aa7d0",
+        "relationship--09f47701-7d1e-467e-9461-379e4f602056",
+        "relationship--20473b13-06b3-43a5-82af-c0f2c621a7a9",
+        "relationship--43942fd8-b3cb-4da1-9b8f-6a52a57c83c6",
+        "relationship--e1cc1a18-6aa3-4439-b1c7-fb2476c4a0c9",
+        "report--38d29eb3-0638-4ba6-804b-b83865061240",
+        "report--3c81c751-7b68-4d8f-a7c3-648c7142d46b",
+        "report--4e8b8739-1a38-4891-8f14-f0506c08cf70",
+        "report--7caba695-5510-4a1e-baab-74fb9854983c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt38",
+      "x_activity_id": "activity--daily-0f684df47b88032d13f0"
+    }
+  ]
+}

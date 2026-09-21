@@ -7,13 +7,14 @@
       "spec_version": "2.1",
       "id": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT39",
       "aliases": [
         "Chafer",
+        "CINDER ION",
         "ITG07",
         "Remix Kitten"
       ],
@@ -24,16 +25,12 @@
       "external_references": [
         {
           "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
           "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
         }
       ],
       "x_profile_id": "actor--apt39",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Chafer",
@@ -41,9 +38,19 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "CINDER ION",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         },
         {
           "name": "ITG07",
@@ -51,7 +58,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
@@ -61,7 +68,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -75,8 +82,7 @@
         "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
         "confidence": "medium",
         "evidence_refs": [
-          "source--mitre-attack-19-1",
-          "source--actor-mapping-workbook"
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
       },
@@ -85,16 +91,17 @@
         "history": "",
         "capability_details": "ASPXSpy, Cadelspy, MechaFlounder, Remexi, Web Shells (aspx spy, b374k), plink, RemCom, VNC Bypass scanner, CoreSecurity tools, Impacket / Python exploits, NSSM, HTTPTunnel, SSH Tunnels to Windows Servers, Windows Credential Editor, pwdump, Mimikatz, NBTscan, CrackMapExec, ftp, PsExec",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、イスラエル、イラン、クウェート、サウジアラビア、スペイン、トルコ、ヨルダン、米国。標的地域=アジア、アフリカ、中東、全世界、北米、欧州。日本は確認時に個別国として保持する。\n\nAirlines, Airports, Transportation, Logistics - worldwide",
+        "targeting_details": "構造化ターゲット監査: 標的国=イラン。標的地域=アジア、アフリカ、北米、欧州。日本は確認時に個別国として保持する。\n\nAirlines, Airports, Transportation, Logistics - worldwide",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt39",
         "actor_name": "APT39",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -103,10 +110,12 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
             "APT39",
+            "CINDER ION",
             "Chafer",
             "ITG07",
             "Remix Kitten"
@@ -115,6 +124,38 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-cinder-ion",
+              "entry_value": "CINDER ION",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt39",
+                  "profile_value": "APT39",
+                  "dataset_value": "APT39"
+                },
+                {
+                  "normalized": "cinderion",
+                  "profile_value": "CINDER ION",
+                  "dataset_value": "CINDER ION"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "CINDER ION",
+                "APT39"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT39.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "d7f937b7-b50b-4022-bca1-9e403ffefe45",
@@ -168,7 +209,78 @@
                 "https://www.bitdefender.com/files/News/CaseStudies/study/332/Bitdefender-Whitepaper-Chafer-creat4491-en-EN-interactive.pdf",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Chafer%2C+APT+39&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2014",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Aviation",
+                  "Engineering",
+                  "Government",
+                  "High-Tech",
+                  "IT",
+                  "Shipping and Logistics",
+                  "Telecommunications",
+                  "Transportation"
+                ],
+                "observed-countries": [
+                  "Israel",
+                  "Jordan",
+                  "Kuwait",
+                  "Saudi Arabia",
+                  "Spain",
+                  "Turkey",
+                  "UAE",
+                  "USA",
+                  "Middle East"
+                ],
+                "tools": [
+                  "Antak",
+                  "ASPXSpy",
+                  "EternalBlue",
+                  "HTTPTunnel",
+                  "MechaFlounder",
+                  "Metasploit",
+                  "Mimikatz",
+                  "nbtscan",
+                  "Non-sucking Service Manager",
+                  "OilRig",
+                  "Plink",
+                  "POWBAT",
+                  "pwdump",
+                  "Rana",
+                  "Remcom",
+                  "Remexi",
+                  "SafetyKatz",
+                  "SEAWEED",
+                  "UltraVNC",
+                  "Windows Credentials Editor",
+                  "Living off the Land",
+                  "SMB hacking tools"
+                ],
+                "operations": [
+                  {
+                    "date": "2017",
+                    "activity": "Chafer appears to have been undeterred by its exposure in 2015 and continued to be very active during 2017, using seven new tools, rolling out new infrastructure, and attacking nine new target organizations in the region. The group hit organizations in Israel, Jordan, the United Arab Emirates, Saudi Arabia, and Turkey.\nSectors targeted included airlines; aircraft services; software and IT services companies serving the air and sea transport sectors; telecoms services; payroll services; engineering consultancies; and document management software.</br />Outside of the Middle East, Symantec has also found evidence of attacks against one African airline and attempts to compromise an international travel reservations firm.\nhttps://www.symantec.com/blogs/threat-intelligence/chafer-latest-attacks-reveal-heightened-ambitions"
+                  },
+                  {
+                    "date": "2018-02",
+                    "activity": "Turkish Government Targeting\nThis new secondary payload is Python-based and compiled into executable form using the PyInstaller utility. This is the first instance where Unit 42 has identified a Python-based payload used by these operators. We’ve also identified code overlap with OilRig’s Clayside VBScript but at this time track Chafer and OilRig as separate threat groups. We have named this payload MechaFlounder for tracking purposes.\nhttps://unit42.paloaltonetworks.com/new-python-based-payload-mechaflounder-used-by-chafer/"
+                  },
+                  {
+                    "date": "2018 Autumn",
+                    "activity": "Spying on Iran-based foreign diplomatic entities\nThroughout the autumn of 2018 we analyzed a long-standing (and still active at that time) cyberespionage campaign that was primarily targeting foreign diplomatic entities based in Iran. The attackers were using an improved version of Remexi in what the victimology suggests might be a domestic cyberespionage operation.\nhttps://securelist.com/chafer-used-remexi-malware/89538/"
+                  },
+                  {
+                    "date": "2018",
+                    "activity": "Bitdefender researchers have found attacks conducted by this actor in the Middle East region, dating back to 2018. The campaigns were based on several tools, including “living off the land” tools, which makes attribution difficult, as well as different hacking tools and a custom built backdoor.\nhttps://www.bitdefender.com/files/News/CaseStudies/study/332/Bitdefender-Whitepaper-Chafer-creat4491-en-EN-interactive.pdf"
+                  }
+                ],
+                "sponsor": "State-sponsored, Rana Intelligence Computing Company",
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -204,7 +316,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -222,6 +335,11 @@
                   "normalized": "chafer",
                   "profile_value": "Chafer",
                   "dataset_value": "Chafer"
+                },
+                {
+                  "normalized": "cinderion",
+                  "profile_value": "CINDER ION",
+                  "dataset_value": "CINDER ION"
                 },
                 {
                   "normalized": "itg07",
@@ -245,7 +363,8 @@
                 "Radio Serpens",
                 "TA454",
                 "ITG07",
-                "Burgundy Sandstorm"
+                "Burgundy Sandstorm",
+                "CINDER ION"
               ],
               "countries": [
                 "IR"
@@ -261,9 +380,11 @@
                 "https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf",
                 "https://www.secureworks.com/research/threat-profiles/cobalt-hickman",
                 "https://unit42.paloaltonetworks.com/atoms/radioserpens/",
-                "https://securityintelligence.com/posts/observations-of-itg07-cyber-operations/"
+                "https://securityintelligence.com/posts/observations-of-itg07-cyber-operations/",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -299,10 +420,318 @@
               "refs": [
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "44e43fad-ffcb-4210-abcf-eaaed9735f80",
+              "entry_value": "APT39 - G0087",
+              "external_id": "G0087",
+              "matched_names": [
+                {
+                  "normalized": "apt39",
+                  "profile_value": "APT39",
+                  "dataset_value": "APT39"
+                },
+                {
+                  "normalized": "chafer",
+                  "profile_value": "Chafer",
+                  "dataset_value": "Chafer"
+                },
+                {
+                  "normalized": "itg07",
+                  "profile_value": "ITG07",
+                  "dataset_value": "ITG07"
+                },
+                {
+                  "normalized": "remixkitten",
+                  "profile_value": "Remix Kitten",
+                  "dataset_value": "Remix Kitten"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "APT39",
+                "ITG07",
+                "Chafer",
+                "Remix Kitten"
+              ],
+              "countries": [],
+              "description": "[APT39](https://attack.mitre.org/groups/G0087) is one of several names for cyber espionage activity conducted by the Iranian Ministry of Intelligence and Security (MOIS) through the front company Rana Intelligence Computing since at least 2014. [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. of Treasury Iran Sanctions September 2020)(Citation: DOJ Iran Indictments September 2020)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0087",
+                "https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf",
+                "https://home.treasury.gov/news/press-releases/sm1127",
+                "https://www.darkreading.com/attacks-breaches/iran-ups-its-traditional-cyber-espionage-tradecraft/d/d-id/1333764",
+                "https://www.fireeye.com/blog/threat-research/2019/01/apt39-iranian-cyber-espionage-group-focused-on-personal-information.html",
+                "https://www.iranwatch.org/sites/default/files/public-intelligence-alert.pdf",
+                "https://www.justice.gov/opa/pr/department-justice-and-partner-departments-and-agencies-conduct-coordinated-actions-disrupt",
+                "https://www.symantec.com/connect/blogs/iran-based-attackers-use-back-door-threats-spy-middle-eastern-targets"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0259baeb-9f63-4c69-bf10-eb038c390688",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03d7999c-1f4c-42cc-8373-e7690d318104",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "09a60ea3-a8d1-4ae5-976e-5783248b72a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0d91b3c0-5e50-47c3-949a-2a796f04d144",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1996eef1-ced3-4d7f-bf94-33298cabbf72",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c34f7aa-9341-4a48-bfab-af22e51aca6c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "242f3da3-4425-4d11-8f5c-b842886da966",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2b742742-28c3-4e1b-bab7-8350d6300fa7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2db31dcd-54da-405d-acef-b9129b816ed6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "30973a08-aed9-4edf-8604-9084ce1b5c4f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3489cfc5-640f-4bb3-a103-9137b97de79f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3a32740a-11b0-4bcf-b0a9-3abd0f6d3cd5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3f886f2a-874f-4333-b794-aa6075009b1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3fc9b85a-2862-4363-a64d-d692e3ffbee0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4ab929c6-ee2d-4fb5-aab4-b14be2ed7179",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4f9ca633-15c5-463c-9724-bdcd54fde541",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "565275d5-fcc3-4b66-b4e7-928e4cac6b8c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "56f46b17-8cfa-46c0-b501-dd52fef394e2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5d0d3609-d06d-49e1-b9c9-b544e0c618cb",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "635cbe30-392d-4e27-978e-66774357c762",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "69b8fd78-40e8-4600-ae4d-662c9d7afdb3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7385dfaf-6886-4229-9ecd-6fd678040830",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92d7da27-2d91-488e-a00c-059dc162766d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9de2308e-7bed-43a3-8e58-f194b3586700",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a705b085-1eae-455e-8f4d-842483d814eb",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a93494bb-4b80-4ea1-8695-3236a49916fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b63970b7-ddfb-4aee-97b1-80d335e033a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bb5a00de-e086-4859-a231-fa793f6797e2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "be055942-6e63-49d7-9fa1-9cb7d8a8f3f4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c32f7008-9fea-41f7-8366-5eb9b74bd896",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c4810609-7da6-48ec-8057-1b70a7814db0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c8e87b83-edbb-48d4-9295-4974897525b7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cc3502b5-30cc-4473-ad48-42d51a6ef6d1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cc89ecbd-3d33-4a41-bcca-001e702d18fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cf23bf4a-e003-4116-bbae-1ea6c558d565",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d63a3fb8-9452-4e9d-a60a-54be68d5998c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "deb98323-e13f-4b0c-8d94-175379069062",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfa03c7d-79ed-4ce2-b9d1-ddc9dbf56ad2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3a12395-188d-4051-9a16-ea8e14d07b88",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "eb062747-2193-45de-8fa2-e62549c37ddf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ecc2f65a-b452-4eaf-9689-7e181f17f7a5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ef67e13e-5598-4adc-bdb2-998225874fa9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f1951e8a-500e-4a26-8803-76d95c4554b4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f6dacc85-b37d-458e-b58d-74fc4bbf5755",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "44e43fad-ffcb-4210-abcf-eaaed9735f80",
@@ -607,10 +1036,47 @@
                   "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "a57b52c7-9f64-4ffe-a7c3-0de738fb2af1",
+              "entry_value": "APT39",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt39",
+                  "profile_value": "APT39",
+                  "dataset_value": "APT39"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "APT39"
+              ],
+              "countries": [
+                "IR"
+              ],
+              "description": "[APT39](https://app.tidalcyber.com/groups/a57b52c7-9f64-4ffe-a7c3-0de738fb2af1) is one of several names for cyber espionage activity conducted by the Iranian Ministry of Intelligence and Security (MOIS) through the front company Rana Intelligence Computing since at least 2014. [APT39](https://app.tidalcyber.com/groups/a57b52c7-9f64-4ffe-a7c3-0de738fb2af1) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.<sup>[[FireEye APT39 Jan 2019](https://app.tidalcyber.com/references/ba366cfc-cc04-41a5-903b-a7bb73136bc3)]</sup><sup>[[Symantec Chafer Dec 2015](https://app.tidalcyber.com/references/0a6166a3-5649-4117-97f4-7b8b5b559929)]</sup><sup>[[FBI FLASH APT39 September 2020](https://app.tidalcyber.com/references/76869199-e9fa-41b4-b045-41015e6daaec)]</sup><sup>[[Dept. of Treasury Iran Sanctions September 2020](https://app.tidalcyber.com/references/0c8ff80a-6b1d-4212-aa40-99aeef04ce05)]</sup><sup>[[DOJ Iran Indictments September 2020](https://app.tidalcyber.com/references/f30a77dd-d1d0-41b8-b82a-461dd6cd126f)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Education",
+                  "Hospitality Leisure",
+                  "Telecommunications",
+                  "Travel Services"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -657,19 +1123,6 @@
               "https://bitdefender.com/files/News/CaseStudies/study/332/Bitdefender-Whitepaper-Chafer-creat4491-en-EN-interactive.pdf"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--remcom",
-            "profile_name": "RemCom",
-            "entry_uuid": "135ce3db-a242-4f81-844a-cf03eb72c291",
-            "entry_value": "RemCom",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.remcom",
-              "https://doublepulsar.com/second-zerologon-attacker-seen-exploiting-internet-honeypot-c7fb074451ef",
-              "http://www.secureworks.com/research/threat-profiles/gold-franklin",
-              "https://unit42.paloaltonetworks.com/stately-taurus-attacks-se-asian-government/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           }
         ],
         "relationship_candidates": [],
@@ -702,7 +1155,7 @@
       "spec_version": "2.1",
       "id": "malware--b3033ea7-6d45-42e6-9e9f-7d1b9bdf8831",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -712,7 +1165,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--aspxspy",
@@ -732,7 +1185,7 @@
       "spec_version": "2.1",
       "id": "malware--d25a8e2e-bff9-418f-8442-ff49b612da3b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -742,7 +1195,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--cadelspy",
@@ -761,7 +1214,7 @@
       "spec_version": "2.1",
       "id": "malware--5c09eb7e-c3ff-4aca-a46c-06dcf17bc795",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -771,7 +1224,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--mechaflounder",
@@ -790,7 +1243,7 @@
       "spec_version": "2.1",
       "id": "malware--77d5a15e-e87e-4e62-850b-b1c502b04817",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -800,7 +1253,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--remexi",
@@ -815,383 +1268,11 @@
       ]
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--cab1dd1f-fc05-4b09-adbe-a29296b5d86a",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Web Shells (aspx spy",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--web-shells-aspx-spy",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--174d9555-cce4-4d1d-b470-0402a56e94b9",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "b374k)",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--b374k",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "plink",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--plink",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--a7de3f87-e879-490f-9e2a-314ddc2739bd",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "RemCom",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--remcom",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--1c995433-364c-4c9e-86db-7d9d62d0051e",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "VNC Bypass scanner",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--vnc-bypass-scanner",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--7e5735d6-d84b-493b-8157-6bd2661766b7",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "CoreSecurity tools",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--coresecurity-tools",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--48036f38-65a0-48da-99c3-d71c329a85c1",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Impacket / Python exploits",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--impacket-python-exploits",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--2c52e1e4-be7a-4c6d-a67a-60ec99787e1e",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "NSSM",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--nssm",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--bce5b985-d082-4e4c-a1f5-18a76ba16184",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "HTTPTunnel",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--httptunnel",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "SSH Tunnels to Windows Servers",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--ssh-tunnels-to-windows-servers",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Windows Credential Editor",
-      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--windows-credential-editor",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "pwdump",
-      "description": "[pwdump](https://attack.mitre.org/software/S0006) is a credential dumper. (Citation: Wikipedia pwdump)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--pwdump",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Mimikatz",
-      "description": "[Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--mimikatz",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "NBTscan",
-      "description": "[NBTscan](https://attack.mitre.org/software/S0590) is an open source tool that has been used by state groups to conduct internal reconnaissance within a compromised network.(Citation: Debian nbtscan Nov 2019)(Citation: SecTools nbtscan June 2003)(Citation: Symantec Waterbug Jun 2019)(Citation: FireEye APT39 Jan 2019)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--nbtscan",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Linux",
-        "Windows",
-        "macOS"
-      ]
-    },
-    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--507ab44f-e331-4cb2-80dd-26b7ddf11b58",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1201,7 +1282,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--crackmapexec",
@@ -1216,7 +1297,7 @@
       "spec_version": "2.1",
       "id": "tool--3a4bfdfb-57f8-4520-ae6e-9f8cb2e1b722",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1226,7 +1307,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--ftp",
@@ -1241,9 +1322,61 @@
     {
       "type": "tool",
       "spec_version": "2.1",
+      "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mimikatz",
+      "description": "[Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--mimikatz",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "NBTscan",
+      "description": "[NBTscan](https://attack.mitre.org/software/S0590) is an open source tool that has been used by state groups to conduct internal reconnaissance within a compromised network.(Citation: Debian nbtscan Nov 2019)(Citation: SecTools nbtscan June 2003)(Citation: Symantec Waterbug Jun 2019)(Citation: FireEye APT39 Jan 2019)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--nbtscan",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
       "id": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1253,7 +1386,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--psexec",
@@ -1264,55 +1397,61 @@
       ]
     },
     {
-      "type": "identity",
+      "type": "tool",
       "spec_version": "2.1",
-      "id": "identity--8897c76a-c4d0-48be-abfb-ade085b6eca1",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "id": "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "アラブ首長国連邦",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてアラブ首長国連邦が記録されている。",
+      "name": "pwdump",
+      "description": "[pwdump](https://attack.mitre.org/software/S0006) is a credential dumper. (Citation: Wikipedia pwdump)",
       "external_references": [
         {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
+      "x_profile_object_id": "tool--pwdump",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
     },
     {
-      "type": "identity",
+      "type": "tool",
       "spec_version": "2.1",
-      "id": "identity--d2c96dcb-a410-4d5b-8525-5c0044271bcb",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "イスラエル",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてイスラエルが記録されている。",
+      "name": "Windows Credential Editor",
+      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
       "external_references": [
         {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
+      "x_profile_object_id": "tool--windows-credential-editor",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
     },
     {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--f117aba9-9254-4ab7-b0a1-29e674dd9b5b",
       "created": "2026-07-29T15:36:09Z",
-      "modified": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1323,7 +1462,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1332,141 +1471,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--b805d43c-462d-4ea4-95b6-3dd5214a4e83",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "クウェート",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてクウェートが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d27693ad-30f5-48fe-922b-28d049a7ad9b",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "サウジアラビア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてサウジアラビアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--9e49f0ff-e0f6-4525-83d2-9f3a3ef8c7dd",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "スペイン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてスペインが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ea46382f-78fa-4ea4-befd-8dac9e548f47",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "トルコ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてトルコが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--742bcfbe-1504-4ef4-a5b0-96b811dd82c2",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ヨルダン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国としてヨルダンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d70ad025-2dbd-44c8-b2bd-4180e42a99f5",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT39の標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--d0dbb2a3-48fe-4dae-a439-82abef9d184c",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1477,7 +1484,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1488,7 +1495,7 @@
       "spec_version": "2.1",
       "id": "identity--e3f3c995-5c95-4172-8edc-2c0c92379c89",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1499,7 +1506,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1508,58 +1515,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--9702412e-4f99-41c8-b474-a911ef7947d9",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでAPT39の標的範囲として中東が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--73e22f03-0a90-417e-ade7-05034aee3fe9",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "全世界",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録された全世界を構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--c278b1a0-3ef6-4598-b6d3-fce91aa823ac",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1570,7 +1528,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1581,7 +1539,7 @@
       "spec_version": "2.1",
       "id": "identity--bbe197fb-b7c1-4267-b337-9b51c808af05",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1592,12 +1550,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1608,7 +1561,7 @@
       "spec_version": "2.1",
       "id": "identity--af33952b-4039-4f68-b34d-da2e39dc2a54",
       "created": "2026-07-29T15:36:09Z",
-      "modified": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1619,7 +1572,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1630,7 +1583,7 @@
       "spec_version": "2.1",
       "id": "identity--5a60c817-9c0c-48f7-91e6-3137e17c430a",
       "created": "2026-07-29T15:36:09Z",
-      "modified": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1641,7 +1594,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1652,7 +1605,7 @@
       "spec_version": "2.1",
       "id": "identity--400be375-65a0-4d77-b4c5-699a72028541",
       "created": "2026-07-29T15:36:09Z",
-      "modified": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1663,7 +1616,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1674,7 +1627,7 @@
       "spec_version": "2.1",
       "id": "identity--9a984001-23e2-4b9d-a22f-1a48043e8ea9",
       "created": "2026-07-29T15:36:09Z",
-      "modified": "2026-07-29T15:36:09Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1685,40 +1638,18 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
       "x_confidence": "high"
     },
     {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Transportation",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Transportation sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1733,7 +1664,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003--general",
@@ -1761,7 +1692,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1776,7 +1707,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -1804,7 +1735,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1819,7 +1750,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1005--general",
@@ -1847,7 +1778,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1862,7 +1793,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1012--general",
@@ -1890,7 +1821,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1905,7 +1836,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1018--general",
@@ -1933,7 +1864,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1948,7 +1879,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-001--general",
@@ -1976,7 +1907,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--241969c5-6e6f-4ee5-8d26-979a5a35e5dd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1991,7 +1922,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-002--general",
@@ -2019,7 +1950,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d372cad4-feb2-431c-aa91-007436b2ac82",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2034,7 +1965,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-004--general",
@@ -2062,7 +1993,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2077,7 +2008,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-002--general",
@@ -2105,7 +2036,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2120,7 +2051,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-013--general",
@@ -2148,7 +2079,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2163,7 +2094,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1033--general",
@@ -2191,7 +2122,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2206,7 +2137,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-005--general",
@@ -2234,7 +2165,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2249,7 +2180,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1041--general",
@@ -2277,7 +2208,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2292,7 +2223,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1046--general",
@@ -2320,7 +2251,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2335,7 +2266,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1053-005--general",
@@ -2363,7 +2294,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b8099ff7-32f8-404b-9eee-bcd568231b56",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2378,7 +2309,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1056--general",
@@ -2406,7 +2337,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--8cab9024-143a-4bf6-95a6-5b8a98a46aa9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2421,7 +2352,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1056-001--general",
@@ -2449,7 +2380,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2464,7 +2395,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059--general",
@@ -2492,7 +2423,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2507,7 +2438,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -2535,7 +2466,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2550,7 +2481,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-005--general",
@@ -2578,7 +2509,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--76538ea8-8b2c-4beb-bdb1-5517e034e117",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2593,7 +2524,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-006--general",
@@ -2621,7 +2552,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--443d1472-ad62-48dd-a9f8-72bc563466c3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2636,7 +2567,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-010--general",
@@ -2664,7 +2595,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2679,7 +2610,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1070-004--general",
@@ -2707,7 +2638,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2722,7 +2653,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1071-001--general",
@@ -2750,7 +2681,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4024cd80-bd7b-40ea-bd30-fb0afdfca53a",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2765,7 +2696,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1071-004--general",
@@ -2793,7 +2724,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2808,7 +2739,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1074-001--general",
@@ -2836,7 +2767,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2851,7 +2782,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1078--general",
@@ -2879,7 +2810,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2894,7 +2825,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1083--general",
@@ -2922,7 +2853,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--92616a2c-b119-4151-928d-9c36cbc79885",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2937,7 +2868,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1090-001--general",
@@ -2965,7 +2896,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2980,7 +2911,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1090-002--general",
@@ -3008,7 +2939,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3023,7 +2954,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1102-002--general",
@@ -3051,7 +2982,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3066,7 +2997,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1105--general",
@@ -3094,7 +3025,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3109,7 +3040,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1110--general",
@@ -3137,7 +3068,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--217b4025-5aeb-40c7-b234-45eef4dfba56",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3152,7 +3083,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1113--general",
@@ -3180,7 +3111,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--022e7b68-1826-47b7-8584-fe15cbbe19c3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3195,7 +3126,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1115--general",
@@ -3223,7 +3154,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f5cf2c22-cedd-4156-88ce-5566cc4c0e30",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3238,7 +3169,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1135--general",
@@ -3266,7 +3197,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--dda979a7-bc3c-40f7-9506-44530264972a",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3281,7 +3212,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1136-001--general",
@@ -3309,7 +3240,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3324,7 +3255,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1140--general",
@@ -3352,7 +3283,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3367,7 +3298,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1190--general",
@@ -3395,7 +3326,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6ad6f8ac-858a-4bff-b86b-346261b6fe65",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3410,7 +3341,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1197--general",
@@ -3438,7 +3369,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3453,7 +3384,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-001--general",
@@ -3481,7 +3412,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3496,7 +3427,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -3524,7 +3455,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--44d1b510-1f00-4364-9654-df683b6c4f0f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3539,7 +3470,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1505-003--general",
@@ -3567,7 +3498,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--ecf4463e-c423-47ae-9692-0e201ef05ebf",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3582,7 +3513,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1546-010--general",
@@ -3610,7 +3541,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3625,7 +3556,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547-001--general",
@@ -3653,7 +3584,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--09cdc1b1-b586-4426-96fe-77d82825cff3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3668,7 +3599,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547-009--general",
@@ -3696,7 +3627,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c85171ff-4162-444f-963b-3660458dc158",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3711,7 +3642,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1553-006--general",
@@ -3739,7 +3670,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3754,7 +3685,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555--general",
@@ -3782,7 +3713,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3797,7 +3728,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1560-001--general",
@@ -3825,7 +3756,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3840,7 +3771,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-001--general",
@@ -3868,7 +3799,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3883,7 +3814,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-002--general",
@@ -3911,7 +3842,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3926,7 +3857,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1569-002--general",
@@ -3954,7 +3885,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3969,7 +3900,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -3997,7 +3928,7 @@
       "spec_version": "2.1",
       "id": "relationship--c571e926-db26-4be9-914e-18f9e6d8cbfd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4005,14 +3936,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "malware--b3033ea7-6d45-42e6-9e9f-7d1b9bdf8831",
       "description": "APT39 uses ASPXSpy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8043e713-4b3a-43b1-875f-8a32db81f976",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4020,14 +3958,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "malware--d25a8e2e-bff9-418f-8442-ff49b612da3b",
       "description": "APT39 uses Cadelspy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dd5cf678-2e3f-4f0b-97ad-eabe4f8f4d7f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4035,14 +3980,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "malware--5c09eb7e-c3ff-4aca-a46c-06dcf17bc795",
       "description": "APT39 uses MechaFlounder.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--66870eb0-7409-4609-b2cd-3831d4433d7b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4050,224 +4002,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "malware--77d5a15e-e87e-4e62-850b-b1c502b04817",
       "description": "APT39 uses Remexi.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--282b0dc2-dcca-4e74-abd1-ae0361386b2e",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--cab1dd1f-fc05-4b09-adbe-a29296b5d86a",
-      "description": "APT39 uses Web Shells (aspx spy.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b9867ad7-e968-451f-a832-fabf989c2973",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--174d9555-cce4-4d1d-b470-0402a56e94b9",
-      "description": "APT39 uses b374k).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--dc22dc28-6a52-4968-bb70-40ce465f7c80",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-      "description": "APT39 uses plink.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d9b8fe76-290c-46ff-98bd-5440e2f7857d",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--a7de3f87-e879-490f-9e2a-314ddc2739bd",
-      "description": "APT39 uses RemCom.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--cbc674b2-d6a3-4e59-b8ef-e6f74d33c480",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--1c995433-364c-4c9e-86db-7d9d62d0051e",
-      "description": "APT39 uses VNC Bypass scanner.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3718d261-19d3-4ba0-88a6-d92640d4f32c",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--7e5735d6-d84b-493b-8157-6bd2661766b7",
-      "description": "APT39 uses CoreSecurity tools.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fe4557fe-3d44-4649-8128-cd7ba4ca9ef4",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--48036f38-65a0-48da-99c3-d71c329a85c1",
-      "description": "APT39 uses Impacket / Python exploits.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8be15da3-4ae2-4f94-b6be-27799a98a541",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--2c52e1e4-be7a-4c6d-a67a-60ec99787e1e",
-      "description": "APT39 uses NSSM.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f5b398f1-e52e-441e-b651-76f72cc9f8f3",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--bce5b985-d082-4e4c-a1f5-18a76ba16184",
-      "description": "APT39 uses HTTPTunnel.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--638de424-2fa2-4186-90f7-d34a5d9b833b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-      "description": "APT39 uses SSH Tunnels to Windows Servers.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a64e58f7-78df-4769-aa79-0ae84cd0558f",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-      "description": "APT39 uses Windows Credential Editor.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e14d7f08-dc74-41f4-8d6e-2d9baf916b21",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
-      "description": "APT39 uses pwdump.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--de74b741-a168-4f10-ba03-17c4bf7b074c",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "description": "APT39 uses Mimikatz.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2ced5ae8-15a1-47ea-956c-60e10acd9311",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
-      "description": "APT39 uses NBTscan.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--88255d33-d7e1-46af-a200-8f91a03176e7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4275,14 +4024,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "tool--507ab44f-e331-4cb2-80dd-26b7ddf11b58",
       "description": "APT39 uses CrackMapExec.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--838c3438-d76d-4476-9785-b0ecb3bb961d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4290,14 +4046,65 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "tool--3a4bfdfb-57f8-4520-ae6e-9f8cb2e1b722",
       "description": "APT39 uses ftp.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--de74b741-a168-4f10-ba03-17c4bf7b074c",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
+      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "description": "APT39 uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ced5ae8-15a1-47ea-956c-60e10acd9311",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
+      "target_ref": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
+      "description": "APT39 uses NBTscan.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22ca98bb-ac66-4e97-a826-ee4129a6f448",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4305,44 +4112,65 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "description": "APT39 uses PsExec.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--6c6e1534-0392-4197-8ea9-4507fcfc6921",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "id": "relationship--e14d7f08-dc74-41f4-8d6e-2d9baf916b21",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--8897c76a-c4d0-48be-abfb-ade085b6eca1",
-      "description": "APT39 targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
+      "target_ref": "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
+      "description": "APT39 uses pwdump.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--1d1d73d7-8599-44cb-9dab-25a81e6998ad",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "id": "relationship--a64e58f7-78df-4769-aa79-0ae84cd0558f",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--d2c96dcb-a410-4d5b-8525-5c0044271bcb",
-      "description": "APT39 targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
+      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "description": "APT39 uses Windows Credential Editor.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9a8ac158-632e-4edf-bb5a-f78fc534130f",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4350,104 +4178,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--f117aba9-9254-4ab7-b0a1-29e674dd9b5b",
       "description": "APT39 targets イラン (profile target category: countries).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--efe25305-dd13-40a5-8f57-f145dd571737",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--b805d43c-462d-4ea4-95b6-3dd5214a4e83",
-      "description": "APT39 targets クウェート (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1f4b7d13-3e44-4771-bd66-5e8be93c35e4",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--d27693ad-30f5-48fe-922b-28d049a7ad9b",
-      "description": "APT39 targets サウジアラビア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a7cd846c-7cb8-44a5-9d53-63dd61c6b491",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--9e49f0ff-e0f6-4525-83d2-9f3a3ef8c7dd",
-      "description": "APT39 targets スペイン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--10a993f5-06ce-47fc-8cfc-6a8692f92718",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--ea46382f-78fa-4ea4-befd-8dac9e548f47",
-      "description": "APT39 targets トルコ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--331f1f32-eeb8-4336-8bb5-d12da3367c35",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--742bcfbe-1504-4ef4-a5b0-96b811dd82c2",
-      "description": "APT39 targets ヨルダン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--460b970e-3c7c-4f02-bbae-8ae2fce40032",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--d70ad025-2dbd-44c8-b2bd-4180e42a99f5",
-      "description": "APT39 targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--30428893-bd6f-48f3-afcf-d3219004d932",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4455,14 +4200,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--d0dbb2a3-48fe-4dae-a439-82abef9d184c",
       "description": "APT39 targets アジア (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--15662cc2-211f-4f37-be24-2aa119329433",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4470,44 +4222,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--e3f3c995-5c95-4172-8edc-2c0c92379c89",
       "description": "APT39 targets アフリカ (profile target category: regions).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--866386b9-a807-4a34-966b-31c1b2075c6d",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--9702412e-4f99-41c8-b474-a911ef7947d9",
-      "description": "APT39 targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--49f18eae-0450-419d-9d4e-234049a7b5ca",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--73e22f03-0a90-417e-ade7-05034aee3fe9",
-      "description": "APT39 targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0872d011-aa9e-47cf-b384-a3d10e5db669",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4515,14 +4244,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--c278b1a0-3ef6-4598-b6d3-fce91aa823ac",
       "description": "APT39 targets 北米 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c918de87-2cfd-4880-a4e1-622922bb964a",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4530,14 +4266,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--bbe197fb-b7c1-4267-b337-9b51c808af05",
       "description": "APT39 targets 欧州 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--323e13f9-36a7-4c86-a2ba-b0672ace63b7",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4545,14 +4288,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--af33952b-4039-4f68-b34d-da2e39dc2a54",
       "description": "APT39 targets 医療・ヘルスケア (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--04715fd9-6999-4a3a-9cc8-4a4e719b8030",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4560,14 +4310,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--5a60c817-9c0c-48f7-91e6-3137e17c430a",
       "description": "APT39 targets 情報通信 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b80c8ae-0066-4c71-92c1-69e455f03872",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4575,14 +4332,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--400be375-65a0-4d77-b4c5-699a72028541",
       "description": "APT39 targets 小売・ホスピタリティ (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--21a7b2b2-ac5a-4559-8ac3-d98ce8877428",
       "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4590,29 +4354,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "identity--9a984001-23e2-4b9d-a22f-1a48043e8ea9",
       "description": "APT39 targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e6906ae8-15bf-481a-86a7-d0d2fc85f081",
-      "created": "2026-07-29T23:13:53Z",
-      "modified": "2026-07-29T23:13:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
-      "target_ref": "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
-      "description": "APT39 targets Transportation (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8af3ac6-9324-403e-a16a-2f2967a9fc51",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4620,14 +4376,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used different versions of Mimikatz to obtain credentials.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1a089ba7-0307-45f1-8392-a2e1fbaeabec",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4635,14 +4398,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used Mimikatz, Windows Credential Editor and ProcDump to dump credentials.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--db0fa396-ec19-4e17-8df3-4832662b06e1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4650,14 +4420,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used various tools to steal files from the compromised host.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c33edbd7-f1db-4301-b853-5d61063ace5b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4665,14 +4442,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used various strains of malware to query the Registry.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ad1b6ccf-13cb-4723-b717-109db85bdbfc",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4680,14 +4464,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used [NBTscan](https://attack.mitre.org/software/S0590) and custom tools to discover remote systems.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e5108de6-856c-414b-97f3-eedfb447a614",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4695,14 +4486,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has been seen using RDP for lateral movement and persistence, in some cases employing the rdpwinst tool for mangement of multiple sessions.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22cec1b2-3021-4ab1-a754-fada9c97056f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4710,14 +4508,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--241969c5-6e6f-4ee5-8d26-979a5a35e5dd",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used SMB for lateral movement.(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--67a54c65-45cd-43f2-860f-d004ec90f197",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4725,14 +4530,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--d372cad4-feb2-431c-aa91-007436b2ac82",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) used secure shell (SSH) to move laterally among their targets.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4c17a918-527d-428c-bfd3-a236a8bebfaf",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4740,14 +4552,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has packed tools with UPX, and has repacked a modified version of [Mimikatz](https://attack.mitre.org/software/S0002) to thwart anti-virus detection.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a7f9e6f2-070d-4a83-bb0f-b892af32ba84",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4755,14 +4574,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware to drop encrypted CAB files.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5a79e89e-fa5f-442b-a47c-d48953eb35a8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4770,14 +4596,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) used [Remexi](https://attack.mitre.org/software/S0375) to collect usernames from the system.(Citation: Symantec Chafer Dec 2015)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed7f5fdc-626a-4d0e-9813-64719301758f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4785,14 +4618,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware disguised as Mozilla Firefox and a tool named mfevtpse.exe to proxy C2 communications, closely mimicking a legitimate McAfee file mfevtps.exe.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ecd1918c-759c-4461-8360-cd5e5f0b86a0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4800,14 +4640,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has exfiltrated stolen victim data through C2 communications.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--98b3d7b9-c2c5-4ad7-b97f-89d3e67faaac",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4815,14 +4662,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used [CrackMapExec](https://attack.mitre.org/software/S0488) and a custom port scanner known as BLUETORCH for network scanning.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a25dd954-805c-48e5-9554-3792e48a53b1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4830,14 +4684,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has created scheduled tasks for persistence.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c50c7212-a606-4135-8ef5-bbb4111d1e7d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4845,14 +4706,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--b8099ff7-32f8-404b-9eee-bcd568231b56",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has utilized tools to capture mouse movements.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--36444a8b-40f0-40fc-b4f0-90a27bdac1e7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4860,14 +4728,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--8cab9024-143a-4bf6-95a6-5b8a98a46aa9",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used tools for capturing keystrokes.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9219456b-94e9-45bf-a5c7-5adbe850217c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4875,14 +4750,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has utilized custom scripts to perform internal reconnaissance.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e73ebbe3-1e24-4ec2-a2d4-6a3a624a472e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4890,14 +4772,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used PowerShell to execute malicious code.(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c69b18ce-7b31-4d52-bbb4-da49cd45cc02",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4905,14 +4794,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has utilized malicious VBS scripts in malware.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f79d6595-7008-4122-a190-d810d3f51789",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4920,14 +4816,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--76538ea8-8b2c-4beb-bdb1-5517e034e117",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used a command line utility and a network scanner written in python.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7212e7bc-2836-4700-b5e2-d48e79fdba8c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4935,14 +4838,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--443d1472-ad62-48dd-a9f8-72bc563466c3",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has utilized AutoIt malware scripts embedded in Microsoft Office documents or malicious links.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--182b5188-b622-4883-b13c-91e7018abc88",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4950,14 +4860,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware to delete files after they are deployed on a compromised host.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bdd984d6-37db-4bfe-9a2f-3fa9eaad8aff",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4965,14 +4882,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used HTTP in communications with C2.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--306ad7d0-8bbd-4427-8bae-dddd7c61ff65",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4980,14 +4904,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--4024cd80-bd7b-40ea-bd30-fb0afdfca53a",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used remote access tools that leverage DNS in communications with C2.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f72196f8-075b-4b48-9b72-2fc15674c6d6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4995,14 +4926,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has utilized tools to aggregate data prior to exfiltration.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0f20044e-f843-4453-805d-2634cd000afd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5010,14 +4948,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used stolen credentials to compromise Outlook Web Access (OWA).(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22186ba8-12b6-4f89-848c-594b895fc0a6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5025,14 +4970,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used tools with the ability to search for files on a compromised host.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--21f23958-f62d-4c5c-9460-039189ce256f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5040,14 +4992,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--92616a2c-b119-4151-928d-9c36cbc79885",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) used custom tools to create SOCK5 and custom protocol proxies between infected hosts.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fd3dcd80-9d0f-4ad9-8f70-e50daf27675f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5055,14 +5014,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used various tools to proxy C2 communications.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--55cbb867-eb25-4909-a4e7-6d3641093a25",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5070,14 +5036,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has communicated with C2 through files uploaded to and downloaded from DropBox.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8fca5794-4cb4-4778-ac47-c3b0a950c7f2",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5085,14 +5058,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has downloaded tools to compromised hosts.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8c982e2b-674c-43dd-8c99-12cb9b31beda",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5100,14 +5080,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used Ncrack to reveal credentials.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e2bc75e1-ee3b-4408-b540-236e654e58be",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5115,14 +5102,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--217b4025-5aeb-40c7-b234-45eef4dfba56",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used a screen capture utility to take screenshots on a compromised host.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--65954b55-bce8-4089-9fd7-c8af1612b220",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5130,14 +5124,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--022e7b68-1826-47b7-8584-fe15cbbe19c3",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used tools capable of stealing contents of the clipboard.(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9953995f-2465-4db3-9491-dda4eecc7389",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5145,14 +5146,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--f5cf2c22-cedd-4156-88ce-5566cc4c0e30",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used the post exploitation tool [CrackMapExec](https://attack.mitre.org/software/S0488) to enumerate network shares.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c8a6e140-58a6-4ab6-821a-f9e6f9ab2f7d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5160,14 +5168,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--dda979a7-bc3c-40f7-9506-44530264972a",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has created accounts on multiple compromised hosts to perform actions within the network.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--df7c8acd-1643-495d-98af-b0836cd0764b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5175,14 +5190,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a40021b6-5f90-4ce5-8a97-d7b7aab068be",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware to decrypt encrypted CAB files.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--64a31f87-3926-4940-b3f8-ef09fb8f8273",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5190,14 +5212,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used SQL injection for initial compromise.(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d003bd21-85aa-46ec-96f7-069b7a0d1c68",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5205,14 +5234,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--6ad6f8ac-858a-4bff-b86b-346261b6fe65",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used the BITS protocol to exfiltrate stolen data from a compromised host.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--da5601d3-4cd4-4afa-bca3-792845c9144c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5220,14 +5256,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--2378dc2c-7eeb-43bc-8b00-aad16349802d",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has sent spearphishing emails in an attempt to lure users to click on a malicious link.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--206ff19d-990b-46c7-97c2-ad143c9c7eca",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5235,14 +5278,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has sent spearphishing emails in an attempt to lure users to click on a malicious attachment.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f16731f7-4ded-4255-b4ca-cf55b91c5be8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5250,14 +5300,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--44d1b510-1f00-4364-9654-df683b6c4f0f",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has installed ANTAK and ASPXSPY web shells.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0487d4c7-af83-4087-b41e-8b10a42ab2d9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5265,14 +5322,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--ecf4463e-c423-47ae-9692-0e201ef05ebf",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware to set <code>LoadAppInit_DLLs</code> in the Registry key <code>SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows</code> in order to establish persistence.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ee493cd9-cb3b-4773-bf8f-af3a27d47513",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5280,14 +5344,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has maintained persistence using the startup folder.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ac3d68df-bc5b-451f-b975-8054d5af951b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5295,14 +5366,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--09cdc1b1-b586-4426-96fe-77d82825cff3",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has modified LNK shortcuts.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--18058245-6c84-4a67-8381-bb7e6823c799",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5310,14 +5388,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--c85171ff-4162-444f-963b-3660458dc158",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used malware to turn off the <code>RequireSigned</code> feature which ensures only signed DLLs can be run on Windows.(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2ec0622e-2ec5-4dd9-a9c9-697caf7cd1e9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5325,14 +5410,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used the Smartftp Password Decryptor tool to decrypt FTP passwords.(Citation: BitDefender Chafer May 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--07031f9b-55e5-4718-9916-4b4bd22293e4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5340,14 +5432,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used WinRAR and 7-Zip to compress an archive stolen data.(Citation: FireEye APT39 Jan 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8b09c976-315b-4ba4-8def-3ae33e9abfd5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5355,14 +5454,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) leveraged spearphishing emails with malicious attachments to initially compromise victims.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--84b90768-8644-4caa-a717-3ec0a42a7cb7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5370,14 +5476,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) leveraged spearphishing emails with malicious links to initially compromise victims.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4eb960cd-0592-41a4-af69-3743f13fb99b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5385,14 +5498,21 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has used post-exploitation tools including RemCom and the Non-sucking Service Manager (NSSM) to execute processes.(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3573b8ce-5e97-4e50-8963-81d1d49cf796",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5400,7 +5520,14 @@
       "source_ref": "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[APT39](https://attack.mitre.org/groups/G0087) has modified and used customized versions of publicly-available tools like PLINK and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: BitDefender Chafer May 2020)(Citation: IBM ITG07 June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
@@ -5424,7 +5551,7 @@
       "spec_version": "2.1",
       "id": "report--b63da694-39bd-4914-bf45-02b094e04050",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5433,50 +5560,29 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:35:02Z",
       "object_refs": [
         "intrusion-set--498ef90b-6698-47b7-bd4d-84f357628301",
         "malware--b3033ea7-6d45-42e6-9e9f-7d1b9bdf8831",
         "malware--d25a8e2e-bff9-418f-8442-ff49b612da3b",
         "malware--5c09eb7e-c3ff-4aca-a46c-06dcf17bc795",
         "malware--77d5a15e-e87e-4e62-850b-b1c502b04817",
-        "malware--cab1dd1f-fc05-4b09-adbe-a29296b5d86a",
-        "malware--174d9555-cce4-4d1d-b470-0402a56e94b9",
-        "malware--a4a6bd36-8d90-4642-bb48-f069db5d923b",
-        "malware--a7de3f87-e879-490f-9e2a-314ddc2739bd",
-        "malware--1c995433-364c-4c9e-86db-7d9d62d0051e",
-        "malware--7e5735d6-d84b-493b-8157-6bd2661766b7",
-        "malware--48036f38-65a0-48da-99c3-d71c329a85c1",
-        "malware--2c52e1e4-be7a-4c6d-a67a-60ec99787e1e",
-        "malware--bce5b985-d082-4e4c-a1f5-18a76ba16184",
-        "malware--b3696ab9-0937-4a46-9557-673b43d67265",
-        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-        "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
-        "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-        "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
         "tool--507ab44f-e331-4cb2-80dd-26b7ddf11b58",
         "tool--3a4bfdfb-57f8-4520-ae6e-9f8cb2e1b722",
+        "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+        "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
-        "identity--8897c76a-c4d0-48be-abfb-ade085b6eca1",
-        "identity--d2c96dcb-a410-4d5b-8525-5c0044271bcb",
+        "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
+        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
         "identity--f117aba9-9254-4ab7-b0a1-29e674dd9b5b",
-        "identity--b805d43c-462d-4ea4-95b6-3dd5214a4e83",
-        "identity--d27693ad-30f5-48fe-922b-28d049a7ad9b",
-        "identity--9e49f0ff-e0f6-4525-83d2-9f3a3ef8c7dd",
-        "identity--ea46382f-78fa-4ea4-befd-8dac9e548f47",
-        "identity--742bcfbe-1504-4ef4-a5b0-96b811dd82c2",
-        "identity--d70ad025-2dbd-44c8-b2bd-4180e42a99f5",
         "identity--d0dbb2a3-48fe-4dae-a439-82abef9d184c",
         "identity--e3f3c995-5c95-4172-8edc-2c0c92379c89",
-        "identity--9702412e-4f99-41c8-b474-a911ef7947d9",
-        "identity--73e22f03-0a90-417e-ade7-05034aee3fe9",
         "identity--c278b1a0-3ef6-4598-b6d3-fce91aa823ac",
         "identity--bbe197fb-b7c1-4267-b337-9b51c808af05",
         "identity--af33952b-4039-4f68-b34d-da2e39dc2a54",
         "identity--5a60c817-9c0c-48f7-91e6-3137e17c430a",
         "identity--400be375-65a0-4d77-b4c5-699a72028541",
         "identity--9a984001-23e2-4b9d-a22f-1a48043e8ea9",
-        "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
         "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
         "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
         "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
@@ -5531,7 +5637,7 @@
         "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

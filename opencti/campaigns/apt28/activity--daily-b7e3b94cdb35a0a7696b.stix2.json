@@ -1,0 +1,1629 @@
+{
+  "type": "bundle",
+  "id": "bundle--33107cb6-b1d2-4da2-89cd-f632a51e112f",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5efb2aa5-5f8c-45e3-8e2e-ee88c35dec47",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exploit Public-Facing Application",
+      "description": "Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--89f456d6a62c12cbae97",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--daily-b7e3b94cdb35a0a7696b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される",
+      "description": "ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b7e3b94cdb35a0a7696b",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--b7e3b94cdb35a0a7696b1426 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt28",
+          "name": "APT28",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--89f456d6a62c12cbae97"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--ukraine",
+            "target--targeting-audit--country--2958e5242a8b9525701a",
+            "target--targeting-audit--country--7c49db2288d7bd5abff5",
+            "target--targeting-audit--country--edef43a2d8834237d751"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--05192f84f365017b985e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-05-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--country--ukraine",
+              "target--targeting-audit--country--2958e5242a8b9525701a",
+              "target--targeting-audit--country--7c49db2288d7bd5abff5",
+              "target--targeting-audit--country--edef43a2d8834237d751"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-0f31344d55ee8f1d9bd2"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a9acc724-0b40-4594-b011-fcaba78a8a80",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される",
+      "identity_class": "organization",
+      "description": "ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--05192f84f365017b985e",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--country--ukraine"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--89f456d6a62c12cbae97"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT28",
+      "aliases": [
+        "BlueDelta",
+        "Fancy Bear",
+        "Forest Blizzard",
+        "FROZENLAKE",
+        "Group 74",
+        "GruesomeLarch",
+        "IRON TWILIGHT",
+        "LAKE RELIC",
+        "Pawn Storm",
+        "Sednit",
+        "SNAKEMACKEREL",
+        "Sofacy",
+        "STRONTIUM",
+        "Swallowtail",
+        "TG-4127",
+        "Threat Group-4127",
+        "Tsar Team"
+      ],
+      "description": "[APT28](https://attack.mitre.org/groups/G0007) is a threat group that has been attributed to Russia's General Staff Main Intelligence Directorate (GRU) 85th Main Special Service Center (GTsSS) military unit 26165.(Citation: NSA/FBI Drovorub August 2020)(Citation: Cybersecurity Advisory GRU Brute Force Campaign July 2021) This group has been active since at least 2004.(Citation: DOJ GRU Indictment Jul 2018)(Citation: Ars Technica GRU indictment Jul 2018)(Citation: Crowdstrike DNC June 2016)(Citation: FireEye APT28)(Citation: SecureWorks TG-4127)(Citation: FireEye APT28 January 2017)(Citation: GRIZZLY STEPPE JAR)(Citation: Sofacy DealersChoice)(Citation: Palo Alto Sofacy 06-2018)(Citation: Symantec APT28 Oct 2018)(Citation: ESET Zebrocy May 2019)\n\n[APT28](https://attack.mitre.org/groups/G0007) reportedly compromised the Hillary Clinton campaign, the Democratic National Committee, and the Democratic Congressional Campaign Committee in 2016 in an attempt to interfere with the U.S. presidential election.(Citation: Crowdstrike DNC June 2016) In 2018, the US indicted five GRU Unit 26165 officers associated with [APT28](https://attack.mitre.org/groups/G0007) for cyber operations (including close-access operations) conducted between 2014 and 2018 against the World Anti-Doping Agency (WADA), the US Anti-Doping Agency, a US nuclear facility, the Organization for the Prohibition of Chemical Weapons (OPCW), the Spiez Swiss Chemicals Laboratory, and other organizations.(Citation: US District Court Indictment GRU Oct 2018) Some of these were conducted with the assistance of GRU Unit 74455, which is also referred to as [Sandworm Team](https://attack.mitre.org/groups/G0034). ",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt28",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "BlueDelta",
+          "vendor": "Recorded Future",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-6bb5f30d0037bd12215d"
+          ],
+          "analyst_notes": "Recorded Future Insikt Groupは「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」として、BlueDeltaをAPT28・Fancy Bear・Forest Blizzardと重複するクラスタと位置付けている。原文の表現は「overlaps with」であり同一クラスタの断定ではないため、scopeはexactではなくoverlappingとする。confidenceは原文自身がmoderate confidenceと明示しているためmedium。"
+        },
+        {
+          "name": "Fancy Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Forest Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "FROZENLAKE",
+          "vendor": "MITRE ATT&CK / Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Group 74",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "GruesomeLarch",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON TWILIGHT",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "LAKE RELIC",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Pawn Storm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Sednit",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "SNAKEMACKEREL",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Sofacy",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "STRONTIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Swallowtail",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TG-4127",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Threat Group-4127",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Tsar Team",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT28の標準化プロファイル。リポジトリ内の専用資料30件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Russian Doll; Bundestag; TV5 Monde \"Cyber Caliphate\"; EFF Attack; DNC Hack; OpOlympics; Burisma\n\n2026年4月、米司法省とFBIは、APT28（GRU第26165部隊）がDNSハイジャックに利用していた侵害済みSOHOルーターネットワークの米国内部分を無力化したと発表した。",
+        "capability_details": "Downdelph, reGeorg, OLDBAIT, Fysbis, XAgentOSX, CORESHELL, XTunnel, JHUHUGIT, DealersChoice, Drovorub, Zebrocy, USBStealer, LoJax, LAMEHUG, CHOPSTICK, Cannon, HIDEDRV, Komplex, ADVSTORESHELL, SOURFACE, Sofacy, XAgent, WinIDS, Foozer, DownRange, Sedreco Dropper, Sednit, Sedkit, HideDrv (Rootkit), SeduUploader, Net, certutil, Forfiles, Winexe, Responder, Mimikatz, Koadic, cipher.exe, Tor, Wevtutil",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、カメルーン、ギリシャ、スペイン、セルビア、チェコ、トルコ、ドイツ、ポーランド、ルーマニア、ロシア、米国。標的地域=アジア、南欧、東欧、欧州。日本は確認時に個別国として保持する。\n\nUnited States government, Romania, Poland, Jordan, Ukraine, Turkey",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--3e9fa44d-1c1e-47b4-b0bd-fee99f84c807",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Serbia",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--7c49db2288d7bd5abff5",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "SRB",
+      "x_opencti_reference_id": "location--2ad09063-81f3-443e-ab24-dbcb950fca2c",
+      "x_opencti_aliases": [
+        "RS",
+        "SRB",
+        "セルビア"
+      ],
+      "latitude": 44.016521,
+      "longitude": 21.005859,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--60bc393b-22a4-4ced-8f88-05d3652e6c42",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:20:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ukraine",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--country--ukraine",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "UKR",
+      "x_opencti_reference_id": "location--e5f054fc-fc63-46f3-8d63-1f93e0cb7801",
+      "x_opencti_aliases": [
+        "UA",
+        "UKR",
+        "ウクライナ"
+      ],
+      "latitude": 48.379433,
+      "longitude": 31.16558,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--d4b6432c-eabc-48f0-bfc0-f75685dd90bb",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Cameroon",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--2958e5242a8b9525701a",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "CMR",
+      "x_opencti_reference_id": "location--c5d52a27-9e31-4025-b9ea-849a75964adf",
+      "x_opencti_aliases": [
+        "CM",
+        "CMR",
+        "カメルーン"
+      ],
+      "latitude": 7.369722,
+      "longitude": 12.354722,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--e732409f-24ed-431b-958f-caa5ceb838c7",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Greece",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--edef43a2d8834237d751",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "GRC",
+      "x_opencti_reference_id": "location--53f500b8-4ac7-4cee-b127-56b5b6f4e546",
+      "x_opencti_aliases": [
+        "GR",
+        "GRC",
+        "ギリシャ"
+      ],
+      "latitude": 39.074208,
+      "longitude": 21.824312,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25761a69-bd3e-42b9-9be8-380de18e3cf1",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "target_ref": "location--d4b6432c-eabc-48f0-bfc0-f75685dd90bb",
+      "description": "APT28 targets カメルーン (profile target category: countries).\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2e1e13f1-7113-4ddd-bb39-fbddf48029b5",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "identity--a9acc724-0b40-4594-b011-fcaba78a8a80",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される affected victim--activity-rule--05192f84f365017b985e.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e1dcd3d-aaa0-4ff0-9803-672ab1819192",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "target_ref": "location--e732409f-24ed-431b-958f-caa5ceb838c7",
+      "description": "APT28 targets ギリシャ (profile target category: countries).\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--44147278-cb20-471e-9213-29e640b29fbe",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "attack-pattern--5efb2aa5-5f8c-45e3-8e2e-ee88c35dec47",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される uses ttp--activity-rule--89f456d6a62c12cbae97.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--768b9e75-8494-4e9f-82b2-8e5db7df38dc",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "target_ref": "attack-pattern--5efb2aa5-5f8c-45e3-8e2e-ee88c35dec47",
+      "description": "Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--83a18f8c-0ff8-4e7e-b3fc-004097f4ffa6",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される is attributed or linked to APT28.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "target_ref": "location--60bc393b-22a4-4ced-8f88-05d3652e6c42",
+      "description": "APT28 targets ウクライナ (profile target category: countries).\n\nEvidence: Targeting text mentions ukraine.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Akamai Security Research",
+          "description": "Local source: https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
+          "external_id": "source--akamai-apt28-cve-2026-21510",
+          "url": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-apt28-military-hackers-exploit-zimbra-flaw-in-ukrainian-govt-attacks/",
+          "external_id": "source--daily-46653690978a5163e9ec",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-apt28-military-hackers-exploit-zimbra-flaw-in-ukrainian-govt-attacks/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-deploy-customized-variant-of-covenant-open-source-tool/",
+          "external_id": "source--daily-4a00e2733e94c16c2bcd",
+          "url": "https://www.bleepingcomputer.com/news/security/apt28-hackers-deploy-customized-variant-of-covenant-open-source-tool/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/",
+          "external_id": "source--daily-7ba97251f8ecb9b8c790",
+          "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-use-signal-chats-to-launch-new-malware-attacks-on-ukraine/",
+          "external_id": "source--daily-ddc816726b2dc0d3951a",
+          "url": "https://www.bleepingcomputer.com/news/security/apt28-hackers-use-signal-chats-to-launch-new-malware-attacks-on-ukraine/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html",
+          "external_id": "source--daily-e4e1690a6e0a90a04bc2",
+          "url": "https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-apt28-hackers-exploit-windows-flaw-reported-by-nsa/",
+          "external_id": "source--daily-f296ca3b0e389a7fa9d4",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-apt28-hackers-exploit-windows-flaw-reported-by-nsa/"
+        },
+        {
+          "source_name": "Akamai Security Research",
+          "description": "Local source: https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
+          "external_id": "source--akamai-apt28-cve-2026-21510"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-apt28-military-hackers-exploit-zimbra-flaw-in-ukrainian-govt-attacks/",
+          "external_id": "source--daily-46653690978a5163e9ec"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-deploy-customized-variant-of-covenant-open-source-tool/",
+          "external_id": "source--daily-4a00e2733e94c16c2bcd"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/",
+          "external_id": "source--daily-7ba97251f8ecb9b8c790"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-use-signal-chats-to-launch-new-malware-attacks-on-ukraine/",
+          "external_id": "source--daily-ddc816726b2dc0d3951a"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html",
+          "external_id": "source--daily-e4e1690a6e0a90a04bc2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-apt28-hackers-exploit-windows-flaw-reported-by-nsa/",
+          "external_id": "source--daily-f296ca3b0e389a7fa9d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-31T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-observed"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "source-observed",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-03-01T00:00:00Z",
+      "stop_time": "2026-01-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b48239fc-795b-4b82-8e32-3e3fbb2e4bbe",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "location--3e9fa44d-1c1e-47b4-b0bd-fee99f84c807",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される targets target--targeting-audit--country--7c49db2288d7bd5abff5.\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ce823369-ba16-45ab-b773-8d0ebfa0cf6a",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+      "target_ref": "location--3e9fa44d-1c1e-47b4-b0bd-fee99f84c807",
+      "description": "APT28 targets セルビア (profile target category: countries).\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e3e83f0b-f197-4f3c-a1ac-4bcdf77e8097",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "location--d4b6432c-eabc-48f0-bfc0-f75685dd90bb",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される targets target--targeting-audit--country--2958e5242a8b9525701a.\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546",
+      "created": "2026-07-29T23:11:59Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "location--60bc393b-22a4-4ced-8f88-05d3652e6c42",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される targets target--country--ukraine.\n\nEvidence: Targeting text mentions ukraine.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "Akamai Security Research",
+          "description": "Local source: https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
+          "external_id": "source--akamai-apt28-cve-2026-21510"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-apt28-military-hackers-exploit-zimbra-flaw-in-ukrainian-govt-attacks/",
+          "external_id": "source--daily-46653690978a5163e9ec"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-deploy-customized-variant-of-covenant-open-source-tool/",
+          "external_id": "source--daily-4a00e2733e94c16c2bcd"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/",
+          "external_id": "source--daily-7ba97251f8ecb9b8c790"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apt28-hackers-use-signal-chats-to-launch-new-malware-attacks-on-ukraine/",
+          "external_id": "source--daily-ddc816726b2dc0d3951a"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html",
+          "external_id": "source--daily-e4e1690a6e0a90a04bc2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-apt28-hackers-exploit-windows-flaw-reported-by-nsa/",
+          "external_id": "source--daily-f296ca3b0e389a7fa9d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fc0a4fe3-c152-49ba-bed4-820d7999af7d",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+      "target_ref": "location--e732409f-24ed-431b-958f-caa5ceb838c7",
+      "description": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される targets target--targeting-audit--country--edef43a2d8834237d751.\n\nEvidence: 活動「政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される」の記述で標的・被害国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--067f5a66-f1d1-4c4e-8eb0-b7444dca71c3",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-03-20T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-46653690978a5163e9ec",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-apt28-military-hackers-exploit-zimbra-flaw-in-ukrainian-govt-attacks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-46653690978a5163e9ec",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0e57f57c-8d43-4464-b9a8-b3e9fec77a21",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT28、Covenantオープンソースツールのカスタマイズ版を展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-03-11T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-4a00e2733e94c16c2bcd",
+          "url": "https://www.bleepingcomputer.com/news/security/apt28-hackers-deploy-customized-variant-of-covenant-open-source-tool/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-4a00e2733e94c16c2bcd",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--18675eb8-caf2-4641-8e64-745603ea71c1",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-04-30T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-7ba97251f8ecb9b8c790",
+          "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-windows-flaw-exploited-in-zero-day-attacks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-7ba97251f8ecb9b8c790",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--559d47b0-1e01-4666-b236-201864fd6e18",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--77216ddb-91c0-45c5-a004-267829c4671e",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-06-25T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-ddc816726b2dc0d3951a",
+          "url": "https://www.bleepingcomputer.com/news/security/apt28-hackers-use-signal-chats-to-launch-new-malware-attacks-on-ukraine/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-ddc816726b2dc0d3951a",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--9802bef6-3fd5-43d2-8926-6ed817538553",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-05-16T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--5efb2aa5-5f8c-45e3-8e2e-ee88c35dec47",
+        "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+        "identity--a9acc724-0b40-4594-b011-fcaba78a8a80",
+        "relationship--25761a69-bd3e-42b9-9be8-380de18e3cf1",
+        "relationship--2e1e13f1-7113-4ddd-bb39-fbddf48029b5",
+        "relationship--3e1dcd3d-aaa0-4ff0-9803-672ab1819192",
+        "relationship--44147278-cb20-471e-9213-29e640b29fbe",
+        "relationship--768b9e75-8494-4e9f-82b2-8e5db7df38dc",
+        "relationship--83a18f8c-0ff8-4e7e-b3fc-004097f4ffa6",
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--b48239fc-795b-4b82-8e32-3e3fbb2e4bbe",
+        "relationship--ce823369-ba16-45ab-b773-8d0ebfa0cf6a",
+        "relationship--e3e83f0b-f197-4f3c-a1ac-4bcdf77e8097",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546",
+        "relationship--fc0a4fe3-c152-49ba-bed4-820d7999af7d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-0f31344d55ee8f1d9bd2",
+          "url": "https://www.bleepingcomputer.com/news/security/government-webmail-hacked-via-xss-bugs-in-global-spy-campaign/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0f31344d55ee8f1d9bd2",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a0c01d2e-357d-4c63-91d7-535e72ab8dd2",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "A Shortcut to Coercion: Incomplete Patch of APT28's Zero-Day Leads to CVE-2026-32202",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-04-23T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Akamai Security Research",
+          "external_id": "source--akamai-apt28-cve-2026-21510",
+          "url": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--akamai-apt28-cve-2026-21510",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "Akamai Security Research",
+      "x_source_type": "vendor-technical-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-published-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b61bbb32-8e62-4ebe-bde6-2f439eca137c",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-04-23T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-f296ca3b0e389a7fa9d4",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-apt28-hackers-exploit-windows-flaw-reported-by-nsa/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f296ca3b0e389a7fa9d4",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e4b3854b-21c0-47cb-8ee3-bd3892fcd18c",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-03-19T00:00:00Z",
+      "object_refs": [
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-e4e1690a6e0a90a04bc2",
+          "url": "https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-e4e1690a6e0a90a04bc2",
+      "x_evidence_slice_scope": "campaign:actor--apt28:activity--daily-b7e3b94cdb35a0a7696b",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3302c704-7a17-4b7e-a7c3-6e3f8c0517fa",
+      "created": "2026-09-21T04:35:01Z",
+      "modified": "2026-09-21T04:35:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT28 / 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される",
+      "description": "ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:01Z",
+      "object_refs": [
+        "attack-pattern--5efb2aa5-5f8c-45e3-8e2e-ee88c35dec47",
+        "campaign--c209e3fc-55c6-4218-b4a1-2495917e1cb1",
+        "identity--a9acc724-0b40-4594-b011-fcaba78a8a80",
+        "intrusion-set--37e1663d-62c3-4ead-818d-4cb5a075fcfc",
+        "location--3e9fa44d-1c1e-47b4-b0bd-fee99f84c807",
+        "location--60bc393b-22a4-4ced-8f88-05d3652e6c42",
+        "location--d4b6432c-eabc-48f0-bfc0-f75685dd90bb",
+        "location--e732409f-24ed-431b-958f-caa5ceb838c7",
+        "relationship--25761a69-bd3e-42b9-9be8-380de18e3cf1",
+        "relationship--2e1e13f1-7113-4ddd-bb39-fbddf48029b5",
+        "relationship--3e1dcd3d-aaa0-4ff0-9803-672ab1819192",
+        "relationship--44147278-cb20-471e-9213-29e640b29fbe",
+        "relationship--768b9e75-8494-4e9f-82b2-8e5db7df38dc",
+        "relationship--83a18f8c-0ff8-4e7e-b3fc-004097f4ffa6",
+        "relationship--902d8670-747c-4906-bd9e-34ddab61392e",
+        "relationship--b48239fc-795b-4b82-8e32-3e3fbb2e4bbe",
+        "relationship--ce823369-ba16-45ab-b773-8d0ebfa0cf6a",
+        "relationship--e3e83f0b-f197-4f3c-a1ac-4bcdf77e8097",
+        "relationship--fb49e96e-2e45-4c78-b64f-9ba520678546",
+        "relationship--fc0a4fe3-c152-49ba-bed4-820d7999af7d",
+        "report--067f5a66-f1d1-4c4e-8eb0-b7444dca71c3",
+        "report--0e57f57c-8d43-4464-b9a8-b3e9fec77a21",
+        "report--18675eb8-caf2-4641-8e64-745603ea71c1",
+        "report--559d47b0-1e01-4666-b236-201864fd6e18",
+        "report--77216ddb-91c0-45c5-a004-267829c4671e",
+        "report--9802bef6-3fd5-43d2-8926-6ed817538553",
+        "report--a0c01d2e-357d-4c63-91d7-535e72ab8dd2",
+        "report--b61bbb32-8e62-4ebe-bde6-2f439eca137c",
+        "report--e4b3854b-21c0-47cb-8ee3-bd3892fcd18c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt28",
+      "x_activity_id": "activity--daily-b7e3b94cdb35a0a7696b"
+    }
+  ]
+}

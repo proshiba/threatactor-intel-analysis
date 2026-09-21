@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--storm-1811",
   "name": "Storm-1811",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:18:00Z",
   "languages": [
     "ja"
   ],
@@ -46,19 +46,20 @@
       "description": "Financially motivated intrusion or fraud.",
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-1",
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "Derived from explicit MITRE ATT&CK actor description."
     }
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "[Storm-1811](https://attack.mitre.org/groups/G1046) is a financially-motivated entity linked to [Black Basta](https://attack.mitre.org/software/S1070) ransomware deployment. [Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake \"help desk\" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)(Citation: RedCanary June Insights 2024)",
-    "capability": "Black Basta, Cobalt Strike, QakBot, Impacket, BITSAdmin, Quick Assist, PsExec",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -87,7 +88,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -117,7 +118,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -148,12 +149,40 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
     ],
     "tools": [
+      {
+        "id": "tool--bitsadmin",
+        "name": "BITSAdmin",
+        "aliases": [
+          "BITSAdmin"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "[BITSAdmin](https://attack.mitre.org/software/S0190) is a command line tool used to create and manage [BITS Jobs](https://attack.mitre.org/techniques/T1197). (Citation: Microsoft BITSAdmin)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
       {
         "id": "tool--impacket",
         "name": "Impacket",
@@ -180,20 +209,20 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
       {
-        "id": "tool--bitsadmin",
-        "name": "BITSAdmin",
+        "id": "tool--psexec",
+        "name": "PsExec",
         "aliases": [
-          "BITSAdmin"
+          "PsExec"
         ],
         "types": [
           "Windows"
         ],
-        "description": "[BITSAdmin](https://attack.mitre.org/software/S0190) is a command line tool used to create and manage [BITS Jobs](https://attack.mitre.org/techniques/T1197). (Citation: Microsoft BITSAdmin)",
+        "description": "[PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec)",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -208,7 +237,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -237,35 +266,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
-        "id": "tool--psexec",
-        "name": "PsExec",
-        "aliases": [
-          "PsExec"
-        ],
-        "types": [
-          "Windows"
-        ],
-        "description": "[PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
@@ -300,9 +301,7 @@
         "basis": "daily-news-file-date"
       },
       "description": "Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ",
-      "target_refs": [
-        "target--mitre-group--sector--6ace32369b881a0c4d24"
-      ],
+      "target_refs": [],
       "malware_refs": [
         "malware--black-basta"
       ],
@@ -337,9 +336,7 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--mitre-group--sector--6ace32369b881a0c4d24"
-          ],
+          "target_refs": [],
           "victim_refs": [
             "victim--activity-rule--4510836a063ad9eed051"
           ]
@@ -381,40 +378,19 @@
           "source--daily-1ba1d9f38d8366b3c0a3"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [
-      {
-        "id": "target--mitre-group--sector--6ace32369b881a0c4d24",
-        "name": "製造・産業",
-        "description": "[Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake \"help desk\" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-1ba1d9f38d8366b3c0a3",
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
-      }
-    ],
+    "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -471,7 +447,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -498,7 +474,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -525,7 +501,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -552,7 +528,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -579,7 +555,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -606,7 +582,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -633,7 +609,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -660,7 +636,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -687,7 +663,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -714,7 +690,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -741,7 +717,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -768,7 +744,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -795,7 +771,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -822,7 +798,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -849,7 +825,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -876,7 +852,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -903,7 +879,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -930,7 +906,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -957,7 +933,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -984,7 +960,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1011,7 +987,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1038,7 +1014,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1065,7 +1041,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1092,7 +1068,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1119,7 +1095,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1146,7 +1122,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1173,7 +1149,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1200,7 +1176,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1227,7 +1203,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1254,7 +1230,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1281,7 +1257,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
@@ -1321,25 +1297,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240516.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240516.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/windows-quick-assist-abused-in-black-basta-ransomware-attacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -1516,6 +1483,118 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -1527,7 +1606,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-1811.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-1811.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -1550,9 +1629,7 @@
       "activity_refs": [
         "activity--daily-34b52b95ce7e51038b32"
       ],
-      "target_refs": [
-        "target--mitre-group--sector--6ace32369b881a0c4d24"
-      ],
+      "target_refs": [],
       "malware_refs": [
         "malware--black-basta"
       ],

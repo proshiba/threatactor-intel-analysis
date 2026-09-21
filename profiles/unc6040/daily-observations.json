@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--unc6040",
-  "updated_at": "2026-07-27T11:17:27Z",
+  "updated_at": "2026-09-21T08:15:06Z",
   "records": [
     {
       "record_id": "daily-record--2cb7fc88b851307541ea272e",
@@ -155,15 +155,15 @@
         "raw_value": "UNC6040"
       },
       "activity": {
-        "title": "ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害",
-        "summary": "ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中",
+        "title": "UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取",
+        "summary": "GTIGは、UNC6040がITサポートを装った音声フィッシングで従業員を誘導し、攻撃者管理のSalesforce接続アプリを承認させてCRMデータを窃取したと報告した。GTIGは初期侵入・窃取をUNC6040、後続のShinyHunters名義の恐喝をUNC6240として分けて追跡し、提携の可能性は示すが同一主体とは断定していない。",
         "news_date": "2025-07-31",
         "news_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/",
-        "primary_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/",
+        "primary_url": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
         "activity_reference": "https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/",
         "news_path": "daily-news/news/2025_07-09/20250731.md"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "iocs": [],
       "artifacts": [],
       "sources": [
@@ -171,21 +171,39 @@
           "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/",
           "source_path": "daily-news/news/2025_07-09/20250731.md",
           "source_type": "primary-report"
+        },
+        {
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+          "source_type": "primary-report"
         }
       ],
       "capability_decisions": [],
-      "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ShinyHunters(UNC6040)：英語話者中心のデータ窃取・恐喝グループ",
+      "review_notes": "GTIG一次資料で再検証。Salesforceへの音声フィッシングとデータ窃取はUNC6040、後続のShinyHunters名義の恐喝はUNC6240として別々に追跡されている。二次記事の『ShinyHunters(UNC6040)』という同一視を除去し、活動期間は推測しない。",
       "activity_claim": {
         "assessment": "strong-subject",
-        "actor_role": "operator",
-        "match_location": "body",
-        "evidence_text": "- ShinyHunters(UNC6040)：英語話者中心のデータ窃取・恐喝グループ",
+        "actor_role": "initial-access-and-data-theft-operator",
+        "match_location": "primary-report",
+        "evidence_text": "GTIG tracks UNC6040 as the actor conducting Salesforce vishing and initial data theft, separately from UNC6240 extortion.",
         "reasons": [
-          "要約の同一文でアクターが活動の実行主体として明記されている"
+          "UNC6040とUNC6240の追跡境界を一次資料に合わせて保持"
         ],
-        "suggested_confidence": "medium"
+        "suggested_confidence": "high"
       },
-      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "activity_period": {
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        }
+      }
     }
   ]
 }

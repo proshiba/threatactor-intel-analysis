@@ -12,6 +12,13 @@ https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterpris
 Then run `scripts/build_attack_reference.py` and remove the large downloaded
 bundle. The source version is embedded in `attack-index.json`.
 
+`opencti-country-index.json` maps every canonical country in
+`../target-geography.json` to the English name, ISO codes, coordinates, aliases,
+and reference ID in a pinned revision of OpenCTI's official geography dataset.
+The source revision and retrieval time are embedded in the index. The OpenCTI
+exporter uses this mapping to avoid inventing country codes and to align imports
+with OpenCTI's built-in Country entities.
+
 ## OSINT snapshots
 
 `osint/` contains immutable-at-analysis-time snapshots used by

@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--teampcp",
   "name": "TeamPCP",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:18:00Z",
   "languages": [
     "ja"
   ],
@@ -12,24 +12,15 @@
     "canonical_name": "TeamPCP",
     "aliases": [
       {
-        "name": "UNC6780",
-        "vendor": "Google Threat Intelligence Group",
-        "scope": "exact",
+        "name": "DeadCatx3",
+        "vendor": "MITRE ATT&CK",
+        "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-ai-threat-tracker-2026-05"
+          "source--mitre-attack-19-2",
+          "source--mitre-attack-g1056"
         ],
-        "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。"
-      },
-      {
-        "name": "TA-NATALSTATUS",
-        "vendor": "",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--oligo-teampcp-2026"
-        ],
-        "analyst_notes": "Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。"
+        "analyst_notes": "Official MITRE ATT&CK associated-group name for G1056."
       },
       {
         "name": "IronErn",
@@ -43,33 +34,77 @@
       },
       {
         "name": "PCPCat",
-        "vendor": "SentinelOne (SentinelLabs)",
-        "scope": "unknown",
-        "confidence": "low",
+        "vendor": "MITRE ATT&CK",
+        "scope": "overlapping",
+        "confidence": "high",
         "evidence_refs": [
-          "source--sentinellabs-pcpjack-2026"
+          "source--mitre-attack-19-2",
+          "source--mitre-attack-g1056"
         ],
-        "analyst_notes": "SentinelLabsが「early TeamPCP/PCPCat campaigns」と併記するが、対応関係の説明がないためスコープ不明として保持する。"
+        "analyst_notes": "MITRE ATT&CK lists PCPCat as an Associated Group for G1056. ATT&CK explicitly treats associated names as overlap signals rather than exact equivalence, so this alias remains overlapping."
+      },
+      {
+        "name": "SHADOW-WATER-058",
+        "vendor": "MITRE ATT&CK",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2",
+          "source--mitre-attack-g1056"
+        ],
+        "analyst_notes": "Official MITRE ATT&CK associated-group name for G1056."
+      },
+      {
+        "name": "ShellForce",
+        "vendor": "MITRE ATT&CK",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2",
+          "source--mitre-attack-g1056"
+        ],
+        "analyst_notes": "Official MITRE ATT&CK associated-group name for G1056."
+      },
+      {
+        "name": "TA-NATALSTATUS",
+        "vendor": "",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。"
+      },
+      {
+        "name": "UNC6780",
+        "vendor": "MITRE ATT&CK",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-g1056"
+        ],
+        "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056."
       }
     ],
     "actor_types": [
-      "cybercrime"
+      "cybercrime",
+      "financially-motivated"
     ],
     "first_seen": {
-      "value": "2020-01-01T00:00:00Z",
-      "precision": "year",
-      "status": "known",
-      "basis": "source-stated"
+      "value": null,
+      "precision": "unknown",
+      "status": "unknown",
+      "basis": "not-stated"
     },
     "last_seen": {
-      "value": "2026-04-01T00:00:00Z",
-      "precision": "month",
-      "status": "known",
-      "basis": "source-stated"
+      "value": null,
+      "precision": "unknown",
+      "status": "unknown",
+      "basis": "not-stated"
     },
     "active": "yes",
-    "description": "金銭目的を公称するサイバー犯罪グループ。インターネットへ露出したRay、Docker、Redis、Reactなどのサービスを自動・ワーム型で侵害し、資格情報窃取、決済フィッシング、ランサムウェア展開、オープンソースサプライチェーン攻撃を行う。ShadowRay 2.0ではAI基盤が自己増殖型ボットネット化された。",
-    "analyst_notes": "2025年後半に公然化したが、Oligoは基盤の連続性から活動を2020年まで遡及している。"
+    "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) is a financially-motivated, cloud-native threat group that has been active since at least September 2025. Initially focused on ransomware and cryptocurrency theft, [TeamPCP](https://attack.mitre.org/groups/G1056) shifted in early 2026 to systematic, worm-driven credential theft and software supply chain attacks targeting Continuous Integration and Continuous Delivery (CI/CD) workflows. [TeamPCP](https://attack.mitre.org/groups/G1056) has monetized access through extortion and through partnerships with ransomware actors including Vect and CipherForce.(Citation: Wiz TeamPCP Profile MAY 2026)(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)",
+    "analyst_notes": "2025年後半に公然化したが、Oligoは基盤の連続性から活動を2020年まで遡及している。 2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
   },
   "attribution": {
     "countries": [],
@@ -93,19 +128,116 @@
         "source--sentinellabs-pcpjack-2026"
       ],
       "analyst_notes": ""
+    },
+    {
+      "type": "financial-gain",
+      "description": "Financially motivated intrusion or fraud.",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Derived from explicit MITRE ATT&CK actor description."
     }
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "金銭目的を公称するサイバー犯罪グループTeamPCP(GTIG命名 UNC6780)。国家帰属は不明。",
-    "capability": "露出サービスの自動探索とワーム型侵害、ShadowRay 2.0ペイロード、SANDCLOCK資格情報スティーラー、ランサムウェア、フィッシングページ。",
-    "infrastructure": "masscan.cloudとnatalstatus.orgを中心とするドメイン群、/EP9ts2/や/files/という特徴的な配置パス、複数のC2 IP。",
-    "victim": "インターネットへ露出したクラウド・AI基盤の運用組織、およびTrivy、Checkmarx、LiteLLM、BerriAIなどのオープンソースプロジェクト。",
-    "socio_political": "収益化のためランサムウェア・データ恐喝グループと提携する犯罪エコシステム。",
-    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
+      {
+        "id": "malware--canisterworm",
+        "name": "CanisterWorm",
+        "aliases": [
+          "CanisterWorm"
+        ],
+        "types": [
+          "Containers",
+          "Linux"
+        ],
+        "description": "[CanisterWorm](https://attack.mitre.org/software/S9042) is a self-propagating malware that has been used by [TeamPCP](https://attack.mitre.org/groups/G1056) in credential harvesting and software supply chain campaigns since at least 2026. [CanisterWorm](https://attack.mitre.org/software/S9042) has used npm credentials to infect software packages and propagate across developer ecosystems. [CanisterWorm](https://attack.mitre.org/software/S9042) has a targeted wiper component and can use decentralized C2 infrastructure implemented via an Internet Computer Protocol (ICP) blockchain canister.(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Aikido CanisterWorm MAR 2026)(Citation: Aikido TeamPCP Trivy MAR 2026)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--dustmaker",
+        "name": "DUSTMAKER",
+        "aliases": [],
+        "types": [
+          "credential stealer"
+        ],
+        "description": "UNC6780(TeamPCP)が用いる資格情報スティーラー。CI/CD環境で動作していることを検知するとGitHub ActionsランナーのプロセスメモリからOIDCトークンを抽出し、そのトークンでtrusted publisherとして自らを認可して、有効なSLSA Build 3の署名付き証明を伴う改ざん版パッケージを公開する。正当な署名を持つため、AIコーディングエージェントの自動信頼チェックを通過する。AIツール向けの資格情報収集や、隠しディレクトリによる防御回避を含む複数のAI関連機能を実装する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "GTIG原文(2026-09-08)が機能を直接記述している。原文は個別検体の初回観測日を示していないため観測期間はunknownとし、公開日を流用しない。"
+      },
+      {
+        "id": "malware--mini-shai-hulud",
+        "name": "Mini Shai-Hulud",
+        "aliases": [
+          "Mini Shai-Hulud"
+        ],
+        "types": [
+          "Containers",
+          "IaaS",
+          "Linux",
+          "SaaS",
+          "Windows",
+          "macOS"
+        ],
+        "description": "[Mini Shai-Hulud](https://attack.mitre.org/software/S9043) is a credential stealer and self-replicating supply chain worm, derived from [Shai-Hulud](https://attack.mitre.org/software/S9008), that has been used by [TeamPCP](https://attack.mitre.org/groups/G1056) to target Continuous Integration and Continuous Delivery/Deployment (CI/CD) workflows since at least 2026. [Mini Shai-Hulud](https://attack.mitre.org/software/S9043) can compromise credentials across multiple cloud, container, and AI configuration file paths and can use stolen npm and GitHub OIDC tokens to spread to other packages maintained by the compromised user.  [Mini Shai-Hulud](https://attack.mitre.org/software/S9043) also has a targeted wiper component and has used multiple C2 and data exfiltration mechanisms.(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
       {
         "id": "malware--sandclock",
         "name": "SANDCLOCK",
@@ -161,13 +293,20 @@
         "analyst_notes": "一次資料は個別IOCとマルウェア名の対応を明示していないため、キャンペーン単位の総称として登録する。"
       },
       {
-        "id": "malware--dustmaker",
-        "name": "DUSTMAKER",
-        "aliases": [],
-        "types": [
-          "credential stealer"
+        "id": "malware--teampcp-cloud-stealer",
+        "name": "TeamPCP Cloud Stealer",
+        "aliases": [
+          "SANDCLOCK",
+          "TeamPCP Cloud Stealer"
         ],
-        "description": "UNC6780(TeamPCP)が用いる資格情報スティーラー。CI/CD環境で動作していることを検知するとGitHub ActionsランナーのプロセスメモリからOIDCトークンを抽出し、そのトークンでtrusted publisherとして自らを認可して、有効なSLSA Build 3の署名付き証明を伴う改ざん版パッケージを公開する。正当な署名を持つため、AIコーディングエージェントの自動信頼チェックを通過する。AIツール向けの資格情報収集や、隠しディレクトリによる防御回避を含む複数のAI関連機能を実装する。",
+        "types": [
+          "Containers",
+          "Linux",
+          "SaaS",
+          "Windows",
+          "macOS"
+        ],
+        "description": "The [TeamPCP Cloud Stealer](https://attack.mitre.org/software/S9041) is a comprehensive filesystem credential stealer that can harvest, encrypt, and exfiltrate credentials from over 50 sensitive file paths across CI/CD, cloud, developer tooling, and container environments. The [TeamPCP Cloud Stealer](https://attack.mitre.org/software/S9041) was the primary payload used by [TeamPCP](https://attack.mitre.org/groups/G1056) in March 2026 during early stages of a cascading supply chain campaign targeting CI/CD workflows.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Google AI Threat Tracker MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -182,9 +321,9 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-adversarial-ai-2026"
+          "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "GTIG原文(2026-09-08)が機能を直接記述している。原文は個別検体の初回観測日を示していないため観測期間はunknownとし、公開日を流用しない。"
+        "analyst_notes": ""
       }
     ],
     "tools": [],
@@ -464,7 +603,10 @@
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--teampcp-oss-supply-chain-2026",
@@ -494,7 +636,8 @@
       ],
       "malware_refs": [
         "malware--dustmaker",
-        "malware--sandclock"
+        "malware--sandclock",
+        "malware--teampcp-cloud-stealer"
       ],
       "infrastructure_refs": [
         "infra--masscan-cloud"
@@ -517,7 +660,8 @@
         "capability": {
           "malware_refs": [
             "malware--dustmaker",
-            "malware--sandclock"
+            "malware--sandclock",
+            "malware--teampcp-cloud-stealer"
           ],
           "ttp_refs": [
             "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -587,7 +731,10 @@
         "source--gtig-ai-threat-tracker-2026-05",
         "source--sentinellabs-pcpjack-2026"
       ],
-      "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。"
+      "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。",
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "victim_cases": [
@@ -607,7 +754,8 @@
       ],
       "malware_refs": [
         "malware--dustmaker",
-        "malware--sandclock"
+        "malware--sandclock",
+        "malware--teampcp-cloud-stealer"
       ],
       "ttp_refs": [
         "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -883,6 +1031,28 @@
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
+        "id": "target--mitre-group--sector--d91c510e87658ff413af",
+        "name": "暗号資産・Web3",
+        "description": "Initially focused on ransomware and cryptocurrency theft, [TeamPCP](https://attack.mitre.org/groups/G1056) shifted in early 2026 to systematic, worm-driven credential theft and software supply chain attacks targeting Continuous Integration and Continuous Delivery (CI/CD) workflows.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
         "id": "target--teampcp--sector--cloud-ai-infrastructure",
         "name": "クラウド・AI基盤運用",
         "description": "Ray、Kubernetes、Docker、Redisなどの運用環境が侵害対象として明示されている。",
@@ -952,10 +1122,982 @@
       }
     ],
     "roles": [],
-    "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "標的国の明示がないため個別国は登録せず、広域表示のみとする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "標的国の明示がないため個別国は登録せず、広域表示のみとする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--t1005--general",
+      "tactic": "Collection",
+      "technique_id": "T1005",
+      "technique_name": "Data from Local System",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has stolen source code from victim environments including Mistral AI.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1027-003--general",
+      "tactic": "Stealth",
+      "technique_id": "T1027.003",
+      "technique_name": "Steganography",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has hidden malicious payloads in the frame data of WAV audio files.(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1036-005--general",
+      "tactic": "Stealth",
+      "technique_id": "T1036.005",
+      "technique_name": "Match Legitimate Resource Name or Location",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has cloned GitHub commit metadata including the author name, email, committer, and timestamps to use for impostor commits.(Citation: Aqua Security Blog Trivy Compromise APR 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also used legitimate file names such as msbuild.exe and ringtone.wav to mask malicious payloads.(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-004--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.004",
+      "technique_name": "Unix Shell",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has leveraged malware capable of execution via the Linux CLI.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-006--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.006",
+      "technique_name": "Python",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has poisoned PyPi packages with malicious code and has used a 13 file modular Python framework for data collection.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-007--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.007",
+      "technique_name": "JavaScript",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used the JavaScript runtime for malware delivery and injected malicious JavaScript into OpenVSX extensions.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-013--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.013",
+      "technique_name": "Container CLI/API",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has queried the Kubernetes API for local service account tokens and has used  `kubectl` for lateral movement.(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Wiz TeamPCP KICS MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1078--general",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised credentials associated with open source security scanning tools and used them to push malicious code to all the resources the tools had access to.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1078-004--general",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078.004",
+      "technique_name": "Cloud Accounts",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used compromised credentials for GitHub and software package repositories, including privileged service accounts, to inject malicious code into CI/CD pipelines.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1098--general",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified settings to publish private Aqua Security repositories to GitHub as public.(Citation: Aqua Security Blog Trivy Compromise APR 2026)\n",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1105--general",
+      "tactic": "Command And Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified legitimate software binaries to retrieve secondary payloads from C2.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1176-002--general",
+      "tactic": "Persistence",
+      "technique_id": "T1176.002",
+      "technique_name": "IDE Extensions",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised VS Code and Open VSX IDE extensions.(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1190--general",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has exploited misconfigurations in GitHub Actions and vulnerabilities such as CVE-2026-33634 in the Aqua Security Trivy scanner and CVE-2025-55182 (React2Shell) against vulnerable cloud endpoints.(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1195-001--general",
+      "tactic": "Initial Access",
+      "technique_id": "T1195.001",
+      "technique_name": "Compromise Software Dependencies and Development Tools",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has conducted coordinated supply chain attacks targeting open-source developer infrastructure including the NPM, VS Code, Docker, and PyPi ecosystems to compromise multiple software packages.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)(Citation: Google AI Threat Tracker MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1485--general",
+      "tactic": "Impact",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has deployed privileged DaemonSets to delete files on Kubernetes clusters and has executed recursive file deletions on non-containerized hosts.(Citation: Palo Alto TeamPCP MAR 2026)\n",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1486--general",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has deployed ransomware and has announced partnerships with ransomware groups including Vect and CipherForce in online criminal forums.(Citation: Palo Alto TeamPCP MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1528--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1528",
+      "technique_name": "Steal Application Access Token",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to steal access tokens from targeted cloud and developer environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1543-002--general",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1543.002",
+      "technique_name": "Systemd Service",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used the systemd user service for malware persistence in targeted environments.(Citation: Wiz TeamPCP KICS MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1546-016--general",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1546.016",
+      "technique_name": "Installer Packages",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has modified software packages with preinstall scripts to download and execute malicious payloads.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1547-001--general",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1547.001",
+      "technique_name": "Registry Run Keys / Startup Folder",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has dropped malware into the Windows Startup folder to establish persistence.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1550-001--general",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1550.001",
+      "technique_name": "Application Access Token",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used stolen access tokens to inject malicious code into CI/CD workflows and to exfiltrate sensitive data from cloud, developer, and container environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1552-004--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1552.004",
+      "technique_name": "Private Keys",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to extract SSH and GPG keys from victim environments.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1553-002--general",
+      "tactic": "Defense Impairment",
+      "technique_id": "T1553.002",
+      "technique_name": "Code Signing",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised legitimate software release workflows resulting in malicious packages receiving legitimate project cryptographic signing.(Citation: Trend Micro TeamPCP MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1555-006--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.006",
+      "technique_name": "Cloud Secrets Management Stores",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used malware to exfiltrate cloud secrets from targeted environments including AWS, GCP, and Azure.(Citation: Sysdig TeamPCP MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1564-001--general",
+      "tactic": "Stealth",
+      "technique_id": "T1564.001",
+      "technique_name": "Hidden Files and Directories",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used a hidden .lock file to establish a 12 hour cooldown period between re-drops for installed malware.(Citation: Aikido TeamPCP Telnyx MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583",
+      "technique_name": "Acquire Infrastructure",
+      "observed_behavior": "In May 2026 [TeamPCP](https://attack.mitre.org/groups/G1056) announced co-ownership of the BreachForums cybercriminal forum claiming responsibility for platform operations, dispute resolution, personnel vetting, and hosting monetary contests.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.001",
+      "technique_name": "Domains",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has registered domains resembling legitimate victim sites such as scan.aquasecurtiy[.]org, checkmarx[.]zone, and git-tanstack[.]com to mask C2 and exfiltration endpoints.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also set up a dark web leak site to post stolen data.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583-004--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.004",
+      "technique_name": "Server",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has leased infrastructure specifically for offensive operations including Google assets in AS396982.(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583-006--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.006",
+      "technique_name": "Web Services",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has set up Clouflare Tunnels for malware C2.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also used the session messenger network for decentralized, encrypted exfiltration via  *.getsession[.]org to recipient  ID `05f9e609d79eed391015e11380dee4b5c9ead0b6e2e7f0134e6e51767a87323026`.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1585-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1585.001",
+      "technique_name": "Social Media Accounts",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has used its own Telegram channel and X accounts @pcpcats and @xploitrsturtle2 for external communications.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1587-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1587.001",
+      "technique_name": "Malware",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has developed and deployed custom malware including [TeamPCP Cloud Stealer](https://attack.mitre.org/software/S9041), [CanisterWorm](https://attack.mitre.org/software/S9042), and [Mini Shai-Hulud](https://attack.mitre.org/software/S9043).(Citation: Wiz Trivy Compromise MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1608-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1608.001",
+      "technique_name": "Upload Malware",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has pushed GitHub commits that modified the actions/checkout to reference an imposter commit that downloaded malicious files from attacker-controlled C2 domains.(Citation: Aqua Security Trivy Compromise MAR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1657--general",
+      "tactic": "Impact",
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has engaged in cryptocurrency mining and theft.(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026) [TeamPCP](https://attack.mitre.org/groups/G1056) has also partnered with ransomware and data theft extortion groups, sold leaked code, and crowdsourced supply chain compromises by open-sourcing their [Mini Shai-Hulud](https://attack.mitre.org/software/S9043) malware.(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: FBI TeamPCP JUL 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1677--general",
+      "tactic": "Execution",
+      "technique_id": "T1677",
+      "technique_name": "Poisoned Pipeline Execution",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has compromised trusted CI/CD pipelines by injecting credential-stealing payloads into legitimate workflows and software packages including open-source security tools Trivy and KICS, and AI gateway LiteLLM.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)(Citation: Google AI Threat Tracker MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1683-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1683.001",
+      "technique_name": "Written Content",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) has created Dune-themed GitHub repositories using stolen tokens.(Citation: Wiz Mini Shai-Hulud MAY 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1684-001--general",
+      "tactic": "Stealth",
+      "technique_id": "T1684.001",
+      "technique_name": "Impersonation",
+      "observed_behavior": "[TeamPCP](https://attack.mitre.org/groups/G1056) impersonated legitimate maintainers to push imposter commits to the Aquasecurity Trivy scanner GitHub repository.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
     {
       "ttp_id": "ttp--teampcp-t1059-004-ndt-sh",
       "tactic": "Execution",
@@ -1125,7 +2267,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--gtig-ai-threat-tracker-2026-05",
@@ -1143,7 +2292,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--oligo-teampcp-2026",
@@ -1161,7 +2323,21 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -1231,7 +2407,20 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。"
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "capability",
+        "identity",
+        "motivation",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--gtig-adversarial-ai-2026",
@@ -1258,6 +2447,85 @@
         "targeting"
       ],
       "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。2026-05-11のGTIG AI Threat Tracker(source--gtig-ai-threat-tracker-2026-05)の後継報告であり、同一のOSSサプライチェーン作戦の継続を扱う。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
+    },
+    {
+      "source_id": "source--mitre-attack-g1056",
+      "path": "https://attack.mitre.org/groups/G1056/",
+      "url": "https://attack.mitre.org/groups/G1056/",
+      "title": "TeamPCP, Group G1056",
+      "publisher": "MITRE ATT&CK",
+      "published_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "Official ATT&CK Group G1056 associated-group names. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -1300,7 +2568,7 @@
       "tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。",
       "GTIG 2026-09-08 は本アクターのOSSサプライチェーン侵害が「Since March 2026」継続していると述べるが、観測終了日を明示していない。activity--teampcp-oss-supply-chain-2026 の last_observed は初報に基づく2026年3月のままであり、2026年4月以降の継続期間は一次資料で確定していない。"
     ],
-    "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "プロファイル昇格は独立一次資料3本の確認と利用者承認に基づく。"
   },
   "free_text": {

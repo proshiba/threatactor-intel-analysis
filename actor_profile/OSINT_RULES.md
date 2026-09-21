@@ -27,6 +27,10 @@
 - `archive_url`（存在する場合）
 - `analyst_notes`
 
+旧レコードで実際の取得時刻が保存されていない場合、`accessed_at`は推測せず
+明示的に`null`とし、その理由を`analyst_notes`へ記録する。後日の監査日時を
+過去の取得日時として代入しない。
+
 ## 更新判定
 
 - 新aliasは、既存クラスターとのスコープを`exact`と断定せず、
@@ -39,6 +43,10 @@
   その参照を付与する。
 - 既存情報と競合する場合は上書きせず、`assessment.uncertainties`と
   `analyst_notes`へ両論を残す。
+- 集約データセットのcampaign、malware、標的、動機、帰属は調査候補として別層に保存し、
+  原典を確認するまで正規プロファイルへ昇格しない。
+- 同じ非canonical aliasが複数actorへ一致する場合、mentionを全actorへ複製せず、
+  ambiguous aliasとしてレビューキューへ送る。canonical nameの明示一致を優先する。
 
 ## 調査状態
 

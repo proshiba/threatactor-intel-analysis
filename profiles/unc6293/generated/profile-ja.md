@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc6293`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:39:13Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -44,21 +44,22 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | UNC6293。GTIGがmoderate confidenceでICE RELIC(旧APT29)の初期アクセス担当サブクラスタと評価するロシア関連の脅威クラスタ。 |
-| Capability | 固有マルウェアの記載はない。app passwordフィッシングによる2要素認証回避と、正規OAuth認証フローを悪用した検証コード／URLの窃取を主な能力とする。囮は画面写真を含むPDF文書。 |
-| Infrastructure | 米国務省を装う認証フォームやOAuthフィッシングページを設置した攻撃者管理ドメイン(dosportal[.]app、foreignrelations[.]us)。GTIGは保有インフラの規模について「the volume of infrastructure that they use is still limited in comparison to other Russian espionage operations」と述べている。 |
-| Victim | ロシアに批判的な著名個人。1回あたり5名未満の小規模な標的選定で、外交や今後の会議・会合を題材とする。 |
-| Socio-political | GTIGはUNC6293を含む3クラスタについて「possess a Russian nexus」とhigh confidenceで評価し、ロシアにとって関心の対象となる個人を狙う諜報目的の活動と位置付けている。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -67,6 +68,7 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -130,7 +132,7 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -142,11 +144,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 2件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 3件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

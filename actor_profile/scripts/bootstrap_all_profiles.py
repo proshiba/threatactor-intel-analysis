@@ -509,15 +509,27 @@ def create_profile(
     # Actor types are finalized after actor-scoped reference data is loaded.
     profile["actor"]["actor_types"] = []
 
-    reference_source_id = "source--mitre-attack-19-1"
+    mitre_group = attack["groups"].get(actor.get("mitre_group_id", ""))
+    reference = (mitre_group or {}).get(
+        "_reference_source",
+        {
+            "source_id": "source--mitre-attack-19-2",
+            "path": "actor_profile/reference/attack-index.json",
+            "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+            "published_at": "2026-08-05",
+        },
+    )
+    reference_source_id = reference["source_id"]
     workbook_source_id = "source--actor-mapping-workbook"
     all_sources: list[dict[str, Any]] = [
         {
             "source_id": reference_source_id,
-            "path": "actor_profile/reference/attack-index.json",
-            "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+            "path": reference["path"],
+            "title": reference["title"],
             "publisher": "MITRE",
-            "published_at": normalize_time("2026-05-12", basis="upstream-release"),
+            "published_at": normalize_time(
+                reference["published_at"], basis="upstream-release"
+            ),
             "language": "en",
             "source_type": "structured-knowledge-base",
             "tlp": "TLP:CLEAR",
@@ -587,7 +599,6 @@ def create_profile(
         )
     profile["sources"] = all_sources
 
-    mitre_group = attack["groups"].get(actor.get("mitre_group_id", ""))
     profile["actor"]["actor_types"] = derive_actor_types(actor, mitre_group)
     if mitre_group:
         profile["actor"]["canonical_name"] = actor["name"]
@@ -740,6 +751,9 @@ def create_profile(
                 "activity_id": activity_id,
                 "name": name,
                 "activity_type": "operation",
+                "stix_object_type": "grouping",
+                "grouping_context": "suspicious-activity",
+                "activity_refs": [],
                 "first_observed": unknown_time(),
                 "last_observed": unknown_time(),
                 "reported_at": unknown_time(),
@@ -768,6 +782,9 @@ def create_profile(
                     "activity_id": activity_id,
                     "name": campaign["name"],
                     "activity_type": "campaign",
+                    "stix_object_type": "campaign",
+                    "grouping_context": None,
+                    "activity_refs": [],
                     "first_observed": time_point(campaign.get("first_seen"), "mitre-attack"),
                     "last_observed": time_point(campaign.get("last_seen"), "mitre-attack"),
                     "reported_at": unknown_time(),
@@ -943,7 +960,41 @@ def main() -> int:
 
     root = args.repository_root.resolve()
     catalog = load_json(args.catalog.resolve())
-    attack = load_json((root / catalog["reference_sources"]["mitre_attack_index"]).resolve())
+    attack_path = catalog["reference_sources"]["mitre_attack_index"]
+    attack = load_json((root / attack_path).resolve())
+
+    def annotate_reference(index: dict[str, Any], relative_path: str) -> None:
+        source = index.get("source", {})
+        version = str(source.get("version") or "unknown")
+        published = str(source.get("modified") or "").split("T", 1)[0] or None
+        collection = str(source.get("name") or "MITRE ATT&CK")
+        source_id = "source--mitre-attack-" + version.replace(".", "-")
+        if "ICS" in collection.upper():
+            source_id = "source--mitre-attack-ics-" + version.replace(".", "-")
+        elif "MOBILE" in collection.upper():
+            source_id = "source--mitre-attack-mobile-" + version.replace(".", "-")
+        for group in index.get("groups", {}).values():
+            group["_reference_source"] = {
+                "source_id": source_id,
+                "path": relative_path,
+                "title": f"MITRE {collection} {version} compact local index",
+                "published_at": published,
+            }
+
+    annotate_reference(attack, attack_path)
+    for source_key in ("mitre_attack_ics_index", "mitre_attack_mobile_index"):
+        secondary_path = catalog["reference_sources"].get(source_key)
+        if not secondary_path:
+            continue
+        secondary = load_json((root / secondary_path).resolve())
+        annotate_reference(secondary, secondary_path)
+        for collection in ("groups", "software", "campaigns", "techniques"):
+            destination = attack.setdefault(collection, {})
+            for object_id, value in secondary.get(collection, {}).items():
+                # Enterprise remains the primary record when an ATT&CK object
+                # is shared across domains. Domain-specific-only objects are
+                # added without changing the original evidence scope.
+                destination.setdefault(object_id, value)
     workbook_rows = load_workbook_rows(
         (root / catalog["reference_sources"]["actor_mapping_workbook"]).resolve()
     )

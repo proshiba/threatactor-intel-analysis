@@ -7,23 +7,20 @@
       "spec_version": "2.1",
       "id": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Putter Panda",
       "aliases": [
         "APT2",
-        "Group 36",
-        "MSUpdater",
-        "PLA Unit 61486",
-        "SearchFire",
-        "TG-6952"
+        "MSUpdater"
       ],
       "description": "[Putter Panda](https://attack.mitre.org/groups/G0024) is a Chinese threat group that has been attributed to Unit 61486 of the 12th Bureau of the PLA’s 3rd General Staff Department (GSD). (Citation: CrowdStrike Putter Panda)",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--putter-panda",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "APT2",
@@ -31,17 +28,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "Group 36",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
@@ -51,37 +38,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "PLA Unit 61486",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "SearchFire",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "TG-6952",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -100,16 +57,17 @@
         "history": "",
         "capability_details": "3PARA RAT, pngdowner, 4H RAT, httpclient, Warp, MSUpdater",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nThis threat actor targets firms in the technology (communications, space, aerospace), research, defense, and government sectors in the United States for espionage purposes. The tools and infrastructure it uses overlap with PLA Unit 61398.",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nThis threat actor targets firms in the technology (communications, space, aerospace), research, defense, and government sectors in the United States for espionage purposes. The tools and infrastructure it uses overlap with PLA Unit 61398.",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--putter-panda",
         "actor_name": "Putter Panda",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -118,6 +76,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -133,6 +92,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "028aa521-2de8-49c4-88d7-455f4d9141ba",
@@ -187,7 +147,31 @@
                 "https://en.wikipedia.org/wiki/PLA_Unit_61486",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Putter+Panda%2C+APT+2&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2007",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Defense",
+                  "Government",
+                  "Research",
+                  "Technology"
+                ],
+                "observed-countries": [
+                  "USA"
+                ],
+                "tools": [
+                  "3PARA RAT",
+                  "4H RAT",
+                  "httpclient",
+                  "MSUpdater",
+                  "pngdowner"
+                ],
+                "sponsor": "State-sponsored, Unit 61486 of the 12th Bureau of the PLA’s 3rd General Staff Department (GSD)",
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -262,7 +246,17 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "U.S. satellite and aerospace sector"
+                ],
+                "cfr-target-category": [
+                  "Private sector",
+                  "Government"
+                ],
+                "cfr-type-of-incident": "Espionage"
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
@@ -296,10 +290,11 @@
                 "MSUpdater"
               ],
               "countries": [],
-              "description": "Putter Panda is a Chinese threat group that has been attributed to Unit 61486 of the 12th Bureau of the PLA’s 3rd General Staff Department (GSD). (Citation: CrowdStrike Putter Panda)",
+              "description": "[Putter Panda](https://attack.mitre.org/groups/G0024) is a Chinese threat group that has been attributed to Unit 61486 of the 12th Bureau of the PLA’s 3rd General Staff Department (GSD). (Citation: CrowdStrike Putter Panda)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0024",
-                "http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf"
+                "http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf",
+                "https://attack.mitre.org/groups/G0024",
+                "https://blogs.blackberry.com/en/2016/01/puttering-into-the-future"
               ],
               "related": [
                 {
@@ -310,13 +305,39 @@
                   "type": "similar"
                 },
                 {
+                  "dest-uuid": "0d91b3c0-5e50-47c3-949a-2a796f04d144",
+                  "type": "uses"
+                },
+                {
                   "dest-uuid": "7bec698a-7e20-4fd3-bb6a-12787770fb1a",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "800bdfba-6d66-480f-9f45-15845c05cb5d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8e461ca3-0996-4e6e-a0df-e2a5bbc51ebc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bbde9781-60aa-4b8a-a911-895b0c1b3872",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e8268361-a599-4e45-bd3f-71c8c7e700c0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f4599aa0-4f85-4a32-80ea-fc39dc965945",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-intrusion-set": [
@@ -395,24 +416,47 @@
                   "dest-uuid": "f4599aa0-4f85-4a32-80ea-fc39dc965945",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "6005f4a9-fe26-4237-a44e-3f6cbb1fe75c",
+              "entry_value": "Putter Panda",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "putterpanda",
+                  "profile_value": "Putter Panda",
+                  "dataset_value": "Putter Panda"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Putter Panda"
+              ],
+              "countries": [
+                "CN"
+              ],
+              "description": "[Putter Panda](https://app.tidalcyber.com/groups/6005f4a9-fe26-4237-a44e-3f6cbb1fe75c) is a Chinese threat group that has been attributed to Unit 61486 of the 12th Bureau of the PLA’s 3rd General Staff Department (GSD). <sup>[[CrowdStrike Putter Panda](https://app.tidalcyber.com/references/413962d0-bd66-4000-a077-38c2677995d1)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "target_categories": [
+                  "Aerospace",
+                  "Defense",
+                  "Government",
+                  "Technology",
+                  "Telecommunications"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--pngdowner",
-            "profile_name": "pngdowner",
-            "entry_uuid": "fb4313ea-1fb6-4766-8b5c-b41fd347e4c5",
-            "entry_value": "pngdowner",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.pngdowner",
-              "https://attack.mitre.org/groups/G0024",
-              "https://www.iocbucket.com/iocs/7f7999ab7f223409ea9ea10cff82b064ce2a1a31"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
           {
             "profile_malware_id": "malware--4h-rat",
             "profile_name": "4H RAT",
@@ -424,6 +468,18 @@
               "https://cocomelonc.github.io/tutorial/2021/09/04/simple-malware-av-evasion.html",
               "https://cocomelonc.github.io/malware/2023/09/25/malware-trick-36.html",
               "https://attack.mitre.org/groups/G0024"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          },
+          {
+            "profile_malware_id": "malware--pngdowner",
+            "profile_name": "pngdowner",
+            "entry_uuid": "fb4313ea-1fb6-4766-8b5c-b41fd347e4c5",
+            "entry_value": "pngdowner",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/win.pngdowner",
+              "https://attack.mitre.org/groups/G0024",
+              "https://www.iocbucket.com/iocs/7f7999ab7f223409ea9ea10cff82b064ce2a1a31"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           }
@@ -456,7 +512,7 @@
       "spec_version": "2.1",
       "id": "malware--db2841be-8f83-4f26-8252-2e9e21b38551",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -466,7 +522,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--3para-rat",
@@ -483,38 +539,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "pngdowner",
-      "description": "[pngdowner](https://attack.mitre.org/software/S0067) is malware used by [Putter Panda](https://attack.mitre.org/groups/G0024). It is a simple tool with limited functionality and no persistence mechanism, suggesting it is used only as a simple \"download-and-\nexecute\" utility. (Citation: CrowdStrike Putter Panda)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--pngdowner",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "pngdowner"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--ab303354-07c0-4591-bf0a-c4ab9636061d",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -524,7 +551,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--4h-rat",
@@ -543,7 +570,7 @@
       "spec_version": "2.1",
       "id": "malware--930569e0-ba35-4393-89ab-189218913e68",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -553,7 +580,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--httpclient",
@@ -570,183 +597,38 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--70eee097-f7c4-4e54-95f0-4e08f8c05d1d",
+      "id": "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Warp",
-      "description": "The actor-mapping workbook lists this software or tool.",
+      "name": "pngdowner",
+      "description": "[pngdowner](https://attack.mitre.org/software/S0067) is malware used by [Putter Panda](https://attack.mitre.org/groups/G0024). It is a simple tool with limited functionality and no persistence mechanism, suggesting it is used only as a simple \"download-and-\nexecute\" utility. (Citation: CrowdStrike Putter Panda)",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_profile_object_id": "malware--warp",
-      "x_confidence": "medium",
+      "x_profile_object_id": "malware--pngdowner",
+      "x_confidence": "high",
       "x_analyst_notes": "",
       "is_family": true,
       "malware_types": [
-        "unknown"
+        "Windows"
       ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--98ea1e9b-cd5b-4711-85b2-05bcf885d77e",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "MSUpdater",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--msupdater",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "Targeting text mentions united states.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Defense",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Defense sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Education and Research",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Education and Research sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Government",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Government sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Technology",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Technology sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
+      "aliases": [
+        "pngdowner"
+      ]
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -761,7 +643,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-013--general",
@@ -789,7 +671,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--3bce6a61-604b-456a-89bb-90f189729950",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -804,7 +686,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1055-001--general",
@@ -832,7 +714,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -847,7 +729,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547-001--general",
@@ -875,7 +757,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -890,7 +772,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1685--general",
@@ -918,7 +800,7 @@
       "spec_version": "2.1",
       "id": "relationship--2a493973-06be-4029-8297-fca846a942f8",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -926,29 +808,21 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "malware--db2841be-8f83-4f26-8252-2e9e21b38551",
       "description": "Putter Panda uses 3PARA RAT.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2a157cee-cec6-4765-896b-4142eeb7868e",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
-      "description": "Putter Panda uses pngdowner.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b11b2ca5-eea5-4486-b45d-d1a75720a6a7",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -956,14 +830,21 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "malware--ab303354-07c0-4591-bf0a-c4ab9636061d",
       "description": "Putter Panda uses 4H RAT.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b966b267-a0ca-4f0d-8cda-e4cd82f59e8d",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -971,119 +852,43 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "malware--930569e0-ba35-4393-89ab-189218913e68",
       "description": "Putter Panda uses httpclient.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--1108591f-e1ac-47c8-863a-81ee137d38e9",
+      "id": "relationship--2a157cee-cec6-4765-896b-4142eeb7868e",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "malware--70eee097-f7c4-4e54-95f0-4e08f8c05d1d",
-      "description": "Putter Panda uses Warp.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b8595f17-abc0-4ba3-bde8-73363c152cbe",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "malware--98ea1e9b-cd5b-4711-85b2-05bcf885d77e",
-      "description": "Putter Panda uses MSUpdater.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--48e05caf-7ddf-45ca-b9b0-33283996cbe2",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-      "description": "Putter Panda targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--567a0758-9ee7-4b6e-af03-4e18068f10e5",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "description": "Putter Panda targets Defense (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8cc4bf52-d775-47b1-ace0-a9d80a03274d",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-      "description": "Putter Panda targets Education and Research (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--62ae3ce6-fb67-4ae7-abaf-24e976d3bac3",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "description": "Putter Panda targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b0233b19-ae6e-41c4-a458-d86330db79ba",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
-      "target_ref": "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
-      "description": "Putter Panda targets Technology (profile target category: sectors).",
-      "x_confidence": "medium"
+      "target_ref": "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
+      "description": "Putter Panda uses pngdowner.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e1e759c7-b5f1-41c4-9068-a04174d2475e",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1091,14 +896,21 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "Droppers used by [Putter Panda](https://attack.mitre.org/groups/G0024) use RC4 or a 16-byte XOR key consisting of the bytes 0xA0 – 0xAF to obfuscate payloads.(Citation: CrowdStrike Putter Panda)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--238bc1bd-2f85-4c50-a5c5-b21e9234e5de",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1106,14 +918,21 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "attack-pattern--3bce6a61-604b-456a-89bb-90f189729950",
       "description": "An executable dropped onto victims by [Putter Panda](https://attack.mitre.org/groups/G0024) aims to inject the specified DLL into a process that would normally be accessing the network, including Outlook Express (msinm.exe), Outlook (outlook.exe), Internet Explorer (iexplore.exe), and Firefox (firefox.exe).(Citation: CrowdStrike Putter Panda)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--234fc242-ab8c-4c02-a898-4915851ce6d5",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1121,14 +940,21 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "A dropper used by [Putter Panda](https://attack.mitre.org/groups/G0024) installs itself into the ASEP Registry key <code>HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run</code> with a value named McUpdate.(Citation: CrowdStrike Putter Panda)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--782b242d-9b32-442b-9c6b-ffa2fbaa52fc",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1136,7 +962,14 @@
       "source_ref": "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
       "target_ref": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "description": "Malware used by [Putter Panda](https://attack.mitre.org/groups/G0024) attempts to terminate processes corresponding to two components of Sophos Anti-Virus (SAVAdminService.exe and SavService.exe).(Citation: CrowdStrike Putter Panda)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -1261,7 +1094,7 @@
       "spec_version": "2.1",
       "id": "note--4286a2ef-7c22-4092-a47c-fe1bd51ce434",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1271,14 +1104,14 @@
         "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 24
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--61e4b88d-e1ce-4cca-92aa-d635541cdd5f",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1287,20 +1120,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--8ed6a9ad-8127-4b1d-9d12-6b75702c09b7",
         "malware--db2841be-8f83-4f26-8252-2e9e21b38551",
-        "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
         "malware--ab303354-07c0-4591-bf0a-c4ab9636061d",
         "malware--930569e0-ba35-4393-89ab-189218913e68",
-        "malware--70eee097-f7c4-4e54-95f0-4e08f8c05d1d",
-        "malware--98ea1e9b-cd5b-4711-85b2-05bcf885d77e",
-        "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-        "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-        "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-        "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
+        "malware--de68988c-36e8-4deb-b0fe-64f708c8f114",
         "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
         "attack-pattern--3bce6a61-604b-456a-89bb-90f189729950",
         "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
@@ -1308,7 +1134,7 @@
         "indicator--c78dd229-82d8-43d1-8e7e-824493e8213b",
         "indicator--1231408a-7e23-435f-8789-73ef37ef76b5"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

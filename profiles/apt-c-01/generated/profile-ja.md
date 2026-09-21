@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt-c-01`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:01Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -16,9 +16,7 @@ APT-C-01の標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| PoisonVine | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -42,20 +40,21 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Poison Ivy, ZxShell, Kanbox RAT, CVE-2012-0158, CVE-2014-6352, CVE-2017-8759 |
+| Capability |  |
 | Infrastructure |  |
-| Victim | government agencies, military individuals, research institutes, maritime agencies |
-| Socio-political | China |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -64,6 +63,7 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 毒云藤 - APT-C-01 | canonical-name | 高 | taiwan | https://apt.360.net/report/apts/2.html |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -80,14 +80,7 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--poison-ivy | Poison Ivy | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--zxshell | ZxShell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--kanbox-rat | Kanbox RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2012-0158 | CVE-2012-0158 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2014-6352 | CVE-2014-6352 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-8759 | CVE-2017-8759 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -123,15 +116,14 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 中国 | Primary geographic target in the reviewed public reporting. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022`, `source--target-audit-misp-360net` |
+| countries | 中国 | Primary geographic target in the reviewed public reporting. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Aviation | Public reporting identifies Aviation entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Defense | Public reporting identifies Defense entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Education and Research | Public reporting identifies Education and Research entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Government | Public reporting identifies Government entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Maritime | Public reporting identifies Maritime entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
-| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: Entities holding Chinese government, defense, aviation, maritime, and cross-Strait policy information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Entities holding Chinese government, defense, aviation, maritime, and cross-Strait policy information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -147,7 +139,7 @@ TTPなし
 - IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 21件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -165,6 +157,7 @@ TTPなし
 - Vendor cluster boundaries may differ from the canonical name used here.
 - Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
 - Taiwan/ICEF command claims rely substantially on sources from the PRC; treat sponsor and unit-level attribution as estimative.
+- 1 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 

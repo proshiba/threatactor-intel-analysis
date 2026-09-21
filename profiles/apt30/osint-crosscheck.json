@@ -2,9 +2,10 @@
   "schema_version": "1.0.0",
   "actor_ref": "actor--apt30",
   "actor_name": "APT30",
-  "searched_at": "2026-09-19T01:10:23Z",
+  "searched_at": "2026-09-21T02:39:13Z",
   "search_scope": {
     "datasets": [
+      "gtig-threat-actor-naming",
       "etda-threat-group-cards",
       "cert-ua-uac-index",
       "microsoft-threat-actor-mapping",
@@ -13,15 +14,49 @@
       "misp-mitre-enterprise-intrusion-set",
       "misp-mitre-intrusion-set",
       "misp-360net",
+      "misp-tidal-groups",
       "misp-malpedia"
     ],
     "name_inputs": [
-      "APT30"
+      "APT30",
+      "ISTHMUS CASTLE"
     ],
     "mitre_group_id": "G0013"
   },
   "overall_assessment": "matched",
   "actor_matches": {
+    "gtig-threat-actor-naming": [
+      {
+        "entry_uuid": "gtig-2026-isthmus-castle",
+        "entry_value": "ISTHMUS CASTLE",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "apt30",
+            "profile_value": "APT30",
+            "dataset_value": "APT30"
+          },
+          {
+            "normalized": "isthmuscastle",
+            "profile_value": "ISTHMUS CASTLE",
+            "dataset_value": "ISTHMUS CASTLE"
+          }
+        ],
+        "match_basis": "canonical-name",
+        "match_confidence": "high",
+        "candidate_names": [
+          "ISTHMUS CASTLE",
+          "APT30"
+        ],
+        "countries": [],
+        "description": "GTIG unified name for APT30.",
+        "refs": [
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        ],
+        "related": [],
+        "research_data": {}
+      }
+    ],
     "etda-threat-group-cards": [
       {
         "entry_uuid": "a97aea4e-ac99-4506-89e6-ba1e5b766b0d",
@@ -55,7 +90,51 @@
           "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
           "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+30%2C+Override+Panda&n=1"
         ],
-        "related": []
+        "related": [],
+        "research_data": {
+          "first-seen": "2005",
+          "motivation": [
+            "Information theft and espionage"
+          ],
+          "observed-sectors": [
+            "Defense",
+            "Government"
+          ],
+          "observed-countries": [
+            "ASEAN",
+            "Bhutan",
+            "Brunei",
+            "Cambodia",
+            "India",
+            "Indonesia",
+            "Japan",
+            "Laos",
+            "Malaysia",
+            "Myanmar",
+            "Nepal",
+            "Philippines",
+            "Saudi Arabia",
+            "Singapore",
+            "South Korea",
+            "Thailand",
+            "Vietnam",
+            "USA"
+          ],
+          "tools": [
+            "BackBend",
+            "Backspace",
+            "Creamsicle",
+            "Flashflood",
+            "Gemcutter",
+            "Milkmaid",
+            "NetEagle",
+            "Orangeade",
+            "Shipshape",
+            "Spaceship"
+          ],
+          "sponsor": "State-sponsored",
+          "last-card-change": "2025-08-16"
+        }
       }
     ],
     "cert-ua-uac-index": [],
@@ -87,7 +166,8 @@
         "refs": [
           "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
         ],
-        "related": []
+        "related": [],
+        "research_data": {}
       }
     ],
     "misp-threat-actor": [
@@ -100,13 +180,19 @@
             "normalized": "apt30",
             "profile_value": "APT30",
             "dataset_value": "APT30"
+          },
+          {
+            "normalized": "isthmuscastle",
+            "profile_value": "ISTHMUS CASTLE",
+            "dataset_value": "ISTHMUS CASTLE"
           }
         ],
         "match_basis": "canonical-name",
         "match_confidence": "high",
         "candidate_names": [
           "APT30",
-          "G0013"
+          "G0013",
+          "ISTHMUS CASTLE"
         ],
         "countries": [
           "CN",
@@ -116,7 +202,8 @@
         "refs": [
           "https://attack.mitre.org/wiki/Group/G0013",
           "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
-          "https://www.mandiant.com/resources/insights/apt-groups"
+          "https://www.mandiant.com/resources/insights/apt-groups",
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
         ],
         "related": [
           {
@@ -126,7 +213,22 @@
             ],
             "type": "similar"
           }
-        ]
+        ],
+        "research_data": {
+          "cfr-suspected-victims": [
+            "United States",
+            "South Korea",
+            "Saudi Arabia",
+            "Thailand",
+            "Vietnam",
+            "Malaysia",
+            "India"
+          ],
+          "cfr-target-category": [
+            "Government"
+          ],
+          "cfr-type-of-incident": "Espionage"
+        }
       }
     ],
     "misp-microsoft-activity-group": [
@@ -167,7 +269,8 @@
             ],
             "type": "similar"
           }
-        ]
+        ],
+        "research_data": {}
       }
     ],
     "misp-mitre-enterprise-intrusion-set": [
@@ -188,19 +291,20 @@
           "APT30"
         ],
         "countries": [],
-        "description": "APT30 is a threat group suspected to be associated with the Chinese government. (Citation: FireEye APT30) While Naikon shares some characteristics with APT30, the two groups do not appear to be exact matches. (Citation: Baumgartner Golovkin Naikon 2015)",
+        "description": "[APT30](https://attack.mitre.org/groups/G0013) is a threat group suspected to be associated with the Chinese government. While [Naikon](https://attack.mitre.org/groups/G0019) shares some characteristics with [APT30](https://attack.mitre.org/groups/G0013), the two groups do not appear to be exact matches.(Citation: FireEye APT30)(Citation: Baumgartner Golovkin Naikon 2015)",
         "refs": [
-          "https://attack.mitre.org/wiki/Group/G0013",
-          "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
+          "https://attack.mitre.org/groups/G0013",
+          "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2015/05/20081935/rpt-apt30.pdf",
           "https://securelist.com/the-naikon-apt/69953/"
         ],
         "related": [
           {
-            "dest-uuid": "2a158b0a-7ef8-43cb-9985-bf34d1e12050",
-            "tags": [
-              "estimative-language:likelihood-probability=\"likely\""
-            ],
-            "type": "similar"
+            "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+            "type": "uses"
+          },
+          {
+            "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+            "type": "uses"
           },
           {
             "dest-uuid": "2f1fd017-9df6-4759-91fb-e7039609b5ff",
@@ -210,20 +314,27 @@
             "type": "similar"
           },
           {
-            "dest-uuid": "5e0a7cf2-6107-4d5f-9dd0-9df38b1fcba8",
-            "tags": [
-              "estimative-language:likelihood-probability=\"likely\""
-            ],
-            "type": "similar"
+            "dest-uuid": "43213480-78f7-4fb3-976f-d48f5f6a4c2a",
+            "type": "uses"
+          },
+          {
+            "dest-uuid": "53cf6cc4-65aa-445a-bcf8-c3d296f8a7a2",
+            "type": "uses"
+          },
+          {
+            "dest-uuid": "8b880b41-5139-4807-baa9-309690218719",
+            "type": "uses"
+          },
+          {
+            "dest-uuid": "b1de6916-7a22-4460-8d26-6b5483ffaa2a",
+            "type": "uses"
           },
           {
             "dest-uuid": "fb261c56-b80e-43a9-8351-c84081e7213d",
-            "tags": [
-              "estimative-language:likelihood-probability=\"almost-certain\""
-            ],
             "type": "uses"
           }
-        ]
+        ],
+        "research_data": {}
       }
     ],
     "misp-mitre-intrusion-set": [
@@ -286,12 +397,61 @@
             "dest-uuid": "fb261c56-b80e-43a9-8351-c84081e7213d",
             "type": "uses"
           }
-        ]
+        ],
+        "research_data": {}
       }
     ],
-    "misp-360net": []
+    "misp-360net": [],
+    "misp-tidal-groups": [
+      {
+        "entry_uuid": "be45ff95-6c74-4000-bc39-63044673d82f",
+        "entry_value": "APT30",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "apt30",
+            "profile_value": "APT30",
+            "dataset_value": "APT30"
+          }
+        ],
+        "match_basis": "canonical-name",
+        "match_confidence": "high",
+        "candidate_names": [
+          "APT30"
+        ],
+        "countries": [
+          "CN"
+        ],
+        "description": "[APT30](https://app.tidalcyber.com/groups/be45ff95-6c74-4000-bc39-63044673d82f) is a threat group suspected to be associated with the Chinese government. While [Naikon](https://app.tidalcyber.com/groups/a80c00b2-b8b6-4780-99bb-df8fe921947d) shares some characteristics with [APT30](https://app.tidalcyber.com/groups/be45ff95-6c74-4000-bc39-63044673d82f), the two groups do not appear to be exact matches.<sup>[[FireEye APT30](https://app.tidalcyber.com/references/c48d2084-61cf-4e86-8072-01e5d2de8416)]</sup><sup>[[Baumgartner Golovkin Naikon 2015](https://app.tidalcyber.com/references/5163576f-0b2c-49ba-8f34-b7efe3f3f6db)]</sup>",
+        "refs": [],
+        "related": [],
+        "research_data": {
+          "observed_motivations": [
+            "Cyber Espionage"
+          ],
+          "target_categories": [
+            "Government",
+            "Media"
+          ]
+        }
+      }
+    ]
   },
   "malware_catalog_matches": [
+    {
+      "profile_malware_id": "malware--backspace",
+      "profile_name": "BACKSPACE",
+      "entry_uuid": "23398248-a52a-4a7c-af10-262822d33a4e",
+      "entry_value": "backspace",
+      "refs": [
+        "https://malpedia.caad.fkie.fraunhofer.de/details/win.backspace",
+        "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
+        "https://www.mandiant.com/sites/default/files/2021-09/rpt-apt30.pdf",
+        "https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/eagle-eye-is-back-apt30/",
+        "https://www.secureworks.com/research/threat-profiles/bronze-geneva"
+      ],
+      "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+    },
     {
       "profile_malware_id": "malware--flashflood",
       "profile_name": "FLASHFLOOD",
@@ -318,18 +478,6 @@
       "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
     },
     {
-      "profile_malware_id": "malware--spaceship",
-      "profile_name": "SPACESHIP",
-      "entry_uuid": "813e2761-6d68-493f-846b-2fc86d2e8079",
-      "entry_value": "SPACESHIP",
-      "refs": [
-        "https://malpedia.caad.fkie.fraunhofer.de/details/win.spaceship",
-        "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
-        "https://www.mandiant.com/sites/default/files/2021-09/rpt-apt30.pdf"
-      ],
-      "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-    },
-    {
       "profile_malware_id": "malware--shipshape",
       "profile_name": "SHIPSHAPE",
       "entry_uuid": "07470989-faac-44fb-b505-1d5568b3c716",
@@ -342,34 +490,19 @@
       "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
     },
     {
-      "profile_malware_id": "malware--backspace",
-      "profile_name": "BACKSPACE",
-      "entry_uuid": "23398248-a52a-4a7c-af10-262822d33a4e",
-      "entry_value": "backspace",
+      "profile_malware_id": "malware--spaceship",
+      "profile_name": "SPACESHIP",
+      "entry_uuid": "813e2761-6d68-493f-846b-2fc86d2e8079",
+      "entry_value": "SPACESHIP",
       "refs": [
-        "https://malpedia.caad.fkie.fraunhofer.de/details/win.backspace",
+        "https://malpedia.caad.fkie.fraunhofer.de/details/win.spaceship",
         "https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf",
-        "https://www.mandiant.com/sites/default/files/2021-09/rpt-apt30.pdf",
-        "https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/eagle-eye-is-back-apt30/",
-        "https://www.secureworks.com/research/threat-profiles/bronze-geneva"
+        "https://www.mandiant.com/sites/default/files/2021-09/rpt-apt30.pdf"
       ],
       "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
     }
   ],
-  "relationship_candidates": [
-    {
-      "dataset_id": "misp-mitre-enterprise-intrusion-set",
-      "source_entry_uuid": "f047ee18-7985-4946-8bfb-4ed754d3a0dd",
-      "relationship_type": "similar",
-      "target_entry_uuid": "2a158b0a-7ef8-43cb-9985-bf34d1e12050",
-      "target_actor": "Naikon",
-      "estimative_tags": [
-        "estimative-language:likelihood-probability=\"likely\""
-      ],
-      "confidence": "low",
-      "assessment": "MISP Galaxy relationship candidate. Review the original references and actor scopes before integration."
-    }
-  ],
+  "relationship_candidates": [],
   "country_comparison": {
     "profile_values": [],
     "external_values": [

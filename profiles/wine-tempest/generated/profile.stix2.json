@@ -7,41 +7,18 @@
       "spec_version": "2.1",
       "id": "intrusion-set--42d705b1-bff2-4678-a2eb-511ddd53c856",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Wine Tempest",
-      "aliases": [
-        "PARINACOTA",
-        "Wadhrama"
-      ],
+      "aliases": [],
       "description": "Wine Tempestの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--wine-tempest",
-      "x_alias_assessments": [
-        {
-          "name": "PARINACOTA",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "Wadhrama",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        }
-      ],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -56,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--wine-tempest",
         "actor_name": "Wine Tempest",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -74,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -85,6 +64,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "5d8fa8b4-2ed3-47ae-a21b-86e8dd17773b",
@@ -114,7 +94,22 @@
                 "https://www.microsoft.com/security/blog/2020/03/05/human-operated-ransomware-attacks-a-preventable-disaster/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Parinacota&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2018",
+                "motivation": [
+                  "Financial gain"
+                ],
+                "observed-countries": [
+                  "Worldwide"
+                ],
+                "tools": [
+                  "Mimikatz",
+                  "ProcDump",
+                  "Wadhrama"
+                ],
+                "last-card-change": "2023-04-26"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -169,7 +164,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -209,7 +205,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             },
             {
               "entry_uuid": "5939e42e-06d0-5719-8072-62f0fc0821e8",
@@ -252,12 +249,14 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -284,48 +283,11 @@
       }
     },
     {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0ea5e11e-36e6-48d2-ac40-69987ee2942d",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "全世界",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでWine Tempestの標的範囲として全世界が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--48906174-5346-4f80-85ad-8f9420117332",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--42d705b1-bff2-4678-a2eb-511ddd53c856",
-      "target_ref": "identity--0ea5e11e-36e6-48d2-ac40-69987ee2942d",
-      "description": "Wine Tempest targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--f0336480-bb4b-45d6-b01d-fc8994fc1f4c",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -335,14 +297,14 @@
         "intrusion-set--42d705b1-bff2-4678-a2eb-511ddd53c856"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 8
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--bd7a58b1-bfd1-4e2e-98e5-9430d447dfb7",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -351,12 +313,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--42d705b1-bff2-4678-a2eb-511ddd53c856",
-        "identity--0ea5e11e-36e6-48d2-ac40-69987ee2942d"
+        "intrusion-set--42d705b1-bff2-4678-a2eb-511ddd53c856"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

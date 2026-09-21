@@ -1,0 +1,1029 @@
+{
+  "type": "bundle",
+  "id": "bundle--459594dd-634d-48f4-bd7b-fcb3dc6ca00a",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e9b33339-7643-4427-bcdc-6cbf20f94c9a",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Screen Capture",
+      "description": "マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1113",
+          "url": "https://attack.mitre.org/techniques/T1113/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--93a860ff37caa628600c",
+      "x_tactic": "Collection",
+      "x_activity_refs": [
+        "activity--daily-fe72cea152ac7ff90389"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "created": "2026-07-27T11:04:31Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "description": "ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-fe72cea152ac7ff90389",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--fe72cea152ac7ff903896876 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gamaredon",
+          "name": "Gamaredon",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--93a860ff37caa628600c"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--mitre-group--sector--ff8bca0df219b1480fef"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--080918e720e48983e77d"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2025-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2025-04-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Collection"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ae1b297bcc282623fbff"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-02-01T00:00:00Z",
+      "last_seen": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "防衛・軍事",
+      "identity_class": "class",
+      "description": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) is a suspected Russian cyber espionage group that has targeted military, law enforcement, judiciary, non-profit, and non-governmental organizations in Ukraine since at least 2013.",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--mitre-group--sector--ff8bca0df219b1480fef",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--773ad43d-57ff-4261-bb0d-02f48e1acd8d",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:36:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "identity_class": "organization",
+      "description": "ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--080918e720e48983e77d",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--mitre-group--sector--ff8bca0df219b1480fef"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--93a860ff37caa628600c"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "created": "2026-07-26T05:28:44Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Gamaredon",
+      "aliases": [
+        "ACTINIUM",
+        "Aqua Blizzard",
+        "Armageddon",
+        "DEV-0157",
+        "Gamaredon Group",
+        "IRON TILDEN",
+        "NastyShrew",
+        "Primitive Bear",
+        "Shuckworm",
+        "UAC-0010"
+      ],
+      "description": "[Gamaredon Group](https://attack.mitre.org/groups/G0047) is a suspected Russian cyber espionage group that has targeted military, law enforcement, judiciary, non-profit, and non-governmental organizations in Ukraine since at least 2013. The name [Gamaredon Group](https://attack.mitre.org/groups/G0047) derives from a misspelling of the word \"Armageddon,\" found in early campaigns.(Citation: Palo Alto Gamaredon Feb 2017)(Citation: TrendMicro Gamaredon April 2020)(Citation: ESET Gamaredon June 2020)(Citation: Symantec Shuckworm January 2022)(Citation: Microsoft Actinium February 2022)\n\nIn November 2021, the Ukrainian government publicly attributed [Gamaredon Group](https://attack.mitre.org/groups/G0047) to Russia’s Federal Security Service (FSB) Center 18, an assessment later supported by multiple independent cybersecurity researchers. (Citation: Bleepingcomputer Gamardeon FSB November 2021)(Citation: Microsoft Actinium February 2022)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--gamaredon",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "ACTINIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Aqua Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Armageddon",
+          "vendor": "State Cyber Protection Centre of Ukraine",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--scpc-uac0010-gamaredon-2023"
+          ],
+          "analyst_notes": "Ukraine's State Cyber Protection Centre explicitly identifies UAC-0010 as also known as Gamaredon and Armageddon."
+        },
+        {
+          "name": "DEV-0157",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Gamaredon Group",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON TILDEN",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NastyShrew",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Primitive Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Shuckworm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UAC-0010",
+          "vendor": "State Cyber Protection Centre of Ukraine",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--scpc-uac0010-gamaredon-2023"
+          ],
+          "analyst_notes": "Ukraine's State Cyber Protection Centre explicitly identifies UAC-0010 as also known as Gamaredon and Armageddon."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "QuietSieve, Pteranodon, PowerPunch, Remcos, Ping, Reg",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T01:54:42Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ukraine",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--36f1b9323d5faab92f39",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "UKR",
+      "x_opencti_reference_id": "location--e5f054fc-fc63-46f3-8d63-1f93e0cb7801",
+      "x_opencti_aliases": [
+        "UA",
+        "UKR",
+        "ウクライナ"
+      ],
+      "latitude": 48.379433,
+      "longitude": 31.16558,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0a340b28-28d9-434e-94b1-66bdcb0922bf",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "target_ref": "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+      "description": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 targets target--mitre-group--sector--ff8bca0df219b1480fef.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--31338765-9e3e-4eb7-93b1-b3b0739aaed0",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "attack-pattern--e9b33339-7643-4427-bcdc-6cbf20f94c9a",
+      "description": "マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3956794a-6fad-4092-8166-87bbad43b9c1",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "target_ref": "attack-pattern--e9b33339-7643-4427-bcdc-6cbf20f94c9a",
+      "description": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 uses ttp--activity-rule--93a860ff37caa628600c.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--55ffb25c-db62-45b0-b15e-0fb322aacda3",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+      "description": "Gamaredon targets 防衛・軍事 (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--613fb8ed-8943-40ac-a280-6dba2147fae0",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "target_ref": "identity--773ad43d-57ff-4261-bb0d-02f48e1acd8d",
+      "description": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 affected victim--activity-rule--080918e720e48983e77d.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "Gamaredon targets ウクライナ (profile target category: countries).\n\nEvidence: 活動「FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2026-01-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--78eb1ffa-568e-4328-a227-9aa6b5376e38",
+      "created": "2026-07-27T11:04:31Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "target_ref": "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+      "description": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 is attributed or linked to Gamaredon.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79a1b362-cea4-42bc-b223-65f8eefdcd93",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 targets target--activity-rule--country--36f1b9323d5faab92f39.\n\nEvidence: 活動「FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+          "external_id": "source--daily-ae1b297bcc282623fbff"
+        },
+        {
+          "source_name": "blog.sekoia.io",
+          "description": "Local source: https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+          "external_id": "source--daily-f9666a37c61d10f83b24"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-02-01T00:00:00Z",
+      "stop_time": "2025-03-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--252c17bd-2636-4eea-a13f-3f9b93380e36",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+        "relationship--55ffb25c-db62-45b0-b15e-0fb322aacda3"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-fe72cea152ac7ff90389",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--35825b4c-bbe0-4e05-986b-9ba435ea9e41",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-03T00:00:00Z",
+      "object_refs": [
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+        "relationship--79a1b362-cea4-42bc-b223-65f8eefdcd93"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "blog.sekoia.io",
+          "external_id": "source--daily-f9666a37c61d10f83b24",
+          "url": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f9666a37c61d10f83b24",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-fe72cea152ac7ff90389",
+      "x_source_publisher": "blog.sekoia.io",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ce270ed9-5ce4-48f3-a193-4a6c0788cb27",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-11T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--e9b33339-7643-4427-bcdc-6cbf20f94c9a",
+        "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+        "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+        "identity--773ad43d-57ff-4261-bb0d-02f48e1acd8d",
+        "relationship--0a340b28-28d9-434e-94b1-66bdcb0922bf",
+        "relationship--31338765-9e3e-4eb7-93b1-b3b0739aaed0",
+        "relationship--3956794a-6fad-4092-8166-87bbad43b9c1",
+        "relationship--55ffb25c-db62-45b0-b15e-0fb322aacda3",
+        "relationship--613fb8ed-8943-40ac-a280-6dba2147fae0",
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+        "relationship--78eb1ffa-568e-4328-a227-9aa6b5376e38",
+        "relationship--79a1b362-cea4-42bc-b223-65f8eefdcd93"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-ae1b297bcc282623fbff",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-ae1b297bcc282623fbff",
+      "x_evidence_slice_scope": "campaign:actor--gamaredon:activity--daily-fe72cea152ac7ff90389",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--05939244-8800-4043-8db2-ed4aad54ba53",
+      "created": "2026-09-21T04:35:02Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Gamaredon / ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "description": "ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:02Z",
+      "object_refs": [
+        "attack-pattern--e9b33339-7643-4427-bcdc-6cbf20f94c9a",
+        "campaign--5a59a8f6-7387-4ff4-81b3-5a24f6d8d1ea",
+        "identity--33e9b303-4048-4a47-83b4-af9b602613d4",
+        "identity--773ad43d-57ff-4261-bb0d-02f48e1acd8d",
+        "intrusion-set--b587d8df-1fae-4206-a077-3f654c18f4b9",
+        "location--594a193e-06ff-439b-93f2-e072203e1822",
+        "relationship--0a340b28-28d9-434e-94b1-66bdcb0922bf",
+        "relationship--31338765-9e3e-4eb7-93b1-b3b0739aaed0",
+        "relationship--3956794a-6fad-4092-8166-87bbad43b9c1",
+        "relationship--55ffb25c-db62-45b0-b15e-0fb322aacda3",
+        "relationship--613fb8ed-8943-40ac-a280-6dba2147fae0",
+        "relationship--7680dfb6-819b-4750-91eb-d268d193c551",
+        "relationship--78eb1ffa-568e-4328-a227-9aa6b5376e38",
+        "relationship--79a1b362-cea4-42bc-b223-65f8eefdcd93",
+        "report--252c17bd-2636-4eea-a13f-3f9b93380e36",
+        "report--35825b4c-bbe0-4e05-986b-9ba435ea9e41",
+        "report--ce270ed9-5ce4-48f3-a193-4a6c0788cb27"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--gamaredon",
+      "x_activity_id": "activity--daily-fe72cea152ac7ff90389"
+    }
+  ]
+}

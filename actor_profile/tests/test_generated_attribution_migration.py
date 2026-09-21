@@ -19,7 +19,7 @@ def base_profile() -> dict:
                     "vendor": "catalog",
                     "scope": "overlapping",
                     "confidence": "high",
-                    "evidence_refs": ["source--mitre-attack-19-1"],
+                    "evidence_refs": ["source--mitre-attack-19-2"],
                     "analyst_notes": "",
                 }
             ],
@@ -98,7 +98,7 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
         self.assertEqual(profile["attribution"]["sponsor_type"], "state")
         self.assertEqual(
             profile["attribution"]["evidence_refs"],
-            ["source--mitre-attack-19-1", "source--actor-mapping-workbook"],
+            ["source--mitre-attack-19-2", "source--actor-mapping-workbook"],
         )
         self.assertIn("state-sponsored", profile["actor"]["actor_types"])
         self.assertEqual(
@@ -107,7 +107,7 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
         )
         self.assertEqual(
             profile["motivations"][0]["evidence_refs"],
-            ["source--mitre-attack-19-1"],
+            ["source--mitre-attack-19-2"],
         )
 
     def test_old_generated_espionage_is_removed_from_non_census_profile(self) -> None:
@@ -150,6 +150,31 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
             profile["attribution"]["evidence_refs"],
             ["source--government-advisory"],
         )
+
+    def test_actor_type_order_alone_is_not_a_change(self) -> None:
+        profile = base_profile()
+        profile["actor"]["actor_types"] = ["threat-cluster", "espionage"]
+        profile["actor"]["aliases"] = []
+        profile["attribution"] = {
+            "countries": [],
+            "sponsor_type": "unknown",
+            "organizations": [],
+            "assessment": "",
+            "confidence": "unknown",
+            "evidence_refs": [],
+            "analyst_notes": "",
+        }
+        profile["motivations"] = []
+        actor = {
+            "slug": "example",
+            "actor_types": ["espionage", "threat-cluster"],
+        }
+        report = migrate_profile(profile, actor, None)
+        self.assertFalse(report["changed"])
+        self.assertEqual(
+            profile["actor"]["actor_types"], ["threat-cluster", "espionage"]
+        )
+        self.assertEqual(profile["updated_at"], "2026-01-01T00:00:00Z")
 
 
 if __name__ == "__main__":

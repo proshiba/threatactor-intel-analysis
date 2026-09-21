@@ -112,6 +112,16 @@ cloud/CDN、hosting providerにも適用します。
   `related-to` / `overlaps-with`等のrelationshipで結ぶ。
 - `actor-census-curation.json`の`exclude`/`override`を使い、次回census materializationで
   software名や誤aliasが再びcanonical Actorへ戻らないようにする。
+- ATT&CKの同一Group IDでvendor renameがAssociated Groupとして確認できる場合は、
+  rename後の名称を第二のcanonical Actorとして残さず、`merge`で既存のstable profileへ
+  統合する。統合元のactor-scoped evidenceは統合先の`source_dirs`へ引き継ぎ、既存profileは
+  stable ID互換のため`deprecated` tombstoneとして残す。
+- ATT&CK Softwareと同名の候補は、命名元の原典が独立したoperator/groupも同名で追跡して
+  いる場合を除きActor化しない。Zebrocyのように原典が明示的にmalware/toolsetとし、別の
+  groupが運用すると述べる名称は`exclude`する。
+- deprecated profileをSTIXへ出力する場合、`intrusion-set`に`revoked: true`と
+  `x_profile_status: deprecated`を付け、active entityとして再利用されないようにする。
+
 ## 6. Workbookからのalias抽出
 
 `APT Groups and Operations.xlsx`等のmapping workbookでは、alias候補として扱う列を
@@ -140,6 +150,8 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 4. 会社名、malware名、operation名の同名衝突ではないか
 
 先頭の`The`、空白、ハイフン、大小文字だけの差は重複候補として扱います。
+同一プロファイル内で正規化後に同じになるaliasは、先に現れた根拠付き表記を残して
+materialization時に重複排除します。
 
 ## 8. Claim auditからの昇格条件
 
@@ -152,6 +164,22 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - source scopeが主張のscopeと一致する
 - entity種別が一致する
 - contradictionが未解消ではない
+
+`build_claim_audits.py`は、identity/alias/relationshipに加えて、actor type、sponsor type、
+帰属組織、motivation、activity、victim case、target、全capability区分、TTP、key judgmentを
+監査対象にします。参照がない主張は`unresolved`、集約資料またはrepository内取込だけを
+根拠とする主張は原則`partially-supported`です。
+deprecated profileの台帳は過去の主張を現行主張として残さず、`superseded`の
+lifecycle claim 1件だけを保持し、現行コレクション集計から除外します。
+
+`state-sponsored`の自動支持は次のいずれかに限定します。
+
+- actor-specificな証拠を持つ`attribution.sponsor_type: state`
+- actor-specificなMITRE ATT&CK記述が国家支援を明示する
+- nation-state区分であることを明示した外部taxonomyにcanonical名または`exact` aliasが一致する
+
+国・originの値だけ、非exact alias、`state-aligned`だけでは`state-sponsored`を
+`supported`にしません。
 
 ## 9. Source precedence
 
@@ -185,6 +213,10 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - [ ] state-sponsoredをespionageへ変換していない
 - [ ] vendor/productをadversaryへ変換していない
 - [ ] software/campaign/organizationをactorとして新設していない
+- [ ] ActivityごとにCampaign / Incident / Groupingを明示し、全件Campaign化していない
+- [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
+- [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
+- [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
 - [ ] alias一致だけでexact identityにしていない
 - [ ] unresolved/partial claimを確定値へ昇格していない
 - [ ] actor-specific evidence_refが重要主張に付いている
@@ -202,15 +234,25 @@ python3 actor_profile/scripts/materialize_actor_census.py
 
 # 旧生成ルールで既存profileへ入った地理由来のstate/espionage等だけを安全に移行
 python3 actor_profile/scripts/migrate_generated_attribution.py --apply
+python3 actor_profile/scripts/migrate_stix_modeling.py --apply
 
 # 新規profileをbootstrapする場合のみ使用（既存profileの一括overwriteは禁止）
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 
-python3 actor_profile/scripts/build_claim_audits.py
+# 新規profileを含むcanonical側へmergeデータを移し、一次情報aliasを反映
+python3 actor_profile/scripts/migrate_curated_entity_boundaries.py --apply
+python3 actor_profile/scripts/apply_verified_alias_updates.py
+python3 actor_profile/scripts/sync_attack_reference.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
+python3 actor_profile/scripts/build_tidal_activity_index.py
+python3 actor_profile/scripts/build_actor_research_dossiers.py
 
 python3 actor_profile/scripts/render_collection_index.py \
   profiles/processing-summary.json \

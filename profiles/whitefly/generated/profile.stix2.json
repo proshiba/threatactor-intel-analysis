@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19,6 +19,7 @@
       ],
       "external_references": [],
       "x_profile_id": "actor--whitefly",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -34,16 +35,17 @@
         "history": "SingHealth",
         "capability_details": "ShimRAT, ShimRATReporter, Mimikatz",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=インド、カナダ、シンガポール、ドイツ、ミャンマー、米国、韓国。標的地域=北米、東南アジア。日本は確認時に個別国として保持する。\n\nGovernment, military, Critical Infrastructure,Automotive Industry*,Weapon Industry*, This threat actor compromises government and critical infrastructure entities, primarily in Myanmar, for espionage purposes. Myanmar, Canada, United States, Germany, India, South Korea, Singapore",
+        "targeting_details": "構造化ターゲット監査: 標的国=シンガポール。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nGovernment, military, Critical Infrastructure,Automotive Industry*,Weapon Industry*, This threat actor compromises government and critical infrastructure entities, primarily in Myanmar, for espionage purposes. Myanmar, Canada, United States, Germany, India, South Korea, Singapore",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--whitefly",
         "actor_name": "Whitefly",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -52,6 +54,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -61,6 +64,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "59308a4a-3c7b-4589-87e5-0c4d0d19274e",
@@ -94,7 +98,48 @@
                 "https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Whitefly%2C+Mofang&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2012",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Automotive",
+                  "Critical infrastructure",
+                  "Defense",
+                  "Engineering",
+                  "Government",
+                  "Healthcare",
+                  "Media",
+                  "Telecommunications",
+                  "weapon industries"
+                ],
+                "observed-countries": [
+                  "Canada",
+                  "Germany",
+                  "India",
+                  "Myanmar",
+                  "Singapore",
+                  "South Korea",
+                  "USA"
+                ],
+                "tools": [
+                  "Mimikatz",
+                  "Nibatad",
+                  "ShimRAT",
+                  "Termite",
+                  "Vcrodat",
+                  "Living off the Land"
+                ],
+                "operations": [
+                  {
+                    "date": "2018-07",
+                    "activity": "Breach of SingHealth\nhttps://www.reuters.com/article/us-singapore-cyberattack/cyberattack-on-singapore-health-database-steals-details-of-1-5-million-including-pm-idUSKBN1KA14J\nhttps://redalert.nshc.net/2019/03/19/sectorm04-targeting-singapore-custom-malware-analysis/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -122,11 +167,79 @@
                 "https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore",
                 "https://www.reuters.com/article/us-singapore-cyberattack/cyberattack-on-singapore-health-database-steals-details-of-1-5-million-including-pm-idUSKBN1KA14J"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "b74f909f-8e52-4b69-b770-162bf59a1b4e",
+              "entry_value": "Whitefly - G0107",
+              "external_id": "G0107",
+              "matched_names": [
+                {
+                  "normalized": "whitefly",
+                  "profile_value": "Whitefly",
+                  "dataset_value": "Whitefly"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Whitefly"
+              ],
+              "countries": [],
+              "description": "[Whitefly](https://attack.mitre.org/groups/G0107) is a cyber espionage group that has been operating since at least 2017. The group has targeted organizations based mostly in Singapore across a wide variety of sectors, and is primarily interested in stealing large amounts of sensitive information. The group has been linked to an attack against Singapore’s largest public health organization, SingHealth.(Citation: Symantec Whitefly March 2019)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0107",
+                "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/whitefly-espionage-singapore"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "0d91b3c0-5e50-47c3-949a-2a796f04d144",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7385dfaf-6886-4229-9ecd-6fd678040830",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b21c3b2d-02e6-45b1-980b-e69051040839",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "b74f909f-8e52-4b69-b770-162bf59a1b4e",
@@ -191,25 +304,46 @@
                   "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "f0943620-7bbb-4239-8ed3-c541c36baaa1",
+              "entry_value": "Whitefly",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "whitefly",
+                  "profile_value": "Whitefly",
+                  "dataset_value": "Whitefly"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Whitefly"
+              ],
+              "countries": [],
+              "description": "[Whitefly](https://app.tidalcyber.com/groups/f0943620-7bbb-4239-8ed3-c541c36baaa1) is a cyber espionage group that has been operating since at least 2017. The group has targeted organizations based mostly in Singapore across a wide variety of sectors, and is primarily interested in stealing large amounts of sensitive information. The group has been linked to an attack against Singapore’s largest public health organization, SingHealth.<sup>[[Symantec Whitefly March 2019](https://app.tidalcyber.com/references/d0e48356-36d9-4b4c-b621-e3c4404378d2)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Healthcare",
+                  "Media",
+                  "Telecommunications"
+                ]
+              }
+            }
+          ]
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--shimrat",
-            "profile_name": "ShimRAT",
-            "entry_uuid": "67fc358f-da6a-4f01-be23-44bc97319127",
-            "entry_value": "Shim RAT",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.shimrat",
-              "https://www.secureworks.com/research/threat-profiles/bronze-walker",
-              "https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -232,65 +366,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--15f5d10e-e617-42b7-9f08-3515ee7c92fa",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ShimRAT",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--shimrat",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--f7880d79-007f-425b-9619-284df487251e",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ShimRATReporter",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--shimratreporter",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -300,7 +380,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--mimikatz",
@@ -311,155 +391,11 @@
       ]
     },
     {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--ce6ae8ca-e793-4366-845d-accefdd2e303",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T00:00:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "SingHealth",
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "activity--singhealth",
-      "x_confidence": "medium",
-      "x_analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "x_reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--whitefly",
-          "name": "Whitefly",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--80cb1786-1a4b-43f9-b20b-ac4a346538b5",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "インド",
-      "identity_class": "organization",
-      "description": "Targeting text mentions india.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--b428978f-803a-4c04-8ac2-da8e0ea3d0dc",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "カナダ",
-      "identity_class": "organization",
-      "description": "Targeting text mentions canada.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--c837998d-e38d-47cc-a58b-1beeb5794610",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -468,276 +404,25 @@
       "description": "Targeting text mentions singapore.",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
         },
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
       "x_confidence": "high"
     },
     {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c78610dc-780b-4350-85b4-e352d9641dc4",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ドイツ",
-      "identity_class": "organization",
-      "description": "Targeting text mentions germany.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--cab0c1b0-48fc-4dbb-96a2-5ebc7784880a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ミャンマー",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録されたミャンマーを構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "Targeting text mentions united states.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "韓国",
-      "identity_class": "organization",
-      "description": "Targeting text mentions south korea.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--59028579-7178-46d9-9792-b0d14f85cb2e",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "北米",
-      "identity_class": "organization",
-      "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--a7849d4c-1404-4f95-a9cb-ad378b818abe",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東南アジア",
-      "identity_class": "organization",
-      "description": "シンガポール、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Defense",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Defense sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Government",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Government sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -752,7 +437,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -780,7 +465,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -795,7 +480,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-013--general",
@@ -823,7 +508,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -838,7 +523,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-005--general",
@@ -866,7 +551,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -881,7 +566,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059--general",
@@ -909,7 +594,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -924,7 +609,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1068--general",
@@ -952,7 +637,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -967,7 +652,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1105--general",
@@ -995,7 +680,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1010,7 +695,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -1038,7 +723,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1053,7 +738,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1574-001--general",
@@ -1081,7 +766,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T13:48:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1096,7 +781,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -1122,39 +807,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--b1c6bd0a-4135-4e78-aeab-dec3af24ddd2",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "malware--15f5d10e-e617-42b7-9f08-3515ee7c92fa",
-      "description": "Whitefly uses ShimRAT.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9574a51e-2692-465e-aa88-9407276eacd2",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "malware--f7880d79-007f-425b-9619-284df487251e",
-      "description": "Whitefly uses ShimRATReporter.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--bed2825a-44df-4ee3-a7ca-78bfe241c98b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1162,44 +817,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "description": "Whitefly uses Mimikatz.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8af0b5d9-8fd6-456a-b404-2c6112077a66",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--80cb1786-1a4b-43f9-b20b-ac4a346538b5",
-      "description": "Whitefly targets インド (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ca7bc8f3-9fa3-4e8e-9993-be5bba83311c",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--b428978f-803a-4c04-8ac2-da8e0ea3d0dc",
-      "description": "Whitefly targets カナダ (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c34b0750-5df4-414d-8661-0f7957578ea7",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1207,149 +839,26 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "identity--c837998d-e38d-47cc-a58b-1beeb5794610",
       "description": "Whitefly targets シンガポール (profile target category: countries).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--cbfdcc67-c0da-41d0-b871-69de4bf2925e",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--c78610dc-780b-4350-85b4-e352d9641dc4",
-      "description": "Whitefly targets ドイツ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a452060e-7f37-4b9e-86eb-a0929fdce34d",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--cab0c1b0-48fc-4dbb-96a2-5ebc7784880a",
-      "description": "Whitefly targets ミャンマー (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b8830941-66b6-44aa-93bf-d5e3fef603d0",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-      "description": "Whitefly targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f5b47679-a8aa-4bdf-bed5-2bda4b75c02a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
-      "description": "Whitefly targets 韓国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--474e4519-2f42-44ca-99cc-0102a93e0ed1",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--59028579-7178-46d9-9792-b0d14f85cb2e",
-      "description": "Whitefly targets 北米 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--4cd283e6-eace-4da7-84eb-e95d05b799ed",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--a7849d4c-1404-4f95-a9cb-ad378b818abe",
-      "description": "Whitefly targets 東南アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--185f3b1f-a2e1-4bb1-a45e-be4315320de0",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "description": "Whitefly targets Defense (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--cd7cc99d-ef88-40ae-bcc6-377e930fed06",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "description": "Whitefly targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9c9a9c13-8ffe-4dbe-9047-7d2bb95270e4",
-      "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--ce6ae8ca-e793-4366-845d-accefdd2e303",
-      "target_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-      "description": "SingHealth is attributed or linked to Whitefly.",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0cc309a1-3511-4c4e-aae2-b8bb94abd4e3",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1357,14 +866,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has used [Mimikatz](https://attack.mitre.org/software/S0002) to obtain credentials.(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f9cbb88-6b47-4c2a-b20a-faa6b191e96d",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1372,14 +888,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has encrypted the payload used for C2.(Citation: Symantec Whitefly March 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cd781d97-9575-41f7-b75d-a2984f81175d",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1387,14 +910,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has named the malicious DLL the same name as DLLs belonging to legitimate software from various security vendors.(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1a1b3927-2ec1-42ff-ac82-21a1ad23ba8b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1402,14 +932,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has used a simple remote shell tool that will call back to the C2 server and wait for commands.(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9448cd54-8b94-4c40-9dcd-965ee99641d7",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1417,14 +954,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has used an open-source tool to exploit a known Windows privilege escalation vulnerability (CVE-2016-0051) on unpatched computers.(Citation: Symantec Whitefly March 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--00734288-b999-4dd3-ac91-c38f79746f5b",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1432,14 +976,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has the ability to download additional tools from the C2.(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--593159fe-8936-4de6-b273-f8cfa59b462d",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1447,14 +998,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has used malicious .exe or .dll files disguised as documents or images.(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--047a1844-a0cf-41e6-95fa-bf5c5027faa4",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1462,14 +1020,21 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has used search order hijacking to run the loader Vcrodat.(Citation: Symantec Whitefly March 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--169ae63f-78c8-4692-968e-eaaae82ddba7",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1477,7 +1042,14 @@
       "source_ref": "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[Whitefly](https://attack.mitre.org/groups/G0107) has obtained and used tools such as [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: Symantec Whitefly March 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -1543,7 +1115,7 @@
       "spec_version": "2.1",
       "id": "note--f3282eb7-758c-48ed-80c0-8591de789a1e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1553,14 +1125,14 @@
         "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 21
+      "x_artifact_observation_count": 3
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--9e15b2e5-6f67-4b72-abf9-b1fed933f53e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1569,24 +1141,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--be34087f-a09b-42f3-a987-f7f56fccd69e",
-        "malware--15f5d10e-e617-42b7-9f08-3515ee7c92fa",
-        "malware--f7880d79-007f-425b-9619-284df487251e",
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-        "campaign--ce6ae8ca-e793-4366-845d-accefdd2e303",
-        "identity--80cb1786-1a4b-43f9-b20b-ac4a346538b5",
-        "identity--b428978f-803a-4c04-8ac2-da8e0ea3d0dc",
         "identity--c837998d-e38d-47cc-a58b-1beeb5794610",
-        "identity--c78610dc-780b-4350-85b4-e352d9641dc4",
-        "identity--cab0c1b0-48fc-4dbb-96a2-5ebc7784880a",
-        "identity--09b0a513-0510-473d-82e0-6062fd18219c",
-        "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
-        "identity--59028579-7178-46d9-9792-b0d14f85cb2e",
-        "identity--a7849d4c-1404-4f95-a9cb-ad378b818abe",
-        "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
         "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
         "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
         "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
@@ -1598,7 +1157,7 @@
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
         "indicator--091430b9-649a-4343-ac14-e9a10ecdd3ac"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

@@ -1,0 +1,396 @@
+{
+  "type": "bundle",
+  "id": "bundle--de66175e-15d5-4028-a7e9-7233765789d9",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e47188d0-f5ce-4253-9e7f-3e61379dce74",
+      "created": "2026-07-27T11:04:35Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け",
+      "description": "Microsoft は、Medusa ランサムウェアの展開で知られる中国拠点の金銭目的グループ Storm-1175 が、n-day と zero-day を高速に悪用していると報告した。 同グループは新規脆弱性の武器化が非常に速く、場合によっては公開前の週から悪用し、初期侵入から数日、時に24時間以内に暗号化まで進むとされる。 攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。 具体例として、GoAnywhere MFT の CVE-2025-10035 を修正前から1週間超悪用し、SmarterMail の CVE-2026-23760 もゼロデイとして利用したと記載されている。 さらに Exchange、PaperCut、Ivanti、ScreenConnect、TeamCity、SimpleHelp、CrushFTP、SmarterMail、BeyondTrust など計10製品超の脆弱性悪用が確認された。 Storm-1175は、公開資産の脆弱性を特定する能力に長けており、エクスプロイトブローカーなどを通じて高度な開発能力やリソースへのアクセスを得ている可能性があると分析されている。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/",
+          "external_id": "source--daily-6d966f0f2bd59b705455",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4673d05df45b6d29aade",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--4673d05df45b6d29aadeb391 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Microsoft は、Medusa ランサムウェアの展開で知られる中国拠点の金銭目的グループ Storm-1175 が、n-day と zero-day を高速に悪用していると報告した。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-1175",
+          "name": "Storm-1175",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--469e30e58089a636de26"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-04-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-6d966f0f2bd59b705455"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-04-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--63adc766-9ff5-4d89-9e19-c83e9ea9fd78",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け",
+      "identity_class": "organization",
+      "description": "Microsoft は、Medusa ランサムウェアの展開で知られる中国拠点の金銭目的グループ Storm-1175 が、n-day と zero-day を高速に悪用していると報告した。 同グループは新規脆弱性の武器化が非常に速く、場合によっては公開前の週から悪用し、初期侵入から数日、時に24時間以内に暗号化まで進むとされる。 攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。 具体例として、GoAnywhere MFT の CVE-2025-10035 を修正前から1週間超悪用し、SmarterMail の CVE-2026-23760 もゼロデイとして利用したと記載されている。 さらに Exchange、PaperCut、Ivanti、ScreenConnect、TeamCity、SimpleHelp、CrushFTP、SmarterMail、BeyondTrust など計10製品超の脆弱性悪用が確認された。 Storm-1175は、公開資産の脆弱性を特定する能力に長けており、エクスプロイトブローカーなどを通じて高度な開発能力やリソースへのアクセスを得ている可能性があると分析されている。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/",
+          "external_id": "source--daily-6d966f0f2bd59b705455",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--469e30e58089a636de26",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-04-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--55499bad-1f88-4501-97a2-d1acccdec9d9",
+      "created": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T02:39:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-1175",
+      "aliases": [],
+      "description": "Storm-1175の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--storm-1175",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Storm-1175の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=シリア。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--26ff432c-c52f-41e0-92b2-b8fb56855967",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--e47188d0-f5ce-4253-9e7f-3e61379dce74",
+      "target_ref": "identity--63adc766-9ff5-4d89-9e19-c83e9ea9fd78",
+      "description": "Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け affected victim--activity-rule--469e30e58089a636de26.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/",
+          "external_id": "source--daily-6d966f0f2bd59b705455",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-04-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4979be6d-6fc7-4597-8aed-c5a654ce887b",
+      "created": "2026-07-27T11:04:35Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e47188d0-f5ce-4253-9e7f-3e61379dce74",
+      "target_ref": "intrusion-set--55499bad-1f88-4501-97a2-d1acccdec9d9",
+      "description": "Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け is attributed or linked to Storm-1175.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/",
+          "external_id": "source--daily-6d966f0f2bd59b705455",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-04-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--6ed9e0fe-8eb3-408d-8814-f1f0614c18b4",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-04-07T00:00:00Z",
+      "object_refs": [
+        "campaign--e47188d0-f5ce-4253-9e7f-3e61379dce74",
+        "identity--63adc766-9ff5-4d89-9e19-c83e9ea9fd78",
+        "relationship--26ff432c-c52f-41e0-92b2-b8fb56855967",
+        "relationship--4979be6d-6fc7-4597-8aed-c5a654ce887b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-6d966f0f2bd59b705455",
+          "url": "https://www.bleepingcomputer.com/news/security/microsoft-links-medusa-ransomware-affiliate-to-zero-day-attacks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-6d966f0f2bd59b705455",
+      "x_evidence_slice_scope": "campaign:actor--storm-1175:activity--daily-4673d05df45b6d29aade",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--5aca7dad-7608-4df4-8844-41416c2c7949",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-1175 / Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け",
+      "description": "Microsoft は、Medusa ランサムウェアの展開で知られる中国拠点の金銭目的グループ Storm-1175 が、n-day と zero-day を高速に悪用していると報告した。 同グループは新規脆弱性の武器化が非常に速く、場合によっては公開前の週から悪用し、初期侵入から数日、時に24時間以内に暗号化まで進むとされる。 攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。 具体例として、GoAnywhere MFT の CVE-2025-10035 を修正前から1週間超悪用し、SmarterMail の CVE-2026-23760 もゼロデイとして利用したと記載されている。 さらに Exchange、PaperCut、Ivanti、ScreenConnect、TeamCity、SimpleHelp、CrushFTP、SmarterMail、BeyondTrust など計10製品超の脆弱性悪用が確認された。 Storm-1175は、公開資産の脆弱性を特定する能力に長けており、エクスプロイトブローカーなどを通じて高度な開発能力やリソースへのアクセスを得ている可能性があると分析されている。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "campaign--e47188d0-f5ce-4253-9e7f-3e61379dce74",
+        "identity--63adc766-9ff5-4d89-9e19-c83e9ea9fd78",
+        "intrusion-set--55499bad-1f88-4501-97a2-d1acccdec9d9",
+        "relationship--26ff432c-c52f-41e0-92b2-b8fb56855967",
+        "relationship--4979be6d-6fc7-4597-8aed-c5a654ce887b",
+        "report--6ed9e0fe-8eb3-408d-8814-f1f0614c18b4"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--storm-1175",
+      "x_activity_id": "activity--daily-4673d05df45b6d29aade"
+    }
+  ]
+}

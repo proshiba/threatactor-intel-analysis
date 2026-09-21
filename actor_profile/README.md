@@ -16,7 +16,8 @@ profiles/<actor-slug>/
 ├── artifacts.csv               # コマンド、文字列、パス等の非IOC artifact観測
 └── generated/
     ├── profile-ja.md           # 人間向け文書
-    └── profile.stix2.json      # STIX 2.1 Bundle
+    ├── profile.stix2.json      # STIX 2.1 Bundle
+    └── research-dossier.json   # 活動・関係・malware・標的・動機・帰属の根拠付き調査票
 ```
 
 自由記述は`free_text`、分析上の留保は`assessment`、各構造化項目固有の補足は
@@ -85,6 +86,9 @@ python3 actor_profile/scripts/validate_profile.py \
   --artifacts profiles/actor-name/artifacts.csv \
   --stix profiles/actor-name/generated/profile.stix2.json \
   --strict
+
+# OpenCTI ImportFileStix向けのアクター別・Activity別Bundleを全件生成
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 ```
 
 実際には、CodexのバンドルPythonを使うとPDF・XLSX取込も有効になります。
@@ -108,10 +112,14 @@ ZIP、RAR、7z、実行ファイル、DLL、マルウェアサンプルは開き
 詳細な規約は[RULES.md](RULES.md)を参照してください。
 自動生成・エージェント更新時の禁止事項と判断手順は
 [GENERATION_RULES.md](GENERATION_RULES.md)を必ず併読してください。
+Campaign / Incident / Grouping、Infrastructure、Observable、時刻相関、Source Reportの
+OpenCTI取込判断は[OPENCTI_INGESTION_RULES.md](OPENCTI_INGESTION_RULES.md)を正とします。
 
 既存profileに旧生成ロジック由来のcountry→state→espionage推定が残っている場合は、
 `python3 actor_profile/scripts/migrate_generated_attribution.py --apply`を使用します。
 このmigrationは定型的な旧自動生成値だけを対象にし、手動attributionや日次Activity、IOC等は保持します。
+ActivityのSTIX entity種別を明示する移行は
+`python3 actor_profile/scripts/migrate_stix_modeling.py --apply`を使用します。
 
 ## 全アクターの一括処理
 
@@ -127,6 +135,20 @@ python3 actor_profile/scripts/materialize_actor_census.py
 # 既存の手動プロファイルを保持し、不足するプロファイルを作成
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 
+# 一次情報で確認した最新alias、改称、明示的なentity境界を反映
+python3 actor_profile/scripts/apply_verified_alias_updates.py
+
+# 現行ATT&CKへ同期し、非掲載IDの根拠は履歴索引へ固定
+python3 actor_profile/scripts/sync_attack_reference.py
+
+# 活動を再構造化した後、証拠境界と一次資料レビュー済み補正を最後に反映
+python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
+python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
+
 # IOC/artifact取込、Markdown/STIX生成、検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3
 
@@ -135,6 +157,9 @@ python3 actor_profile/scripts/apply_alias_overlap_relationships.py
 
 # 既存のIOC/artifactを使って再レンダリング・再検証のみ
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+
+# OpenCTI取込用STIXをアクター別・Activity別に分割して生成
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 
 # Activity、TTP、被害事例、標的の参照から活動別Diamond Modelを再生成
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
@@ -147,7 +172,11 @@ python3 actor_profile/scripts/render_collection_index.py \
 ```
 
 MITRE ATT&CKのactor、software、campaign、technique関係は
-`reference/attack-index.json`に保存したEnterprise ATT&CK 19.1のコンパクト索引を使います。
+`reference/attack-index.json`に保存したEnterprise ATT&CK 19.2と、
+`reference/attack-mobile-index.json`に保存したMobile ATT&CK 19.2、
+`reference/attack-ics-index.json`に保存したICS ATT&CK 19.2のコンパクト索引を使います。
+19.2で非掲載となった旧Groupの根拠は`reference/attack-enterprise-19.1.json`へ固定し、
+deprecatedをアクターの消滅や誤帰属と自動解釈しません。
 資料本文にTechnique IDがある場合は、その資料もTTPの根拠へ追加します。
 
 全コーパス走査の根拠は`actor-census.json`、採用・統合・除外判断は
@@ -183,19 +212,36 @@ python3 actor_profile/scripts/build_cert_ua_index.py
 # canonical name、alias、MITRE ID、帰属候補を全プロファイルで照合
 python3 actor_profile/scripts/crosscheck_all_actors.py
 
-# 主張台帳と人間向けMarkdown／STIXを再生成
-python3 actor_profile/scripts/build_claim_audits.py
+# 活動を更新し、集約・旧ワークブックだけの主張を調査候補層へ隔離
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/migrate_evidence_boundaries.py --apply
+python3 actor_profile/scripts/apply_primary_source_corrections.py
+
+# 根拠付きの標的、活動単位Diamond、主張台帳、人間向けMarkdown／STIXを再生成
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+
+# TIDAL/MISPのcampaign・software関係を要原典確認の索引へ変換し、全actor調査票を生成
+python3 actor_profile/scripts/build_tidal_activity_index.py
+python3 actor_profile/scripts/build_actor_research_dossiers.py
 ```
 
-`enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、高確度で
-アクター照合できたMISP／ETDAの被害地理フィールド、レビュー済み一次資料補正を
-標的国・地域へ統合します。帰属国、C2の所在国、帰属表明を行った国は標的として
-扱いません。広域活動は`全世界`等の地域を保持し、日本の被害が確認できる場合は
-地域表示とは別に`日本`を個別保持します。複数の個別国から導出した地域は
+`research-dossier.json`は、正規プロファイル由来のcanonical層と、ETDA・MISP・TIDAL由来の
+external research lead層を分離します。集約データの名称、期間、malware、標的、動機、帰属は
+原典レビュー前にcanonicalへ昇格しません。全体の充足状況は
+`profiles/research-summary.json`と`profiles/research-summary.csv`で確認できます。
+旧canonical層から隔離した未検証の関係・標的・動機・帰属は
+`actor_profile/manual-research-leads.json`に保持し、調査票のexternal research lead層へ
+統合します。削除ではなく、出典原文を確認するまでの保留です。
+
+`enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、レビュー済み
+一次資料補正を標的国・地域へ統合します。MISP／ETDAおよび旧ワークブックの
+被害地理フィールドは調査候補として監査しますが、原典確認前にcanonicalへは
+統合しません。帰属国、C2の所在国、帰属表明を行った国は標的として扱いません。
+広域活動は`全世界`等の地域を保持し、日本の被害が確認できる場合は地域表示とは
+別に`日本`を個別保持します。複数の個別国から導出した地域は
 「域内全体が標的だった」という意味ではなく、UIでの集約表示用です。
 
 監査結果は`profiles/targeting-audit.json`に保存されます。

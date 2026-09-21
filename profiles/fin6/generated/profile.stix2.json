@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,12 +17,14 @@
         "ITG08",
         "Magecart Group 6",
         "Skeleton Spider",
+        "SQUID COMET",
         "TAAL"
       ],
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) is a cyber crime group that has stolen payment card data and sold it for profit on underground marketplaces. This group has aggressively targeted and compromised point of sale (PoS) systems in the hospitality and retail sectors.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--fin6",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Camouflage Tempest",
@@ -30,7 +32,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
@@ -40,7 +42,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
@@ -50,7 +52,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
@@ -60,9 +62,19 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "SQUID COMET",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         },
         {
           "name": "TAAL",
@@ -70,7 +82,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -96,9 +108,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--fin6",
         "actor_name": "FIN6",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -107,6 +120,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -115,12 +129,45 @@
             "ITG08",
             "Magecart Group 6",
             "Skeleton Spider",
+            "SQUID COMET",
             "TAAL"
           ],
           "mitre_group_id": "G0037"
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-squid-comet",
+              "entry_value": "SQUID COMET",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "fin6",
+                  "profile_value": "FIN6",
+                  "dataset_value": "FIN6"
+                },
+                {
+                  "normalized": "squidcomet",
+                  "profile_value": "SQUID COMET",
+                  "dataset_value": "SQUID COMET"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "SQUID COMET",
+                "FIN6"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for FIN6.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "61c8ecd4-e4e1-4f36-b209-ca55106ec22f",
@@ -177,7 +224,77 @@
                 "https://dti.domaintools.com/Skeleton-Spider-Trusted-Cloud-Malware-Delivery/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=FIN6%2C+Skeleton+Spider&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2015",
+                "motivation": [
+                  "Financial crime",
+                  "Financial gain"
+                ],
+                "observed-sectors": [
+                  "Chemical",
+                  "Energy",
+                  "Hospitality",
+                  "Manufacturing",
+                  "Retail"
+                ],
+                "tools": [
+                  "AbaddonPOS",
+                  "Anchor",
+                  "BlackPOS",
+                  "CmdSQL",
+                  "Cobalt Strike",
+                  "FlawedAmmyy",
+                  "Grateful POS",
+                  "JSPSPY",
+                  "LockerGoga",
+                  "Magecart",
+                  "Meterpreter",
+                  "Mimikatz",
+                  "More_eggs",
+                  "Ryuk",
+                  "SCRAPMINT",
+                  "TerraStealer",
+                  "Vawtrak",
+                  "Windows Credentials Editor",
+                  "Living off the Land"
+                ],
+                "operations": [
+                  {
+                    "date": "2018",
+                    "activity": "Based on Visa Payment Fraud Disruption’s (PFD) analysis of eCommerce compromises throughout 2018, FIN6’s focus on the CNP environment has only amplified, suggesting that the cybercrime group has fully incorporated targeting CNP environments into their criminal methodology.\nhttps://usa.visa.com/dam/VCOM/global/support-legal/documents/fin6-cybercrime-group-expands-threat-To-ecommerce-merchants.pdf"
+                  },
+                  {
+                    "date": "2019-01",
+                    "activity": "Over the past 8-10 weeks, Morphisec has been tracking multiple sophisticated attacks targeting Point of Sale thin clients globally. More specifically, on the 6th of February we identified an extremely high number of prevention events stopping Cobalt Strike backdoor execution, with some of the attacks expressly targeting Point of Sale VMWare Horizon thin clients.\nhttp://blog.morphisec.com/new-global-attack-on-point-of-sale-systems"
+                  },
+                  {
+                    "date": "2019-01",
+                    "activity": "Hackers have infected the systems of Altran Technologies with malware that spread through the company network, affecting operations in some European countries. To protect client data and their own assets, Altran decided to shut down its network and applications.\nhttps://www.bleepingcomputer.com/news/security/new-lockergoga-ransomware-allegedly-used-in-altran-attack/"
+                  },
+                  {
+                    "date": "2019-03",
+                    "activity": "One of the largest aluminum producers in the world, Norsk Hydro, has been forced to switch to partial manual operations due to a cyber attack that is allegedly pushing LockerGoga ransomware.\nhttps://www.bleepingcomputer.com/news/security/lockergoga-ransomware-sends-norsk-hydro-into-manual-mode/"
+                  },
+                  {
+                    "date": "2019-04",
+                    "activity": "The Securonix Threat Research Team has been closely monitoring the LockerGoga targeted cyber sabotage/ransomware (TC/R) attacks impacting Norsk Hydro (one of the largest aluminum companies worldwide), Hexion/Momentive (a chemical manufacturer), and other companies’ IT and operational technology (OT) infrastructure, causing over US$40 million in damages.\nhttps://www.securonix.com/securonix-threat-research-detecting-lockergoga-targeted-it-ot-cyber-sabotage-ransomware-attacks/"
+                  },
+                  {
+                    "date": "2019-08",
+                    "activity": "Based on our investigation and analysis of its adversarial tactics, techniques and procedures (TTPs), we believe ITG08 is actively attacking multinational organizations, targeting specific employees with spear phishing emails advertising fake job advertisements and repeatedly deploying the More_eggs Jscript backdoor malware.\nhttps://securityintelligence.com/posts/more_eggs-anyone-threat-actor-itg08-strikes-again/"
+                  },
+                  {
+                    "date": "2019-09",
+                    "activity": "Hackers have breached the infrastructure of Volusion, a provider of cloud-hosted online stores, and are delivering malicious code that records and steals payment card details entered by users in online forms.\nhttps://www.zdnet.com/article/hackers-breach-volusion-and-start-collecting-card-details-from-thousands-of-sites/\nhttps://www.zdnet.com/article/card-data-from-the-volusion-web-skimmer-incident-surfaces-on-the-dark-web/"
+                  },
+                  {
+                    "date": "2020-03",
+                    "activity": "In a new and dangerous twist to this trend, IBM X-Force Incident Response and Intelligence Services (IRIS) research believes that the elite cybercriminal threat actor ITG08, also known as FIN6, has partnered with the malware gang behind one of the most active Trojans — TrickBot — to use TrickBot’s new malware framework dubbed “Anchor” against organizations for financial profit.\nhttps://securityintelligence.com/posts/itg08-aka-fin6-partners-with-trickbot-gang-uses-anchor-framework/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -210,7 +327,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -243,6 +361,11 @@
                   "normalized": "skeletonspider",
                   "profile_value": "Skeleton Spider",
                   "dataset_value": "SKELETON SPIDER"
+                },
+                {
+                  "normalized": "squidcomet",
+                  "profile_value": "SQUID COMET",
+                  "dataset_value": "SQUID COMET"
                 }
               ],
               "match_basis": "canonical-name",
@@ -258,7 +381,8 @@
                 "G0037",
                 "Camouflage Tempest",
                 "TA4557",
-                "Storm-0538"
+                "Storm-0538",
+                "SQUID COMET"
               ],
               "countries": [],
               "description": "FIN is a group targeting financial assets including assets able to do financial transaction including PoS.",
@@ -270,7 +394,8 @@
                 "http://www.secureworks.com/research/threat-profiles/gold-franklin",
                 "https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/",
                 "https://www.proofpoint.com/us/blog/threat-insight/security-brief-ta4557-targets-recruiters-directly-email",
-                "https://www.proofpoint.com/us/threat-insight/post/fake-jobs-campaigns-delivering-moreeggs-backdoor-fake-job-offers"
+                "https://www.proofpoint.com/us/threat-insight/post/fake-jobs-campaigns-delivering-moreeggs-backdoor-fake-job-offers",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": [
                 {
@@ -294,7 +419,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -345,7 +471,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             },
             {
               "entry_uuid": "8ad930d9-fcdb-531b-827f-c4a05c36e152",
@@ -375,7 +502,8 @@
               "refs": [
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-mitre-enterprise-intrusion-set": [
@@ -385,23 +513,142 @@
               "external_id": "G0037",
               "matched_names": [
                 {
+                  "normalized": "camouflagetempest",
+                  "profile_value": "Camouflage Tempest",
+                  "dataset_value": "Camouflage Tempest"
+                },
+                {
                   "normalized": "fin6",
                   "profile_value": "FIN6",
                   "dataset_value": "FIN6"
+                },
+                {
+                  "normalized": "itg08",
+                  "profile_value": "ITG08",
+                  "dataset_value": "ITG08"
+                },
+                {
+                  "normalized": "magecartgroup6",
+                  "profile_value": "Magecart Group 6",
+                  "dataset_value": "Magecart Group 6"
+                },
+                {
+                  "normalized": "skeletonspider",
+                  "profile_value": "Skeleton Spider",
+                  "dataset_value": "Skeleton Spider"
+                },
+                {
+                  "normalized": "taal",
+                  "profile_value": "TAAL",
+                  "dataset_value": "TAAL"
                 }
               ],
               "match_basis": "mitre-external-id",
               "match_confidence": "high",
               "candidate_names": [
-                "FIN6"
+                "FIN6",
+                "Magecart Group 6",
+                "ITG08",
+                "Skeleton Spider",
+                "TAAL",
+                "Camouflage Tempest"
               ],
               "countries": [],
-              "description": "FIN6 is a cyber crime group that has stolen payment card data and sold it for profit on underground marketplaces. This group has aggressively targeted and compromised point of sale (PoS) systems in the hospitality and retail sectors. (Citation: FireEye FIN6 April 2016)",
+              "description": "[FIN6](https://attack.mitre.org/groups/G0037) is a cyber crime group that has stolen payment card data and sold it for profit on underground marketplaces. This group has aggressively targeted and compromised point of sale (PoS) systems in the hospitality and retail sectors.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0037",
-                "https://www2.fireeye.com/rs/848-DID-242/images/rpt-fin6.pdf"
+                "https://attack.mitre.org/groups/G0037",
+                "https://crowdstrike.lookbookhq.com/global-threat-report-2018-web/cs-2018-global-threat-report",
+                "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide",
+                "https://securityintelligence.com/posts/itg08-aka-fin6-partners-with-trickbot-gang-uses-anchor-framework/",
+                "https://securityintelligence.com/posts/more_eggs-anyone-threat-actor-itg08-strikes-again/",
+                "https://web.archive.org/web/20190807112824/https://www2.fireeye.com/rs/848-DID-242/images/rpt-fin6.pdf",
+                "https://www.fireeye.com/blog/threat-research/2019/04/pick-six-intercepting-a-fin6-intrusion.html"
               ],
               "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "01a5a209-b94c-450b-b7f9-946497d91055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0f4a0c76-ab2d-4cb0-85d3-3f0efb8cba0d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "143c0cbb-a297-4142-9624-87ffc778980b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1cdbbcab-903a-414d-8eb0-439a97343737",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1d24cdee-9ea2-4189-b08e-af110bf2435d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "21875073-b0ee-49e3-9077-1e2a885359af",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "242f3da3-4425-4d11-8f5c-b842886da966",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "248d3fe1-7fe1-4d71-91c7-8bb7ef35cad3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "30208d3e-0d6b-43c8-883e-44462a514619",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "32901740-b42c-4fdd-bc02-345b5dc57082",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "359b00ad-9425-420b-bba5-6de8d600cbc0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3fc9b85a-2862-4363-a64d-d692e3ffbee0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "432555de-63bf-4f2a-a3fa-f720a4561078",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4fe28b27-b13c-453e-a386-c2ef362a573b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "53ac20cd-aca3-406e-9aa0-9fc7fdc60a5a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "58a3e6aa-4453-4cc8-a51f-4befe80b31a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5af7a825-2d9f-400d-931a-e00eb9e27f48",
+                  "type": "uses"
+                },
                 {
                   "dest-uuid": "647894f6-1723-4cba-aba4-0ef0966d5302",
                   "tags": [
@@ -410,13 +657,131 @@
                   "type": "similar"
                 },
                 {
-                  "dest-uuid": "9422fc14-1c43-410d-ab0f-a709b76c72dc",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7385dfaf-6886-4229-9ecd-6fd678040830",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bdca9d5-d500-4d7d-8c52-5fd47baf4c0c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "830c9528-df21-472c-8c14-a036bf17d665",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a020a61c-423f-4195-8c46-ba1d21abba37",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a7881f21-e978-4fe4-af56-92c9416a2616",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b21c3b2d-02e6-45b1-980b-e69051040839",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bbde9781-60aa-4b8a-a911-895b0c1b3872",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf176076-b789-408e-8cba-7275e81c0ada",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bfd2738c-8b43-43c3-bc9f-d523c8e88bf4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c21d5a77-d422-4a69-acd7-2c53c1faa34b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c9b99d03-ff11-4a48-95f0-82660d582c25",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d1fcf083-a721-4223-aedf-bf8960798d62",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d511a6f6-4a33-41d5-bc95-c343875d1377",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d63a3fb8-9452-4e9d-a60a-54be68d5998c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d9f7383c-95ec-4080-bbce-121c9384457b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dcaa092b-7de9-4a21-977f-7fcb77e89c48",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3a12395-188d-4051-9a16-ea8e14d07b88",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "eb062747-2193-45de-8fa2-e62549c37ddf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "edf91964-b26e-4b4a-9600-ccacd7d7df24",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f1951e8a-500e-4a26-8803-76d95c4554b4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f59508a6-3615-47c3-b493-6676e1a39a87",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f6ad61ee-65f3-4bd0-a3f5-2f0accb36317",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "fb8d023d-45be-47e9-bc51-f56bcae6435b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-intrusion-set": [
@@ -693,10 +1058,44 @@
                   "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "fcaadc12-7c17-4946-a9dc-976ed610854c",
+              "entry_value": "FIN6",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "fin6",
+                  "profile_value": "FIN6",
+                  "dataset_value": "FIN6"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "FIN6"
+              ],
+              "countries": [],
+              "description": "[FIN6](https://app.tidalcyber.com/groups/fcaadc12-7c17-4946-a9dc-976ed610854c) is a cyber crime group that has stolen payment card data and sold it for profit on underground marketplaces. This group has aggressively targeted and compromised point of sale (PoS) systems in the hospitality and retail sectors.<sup>[[FireEye FIN6 April 2016](https://app.tidalcyber.com/references/8c0997e1-b285-42dd-9492-75065eac8f8b)]</sup><sup>[[FireEye FIN6 Apr 2019](https://app.tidalcyber.com/references/e8a2bc6a-04e3-484e-af67-5f57656c7206)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Financial Gain"
+                ],
+                "target_categories": [
+                  "Financial Services",
+                  "Hospitality Leisure",
+                  "Retail"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -1982,7 +2381,7 @@
       "spec_version": "2.1",
       "id": "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1992,7 +2391,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--cobalt-strike",
@@ -2013,7 +2412,7 @@
       "spec_version": "2.1",
       "id": "malware--e14bcbf0-3f86-4d37-bd81-3b5faaed2e07",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2023,7 +2422,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--flawedammyy",
@@ -2042,7 +2441,7 @@
       "spec_version": "2.1",
       "id": "malware--85516d8f-f39d-4d49-ba44-849aa3171a30",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2052,7 +2451,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--frameworkpos",
@@ -2072,7 +2471,7 @@
       "spec_version": "2.1",
       "id": "malware--94139652-7938-4b2e-8058-3d1b9a5f6a6b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2082,7 +2481,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--grimagent",
@@ -2101,7 +2500,7 @@
       "spec_version": "2.1",
       "id": "malware--192e8380-c3b5-45e2-9db4-388ee7150bd0",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2111,7 +2510,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--lockergoga",
@@ -2130,7 +2529,7 @@
       "spec_version": "2.1",
       "id": "malware--bb704c42-ec49-4ade-a656-d933bb66047c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2140,7 +2539,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--maze",
@@ -2159,7 +2558,7 @@
       "spec_version": "2.1",
       "id": "malware--d41dac90-c10a-4138-8258-5ff89554b9b7",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2169,7 +2568,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--more-eggs",
@@ -2189,36 +2588,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--c4def88e-edb5-4c52-afe6-fc4667c81848",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Ransomware",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--ransomware",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--e9b35d71-719b-41fc-a2e4-83dac99e0934",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2228,7 +2600,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--ryuk",
@@ -2243,88 +2615,11 @@
       ]
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--ab219a84-7fd0-4cba-96e3-0f928f5eace0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Vawtrak/Neverquest",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--vawtrak-neverquest",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Windows Credential Editor",
-      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--windows-credential-editor",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Mimikatz",
-      "description": "[Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--mimikatz",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--58d2326a-96f0-4550-ba42-9681e849143c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2334,7 +2629,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--adfind",
@@ -2347,9 +2642,34 @@
     {
       "type": "tool",
       "spec_version": "2.1",
+      "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mimikatz",
+      "description": "[Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--mimikatz",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
       "id": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2359,10 +2679,35 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--psexec",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Windows Credential Editor",
+      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--windows-credential-editor",
       "x_confidence": "high",
       "x_analyst_notes": "",
       "tool_types": [
@@ -2374,7 +2719,7 @@
       "spec_version": "2.1",
       "id": "campaign--75941cc9-7896-41d7-b2a2-2ca1d8ba7faf",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2388,14 +2733,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-bbd8f32e409b6d1279c2",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "high",
       "x_analyst_notes": "日次収集レコード daily-record--bbd8f32e409b6d1279c21177 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: FIN6ハッカーが求職者を装いリクルーターの端末にバックドアを仕掛ける",
-      "x_reported_at": {
-        "value": "2025-06-11T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--fin6",
@@ -2451,6 +2792,24 @@
           "source--daily-e69a4b59d2f63ad15f24"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -2458,7 +2817,7 @@
       "spec_version": "2.1",
       "id": "identity--2c7aaaf2-1167-46dd-8a7c-7c2aff6a4a35",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2469,7 +2828,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -2480,7 +2839,7 @@
       "spec_version": "2.1",
       "id": "identity--78f40666-499e-4185-a2e6-006091a8fac3",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2491,7 +2850,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -2560,7 +2919,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2575,7 +2934,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -2603,7 +2962,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e9e43ae1-bc7e-4829-8494-875243d95e59",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2618,7 +2977,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-003--general",
@@ -2646,7 +3005,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2661,7 +3020,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1005--general",
@@ -2689,7 +3048,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2704,7 +3063,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1018--general",
@@ -2732,7 +3091,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2747,7 +3106,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-001--general",
@@ -2775,7 +3134,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2790,7 +3149,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-010--general",
@@ -2818,7 +3177,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--17f0af66-6e30-4c8e-aa0a-bc6ed008102c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2833,7 +3192,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-004--general",
@@ -2861,7 +3220,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2876,7 +3235,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1046--general",
@@ -2904,7 +3263,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2919,7 +3278,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1047--general",
@@ -2947,7 +3306,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--bafb7f8c-427e-4afa-aa71-4ba68ac7f462",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2962,7 +3321,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1048-003--general",
@@ -2990,7 +3349,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3005,7 +3364,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1053-005--general",
@@ -3033,7 +3392,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3048,7 +3407,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059--general",
@@ -3076,7 +3435,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3091,7 +3450,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -3119,7 +3478,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3134,7 +3493,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-003--general",
@@ -3162,7 +3521,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3177,7 +3536,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-007--general",
@@ -3205,7 +3564,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3220,7 +3579,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1068--general",
@@ -3248,7 +3607,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3263,7 +3622,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1070-004--general",
@@ -3291,7 +3650,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--15ab621f-b59f-4396-bc59-a340f8ae6136",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3306,7 +3665,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1074-002--general",
@@ -3334,7 +3693,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3349,7 +3708,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1078--general",
@@ -3377,7 +3736,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3392,7 +3751,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1087-002--general",
@@ -3420,7 +3779,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2522122c-0d04-44df-9f59-257223bbf229",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3435,7 +3794,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1095--general",
@@ -3463,7 +3822,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--cef95057-8b46-40d4-b1ba-ceca3f27b32d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3478,7 +3837,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1102--general",
@@ -3506,7 +3865,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--33da3a3c-5b70-424b-8fdd-0d3d91e0bba5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3521,7 +3880,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1110-002--general",
@@ -3549,7 +3908,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3564,7 +3923,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1119--general",
@@ -3592,7 +3951,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--0d38edd5-a95e-4e83-8a1b-762493fb1e10",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3607,7 +3966,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1134--general",
@@ -3635,7 +3994,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3650,7 +4009,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -3678,7 +4037,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c3c34438-a1e2-4a16-ac21-6b1de646e4c1",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3693,7 +4052,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1213-006--general",
@@ -3721,7 +4080,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3736,7 +4095,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547-001--general",
@@ -3764,7 +4123,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--911f6a14-2e23-4eb8-b594-11550167aabe",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3779,7 +4138,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1553-002--general",
@@ -3807,7 +4166,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3822,7 +4181,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555--general",
@@ -3850,7 +4209,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3865,7 +4224,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555-003--general",
@@ -3893,7 +4252,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--ec6a6f5c-e24a-40de-b570-911d82d1a14e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3908,7 +4267,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1560--general",
@@ -3936,7 +4295,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2d430100-cda8-4216-a2a2-eb5153602554",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3951,7 +4310,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1560-003--general",
@@ -3979,7 +4338,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3994,7 +4353,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-001--general",
@@ -4022,7 +4381,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--dddee679-7a46-474b-bf1b-ccdc64685e36",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4037,7 +4396,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-003--general",
@@ -4065,7 +4424,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4080,7 +4439,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1569-002--general",
@@ -4108,7 +4467,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--320ae3be-e331-486f-a034-d7be5c08c5ef",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4123,7 +4482,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1572--general",
@@ -4151,7 +4510,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--cee7b36e-23cc-45b8-a0e6-fd35534c6067",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4166,7 +4525,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1573-002--general",
@@ -4194,7 +4553,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4209,7 +4568,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -4237,7 +4596,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4252,7 +4611,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1685--general",
@@ -4280,7 +4639,7 @@
       "spec_version": "2.1",
       "id": "relationship--dcc212f2-b53d-4ad7-bea9-3857e8e2a425",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4288,14 +4647,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
       "description": "FIN6 uses Cobalt Strike.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--03401841-7fa9-4e83-ac93-2b5eeed3ad36",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4303,14 +4669,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--e14bcbf0-3f86-4d37-bd81-3b5faaed2e07",
       "description": "FIN6 uses FlawedAmmyy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9d24d057-0c35-4295-be09-9aead57e2511",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4318,14 +4691,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--85516d8f-f39d-4d49-ba44-849aa3171a30",
       "description": "FIN6 uses FrameworkPOS.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5cdb17f5-d2b9-4cde-8741-aacfec61330f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4333,14 +4713,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--94139652-7938-4b2e-8058-3d1b9a5f6a6b",
       "description": "FIN6 uses GrimAgent.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--313c0305-73af-4e98-8da7-86d3a90a8403",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4348,14 +4735,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--192e8380-c3b5-45e2-9db4-388ee7150bd0",
       "description": "FIN6 uses LockerGoga.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--79ffaad1-62d1-4e38-b6cf-013dc0ed6f4b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4363,14 +4757,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--bb704c42-ec49-4ade-a656-d933bb66047c",
       "description": "FIN6 uses Maze.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--122fc49f-8f9a-4466-9ebb-b139ad944a22",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4378,29 +4779,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--d41dac90-c10a-4138-8258-5ff89554b9b7",
       "description": "FIN6 uses More_eggs.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d5a49de5-1a20-499c-9fdc-a4f32bbd442a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
-      "target_ref": "malware--c4def88e-edb5-4c52-afe6-fc4667c81848",
-      "description": "FIN6 uses Ransomware.",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--92245775-01cf-452f-81ff-5a0bc15bd367",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4408,59 +4801,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "malware--e9b35d71-719b-41fc-a2e4-83dac99e0934",
       "description": "FIN6 uses Ryuk.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ee92901a-4187-41dd-8840-66d123003f5d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
-      "target_ref": "malware--ab219a84-7fd0-4cba-96e3-0f928f5eace0",
-      "description": "FIN6 uses Vawtrak/Neverquest.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1ad288ad-80c0-44a3-9883-bc1bdb2c11ab",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
-      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-      "description": "FIN6 uses Windows Credential Editor.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1c540571-95af-430f-b0c1-3f7bcd140e0c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
-      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "description": "FIN6 uses Mimikatz.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e09b7210-c46c-4172-aa35-0d895420f085",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4468,14 +4823,43 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "tool--58d2326a-96f0-4550-ba42-9681e849143c",
       "description": "FIN6 uses AdFind.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1c540571-95af-430f-b0c1-3f7bcd140e0c",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
+      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "description": "FIN6 uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--57003588-50fe-44d0-aa84-2e35d644514b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4483,14 +4867,43 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "description": "FIN6 uses PsExec.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ad288ad-80c0-44a3-9883-bc1bdb2c11ab",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
+      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "description": "FIN6 uses Windows Credential Editor.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c48d9e6a-1fd1-49d1-bd94-354eef8c31d6",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4498,14 +4911,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "identity--2c7aaaf2-1167-46dd-8a7c-7c2aff6a4a35",
       "description": "FIN6 targets 小売・ホスピタリティ (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5d784bc6-a31d-4bc6-ac56-fe3c08a8ddb9",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4513,14 +4933,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "identity--78f40666-499e-4185-a2e6-006091a8fac3",
       "description": "FIN6 targets 医療・ヘルスケア (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c0d69d6f-01be-4a40-b99d-cb216a289089",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-07-27T11:04:31Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4528,14 +4955,45 @@
       "source_ref": "campaign--75941cc9-7896-41d7-b2a2-2ca1d8ba7faf",
       "target_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "description": "FIN6ハッカーが求職者を装いリクルーターの端末にバックドアを仕掛ける is attributed or linked to FIN6.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fin6-hackers-pose-as-job-seekers-to-backdoor-recruiters-devices/",
+          "external_id": "source--daily-e69a4b59d2f63ad15f24"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--20da7c8f-05ec-4ad4-a042-4027621e54d9",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4543,14 +5001,45 @@
       "source_ref": "campaign--75941cc9-7896-41d7-b2a2-2ca1d8ba7faf",
       "target_ref": "identity--adaebf53-7281-48ea-b5ac-aa478ac3dbd2",
       "description": "FIN6ハッカーが求職者を装いリクルーターの端末にバックドアを仕掛ける affected victim--activity-rule--8ab8548b8c32467766dc.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fin6-hackers-pose-as-job-seekers-to-backdoor-recruiters-devices/",
+          "external_id": "source--daily-e69a4b59d2f63ad15f24"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-06-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8e0db2e9-63b7-455a-aa70-2b35160647ca",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4558,14 +5047,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used [Windows Credential Editor](https://attack.mitre.org/software/S0005) for credential dumping.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)\t\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6896e32c-32f4-4042-b96a-253442553256",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4573,14 +5069,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--e9e43ae1-bc7e-4829-8494-875243d95e59",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Metasploit’s [PsExec](https://attack.mitre.org/software/S0029) NTDSGRAB module to obtain a copy of the victim's Active Directory database.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dfa53f4f-f14d-4d0f-a263-6a3f85b8ad58",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4588,14 +5091,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has collected and exfiltrated payment card data from compromised systems.(Citation: Trend Micro FIN6 October 2019)(Citation: RiskIQ British Airways September 2018)(Citation: RiskIQ Newegg September 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8d6429ad-c263-4a32-847a-177781063d64",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4603,14 +5113,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) used publicly available tools (including Microsoft's built-in SQL querying tool, osql.exe) to map the internal network and conduct reconnaissance against Active Directory, Structured Query Language (SQL) servers, and NetBIOS.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ba04e66b-6920-40ab-b34c-965e23fcba58",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4618,14 +5135,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) used RDP to move laterally in victim networks.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b786242-2b80-4e5b-be81-756cd84f7e8e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4633,14 +5157,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used encoded PowerShell commands.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e7f2062e-d243-48b9-95de-c2ae0140fb1a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4648,14 +5179,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--17f0af66-6e30-4c8e-aa0a-bc6ed008102c",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has renamed the \"psexec\" service name to \"mstdc\" to masquerade as a legitimate Windows service.(Citation: FireEye FIN6 Apr 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f612fdd3-58e4-4595-8310-07195826b1a1",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4663,14 +5201,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) used publicly available tools (including Microsoft's built-in SQL querying tool, osql.exe) to map the internal network and conduct reconnaissance against Active Directory, Structured Query Language (SQL) servers, and NetBIOS.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aec63e3d-c693-4d9e-82c5-6a830840bec3",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4678,14 +5223,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used WMI to automate the remote execution of PowerShell scripts.(Citation: Security Intelligence More Eggs Aug 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f1028ee3-2aca-40e9-a3ef-3e96962154cd",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4693,14 +5245,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--bafb7f8c-427e-4afa-aa71-4ba68ac7f462",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has sent stolen payment card data to remote servers via HTTP POSTs.(Citation: Trend Micro FIN6 October 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aeb97d0b-ea98-4eb3-8d2d-5ea2a7e3a9a2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4708,14 +5267,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used scheduled tasks to establish persistence for various malware it uses, including downloaders known as HARDTACK and SHIPBREAD and [FrameworkPOS](https://attack.mitre.org/software/S0503).(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9efbfb36-4b38-4566-a3a0-315ab168c2e4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4723,14 +5289,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used scripting to iterate through a list of compromised PoS systems, copy data to a log file, and remove the original data files.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--69d600eb-5966-4428-b0fb-422200144854",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4738,14 +5311,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": " [FIN6](https://attack.mitre.org/groups/G0037) has used PowerShell to gain access to merchant's networks, and a Metasploit PowerShell module to download and execute shellcode and to set up a local listener.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9b0fafcc-8141-416a-8f11-3b6ee4a08de5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4753,14 +5333,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used <code>kill.bat</code> script to disable security tools.(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ce1173a5-970b-4bd3-9452-1a9dbf1919c5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4768,14 +5355,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used malicious JavaScript to steal payment card data from e-commerce sites.(Citation: Trend Micro FIN6 October 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6114d9f9-9bee-44c2-b01e-253cb2bd119b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4783,14 +5377,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--b602140b-a690-43aa-a1b1-dcbcdebca44a",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used tools to exploit Windows vulnerabilities in order to escalate privileges. The tools targeted CVE-2013-3660, CVE-2011-2005, and CVE-2010-4398, all of which could allow local users to access kernel-level privileges.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d7f71166-8917-4489-87e4-7d3470fa41a2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4798,14 +5399,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has removed files from victim machines.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5a991c41-05e4-4cae-916d-82cbb1ec0b88",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4813,14 +5421,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--15ab621f-b59f-4396-bc59-a340f8ae6136",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) actors have compressed data from remote systems and moved it to another staging system before exfiltration.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--314ad474-2eed-40b8-abf5-ad430ad635cf",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4828,14 +5443,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "To move laterally on a victim network, [FIN6](https://attack.mitre.org/groups/G0037) has used credentials stolen from various systems on which it gathered usernames and password hashes.(Citation: FireEye FIN6 April 2016)(Citation: FireEye FIN6 Apr 2019)(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b14bddce-279f-42ec-a2ce-677993df2661",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4843,14 +5465,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Metasploit’s [PsExec](https://attack.mitre.org/software/S0029) NTDSGRAB module to obtain a copy of the victim's Active Directory database.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1fd592fa-cf45-44d0-a5a9-a5e350804e92",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4858,14 +5487,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--2522122c-0d04-44df-9f59-257223bbf229",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Metasploit Bind and Reverse TCP stagers.(Citation: Trend Micro FIN6 October 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c6a70133-6669-4545-8147-16041648ea21",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4873,14 +5509,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--cef95057-8b46-40d4-b1ba-ceca3f27b32d",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Pastebin and Google Storage to host content for their operations.(Citation: FireEye FIN6 Apr 2019)\t\n",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--835e29c3-3168-488a-ad6f-48c5e23cefdc",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4888,14 +5531,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--33da3a3c-5b70-424b-8fdd-0d3d91e0bba5",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has extracted password hashes from ntds.dit to crack offline.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--533309fd-4059-443b-b08e-bb98b7c2cfff",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4903,14 +5553,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used a script to iterate through a list of compromised PoS systems, copy and remove data to a log file, and to bind to events from the submit payment button.(Citation: FireEye FIN6 April 2016)(Citation: Trend Micro FIN6 October 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--49fa2e15-6818-4c27-b258-0dea4ce7bdf5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4918,14 +5575,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--0d38edd5-a95e-4e83-8a1b-762493fb1e10",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used has used Metasploit’s named-pipe impersonation technique to escalate privileges.(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bbc38516-0e60-4636-9a3f-f5d8a25a8fa6",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4933,14 +5597,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used malicious documents to lure victims into allowing execution of PowerShell scripts.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--85f1bcb4-7648-4124-a0ab-98d9ab79f5c2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4948,14 +5619,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--c3c34438-a1e2-4a16-ac21-6b1de646e4c1",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has collected schemas and user accounts from systems running SQL Server.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8eeedafb-afad-45eb-b9ef-46982818d0c8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4963,14 +5641,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--b0426f93-27fe-4768-9a81-99d85b3a59a7",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Registry Run keys to establish persistence for its downloader tools known as HARDTACK and SHIPBREAD.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0c489042-e3b8-42f8-a61d-1e77342d14bc",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4978,14 +5663,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--911f6a14-2e23-4eb8-b594-11550167aabe",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used Comodo code-signing certificates.(Citation: Security Intelligence More Eggs Aug 2019)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d0bd1c6c-f293-437f-8ff5-da9ab56f7430",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4993,14 +5685,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used the Stealer One credential stealer to target e-mail and file transfer utilities including FTP.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--83b0c39c-0cce-4d90-bcca-7a4c55b350a6",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5008,14 +5707,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used the Stealer One credential stealer to target web browsers.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--938fcee5-9d7f-4b19-ab2c-a53b602008df",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5023,14 +5729,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--ec6a6f5c-e24a-40de-b570-911d82d1a14e",
       "description": "Following data collection, [FIN6](https://attack.mitre.org/groups/G0037) has compressed log files into a ZIP archive prior to staging and exfiltration.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5d2d6ace-469b-42e1-8bc6-f09a0b4f94a9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5038,14 +5751,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--2d430100-cda8-4216-a2a2-eb5153602554",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has encoded data gathered from the victim with a simple substitution cipher and single-byte XOR using the 0xAA key, and Base64 with character permutation.(Citation: FireEye FIN6 April 2016)(Citation: Trend Micro FIN6 October 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5d3cff52-7d6f-466e-afbc-73bfa80c2a07",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5053,14 +5773,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has targeted victims with e-mails containing malicious attachments.(Citation: Visa FIN6 Feb 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--32472b35-0abe-446e-932f-d0ee0b48b1b6",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5068,14 +5795,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--dddee679-7a46-474b-bf1b-ccdc64685e36",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has used fake job advertisements sent via LinkedIn to spearphish targets.(Citation: Security Intelligence More Eggs Aug 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d9975de-b43e-49d9-994d-f01345ae7b57",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5083,14 +5817,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has created Windows services to execute encoded PowerShell commands.(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6b8d7c32-ef49-426d-8cea-316817ec78b5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5098,14 +5839,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--320ae3be-e331-486f-a034-d7be5c08c5ef",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) used the Plink command-line utility to create SSH tunnels to C2 servers.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--771b126d-8962-4ed7-9fa0-66d4d819bf55",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5113,14 +5861,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--cee7b36e-23cc-45b8-a0e6-fd35534c6067",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) used the Plink command-line utility to create SSH tunnels to C2 servers.(Citation: FireEye FIN6 April 2016)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--551d4bd9-17e2-44b4-9d7b-42e90b27811f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5128,14 +5883,21 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has obtained and used tools such as [Mimikatz](https://attack.mitre.org/software/S0002), [Cobalt Strike](https://attack.mitre.org/software/S0154), and [AdFind](https://attack.mitre.org/software/S0552).(Citation: Security Intelligence More Eggs Aug 2019)(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a410157-1de0-4dab-9a5c-d050f2c24bc8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5143,7 +5905,14 @@
       "source_ref": "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
       "target_ref": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "description": "[FIN6](https://attack.mitre.org/groups/G0037) has deployed a utility script named <code>kill.bat</code> to disable anti-virus.(Citation: FireEye FIN6 Apr 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -5209,7 +5978,7 @@
       "spec_version": "2.1",
       "id": "note--765d018d-0445-4f5b-b46f-16ee4aee5e24",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5219,14 +5988,14 @@
         "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 48
+      "x_artifact_observation_count": 2
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--bc372139-42d7-4410-9366-6f5578e01442",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5235,7 +6004,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--7c07aa30-403b-48c5-83f4-8c217288ac41",
         "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
@@ -5245,13 +6014,11 @@
         "malware--192e8380-c3b5-45e2-9db4-388ee7150bd0",
         "malware--bb704c42-ec49-4ade-a656-d933bb66047c",
         "malware--d41dac90-c10a-4138-8258-5ff89554b9b7",
-        "malware--c4def88e-edb5-4c52-afe6-fc4667c81848",
         "malware--e9b35d71-719b-41fc-a2e4-83dac99e0934",
-        "malware--ab219a84-7fd0-4cba-96e3-0f928f5eace0",
-        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-        "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
         "tool--58d2326a-96f0-4550-ba42-9681e849143c",
+        "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
         "campaign--75941cc9-7896-41d7-b2a2-2ca1d8ba7faf",
         "identity--2c7aaaf2-1167-46dd-8a7c-7c2aff6a4a35",
         "identity--78f40666-499e-4185-a2e6-006091a8fac3",
@@ -5298,7 +6065,7 @@
         "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
         "indicator--7c5837dc-bf83-438c-85a9-cfefc91f6860"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

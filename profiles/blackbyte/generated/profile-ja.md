@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--blackbyte`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:18:00Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,7 @@ BlackByteの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Hecamede | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | MITRE ATT&CK lists Hecamede as an Associated Group. This is retained as overlapping rather than exact identity. |
+| Hecamede | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | MITRE ATT&CK lists Hecamede as an Associated Group. This is retained as overlapping rather than exact identity. |
 
 ## 帰属
 
@@ -41,29 +41,31 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [BlackByte](https://attack.mitre.org/groups/G1043) is a ransomware threat actor operating since at least 2021. [BlackByte](https://attack.mitre.org/groups/G1043) is associated with several versions of ransomware also labeled [BlackByte Ransomware](https://attack.mitre.org/software/S1180). [BlackByte](https://attack.mitre.org/groups/G1043) ransomware operations initially used a common encryption key allowing for the development of a universal decryptor, but subsequent versions such as [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) use more robust encryption mechanisms. [BlackByte](https://attack.mitre.org/groups/G1043) is notable for operations targeting critical infrastructure entities among other targets across North America.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |
-| Capability | BlackByte 2.0 Ransomware, BlackByte Ransomware, Cobalt Strike, Exbyte, Arp, Mimikatz, AdFind, PsExec |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Healthcare, manifacturing, professional, scientific, technical services, wholesale, education |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | BlackByte - G1043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1043<br>https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/<br>https://www.ic3.gov/CSA/2022/220211.pdf |
 | misp-mitre-intrusion-set | BlackByte - G1043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1043<br>https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/<br>https://www.ic3.gov/CSA/2022/220211.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | BlackByte | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -82,19 +84,19 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--blackbyte-2-0-ransomware | BlackByte 2.0 Ransomware | [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) is a replacement for [BlackByte Ransomware](https://attack.mitre.org/software/S1180). Unlike [BlackByte Ransomware](https://attack.mitre.org/software/S1180), [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) does not have a common key for victim decryption. [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) remains uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations.(Citation: Microsoft BlackByte 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--blackbyte-ransomware | BlackByte Ransomware | [BlackByte Ransomware](https://attack.mitre.org/software/S1180) is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. [BlackByte Ransomware](https://attack.mitre.org/software/S1180) used a common key for infections, allowing for the creation of a universal decryptor.(Citation: Trustwave BlackByte 2021)(Citation: FBI BlackByte 2022) [BlackByte Ransomware](https://attack.mitre.org/software/S1180) was replaced in [BlackByte](https://attack.mitre.org/groups/G1043) operations by [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) by 2023.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--exbyte | Exbyte | [Exbyte](https://attack.mitre.org/software/S1179) is an exfiltration tool written in Go that is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. Observed since 2022, [Exbyte](https://attack.mitre.org/software/S1179) transfers collected files to online file sharing and hosting services.(Citation: Symantec BlackByte 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--blackbyte-2-0-ransomware | BlackByte 2.0 Ransomware | [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) is a replacement for [BlackByte Ransomware](https://attack.mitre.org/software/S1180). Unlike [BlackByte Ransomware](https://attack.mitre.org/software/S1180), [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) does not have a common key for victim decryption. [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) remains uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations.(Citation: Microsoft BlackByte 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--blackbyte-ransomware | BlackByte Ransomware | [BlackByte Ransomware](https://attack.mitre.org/software/S1180) is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. [BlackByte Ransomware](https://attack.mitre.org/software/S1180) used a common key for infections, allowing for the creation of a universal decryptor.(Citation: Trustwave BlackByte 2021)(Citation: FBI BlackByte 2022) [BlackByte Ransomware](https://attack.mitre.org/software/S1180) was replaced in [BlackByte](https://attack.mitre.org/groups/G1043) operations by [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) by 2023.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--exbyte | Exbyte | [Exbyte](https://attack.mitre.org/software/S1179) is an exfiltration tool written in Go that is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. Observed since 2022, [Exbyte](https://attack.mitre.org/software/S1179) transfers collected files to online file sharing and hosting services.(Citation: Symantec BlackByte 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--arp | Arp | [Arp](https://attack.mitre.org/software/S0099) displays and modifies information about a system's Address Resolution Protocol (ARP) cache. (Citation: TechNet Arp) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--adfind | AdFind | [AdFind](https://attack.mitre.org/software/S0552) is a free command-line query tool that can be used for gathering information from Active Directory.(Citation: Red Canary Hospital Thwarted Ryuk October 2020)(Citation: FireEye FIN6 Apr 2019)(Citation: FireEye Ryuk and Trickbot January 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--psexec | PsExec | [PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--adfind | AdFind | [AdFind](https://attack.mitre.org/software/S0552) is a free command-line query tool that can be used for gathering information from Active Directory.(Citation: Red Canary Hospital Thwarted Ryuk October 2020)(Citation: FireEye FIN6 Apr 2019)(Citation: FireEye Ryuk and Trickbot January 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--arp | Arp | [Arp](https://attack.mitre.org/software/S0099) displays and modifies information about a system's Address Resolution Protocol (ARP) cache. (Citation: TechNet Arp) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--psexec | PsExec | [PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -128,12 +130,9 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -143,62 +142,62 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003 | OS Credential Dumping | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) and [Mimikatz](https://attack.mitre.org/software/S0002) to dump credentials from victim systems.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1012 | Query Registry | [BlackByte](https://attack.mitre.org/groups/G1043) queried registry values to determine system language settings.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016 | System Network Configuration Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Arp](https://attack.mitre.org/software/S0099) to pull system network information and identify connected devices.(Citation: FBI BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Arp](https://attack.mitre.org/software/S0099) to identify remotely-connected devices.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | [BlackByte](https://attack.mitre.org/groups/G1043) has used RDP to access other hosts within victim networks.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [BlackByte](https://attack.mitre.org/groups/G1043) used SMB file shares to distribute payloads throughout victim networks, including BlackByte ransomware variants during wormable operations.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.008 | Masquerade File Type | [BlackByte](https://attack.mitre.org/groups/G1043) masqueraded configuration files containing encryption keys as PNG files.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1041 | Exfiltration Over C2 Channel | [BlackByte](https://attack.mitre.org/groups/G1043) transmitted collected victim host information via HTTP POST to command and control infrastructure.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as NetScan to enumerate network services in victim environments.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | [BlackByte](https://attack.mitre.org/groups/G1043) used WMI to delete Volume Shadow Copies on victim machines.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [BlackByte](https://attack.mitre.org/groups/G1043) created scheduled tasks for payload execution.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | [BlackByte](https://attack.mitre.org/groups/G1043) has injected [Cobalt Strike](https://attack.mitre.org/software/S0154) into `wuauclt.exe` during intrusions.(Citation: Picus BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has injected ransomware into `svchost.exe` before encryption.(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | [BlackByte](https://attack.mitre.org/groups/G1043) used process hollowing for defense evasion purposes.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [BlackByte](https://attack.mitre.org/groups/G1043) used encoded PowerShell commands during operations.(Citation: FBI BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has used remote PowerShell commands in victim networks.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [BlackByte](https://attack.mitre.org/groups/G1043) executed ransomware using the Windows command shell.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [BlackByte](https://attack.mitre.org/groups/G1043) has exploited CVE-2024-37085 in VMWare ESXi software for authentication bypass and subsequent privilege escalation.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | [BlackByte](https://attack.mitre.org/groups/G1043) deleted ransomware executables post-encryption.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [BlackByte](https://attack.mitre.org/groups/G1043) collected victim device information then transmitted this via HTTP POST to command and control infrastructure.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [BlackByte](https://attack.mitre.org/groups/G1043) has gained access to victim environments through legitimate VPN credentials.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [BlackByte](https://attack.mitre.org/groups/G1043) captured credentials for or impersonated domain administration users.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used various system commands and tools to pull system information during operations.(Citation: FBI BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as [AdFind](https://attack.mitre.org/software/S0552) to identify and enumerate domain accounts.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [BlackByte](https://attack.mitre.org/groups/G1043) has transferred tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) to victim environments from file sharing and hosting websites.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | [BlackByte](https://attack.mitre.org/groups/G1043) performed Registry modifications to escalate privileges and disable security tools.(Citation: Picus BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1134.003 | Make and Impersonate Token | [BlackByte](https://attack.mitre.org/groups/G1043) constructed a valid authentication token following Microsoft Exchange exploitation to allow for follow-on privileged command execution.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1135 | Network Share Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated network shares on victim devices.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136.002 | Domain Account | [BlackByte](https://attack.mitre.org/groups/G1043) created privileged domain accounts during intrusions.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | [BlackByte](https://attack.mitre.org/groups/G1043) has encoded commands in base64-encoded sections concatenated together in PowerShell.(Citation: FBI BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) uses PowerShell commands to disable Windows Defender.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [BlackByte](https://attack.mitre.org/groups/G1043) exploited vulnerabilities such as ProxyLogon and ProxyShell for initial access to victim environments.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1219 | Remote Access Tools | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as AnyDesk in victim environments.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1480 | Execution Guardrails | [BlackByte](https://attack.mitre.org/groups/G1043) stopped execution if identified language settings on victim machines was Russian or one of several language associated with former Soviet republics.(Citation: Picus BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has used ransomware variants requiring a key passed on the command line for the malware to execute.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1482 | Domain Trust Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated Active Directory information and trust relationships during operations.(Citation: FBI BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | [BlackByte](https://attack.mitre.org/groups/G1043) has encrypted victim files for ransom. Early versions of BlackByte ransomware used a common key for encryption, but later versions use unique keys per victim.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1490 | Inhibit System Recovery | [BlackByte](https://attack.mitre.org/groups/G1043) resized and deleted volume shadow copy files to prevent system recovery after encryption.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1491.001 | Internal Defacement | [BlackByte](https://attack.mitre.org/groups/G1043) left ransom notes in all directories where encryption takes place.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | [BlackByte](https://attack.mitre.org/groups/G1043) has used ASPX web shells following exploitation of vulnerabilities in services such as Microsoft Exchange.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated installed security products during operations.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1543.003 | Windows Service | [BlackByte](https://attack.mitre.org/groups/G1043) modified multiple services on victim machines to enable encryption operations.(Citation: Symantec BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has installed tools such as AnyDesk as a service on victim machines.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [BlackByte](https://attack.mitre.org/groups/G1043) has used Registry Run keys for persistence.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560 | Archive Collected Data | [BlackByte](https://attack.mitre.org/groups/G1043) compressed data collected from victim environments prior to exfiltration.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1567 | Exfiltration Over Web Service | [BlackByte](https://attack.mitre.org/groups/G1043) has used services such as `anonymfiles.com` and `file.io` to exfiltrate victim data.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | [BlackByte](https://attack.mitre.org/groups/G1043) created malicious services for ransomware execution.(Citation: Symantec BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1570 | Lateral Tool Transfer | [BlackByte](https://attack.mitre.org/groups/G1043) transfered tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) and the AnyDesk remote access tool during operations using SMB shares.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.003 | Virtual Private Server | [BlackByte](https://attack.mitre.org/groups/G1043) staged encryption keys on virtual private servers operated by the adversary.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | [BlackByte](https://attack.mitre.org/groups/G1043) has staged tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) at public file sharing and hosting sites.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1614.001 | System Language Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) identified system language settings to determine follow-on execution.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | [BlackByte](https://attack.mitre.org/groups/G1043) disabled security tools such as Windows Defender and the Raccine anti-ransomware tool during operations.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1686 | Disable or Modify System Firewall | [BlackByte](https://attack.mitre.org/groups/G1043) modified firewall rules on victim machines to enable remote system discovery.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003 | OS Credential Dumping | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) and [Mimikatz](https://attack.mitre.org/software/S0002) to dump credentials from victim systems.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1012 | Query Registry | [BlackByte](https://attack.mitre.org/groups/G1043) queried registry values to determine system language settings.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1016 | System Network Configuration Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Arp](https://attack.mitre.org/software/S0099) to pull system network information and identify connected devices.(Citation: FBI BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1018 | Remote System Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used tools such as [Arp](https://attack.mitre.org/software/S0099) to identify remotely-connected devices.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [BlackByte](https://attack.mitre.org/groups/G1043) has used RDP to access other hosts within victim networks.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [BlackByte](https://attack.mitre.org/groups/G1043) used SMB file shares to distribute payloads throughout victim networks, including BlackByte ransomware variants during wormable operations.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.008 | Masquerade File Type | [BlackByte](https://attack.mitre.org/groups/G1043) masqueraded configuration files containing encryption keys as PNG files.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Exfiltration | T1041 | Exfiltration Over C2 Channel | [BlackByte](https://attack.mitre.org/groups/G1043) transmitted collected victim host information via HTTP POST to command and control infrastructure.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1046 | Network Service Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as NetScan to enumerate network services in victim environments.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1047 | Windows Management Instrumentation | [BlackByte](https://attack.mitre.org/groups/G1043) used WMI to delete Volume Shadow Copies on victim machines.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [BlackByte](https://attack.mitre.org/groups/G1043) created scheduled tasks for payload execution.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [BlackByte](https://attack.mitre.org/groups/G1043) has injected [Cobalt Strike](https://attack.mitre.org/software/S0154) into `wuauclt.exe` during intrusions.(Citation: Picus BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has injected ransomware into `svchost.exe` before encryption.(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | [BlackByte](https://attack.mitre.org/groups/G1043) used process hollowing for defense evasion purposes.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [BlackByte](https://attack.mitre.org/groups/G1043) used encoded PowerShell commands during operations.(Citation: FBI BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has used remote PowerShell commands in victim networks.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [BlackByte](https://attack.mitre.org/groups/G1043) executed ransomware using the Windows command shell.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [BlackByte](https://attack.mitre.org/groups/G1043) has exploited CVE-2024-37085 in VMWare ESXi software for authentication bypass and subsequent privilege escalation.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.004 | File Deletion | [BlackByte](https://attack.mitre.org/groups/G1043) deleted ransomware executables post-encryption.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [BlackByte](https://attack.mitre.org/groups/G1043) collected victim device information then transmitted this via HTTP POST to command and control infrastructure.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [BlackByte](https://attack.mitre.org/groups/G1043) has gained access to victim environments through legitimate VPN credentials.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [BlackByte](https://attack.mitre.org/groups/G1043) captured credentials for or impersonated domain administration users.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) used various system commands and tools to pull system information during operations.(Citation: FBI BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1087.002 | Domain Account | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as [AdFind](https://attack.mitre.org/software/S0552) to identify and enumerate domain accounts.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [BlackByte](https://attack.mitre.org/groups/G1043) has transferred tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) to victim environments from file sharing and hosting websites.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [BlackByte](https://attack.mitre.org/groups/G1043) performed Registry modifications to escalate privileges and disable security tools.(Citation: Picus BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1134.003 | Make and Impersonate Token | [BlackByte](https://attack.mitre.org/groups/G1043) constructed a valid authentication token following Microsoft Exchange exploitation to allow for follow-on privileged command execution.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1135 | Network Share Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated network shares on victim devices.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1136.002 | Domain Account | [BlackByte](https://attack.mitre.org/groups/G1043) created privileged domain accounts during intrusions.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [BlackByte](https://attack.mitre.org/groups/G1043) has encoded commands in base64-encoded sections concatenated together in PowerShell.(Citation: FBI BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) uses PowerShell commands to disable Windows Defender.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [BlackByte](https://attack.mitre.org/groups/G1043) exploited vulnerabilities such as ProxyLogon and ProxyShell for initial access to victim environments.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1219 | Remote Access Tools | [BlackByte](https://attack.mitre.org/groups/G1043) has used tools such as AnyDesk in victim environments.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1480 | Execution Guardrails | [BlackByte](https://attack.mitre.org/groups/G1043) stopped execution if identified language settings on victim machines was Russian or one of several language associated with former Soviet republics.(Citation: Picus BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has used ransomware variants requiring a key passed on the command line for the malware to execute.(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1482 | Domain Trust Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated Active Directory information and trust relationships during operations.(Citation: FBI BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Impact | T1486 | Data Encrypted for Impact | [BlackByte](https://attack.mitre.org/groups/G1043) has encrypted victim files for ransom. Early versions of BlackByte ransomware used a common key for encryption, but later versions use unique keys per victim.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Impact | T1490 | Inhibit System Recovery | [BlackByte](https://attack.mitre.org/groups/G1043) resized and deleted volume shadow copy files to prevent system recovery after encryption.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Impact | T1491.001 | Internal Defacement | [BlackByte](https://attack.mitre.org/groups/G1043) left ransom notes in all directories where encryption takes place.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1505.003 | Web Shell | [BlackByte](https://attack.mitre.org/groups/G1043) has used ASPX web shells following exploitation of vulnerabilities in services such as Microsoft Exchange.(Citation: Picus BlackByte 2022)(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1518.001 | Security Software Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) enumerated installed security products during operations.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1543.003 | Windows Service | [BlackByte](https://attack.mitre.org/groups/G1043) modified multiple services on victim machines to enable encryption operations.(Citation: Symantec BlackByte 2022) [BlackByte](https://attack.mitre.org/groups/G1043) has installed tools such as AnyDesk as a service on victim machines.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [BlackByte](https://attack.mitre.org/groups/G1043) has used Registry Run keys for persistence.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1560 | Archive Collected Data | [BlackByte](https://attack.mitre.org/groups/G1043) compressed data collected from victim environments prior to exfiltration.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Exfiltration | T1567 | Exfiltration Over Web Service | [BlackByte](https://attack.mitre.org/groups/G1043) has used services such as `anonymfiles.com` and `file.io` to exfiltrate victim data.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1569.002 | Service Execution | [BlackByte](https://attack.mitre.org/groups/G1043) created malicious services for ransomware execution.(Citation: Symantec BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1570 | Lateral Tool Transfer | [BlackByte](https://attack.mitre.org/groups/G1043) transfered tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) and the AnyDesk remote access tool during operations using SMB shares.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.003 | Virtual Private Server | [BlackByte](https://attack.mitre.org/groups/G1043) staged encryption keys on virtual private servers operated by the adversary.(Citation: FBI BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.001 | Upload Malware | [BlackByte](https://attack.mitre.org/groups/G1043) has staged tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154) at public file sharing and hosting sites.(Citation: Microsoft BlackByte 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1614.001 | System Language Discovery | [BlackByte](https://attack.mitre.org/groups/G1043) identified system language settings to determine follow-on execution.(Citation: Picus BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [BlackByte](https://attack.mitre.org/groups/G1043) disabled security tools such as Windows Defender and the Raccine anti-ransomware tool during operations.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Cisco BlackByte 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1686 | Disable or Modify System Firewall | [BlackByte](https://attack.mitre.org/groups/G1043) modified firewall rules on victim machines to enable remote system discovery.(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
-- IOC値: 6件
-- IOC観測: 6件
+- IOC値: 8件
+- IOC観測: 8件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 6件
-- 非IOC artifact観測: 494件（`artifacts.csv`）
+- 要レビュー候補: 7件
+- 非IOC artifact観測: 32件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -368,9 +367,12 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 | source--blackbyte--fb93ff55b8afe52f | 2021 NCC Group Annual Research Report |  | 2021 | summary/2022/2021-NCC-Group-Annual-Research-Report.pdf | report | TLP:CLEAR | 中 |
 | source--blackbyte--ffa13d84eee156bb | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
 | source--daily-41c3c863b2f45c7b4624 | BlackByteが新たな脆弱性を活用し攻撃を継続 | blog.talosintelligence.com | 2024-08-29 | https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -1,0 +1,1265 @@
+{
+  "type": "bundle",
+  "id": "bundle--efa04ba5-41e8-4597-9cf7-6f96730a4fb7",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "created": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cf787599b4873ec991bd",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--cf787599b4873ec991bd75ae から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Group-IB原文(公開2026-08-26、アクセス2026-08-27)を確認して承認。原文は「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」と明記し、記事全体で当該アクターを新規インフラ・ツールセットの実行主体として扱っている。Nimbus Manticoreはunc1549プロファイルのexact aliasであり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はKaspersky Securelist報告(2026-07-28)の既知IOCからのピボットで、原文は「The first sample discovery comes from investigating a known C2 IP (172[.]86[.]98[.]113) from the abovementioned Securelist report」「The third discovery comes as a result of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続する専用リバースSSHトンネルツールと、TWOSTROKEのC++亜種、およびlocat[.]sbs配下の国名風サブドメイン群からなる新規インフラである。確度は、単一ベンダーによるインフラピボットとコード類似に基づく帰属で被害組織の直接観測がないためmediumとする。活動期間は原文が観測日もキャンペーン期間も示さないためunknownとし、記載のコンパイル時刻(2018-09-26、2021-08-19)はOSINT_RULESに従い観測日へ流用しない。公開日2026-08-26とtech-memo日次ファイル日付2026-08-27はreported_atとして分離する。国名風サブドメインは原文が「The actual use of this infrastructure is still not clear at the time of this report since no related samples were identified so far」として用途未確定としているため、標的国・標的分野の根拠には用いない。IOC CSVのactor列は複合表記「Tortoiseshell (Mirage Kitten / UNC1549 / Nimbus Manticore)」であり、parse-daily/config.jsonのactor_value_aliasesでUNC1549へ明示対応付けした上で取り込む。複合表記のためis_safe_structured_matchでは自動承認されず、本判断で個別承認する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1549",
+          "name": "UNC1549",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": [
+            "organization--irgc-cec"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-126c8af714f49766e231"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--region--middle-east",
+            "target--sector--government",
+            "target--targeting-audit--region--13f9cf21464b4deacca3"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a1b1f24e4aa40c393238"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "not-stated",
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "last_observed": {
+            "basis": "not-stated",
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-08-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--region--middle-east",
+              "target--targeting-audit--region--13f9cf21464b4deacca3"
+            ]
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
+      "created": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "identity_class": "organization",
+      "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--a1b1f24e4aa40c393238",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--region--middle-east",
+        "target--sector--government"
+      ],
+      "x_malware_refs": [
+        "malware--daily-126c8af714f49766e231"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "サーバー",
+        "エンドポイント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "created": "2026-07-29T14:09:02Z",
+      "modified": "2026-08-27T03:19:36Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Government",
+      "identity_class": "class",
+      "description": "JordanおよびTanzaniaに関する報告で対象組織種別として挙げられた。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--sector--government",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "created": "2026-07-25T15:23:07Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1549",
+      "aliases": [
+        "Mirage Kitten",
+        "Smoke Sandstorm",
+        "Nimbus Manticore",
+        "Tortoiseshell"
+      ],
+      "description": "UNC1549は、航空宇宙、航空、防衛、通信などを対象に情報収集を行う脅威クラスタである。KasperskyはMirage Kitten、Smoke Sandstorm、Nimbus Manticoreの別名で追跡し、2026年にNightLedger、ArcBridge、BridgeHeadからなる新しいツールセットを確認した。",
+      "goals": [
+        "航空宇宙、航空、防衛、通信分野を中心とする情報収集。"
+      ],
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd",
+          "url": "https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416"
+        },
+        {
+          "source_name": "source--unc1549--5ad26a22b1f5c730",
+          "description": "Local source: OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf",
+          "external_id": "source--unc1549--5ad26a22b1f5c730"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ],
+      "x_profile_id": "actor--unc1549",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Mirage Kitten",
+          "vendor": "Kaspersky",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--kaspersky-mirage-kitten-2026"
+          ],
+          "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+        },
+        {
+          "name": "Smoke Sandstorm",
+          "vendor": "Kaspersky",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--kaspersky-mirage-kitten-2026"
+          ],
+          "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+        },
+        {
+          "name": "Nimbus Manticore",
+          "vendor": "Kaspersky",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--kaspersky-mirage-kitten-2026"
+          ],
+          "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+        },
+        {
+          "name": "Tortoiseshell",
+          "vendor": "Group-IB",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-2f8e0aeaa133b750f976"
+          ],
+          "analyst_notes": "Group-IBは「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」としてUNC1549と同一視している。ただしprofiles/tortoiseshellはMITRE ATT&CK G1012 CURIUM(別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten、典拠はSymantec Tortoiseshell 2019)であり、Group-IBはこれらの別名に言及していない。ベンダー間で追跡範囲が一致しない可能性があるためscopeはexactではなくoverlappingとし、両プロファイルの統合は行わない。境界評価はclaim-audit.jsonのclaim--groupib-tortoiseshell-unc1549-boundaryへ記録した。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Iran"
+        ],
+        "sponsor_type": "state-aligned",
+        "organizations": [
+          {
+            "id": "organization--irgc-cec",
+            "name": "Islamic Revolutionary Guard Corps Cyber Electronic Command",
+            "relationship": "米国政府の評価として活動の整合性が報告されている",
+            "confidence": "medium",
+            "evidence_refs": [
+              "source--unc1549--5ad26a22b1f5c730"
+            ],
+            "analyst_notes": "Dragos報告内の米国政府評価に基づく。組織による個別作戦の直接指揮を示すものではない。"
+          }
+        ],
+        "assessment": "複数資料はUNC1549をイラン系またはイランの情報目的に整合する脅威クラスタとして評価している。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-96ac11961cae303bc9fd",
+          "source--unc1549--5ad26a22b1f5c730",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": "国・組織への帰属と、Kasperskyが今回観測した個々の侵害活動の実行主体評価は分けて扱う。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC1549はイラン系と評価される情報収集クラスタで、KasperskyはMirage Kitten、Smoke Sandstorm、Nimbus Manticoreとして追跡している。2026年7月の報告では、中東・アフリカの航空宇宙、航空、防衛、通信などを対象とする活動と、NightLedger、ArcBridge、BridgeHeadの新規ツールセットが明らかになった。",
+        "history": "2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。",
+        "capability_details": "NightLedgerはDLL検索順序ハイジャックで起動するWindowsバックドアで、偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード等に対応する。ArcBridgeはDNS/TCPを、BridgeHeadはSOCKS5をWebSocketで中継し、両者とも企業プロキシを考慮する。",
+        "infrastructure_details": "HTTPSおよびWebSocketを用い、Azure App Service、Cloudflare配下のホスト、標的に合わせた名称の独自ドメインを組み合わせる。IOCはiocs.json、通信パス、mutex、設定マーカー、User-Agent等はartifacts.csvに保存する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、イスラエル、エジプト、エチオピア、タンザニア、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
+        "additional_notes": "Kasperskyが明示した別名はexactとして保持するが確度はmediumとし、他ベンダーの追跡名を根拠なく統合しない。IOCの観測日は不明のまま保持する。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T01:54:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "欧州",
+      "description": "活動「Tortoiseshell：新たなツールセットと運用インフラを公開」の記述で標的地域として欧州が明示されている。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d",
+          "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--targeting-audit--region--13f9cf21464b4deacca3",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "欧州",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+      "created": "2026-07-29T14:09:02Z",
+      "modified": "2026-09-21T03:17:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中東",
+      "description": "継続的な重点標的地域として報告された。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd",
+          "url": "https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d",
+          "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143",
+          "url": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "high",
+      "x_profile_object_id": "target--region--middle-east",
+      "confidence": 85,
+      "x_opencti_location_type": "Region",
+      "region": "中東",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--01550cd5-cc7f-4710-860c-16af83913f95",
+      "created": "2026-08-27T03:17:09Z",
+      "modified": "2026-08-27T03:19:36Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TWOSTROKE",
+      "description": "Group-IBが2026年8月26日付調査で解析したC++バックドア。DLLサーチオーダーハイジャックで実行され、シェルコマンドとファイルコマンドの実行、ファイルの送受信、メモリー内DLL実行、偵察を遠隔操作できる。",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-126c8af714f49766e231",
+      "x_confidence": "medium",
+      "x_analyst_notes": "IOC CSVのmalware列の値を、Group-IB原文の検体解析記述で直接利用を確認したうえで承認した。原文は「Analysis of the sample shows similarities to TWOSTROKE backdoor previously reported by GTIG in late 2025, this indicates continued use of this backdoor by the TA」と述べ、GTIGが2025年後半に報告した同名バックドアの継続利用と評価している。検体のコンパイル時刻2018-09-26は観測日ではないため期間へ流用しない。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3c677cad-e28b-40ec-9d48-8e5ceb7f14fd",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "UNC1549 targets Government (profile target category: sectors).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43754e1f-bd30-435f-85f4-81b1b1ec54a4",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--region--middle-east.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43d5dc04-ace5-4398-9286-b98d63bfdad7",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "target_ref": "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+      "description": "UNC1549 targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d",
+          "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "last": "Check Point: 2026年4月まで観測",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--52cf72e9-6e09-4d8b-91c2-5549f358c8c8",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--targeting-audit--region--13f9cf21464b4deacca3.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--876cfa43-8e5c-4d3b-8ad2-66ab06395524",
+      "created": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 is attributed or linked to UNC1549.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a2416165-77f9-486c-ad08-cb2d2b1a607c",
+      "created": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 affected victim--activity-rule--a1b1f24e4aa40c393238.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2014dbf-67bd-4ed0-a96e-05811002b562",
+      "created": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "target_ref": "malware--01550cd5-cc7f-4710-860c-16af83913f95",
+      "description": "UNC1549 uses TWOSTROKE.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d21301a6-b223-48a0-8445-eef4988128bc",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "target_ref": "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+      "description": "UNC1549 targets 中東 (profile target category: regions).",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        },
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd",
+          "url": "https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d",
+          "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "external_id": "source--daily-eac188700be16a552143",
+          "url": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "source_name": "Kaspersky GReAT",
+          "description": "Local source: https://securelist.com/mirage-kitten-new-tools/120811/",
+          "external_id": "source--kaspersky-mirage-kitten-2026"
+        },
+        {
+          "source_name": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Local source: summary/2025/m-trends-2025-en.pdf",
+          "external_id": "source--unc1549--c47ef662fbdb6d88"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-02-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e70f6dbf-7ce7-4b0b-9ad7-ac3828d1f5d2",
+      "created": "2026-08-27T03:17:09Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "malware--01550cd5-cc7f-4710-860c-16af83913f95",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 uses malware--daily-126c8af714f49766e231.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9934684-6ded-4338-9777-71864cfbbda7",
+      "created": "2026-08-27T03:19:36Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 targets target--sector--government.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "description": "Local source: https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--102ea8dd-6e01-4400-920c-c7703bc047ec",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-27T00:00:00Z",
+      "object_refs": [
+        "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+        "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "malware--01550cd5-cc7f-4710-860c-16af83913f95",
+        "relationship--3c677cad-e28b-40ec-9d48-8e5ceb7f14fd",
+        "relationship--43754e1f-bd30-435f-85f4-81b1b1ec54a4",
+        "relationship--43d5dc04-ace5-4398-9286-b98d63bfdad7",
+        "relationship--52cf72e9-6e09-4d8b-91c2-5549f358c8c8",
+        "relationship--876cfa43-8e5c-4d3b-8ad2-66ab06395524",
+        "relationship--a2416165-77f9-486c-ad08-cb2d2b1a607c",
+        "relationship--d2014dbf-67bd-4ed0-a96e-05811002b562",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc",
+        "relationship--e70f6dbf-7ce7-4b0b-9ad7-ac3828d1f5d2",
+        "relationship--f9934684-6ded-4338-9777-71864cfbbda7"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "group-ib.com",
+          "external_id": "source--daily-2f8e0aeaa133b750f976",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-2f8e0aeaa133b750f976",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "group-ib.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--15e4835d-d631-4b1e-9b3d-e110944e6ed0",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "m trends 2025 en",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-01-01T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "m trends 2025 en",
+          "external_id": "source--unc1549--c47ef662fbdb6d88",
+          "description": "Repository source: summary/2025/m-trends-2025-en.pdf"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--unc1549--c47ef662fbdb6d88",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "",
+      "x_source_type": "report",
+      "x_published_precision": "year",
+      "x_published_status": "known",
+      "x_published_basis": "filename",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4ce1628f-ef85-485a-a041-cf190c9d7388",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-27T00:00:00Z",
+      "object_refs": [
+        "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "relationship--43d5dc04-ace5-4398-9286-b98d63bfdad7",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "external_id": "source--daily-d9794d16b217472dc38d",
+          "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-d9794d16b217472dc38d",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "research.checkpoint.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--676e72e8-de07-459e-b7bd-e285002d7359",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Dragos 2026 OT Cybersecurity Report A Year in Review",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-01-01T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Dragos 2026 OT Cybersecurity Report A Year in Review",
+          "external_id": "source--unc1549--5ad26a22b1f5c730",
+          "description": "Repository source: OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--unc1549--5ad26a22b1f5c730",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "",
+      "x_source_type": "report",
+      "x_published_precision": "year",
+      "x_published_status": "known",
+      "x_published_basis": "filename",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c235365c-4dcc-4f0a-a08a-55e921736f96",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-02T00:00:00Z",
+      "object_refs": [
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "external_id": "source--daily-eac188700be16a552143",
+          "url": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-eac188700be16a552143",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "securelist.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ee7e61d8-6aa1-464c-b866-3c695712e5ed",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "actor_profile/evidence/unc1549-kaspersky-2026-07-28.csv",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-28T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "relationship--3c677cad-e28b-40ec-9d48-8e5ceb7f14fd",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--kaspersky-mirage-kitten-2026",
+          "description": "Repository source: actor_profile/evidence/unc1549-kaspersky-2026-07-28.csv"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--kaspersky-mirage-kitten-2026",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f8152d7a-70a9-417f-907e-b65ee9e2731f",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-25T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "external_id": "source--daily-96ac11961cae303bc9fd",
+          "url": "https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-96ac11961cae303bc9fd",
+      "x_evidence_slice_scope": "campaign:actor--unc1549:activity--daily-cf787599b4873ec991bd",
+      "x_source_publisher": "unit42.paloaltonetworks.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ae90296c-72be-4623-b020-4b88b16dacc8",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1549 / Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
+        "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+        "location--11536915-04d6-4b1b-a8aa-824344f465b9",
+        "location--6fc76672-f31a-454c-bd70-c7213d465fc6",
+        "malware--01550cd5-cc7f-4710-860c-16af83913f95",
+        "relationship--3c677cad-e28b-40ec-9d48-8e5ceb7f14fd",
+        "relationship--43754e1f-bd30-435f-85f4-81b1b1ec54a4",
+        "relationship--43d5dc04-ace5-4398-9286-b98d63bfdad7",
+        "relationship--52cf72e9-6e09-4d8b-91c2-5549f358c8c8",
+        "relationship--876cfa43-8e5c-4d3b-8ad2-66ab06395524",
+        "relationship--a2416165-77f9-486c-ad08-cb2d2b1a607c",
+        "relationship--d2014dbf-67bd-4ed0-a96e-05811002b562",
+        "relationship--d21301a6-b223-48a0-8445-eef4988128bc",
+        "relationship--e70f6dbf-7ce7-4b0b-9ad7-ac3828d1f5d2",
+        "relationship--f9934684-6ded-4338-9777-71864cfbbda7",
+        "report--102ea8dd-6e01-4400-920c-c7703bc047ec",
+        "report--15e4835d-d631-4b1e-9b3d-e110944e6ed0",
+        "report--4ce1628f-ef85-485a-a041-cf190c9d7388",
+        "report--676e72e8-de07-459e-b7bd-e285002d7359",
+        "report--c235365c-4dcc-4f0a-a08a-55e921736f96",
+        "report--ee7e61d8-6aa1-464c-b866-3c695712e5ed",
+        "report--f8152d7a-70a9-417f-907e-b65ee9e2731f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc1549",
+      "x_activity_id": "activity--daily-cf787599b4873ec991bd"
+    }
+  ]
+}

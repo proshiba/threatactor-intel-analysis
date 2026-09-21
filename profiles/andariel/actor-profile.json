@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--andariel",
   "name": "Andariel",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T08:15:06Z",
   "languages": [
     "ja"
   ],
@@ -17,7 +17,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -27,7 +27,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -37,7 +37,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       }
@@ -71,8 +71,7 @@
     "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
     "confidence": "medium",
     "evidence_refs": [
-      "source--mitre-attack-19-1",
-      "source--actor-mapping-workbook"
+      "source--mitre-attack-19-1"
     ],
     "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
   },
@@ -101,15 +100,38 @@
         "source--treasury-dprk-groups-2019"
       ],
       "analyst_notes": "Verified OSINT relationship: status=supported; limitation=Lazarus is also used as a broad umbrella label in some reporting, so operation-level attribution should retain the Andariel label where supported. counterevidence=The sources warn that DPRK cluster boundaries overlap; subgroup status does not imply identical tooling across all Lazarus activity."
+    },
+    {
+      "relationship_id": "relationship--andariel--verified--78cc1099f60acabe",
+      "target_actor": "APT45",
+      "relationship_type": "overlaps-with",
+      "description": "Mandiant states that activity it attributes to APT45 has been publicly reported as Andariel, while treating vendor cluster boundaries as an attribution complication rather than asserting universal alias identity.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--mandiant-apt45-2024"
+      ],
+      "analyst_notes": "Cross-vendor overlap only; preserve separate APT45 and Andariel profiles until a primary source defines the identity boundary more precisely."
     }
   ],
   "diamond_model": {
-    "adversary": "[Andariel](https://attack.mitre.org/groups/G0138) is a North Korean state-sponsored threat group that has been active since at least 2009. [Andariel](https://attack.mitre.org/groups/G0138) has primarily focused its operations--which have included destructive attacks--against South Korean government agencies, military organizations, and a variety of domestic companies; they have also conducted cyber financial operations against ATMs, banks, and cryptocurrency exchanges. [Andariel](https://attack.mitre.org/groups/G0138)'s notable activity includes Operation Black Mine, Operation GoldenAxe, and Campaign Rifle.(Citation: FSI Andariel Campaign Rifle July 2017)(Citation: IssueMakersLab Andariel GoldenAxe May 2017)(Citation: AhnLab Andariel Subgroup of Lazarus June 2018)(Citation: TrendMicro New Andariel Tactics July 2018)(Citation: CrowdStrike Silent Chollima Adversary September 2021)\n\n[Andariel](https://attack.mitre.org/groups/G0138) is considered a sub-set of [Lazarus Group](https://attack.mitre.org/groups/G0032), and has been attributed to North Korea's Reconnaissance General Bureau.(Citation: Treasury North Korean Cyber Groups September 2019)\n\nNorth Korean group definitions are known to have significant overlap, and some security researchers report all North Korean state-sponsored cyber activity under the name [Lazarus Group](https://attack.mitre.org/groups/G0032) instead of tracking clusters or subgroups.",
-    "capability": "Rifdoor, gh0st RAT, Phandoor",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
-    "victim": "Information gathering and profit",
-    "socio_political": "North Korea",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -140,31 +162,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
-        "id": "malware--phandoor",
-        "name": "Phandoor",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -192,7 +190,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
@@ -303,7 +301,10 @@
           "source--daily-cecaacd0e1f99bf64539"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-66d5f2f43a7c4a6f813d",
@@ -406,7 +407,10 @@
           "source--daily-d2af83b6cab76368c85d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-701de91748ab693c3aec",
@@ -503,7 +507,10 @@
           "source--daily-1147479b46313418b844"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-822cebac470810513a38",
@@ -607,7 +614,10 @@
           "source--daily-b9be11e58ab6c82617ab"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-9b903807e5f68679a7fc",
@@ -715,7 +725,10 @@
           "source--daily-444c87a0051642065f55"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-b33ae285eb5abcdb47e3",
@@ -805,793 +818,14 @@
           "source--daily-a36638e8716771007cc7"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--desertwolf",
-      "name": "DesertWolf",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
       },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--initroy",
-      "name": "INITROY",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--mayday",
-      "name": "Mayday",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--sony",
-      "name": "Sony",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--vanxatm",
-      "name": "Vanxatm",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "activity_id": "activity--xeda",
-      "name": "XEDA",
-      "activity_type": "operation",
-      "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--actor-mapping-workbook"
-      ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "ttp_refs": [],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--andariel",
-          "name": "Andariel",
-          "attribution_countries": [
-            "North Korea"
-          ],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "North Korea"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
     "countries": [
-      {
-        "id": "target--targeting-audit--country--231cfe9428cad11989d3",
-        "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてインドが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--c74a9c526ccf079c6168",
-        "name": "オーストラリア",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてオーストラリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--0a9b8b792ce733b8c8f8",
-        "name": "カナダ",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてカナダが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--5a66324d8da2db7893a9",
-        "name": "グアテマラ",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてグアテマラが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--6e5fd8edc54a48c4074d",
-        "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてタイが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--9d8433c6f505537a34ec",
-        "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてドイツが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--2b8fcdd234d028da358b",
-        "name": "バングラデシュ",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてバングラデシュが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--f54af77b1585786dc93e",
-        "name": "フランス",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてフランスが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--5600afe521c30754b0fa",
-        "name": "ブラジル",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国としてブラジルが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--8700ecc9c27689168c0d",
-        "name": "中国",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国として中国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--d02b8329e2c28d502de9",
-        "name": "日本",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国として日本が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
       {
         "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "name": "米国",
@@ -1610,32 +844,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-d2af83b6cab76368c85d",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-d2af83b6cab76368c85d"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--c2d078fc367940d25806",
-        "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国として英国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--activity-rule--country--6cb716c577f256f44a3e",
@@ -1657,150 +868,12 @@
         "evidence_refs": [
           "source--daily-444c87a0051642065f55",
           "source--daily-b9be11e58ab6c82617ab",
-          "source--daily-cecaacd0e1f99bf64539",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-cecaacd0e1f99bf64539"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--1e2b6aa4a01dc10a04e5",
-        "name": "香港",
-        "description": "構造化OSINTの被害国フィールドでAndarielの標的・被害国として香港が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
-    "regions": [
-      {
-        "id": "target--targeting-audit--region--d296e693a366304400a8",
-        "name": "中南米",
-        "description": "グアテマラ、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--ffcc4ea992591477e159",
-        "name": "北米",
-        "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-d2af83b6cab76368c85d",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--2fc0709bf3ed103cc7d1",
-        "name": "南アジア",
-        "description": "インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--2ddc4871055e9ab98605",
-        "name": "東アジア",
-        "description": "中国、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-444c87a0051642065f55",
-          "source--daily-b9be11e58ab6c82617ab",
-          "source--daily-cecaacd0e1f99bf64539",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--6b9b8a3c45411d974ef8",
-        "name": "欧州",
-        "description": "ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      }
-    ],
+    "regions": [],
     "sectors": [
       {
         "id": "target--activity-rule--sector--b94dc560a327b601965d",
@@ -1849,8 +922,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -1905,7 +978,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1932,7 +1005,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1959,7 +1032,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1986,7 +1059,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2040,7 +1113,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2067,7 +1140,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2121,7 +1194,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2148,7 +1221,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2176,7 +1249,7 @@
       "confidence": "high",
       "evidence_refs": [
         "source--andariel--d8b5468150bbcc71",
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2203,7 +1276,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2230,7 +1303,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -2257,7 +1330,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
@@ -3251,7 +2324,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241031.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241031.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korean-govt-hackers-linked-to-play-ransomware-attack/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-444c87a0051642065f55",
@@ -3269,7 +2349,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240806.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240806.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-a36638e8716771007cc7",
@@ -3287,7 +2376,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-windows-rid-hijacking-to-create-hidden-admin-account/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     {
       "source_id": "source--daily-b9be11e58ab6c82617ab",
@@ -3305,7 +2400,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240424.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240424.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-cecaacd0e1f99bf64539",
@@ -3323,7 +2426,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240604.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240604.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2024/06/andariel-hackers-target-south-korean.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-d2af83b6cab76368c85d",
@@ -3341,25 +2452,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241003.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241003.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2024/10/andariel-hacker-group-shifts-focus-to.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--mitre-live-andariel-2024",
@@ -3379,7 +2480,12 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Describes Andariel as a subset of Lazarus Group and warns about overlapping DPRK taxonomies."
+      "analyst_notes": "Describes Andariel as a subset of Lazarus Group and warns about overlapping DPRK taxonomies.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -3529,7 +2635,68 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Calls Bluenoroff and Andariel sub-groups of Lazarus and attributes all three to the RGB."
+      "analyst_notes": "Calls Bluenoroff and Andariel sub-groups of Lazarus and attributes all three to the RGB.",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
       "source_id": "source--target-audit-misp-threat-actor",
@@ -3555,6 +2722,91 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--mandiant-apt45-2024",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine",
+      "title": "APT45: North Korea's Digital Military Machine",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2024-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "attribution",
+        "relationship",
+        "capability",
+        "targeting"
+      ],
+      "analyst_notes": "Mandiant states that activity it attributes to APT45 has been publicly reported as Andariel, Onyx Sleet, Stonefly, and Silent Chollima. This supports a cross-vendor overlap, not an unqualified exact alias."
     }
   ],
   "assessment": {
@@ -3576,7 +2828,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/andariel.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/andariel.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -3584,7 +2836,7 @@
     "history": "DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony",
     "capability_details": "Rifdoor, gh0st RAT, Phandoor",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=インド、オーストラリア、カナダ、グアテマラ、タイ、ドイツ、バングラデシュ、フランス、ブラジル、中国、日本、米国、英国、韓国、香港。標的地域=中南米、北米、南アジア、東アジア、欧州。日本は確認時に個別国として保持する。\n\nInformation gathering and profit",
+    "targeting_details": "構造化ターゲット監査: 標的国=米国、韓国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nInformation gathering and profit",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [

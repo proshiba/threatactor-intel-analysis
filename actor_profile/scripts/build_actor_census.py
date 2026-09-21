@@ -27,6 +27,7 @@ IDENTIFIER_RE = re.compile(
     r"Storm-\d{4}|CL-STA-\d{4})(?![A-Z0-9-])",
     re.IGNORECASE,
 )
+ATTACK_TACTIC_LIKE_TA_RE = re.compile(r"TA0*([0-9]+)", re.IGNORECASE)
 GENERIC_NAMES = {
     "actor", "actors", "adversary", "campaign", "china", "group", "iran",
     "malware", "north korea", "operation", "russia", "team", "threat actor",
@@ -98,9 +99,21 @@ def add_identity(
     mitre_id: str | None = None,
     origins: Iterable[str] = (),
     reference: dict[str, Any] | None = None,
+    preserve_on_ambiguous: bool = False,
 ) -> str:
-    names = [clean_name(name), *(clean_name(x) for x in aliases)]
-    names = list(dict.fromkeys(x for x in names if useful_name(x)))
+    raw_names = [clean_name(name), *(clean_name(x) for x in aliases)]
+    names = list(
+        dict.fromkeys(
+            value
+            for index, value in enumerate(raw_names)
+            if useful_name(value)
+            or (
+                mitre_id
+                and index == 0
+                and len(normalized_name(value)) >= 2
+            )
+        )
+    )
     if not names:
         return ""
     overlapping = {
@@ -115,16 +128,27 @@ def add_identity(
             actor_id = mitre_actor_id
         elif len(overlapping) == 1:
             old_id = next(iter(overlapping))
-            old = identities.pop(old_id)
-            old["actor_id"] = mitre_actor_id
-            identities[mitre_actor_id] = old
-            for ids in alias_index.values():
-                if old_id in ids:
-                    ids.remove(old_id)
-                    ids.add(mitre_actor_id)
-            actor_id = mitre_actor_id
+            old = identities[old_id]
+            # Two official ATT&CK Group IDs remain separate even when ATT&CK
+            # itself lists a shared associated name.  Shared aliases such as
+            # UAC-0056, Winnti Group, or The White Company are overlap signals,
+            # not permission to replace one Group identity with another.
+            if not old.get("mitre_group_id"):
+                old = identities.pop(old_id)
+                old["actor_id"] = mitre_actor_id
+                identities[mitre_actor_id] = old
+                for ids in alias_index.values():
+                    if old_id in ids:
+                        ids.remove(old_id)
+                        ids.add(mitre_actor_id)
+                actor_id = mitre_actor_id
     elif len(overlapping) == 1:
         actor_id = next(iter(overlapping))
+    elif len(overlapping) > 1 and not preserve_on_ambiguous:
+        # A broad workbook or taxonomy row that touches multiple established
+        # identities is an ambiguity, not a third actor and not permission to
+        # merge the established identities.
+        return ""
     item = identities.setdefault(
         actor_id,
         {
@@ -146,6 +170,74 @@ def add_identity(
     for alias in names:
         alias_index[normalized_name(alias)].add(actor_id)
     return actor_id
+
+
+def identity_boundaries(curation: dict[str, Any]) -> dict[str, set[str]]:
+    """Return family-aware alias exclusions for reviewed entity boundaries."""
+    exclusions: dict[str, set[str]] = defaultdict(set)
+    rules = curation.get("identities", {})
+    for item in curation.get("identity_boundaries", []):
+        if len(item.get("names", [])) != 2:
+            continue
+        families: list[set[str]] = []
+        for name in item["names"]:
+            rule = rules.get(normalized_name(name), {})
+            family = {
+                normalized_name(value)
+                for value in [name, *rule.get("aliases", [])]
+                if normalized_name(value)
+            }
+            families.append(family)
+        left, right = families
+        for name in left:
+            exclusions[name].update(right)
+        for name in right:
+            exclusions[name].update(left)
+    return exclusions
+
+
+def filter_separated_aliases(
+    canonical_name: str,
+    names: Iterable[str],
+    boundaries: dict[str, set[str]],
+) -> list[str]:
+    """Remove aliases explicitly separated from one canonical identity."""
+    canonical = normalized_name(canonical_name)
+    blocked = boundaries.get(canonical, set())
+    return [
+        name
+        for name in names
+        if normalized_name(name) not in blocked
+    ]
+
+
+def attack_tactic_like_ta(value: str) -> bool:
+    """Reject ATT&CK tactic IDs and obvious truncated variants as actors."""
+    match = ATTACK_TACTIC_LIKE_TA_RE.fullmatch(value.strip())
+    return bool(match and int(match.group(1)) < 100)
+
+
+def resolve_mention_identities(
+    surface: str,
+    actor_ids: Iterable[str],
+    identities: dict[str, dict[str, Any]],
+) -> set[str]:
+    """Resolve a corpus name without duplicating ambiguous vendor aliases.
+
+    A canonical-name match wins over another profile's overlapping alias.  If
+    a non-canonical alias maps to multiple identities, the mention is retained
+    only in the census ambiguity log and is not assigned to every actor.
+    """
+    candidates = set(actor_ids)
+    canonical = {
+        actor_id
+        for actor_id in candidates
+        if normalized_name(identities[actor_id]["canonical_name"])
+        == normalized_name(surface)
+    }
+    if canonical:
+        return canonical
+    return candidates if len(candidates) == 1 else set()
 
 
 def load_microsoft_names(path: Path) -> list[dict[str, Any]]:
@@ -243,23 +335,68 @@ def main() -> int:
     parser.add_argument("--catalog", type=Path, default=Path("actor_profile/corpus-catalog.json"))
     parser.add_argument("--output", type=Path, default=Path("actor_profile/actor-census.json"))
     parser.add_argument("--csv-output", type=Path, default=Path("actor_profile/actor-census.csv"))
+    parser.add_argument(
+        "--curation",
+        type=Path,
+        default=Path("actor_profile/actor-census-curation.json"),
+    )
     parser.add_argument("--max-mentions-per-actor-source", type=int, default=5)
     args = parser.parse_args()
 
     root = args.repository_root.resolve()
     catalog = load_json((root / args.catalog).resolve())
-    attack = load_json((root / catalog["reference_sources"]["mitre_attack_index"]).resolve())
+    curation_path = (root / args.curation).resolve()
+    curation = load_json(curation_path) if curation_path.exists() else {}
+    boundaries = identity_boundaries(curation)
     identities: dict[str, dict[str, Any]] = {}
     alias_index: dict[str, set[str]] = defaultdict(set)
 
-    for mitre_id, group in attack["groups"].items():
+    attack_sources = [
+        ("mitre_attack_index", "MITRE Enterprise ATT&CK"),
+        ("mitre_attack_ics_index", "MITRE ICS ATT&CK"),
+        ("mitre_attack_mobile_index", "MITRE Mobile ATT&CK"),
+        (
+            "mitre_attack_enterprise_19_1_history",
+            "MITRE Enterprise ATT&CK 19.1 historical",
+        ),
+    ]
+    seen_mitre_ids: set[str] = set()
+    for source_key, source_name in attack_sources:
+        relative = catalog["reference_sources"].get(source_key)
+        if not relative:
+            continue
+        attack = load_json((root / relative).resolve())
+        for mitre_id, group in attack["groups"].items():
+            if source_key.endswith("_history") and mitre_id in seen_mitre_ids:
+                continue
+            aliases = filter_separated_aliases(
+                group["name"], group.get("aliases", []), boundaries
+            )
+            add_identity(
+                identities,
+                alias_index,
+                name=group["name"],
+                aliases=aliases,
+                mitre_id=mitre_id,
+                reference={"source": source_name, "external_id": mitre_id},
+            )
+            seen_mitre_ids.add(mitre_id)
+
+    # Some vendor clusters are not represented in ATT&CK. Seed them before
+    # reading community workbooks so a workbook's broad row cannot silently
+    # collapse an explicitly separated actor into another identity.
+    for item in curation.get("reference_identities", []):
         add_identity(
             identities,
             alias_index,
-            name=group["name"],
-            aliases=group.get("aliases", []),
-            mitre_id=mitre_id,
-            reference={"source": "MITRE ATT&CK", "external_id": mitre_id},
+            name=item["canonical_name"],
+            aliases=item.get("aliases", []),
+            origins=item.get("origins", []),
+            reference={
+                "source": item.get("source", "analyst-curated-primary-source"),
+                "url": item.get("url"),
+            },
+            preserve_on_ambiguous=True,
         )
 
     workbook_path = root / catalog["reference_sources"]["actor_mapping_workbook"]
@@ -267,16 +404,25 @@ def main() -> int:
         names = workbook_actor_names(record)
         if not names:
             continue
+        workbook_name = record["fields"].get("Common Name", names[0])
+        mitre_id = (
+            record["fields"].get("MITRE ATT&CK")
+            if re.fullmatch(r"G\d{4}", record["fields"].get("MITRE ATT&CK", ""))
+            else None
+        )
+        mitre_actor_id = f"actor-census--mitre:{mitre_id}" if mitre_id else ""
+        canonical_name = (
+            identities[mitre_actor_id]["canonical_name"]
+            if mitre_actor_id in identities
+            else workbook_name
+        )
+        names = filter_separated_aliases(canonical_name, names, boundaries)
         add_identity(
             identities,
             alias_index,
-            name=record["fields"].get("Common Name", names[0]),
+            name=canonical_name,
             aliases=names,
-            mitre_id=(
-                record["fields"].get("MITRE ATT&CK")
-                if re.fullmatch(r"G\d{4}", record["fields"].get("MITRE ATT&CK", ""))
-                else None
-            ),
+            mitre_id=mitre_id,
             origins=[record["sheet"]],
             reference={
                 "source": workbook_path.name,
@@ -287,32 +433,45 @@ def main() -> int:
 
     microsoft_path = root / catalog["reference_sources"]["microsoft_mapping_workbook"]
     for record in load_microsoft_names(microsoft_path):
+        aliases = filter_separated_aliases(
+            record["name"], record["aliases"], boundaries
+        )
         add_identity(
             identities,
             alias_index,
             name=record["name"],
-            aliases=record["aliases"],
+            aliases=aliases,
             origins=[record["origin"]] if record["origin"] else [],
             reference={"source": microsoft_path.name, "sheet": "alphabetical", "row": record["row"]},
         )
 
     catalog_aliases: set[str] = set()
     for actor in catalog["actors"]:
-        names = [actor["name"], *actor.get("aliases", [])]
+        if attack_tactic_like_ta(actor["name"]):
+            continue
+        names = [
+            actor["name"],
+            *filter_separated_aliases(
+                actor["name"], actor.get("aliases", []), boundaries
+            ),
+        ]
         catalog_aliases.update(normalized_name(name) for name in names)
         add_identity(
             identities,
             alias_index,
             name=actor["name"],
-            aliases=actor.get("aliases", []),
+            aliases=names[1:],
             mitre_id=actor.get("mitre_group_id"),
             reference={"source": "corpus-catalog.json", "slug": actor["slug"]},
+            preserve_on_ambiguous=True,
         )
 
     alias_pattern, sensitive_alias_pattern = build_alias_patterns(alias_index, identities)
     files = corpus_files(root)
     mention_keys: set[tuple[str, str, str, int, int]] = set()
     mention_counts: dict[tuple[str, str], int] = defaultdict(int)
+    ambiguous_mentions: list[dict[str, Any]] = []
+    ambiguous_keys: set[tuple[str, str, str]] = set()
     errors: list[dict[str, str]] = []
 
     for file_index, path in enumerate(files, start=1):
@@ -322,18 +481,59 @@ def main() -> int:
                 text = record["text"]
                 if not text:
                     continue
+                location = json.dumps(record["location"], sort_keys=True)
                 found: list[tuple[str, int, int, str]] = []
                 for match in alias_pattern.finditer(text):
                     normalized = normalized_name(match.group())
-                    for actor_id in alias_index.get(normalized, set()):
+                    candidates = alias_index.get(normalized, set())
+                    resolved = resolve_mention_identities(
+                        match.group(), candidates, identities
+                    )
+                    if candidates and not resolved:
+                        ambiguity_key = (relative, location, normalized)
+                        if ambiguity_key not in ambiguous_keys:
+                            ambiguous_keys.add(ambiguity_key)
+                            ambiguous_mentions.append(
+                                {
+                                    "source_path": relative,
+                                    "source_location": record["location"],
+                                    "matched_name": match.group(),
+                                    "candidate_actor_ids": sorted(candidates),
+                                    "context_excerpt": context(
+                                        text, match.start(), match.end()
+                                    ),
+                                }
+                            )
+                    for actor_id in resolved:
                         found.append((actor_id, match.start(), match.end(), match.group()))
                 if sensitive_alias_pattern:
                     for match in sensitive_alias_pattern.finditer(text):
                         normalized = normalized_name(match.group())
-                        for actor_id in alias_index.get(normalized, set()):
+                        candidates = alias_index.get(normalized, set())
+                        resolved = resolve_mention_identities(
+                            match.group(), candidates, identities
+                        )
+                        if candidates and not resolved:
+                            ambiguity_key = (relative, location, normalized)
+                            if ambiguity_key not in ambiguous_keys:
+                                ambiguous_keys.add(ambiguity_key)
+                                ambiguous_mentions.append(
+                                    {
+                                        "source_path": relative,
+                                        "source_location": record["location"],
+                                        "matched_name": match.group(),
+                                        "candidate_actor_ids": sorted(candidates),
+                                        "context_excerpt": context(
+                                            text, match.start(), match.end()
+                                        ),
+                                    }
+                                )
+                        for actor_id in resolved:
                             found.append((actor_id, match.start(), match.end(), match.group()))
                 for match in IDENTIFIER_RE.finditer(text):
                     surface = clean_name(match.group())
+                    if attack_tactic_like_ta(surface):
+                        continue
                     normalized = normalized_name(surface)
                     actor_ids = alias_index.get(normalized, set())
                     if not actor_ids:
@@ -344,9 +544,11 @@ def main() -> int:
                             reference={"source": "corpus-pattern-discovery"},
                         )
                         actor_ids = {actor_id}
-                    for actor_id in actor_ids:
+                    resolved = resolve_mention_identities(
+                        surface, actor_ids, identities
+                    )
+                    for actor_id in resolved:
                         found.append((actor_id, match.start(), match.end(), surface))
-                location = json.dumps(record["location"], sort_keys=True)
                 for actor_id, start, end, surface in found:
                     count_key = (actor_id, relative)
                     if mention_counts[count_key] >= args.max_mentions_per_actor_source:
@@ -383,17 +585,40 @@ def main() -> int:
                 flush=True,
             )
 
-    catalog_by_norm = {
-        normalized_name(name): actor["slug"]
+    # Generated census entries are removed and rebuilt by the materializer.
+    # Treating them as already represented here would delete them on a repeat
+    # run without re-adding them.
+    stable_catalog_actors = [
+        actor
         for actor in catalog["actors"]
-        for name in [actor["name"], *actor.get("aliases", [])]
-    }
+        if actor.get("profile_basis")
+        not in {"actor-scoped-census-evidence", "official-attack-reference"}
+    ]
+    catalog_by_norm: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for actor in stable_catalog_actors:
+        for name in [actor["name"], *actor.get("aliases", [])]:
+            catalog_by_norm[normalized_name(name)].append(actor)
     for item in identities.values():
-        slugs = {
-            catalog_by_norm[normalized_name(alias)]
+        candidates = {
+            actor["slug"]: actor
             for alias in item["aliases"]
-            if normalized_name(alias) in catalog_by_norm
+            for actor in catalog_by_norm.get(normalized_name(alias), [])
         }
+        if item.get("mitre_group_id"):
+            same_group = {
+                slug
+                for slug, actor in candidates.items()
+                if actor.get("mitre_group_id") == item["mitre_group_id"]
+            }
+            canonical = {
+                slug
+                for slug, actor in candidates.items()
+                if normalized_name(actor["name"])
+                == normalized_name(item["canonical_name"])
+            }
+            slugs = same_group or canonical
+        else:
+            slugs = set(candidates)
         item["catalog_slugs"] = sorted(slugs)
         item["is_profiled"] = bool(slugs)
         item["mention_source_count"] = len(
@@ -427,9 +652,11 @@ def main() -> int:
             "unprofiled": sum(not x["is_profiled"] for x in actor_rows),
             "with_corpus_mentions": sum(bool(x["mentions"]) for x in actor_rows),
             "mentions": sum(len(x["mentions"]) for x in actor_rows),
+            "ambiguous_alias_mentions": len(ambiguous_mentions),
             "source_errors": len(errors),
         },
         "source_errors": errors,
+        "ambiguous_alias_mentions": ambiguous_mentions,
         "actors": actor_rows,
     }
     write_json_atomic((root / args.output).resolve(), result)
@@ -441,6 +668,7 @@ def main() -> int:
                 "actor_id", "canonical_name", "mitre_group_id", "is_profiled",
                 "catalog_slugs", "mention_source_count", "mention_count", "aliases",
             ],
+            lineterminator="\n",
         )
         writer.writeheader()
         for item in actor_rows:

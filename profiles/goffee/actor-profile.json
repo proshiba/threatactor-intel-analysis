@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--goffee",
   "name": "GOFFEE",
   "status": "draft",
   "created_at": "2026-09-18T02:20:00Z",
-  "updated_at": "2026-09-19T00:00:42Z",
+  "updated_at": "2026-09-21T03:50:38Z",
   "languages": [
     "ja"
   ],
@@ -79,12 +79,12 @@
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "GOFFEE(BI.ZONE 呼称: Paper Werewolf)。少なくとも2022年初頭から活動する、ロシア連邦の組織を標的とする脅威グループ。いずれの一次資料も出身国・後援関係を述べていない。Kaspersky は過去に HeartlessSoul との関連を確認しており、両グループの背後に同一の攻撃者がいると中程度の確度で評価するが、道具立ては大きく異なるとしている。",
-    "capability": "自製マルウェア: 悪性IISモジュール Owowa、PowerShell製の非公開Mythicエージェント PowerTaskel とその後継 PowerTaskel v2、PowerShellダウンローダ PowerModul(BI.ZONE 呼称 PowerRAT に対応)、リムーバブルメディアからのファイル窃取 FlashFileGrabber/FlashFileGrabberOffline、リムーバブルメディア感染用 USB Worm、バイナリRAT の WarpRAT(別名 EchoGather RAT)、BI.ZONE が挙げる QwakMyAgent。既製品は Mythic フレームワークとその Poseidon エージェント、Chisel、PsExec、Gophish、Inno Setup。Kaspersky は攻撃準備に AI を含む自動化手段を用いると述べる。",
-    "infrastructure": "キャンペーンごとに入れ替える .online / .site / .com の短命ドメイン群と VPS。C2 の所在を隠すためにリバースプロキシサーバを多用する。WarpRAT は 443/TCP・TLS・POST を用い、sleepTime と anti-VM を設定で持つ。PowerModul は http://<C2>/api/texts/<computer>_<user>_<disk-serial> 形式で識別子をURLへ付与する。",
-    "victim": "ロシア連邦の組織が中心。Kaspersky の2026年の報告では約120の被害組織をロシア連邦で確認し、CIS諸国で数件、EUで単発の被害を確認している(EUへの攻撃は偶発的と評価)。業種は機械製造・製造業・政府部門(2026年)、マスメディアと通信・建設・政府機関・エネルギー(2024年後半)、政府・エネルギー・金融・メディアほか(BI.ZONE)。",
-    "socio_political": "諜報目的が主であり、達成後に被害インフラの運用を妨害した事例が1件ある。いずれの一次資料も国家との関係を述べていないため、地政学的な位置付けは未確定である。",
-    "analyst_notes": "Kaspersky Securelist(2026-08-28、ロシア語版のみ)、Kaspersky Securelist(2025-04-10)、BI.ZONE Threat Intelligence(2024-12-25)の原文記述のみから構成した。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -796,7 +796,10 @@
           "source--kaspersky-goffee-recent-attacks-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--goffee-paper-werewolf-campaigns-2024",
@@ -828,9 +831,9 @@
         "target--goffee--sector--finance"
       ],
       "malware_refs": [
+        "malware--goffee-owowa",
         "malware--goffee-powermodul",
         "malware--goffee-powertaskel",
-        "malware--goffee-owowa",
         "malware--goffee-qwakmyagent"
       ],
       "infrastructure_refs": [
@@ -975,7 +978,10 @@
           "source--kaspersky-goffee-recent-attacks-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--goffee-powermodul-usb-worm-2024",
@@ -1009,9 +1015,9 @@
         "target--goffee--sector--telecom"
       ],
       "malware_refs": [
+        "malware--goffee-flashfilegrabber",
         "malware--goffee-powermodul",
         "malware--goffee-powertaskel",
-        "malware--goffee-flashfilegrabber",
         "malware--goffee-usb-worm"
       ],
       "infrastructure_refs": [],
@@ -1116,7 +1122,10 @@
           "source--kaspersky-goffee-recent-attacks-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--goffee-warprat-powertaskel-v2-2026",
@@ -1148,8 +1157,9 @@
         "target--goffee--sector--manufacturing"
       ],
       "malware_refs": [
-        "malware--goffee-warprat",
-        "malware--goffee-powertaskel-v2"
+        "malware--goffee-powertaskel",
+        "malware--goffee-powertaskel-v2",
+        "malware--goffee-warprat"
       ],
       "infrastructure_refs": [
         "infra--goffee-per-campaign-domains",
@@ -1179,6 +1189,7 @@
         },
         "capability": {
           "malware_refs": [
+            "malware--goffee-powertaskel",
             "malware--goffee-powertaskel-v2",
             "malware--goffee-warprat"
           ],
@@ -1250,7 +1261,10 @@
           "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "victim_cases": [
@@ -1419,6 +1433,7 @@
         "target--goffee--sector--manufacturing"
       ],
       "malware_refs": [
+        "malware--goffee-powertaskel",
         "malware--goffee-powertaskel-v2",
         "malware--goffee-warprat"
       ],
@@ -1691,8 +1706,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "Kasperskyは標的が狭く選別されていること(「направленные на узкий круг целей」「специально отобранный круг жертв」)をGOFFEEの特徴として繰り返し述べる。被害はロシア連邦の組織に集中し、2026年の報告は業種の中心を機械製造・製造業・政府部門とする。CIS諸国での被害は数件、EUでの被害は単発かつ偶発的と評価されている。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関など被害者が信頼しやすい実在組織の文書を模したものが用いられる。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "被害国ロシアを攻撃者の帰属国へ流用していない。EUは原文が偶発的と明記しているため region として confidence: low で保持し、標的像の拡張には用いない。日本に関する記述は3本の一次資料のいずれにもない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。 業種名は enrich_activity_intelligence.py が用いるリポジトリ既存の語彙へ揃え、重複して生成された「政府・公共機関」と「マスメディア・通信」を「政府・行政」「メディア・報道」「情報通信」へ統合・分割した。"
+    "selection_logic": "Kasperskyは標的が狭く選別されていること(「направленные на узкий круг целей」「специально отобранный круг жертв」)をGOFFEEの特徴として繰り返し述べる。被害はロシア連邦の組織に集中し、2026年の報告は業種の中心を機械製造・製造業・政府部門とする。CIS諸国での被害は数件、EUでの被害は単発かつ偶発的と評価されている。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関など被害者が信頼しやすい実在組織の文書を模したものが用いられる。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "被害国ロシアを攻撃者の帰属国へ流用していない。EUは原文が偶発的と明記しているため region として confidence: low で保持し、標的像の拡張には用いない。日本に関する記述は3本の一次資料のいずれにもない。 業種名は enrich_activity_intelligence.py が用いるリポジトリ既存の語彙へ揃え、重複して生成された「政府・公共機関」と「マスメディア・通信」を「政府・行政」「メディア・報道」「情報通信」へ統合・分割した。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -3019,6 +3034,32 @@
         "ioc"
       ],
       "analyst_notes": "BI.ZONE Threat Intelligenceが直接観測した一次資料であり、Kasperskyとは独立した2本目の一次情報源である。原文末尾にMITRE ATT&CKの技術と手順の対応表を持つため、本プロファイルのTTPの多くは同表の記述をそのまま構造化している。公開日には差異がある。本文の署名行の表示は「December 25, 2024」だが、ページ埋め込みの datePublished は「2024-12-18T09:09:18+03:00」である。表示日である2024-12-25を採用し、差異を本注記へ残す。いずれの日付も観測日へ流用していない。curlでHTTP 200を取得して原文を確認している。"
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -3077,7 +3118,7 @@
       "PowerTaskel v2 は当初 MythicAcademic キャンペーンでの使用として観測され、C2 インフラの共有が判明して初めて GOFFEE へ結び付いたと Kaspersky が明記している。MythicAcademic と GOFFEE の関係は本稿では解決されていない。",
       "PowerTaskel / PowerModul / USB Worm の名称は profiles/anonymous の生成物にも現れるが、これは Kaspersky ICS CERT のハクティビスト TTP 総覧資料に含まれる一般的な技術記述からの取り込みであり、同プロファイルに GOFFEE 由来の IOC は存在しない(iocs.json は0件)。本プロファイルとの重複ではない。"
     ],
-    "collection_notes": "2026-09-18 の日次チェックにおいて、一次情報源の公開一覧巡回で Kaspersky Securelist ロシア語版の2026-08-28公開分を検知した。tech-memo daily-news には未収録であり、IOC CSV の actor 列にも現れないため、daily_check.py --run-scan では検知されない取りこぼしであった。検知後、既存673プロファイルの canonical name / alias と parse-daily/unknown-clusters.json の clusters・excluded_name_collisions を照合し、GOFFEE / Paper Werewolf のエントリが存在しないことを確認した。昇格判断のため独立した一次情報源を探索し、Kaspersky Securelist(2025-04-10)と BI.ZONE Threat Intelligence(2024-12-25)の2本を特定して、いずれも curl で原文HTMLを取得して確認した。AGENT.md の昇格閾値(独立した一次資料2本以上)は Kaspersky と BI.ZONE の2社で満たしている。検索は発見用途にのみ用い、記述の根拠はすべて原文の本文表現である。",
+    "collection_notes": "2026-09-18 の日次チェックにおいて、一次情報源の公開一覧巡回で Kaspersky Securelist ロシア語版の2026-08-28公開分を検知した。tech-memo daily-news には未収録であり、IOC CSV の actor 列にも現れないため、daily_check.py --run-scan では検知されない取りこぼしであった。検知後、既存673プロファイルの canonical name / alias と parse-daily/unknown-clusters.json の clusters・excluded_name_collisions を照合し、GOFFEE / Paper Werewolf のエントリが存在しないことを確認した。昇格判断のため独立した一次情報源を探索し、Kaspersky Securelist(2025-04-10)と BI.ZONE Threat Intelligence(2024-12-25)の2本を特定して、いずれも curl で原文HTMLを取得して確認した。AGENT.md の昇格閾値(独立した一次資料2本以上)は Kaspersky と BI.ZONE の2社で満たしている。検索は発見用途にのみ用い、記述の根拠はすべて原文の本文表現である。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "本プロファイルは3本の一次資料のみから構成しており、二次報道は採用していない。反証の探索範囲は上記3本と本リポジトリ内の既存データに限られる。「反証が見つからなかった」ことを「反証なし」とは扱わない。"
   },
   "free_text": {

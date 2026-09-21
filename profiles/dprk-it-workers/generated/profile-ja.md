@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--dprk-it-workers`
 - 状態: draft
-- 更新日時: 2026-09-19T00:58:00Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:11:26Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -52,12 +52,13 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -66,6 +67,7 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -139,7 +141,7 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 | sectors | リモート採用を行うIT・ソフトウェア開発企業 | ANY.RUNは「Their goal is simple: get hired by Western companies」と記載し、リモート採用を通じて正規従業員として組織内部へ入り込むことを目的とすると評価している。 | 不明 | 不明 | 高 | `source--anyrun-it-workers-part-two-2026`, `source--flare-ibm-xforce-nkitw-2026` |
 | sectors | 受託開発を行うWebエージェンシーとそのクライアント | 原文は「Web agencies that do contract work for multiple clients are a popular choice for NKITW to apply to」と記載し、エージェンシーへ就労したNKITWがエージェンシー自身に加えてそのクライアント環境(クライアント側の社用メール、Jira、SharePoint、Shopify、CRM)にもアカウントを付与された事例を示している。1件の就労が複数の顧客組織へ波及する構造として記録する。 | 不明 | 不明 | 高 | `source--flare-ibm-xforce-nkitw-2026` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -191,11 +193,11 @@ U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-gener
 
 ## IOC／artifact概要
 
-- IOC値: 159件
-- IOC観測: 164件
+- IOC値: 182件
+- IOC観測: 198件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 50件
-- 非IOC artifact観測: 63件（`artifacts.csv`）
+- 要レビュー候補: 45件
+- 非IOC artifact観測: 44件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

@@ -1,0 +1,1583 @@
+{
+  "type": "bundle",
+  "id": "bundle--8921dcfa-5de8-4ab0-a52c-be47beef18fa",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--34534f55-70e5-4c59-bf61-13dccd3597eb",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "One-Way Communication",
+      "description": "GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1102.003",
+          "url": "https://attack.mitre.org/techniques/T1102/003/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--4b68390034dd0a918d46",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-c8c7410b209e5a38dbfe"
+      ],
+      "x_malware_refs": [
+        "malware--mopsled",
+        "malware--riflespine"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用",
+      "description": "UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。 侵入後、持続的なアクセスを確保するための多くの手法を使用。 北米、東南アジア、オセアニアの政府や企業を主な標的。 ReptileやMedusaなどのルートキットを使用。 GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-c8c7410b209e5a38dbfe",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--c8c7410b209e5a38dbfe086c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc3886",
+          "name": "UNC3886",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--medusa",
+            "malware--mopsled",
+            "malware--reptile",
+            "malware--riflespine"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--4b68390034dd0a918d46"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--targeting-audit--region--4c0d2886321054aa30de",
+            "target--targeting-audit--region--7d3945b7c9ca7e997389",
+            "target--targeting-audit--region--8b6444202f1ea5f2d7b7"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--ea1152a5d569414a67bb"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-06-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--targeting-audit--region--4c0d2886321054aa30de",
+              "target--targeting-audit--region--7d3945b7c9ca7e997389",
+              "target--targeting-audit--region--8b6444202f1ea5f2d7b7"
+            ]
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2991ab0470fb4a03b3f8"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "class",
+      "description": "活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--210dddb39397dbe50e91",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ddc46321-7ce9-4956-af28-e5011cb7803b",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-20T08:53:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用",
+      "identity_class": "organization",
+      "description": "UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。 侵入後、持続的なアクセスを確保するための多くの手法を使用。 北米、東南アジア、オセアニアの政府や企業を主な標的。 ReptileやMedusaなどのルートキットを使用。 GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--ea1152a5d569414a67bb",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "x_malware_refs": [
+        "malware--medusa",
+        "malware--mopsled",
+        "malware--reptile",
+        "malware--riflespine"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--4b68390034dd0a918d46"
+      ],
+      "x_affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T03:52:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC3886",
+      "aliases": [],
+      "description": "[UNC3886](https://attack.mitre.org/groups/G1048) is a China-nexus cyberespionage group that has been active since at least 2022, targeting defense, technology, and telecommunication organizations located in the United States and the Asia-Pacific-Japan (APJ) regions. [UNC3886](https://attack.mitre.org/groups/G1048) has displayed a deep understanding of edge devices and virtualization technologies through the exploitation of zero-day vulnerabilities and the use of novel malware families and utilities.(Citation: Mandiant Fortinet Zero Day)(Citation: Google Cloud Threat Intelligence VMWare ESXi Zero-Day 2023)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--unc3886",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC3886の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "MEDUSA, CASTLETAP, THINCRUST, REPTILE, VIRTUALPIE, MOPSLED, RIFLESPINE, VIRTUALPITA",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=シンガポール、中国、米国。標的地域=アジア、アフリカ、オセアニア、北米、東南アジア、欧州。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "オセアニア",
+      "description": "活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的地域としてオセアニアが明示されている。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--targeting-audit--region--7d3945b7c9ca7e997389",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "オセアニア",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北米",
+      "description": "活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的地域として北米が明示されている。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--targeting-audit--region--4c0d2886321054aa30de",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "北米",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "東南アジア",
+      "description": "活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的地域として東南アジアが明示されている。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--targeting-audit--region--8b6444202f1ea5f2d7b7",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "東南アジア",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--b3304474-de04-4018-ae33-bdbd5d106b35",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-20T13:48:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MOPSLED",
+      "description": "[MOPSLED](https://attack.mitre.org/software/S1221) is a shellcode-based modular backdoor that has been used by China-nexus cyber espionage actors including [UNC3886](https://attack.mitre.org/groups/G1048) and [APT41](https://attack.mitre.org/groups/G0096).(Citation: Google Cloud Mandiant UNC3886 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--mopsled",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": [
+        "MOPSLED"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--c55ff98a-9097-41cd-8c27-374bd45aa463",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-20T13:48:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "RIFLESPINE",
+      "description": "[RIFLESPINE](https://attack.mitre.org/software/S1222) is a cross-platform backdoor that leverages Google Drive for file transfer and command execution.(Citation: Google Cloud Mandiant UNC3886 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--riflespine",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": [
+        "RIFLESPINE"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--d5b035d9-c323-418e-a633-4e68482d10e4",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-20T13:48:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MEDUSA",
+      "description": "[MEDUSA](https://attack.mitre.org/software/S1220) is an open-source rootkit that is capable of dynamic linker hijacking, command execution, and logging credentials.(Citation: Google Cloud Mandiant UNC3886 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--medusa",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": [
+        "MEDUSA"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--d7ba6937-96ac-450a-bd94-f97bf16d3db3",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-20T13:48:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "REPTILE",
+      "description": "[REPTILE](https://attack.mitre.org/software/S1219) is an open-source Linux rootkit with multiple components that provides backdoor access and functionality.(Citation: Google Cloud Mandiant UNC3886 2024)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--reptile",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": [
+        "REPTILE"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--08a2be5d-de8d-4aa6-b2e7-818536c56a53",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "malware--b3304474-de04-4018-ae33-bdbd5d106b35",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 uses malware--mopsled.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2706afba-2dfd-4cdb-894d-3660614dda52",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "attack-pattern--34534f55-70e5-4c59-bf61-13dccd3597eb",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 uses ttp--activity-rule--4b68390034dd0a918d46.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--35ec2762-d3c5-4927-bf25-4cbaff193e1a",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 is attributed or linked to UNC3886.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43443197-171a-4514-99f7-b8c65785442b",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "malware--d5b035d9-c323-418e-a633-4e68482d10e4",
+      "description": "UNC3886 uses MEDUSA.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-07-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2024-07-01T04:00:00.000Z",
+      "stop_time": "2025-03-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--49e8fc15-0684-4d39-b689-920e64e4597b",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "malware--c55ff98a-9097-41cd-8c27-374bd45aa463",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 uses malware--riflespine.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d89ad0c-4955-4a2b-b352-388f4b8e7976",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+      "description": "UNC3886 targets オセアニア (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--55de1166-7114-4e6e-8335-6183ae7245fd",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "malware--d7ba6937-96ac-450a-bd94-f97bf16d3db3",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 uses malware--reptile.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--680a8aa1-c652-475e-901c-fe1dccbb19f6",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "malware--d7ba6937-96ac-450a-bd94-f97bf16d3db3",
+      "description": "UNC3886 uses REPTILE.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-07-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2025-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2024-07-01T04:00:00.000Z",
+      "stop_time": "2025-03-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--70a4a591-c0ab-4749-8219-c69f181888b9",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "malware--d5b035d9-c323-418e-a633-4e68482d10e4",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 uses malware--medusa.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--759a6f92-ef67-4067-a270-61d16456b674",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 targets target--targeting-audit--region--8b6444202f1ea5f2d7b7.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--76eab607-35f8-4157-acb3-3f88c66b65f2",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "UNC3886 targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7ff97bd4-f2b1-4323-b690-0c3b896bc338",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 targets target--targeting-audit--region--7d3945b7c9ca7e997389.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c32804b-2e19-4e5f-a7a7-bc7166d6fd48",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "malware--b3304474-de04-4018-ae33-bdbd5d106b35",
+      "description": "UNC3886 uses MOPSLED.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--914d6c02-239a-4c33-a720-a15c5ef42354",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+      "description": "UNC3886 targets 東南アジア (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ac422a6a-f922-4ac6-8652-6b66c9dd4d77",
+      "created": "2026-07-25T15:23:08Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "malware--c55ff98a-9097-41cd-8c27-374bd45aa463",
+      "description": "UNC3886 uses RIFLESPINE.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--babd923a-1a63-4204-bba3-3378fbb3f1c5",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 targets target--targeting-audit--region--4c0d2886321054aa30de.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c7f654ad-15d5-43c6-a43b-41289bf71308",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "identity--ddc46321-7ce9-4956-af28-e5011cb7803b",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 affected victim--activity-rule--ea1152a5d569414a67bb.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d13808e5-58fd-4e09-83f1-87cc3ac0d727",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "attack-pattern--34534f55-70e5-4c59-bf61-13dccd3597eb",
+      "description": "GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2d0efe6-bd4f-4898-9732-db0f49dd3f1c",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-06-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e0c476f0-9bcf-4492-8168-01ffbdc7e35b",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+      "target_ref": "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+      "description": "UNC3886 targets 北米 (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--06859e4e-ebc3-496d-894e-7ba140461ee2",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-06-20T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--34534f55-70e5-4c59-bf61-13dccd3597eb",
+        "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--ddc46321-7ce9-4956-af28-e5011cb7803b",
+        "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+        "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+        "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+        "relationship--08a2be5d-de8d-4aa6-b2e7-818536c56a53",
+        "relationship--2706afba-2dfd-4cdb-894d-3660614dda52",
+        "relationship--35ec2762-d3c5-4927-bf25-4cbaff193e1a",
+        "relationship--49e8fc15-0684-4d39-b689-920e64e4597b",
+        "relationship--4d89ad0c-4955-4a2b-b352-388f4b8e7976",
+        "relationship--55de1166-7114-4e6e-8335-6183ae7245fd",
+        "relationship--70a4a591-c0ab-4749-8219-c69f181888b9",
+        "relationship--759a6f92-ef67-4067-a270-61d16456b674",
+        "relationship--76eab607-35f8-4157-acb3-3f88c66b65f2",
+        "relationship--7ff97bd4-f2b1-4323-b690-0c3b896bc338",
+        "relationship--914d6c02-239a-4c33-a720-a15c5ef42354",
+        "relationship--babd923a-1a63-4204-bba3-3378fbb3f1c5",
+        "relationship--c7f654ad-15d5-43c6-a43b-41289bf71308",
+        "relationship--d13808e5-58fd-4e09-83f1-87cc3ac0d727",
+        "relationship--d2d0efe6-bd4f-4898-9732-db0f49dd3f1c",
+        "relationship--e0c476f0-9bcf-4492-8168-01ffbdc7e35b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-2991ab0470fb4a03b3f8",
+          "url": "https://thehackernews.com/2024/06/chinese-cyber-espionage-group-exploits.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-2991ab0470fb4a03b3f8",
+      "x_evidence_slice_scope": "campaign:actor--unc3886:activity--daily-c8c7410b209e5a38dbfe",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b3089716-57cb-4b02-8e09-a82fca37db8e",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "malware--b3304474-de04-4018-ae33-bdbd5d106b35",
+        "malware--c55ff98a-9097-41cd-8c27-374bd45aa463",
+        "malware--d5b035d9-c323-418e-a633-4e68482d10e4",
+        "malware--d7ba6937-96ac-450a-bd94-f97bf16d3db3",
+        "relationship--43443197-171a-4514-99f7-b8c65785442b",
+        "relationship--680a8aa1-c652-475e-901c-fe1dccbb19f6",
+        "relationship--8c32804b-2e19-4e5f-a7a7-bc7166d6fd48",
+        "relationship--ac422a6a-f922-4ac6-8652-6b66c9dd4d77"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--unc3886:activity--daily-c8c7410b209e5a38dbfe",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e226b3cd-fe3c-46c2-92f2-e70bb5874fde",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-06-21T00:00:00Z",
+      "object_refs": [
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+        "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+        "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+        "relationship--4d89ad0c-4955-4a2b-b352-388f4b8e7976",
+        "relationship--76eab607-35f8-4157-acb3-3f88c66b65f2",
+        "relationship--914d6c02-239a-4c33-a720-a15c5ef42354",
+        "relationship--e0c476f0-9bcf-4492-8168-01ffbdc7e35b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-4fd1a9d4d043a65933bd",
+          "url": "https://www.bleepingcomputer.com/news/security/unc3886-hackers-use-linux-rootkits-to-hide-on-vmware-esxi-vms/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-4fd1a9d4d043a65933bd",
+      "x_evidence_slice_scope": "campaign:actor--unc3886:activity--daily-c8c7410b209e5a38dbfe",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2fe8dbe8-bd11-430a-b255-d6212617d1a6",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC3886 / 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用",
+      "description": "UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。 侵入後、持続的なアクセスを確保するための多くの手法を使用。 北米、東南アジア、オセアニアの政府や企業を主な標的。 ReptileやMedusaなどのルートキットを使用。 GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "attack-pattern--34534f55-70e5-4c59-bf61-13dccd3597eb",
+        "campaign--7be88df2-b67a-41da-92c0-f27a6c55fe6c",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--ddc46321-7ce9-4956-af28-e5011cb7803b",
+        "intrusion-set--9b818081-09e7-4a2a-8743-e8687c2273e2",
+        "location--2f383751-7ba9-4a0c-b1d7-832f92816aa1",
+        "location--6a38bd45-655f-4ca8-873d-c26c033c9404",
+        "location--df03f08e-3b8a-478d-adfa-00127f01d472",
+        "malware--b3304474-de04-4018-ae33-bdbd5d106b35",
+        "malware--c55ff98a-9097-41cd-8c27-374bd45aa463",
+        "malware--d5b035d9-c323-418e-a633-4e68482d10e4",
+        "malware--d7ba6937-96ac-450a-bd94-f97bf16d3db3",
+        "relationship--08a2be5d-de8d-4aa6-b2e7-818536c56a53",
+        "relationship--2706afba-2dfd-4cdb-894d-3660614dda52",
+        "relationship--35ec2762-d3c5-4927-bf25-4cbaff193e1a",
+        "relationship--43443197-171a-4514-99f7-b8c65785442b",
+        "relationship--49e8fc15-0684-4d39-b689-920e64e4597b",
+        "relationship--4d89ad0c-4955-4a2b-b352-388f4b8e7976",
+        "relationship--55de1166-7114-4e6e-8335-6183ae7245fd",
+        "relationship--680a8aa1-c652-475e-901c-fe1dccbb19f6",
+        "relationship--70a4a591-c0ab-4749-8219-c69f181888b9",
+        "relationship--759a6f92-ef67-4067-a270-61d16456b674",
+        "relationship--76eab607-35f8-4157-acb3-3f88c66b65f2",
+        "relationship--7ff97bd4-f2b1-4323-b690-0c3b896bc338",
+        "relationship--8c32804b-2e19-4e5f-a7a7-bc7166d6fd48",
+        "relationship--914d6c02-239a-4c33-a720-a15c5ef42354",
+        "relationship--ac422a6a-f922-4ac6-8652-6b66c9dd4d77",
+        "relationship--babd923a-1a63-4204-bba3-3378fbb3f1c5",
+        "relationship--c7f654ad-15d5-43c6-a43b-41289bf71308",
+        "relationship--d13808e5-58fd-4e09-83f1-87cc3ac0d727",
+        "relationship--d2d0efe6-bd4f-4898-9732-db0f49dd3f1c",
+        "relationship--e0c476f0-9bcf-4492-8168-01ffbdc7e35b",
+        "report--06859e4e-ebc3-496d-894e-7ba140461ee2",
+        "report--b3089716-57cb-4b02-8e09-a82fca37db8e",
+        "report--e226b3cd-fe3c-46c2-92f2-e70bb5874fde"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc3886",
+      "x_activity_id": "activity--daily-c8c7410b209e5a38dbfe"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--apt38",
-  "updated_at": "2026-08-07T10:34:09Z",
+  "updated_at": "2026-09-21T08:15:06Z",
   "records": [
     {
       "record_id": "daily-record--0f684df47b88032d13f03596",
@@ -3458,11 +3458,11 @@
         "raw_value": "SAPPHIRE SLEET"
       },
       "activity": {
-        "title": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
+        "title": "Sapphire Sleet系クラスタ、npmパッケージのサプライチェーンを侵害",
         "summary": "Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。",
         "news_date": "2026-07-31",
         "news_url": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
-        "primary_url": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+        "primary_url": "https://aws.amazon.com/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
         "activity_reference": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
         "news_path": "daily-news/news/2026_07-09/20260731.md"
       },
@@ -3572,7 +3572,7 @@
           "reason": "侵害されたnpmパッケージ自体。原文に「特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows/macOS/Linux上で実行するコードが確認された」と明記され、C2通信・ペイロード取得機能を持つ悪性実装として直接分析されている。"
         }
       ],
-      "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
+      "review_notes": "AWS一次資料を再確認。公開日は2026-07-29。typo-crypto（2025-03）、debug/chalk（2025-09）、axios（2026-03）を同一DPRK系アクターへmedium confidenceで帰属する。本文の名称はSAPPHIRE SLEET等でAPT38表記はないため、MITRE G0082を介したoverlappingスコープとして保持し完全同一とは断定しない。",
       "activity_claim": {
         "assessment": "structured-actor-field",
         "actor_role": "operator",
@@ -3583,7 +3583,21 @@
         ],
         "suggested_confidence": "medium"
       },
-      "source_commit": "153b082489afea8d247b3e646cb25c96e25b5601"
+      "source_commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+      "activity_period": {
+        "first_observed": {
+          "value": "2025-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "AWS: typo-crypto compromise in March 2025"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "AWS: axios compromise in March 2026"
+        }
+      }
     }
   ]
 }

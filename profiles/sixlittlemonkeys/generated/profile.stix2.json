@@ -7,30 +7,18 @@
       "spec_version": "2.1",
       "id": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "SixLittleMonkeys",
-      "aliases": [
-        "Microcin"
-      ],
+      "aliases": [],
       "description": "SixLittleMonkeysの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--sixlittlemonkeys",
-      "x_alias_assessments": [
-        {
-          "name": "Microcin",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        }
-      ],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -45,16 +33,17 @@
         "history": "",
         "capability_details": "Microcin, BYEBY, Mikroceen",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、ベラルーシ、モンゴル、ロシア。標的地域=中央アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nCentral Asia, Russian military, Belarussia, Mongolia,",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nCentral Asia, Russian military, Belarussia, Mongolia,",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--sixlittlemonkeys",
         "actor_name": "SixLittleMonkeys",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -63,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -73,6 +63,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "99c03ea2-2c7c-49fc-a513-9f2782b630a7",
@@ -101,7 +92,41 @@
                 "https://securelist.com/microcin-is-here/97353/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Mikroceen&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2017",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Defense",
+                  "Government",
+                  "Oil and gas",
+                  "Telecommunications"
+                ],
+                "observed-countries": [
+                  "Belarus",
+                  "Mongolia",
+                  "Russia",
+                  "Central Asia"
+                ],
+                "tools": [
+                  "Gh0st RAT",
+                  "logon.dll",
+                  "logsupport.dll",
+                  "Microcin",
+                  "Mimikatz",
+                  "pcaudit.bat",
+                  "sqllauncher.dll"
+                ],
+                "operations": [
+                  {
+                    "date": "2021-03",
+                    "activity": "Exchange servers under siege from at least 10 APT groups\nhttps://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/"
+                  }
+                ],
+                "last-card-change": "2021-04-20"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -142,57 +167,24 @@
                 "https://securelist.com/apt-trends-report-q3-2021/104708",
                 "https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Belarus",
+                  "Russia",
+                  "Mongolia",
+                  "Ukraine"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--microcin",
-            "profile_name": "Microcin",
-            "entry_uuid": "185d8b28-0179-4ec6-a3c8-201b1936b9aa",
-            "entry_value": "Microcin",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.microcin",
-              "https://decoded.avast.io/luigicamastra/apt-group-planted-backdoors-targeting-high-profile-networks-in-central-asia/",
-              "https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/",
-              "https://github.com/dlegezo/common",
-              "https://decoded.avast.io/luigicamastra/apt-group-planted-backdoors-targeting-high-profile-networks-in-central-asia",
-              "https://securelist.com/apt-trends-report-q2-2019/91897/",
-              "https://securelist.com/a-simple-example-of-a-complex-cyberattack/82636",
-              "https://www.welivesecurity.com/2020/05/14/mikroceen-spying-backdoor-high-profile-networks-central-asia",
-              "https://securelist.com/microcin-is-here/97353",
-              "https://www.welivesecurity.com/wp-content/uploads/2020/07/ESET_Threat_Report_Q22020.pdf",
-              "https://www.welivesecurity.com/2020/05/14/mikroceen-spying-backdoor-high-profile-networks-central-asia/",
-              "https://st.drweb.com/static/new-www/news/2020/july/Study_of_the_APT_attacks_on_state_institutions_in_Kazakhstan_and_Kyrgyzstan_en.pdf",
-              "https://securelist.com/microcin-is-here/97353/",
-              "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07170759/Microcin_Technical_4PDF_eng_final_s.pdf",
-              "https://securelist.com/a-simple-example-of-a-complex-cyberattack/82636/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--byeby",
-            "profile_name": "BYEBY",
-            "entry_uuid": "12886243-55b6-4864-bf7a-7e2439e3a4c1",
-            "entry_value": "BYEBY",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.byeby",
-              "https://decoded.avast.io/luigicamastra/apt-group-planted-backdoors-targeting-high-profile-networks-in-central-asia/",
-              "https://www.ptsecurity.com/ww-en/analytics/calypso-apt-2019/",
-              "https://decoded.avast.io/luigicamastra/apt-group-planted-backdoors-targeting-high-profile-networks-in-central-asia",
-              "https://researchcenter.paloaltonetworks.com/2017/09/unit42-threat-actors-target-government-belarus-using-cmstar-trojan",
-              "https://unit42.paloaltonetworks.com/unit42-threat-actors-target-government-belarus-using-cmstar-trojan",
-              "https://www.welivesecurity.com/2020/05/14/mikroceen-spying-backdoor-high-profile-networks-central-asia/",
-              "https://research.checkpoint.com/2020/vicious-panda-the-covid-campaign/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -217,478 +209,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--40769852-1118-4f86-94bc-e4c3e20548cb",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Microcin",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--microcin",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--c2794f14-d91d-466f-9168-1be957b8bbf0",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "BYEBY",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--byeby",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--b5ab7254-e80e-4c07-a397-b66a0db540bc",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Mikroceen",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--mikroceen",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--47f05826-3c12-44f6-8058-36758247c744",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ウクライナ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでSixLittleMonkeysの標的・被害国としてウクライナが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2bad3ebd-fa5f-433d-b2a8-1f5ef98f005a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ベラルーシ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでSixLittleMonkeysの標的・被害国としてベラルーシが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1b4b16e8-ad24-4806-883d-7b25dba5499c",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "モンゴル",
-      "identity_class": "organization",
-      "description": "Targeting text mentions mongolia.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2c8b6b3c-4ab5-4abb-a98f-5615e9458d5a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ロシア",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録されたロシアを構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--004ff3e7-38bf-4843-9ed7-7bb09fb07517",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中央アジア",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録された中央アジアを構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d04da067-8f00-4b0f-8e21-028426ca7038",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東欧",
-      "identity_class": "organization",
-      "description": "ウクライナ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--8f7ab019-f0d4-4d77-8778-92ea4b9d287c",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "ウクライナ、ベラルーシで確認された標的・被害事例を欧州として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Defense",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Defense sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--86df1483-7126-46f9-a9b0-75e96865b981",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "malware--40769852-1118-4f86-94bc-e4c3e20548cb",
-      "description": "SixLittleMonkeys uses Microcin.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--076f508c-2dbf-48d7-ab96-7a91df75158f",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "malware--c2794f14-d91d-466f-9168-1be957b8bbf0",
-      "description": "SixLittleMonkeys uses BYEBY.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7d875c28-e40b-4f10-a282-e1de4ac1d142",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "malware--b5ab7254-e80e-4c07-a397-b66a0db540bc",
-      "description": "SixLittleMonkeys uses Mikroceen.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fbd1b062-b337-4b9c-96f3-dc6888a7027e",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--47f05826-3c12-44f6-8058-36758247c744",
-      "description": "SixLittleMonkeys targets ウクライナ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--310d7602-7df6-4327-aa5c-f5aba74140e0",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--2bad3ebd-fa5f-433d-b2a8-1f5ef98f005a",
-      "description": "SixLittleMonkeys targets ベラルーシ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2c9b16ca-14ec-473f-a9e7-569916be9b2f",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--1b4b16e8-ad24-4806-883d-7b25dba5499c",
-      "description": "SixLittleMonkeys targets モンゴル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--600502f1-a9d2-4515-aae9-70987d45330d",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--2c8b6b3c-4ab5-4abb-a98f-5615e9458d5a",
-      "description": "SixLittleMonkeys targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9adc10d4-c4ef-4a3a-8c15-2f6e1d169b4d",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--004ff3e7-38bf-4843-9ed7-7bb09fb07517",
-      "description": "SixLittleMonkeys targets 中央アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b006a696-7262-4227-adee-ac0c56c16a5a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--d04da067-8f00-4b0f-8e21-028426ca7038",
-      "description": "SixLittleMonkeys targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7afd41f8-382d-4cc7-b5ea-f580cc263730",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--8f7ab019-f0d4-4d77-8778-92ea4b9d287c",
-      "description": "SixLittleMonkeys targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5913f4d5-a501-4162-8531-424810286f64",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-      "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-      "description": "SixLittleMonkeys targets Defense (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--63199dd3-c99f-4db6-8a2a-24301b389d1d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -698,14 +223,14 @@
         "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 17
+      "x_artifact_observation_count": 5
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--7e943e95-758e-4d88-9d01-40a4b8b9f433",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -714,22 +239,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb",
-        "malware--40769852-1118-4f86-94bc-e4c3e20548cb",
-        "malware--c2794f14-d91d-466f-9168-1be957b8bbf0",
-        "malware--b5ab7254-e80e-4c07-a397-b66a0db540bc",
-        "identity--47f05826-3c12-44f6-8058-36758247c744",
-        "identity--2bad3ebd-fa5f-433d-b2a8-1f5ef98f005a",
-        "identity--1b4b16e8-ad24-4806-883d-7b25dba5499c",
-        "identity--2c8b6b3c-4ab5-4abb-a98f-5615e9458d5a",
-        "identity--004ff3e7-38bf-4843-9ed7-7bb09fb07517",
-        "identity--d04da067-8f00-4b0f-8e21-028426ca7038",
-        "identity--8f7ab019-f0d4-4d77-8778-92ea4b9d287c",
-        "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0"
+        "intrusion-set--1fb6d424-3d57-4789-b3df-67efda55fdbb"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

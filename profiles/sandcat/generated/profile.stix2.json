@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--sandcat",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "CHAINSHOT, FinFisher/FinSpy, CVE-2018-8589",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=サウジアラビア。標的地域=中東。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--sandcat",
         "actor_name": "Sandcat",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "ff99d24e-706d-4f15-99f3-a30c0be47cbe",
@@ -85,7 +89,24 @@
                 "https://www.vice.com/en_us/article/3kx5y3/uzbekistan-hacking-operations-uncovered-due-to-spectacularly-bad-opsec",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=SandCat&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2018",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-countries": [
+                  "Saudi Arabia",
+                  "Middle East"
+                ],
+                "tools": [
+                  "FinFisher",
+                  "CHAINSHOT",
+                  "several 0-days"
+                ],
+                "sponsor": "State-sponsored, Military Unit 02616",
+                "last-card-change": "2020-04-14"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -112,31 +133,17 @@
               "refs": [
                 "https://securelist.com/zero-day-in-windows-kernel-transaction-manager-cve-2018-8611/89253/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--chainshot",
-            "profile_name": "CHAINSHOT",
-            "entry_uuid": "36f9a5e0-9a78-4b9a-9072-1596c91b59b6",
-            "entry_value": "Chainshot",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.chainshot",
-              "https://researchcenter.paloaltonetworks.com/2018/09/unit42-slicing-dicing-cve-2018-5002-payloads-new-chainshot-malware/",
-              "https://www.icebrg.io/blog/adobe-flash-zero-day-targeted-attack",
-              "https://securelist.com/puzzlemaker-chrome-zero-day-exploit-chain/102771/",
-              "https://www.vice.com/en_us/article/3kx5y3/uzbekistan-hacking-operations-uncovered-due-to-spectacularly-bad-opsec",
-              "https://citizenlab.ca/2021/07/hooking-candiru-another-mercenary-spyware-vendor-comes-into-focus/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -161,211 +168,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--48b9f26f-cc53-4de5-a675-14a01fd20b9d",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "CHAINSHOT",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--chainshot",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--585f8492-42c5-4678-b78b-0f839a9d7d7c",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "FinFisher/FinSpy",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--finfisher-finspy",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d0cfd6a5-f8fe-40ad-b8a6-7537039d74f0",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "CVE-2018-8589",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--cve-2018-8589",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1adbdbdb-779a-42bd-8ae0-c9a662ea62fe",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "サウジアラビア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでSandcatの標的・被害国としてサウジアラビアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--4acbc4a6-ea4c-4ed3-a18c-88444ecb352b",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでSandcatの標的範囲として中東が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--0e57da1a-eefc-4cef-9f7e-d6821473aa76",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-      "target_ref": "malware--48b9f26f-cc53-4de5-a675-14a01fd20b9d",
-      "description": "Sandcat uses CHAINSHOT.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b4d787b3-e6c9-43a8-8e44-b3c21e6b8069",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-      "target_ref": "malware--585f8492-42c5-4678-b78b-0f839a9d7d7c",
-      "description": "Sandcat uses FinFisher/FinSpy.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9e9b150d-975a-4100-a450-90c5a49779a3",
-      "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-      "target_ref": "malware--d0cfd6a5-f8fe-40ad-b8a6-7537039d74f0",
-      "description": "Sandcat uses CVE-2018-8589.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--22eaffc8-6d00-42b8-bd61-ddc2c0c10401",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-      "target_ref": "identity--1adbdbdb-779a-42bd-8ae0-c9a662ea62fe",
-      "description": "Sandcat targets サウジアラビア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1d8481f6-db73-42ca-956f-e59be5891f59",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-      "target_ref": "identity--4acbc4a6-ea4c-4ed3-a18c-88444ecb352b",
-      "description": "Sandcat targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--3e2162c3-bc11-4456-bced-48bb08af7536",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -375,14 +182,14 @@
         "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 16
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--0e3519c0-3db5-4c60-a968-a9b7db2e848a",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -391,16 +198,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01",
-        "malware--48b9f26f-cc53-4de5-a675-14a01fd20b9d",
-        "malware--585f8492-42c5-4678-b78b-0f839a9d7d7c",
-        "malware--d0cfd6a5-f8fe-40ad-b8a6-7537039d74f0",
-        "identity--1adbdbdb-779a-42bd-8ae0-c9a662ea62fe",
-        "identity--4acbc4a6-ea4c-4ed3-a18c-88444ecb352b"
+        "intrusion-set--78bc77cf-4493-48b9-94b2-42bb08ea6f01"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

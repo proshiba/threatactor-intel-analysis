@@ -1,0 +1,1713 @@
+{
+  "type": "bundle",
+  "id": "bundle--55acf8bd-1ed7-479c-b799-02ca5e933307",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DLL",
+      "description": "攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1574.001",
+          "url": "https://attack.mitre.org/techniques/T1574/001/"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--bb83afc59a90ec2e9e7f",
+      "x_tactic": "Execution, Stealth",
+      "x_activity_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b8b3301d837c22e89850",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--b8b3301d837c22e89850ee20 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--mustang-panda",
+          "name": "Mustang Panda",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--coolclient",
+            "malware--plugx"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--mongolia",
+            "target--mitre-group--country--3741489f7d9087fab6e5",
+            "target--mitre-group--country--e35e01ac517c4dd06824",
+            "target--targeting-audit--country--ae80ac68287021e69141"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--424cfca2a8efacfa91f1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Execution",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--mongolia",
+              "target--mitre-group--country--3741489f7d9087fab6e5",
+              "target--mitre-group--country--e35e01ac517c4dd06824",
+              "target--targeting-audit--country--ae80ac68287021e69141"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "identity_class": "organization",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--424cfca2a8efacfa91f1",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--country--mongolia",
+        "target--mitre-group--country--3741489f7d9087fab6e5",
+        "target--mitre-group--country--e35e01ac517c4dd06824"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-09-21T04:18:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mustang Panda",
+      "aliases": [
+        "BASIN CASTLE",
+        "BRONZE PRESIDENT",
+        "CAMARO DRAGON",
+        "ClumsyToad",
+        "EARTH PRETA",
+        "FIREANT",
+        "HIVE0154",
+        "HoneyMyte",
+        "RedDelta",
+        "Red Lich",
+        "STATELY TAURUS",
+        "TA416",
+        "TANTALUM",
+        "TEMP.Hex",
+        "TWILL TYPHOON",
+        "UNC6384"
+      ],
+      "description": "[Mustang Panda](https://attack.mitre.org/groups/G0129) is a China-based cyber espionage threat actor that has been conducting operations since at least 2012. [Mustang Panda](https://attack.mitre.org/groups/G0129) has been known to use tailored phishing lures and decoy documents to deliver malicious payloads.  [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. (Citation: BlackBerry MUSTANG PANDA October 2022)(Citation: Eset PlugX Korplug Mustang Panda March 2022)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Cisco Talos MUSTANG PANDA PLUGX PUBLOAD MAY 2022)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: DOJ Affidavit Search and Seizure PlugX December 2024)(Citation: EclecticIQ Mustang Panda PlugX)(Citation: ATTACKIQ MUSTANG PANDA TONESHELL March 2023)(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Palo Alto Networks, Unit 42)(Citation: Sophos PlugX September 2022)(Citation: Sophos Mustang Panda PLUGX)(Citation: Zscaler)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--mustang-panda",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BASIN CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "BRONZE PRESIDENT",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "CAMARO DRAGON",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ClumsyToad",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "EARTH PRETA",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "FIREANT",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "HIVE0154",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "HoneyMyte",
+          "vendor": "Kaspersky GReAT",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--daily-9232cff77ce0ef8f62b1"
+          ],
+          "analyst_notes": "Kaspersky explicitly states that the HoneyMyte APT group is also known as Mustang Panda."
+        },
+        {
+          "name": "RedDelta",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Red Lich",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "STATELY TAURUS",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TA416",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TANTALUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TEMP.Hex",
+          "vendor": "MITRE ATT&CK / Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "TWILL TYPHOON",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC6384",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "RCSession, PAKLOG, TONESHELL, BOOKWORM, STATICPLUGIN, PUBLOAD, CANONSTAGER, CLAIMLOADER, China Chopper, SplatDropper, PlugX, CorKLOG, Cobalt Strike, PoisonIvy, HIUPAN, StarProxy, ShadowPad, SplatCloak, ORat, Nmap, Wmiexec, China Chopper web shell, Impacket, Mimikatz, NBTscan, AdFind, Wevtutil",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=インド、セルビア、ハンガリー、パキスタン、ベルギー、マレーシア、ミャンマー、モンゴル、ロシア、中国、台湾、米国、韓国。標的地域=NATO加盟国、アジア、全世界、南アジア、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nMining sector in Mongolia, private individuals |=| gathering geo-political and economic intelligence, NGOs, political & law enforcement org in South and East Asia",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--14ae8553-5588-4f5a-9c65-ff52bc307609",
+      "created": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Pakistan",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--mitre-group--country--3741489f7d9087fab6e5",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "PAK",
+      "x_opencti_reference_id": "location--1d159ef7-392a-49b3-8ca6-b51621e6bec8",
+      "x_opencti_aliases": [
+        "PAK",
+        "PK",
+        "パキスタン"
+      ],
+      "latitude": 30.375321,
+      "longitude": 69.345116,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--65ce6828-83bf-4b57-a4d6-13c938cac887",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Myanmar",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--ae80ac68287021e69141",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "MMR",
+      "x_opencti_reference_id": "location--4145b9ec-ee0a-4d35-afb9-9b5196e846d5",
+      "x_opencti_aliases": [
+        "MM",
+        "MMR",
+        "ミャンマー"
+      ],
+      "latitude": 21.913965,
+      "longitude": 95.956223,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--8a0e7995-5857-4fb9-b01a-906246e18a00",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mongolia",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--country--mongolia",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "MNG",
+      "x_opencti_reference_id": "location--489a5be3-5051-42e6-a146-45e20704a410",
+      "x_opencti_aliases": [
+        "MN",
+        "MNG",
+        "モンゴル"
+      ],
+      "latitude": 46.862496,
+      "longitude": 103.846656,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--d7a57a06-5652-4223-8fa9-73aae6f9a2f5",
+      "created": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Russian Federation",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--mitre-group--country--e35e01ac517c4dd06824",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "RUS",
+      "x_opencti_reference_id": "location--3e45f29a-3269-491f-ac9d-5e680db683b2",
+      "x_opencti_aliases": [
+        "RU",
+        "RUS",
+        "ロシア"
+      ],
+      "latitude": 61.52401,
+      "longitude": 105.318756,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-09-20T13:48:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "PlugX",
+      "description": "[PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--plugx",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "DestroyRAT",
+        "Kaba",
+        "Korplug",
+        "PlugX",
+        "Sogu",
+        "TVT",
+        "Thoper"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T03:52:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CoolClient",
+      "description": "HoneyMyte（Mustang Panda）に帰属されるバックドアファミリー。キーロギング、クリップボード窃取、認証情報収集、ファイル管理、システム偵察、プラグインによる機能拡張を備える。2026年8月にKaspersky GReATが報告した新亜種は、署名済みカーネルモードドライバー msagent.sys をWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリオブジェクトの隠蔽と保護、NsiproxyのフックによるC2アドレスの秘匿を行う。展開時はPlugXを初期の足掛かりとし、Sangfor社の正規実行ファイルによるDLLサイドローディングで読み込まれる。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_profile_object_id": "malware--coolclient",
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料(Kaspersky GReAT/Securelist, 2026-08-14公開)が本ファミリーをHoneyMyte(別名Mustang Panda)へ帰属している。Sophosによる2022年の初報およびTrend Microによる2023年の解析は原文が言及するのみで、公開日を観測日へ流用しないためfirst_observed/last_observedはunknownとした。",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0e69aa05-19c0-463e-ae42-bf81c3b79580",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses malware--coolclient.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--12b35ce2-dfaa-4d51-9c2f-12c092ca60f3",
+      "created": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "location--14ae8553-5588-4f5a-9c65-ff52bc307609",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 targets target--mitre-group--country--3741489f7d9087fab6e5.\n\nEvidence: re.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3767c2fb-9ed8-4ed6-992a-463ff4a76ebc",
+      "created": "2026-09-10T16:11:26Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses ttp--activity-rule--bb83afc59a90ec2e9e7f.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "location--8a0e7995-5857-4fb9-b01a-906246e18a00",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 targets target--country--mongolia.\n\nEvidence: Targeting text mentions mongolia.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--57ed6c2a-e23e-463e-879a-1e2996b57a47",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "description": "攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--617590eb-e46a-4160-ad85-ebf3ec0f3be6",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses malware--plugx.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "location--65ce6828-83bf-4b57-a4d6-13c938cac887",
+      "description": "Mustang Panda targets ミャンマー (profile target category: countries).\n\nEvidence: MITRE ATT&CKのGroup概要でMustang Pandaの標的国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html",
+          "external_id": "source--daily-0a1a885ea4fa4a799508",
+          "url": "https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html",
+          "external_id": "source--daily-0a1a885ea4fa4a799508"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7ae79e82-05b2-4662-8119-132f25ea5523",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "location--d7a57a06-5652-4223-8fa9-73aae6f9a2f5",
+      "description": "Mustang Panda targets ロシア (profile target category: countries).\n\nEvidence: g Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a6f446fc-7da5-4313-b120-4ae433591a73",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 is attributed or linked to Mustang Panda.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1",
+      "created": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "location--65ce6828-83bf-4b57-a4d6-13c938cac887",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 targets target--targeting-audit--country--ae80ac68287021e69141.\n\nEvidence: MITRE ATT&CKのGroup概要でMustang Pandaの標的国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html",
+          "external_id": "source--daily-0a1a885ea4fa4a799508"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bbaf73bb-6073-48ad-ae1a-3aa3c8fcac68",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "description": "Mustang Panda uses CoolClient.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d3a35189-ae83-4e6e-b581-fb1fbec35968",
+      "created": "2026-09-10T16:11:26Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 affected victim--activity-rule--424cfca2a8efacfa91f1.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e355eaca-9959-4432-8f55-26f172535fa6",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+      "description": "Mustang Panda uses PlugX.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2023-07-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-12-01T07:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "mitre-attack; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2023-07-01T06:00:00.000Z",
+      "stop_time": "2024-12-01T07:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e6319608-f330-457e-b8ce-723fd65295b5",
+      "created": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "location--d7a57a06-5652-4223-8fa9-73aae6f9a2f5",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 targets target--mitre-group--country--e35e01ac517c4dd06824.\n\nEvidence: g Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea0e374a-191b-4d14-a393-8d968a60d442",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "location--14ae8553-5588-4f5a-9c65-ff52bc307609",
+      "description": "Mustang Panda targets パキスタン (profile target category: countries).\n\nEvidence: re.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "location--8a0e7995-5857-4fb9-b01a-906246e18a00",
+      "description": "Mustang Panda targets モンゴル (profile target category: countries).\n\nEvidence: Targeting text mentions mongolia.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0f470535-d726-41f7-9267-52c9ca7084d5",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国のMustang Panda、CoolClientバックドアで情報窃取ツールを展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-01-29T00:00:00Z",
+      "object_refs": [
+        "relationship--12b35ce2-dfaa-4d51-9c2f-12c092ca60f3",
+        "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+        "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+        "relationship--7ae79e82-05b2-4662-8119-132f25ea5523",
+        "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1",
+        "relationship--e6319608-f330-457e-b8ce-723fd65295b5",
+        "relationship--ea0e374a-191b-4d14-a393-8d968a60d442",
+        "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-babfc72d5fb1a4c1aea7",
+          "url": "https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-babfc72d5fb1a4c1aea7",
+      "x_evidence_slice_scope": "campaign:actor--mustang-panda:activity--daily-b8b3301d837c22e89850",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--57bb2a1a-1518-48d6-a783-96b174139275",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+        "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--mustang-panda:activity--daily-b8b3301d837c22e89850",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a48b4bc9-9bb1-427a-9f93-ed0f7b0bd9fe",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT group HoneyMyte upgrades CoolClient: the backdoor gets a kernel-level Windows rootkit",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-14T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+        "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+        "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+        "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+        "relationship--0e69aa05-19c0-463e-ae42-bf81c3b79580",
+        "relationship--12b35ce2-dfaa-4d51-9c2f-12c092ca60f3",
+        "relationship--3767c2fb-9ed8-4ed6-992a-463ff4a76ebc",
+        "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+        "relationship--57ed6c2a-e23e-463e-879a-1e2996b57a47",
+        "relationship--617590eb-e46a-4160-ad85-ebf3ec0f3be6",
+        "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+        "relationship--7ae79e82-05b2-4662-8119-132f25ea5523",
+        "relationship--a6f446fc-7da5-4313-b120-4ae433591a73",
+        "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1",
+        "relationship--bbaf73bb-6073-48ad-ae1a-3aa3c8fcac68",
+        "relationship--d3a35189-ae83-4e6e-b581-fb1fbec35968",
+        "relationship--e6319608-f330-457e-b8ce-723fd65295b5",
+        "relationship--ea0e374a-191b-4d14-a393-8d968a60d442",
+        "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT / Securelist",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1",
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-9232cff77ce0ef8f62b1",
+      "x_evidence_slice_scope": "campaign:actor--mustang-panda:activity--daily-b8b3301d837c22e89850",
+      "x_source_publisher": "Kaspersky GReAT / Securelist",
+      "x_source_type": "vendor-threat-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b99273c4-845e-4343-8d8c-7ece6a25ec88",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mustang Panda、ミャンマーを標的にStarProxyとTONESHELL改良版で攻撃",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-18T00:00:00Z",
+      "object_refs": [
+        "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+        "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-0a1a885ea4fa4a799508",
+          "url": "https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0a1a885ea4fa4a799508",
+      "x_evidence_slice_scope": "campaign:actor--mustang-panda:activity--daily-b8b3301d837c22e89850",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d681d0e7-85fe-42d2-a6ac-cfcbe830ad4e",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+        "relationship--12b35ce2-dfaa-4d51-9c2f-12c092ca60f3",
+        "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+        "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+        "relationship--7ae79e82-05b2-4662-8119-132f25ea5523",
+        "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1",
+        "relationship--e355eaca-9959-4432-8f55-26f172535fa6",
+        "relationship--e6319608-f330-457e-b8ce-723fd65295b5",
+        "relationship--ea0e374a-191b-4d14-a393-8d968a60d442",
+        "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--mustang-panda:activity--daily-b8b3301d837c22e89850",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2fe39cfa-d9fd-4f01-95b0-9d89863ec68d",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mustang Panda / APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+        "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+        "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+        "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+        "location--14ae8553-5588-4f5a-9c65-ff52bc307609",
+        "location--65ce6828-83bf-4b57-a4d6-13c938cac887",
+        "location--8a0e7995-5857-4fb9-b01a-906246e18a00",
+        "location--d7a57a06-5652-4223-8fa9-73aae6f9a2f5",
+        "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+        "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+        "relationship--0e69aa05-19c0-463e-ae42-bf81c3b79580",
+        "relationship--12b35ce2-dfaa-4d51-9c2f-12c092ca60f3",
+        "relationship--3767c2fb-9ed8-4ed6-992a-463ff4a76ebc",
+        "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+        "relationship--57ed6c2a-e23e-463e-879a-1e2996b57a47",
+        "relationship--617590eb-e46a-4160-ad85-ebf3ec0f3be6",
+        "relationship--7524ac73-1957-42e4-9f49-0631134ff37d",
+        "relationship--7ae79e82-05b2-4662-8119-132f25ea5523",
+        "relationship--a6f446fc-7da5-4313-b120-4ae433591a73",
+        "relationship--b13c2291-c699-4c23-84d4-8b1d337035f1",
+        "relationship--bbaf73bb-6073-48ad-ae1a-3aa3c8fcac68",
+        "relationship--d3a35189-ae83-4e6e-b581-fb1fbec35968",
+        "relationship--e355eaca-9959-4432-8f55-26f172535fa6",
+        "relationship--e6319608-f330-457e-b8ce-723fd65295b5",
+        "relationship--ea0e374a-191b-4d14-a393-8d968a60d442",
+        "relationship--f52a284d-a2f5-44b3-9177-ea6fb44eb158",
+        "report--0f470535-d726-41f7-9267-52c9ca7084d5",
+        "report--57bb2a1a-1518-48d6-a783-96b174139275",
+        "report--a48b4bc9-9bb1-427a-9f93-ed0f7b0bd9fe",
+        "report--b99273c4-845e-4343-8d8c-7ece6a25ec88",
+        "report--d681d0e7-85fe-42d2-a6ac-cfcbe830ad4e"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--mustang-panda",
+      "x_activity_id": "activity--daily-b8b3301d837c22e89850"
+    }
+  ]
+}

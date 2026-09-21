@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--apt42",
   "name": "APT42",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:18:00Z",
   "languages": [
     "ja"
   ],
@@ -12,14 +12,25 @@
     "canonical_name": "APT42",
     "aliases": [
       {
+        "name": "CALANQUE",
+        "vendor": "Google Threat Intelligence Group",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unified-actor-naming-2026"
+        ],
+        "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+      },
+      {
         "name": "CALANQUE ION",
         "vendor": "Google Threat Intelligence Group",
         "scope": "exact",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-adversarial-ai-2026"
+          "source--gtig-adversarial-ai-2026",
+          "source--gtig-unified-actor-naming-2026"
         ],
-        "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。"
+        "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
       }
     ],
     "actor_types": [
@@ -56,7 +67,8 @@
       "description": "Actor-specific reporting explicitly describes espionage or intelligence collection.",
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-1",
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship."
     }
@@ -84,15 +96,38 @@
         "source--mitre-attack-19-1"
       ],
       "analyst_notes": "MITRE relationship extraction: status=supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
+    },
+    {
+      "relationship_id": "relationship--apt42--mitre--71010743031a783b",
+      "target_actor": "Charming Kitten",
+      "relationship_type": "distinct-from",
+      "description": "While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "MITRE relationship extraction: status=supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
     }
   ],
   "diamond_model": {
-    "adversary": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
-    "capability": "NICECURL, TAMECAT",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
-    "victim": "Western think tanks, researchers, journalists, current Western government officials, former Iranian government officials, and the Iranian diaspora abroad",
+    "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -120,7 +155,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -148,7 +183,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
@@ -184,9 +219,7 @@
         "basis": "daily-news-file-date"
       },
       "description": "Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。",
-      "target_refs": [
-        "target--activity-rule--country--72caf60a2fbce4a1be7a"
-      ],
+      "target_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
@@ -213,9 +246,7 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--country--72caf60a2fbce4a1be7a"
-          ],
+          "target_refs": [],
           "victim_refs": [
             "victim--activity-rule--8d9f800c14d1007aa798"
           ]
@@ -246,9 +277,7 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [
-              "target--activity-rule--country--72caf60a2fbce4a1be7a"
-            ],
+            "target_country_refs": [],
             "target_region_refs": []
           }
         },
@@ -257,7 +286,10 @@
           "source--daily-2cce580b31452f445118"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-44334d9d451bb0daecc6",
@@ -351,7 +383,10 @@
           "source--daily-e07d98b8e6a40e245f21"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-a846d20a187dffe844c6",
@@ -437,279 +472,14 @@
           "source--daily-0917cfe45c04f45174f4"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
-    "countries": [
-      {
-        "id": "target--targeting-audit--country--be7f6d068310f64ef298",
-        "name": "アラブ首長国連邦",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてアラブ首長国連邦が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--07fbb169e9a6fd3553e3",
-        "name": "イスラエル",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイスラエルが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--fd3f907cc2961eec56cc",
-        "name": "イタリア",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイタリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--a9577f01e2581b421104",
-        "name": "イラン",
-        "description": "レビュー済みアクターマッピングの標的欄に記録されたイランを構造化した。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--7c79a8dae632681db3a1",
-        "name": "ウクライナ",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてウクライナが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--149d72102f979b710887",
-        "name": "オーストラリア",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてオーストラリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--b4439388eeb632cd3389",
-        "name": "ノルウェー",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてノルウェーが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--3d5f91f3b932885bb79c",
-        "name": "ブルガリア",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてブルガリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--c26ca348e208a928a75c",
-        "name": "マレーシア",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてマレーシアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "name": "ロシア",
-        "description": "活動「Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-2cce580b31452f445118"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
-      },
-      {
-        "id": "target--targeting-audit--country--2cb4dbf4b68909e88f23",
-        "name": "米国",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国として米国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--9d82a4a794bb60fb227b",
-        "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国として英国が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      }
-    ],
+    "countries": [],
     "regions": [
       {
         "id": "target--targeting-audit--region--8b1ea584ab8b6913372d",
@@ -729,58 +499,9 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
-          "source--mitre-attack-19-1",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--region--8fc4de7185e414b21a34",
-        "name": "東欧",
-        "description": "ウクライナ、ブルガリア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-2cce580b31452f445118",
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--cad77754f6851db40bac",
-        "name": "欧州",
-        "description": "構造化OSINTの被害地域フィールドでAPT42の標的範囲として欧州が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
       }
     ],
     "sectors": [
@@ -805,77 +526,11 @@
           "source--daily-e07d98b8e6a40e245f21"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
-      },
-      {
-        "id": "target--sector--education-and-research",
-        "name": "Education and Research",
-        "description": "Targeting text indicates the Education and Research sector.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
-      },
-      {
-        "id": "target--sector--government",
-        "name": "Government",
-        "description": "Targeting text indicates the Government sector.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
-      },
-      {
-        "id": "target--sector--media",
-        "name": "Media",
-        "description": "Targeting text indicates the Media sector.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -901,7 +556,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -928,7 +583,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -955,7 +610,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -982,7 +637,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1009,7 +664,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1036,7 +691,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1063,7 +718,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1090,7 +745,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1117,7 +772,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1144,7 +799,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1171,7 +826,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1198,7 +853,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1225,7 +880,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1252,7 +907,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1279,7 +934,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1306,7 +961,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1333,7 +988,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1360,7 +1015,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1414,7 +1069,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1441,7 +1096,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1468,7 +1123,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1495,7 +1150,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1522,7 +1177,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1549,7 +1204,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1576,7 +1231,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1603,7 +1258,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1630,7 +1285,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1657,7 +1312,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1684,7 +1339,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1711,7 +1366,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1738,7 +1393,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -1765,7 +1420,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
@@ -2219,7 +1874,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240506.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240506.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/iranian-hackers-pose-as-journalists-to-push-backdoor-malware/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     {
       "source_id": "source--daily-2cce580b31452f445118",
@@ -2237,7 +1898,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260213.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260213.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-e07d98b8e6a40e245f21",
@@ -2255,25 +1924,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250131.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250131.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -2354,6 +2013,138 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--gtig-adversarial-ai-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-10T16:00:55Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "alias",
+        "capability"
+      ],
+      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。検索結果スニペットは根拠に使用していない。本稿はGTIGの新しい脅威アクター命名体系(2026-07-24公表)に沿って旧称を併記しており、別名の典拠として用いる。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
+    },
+    {
+      "source_id": "source--gtig-unified-actor-naming-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Updated Cyber Threat Actor Naming System",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null
+    },
+    {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--target-audit-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
       "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
@@ -2404,29 +2195,60 @@
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     },
     {
-      "source_id": "source--gtig-adversarial-ai-2026",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
-      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
-      "publisher": "Google Threat Intelligence Group",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": "2026-09-08T00:00:00Z",
+        "value": "2026-05-12T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "source-stated"
+        "basis": "upstream-release"
       },
-      "accessed_at": "2026-09-10T16:00:55Z",
       "language": "en",
-      "source_type": "vendor-research",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
       "actor_scope": "exact",
       "claims_supported": [
+        "identity",
         "alias",
-        "capability"
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
       ],
-      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。検索結果スニペットは根拠に使用していない。本稿はGTIGの新しい脅威アクター命名体系(2026-07-24公表)に沿って旧称を併記しており、別名の典拠として用いる。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -2438,7 +2260,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/apt42.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/apt42.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -2446,7 +2268,7 @@
     "history": "",
     "capability_details": "NICECURL, TAMECAT",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、イスラエル、イタリア、イラン、ウクライナ、オーストラリア、ノルウェー、ブルガリア、マレーシア、ロシア、米国、英国。標的地域=中東、東欧、欧州。日本は確認時に個別国として保持する。\n\nWestern think tanks, researchers, journalists, current Western government officials, former Iranian government officials, and the Iranian diaspora abroad",
+    "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東。日本は確認時に個別国として保持する。\n\nWestern think tanks, researchers, journalists, current Western government officials, former Iranian government officials, and the Iranian diaspora abroad",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -2461,9 +2283,7 @@
       "activity_refs": [
         "activity--daily-378e1b9987e0f8734e76"
       ],
-      "target_refs": [
-        "target--activity-rule--country--72caf60a2fbce4a1be7a"
-      ],
+      "target_refs": [],
       "malware_refs": [],
       "ttp_refs": [],
       "affected_assets": [],

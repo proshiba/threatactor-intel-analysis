@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
       "created": "2026-07-25T15:23:06Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--uac-0188",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -39,9 +40,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--uac-0188",
         "actor_name": "UAC-0188",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "no-match",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [],
           "microsoft-threat-actor-mapping": [],
@@ -66,7 +70,8 @@
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -95,7 +100,7 @@
       "spec_version": "2.1",
       "id": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -109,14 +114,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-e3f19b42e89889105297",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--e3f19b42e89889105297c78f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - UAC-0188が金融機関を標的にトロイの木馬化されたマインスイーパーのPythonクローンを使用",
-      "x_reported_at": {
-        "value": "2024-05-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--uac-0188",
@@ -177,6 +178,24 @@
           "source--daily-d10b7c56549314679c89"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -330,7 +349,7 @@
       "spec_version": "2.1",
       "id": "relationship--7c826981-54cf-453e-bec0-1f7596b2e221",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -338,14 +357,21 @@
       "source_ref": "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
       "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
       "description": "UAC-0188 targets 医療・ヘルスケア (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7a2ecd25-3997-492b-9157-399250afc07e",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -353,14 +379,21 @@
       "source_ref": "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "UAC-0188 targets 金融 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ded844ed-0d9f-4018-8c5e-31eeccca4374",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -368,14 +401,45 @@
       "source_ref": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "target_ref": "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
       "description": "ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング is attributed or linked to UAC-0188.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8c9d2e3-9007-4da8-a69a-1b04fedd5749",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -383,14 +447,45 @@
       "source_ref": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
       "description": "ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング targets target--activity-rule--sector--260bd106ff4950e5430d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f53b0e7b-e43c-4c0c-99db-213cbbe8cfb8",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -398,14 +493,45 @@
       "source_ref": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
       "description": "ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8291f41c-6c3d-4866-9ef1-8236e4703fd9",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -413,14 +539,45 @@
       "source_ref": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "target_ref": "attack-pattern--705feee0-f888-40c5-8c61-06ed80e9f834",
       "description": "ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング uses ttp--activity-rule--47e67d974c4b21273613.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8fca0fc6-2a01-4add-8294-57d587e869a1",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -428,14 +585,45 @@
       "source_ref": "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
       "target_ref": "identity--6b57479a-f6cb-4d9b-baa6-ade229ecfea3",
       "description": "ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング affected victim--activity-rule--330b99555e5684be6e6b.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1fe903cd-4f87-401f-a72e-61fe9bc2bdc5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -443,14 +631,21 @@
       "source_ref": "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
       "target_ref": "attack-pattern--705feee0-f888-40c5-8c61-06ed80e9f834",
       "description": "メールにはdropbox上のマルウェアへのリンクが存在 dropboxからSCRファイルをダウンロードし実行すると、MinesweeperのPythonクローンコードと、リモートから取得する悪意のあるPythonコードが含まれる マルウェアはSuperOps RMMをインストールし、リモートアクセスを取得 CERT-UAが複数の侵害を確認",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/",
+          "external_id": "source--daily-d10b7c56549314679c89"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--7652491f-807c-4f37-96b6-a70086f2ce5b",
       "created": "2026-07-25T15:23:06Z",
-      "modified": "2026-07-25T15:23:06Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -460,14 +655,14 @@
         "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 1
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--e41805a4-a0db-4897-a80c-5820fa288ca2",
       "created": "2026-07-25T15:23:06Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T02:11:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -476,7 +671,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:12:01Z",
+      "published": "2026-09-21T02:11:28Z",
       "object_refs": [
         "intrusion-set--78d62dee-0d45-4494-b97e-2ddb6f6f274b",
         "campaign--62de4df9-263f-4350-b3f6-2f3dab2219b1",
@@ -485,7 +680,7 @@
         "identity--6b57479a-f6cb-4d9b-baa6-ade229ecfea3",
         "attack-pattern--705feee0-f888-40c5-8c61-06ed80e9f834"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

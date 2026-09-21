@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--lamberts",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=中国。標的地域=アジア、アフリカ、中東、全世界、欧州。日本は確認時に個別国として保持する。\n\nPRC",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nPRC",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--lamberts",
         "actor_name": "Lamberts",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [],
           "microsoft-threat-actor-mapping": [],
@@ -103,13 +107,33 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Global"
+                ],
+                "cfr-target-category": [
+                  "Private sector",
+                  "Government"
+                ],
+                "cfr-type-of-incident": "Espionage",
+                "targeted-sector": [
+                  "Telecoms",
+                  "Aerospace",
+                  "Energy",
+                  "Education",
+                  "Government, Administration",
+                  "Finance",
+                  "News - Media"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [
@@ -149,226 +173,229 @@
       }
     },
     {
-      "type": "identity",
+      "type": "indicator",
       "spec_version": "2.1",
-      "id": "identity--1d8c5168-6d28-462f-b461-9c59d23e7ede",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "indicator--8f96ab2c-d7bf-4e89-ab89-ccc764a353f7",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "中国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでLambertsの標的・被害国として中国が記録されている。",
-      "external_references": [
+      "name": "domain: almawaddrial.com",
+      "pattern": "[domain-name:value = 'almawaddrial.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
         {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "observation_id": "observation--sha256:c3a3b083ef4365025f85f1c8eb8d97d8c4fac5650d8e4d3dcb53f914a5064e72",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 64
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "almawaddrial[.]com 46.151.212.202",
+          "analyst_notes": "",
+          "raw_value": "almawaddrial[.]com"
         }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ba0f639d-342a-4fe5-a175-b454680e2ee3",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アジア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲としてアジアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c436e48d-9a80-4f16-8341-7c1ec3b3f1fc",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アフリカ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲としてアフリカが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--037ec627-8ac8-4442-b23b-7d80fd3fe962",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲として中東が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c6da6957-5341-472e-ba79-13cf6ea5f740",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "全世界",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲として全世界が記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f69d24d6-157f-4624-bf8f-459431e208e9",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLambertsの標的範囲として欧州が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--d0b2d42f-514f-4ea4-a573-615092acc3d6",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "relationship--55b4c4a1-9f0b-4837-996b-d1805aa2ffca",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--1d8c5168-6d28-462f-b461-9c59d23e7ede",
-      "description": "Lamberts targets 中国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8f96ab2c-d7bf-4e89-ab89-ccc764a353f7",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--16c8d09b-5aa6-46f4-a19a-3d287d82a12c",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: alwatantrade.com",
+      "pattern": "[domain-name:value = 'alwatantrade.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f89f37dbd05622133b63d0a9c6fdf3e8366eb8942fc37ef9bba764a6dbad9cd2",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 58
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "alwatantrade[.]com 188.241.60.109",
+          "analyst_notes": "",
+          "raw_value": "alwatantrade[.]com"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--7c60521c-2e16-4a67-a3f0-1bbef5122966",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "relationship--7020a845-9b8c-4a24-99ea-844820566773",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--ba0f639d-342a-4fe5-a175-b454680e2ee3",
-      "description": "Lamberts targets アジア (profile target category: regions).",
-      "x_confidence": "medium"
+      "relationship_type": "indicates",
+      "source_ref": "indicator--16c8d09b-5aa6-46f4-a19a-3d287d82a12c",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1fe43a27-f98b-4e35-9d43-76752a80b520",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: babmaftuh.com",
+      "pattern": "[domain-name:value = 'babmaftuh.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:78aca70f066dbdc5ad156260f98c05d4cf4c844a737ca2223ff72c6f8a1c02a1",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 56
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "babmaftuh[.]com 185.56.89.196",
+          "analyst_notes": "",
+          "raw_value": "babmaftuh[.]com"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--c017b6f3-c1f6-44b1-8a26-91d75d7fc47b",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "id": "relationship--141fdf26-65c1-4ae7-9107-b641940503dc",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--c436e48d-9a80-4f16-8341-7c1ec3b3f1fc",
-      "description": "Lamberts targets アフリカ (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--970b96b7-405a-4b4a-910b-d62a46ac7803",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--037ec627-8ac8-4442-b23b-7d80fd3fe962",
-      "description": "Lamberts targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6dd1ef1b-c07c-43ce-857d-f0663f1c2b8b",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--c6da6957-5341-472e-ba79-13cf6ea5f740",
-      "description": "Lamberts targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6ac8f973-16f7-4ae0-9859-9b64866cec0b",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-      "target_ref": "identity--f69d24d6-157f-4624-bf8f-459431e208e9",
-      "description": "Lamberts targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1fe43a27-f98b-4e35-9d43-76752a80b520",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -434,7 +461,7 @@
       "spec_version": "2.1",
       "id": "relationship--20497889-e926-437f-911a-c00ee7b9f3d2",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -442,7 +469,383 @@
       "source_ref": "indicator--d928603b-11d9-41b4-8861-f6d510d77e93",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5d906ed0-1eb2-43f9-a25e-35628794b811",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: elehenishing.com",
+      "pattern": "[domain-name:value = 'elehenishing.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:65332793198ce39e5055dca94075819f908d2d030eb5fe9cf1db1fcf4e4bf81a",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 62
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "elehenishing[.]com 185.225.17.77",
+          "analyst_notes": "",
+          "raw_value": "elehenishing[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5ba7c171-b95e-40ed-a83f-d0f46edda8ba",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5d906ed0-1eb2-43f9-a25e-35628794b811",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--33905319-89ff-4895-a9e7-0ef69abf4dfb",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mdeastserv.com",
+      "pattern": "[domain-name:value = 'mdeastserv.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7b734bcc1106d331671e4be013f7ea9e471f365010453d9ac0f5de2f7acfb270",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 66
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "mdeastserv[.]com 46.151.212.201",
+          "analyst_notes": "",
+          "raw_value": "mdeastserv[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8f042b16-e3d4-4d5b-b7dc-78a86da40287",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--33905319-89ff-4895-a9e7-0ef69abf4dfb",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--42c17582-407b-4e5e-bc64-c8bba4a8bd2f",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: shayalyawm.com",
+      "pattern": "[domain-name:value = 'shayalyawm.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ac16a8cd45fa6d1ecb01583b26324847748a07f9f1f85194121f6a18d4d94f35",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 60
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "shayalyawm[.]com 5.226.168.124",
+          "analyst_notes": "",
+          "raw_value": "shayalyawm[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--906253f2-040e-41b7-a083-db759cebc7b9",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--42c17582-407b-4e5e-bc64-c8bba4a8bd2f",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2167e216-5d3a-4ea6-9b43-b544c0f362c8",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: teknikgorus.com",
+      "pattern": "[domain-name:value = 'teknikgorus.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4378ed2048baeaeaa401debc8e4594b3473c2752ad66df1b76ae6d7ea0c4a894",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 52
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "teknikgorus[.]com 88.119.179.17",
+          "analyst_notes": "",
+          "raw_value": "teknikgorus[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a945d21e-0203-4a9b-aac7-a21311847a3b",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2167e216-5d3a-4ea6-9b43-b544c0f362c8",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--487020df-d0c8-49b6-96ad-91a763f46956",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: wnupdnew.com",
+      "pattern": "[domain-name:value = 'wnupdnew.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:38Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:12c65f3db71435529b431b0c6405f1de84cf608718f1674ea8610d5c073d599d",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--lamberts--b03973bee4f52c80",
+          "source_path": "Lamberts/DePriMon/README.MD",
+          "source_location": {
+            "line": 54
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "text-line",
+          "context_excerpt": "wnupdnew[.]com 190.0.226.147",
+          "analyst_notes": "",
+          "raw_value": "wnupdnew[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d872402a-dd7d-407a-bf84-e3276fb5bd60",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--487020df-d0c8-49b6-96ad-91a763f46956",
+      "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -508,7 +911,7 @@
       "spec_version": "2.1",
       "id": "relationship--bc7cf87f-869d-4dc5-8ea5-d9b8e70a9fe8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -516,7 +919,8 @@
       "source_ref": "indicator--14c49cde-9356-4f4f-8198-55ce82b2ba3e",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -582,7 +986,7 @@
       "spec_version": "2.1",
       "id": "relationship--bde07bfa-70dc-4ed6-ba11-9653de5fc819",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -590,7 +994,8 @@
       "source_ref": "indicator--c73510eb-649c-4b2c-b414-d70c54cf6cb7",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -656,7 +1061,7 @@
       "spec_version": "2.1",
       "id": "relationship--7cb739d9-a65d-40d3-a774-0287bb6fb926",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -664,7 +1069,8 @@
       "source_ref": "indicator--488e9e4b-95d3-45a1-8bff-eece697ae85b",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -730,7 +1136,7 @@
       "spec_version": "2.1",
       "id": "relationship--47b88823-4232-451e-9eb8-ea9d27296bf1",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -738,7 +1144,8 @@
       "source_ref": "indicator--002ae406-97cb-452b-956f-8af972780205",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -804,7 +1211,7 @@
       "spec_version": "2.1",
       "id": "relationship--c30dd2e1-93d7-4b94-9c1a-ee71773a45b5",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -812,7 +1219,8 @@
       "source_ref": "indicator--f740beb0-b845-471b-a414-92b5a1057ab4",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -878,7 +1286,7 @@
       "spec_version": "2.1",
       "id": "relationship--7e5c84b4-3a4b-4505-880d-9023db4ec1b2",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -886,7 +1294,8 @@
       "source_ref": "indicator--78986e33-f79f-45e7-943b-5f26ebd155ac",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -952,7 +1361,7 @@
       "spec_version": "2.1",
       "id": "relationship--20b2502e-1320-4bc7-9e75-bb802206013b",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -960,7 +1369,8 @@
       "source_ref": "indicator--1b16a9a9-c811-488f-a1d9-a894ff564af1",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1026,7 +1436,7 @@
       "spec_version": "2.1",
       "id": "relationship--8fbf17e2-9ae4-4601-8c59-b362fff852ab",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1034,7 +1444,8 @@
       "source_ref": "indicator--b8d269ce-3077-43ef-916e-f18a82976ee2",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1100,7 +1511,7 @@
       "spec_version": "2.1",
       "id": "relationship--79d1b76c-35c3-4b20-b96e-bae79afb7c12",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1108,14 +1519,15 @@
       "source_ref": "indicator--f74d9697-195e-4858-be36-9037621d4203",
       "target_ref": "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--39972d15-4d7e-4ad6-8953-cc23fa4fe943",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1165,7 +1577,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "02B38F6E8B54885FA967851A5580F61C14A0AAB6",
           "analyst_notes": "",
-          "raw_value": "02B38F6E8B54885FA967851A5580F61C14A0AAB6"
+          "raw_value": "02b38f6e8b54885fa967851a5580f61c14a0aab6"
         }
       ]
     },
@@ -1174,7 +1586,7 @@
       "spec_version": "2.1",
       "id": "indicator--f11c5fdb-f713-43fe-99c7-616d11f274a6",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1224,7 +1636,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "03E047DD4CECB16F513C44599BF9B8BA82D0B7CB",
           "analyst_notes": "",
-          "raw_value": "03E047DD4CECB16F513C44599BF9B8BA82D0B7CB"
+          "raw_value": "03e047dd4cecb16f513c44599bf9b8ba82d0b7cb"
         }
       ]
     },
@@ -1233,7 +1645,7 @@
       "spec_version": "2.1",
       "id": "indicator--eac69cfb-2d2d-4f26-bd19-424bc1df469a",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1283,7 +1695,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "0996C280AB704E95C9043C5A250CCE077DF9C8B2",
           "analyst_notes": "",
-          "raw_value": "0996C280AB704E95C9043C5A250CCE077DF9C8B2"
+          "raw_value": "0996c280ab704e95c9043c5a250cce077df9c8b2"
         }
       ]
     },
@@ -1292,7 +1704,7 @@
       "spec_version": "2.1",
       "id": "indicator--2b1c6515-65a1-4425-a4f6-07dfd8bc6ae7",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1342,7 +1754,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "15EBE328A501B1D603E66762FBB4583D73E109F7",
           "analyst_notes": "",
-          "raw_value": "15EBE328A501B1D603E66762FBB4583D73E109F7"
+          "raw_value": "15ebe328a501b1d603e66762fbb4583d73e109f7"
         }
       ]
     },
@@ -1351,7 +1763,7 @@
       "spec_version": "2.1",
       "id": "indicator--ce1bbbeb-589b-4b1d-b7ed-db6964857045",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1401,7 +1813,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "1911F6E8B05E38A3C994048C759C5EA2B95CE5F7",
           "analyst_notes": "",
-          "raw_value": "1911F6E8B05E38A3C994048C759C5EA2B95CE5F7"
+          "raw_value": "1911f6e8b05e38a3c994048c759c5ea2b95ce5f7"
         }
       ]
     },
@@ -1410,7 +1822,7 @@
       "spec_version": "2.1",
       "id": "indicator--bcdc3774-5ee0-4765-b11b-2b1931cbcd3d",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1460,7 +1872,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "2B30BE3F39DEF1F404264D8858B89769E6C032D9",
           "analyst_notes": "",
-          "raw_value": "2B30BE3F39DEF1F404264D8858B89769E6C032D9"
+          "raw_value": "2b30be3f39def1f404264d8858b89769e6c032d9"
         }
       ]
     },
@@ -1469,7 +1881,7 @@
       "spec_version": "2.1",
       "id": "indicator--b9ddcfd7-3f5f-47b1-9c2a-f5b6fd2a52c6",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1519,7 +1931,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "2D80B235CDF41E09D055DD1B01FD690E13BE0AC7",
           "analyst_notes": "",
-          "raw_value": "2D80B235CDF41E09D055DD1B01FD690E13BE0AC7"
+          "raw_value": "2d80b235cdf41e09d055dd1b01fd690e13be0ac7"
         }
       ]
     },
@@ -1528,7 +1940,7 @@
       "spec_version": "2.1",
       "id": "indicator--3d1f2703-5a28-40cb-8482-e1a0bf4ea50c",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1578,7 +1990,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "6DB79671A3F31F7A9BB870151792A56276619DC1",
           "analyst_notes": "",
-          "raw_value": "6DB79671A3F31F7A9BB870151792A56276619DC1"
+          "raw_value": "6db79671a3f31f7a9bb870151792a56276619dc1"
         }
       ]
     },
@@ -1587,7 +1999,7 @@
       "spec_version": "2.1",
       "id": "indicator--7bc431ba-5455-482f-8047-d2048f8a2a04",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1637,7 +2049,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "6FAB7AA0479D41700981983A39F962F28CCFBE29",
           "analyst_notes": "",
-          "raw_value": "6FAB7AA0479D41700981983A39F962F28CCFBE29"
+          "raw_value": "6fab7aa0479d41700981983a39f962f28ccfbe29"
         }
       ]
     },
@@ -1646,7 +2058,7 @@
       "spec_version": "2.1",
       "id": "indicator--b3039715-6dd7-4fb4-a424-7fef0f85d824",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1696,7 +2108,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "7D0B08654B47329AD6AE44B8FF158105EA736BC3",
           "analyst_notes": "",
-          "raw_value": "7D0B08654B47329AD6AE44B8FF158105EA736BC3"
+          "raw_value": "7d0b08654b47329ad6ae44b8ff158105ea736bc3"
         }
       ]
     },
@@ -1705,7 +2117,7 @@
       "spec_version": "2.1",
       "id": "indicator--706e4d42-f664-4174-9870-50ba8b8495cd",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1755,7 +2167,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "7E8A7273C5A0D49DFE6DA04FEF963E30D5258814",
           "analyst_notes": "",
-          "raw_value": "7E8A7273C5A0D49DFE6DA04FEF963E30D5258814"
+          "raw_value": "7e8a7273c5a0d49dfe6da04fef963e30d5258814"
         }
       ]
     },
@@ -1764,7 +2176,7 @@
       "spec_version": "2.1",
       "id": "indicator--e468b8ad-0bf5-4ebe-afe5-c6975260ffae",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1814,7 +2226,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "8B4F3A06BA41F859E4CC394985BB788D5F76C85C",
           "analyst_notes": "",
-          "raw_value": "8B4F3A06BA41F859E4CC394985BB788D5F76C85C"
+          "raw_value": "8b4f3a06ba41f859e4cc394985bb788d5f76c85c"
         }
       ]
     },
@@ -1823,7 +2235,7 @@
       "spec_version": "2.1",
       "id": "indicator--34895bf0-17d6-412b-b533-e6fae1181fe6",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1873,7 +2285,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "94C0BE25077D9A76F14A63CBF7A774A96E8006B8",
           "analyst_notes": "",
-          "raw_value": "94C0BE25077D9A76F14A63CBF7A774A96E8006B8"
+          "raw_value": "94c0be25077d9a76f14a63cbf7a774a96e8006b8"
         }
       ]
     },
@@ -1882,7 +2294,7 @@
       "spec_version": "2.1",
       "id": "indicator--b1ea3a4b-4008-480c-a502-4e566cd8b4e9",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1932,7 +2344,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "968B52550062848A717027C512AFEDED19254F58",
           "analyst_notes": "",
-          "raw_value": "968B52550062848A717027C512AFEDED19254F58"
+          "raw_value": "968b52550062848a717027c512afeded19254f58"
         }
       ]
     },
@@ -1941,7 +2353,7 @@
       "spec_version": "2.1",
       "id": "indicator--806768bd-df76-4aab-84dd-25b582967389",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1991,7 +2403,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "9C4BADE47865E8111DD3EEE6C5C4BC83F2489F5B",
           "analyst_notes": "",
-          "raw_value": "9C4BADE47865E8111DD3EEE6C5C4BC83F2489F5B"
+          "raw_value": "9c4bade47865e8111dd3eee6c5c4bc83f2489f5b"
         }
       ]
     },
@@ -2000,7 +2412,7 @@
       "spec_version": "2.1",
       "id": "indicator--089c88d9-2dff-4b62-83b1-7b75216aebcf",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2050,7 +2462,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "AA59CB6715CFFF545579861E5E77308F6CAEAC36",
           "analyst_notes": "",
-          "raw_value": "AA59CB6715CFFF545579861E5E77308F6CAEAC36"
+          "raw_value": "aa59cb6715cfff545579861e5e77308f6caeac36"
         }
       ]
     },
@@ -2059,7 +2471,7 @@
       "spec_version": "2.1",
       "id": "indicator--c7ba22e6-6b91-4b16-b1ab-d7640b21ecbd",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2109,7 +2521,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "C2388C2B2ED6063EACBA8A4021CE32EB0929FAD2",
           "analyst_notes": "",
-          "raw_value": "C2388C2B2ED6063EACBA8A4021CE32EB0929FAD2"
+          "raw_value": "c2388c2b2ed6063eacba8a4021ce32eb0929fad2"
         }
       ]
     },
@@ -2118,7 +2530,7 @@
       "spec_version": "2.1",
       "id": "indicator--7ace3a5b-17c6-43aa-b2f1-41532222b08a",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2168,7 +2580,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "CA34050771678C65040065822729F44B35C87B0C",
           "analyst_notes": "",
-          "raw_value": "CA34050771678C65040065822729F44B35C87B0C"
+          "raw_value": "ca34050771678c65040065822729f44b35c87b0c"
         }
       ]
     },
@@ -2177,7 +2589,7 @@
       "spec_version": "2.1",
       "id": "indicator--519fc600-f00d-4b65-9443-df258af4affd",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2227,7 +2639,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "D38045B42C7E87C199993AB929AD92ADE4F82398",
           "analyst_notes": "",
-          "raw_value": "D38045B42C7E87C199993AB929AD92ADE4F82398"
+          "raw_value": "d38045b42c7e87c199993ab929ad92ade4f82398"
         }
       ]
     },
@@ -2236,7 +2648,7 @@
       "spec_version": "2.1",
       "id": "indicator--cb7dea1f-70cc-44a6-b536-c25cd117293f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2286,7 +2698,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "E272FDA0E9BA1A1B8EF444FF5F2E8EE419746384",
           "analyst_notes": "",
-          "raw_value": "E272FDA0E9BA1A1B8EF444FF5F2E8EE419746384"
+          "raw_value": "e272fda0e9ba1a1b8ef444ff5f2e8ee419746384"
         }
       ]
     },
@@ -2295,7 +2707,7 @@
       "spec_version": "2.1",
       "id": "indicator--bb4255a5-c934-45c5-bbf2-9701b441b6a2",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2345,7 +2757,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "E2D39E290201010F49652EE6116FD9B35C9AD882",
           "analyst_notes": "",
-          "raw_value": "E2D39E290201010F49652EE6116FD9B35C9AD882"
+          "raw_value": "e2d39e290201010f49652ee6116fd9b35c9ad882"
         }
       ]
     },
@@ -2354,7 +2766,7 @@
       "spec_version": "2.1",
       "id": "indicator--bf326e5f-f594-449c-beba-65bcf18df8ba",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2404,7 +2816,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "F413EEE3CFD85A60D7AFC4D4ECC4445BB1F0B8BC",
           "analyst_notes": "",
-          "raw_value": "F413EEE3CFD85A60D7AFC4D4ECC4445BB1F0B8BC"
+          "raw_value": "f413eee3cfd85a60d7afc4d4ecc4445bb1f0b8bc"
         }
       ]
     },
@@ -2413,7 +2825,7 @@
       "spec_version": "2.1",
       "id": "indicator--e179c1f9-9aaa-4345-9ccd-2f2d8e36016a",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2463,7 +2875,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "Key 2: 8D35913F80A23E820C23B3125ABF57901BC9A7B83283FB2B240193ABDEDE52B9",
           "analyst_notes": "",
-          "raw_value": "8D35913F80A23E820C23B3125ABF57901BC9A7B83283FB2B240193ABDEDE52B9"
+          "raw_value": "8d35913f80a23e820c23b3125abf57901bc9a7b83283fb2b240193abdede52b9"
         }
       ]
     },
@@ -2472,7 +2884,7 @@
       "spec_version": "2.1",
       "id": "indicator--34a5a6d9-1aa3-44ff-a447-f90ad5e61a56",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2522,7 +2934,7 @@
           "extraction_method": "text-line",
           "context_excerpt": "Key 1: C097CF17DC3303BC8155534350464E50176ACA63842B0973831D8C6C8F136817",
           "analyst_notes": "",
-          "raw_value": "C097CF17DC3303BC8155534350464E50176ACA63842B0973831D8C6C8F136817"
+          "raw_value": "c097cf17dc3303bc8155534350464e50176aca63842b0973831d8c6c8f136817"
         }
       ]
     },
@@ -2548,7 +2960,7 @@
       "spec_version": "2.1",
       "id": "report--3c68c4ce-dfc8-4a62-8674-c9cbd681dd36",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2557,16 +2969,18 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--b5c38785-186e-4d94-8bc9-265b31638aee",
-        "identity--1d8c5168-6d28-462f-b461-9c59d23e7ede",
-        "identity--ba0f639d-342a-4fe5-a175-b454680e2ee3",
-        "identity--c436e48d-9a80-4f16-8341-7c1ec3b3f1fc",
-        "identity--037ec627-8ac8-4442-b23b-7d80fd3fe962",
-        "identity--c6da6957-5341-472e-ba79-13cf6ea5f740",
-        "identity--f69d24d6-157f-4624-bf8f-459431e208e9",
+        "indicator--8f96ab2c-d7bf-4e89-ab89-ccc764a353f7",
+        "indicator--16c8d09b-5aa6-46f4-a19a-3d287d82a12c",
+        "indicator--1fe43a27-f98b-4e35-9d43-76752a80b520",
         "indicator--d928603b-11d9-41b4-8861-f6d510d77e93",
+        "indicator--5d906ed0-1eb2-43f9-a25e-35628794b811",
+        "indicator--33905319-89ff-4895-a9e7-0ef69abf4dfb",
+        "indicator--42c17582-407b-4e5e-bc64-c8bba4a8bd2f",
+        "indicator--2167e216-5d3a-4ea6-9b43-b544c0f362c8",
+        "indicator--487020df-d0c8-49b6-96ad-91a763f46956",
         "indicator--14c49cde-9356-4f4f-8198-55ce82b2ba3e",
         "indicator--c73510eb-649c-4b2c-b414-d70c54cf6cb7",
         "indicator--488e9e4b-95d3-45a1-8bff-eece697ae85b",
@@ -2601,7 +3015,7 @@
         "indicator--e179c1f9-9aaa-4345-9ccd-2f2d8e36016a",
         "indicator--34a5a6d9-1aa3-44ff-a447-f90ad5e61a56"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

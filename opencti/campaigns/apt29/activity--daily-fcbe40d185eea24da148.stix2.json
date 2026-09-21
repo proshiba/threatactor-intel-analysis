@@ -1,0 +1,1426 @@
+{
+  "type": "bundle",
+  "id": "bundle--73c78b58-c870-4d0b-9610-110135758356",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Desktop Protocol",
+      "description": "攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1021.001",
+          "url": "https://attack.mitre.org/techniques/T1021/001/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--c149e2cc5f6b0de91070",
+      "x_tactic": "Lateral Movement",
+      "x_activity_refs": [
+        "activity--daily-fcbe40d185eea24da148"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
+      "description": "ロシア関連のAPT29が、悪意のあるRDP設定ファイルを用いて政府機関や研究者を標的に攻撃。 政府、軍隊、シンクタンク、学術研究者、ウクライナの組織を標的としており、「rogue RDP」と呼ばれる手法を利用。 被害者はフィッシングメールのRDPファイルを開くことで、193のRDPリレーの1つを介して攻撃者のRDPサーバーに接続してしまう。 攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。 接続が確立されると、ローグサーバーは正当なRDPサーバーの動作を模倣し、セッションを悪用してさまざまな悪意のある活動を遂行。 主な攻撃ベクトルには、攻撃者が悪意のあるスクリプトを展開したり、被害者のマシン上のシステム設定を変更したりすることが含まれる。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-fcbe40d185eea24da148",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--fcbe40d185eea24da1489697 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt29",
+          "name": "APT29",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--c149e2cc5f6b0de91070"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--fd87b1aa778733ddde9a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-12-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Lateral Movement"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-833e8d72019628e85850"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:20:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Government",
+      "identity_class": "class",
+      "description": "Targeting text indicates the Government sector.",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/",
+          "external_id": "source--daily-27037377b2315277772d",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-apt29-hackers-use-ios-chrome-exploits-created-by-spyware-vendors/",
+          "external_id": "source--daily-283705f15c8b352febf2",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-apt29-hackers-use-ios-chrome-exploits-created-by-spyware-vendors/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/midnight-blizzard-deploys-new-grapeloader-malware-in-embassy-phishing/",
+          "external_id": "source--daily-333754fe19b5747a8958",
+          "url": "https://www.bleepingcomputer.com/news/security/midnight-blizzard-deploys-new-grapeloader-malware-in-embassy-phishing/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/",
+          "external_id": "source--daily-9d15f8a2b79eddc0a96b",
+          "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-uk-warn-of-russian-apt29-hackers-targeting-zimbra-teamcity-servers/",
+          "external_id": "source--daily-bef8400faee317cbc290",
+          "url": "https://www.bleepingcomputer.com/news/security/us-uk-warn-of-russian-apt29-hackers-targeting-zimbra-teamcity-servers/"
+        },
+        {
+          "source_name": "anthropic.com",
+          "description": "Local source: https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "external_id": "source--daily-d957d6c999575906f6dc",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--sector--government",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8aef03a0-aa54-49cf-84bf-5fafac64cbcf",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-07-29T15:20:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
+      "identity_class": "organization",
+      "description": "ロシア関連のAPT29が、悪意のあるRDP設定ファイルを用いて政府機関や研究者を標的に攻撃。 政府、軍隊、シンクタンク、学術研究者、ウクライナの組織を標的としており、「rogue RDP」と呼ばれる手法を利用。 被害者はフィッシングメールのRDPファイルを開くことで、193のRDPリレーの1つを介して攻撃者のRDPサーバーに接続してしまう。 攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。 接続が確立されると、ローグサーバーは正当なRDPサーバーの動作を模倣し、セッションを悪用してさまざまな悪意のある活動を遂行。 主な攻撃ベクトルには、攻撃者が悪意のあるスクリプトを展開したり、被害者のマシン上のシステム設定を変更したりすることが含まれる。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--fd87b1aa778733ddde9a",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--sector--government"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--c149e2cc5f6b0de91070"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29",
+      "aliases": [
+        "Blue Kitsune",
+        "Cozy Bear",
+        "CozyDuke",
+        "Dark Halo",
+        "ICECAP",
+        "ICE RELIC",
+        "IRON HEMLOCK",
+        "IRON RITUAL",
+        "Midnight Blizzard",
+        "NOBELIUM",
+        "NobleBaron",
+        "SolarStorm",
+        "The Dukes",
+        "UNC2452",
+        "UNC3524",
+        "YTTRIUM"
+      ],
+      "description": "[APT29](https://attack.mitre.org/groups/G0016) is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).(Citation: White House Imposing Costs RU Gov April 2021)(Citation: UK Gov Malign RIS Activity April 2021) They have operated since at least 2008, often targeting government networks in Europe and NATO member countries, research institutes, and think tanks. [APT29](https://attack.mitre.org/groups/G0016) reportedly compromised the Democratic National Committee starting in the summer of 2015.(Citation: F-Secure The Dukes)(Citation: GRIZZLY STEPPE JAR)(Citation: Crowdstrike DNC June 2016)(Citation: UK Gov UK Exposes Russia SolarWinds April 2021)\n\nIn April 2021, the US and UK governments attributed the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024) to the SVR; public statements included citations to [APT29](https://attack.mitre.org/groups/G0016), Cozy Bear, and The Dukes.(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021) Industry reporting also referred to the actors involved in this campaign as UNC2452, NOBELIUM, StellarParticle, Dark Halo, and SolarStorm.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Unit 42 SolarStorm December 2020)",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt29",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "Blue Kitsune",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Cozy Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "CozyDuke",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Dark Halo",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ICECAP",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "ICE RELIC",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "IRON HEMLOCK",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON RITUAL",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Midnight Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NOBELIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NobleBaron",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "SolarStorm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "The Dukes",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC2452",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC3524",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "YTTRIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT29の標準化プロファイル。リポジトリ内の専用資料19件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Operation Ghost\n\n2024年10月22日以降、APT29（Midnight Blizzard）は100超の組織の数千人へ署名済みRDP設定ファイルを送付した。標的が開くと攻撃者管理サーバーへ接続し、ローカルドライブ、クリップボード、周辺機器、認証機能等がリモート側へマッピングされた。",
+        "capability_details": "PowerDuke, reGeorg, GeminiDuke, HAMMERTOSS, CosmicDuke, EnvyScout, TEARDROP, WellMess, PolyglotDuke, RegDuke, QUIETEXIT, Raindrop, FatDuke, GoldMax, POSHSPY, MiniDuke, SeaDuke, FoggyWeb, WellMail, LiteDuke, VaporRage, Sibot, Cobalt Strike, SUNBURST, PinchDuke, OnionDuke, NativeZone, GoldFinder, TrailBlazer, SUNSPOT, BoomBox, CloudDuke, SoreFang, CozyCar, CozyDuke, SeaDaddy implant developed in Python and compiled with py2exe, AdobeARM, ATI-Agent, MiniDionis, Grizzly Steppe, Vernaldrop, Tadpole, Spikerush, Net, BloodHound, Sliver, Impacket, ipconfig, AADInternals, Tasklist, meek, ROADTools, Systeminfo, Mimikatz, SDelete, Tor, AdFind, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、オーストラリア、ドイツ、モンゴル、日本、米国、英国。標的地域=NATO加盟国、アジア、中東、全世界、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets government ministries and agencies in Europe, the US, Central Asia, East Africa, and the Middle East, associated with DNC attacks",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を確認し、GTIGの新呼称ICE RELICをaliasへ追加、ChocoShellの別名CHERRYPIEを追記、UNC6293・UNC7005とのサブクラスタ関係を関係として追加した。Storm-2945はGTIGがUNC7005として別クラスタで追跡しているため、本プロファイルのaliasへは追加していない。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T01:54:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ukraine",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--36f1b9323d5faab92f39",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "UKR",
+      "x_opencti_reference_id": "location--e5f054fc-fc63-46f3-8d63-1f93e0cb7801",
+      "x_opencti_aliases": [
+        "UA",
+        "UKR",
+        "ウクライナ"
+      ],
+      "latitude": 48.379433,
+      "longitude": 31.16558,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
+      "created": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "APT29 targets ウクライナ (profile target category: countries).\n\nEvidence: 活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された国・地域。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/amazon-seizes-domains-used-in-rogue-remote-desktop-campaign-to-steal-data/",
+          "external_id": "source--daily-b028cfa41afc98a11bc6",
+          "url": "https://www.bleepingcomputer.com/news/security/amazon-seizes-domains-used-in-rogue-remote-desktop-campaign-to-steal-data/"
+        },
+        {
+          "source_name": "anthropic.com",
+          "description": "Local source: https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "external_id": "source--daily-d957d6c999575906f6dc",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/amazon-seizes-domains-used-in-rogue-remote-desktop-campaign-to-steal-data/",
+          "external_id": "source--daily-b028cfa41afc98a11bc6"
+        },
+        {
+          "source_name": "anthropic.com",
+          "description": "Local source: https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "external_id": "source--daily-d957d6c999575906f6dc"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--21830948-93c1-48df-a235-171601a35e1c",
+      "created": "2026-07-29T23:13:53Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "APT29 targets Government (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/",
+          "external_id": "source--daily-27037377b2315277772d",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/russian-apt29-hackers-use-ios-chrome-exploits-created-by-spyware-vendors/",
+          "external_id": "source--daily-283705f15c8b352febf2",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-apt29-hackers-use-ios-chrome-exploits-created-by-spyware-vendors/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/midnight-blizzard-deploys-new-grapeloader-malware-in-embassy-phishing/",
+          "external_id": "source--daily-333754fe19b5747a8958",
+          "url": "https://www.bleepingcomputer.com/news/security/midnight-blizzard-deploys-new-grapeloader-malware-in-embassy-phishing/"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/",
+          "external_id": "source--daily-9d15f8a2b79eddc0a96b",
+          "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-uk-warn-of-russian-apt29-hackers-targeting-zimbra-teamcity-servers/",
+          "external_id": "source--daily-bef8400faee317cbc290",
+          "url": "https://www.bleepingcomputer.com/news/security/us-uk-warn-of-russian-apt29-hackers-targeting-zimbra-teamcity-servers/"
+        },
+        {
+          "source_name": "anthropic.com",
+          "description": "Local source: https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "external_id": "source--daily-d957d6c999575906f6dc",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2019-08-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "second",
+        "last_precision": "month"
+      },
+      "start_time": "2019-08-01T05:00:00.000Z",
+      "stop_time": "2024-07-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4318b612-46da-4ec0-b325-86b6328b53d9",
+      "created": "2026-07-27T11:04:29Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用 is attributed or linked to APT29.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--675df169-518e-41c8-958c-cdd3de1aee3f",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+      "description": "攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--736a470e-9cdc-4498-9cd8-003767f2f535",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "target_ref": "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+      "description": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用 uses ttp--activity-rule--c149e2cc5f6b0de91070.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96904b4a-74e0-4834-a08c-e186f75d04e6",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用 targets target--activity-rule--country--36f1b9323d5faab92f39.\n\nEvidence: 活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された国・地域。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        },
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/amazon-seizes-domains-used-in-rogue-remote-desktop-campaign-to-steal-data/",
+          "external_id": "source--daily-b028cfa41afc98a11bc6"
+        },
+        {
+          "source_name": "anthropic.com",
+          "description": "Local source: https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "external_id": "source--daily-d957d6c999575906f6dc"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--de0be13c-16e5-42bf-b95a-022f9091f67f",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用 targets target--sector--government.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9b204cb-c38c-4c1f-a4b8-94d8a2a3087b",
+      "created": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+      "target_ref": "identity--8aef03a0-aa54-49cf-84bf-5fafac64cbcf",
+      "description": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用 affected victim--activity-rule--fd87b1aa778733ddde9a.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-12-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--07bae851-05d9-4e0e-b4f7-43fb18a0d77a",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのAPT29、スパイウェアベンダーが作成したiOSとChromeの脆弱性を悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-08-30T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-283705f15c8b352febf2",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-apt29-hackers-use-ios-chrome-exploits-created-by-spyware-vendors/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-283705f15c8b352febf2",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--307c6181-3a37-4f8f-b5a7-65e5a5faf0fc",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Amazonがデータ窃盗目的の不正なリモートデスクトップキャンペーンに使用されたドメインを差し押さえ",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-10-26T00:00:00Z",
+      "object_refs": [
+        "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
+        "relationship--96904b4a-74e0-4834-a08c-e186f75d04e6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-b028cfa41afc98a11bc6",
+          "url": "https://www.bleepingcomputer.com/news/security/amazon-seizes-domains-used-in-rogue-remote-desktop-campaign-to-steal-data/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-b028cfa41afc98a11bc6",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3b1d4151-57a0-479b-abf2-8a7b362524f0",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米英がロシアAPT29ハッカーのZimbraおよびTeamCityサーバー攻撃に警告",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-10-11T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-bef8400faee317cbc290",
+          "url": "https://www.bleepingcomputer.com/news/security/us-uk-warn-of-russian-apt29-hackers-targeting-zimbra-teamcity-servers/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-bef8400faee317cbc290",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3cda1c4a-e7c7-4e74-91f4-c1f2e4748398",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4e822437-5eb3-4d81-aa9d-f9e715b7062c",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7b792119-542a-49c4-b217-2ac5cf0e7395",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのハッカーがWineLoaderマルウェアでドイツの政党を標的に",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-03-23T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-27037377b2315277772d",
+          "url": "https://www.bleepingcomputer.com/news/security/russian-hackers-target-german-political-parties-with-wineloader-malware/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-27037377b2315277772d",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--96235ec2-f808-4179-88c7-2585a72abd9c",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-12T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c",
+        "relationship--96904b4a-74e0-4834-a08c-e186f75d04e6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "anthropic.com",
+          "external_id": "source--daily-d957d6c999575906f6dc",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-d957d6c999575906f6dc",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "anthropic.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e1680b03-cf54-4e56-b9fe-e1cf457836be",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-12-19T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+        "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "identity--8aef03a0-aa54-49cf-84bf-5fafac64cbcf",
+        "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c",
+        "relationship--4318b612-46da-4ec0-b325-86b6328b53d9",
+        "relationship--675df169-518e-41c8-958c-cdd3de1aee3f",
+        "relationship--736a470e-9cdc-4498-9cd8-003767f2f535",
+        "relationship--96904b4a-74e0-4834-a08c-e186f75d04e6",
+        "relationship--de0be13c-16e5-42bf-b95a-022f9091f67f",
+        "relationship--f9b204cb-c38c-4c1f-a4b8-94d8a2a3087b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "external_id": "source--daily-833e8d72019628e85850",
+          "url": "https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-833e8d72019628e85850",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "thehackernews.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f013ae3a-421c-4e14-b0f4-de862e792828",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CISAがマイクロソフトハックに影響を受けた機関にリスク軽減を指示",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-04-12T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-9d15f8a2b79eddc0a96b",
+          "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-9d15f8a2b79eddc0a96b",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--fa430313-0ccd-4298-a460-aec147c355da",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "大使館を標的としたフィッシング攻撃に新たなGrapeLoaderマルウェアを展開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-04-16T00:00:00Z",
+      "object_refs": [
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-333754fe19b5747a8958",
+          "url": "https://www.bleepingcomputer.com/news/security/midnight-blizzard-deploys-new-grapeloader-malware-in-embassy-phishing/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-333754fe19b5747a8958",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--daily-fcbe40d185eea24da148",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4461d0dc-4eac-49d2-ac75-49d3b8c25608",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29 / APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
+      "description": "ロシア関連のAPT29が、悪意のあるRDP設定ファイルを用いて政府機関や研究者を標的に攻撃。 政府、軍隊、シンクタンク、学術研究者、ウクライナの組織を標的としており、「rogue RDP」と呼ばれる手法を利用。 被害者はフィッシングメールのRDPファイルを開くことで、193のRDPリレーの1つを介して攻撃者のRDPサーバーに接続してしまう。 攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。 接続が確立されると、ローグサーバーは正当なRDPサーバーの動作を模倣し、セッションを悪用してさまざまな悪意のある活動を遂行。 主な攻撃ベクトルには、攻撃者が悪意のあるスクリプトを展開したり、被害者のマシン上のシステム設定を変更したりすることが含まれる。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--d64fa122-b895-4f5b-8435-23996a557c36",
+        "campaign--8d3e83ba-5a8c-4c46-8d70-c75c51dc3413",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "identity--8aef03a0-aa54-49cf-84bf-5fafac64cbcf",
+        "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+        "location--594a193e-06ff-439b-93f2-e072203e1822",
+        "relationship--0247ca50-e6bc-4464-9bb5-e1ef677f2b04",
+        "relationship--21830948-93c1-48df-a235-171601a35e1c",
+        "relationship--4318b612-46da-4ec0-b325-86b6328b53d9",
+        "relationship--675df169-518e-41c8-958c-cdd3de1aee3f",
+        "relationship--736a470e-9cdc-4498-9cd8-003767f2f535",
+        "relationship--96904b4a-74e0-4834-a08c-e186f75d04e6",
+        "relationship--de0be13c-16e5-42bf-b95a-022f9091f67f",
+        "relationship--f9b204cb-c38c-4c1f-a4b8-94d8a2a3087b",
+        "report--07bae851-05d9-4e0e-b4f7-43fb18a0d77a",
+        "report--307c6181-3a37-4f8f-b5a7-65e5a5faf0fc",
+        "report--3b1d4151-57a0-479b-abf2-8a7b362524f0",
+        "report--3cda1c4a-e7c7-4e74-91f4-c1f2e4748398",
+        "report--4e822437-5eb3-4d81-aa9d-f9e715b7062c",
+        "report--7b792119-542a-49c4-b217-2ac5cf0e7395",
+        "report--96235ec2-f808-4179-88c7-2585a72abd9c",
+        "report--e1680b03-cf54-4e56-b9fe-e1cf457836be",
+        "report--f013ae3a-421c-4e14-b0f4-de862e792828",
+        "report--fa430313-0ccd-4298-a460-aec147c355da"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt29",
+      "x_activity_id": "activity--daily-fcbe40d185eea24da148"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--mustard-tempest",
   "name": "Mustard Tempest",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -17,7 +17,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -27,17 +27,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "Purple Vallhund",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -47,7 +37,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -57,7 +47,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       }
@@ -111,18 +101,18 @@
         "basis": "not-stated"
       },
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE relationship extraction: status=partially-supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
     }
   ],
   "diamond_model": {
-    "adversary": "[Mustard Tempest](https://attack.mitre.org/groups/G1020) is an initial access broker that has operated the [SocGholish](https://attack.mitre.org/software/S1124) distribution network since at least 2017. [Mustard Tempest](https://attack.mitre.org/groups/G1020) has partnered with [Indrik Spider](https://attack.mitre.org/groups/G0119) to provide access for the download of additional malware including LockBit, [WastedLocker](https://attack.mitre.org/software/S0612), and remote access tools.(Citation: Microsoft Ransomware as a Service)(Citation: Microsoft Threat Actor Naming July 2023)(Citation: Secureworks Gold Prelude Profile)(Citation: SocGholish-update)",
-    "capability": "SocGholish, Cobalt Strike",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -152,7 +142,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -181,7 +171,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
@@ -282,7 +272,10 @@
           "source--daily-4c5a096408cb1636d9f7"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-da12b59b38f6c2339626",
@@ -307,7 +300,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
-      "target_refs": [],
+      "target_refs": [
+        "target--targeting-audit--country--d256b517220d4474b4b9"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
@@ -316,7 +311,9 @@
       ],
       "analyst_notes": "日次収集レコード daily-record--da12b59b38f6c23396266b03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
       "ttp_refs": [],
-      "victim_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--fcba4528860f9fca5a44"
+      ],
       "diamond_model": {
         "adversary": {
           "actor_ref": "actor--mustard-tempest",
@@ -332,8 +329,12 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
-          "victim_refs": []
+          "target_refs": [
+            "target--targeting-audit--country--d256b517220d4474b4b9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--fcba4528860f9fca5a44"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -359,7 +360,9 @@
           "results": [],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--targeting-audit--country--d256b517220d4474b4b9"
+            ],
             "target_region_refs": []
           }
         },
@@ -368,7 +371,10 @@
           "source--daily-766a563d30b306b7681d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
@@ -396,34 +402,11 @@
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
-    "regions": [
-      {
-        "id": "target--targeting-audit--region--4346151f4b2a1086f85a",
-        "name": "全世界",
-        "description": "構造化OSINTの被害地域フィールドでMustard Tempestの標的範囲として全世界が記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      }
-    ],
+    "regions": [],
     "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -449,7 +432,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -476,7 +459,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -503,7 +486,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -530,7 +513,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -557,7 +540,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -584,7 +567,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -611,7 +594,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -638,7 +621,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -665,7 +648,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -692,7 +675,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -719,7 +702,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -746,7 +729,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
@@ -786,7 +769,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250808.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250808.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2025/08/socgholish-malware-spread-via-ad-tools.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     {
       "source_id": "source--daily-766a563d30b306b7681d",
@@ -804,25 +793,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2024/12/horns-campaign-delivers-rats-via-fake.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting"
+      ]
     },
     {
       "source_id": "source--mustard-tempest--0a466fea7e0945f8",
@@ -1135,6 +1113,62 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--target-audit-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
       "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
@@ -1158,6 +1192,62 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -1167,9 +1257,10 @@
       "Automatically mapped aliases, targets, and workbook software require analyst review."
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Vendor cluster boundaries may differ from the canonical name used here.",
+      "1 alias lead(s) remain non-canonical pending original-source review."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/mustard-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/mustard-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -1177,8 +1268,51 @@
     "history": "",
     "capability_details": "SocGholish, Cobalt Strike",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=ロシア。標的地域=全世界。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=ロシア。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
-  "victim_cases": []
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--fcba4528860f9fca5a44",
+      "name": "被害事例: HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
+      "activity_refs": [
+        "activity--daily-da12b59b38f6c2339626"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-766a563d30b306b7681d"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19,6 +19,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--strider",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "ProjectSauron",
@@ -26,7 +27,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -45,16 +46,17 @@
         "history": "",
         "capability_details": "Remsec",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イラン、スウェーデン、ベルギー、ルワンダ、ロシア、中国。標的地域=欧州。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=スウェーデン、ベルギー、ロシア、中国。標的地域=欧州。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--strider",
         "actor_name": "Strider",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -63,6 +65,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -73,6 +76,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "d7d99de3-c515-4117-b40c-7696babb69c1",
@@ -107,7 +111,33 @@
                 "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07190154/The-ProjectSauron-APT_research_KL.pdf",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Strider%2C+ProjectSauron&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2011",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Defense",
+                  "Embassies",
+                  "Financial",
+                  "Government",
+                  "Telecommunications",
+                  "Scientific research centers"
+                ],
+                "observed-countries": [
+                  "Belgium",
+                  "China",
+                  "Iran",
+                  "Russia",
+                  "Rwanda",
+                  "Sweden"
+                ],
+                "tools": [
+                  "Remsec"
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -165,7 +195,25 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Russia",
+                  "Iran",
+                  "Belgium",
+                  "China",
+                  "Sweden",
+                  "Rwanda"
+                ],
+                "cfr-target-category": [
+                  "Government",
+                  "Military"
+                ],
+                "cfr-type-of-incident": "Espionage",
+                "targeted-sector": [
+                  "Intelligence"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
@@ -193,13 +241,33 @@
                 "ProjectSauron"
               ],
               "countries": [],
-              "description": "Strider is a threat group that has been active since at least 2011 and has targeted victims in Russia, China, Sweden, Belgium, Iran, and Rwanda. (Citation: Symantec Strider Blog) (Citation: Kaspersky ProjectSauron Blog)",
+              "description": "[Strider](https://attack.mitre.org/groups/G0041) is a threat group that has been active since at least 2011 and has targeted victims in Russia, China, Sweden, Belgium, Iran, and Rwanda.(Citation: Symantec Strider Blog)(Citation: Kaspersky ProjectSauron Blog)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0041",
                 "http://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets",
-                "https://securelist.com/faq-the-projectsauron-apt/75533/"
+                "https://attack.mitre.org/groups/G0041",
+                "https://securelist.com/faq-the-projectsauron-apt/75533/",
+                "https://securelist.com/files/2016/07/The-ProjectSauron-APT_research_KL.pdf"
               ],
               "related": [
+                {
+                  "dest-uuid": "24ce266c-1860-5e04-a107-48d1d39f8ebf",
+                  "tags": [
+                    "estimative-language:likelihood-probability=\"likely\""
+                  ],
+                  "type": "similar"
+                },
+                {
+                  "dest-uuid": "3731fbcd-0e43-47ae-ae6c-d15e510f0d42",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "69d6f4a9-fcf0-4f51-bca7-597c51ad0bb8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfebc3b7-d19d-450b-81c7-6dafe4184c04",
+                  "type": "uses"
+                },
                 {
                   "dest-uuid": "f3179cfb-9c86-4980-bd6b-e4fa74adaaa7",
                   "tags": [
@@ -208,13 +276,11 @@
                   "type": "similar"
                 },
                 {
-                  "dest-uuid": "69d6f4a9-fcf0-4f51-bca7-597c51ad0bb8",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
+                  "dest-uuid": "f6dacc85-b37d-458e-b58d-74fc4bbf5755",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-intrusion-set": [
@@ -279,7 +345,8 @@
                   "dest-uuid": "f6dacc85-b37d-458e-b58d-74fc4bbf5755",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-360net": [
@@ -323,7 +390,43 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
+            }
+          ],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "deb573c6-071a-4b50-9e92-4aa648d8bdc1",
+              "entry_value": "Strider",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "strider",
+                  "profile_value": "Strider",
+                  "dataset_value": "Strider"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Strider"
+              ],
+              "countries": [],
+              "description": "[Strider](https://app.tidalcyber.com/groups/deb573c6-071a-4b50-9e92-4aa648d8bdc1) is a threat group that has been active since at least 2011 and has targeted victims in Russia, China, Sweden, Belgium, Iran, and Rwanda.<sup>[[Symantec Strider Blog](https://app.tidalcyber.com/references/664eac41-257f-4d4d-aba5-5d2e8e2117a7)]</sup><sup>[[Kaspersky ProjectSauron Blog](https://app.tidalcyber.com/references/baeaa632-3fa5-4d2b-9537-ccc7674fd7d6)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Aerospace",
+                  "Defense",
+                  "Financial Services",
+                  "Government",
+                  "Telecommunications"
+                ]
+              }
             }
           ]
         },
@@ -373,7 +476,7 @@
       "spec_version": "2.1",
       "id": "malware--26d523c5-1fa2-409a-ac7f-5679bcae4aec",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -383,7 +486,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--remsec",
@@ -402,41 +505,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--672d1355-ff55-42cc-bf69-f2d55b29a409",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでStriderの標的・被害国としてイランが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / 360.net",
-          "description": "Local source: actor_profile/reference/osint/misp-360net.json",
-          "external_id": "source--target-audit-misp-360net"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--d5c19213-26ed-4e3b-a694-ce108cee6d4d",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -447,17 +518,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -468,7 +529,7 @@
       "spec_version": "2.1",
       "id": "identity--6503a499-32bc-4381-8004-85ffc222ff79",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -479,22 +540,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / 360.net",
-          "description": "Local source: actor_profile/reference/osint/misp-360net.json",
-          "external_id": "source--target-audit-misp-360net"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -503,36 +549,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--227a3343-9218-4494-8d90-ec19973df549",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ルワンダ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでStriderの標的・被害国としてルワンダが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--41b08347-87b7-4d34-a154-2785b4492dab",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -543,22 +562,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / 360.net",
-          "description": "Local source: actor_profile/reference/osint/misp-360net.json",
-          "external_id": "source--target-audit-misp-360net"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -569,7 +573,7 @@
       "spec_version": "2.1",
       "id": "identity--372d8942-5520-4d8b-ab0d-3504f21a335a",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -580,22 +584,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / 360.net",
-          "description": "Local source: actor_profile/reference/osint/misp-360net.json",
-          "external_id": "source--target-audit-misp-360net"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -606,7 +595,7 @@
       "spec_version": "2.1",
       "id": "identity--6a5d1e69-a1d9-4485-9d11-1895f0b579c4",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -617,22 +606,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / 360.net",
-          "description": "Local source: actor_profile/reference/osint/misp-360net.json",
-          "external_id": "source--target-audit-misp-360net"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -643,7 +617,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--92616a2c-b119-4151-928d-9c36cbc79885",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -658,7 +632,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1090-001--general",
@@ -686,7 +660,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--32bb5114-af5c-4d94-b304-eafa038e63fb",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -701,7 +675,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1556-002--general",
@@ -729,7 +703,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--9c5f0cec-0e63-4cb2-89a6-979a463828ff",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -744,7 +718,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1564-005--general",
@@ -772,7 +746,7 @@
       "spec_version": "2.1",
       "id": "relationship--a2b49f6b-667c-4259-837f-ca858122293f",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -780,29 +754,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "malware--26d523c5-1fa2-409a-ac7f-5679bcae4aec",
       "description": "Strider uses Remsec.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--eb027f4e-9a97-49a6-b29d-3dbbb8b86efb",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
-      "target_ref": "identity--672d1355-ff55-42cc-bf69-f2d55b29a409",
-      "description": "Strider targets イラン (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1b67d6bc-1fc5-4964-af95-679fd5f09b1d",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -810,14 +776,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "identity--d5c19213-26ed-4e3b-a694-ce108cee6d4d",
       "description": "Strider targets スウェーデン (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c3107d2-0a43-4ab2-8c7f-57ddca315cef",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -825,29 +798,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "identity--6503a499-32bc-4381-8004-85ffc222ff79",
       "description": "Strider targets ベルギー (profile target category: countries).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3a2c7542-b872-4912-8c0b-6a9249039be2",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
-      "target_ref": "identity--227a3343-9218-4494-8d90-ec19973df549",
-      "description": "Strider targets ルワンダ (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--85950a13-e25b-49e9-89ee-8850c28c9f5b",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -855,14 +820,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "identity--41b08347-87b7-4d34-a154-2785b4492dab",
       "description": "Strider targets ロシア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--17e8c176-5836-4b65-a4a7-dd599f6f98a4",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -870,14 +842,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "identity--372d8942-5520-4d8b-ab0d-3504f21a335a",
       "description": "Strider targets 中国 (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--de28a417-55ef-49cd-8a9a-dca9e1ee03f0",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -885,14 +864,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "identity--6a5d1e69-a1d9-4485-9d11-1895f0b579c4",
       "description": "Strider targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ce63799b-0ad2-43e1-a5a2-9e10c851ea12",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -900,14 +886,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "attack-pattern--92616a2c-b119-4151-928d-9c36cbc79885",
       "description": "[Strider](https://attack.mitre.org/groups/G0041) has used local servers with both local network and Internet access to act as internal proxy nodes to exfiltrate data from other parts of the network without direct Internet access.(Citation: Kaspersky ProjectSauron Blog)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2e00ff1e-7acf-40e9-bebc-3a1c126b63dc",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -915,14 +908,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "attack-pattern--32bb5114-af5c-4d94-b304-eafa038e63fb",
       "description": "[Strider](https://attack.mitre.org/groups/G0041) has registered its persistence module on domain controllers as a Windows LSA (Local System Authority) password filter to acquire credentials any time a domain, local user, or administrator logs in or changes a password.(Citation: Kaspersky ProjectSauron Full Report)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4ead2f61-bf63-4bec-a8d2-b172e4a8dfc8",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -930,14 +930,21 @@
       "source_ref": "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
       "target_ref": "attack-pattern--9c5f0cec-0e63-4cb2-89a6-979a463828ff",
       "description": "[Strider](https://attack.mitre.org/groups/G0041) has used a hidden file system that is stored as a file on disk.(Citation: Kaspersky ProjectSauron Full Report)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--2bdfac3e-b8b8-4d5b-8934-2cb3c14d5c13",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -947,14 +954,14 @@
         "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 19
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--ccecb9c8-c828-4834-bc75-2772ef82bfe9",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -963,14 +970,12 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:35:03Z",
       "object_refs": [
         "intrusion-set--7a2b5658-106a-4741-b237-d5d2861d19fb",
         "malware--26d523c5-1fa2-409a-ac7f-5679bcae4aec",
-        "identity--672d1355-ff55-42cc-bf69-f2d55b29a409",
         "identity--d5c19213-26ed-4e3b-a694-ce108cee6d4d",
         "identity--6503a499-32bc-4381-8004-85ffc222ff79",
-        "identity--227a3343-9218-4494-8d90-ec19973df549",
         "identity--41b08347-87b7-4d34-a154-2785b4492dab",
         "identity--372d8942-5520-4d8b-ab0d-3504f21a335a",
         "identity--6a5d1e69-a1d9-4485-9d11-1895f0b579c4",
@@ -978,7 +983,7 @@
         "attack-pattern--32bb5114-af5c-4d94-b304-eafa038e63fb",
         "attack-pattern--9c5f0cec-0e63-4cb2-89a6-979a463828ff"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

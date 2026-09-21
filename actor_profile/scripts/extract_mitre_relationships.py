@@ -20,6 +20,16 @@ NOTE_PREFIX = "MITRE relationship extraction:"
 
 def relation_type(text: str) -> tuple[str, str, str]:
     lower = text.casefold()
+    if any(
+        marker in lower
+        for marker in (
+            "are distinct cluster",
+            "are distinct group",
+            "appear to be distinct",
+            "tracked as separate",
+        )
+    ):
+        return "distinct-from", "high", "supported"
     if any(marker in lower for marker in ("sub-set of", "subset of", "subgroup of")):
         return "part-of", "high", "supported"
     if "assist" in lower or "collaborat" in lower or "cooperat" in lower:
@@ -90,7 +100,7 @@ def main() -> int:
                 "confidence": confidence,
                 "verification_status": status,
                 "description": excerpt,
-                "evidence_refs": ["source--mitre-attack-19-1"],
+                "evidence_refs": ["source--mitre-attack-19-2"],
                 "limitations": (
                     "A narrative cross-reference establishes a relationship but "
                     "does not by itself prove exact actor identity or identical scope."
@@ -203,7 +213,7 @@ def main() -> int:
                         "url": url,
                         "title": f"MITRE ATT&CK group {group_id}",
                         "publisher": "MITRE ATT&CK",
-                        "source_id": "source--mitre-attack-19-1",
+                        "source_id": "source--mitre-attack-19-2",
                     }
                 )
             item["claims_integrated"] = list(
@@ -219,7 +229,7 @@ def main() -> int:
     output = {
         "schema_version": "1.0.0",
         "generated_at": utc_now(),
-        "source": "MITRE Enterprise ATT&CK 19.1 compact local index",
+        "source": "MITRE Enterprise ATT&CK 19.2 compact local index",
         "relationship_count": len(candidates),
         "relationships": sorted(
             candidates.values(),

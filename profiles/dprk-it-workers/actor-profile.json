@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--dprk-it-workers",
   "name": "DPRK IT Worker Schemes",
   "status": "draft",
   "created_at": "2026-07-25T09:03:53Z",
-  "updated_at": "2026-09-19T00:58:00Z",
+  "updated_at": "2026-09-21T02:11:26Z",
   "languages": [
     "ja"
   ],
@@ -87,7 +87,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -318,7 +318,10 @@
           "source--daily-10f083232dfd566dc4f9"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "grouping",
+      "activity_refs": [],
+      "grouping_context": "suspicious-activity"
     },
     {
       "activity_id": "activity--dprk-it-workers-ballena-azul-2026",
@@ -437,7 +440,10 @@
           "source--anyrun-it-workers-part-two-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--dprk-it-workers-flare-xforce-nkitw-2026",
@@ -572,7 +578,10 @@
           "source--flare-ibm-xforce-nkitw-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
@@ -715,8 +724,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -1763,7 +1772,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "原文を確認(アクセス日 2026-08-13)。研究者自身が偽企業を設立して当該人物を実際に採用し、内部から観測した直接観測報告である。第1弾「Smile, You're on Camera: A Live Stream from Inside Lazarus Group's IT Workers Scheme」は本プロファイルへPDFとして既収載(source--dprk-it-workers--15da1b5bbfbc5250)。"
+      "analyst_notes": "原文を確認(アクセス日 2026-08-13)。研究者自身が偽企業を設立して当該人物を実際に採用し、内部から観測した直接観測報告である。第1弾「Smile, You're on Camera: A Live Stream from Inside Lazarus Group's IT Workers Scheme」は本プロファイルへPDFとして既収載(source--dprk-it-workers--15da1b5bbfbc5250)。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-10f083232dfd566dc4f9",
@@ -1781,7 +1798,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity"
+      ]
     },
     {
       "source_id": "source--dprk-it-workers--15da1b5bbfbc5250",
@@ -1950,7 +1973,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "原文を確認(アクセス日 2026-08-19)。公開日は本文署名「March 18, 2026」およびJSON-LDのdatePublished 2026-03-18T13:00:34+00:00で確認した。dateModifiedは2026-06-24T00:49:07+00:00。tech-memo daily-news 2026-08-19に掲載されたが、公開そのものは2026-03-18であり、tech-memo掲載日を公開日へ流用していない。FlareとIBM X-Forceの共同調査で、Flareのプラットフォームが収集した一次資料(内部スプレッドシート、スライド、IP Messengerログ、Google Translate履歴、ブラウザ履歴)に基づく直接分析である。ただし原文は「To protect our methodology, we have chosen to intentionally minimize information on sources and methods」と記載しており、収集元と手法の詳細は非公開である。"
+      "analyst_notes": "原文を確認(アクセス日 2026-08-19)。公開日は本文署名「March 18, 2026」およびJSON-LDのdatePublished 2026-03-18T13:00:34+00:00で確認した。dateModifiedは2026-06-24T00:49:07+00:00。tech-memo daily-news 2026-08-19に掲載されたが、公開そのものは2026-03-18であり、tech-memo掲載日を公開日へ流用していない。FlareとIBM X-Forceの共同調査で、Flareのプラットフォームが収集した一次資料(内部スプレッドシート、スライド、IP Messengerログ、Google Translate履歴、ブラウザ履歴)に基づく直接分析である。ただし原文は「To protect our methodology, we have chosen to intentionally minimize information on sources and methods」と記載しており、収集元と手法の詳細は非公開である。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -1995,7 +2025,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Used to model the broader DPRK IT worker scheme/ecosystem and its state revenue-generation purpose."
+      "analyst_notes": "Used to model the broader DPRK IT worker scheme/ecosystem and its state revenue-generation purpose. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "attribution",
+        "motivation",
+        "relationship"
+      ]
     },
     {
       "source_id": "source--crowdstrike-famous-chollima-2026",
@@ -2014,7 +2052,13 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "CrowdStrike treats FAMOUS CHOLLIMA as a named DPRK-nexus adversary conducting IT worker infiltration."
+      "analyst_notes": "CrowdStrike treats FAMOUS CHOLLIMA as a named DPRK-nexus adversary conducting IT worker infiltration. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "assessment",
+        "relationship"
+      ]
     }
   ],
   "assessment": {

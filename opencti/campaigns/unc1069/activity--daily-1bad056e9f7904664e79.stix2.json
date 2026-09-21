@@ -1,0 +1,577 @@
+{
+  "type": "bundle",
+  "id": "bundle--2c81ef20-ab3e-4397-a42f-4a84681fb1cc",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--de73b3b1-6759-4cd4-a882-85b6b8de6309",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--b11b64c91d944331e1e1",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--daily-1bad056e9f7904664e79"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害",
+      "description": "Google Threat Intelligence Groupは2026年3月31日、axiosの保守者アカウント侵害により、悪性依存関係`plain-crypto-js`が1.14.1と0.30.4へ混入したサプライチェーン攻撃を確認した。 インストール時に`postinstall`で`setup.js`が密かに実行され、Windows、macOS、Linux向けにWAVESHAPER.V2バックドアを展開する仕組みだと説明している。 攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。 GTIGはWAVESHAPER.V2やインフラの一致から、2018年以降活動する金銭目的の北朝鮮系脅威アクターUNC1069による活動と評価している。 防御策として、危険版への更新回避、安全版への固定、`plain-crypto-js`の監査、影響ホスト隔離、資格情報ローテーション、C2遮断を勧告している。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-1bad056e9f7904664e79",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--1bad056e9f7904664e794964 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: V2やインフラの一致から、2018年以降活動する金銭目的の北朝鮮系脅威アクターUNC1069による活動と評価している。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1069",
+          "name": "UNC1069",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--b11b64c91d944331e1e1"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--61630d27ff1dbbc277ee"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2026-03-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2026-04-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Stealth"
+          ],
+          "results": [
+            "account-compromise",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-4105305f46ca812b4f99"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-04-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-03-31T00:00:00Z",
+      "last_seen": "2026-03-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a96874c4-86c4-4c7c-ad46-a47270d146b0",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害",
+      "identity_class": "organization",
+      "description": "Google Threat Intelligence Groupは2026年3月31日、axiosの保守者アカウント侵害により、悪性依存関係`plain-crypto-js`が1.14.1と0.30.4へ混入したサプライチェーン攻撃を確認した。 インストール時に`postinstall`で`setup.js`が密かに実行され、Windows、macOS、Linux向けにWAVESHAPER.V2バックドアを展開する仕組みだと説明している。 攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。 GTIGはWAVESHAPER.V2やインフラの一致から、2018年以降活動する金銭目的の北朝鮮系脅威アクターUNC1069による活動と評価している。 防御策として、危険版への更新回避、安全版への固定、`plain-crypto-js`の監査、影響ホスト隔離、資格情報ローテーション、C2遮断を勧告している。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--61630d27ff1dbbc277ee",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--b11b64c91d944331e1e1"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "モバイル端末"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "account-compromise",
+          "description": "Google Threat Intelligence Groupは2026年3月31日、axiosの保守者アカウント侵害により、悪性依存関係`plain-crypto-js`が1.14.1と0.30.4へ混入したサプライチェーン攻撃を確認した。"
+        },
+        {
+          "impact_type": "supply-chain",
+          "description": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-04-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "created": "2026-07-25T15:23:06Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1069",
+      "aliases": [
+        "MASAN",
+        "MIDNIGHT NEPTUNE"
+      ],
+      "description": "UNC1069の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc1069",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "MASAN",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "MIDNIGHT NEPTUNE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG原文の「MIDNIGHT NEPTUNE, financially motivated North Korea-nexus threat clusters formerly tracked as UNC1069」に基づく。UNC1069はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。原文が「threat clusters」と複数形で述べる点は、MIDNIGHT NEPTUNEが複数クラスタを束ねる可能性を示すため analyst_notes として残す。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC1069の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25041a7e-e1b5-4417-8df4-0ce8089921ff",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "target_ref": "attack-pattern--de73b3b1-6759-4cd4-a882-85b6b8de6309",
+      "description": "攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2026-03-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5d049192-4de6-4fc5-9889-9e5f4eb6b546",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+      "target_ref": "identity--a96874c4-86c4-4c7c-ad46-a47270d146b0",
+      "description": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 affected victim--activity-rule--61630d27ff1dbbc277ee.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-04-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-03-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b9e9d6ac-0fff-4ddc-9a6f-541c06c0a7ef",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+      "target_ref": "attack-pattern--de73b3b1-6759-4cd4-a882-85b6b8de6309",
+      "description": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 uses ttp--activity-rule--b11b64c91d944331e1e1.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-04-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-03-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dd4cdfd7-ce5b-48ae-b520-570d16126f97",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+      "target_ref": "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+      "description": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 is attributed or linked to UNC1069.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-04-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-03-31T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b393c8d7-cc84-41b0-93fa-d127cbbdcb80",
+      "created": "2026-09-21T04:15:52Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-04-02T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--de73b3b1-6759-4cd4-a882-85b6b8de6309",
+        "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+        "identity--a96874c4-86c4-4c7c-ad46-a47270d146b0",
+        "relationship--25041a7e-e1b5-4417-8df4-0ce8089921ff",
+        "relationship--5d049192-4de6-4fc5-9889-9e5f4eb6b546",
+        "relationship--b9e9d6ac-0fff-4ddc-9a6f-541c06c0a7ef",
+        "relationship--dd4cdfd7-ce5b-48ae-b520-570d16126f97"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "external_id": "source--daily-4105305f46ca812b4f99",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/north-korea-threat-actor-targets-axios-npm-package?hl=en"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-4105305f46ca812b4f99",
+      "x_evidence_slice_scope": "campaign:actor--unc1069:activity--daily-1bad056e9f7904664e79",
+      "x_source_publisher": "cloud.google.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4fc1f5a3-a148-4f89-a517-b37b44ec9769",
+      "created": "2026-09-21T04:15:52Z",
+      "modified": "2026-09-21T04:15:52Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC1069 / 北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害",
+      "description": "Google Threat Intelligence Groupは2026年3月31日、axiosの保守者アカウント侵害により、悪性依存関係`plain-crypto-js`が1.14.1と0.30.4へ混入したサプライチェーン攻撃を確認した。 インストール時に`postinstall`で`setup.js`が密かに実行され、Windows、macOS、Linux向けにWAVESHAPER.V2バックドアを展開する仕組みだと説明している。 攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。 GTIGはWAVESHAPER.V2やインフラの一致から、2018年以降活動する金銭目的の北朝鮮系脅威アクターUNC1069による活動と評価している。 防御策として、危険版への更新回避、安全版への固定、`plain-crypto-js`の監査、影響ホスト隔離、資格情報ローテーション、C2遮断を勧告している。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:15:52Z",
+      "object_refs": [
+        "attack-pattern--de73b3b1-6759-4cd4-a882-85b6b8de6309",
+        "campaign--6b9ca961-7b6f-4752-9f5b-67bdfe2f04da",
+        "identity--a96874c4-86c4-4c7c-ad46-a47270d146b0",
+        "intrusion-set--9a915b87-0f9c-4192-9ee9-13e6c853ee05",
+        "relationship--25041a7e-e1b5-4417-8df4-0ce8089921ff",
+        "relationship--5d049192-4de6-4fc5-9889-9e5f4eb6b546",
+        "relationship--b9e9d6ac-0fff-4ddc-9a6f-541c06c0a7ef",
+        "relationship--dd4cdfd7-ce5b-48ae-b520-570d16126f97",
+        "report--b393c8d7-cc84-41b0-93fa-d127cbbdcb80"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc1069",
+      "x_activity_id": "activity--daily-1bad056e9f7904664e79"
+    }
+  ]
+}

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--storm-2603`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:16:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-2603 | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -62,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -78,7 +80,9 @@ Aliasなし
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--warlock-ransomware | Warlock ransomware | Ransomware deployed by Storm-2603 after ToolShell exploitation. | 2025-07-18 | 不明 | 高 | `source--microsoft-toolshell-2025` |
 
 ### ツール
 
@@ -104,17 +108,15 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | ransomware-extortion | 不明 | 不明 | 2025-08-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--c1764ef2f19cd9e2befc | Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。 | 中 | `source--daily-0e75e392e2685f601677` |
-| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | ransomware-extortion | 不明 | 不明 | 2025-07-24 |  |  | ttp--activity-rule--af1214636f4d588f7138 | victim--activity-rule--2fb3ba4fffbab5417544 | 中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告 | 中 | `source--daily-5c143f1d91377b49cfcc` |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | victim--activity-rule--b17097a14592b324966d | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
+| Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開 | ransomware-extortion | 2025-07-18 | 不明 | 2025-07-22 |  | malware--warlock-ransomware | ttp--activity-rule--af1214636f4d588f7138 |  | Microsoftは、Storm-2603が2025年7月18日以降、オンプレミスSharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、グループポリシーでWarlockランサムウェアを展開したと報告した。同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、個別被害組織をStorm-2603へ一括帰属しない。 | 高 | `source--microsoft-toolshell-2025` |
+| Storm-2603と無関係な第2主体が同居した並行侵入事例 | intrusion | 不明 | 不明 | 2026-06-22 |  |  |  |  | Microsoft DARTは、一つの被害環境でStorm-2603と無関係な第2主体が並行して活動した事例を報告した。Storm-2603側はSharePointを探索し、Velociraptor、Cloudflare Tunnel、Zoho Assist、VS Code経由SSHなどを用いて権限・永続性・遠隔アクセスを確保した。別主体のDLLサイドローディングや独自バックドアはStorm-2603の能力として扱わない。 | 高 | `source--microsoft-storm2603-parallel-intrusion-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | Storm-2603 | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 中 |
-| Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | Storm-2603 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | 中 |
-| 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | Storm-2603 | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
+| Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開 | Storm-2603 | Warlock ransomware | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 情報なし | 高 |
+| Storm-2603と無関係な第2主体が同居した並行侵入事例 | Storm-2603 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
 
 
@@ -124,18 +126,12 @@ Aliasなし
 |---|---|---|---|---|---|---|
 | countries | 中国 | 活動「ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-0e75e392e2685f601677` |
 | countries | 米国 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
-| regions | 中東 | 活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-5c143f1d91377b49cfcc`, `source--daily-c9fa26bbe8d21f50b441` |
-| regions | 欧州 | 活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--daily-5c143f1d91377b49cfcc`, `source--daily-c9fa26bbe8d21f50b441` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--af1214636f4d588f7138 | サーバー | encryption: Microsoft: SharePointサーバーもランサムウェア攻撃の標的に | 不明 | 不明 | 2025-07-24 | 中 | `source--daily-5c143f1d91377b49cfcc` |
-| 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  |  |  | 不明 | 不明 | 2025-07-24 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
-| 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | サーバー | encryption: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 不明 | 不明 | 2025-08-05 | 中 | `source--daily-0e75e392e2685f601677` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -149,7 +145,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -177,6 +173,8 @@ Aliasなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--storm-2603--358d7946c0a9352d | storm 2603 |  | 不明 | actor_profile/evidence/storm-2603.csv | structured-data | TLP:CLEAR | 中 |
 | source--storm-2603--bba67560ab315d2e | UK NCC Group Cyber Threat Intelligence Report September 2025 |  | 2025 | summary/2025/UK_NCC_Group_Cyber_Threat_Intelligence_Report_September_2025_.pdf | report | TLP:CLEAR | 中 |
+| source--microsoft-toolshell-2025 | Disrupting active exploitation of on-premises SharePoint vulnerabilities | Microsoft Threat Intelligence | 2025-07-22 | https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--microsoft-storm2603-parallel-intrusion-2026 | One intrusion, two cyberattackers: Uncovering parallel threat activity | Microsoft Defender Experts Cybersecurity Incident Response | 2026-06-22 | https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

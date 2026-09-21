@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19,6 +19,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--polonium",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Plaid Rain",
@@ -26,7 +27,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -45,16 +46,17 @@
         "history": "",
         "capability_details": "CreepyDrive, CreepySnail",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、レバノン。標的地域=中東。日本は確認時に個別国として保持する。\n\nIsraeli critical manufacturing, information technology, transportation systems, defense industrial base, government agencies and services, food and agriculture, financial services, healthcare and public health",
+        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nIsraeli critical manufacturing, information technology, transportation systems, defense industrial base, government agencies and services, food and agriculture, financial services, healthcare and public health",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--polonium",
         "actor_name": "POLONIUM",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -63,6 +65,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -73,6 +76,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "40d95f4c-db45-4311-86a0-328273bf0491",
@@ -106,7 +110,41 @@
                 "https://www.microsoft.com/security/blog/2022/06/02/exposing-polonium-activity-and-infrastructure-targeting-israeli-organizations/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Polonium&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2022",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Engineering",
+                  "Defense",
+                  "IT",
+                  "Manufacturing",
+                  "Media",
+                  "Telecommunications"
+                ],
+                "observed-countries": [
+                  "Israel",
+                  "Lebanon"
+                ],
+                "tools": [
+                  "CreepyDrive",
+                  "CreepySnail",
+                  "DeepCreep",
+                  "FlipCreep",
+                  "MegaCreep",
+                  "PapaCreep",
+                  "TechnoCreep"
+                ],
+                "operations": [
+                  {
+                    "date": "2022-09",
+                    "activity": "POLONIUM targets Israel with Creepy malware\nhttps://www.welivesecurity.com/2022/10/11/polonium-targets-israel-creepy-malware/\nhttps://www.deepinstinct.com/blog/polonium-apt-group-uncovering-new-elements"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -141,7 +179,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -188,7 +227,28 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Israel"
+                ],
+                "cfr-target-category": [
+                  "Critical manufacturing",
+                  "Defense industrial base",
+                  "Financial services",
+                  "Food and agriculture",
+                  "Government agencies and services",
+                  "Healthcare",
+                  "Pharmaceuticals",
+                  "Information technology",
+                  "Transportation systems",
+                  "NGOs",
+                  "Civil Society",
+                  "Military",
+                  "Defense"
+                ],
+                "cfr-type-of-incident": "Espionage"
+              }
             }
           ],
           "misp-microsoft-activity-group": [
@@ -232,10 +292,81 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "5f3d0238-d058-44a9-8812-3dd1b6741a8c",
+              "entry_value": "POLONIUM - G1005",
+              "external_id": "G1005",
+              "matched_names": [
+                {
+                  "normalized": "plaidrain",
+                  "profile_value": "Plaid Rain",
+                  "dataset_value": "Plaid Rain"
+                },
+                {
+                  "normalized": "polonium",
+                  "profile_value": "POLONIUM",
+                  "dataset_value": "POLONIUM"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "POLONIUM",
+                "Plaid Rain"
+              ],
+              "countries": [],
+              "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) is a Lebanon-based group that has primarily targeted Israeli organizations, including critical manufacturing, information technology, and defense industry companies, since at least February 2022. Security researchers assess [POLONIUM](https://attack.mitre.org/groups/G1005) has coordinated their operations with multiple actors affiliated with Iran’s Ministry of Intelligence and Security (MOIS), based on victim overlap as well as common techniques and tooling.(Citation: Microsoft POLONIUM June 2022)",
+              "refs": [
+                "https://attack.mitre.org/groups/G1005",
+                "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide",
+                "https://www.microsoft.com/security/blog/2022/06/02/exposing-polonium-activity-and-infrastructure-targeting-israeli-organizations/"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "731f4f55-b6d0-41d1-a7a9-072a66389aea",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "750eb92a-7fdf-451e-9592-1d42357018f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "88d31120-5bc7-4ce3-a9c0-7cf147be8e54",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9fa07bef-9c81-421e-a8e5-ad4366c5a925",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "be055942-6e63-49d7-9fa1-9cb7d8a8f3f4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf1b6176-597c-4600-bfcd-ac989670f96b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d23de441-f9cf-4802-b1ff-f588a11a896b",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "5f3d0238-d058-44a9-8812-3dd1b6741a8c",
@@ -303,10 +434,35 @@
                   "dest-uuid": "d23de441-f9cf-4802-b1ff-f588a11a896b",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "7fbd7514-76e9-4696-8c66-9f95546e3315",
+              "entry_value": "POLONIUM",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "polonium",
+                  "profile_value": "POLONIUM",
+                  "dataset_value": "POLONIUM"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "POLONIUM"
+              ],
+              "countries": [],
+              "description": "[POLONIUM](https://app.tidalcyber.com/groups/7fbd7514-76e9-4696-8c66-9f95546e3315) is a Lebanon-based group that has primarily targeted Israeli organizations, including critical manufacturing, information technology, and defense industry companies, since at least February 2022. Security researchers assess [POLONIUM](https://app.tidalcyber.com/groups/7fbd7514-76e9-4696-8c66-9f95546e3315) has coordinated their operations with multiple actors affiliated with Iran’s Ministry of Intelligence and Security (MOIS), based on victim overlap as well as common techniques and tooling.<sup>[[Microsoft POLONIUM June 2022](https://app.tidalcyber.com/references/689ff1ab-9fed-4aa2-8e5e-78dac31e6fbd)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {}
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -349,7 +505,7 @@
       "spec_version": "2.1",
       "id": "malware--cad07fd5-d471-4114-8976-6c43c65a5f0c",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -359,7 +515,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--creepydrive",
@@ -379,7 +535,7 @@
       "spec_version": "2.1",
       "id": "malware--5281c4d4-4120-4784-8e7f-25af485d852f",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -389,7 +545,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--creepysnail",
@@ -408,7 +564,7 @@
       "spec_version": "2.1",
       "id": "identity--b18fdd30-e350-443e-9128-97db30251b09",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -417,24 +573,9 @@
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) is a Lebanon-based group that has primarily targeted Israeli organizations, including critical manufacturing, information technology, and defense industry companies, since at least February 2022.",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -443,68 +584,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--f855f25b-9931-4826-a3f0-30f9abac921a",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "レバノン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでPOLONIUMの標的・被害国としてレバノンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--e68c60f5-07c2-4830-8279-1bdb3a5cd84d",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "イスラエル、レバノンで確認された標的・被害事例を中東として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--482c6ab1-a2fd-48cf-adbb-0775125134ae",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -515,7 +597,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -526,7 +608,7 @@
       "spec_version": "2.1",
       "id": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -535,36 +617,14 @@
       "description": "Targeting text indicates the Defense sector.",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
         },
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Finance",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Finance sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -575,7 +635,7 @@
       "spec_version": "2.1",
       "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:36:11Z",
+      "modified": "2026-09-21T02:20:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -584,102 +644,14 @@
       "description": "Targeting text indicates the Government sector.",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
         },
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--5cbb8ad7-16ed-405d-a8f5-33399b7ac4f1",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Healthcare",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Healthcare sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--af1923ab-ef72-4e86-b533-864b3e06892e",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Manufacturing",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Manufacturing sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Technology",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Technology sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Transportation",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Transportation sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -690,7 +662,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -705,7 +677,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1078--general",
@@ -733,7 +705,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--dc04be25-1e17-4555-8bf1-c07453b4dfed",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -748,7 +720,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1090--general",
@@ -776,7 +748,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -791,7 +763,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1102-002--general",
@@ -819,7 +791,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--8a66113d-8544-4ff3-8fdf-81edac388991",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -834,7 +806,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1199--general",
@@ -862,7 +834,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -877,7 +849,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1567-002--general",
@@ -905,7 +877,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6b65a723-72ea-4924-8a1f-c94cf823e2e3",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -920,7 +892,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-006--general",
@@ -948,7 +920,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -963,7 +935,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -991,7 +963,7 @@
       "spec_version": "2.1",
       "id": "relationship--b2c073ae-b5cc-47be-8889-7b38f42e1d0f",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -999,14 +971,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "malware--cad07fd5-d471-4114-8976-6c43c65a5f0c",
       "description": "POLONIUM uses CreepyDrive.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f96cd6ad-4d7e-4e33-acf4-d024a0b3dbdd",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1014,14 +993,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "malware--5281c4d4-4120-4784-8e7f-25af485d852f",
       "description": "POLONIUM uses CreepySnail.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eb9e4a1a-4565-48bf-a01c-414aae6385da",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1029,44 +1015,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "identity--b18fdd30-e350-443e-9128-97db30251b09",
       "description": "POLONIUM targets イスラエル (profile target category: countries).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--04a19100-1b39-4234-b54b-fc63c1dfd28d",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--f855f25b-9931-4826-a3f0-30f9abac921a",
-      "description": "POLONIUM targets レバノン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--204417ba-251c-48d8-8bd2-9ae84c10fc93",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--e68c60f5-07c2-4830-8279-1bdb3a5cd84d",
-      "description": "POLONIUM targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0ddfc1ab-4bc6-4755-812f-1bca14caa209",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1074,14 +1037,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "identity--482c6ab1-a2fd-48cf-adbb-0775125134ae",
       "description": "POLONIUM targets 製造・産業 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--74eecd43-0b48-4bda-b855-5a0ea216ef72",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1089,29 +1059,26 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "description": "POLONIUM targets Defense (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e2bcb7cb-ba9b-47d6-ad9c-e53c760b6624",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
-      "description": "POLONIUM targets Finance (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d774ff3d-0fa7-4792-a9bb-62f8c5752202",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1119,74 +1086,26 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
       "description": "POLONIUM targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--843ef542-fc3e-4b76-9810-17101cca212f",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--5cbb8ad7-16ed-405d-a8f5-33399b7ac4f1",
-      "description": "POLONIUM targets Healthcare (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--23e9a019-286f-4880-bd07-2d581463db88",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--af1923ab-ef72-4e86-b533-864b3e06892e",
-      "description": "POLONIUM targets Manufacturing (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9c8f070f-7712-43f0-88be-f5f48199b1d4",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
-      "description": "POLONIUM targets Technology (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a399f34a-16e8-43d6-bde3-bb7e24f79198",
-      "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
-      "target_ref": "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
-      "description": "POLONIUM targets Transportation (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f7c32805-1cb8-4cfb-886f-8bded7c24cd1",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1194,14 +1113,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has used valid compromised credentials to gain access to victim environments.(Citation: Microsoft POLONIUM June 2022)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--81503ef1-5c83-4176-952d-3d0fa15cdc74",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1209,14 +1135,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--dc04be25-1e17-4555-8bf1-c07453b4dfed",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has used the AirVPN service for operational activity.(Citation: Microsoft POLONIUM June 2022)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f17c6d35-8b36-47c6-9383-56bf72c608c6",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1224,14 +1157,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has used OneDrive and DropBox for C2.(Citation: Microsoft POLONIUM June 2022)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d347c097-7572-4a1e-a29c-1af1e559d9a6",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1239,14 +1179,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--8a66113d-8544-4ff3-8fdf-81edac388991",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has used compromised credentials from an IT company to target downstream customers including a law firm and aviation company.(Citation: Microsoft POLONIUM June 2022)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d666ae6-341c-4ac2-aafa-a0286fecd2f5",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1254,14 +1201,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has exfiltrated stolen data to [POLONIUM](https://attack.mitre.org/groups/G1005)-owned OneDrive and Dropbox accounts.(Citation: Microsoft POLONIUM June 2022) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--df3dbe3e-c9b7-430a-84ee-f3780d595fb4",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1269,14 +1223,21 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--6b65a723-72ea-4924-8a1f-c94cf823e2e3",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has created and used legitimate Microsoft OneDrive accounts for their operations.(Citation: Microsoft POLONIUM June 2022)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--efc04016-3afd-48e0-a034-4a631e4936f9",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1284,7 +1245,14 @@
       "source_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[POLONIUM](https://attack.mitre.org/groups/G1005) has obtained and used tools such as AirVPN and plink in their operations.(Citation: Microsoft POLONIUM June 2022) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
@@ -1350,7 +1318,7 @@
       "spec_version": "2.1",
       "id": "relationship--b479e471-20e8-4131-bd61-4e51bc3038df",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1358,14 +1326,15 @@
       "source_ref": "indicator--7261615d-3a1c-4632-9347-607ceb04b23d",
       "target_ref": "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--c818da27-a1ab-4c5a-b205-3a6170283f15",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1375,14 +1344,14 @@
         "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 47
+      "x_artifact_observation_count": 3
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--f8a47e25-c800-42ba-b5a3-95aeca49124c",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1391,22 +1360,15 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:35:03Z",
       "object_refs": [
         "intrusion-set--397eddf5-8b74-4fda-82c2-ba0d16f441d9",
         "malware--cad07fd5-d471-4114-8976-6c43c65a5f0c",
         "malware--5281c4d4-4120-4784-8e7f-25af485d852f",
         "identity--b18fdd30-e350-443e-9128-97db30251b09",
-        "identity--f855f25b-9931-4826-a3f0-30f9abac921a",
-        "identity--e68c60f5-07c2-4830-8279-1bdb3a5cd84d",
         "identity--482c6ab1-a2fd-48cf-adbb-0775125134ae",
         "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
-        "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
         "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-        "identity--5cbb8ad7-16ed-405d-a8f5-33399b7ac4f1",
-        "identity--af1923ab-ef72-4e86-b533-864b3e06892e",
-        "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
-        "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
         "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
         "attack-pattern--dc04be25-1e17-4555-8bf1-c07453b4dfed",
         "attack-pattern--9d3ea59d-306c-493d-8e67-2232a29ac1fd",
@@ -1416,7 +1378,7 @@
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
         "indicator--7261615d-3a1c-4632-9347-607ceb04b23d"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

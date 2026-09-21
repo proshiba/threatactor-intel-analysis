@@ -7,17 +7,43 @@
       "spec_version": "2.1",
       "id": "intrusion-set--9d3fb90e-054f-4125-8c67-80537dfb41cd",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:39Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "UAC-0020",
-      "aliases": [],
+      "aliases": [
+        "TEMP.Vermin",
+        "VERMIN RELIC"
+      ],
       "description": "UAC-0020の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--uac-0020",
-      "x_alias_assessments": [],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "TEMP.Vermin",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cert-ua-uac0020-index"
+          ],
+          "analyst_notes": "CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact."
+        },
+        {
+          "name": "VERMIN RELIC",
+          "vendor": "Google Threat Intelligence Group / CERT-UA / Google Threat Intelligence Group",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026",
+            "source--cert-ua-uac0020-index"
+          ],
+          "analyst_notes": "CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact."
+        }
+      ],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -39,9 +65,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--uac-0020",
         "actor_name": "UAC-0020",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,15 +77,50 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
-            "UAC-0020"
+            "UAC-0020",
+            "TEMP.Vermin",
+            "VERMIN RELIC"
           ],
           "mitre_group_id": null
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-vermin-relic",
+              "entry_value": "VERMIN RELIC",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "tempvermin",
+                  "profile_value": "TEMP.Vermin",
+                  "dataset_value": "TEMP.Vermin"
+                },
+                {
+                  "normalized": "verminrelic",
+                  "profile_value": "VERMIN RELIC",
+                  "dataset_value": "VERMIN RELIC"
+                }
+              ],
+              "match_basis": "multiple-name-intersection",
+              "match_confidence": "high",
+              "candidate_names": [
+                "VERMIN RELIC",
+                "TEMP.Vermin"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for TEMP.Vermin.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [
             {
@@ -82,7 +144,8 @@
               "refs": [
                 "https://cert.gov.ua/article/6280422"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "microsoft-threat-actor-mapping": [],
@@ -93,9 +156,19 @@
               "external_id": null,
               "matched_names": [
                 {
+                  "normalized": "tempvermin",
+                  "profile_value": "TEMP.Vermin",
+                  "dataset_value": "TEMP.Vermin"
+                },
+                {
                   "normalized": "uac0020",
                   "profile_value": "UAC-0020",
                   "dataset_value": "UAC-0020"
+                },
+                {
+                  "normalized": "verminrelic",
+                  "profile_value": "VERMIN RELIC",
+                  "dataset_value": "VERMIN RELIC"
                 }
               ],
               "match_basis": "canonical-name",
@@ -103,7 +176,9 @@
               "candidate_names": [
                 "UAC-0020",
                 "Vermin",
-                "SickSync"
+                "SickSync",
+                "TEMP.Vermin",
+                "VERMIN RELIC"
               ],
               "countries": [
                 "RU"
@@ -112,15 +187,18 @@
               "refs": [
                 "https://socprime.com/blog/vermin-uac-0020-hacking-collective-hits-ukrainian-government-and-military-with-spectr-malware/",
                 "https://therecord.media/russian-vermin-hackers-target-ukraine",
-                "https://cert.gov.ua/article/6279600"
+                "https://cert.gov.ua/article/6279600",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -151,7 +229,7 @@
       "spec_version": "2.1",
       "id": "note--c9229bbf-043c-436b-b6ec-398ea8a129d3",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -161,14 +239,14 @@
         "intrusion-set--9d3fb90e-054f-4125-8c67-80537dfb41cd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 8
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--cb944ec1-9da1-479f-bf93-e3a42a2450d3",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:15:52Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -177,11 +255,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:15:52Z",
       "object_refs": [
         "intrusion-set--9d3fb90e-054f-4125-8c67-80537dfb41cd"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

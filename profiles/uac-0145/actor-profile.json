@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--uac-0145",
   "name": "UAC-0145",
   "status": "draft",
   "created_at": "2026-08-13T00:00:00Z",
-  "updated_at": "2026-08-13T10:58:19Z",
+  "updated_at": "2026-09-21T03:50:41Z",
   "languages": [
     "ja"
   ],
@@ -12,8 +12,8 @@
     "canonical_name": "UAC-0145",
     "aliases": [],
     "actor_types": [
-      "state-sponsored",
-      "espionage"
+      "espionage",
+      "threat-cluster"
     ],
     "first_seen": {
       "value": null,
@@ -106,12 +106,12 @@
     }
   ],
   "diamond_model": {
-    "adversary": "CERT-UAが追跡するクラスタUAC-0145。CERT-UAはUAC-0002(Sandworm、APT44、Seashell Blizzard)のサブクラスタと位置付ける。本資料群は後援国を明示していない。",
-    "capability": "KALAMBUR、SUMBUR、TAMBUR、ローダーFLUIDLEECH/LOADLOOP、VBSドロッパーGHETTOVIBE、PowerShell偵察スクリプトSCOUTCURL、PythonバックドアFREAKYPOLL、ウェブインジェクトSMARTAXE、AndroidバックドアCOWARDDUCK、改変WireGuardクライアントSopraVPN。正規ツールとしてOpenSSH、TOR、RSYNC、cURLを併用する。",
-    "infrastructure": "偽CAPTCHAを配信する侵害済みウェブサイト群、クローキングサービスCloaking.House、SopraVPNを配布するSourceForgeプロジェクト、Sopra SteriaとATLAS Business Groupを騙る偽企業ドメイン、コマンド取得に悪用される正規サービスとEthereumスマートコントラクト。",
-    "victim": "ウクライナの政府機関・軍と、企業リソースへ接続しうるシステム管理者・IT専門職個人。CERT-UAは通信事業者とIT企業に対して注意喚起している。",
-    "socio_political": "ウクライナの国家機関と防衛関連要員、およびそこへ接続しうる技術者個人を対象とする諜報活動。中央行政機関インフラへの破壊的攻撃の前提が作られた事例が報告されている。",
-    "analyst_notes": "アクター単位のDiamond Model。活動単位のDiamond Modelは各activityが保持する。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -790,7 +790,10 @@
           "source--certua-6318863-uac-0145"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--uac-0145-initial-access-vectors-2026",
@@ -821,16 +824,16 @@
         "target--uac-0145--sector--government"
       ],
       "malware_refs": [
-        "malware--uac-0145-kalambur",
-        "malware--uac-0145-sumbur",
-        "malware--uac-0145-tambur",
-        "malware--uac-0145-ghettovibe",
-        "malware--uac-0145-scoutcurl",
+        "malware--uac-0145-cowardduck",
         "malware--uac-0145-fluidleech",
-        "malware--uac-0145-loadloop",
         "malware--uac-0145-freakypoll",
+        "malware--uac-0145-ghettovibe",
+        "malware--uac-0145-kalambur",
+        "malware--uac-0145-loadloop",
+        "malware--uac-0145-scoutcurl",
         "malware--uac-0145-smartaxe",
-        "malware--uac-0145-cowardduck"
+        "malware--uac-0145-sumbur",
+        "malware--uac-0145-tambur"
       ],
       "infrastructure_refs": [
         "infrastructure--uac-0145-compromised-websites",
@@ -971,7 +974,10 @@
           "source--certua-6318863-uac-0145"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "victim_cases": [
@@ -1374,8 +1380,8 @@
         "analyst_notes": ""
       }
     ],
-    "selection_logic": "ウクライナの政府機関・軍と、そこへ接続しうるIT/通信分野の技術者個人の双方を対象とする。前者は組織ネットワークへの足がかりと破壊的攻撃の前提づくり、後者は管理者権限を持つ個人端末経由での企業リソース到達を狙う。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "帰属国やインフラ所在国は標的国へ流用しない。ウクライナのみが一次資料で被害地として確認できる個別国である。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "ウクライナの政府機関・軍と、そこへ接続しうるIT/通信分野の技術者個人の双方を対象とする。前者は組織ネットワークへの足がかりと破壊的攻撃の前提づくり、後者は管理者権限を持つ個人端末経由での企業リソース到達を狙う。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "帰属国やインフラ所在国は標的国へ流用しない。ウクライナのみが一次資料で被害地として確認できる個別国である。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -2150,7 +2156,19 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "原文を全文確認(アクセス日 2026-08-13)。cert.gov.uaはAngular SPAのため記事ページのHTMLに本文が含まれない。本文とIOCは同サイトのAPI(/api/articles/byId?id=6318437)から取得した。MIL.CERT-UA(ウクライナ国防省サイバー防衛センター)の協力が明記されている。"
+      "analyst_notes": "原文を全文確認(アクセス日 2026-08-13)。cert.gov.uaはAngular SPAのため記事ページのHTMLに本文が含まれない。本文とIOCは同サイトのAPI(/api/articles/byId?id=6318437)から取得した。MIL.CERT-UA(ウクライナ国防省サイバー防衛センター)の協力が明記されている。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "relationship",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--certua-6318863-uac-0145",
@@ -2175,7 +2193,96 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "原文を全文確認(アクセス日 2026-08-13)。本文とIOCは/api/articles/byId?id=6318863から取得した。tech-memoが参照したBleepingComputer記事(2026-08-13)ではなく、同記事が引用する本一次資料を根拠とする。"
+      "analyst_notes": "原文を全文確認(アクセス日 2026-08-13)。本文とIOCは/api/articles/byId?id=6318863から取得した。tech-memoが参照したBleepingComputer記事(2026-08-13)ではなく、同記事が引用する本一次資料を根拠とする。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "attribution",
+        "capability",
+        "motivation",
+        "relationship",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
+    },
+    {
+      "source_id": "source--osint-cert-ua-uac-index",
+      "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
+      "url": "https://cert.gov.ua/articles",
+      "title": "CERT-UA UAC Article Index",
+      "publisher": "CERT-UA",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "government-cert-article-index",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "82ca02b547093b2a0f60b1c62ed7fb8f6b6c9d0de6b0e4c2936ae64a1dcbc162",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "9caebf1f7b9680ba0f1c6a0b0c18e5d250acc74fe2bdc9b127a54dc1759cba6f",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=350. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   ],
   "assessment": {
@@ -2219,7 +2326,7 @@
       "KALAMBUR、SUMBUR、TAMBURの機能と観測期間が資料に記載されていない。",
       "通信事業者とIT企業は注意喚起の名宛人として挙げられており、被害が確認された業種として明示されているわけではない。"
     ],
-    "collection_notes": "一次資料はCERT-UAの2件(2026-07-15、2026-08-08)。cert.gov.uaはAngular SPAで記事ページのHTMLに本文を含まないため、同サイトのAPI(/api/articles/byId?id=<id>)から本文とIOCを取得して全文確認した(アクセス日 2026-08-13)。tech-memo daily-news 2026-08-13が収録したBleepingComputer記事は発見用途にのみ用い、根拠には採用していない。",
+    "collection_notes": "一次資料はCERT-UAの2件(2026-07-15、2026-08-08)。cert.gov.uaはAngular SPAで記事ページのHTMLに本文を含まないため、同サイトのAPI(/api/articles/byId?id=<id>)から本文とIOCを取得して全文確認した(アクセス日 2026-08-13)。tech-memo daily-news 2026-08-13が収録したBleepingComputer記事は発見用途にのみ用い、根拠には採用していない。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "本プロファイルはCERT-UAがUAC-0145の指定子で報告した内容に限定する。親クラスタの実績や他ベンダーのSandworm関連報告を取り込まない。"
   },
   "free_text": {

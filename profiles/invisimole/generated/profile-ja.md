@@ -2,18 +2,18 @@
 
 - プロファイルID: `actor--invisimole`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:02Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
-InvisiMoleの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+InvisiMoleは少なくとも2013年から活動するサイバースパイ集団で、2019年後半から2020年に東欧の軍事・外交組織を標的化した。Gamaredonによる初期侵入後に同名のモジュール型スパイウェアを選別配布する協力関係が確認されている。
 
 ## アクター名とAlias
 
 - 正規名: **InvisiMole**
-- 初回観測: 不明
-- 最終観測: 不明
+- 初回観測: 2013
+- 最終観測: 2020-06-18
 - 活動状態: unknown
 
 Aliasなし
@@ -29,11 +29,15 @@ Aliasなし
 
 ## モチベーション
 
-未評価
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | ESET explicitly describes InvisiMole as a cyber-espionage group and documents extensive spying capabilities. | 高 | `source--eset-invisimole-hidden-arsenal-2020` | Motivation is source-stated, not inferred from geography. |
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| actor--gamaredon | cooperates-with | ESET observed Gamaredon malware establishing initial access and delivering InvisiMole to a small, selected subset of targets. ESET explicitly treats the two as distinct groups with different TTPs. | 高 | `source--eset-invisimole-hidden-arsenal-2020` |
 
 ## ダイヤモンドモデル
 
@@ -42,18 +46,19 @@ Aliasなし
 | Adversary |  |
 | Capability |  |
 | Infrastructure |  |
-| Victim | Russia, Ukraine |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | InvisiMole | canonical-name | 高 | Russia | https://www.welivesecurity.com/2018/06/07/invisimole-equipped-spyware-undercover/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=InvisiMole&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0593 | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -62,6 +67,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -78,7 +84,9 @@ Aliasなし
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--invisimole | InvisiMole | 同名グループが使用するモジュール型スパイウェア。RC2CLとRC2FMのバックドア、更新版のTCP/DNSダウンローダーを含む。 | 2013 | 2020-06-18 | 高 | `source--eset-invisimole-hidden-arsenal-2020` |
 
 ### ツール
 
@@ -102,11 +110,15 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| InvisiMoleによる東欧の軍事・外交組織へのスパイ活動 | cyber-espionage | 2019-10 | 2020-06-18 | 2020-06-18 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d, target--targeting-audit--region--e469a12091a1d97c652a | malware--invisimole |  | victim--activity-rule--1203af6b336e894538e2 | ESETは2019年後半から2020年6月18日の報告時点まで、東欧の少数の高位組織、特に軍事部門と政府・行政に属する外交使節団を標的とする攻撃を観測した。Gamaredonが先に侵入した端末の一部へ、より選別的にInvisiMoleを配布した。 | 高 | `source--eset-invisimole-hidden-arsenal-2020` |
 
 ### 活動別ダイヤモンドモデル
 
-活動別ダイヤモンドモデルなし
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| InvisiMoleによる東欧の軍事・外交組織へのスパイ活動 | InvisiMole | InvisiMole | 情報なし | 情報なし | 政府・行政, 防衛・軍事, 東欧 | 被害事例: InvisiMoleによる東欧の軍事・外交組織へのスパイ活動 | 高 |
 
 
 
@@ -114,15 +126,17 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東欧 | 構造化OSINTの被害地域フィールドでInvisiMoleの標的範囲として東欧が記録されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | 活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的地域として東欧が明示されている。 | 2019-10 | 2020-06-18 | 中 | `source--eset-invisimole-hidden-arsenal-2020` |
+| sectors | 政府・行政 | 活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的として明示された産業。 | 2019-10 | 2020-06-18 | 中 | `source--eset-invisimole-hidden-arsenal-2020` |
+| sectors | 防衛・軍事 | 活動「InvisiMoleによる東欧の軍事・外交組織へのスパイ活動」の記述で標的として明示された産業。 | 2019-10 | 2020-06-18 | 中 | `source--eset-invisimole-hidden-arsenal-2020` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: InvisiMoleによる東欧の軍事・外交組織へのスパイ活動 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d | malware--invisimole |  | エンドポイント | espionage: InvisiMoleによる東欧の軍事・外交組織へのスパイ活動 | 2019-10 | 2020-06-18 | 2020-06-18 | 高 | `source--eset-invisimole-hidden-arsenal-2020` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -134,7 +148,7 @@ TTPなし
 - IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 38件（`artifacts.csv`）
+- 非IOC artifact観測: 5件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -174,6 +188,7 @@ TTPなし
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--eset-invisimole-hidden-arsenal-2020 | Digging up InvisiMole's hidden arsenal | ESET Research | 2020-06-18 | https://www.welivesecurity.com/2020/06/18/digging-up-invisimole-hidden-arsenal/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

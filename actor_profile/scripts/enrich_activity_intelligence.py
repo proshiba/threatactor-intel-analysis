@@ -35,7 +35,7 @@ DEFAULT_RULES = FRAMEWORK_ROOT / "activity-observation-rules.json"
 DEFAULT_ATTACK = FRAMEWORK_ROOT / "reference" / "attack-index.json"
 DEFAULT_CATALOG = FRAMEWORK_ROOT / "corpus-catalog.json"
 DEFAULT_PROFILES = REPO_ROOT / "profiles"
-MITRE_SOURCE_ID = "source--mitre-attack-19-1"
+MITRE_SOURCE_ID = "source--mitre-attack-19-2"
 GENERATED_TTP_PREFIXES = ("ttp--activity-rule--", "ttp--mitre-campaign--")
 GENERATED_TARGET_PREFIX = "target--activity-rule--"
 GENERATED_MITRE_TARGET_PREFIX = "target--mitre-group--"
@@ -73,6 +73,10 @@ def compile_rules(
     for category in ("countries", "sectors", "assets", "impacts"):
         for rule in rules[category]:
             rule["_patterns"] = compile_patterns(rule["patterns"])
+    rules["_activity_target_exclusions"] = {
+        item["activity_id"]: set(item.get("target_names", []))
+        for item in rules.get("activity_target_exclusions", [])
+    }
     names = {
         value.strip()
         for item in (catalog or {}).get("actors", [])
@@ -380,7 +384,12 @@ def ensure_mitre_source(profile: dict[str, Any], attack: dict[str, Any]) -> None
                 f"{source.get('version', '')} compact local index"
             ).strip(),
             "publisher": "MITRE",
-            "published_at": unknown_time(),
+            "published_at": {
+                "value": "2026-08-05T00:00:00Z",
+                "precision": "day",
+                "status": "known",
+                "basis": "upstream-release",
+            },
             "language": "en",
             "source_type": "structured-knowledge-base",
             "tlp": "TLP:CLEAR",
@@ -468,7 +477,8 @@ def activity_text(
         normalized_name(match.group(1))
         for match in actor_pattern.finditer(description)
     }
-    if len(all_mentions) <= 1:
+    own_names = profile_actor_names(profile)
+    if len(all_mentions) <= 1 or all_mentions <= own_names:
         return f"{title}\n{description}".strip()
 
     # Multi-actor roundups are common in daily news. Keep only the current
@@ -483,7 +493,6 @@ def activity_text(
         )
         if item.strip()
     ]
-    own_names = profile_actor_names(profile)
     selected: list[str] = []
     for index, part in enumerate(parts):
         mentions = {
@@ -524,6 +533,43 @@ def malware_refs_in_excerpt(
                 result.add(item["id"])
                 break
     return sorted(result)
+
+
+def link_explicit_activity_malware(
+    profile: dict[str, Any],
+    activity: dict[str, Any],
+    rules: dict[str, Any],
+) -> list[str]:
+    """Link already-evidenced malware when its name occurs in this activity.
+
+    Actor and malware names sometimes intentionally collide (Akira, KONNI,
+    InvisiMole, NetTraveler).  Those ambiguous labels are left to reviewed
+    records instead of being inferred from a bare actor-name occurrence.
+    """
+    text = activity_text(profile, activity, rules).casefold()
+    actor_names = profile_actor_names(profile)
+    linked: set[str] = set(activity.get("malware_refs", []))
+    added: list[str] = []
+    for item in profile.get("capabilities", {}).get("malware", []):
+        candidates = [item.get("name", ""), *item.get("aliases", [])]
+        candidates = [
+            name
+            for name in candidates
+            if len(name.strip()) >= 4 and normalized_name(name) not in actor_names
+        ]
+        if not any(
+            re.search(
+                rf"(?<![a-z0-9]){re.escape(name.casefold())}(?![a-z0-9])",
+                text,
+            )
+            for name in candidates
+        ):
+            continue
+        if item["id"] not in linked:
+            added.append(item["id"])
+        linked.add(item["id"])
+    activity["malware_refs"] = sorted(linked)
+    return sorted(added)
 
 
 def add_rule_ttps(
@@ -600,7 +646,10 @@ def actor_attribution_context(
     )
     japanese_terms = (
         r"^\s*(?:人|(?:系|関連|関与|支援|国家支援|政府支援)(?:の)?|"
-        r"の(?:国家|政府)?(?:支援)?)?\s*"
+        r"の(?:国家|政府)?(?:支援)?(?:の)?)?\s*"
+        # 「中国政府支援のこのハッカー集団」のように、帰属修飾と
+        # 主体語の間に指示語が入る形も被害側ではない。
+        r"(?:(?:この|その|同)\s*)?"
         # 「北朝鮮サイバー攻撃グループ」のように、国名と主体語の間に
         # 「サイバー攻撃」等の修飾が入る形も実行主体側の呼称である。
         r"(?:サイバー(?:攻撃|犯罪|諜報)?)?"
@@ -612,6 +661,12 @@ def actor_attribution_context(
         or re.search(actor_terms, after)
         or re.search(japanese_terms, after)
         or re.search(r"^\s*(?:系|関連|関与|支援)(?:の)?", after)
+        or re.search(r"^\s*と関連(?:する|した|し)", after)
+        or re.search(
+            r"^\s*の(?:攻撃|脅威|サイバー攻撃)?"
+            r"(?:キャンペ(?:ーン|ン)|作戦|活動)",
+            after,
+        )
         # 「中国によるハッキング」「ロシアによるサイバー攻撃」のように、
         # 国名に「による」＋攻撃行為の名詞が続く形は実行主体側の帰属表現で
         # あり被害国ではない。「日本への攻撃」のような被害側の助詞とは
@@ -632,7 +687,40 @@ def actor_attribution_context(
         # 「米国からの圧力」「米国からの制裁」のように、国名が地政学的な
         # 働きかけの主体として現れる形は被害側ではない。攻撃の標的を示す
         # 「米国への攻撃」「米国の政府機関」とは助詞の形が異なる。
-        or re.search(r"^\s*からの(?:圧力|関与|要求|制裁|働きかけ)", after)
+        or re.search(
+            r"^\s*からの(?:追加)?(?:圧力|関与|要求|要請|制裁|働きかけ)",
+            after,
+        )
+        # 国や地域を題材・政策領域として述べる「朝鮮半島情勢に関係する
+        # 専門家」のような表現は、被害者の所在を示さない。
+        or re.search(
+            r"^\s*(?:(?:政治|核|軍事|外交)\s*)?"
+            r"(?:情勢|問題|政策|研究|関連(?:業務|案件|テーマ))",
+            after,
+        )
+        or re.search(
+            r"^\s*の(?:(?:政治|核|軍事|外交)\s*)?"
+            r"(?:情勢|問題|政策|研究)[^。\n]{0,35}"
+            r"(?:に焦点|に関係|に関連|を研究|を扱)",
+            after,
+        )
+        # 「北朝鮮軍のウクライナ派遣」の北朝鮮は派遣主体であり、同じ文の
+        # 標的国ウクライナとは役割が異なる。
+        or re.search(
+            r"^\s*軍の[^。\n]{0,45}(?:派遣|展開|侵攻|参戦)",
+            after,
+        )
+        # なりすまし・偽装に使われた組織の国は、それだけでは被害国ではない。
+        or re.search(
+            r"^\s*[^。、\n]{0,45}(?:への|を)(?:成りすま|装い|偽装)",
+            after,
+        )
+        # 攻撃を非難・批判した国や機構は、攻撃対象そのものではない。
+        or re.search(
+            r"^\s*(?!への|に対する)[^。\n]{0,55}"
+            r"(?:攻撃|活動)を(?:非難|批判)",
+            after,
+        )
         # 「イラン人17人を起訴」のような国籍付きの人数表現は実行主体側の記述で
         # あり、被害国ではない。「日本人を標的」のような被害側の表現を巻き込まない
         # よう、人数を伴う形だけを帰属文脈として扱う。
@@ -642,7 +730,16 @@ def actor_attribution_context(
     if actor_pattern:
         actor_match = actor_pattern.search(after)
         if actor_match and actor_match.start() <= 35:
-            return True
+            # Actor名が国名の直後にあるだけで帰属国とは限らない。
+            # 「韓国組織を狙うKonni」のように標的節の後へ主体名が続く文を
+            # 落とさず、それ以外は従来どおり帰属文脈として除外する。
+            between = after[: actor_match.start()]
+            if not re.search(
+                r"(?i)(?:標的|狙|攻撃|侵害|被害|target|attack|breach|"
+                r"compromise|phish|victim)",
+                between,
+            ):
+                return True
     return bool(
         re.search(
             r"(?i)(?:from|by|"
@@ -664,6 +761,26 @@ def contextual_match(
     for pattern in patterns:
         for match in pattern.finditer(text):
             if country and actor_attribution_context(text, match, actor_pattern):
+                continue
+            # Sector terms need a narrower guard than countries: actor names
+            # legitimately follow target sectors in prose.  Only discard an
+            # immediate sponsorship/linkage modifier such as
+            # government-backed or 「政府支援」.
+            after = text[match.end() : match.end() + 32]
+            if not country and (
+                re.search(
+                    r"(?i)^\s*(?:[-–—]\s*)?"
+                    r"(?:backed|sponsored)\s+"
+                    r"(?:cyber\s*)?(?:hackers?|actors?|groups?|threat actors?)\b",
+                    after,
+                )
+                or re.search(
+                    r"^\s*支援(?:の)?(?:(?:この|その|同)\s*)?"
+                    r"(?:サイバー(?:攻撃|犯罪|諜報)?)?"
+                    r"(?:APT|ハッカー|攻撃者|アクター|グループ|集団)",
+                    after,
+                )
+            ):
                 continue
             if explicit_target_context(text, match, country=country):
                 return match
@@ -718,7 +835,8 @@ def explicit_target_context(
                 after,
             )
             or re.search(
-                r"^[^、。\n]{0,70}(?:を[^、。\n]{0,35}(?:標的|攻撃|侵害)|"
+                r"^[^、。\n]{0,70}(?:を[^、。\n]{0,45}"
+                r"(?:標的|攻撃|侵害|狙|妨害|破壊)|"
                 r"を狙|への攻撃|に対する攻撃|で被害|"
                 r"に対して(?:使用|展開))",
                 after,
@@ -737,7 +855,8 @@ def explicit_target_context(
             after,
         )
         or re.search(
-            r"^[^、。\n]{0,70}(?:を[^、。\n]{0,35}(?:標的|攻撃|侵害)|"
+            r"^[^、。\n]{0,70}(?:を[^、。\n]{0,45}"
+            r"(?:標的|攻撃|侵害|狙|妨害|破壊)|"
             r"を狙|への攻撃|に対する攻撃|で被害|"
             r"に対して(?:使用|展開)|フィッシング)",
             after,
@@ -764,12 +883,17 @@ def add_targets(
 ) -> list[str]:
     text = activity_text(profile, activity, rules)
     refs: set[str] = set(activity.get("target_refs", []))
+    excluded_names = rules.get("_activity_target_exclusions", {}).get(
+        activity.get("activity_id"), set()
+    )
     for source_key, category, kind in (
         ("countries", "countries", "country"),
         ("sectors", "sectors", "sector"),
     ):
         targets = profile["targets"][category]
         for rule in rules[source_key]:
+            if rule["name"] in excluded_names:
+                continue
             match = contextual_match(
                 text,
                 rule["_patterns"],
@@ -1235,6 +1359,9 @@ def add_mitre_campaigns(
                 "activity_id": f"activity--mitre-campaign--{digest}",
                 "name": campaign.get("name", campaign.get("external_id", "Campaign")),
                 "activity_type": "campaign",
+                "stix_object_type": "campaign",
+                "grouping_context": None,
+                "activity_refs": [],
                 "first_observed": (
                     {
                         "value": campaign["first_seen"],
@@ -1402,6 +1529,7 @@ def enrich_profile(
         activity.setdefault("victim_refs", [])
         enrich_explicit_activity_period(profile, activity, rules)
         add_targets(profile, activity, rules)
+        link_explicit_activity_malware(profile, activity, rules)
         add_rule_ttps(profile, activity, rules, attack)
         add_victim_case(profile, activity, rules)
     profile["ttps"].sort(key=lambda item: item["ttp_id"])

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--gossipgirl",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "Olympic Games / Stuxnet",
         "capability_details": "Flame, Stuxnet, Miniflame, Duqu, Gauss",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イラン。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--gossipgirl",
         "actor_name": "GOSSIPGIRL",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "40c47a97-22a5-46d3-978e-f89c802dad93",
@@ -89,7 +93,25 @@
                 "https://www.volkskrant.nl/kijkverder/v/2024/sabotage-in-iran-een-missie-in-duisternis~v989743/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Operation+Olympic+Games&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2007",
+                "motivation": [
+                  "Information theft and espionage",
+                  "Sabotage and destruction"
+                ],
+                "observed-sectors": [
+                  "Energy"
+                ],
+                "observed-countries": [
+                  "Iran"
+                ],
+                "tools": [
+                  "Stuxnet"
+                ],
+                "sponsor": "State-sponsored, Equation Group (NSA), CIA and Unit 8200",
+                "last-card-change": "2024-01-17"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -98,89 +120,10 @@
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--flame",
-            "profile_name": "Flame",
-            "entry_uuid": "c40dbede-490f-4df4-a242-a2461e3cfc4e",
-            "entry_value": "Flame",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.flame",
-              "https://www.crysys.hu/publications/files/tedi/ukatemicrysys_territorialdispute.pdf",
-              "https://github.com/juanandresgs/papers/raw/master/Flame%202.0%20Risen%20from%20the%20Ashes.pdf",
-              "https://web.archive.org/web/20230416140914if_/http://www.chinaview.cn/20230411/4e0fa0f4fd1d408aaddeef8be63a4757/202304114e0fa0f4fd1d408aaddeef8be63a4757_20230411161526_0531.pdf",
-              "https://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf",
-              "https://storage.googleapis.com/chronicle-research/Flame%202.0%20Risen%20from%20the%20Ashes.pdf",
-              "https://www.symantec.com/connect/blogs/flamer-recipe-bluetoothache",
-              "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=ce2df4da-afe9-4a24-b28c-0fb3ba671d95&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments",
-              "https://securelist.com/the-flame-questions-and-answers-51/34344/",
-              "https://www.crysys.hu/publications/files/skywiper.pdf"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--stuxnet",
-            "profile_name": "Stuxnet",
-            "entry_uuid": "6ad84f52-0025-4a9d-861a-65c870f47988",
-            "entry_value": "Stuxnet",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.stuxnet",
-              "https://fmmresearch.wordpress.com/2020/09/28/the-emerald-connection-equationgroup-collaboration-with-stuxnet/",
-              "https://www.atlanticcouncil.org/wp-content/uploads/2020/07/Breaking-trust-Shades-of-crisis-across-an-insecure-software-supply-chain.pdf",
-              "https://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf",
-              "https://symantec.broadcom.com/hubfs/Attacks-Against-Critical_Infrastructrure.pdf",
-              "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2017/10/20114955/Bartholomew-GuerreroSaade-VB2016.pdf",
-              "https://www.spiegel.de/netzwelt/web/die-erste-cyberwaffe-und-ihre-folgen-a-a0ed08c9-5080-4ac2-8518-ed69347dc147",
-              "https://www.pwc.co.uk/cyber-security/assets/cyber-threats-2019-retrospect.pdf",
-              "https://medium.com/s2wlab/w3-may-en-story-of-the-week-code-signing-certificate-on-the-darkweb-94c7ec437001",
-              "https://news.yahoo.com/revealed-how-a-secret-dutch-mole-aided-the-us-israeli-stuxnet-cyber-attack-on-iran-160026018.html",
-              "https://www.codeproject.com/articles/246545/stuxnet-malware-analysis-paper",
-              "https://storage.googleapis.com/chronicle-research/STUXSHOP%20Stuxnet%20Dials%20In%20.pdf",
-              "https://media.ccc.de/v/27c3-4245-en-adventures_in_analyzing_stuxnet",
-              "https://www.welivesecurity.com/media_files/white-papers/Stuxnet_Under_the_Microscope.pdf",
-              "http://artemonsecurity.blogspot.de/2017/04/stuxnet-drivers-detailed-analysis.html",
-              "https://www.domaintools.com/resources/blog/visibility-monitoring-and-critical-infrastructure-security",
-              "https://fmmresearch.files.wordpress.com/2020/09/theemeraldconnectionreport_fmmr-2.pdf",
-              "https://www.crysys.hu/publications/files/tedi/ukatemicrysys_territorialdispute.pdf",
-              "https://web.archive.org/web/20230416140914if_/http://www.chinaview.cn/20230411/4e0fa0f4fd1d408aaddeef8be63a4757/202304114e0fa0f4fd1d408aaddeef8be63a4757_20230411161526_0531.pdf",
-              "https://ti.qianxin.com/uploads/2020/02/13/cb78386a082f465f259b37dae5df4884.pdf"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--duqu",
-            "profile_name": "Duqu",
-            "entry_uuid": "7344cee0-87c9-46a1-85aa-0d3c8c9c8cc6",
-            "entry_value": "DuQu",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.duqu",
-              "https://www.crysys.hu/publications/files/tedi/ukatemicrysys_territorialdispute.pdf",
-              "https://securelist.com/blog/research/70504/the-mystery-of-duqu-2-0-a-sophisticated-cyberespionage-actor-returns/",
-              "https://web.archive.org/web/20230416140914if_/http://www.chinaview.cn/20230411/4e0fa0f4fd1d408aaddeef8be63a4757/202304114e0fa0f4fd1d408aaddeef8be63a4757_20230411161526_0531.pdf",
-              "https://cocomelonc.github.io/malware/2025/02/24/malware-tricks-45.html",
-              "http://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/w32_duqu_the_precursor_to_the_next_stuxnet_research.pdf",
-              "https://cocomelonc.github.io/tutorial/2022/05/09/malware-pers-4.html",
-              "https://docs.broadcom.com/doc/w32-duqu-11-en",
-              "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2017/10/20114955/Bartholomew-GuerreroSaade-VB2016.pdf"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
-          {
-            "profile_malware_id": "malware--gauss",
-            "profile_name": "Gauss",
-            "entry_uuid": "5f8be453-8f73-47a2-9c9f-e8b9b02f5691",
-            "entry_value": "Gauss",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.gauss",
-              "https://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf",
-              "http://contagiodump.blogspot.com/2012/08/gauss-samples-nation-state-cyber.html",
-              "https://web.archive.org/web/20230416140914if_/http://www.chinaview.cn/20230411/4e0fa0f4fd1d408aaddeef8be63a4757/202304114e0fa0f4fd1d408aaddeef8be63a4757_20230411161526_0531.pdf"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -206,353 +149,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--942b5af5-d4de-4f3c-9480-6dbab1c082de",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Flame",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--flame",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--c4767b1b-1a04-434a-9474-5d265890ce7f",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Stuxnet",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--stuxnet",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d0b7189a-4d55-45fe-974e-50f96bdda7dc",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Miniflame",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--miniflame",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--b607cd71-9f67-4460-9c06-3d06286e817e",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Duqu",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--duqu",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--536b3e1a-aaf5-4e83-ac3f-c8422f8df910",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Gauss",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--gauss",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--b1016556-1303-448a-8de9-50472b843d5e",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Olympic Games / Stuxnet",
-      "description": "Operation name listed in the repository actor-mapping workbook.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "activity--olympic-games-stuxnet",
-      "x_confidence": "medium",
-      "x_analyst_notes": "Operation-to-actor mapping requires source-level review.",
-      "x_reported_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--gossipgirl",
-          "name": "GOSSIPGIRL",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "activity_type": "operation",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f6a5f8c2-00b0-4e1a-827d-a6ba09e3125c",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでGOSSIPGIRLの標的・被害国としてイランが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7b5ef6ce-1fb2-4af2-bbd2-774404188bd0",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "malware--942b5af5-d4de-4f3c-9480-6dbab1c082de",
-      "description": "GOSSIPGIRL uses Flame.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--21ecea77-5a24-4846-8991-63031ef30511",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "malware--c4767b1b-1a04-434a-9474-5d265890ce7f",
-      "description": "GOSSIPGIRL uses Stuxnet.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--def39782-df9a-44ee-a410-056b7647e891",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "malware--d0b7189a-4d55-45fe-974e-50f96bdda7dc",
-      "description": "GOSSIPGIRL uses Miniflame.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--cc227f32-c111-43ca-b59d-ae99d4e43756",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "malware--b607cd71-9f67-4460-9c06-3d06286e817e",
-      "description": "GOSSIPGIRL uses Duqu.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--35785fd9-6bd2-4452-806f-db858c093013",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "malware--536b3e1a-aaf5-4e83-ac3f-c8422f8df910",
-      "description": "GOSSIPGIRL uses Gauss.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b6792906-3804-42ab-abed-2f8935d087fd",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "target_ref": "identity--f6a5f8c2-00b0-4e1a-827d-a6ba09e3125c",
-      "description": "GOSSIPGIRL targets イラン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9dee1cdd-c85e-49ab-ac40-049dad5b6067",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--b1016556-1303-448a-8de9-50472b843d5e",
-      "target_ref": "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-      "description": "Olympic Games / Stuxnet is attributed or linked to GOSSIPGIRL.",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--5243ddaf-d03f-4203-8488-58487114073c",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -562,14 +163,14 @@
         "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 6
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--ddd44af9-e1c5-453e-9a93-c5e3801ae23b",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -578,18 +179,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a",
-        "malware--942b5af5-d4de-4f3c-9480-6dbab1c082de",
-        "malware--c4767b1b-1a04-434a-9474-5d265890ce7f",
-        "malware--d0b7189a-4d55-45fe-974e-50f96bdda7dc",
-        "malware--b607cd71-9f67-4460-9c06-3d06286e817e",
-        "malware--536b3e1a-aaf5-4e83-ac3f-c8422f8df910",
-        "campaign--b1016556-1303-448a-8de9-50472b843d5e",
-        "identity--f6a5f8c2-00b0-4e1a-827d-a6ba09e3125c"
+        "intrusion-set--63c9485f-efd9-4730-9571-5d76efe1514a"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

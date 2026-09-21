@@ -1,0 +1,500 @@
+{
+  "type": "bundle",
+  "id": "bundle--7565d805-738e-4e5e-93ee-2ecd64872b12",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ファイル共有を装うOAuthフィッシングドメインとクラウドプロジェクト",
+      "description": "UNC5976はファイル共有を思わせる名称のドメインを購入し、対応するクラウドプロジェクトを作成する。ドメインは偽のファイル共有ページを提供し、数秒後にログインダイアログを表示する。標的が認証すると、認証トークンをURLから取得して保存する悪性スクリプトを設置したクラウドプロジェクトのURLへリダイレクトされる。GTIGによる初回の発見と無効化からおよそ3か月のうちに、少なくとも12件の新規ドメインと関連インフラが作成された。GTIGは、UNC5976がフィッシングインフラの一部をGoogle以外の事業者へ移行しつつあると評価している。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "infra--unc5976-file-sharing-phishing-domains",
+      "x_confidence": "high",
+      "x_analyst_notes": "原文は12件の新規ドメインの個別値を列挙していないため、IOCとして収録できるのはIOC表に掲載された2件のみである。",
+      "infrastructure_types": [
+        "phishing-domain",
+        "cloud-project"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "created": "2026-08-21T01:25:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC7005",
+      "aliases": [
+        "STORM-2945"
+      ],
+      "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+      "x_profile_id": "actor--unc7005",
+      "x_profile_status": "draft",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-08-13T00:00:00Z"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5976",
+      "aliases": [],
+      "description": "UNC5976はGoogle Threat Intelligence Group (GTIG)が2026年3月からOAuth関連活動の追跡を開始した、認証に重点を置くロシア関連の諜報クラスタである。GTIGは「We believe this cluster to be distinct from UNC6293 and UNC7005」と述べ、ICE RELIC(旧APT29)へ結び付く2クラスタとは別のものとして扱っている。ファイル共有を思わせるドメインとクラウドプロジェクトを組み合わせたOAuthフィッシングによる認証トークンの自動収集を主な手口とし、悪性のExcelプラグインHEADRUSHも用いる。",
+      "first_seen": "2026-03-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "goals": [
+        "GTIGはUNC5976を「a suspected Russian cyber espionage cluster with an authentication focus」と説明し、認証トークンの窃取によるアカウント侵害を目的とする活動と位置付けている。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_id": "actor--unc5976",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。UNC5976については「a suspected Russian cyber espionage cluster with an authentication focus」と記述し、ICE RELIC系の2クラスタとは区別したうえで「potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と述べるにとどまり、具体的な機関への帰属は行っていない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。「alternative Russian intelligence services」への整合は可能性の指摘であり、organizationsへは反映しない。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC5976はGTIGが2026年3月から追跡する、認証に重点を置くロシア関連の諜報クラスタである。ファイル共有を装うドメインとクラウドプロジェクトを組み合わせたOAuthフィッシングで認証トークンを自動収集し、悪性Excelプラグイン HEADRUSH も用いる。GTIGはUNC6293・UNC7005とは別クラスタと評価している。",
+        "history": "2026年3月にGTIGがOAuth関連活動の追跡を開始し、無効化後およそ3か月で少なくとも12件の新規ドメインが再構築された。2026年4月にはHEADRUSH検体の配布が確認された。",
+        "capability_details": "OAuthフィッシングでは、正規のGoogle OAuthログイン画面を経由させたうえで攻撃者管理のクラウドプロジェクトへリダイレクトし、URLから認証トークンを取得して保存する。HEADRUSHは悪性のExcelプラグインで、最終的にHTAダウンローダーへ到達する。",
+        "infrastructure_details": "購入ドメインは多くがファイル共有に関連する名称を用いる。GTIGは、フィッシングインフラの一部がGoogle以外の事業者へ移行しつつあると評価している。",
+        "targeting_details": "構造化ターゲット監査: 標的国=アルメニア、ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nHEADRUSHの配布ではウクライナの研究機関を装うドメインが用いられ、ウクライナの航空宇宙・画像関連企業が標的となった可能性がある。",
+        "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+      },
+      "x_osint_crosscheck_assessment": "no-match",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--0348dcd9-34b5-4ff1-8b55-e55cffb5bc3b",
+      "created": "2026-08-21T01:45:24Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Armenia",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--31c38bdcbda84be33d7e",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "ARM",
+      "x_opencti_reference_id": "location--452cf041-37ff-4902-9b4c-f268e73b9861",
+      "x_opencti_aliases": [
+        "AM",
+        "ARM",
+        "アルメニア"
+      ],
+      "latitude": 40.069099,
+      "longitude": 45.038189,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ukraine",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--36f1b9323d5faab92f39",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "UKR",
+      "x_opencti_reference_id": "location--e5f054fc-fc63-46f3-8d63-1f93e0cb7801",
+      "x_opencti_aliases": [
+        "UA",
+        "UKR",
+        "ウクライナ"
+      ],
+      "latitude": 48.379433,
+      "longitude": 31.16558,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "HEADRUSH",
+      "description": "GTIGがHEADRUSHと命名した悪性のExcelプラグイン。2026年4月に確認された検体は最終的にHTML Application (HTA)ダウンローダーへ到達する。GTIGは当時、感染連鎖の全容を特定できなかったと述べている。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "malware--headrush",
+      "x_confidence": "high",
+      "x_analyst_notes": "GTIG命名の独自マルウェア。",
+      "is_family": true,
+      "malware_types": [
+        "Excel",
+        "plugin",
+        "downloader"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--02d08513-715a-4e5f-b0d2-75f8c423663b",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+      "description": "UNC5976 uses HEADRUSH.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
+      "created": "2026-08-21T01:25:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "related-to",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "description": "GTIGはUNC5976について「We believe this cluster to be distinct from UNC6293 and UNC7005」「UNC5976 remains distinct from the UNC6293 and UNC7005 clusters, potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と明示的に別クラスタとしている。相違点として、事後侵害活動に住宅用プロキシーではなく専用インフラを用いること、およびICE RELIC関連クラスタよりマルウェアとツールの利用が顕著であることを挙げている。共通点は、ロシア関連性と認証フロー悪用への注力である。",
+      "confidence": 60,
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_relationship_id": "relationship--unc5976-unc6293-unc7005-distinct",
+      "x_profile_relationship_type": "related-to",
+      "x_confidence": "medium",
+      "x_analyst_notes": "同一性や協力関係を示す関係ではなく、同一資料で並置され明示的に区別されたクラスタであることを記録する。将来の誤統合を防ぐための記録であり、related-toを用いる(RULES.md 6条・13条)。",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "start_time": "2026-03-01T00:00:00Z",
+      "stop_time": "2026-04-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "location--594a193e-06ff-439b-93f2-e072203e1822",
+      "description": "UNC5976 targets ウクライナ (profile target category: countries).\n\nEvidence: GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
+      "created": "2026-08-21T01:45:24Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "location--0348dcd9-34b5-4ff1-8b55-e55cffb5bc3b",
+      "description": "UNC5976 targets アルメニア (profile target category: countries).\n\nEvidence: GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+      "target_ref": "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+      "description": "UNC5976 uses ファイル共有を装うOAuthフィッシングドメインとクラウドプロジェクト.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-03-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3091b680-9bad-4940-9c12-5dbe838f7465",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-20T00:00:00Z",
+      "object_refs": [
+        "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+        "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+        "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+        "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+        "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
+        "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
+        "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
+        "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-going-with-the-flows-2026",
+      "x_evidence_slice_scope": "actor:actor--unc5976",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c7c747ae-9c45-400d-b889-b185d71dc1a7",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC5976 OpenCTI Actor Profile",
+      "description": "UNC5976はGTIGが2026年3月から追跡する、認証に重点を置くロシア関連の諜報クラスタである。ファイル共有を装うドメインとクラウドプロジェクトを組み合わせたOAuthフィッシングで認証トークンを自動収集し、悪性Excelプラグイン HEADRUSH も用いる。GTIGはUNC6293・UNC7005とは別クラスタと評価している。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "infrastructure--13e19a0e-7ab9-4f04-82f8-1308bfccfc53",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+        "intrusion-set--65ac951c-67ab-4bf7-9ad1-ec22a6dc8d54",
+        "location--0348dcd9-34b5-4ff1-8b55-e55cffb5bc3b",
+        "location--594a193e-06ff-439b-93f2-e072203e1822",
+        "malware--be43e353-b731-4044-8ddb-1aad8920b610",
+        "note--02d08513-715a-4e5f-b0d2-75f8c423663b",
+        "relationship--1cdd0c13-a3de-4c57-a9dd-7a4033a39e1a",
+        "relationship--7b77bbe0-fd1d-485b-9042-18cf10fd6e43",
+        "relationship--86b6418b-a1b3-447c-afe3-2664d62a633e",
+        "relationship--b1d07111-b6f1-4db4-8ac7-b2d0e106ce1e",
+        "relationship--ca502291-bdcd-49ed-abd4-86e7ea7e354d",
+        "report--3091b680-9bad-4940-9c12-5dbe838f7465"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "actor",
+      "x_profile_id": "actor--unc5976"
+    }
+  ]
+}

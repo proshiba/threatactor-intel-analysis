@@ -1,13 +1,13 @@
 # Shamoon 脅威アクタープロファイル
 
 - プロファイルID: `actor--shamoon`
-- 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 状態: deprecated
+- 更新日時: 2026-09-21T02:11:27Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-Shamoonの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+Shamoonはwiper malwareとして扱い、旧actor profileはdeprecatedとする。Actor側はGreenbug / Volatile Kittenを別entityとして追跡する。
 
 ## アクター名とAlias
 
@@ -16,13 +16,11 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Volatile Kitten | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
-未評価
+Deprecated entity conflation.
 
 - 国: 不明
 - スポンサー種別: unknown
@@ -42,9 +40,9 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Shamoon / Disttrack |
+| Capability |  |
 | Infrastructure |  |
-| Victim | This threat actor targets energy sector, oil and gas industry as well as transportation and telecommunication services. |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -80,9 +78,7 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--shamoon-disttrack | Shamoon / Disttrack | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -116,13 +112,9 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Deprecated legacy actor profile. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -130,9 +122,7 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## MITRE ATT&CK Matrixデータ
 
-| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|
-| Impact | T1485 | Data Destruction | Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf {"page": 67} Shamoon T1485 Data Destruction BlackJack применяли вредоносную программу Shamoon (известную как вайпер) для уничтожения данных в скомпрометированных системах. Этот инструмент перезаписывает данные на диске жертвы, включая загрузочные секторы, что приводит к невозможности восстановления систем |  |  | 不明 | 不明 | 中 | `source--shamoon--f6a320e89012bb39` |
+TTPなし
 
 ## IOC／artifact概要
 
@@ -140,20 +130,20 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 59件（`artifacts.csv`）
+- 非IOC artifact観測: 8件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| Shamoon is wiper malware; the legacy Shamoon actor profile is deprecated and actor tracking is separated into Greenbug / Volatile Kitten where supported. | 高 | `source--mitre-shamoon-s0140`, `source--crowdstrike-volatile-kitten` | Entity-type correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
+- Some historical reporting uses Shamoon as a metonym for the operators.
 
 ## 出典
 
@@ -178,7 +168,9 @@ Shamoonの標準化プロファイル。リポジトリ内の専用資料1件と
 | source--shamoon--985fc49e9c2ecf58 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--shamoon--19879982443b5b5b | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--mitre-shamoon-s0140 | Shamoon, Software S0140 | MITRE ATT&CK | 不明 | https://attack.mitre.org/software/S0140/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--crowdstrike-volatile-kitten | Volatile Kitten Adversary Profile | CrowdStrike | 不明 | https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/ | vendor-adversary-profile | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+actor--shamoonは既存参照互換性のため保持する。

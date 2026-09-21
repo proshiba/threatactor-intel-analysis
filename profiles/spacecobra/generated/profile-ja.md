@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--spacecobra`
 - 状態: draft
-- 更新日時: 2026-09-19T00:59:00Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:11:27Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -39,21 +39,22 @@ ESET states that the real identity of the actor behind GravityRAT remains unknow
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | ESET tracking name for the unknown actor behind GravityRAT. |
-| Capability | GravityRAT malware family, including Android variants distributed as trojanized messaging applications. |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Highly targeted victims; ESET reported a targeted user in India. |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -62,6 +63,7 @@ ESET states that the real identity of the actor behind GravityRAT remains unknow
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -116,7 +118,7 @@ ESETは2023年、BingeChatおよびChaticoを用いるGravityRATキャンペー�
 
 ターゲット情報なし
 
-選定ロジック: Only source-explicit targeting should be structured.
+選定ロジック: Only source-explicit targeting should be structured. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

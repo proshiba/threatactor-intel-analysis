@@ -7,17 +7,31 @@
       "spec_version": "2.1",
       "id": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "UNC5174",
-      "aliases": [],
+      "aliases": [
+        "CL-STA-1015"
+      ],
       "description": "UNC5174の標準化プロファイル。リポジトリ内の専用資料3件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--unc5174",
-      "x_alias_assessments": [],
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "CL-STA-1015",
+          "vendor": "Palo Alto Networks Unit 42",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--unit42-react2shell-cl-sta-1015-2025"
+          ],
+          "analyst_notes": "Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor cluster mapping. It is retained as overlapping until scope stability is independently confirmed."
+        }
+      ],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -39,9 +53,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--unc5174",
         "actor_name": "UNC5174",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +65,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +75,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [],
           "microsoft-threat-actor-mapping": [],
@@ -86,13 +103,52 @@
                 "https://rhisac.org/threat-intelligence/f5-big-ip-and-screenconnect-cves/",
                 "https://www.mandiant.com/resources/blog/initial-access-brokers-exploit-f5-screenconnect"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "21df749a-1e70-4c11-921c-071a61d9a900",
+              "entry_value": "UNC5174",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "unc5174",
+                  "profile_value": "UNC5174",
+                  "dataset_value": "UNC5174"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "UNC5174"
+              ],
+              "countries": [],
+              "description": "UNC5174 is a financially motivated actor who is believed to be a possible contractor for China's Ministry of State Security, carrying out initial access broker activities while also operating under a hacktivist collective persona (\"Uteus\").<sup>[[Google Cybercrime Report February 11 2025](/references/17685d5c-4255-445e-a546-e0dfb92378c2)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Financial Gain"
+                ],
+                "target_categories": [
+                  "Defense",
+                  "Energy",
+                  "Financial Services",
+                  "Government",
+                  "Healthcare",
+                  "Infrastructure",
+                  "Manufacturing",
+                  "Water"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -117,11 +173,65 @@
       }
     },
     {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--dbb6196a-36eb-4829-a9a1-473b93114cde",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SNOWLIGHT",
+      "description": "Linux dropper used to retrieve follow-on malware including VShell.",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "description": "Local source: https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+          "external_id": "source--unit42-react2shell-cl-sta-1015-2025"
+        }
+      ],
+      "x_profile_object_id": "malware--snowlight",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--03c0343a-20f4-4aca-a7ce-c7b83d7aa145",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "VShell",
+      "description": "Remote access trojan deployed after SNOWLIGHT.",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "description": "Local source: https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+          "external_id": "source--unit42-react2shell-cl-sta-1015-2025"
+        }
+      ],
+      "x_profile_object_id": "malware--vshell",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Linux"
+      ],
+      "aliases": []
+    },
+    {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -135,14 +245,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-1a468402eb471b838554",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--1a468402eb471b838554c8cc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国系APTグループUNC5174がLinux向けにSNOWLIGHTマルウェアとVShellを展開",
-      "x_reported_at": {
-        "value": "2025-04-16T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc5174",
@@ -201,6 +307,24 @@
           "source--daily-c5a9c42da8ab9e7b0010"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -208,7 +332,7 @@
       "spec_version": "2.1",
       "id": "campaign--94f03d33-32c8-441c-ae41-da67f0b3c8b3",
       "created": "2026-07-27T11:17:26Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -222,14 +346,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-b2b13f8ce7c4e96dadaf",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--b2b13f8ce7c4e96dadafaad0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のAPTグループ（Chaya_004、UNC5221、UNC5174、CL-STA-0048）も同脆弱性を悪用し、少なくとも581のSAP NetWeaverインスタンスにバックドアを設置。",
-      "x_reported_at": {
-        "value": "2025-05-15T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc5174",
@@ -285,88 +405,24 @@
           "source--daily-c8f19538293e168bddbd"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--564e308a-29da-4ab1-a8f3-61243073fd33",
-      "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱",
-      "description": "React2Shell（CVE-2025-55182）が公表直後から悪用され、既に30超の組織侵害と7万7,664の脆弱IPが確認。 RSCの安全でないデシリアライズが原因で、Next.js等の実装に影響し、単一HTTP要求で未認証RCEが可能。 PoC公開後にスキャンが急増し、GreyNoiseは直近24時間で181の発信元を観測、複数国からの自動化攻撃が目立つ。 侵害では偵察やAWS資格情報窃取試行、23[.]235[.]188[.]3から第2段階PS取得、Cobalt Strike設置が報告。 CISAはKEVに追加し、即時の更新・再ビルド/再デプロイとPS/シェル実行痕跡のログ確認を助言。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/react2shell-flaw-exploited-to-breach-30-orgs-77k-ip-addresses-vulnerable/",
-          "external_id": "source--daily-f47a43f682d4bb61a2bc"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-cdb2b24b57d09645a48d",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--cdb2b24b57d09645a48d146a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者情報：中国関与とされるEarth Lamia／Jackpot PandaやUNC5174の関与が報告",
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
       "x_reported_at": {
-        "value": "2025-12-08T00:00:00Z",
+        "value": "2025-05-15T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--unc5174",
-          "name": "UNC5174",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--8d6a477bac79692c0bf5"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": "2025-12-08T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "intrusion",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-f47a43f682d4bb61a2bc"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
     },
     {
@@ -412,57 +468,6 @@
       ],
       "x_target_category": "sectors",
       "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--23b5e2c1-ec8b-4c07-9b76-cf0ac661e053",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "被害事例: React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱",
-      "identity_class": "organization",
-      "description": "React2Shell（CVE-2025-55182）が公表直後から悪用され、既に30超の組織侵害と7万7,664の脆弱IPが確認。 RSCの安全でないデシリアライズが原因で、Next.js等の実装に影響し、単一HTTP要求で未認証RCEが可能。 PoC公開後にスキャンが急増し、GreyNoiseは直近24時間で181の発信元を観測、複数国からの自動化攻撃が目立つ。 侵害では偵察やAWS資格情報窃取試行、23[.]235[.]188[.]3から第2段階PS取得、Cobalt Strike設置が報告。 CISAはKEVに追加し、即時の更新・再ビルド/再デプロイとPS/シェル実行痕跡のログ確認を助言。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/react2shell-flaw-exploited-to-breach-30-orgs-77k-ip-addresses-vulnerable/",
-          "external_id": "source--daily-f47a43f682d4bb61a2bc"
-        }
-      ],
-      "x_profile_object_id": "victim--activity-rule--8d6a477bac79692c0bf5",
-      "x_disclosure_status": "aggregate",
-      "x_victim_type": "multiple-organizations",
-      "x_case_status": "reported",
-      "x_target_refs": [],
-      "x_malware_refs": [],
-      "x_ttp_refs": [],
-      "x_affected_assets": [
-        "クラウド／SaaS"
-      ],
-      "x_impacts": [],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_reported_at": {
-        "value": "2025-12-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_confidence": "medium",
-      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
       "type": "identity",
@@ -657,11 +662,170 @@
       "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
     },
     {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--515ef440-f2f0-41cf-972e-52d983c918b4",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CL-STA-1015／UNC5174と整合するReact2Shell後続活動",
+      "description": "Unit 42はReact2Shell（CVE-2025-55182）悪用後、CL-STA-1015と高い確度で整合する活動を観測した。攻撃者はcurl/wgetでsltシェルスクリプトをファイルレス実行し、SNOWLIGHTとVShellを展開した。React2Shell全体の侵害数や脆弱ホスト数は複数主体を含むため、このクラスタ固有の被害数・標的としては記録しない。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+        "malware--03c0343a-20f4-4aca-a7ce-c7b83d7aa145",
+        "malware--dbb6196a-36eb-4829-a9a1-473b93114cde"
+      ],
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/react2shell-flaw-exploited-to-breach-30-orgs-77k-ip-addresses-vulnerable/",
+          "external_id": "source--daily-f47a43f682d4bb61a2bc"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/threat-actors-exploit-react2shell-cve-2025-55182",
+          "external_id": "source--gtig-react2shell-multiple-actors-2025"
+        },
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "description": "Local source: https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+          "external_id": "source--unit42-react2shell-cl-sta-1015-2025"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cdb2b24b57d09645a48d",
+      "x_activity_type": "intrusion",
+      "x_stix_object_type": "grouping",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-12-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "Unit 42の直接観測は強いが、広域スキャン・30組織侵害・7.7万IP等をUNC5174単独へ割り当てる根拠はない。GTIGの別クラスタUNC6586も考慮。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5174",
+          "name": "UNC5174",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--snowlight",
+            "malware--vshell"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-12-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f47a43f682d4bb61a2bc",
+          "source--gtig-react2shell-multiple-actors-2025",
+          "source--unit42-react2shell-cl-sta-1015-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0938e4ae-d48c-4271-a1db-3bfc9330aa88",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "target_ref": "malware--dbb6196a-36eb-4829-a9a1-473b93114cde",
+      "description": "UNC5174 uses SNOWLIGHT.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "description": "Local source: https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+          "external_id": "source--unit42-react2shell-cl-sta-1015-2025"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6c77e5fe-e932-4de4-8138-10140618b4f1",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "target_ref": "malware--03c0343a-20f4-4aca-a7ce-c7b83d7aa145",
+      "description": "UNC5174 uses VShell.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "description": "Local source: https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+          "external_id": "source--unit42-react2shell-cl-sta-1015-2025"
+        }
+      ]
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d349b3a6-63d9-4614-a4c6-9302fbdabc02",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -669,14 +833,21 @@
       "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "target_ref": "identity--8c3b720e-d886-4ecb-8a16-ffbe5653aada",
       "description": "UNC5174 targets 日本 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--29ece933-bce5-4506-900e-b22b9fd47507",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -684,14 +855,21 @@
       "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "UNC5174 targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--72e8a5cf-0baf-410b-be8f-1917dc242fbd",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-27T11:04:38Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -699,14 +877,45 @@
       "source_ref": "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 is attributed or linked to UNC5174.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aa0d4512-6cc7-4f6e-ac67-0a401a1eba9c",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -714,14 +923,45 @@
       "source_ref": "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
       "target_ref": "identity--8c3b720e-d886-4ecb-8a16-ffbe5653aada",
       "description": "中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 targets target--activity-rule--country--f35cd09db0a72555b38a.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8d2decf6-6bc7-4f88-a0e5-c8f6a7f4924f",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -729,14 +969,45 @@
       "source_ref": "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 targets target--activity-rule--sector--210dddb39397dbe50e91.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3eec110d-5db9-4699-bba4-02671d1aa163",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -744,14 +1015,45 @@
       "source_ref": "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
       "target_ref": "identity--00524358-7a81-41cf-979b-8e508137b389",
       "description": "中国系ハッカーがLinuxシステムを標的にSNOWLIGHTマルウェアとVShellツールを使用 affected victim--activity-rule--caea1296908bb424f92e.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/chinese-hackers-target-linux-systems.html",
+          "external_id": "source--daily-c5a9c42da8ab9e7b0010"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-04-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b8016da8-c916-492a-bcf4-2b73ae05d639",
       "created": "2026-07-27T11:17:26Z",
-      "modified": "2026-07-27T11:17:26Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -759,14 +1061,45 @@
       "source_ref": "campaign--94f03d33-32c8-441c-ae41-da67f0b3c8b3",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "ランサムウェア集団、SAP NetWeaver攻撃に参入 is attributed or linked to UNC5174.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-ongoing-sap-netweaver-attacks/",
+          "external_id": "source--daily-c8f19538293e168bddbd"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--18d2b1dc-d61f-4eff-92c3-9a3c26db91df",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -774,44 +1107,45 @@
       "source_ref": "campaign--94f03d33-32c8-441c-ae41-da67f0b3c8b3",
       "target_ref": "identity--f4d1b147-7a2a-49f7-a154-bad5ad978c57",
       "description": "ランサムウェア集団、SAP NetWeaver攻撃に参入 affected victim--activity-rule--b0587ebaf67a29526988.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a4ff4d88-600d-4f6a-b7bd-54ca008913bb",
-      "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-27T11:04:38Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-ongoing-sap-netweaver-attacks/",
+          "external_id": "source--daily-c8f19538293e168bddbd"
+        }
       ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--564e308a-29da-4ab1-a8f3-61243073fd33",
-      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
-      "description": "React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 is attributed or linked to UNC5174.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c6180b6b-2977-44ef-ac5c-bbfdf0688ae6",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--564e308a-29da-4ab1-a8f3-61243073fd33",
-      "target_ref": "identity--23b5e2c1-ec8b-4c07-9b76-cf0ac661e053",
-      "description": "React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱 affected victim--activity-rule--8d6a477bac79692c0bf5.",
-      "x_confidence": "medium"
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-05-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--92514a48-c054-413e-8cf2-9675dfc5fd3e",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -819,14 +1153,21 @@
       "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "e_severity Low, confidence Low, tag VShell, tag RAT, updated_at 2025_08_26, mitre_tactic_id TA0011, mitre_tactic_name Command_And_Control, mitre_technique_id T1105, mitre_technique_name Ingress_Tool_Transfer;) alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:\"[NVISO] Potential VShell beacon payload request (Windows i386)\"; flow:to_server,established; content:\"w32 \"; fast_pattern; offset:0; depth:6; stream_size:client,<=,45; flowb",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--unc5174--626245061e5734b4",
+          "description": "Local source: UNC****/UNC5174/VShell.pdf",
+          "external_id": "source--unc5174--626245061e5734b4"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f27bba16-d80f-45df-adc7-6ef67332b339",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -834,14 +1175,696 @@
       "source_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "target_ref": "attack-pattern--7dfb3d3b-fbe1-42e4-9511-6447ca5a7201",
       "description": "ty Critical, confidence Medium, tag VShell, tag RAT, updated_at 2025_08_26, mitre_tactic_id TA0011, mitre_tactic_name Command_And_Control, mitre_technique_id T1573, mitre_technique_name Encrypted_Channel;) alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:\"[NVISO] VShell beacon server handshake\"; flow:to_client,established; content:\"|3c 00 00 00|\"; fast_pattern; offset:0; depth:4; byte_test:1,&,0x80,0x4; content:\"|20 00 00 00|\"; offse",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--unc5174--626245061e5734b4",
+          "description": "Local source: UNC****/UNC5174/VShell.pdf",
+          "external_id": "source--unc5174--626245061e5734b4"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4b997806-9a72-4d88-909d-766aebb2afbc",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account.gooogleasia.com",
+      "pattern": "[domain-name:value = 'account.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4eb6cc03a73996e11ede05b05c3b9c114c7d07a32c7f40605a1326b8f93105cb",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "account[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d643919f-2c2d-4d7e-8969-25b660369c2c",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4b997806-9a72-4d88-909d-766aebb2afbc",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--837e0a6c-b304-48fc-8363-69251f519bf4",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: apib.googlespays.com",
+      "pattern": "[domain-name:value = 'apib.googlespays.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e4a6ef9325cf0ef20783622848d7ea59114ff8363f2236d11a765d3b2d09121d",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "apib[.]googlespays[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--945a8775-3792-4456-be94-4be0f2ac1b2a",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--837e0a6c-b304-48fc-8363-69251f519bf4",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bc715301-fd9d-45ee-885a-437e62993e8c",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: btt.evil.gooogleasia.com",
+      "pattern": "[domain-name:value = 'btt.evil.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:30c9e4ff1740132fced87f2ec4cf24f2fbacf2df899bcd6b894543afaa3c83ec",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "btt[.]evil[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4f879822-3ee7-45e6-9b4f-351bb4410cc2",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bc715301-fd9d-45ee-885a-437e62993e8c",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--24c0e72d-13ce-4457-a8f0-f1405905a0de",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: chmobank.com",
+      "pattern": "[domain-name:value = 'chmobank.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:865619f343ffab68b818cb0d36530e9dfc53f3c306ebccb265751039bc794717",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "chmobank[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3f34b75b-0655-41e4-95ed-93c24c1e203c",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--24c0e72d-13ce-4457-a8f0-f1405905a0de",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--da690e23-4522-4dc5-a290-bb59155aff48",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: ciscocdn.com",
+      "pattern": "[domain-name:value = 'ciscocdn.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:24643ee584dce870b6098207e704ac8dd242b0c27b0c5fa6c8ddf6b57241d513",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 10
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 URL http://vs[.]gooogleasia[.]com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443 http://ciscocdn[.]com:8888/supershell/compile/download/x64 http://www[.]bing-server[.]com:443 http://47[.]97[.]176[.]108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887 http://images.windowstimes[.]online/?a=l64&h=images.windowstimes[.]online&t=ws_&p=80 http://lin[.]huionepay[.]me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086 http://lin[.]telegrams[.]icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086 http://lin[.]c1",
+          "analyst_notes": "",
+          "raw_value": "ciscocdn[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cba51b5-dc4f-4c78-9bba-a8c497010a26",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--da690e23-4522-4dc5-a290-bb59155aff48",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0fd5433d-bfd1-4f8d-a366-22fad65dd33a",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: evil.gooogleasia.com",
+      "pattern": "[domain-name:value = 'evil.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f5395d3a9f65bcd9ca587ce6b01eaa66d86bb75b148d379afa601242181a467a",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "evil[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a8b15902-a012-47c3-a3db-83f97d1fc35d",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0fd5433d-bfd1-4f8d-a366-22fad65dd33a",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3bef4622-9c8d-47c3-a8ff-89c92add38c6",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: gooogleasia.com",
+      "pattern": "[domain-name:value = 'gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c731ed51b4aef3a6e5c0ec6e8b61e5931c447a194fe6ec41de9cde4d933c2a98",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 2
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "1) 개요 최근 여러 보안 커뮤니티와 기관들은 UNC5174로 식별되는 위협 그룹의 새로운 캠페인을 발견했다. 해당 캠페인은 기존의 캠페인과 달리 vshell 이라는 새로 출시된 오픈소스 도구를 사용했다. 언더그라운드 커뮤니티에서 vshell이 기존에 많이 사용되던 Cobalt Strike 보다 우수한 성능을 제공한다고 평가하고 있으며, 이는 공격자가 새로운 툴체인을 도입하여 탐지 회피와 작전 효율성을 강화하고 있음을 의미한다. 공격자들은 난독화 효과를 극대화하고 비용을 절감하기 위해 공격 캠페인에 오픈소스 도구를 채택하는 경향을 보이고 있다. 이는 해당 캠페인의 배후가 어떤 그룹인지 파악하기 어렵게 한다. 실제로 UNC5174 그룹은 지난 1년 동안 보안 기관들의 모니터링에 탐지되지 않았다. 이번 캠페인에서 UNC5174 그룹이 초기침투에 어떤 도구를 사용했는지는 불분명하지만, Linux 기반 시스템을 목표로 하고 있으며 새로운C2 서버들이피싱 및 소셜 엔지니어링에사용될 가능성이 ",
+          "analyst_notes": "",
+          "raw_value": "gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2237108f-835e-408d-9d05-72817d25d220",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3bef4622-9c8d-47c3-a8ff-89c92add38c6",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cfaced6f-64e8-4237-a89d-1d1a54ba58f8",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: ks.evil.gooogleasia.com",
+      "pattern": "[domain-name:value = 'ks.evil.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c70edd1d6d5b956f428d3589405d3246d7ab9f36f5a903ef44af5f20b55cc99f",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "ks[.]evil[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79ecf1e6-c2e5-4eb7-901a-ae89b491aff6",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cfaced6f-64e8-4237-a89d-1d1a54ba58f8",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f84d16ed-8d75-4872-84b9-d47b66442c47",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: lin.c1oudf1are.com",
+      "pattern": "[domain-name:value = 'lin.c1oudf1are.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:acbea0c9eacaeb4b8b9ba8863ca37d88972442f1c06e22450455b1de53c8674b",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 10
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 URL http://vs[.]gooogleasia[.]com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443 http://ciscocdn[.]com:8888/supershell/compile/download/x64 http://www[.]bing-server[.]com:443 http://47[.]97[.]176[.]108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887 http://images.windowstimes[.]online/?a=l64&h=images.windowstimes[.]online&t=ws_&p=80 http://lin[.]huionepay[.]me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086 http://lin[.]telegrams[.]icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086 http://lin[.]c1",
+          "analyst_notes": "",
+          "raw_value": "lin[.]c1oudf1are[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--40993ed6-f965-4931-841f-b704a2816461",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f84d16ed-8d75-4872-84b9-d47b66442c47",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--00e5fe7a-0efb-438c-8f16-c24228b0f013",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -849,7 +1872,7 @@
       "pattern": "[domain-name:value = 'lin.huionepay.me']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -899,8 +1922,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5e605482-9bff-4527-a452-a34a9661638e",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -908,14 +1931,15 @@
       "source_ref": "indicator--00e5fe7a-0efb-438c-8f16-c24228b0f013",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--fd92a832-ef0c-4832-ad93-ddaa8a68d407",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -923,7 +1947,7 @@
       "pattern": "[domain-name:value = 'lin.telegrams.icu']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -973,8 +1997,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8e6bd86d-8e90-4f7e-b426-3b834222bcfa",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -982,14 +2006,15 @@
       "source_ref": "indicator--fd92a832-ef0c-4832-ad93-ddaa8a68d407",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ab767f0d-0335-4f5c-922c-ee47e79dc612",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -997,7 +2022,7 @@
       "pattern": "[domain-name:value = 'mcafeecdn.xyz']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -1047,8 +2072,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5c11e0ad-ad71-42a0-9ac0-6e58da10e435",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1056,14 +2081,90 @@
       "source_ref": "indicator--ab767f0d-0335-4f5c-922c-ee47e79dc612",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--27ba2def-ba22-4e4a-aa5e-3052ec1ee6be",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mtls.sex666vr.com",
+      "pattern": "[domain-name:value = 'mtls.sex666vr.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6cc78e9ec4bc3a74ce8340b1c642ffcadc09fe1bafd5def4e4e5d58516e2424e",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "mtls[.]sex666vr[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6a03779b-5a34-4d0e-8482-b10847b5d8fd",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--27ba2def-ba22-4e4a-aa5e-3052ec1ee6be",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--45176f91-c4f1-4712-a84d-caf2f466bc1d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1931,8 +3032,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6823cf9e-20c5-4a3b-a0fa-88693469250b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1940,14 +3041,195 @@
       "source_ref": "indicator--45176f91-c4f1-4712-a84d-caf2f466bc1d",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--97303308-862e-4ab9-84c3-12d6c404cfbb",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: samsungcdn.com",
+      "pattern": "[domain-name:value = 'samsungcdn.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:281acc3e356b1c8e387c77dd3316cc0bb9892a4379d5cd9f0abfe3938984320d",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "samsungcdn[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--97bb8e98-13bb-4904-8142-39394ac2431c",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--97303308-862e-4ab9-84c3-12d6c404cfbb",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--03b13913-fa48-4338-a274-a9dcd4120d0f",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: sex666vr.com",
+      "pattern": "[domain-name:value = 'sex666vr.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:eb4c32016c9c31b63cae65df53424b3db1c429cff4a0159d51feadecf48ccdef",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 2
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "1) 개요 최근 여러 보안 커뮤니티와 기관들은 UNC5174로 식별되는 위협 그룹의 새로운 캠페인을 발견했다. 해당 캠페인은 기존의 캠페인과 달리 vshell 이라는 새로 출시된 오픈소스 도구를 사용했다. 언더그라운드 커뮤니티에서 vshell이 기존에 많이 사용되던 Cobalt Strike 보다 우수한 성능을 제공한다고 평가하고 있으며, 이는 공격자가 새로운 툴체인을 도입하여 탐지 회피와 작전 효율성을 강화하고 있음을 의미한다. 공격자들은 난독화 효과를 극대화하고 비용을 절감하기 위해 공격 캠페인에 오픈소스 도구를 채택하는 경향을 보이고 있다. 이는 해당 캠페인의 배후가 어떤 그룹인지 파악하기 어렵게 한다. 실제로 UNC5174 그룹은 지난 1년 동안 보안 기관들의 모니터링에 탐지되지 않았다. 이번 캠페인에서 UNC5174 그룹이 초기침투에 어떤 도구를 사용했는지는 불분명하지만, Linux 기반 시스템을 목표로 하고 있으며 새로운C2 서버들이피싱 및 소셜 엔지니어링에사용될 가능성이 ",
+          "analyst_notes": "",
+          "raw_value": "sex666vr[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:1b3522b28b241ee7dd1de94ee59944a32cc8877ae624385656141f12e3eeff67",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "sex666vr[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--968a88cb-dd1f-4b69-a964-1e190b99870a",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--03b13913-fa48-4338-a274-a9dcd4120d0f",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5aeb72ef-357a-4e02-a5b1-0c09f23a1dbf",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1955,7 +3237,7 @@
       "pattern": "[domain-name:value = 'start.bootstrapcdn.fun']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2005,8 +3287,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1840745c-c688-42ab-b299-7431264bdde0",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2014,14 +3296,90 @@
       "source_ref": "indicator--5aeb72ef-357a-4e02-a5b1-0c09f23a1dbf",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5a8ce7cc-4d17-4250-91af-d0b50254b3c3",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: stats.bastatic.com",
+      "pattern": "[domain-name:value = 'stats.bastatic.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f1fdaf07ed44bd3bf07e63aeb8f946b1f8a22798d5d316a4c7fc10224914f169",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--626245061e5734b4",
+          "source_path": "UNC****/UNC5174/VShell.pdf",
+          "source_location": {
+            "page": 28
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "128 28 nviso.eu Figure 29: Resolution statistics for the high-confidence stats[.]bastatic[.]com VShell infrastructure, as seen in urlscan. On other occasions, VShell operators mentioned their target organizations as cryptographic materials (see Figure 30). These findings were confirmed through Team Cymru visibility (see section 3.3, NetFlow Analysis ) and supported the assessment that some VShell infrastructure had been specifically established for targeted intrusions. Figure 30: A scraped VShel",
+          "analyst_notes": "",
+          "raw_value": "stats[.]bastatic[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea8c76de-649e-449e-b728-dcaea9508ac9",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5a8ce7cc-4d17-4250-91af-d0b50254b3c3",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f2d70f3e-b546-48e1-8ff4-dcf9fd145fab",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2029,7 +3387,7 @@
       "pattern": "[domain-name:value = 'telegrams.icu']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2079,8 +3437,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--98eca412-8201-4a83-9d6c-ded9aa94c7ba",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2088,14 +3446,225 @@
       "source_ref": "indicator--f2d70f3e-b546-48e1-8ff4-dcf9fd145fab",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9096750b-019d-4f56-bfae-c3ef4b0e2010",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: vs.gooogleasia.com",
+      "pattern": "[domain-name:value = 'vs.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 3,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:fe899454d28b0275e324bf03d3e1086d959fc9d34a95792cb73416bea8313e97",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 10
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 URL http://vs[.]gooogleasia[.]com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443 http://ciscocdn[.]com:8888/supershell/compile/download/x64 http://www[.]bing-server[.]com:443 http://47[.]97[.]176[.]108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887 http://images.windowstimes[.]online/?a=l64&h=images.windowstimes[.]online&t=ws_&p=80 http://lin[.]huionepay[.]me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086 http://lin[.]telegrams[.]icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086 http://lin[.]c1",
+          "analyst_notes": "",
+          "raw_value": "vs[.]gooogleasia[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:686bfc1163b0fc385564700384f584a6f29f924fa5b156f89b3f17a917679f2d",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 5
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "2 <그림 6> init.d이용 bash 스크립트에서 다운로드 된 실행 파일 2개 중 하나인 dnsloger는 UNC5174가 이전에 사용했던 SNOWLIGHT 악성코드 변종 중 하나이다. SNOWLIGHT악성코드는 Linux 내부 구조, 지속성, 방어 회피 등 여러가지 작업을 수행한다. dnsloger분석 시 C2서버와 통신 시 필요한 일부 매개변수, 파일 이름들이 하드코딩되어있다. [dnsloger(SNOWLIGHT)] <그림 7> 하드코딩 된 일부 매개변수 악성코드는 먼저 /tmp/log_de.log 파일을 확인한다. 해당 파일이 없을 경우 C2 서버에 연결하기 위한 네트워크 통신용 소켓을 설정한다. C2 서버(vs[.]gooogleasia[.]com)에 대한 연결을 확인하고 HTTP GET 요청을 전송한다. 이때 다운로드 되는 파일은 vshell이다. <그림 8,9> log 파일 확인 (위)/ 통신 소켓 설정(아래)",
+          "analyst_notes": "",
+          "raw_value": "vs[.]gooogleasia[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:b7a6dc06a0616bdd8a23ef4ca88cfba09d84bd2280793917436de73293cc5210",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "vs[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0cf09168-b83e-495b-baa2-9d3135ebc93c",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9096750b-019d-4f56-bfae-c3ef4b0e2010",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--11431b7d-6ba1-4fd6-b2d1-2e37cad4f106",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: wg.gooogleasia.com",
+      "pattern": "[domain-name:value = 'wg.gooogleasia.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c918193d58c8fd4b4788840afcc8dc1d55b56d33194d7a04495433177a29e2b4",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 9
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 Domain vs[.]gooogleasia[.]com apib[.]googlespays[.]com sex666vr[.]com evil[.]gooogleasia[.]com account[.]gooogleasia[.]com ks[.]evil[.]gooogleasia[.]com btt[.]evil[.]gooogleasia[.]com mtls[.]sex666vr[.]com wg[.]gooogleasia[.]com samsungcdn[.]com start[.]bootstrapcdn[.]fun mcafeecdn[.]xyz chmobank[.]com IP 34[.]96[.]239[.]183 8[.]219[.]171[.]47 188[.]114[.]97[.]3 34[.]55[.]187[.]149 34[.]150[.]33[.]237 34[.]96[.]169[.]109 34[.]92[.]255[.]51 34[.]131[.]20[.]34 34[.]131[.]242[.]33 34[.]",
+          "analyst_notes": "",
+          "raw_value": "wg[.]gooogleasia[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eedbc9cf-65d9-49fd-8312-0532d47ba837",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--11431b7d-6ba1-4fd6-b2d1-2e37cad4f106",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--92920ebf-3864-4e11-8efc-a043f4d64036",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2103,7 +3672,7 @@
       "pattern": "[domain-name:value = 'windowstimes.online']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2153,8 +3722,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--733df3f5-f27b-4e38-8370-9e0c9105ad7e",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2162,14 +3731,90 @@
       "source_ref": "indicator--92920ebf-3864-4e11-8efc-a043f4d64036",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--50b16dc1-8575-44c4-bf1f-490b9f408390",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: www.bing-server.com",
+      "pattern": "[domain-name:value = 'www.bing-server.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:01:10Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:becdde42ec395830d3ffb730a9696264b6f195e48f757a53a9f95604fb84c281",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc5174--0aff60e0dfc1afff",
+          "source_path": "UNC****/UNC5174/UNC5174.pdf",
+          "source_location": {
+            "page": 10
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "8 5) IOC 정보 URL http://vs[.]gooogleasia[.]com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443 http://ciscocdn[.]com:8888/supershell/compile/download/x64 http://www[.]bing-server[.]com:443 http://47[.]97[.]176[.]108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887 http://images.windowstimes[.]online/?a=l64&h=images.windowstimes[.]online&t=ws_&p=80 http://lin[.]huionepay[.]me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086 http://lin[.]telegrams[.]icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086 http://lin[.]c1",
+          "analyst_notes": "",
+          "raw_value": "www[.]bing-server[.]com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d6759c15-62ae-4662-a8d1-fc834eee3933",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--50b16dc1-8575-44c4-bf1f-490b9f408390",
+      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6d638f5f-10a0-4427-871f-294e4f4eb8d2",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2177,7 +3822,7 @@
       "pattern": "[email-addr:value = 'csirt@nviso.eu']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2227,8 +3872,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--451236c3-e992-48f6-8313-1e0220d9201c",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2236,14 +3881,15 @@
       "source_ref": "indicator--6d638f5f-10a0-4427-871f-294e4f4eb8d2",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3635c20f-8af6-4a35-9f44-83e05c7ec943",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2251,7 +3897,7 @@
       "pattern": "[email-addr:value = 'support@cymru.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2301,8 +3947,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--51d4f37a-63a2-4569-9b6e-186d15088783",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2310,14 +3956,15 @@
       "source_ref": "indicator--3635c20f-8af6-4a35-9f44-83e05c7ec943",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b71335c5-5f8c-49a2-bc59-2939204a7680",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2325,7 +3972,7 @@
       "pattern": "[ipv4-addr:value = '188.114.97.3']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2375,8 +4022,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ad3a601d-ce71-4bd3-80c6-4080b6980936",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2384,88 +4031,15 @@
       "source_ref": "indicator--b71335c5-5f8c-49a2-bc59-2939204a7680",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--15d51271-94d5-48e8-b4c1-47ae8114bc2a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ipv4: 192.168.205.128",
-      "pattern": "[ipv4-addr:value = '192.168.205.128']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:7e5e44f2fb24ad85207a065fb4715c4dc7becbe7fd5e8eafcd86c74482c6bf7b",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--unc5174--626245061e5734b4",
-          "source_path": "UNC****/UNC5174/VShell.pdf",
-          "source_location": {
-            "page": 15
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "pdf-text",
-          "context_excerpt": "115 15 nviso.eu Figure 12: A VShell TCP listener's fake nginx lure seen from a browser. When servers expose an HTTP service (e.g., VShell’s above TCP listener), a common scanner-indexed property is the HTTP response’s body hash. This derived property allows for the easy identification of all indexed servers exposing the same default web page. As an example, the below Snippet 1 computes the HTTP body hashes (SHA256, SHA1, MD5) of the above VShell listener’s decoy “nginx” page. ~$ curl -s http://1",
-          "analyst_notes": "",
-          "raw_value": "192.168.205.128"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--77a12c62-e517-4488-8e8b-fe7b332954eb",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--15d51271-94d5-48e8-b4c1-47ae8114bc2a",
-      "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--aa466174-8a16-4bde-bf30-f82ff14ff47a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2473,7 +4047,7 @@
       "pattern": "[ipv4-addr:value = '34.126.97.166']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2523,8 +4097,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5311d6b3-e81f-4ca3-9831-86dabc90ab27",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2532,14 +4106,15 @@
       "source_ref": "indicator--aa466174-8a16-4bde-bf30-f82ff14ff47a",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d39ab826-2b08-4170-96a5-b8d99d6b6760",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2547,7 +4122,7 @@
       "pattern": "[ipv4-addr:value = '34.131.20.34']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2597,8 +4172,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3aa0ae02-88aa-4c5b-932a-7f3dd46713bf",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2606,14 +4181,15 @@
       "source_ref": "indicator--d39ab826-2b08-4170-96a5-b8d99d6b6760",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4a4ffdbe-e4a5-474b-8103-460eec7da195",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2621,7 +4197,7 @@
       "pattern": "[ipv4-addr:value = '34.131.242.33']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2671,8 +4247,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c1277fd9-94db-4b9d-a5d4-994fe9915a5c",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2680,14 +4256,15 @@
       "source_ref": "indicator--4a4ffdbe-e4a5-474b-8103-460eec7da195",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--cae8130e-d051-42d6-953c-5d4e9d87b06c",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2695,7 +4272,7 @@
       "pattern": "[ipv4-addr:value = '34.150.33.237']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2745,8 +4322,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6baab7ae-3deb-4e6a-a3ad-465a792eadd2",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2754,14 +4331,15 @@
       "source_ref": "indicator--cae8130e-d051-42d6-953c-5d4e9d87b06c",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6f42be3a-b7f9-478e-bd46-78451411d5e7",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2769,7 +4347,7 @@
       "pattern": "[ipv4-addr:value = '34.55.187.149']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2819,8 +4397,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1bd213e6-8f3a-4092-8951-f3accdd20477",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2828,14 +4406,15 @@
       "source_ref": "indicator--6f42be3a-b7f9-478e-bd46-78451411d5e7",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d406fbfd-1f2b-4247-a7f7-4d830d90f1bc",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2843,7 +4422,7 @@
       "pattern": "[ipv4-addr:value = '34.92.255.51']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2893,8 +4472,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ef62871f-2579-4843-94ee-17be52b4af7a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2902,14 +4481,15 @@
       "source_ref": "indicator--d406fbfd-1f2b-4247-a7f7-4d830d90f1bc",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--118f3e44-e0be-4477-bc3c-7f088ac7f3de",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2917,7 +4497,7 @@
       "pattern": "[ipv4-addr:value = '34.96.169.109']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -2967,8 +4547,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e94aa7c7-3338-42f4-bdff-29d406ec2275",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2976,14 +4556,15 @@
       "source_ref": "indicator--118f3e44-e0be-4477-bc3c-7f088ac7f3de",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--255a9119-d153-48c6-bd85-9df481298a14",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2991,7 +4572,7 @@
       "pattern": "[ipv4-addr:value = '34.96.239.183']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3041,8 +4622,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--494ea097-3ce5-4dd8-980e-9f66fbcb44f8",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3050,14 +4631,15 @@
       "source_ref": "indicator--255a9119-d153-48c6-bd85-9df481298a14",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3ab12afa-39a0-4162-90df-3f12b6b6bc9e",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3065,7 +4647,7 @@
       "pattern": "[ipv4-addr:value = '47.97.176.108']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3115,8 +4697,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f2bbe7f-daae-4f31-b33b-cb8a631dda72",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3124,14 +4706,15 @@
       "source_ref": "indicator--3ab12afa-39a0-4162-90df-3f12b6b6bc9e",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--46b951e6-333f-48f6-a245-502438495ddb",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3139,7 +4722,7 @@
       "pattern": "[ipv4-addr:value = '8.219.171.47']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3189,8 +4772,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a5ed199e-8e29-4b22-8234-b0ff8b0e9c0a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3198,14 +4781,15 @@
       "source_ref": "indicator--46b951e6-333f-48f6-a245-502438495ddb",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ed6a5da8-eab0-4378-9657-242631294e6d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3213,7 +4797,7 @@
       "pattern": "[file:hashes.'MD5' = 'ca355028c4317eeae9d3fe6f98b0ef7b']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3263,8 +4847,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c461038d-1a12-457f-af8d-59c35350aba4",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3272,14 +4856,15 @@
       "source_ref": "indicator--ed6a5da8-eab0-4378-9657-242631294e6d",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--335ef2e4-ca4a-4c0c-8229-05ac3b8e9be7",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3287,7 +4872,7 @@
       "pattern": "[file:hashes.'SHA-1' = '9025c022f8b57671a0c1dcb0b3a9b1a97cec7be2']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3337,8 +4922,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4be34d66-5a80-4b8a-ad40-66641edca891",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3346,14 +4931,15 @@
       "source_ref": "indicator--335ef2e4-ca4a-4c0c-8229-05ac3b8e9be7",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1dfebc55-8e00-4245-aec5-78a945570baa",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3361,7 +4947,7 @@
       "pattern": "[file:hashes.'SHA-256' = '21ccb25887eae8b17349cefc04394dc3ad75c289768d7ba61f51d228b4c964db']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3411,8 +4997,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4d24b9b5-1c44-4a81-89e9-a4ed479bd344",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3420,14 +5006,15 @@
       "source_ref": "indicator--1dfebc55-8e00-4245-aec5-78a945570baa",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a89f161d-2944-48ec-8e7a-1637e36c1d24",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3435,7 +5022,7 @@
       "pattern": "[file:hashes.'SHA-256' = '6579defcd1326efad359c59cfe9a76d7df375e54f6e977dd880d10f81325999e']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3485,8 +5072,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--367627c9-6798-4f52-8ed7-c401915f9211",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3494,14 +5081,15 @@
       "source_ref": "indicator--a89f161d-2944-48ec-8e7a-1637e36c1d24",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3b446c0b-8ed5-47b5-a488-639042b41781",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3509,7 +5097,7 @@
       "pattern": "[file:hashes.'SHA-256' = '8d88944149ea1477bd7ba0a07be3a4371ba958d4a47b783f7c10cbe08c5e7d38']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3559,8 +5147,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c2ed5ee8-51f6-475f-aee8-18880ad80703",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3568,14 +5156,15 @@
       "source_ref": "indicator--3b446c0b-8ed5-47b5-a488-639042b41781",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b4122e59-c5d9-4654-80b5-a6d0e61c0d38",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3583,7 +5172,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'af44db26be11baa7878941cc1d95ccf043170236d6610ad24828affb44c873a6']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3633,8 +5222,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--51bb29c8-286e-48ef-a605-beaacfbc856b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3642,14 +5231,15 @@
       "source_ref": "indicator--b4122e59-c5d9-4654-80b5-a6d0e61c0d38",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d828a292-7a66-4c69-87f3-950ca05c0de4",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3657,7 +5247,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'e6db3de3a21debce119b16697ea2de5376f685567b284ef2dee32feb8d2d44f8']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3699,7 +5289,7 @@
           "extraction_method": "pdf-text",
           "context_excerpt": "8 5) IOC 정보 URL http://vs[.]gooogleasia[.]com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443 http://ciscocdn[.]com:8888/supershell/compile/download/x64 http://www[.]bing-server[.]com:443 http://47[.]97[.]176[.]108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887 http://images.windowstimes[.]online/?a=l64&h=images.windowstimes[.]online&t=ws_&p=80 http://lin[.]huionepay[.]me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086 http://lin[.]telegrams[.]icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086 http://lin[.]c1",
           "analyst_notes": "",
-          "raw_value": "E6db3de3a21debce119b16697ea2de5376f685567b284ef2dee32feb8d2d44f8"
+          "raw_value": "e6db3de3a21debce119b16697ea2de5376f685567b284ef2dee32feb8d2d44f8"
         }
       ]
     },
@@ -3707,8 +5297,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e06d527f-c612-4a59-9a43-3bdfbfc71579",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3716,14 +5306,15 @@
       "source_ref": "indicator--d828a292-7a66-4c69-87f3-950ca05c0de4",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9b40cac6-3a1d-43cd-94bc-b8208f916f51",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3731,7 +5322,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'f064fdd24c56f2d20f1a6a32fc7edbd3848f962b25965b788b0dc725eeab9db4']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3781,8 +5372,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ae74e82b-56b5-44fb-a3b5-911ce4e5631b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3790,14 +5381,15 @@
       "source_ref": "indicator--9b40cac6-3a1d-43cd-94bc-b8208f916f51",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ac38ba4f-9506-4902-b68b-dd92d6a0e744",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3805,7 +5397,7 @@
       "pattern": "[url:value = 'http://192.168.205.128:8084/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3855,8 +5447,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d479f8d5-5213-4af3-9027-da141e96f829",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3864,14 +5456,15 @@
       "source_ref": "indicator--ac38ba4f-9506-4902-b68b-dd92d6a0e744",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--28df8f4d-a9c5-4b3f-a7de-249b9abb390d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3879,7 +5472,7 @@
       "pattern": "[url:value = 'http://47.97.176.108:8887/?a=l64&h=47.97.176.108&t=ws_&p=8887']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3929,8 +5522,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a77b26ac-e728-42ba-9e17-ed58ebc0fe63",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3938,14 +5531,15 @@
       "source_ref": "indicator--28df8f4d-a9c5-4b3f-a7de-249b9abb390d",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e3cd82fc-b34f-4469-b1cd-7973a47b6a4a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3953,7 +5547,7 @@
       "pattern": "[url:value = 'http://ciscocdn.com:8888/supershell/compile/download/x64']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4003,8 +5597,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d0131d04-5b55-443a-82d2-5a5e3666e6f0",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4012,14 +5606,15 @@
       "source_ref": "indicator--e3cd82fc-b34f-4469-b1cd-7973a47b6a4a",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d37efd9b-d4c5-4562-a82c-933211662cd9",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4027,7 +5622,7 @@
       "pattern": "[url:value = 'http://gooogleasia.com:8080/)에서']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4077,8 +5672,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6efd8cd7-b4a9-41dc-a675-c8782f6f6f55",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4086,14 +5681,15 @@
       "source_ref": "indicator--d37efd9b-d4c5-4562-a82c-933211662cd9",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--162d6e5b-2b09-4ff2-8d30-4eb3451a2b5c",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4101,7 +5697,7 @@
       "pattern": "[url:value = 'http://images.windowstimes.online/?a=l64&h=images.windowstimes.online&t=ws_&p=80']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4151,8 +5747,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f0415229-de90-4227-8c1f-8644e6ef1706",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4160,14 +5756,15 @@
       "source_ref": "indicator--162d6e5b-2b09-4ff2-8d30-4eb3451a2b5c",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1bed6a72-90b6-44c2-b8f3-e717ca481b14",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4175,7 +5772,7 @@
       "pattern": "[url:value = 'http://lin.c1oudf1are.com:42323/?a=l64&h=lin.c1oudf1are.com&t=ws_&p=42323']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4225,8 +5822,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--071a4fb5-0d88-456e-b59d-9805e06ec98d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4234,14 +5831,15 @@
       "source_ref": "indicator--1bed6a72-90b6-44c2-b8f3-e717ca481b14",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1864a45f-0762-490b-bc36-fd603ab7b3f3",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4249,7 +5847,7 @@
       "pattern": "[url:value = 'http://lin.huionepay.me:2086/?a=l64&h=lin.huionepay.me&t=ws_&p=2086']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4299,8 +5897,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bd1a7b4c-a73a-4b9a-856a-e04625b1722b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4308,14 +5906,15 @@
       "source_ref": "indicator--1864a45f-0762-490b-bc36-fd603ab7b3f3",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f877509e-ed78-4ad1-9b93-26912c06780b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4323,7 +5922,7 @@
       "pattern": "[url:value = 'http://lin.telegrams.icu:2086/?a=l64&h=lin.telegrams.icu&t=ws_&p=2086']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4373,8 +5972,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0635eba-4c1a-480b-8f43-a3a3c4eeb8fb",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4382,14 +5981,15 @@
       "source_ref": "indicator--f877509e-ed78-4ad1-9b93-26912c06780b",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--960e590e-c17f-4945-bc2c-990b7fb7f4a6",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4397,7 +5997,7 @@
       "pattern": "[url:value = 'http://vs.gooogleasia.com:8443/?a=l64&h=vs.gooogleasia.com&t=ws_&p=8443']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4447,8 +6047,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--28d8184b-427e-4961-9789-c6c5c6197cfc",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4456,14 +6056,15 @@
       "source_ref": "indicator--960e590e-c17f-4945-bc2c-990b7fb7f4a6",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--14325a4b-c1c0-4d41-86d5-ec701b2b05aa",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4471,7 +6072,7 @@
       "pattern": "[url:value = 'http://www.bing-server.com:443/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4521,8 +6122,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a3312ee-2a6c-48ae-aba7-698f90137a89",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4530,14 +6131,15 @@
       "source_ref": "indicator--14325a4b-c1c0-4d41-86d5-ec701b2b05aa",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d9a6e5bf-f328-4de2-9d62-6182bff2e976",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4545,7 +6147,7 @@
       "pattern": "[url:value = 'https://archive.org/details/DTIC_ADA586960']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4595,8 +6197,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d94fde0d-385c-4af4-bec7-7ae527a04bad",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4604,14 +6206,15 @@
       "source_ref": "indicator--d9a6e5bf-f328-4de2-9d62-6182bff2e976",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--43ab015c-bbe0-4d49-bbd5-6f64ddec4bbb",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4669,8 +6272,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--821c7cf3-cd58-4cd2-97c4-8f1961b342da",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4678,14 +6281,15 @@
       "source_ref": "indicator--43ab015c-bbe0-4d49-bbd5-6f64ddec4bbb",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a46277f4-b3fc-4497-a656-971a2483697b",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4693,7 +6297,7 @@
       "pattern": "[url:value = 'https://blog.nviso.eu/series/cobalt-strike-decrypting-traffic/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4743,8 +6347,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--87834741-f3e6-4b03-999a-2ba36ba6d009",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4752,7 +6356,7 @@
       "pattern": "[url:value = 'https://censys.com/solutions/threat-hunting']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4802,8 +6406,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cd5139dd-c627-4b90-b7da-5a2a244c0523",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4811,14 +6415,15 @@
       "source_ref": "indicator--87834741-f3e6-4b03-999a-2ba36ba6d009",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9c835208-db30-43ae-b16a-fa19569020ee",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4826,7 +6431,7 @@
       "pattern": "[url:value = 'https://gchq.github.io/CyberChef/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4876,8 +6481,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6f4d3eee-96e8-4e11-8f13-2332e1690c83",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4935,8 +6540,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--467b4f7c-9971-4d79-b464-3706a9b63cf5",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4944,14 +6549,15 @@
       "source_ref": "indicator--6f4d3eee-96e8-4e11-8f13-2332e1690c83",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--150edcd7-b6e7-4b2f-ac2a-c0f87fe730bb",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4959,7 +6565,7 @@
       "pattern": "[url:value = 'https://mrxn.net/hacktools/vshell-v493.html']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5009,8 +6615,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5535e907-6f28-488b-b73b-47ce6c57cde3",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5018,7 +6624,7 @@
       "pattern": "[url:value = 'https://suricata.io/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5068,8 +6674,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f059aa54-ffa2-4e1e-9cd0-93947547bf6a",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5077,14 +6683,15 @@
       "source_ref": "indicator--5535e907-6f28-488b-b73b-47ce6c57cde3",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1f42ac5f-a14d-46ad-8dbe-7dc7da78fc9d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5092,7 +6699,7 @@
       "pattern": "[url:value = 'https://www.alibabacloud.com/en/product/object-storage-service']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5142,8 +6749,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4fa8deab-5b38-4146-86c0-4e453ef71346",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5151,14 +6758,15 @@
       "source_ref": "indicator--1f42ac5f-a14d-46ad-8dbe-7dc7da78fc9d",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3e3162e4-039d-4627-bd25-0ff1899e588e",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5166,7 +6774,7 @@
       "pattern": "[url:value = 'https://www.cobaltstrike.com/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5216,8 +6824,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e97a1c2e-cf4e-4067-bfbe-a5f9565ebd1d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5225,14 +6833,15 @@
       "source_ref": "indicator--3e3162e4-039d-4627-bd25-0ff1899e588e",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e231844e-461b-4b0c-8a86-bbf9bd3ce66d",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5240,7 +6849,7 @@
       "pattern": "[url:value = 'https://www.mhtsec.com/700/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:09Z",
+      "valid_from": "2026-07-25T09:01:10Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5290,8 +6899,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e41fbc89-5efb-4bac-9ff4-c156e242a914",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5349,8 +6958,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0a91938f-d24a-4bd4-b328-dbfaf0b4ff41",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5358,14 +6967,15 @@
       "source_ref": "indicator--e41fbc89-5efb-4bac-9ff4-c156e242a914",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--bb0ed58f-80e3-4110-b683-b99079d5394c",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5423,8 +7033,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9b56bc41-7867-44f1-8614-e0b5e8da8484",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "created": "2026-09-21T01:54:44Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5432,14 +7042,15 @@
       "source_ref": "indicator--bb0ed58f-80e3-4110-b683-b99079d5394c",
       "target_ref": "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--fb78775a-5b98-4d9c-9b2d-78826a4c7a10",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T01:54:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5449,14 +7060,14 @@
         "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 8
+      "x_artifact_observation_count": 6
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--3bbe179c-7248-4fb4-9b88-296900aae1a2",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T08:15:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5465,30 +7076,46 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T08:15:06Z",
       "object_refs": [
         "intrusion-set--a76d0cd4-0d2d-43bf-9178-6e54515d75c5",
+        "malware--dbb6196a-36eb-4829-a9a1-473b93114cde",
+        "malware--03c0343a-20f4-4aca-a7ce-c7b83d7aa145",
         "campaign--7cd3e095-7e3d-4a9d-909d-3a4bb4360ddb",
         "campaign--94f03d33-32c8-441c-ae41-da67f0b3c8b3",
-        "campaign--564e308a-29da-4ab1-a8f3-61243073fd33",
         "identity--8c3b720e-d886-4ecb-8a16-ffbe5653aada",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
-        "identity--23b5e2c1-ec8b-4c07-9b76-cf0ac661e053",
         "identity--f4d1b147-7a2a-49f7-a154-bad5ad978c57",
         "identity--00524358-7a81-41cf-979b-8e508137b389",
         "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
         "attack-pattern--7dfb3d3b-fbe1-42e4-9511-6447ca5a7201",
+        "grouping--515ef440-f2f0-41cf-972e-52d983c918b4",
+        "indicator--4b997806-9a72-4d88-909d-766aebb2afbc",
+        "indicator--837e0a6c-b304-48fc-8363-69251f519bf4",
+        "indicator--bc715301-fd9d-45ee-885a-437e62993e8c",
+        "indicator--24c0e72d-13ce-4457-a8f0-f1405905a0de",
+        "indicator--da690e23-4522-4dc5-a290-bb59155aff48",
+        "indicator--0fd5433d-bfd1-4f8d-a366-22fad65dd33a",
+        "indicator--3bef4622-9c8d-47c3-a8ff-89c92add38c6",
+        "indicator--cfaced6f-64e8-4237-a89d-1d1a54ba58f8",
+        "indicator--f84d16ed-8d75-4872-84b9-d47b66442c47",
         "indicator--00e5fe7a-0efb-438c-8f16-c24228b0f013",
         "indicator--fd92a832-ef0c-4832-ad93-ddaa8a68d407",
         "indicator--ab767f0d-0335-4f5c-922c-ee47e79dc612",
+        "indicator--27ba2def-ba22-4e4a-aa5e-3052ec1ee6be",
         "indicator--45176f91-c4f1-4712-a84d-caf2f466bc1d",
+        "indicator--97303308-862e-4ab9-84c3-12d6c404cfbb",
+        "indicator--03b13913-fa48-4338-a274-a9dcd4120d0f",
         "indicator--5aeb72ef-357a-4e02-a5b1-0c09f23a1dbf",
+        "indicator--5a8ce7cc-4d17-4250-91af-d0b50254b3c3",
         "indicator--f2d70f3e-b546-48e1-8ff4-dcf9fd145fab",
+        "indicator--9096750b-019d-4f56-bfae-c3ef4b0e2010",
+        "indicator--11431b7d-6ba1-4fd6-b2d1-2e37cad4f106",
         "indicator--92920ebf-3864-4e11-8efc-a043f4d64036",
+        "indicator--50b16dc1-8575-44c4-bf1f-490b9f408390",
         "indicator--6d638f5f-10a0-4427-871f-294e4f4eb8d2",
         "indicator--3635c20f-8af6-4a35-9f44-83e05c7ec943",
         "indicator--b71335c5-5f8c-49a2-bc59-2939204a7680",
-        "indicator--15d51271-94d5-48e8-b4c1-47ae8114bc2a",
         "indicator--aa466174-8a16-4bde-bf30-f82ff14ff47a",
         "indicator--d39ab826-2b08-4170-96a5-b8d99d6b6760",
         "indicator--4a4ffdbe-e4a5-474b-8103-460eec7da195",
@@ -5531,7 +7158,7 @@
         "indicator--e41fbc89-5efb-4bac-9ff4-c156e242a914",
         "indicator--bb0ed58f-80e3-4110-b683-b99079d5394c"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

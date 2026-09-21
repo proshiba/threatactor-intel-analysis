@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--uac-0050",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=ドイツ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--uac-0050",
         "actor_name": "UAC-0050",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [
             {
@@ -87,7 +91,8 @@
                 "https://cert.gov.ua/article/6276652",
                 "https://cert.gov.ua/article/3804703"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "microsoft-threat-actor-mapping": [],
@@ -117,13 +122,19 @@
                 "https://cert.gov.ua/article/3804703",
                 "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Germany"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -148,48 +159,161 @@
       }
     },
     {
-      "type": "identity",
+      "type": "indicator",
       "spec_version": "2.1",
-      "id": "identity--487a120e-4dd6-4105-a3ff-23e82779150b",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "id": "indicator--7f7daf41-a9ee-40b7-9ca5-268a7d409f20",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "ドイツ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUAC-0050の標的・被害国としてドイツが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
+      "name": "url: https://socprime.com/blog/uac-0050-financially-motivated-attack-detection/",
+      "pattern": "[url:value = 'https://socprime.com/blog/uac-0050-financially-motivated-attack-detection/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2024-10-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
       ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:34392910c6cbfb5c92ff0eade28af3e64ee5b41627d3bf1e3df7ba1a8fc512ba",
+          "observed_at": {
+            "value": "2024-10-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--uac-0050--6a894de1d23bf0bc",
+          "source_path": "actor_profile/evidence/uac-0050.csv",
+          "source_location": {
+            "row": 15
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf {\"page\": 8} uac-0050 s cybercrime, while 12% was deemed opportunistic. 5 https://www.microsoft.com/en-us/security/blog/2024/10/29/midnight-blizzard-conducts-large-scale-spear-phishing-campaign-using-rdp-files/ 6 https://socprime.com/blog/uac-0050-financially-motivated-attack-detection/ 7 https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-301a 8 https://strikeready.com/blog/ru-apt-targeting-energy-infrastructure-unknown-unknowns-part-3/ 9",
+          "analyst_notes": "",
+          "raw_value": "https://socprime.com/blog/uac-0050-financially-motivated-attack-detection/"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--13139cd8-c1e2-4939-a1fa-83f8688546aa",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "id": "relationship--24340d44-2c02-4595-9f9a-38f4b4269c0e",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161",
-      "target_ref": "identity--487a120e-4dd6-4105-a3ff-23e82779150b",
-      "description": "UAC-0050 targets ドイツ (profile target category: countries).",
-      "x_confidence": "medium"
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7f7daf41-a9ee-40b7-9ca5-268a7d409f20",
+      "target_ref": "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ad09cf96-71a9-46d4-833f-914d407221c7",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-20T11:55:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://strikeready.com/blog/ru-apt-targeting-energy-infrastructure-unknown-unknowns-part-3/",
+      "pattern": "[url:value = 'https://strikeready.com/blog/ru-apt-targeting-energy-infrastructure-unknown-unknowns-part-3/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2024-10-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c4fc9498a199f281eed2c54023c61bf788fde738d60b251c04719fb5036b9d7e",
+          "observed_at": {
+            "value": "2024-10-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--uac-0050--6a894de1d23bf0bc",
+          "source_path": "actor_profile/evidence/uac-0050.csv",
+          "source_location": {
+            "row": 15
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf {\"page\": 8} uac-0050 s cybercrime, while 12% was deemed opportunistic. 5 https://www.microsoft.com/en-us/security/blog/2024/10/29/midnight-blizzard-conducts-large-scale-spear-phishing-campaign-using-rdp-files/ 6 https://socprime.com/blog/uac-0050-financially-motivated-attack-detection/ 7 https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-301a 8 https://strikeready.com/blog/ru-apt-targeting-energy-infrastructure-unknown-unknowns-part-3/ 9",
+          "analyst_notes": "",
+          "raw_value": "https://strikeready.com/blog/ru-apt-targeting-energy-infrastructure-unknown-unknowns-part-3/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f52ef960-51ed-488f-b93e-d08b5a7fd81c",
+      "created": "2026-09-20T11:55:34Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ad09cf96-71a9-46d4-833f-914d407221c7",
+      "target_ref": "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--1a0b10cb-455c-492a-8345-0d08d8305817",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -199,14 +323,14 @@
         "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 12
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--ed9034cd-615e-4a9a-ba1b-8e112b1e2968",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -215,12 +339,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--88783b80-694c-42e2-bf2d-7a340d936161",
-        "identity--487a120e-4dd6-4105-a3ff-23e82779150b"
+        "indicator--7f7daf41-a9ee-40b7-9ca5-268a7d409f20",
+        "indicator--ad09cf96-71a9-46d4-833f-914d407221c7"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc7005`
 - 状態: draft
-- 更新日時: 2026-08-21T01:45:24Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:03Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -39,18 +39,49 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| actor--apt29 | part-of | GTIGは「Similarly we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」「GTIG assesses with moderate confidence that UNC6293 and UNC7005 are related to a subcluster of ICE RELIC that we associate with initial access operations」と述べている。根拠として、学術・NGO・外交・防衛という標的業種と地域の重なり、および外交行事の招待やワインに関する特定の題材が2021年から2024年のICE RELICのフィッシング作戦で文書化されていることを挙げている。 | 中 | `source--gtig-going-with-the-flows-2026` |
+| actor--apt29 | part-of | GTIGは「Similarly we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」「GTIG assesses with moderate confidence that UNC6293 and UNC7005 are related to a subcluster of ICE RELIC that we associate with initial access operations」と述べている。根拠として、学術・NGO・外交・防衛という標的業種と地域の重なり、および外交行事の招待やワインに関する特定の題材が2021年から2024年のICE RELICのフィッシング作戦で文書化されていることを挙げている。 MicrosoftはStorm-2945をMidnight Blizzardの運用サブクラスタと明記している。 | 中 | `source--gtig-going-with-the-flows-2026`, `source--microsoft-captivecrunch-2026` |
 | actor--unc6293 | shares-targeting-with | GTIGは「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately」と述べる。2026年5月下旬の大規模フィッシング作戦で使われた攻撃者メールアドレスは、2025年6月のUNC6293の作戦で使われたものとほぼ同一であった。app passwordフィッシングの社会工学的手口も類似するが、UNC7005は1標的ごとに固有のapp password名を用いる点で異なる。 | 中 | `source--gtig-going-with-the-flows-2026` |
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | UNC7005(Microsoft呼称: STORM-2945)。GTIGがmoderate confidenceでICE RELIC(旧APT29)へ接続する初期アクセスクラスタと評価するロシア関連の脅威クラスタ。UNC6293より練度と運用セキュリティが低いとされる。 |
-| Capability | app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシング。マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、およびMaaSのVIDARとATOMIC。着地ページでの端末フィンガープリントによる自動解析回避を行う。 |
-| Infrastructure | Microsoft認証リソース、実在の行事・団体(GLOBSEC、Finnish Operations Center)、WhatsAppを装う多数の攻撃者管理ドメイン。Googleクラウドプロジェクトを認証トークン窃取の受け皿として悪用する。宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラと結び付けられている。 |
-| Victim | ウクライナ、西欧、米国の学術関係者、外交関係者、非営利団体の職員。欧州の防衛産業に属するか関係する標的。ロシアと旧ソビエト諸国を専門とする米国の研究者。 |
-| Socio-political | GTIGはロシア国家にとって関心の対象となる個人を狙う諜報目的の活動と位置付け、3クラスタのロシア関連性をhigh confidenceで評価している。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `possible-match`
+- 調査日時: 2026-09-21T02:39:13Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Storm-2945 | single-alias-intersection | 中 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | Storm-2945 | single-alias-intersection | 中 |  | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -97,8 +128,8 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | UNC7005による標的別app passwordフィッシング | phishing-campaign | 2026-02 | 不明 | 2026-08-20 |  |  |  |  | GTIGは、UNC7005が2026年2月以降、国家的な関心の対象となる個人へきわめて選別的なapp passwordフィッシングを行っていると報告した。社会工学的な手口はUNC6293と類似するが、観測されたほぼ全事例でapp passwordの名称が標的ごとに固有であり、標的が従事しているとされる活動の種類やなりすまし対象の組織名に合わせて構成される点が異なる。 | 高 | `source--gtig-going-with-the-flows-2026` |
 | UNC7005によるMicrosoft・WhatsAppデバイスコードフィッシング | phishing-campaign | 2026-04 | 2026-06 | 2026-08-20 |  |  |  |  | UNC7005はMicrosoftアカウントとWhatsAppアカウントの双方に対してデバイスコードフィッシングを実施した。Microsoft向けは、実在の行事や団体を装う攻撃者管理ドメインから送信したメールに攻撃者サイトへのリンクを含める形で始まる。2026年4月下旬の「大使館招待」を題材とする作戦のサイト雛形は、2026年5月に実在のGLOBSECフォーラムを装う別作戦へ再利用された。閲覧時には標的端末のフィンガープリントを取得して自動スキャナーを判別する。登録手続きは詳細に作り込まれ、過去のICE RELIC関連フィッシングでも用いられたワインの選択という題材が含まれていた。2026年5月から6月にはWhatsAppを装い、安全な通話やチャット、文書共有への参加を口実に、標的のWhatsAppアカウントを攻撃者管理端末へ連携させた。 | 高 | `source--gtig-going-with-the-flows-2026` |
 | UNC7005インフラと宿泊施設captive portalリダイレクト作戦の結び付き | infrastructure-operation | 2026-04 | 2026-07 | 2026-08-20 |  | malware--cherrypie |  |  | GTIGは2026年4月下旬から、Microsoftの認証リソースを模倣するUNC7005のインフラを追跡し、運用化されたドメインを順次Safe Browsingのブロックリストへ追加していた。2026年7月中旬以降、宿泊施設や会議施設のcaptive portalから当該インフラへ利用者がリダイレクトされる事象を観測している。GTIGはこのインフラ群を、2026年4月まで遡るUNC7005の他の認証系作戦およびマルウェア作戦へ直接結び付けた。captive portal作戦のドメインと結び付くドメインは、以前のデバイスコードフィッシング作戦で使われたUNC7005のドメインと同一IPへの解決を共有する。 | 高 | `source--gtig-going-with-the-flows-2026` |
-| UNC7005によるFOC偽装のOAuthフィッシング | phishing-campaign | 2026-07-31 | 2026-08-13 | 2026-08-20 | target--activity-rule--sector--b94dc560a327b601965d |  | ttp--activity-rule--425a851d17c8543b0208 | victim--activity-rule--d365dee4c01deb7399a1 | 2026年8月初旬、UNC7005はクラウド基盤を用いたGoogleアカウントのOAuthフィッシングを開始した。2026年7月31日以降、防衛・安全保障市場を支援する実在の支援団体FOCを装うドメインを登録し、2026年8月6日から13日にかけて、欧州の防衛・安全保障分野に属するか関係する標的へ攻撃者管理ドメインへのリンクを含むフィッシングメールを送信した。「Get Access」または「Sign in With Google」を押した標的は正規のGoogle OAuthログイン画面へ誘導され、認証後に攻撃者が管理する未検証のテストモードのクラウドプロジェクトへリダイレクトされる。同じ時期に、正規のMicrosoft OAuth URLを標的へ直接送る、きわめて限定的な作戦も確認されている。 | 高 | `source--gtig-going-with-the-flows-2026` |
-| UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 | malware-campaign | 2026-05 | 2026-05 | 2026-08-20 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--e7608f51421ca8b1e297 | malware--vidar, malware--atomic | ttp--activity-rule--9045691d65b283df2eec | victim--activity-rule--e03d2994764dfa6e1bab | 2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。 | 高 | `source--gtig-going-with-the-flows-2026` |
+| UNC7005によるFOC偽装のOAuthフィッシング | phishing-campaign | 2026-07-31 | 2026-08-13 | 2026-08-20 | target--activity-rule--sector--b94dc560a327b601965d, target--targeting-audit--region--4af56692ce85070ffc71 |  | ttp--activity-rule--425a851d17c8543b0208 | victim--activity-rule--d365dee4c01deb7399a1 | 2026年8月初旬、UNC7005はクラウド基盤を用いたGoogleアカウントのOAuthフィッシングを開始した。2026年7月31日以降、防衛・安全保障市場を支援する実在の支援団体FOCを装うドメインを登録し、2026年8月6日から13日にかけて、欧州の防衛・安全保障分野に属するか関係する標的へ攻撃者管理ドメインへのリンクを含むフィッシングメールを送信した。「Get Access」または「Sign in With Google」を押した標的は正規のGoogle OAuthログイン画面へ誘導され、認証後に攻撃者が管理する未検証のテストモードのクラウドプロジェクトへリダイレクトされる。同じ時期に、正規のMicrosoft OAuth URLを標的へ直接送る、きわめて限定的な作戦も確認されている。 | 高 | `source--gtig-going-with-the-flows-2026` |
+| UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 | malware-campaign | 2026-05 | 2026-05 | 2026-08-20 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--e7608f51421ca8b1e297 | malware--atomic, malware--vidar | ttp--activity-rule--9045691d65b283df2eec | victim--activity-rule--e03d2994764dfa6e1bab | 2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。 | 高 | `source--gtig-going-with-the-flows-2026` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -107,7 +138,7 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | UNC7005による標的別app passwordフィッシング | UNC7005 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 | UNC7005によるMicrosoft・WhatsAppデバイスコードフィッシング | UNC7005 | 情報なし | 情報なし | 行事・団体を装う攻撃者ドメイン群 | 情報なし | 情報なし | 高 |
 | UNC7005インフラと宿泊施設captive portalリダイレクト作戦の結び付き | UNC7005 | CHERRYPIE | 情報なし | Microsoft認証を模倣する攻撃者ドメイン群 | 情報なし | 情報なし | 高 |
-| UNC7005によるFOC偽装のOAuthフィッシング | UNC7005 | 情報なし | T1566.002 Spearphishing Link | 行事・団体を装う攻撃者ドメイン群 | 防衛・軍事 | 被害事例: UNC7005によるFOC偽装のOAuthフィッシング | 高 |
+| UNC7005によるFOC偽装のOAuthフィッシング | UNC7005 | 情報なし | T1566.002 Spearphishing Link | 行事・団体を装う攻撃者ドメイン群 | 防衛・軍事, 欧州 | 被害事例: UNC7005によるFOC偽装のOAuthフィッシング | 高 |
 | UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 | UNC7005 | ATOMIC, VIDAR | T1566.002 Spearphishing Link | 情報なし | 米国, 教育・研究 | 被害事例: UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 | 高 |
 
 2026年2月にクラスタとして特定され、同月以降app passwordフィッシングを実施。4月下旬から大使館招待を題材とするデバイスコードフィッシングとMicrosoft認証を模倣するインフラの構築、5月にGLOBSECを装う作戦とウクライナ決議サミットを装うインフォスティーラー配布、5月から6月にWhatsAppを装う作戦、7月16日から23日にOWA題材ドメインの登録、7月31日以降Finnish Operations Centerを装うドメインの登録、8月6日から13日に欧州防衛産業向けのOAuthフィッシングを実施した。
@@ -122,7 +153,7 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | sectors | 防衛・軍事 | 活動「UNC7005によるFOC偽装のOAuthフィッシング」の記述で標的として明示された産業。 | 2026-07-31 | 2026-08-13 | 中 | `source--gtig-going-with-the-flows-2026` |
 | sectors | 教育・研究 | 活動「UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布」の記述で標的として明示された産業。 | 2026-05 | 2026-05 | 中 | `source--gtig-going-with-the-flows-2026` |
 
-選定ロジック: 標的国・地域・業種は、GTIG原文がUNC7005について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域・業種は、GTIG原文がUNC7005について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -140,10 +171,10 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 ## IOC／artifact概要
 
-- IOC値: 43件
-- IOC観測: 43件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 4件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -170,6 +201,9 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--gtig-going-with-the-flows-2026 | Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia | Google Threat Intelligence Group | 2026-08-20 | https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia | vendor-research | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--microsoft-captivecrunch-2026 | CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft | Microsoft Threat Intelligence | 2026-07-31 | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--unc1549",
   "name": "UNC1549",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -110,12 +110,12 @@
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "UNC1549（Kaspersky追跡名: Mirage Kitten。別名: Smoke Sandstorm、Nimbus Manticore）。",
-    "capability": "NightLedgerバックドア、ArcBridgeおよびBridgeHead WebSocketトンネラー。DLL検索順序ハイジャック、SOCKS5トンネリング、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
-    "infrastructure": "HTTPSとWebSocketを用いるC2、Azure App ServiceやCloudflare配下を含むドメイン、標的別に調整したドメインや採用・ビデオ会議を装う誘導基盤。",
-    "victim": "中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野。2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの組織が挙げられた。",
-    "socio_political": "情報収集目的のサイバースパイ活動。既存資料ではイランの情報目的やIRGC-CECとの整合性が評価されている。",
-    "analyst_notes": "2026年7月28日付Kaspersky調査と、既存のUnit 42、Dragos、M-Trends資料を統合した。公開日と攻撃観測日は分離している。"
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -453,8 +453,10 @@
         "target--country--egypt",
         "target--country--ethiopia",
         "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
-        "target--sector--aviation"
+        "target--sector--aviation",
+        "target--targeting-audit--country--dfe4685c3d850f100942"
       ],
       "malware_refs": [
         "malware--daily-05c4e283c192f549b723",
@@ -496,8 +498,10 @@
             "target--country--egypt",
             "target--country--ethiopia",
             "target--region--africa",
+            "target--region--middle-east",
             "target--sector--aerospace",
-            "target--sector--aviation"
+            "target--sector--aviation",
+            "target--targeting-audit--country--dfe4685c3d850f100942"
           ],
           "victim_refs": [
             "victim--activity-rule--590d0a5c1af14161be04"
@@ -533,10 +537,12 @@
             ],
             "target_country_refs": [
               "target--country--egypt",
-              "target--country--ethiopia"
+              "target--country--ethiopia",
+              "target--targeting-audit--country--dfe4685c3d850f100942"
             ],
             "target_region_refs": [
-              "target--region--africa"
+              "target--region--africa",
+              "target--region--middle-east"
             ]
           }
         },
@@ -545,7 +551,10 @@
           "source--daily-eac188700be16a552143"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-6b2a23bcddd9757abbb0",
@@ -572,7 +581,9 @@
       "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
       "target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
-        "target--activity-rule--country--904728608f27c39df0df"
+        "target--activity-rule--country--904728608f27c39df0df",
+        "target--region--middle-east",
+        "target--targeting-audit--country--1d21569d1d3f9ade5d30"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -610,7 +621,9 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--activity-rule--country--904728608f27c39df0df"
+            "target--activity-rule--country--904728608f27c39df0df",
+            "target--region--middle-east",
+            "target--targeting-audit--country--1d21569d1d3f9ade5d30"
           ],
           "victim_refs": [
             "victim--activity-rule--071152112a80d6125133"
@@ -649,9 +662,12 @@
             ],
             "target_country_refs": [
               "target--activity-rule--country--6604ad21c713b8dfd8c7",
-              "target--activity-rule--country--904728608f27c39df0df"
+              "target--activity-rule--country--904728608f27c39df0df",
+              "target--targeting-audit--country--1d21569d1d3f9ade5d30"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east"
+            ]
           }
         },
         "confidence": "medium",
@@ -659,7 +675,10 @@
           "source--daily-96ac11961cae303bc9fd"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-cf787599b4873ec991bd",
@@ -685,7 +704,9 @@
       },
       "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
       "target_refs": [
-        "target--sector--government"
+        "target--region--middle-east",
+        "target--sector--government",
+        "target--targeting-audit--region--13f9cf21464b4deacca3"
       ],
       "malware_refs": [
         "malware--daily-126c8af714f49766e231"
@@ -722,7 +743,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--sector--government"
+            "target--region--middle-east",
+            "target--sector--government",
+            "target--targeting-audit--region--13f9cf21464b4deacca3"
           ],
           "victim_refs": [
             "victim--activity-rule--a1b1f24e4aa40c393238"
@@ -755,7 +778,10 @@
               "Iran"
             ],
             "target_country_refs": [],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east",
+              "target--targeting-audit--region--13f9cf21464b4deacca3"
+            ]
           }
         },
         "confidence": "medium",
@@ -763,7 +789,10 @@
           "source--daily-2f8e0aeaa133b750f976"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-fbebead95e73f527d5d5",
@@ -790,7 +819,9 @@
       "description": "IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。",
       "target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
-        "target--sector--aviation"
+        "target--region--middle-east",
+        "target--sector--aviation",
+        "target--targeting-audit--region--13f9cf21464b4deacca3"
       ],
       "malware_refs": [
         "malware--daily-8bf720ef2de5aceeae08"
@@ -828,7 +859,9 @@
         "victim": {
           "target_refs": [
             "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--sector--aviation"
+            "target--region--middle-east",
+            "target--sector--aviation",
+            "target--targeting-audit--region--13f9cf21464b4deacca3"
           ],
           "victim_refs": [
             "victim--activity-rule--8ea4f5b021a437bbcf9d"
@@ -863,7 +896,10 @@
             "target_country_refs": [
               "target--activity-rule--country--6604ad21c713b8dfd8c7"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--middle-east",
+              "target--targeting-audit--region--13f9cf21464b4deacca3"
+            ]
           }
         },
         "confidence": "high",
@@ -871,7 +907,10 @@
           "source--daily-d9794d16b217472dc38d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--mirage-kitten-middle-east-africa-2026",
@@ -904,6 +943,8 @@
         "target--country--jordan",
         "target--country--pakistan",
         "target--country--tanzania",
+        "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
         "target--sector--aviation",
         "target--sector--defense",
@@ -912,9 +953,9 @@
         "target--sector--telecommunications"
       ],
       "malware_refs": [
-        "malware--nightledger",
         "malware--arcbridge",
-        "malware--bridgehead"
+        "malware--bridgehead",
+        "malware--nightledger"
       ],
       "infrastructure_refs": [
         "infrastructure--mirage-kitten-cloud-c2"
@@ -983,6 +1024,8 @@
             "target--country--jordan",
             "target--country--pakistan",
             "target--country--tanzania",
+            "target--region--africa",
+            "target--region--middle-east",
             "target--sector--aerospace",
             "target--sector--aviation",
             "target--sector--defense",
@@ -1037,7 +1080,10 @@
               "target--country--pakistan",
               "target--country--tanzania"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--region--africa",
+              "target--region--middle-east"
+            ]
           }
         },
         "confidence": "high",
@@ -1046,7 +1092,10 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
@@ -1091,32 +1140,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96ac11961cae303bc9fd",
-          "source--target-audit-etda-threat-group-cards"
+          "source--daily-96ac11961cae303bc9fd"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--67a73f46c381272a9f48",
-        "name": "アルバニア",
-        "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてアルバニアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--activity-rule--country--904728608f27c39df0df",
@@ -1136,33 +1162,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-96ac11961cae303bc9fd",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-96ac11961cae303bc9fd"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--1959c8dfa5d7d4f14258",
-        "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてインドが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--country--egypt",
@@ -1182,7 +1184,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
@@ -1206,7 +1207,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
@@ -1230,32 +1230,9 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "組織種別の国別対応は原文以上に細分化しない。 [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
-      },
-      {
-        "id": "target--targeting-audit--country--a737993e64830b042559",
-        "name": "トルコ",
-        "description": "構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてトルコが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--country--pakistan",
@@ -1275,7 +1252,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "報告公開日を標的化時期として扱わない。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
@@ -1298,7 +1274,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "報告公開日を標的化時期として扱わない。 [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
@@ -1321,7 +1296,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "組織種別の国別対応は原文以上に細分化しない。 [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
@@ -1345,10 +1319,9 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-96ac11961cae303bc9fd",
-          "source--daily-d9794d16b217472dc38d",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-d9794d16b217472dc38d"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [
@@ -1370,7 +1343,6 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
@@ -1394,13 +1366,11 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--daily-2f8e0aeaa133b750f976",
           "source--daily-96ac11961cae303bc9fd",
           "source--daily-d9794d16b217472dc38d",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor",
           "source--unc1549--c47ef662fbdb6d88"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -1408,7 +1378,7 @@
       {
         "id": "target--targeting-audit--region--5b080d8e528025530815",
         "name": "南アジア",
-        "description": "アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "description": "アフガニスタン、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1423,10 +1393,8 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook",
           "source--daily-eac188700be16a552143",
-          "source--kaspersky-mirage-kitten-2026",
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
@@ -1449,11 +1417,9 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-2f8e0aeaa133b750f976",
-          "source--daily-d9794d16b217472dc38d",
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--daily-d9794d16b217472dc38d"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "sectors": [
@@ -1620,8 +1586,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "国と産業の対応は報告で明示された範囲に限定し、公開日から標的化時期を推定していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "国と産業の対応は報告で明示された範囲に限定し、公開日から標的化時期を推定していない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -2021,7 +1987,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260827.md; source commit: 1ee48cb064541825445d1b6cfbf52f2eb61aebcb; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260827.md; source commit: 1ee48cb064541825445d1b6cfbf52f2eb61aebcb; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "identity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-96ac11961cae303bc9fd",
@@ -2039,7 +2015,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260525.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260525.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-d9794d16b217472dc38d",
@@ -2057,7 +2043,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260527.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260527.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-eac188700be16a552143",
@@ -2075,7 +2070,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--kaspersky-mirage-kitten-2026",
@@ -2108,21 +2112,31 @@
     },
     {
       "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
       "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
       "publisher": "MITRE",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
       },
       "language": "en",
       "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository. ATT&CK relationship modification dates are not observation dates."
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -2229,31 +2243,6 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
-    {
       "source_id": "source--unc1549--58f9a9044c894db2",
       "path": "actor_profile/evidence/unc1549.csv",
       "title": "unc1549",
@@ -2352,6 +2341,57 @@
       "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
       "source_id": "source--target-audit-misp-threat-actor",
       "path": "actor_profile/reference/osint/misp-threat-actor.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
@@ -2405,7 +2445,7 @@
       "ベンダーごとに追跡するクラスタ範囲が異なる可能性がある。",
       "既存資料が示すイラン系・IRGC-CEC整合性は帰属評価であり、今回報告された個々の侵害に対する指揮関係を直接証明しない。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\n2026-07-29 daily OSINT: Kaspersky Securelist本文・IOC一覧を直接確認し、actor_profile/evidence/unc1549-kaspersky-2026-07-28.csvへ構造化した。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\n2026-07-29 daily OSINT: Kaspersky Securelist本文・IOC一覧を直接確認し、actor_profile/evidence/unc1549-kaspersky-2026-07-28.csvへ構造化した。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "Operation Talked（SOCRadar、2026-07-29）はUAC-0056/UAC-0114とのTTP重複のみを示し、UNC1549とは無関係である。重複のみの情報を既存アクターへ同一視しない方針を継続する。"
   },
   "free_text": {
@@ -2413,7 +2453,7 @@
     "history": "2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。",
     "capability_details": "NightLedgerはDLL検索順序ハイジャックで起動するWindowsバックドアで、偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード等に対応する。ArcBridgeはDNS/TCPを、BridgeHeadはSOCKS5をWebSocketで中継し、両者とも企業プロキシを考慮する。",
     "infrastructure_details": "HTTPSおよびWebSocketを用い、Azure App Service、Cloudflare配下のホスト、標的に合わせた名称の独自ドメインを組み合わせる。IOCはiocs.json、通信パス、mutex、設定マーカー、User-Agent等はartifacts.csvに保存する。",
-    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、アルバニア、イスラエル、インド、エジプト、エチオピア、タンザニア、トルコ、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
+    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、イスラエル、エジプト、エチオピア、タンザニア、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
     "additional_notes": "Kasperskyが明示した別名はexactとして保持するが確度はmediumとし、他ベンダーの追跡名を根拠なく統合しない。IOCの観測日は不明のまま保持する。"
   },
   "victim_cases": [
@@ -2430,7 +2470,8 @@
       ],
       "target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
-        "target--activity-rule--country--904728608f27c39df0df"
+        "target--activity-rule--country--904728608f27c39df0df",
+        "target--region--middle-east"
       ],
       "malware_refs": [],
       "ttp_refs": [
@@ -2486,6 +2527,8 @@
         "target--country--jordan",
         "target--country--pakistan",
         "target--country--tanzania",
+        "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
         "target--sector--aviation",
         "target--sector--defense",
@@ -2556,6 +2599,7 @@
         "target--country--egypt",
         "target--country--ethiopia",
         "target--region--africa",
+        "target--region--middle-east",
         "target--sector--aerospace",
         "target--sector--aviation"
       ],
@@ -2611,6 +2655,7 @@
       ],
       "target_refs": [
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--region--middle-east",
         "target--sector--aviation"
       ],
       "malware_refs": [
@@ -2655,6 +2700,7 @@
         "activity--daily-cf787599b4873ec991bd"
       ],
       "target_refs": [
+        "target--region--middle-east",
         "target--sector--government"
       ],
       "malware_refs": [

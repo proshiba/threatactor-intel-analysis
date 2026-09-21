@@ -1,16 +1,27 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--unc6040",
   "name": "UNC6040",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T08:15:06Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "UNC6040",
-    "aliases": [],
+    "aliases": [
+      {
+        "name": "Storm-2581",
+        "vendor": "Microsoft",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--osint-microsoft-threat-actor-mapping"
+        ],
+        "analyst_notes": "Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ."
+      }
+    ],
     "actor_types": [
       "threat-cluster"
     ],
@@ -40,14 +51,38 @@
     "analyst_notes": ""
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc6040--verified--c41cf9595a8fbc46",
+      "target_actor": "UNC6240",
+      "relationship_type": "related-to",
+      "description": "GTIG tracks the initial Salesforce vishing and data theft as UNC6040 and the subsequent ShinyHunters-branded extortion as UNC6240; a partnership is possible but not established as exact identity.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-unc6040-salesforce-vishing-2025"
+      ],
+      "analyst_notes": "Sequential operational link with distinct tracking boundaries; do not treat ShinyHunters as an exact UNC6040 alias."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [],
@@ -153,7 +188,10 @@
           "source--daily-8012423fa9a259605e9c"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-646395085c698e6e36b3",
@@ -245,7 +283,10 @@
           "source--daily-80e44f9cbc707f36952a"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-7ae9e9c54f991ff32edf",
@@ -337,11 +378,14 @@
           "source--daily-d18643e84905959f1988"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-dcc1e326e606705f98d4",
-      "name": "ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害",
+      "name": "UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取",
       "activity_type": "phishing-campaign",
       "first_observed": {
         "value": null,
@@ -356,20 +400,20 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2025-07-31T00:00:00Z",
+        "value": "2025-06-04T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "description": "ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中",
+      "description": "GTIGは、UNC6040がITサポートを装った音声フィッシングで従業員を誘導し、攻撃者管理のSalesforce接続アプリ（Data Loaderまたは同等のカスタムアプリ）を承認させ、大量のCRMデータを窃取したと報告した。GTIGは初期侵入・窃取をUNC6040、後続のShinyHunters名義の恐喝をUNC6240として分けて追跡しており、両者の提携可能性は示すが同一主体とは断定していない。",
       "target_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--daily-636d2791761dd2b53914"
+        "source--gtig-unc6040-salesforce-vishing-2025"
       ],
-      "analyst_notes": "日次収集レコード daily-record--dcc1e326e606705f98d43595 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ShinyHunters(UNC6040)：英語話者中心のデータ窃取・恐喝グループ",
+      "analyst_notes": "一次資料に合わせ、ShinyHuntersをUNC6040の無条件な別名とする二次記事の表現を除去。侵入・データ窃取と後続恐喝のクラスタ境界を保持する。",
       "ttp_refs": [],
       "victim_refs": [
         "victim--activity-rule--0afbad5604962472d1de"
@@ -408,15 +452,14 @@
             "basis": "not-stated"
           },
           "reported_at": {
-            "value": "2025-07-31T00:00:00Z",
+            "value": "2025-06-04T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "phishing-campaign",
           "phases": [],
           "results": [
-            "credential-theft",
             "data-theft"
           ],
           "direction": {
@@ -425,12 +468,15 @@
             "target_region_refs": []
           }
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-636d2791761dd2b53914"
+          "source--gtig-unc6040-salesforce-vishing-2025"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
@@ -461,8 +507,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [],
   "sources": [
@@ -500,7 +546,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250731.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250731.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8012423fa9a259605e9c",
@@ -518,7 +571,15 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250826.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250826.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-80e44f9cbc707f36952a",
@@ -536,7 +597,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250605.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250605.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/google-hackers-target-salesforce-accounts-in-data-extortion-attacks/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-d18643e84905959f1988",
@@ -554,7 +622,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250915.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250915.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-of-unc6040-unc6395-hackers-stealing-salesforce-data/",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -635,6 +710,90 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f69bdfe941cd5f7e139c6a498895799e337a1affc03e24b4a9062cff886c4542",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--gtig-unc6040-salesforce-vishing-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+      "title": "The Cost of a Call: From Voice Phishing to Data Extortion",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2025-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "GTIG attributes Salesforce vishing and initial data theft to UNC6040, but separately tracks the subsequent ShinyHunters-branded extortion as UNC6240. The report says a partnership is possible, not proven."
     }
   ],
   "assessment": {
@@ -646,7 +805,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6040.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6040.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -660,12 +819,12 @@
   "victim_cases": [
     {
       "victim_case_id": "victim--activity-rule--0afbad5604962472d1de",
-      "name": "被害事例: ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害",
+      "name": "被害事例: UNC6040によるSalesforceデータ窃取",
       "victim_name": null,
-      "disclosure_status": "aggregate",
-      "victim_type": "multiple-organizations",
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
       "case_status": "reported",
-      "description": "ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中",
+      "description": "GTIGは、UNC6040がITサポートを装った音声フィッシングで従業員を誘導し、攻撃者管理のSalesforce接続アプリ（Data Loaderまたは同等のカスタムアプリ）を承認させ、大量のCRMデータを窃取したと報告した。GTIGは初期侵入・窃取をUNC6040、後続のShinyHunters名義の恐喝をUNC6240として分けて追跡しており、両者の提携可能性は示すが同一主体とは断定していない。",
       "activity_refs": [
         "activity--daily-dcc1e326e606705f98d4"
       ],
@@ -678,11 +837,7 @@
       "impacts": [
         {
           "impact_type": "data-theft",
-          "description": "ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害"
-        },
-        {
-          "impact_type": "credential-theft",
-          "description": "ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中"
+          "description": "UNC6040、vishingでSalesforce接続アプリを承認させデータを窃取"
         }
       ],
       "first_observed": {
@@ -698,16 +853,16 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2025-07-31T00:00:00Z",
+        "value": "2025-06-04T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--daily-636d2791761dd2b53914"
+        "source--gtig-unc6040-salesforce-vishing-2025"
       ],
-      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+      "analyst_notes": "一次資料に合わせ、ShinyHuntersをUNC6040の無条件な別名とする二次記事の表現を除去。侵入・データ窃取と後続恐喝のクラスタ境界を保持する。"
     },
     {
       "victim_case_id": "victim--activity-rule--1fa6e836484db0ee9a8a",

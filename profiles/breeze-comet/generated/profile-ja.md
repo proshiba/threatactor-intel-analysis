@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-02T13:04:42Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,16 +18,16 @@ BREEZE COMET(旧UNC5669)は、ブラジルの金融サービス、小売、eコ�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| UNC5669 | Google Threat Intelligence Group / Mandiant | exact | 高 | `source--breeze-comet--gtig-brazil-2026` | GTIGは「GTIG tracks this activity as BREEZE COMET (formerly UNC5669)」と記載しており、同一クラスタの旧指定子として明示している。ベンダー自身による改称であるためscopeはexactとする。 |
 | Plump Spider | 他ベンダーの公開報告(GTIGが参照) | overlapping | 中 | `source--breeze-comet--gtig-brazil-2026` | GTIGの記述は「This activity overlaps with operations publicly reported as Plump Spider and SHADOW-AETHER-064」であり、作戦の重複を述べるにとどまる。同一クラスタとの断定ではないためscopeはexactにしない。Plump Spiderを用いるベンダーの原報告は未確認である。 |
 | SHADOW-AETHER-064 | 他ベンダーの公開報告(GTIGが参照) | overlapping | 中 | `source--breeze-comet--gtig-brazil-2026` | 同上。作戦の重複としての言及であり、原報告は未確認である。 |
+| UNC5669 | Google Threat Intelligence Group / Mandiant | exact | 高 | `source--breeze-comet--gtig-brazil-2026` | GTIGは「GTIG tracks this activity as BREEZE COMET (formerly UNC5669)」と記載しており、同一クラスタの旧指定子として明示している。ベンダー自身による改称であるためscopeはexactとする。 |
 
 ## 帰属
 
 GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクターと評価し、国家や特定組織への帰属は行っていない。標的と運用がブラジルに集中し、回収されたスクリプトのコメントがポルトガル語であることは運用言語・活動地域の指標であって、攻撃者の所在国の帰属根拠として扱わない。
 
 - 国: 不明
-- スポンサー種別: non-state
+- スポンサー種別: criminal
 - 確度: 中
 - 証拠: `source--breeze-comet--gtig-brazil-2026`
 
@@ -39,7 +39,10 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Plump Spider | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as Plump Spider. | 中 | `source--breeze-comet--gtig-brazil-2026` |
+| SHADOW-AETHER-064 | overlaps-with | GTIG states that BREEZE COMET activity overlaps operations publicly reported as SHADOW-AETHER-064. | 中 | `source--breeze-comet--gtig-brazil-2026` |
 
 ## ダイヤモンドモデル
 
@@ -51,17 +54,48 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | Victim |  |
 | Socio-political |  |
 
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-21T02:39:13Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | BREEZE COMET | canonical-name | 高 |  | https://www.hendryadrian.com/financially-motivated-threat-actor-breeze-comet-targets-brazil/ |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | PLUMP SPIDER | single-alias-intersection | 中 |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
+
 ## Capability
 
 ### マルウェア
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--boatbeam | BOATBEAM | 443番ポートで偽のIIS HTTPSサーバーを起動するGo製バックドア。正規のWebサーバーを装ってバックドア通信を隠蔽し、特定のセッションCookieを受信したときにのみC2機能を有効化する。冗長化アーキテクチャの最終層を成す。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--cobaltspin | COBALTSPIN | Rustで書かれた軽量かつ回避性の高いネットワークトンネラー。WebSocket上にリバースSOCKS5プロキシを確立し、C2と内部標的の間でトラフィックを双方向に中継する。分割された金融ネットワークを移動し、内部ファイアウォールを越えた横展開を、検知を誘発しがちな常駐型の永続化機構なしで実現する。金融API基盤への持続的なネットワークアクセスの維持に用いられる。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
+| malware--kickplate | KICKPLATE | Windows Update Health Toolsを騙るNim製のカスタムバックドア。補助ペイロードの継続的な配信とホストレベルの永続化の強制に用いられる。SOCKS5トンネラーの制御、レジストリのスタートアップキーの更新、Windowsサービスの秘密裏な変更を行うコマンドを実行する。SYSTEM権限で動作するschtasks.exeによる標準の計画タスクと、ユーザーのスタートアップフォルダー内の悪性ショートカット(.lnk)の改変を補助的に併用する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--lightpaint | LIGHTPAINT | SoftEther等の正規VPNを導入し自動永続化するよう構成するJava製のカスタムバックドア。導入したVPNマネージャーからの全通信を許可するWindows Defenderファイアウォールの受信規則をプログラム的に追加し、その後Windows Networking Vpn Plugin Platformのイベントログを消去して接続のフォレンジック痕跡を抹消する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--mildfrost | MILDFROST | JVMのプロセス空間内に潜む受動型のJava JARバックドア。DnsCommandBeacon.classなどのクラスを用いて低速かつ隠密なDNSトンネルを確立する。フォールバックC2としても機能し、委譲されたサブドメインを動的に問い合わせて指示を受け取り、C++実行ファイルの新しいコピーを取得する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
-| malware--kickplate | KICKPLATE | Windows Update Health Toolsを騙るNim製のカスタムバックドア。補助ペイロードの継続的な配信とホストレベルの永続化の強制に用いられる。SOCKS5トンネラーの制御、レジストリのスタートアップキーの更新、Windowsサービスの秘密裏な変更を行うコマンドを実行する。SYSTEM権限で動作するschtasks.exeによる標準の計画タスクと、ユーザーのスタートアップフォルダー内の悪性ショートカット(.lnk)の改変を補助的に併用する。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
-| malware--boatbeam | BOATBEAM | 443番ポートで偽のIIS HTTPSサーバーを起動するGo製バックドア。正規のWebサーバーを装ってバックドア通信を隠蔽し、特定のセッションCookieを受信したときにのみC2機能を有効化する。冗長化アーキテクチャの最終層を成す。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 | malware--realbreeze | REALBREEZE | カスタムのLDAP総当たりユーティリティ。可視性の低い環境で特権昇格に用いられる。 | 不明 | 不明 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 
 ### ツール
@@ -93,13 +127,13 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | intrusion | 2024 | 2026 | 2026-09-01 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--570d54d1d21fab6540a9 | malware--cobaltspin, malware--lightpaint, malware--mildfrost, malware--kickplate, malware--boatbeam, malware--realbreeze | ttp--activity-rule--2b2ebbe6402eafb1b795 | victim--activity-rule--c411e51fdcb57e39118a | ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。 | 高 | `source--breeze-comet--gtig-brazil-2026` |
+| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | intrusion | 2024 | 2026 | 2026-09-01 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--activity-rule--sector--570d54d1d21fab6540a9, target--targeting-audit--country--204596d5a0a7a4b3a19e | malware--boatbeam, malware--cobaltspin, malware--kickplate, malware--lightpaint, malware--mildfrost, malware--realbreeze | ttp--activity-rule--2b2ebbe6402eafb1b795 | victim--activity-rule--c411e51fdcb57e39118a | ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。 | 高 | `source--breeze-comet--gtig-brazil-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | BREEZE COMET | BOATBEAM, COBALTSPIN, KICKPLATE, LIGHTPAINT, MILDFROST, REALBREEZE | T1110.003 Password Spraying | 情報なし | 政府・行政, 金融, 小売・ホスピタリティ | 被害事例: ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | 高 |
+| ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | BREEZE COMET | BOATBEAM, COBALTSPIN, KICKPLATE, LIGHTPAINT, MILDFROST, REALBREEZE | T1110.003 Password Spraying | 情報なし | 政府・行政, 金融, 小売・ホスピタリティ, ブラジル | 被害事例: ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金 | 高 |
 
 
 
@@ -112,7 +146,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | sectors | 金融 | 活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。 | 2024 | 2026 | 中 | `source--breeze-comet--gtig-brazil-2026` |
 | sectors | 小売・ホスピタリティ | 活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。 | 2024 | 2026 | 中 | `source--breeze-comet--gtig-brazil-2026` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -159,6 +193,8 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--breeze-comet--gtig-brazil-2026 | Financially Motivated Threat Actor BREEZE COMET Targets Brazil | Google Threat Intelligence Group / Mandiant | 2026-09-01 | https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil | vendor-technical-report | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

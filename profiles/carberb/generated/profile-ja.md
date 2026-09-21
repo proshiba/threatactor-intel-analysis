@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--carberb`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:20:30Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,7 @@ Carberpの標準化プロファイル。Group-IBのactor-specific調査に基づ
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Carberb | legacy-corpus | unknown | 低 | `source--actor-mapping-workbook` | Legacy corpus spelling retained only for lookup compatibility; canonicalized to Carberp after actor-specific review. |
+| Carberb | legacy-corpus | exact | 低 | `source--actor-census-curation-carberp` | Legacy repository spelling retained as an exact lookup variant of the reviewed canonical name Carberp; confidence remains low because the misspelling is corpus-local. |
 
 ## 帰属
 
@@ -43,21 +43,22 @@ Group-IB identifies Carberp as a criminal hacking group focused on financial the
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | Group-IB describes Carberp as a financially motivated hacking group that operated a banking botnet, targeted financial institutions and banks, and used the Carberp banking Trojan for large-scale fraud. |
-| Capability | Carberp banking Trojan / banking botnet operations |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Financial sector and banks; Group-IB describes attacks as worldwide. |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -66,6 +67,7 @@ Group-IB identifies Carberp as a criminal hacking group focused on financial the
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -118,10 +120,10 @@ Group-IBは2010〜2012年のCarberp gangの活動と、法執行機関による�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| regions | 全世界 | Group-IB lists the geography of Carberp attacks as Worldwide. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--group-ib-carberp-gang` |
+| regions | 全世界 | Group-IB lists the geography of Carberp attacks as Worldwide. | 不明 | 不明 | 高 | `source--group-ib-carberp-gang` |
 | sectors | 金融 | Group-IB lists the financial sector and banks as Carberp targets. | 不明 | 不明 | 高 | `source--group-ib-carberp-gang` |
 
-選定ロジック: Actor-specific Group-IB investigation only; geography is not reused as sponsorship evidence. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Actor-specific Group-IB investigation only; geography is not reused as sponsorship evidence. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -133,11 +135,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 2件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 1件（`artifacts.csv`）
+- 要レビュー候補: 2件
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -160,6 +162,7 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--carberb--5501c7dbfeb0afae | carberb |  | 不明 | actor_profile/evidence/carberb.csv | structured-data | TLP:CLEAR | 中 |
 | source--group-ib-carberp-gang | Carberp gang knocked down | Group-IB | 不明 | https://www.group-ib.com/top-investigations/carberp-gang/ | actor-specific-investigation | TLP:CLEAR | 高 |
+| source--actor-census-curation-carberp | Analyst-reviewed Carberp identity curation | threatactor-intel-analysis maintainers | 不明 | actor_profile/actor-census-curation.json | analyst-curation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

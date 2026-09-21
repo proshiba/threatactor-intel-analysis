@@ -21,7 +21,7 @@ from common import load_json, utc_now, write_json_atomic
 
 
 WORKBOOK_SOURCE_ID = "source--actor-mapping-workbook"
-MITRE_SOURCE_ID = "source--mitre-attack-19-1"
+MITRE_SOURCE_ID = "source--mitre-attack-19-2"
 GENERATED_ESPIONAGE_DESCRIPTION = (
     "State-sponsored intelligence collection or strategic operations."
 )
@@ -97,7 +97,12 @@ def migrate_profile(
     }
 
     desired_types = derive_actor_types(catalog_actor, mitre_group)
-    if profile["actor"].get("actor_types", []) != desired_types:
+    existing_types = profile["actor"].get("actor_types", [])
+    # Actor type order is not semantic. Preserve analyst ordering and avoid
+    # timestamps/notes that falsely imply a substantive migration.
+    if len(existing_types) != len(desired_types) or set(existing_types) != set(
+        desired_types
+    ):
         profile["actor"]["actor_types"] = desired_types
         report["actor_types_changed"] = True
         report["changed"] = True

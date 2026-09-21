@@ -1,0 +1,504 @@
+{
+  "type": "bundle",
+  "id": "bundle--3aa36a82-662e-496b-a62e-8efe62c9cb0b",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+      "created": "2026-08-07T09:42:38Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "description": "ヘッジファンド、プライベートエクイティ、金融機関を狙う最近の攻撃が、BlackFile関連の恐喝グループUNC6671に関連付けられた。 Point72、Millennium Management、Two Sigma、Citadelなどが標的となり、従業員を電話で騙すボイスフィッシングが使用された。 攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。 Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。 UNC6671はBlackFileに加えてRedact、Pink、Helix、Falconを使用し、Mandiantは現在UNC6671によって侵害された数十組織の侵害対応を支援している。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-88da96b89053f0ca0aa8",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--88da96b89053f0ca0aa83f7d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Google Threat Intelligence Group, 2026-08-06公開)を確認。「a common group of threat actors are affiliated with the BlackFile, Redact, Pink, Helix, and Falcon extortion brands」とUNC6671が複数の恐喝ブランドを横断して運用する実行主体であることが明記されている。ヘッジファンド・プライベートエクイティ・金融機関を標的としたボイスフィッシングによるMicrosoft 365/Okta SSO侵害を新規活動として採用。活動期間は一次資料のドメイン登録観測(2026-04-01〜08-03)を別途確認できた範囲に限定し、記事公開日(2026-08-06/07)はreported_atとして分離する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6671",
+          "name": "UNC6671",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--4221b5fbb827488c6eaa"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9d131ccb215967a3529e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0f56214542b30c75b57a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "created": "2026-08-10T07:25:31Z",
+      "modified": "2026-08-10T07:25:31Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "金融",
+      "identity_class": "class",
+      "description": "活動「ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e5bdc874-8266-4f63-8021-f718a8e2cb79",
+      "created": "2026-08-10T07:25:31Z",
+      "modified": "2026-08-10T07:25:31Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "identity_class": "organization",
+      "description": "ヘッジファンド、プライベートエクイティ、金融機関を狙う最近の攻撃が、BlackFile関連の恐喝グループUNC6671に関連付けられた。 Point72、Millennium Management、Two Sigma、Citadelなどが標的となり、従業員を電話で騙すボイスフィッシングが使用された。 攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。 Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。 UNC6671はBlackFileに加えてRedact、Pink、Helix、Falconを使用し、Mandiantは現在UNC6671によって侵害された数十組織の侵害対応を支援している。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--9d131ccb215967a3529e",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--4c589b6e-d11e-48c9-9629-c6fa1bef6af2",
+      "created": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6671",
+      "aliases": [],
+      "description": "UNC6671の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--unc6671",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC6671の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79cfc806-6945-48eb-9d57-8e871e8f7d10",
+      "created": "2026-08-10T07:25:31Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4c589b6e-d11e-48c9-9629-c6fa1bef6af2",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "UNC6671 targets 金融 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9456c761-6d94-42a4-850d-961f51a2aea7",
+      "created": "2026-08-07T09:42:38Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+      "target_ref": "intrusion-set--4c589b6e-d11e-48c9-9629-c6fa1bef6af2",
+      "description": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連 is attributed or linked to UNC6671.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cc944d11-e01f-4b6c-9671-f9063b5586de",
+      "created": "2026-08-12T01:51:59Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+      "target_ref": "identity--e5bdc874-8266-4f63-8021-f718a8e2cb79",
+      "description": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連 affected victim--activity-rule--9d131ccb215967a3529e.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4b3212c-7527-40e6-97ec-95981d5c3d7d",
+      "created": "2026-08-12T01:51:59Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f3719822-9e3f-44f2-b10e-db783b89d456",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-07T00:00:00Z",
+      "object_refs": [
+        "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--e5bdc874-8266-4f63-8021-f718a8e2cb79",
+        "relationship--79cfc806-6945-48eb-9d57-8e871e8f7d10",
+        "relationship--9456c761-6d94-42a4-850d-961f51a2aea7",
+        "relationship--cc944d11-e01f-4b6c-9671-f9063b5586de",
+        "relationship--f4b3212c-7527-40e6-97ec-95981d5c3d7d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "external_id": "source--daily-0f56214542b30c75b57a",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0f56214542b30c75b57a",
+      "x_evidence_slice_scope": "campaign:actor--unc6671:activity--daily-88da96b89053f0ca0aa8",
+      "x_source_publisher": "cloud.google.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--bf458f7a-db94-45ca-9a76-41aee0e2c6d6",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6671 / ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "description": "ヘッジファンド、プライベートエクイティ、金融機関を狙う最近の攻撃が、BlackFile関連の恐喝グループUNC6671に関連付けられた。 Point72、Millennium Management、Two Sigma、Citadelなどが標的となり、従業員を電話で騙すボイスフィッシングが使用された。 攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。 Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。 UNC6671はBlackFileに加えてRedact、Pink、Helix、Falconを使用し、Mandiantは現在UNC6671によって侵害された数十組織の侵害対応を支援している。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "campaign--084ede4f-64d3-4f87-93f3-047bdd1b3ae9",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--e5bdc874-8266-4f63-8021-f718a8e2cb79",
+        "intrusion-set--4c589b6e-d11e-48c9-9629-c6fa1bef6af2",
+        "relationship--79cfc806-6945-48eb-9d57-8e871e8f7d10",
+        "relationship--9456c761-6d94-42a4-850d-961f51a2aea7",
+        "relationship--cc944d11-e01f-4b6c-9671-f9063b5586de",
+        "relationship--f4b3212c-7527-40e6-97ec-95981d5c3d7d",
+        "report--f3719822-9e3f-44f2-b10e-db783b89d456"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc6671",
+      "x_activity_id": "activity--daily-88da96b89053f0ca0aa8"
+    }
+  ]
+}

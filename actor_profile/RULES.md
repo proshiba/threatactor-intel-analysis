@@ -78,6 +78,12 @@ Activityは`first_observed`、`last_observed`に加えて`reported_at`を必ず�
 マルウェア期間集計と並び替えには`reported_at`を使用しない。報告日は活動時期不明の
 理由を明示する補助表示に限り、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
 
+Activityは`activity_type`とは別に、STIX entity境界を明示する`stix_object_type`を必ず持つ。
+値は`campaign`、`incident`、`grouping`のいずれかとする。`intrusion`等の意味ラベルだけから
+全件をCampaignへ変換してはいけない。Groupingは`grouping_context`と`activity_refs`を持ち、
+包含されたオブジェクト間のRelationshipを暗黙に主張しない。詳細な判断と時間相関規則は
+[OPENCTI_INGESTION_RULES.md](OPENCTI_INGESTION_RULES.md)を正とする。
+
 Activityは`ttp_refs`と`victim_refs`も必ず持つ。参照先が判明しない場合は空配列にする。
 TTP・マルウェア・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
 利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ
@@ -144,12 +150,19 @@ python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 
 異なるベンダークラスタを、名称一覧だけを根拠に`exact`へ統合しない。
 
+一方、公式ATT&CKの同一Group IDと命名元ベンダー資料で単なるrenameであることを確認した
+名称は、別のcanonical profileを作らず既存profileの`exact` aliasとして保持する。
+同一性の確認には名前一致だけでなく、Group IDとactor-specificな原典を必要とする。
+Software/Malware名とActor名が一致する場合はentity種別を先に確認し、原典が独立した
+operator/groupを定義していなければActorとしてmaterializeしない。
+
 ## 6. アクター間関係
 
 `relationship_type`は次を優先する。
 
 - `part-of`
 - `subordinate-to`
+- `distinct-from`
 - `overlaps-with`
 - `shares-tools-with`
 - `shares-infrastructure-with`
@@ -408,7 +421,7 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 - Tool: `tool`
 - Infrastructure: `infrastructure`
 - TTP: `attack-pattern`
-- Activity: `campaign`
+- Activity: 明示した`stix_object_type`に従い`campaign`、`incident`、`grouping`
 - Targets/attribution organizations: `identity`
 - IOC: `indicator`
 - 観測: `observed-data`と`note`、またはIndicatorの外部参照
@@ -419,6 +432,33 @@ STIXに直接表しにくい精度、証拠、自由記述は`x_`カスタムプ
 `artifacts.csv`の非IOC artifactは、該当するSCOへ安全に変換できる場合だけSTIXへ含める。
 変換できないコマンドや文字列は、STIX `artifact` SCOへ無理に格納せず、`note`または
 カスタムプロパティで参照する。
+
+### 11.1 OpenCTI取込用Bundle
+
+OpenCTI向け出力は`opencti/actors/`のアクター単位Bundle、
+`opencti/campaigns/<actor>/`のCampaign Bundle、`opencti/activities/<actor>/`の
+Incident/Grouping Bundleへ分割する。
+
+- Actor BundleはActivityを含めず、アクター全体の知識とActivity未割当IOCを保持する。
+- 各Activity Bundleは主となるCampaign/Incident/Groupingを明示し、同じ活動へ明示参照されたオブジェクトだけを
+  含める。アクター一般の利用実績から活動別マルウェア、TTP、標的を補完しない。
+- 各Bundleは`created_by_ref`、Relationshipの両端、Reportの`object_refs`をBundle内で解決し、
+  標準TLP marking以外の参照切れを許可しない。
+- Reportの`object_refs`にはRelationshipも含め、OpenCTI上で知識コンテナとして確認できるようにする。
+- 国・地域は`Location`、産業・役割は`identity_class: class`の`Identity`へ変換する。
+- 国は`reference/opencti-country-index.json`で固定したOpenCTI公式Countryの英語名、
+  ISO 3166-1 alpha-3コード、座標、aliasへ照合する。一致しない国コードは推測しない。
+  公式IDは参照値として保持する。actor-specificな標的説明と出典は、重複排除される
+  Country本体ではなく、そのCountryを対象とするRelationshipへ移す。
+- アクター関係の対象をcanonical名、Profile ID、根拠付き`exact` aliasで一意に解決できない場合、
+  新しいIntrusion Setを推測生成しない。元関係は`Note`とmanifestへ残す。
+- Activity割当済みIOCは該当Activity Bundleへ、未割当IOCはActor Bundleへ収録する。
+- Network Observableは値ごとの安定SCOとして出力し、明示的な`infrastructure_refs`がある場合だけ
+  Infrastructureから`consists-of`を結ぶ。実観測日時がないRelationshipへ公開日由来の
+  `start_time`/`stop_time`を付けない。
+- 公開日が判明するSourceは原典Reportとして`Report.published`を保持する。公開日不明のSourceへ
+  profile更新日時等を代入しない。
+- OpenCTI既定の50 MiB取込上限を下回るよう、生成時の上限は45 MiBとする。
 
 ## 12. 検証の重大度
 
@@ -444,6 +484,18 @@ OSINTはプロファイル本文への追記だけで終わらせず、各プロ
 検索結果のスニペットだけを最終根拠にしない。政府機関、司法資料、制裁指定、
 公式ATT&CK、当該ベンダーの一次調査を優先し、発行日とアクセス日を分けて記録する。
 反証が見つからないことを「反証なし」と断定せず、検索範囲と未解決点を残す。
+
+claim auditはalias、帰属国、関係、主要malware/TTPだけに限定しない。少なくとも
+`actor.actor_types`、`attribution.sponsor_type`、帰属組織、motivation、activity、
+victim case、target、全capability区分、TTP、key judgmentを個別のclaimとして監査する。
+根拠参照が空の主張を既定で`partially-supported`にしてはならず、`unresolved`とする。
+
+`state-sponsored`は特に強い主張として扱い、actor-specificなスポンサー関係の明示を
+必要とする。一般的な国・originラベルは根拠にしない。外部taxonomyを使う場合も、その
+taxonomy自身が対象区分をnation-state actorとして明示し、canonical名または`exact`
+aliasが一致するときだけ使用する。`overlapping`、`related`、`broader`、`narrower`の
+alias一致から国家支援を継承しない。`state-aligned`の根拠しかない場合、
+`state-sponsored` claimは最大でも`partially-supported`である。
 
 アクター関係は、最低でも次を分離する。
 
@@ -478,6 +530,17 @@ taxonomyの`similar`関係は低信頼度の関係候補として保存する。
 
 Malpediaとの名前一致はマルウェアのカタログ存在だけを意味し、そのアクターが
 使用した証拠にはしない。
+
+## 15. 全アクター調査票
+
+全active actorに`generated/research-dossier.json`を生成し、少なくとも関係アクター、
+活動時期、活動別malware、標的、動機、帰属、各主張の根拠参照とclaim audit結果をまとめる。
+値が存在しない次元は空欄を推測で埋めず、`unknown`と`research_gaps`で明示する。
+
+ETDA、MISP、TIDAL等の集約データから得たcampaign、software、標的、動機、帰属候補は
+`external_research_leads`に隔離する。集約データの日付は、原典を確認するまで確定観測日と
+せず、`inferred`または報告日として保存する。canonicalへの昇格には、actor scope、
+entity種別、活動との結び付き、観測期間を原典で確認したevidenceが必要である。
 
 
 ## 14. 生成・エージェント用ガードレール

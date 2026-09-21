@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc1069`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:15:52Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,8 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| MIDNIGHT NEPTUNE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「MIDNIGHT NEPTUNE, financially motivated North Korea-nexus threat clusters formerly tracked as UNC1069」に基づく。UNC1069はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。原文が「threat clusters」と複数形で述べる点は、MIDNIGHT NEPTUNEが複数クラスタを束ねる可能性を示すため analyst_notes として残す。 |
+| MASAN | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| MIDNIGHT NEPTUNE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-unified-actor-naming-2026` | GTIG原文の「MIDNIGHT NEPTUNE, financially motivated North Korea-nexus threat clusters formerly tracked as UNC1069」に基づく。UNC1069はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。原文が「threat clusters」と複数形で述べる点は、MIDNIGHT NEPTUNEが複数クラスタを束ねる可能性を示すため analyst_notes として残す。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -50,12 +51,13 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | MIDNIGHT NEPTUNE | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Sapphire Sleet | canonical-name | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -64,6 +66,7 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -127,7 +130,7 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 | sectors | 暗号資産・Web3 | 活動「北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-16dc3c27175f6cbffe47` |
 | sectors | 製造・産業 | 活動「北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-16dc3c27175f6cbffe47` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -146,11 +149,11 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 6件
+- IOC観測: 9件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 14件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -185,6 +188,8 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 | source--unc1069--a8ecf781c48045b5 | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
 | source--unc1069--e5ffd49d89d7dcfd | unc1069 |  | 不明 | actor_profile/evidence/unc1069.csv | structured-data | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

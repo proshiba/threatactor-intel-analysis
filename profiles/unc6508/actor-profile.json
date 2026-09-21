@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--unc6508",
   "name": "UNC6508",
   "status": "draft",
   "created_at": "2026-09-10T22:16:00Z",
-  "updated_at": "2026-09-19T00:00:53Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -34,10 +34,10 @@
     "countries": [
       "China"
     ],
-    "sponsor_type": "state-sponsored",
+    "sponsor_type": "state-aligned",
     "organizations": [],
     "assessment": "GTIGは2026-06-15の報告で「GTIG attributes this activity to UNC6508 with high confidence.」と述べ、根拠としてキャンペーン間のインフラ重複、REDCapサーバー上でのINFINITEREDバックドアの一貫した使用、医学研究および防衛分野への特異的な標的選択を挙げている。動機については「We assess UNC6508 is an espionage motivated threat cluster, with priorities that align with historic PRC state-sponsored espionage trends and intelligence collection requirements.」として、PRCの国家支援型諜報の傾向および情報収集要求と優先度が整合すると評価する。特定の政府機関・企業への帰属は行われていない。",
-    "confidence": "high",
+    "confidence": "medium",
     "evidence_refs": [
       "source--gtig-unc6508-medical-research-2026",
       "source--gtig-adversarial-ai-2026"
@@ -71,7 +71,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": ""
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -267,7 +267,10 @@
           "source--gtig-adversarial-ai-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--unc6508--redcap-medical-research-2023-2025",
@@ -296,7 +299,8 @@
         "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "target--activity-rule--country--ee55e5e8faa5dd675d7b",
         "target--activity-rule--sector--260bd106ff4950e5430d",
-        "target--activity-rule--sector--e7608f51421ca8b1e297"
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--targeting-audit--region--8a2c1102279dd90c37e4"
       ],
       "malware_refs": [
         "malware--infinitered"
@@ -340,7 +344,8 @@
             "target--activity-rule--country--6604ad21c713b8dfd8c7",
             "target--activity-rule--country--ee55e5e8faa5dd675d7b",
             "target--activity-rule--sector--260bd106ff4950e5430d",
-            "target--activity-rule--sector--e7608f51421ca8b1e297"
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--targeting-audit--region--8a2c1102279dd90c37e4"
           ],
           "victim_refs": [
             "victim--activity-rule--3e3b5dda438e2bf439b5"
@@ -379,7 +384,9 @@
               "target--activity-rule--country--6604ad21c713b8dfd8c7",
               "target--activity-rule--country--ee55e5e8faa5dd675d7b"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--8a2c1102279dd90c37e4"
+            ]
           }
         },
         "confidence": "high",
@@ -387,7 +394,10 @@
           "source--gtig-unc6508-medical-research-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "victim_cases": [
@@ -563,8 +573,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -681,6 +691,32 @@
         "targeting"
       ],
       "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。tech-memo daily-news は本稿をBleepingComputerの二次要約で収録しており、当該要約は本クラスタに言及していないため、一次情報源の公開一覧チェックで検知した。"
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -720,7 +756,7 @@
       "ローカルLLM基盤の展開はGTIGが「suspected UNC6508 activity」と留保しており、本クラスタの活動と確定していない。",
       "既存の他プロファイルとの重複の有無は未確認である。GTIGは本クラスタに旧称や他ベンダー別名を示していない。"
     ],
-    "collection_notes": "一次資料2本(GTIG 2026-06-15、2026-09-08)を原文で確認。参照の起点は actor_profile/reference/osint/misp-threat-actor.json のUNC6508エントリと、2026-09-10の日次チェックにおける一次情報源の公開一覧確認。",
+    "collection_notes": "一次資料2本(GTIG 2026-06-15、2026-09-08)を原文で確認。参照の起点は actor_profile/reference/osint/misp-threat-actor.json のUNC6508エントリと、2026-09-10の日次チェックにおける一次情報源の公開一覧確認。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "parse-daily/unknown-clusters.json の unknown-cluster--unc6508 から昇格。台帳側は削除せず status: merged と統合先・統合日を残している。"
   },
   "free_text": {

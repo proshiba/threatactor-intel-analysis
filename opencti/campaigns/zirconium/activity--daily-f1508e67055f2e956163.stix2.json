@@ -1,0 +1,331 @@
+{
+  "type": "bundle",
+  "id": "bundle--468f5ba3-03b9-486f-93ed-30fde86d51ca",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Violet Typhoon、オンプレミスSharePointのToolShellを悪用",
+      "description": "Microsoftは、Violet Typhoon（ZIRCONIUM/APT31）が2025年7月7日頃からオンプレミスSharePointの脆弱性を悪用したと報告した。同じ脆弱性はLinen TyphoonとStorm-2603にも別個に悪用されており、NNSAを含む個別被害組織をViolet Typhoonへ一括帰属する根拠は示されていない。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-f1508e67055f2e956163",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftがViolet Typhoonへ帰属した活動範囲に限定。複数主体が同じ脆弱性を悪用したため、共通IOCだけで各被害を再帰属しない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--zirconium",
+          "name": "ZIRCONIUM",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-07-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-07-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2025-07-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2025-07-07T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "created": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ZIRCONIUM",
+      "aliases": [
+        "APT31",
+        "Judgement Panda",
+        "Judgment Panda",
+        "TIDE CASTLE",
+        "Violet Typhoon"
+      ],
+      "description": "[ZIRCONIUM](https://attack.mitre.org/groups/G0128) is a threat group operating out of China, active since at least 2017, that has targeted individuals associated with the 2020 US presidential election and prominent leaders in the international affairs community.(Citation: Microsoft Targeting Elections September 2020)(Citation: Check Point APT31 February 2021)",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--zirconium",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "APT31",
+          "vendor": "MITRE ATT&CK / Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Judgement Panda",
+          "vendor": "CERT-EU / ENISA",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cert-eu-enisa-apt31-2023"
+          ],
+          "analyst_notes": "The joint CERT-EU/ENISA publication explicitly identifies APT31 as also known as Judgment Panda and Zirconium."
+        },
+        {
+          "name": "Judgment Panda",
+          "vendor": "CERT-EU / ENISA",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cert-eu-enisa-apt31-2023"
+          ],
+          "analyst_notes": "The joint CERT-EU/ENISA publication explicitly identifies APT31 as also known as Judgment Panda and Zirconium."
+        },
+        {
+          "name": "TIDE CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "Violet Typhoon",
+          "vendor": "MITRE ATT&CK",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Curated merge into the canonical MITRE Group profile."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Op. Poisoned Hurricane",
+        "capability_details": "China Chopper Webshell, PlugX, Mimikatz, Sakula",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ベトナム、ロシア、中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nAerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ece94f36-04f5-481e-b696-0eae5a52447d",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "description": "Violet Typhoon、オンプレミスSharePointのToolShellを悪用 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2025-07-07T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4b0688b0-2a65-4e91-8ddf-5024cd6cad6f",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Disrupting active exploitation of on-premises SharePoint vulnerabilities",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-07-22T00:00:00Z",
+      "object_refs": [
+        "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+        "relationship--ece94f36-04f5-481e-b696-0eae5a52447d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--microsoft-toolshell-2025",
+      "x_evidence_slice_scope": "campaign:actor--zirconium:activity--daily-f1508e67055f2e956163",
+      "x_source_publisher": "Microsoft Threat Intelligence",
+      "x_source_type": "vendor-threat-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d804425b-4238-481c-a8ac-5f7848a9042b",
+      "created": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ZIRCONIUM / Violet Typhoon、オンプレミスSharePointのToolShellを悪用",
+      "description": "Microsoftは、Violet Typhoon（ZIRCONIUM/APT31）が2025年7月7日頃からオンプレミスSharePointの脆弱性を悪用したと報告した。同じ脆弱性はLinen TyphoonとStorm-2603にも別個に悪用されており、NNSAを含む個別被害組織をViolet Typhoonへ一括帰属する根拠は示されていない。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:16:06Z",
+      "object_refs": [
+        "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+        "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+        "relationship--ece94f36-04f5-481e-b696-0eae5a52447d",
+        "report--4b0688b0-2a65-4e91-8ddf-5024cd6cad6f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--zirconium",
+      "x_activity_id": "activity--daily-f1508e67055f2e956163"
+    }
+  ]
+}

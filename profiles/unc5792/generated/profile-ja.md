@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc5792`
 - 状態: draft
-- 更新日時: 2026-09-10T22:21:37Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:03Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -16,7 +16,9 @@ UNC5792はロシアを拠点とする脅威クラスタで、暗号化メッセ�
 - 最終観測: 不明
 - 活動状態: likely
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Frontier Blizzard | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
 
@@ -49,6 +51,37 @@ GTIGは2026-09-08の報告で本クラスタを「UNC5792—a Russia-based threa
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-21T02:39:13Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Frontier Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -103,7 +136,7 @@ FBI・CISAは2026年3月に最初の告知を行い、2026-06-26のPSA(I-062626-
 | sectors | 政府・行政 | 活動「Signalバックアップ復旧キーを狙うサポート偽装フィッシング」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--fbi-cisa-psa-signal-recovery-keys-2026` |
 | sectors | メディア・報道 | 活動「Signalバックアップ復旧キーを狙うサポート偽装フィッシング」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--fbi-cisa-psa-signal-recovery-keys-2026` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -149,6 +182,7 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--fbi-cisa-psa-signal-recovery-keys-2026 | Russian Cyber Actors Targeting Backup Recovery Keys of Encrypted Messaging Applications (I-062626-PSA) | Federal Bureau of Investigation / Cybersecurity and Infrastructure Security Agency | 2026-06-26 | https://www.ic3.gov/PSA/2026/PSA260626 | government-advisory | TLP:CLEAR | 高 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--famous-chollima`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:39:13Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -23,7 +23,7 @@ Aliasなし
 CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; its IT-worker revenue generation supports the North Korean regime.
 
 - 国: North Korea
-- スポンサー種別: state-aligned
+- スポンサー種別: state
 - 確度: 高
 - 証拠: `source--crowdstrike-famous-chollima-2026`, `source--crowdstrike-famous-chollima-2025`
 
@@ -44,21 +44,22 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | CrowdStrike-tracked DPRK-nexus adversary FAMOUS CHOLLIMA. |
-| Capability | Fraudulent identities, AI-assisted personas, remote IT employment, insider access, and associated hands-on-keyboard activity. |
-| Infrastructure | Front companies, remote-work infrastructure, and identity/laptop-farm ecosystems described across DPRK IT-worker reporting. |
-| Victim | Technology companies and other employers targeted for fraudulent remote employment. |
-| Socio-political | DPRK revenue generation. |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -67,6 +68,7 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Famous Chollima | canonical-name | 高 | KP |  |
 
 ### 関係性候補（未統合）
 
@@ -119,7 +121,7 @@ CrowdStrikeは2024〜2026年にかけてFAMOUS CHOLLIMAのIT-worker/insider型�
 
 ターゲット情報なし
 
-選定ロジック: Only source-explicit actor-specific targeting is structured.
+選定ロジック: Only source-explicit actor-specific targeting is structured. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -159,6 +161,7 @@ TTPなし
 | source--crowdstrike-famous-chollima-2025 | CrowdStrike 2025 Threat Hunting Report | CrowdStrike | 2025-08-04 | https://www.crowdstrike.com/en-us/blog/crowdstrike-2025-threat-hunting-report-ai-weapon-target/ | vendor-threat-research | TLP:CLEAR | 高 |
 | source--doj-dprk-it-worker-schemes-2025 | Justice Department Announces Coordinated, Nationwide Actions to Combat North Korean Remote IT Workers' Illicit Revenue Generation Schemes | U.S. Department of Justice | 2025-06-30 | https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote | government-law-enforcement | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,0 +1,491 @@
+{
+  "type": "bundle",
+  "id": "bundle--f14c7d76-58c9-4d5d-93fa-cbbed7e86ae0",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "created": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "description": "新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-bcf2e1dd42b8e1d500d6",
+      "x_activity_type": "campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--bcf2e1dd42b8e1d500d6f319 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--magecart",
+          "name": "Magecart",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--4221b5fbb827488c6eaa"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--450ca787b4c7bb9ad8ac"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-06T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-5b3e49d018b8dff5644f"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-07-29T15:20:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "金融",
+      "identity_class": "class",
+      "description": "活動「クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--88d4c9ff-e08e-4f6a-bf20-4fdb5b802c2e",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-07-29T15:20:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "identity_class": "organization",
+      "description": "新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--450ca787b4c7bb9ad8ac",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+      "created": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Magecart",
+      "aliases": [],
+      "description": "Magecartの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--magecart",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Magecartの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--524665b8-d8e7-4e24-ac9c-8fd0a60fe623",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--59027cef-4223-461c-a69c-e0e08c867b7f",
+      "created": "2026-07-27T11:04:33Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+      "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 is attributed or linked to Magecart.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d055d7f7-df5a-4300-84e3-bb5ee298b94b",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "Magecart targets 金融 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fba021b6-b820-41b1-83dc-ae32e7961436",
+      "created": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "target_ref": "identity--88d4c9ff-e08e-4f6a-bf20-4fdb5b802c2e",
+      "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 affected victim--activity-rule--450ca787b4c7bb9ad8ac.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c309ad56-8243-482a-a358-bbb774749479",
+      "created": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-06T00:00:00Z",
+      "object_refs": [
+        "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--88d4c9ff-e08e-4f6a-bf20-4fdb5b802c2e",
+        "relationship--524665b8-d8e7-4e24-ac9c-8fd0a60fe623",
+        "relationship--59027cef-4223-461c-a69c-e0e08c867b7f",
+        "relationship--d055d7f7-df5a-4300-84e3-bb5ee298b94b",
+        "relationship--fba021b6-b820-41b1-83dc-ae32e7961436"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "external_id": "source--daily-5b3e49d018b8dff5644f",
+          "url": "https://sansec.io/research/stripe-api-skimmer-infrastructure"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-5b3e49d018b8dff5644f",
+      "x_evidence_slice_scope": "campaign:actor--magecart:activity--daily-bcf2e1dd42b8e1d500d6",
+      "x_source_publisher": "sansec.io",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--859556ef-1cb6-49c9-bc31-f64f06e5ba8e",
+      "created": "2026-09-21T02:39:13Z",
+      "modified": "2026-09-21T02:39:13Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Magecart / クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "description": "新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T02:39:13Z",
+      "object_refs": [
+        "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--88d4c9ff-e08e-4f6a-bf20-4fdb5b802c2e",
+        "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+        "relationship--524665b8-d8e7-4e24-ac9c-8fd0a60fe623",
+        "relationship--59027cef-4223-461c-a69c-e0e08c867b7f",
+        "relationship--d055d7f7-df5a-4300-84e3-bb5ee298b94b",
+        "relationship--fba021b6-b820-41b1-83dc-ae32e7961436",
+        "report--c309ad56-8243-482a-a358-bbb774749479"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--magecart",
+      "x_activity_id": "activity--daily-bcf2e1dd42b8e1d500d6"
+    }
+  ]
+}

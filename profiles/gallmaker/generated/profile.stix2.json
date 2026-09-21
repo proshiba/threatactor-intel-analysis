@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19,6 +19,7 @@
       ],
       "external_references": [],
       "x_profile_id": "actor--gallmaker",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -34,16 +35,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東、東欧。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--gallmaker",
         "actor_name": "Gallmaker",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -52,6 +54,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -61,6 +64,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "dafbb134-1652-4444-8b12-9b4cc121e3c2",
@@ -85,7 +89,25 @@
                 "https://www.symantec.com/blogs/threat-intelligence/gallmaker-attack-group",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gallmaker&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2017",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Defense",
+                  "Embassies",
+                  "Government"
+                ],
+                "observed-countries": [
+                  "Eastern Europe and Middle East"
+                ],
+                "tools": [
+                  "Living off the Land"
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -112,11 +134,63 @@
               "refs": [
                 "https://www.symantec.com/blogs/threat-intelligence/gallmaker-attack-group"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "2fd2be6a-d3a2-4a65-b499-05ea2693abee",
+              "entry_value": "Gallmaker - G0084",
+              "external_id": "G0084",
+              "matched_names": [
+                {
+                  "normalized": "gallmaker",
+                  "profile_value": "Gallmaker",
+                  "dataset_value": "Gallmaker"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Gallmaker"
+              ],
+              "countries": [],
+              "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) is a cyberespionage group that has targeted victims in the Middle East and has been active since at least December 2017. The group has mainly targeted victims in the defense, military, and government sectors.(Citation: Symantec Gallmaker Oct 2018)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0084",
+                "https://www.symantec.com/blogs/threat-intelligence/gallmaker-attack-group"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232a7e42-cd6e-4902-8fe9-2960f529dd4d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "2fd2be6a-d3a2-4a65-b499-05ea2693abee",
@@ -165,10 +239,43 @@
                   "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "cd483597-4eda-4e16-bb58-353488511410",
+              "entry_value": "Gallmaker",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "gallmaker",
+                  "profile_value": "Gallmaker",
+                  "dataset_value": "Gallmaker"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Gallmaker"
+              ],
+              "countries": [],
+              "description": "[Gallmaker](https://app.tidalcyber.com/groups/cd483597-4eda-4e16-bb58-353488511410) is a cyberespionage group that has targeted victims in the Middle East and has been active since at least December 2017. The group has mainly targeted victims in the defense, military, and government sectors.<sup>[[Symantec Gallmaker Oct 2018](https://app.tidalcyber.com/references/f47b3e2b-acdd-4487-88b9-de5cbe45cf33)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Defense",
+                  "Government"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -197,7 +304,7 @@
       "spec_version": "2.1",
       "id": "identity--545c5b37-ffc9-416d-9dec-d10ed3910d72",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -208,12 +315,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -222,31 +324,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--cd2b4eef-78a2-4097-803b-d8e05b1ad648",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東欧",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでGallmakerの標的範囲として東欧が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--dc5956b8-f0e6-461f-92e1-bc873c921055",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -257,7 +337,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -268,7 +348,7 @@
       "spec_version": "2.1",
       "id": "identity--1b1e8bfe-b51f-479e-964f-ecb51e9a4613",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -279,7 +359,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -290,7 +370,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -305,7 +385,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027--general",
@@ -333,7 +413,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -348,7 +428,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -376,7 +456,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -391,7 +471,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -419,7 +499,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0f4d98c-896c-4a5f-b93c-7e706c3ccd6a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -434,7 +514,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1559-002--general",
@@ -462,7 +542,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -477,7 +557,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1560-001--general",
@@ -505,7 +585,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -520,7 +600,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-001--general",
@@ -548,7 +628,7 @@
       "spec_version": "2.1",
       "id": "relationship--b87c2b44-4e5c-46e6-9484-049add2799ae",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -556,29 +636,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "identity--545c5b37-ffc9-416d-9dec-d10ed3910d72",
       "description": "Gallmaker targets 中東 (profile target category: regions).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7f9c0acf-1ad3-47f7-9f98-4981c75ebc8d",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
-      "target_ref": "identity--cd2b4eef-78a2-4097-803b-d8e05b1ad648",
-      "description": "Gallmaker targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--faecd3eb-2383-4885-8577-020f96b8cb28",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -586,14 +658,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "identity--dc5956b8-f0e6-461f-92e1-bc873c921055",
       "description": "Gallmaker targets 防衛・軍事 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e4252aa6-f7d8-4ef3-8bac-b141b98129a9",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -601,14 +680,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "identity--1b1e8bfe-b51f-479e-964f-ecb51e9a4613",
       "description": "Gallmaker targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1122ca70-5789-4be3-85fd-74cd9d1dea49",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -616,14 +702,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) obfuscated shellcode used during execution.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3a426d85-24aa-4fa3-9a0a-6ab173e64487",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -631,14 +724,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) used PowerShell to download additional payloads and for execution.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d6c505d1-a37d-4eed-82f2-cd41b533b6cb",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -646,14 +746,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) sent victims a lure document with a warning that asked victims to “enable content” for execution.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--69376922-19a5-4959-8033-0c2f886186c5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -661,14 +768,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--b0f4d98c-896c-4a5f-b93c-7e706c3ccd6a",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) attempted to exploit Microsoft’s DDE protocol in order to gain access to victim machines and for execution.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f56a1258-9a7d-487e-b470-e7bdc5df094d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -676,14 +790,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) has used WinZip, likely to archive data prior to exfiltration.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4194a9c2-e278-4f8a-aba8-0b993daaf0d2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -691,14 +812,21 @@
       "source_ref": "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[Gallmaker](https://attack.mitre.org/groups/G0084) sent emails with malicious Microsoft Office documents attached.(Citation: Symantec Gallmaker Oct 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--50506cbd-181b-46e9-885f-e6617c227d90",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -708,14 +836,14 @@
         "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 15
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--1f72a6d1-a7c9-4360-a758-e577b276ea69",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -724,11 +852,10 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--64262e51-de25-47ce-b327-4eb4038ab5d8",
         "identity--545c5b37-ffc9-416d-9dec-d10ed3910d72",
-        "identity--cd2b4eef-78a2-4097-803b-d8e05b1ad648",
         "identity--dc5956b8-f0e6-461f-92e1-bc873c921055",
         "identity--1b1e8bfe-b51f-479e-964f-ecb51e9a4613",
         "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
@@ -738,7 +865,7 @@
         "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
         "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

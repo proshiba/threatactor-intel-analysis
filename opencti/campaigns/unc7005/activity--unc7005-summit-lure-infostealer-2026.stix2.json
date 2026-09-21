@@ -1,0 +1,1112 @@
+{
+  "type": "bundle",
+  "id": "bundle--7c43927b-0422-4444-9204-d3966b97b1bd",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9007ed7b-4cae-4fbb-848b-a571ab4278a1",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Spearphishing Link",
+      "description": "フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002",
+          "url": "https://attack.mitre.org/techniques/T1566/002/"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--9045691d65b283df2eec",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--unc7005-summit-lure-infostealer-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布",
+      "description": "2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "activity--unc7005-summit-lure-infostealer-2026",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "原文の「In late May 2026」からmonth精度で設定した。配布されたVIDAR・ATOMICはいずれもMaaSであり専有マルウェアではない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--atomic",
+            "malware--vidar"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--9045691d65b283df2eec"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--sector--e7608f51421ca8b1e297"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--e03d2994764dfa6e1bab"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "first_seen": "2026-05-01T00:00:00Z",
+      "last_seen": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "教育・研究",
+      "identity_class": "class",
+      "description": "活動「UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8d317a2d-86ca-4557-9a86-8ae2d73b76c5",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布",
+      "identity_class": "organization",
+      "description": "2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--e03d2994764dfa6e1bab",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "x_malware_refs": [
+        "malware--atomic",
+        "malware--vidar"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--9045691d65b283df2eec"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC7005",
+      "aliases": [
+        "STORM-2945"
+      ],
+      "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-08-13T00:00:00Z",
+      "goals": [
+        "GTIGはUNC7005を「suspected Russian cyber espionage」クラスタの一つとして扱い、「individuals of interest to the Russian state」を標的とするhighly selectiveな作戦と説明している。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_id": "actor--unc7005",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "STORM-2945",
+          "vendor": "Microsoft",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「UNC7005 (aka STORM-2945)」と明記した同一視である。ただしMicrosoftはStorm-2945を「Midnight Blizzardの運用サブクラスタ」として扱うのに対し、GTIGはUNC7005をICE RELIC(旧APT29)との関連をmoderate confidenceにとどめて別クラスタとして追跡しており、同じ指定子に対するクラスタ境界の評価がベンダー間で異なる。この差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。ICE RELIC(旧APT29)への接続はmoderate confidenceであり、具体的なロシア情報機関への帰属は行われていない。GTIG自身の表現は「suspected Russian」である。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。Microsoftが同一指定子(Storm-2945)をMidnight Blizzardのサブクラスタとして扱う点はスコープ評価の差であり、本プロファイルの帰属国とは矛盾しない。"
+      },
+      "x_free_text": {
+        "executive_summary": "UNC7005(Microsoft呼称: STORM-2945)はGTIGが2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。app passwordフィッシング、デバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。2026年7月に表面化した宿泊施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+        "history": "2026年2月にクラスタとして特定され、同月以降app passwordフィッシングを実施。4月下旬から大使館招待を題材とするデバイスコードフィッシングとMicrosoft認証を模倣するインフラの構築、5月にGLOBSECを装う作戦とウクライナ決議サミットを装うインフォスティーラー配布、5月から6月にWhatsAppを装う作戦、7月16日から23日にOWA題材ドメインの登録、7月31日以降Finnish Operations Centerを装うドメインの登録、8月6日から13日に欧州防衛産業向けのOAuthフィッシングを実施した。",
+        "capability_details": "マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、MaaSのVIDARとATOMIC。GTIGはCHERRYPIEの検体にLLM生成を示唆する痕跡が多数含まれると述べている。",
+        "infrastructure_details": "攻撃者管理ドメインの登録には複数のフリーメールアドレスが用いられ、chikolimdrid@gmail.comは2026年7月のOWA題材ドメイン3件とms365-live[.]comの登録に共通する。ms365-live[.]comとmy-invite[.]orgはいずれも104.194.159[.]150へ解決していた。",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、米国。標的地域=欧州。日本は確認時に個別国として保持する。\n\nウクライナ、西欧、米国の学術・外交・非営利分野の個人を主な標的とし、2026年8月には欧州の防衛産業に属するか関係する標的へ範囲を広げた。",
+        "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+      },
+      "x_osint_crosscheck_assessment": "possible-match",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "United States of America",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "USA",
+      "x_opencti_reference_id": "location--dbac05fd-3616-4d7c-9bcd-e6b867c1f5be",
+      "x_opencti_aliases": [
+        "US",
+        "USA",
+        "米国"
+      ],
+      "latitude": 37.09024,
+      "longitude": -95.712891,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--0fb0aae0-c3e4-4517-9418-4dda98287b55",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "VIDAR",
+      "description": "MaaSとして運用されるインフォスティーラー。UNC7005が2026年5月下旬の作戦でWindows利用者へ配布した検体は難読化されたGoバイナリーで、C2は107.189.18[.]7。ブラウザーに保存された資格情報、決済情報、Cookie、住所等を平文でC2へ送信する。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "malware--vidar",
+      "x_confidence": "high",
+      "x_analyst_notes": "VIDARは複数の攻撃者が利用するMaaSであり、本マルウェアの登録はUNC7005による利用の記録であって専有を意味しない。",
+      "is_family": true,
+      "malware_types": [
+        "Windows",
+        "infostealer",
+        "malware-as-a-service"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--4a738a9a-5222-4094-8328-c63def40f6ab",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ATOMIC",
+      "description": "MaaSとして運用されるmacOS向けインフォスティーラー。UNC7005は2026年5月下旬の作戦で、User AgentがmacOSを示す標的へ配布した。ブラウザーの機微情報を標的とする。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_profile_object_id": "malware--atomic",
+      "x_confidence": "high",
+      "x_analyst_notes": "ATOMICも共有MaaSであり、登録は利用の記録であって専有を意味しない。",
+      "is_family": true,
+      "malware_types": [
+        "macOS",
+        "infostealer",
+        "malware-as-a-service"
+      ],
+      "aliases": [
+        "AtomicStealer"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0d12151f-b808-4387-8c36-87b7f69599a2",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 is attributed or linked to UNC7005.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2356f44b-6941-479e-8810-84d09831832c",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "malware--4a738a9a-5222-4094-8328-c63def40f6ab",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 uses malware--atomic.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--90cfbc26-98bc-4551-99c2-7838c6cf1088",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "identity--8d317a2d-86ca-4557-9a86-8ae2d73b76c5",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 affected victim--activity-rule--e03d2994764dfa6e1bab.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--95e159df-8781-4b3b-9e9d-7251233c0c9c",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "attack-pattern--9007ed7b-4cae-4fbb-848b-a571ab4278a1",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 uses ttp--activity-rule--9045691d65b283df2eec.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9a9fd390-1e11-4ad5-abd6-08defcf53338",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 targets target--activity-rule--country--6604ad21c713b8dfd8c7.\n\nEvidence: GTIGはUNC7005を「primarily targets academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」と記述し、2026年8月には「targets in or related to the European defense industry」へ範囲を広げたとしている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a24555fb-ff2d-4ee7-bcbc-9f1902338b83",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "malware--0fb0aae0-c3e4-4517-9418-4dda98287b55",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 uses malware--vidar.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a363aa25-fcde-45fd-9ac9-e063113be092",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "target_ref": "attack-pattern--9007ed7b-4cae-4fbb-848b-a571ab4278a1",
+      "description": "フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d77d56e1-c576-46bc-b2a1-9acd635b299f",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "target_ref": "malware--4a738a9a-5222-4094-8328-c63def40f6ab",
+      "description": "UNC7005 uses ATOMIC.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d8a2ca2b-5743-4295-bbdc-0a9efc8cf094",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "target_ref": "malware--0fb0aae0-c3e4-4517-9418-4dda98287b55",
+      "description": "UNC7005 uses VIDAR.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e4f47038-25c6-4209-85e8-da6df5533c13",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+      "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+      "description": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--feecd401-448f-4388-8515-9b20e666bf3a",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+      "description": "UNC7005 targets 教育・研究 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ff90023f-0ce5-43b2-9c0a-6e6442fe34c0",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+      "target_ref": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+      "description": "UNC7005 targets 米国 (profile target category: countries).\n\nEvidence: GTIGはUNC7005を「primarily targets academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」と記述し、2026年8月には「targets in or related to the European defense industry」へ範囲を広げたとしている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "source-stated; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--acbcd49a-54a0-42f6-8b33-624de418ab3b",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-20T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--9007ed7b-4cae-4fbb-848b-a571ab4278a1",
+        "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+        "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+        "identity--8d317a2d-86ca-4557-9a86-8ae2d73b76c5",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+        "malware--0fb0aae0-c3e4-4517-9418-4dda98287b55",
+        "malware--4a738a9a-5222-4094-8328-c63def40f6ab",
+        "relationship--0d12151f-b808-4387-8c36-87b7f69599a2",
+        "relationship--2356f44b-6941-479e-8810-84d09831832c",
+        "relationship--90cfbc26-98bc-4551-99c2-7838c6cf1088",
+        "relationship--95e159df-8781-4b3b-9e9d-7251233c0c9c",
+        "relationship--9a9fd390-1e11-4ad5-abd6-08defcf53338",
+        "relationship--a24555fb-ff2d-4ee7-bcbc-9f1902338b83",
+        "relationship--a363aa25-fcde-45fd-9ac9-e063113be092",
+        "relationship--d77d56e1-c576-46bc-b2a1-9acd635b299f",
+        "relationship--d8a2ca2b-5743-4295-bbdc-0a9efc8cf094",
+        "relationship--e4f47038-25c6-4209-85e8-da6df5533c13",
+        "relationship--feecd401-448f-4388-8515-9b20e666bf3a",
+        "relationship--ff90023f-0ce5-43b2-9c0a-6e6442fe34c0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-going-with-the-flows-2026",
+      "x_evidence_slice_scope": "campaign:actor--unc7005:activity--unc7005-summit-lure-infostealer-2026",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "document",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--36cb8f78-c6d2-47f5-b7f3-6d954831b86c",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC7005 / UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布",
+      "description": "2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "attack-pattern--9007ed7b-4cae-4fbb-848b-a571ab4278a1",
+        "campaign--cd956773-2368-4b74-80b4-7159bf0d27ba",
+        "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+        "identity--8d317a2d-86ca-4557-9a86-8ae2d73b76c5",
+        "intrusion-set--45eb70dc-fabe-4655-b44b-8910ccc62e44",
+        "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
+        "malware--0fb0aae0-c3e4-4517-9418-4dda98287b55",
+        "malware--4a738a9a-5222-4094-8328-c63def40f6ab",
+        "relationship--0d12151f-b808-4387-8c36-87b7f69599a2",
+        "relationship--2356f44b-6941-479e-8810-84d09831832c",
+        "relationship--90cfbc26-98bc-4551-99c2-7838c6cf1088",
+        "relationship--95e159df-8781-4b3b-9e9d-7251233c0c9c",
+        "relationship--9a9fd390-1e11-4ad5-abd6-08defcf53338",
+        "relationship--a24555fb-ff2d-4ee7-bcbc-9f1902338b83",
+        "relationship--a363aa25-fcde-45fd-9ac9-e063113be092",
+        "relationship--d77d56e1-c576-46bc-b2a1-9acd635b299f",
+        "relationship--d8a2ca2b-5743-4295-bbdc-0a9efc8cf094",
+        "relationship--e4f47038-25c6-4209-85e8-da6df5533c13",
+        "relationship--feecd401-448f-4388-8515-9b20e666bf3a",
+        "relationship--ff90023f-0ce5-43b2-9c0a-6e6442fe34c0",
+        "report--acbcd49a-54a0-42f6-8b33-624de418ab3b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc7005",
+      "x_activity_id": "activity--unc7005-summit-lure-infostealer-2026"
+    }
+  ]
+}

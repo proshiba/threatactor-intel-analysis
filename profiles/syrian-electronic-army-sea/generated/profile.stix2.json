@@ -7,28 +7,40 @@
       "spec_version": "2.1",
       "id": "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Syrian Electronic Army (SEA)",
       "aliases": [
-        "Deadeye Jackal"
+        "Deadeye Jackal",
+        "Deadeye Hawk"
       ],
-      "description": "Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "description": "The Syrian Electronic Army is a pro-regime hacking collective that CrowdStrike historically tracked as DEADEYE JACKAL; CrowdStrike later renamed its Syria-nexus adversary tracking to DEADEYE HAWK.",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--syrian-electronic-army-sea",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Deadeye Jackal",
-          "vendor": "catalog",
+          "vendor": "CrowdStrike",
           "scope": "overlapping",
           "confidence": "medium",
           "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--crowdstrike-sea-deadeye-jackal-2015"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "CrowdStrike's 2015 report states that it tracked the Syrian Electronic Army as DEADEYE JACKAL. Scope remains overlapping because the vendor tracking boundary may not be identical to the public SEA label."
+        },
+        {
+          "name": "Deadeye Hawk",
+          "vendor": "CrowdStrike",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--syrian-electronic-army-sea--bfcd17832a028098"
+          ],
+          "analyst_notes": "CrowdStrike's 2023 report renamed its Syria-nexus adversary from DEADEYE JACKAL to DEADEYE HAWK. This is retained as a scoped rename rather than an exact identity assertion."
         }
       ],
       "x_attribution": {
@@ -52,9 +64,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--syrian-electronic-army-sea",
         "actor_name": "Syrian Electronic Army (SEA)",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -63,16 +76,19 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
             "Syrian Electronic Army (SEA)",
+            "Deadeye Hawk",
             "Deadeye Jackal"
           ],
           "mitre_group_id": null
         },
         "overall_assessment": "possible-match",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "0f16cba0-5b7f-449b-95a6-0ca000e9a63e",
@@ -104,7 +120,47 @@
                 "https://en.wikipedia.org/wiki/Syrian_Electronic_Army",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Syrian+Electronic+Army+%28SEA%29%2C+Deadeye+Jackal&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2011",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Defense",
+                  "Government",
+                  "High-Tech",
+                  "Media",
+                  "Retail",
+                  "Telecommunications",
+                  "dissidents"
+                ],
+                "observed-countries": [
+                  "Canada",
+                  "France",
+                  "UK",
+                  "USA",
+                  "Middle East"
+                ],
+                "tools": [
+                  "AndoServer",
+                  "SandroRAT",
+                  "SilverHawk",
+                  "SLRat",
+                  "SpyNote RAT"
+                ],
+                "operations": [
+                  {
+                    "date": "2016 Mid",
+                    "activity": "In recent years, the group has seemingly kept a low profile, but the SEA hasn't ceased activity: it's altered tactics and is now delivering custom Android malware to opponents of the Assad regime for the purposes of surveillance.\nhttps://www.zdnet.com/article/these-hackers-are-using-android-surveillance-malware-to-target-opponents-of-the-syrian-government/"
+                  },
+                  {
+                    "date": "2018-01",
+                    "activity": "Lookout researchers have uncovered a long-running surveillance campaign tied to Syrian nation-state actors, which recently started using the novel coronavirus as its newest lure to entice its targets to download malware.\nhttps://blog.lookout.com/nation-state-mobile-malware-targets-syrians-with-covid-19-lures"
+                  }
+                ],
+                "last-card-change": "2021-12-26"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -135,13 +191,24 @@
               "refs": [
                 "https://en.wikipedia.org/wiki/Syrian_Electronic_Army"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "targeted-sector": [
+                  "Country",
+                  "Defense",
+                  "Opposition",
+                  "Political party",
+                  "News - Media",
+                  "Government, Administration"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -168,169 +235,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--bc65aac6-0de2-4c58-bfed-96bcb7cb017a",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "SeANux: Sea Shell (Basic Web Shell)",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--seanux-sea-shell-basic-web-shell",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--70362f11-4c5c-403d-b6d3-fba0e6330adf",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Executer Webshell",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--executer-webshell",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Finance",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Finance sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--4ade189c-13d3-43ed-b204-a23138c98e72",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Media",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Media sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--853f7514-06c5-409c-a913-eef4c94c0cd7",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
-      "target_ref": "malware--bc65aac6-0de2-4c58-bfed-96bcb7cb017a",
-      "description": "Syrian Electronic Army (SEA) uses SeANux: Sea Shell (Basic Web Shell).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--bdbb2264-9f69-475e-95b1-d43f5c8f9bb3",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
-      "target_ref": "malware--70362f11-4c5c-403d-b6d3-fba0e6330adf",
-      "description": "Syrian Electronic Army (SEA) uses Executer Webshell.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--00ee20d6-2735-44e5-b633-e9d959d936ab",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
-      "target_ref": "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
-      "description": "Syrian Electronic Army (SEA) targets Finance (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--308ae2d0-4979-41fe-87e6-0d1149c2a309",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
-      "target_ref": "identity--4ade189c-13d3-43ed-b204-a23138c98e72",
-      "description": "Syrian Electronic Army (SEA) targets Media (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--ee4e8e9d-56cf-4a73-ba75-9639d8534218",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -340,14 +249,14 @@
         "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 8
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--4e3e1d6a-6a12-4fb1-902e-5c0899e35161",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -356,15 +265,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc",
-        "malware--bc65aac6-0de2-4c58-bfed-96bcb7cb017a",
-        "malware--70362f11-4c5c-403d-b6d3-fba0e6330adf",
-        "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
-        "identity--4ade189c-13d3-43ed-b204-a23138c98e72"
+        "intrusion-set--17fc6aaa-0227-4b44-b7d2-9a4ebf886abc"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

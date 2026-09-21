@@ -5,10 +5,15 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from crosscheck_all_actors import ensure_progress_entry  # noqa: E402
+from crosscheck_all_actors import country_key, ensure_progress_entry  # noqa: E402
 
 
 class OsintProgressTests(unittest.TestCase):
+    def test_country_key_normalizes_localized_country_names(self) -> None:
+        self.assertEqual(country_key("中国"), "china")
+        self.assertEqual(country_key("CN"), "china")
+        self.assertEqual(country_key("China"), "china")
+
     def test_new_actor_gets_default_progress_entry(self) -> None:
         tracker = {"actors": []}
         by_slug = {}

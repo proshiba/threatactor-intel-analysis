@@ -1,0 +1,778 @@
+{
+  "type": "bundle",
+  "id": "bundle--3ccd9a25-a486-4cf9-a62b-0d7429926aba",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+      "created": "2026-07-27T11:04:39Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布",
+      "description": "Vanilla Tempestは遅くとも2025年6月からFox TempestのMSaaSへトロイ化したMicrosoft Teamsインストーラを持ち込み、不正署名済みバイナリを正規広告、マルバタイジング、SEOポイズニング経由で配布した。偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。Microsoftは2025年10月に関連する200超の証明書を失効させた。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cdd28b7e4efb97edb05f",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftのFox Tempest一次報告にあるVanilla Tempest事例へ主体を限定して統合。Fox Tempest自体のサービス運営・妨害はVanilla Tempestの活動として扱わず、uses-service-of関係として分離した。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--vanilla-tempest",
+          "name": "Vanilla Tempest",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--oyster",
+            "malware--rhysida"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--f98095af9352ea1ab8e2"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-1f90e973408c7fac0a86",
+          "source--daily-5287a969660d1bb7e309"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2025-06-01T00:00:00Z",
+      "last_seen": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5508a4ba-4cd9-4f49-a946-b4bc609d1da6",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T03:50:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布",
+      "identity_class": "organization",
+      "description": "Vanilla Tempestは遅くとも2025年6月からFox TempestのMSaaSへトロイ化したMicrosoft Teamsインストーラを持ち込み、不正署名済みバイナリを正規広告、マルバタイジング、SEOポイズニング経由で配布した。偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。Microsoftは2025年10月に関連する200超の証明書を失効させた。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--f98095af9352ea1ab8e2",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--oyster",
+        "malware--rhysida"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--81641f2e-54e4-4560-8ef0-ae438ad1bef8",
+      "created": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T03:50:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Vanilla Tempest",
+      "aliases": [
+        "DEV-0832",
+        "Vice Society",
+        "VICE SPIDER"
+      ],
+      "description": "Vanilla Tempestの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--vanilla-tempest",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "DEV-0832",
+          "vendor": "Microsoft Threat Intelligence",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--microsoft-dev0832-vice-society-2022"
+          ],
+          "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+        },
+        {
+          "name": "Vice Society",
+          "vendor": "Microsoft Threat Intelligence",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--microsoft-dev0832-vice-society-2022"
+          ],
+          "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+        },
+        {
+          "name": "VICE SPIDER",
+          "vendor": "Microsoft Threat Intelligence",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--microsoft-dev0832-vice-society-2022"
+          ],
+          "analyst_notes": "Microsoft explicitly states that DEV-0832 is also known as Vice Society and that DEV-0832 is now tracked as Vanilla Tempest."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "Vanilla Tempestの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--2b4b4159-1eca-4863-9a6e-c0ad3b214c68",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T03:50:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Rhysida",
+      "description": "Ransomware deployed by Vanilla Tempest in some intrusions using the same Fox Tempest-signed Teams-installer process.",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        }
+      ],
+      "x_profile_object_id": "malware--rhysida",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--53f2b12a-4cb3-4c9a-986e-1b67296f668d",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T03:50:44Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Oyster",
+      "description": "Modular multistage backdoor deployed from trojanized Teams installers; it provides persistence, C2, host discovery, and follow-on delivery.",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        }
+      ],
+      "x_profile_object_id": "malware--oyster",
+      "x_confidence": "high",
+      "x_analyst_notes": "Primary-source-verified capability used in the linked activity.",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "Broomstick"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--09e7299c-c212-4ea8-b915-6e7bbb121955",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+      "target_ref": "identity--5508a4ba-4cd9-4f49-a946-b4bc609d1da6",
+      "description": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布 affected victim--activity-rule--f98095af9352ea1ab8e2.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a4a6591-b47e-401c-9fe5-f736bc59c06e",
+      "created": "2026-07-27T11:04:39Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+      "target_ref": "intrusion-set--81641f2e-54e4-4560-8ef0-ae438ad1bef8",
+      "description": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布 is attributed or linked to Vanilla Tempest.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a7d5b78-bbc9-4bfc-969f-ecde2d269f92",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--81641f2e-54e4-4560-8ef0-ae438ad1bef8",
+      "target_ref": "malware--2b4b4159-1eca-4863-9a6e-c0ad3b214c68",
+      "description": "Vanilla Tempest uses Rhysida.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79e7b6b9-2396-4935-896c-926a16b59054",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--81641f2e-54e4-4560-8ef0-ae438ad1bef8",
+      "target_ref": "malware--53f2b12a-4cb3-4c9a-986e-1b67296f668d",
+      "description": "Vanilla Tempest uses Oyster.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--adedc7e9-ef53-4bab-bdf3-780b04eab690",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+      "target_ref": "malware--2b4b4159-1eca-4863-9a6e-c0ad3b214c68",
+      "description": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布 uses malware--rhysida.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d82c468a-d81e-4c0c-9822-2dda2ef1bcb6",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+      "target_ref": "malware--53f2b12a-4cb3-4c9a-986e-1b67296f668d",
+      "description": "Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布 uses malware--oyster.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-10-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2025-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2025-06-01T00:00:00Z",
+      "stop_time": "2025-10-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--0917f7d5-8c4c-4e62-9d55-5d1fa63352e3",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-10-17T00:00:00Z",
+      "object_refs": [
+        "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+        "identity--5508a4ba-4cd9-4f49-a946-b4bc609d1da6",
+        "relationship--09e7299c-c212-4ea8-b915-6e7bbb121955",
+        "relationship--5a4a6591-b47e-401c-9fe5-f736bc59c06e",
+        "relationship--adedc7e9-ef53-4bab-bdf3-780b04eab690",
+        "relationship--d82c468a-d81e-4c0c-9822-2dda2ef1bcb6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-5287a969660d1bb7e309",
+          "url": "https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-5287a969660d1bb7e309",
+      "x_evidence_slice_scope": "campaign:actor--vanilla-tempest:activity--daily-cdd28b7e4efb97edb05f",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--26d10013-ca44-4774-9edf-456ccc6a2402",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exposing Fox Tempest: A malware-signing service operation",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-19T00:00:00Z",
+      "object_refs": [
+        "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+        "identity--5508a4ba-4cd9-4f49-a946-b4bc609d1da6",
+        "malware--2b4b4159-1eca-4863-9a6e-c0ad3b214c68",
+        "malware--53f2b12a-4cb3-4c9a-986e-1b67296f668d",
+        "relationship--09e7299c-c212-4ea8-b915-6e7bbb121955",
+        "relationship--5a4a6591-b47e-401c-9fe5-f736bc59c06e",
+        "relationship--5a7d5b78-bbc9-4bfc-969f-ecde2d269f92",
+        "relationship--79e7b6b9-2396-4935-896c-926a16b59054",
+        "relationship--adedc7e9-ef53-4bab-bdf3-780b04eab690",
+        "relationship--d82c468a-d81e-4c0c-9822-2dda2ef1bcb6"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "external_id": "source--daily-1f90e973408c7fac0a86",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-1f90e973408c7fac0a86",
+      "x_evidence_slice_scope": "campaign:actor--vanilla-tempest:activity--daily-cdd28b7e4efb97edb05f",
+      "x_source_publisher": "Microsoft Threat Intelligence",
+      "x_source_type": "vendor-threat-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c756272a-a8bd-474c-b3e0-47409a51c665",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Vanilla Tempest / Vanilla Tempest、Fox Tempest署名済みの偽TeamsインストーラでOysterを配布",
+      "description": "Vanilla Tempestは遅くとも2025年6月からFox TempestのMSaaSへトロイ化したMicrosoft Teamsインストーラを持ち込み、不正署名済みバイナリを正規広告、マルバタイジング、SEOポイズニング経由で配布した。偽MSTeamsSetup.exeはOyster（Broomstick）バックドアを展開し、観測事例の一部ではRhysidaランサムウェアも配備された。Microsoftは2025年10月に関連する200超の証明書を失効させた。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "campaign--944196d3-1d99-477e-855b-0377b635bb97",
+        "identity--5508a4ba-4cd9-4f49-a946-b4bc609d1da6",
+        "intrusion-set--81641f2e-54e4-4560-8ef0-ae438ad1bef8",
+        "malware--2b4b4159-1eca-4863-9a6e-c0ad3b214c68",
+        "malware--53f2b12a-4cb3-4c9a-986e-1b67296f668d",
+        "relationship--09e7299c-c212-4ea8-b915-6e7bbb121955",
+        "relationship--5a4a6591-b47e-401c-9fe5-f736bc59c06e",
+        "relationship--5a7d5b78-bbc9-4bfc-969f-ecde2d269f92",
+        "relationship--79e7b6b9-2396-4935-896c-926a16b59054",
+        "relationship--adedc7e9-ef53-4bab-bdf3-780b04eab690",
+        "relationship--d82c468a-d81e-4c0c-9822-2dda2ef1bcb6",
+        "report--0917f7d5-8c4c-4e62-9d55-5d1fa63352e3",
+        "report--26d10013-ca44-4774-9edf-456ccc6a2402"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--vanilla-tempest",
+      "x_activity_id": "activity--daily-cdd28b7e4efb97edb05f"
+    }
+  ]
+}

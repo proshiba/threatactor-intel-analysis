@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--goffee`
 - 状態: draft
-- 更新日時: 2026-09-18T01:45:20Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T03:50:38Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -44,11 +44,42 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | GOFFEE(BI.ZONE 呼称: Paper Werewolf)。少なくとも2022年初頭から活動する、ロシア連邦の組織を標的とする脅威グループ。いずれの一次資料も出身国・後援関係を述べていない。Kaspersky は過去に HeartlessSoul との関連を確認しており、両グループの背後に同一の攻撃者がいると中程度の確度で評価するが、道具立ては大きく異なるとしている。 |
-| Capability | 自製マルウェア: 悪性IISモジュール Owowa、PowerShell製の非公開Mythicエージェント PowerTaskel とその後継 PowerTaskel v2、PowerShellダウンローダ PowerModul(BI.ZONE 呼称 PowerRAT に対応)、リムーバブルメディアからのファイル窃取 FlashFileGrabber/FlashFileGrabberOffline、リムーバブルメディア感染用 USB Worm、バイナリRAT の WarpRAT(別名 EchoGather RAT)、BI.ZONE が挙げる QwakMyAgent。既製品は Mythic フレームワークとその Poseidon エージェント、Chisel、PsExec、Gophish、Inno Setup。Kaspersky は攻撃準備に AI を含む自動化手段を用いると述べる。 |
-| Infrastructure | キャンペーンごとに入れ替える .online / .site / .com の短命ドメイン群と VPS。C2 の所在を隠すためにリバースプロキシサーバを多用する。WarpRAT は 443/TCP・TLS・POST を用い、sleepTime と anti-VM を設定で持つ。PowerModul は http://<C2>/api/texts/<computer>_<user>_<disk-serial> 形式で識別子をURLへ付与する。 |
-| Victim | ロシア連邦の組織が中心。Kaspersky の2026年の報告では約120の被害組織をロシア連邦で確認し、CIS諸国で数件、EUで単発の被害を確認している(EUへの攻撃は偶発的と評価)。業種は機械製造・製造業・政府部門(2026年)、マスメディアと通信・建設・政府機関・エネルギー(2024年後半)、政府・エネルギー・金融・メディアほか(BI.ZONE)。 |
-| Socio-political | 諜報目的が主であり、達成後に被害インフラの運用を妨害した事例が1件ある。いずれの一次資料も国家との関係を述べていないため、地政学的な位置付けは未確定である。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-21T02:39:13Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | GOFFEE | canonical-name | 高 |  | https://securelist.com/goffee-apt-new-attacks/116139/ |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -109,9 +140,9 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | GOFFEEによる改変Owowa IISモジュールの設置 | espionage-campaign | 2022-05 | 2023-08 | 2025-04-10 |  | malware--goffee-owowa | ttp--goffee--asymmetric-crypto, ttp--goffee--iis-components, ttp--goffee--web-portal-capture |  | Kasperskyは、GOFFEEが2022年5月から2023年夏にかけて、改変したOwowa(悪性IISモジュール)を攻撃に用いていたと報告した。BI.ZONEは同モジュールがOutlook Web Accessの利用者認証時に資格情報を窃取し、窃取データをHashSetとしてメモリ上に保持すると説明している。特定のユーザー名をリクエストヘッダへ与えると、Base64で符号化したデータ集合を返すモジュール、および復号後のデータを削除してRSA暗号化したOk文字列を返すモジュールが確認されている。 | 高 | `source--kaspersky-goffee-recent-attacks-2025`, `source--bizone-paper-werewolf-destructive-2024` |
-| Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為 | espionage-campaign | 2022 | 不明 | 2024-12-25 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--sector--energy, target--goffee--sector--finance | malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-owowa, malware--goffee-qwakmyagent | ttp--activity-rule--7176b5924c70b79b0a53, ttp--goffee--acquire-domains, ttp--goffee--acquire-vps, ttp--goffee--data-destruction, ttp--goffee--deobfuscate, ttp--goffee--develop-malware, ttp--goffee--dynamic-api-resolution, ttp--goffee--embedded-payloads, ttp--goffee--encoded-file, ttp--goffee--fallback-channels, ttp--goffee--fileless-storage, ttp--goffee--hidden-files, ttp--goffee--ingress-tool-transfer, ttp--goffee--lateral-tool-transfer, ttp--goffee--obtain-tool, ttp--goffee--phishing, ttp--goffee--powershell, ttp--goffee--registry-run-keys, ttp--goffee--stage-upload-malware, ttp--goffee--system-info-discovery, ttp--goffee--system-owner-discovery, ttp--goffee--system-shutdown, ttp--goffee--user-execution, ttp--goffee--visual-basic, ttp--goffee--web-protocols | victim--activity-rule--a99f98d19df0289fcaf0 | BI.ZONE Threat Intelligenceは、Paper Werewolf(別名GOFFEE)の活動急増を観測し、2022年以降で少なくとも7件のキャンペーンを記録した。被害組織には政府、エネルギー、金融、メディアほかが含まれる。攻撃者は著名な組織(大規模機関、規制当局、法執行機関)を装うフィッシングメールで悪性マクロ入りのWord文書を配布し、配信にはオープンソースのGophishフレームワークをしばしば用いた。文書は研究機関、自治体、電力系統会社などの文書を装っていた。マクロは復号したペイロードを%USERPROFILE%\UserCache.ini(PowerShell)と%USERPROFILE%\UserCache.ini.hta(HTA)へ書き出し、HKEY_CURRENT_USER\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows\LOADへHTAのパスを書き込んで永続化した。環境変数AZURE_RESOURCE_GROUP、ONEDRIVE_RESOURCE_GROUP、AZURE_DECODEへマルウェアを退避して秘匿する手口、および1×1ピクセル画像へのリンクによる開封監視も観測された。諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。 | 高 | `source--bizone-paper-werewolf-destructive-2024` |
-| GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | espionage-campaign | 2024-07 | 2024-12 | 2025-04-10 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--country--russia, target--goffee--sector--construction, target--goffee--sector--energy, target--goffee--sector--telecom | malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-flashfilegrabber, malware--goffee-usb-worm | ttp--activity-rule--22646f6aaf2520e13f75, ttp--activity-rule--73ede5bdd0635240e606, ttp--goffee--data-from-removable-media, ttp--goffee--double-file-extension, ttp--goffee--mshta, ttp--goffee--process-injection, ttp--goffee--removable-media-replication, ttp--goffee--spearphishing-attachment | victim--activity-rule--9a954514c78337fd43b4 | Kasperskyは、2024年後半にGOFFEEがロシア連邦の組織へ標的型攻撃を継続し、PowerTaskelに加えて新たなインプラントPowerModulを投入したと報告した。初期感染は悪性添付付きのフィッシングメールで、同時期に2つの経路が併用された。1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。もう1つはマクロをドロッパーとするMicrosoft Office文書で、HTAとPowerShellの2ファイルを作成し、HKCU\Software\Microsoft\Windows NT\CurrentVersion\WindowsのLOAD値へHTAのパスを書き込んで自動起動させる。HTAはcmd.exeと出力リダイレクトでUserCacheHelper.lnk.jsを作成して実行し、そのJavaScriptがWMIのWin32_Process経由で非表示のPowerShellを起動してUserCache.ini(PowerModul)を読み込ませる。PowerModulのペイロードはPowerTaskel、FlashFileGrabber、USB Wormであった。横展開の局面ではPowerShellの制約を理由にPowerTaskelからバイナリMythicエージェントへ移行し、PowerTaskelがC2からエージェントを取得して自プロセスへ注入する。被害はロシア連邦に所在する組織で、マスメディアと通信、建設、政府機関、エネルギーの各分野にわたった。 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
-| GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | espionage-campaign | 2026-03 | 2026-03 | 2026-08-28 | target--activity-rule--sector--210dddb39397dbe50e91, target--goffee--country--russia, target--goffee--region--cis, target--goffee--region--europe, target--goffee--sector--manufacturing | malware--goffee-warprat, malware--goffee-powertaskel-v2 | ttp--goffee--encrypted-channel, ttp--goffee--proxy, ttp--goffee--sandbox-evasion, ttp--goffee--spearphishing-link, ttp--goffee--user-execution-installer | victim--activity-rule--d86163e519a5c281599b | Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
+| Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為 | espionage-campaign | 2022 | 不明 | 2024-12-25 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--sector--energy, target--goffee--sector--finance | malware--goffee-owowa, malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-qwakmyagent | ttp--activity-rule--7176b5924c70b79b0a53, ttp--goffee--acquire-domains, ttp--goffee--acquire-vps, ttp--goffee--data-destruction, ttp--goffee--deobfuscate, ttp--goffee--develop-malware, ttp--goffee--dynamic-api-resolution, ttp--goffee--embedded-payloads, ttp--goffee--encoded-file, ttp--goffee--fallback-channels, ttp--goffee--fileless-storage, ttp--goffee--hidden-files, ttp--goffee--ingress-tool-transfer, ttp--goffee--lateral-tool-transfer, ttp--goffee--obtain-tool, ttp--goffee--phishing, ttp--goffee--powershell, ttp--goffee--registry-run-keys, ttp--goffee--stage-upload-malware, ttp--goffee--system-info-discovery, ttp--goffee--system-owner-discovery, ttp--goffee--system-shutdown, ttp--goffee--user-execution, ttp--goffee--visual-basic, ttp--goffee--web-protocols | victim--activity-rule--a99f98d19df0289fcaf0 | BI.ZONE Threat Intelligenceは、Paper Werewolf(別名GOFFEE)の活動急増を観測し、2022年以降で少なくとも7件のキャンペーンを記録した。被害組織には政府、エネルギー、金融、メディアほかが含まれる。攻撃者は著名な組織(大規模機関、規制当局、法執行機関)を装うフィッシングメールで悪性マクロ入りのWord文書を配布し、配信にはオープンソースのGophishフレームワークをしばしば用いた。文書は研究機関、自治体、電力系統会社などの文書を装っていた。マクロは復号したペイロードを%USERPROFILE%\UserCache.ini(PowerShell)と%USERPROFILE%\UserCache.ini.hta(HTA)へ書き出し、HKEY_CURRENT_USER\SOFTWARE\Microsoft\WindowsNT\CurrentVersion\Windows\LOADへHTAのパスを書き込んで永続化した。環境変数AZURE_RESOURCE_GROUP、ONEDRIVE_RESOURCE_GROUP、AZURE_DECODEへマルウェアを退避して秘匿する手口、および1×1ピクセル画像へのリンクによる開封監視も観測された。諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。 | 高 | `source--bizone-paper-werewolf-destructive-2024` |
+| GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | espionage-campaign | 2024-07 | 2024-12 | 2025-04-10 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--country--russia, target--goffee--sector--construction, target--goffee--sector--energy, target--goffee--sector--telecom | malware--goffee-flashfilegrabber, malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-usb-worm | ttp--activity-rule--22646f6aaf2520e13f75, ttp--activity-rule--73ede5bdd0635240e606, ttp--goffee--data-from-removable-media, ttp--goffee--double-file-extension, ttp--goffee--mshta, ttp--goffee--process-injection, ttp--goffee--removable-media-replication, ttp--goffee--spearphishing-attachment | victim--activity-rule--9a954514c78337fd43b4 | Kasperskyは、2024年後半にGOFFEEがロシア連邦の組織へ標的型攻撃を継続し、PowerTaskelに加えて新たなインプラントPowerModulを投入したと報告した。初期感染は悪性添付付きのフィッシングメールで、同時期に2つの経路が併用された。1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。もう1つはマクロをドロッパーとするMicrosoft Office文書で、HTAとPowerShellの2ファイルを作成し、HKCU\Software\Microsoft\Windows NT\CurrentVersion\WindowsのLOAD値へHTAのパスを書き込んで自動起動させる。HTAはcmd.exeと出力リダイレクトでUserCacheHelper.lnk.jsを作成して実行し、そのJavaScriptがWMIのWin32_Process経由で非表示のPowerShellを起動してUserCache.ini(PowerModul)を読み込ませる。PowerModulのペイロードはPowerTaskel、FlashFileGrabber、USB Wormであった。横展開の局面ではPowerShellの制約を理由にPowerTaskelからバイナリMythicエージェントへ移行し、PowerTaskelがC2からエージェントを取得して自プロセスへ注入する。被害はロシア連邦に所在する組織で、マスメディアと通信、建設、政府機関、エネルギーの各分野にわたった。 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
+| GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | espionage-campaign | 2026-03 | 2026-03 | 2026-08-28 | target--goffee--country--russia, target--goffee--region--cis, target--goffee--region--europe, target--goffee--sector--manufacturing | malware--goffee-powertaskel, malware--goffee-powertaskel-v2, malware--goffee-warprat | ttp--goffee--encrypted-channel, ttp--goffee--proxy, ttp--goffee--sandbox-evasion, ttp--goffee--spearphishing-link, ttp--goffee--user-execution-installer | victim--activity-rule--d86163e519a5c281599b | Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -120,7 +151,7 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 | GOFFEEによる改変Owowa IISモジュールの設置 | GOFFEE | Owowa | T1573.002 Asymmetric Cryptography, T1505.004 IIS Components, T1056.003 Web Portal Capture | 情報なし | 情報なし | 情報なし | 高 |
 | Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為 | GOFFEE | Owowa, PowerModul, PowerTaskel, QwakMyAgent | T1059.001 PowerShell, T1583.001 Domains, T1583.003 Virtual Private Server, T1485 Data Destruction, T1140 Deobfuscate/Decode Files or Information, T1587.001 Malware, T1027.007 Dynamic API Resolution, T1027.009 Embedded Payloads, T1027.013 Encrypted/Encoded File, T1008 Fallback Channels, T1027.011 Fileless Storage, T1564.001 Hidden Files and Directories, T1105 Ingress Tool Transfer, T1570 Lateral Tool Transfer, T1588.002 Tool, T1566 Phishing, T1059.001 PowerShell, T1547.001 Registry Run Keys / Startup Folder, T1608.001 Upload Malware, T1082 System Information Discovery, T1033 System Owner/User Discovery, T1529 System Shutdown/Reboot, T1204.002 Malicious File, T1059.005 Visual Basic, T1071.001 Web Protocols | C2 とマルウェア配置に用いる VPS | 政府・行政, メディア・報道, エネルギー, 金融 | 被害事例: Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為 | 高 |
 | GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | GOFFEE | FlashFileGrabber, PowerModul, PowerTaskel, USB Worm | T1027 Obfuscated Files or Information, T1036 Masquerading, T1025 Data from Removable Media, T1036.007 Double File Extension, T1218.005 Mshta, T1055 Process Injection, T1091 Replication Through Removable Media, T1566.001 Spearphishing Attachment | 情報なし | 政府・行政, メディア・報道, ロシア, 建設, エネルギー, 情報通信 | 被害事例: GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | 高 |
-| GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | GOFFEE | PowerTaskel v2, WarpRAT | T1573 Encrypted Channel, T1090 Proxy, T1497 Virtualization/Sandbox Evasion, T1566.002 Spearphishing Link, T1204.002 Malicious File | キャンペーンごとに使い分ける短命ドメイン群, C2 秘匿のためのリバースプロキシ | 政府・行政, ロシア, CIS諸国, 欧州, 製造・産業 | 被害事例: GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | 高 |
+| GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | GOFFEE | PowerTaskel, PowerTaskel v2, WarpRAT | T1573 Encrypted Channel, T1090 Proxy, T1497 Virtualization/Sandbox Evasion, T1566.002 Spearphishing Link, T1204.002 Malicious File | キャンペーンごとに使い分ける短命ドメイン群, C2 秘匿のためのリバースプロキシ | ロシア, CIS諸国, 欧州, 製造・産業 | 被害事例: GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | 高 |
 
 Kaspersky が本アクターを認知したのは2022年初頭である。2022年5月から2023年夏にかけては改変した Owowa を IIS へ設置し、Outlook Web Access の認証時に資格情報を窃取していた。2024年からはパッチを当てた explorer.exe をスピアフィッシングで配布する手口へ移行し、2024年後半には PowerTaskel に加えて PowerModul を投入した。同年12月、BI.ZONE は Paper Werewolf の活動急増を報告し、2022年以降で少なくとも7件のキャンペーンを記録するとともに、諜報目的の達成後に被害インフラの運用を妨害した事例を1件公表した。2026年3月には偽の Acrobat Reader 更新通知を描画した PDF から WarpRAT を配布する新しい初期アクセス手法が観測され、同時に PowerTaskel の進化形である PowerTaskel v2 の展開が確認された。
 
@@ -131,23 +162,23 @@ Kaspersky が本アクターを認知したのは2022年初頭である。2022�
 | countries | ロシア | Kasperskyは2025年の報告で「the identified targets of the malicious activities described in this article are located in Russia」とし、2026年の報告では「мы обнаружили около 120 жертв в Российской Федерации」として約120の被害組織をロシア連邦で確認したと述べる。被害の主たる所在をロシア連邦と判断した根拠として、スピアフィッシングのメールとおとりファイルのほとんどがロシア語であったという言語的手掛かりとテレメトリを挙げている。 | 2024-07 | 2026-03 | 高 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025`, `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
 | regions | CIS諸国 | Kasperskyは2026年の報告で「несколько — в странах СНГ」として、CIS諸国でも数件の被害を確認したと述べる。個別の国名は原文に記載がない。 | 2026-03 | 2026-03 | 中 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
 | regions | 欧州 | Kasperskyは2026年の報告で「единичные — в ЕС」としてEUで単発の被害を確認したが、「Атаки на цели в странах Евросоюза носят случайный характер」として、EU域内の標的への攻撃は偶発的な性質のものであると評価している。 | 2026-03 | 2026-03 | 低 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
-| sectors | 政府・行政 | Kasperskyは2025年の報告で対象業種に「government entities」を挙げ、2026年の報告では「Большая часть целей принадлежала к машиностроению, производству и государственному сектору」として政府部門を主たる標的の1つとする。BI.ZONEも被害組織に政府機関を挙げ、GOFFEEのキャンペーンに典型的な被害者層としてKasperskyは「в основном это государственные учреждения и промышленные предприятия РФ」と述べる。 | 2024-07 | 2026-03 | 高 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025`, `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
-| sectors | メディア・報道 | Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。BI.ZONEも被害組織にメディアを挙げる。 | 2024-07 | 2024-12 | 高 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025` |
-| sectors | 情報通信 | Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。 | 2024-07 | 2024-12 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
-| sectors | 製造・産業 | Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。 | 2026-03 | 2026-03 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
-| sectors | エネルギー | Kasperskyは2025年の報告で対象業種に「energy companies」を挙げる。BI.ZONEも被害組織にエネルギー分野を挙げ、電力系統会社の文書を装ったおとりの使用を記録している。 | 2022 | 2024-12 | 高 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025` |
+| sectors | 政府・行政 | 活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。 | 2022 | 2024-12 | 中 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025` |
+| sectors | メディア・報道 | 活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。 | 2022 | 2024-12 | 中 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025` |
 | sectors | 建設 | Kasperskyは2025年の報告で対象業種に「construction」を挙げる。 | 2024-07 | 2024-12 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
+| sectors | エネルギー | Kasperskyは2025年の報告で対象業種に「energy companies」を挙げる。BI.ZONEも被害組織にエネルギー分野を挙げ、電力系統会社の文書を装ったおとりの使用を記録している。 | 2022 | 2024-12 | 高 | `source--bizone-paper-werewolf-destructive-2024`, `source--kaspersky-goffee-recent-attacks-2025` |
 | sectors | 金融 | BI.ZONEは被害組織に金融分野を挙げる(「Among the victims are government, energy, financial, media, and other organizations」)。 | 2022 | 不明 | 中 | `source--bizone-paper-werewolf-destructive-2024` |
+| sectors | 製造・産業 | Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。 | 2026-03 | 2026-03 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
+| sectors | 情報通信 | Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。 | 2024-07 | 2024-12 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
 
-選定ロジック: Kasperskyは標的が狭く選別されていること(「направленные на узкий круг целей」「специально отобранный круг жертв」)をGOFFEEの特徴として繰り返し述べる。被害はロシア連邦の組織に集中し、2026年の報告は業種の中心を機械製造・製造業・政府部門とする。CIS諸国での被害は数件、EUでの被害は単発かつ偶発的と評価されている。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関など被害者が信頼しやすい実在組織の文書を模したものが用いられる。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Kasperskyは標的が狭く選別されていること(「направленные на узкий круг целей」「специально отобранный круг жертв」)をGOFFEEの特徴として繰り返し述べる。被害はロシア連邦の組織に集中し、2026年の報告は業種の中心を機械製造・製造業・政府部門とする。CIS諸国での被害は数件、EUでの被害は単発かつ偶発的と評価されている。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関など被害者が信頼しやすい実在組織の文書を模したものが用いられる。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--country--russia, target--goffee--sector--construction, target--goffee--sector--energy | malware--goffee-flashfilegrabber, malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-usb-worm | ttp--activity-rule--22646f6aaf2520e13f75, ttp--activity-rule--73ede5bdd0635240e606, ttp--goffee--data-from-removable-media, ttp--goffee--double-file-extension, ttp--goffee--mshta, ttp--goffee--process-injection, ttp--goffee--removable-media-replication, ttp--goffee--spearphishing-attachment | メール／メールアカウント |  | 2024-07 | 2024-12 | 2025-04-10 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
+| 被害事例: GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--country--russia, target--goffee--sector--construction, target--goffee--sector--energy, target--goffee--sector--telecom | malware--goffee-flashfilegrabber, malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-usb-worm | ttp--activity-rule--22646f6aaf2520e13f75, ttp--activity-rule--73ede5bdd0635240e606, ttp--goffee--data-from-removable-media, ttp--goffee--double-file-extension, ttp--goffee--mshta, ttp--goffee--process-injection, ttp--goffee--removable-media-replication, ttp--goffee--spearphishing-attachment | メール／メールアカウント |  | 2024-07 | 2024-12 | 2025-04-10 | 高 | `source--kaspersky-goffee-recent-attacks-2025` |
 | 被害事例: Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61, target--goffee--sector--energy, target--goffee--sector--finance | malware--goffee-owowa, malware--goffee-powermodul, malware--goffee-powertaskel, malware--goffee-qwakmyagent | ttp--activity-rule--7176b5924c70b79b0a53, ttp--goffee--acquire-domains, ttp--goffee--acquire-vps, ttp--goffee--data-destruction, ttp--goffee--deobfuscate, ttp--goffee--develop-malware, ttp--goffee--dynamic-api-resolution, ttp--goffee--embedded-payloads, ttp--goffee--encoded-file, ttp--goffee--fallback-channels, ttp--goffee--fileless-storage, ttp--goffee--hidden-files, ttp--goffee--ingress-tool-transfer, ttp--goffee--lateral-tool-transfer, ttp--goffee--obtain-tool, ttp--goffee--phishing, ttp--goffee--powershell, ttp--goffee--registry-run-keys, ttp--goffee--stage-upload-malware, ttp--goffee--system-info-discovery, ttp--goffee--system-owner-discovery, ttp--goffee--system-shutdown, ttp--goffee--user-execution, ttp--goffee--visual-basic, ttp--goffee--web-protocols | メール／メールアカウント, クラウド／SaaS | disruption: 諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。 | 2022 | 不明 | 2024-12-25 | 高 | `source--bizone-paper-werewolf-destructive-2024` |
-| 被害事例: GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--goffee--country--russia, target--goffee--region--cis, target--goffee--region--europe, target--goffee--sector--manufacturing | malware--goffee-powertaskel-v2, malware--goffee-warprat | ttp--goffee--encrypted-channel, ttp--goffee--proxy, ttp--goffee--sandbox-evasion, ttp--goffee--spearphishing-link, ttp--goffee--user-execution-installer | メール／メールアカウント |  | 2026-03 | 2026-03 | 2026-08-28 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
+| 被害事例: GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 | 非公開 | anonymous | unknown | reported | target--goffee--country--russia, target--goffee--region--cis, target--goffee--region--europe, target--goffee--sector--manufacturing | malware--goffee-powertaskel, malware--goffee-powertaskel-v2, malware--goffee-warprat | ttp--goffee--encrypted-channel, ttp--goffee--proxy, ttp--goffee--sandbox-evasion, ttp--goffee--spearphishing-link, ttp--goffee--user-execution-installer | メール／メールアカウント |  | 2026-03 | 2026-03 | 2026-08-28 | 高 | `source--kaspersky-goffee-warprat-powertaskel-v2-2026` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -197,11 +228,11 @@ Kaspersky が本アクターを認知したのは2022年初頭である。2022�
 
 ## IOC／artifact概要
 
-- IOC値: 71件
-- IOC観測: 71件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 30件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -236,6 +267,7 @@ Kaspersky が本アクターを認知したのは2022年初頭である。2022�
 | source--kaspersky-goffee-warprat-powertaskel-v2-2026 | APT-группа GOFFEE продолжает атаки на организации в РФ, распространяя два бэкдора через целевой фишинг | Kaspersky GReAT (Securelist ロシア語版) | 2026-08-28 | https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/ | vendor-research | TLP:CLEAR | 高 |
 | source--kaspersky-goffee-recent-attacks-2025 | GOFFEE's recent attacks: new tools and techniques | Kaspersky GReAT (Securelist) | 2025-04-10 | https://securelist.com/goffee-apt-new-attacks/116139/ | vendor-research | TLP:CLEAR | 高 |
 | source--bizone-paper-werewolf-destructive-2024 | Espionage cluster Paper Werewolf engages in destructive behavior | BI.ZONE Threat Intelligence | 2024-12-25 | https://bi.zone/eng/expertise/blog/paper-werewolf-sovmeshchaet-kibershpionazh-s-destruktivnymi-deystviyami/ | vendor-research | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

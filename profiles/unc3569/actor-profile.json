@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--unc3569",
   "name": "UNC3569",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
@@ -47,7 +47,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -174,7 +174,10 @@
           "source--daily-a44134da0f07029e3862"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     },
     {
       "activity_id": "activity--daily-48716db321e86ff0f407",
@@ -200,9 +203,13 @@
       },
       "description": "Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。",
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91"
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--targeting-audit--country--39881b6f27f0986ea931",
+        "target--targeting-audit--region--af8e0b8ea3f352b88f87"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--daily-92623c41cfe9d6459335"
+      ],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
@@ -223,7 +230,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--daily-92623c41cfe9d6459335"
+          ],
           "ttp_refs": [
             "ttp--activity-rule--d23ef70e9a6b6307bc52"
           ]
@@ -233,7 +242,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91"
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--targeting-audit--country--39881b6f27f0986ea931",
+            "target--targeting-audit--region--af8e0b8ea3f352b88f87"
           ],
           "victim_refs": [
             "victim--activity-rule--b58e62cfdbc20134f3f1"
@@ -268,8 +279,12 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
+            "target_country_refs": [
+              "target--targeting-audit--country--39881b6f27f0986ea931"
+            ],
+            "target_region_refs": [
+              "target--targeting-audit--region--af8e0b8ea3f352b88f87"
+            ]
           }
         },
         "confidence": "medium",
@@ -277,7 +292,10 @@
           "source--daily-c20a23c702af45ff32d4"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "targets": {
@@ -354,8 +372,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -423,7 +441,14 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260914.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260914.md; source commit: 3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability"
+      ]
     },
     {
       "source_id": "source--daily-c20a23c702af45ff32d4",
@@ -441,7 +466,16 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -515,7 +549,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc3569.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc3569.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -541,7 +575,9 @@
       "target_refs": [
         "target--activity-rule--sector--210dddb39397dbe50e91"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--daily-92623c41cfe9d6459335"
+      ],
       "ttp_refs": [
         "ttp--activity-rule--d23ef70e9a6b6307bc52"
       ],

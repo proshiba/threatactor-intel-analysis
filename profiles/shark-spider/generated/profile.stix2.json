@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--a20f4bcb-e63c-4a7b-9158-793542a57434",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--shark-spider",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--shark-spider",
         "actor_name": "Shark Spider",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "c967a0bb-d7ec-4955-83ca-8b90172ef9af",
@@ -84,7 +88,29 @@
                 "https://securelist.com/shylockcaphaw-malware-trojan-the-overview/64599/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Shark+Spider&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2011",
+                "motivation": [
+                  "Financial crime"
+                ],
+                "observed-sectors": [
+                  "Financial"
+                ],
+                "observed-countries": [
+                  "Worldwide"
+                ],
+                "tools": [
+                  "Shylock"
+                ],
+                "operations": [
+                  {
+                    "date": "2013-01",
+                    "activity": "New Version of Shylock Malware Spreading Through Skype\nhttps://threatpost.com/new-version-shylock-malware-spreading-through-skype-011713/77416/"
+                  }
+                ],
+                "last-card-change": "2020-04-14"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -111,13 +137,19 @@
               ],
               "description": "This group's activity was first observed in November 2013. It leverages a banking Trojan more commonly known as Shylock which aims to compromise online banking credentials and credentials related to Bitcoin wallets.",
               "refs": [],
-              "related": []
+              "related": [],
+              "research_data": {
+                "targeted-sector": [
+                  "Bank"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -142,43 +174,6 @@
           "A Malpedia name match confirms catalogue presence only, not actor use."
         ]
       }
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--3c82003f-4c02-4e40-8a1b-4a0e831bef4c",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "全世界",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでShark Spiderの標的範囲として全世界が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--bcda2283-4dcc-47e3-81e0-cef466c1ad74",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a20f4bcb-e63c-4a7b-9158-793542a57434",
-      "target_ref": "identity--3c82003f-4c02-4e40-8a1b-4a0e831bef4c",
-      "description": "Shark Spider targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium"
     },
     {
       "type": "indicator",
@@ -244,7 +239,7 @@
       "spec_version": "2.1",
       "id": "note--7cef0248-f688-4e40-b91c-bd72bd1fbe73",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -254,14 +249,14 @@
         "intrusion-set--a20f4bcb-e63c-4a7b-9158-793542a57434"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 5
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--dde426aa-ebad-4bd8-8efd-25bd3aa64bde",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -270,13 +265,12 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--a20f4bcb-e63c-4a7b-9158-793542a57434",
-        "identity--3c82003f-4c02-4e40-8a1b-4a0e831bef4c",
         "indicator--e215fd56-ad76-4846-9155-7db58b1b4cc1"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

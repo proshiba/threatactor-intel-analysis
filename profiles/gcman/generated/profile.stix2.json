@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--gcman",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=ロシア。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--gcman",
         "actor_name": "GCMAN",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "e6eeb30a-a941-46f9-8340-20958f1d6cb0",
@@ -85,7 +89,27 @@
                 "https://securelist.com/apt-style-bank-robberies-increase-with-metel-gcman-and-carbanak-2-0-attacks/73638/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=GCMAN&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2016",
+                "motivation": [
+                  "Financial crime"
+                ],
+                "observed-sectors": [
+                  "Financial"
+                ],
+                "observed-countries": [
+                  "Russia"
+                ],
+                "tools": [
+                  "GCMAN",
+                  "Meterpreter",
+                  "PuTTY",
+                  "VNC",
+                  "malicious RAR archives"
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -124,7 +148,12 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "targeted-sector": [
+                  "Bank"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
@@ -146,27 +175,29 @@
                 "GCMAN"
               ],
               "countries": [],
-              "description": "GCMAN is a threat group that focuses on targeting banks for the purpose of transferring money to e-currency services. (Citation: Securelist GCMAN)",
+              "description": "[GCMAN](https://attack.mitre.org/groups/G0036) is a threat group that focuses on targeting banks for the purpose of transferring money to e-currency services. (Citation: Securelist GCMAN)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0036",
+                "https://attack.mitre.org/groups/G0036",
                 "https://securelist.com/apt-style-bank-robberies-increase-with-metel-gcman-and-carbanak-2-0-attacks/73638/"
               ],
               "related": [
+                {
+                  "dest-uuid": "01327cde-66c4-4123-bf34-5f258d59457b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2db31dcd-54da-405d-acef-b9129b816ed6",
+                  "type": "uses"
+                },
                 {
                   "dest-uuid": "d93889de-b4bc-4a29-9ce7-d67717c140a0",
                   "tags": [
                     "estimative-language:likelihood-probability=\"likely\""
                   ],
                   "type": "similar"
-                },
-                {
-                  "dest-uuid": "54a649ff-439a-41a4-9856-8d144a2551ba",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
-                  "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-mitre-intrusion-set": [
@@ -208,10 +239,42 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "dbc85db0-937d-47d7-9002-7364d41be48a",
+              "entry_value": "GCMAN",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "gcman",
+                  "profile_value": "GCMAN",
+                  "dataset_value": "GCMAN"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GCMAN"
+              ],
+              "countries": [],
+              "description": "[GCMAN](https://app.tidalcyber.com/groups/dbc85db0-937d-47d7-9002-7364d41be48a) is a threat group that focuses on targeting banks for the purpose of transferring money to e-currency services. <sup>[[Securelist GCMAN](https://app.tidalcyber.com/references/1f07f234-50f0-4c1e-942a-a01d3f733161)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Financial Gain"
+                ],
+                "target_categories": [
+                  "Financial Services"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -240,31 +303,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--8a8c44a5-a683-4171-bf78-dad577cc6523",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ロシア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでGCMANの標的・被害国としてロシアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--dcffd2d6-5f64-405f-b262-4d5afbc30d7d",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -275,7 +316,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -286,7 +327,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d372cad4-feb2-431c-aa91-007436b2ac82",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -301,7 +342,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-004--general",
@@ -329,7 +370,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--875ac815-b566-4b94-8928-af24764875c8",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -344,7 +385,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1021-005--general",
@@ -370,24 +411,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--65881354-9795-41fa-bf26-6edd65be2938",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
-      "target_ref": "identity--8a8c44a5-a683-4171-bf78-dad577cc6523",
-      "description": "GCMAN targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--a91c4eb3-7509-40e0-8ab7-a64dff1cadc1",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -395,14 +421,21 @@
       "source_ref": "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
       "target_ref": "identity--dcffd2d6-5f64-405f-b262-4d5afbc30d7d",
       "description": "GCMAN targets 金融 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c869eb45-d1da-4ff6-9dd4-8b2a910a522a",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -410,14 +443,21 @@
       "source_ref": "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
       "target_ref": "attack-pattern--d372cad4-feb2-431c-aa91-007436b2ac82",
       "description": "[GCMAN](https://attack.mitre.org/groups/G0036) uses Putty for lateral movement.(Citation: Securelist GCMAN)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a1fef82c-29ad-44ca-9ecc-6d8226444808",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -425,14 +465,21 @@
       "source_ref": "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
       "target_ref": "attack-pattern--875ac815-b566-4b94-8928-af24764875c8",
       "description": "[GCMAN](https://attack.mitre.org/groups/G0036) uses VNC for lateral movement.(Citation: Securelist GCMAN)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--af20a4fe-80f1-40dc-bbf9-f9d6d6259d26",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -442,14 +489,14 @@
         "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 15
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--a60dacc4-514c-4171-a438-16a12f41fcc2",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -458,15 +505,14 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--fd0cb532-06c7-4848-83b3-7046c11291fd",
-        "identity--8a8c44a5-a683-4171-bf78-dad577cc6523",
         "identity--dcffd2d6-5f64-405f-b262-4d5afbc30d7d",
         "attack-pattern--d372cad4-feb2-431c-aa91-007436b2ac82",
         "attack-pattern--875ac815-b566-4b94-8928-af24764875c8"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

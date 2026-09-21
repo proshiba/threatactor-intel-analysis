@@ -1,0 +1,2521 @@
+{
+  "type": "bundle",
+  "id": "bundle--9dbd5108-9610-40de-b00f-a92150669bb4",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--4b703096e6ee5c321f92",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取",
+      "description": "Microsoftは、Midnight Blizzardの運用サブクラスタ「Storm-2945」が2026年5月以降、世界各地の宿泊施設や空港、会議施設で提供される侵害されたcaptive portal Wi-Fiネットワークを悪用し、出張中の企業利用者の通信を攻撃者インフラへリダイレクトしていると報告した。通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。使用されたツールはGo製Windows RATのCornFlake、PowerShell製インフォスティーラーのChocoShell、キャンペーン基盤を操作するWebベースのC2オペレーターパネルFruitStoneである。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--captivecrunch-travel-wifi-2026",
+      "x_activity_type": "campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "標的は本文で「世界各地の出張中の企業利用者」とのみ記述され、特定の国・業種は明示されない。宿泊・渡航関連施設は攻撃経路(侵害されたcaptive portal)であり被害対象の業種ではないため、target_refsを推測で埋めず空配列のままとした(RULES.md 1条5項)。説明文では「小売・ホスピタリティ」「製造・産業」がactivity-rule抽出で誤検出されないよう、業種を想起させる語(ホテル、ホスピタリティ、エンジニアリング等の部分一致を含む語)を意図的に避けて記述している(検証: actor_profile/activity-observation-rules.jsonのsectorsパターンと照合し空一致を確認)。first_observedは本文が明記する「2026年5月以降」からmonth精度で設定し、個別インシデントの終了時期は明記されないためlast_observedはunknownとした。ttp_refsは空配列とし、enrich_activity_intelligence.pyによる記述文からの自動抽出に委ねた(手動でのMITRE技術ID追加は行っていない)。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt29",
+          "name": "APT29",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--chocoshell",
+            "malware--cornflake"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--4b703096e6ee5c321f92"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--captivecrunch-fruitstone-c2"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--targeting-audit--region--1b76161348734d33ac60"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--8b91ac12a7aa7c870ce1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "campaign",
+          "phases": [
+            "Execution"
+          ],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--targeting-audit--region--1b76161348734d33ac60"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-captivecrunch-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "first_seen": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--5c0104e6-9853-4808-99cc-467fbc9abbc5",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:dba572be253f7f4e66892b5b8c5a67688fb9652b2601f27f61b555e66e42b98b",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "owa-ms365.com"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--5e186bac-aadb-4ae8-9c21-b8a07c83dad9",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:47c5f12a8e421ca364a80ae38c4e89f48ce98a77ec21f68bd2126548cb3ef17d",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "ms365-live.com"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--988073e1-e22e-4483-80b5-e17f86b6b4ab",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:10971412bf222eb81fed34f5edea1ddcb7b381e01ac38f89131c09650cce438c",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "m365-owa.com"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--f8e05a05-bd77-4383-b355-732dd807be81",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:7db4c2576ffef73d99ae335e9e63af1a53ffaf3e80e38ad8644548c05b35afe2",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "ms365-device.com"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--11876547-f714-4b14-b63c-02446c774cdf",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取",
+      "identity_class": "organization",
+      "description": "Microsoftは、Midnight Blizzardの運用サブクラスタ「Storm-2945」が2026年5月以降、世界各地の宿泊施設や空港、会議施設で提供される侵害されたcaptive portal Wi-Fiネットワークを悪用し、出張中の企業利用者の通信を攻撃者インフラへリダイレクトしていると報告した。通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。使用されたツールはGo製Windows RATのCornFlake、PowerShell製インフォスティーラーのChocoShell、キャンペーン基盤を操作するWebベースのC2オペレーターパネルFruitStoneである。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--8b91ac12a7aa7c870ce1",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--chocoshell",
+        "malware--cornflake"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--4b703096e6ee5c321f92"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 107.189.26.194",
+      "pattern": "[ipv4-addr:value = '107.189.26.194']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:19Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: ms365-live.com",
+      "pattern": "[domain-name:value = 'ms365-live.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 31.57.243.154",
+      "pattern": "[ipv4-addr:value = '31.57.243.154']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: ms365-device.com",
+      "pattern": "[domain-name:value = 'ms365-device.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--90991537-a183-4edd-845f-74102bdfc678",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.146.28.75",
+      "pattern": "[ipv4-addr:value = '38.146.28.75']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 213.145.86.112",
+      "pattern": "[ipv4-addr:value = '213.145.86.112']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: m365-owa.com",
+      "pattern": "[domain-name:value = 'm365-owa.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-20T11:57:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: owa-ms365.com",
+      "pattern": "[domain-name:value = 'owa-ms365.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--captivecrunch-fruitstone-c2"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FruitStone C2 Operator Panel",
+      "description": "CaptiveCrunchキャンペーンの基盤を操作するWebベースのC2オペレーターパネル。侵害したcaptive portal Wi-Fi経由のトラフィック操作、デバイスコードフィッシング、ClickFix型ソーシャルエンジニアリングによる攻撃の運用管理に用いられる。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "infra--captivecrunch-fruitstone-c2",
+      "x_confidence": "high",
+      "x_analyst_notes": "配送されるペイロード(マルウェア)ではなく運用管理用のC2パネルであるため、capabilities.malwareではなくcapabilities.infrastructureへ分類した。単一の具体的なC2基盤コンポーネントとして明確に識別できるため、汎用的な行動を表すoperational_capabilitiesではなくinfrastructureを選んだ。IDプレフィックスはRULES.mdの`infra--`規則、および本プロファイル既存の`infra--apt29-actor-controlled-rdp`に合わせた(unc1549プロファイルの`infrastructure--`表記とは異なるが、本プロファイル内の既存慣行を優先した)。",
+      "infrastructure_types": [
+        "command-and-control",
+        "operator-panel",
+        "web-application"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "created": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T02:39:39Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29",
+      "aliases": [
+        "Blue Kitsune",
+        "Cozy Bear",
+        "CozyDuke",
+        "Dark Halo",
+        "ICECAP",
+        "ICE RELIC",
+        "IRON HEMLOCK",
+        "IRON RITUAL",
+        "Midnight Blizzard",
+        "NOBELIUM",
+        "NobleBaron",
+        "SolarStorm",
+        "The Dukes",
+        "UNC2452",
+        "UNC3524",
+        "YTTRIUM"
+      ],
+      "description": "[APT29](https://attack.mitre.org/groups/G0016) is threat group that has been attributed to Russia's Foreign Intelligence Service (SVR).(Citation: White House Imposing Costs RU Gov April 2021)(Citation: UK Gov Malign RIS Activity April 2021) They have operated since at least 2008, often targeting government networks in Europe and NATO member countries, research institutes, and think tanks. [APT29](https://attack.mitre.org/groups/G0016) reportedly compromised the Democratic National Committee starting in the summer of 2015.(Citation: F-Secure The Dukes)(Citation: GRIZZLY STEPPE JAR)(Citation: Crowdstrike DNC June 2016)(Citation: UK Gov UK Exposes Russia SolarWinds April 2021)\n\nIn April 2021, the US and UK governments attributed the [SolarWinds Compromise](https://attack.mitre.org/campaigns/C0024) to the SVR; public statements included citations to [APT29](https://attack.mitre.org/groups/G0016), Cozy Bear, and The Dukes.(Citation: NSA Joint Advisory SVR SolarWinds April 2021)(Citation: UK NSCS Russia SolarWinds April 2021) Industry reporting also referred to the actors involved in this campaign as UNC2452, NOBELIUM, StellarParticle, Dark Halo, and SolarStorm.(Citation: FireEye SUNBURST Backdoor December 2020)(Citation: MSTIC NOBELIUM Mar 2021)(Citation: CrowdStrike SUNSPOT Implant January 2021)(Citation: Volexity SolarWinds)(Citation: Cybersecurity Advisory SVR TTP May 2021)(Citation: Unit 42 SolarStorm December 2020)",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_id": "actor--apt29",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "Blue Kitsune",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Cozy Bear",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "CozyDuke",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Dark Halo",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "ICECAP",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "ICE RELIC",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-going-with-the-flows-2026",
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
+          "name": "IRON HEMLOCK",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "IRON RITUAL",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Midnight Blizzard",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NOBELIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "NobleBaron",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "SolarStorm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "The Dukes",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC2452",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "UNC3524",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "YTTRIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
+        "organizations": [],
+        "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
+      },
+      "x_free_text": {
+        "executive_summary": "APT29の標準化プロファイル。リポジトリ内の専用資料19件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Operation Ghost\n\n2024年10月22日以降、APT29（Midnight Blizzard）は100超の組織の数千人へ署名済みRDP設定ファイルを送付した。標的が開くと攻撃者管理サーバーへ接続し、ローカルドライブ、クリップボード、周辺機器、認証機能等がリモート側へマッピングされた。",
+        "capability_details": "PowerDuke, reGeorg, GeminiDuke, HAMMERTOSS, CosmicDuke, EnvyScout, TEARDROP, WellMess, PolyglotDuke, RegDuke, QUIETEXIT, Raindrop, FatDuke, GoldMax, POSHSPY, MiniDuke, SeaDuke, FoggyWeb, WellMail, LiteDuke, VaporRage, Sibot, Cobalt Strike, SUNBURST, PinchDuke, OnionDuke, NativeZone, GoldFinder, TrailBlazer, SUNSPOT, BoomBox, CloudDuke, SoreFang, CozyCar, CozyDuke, SeaDaddy implant developed in Python and compiled with py2exe, AdobeARM, ATI-Agent, MiniDionis, Grizzly Steppe, Vernaldrop, Tadpole, Spikerush, Net, BloodHound, Sliver, Impacket, ipconfig, AADInternals, Tasklist, meek, ROADTools, Systeminfo, Mimikatz, SDelete, Tor, AdFind, PsExec",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、オーストラリア、ドイツ、モンゴル、日本、米国、英国。標的地域=NATO加盟国、アジア、中東、全世界、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets government ministries and agencies in Europe, the US, Central Asia, East Africa, and the Middle East, associated with DNC attacks",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を確認し、GTIGの新呼称ICE RELICをaliasへ追加、ChocoShellの別名CHERRYPIEを追記、UNC6293・UNC7005とのサブクラスタ関係を関係として追加した。Storm-2945はGTIGがUNC7005として別クラスタで追跡しているため、本プロファイルのaliasへは追加していない。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--aa1a9a40-9ee2-4345-ab67-f11a66ca8083",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:8d08bebec55d11be4cb720181cc1f16981f719479d27f760a6293a9c0d9fd8f8",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "107.189.26.194"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--bd309fd1-0cee-463e-98ec-26937a12e7a7",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:e1a595dbab3d1aa3d8cbb6d434a86c55005282fbc6e390f12e0e7df775b33d01",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "31.57.243.154"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--c7019c9b-95f1-40db-be21-f5edb2ede9e3",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:0f9777b915348306221082c187e1a29b5ac7197a0bed690cdeeb29c56acb6726",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "213.145.86.112"
+    },
+    {
+      "type": "ipv4-addr",
+      "spec_version": "2.1",
+      "id": "ipv4-addr--f371c64f-4a9d-4913-8e9e-2a6b1e9e0659",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "x_profile_indicator_id": "indicator--sha256:2f9cfe4c9fb9e4c1bed6645a6662b1bfdf8d0b84bdd564953ce4dc2a3ee35782",
+      "x_campaign_refs": [
+        "activity--captivecrunch-travel-wifi-2026"
+      ],
+      "x_disposition": "confirmed",
+      "value": "38.146.28.75"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--6b07f8f1-4657-428e-a996-94525be9a0e2",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "全世界",
+      "description": "活動「Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取」の記述で標的地域として全世界が明示されている。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--targeting-audit--region--1b76161348734d33ac60",
+      "confidence": 60,
+      "x_opencti_location_type": "Region",
+      "region": "全世界",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-21T01:36:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ChocoShell",
+      "description": "PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--chocoshell",
+      "x_confidence": "high",
+      "x_analyst_notes": "Storm-2945によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。 GTIG(2026-08-20)は「Samples of the CHERRYPIE PowerShell infostealer (also known as ChocoShell)」と同一マルウェアであることを明記し、LLM生成を示唆する痕跡が多数含まれること、およびMaaSで購入したインフォスティーラーを基にしている可能性を述べている。GTIGは本マルウェアをUNC7005へ帰属しており、Microsoftの帰属(Midnight Blizzardのサブクラスタ Storm-2945)とはクラスタ境界の評価が異なる。差異はclaim-audit.jsonへ記録した。",
+      "is_family": true,
+      "malware_types": [
+        "Windows",
+        "PowerShell",
+        "infostealer"
+      ],
+      "aliases": [
+        "CHERRYPIE"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--fe14662d-0505-4cd1-ade1-b82948927685",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-08-03T03:46:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CornFlake",
+      "description": "Go言語で書かれたWindows向けRAT。キーロギング、監視、資格情報窃取機能を備える。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--cornflake",
+      "x_confidence": "high",
+      "x_analyst_notes": "Storm-2945(Midnight Blizzardの運用サブクラスタ)によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。",
+      "is_family": true,
+      "malware_types": [
+        "Windows",
+        "RAT"
+      ],
+      "aliases": [],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--01ae6e50-a947-4b58-9e1a-0cd2f87b396f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "domain: ms365-device.com is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--06c1eb17-6bb8-4149-a1db-2063bead9fe7",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
+      "description": "通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated; activity-period",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07862100-6334-41cd-b27b-9cbe66ec9131",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "domain-name--f8e05a05-bd77-4383-b355-732dd807be81",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:7db4c2576ffef73d99ae335e9e63af1a53ffaf3e80e38ad8644548c05b35afe2.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:7db4c2576ffef73d99ae335e9e63af1a53ffaf3e80e38ad8644548c05b35afe2",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--107c9711-a58c-485f-aaf5-222fe1d1e41b",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "ipv4: 213.145.86.112 is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1467fbf2-2c82-4592-9f23-84abab21b92a",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "domain: m365-owa.com is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17362646-ed79-4109-bd28-0b69087fc2a0",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "APT29 uses FruitStone C2 Operator Panel.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17fb749f-ea03-453f-9ff7-20c48cd5135e",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "domain: owa-ms365.com is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--193caa5e-c11d-4d14-bcb4-12268dc30fd3",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "ipv4: 31.57.243.154 is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1e3c9ec8-af69-44c5-9c85-8f813ab76375",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 is attributed or linked to APT29.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ff42a57-ad48-487c-ba71-f000e8fe1b1e",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "ipv4: 31.57.243.154 is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--22f45de6-be48-4d1c-807c-a0937609095f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "ipv4-addr--f371c64f-4a9d-4913-8e9e-2a6b1e9e0659",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:2f9cfe4c9fb9e4c1bed6645a6662b1bfdf8d0b84bdd564953ce4dc2a3ee35782.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:2f9cfe4c9fb9e4c1bed6645a6662b1bfdf8d0b84bdd564953ce4dc2a3ee35782",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2de87d63-d877-406d-813f-44a4e3c75aaa",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37badbd6-d96a-449d-96bd-521a304b2e03",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 uses infra--captivecrunch-fruitstone-c2.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3a5f5b7d-452c-4c35-a98e-4b1679e7a527",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "domain-name--5c0104e6-9853-4808-99cc-467fbc9abbc5",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:dba572be253f7f4e66892b5b8c5a67688fb9652b2601f27f61b555e66e42b98b.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:dba572be253f7f4e66892b5b8c5a67688fb9652b2601f27f61b555e66e42b98b",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3ff11c57-3ea6-4f10-9bd5-6a3184d8870d",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "domain-name--988073e1-e22e-4483-80b5-e17f86b6b4ab",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:10971412bf222eb81fed34f5edea1ddcb7b381e01ac38f89131c09650cce438c.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:10971412bf222eb81fed34f5edea1ddcb7b381e01ac38f89131c09650cce438c",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--414b3efb-101a-464e-ba25-99f2f2f4f420",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "ipv4: 213.145.86.112 is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--432eb0aa-0b62-4590-aabb-76958d6a6e4f",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "domain: ms365-device.com is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--46aa4deb-b059-411f-b2a6-86ce4f11d46a",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "domain: ms365-live.com is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--531ec3a2-9330-4c1f-8e77-d2979caa5df0",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "location--6b07f8f1-4657-428e-a996-94525be9a0e2",
+      "description": "APT29 targets 全世界 (profile target category: regions).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--55dea042-798f-40f6-8491-2b60a555c83e",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "domain: ms365-live.com is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f332fa2-504e-4932-9a01-ff40a50f5149",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "domain: owa-ms365.com is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--640f3e04-00f0-4b83-90dc-1f709ada6bc7",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "identity--11876547-f714-4b14-b63c-02446c774cdf",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 affected victim--activity-rule--8b91ac12a7aa7c870ce1.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--703aa3bc-7e30-4241-ac77-877470a7540b",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7814e369-e7af-404c-810e-47089dc471af",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80ad7878-f6da-4b33-a7cb-f2402c1e1b4e",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8e4e6362-7291-46b4-9140-2dab934c74b1",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "domain: m365-owa.com is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--982659ba-6dc5-46d4-a054-b045ca652db3",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "domain-name--5e186bac-aadb-4ae8-9c21-b8a07c83dad9",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:47c5f12a8e421ca364a80ae38c4e89f48ce98a77ec21f68bd2126548cb3ef17d.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:47c5f12a8e421ca364a80ae38c4e89f48ce98a77ec21f68bd2126548cb3ef17d",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9b061366-856c-4080-a263-50f8ffce2380",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "ipv4-addr--bd309fd1-0cee-463e-98ec-26937a12e7a7",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:e1a595dbab3d1aa3d8cbb6d434a86c55005282fbc6e390f12e0e7df775b33d01.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:e1a595dbab3d1aa3d8cbb6d434a86c55005282fbc6e390f12e0e7df775b33d01",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9b295b93-d993-4489-aad6-52eafca8fcb6",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "ipv4: 107.189.26.194 is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9e68cf0f-1a48-4122-a562-83f20d246210",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "malware--fe14662d-0505-4cd1-ade1-b82948927685",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 uses malware--cornflake.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5342d7c-bc33-44ac-80f0-b8d4053538d9",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ae7e5316-92d8-4a1a-a1e0-ce4abe5520a4",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--90991537-a183-4edd-845f-74102bdfc678",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b7652f5e-5f15-4d3b-8398-6250b8482d4e",
+      "created": "2026-09-21T02:05:24Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "location--6b07f8f1-4657-428e-a996-94525be9a0e2",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 targets target--targeting-audit--region--1b76161348734d33ac60.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b7d5ccdf-8e5e-4f35-8a4d-15f713a387ac",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "ipv4: 107.189.26.194 is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c6e0c341-1fe2-4e26-bba0-9b807d37c53f",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "malware--fe14662d-0505-4cd1-ade1-b82948927685",
+      "description": "APT29 uses CornFlake.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e0dd5f09-b7d9-4e70-9b2f-66dc1ccb4036",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e80110de-aa0f-439d-a9a7-e7b632ebe694",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "ipv4-addr--c7019c9b-95f1-40db-be21-f5edb2ede9e3",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:0f9777b915348306221082c187e1a29b5ac7197a0bed690cdeeb29c56acb6726.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:0f9777b915348306221082c187e1a29b5ac7197a0bed690cdeeb29c56acb6726",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f148d403-35bf-4257-a265-7fb242fe90b6",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--90991537-a183-4edd-845f-74102bdfc678",
+      "target_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "description": "ipv4: 38.146.28.75 is explicitly scoped to campaign Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f199965d-e426-4aa8-8327-57cf135ae705",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 uses malware--chocoshell.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f1f5938a-0854-4421-ab91-1e9b5d4c0a11",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "target_ref": "ipv4-addr--aa1a9a40-9ee2-4345-ab67-f11a66ca8083",
+      "description": "infra--captivecrunch-fruitstone-c2 explicitly contains the observable represented by indicator--sha256:8d08bebec55d11be4cb720181cc1f16981f719479d27f760a6293a9c0d9fd8f8.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-captivecrunch-2026",
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:8d08bebec55d11be4cb720181cc1f16981f719479d27f760a6293a9c0d9fd8f8",
+      "x_observation_source_refs": [
+        "source--microsoft-captivecrunch-2026"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f2e7473d-048a-4251-b61f-a839bf0896e2",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "target_ref": "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+      "description": "APT29 uses ChocoShell.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f2eab947-084d-40bd-96da-80ca11941317",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+      "target_ref": "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
+      "description": "Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 uses ttp--activity-rule--4b703096e6ee5c321f92.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+          "external_id": "source--microsoft-captivecrunch-2026"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "month",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "start_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f40173fa-3aa5-4efb-9ba2-d3570ac9ee95",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--90991537-a183-4edd-845f-74102bdfc678",
+      "target_ref": "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+      "description": "ipv4: 38.146.28.75 is explicitly linked to infra--captivecrunch-fruitstone-c2 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9352a16-f6bb-4496-a4f9-2bfb8526d58a",
+      "created": "2026-08-03T03:46:03Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+      "target_ref": "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--75007194-b3cb-4105-aef9-74b3684578f7",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-31T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
+        "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+        "identity--11876547-f714-4b14-b63c-02446c774cdf",
+        "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+        "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+        "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+        "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+        "indicator--90991537-a183-4edd-845f-74102bdfc678",
+        "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+        "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+        "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+        "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+        "location--6b07f8f1-4657-428e-a996-94525be9a0e2",
+        "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+        "malware--fe14662d-0505-4cd1-ade1-b82948927685",
+        "relationship--06c1eb17-6bb8-4149-a1db-2063bead9fe7",
+        "relationship--07862100-6334-41cd-b27b-9cbe66ec9131",
+        "relationship--17362646-ed79-4109-bd28-0b69087fc2a0",
+        "relationship--1e3c9ec8-af69-44c5-9c85-8f813ab76375",
+        "relationship--22f45de6-be48-4d1c-807c-a0937609095f",
+        "relationship--37badbd6-d96a-449d-96bd-521a304b2e03",
+        "relationship--3a5f5b7d-452c-4c35-a98e-4b1679e7a527",
+        "relationship--3ff11c57-3ea6-4f10-9bd5-6a3184d8870d",
+        "relationship--531ec3a2-9330-4c1f-8e77-d2979caa5df0",
+        "relationship--640f3e04-00f0-4b83-90dc-1f709ada6bc7",
+        "relationship--982659ba-6dc5-46d4-a054-b045ca652db3",
+        "relationship--9b061366-856c-4080-a263-50f8ffce2380",
+        "relationship--9e68cf0f-1a48-4122-a562-83f20d246210",
+        "relationship--b7652f5e-5f15-4d3b-8398-6250b8482d4e",
+        "relationship--c6e0c341-1fe2-4e26-bba0-9b807d37c53f",
+        "relationship--e80110de-aa0f-439d-a9a7-e7b632ebe694",
+        "relationship--f199965d-e426-4aa8-8327-57cf135ae705",
+        "relationship--f1f5938a-0854-4421-ab91-1e9b5d4c0a11",
+        "relationship--f2e7473d-048a-4251-b61f-a839bf0896e2",
+        "relationship--f2eab947-084d-40bd-96da-80ca11941317"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-captivecrunch-2026",
+          "description": "Repository source: actor_profile/evidence/apt29-captivecrunch-2026-07-31.csv"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--microsoft-captivecrunch-2026",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--captivecrunch-travel-wifi-2026",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7bc4e618-c295-4d15-bf6d-0a0e1f8f2448",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-20T00:00:00Z",
+      "object_refs": [
+        "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+        "relationship--f2e7473d-048a-4251-b61f-a839bf0896e2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-going-with-the-flows-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-going-with-the-flows-2026",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--captivecrunch-travel-wifi-2026",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "vendor-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--bf39b1ba-1dc0-4f04-822f-2d1615252cec",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-05-12T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-1",
+          "description": "Repository source: actor_profile/reference/attack-enterprise-19.1.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-1",
+      "x_evidence_slice_scope": "campaign:actor--apt29:activity--captivecrunch-travel-wifi-2026",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1f9c7ad5-6583-4448-bcf5-95cf24626c69",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT29 / Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取",
+      "description": "Microsoftは、Midnight Blizzardの運用サブクラスタ「Storm-2945」が2026年5月以降、世界各地の宿泊施設や空港、会議施設で提供される侵害されたcaptive portal Wi-Fiネットワークを悪用し、出張中の企業利用者の通信を攻撃者インフラへリダイレクトしていると報告した。通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。使用されたツールはGo製Windows RATのCornFlake、PowerShell製インフォスティーラーのChocoShell、キャンペーン基盤を操作するWebベースのC2オペレーターパネルFruitStoneである。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--a67d1ad4-e852-4fc0-889c-d097bea4fa27",
+        "campaign--40d9e731-68de-4886-ba18-5d8aa121a287",
+        "domain-name--5c0104e6-9853-4808-99cc-467fbc9abbc5",
+        "domain-name--5e186bac-aadb-4ae8-9c21-b8a07c83dad9",
+        "domain-name--988073e1-e22e-4483-80b5-e17f86b6b4ab",
+        "domain-name--f8e05a05-bd77-4383-b355-732dd807be81",
+        "identity--11876547-f714-4b14-b63c-02446c774cdf",
+        "indicator--13006ad7-526b-4be3-8096-32a0df679fda",
+        "indicator--3dd8ef21-e74f-46af-9713-3c10e004a11e",
+        "indicator--5be8af8c-52d3-4907-90b6-7bf828049fd8",
+        "indicator--676eb842-e096-4d87-a98b-a208b125f973",
+        "indicator--90991537-a183-4edd-845f-74102bdfc678",
+        "indicator--bd0f19ac-9444-40b2-9781-aca474bda0c0",
+        "indicator--d7aeea97-3943-44e3-b6b3-642e04c8a072",
+        "indicator--ee874942-8730-4d7d-a07d-905fb30c7543",
+        "infrastructure--d13dc508-7258-4b5e-afa7-603d133217a6",
+        "intrusion-set--a1230c45-b303-418e-bd74-7bfc32c960d8",
+        "ipv4-addr--aa1a9a40-9ee2-4345-ab67-f11a66ca8083",
+        "ipv4-addr--bd309fd1-0cee-463e-98ec-26937a12e7a7",
+        "ipv4-addr--c7019c9b-95f1-40db-be21-f5edb2ede9e3",
+        "ipv4-addr--f371c64f-4a9d-4913-8e9e-2a6b1e9e0659",
+        "location--6b07f8f1-4657-428e-a996-94525be9a0e2",
+        "malware--dd42ae5c-ccf2-441d-9c2c-c9277d047533",
+        "malware--fe14662d-0505-4cd1-ade1-b82948927685",
+        "relationship--01ae6e50-a947-4b58-9e1a-0cd2f87b396f",
+        "relationship--06c1eb17-6bb8-4149-a1db-2063bead9fe7",
+        "relationship--07862100-6334-41cd-b27b-9cbe66ec9131",
+        "relationship--107c9711-a58c-485f-aaf5-222fe1d1e41b",
+        "relationship--1467fbf2-2c82-4592-9f23-84abab21b92a",
+        "relationship--17362646-ed79-4109-bd28-0b69087fc2a0",
+        "relationship--17fb749f-ea03-453f-9ff7-20c48cd5135e",
+        "relationship--193caa5e-c11d-4d14-bcb4-12268dc30fd3",
+        "relationship--1e3c9ec8-af69-44c5-9c85-8f813ab76375",
+        "relationship--1ff42a57-ad48-487c-ba71-f000e8fe1b1e",
+        "relationship--22f45de6-be48-4d1c-807c-a0937609095f",
+        "relationship--2de87d63-d877-406d-813f-44a4e3c75aaa",
+        "relationship--37badbd6-d96a-449d-96bd-521a304b2e03",
+        "relationship--3a5f5b7d-452c-4c35-a98e-4b1679e7a527",
+        "relationship--3ff11c57-3ea6-4f10-9bd5-6a3184d8870d",
+        "relationship--414b3efb-101a-464e-ba25-99f2f2f4f420",
+        "relationship--432eb0aa-0b62-4590-aabb-76958d6a6e4f",
+        "relationship--46aa4deb-b059-411f-b2a6-86ce4f11d46a",
+        "relationship--531ec3a2-9330-4c1f-8e77-d2979caa5df0",
+        "relationship--55dea042-798f-40f6-8491-2b60a555c83e",
+        "relationship--5f332fa2-504e-4932-9a01-ff40a50f5149",
+        "relationship--640f3e04-00f0-4b83-90dc-1f709ada6bc7",
+        "relationship--703aa3bc-7e30-4241-ac77-877470a7540b",
+        "relationship--7814e369-e7af-404c-810e-47089dc471af",
+        "relationship--80ad7878-f6da-4b33-a7cb-f2402c1e1b4e",
+        "relationship--8e4e6362-7291-46b4-9140-2dab934c74b1",
+        "relationship--982659ba-6dc5-46d4-a054-b045ca652db3",
+        "relationship--9b061366-856c-4080-a263-50f8ffce2380",
+        "relationship--9b295b93-d993-4489-aad6-52eafca8fcb6",
+        "relationship--9e68cf0f-1a48-4122-a562-83f20d246210",
+        "relationship--a5342d7c-bc33-44ac-80f0-b8d4053538d9",
+        "relationship--ae7e5316-92d8-4a1a-a1e0-ce4abe5520a4",
+        "relationship--b7652f5e-5f15-4d3b-8398-6250b8482d4e",
+        "relationship--b7d5ccdf-8e5e-4f35-8a4d-15f713a387ac",
+        "relationship--c6e0c341-1fe2-4e26-bba0-9b807d37c53f",
+        "relationship--e0dd5f09-b7d9-4e70-9b2f-66dc1ccb4036",
+        "relationship--e80110de-aa0f-439d-a9a7-e7b632ebe694",
+        "relationship--f148d403-35bf-4257-a265-7fb242fe90b6",
+        "relationship--f199965d-e426-4aa8-8327-57cf135ae705",
+        "relationship--f1f5938a-0854-4421-ab91-1e9b5d4c0a11",
+        "relationship--f2e7473d-048a-4251-b61f-a839bf0896e2",
+        "relationship--f2eab947-084d-40bd-96da-80ca11941317",
+        "relationship--f40173fa-3aa5-4efb-9ba2-d3570ac9ee95",
+        "relationship--f9352a16-f6bb-4496-a4f9-2bfb8526d58a",
+        "report--75007194-b3cb-4105-aef9-74b3684578f7",
+        "report--7bc4e618-c295-4d15-bf6d-0a0e1f8f2448",
+        "report--bf39b1ba-1dc0-4f04-822f-2d1615252cec"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--apt29",
+      "x_activity_id": "activity--captivecrunch-travel-wifi-2026"
+    }
+  ]
+}

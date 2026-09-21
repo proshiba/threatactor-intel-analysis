@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--cinnamon-tempest",
   "name": "Cinnamon Tempest",
   "status": "draft",
   "created_at": "2026-07-25T11:08:02Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:18:00Z",
   "languages": [
     "ja"
   ],
@@ -17,7 +17,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -27,7 +27,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -37,7 +37,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       }
@@ -76,7 +76,8 @@
       "description": "Actor-specific reporting explicitly describes espionage or intelligence collection.",
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-1",
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship."
     }
@@ -101,50 +102,21 @@
         "basis": "not-stated"
       },
       "evidence_refs": [
-        "source--mitre-attack-19-1",
-        "source--actor-mapping-workbook"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "共有aliasに基づくtaxonomy overlap候補。同一主体であることを断定せず、ベンダーごとの追跡スコープ差を個別に確認する。"
     }
   ],
   "diamond_model": {
-    "adversary": "[Cinnamon Tempest](https://attack.mitre.org/groups/G1021) is a China-based threat group that has been active since at least 2021 deploying multiple strains of ransomware based on the leaked [Babuk](https://attack.mitre.org/software/S0638) source code. [Cinnamon Tempest](https://attack.mitre.org/groups/G1021) does not operate their ransomware on an affiliate model or purchase access but appears to act independently in all stages of the attack lifecycle. Based on victimology, the short lifespan of each ransomware variant, and use of malware attributed to government-sponsored threat groups, [Cinnamon Tempest](https://attack.mitre.org/groups/G1021) may be motivated by intellectual property theft or cyberespionage rather than financial gain.(Citation: Microsoft Ransomware as a Service)(Citation: Microsoft Threat Actor Naming July 2023)(Citation: Trend Micro Cheerscrypt May 2022)(Citation: SecureWorks BRONZE STARLIGHT Ransomware Operations June 2022)",
-    "capability": "HUI Loader, Cheerscrypt, PlugX, Pandora, Cobalt Strike, Sliver, Impacket, Rclone",
+    "adversary": "",
+    "capability": "",
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
-      {
-        "id": "malware--hui-loader",
-        "name": "HUI Loader",
-        "aliases": [
-          "HUI Loader"
-        ],
-        "types": [
-          "Windows"
-        ],
-        "description": "[HUI Loader](https://attack.mitre.org/software/S1097) is a custom DLL loader that has been used since at least 2015 by China-based threat groups including [Cinnamon Tempest](https://attack.mitre.org/groups/G1021) and [menuPass](https://attack.mitre.org/groups/G0045) to deploy malware on compromised hosts. [HUI Loader](https://attack.mitre.org/software/S1097) has been observed in campaigns loading [SodaMaster](https://attack.mitre.org/software/S0627), [PlugX](https://attack.mitre.org/software/S0013), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Komplex](https://attack.mitre.org/software/S0162), and several strains of ransomware.(Citation: SecureWorks BRONZE STARLIGHT Ransomware Operations June 2022)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
       {
         "id": "malware--cheerscrypt",
         "name": "Cheerscrypt",
@@ -170,7 +142,93 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--cobalt-strike",
+        "name": "Cobalt Strike",
+        "aliases": [
+          "Cobalt Strike"
+        ],
+        "types": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "description": "[Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)\n\nIn addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--hui-loader",
+        "name": "HUI Loader",
+        "aliases": [
+          "HUI Loader"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "[HUI Loader](https://attack.mitre.org/software/S1097) is a custom DLL loader that has been used since at least 2015 by China-based threat groups including [Cinnamon Tempest](https://attack.mitre.org/groups/G1021) and [menuPass](https://attack.mitre.org/groups/G0045) to deploy malware on compromised hosts. [HUI Loader](https://attack.mitre.org/software/S1097) has been observed in campaigns loading [SodaMaster](https://attack.mitre.org/software/S0627), [PlugX](https://attack.mitre.org/software/S0013), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Komplex](https://attack.mitre.org/software/S0162), and several strains of ransomware.(Citation: SecureWorks BRONZE STARLIGHT Ransomware Operations June 2022)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--pandora",
+        "name": "Pandora",
+        "aliases": [
+          "Pandora"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "[Pandora](https://attack.mitre.org/software/S0664) is a multistage kernel rootkit with backdoor functionality that has been in use by [Threat Group-3390](https://attack.mitre.org/groups/G0027) since at least 2020.(Citation: Trend Micro Iron Tiger April 2021)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -204,100 +262,12 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
-        "id": "malware--pandora",
-        "name": "Pandora",
-        "aliases": [
-          "Pandora"
-        ],
-        "types": [
-          "Windows"
-        ],
-        "description": "[Pandora](https://attack.mitre.org/software/S0664) is a multistage kernel rootkit with backdoor functionality that has been in use by [Threat Group-3390](https://attack.mitre.org/groups/G0027) since at least 2020.(Citation: Trend Micro Iron Tiger April 2021)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
-        "id": "malware--cobalt-strike",
-        "name": "Cobalt Strike",
-        "aliases": [
-          "Cobalt Strike"
-        ],
-        "types": [
-          "Linux",
-          "Windows",
-          "macOS"
-        ],
-        "description": "[Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)\n\nIn addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
     ],
     "tools": [
-      {
-        "id": "tool--sliver",
-        "name": "Sliver",
-        "aliases": [
-          "Sliver"
-        ],
-        "types": [
-          "Linux",
-          "Windows",
-          "macOS"
-        ],
-        "description": "[Sliver](https://attack.mitre.org/software/S0633) is an open source, cross-platform, red team command and control (C2) framework written in Golang. [Sliver](https://attack.mitre.org/software/S0633) includes its own package manager, \"armory,\" for staging and downloading additional tools and payloads to the primary C2 framework.(Citation: Bishop Fox Sliver Framework August 2019)(Citation: Cybereason Sliver Undated)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
       {
         "id": "tool--impacket",
         "name": "Impacket",
@@ -324,7 +294,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       },
@@ -354,7 +324,37 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--sliver",
+        "name": "Sliver",
+        "aliases": [
+          "Sliver"
+        ],
+        "types": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "description": "[Sliver](https://attack.mitre.org/software/S0633) is an open source, cross-platform, red team command and control (C2) framework written in Golang. [Sliver](https://attack.mitre.org/software/S0633) includes its own package manager, \"armory,\" for staging and downloading additional tools and payloads to the primary C2 framework.(Citation: Bishop Fox Sliver Framework August 2019)(Citation: Cybereason Sliver Undated)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
       }
@@ -367,58 +367,12 @@
   },
   "activities": [],
   "targets": {
-    "countries": [
-      {
-        "id": "target--targeting-audit--country--ac6db1239e8133b507cf",
-        "name": "フィリピン",
-        "description": "構造化OSINTの被害国フィールドでCinnamon Tempestの標的・被害国としてフィリピンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      }
-    ],
-    "regions": [
-      {
-        "id": "target--targeting-audit--region--4bc66aef4d89bfdefea8",
-        "name": "東南アジア",
-        "description": "構造化OSINTの被害地域フィールドでCinnamon Tempestの標的範囲として東南アジアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      }
-    ],
+    "countries": [],
+    "regions": [],
     "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -444,7 +398,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -471,7 +425,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -498,7 +452,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -525,7 +479,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -552,7 +506,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -579,7 +533,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -606,7 +560,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -633,7 +587,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -660,7 +614,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -687,7 +641,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -714,7 +668,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -741,7 +695,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -768,7 +722,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -795,7 +749,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -822,7 +776,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -849,7 +803,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -876,7 +830,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -903,7 +857,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
@@ -930,30 +884,12 @@
       },
       "confidence": "high",
       "evidence_refs": [
-        "source--mitre-attack-19-1"
+        "source--mitre-attack-19-2"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -1175,6 +1111,62 @@
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--target-audit-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
       "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
@@ -1198,6 +1190,62 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -1209,7 +1257,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/cinnamon-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/cinnamon-tempest.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -1217,7 +1265,7 @@
     "history": "",
     "capability_details": "HUI Loader, Cheerscrypt, PlugX, Pandora, Cobalt Strike, Sliver, Impacket, Rclone",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=フィリピン。標的地域=東南アジア。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": []

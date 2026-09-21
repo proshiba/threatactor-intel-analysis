@@ -2,9 +2,10 @@
   "schema_version": "1.0.0",
   "actor_ref": "actor--apt24",
   "actor_name": "APT24",
-  "searched_at": "2026-09-19T01:10:23Z",
+  "searched_at": "2026-09-21T02:39:13Z",
   "search_scope": {
     "datasets": [
+      "gtig-threat-actor-naming",
       "etda-threat-group-cards",
       "cert-ua-uac-index",
       "microsoft-threat-actor-mapping",
@@ -13,17 +14,51 @@
       "misp-mitre-enterprise-intrusion-set",
       "misp-mitre-intrusion-set",
       "misp-360net",
+      "misp-tidal-groups",
       "misp-malpedia"
     ],
     "name_inputs": [
       "APT24",
       "RAVINE CASTLE",
+      "UNC1088",
       "COULEE"
     ],
     "mitre_group_id": null
   },
   "overall_assessment": "matched",
   "actor_matches": {
+    "gtig-threat-actor-naming": [
+      {
+        "entry_uuid": "gtig-2026-ravine-castle",
+        "entry_value": "RAVINE CASTLE",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "ravinecastle",
+            "profile_value": "RAVINE CASTLE",
+            "dataset_value": "RAVINE CASTLE"
+          },
+          {
+            "normalized": "unc1088",
+            "profile_value": "UNC1088",
+            "dataset_value": "UNC1088"
+          }
+        ],
+        "match_basis": "multiple-name-intersection",
+        "match_confidence": "high",
+        "candidate_names": [
+          "RAVINE CASTLE",
+          "UNC1088"
+        ],
+        "countries": [],
+        "description": "GTIG unified name for UNC1088.",
+        "refs": [
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        ],
+        "related": [],
+        "research_data": {}
+      }
+    ],
     "etda-threat-group-cards": [],
     "cert-ua-uac-index": [],
     "microsoft-threat-actor-mapping": [
@@ -54,7 +89,8 @@
         "refs": [
           "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
         ],
-        "related": []
+        "related": [],
+        "research_data": {}
       }
     ],
     "misp-threat-actor": [
@@ -98,7 +134,40 @@
             ],
             "type": "similar"
           }
-        ]
+        ],
+        "research_data": {}
+      },
+      {
+        "entry_uuid": "faa47cb0-bfbf-4bd8-a499-2610c61b176b",
+        "entry_value": "UNC1088",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "ravinecastle",
+            "profile_value": "RAVINE CASTLE",
+            "dataset_value": "RAVINE CASTLE"
+          },
+          {
+            "normalized": "unc1088",
+            "profile_value": "UNC1088",
+            "dataset_value": "UNC1088"
+          }
+        ],
+        "match_basis": "multiple-name-intersection",
+        "match_confidence": "high",
+        "candidate_names": [
+          "UNC1088",
+          "RAVINE CASTLE"
+        ],
+        "countries": [
+          "CN"
+        ],
+        "description": "UNC1088 is a China-nexus threat cluster tracked by Mandiant, renamed RAVINE CASTLE under Google Threat Intelligence's updated naming system.",
+        "refs": [
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
+        ],
+        "related": [],
+        "research_data": {}
       }
     ],
     "misp-microsoft-activity-group": [
@@ -130,12 +199,14 @@
         "refs": [
           "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
         ],
-        "related": []
+        "related": [],
+        "research_data": {}
       }
     ],
     "misp-mitre-enterprise-intrusion-set": [],
     "misp-mitre-intrusion-set": [],
-    "misp-360net": []
+    "misp-360net": [],
+    "misp-tidal-groups": []
   },
   "malware_catalog_matches": [],
   "relationship_candidates": [],
@@ -148,10 +219,12 @@
     "assessment": "No disjoint country conflict detected."
   },
   "ambiguities": {
-    "datasets_with_multiple_matches": [],
-    "scope_divergence_detected": false,
+    "datasets_with_multiple_matches": [
+      "misp-threat-actor"
+    ],
+    "scope_divergence_detected": true,
     "requires_review": false,
-    "assessment": "No multiple-match ambiguity detected."
+    "assessment": "Multiple taxonomy entries share names or aliases. A canonical name or MITRE ID anchors this profile, so the additional entries are retained as scope-divergence leads."
   },
   "limitations": [
     "Exact normalized-name matching does not prove one-to-one actor identity.",

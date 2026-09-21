@@ -7,15 +7,13 @@
       "spec_version": "2.1",
       "id": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "GALLIUM",
       "aliases": [
-        "Granite Typhoon",
-        "Soft Cell",
-        "UNSC 2814"
+        "Granite Typhoon"
       ],
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) is a cyberespionage group that has been active since at least 2012, primarily targeting telecommunications companies, financial institutions, and government entities in Afghanistan, Australia, Belgium, Cambodia, Malaysia, Mozambique, the Philippines, Russia, and Vietnam. This group is particularly known for launching Operation Soft Cell, a long-term campaign targeting telecommunications providers.(Citation: Cybereason Soft Cell June 2019) Security researchers have identified [GALLIUM](https://attack.mitre.org/groups/G0093) as a likely Chinese state-sponsored group, based in part on tools used and TTPs commonly associated with Chinese threat actors.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)(Citation: Unit 42 PingPull Jun 2022)",
       "goals": [
@@ -24,16 +22,12 @@
       "external_references": [
         {
           "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
+          "description": "Local source: actor_profile/reference/attack-enterprise-19.1.json",
           "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
         }
       ],
       "x_profile_id": "actor--gallium",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Granite Typhoon",
@@ -41,27 +35,7 @@
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "Soft Cell",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
-        {
-          "name": "UNSC 2814",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -75,8 +49,7 @@
         "assessment": "Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.",
         "confidence": "medium",
         "evidence_refs": [
-          "source--mitre-attack-19-1",
-          "source--actor-mapping-workbook"
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Migrated from a legacy rule that treated workbook geography as sponsorship. State sponsorship is now anchored to actor-specific MITRE text."
       },
@@ -92,9 +65,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--gallium",
         "actor_name": "GALLIUM",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -103,6 +77,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -115,6 +90,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "8dd3c489-96f1-412f-9eec-60f96a674571",
@@ -149,7 +125,55 @@
                 "https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gallium&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2018",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Financial",
+                  "Government",
+                  "Telecommunications"
+                ],
+                "tools": [
+                  "BlackMould",
+                  "China Chopper",
+                  "Cobalt Strike",
+                  "Gh0stCringe RAT",
+                  "HTran",
+                  "LaZagne",
+                  "Mimikatz",
+                  "nbtscan",
+                  "netcat",
+                  "PingPull",
+                  "Plink",
+                  "Poison Ivy",
+                  "PsExec",
+                  "QuarkBandit",
+                  "QuasarRAT",
+                  "Reshell",
+                  "SoftEther VPN",
+                  "Sword2033",
+                  "Windows Credentials Editor",
+                  "WinRAR"
+                ],
+                "operations": [
+                  {
+                    "date": "2021-09",
+                    "activity": "Chinese Alloy Taurus Updates PingPull Malware\nhttps://unit42.paloaltonetworks.com/alloy-taurus/"
+                  },
+                  {
+                    "date": "2022 Early",
+                    "activity": "Persistent Attempts at Cyberespionage Against Southeast Asian Government Target Have Links to Alloy Taurus\nhttps://unit42.paloaltonetworks.com/alloy-taurus-targets-se-asian-government/"
+                  },
+                  {
+                    "date": "2022-06",
+                    "activity": "GALLIUM Expands Targeting Across Telecommunications, Government and Finance Sectors With New PingPull Tool\nhttps://unit42.paloaltonetworks.com/pingpull-gallium/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -184,7 +208,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -246,7 +271,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [
@@ -287,7 +313,8 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             },
             {
               "entry_uuid": "ae4036de-c901-5f21-808a-f5c071ef509b",
@@ -329,10 +356,235 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "06a11b7e-2a36-47fe-8d3e-82c265df3258",
+              "entry_value": "GALLIUM - G0093",
+              "external_id": "G0093",
+              "matched_names": [
+                {
+                  "normalized": "gallium",
+                  "profile_value": "GALLIUM",
+                  "dataset_value": "GALLIUM"
+                },
+                {
+                  "normalized": "granitetyphoon",
+                  "profile_value": "Granite Typhoon",
+                  "dataset_value": "Granite Typhoon"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GALLIUM",
+                "Granite Typhoon"
+              ],
+              "countries": [],
+              "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) is a cyberespionage group that has been active since at least 2012, primarily targeting telecommunications companies, financial institutions, and government entities in Afghanistan, Australia, Belgium, Cambodia, Malaysia, Mozambique, the Philippines, Russia, and Vietnam. This group is particularly known for launching Operation Soft Cell, a long-term campaign targeting telecommunications providers.(Citation: Cybereason Soft Cell June 2019) Security researchers have identified [GALLIUM](https://attack.mitre.org/groups/G0093) as a likely Chinese state-sponsored group, based in part on tools used and TTPs commonly associated with Chinese threat actors.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)(Citation: Unit 42 PingPull Jun 2022)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0093",
+                "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide",
+                "https://unit42.paloaltonetworks.com/pingpull-gallium/",
+                "https://www.cybereason.com/blog/operation-soft-cell-a-worldwide-campaign-against-telecommunications-providers",
+                "https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "01a5a209-b94c-450b-b7f9-946497d91055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03342581-f790-4f03-ba41-e82e67392e23",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03d7999c-1f4c-42cc-8373-e7690d318104",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0c8465c0-d0b4-4670-992e-4eee8d7ff952",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "10d51417-ee35-4589-b1ff-b6df1c334e8d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1644e709-12d2-41e5-a60f-3470991f5011",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c34f7aa-9341-4a48-bfab-af22e51aca6c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "242f3da3-4425-4d11-8f5c-b842886da966",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "294e2560-bd48-44b2-9da2-833b5588ad11",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "32901740-b42c-4fdd-bc02-345b5dc57082",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3a0f6128-0a01-421d-8eca-e57d8671b1f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3f886f2a-874f-4333-b794-aa6075009b1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5a3a31fe-5a8f-48e1-bff0-a753e5b1be70",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5d0d3609-d06d-49e1-b9c9-b544e0c618cb",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "60c4b628-4807-4b0b-bbf5-fdac8643c337",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "63c4511b-2d6e-4bb2-b582-e2e99a8a467d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "64fa0de0-6240-41f4-8638-f4ca7ed528fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "69b8fd78-40e8-4600-ae4d-662c9d7afdb3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7610cada-1499-41a4-b3dd-46467b68d177",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7e150503-88e7-4861-866b-ff1ac82c4475",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92d7da27-2d91-488e-a00c-059dc162766d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b0533c6e-8fea-4788-874f-b799cacc4b92",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b42378e0-f147-496f-992a-26a49705395b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b63970b7-ddfb-4aee-97b1-80d335e033a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b77b563c-34bb-4fb8-86a3-3694338f7b47",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bba595da-b73a-4354-aa6c-224d4de7cb4e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bd5b58a4-a52d-4a29-bc0d-3f1d3968eb6b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf90d72c-c00b-45e3-b3aa-68560560d4c5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cde2d700-9ed1-46cf-9bce-07364fe8b24f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d1fcf083-a721-4223-aedf-bf8960798d62",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d5e96a35-7b0b-4c6a-9533-d63ecbda563e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "deb98323-e13f-4b0c-8d94-175379069062",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e624264c-033a-424d-9fd7-fc9c3bbdb03e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "06a11b7e-2a36-47fe-8d3e-82c265df3258",
@@ -554,24 +806,43 @@
                   "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "15ff1ce0-44f0-4f1d-a4ef-83444570e572",
+              "entry_value": "GALLIUM",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "gallium",
+                  "profile_value": "GALLIUM",
+                  "dataset_value": "GALLIUM"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GALLIUM"
+              ],
+              "countries": [
+                "CN"
+              ],
+              "description": "[GALLIUM](https://app.tidalcyber.com/groups/15ff1ce0-44f0-4f1d-a4ef-83444570e572) is a cyberespionage group that has been active since at least 2012, primarily targeting telecommunications companies, financial institutions, and government entities in Afghanistan, Australia, Belgium, Cambodia, Malaysia, Mozambique, the Philippines, Russia, and Vietnam. This group is particularly known for launching Operation Soft Cell, a long-term campaign targeting telecommunications providers.<sup>[[Cybereason Soft Cell June 2019](https://app.tidalcyber.com/references/620b7353-0e58-4503-b534-9250a8f5ae3c)]</sup> Security researchers have identified [GALLIUM](https://app.tidalcyber.com/groups/15ff1ce0-44f0-4f1d-a4ef-83444570e572) as a likely Chinese state-sponsored group, based in part on tools used and TTPs commonly associated with Chinese threat actors.<sup>[[Cybereason Soft Cell June 2019](https://app.tidalcyber.com/references/620b7353-0e58-4503-b534-9250a8f5ae3c)]</sup><sup>[[Microsoft GALLIUM December 2019](https://app.tidalcyber.com/references/5bc76b47-ff68-4031-a347-f2dc0daba203)]</sup><sup>[[Unit 42 PingPull Jun 2022](https://app.tidalcyber.com/references/ac6491ab-6ef1-4091-8a15-50e2cbafe157)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "target_categories": [
+                  "Telecommunications"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--pingpull",
-            "profile_name": "PingPull",
-            "entry_uuid": "65a7944c-15d9-4ca5-8561-7c97b18684c8",
-            "entry_value": "PingPull",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/elf.pingpull",
-              "https://blog.sekoia.io/my-teas-not-cold-an-overview-of-china-cyber-threat/",
-              "https://unit42.paloaltonetworks.com/alloy-taurus/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
           {
             "profile_malware_id": "malware--china-chopper",
             "profile_name": "China Chopper",
@@ -659,6 +930,18 @@
               "https://unit42.paloaltonetworks.com/operation-diplomatic-specter/",
               "https://unit42.paloaltonetworks.com/china-chopper-webshell/",
               "https://www.secureworks.com/research/threat-profiles/bronze-express"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          },
+          {
+            "profile_malware_id": "malware--pingpull",
+            "profile_name": "PingPull",
+            "entry_uuid": "65a7944c-15d9-4ca5-8561-7c97b18684c8",
+            "entry_value": "PingPull",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/elf.pingpull",
+              "https://blog.sekoia.io/my-teas-not-cold-an-overview-of-china-cyber-threat/",
+              "https://unit42.paloaltonetworks.com/alloy-taurus/"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           },
@@ -1037,67 +1320,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PingPull",
-      "description": "[PingPull](https://attack.mitre.org/software/S1031) is a remote access Trojan (RAT) written in Visual C++ that has been used by [GALLIUM](https://attack.mitre.org/groups/G0093) since at least June 2022. [PingPull](https://attack.mitre.org/software/S1031) has been used to target telecommunications companies, financial institutions, and government entities in Afghanistan, Australia, Belgium, Cambodia, Malaysia, Mozambique, the Philippines, Russia, and Vietnam.(Citation: Unit 42 PingPull Jun 2022)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--pingpull",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "PingPull"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "China Chopper",
-      "description": "[China Chopper](https://attack.mitre.org/software/S0020) is a [Web Shell](https://attack.mitre.org/techniques/T1505/003) hosted on Web servers to provide access back into an enterprise network that does not rely on an infected system calling back to a remote command and control server.(Citation: Lee 2013) It has been used by several threat groups.(Citation: Dell TG-3390)(Citation: FireEye Periscope March 2018)(Citation: CISA AA21-200A APT40 July 2021)(Citation: Rapid7 HAFNIUM Mar 2021)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--china-chopper",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "China Chopper"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--05f48042-f322-44c1-a5ea-ff2d46092a08",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1107,7 +1332,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--blackmould",
@@ -1124,9 +1349,67 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "China Chopper",
+      "description": "[China Chopper](https://attack.mitre.org/software/S0020) is a [Web Shell](https://attack.mitre.org/techniques/T1505/003) hosted on Web servers to provide access back into an enterprise network that does not rely on an infected system calling back to a remote command and control server.(Citation: Lee 2013) It has been used by several threat groups.(Citation: Dell TG-3390)(Citation: FireEye Periscope March 2018)(Citation: CISA AA21-200A APT40 July 2021)(Citation: Rapid7 HAFNIUM Mar 2021)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--china-chopper",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "China Chopper"
+      ]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "PingPull",
+      "description": "[PingPull](https://attack.mitre.org/software/S1031) is a remote access Trojan (RAT) written in Visual C++ that has been used by [GALLIUM](https://attack.mitre.org/groups/G0093) since at least June 2022. [PingPull](https://attack.mitre.org/software/S1031) has been used to target telecommunications companies, financial institutions, and government entities in Afghanistan, Australia, Belgium, Cambodia, Malaysia, Mozambique, the Philippines, Russia, and Vietnam.(Citation: Unit 42 PingPull Jun 2022)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--pingpull",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "PingPull"
+      ]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1136,7 +1419,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--plugx",
@@ -1161,7 +1444,7 @@
       "spec_version": "2.1",
       "id": "malware--b5056977-0516-42d8-ad84-f0f243655975",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1171,7 +1454,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--poisonivy",
@@ -1189,117 +1472,11 @@
       ]
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--f2dd6a8a-0406-41f6-9ff8-2dc3987bb75d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "QuarkBandit",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--quarkbandit",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--f4f8a1d7-2663-4a01-862c-cd2c9ca3ad6a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Winrar",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--winrar",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--f6d3fde2-726a-4835-879a-df2f70c04aef",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Netcat",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--netcat",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Net",
-      "description": "The [Net](https://attack.mitre.org/software/S0039) utility is a component of the Windows operating system. It is used in command-line operations for control of users, groups, services, and network connections. (Citation: Microsoft Net Utility)\n\n[Net](https://attack.mitre.org/software/S0039) has a great deal of functionality, (Citation: Savill 1999) much of which is useful for an adversary, such as gathering system and network information for Discovery, moving laterally through [SMB/Windows Admin Shares](https://attack.mitre.org/techniques/T1021/002) using <code>net use</code> commands, and interacting with services. The net1.exe utility is executed for certain functionality when net.exe is run and can be used directly in commands such as <code>net1 user</code>.",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--net",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Windows"
-      ]
-    },
-    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--49f2708c-1c2b-473f-8e0e-2ee4d2a36bdd",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1309,7 +1486,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--at",
@@ -1324,22 +1501,22 @@
     {
       "type": "tool",
       "spec_version": "2.1",
-      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "id": "tool--772c9212-ebad-4afb-bdf8-97a0df02c9fb",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Windows Credential Editor",
-      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
+      "name": "cmd",
+      "description": "[cmd](https://attack.mitre.org/software/S0106) is the Windows command-line interpreter that can be used to interact with systems and execute other processes and utilities. (Citation: TechNet Cmd)\n\nCmd.exe contains native functionality to perform many operations to interact with the system, including listing files in a directory (e.g., <code>dir</code> (Citation: TechNet Dir)), deleting files (e.g., <code>del</code> (Citation: TechNet Del)), and copying files (e.g., <code>copy</code> (Citation: TechNet Copy)).",
       "external_references": [
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_profile_object_id": "tool--windows-credential-editor",
+      "x_profile_object_id": "tool--cmd",
       "x_confidence": "high",
       "x_analyst_notes": "",
       "tool_types": [
@@ -1349,9 +1526,35 @@
     {
       "type": "tool",
       "spec_version": "2.1",
+      "id": "tool--0b41b35a-e8dd-4ba2-821c-8b024d953dd0",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "HTRAN",
+      "description": "[HTRAN](https://attack.mitre.org/software/S0040) is a tool that proxies connections through intermediate hops and aids users in disguising their true geographical location. It can be used by adversaries to hide their location when interacting with the victim networks. (Citation: Operation Quantum Entanglement)(Citation: NCSC Joint Report Public Tools)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--htran",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Linux",
+        "Windows"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
       "id": "tool--487af1f2-b543-46d8-8e96-c862d0d21bf7",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1361,7 +1564,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--ipconfig",
@@ -1376,7 +1579,7 @@
       "spec_version": "2.1",
       "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1386,7 +1589,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--mimikatz",
@@ -1401,7 +1604,7 @@
       "spec_version": "2.1",
       "id": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1411,7 +1614,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--nbtscan",
@@ -1426,9 +1629,34 @@
     {
       "type": "tool",
       "spec_version": "2.1",
+      "id": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Net",
+      "description": "The [Net](https://attack.mitre.org/software/S0039) utility is a component of the Windows operating system. It is used in command-line operations for control of users, groups, services, and network connections. (Citation: Microsoft Net Utility)\n\n[Net](https://attack.mitre.org/software/S0039) has a great deal of functionality, (Citation: Savill 1999) much of which is useful for an adversary, such as gathering system and network information for Discovery, moving laterally through [SMB/Windows Admin Shares](https://attack.mitre.org/techniques/T1021/002) using <code>net use</code> commands, and interacting with services. The net1.exe utility is executed for certain functionality when net.exe is run and can be used directly in commands such as <code>net1 user</code>.",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "tool--net",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "Windows"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
       "id": "tool--9073c047-1da5-4a4e-bccd-49ee8f894a2c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1438,7 +1666,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--ping",
@@ -1451,22 +1679,22 @@
     {
       "type": "tool",
       "spec_version": "2.1",
-      "id": "tool--772c9212-ebad-4afb-bdf8-97a0df02c9fb",
+      "id": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "cmd",
-      "description": "[cmd](https://attack.mitre.org/software/S0106) is the Windows command-line interpreter that can be used to interact with systems and execute other processes and utilities. (Citation: TechNet Cmd)\n\nCmd.exe contains native functionality to perform many operations to interact with the system, including listing files in a directory (e.g., <code>dir</code> (Citation: TechNet Dir)), deleting files (e.g., <code>del</code> (Citation: TechNet Del)), and copying files (e.g., <code>copy</code> (Citation: TechNet Copy)).",
+      "name": "PsExec",
+      "description": "[PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec)",
       "external_references": [
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_profile_object_id": "tool--cmd",
+      "x_profile_object_id": "tool--psexec",
       "x_confidence": "high",
       "x_analyst_notes": "",
       "tool_types": [
@@ -1478,7 +1706,7 @@
       "spec_version": "2.1",
       "id": "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1488,7 +1716,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--reg",
@@ -1501,48 +1729,22 @@
     {
       "type": "tool",
       "spec_version": "2.1",
-      "id": "tool--0b41b35a-e8dd-4ba2-821c-8b024d953dd0",
+      "id": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "HTRAN",
-      "description": "[HTRAN](https://attack.mitre.org/software/S0040) is a tool that proxies connections through intermediate hops and aids users in disguising their true geographical location. It can be used by adversaries to hide their location when interacting with the victim networks. (Citation: Operation Quantum Entanglement)(Citation: NCSC Joint Report Public Tools)",
+      "name": "Windows Credential Editor",
+      "description": "[Windows Credential Editor](https://attack.mitre.org/software/S0005) is a password dumping tool. (Citation: Amplia WCE)",
       "external_references": [
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_profile_object_id": "tool--htran",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Linux",
-        "Windows"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
-      "id": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PsExec",
-      "description": "[PsExec](https://attack.mitre.org/software/S0029) is a free Microsoft tool that can be used to execute a program on another computer. It is used by IT administrators and attackers.(Citation: Russinovich Sysinternals)(Citation: SANS PsExec)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--psexec",
+      "x_profile_object_id": "tool--windows-credential-editor",
       "x_confidence": "high",
       "x_analyst_notes": "",
       "tool_types": [
@@ -1554,7 +1756,7 @@
       "spec_version": "2.1",
       "id": "identity--74d435b0-36c3-4b69-95e5-20d956c638a3",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1565,7 +1767,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1576,7 +1778,7 @@
       "spec_version": "2.1",
       "id": "identity--33926b1d-ab00-4f57-952f-cbe508877435",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1587,7 +1789,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1598,7 +1800,7 @@
       "spec_version": "2.1",
       "id": "identity--ab11c3e3-d6f6-4927-ad92-2b051cc6b695",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1609,7 +1811,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1620,7 +1822,7 @@
       "spec_version": "2.1",
       "id": "identity--f4b1fd48-9518-49d1-84b1-6d931258361c",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1631,7 +1833,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1642,7 +1844,7 @@
       "spec_version": "2.1",
       "id": "identity--0fa59371-4b2d-4399-9a43-f893b5ab7688",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1653,7 +1855,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1664,7 +1866,7 @@
       "spec_version": "2.1",
       "id": "identity--25c34ca6-80db-4ea9-b8b2-4ba02683edb1",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1675,7 +1877,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1686,7 +1888,7 @@
       "spec_version": "2.1",
       "id": "identity--b16ac8f8-ea59-48cd-9c76-44b72471ea28",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1697,7 +1899,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1708,7 +1910,7 @@
       "spec_version": "2.1",
       "id": "identity--af2c4280-e2c4-44bd-b538-7802aac11b75",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1719,7 +1921,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1730,7 +1932,7 @@
       "spec_version": "2.1",
       "id": "identity--3cf5bb31-7774-49d4-8ea2-1d7ed9af6433",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1741,7 +1943,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "countries",
@@ -1752,7 +1954,7 @@
       "spec_version": "2.1",
       "id": "identity--25c56fbe-a4a6-41c2-8965-21b4beebcb26",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1763,7 +1965,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1774,7 +1976,7 @@
       "spec_version": "2.1",
       "id": "identity--e7e069be-aafd-4a52-9b20-49f47d8a2765",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1785,7 +1987,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1796,7 +1998,7 @@
       "spec_version": "2.1",
       "id": "identity--4c560d51-f252-454a-9300-61592f120ed8",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1807,7 +2009,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1818,7 +2020,7 @@
       "spec_version": "2.1",
       "id": "identity--ab2bef29-a86e-438c-a52c-9faa42e5991f",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1829,40 +2031,18 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
       "x_confidence": "high"
     },
     {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--cf405014-0715-409d-a544-289d1cf47c6f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Telecommunications",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Telecommunications sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1877,7 +2057,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -1905,7 +2085,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--63b6bcd7-7a13-4310-b007-80d3a7f2759f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1920,7 +2100,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-002--general",
@@ -1948,7 +2128,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1963,7 +2143,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1005--general",
@@ -1991,7 +2171,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2006,7 +2186,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1016--general",
@@ -2034,7 +2214,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2049,7 +2229,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1018--general",
@@ -2077,7 +2257,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2092,7 +2272,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027--general",
@@ -2120,7 +2300,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2135,7 +2315,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-002--general",
@@ -2163,7 +2343,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e47936d3-a852-4fe0-8c6c-2ed0cbe4d02e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2178,7 +2358,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-005--general",
@@ -2206,7 +2386,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2221,7 +2401,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1033--general",
@@ -2249,7 +2429,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--400a4637-be11-491b-b62b-b0f1bd43ca22",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2264,7 +2444,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-003--general",
@@ -2292,7 +2472,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2307,7 +2487,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1041--general",
@@ -2335,7 +2515,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2350,7 +2530,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1047--general",
@@ -2378,7 +2558,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1000efd0-5918-4be5-aa1d-477cef3a7212",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2393,7 +2573,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1049--general",
@@ -2421,7 +2601,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2436,7 +2616,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1053-005--general",
@@ -2464,7 +2644,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2479,7 +2659,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -2507,7 +2687,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2522,7 +2702,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-003--general",
@@ -2550,7 +2730,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2565,7 +2745,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1074-001--general",
@@ -2593,7 +2773,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2608,7 +2788,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1078--general",
@@ -2636,7 +2816,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2651,7 +2831,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1090-002--general",
@@ -2679,7 +2859,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2694,7 +2874,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1105--general",
@@ -2722,7 +2902,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2737,7 +2917,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1133--general",
@@ -2765,7 +2945,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--55f8b80f-7609-4317-8326-4a5e8bc90530",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2780,7 +2960,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1136-002--general",
@@ -2808,7 +2988,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2823,7 +3003,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1190--general",
@@ -2851,7 +3031,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--44d1b510-1f00-4364-9654-df683b6c4f0f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2866,7 +3046,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1505-003--general",
@@ -2894,7 +3074,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--0be959da-1b24-4f37-9d2e-a7a7ba1ad688",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2909,7 +3089,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1550-002--general",
@@ -2937,7 +3117,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--911f6a14-2e23-4eb8-b594-11550167aabe",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2952,7 +3132,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1553-002--general",
@@ -2980,7 +3160,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2995,7 +3175,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1560-001--general",
@@ -3023,7 +3203,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5e4bc7fe-fd08-4d1c-89cd-bff1ba63e844",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3038,7 +3218,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1570--general",
@@ -3066,7 +3246,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3081,7 +3261,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1574-001--general",
@@ -3109,7 +3289,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f4edb6fd-01e1-4781-8b95-e2dfe97e55fb",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3124,7 +3304,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-004--general",
@@ -3152,7 +3332,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3167,7 +3347,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -3193,39 +3373,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--53608c10-3699-4617-a426-600d3addfc00",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
-      "description": "GALLIUM uses PingPull.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1dbd897b-32ed-44a5-97cc-eff23fbe2010",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
-      "description": "GALLIUM uses China Chopper.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--14e6646e-44ce-4883-b462-c8523dd0ccc5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3233,14 +3383,65 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "malware--05f48042-f322-44c1-a5ea-ff2d46092a08",
       "description": "GALLIUM uses BlackMould.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1dbd897b-32ed-44a5-97cc-eff23fbe2010",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
+      "description": "GALLIUM uses China Chopper.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53608c10-3699-4617-a426-600d3addfc00",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
+      "description": "GALLIUM uses PingPull.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e26469e8-17d5-40ee-b5d8-1a700efa341f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3248,14 +3449,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
       "description": "GALLIUM uses PlugX.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--be1a34a4-86e5-49e6-9460-eaa164b53198",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3263,74 +3471,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "malware--b5056977-0516-42d8-ad84-f0f243655975",
       "description": "GALLIUM uses PoisonIvy.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a3dc7cc3-606c-414e-9ea2-177bbdb471bf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "malware--f2dd6a8a-0406-41f6-9ff8-2dc3987bb75d",
-      "description": "GALLIUM uses QuarkBandit.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3464caae-defb-4d71-8f75-2060bd95cd05",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "malware--f4f8a1d7-2663-4a01-862c-cd2c9ca3ad6a",
-      "description": "GALLIUM uses Winrar.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1fe79c54-83a6-4c80-9e7d-e2933850e2f8",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "malware--f6d3fde2-726a-4835-879a-df2f70c04aef",
-      "description": "GALLIUM uses Netcat.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--837e8aae-c03b-426b-aad2-d334bc581d92",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
-      "description": "GALLIUM uses Net.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--10d4deb6-9a4d-4efd-ac18-0f15894fdebd",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3338,89 +3493,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "tool--49f2708c-1c2b-473f-8e0e-2ee4d2a36bdd",
       "description": "GALLIUM uses at.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fa009d40-4a99-4eb1-adf6-b631e24da272",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
-      "description": "GALLIUM uses Windows Credential Editor.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--391b9748-969a-46f1-bb0b-105a1d422bc9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--487af1f2-b543-46d8-8e96-c862d0d21bf7",
-      "description": "GALLIUM uses ipconfig.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2af1c4b0-9f16-49ab-9eb7-348243b3c368",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "description": "GALLIUM uses Mimikatz.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--36b65960-46d1-48c5-b4cd-b4bedd5e9c02",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
-      "description": "GALLIUM uses NBTscan.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--dfeb6a2f-1419-4361-a873-622e97acb3a4",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--9073c047-1da5-4a4e-bccd-49ee8f894a2c",
-      "description": "GALLIUM uses Ping.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4c1dc429-a3bc-48be-8a32-f447bd193e84",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3428,29 +3515,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "tool--772c9212-ebad-4afb-bdf8-97a0df02c9fb",
       "description": "GALLIUM uses cmd.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--550a0a3f-7968-4af6-96da-0044e6e8f035",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
-      "description": "GALLIUM uses Reg.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2ba4a8a7-86da-4cda-aa6a-2e403246f9e9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3458,14 +3537,131 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "tool--0b41b35a-e8dd-4ba2-821c-8b024d953dd0",
       "description": "GALLIUM uses HTRAN.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--391b9748-969a-46f1-bb0b-105a1d422bc9",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--487af1f2-b543-46d8-8e96-c862d0d21bf7",
+      "description": "GALLIUM uses ipconfig.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2af1c4b0-9f16-49ab-9eb7-348243b3c368",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "description": "GALLIUM uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--36b65960-46d1-48c5-b4cd-b4bedd5e9c02",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
+      "description": "GALLIUM uses NBTscan.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--837e8aae-c03b-426b-aad2-d334bc581d92",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
+      "description": "GALLIUM uses Net.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dfeb6a2f-1419-4361-a873-622e97acb3a4",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--9073c047-1da5-4a4e-bccd-49ee8f894a2c",
+      "description": "GALLIUM uses Ping.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ab785536-246f-49b8-ab45-f74697614389",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3473,14 +3669,65 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "description": "GALLIUM uses PsExec.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--550a0a3f-7968-4af6-96da-0044e6e8f035",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
+      "description": "GALLIUM uses Reg.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fa009d40-4a99-4eb1-adf6-b631e24da272",
+      "created": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T04:35:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
+      "target_ref": "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+      "description": "GALLIUM uses Windows Credential Editor.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--27a0ef49-d91b-4451-8a22-43e51d900766",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3488,14 +3735,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--74d435b0-36c3-4b69-95e5-20d956c638a3",
       "description": "GALLIUM targets アフガニスタン (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33d0799a-772f-4db5-99d5-8c8c3449f202",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3503,14 +3757,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--33926b1d-ab00-4f57-952f-cbe508877435",
       "description": "GALLIUM targets オーストラリア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e20049b6-2d44-447a-b388-8749aec1b6a6",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3518,14 +3779,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--ab11c3e3-d6f6-4927-ad92-2b051cc6b695",
       "description": "GALLIUM targets カンボジア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f022597-7488-49f5-a05a-4b75a1a531eb",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3533,14 +3801,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--f4b1fd48-9518-49d1-84b1-6d931258361c",
       "description": "GALLIUM targets フィリピン (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--70ffc736-82f0-46d4-80e2-9d84c85e365f",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3548,14 +3823,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--0fa59371-4b2d-4399-9a43-f893b5ab7688",
       "description": "GALLIUM targets ベトナム (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--47c2357e-7000-46ff-8a98-d41ea411a890",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3563,14 +3845,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--25c34ca6-80db-4ea9-b8b2-4ba02683edb1",
       "description": "GALLIUM targets ベルギー (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--81f9b435-7ef9-4216-80a0-1d4809b7dfe4",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3578,14 +3867,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--b16ac8f8-ea59-48cd-9c76-44b72471ea28",
       "description": "GALLIUM targets マレーシア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e23a0739-ed19-42fd-add2-d5315d496ea6",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3593,14 +3889,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--af2c4280-e2c4-44bd-b538-7802aac11b75",
       "description": "GALLIUM targets モザンビーク (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a9e6ae36-50f2-46de-9dae-7d11bcefe2d0",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3608,14 +3911,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--3cf5bb31-7774-49d4-8ea2-1d7ed9af6433",
       "description": "GALLIUM targets ロシア (profile target category: countries).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ba3099f9-fcf7-4945-9a6f-7cfa734d2e2f",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3623,14 +3933,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--25c56fbe-a4a6-41c2-8965-21b4beebcb26",
       "description": "GALLIUM targets 東南アジア (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6cadb2c1-eb2f-4453-8564-dc312c262c5c",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3638,14 +3955,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--e7e069be-aafd-4a52-9b20-49f47d8a2765",
       "description": "GALLIUM targets 情報通信 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--98bd14a9-c6da-4249-8ee2-e23b92ea8d29",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3653,14 +3977,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--4c560d51-f252-454a-9300-61592f120ed8",
       "description": "GALLIUM targets 金融 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b789afc0-931c-40da-9c3e-6bc2259bef47",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3668,29 +3999,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "identity--ab2bef29-a86e-438c-a52c-9faa42e5991f",
       "description": "GALLIUM targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f8e3ccd6-9368-44ad-bbab-87475ec802f9",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-      "target_ref": "identity--cf405014-0715-409d-a544-289d1cf47c6f",
-      "description": "GALLIUM targets Telecommunications (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dd91983f-ccb0-4f63-8d79-e3596c2a3d8c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3698,14 +4021,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used a modified version of [Mimikatz](https://attack.mitre.org/software/S0002) along with a PowerShell-based [Mimikatz](https://attack.mitre.org/software/S0002) to dump credentials on the victim machines.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--63464d06-01aa-4a58-9620-41b19dc1ec48",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3713,14 +4043,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--63b6bcd7-7a13-4310-b007-80d3a7f2759f",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used <code>reg</code> commands to dump specific hives from the Windows Registry, such as the SAM hive, and obtain password hashes.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e39b067a-7aba-41f4-9015-67e722081027",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3728,14 +4065,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) collected data from the victim's local system, including password hashes from the SAM hive in the Registry.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ebf09182-027f-4a6f-8f88-1a56e85a4e74",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3743,14 +4087,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used <code>ipconfig /all</code> to obtain information about the victim network configuration. The group also ran a modified version of [NBTscan](https://attack.mitre.org/software/S0590) to identify available NetBIOS name servers.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9b34788c-de19-4f0a-b38d-3d75a23920c3",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3758,14 +4109,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used a modified version of [NBTscan](https://attack.mitre.org/software/S0590) to identify available NetBIOS name servers over the network as well as <code>ping</code> to identify remote systems.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f13842a9-c58d-482a-9002-cfb32258314a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3773,14 +4131,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--be5be137-f4da-4fd0-b759-132d476d048d",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used a modified version of [HTRAN](https://attack.mitre.org/software/S0040) in which they obfuscated strings such as debug messages in an apparent attempt to evade detection.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--03eb0ec1-b0f9-4323-9c39-1929dd44fa56",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3788,14 +4153,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) packed some payloads using different types of packers, both known and custom.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--85c25629-3240-481a-8d86-c3081d96afa1",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3803,14 +4175,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--e47936d3-a852-4fe0-8c6c-2ed0cbe4d02e",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) ensured each payload had a unique hash, including by using different types of packers.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a7d1abde-cd0a-4e6d-ad7a-5b64ac180bc0",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3818,14 +4197,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used <code>whoami</code> and <code>query user</code> to obtain information about the victim user.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c41c7cd8-4e4d-4b50-ba43-e37712b4a2ab",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3833,14 +4219,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--400a4637-be11-491b-b62b-b0f1bd43ca22",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used a renamed cmd.exe file to evade detection.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7e546c45-ae4e-4402-aa47-67fcd1cc86cc",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3848,14 +4241,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used Web shells and [HTRAN](https://attack.mitre.org/software/S0040) for C2 and to exfiltrate data.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--25c2afb4-2bf2-4f7d-a406-665b65da482c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3863,14 +4263,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used WMI for execution to assist in lateral movement as well as for installing tools across multiple assets.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a1d0bd9-315c-46d3-957d-de354e83e0d9",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3878,14 +4285,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--1000efd0-5918-4be5-aa1d-477cef3a7212",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used <code>netstat -oan</code> to obtain information about the victim network connections.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--753b1612-e5c2-44eb-99b2-7cb3061e1cd4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3893,14 +4307,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) established persistence for [PoisonIvy](https://attack.mitre.org/software/S0012) by created a scheduled task.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--71be7091-d3e8-4aee-aff5-d97043ddfdcd",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3908,14 +4329,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used PowerShell for execution to assist in lateral movement as well as for dumping credentials stored on compromised machines.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f58759da-c284-4064-bdd0-3f0c1294e741",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3923,14 +4351,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used the Windows command shell to execute commands.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e04b782a-984b-4cc4-a757-d1ad768227cd",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3938,14 +4373,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) compressed and staged files in multi-part archives in the Recycle Bin prior to exfiltration.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bdc3b893-18d8-4080-8b37-be8eeb6124be",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3953,14 +4395,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) leveraged valid accounts to maintain access to a victim network.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a064daa2-1efc-4a3a-a8e9-b22d1cad89c7",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3968,14 +4417,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used a modified version of [HTRAN](https://attack.mitre.org/software/S0040) to redirect connections between networks.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--de6c4059-d4df-4230-96dc-bc13ead3aae2",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3983,14 +4439,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) dropped additional tools to victims during their operation, including portqry.exe, a renamed cmd.exe file, winrar, and [HTRAN](https://attack.mitre.org/software/S0040).(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9cf6d22a-27a1-4119-af7f-9083aca91e9a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3998,14 +4461,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) has used VPN services, including SoftEther VPN, to access and maintain persistence in victim environments.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9c791bf3-1e4a-4667-84bc-cb592145f3c4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4013,14 +4483,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--55f8b80f-7609-4317-8326-4a5e8bc90530",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) created high-privileged domain user accounts to maintain access to victim networks.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93632a09-d61a-42d0-b2ef-37760b3be10e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4028,14 +4505,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) exploited a publicly-facing servers including Wildfly/JBoss servers to gain access to the network.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--196fb272-d8da-4c3d-a148-f119e7c9e626",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4043,14 +4527,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--44d1b510-1f00-4364-9654-df683b6c4f0f",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used Web shells to persist in victim environments and assist in execution and exfiltration.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--736885f6-5ace-466b-a058-9e50d4d2a949",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4058,14 +4549,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--0be959da-1b24-4f37-9d2e-a7a7ba1ad688",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used dumped hashes to authenticate to other machines via pass the hash.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--950cb2a7-f6cd-442e-b75c-79c79e96517f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4073,14 +4571,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--911f6a14-2e23-4eb8-b594-11550167aabe",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) has used stolen certificates to sign its tools including those from Whizzimo LLC.(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3fda3bfa-6ea6-417c-825f-df1ae7024161",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4088,14 +4593,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used WinRAR to compress and encrypt stolen data prior to exfiltration.(Citation: Cybereason Soft Cell June 2019)(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3968eb24-d37f-4b28-beaf-e56d629c8497",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4103,14 +4615,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--5e4bc7fe-fd08-4d1c-89cd-bff1ba63e844",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) has used [PsExec](https://attack.mitre.org/software/S0029) to move laterally between hosts in the target network.(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3151fdb9-0f10-4c0c-996a-81a65b97cb2a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4118,14 +4637,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) used DLL side-loading to covertly load [PoisonIvy](https://attack.mitre.org/software/S0012) into memory on the victim machine.(Citation: Cybereason Soft Cell June 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6c4bcd57-3fa2-48a4-a3a7-6d256539a027",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4133,14 +4659,21 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--f4edb6fd-01e1-4781-8b95-e2dfe97e55fb",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) has used Taiwan-based servers that appear to be exclusive to [GALLIUM](https://attack.mitre.org/groups/G0093).(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c90ae0d8-86ec-42ac-9137-3196815d9332",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4148,14 +4681,80 @@
       "source_ref": "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[GALLIUM](https://attack.mitre.org/groups/G0093) has used a variety of widely-available tools, which in some cases they modified to add functionality and/or subvert antimalware solutions.(Citation: Microsoft GALLIUM December 2019)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--051b0a67-b04a-407c-9b72-21688b6413ee",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://www.cybereason.co/",
+      "pattern": "[url:value = 'https://www.cybereason.co/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2019-12-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7e62bf5c299c696f4ada09b973abfb578f494b2bb0aff4df8323bb689d05596b",
+          "observed_at": {
+            "value": "2019-12-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--gallium--3c830a306dfb9d8f",
+          "source_path": "actor_profile/evidence/gallium.csv",
+          "source_location": {
+            "row": 3
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 93, \"sheet\": \"China\"} Soft Cell GALLIUM Soft Cell, UNSC 2814 BlackMould, China Chopper, PoisonIvy, QuarkBandit, Htran, NBTScan, PsExec, Winrar, Netcat Telecom https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/ https://www.cybereason.co",
+          "analyst_notes": "",
+          "raw_value": "https://www.cybereason.co"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--9f6d0c9c-1f5a-41e3-b581-b44617569c30",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4165,14 +4764,14 @@
         "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 28
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--3e179582-2068-4330-bbc1-8ec76f1aebb8",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:35:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4181,28 +4780,25 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:35:02Z",
       "object_refs": [
         "intrusion-set--948f512e-f1a5-45ff-b0fb-d48ca9a79854",
-        "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
-        "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
         "malware--05f48042-f322-44c1-a5ea-ff2d46092a08",
+        "malware--d0bd7e28-29d9-40e2-ab7b-57fdeaa59148",
+        "malware--affe2c81-9d75-4519-a7d9-347a1eed95a2",
         "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
         "malware--b5056977-0516-42d8-ad84-f0f243655975",
-        "malware--f2dd6a8a-0406-41f6-9ff8-2dc3987bb75d",
-        "malware--f4f8a1d7-2663-4a01-862c-cd2c9ca3ad6a",
-        "malware--f6d3fde2-726a-4835-879a-df2f70c04aef",
-        "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
         "tool--49f2708c-1c2b-473f-8e0e-2ee4d2a36bdd",
-        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
+        "tool--772c9212-ebad-4afb-bdf8-97a0df02c9fb",
+        "tool--0b41b35a-e8dd-4ba2-821c-8b024d953dd0",
         "tool--487af1f2-b543-46d8-8e96-c862d0d21bf7",
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
         "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
+        "tool--a108ac6b-f8dd-4cb3-ac3d-3d85bd097d0f",
         "tool--9073c047-1da5-4a4e-bccd-49ee8f894a2c",
-        "tool--772c9212-ebad-4afb-bdf8-97a0df02c9fb",
-        "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
-        "tool--0b41b35a-e8dd-4ba2-821c-8b024d953dd0",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
+        "tool--750f8de8-427a-41bb-ba72-e5d000dcf854",
         "identity--74d435b0-36c3-4b69-95e5-20d956c638a3",
         "identity--33926b1d-ab00-4f57-952f-cbe508877435",
         "identity--ab11c3e3-d6f6-4927-ad92-2b051cc6b695",
@@ -4216,7 +4812,6 @@
         "identity--e7e069be-aafd-4a52-9b20-49f47d8a2765",
         "identity--4c560d51-f252-454a-9300-61592f120ed8",
         "identity--ab2bef29-a86e-438c-a52c-9faa42e5991f",
-        "identity--cf405014-0715-409d-a544-289d1cf47c6f",
         "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
         "attack-pattern--63b6bcd7-7a13-4310-b007-80d3a7f2759f",
         "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
@@ -4247,9 +4842,10 @@
         "attack-pattern--5e4bc7fe-fd08-4d1c-89cd-bff1ba63e844",
         "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
         "attack-pattern--f4edb6fd-01e1-4781-8b95-e2dfe97e55fb",
-        "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880"
+        "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
+        "indicator--051b0a67-b04a-407c-9b72-21688b6413ee"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

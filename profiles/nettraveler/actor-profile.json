@@ -1,55 +1,34 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--nettraveler",
   "name": "NetTraveler",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-21T04:35:03Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "NetTraveler",
-    "aliases": [
-      {
-        "name": "APT21",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "Lanzhou PLA Unit",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      }
-    ],
+    "aliases": [],
     "actor_types": [
       "threat-cluster"
     ],
     "first_seen": {
-      "value": null,
-      "precision": "unknown",
-      "status": "unknown",
-      "basis": "not-stated"
+      "value": "2004-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
     },
     "last_seen": {
-      "value": null,
-      "precision": "unknown",
-      "status": "unknown",
-      "basis": "not-stated"
+      "value": "2013-06-04T00:00:00Z",
+      "precision": "day",
+      "status": "known",
+      "basis": "source-observed"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
+    "description": "NetTravelerはKasperskyが追跡した大規模サイバースパイ活動集合で、少なくとも2004年から活動し、40か国で350件超の高位標的を侵害した。同名のNetTravelerツールキットは主要マルウェアであり、アクター実体とは分離して記録する。",
+    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific. 2026-09 entity-boundary review: public reporting overloads NetTraveler as both a group/campaign label and a malware/toolkit name; this profile models the operator cluster and keeps malware--nettraveler separate."
   },
   "attribution": {
     "countries": [],
@@ -58,1023 +37,1010 @@
     "assessment": "",
     "confidence": "unknown",
     "evidence_refs": [],
-    "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+    "analyst_notes": "Kaspersky observed that most operators appeared to be native Chinese speakers, but language does not establish country of origin, state control, or sponsorship."
   },
-  "motivations": [],
-  "relationships": [],
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "Kaspersky explicitly describes the activity as cyber espionage and documents theft of sensitive technical and government information.",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-nettraveler-2013"
+      ],
+      "analyst_notes": "Motivation is source-stated; sponsorship remains unknown."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--nettraveler--danti-suspected",
+      "target_actor": "actor--danti",
+      "relationship_type": "related-to",
+      "description": "KasperskyはDantiの起源を不明とした上で、NetTravelerおよびDragonOKとの接続可能性を疑っていると記述した。",
+      "confidence": "low",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": "2016-08-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-assessment"
+      },
+      "evidence_refs": [
+        "source--kaspersky-q2-2016-danti"
+      ],
+      "analyst_notes": "This is a vendor-stated suspicion, not proof of shared operators or exact identity. Publication date records the assessment date only."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
-    "capability": "NetTraveler",
+    "capability": "",
     "infrastructure": "",
-    "victim": "This threat actor targets computer networks associated with Tibetan and Uyghur activists for espionage purposes.",
+    "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
       {
         "id": "malware--nettraveler",
         "name": "NetTraveler",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
+        "aliases": [
+          "Travnet",
+          "Netfile"
+        ],
+        "types": [
+          "Windows",
+          "information-stealer",
+          "backdoor"
+        ],
+        "description": "NetTravelerグループが監視、キーロギング、ファイル窃取、追加マルウェア導入に使用した同名ツールキット。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2005-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "sample-timestamp"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": ""
+        "analyst_notes": "The source notes references to 2004 activity but the earliest known sample timestamps are from 2005."
       }
     ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
-    "vulnerabilities": [],
+    "vulnerabilities": [
+      {
+        "id": "vulnerability--cve-2010-3333",
+        "name": "CVE-2010-3333",
+        "description": "Patched Microsoft Office vulnerability used in malicious spearphishing attachments during NetTraveler operations.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "The source does not state the first use date."
+      },
+      {
+        "id": "vulnerability--cve-2012-0158",
+        "name": "CVE-2012-0158",
+        "description": "Patched Microsoft Office vulnerability used in malicious spearphishing attachments during NetTraveler operations.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "The source does not state the first use date."
+      }
+    ],
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--nettraveler-red-star-2004-2013",
+      "name": "NetTraveler／Red Starサイバースパイ活動",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2004-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2013-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-observed"
+      },
+      "reported_at": {
+        "value": "2013-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "description": "Kasperskyは、モンゴル、ロシア、インド、カザフスタン、キルギス、中国、タジキスタン、韓国、スペイン、ドイツ、米国、カナダ、英国、チリ、モロッコ、ギリシャ、ベルギー、オーストリア、ウクライナ、リトアニア、ベラルーシ、オーストラリア、香港、日本、イラン、トルコ、パキスタン、タイ、カタール、ヨルダンを含む40か国で侵害を確認した。標的は政府機関、大使館、石油・ガス、研究機関、大学、防衛・軍事請負企業、活動家等で、NetTravelerマルウェアを用いて機微情報を窃取した。",
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--67ce22b843f136bff928",
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--country--72caf60a2fbce4a1be7a",
+        "target--activity-rule--country--7d3fb601fc3dd41e174c",
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--country--9e0b33ddb91d0135fb82",
+        "target--activity-rule--country--de0df51cff4adf4fc20b",
+        "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--activity-rule--country--f9601e2d842c9a05202b",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "target--targeting-audit--country--119b0634a77613d69330",
+        "target--targeting-audit--country--2a4fa45d08ef5cbd2526",
+        "target--targeting-audit--country--2bcfe28e9c86b109f2eb",
+        "target--targeting-audit--country--441ad68212c2f542f406",
+        "target--targeting-audit--country--586767a2ca703f81684f",
+        "target--targeting-audit--country--67c0a983b51ee71168ba",
+        "target--targeting-audit--country--6ff28da594055e910861",
+        "target--targeting-audit--country--82cdc5812d8be5b98ece",
+        "target--targeting-audit--country--85491d71f6e465ac98b1",
+        "target--targeting-audit--country--8ba6c97bcb6b50c67b54",
+        "target--targeting-audit--country--a1d0ef6a976950860a50",
+        "target--targeting-audit--country--a23a84e574f57f4fb6ba",
+        "target--targeting-audit--country--a69f351616a0377b76e1",
+        "target--targeting-audit--country--a78ddb709c3b4f3dfd57",
+        "target--targeting-audit--country--ca37dd5b4e620fa9747d",
+        "target--targeting-audit--country--cc0db63fa990598a10a0",
+        "target--targeting-audit--country--e7d17cbe5e04d0e39f52"
+      ],
+      "malware_refs": [
+        "malware--nettraveler"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--e11c669803fb114c1d2d"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-nettraveler-2013"
+      ],
+      "analyst_notes": "Country names are explicit victim locations in the source; the list does not imply attribution or sponsorship.",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--nettraveler",
+          "name": "NetTraveler",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--nettraveler"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--country--48cc6b4cc2919459aec9",
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--country--67ce22b843f136bff928",
+            "target--activity-rule--country--6cb716c577f256f44a3e",
+            "target--activity-rule--country--72caf60a2fbce4a1be7a",
+            "target--activity-rule--country--7d3fb601fc3dd41e174c",
+            "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+            "target--activity-rule--country--9e0b33ddb91d0135fb82",
+            "target--activity-rule--country--de0df51cff4adf4fc20b",
+            "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+            "target--activity-rule--country--f35cd09db0a72555b38a",
+            "target--activity-rule--country--f9601e2d842c9a05202b",
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+            "target--targeting-audit--country--119b0634a77613d69330",
+            "target--targeting-audit--country--2a4fa45d08ef5cbd2526",
+            "target--targeting-audit--country--2bcfe28e9c86b109f2eb",
+            "target--targeting-audit--country--441ad68212c2f542f406",
+            "target--targeting-audit--country--586767a2ca703f81684f",
+            "target--targeting-audit--country--67c0a983b51ee71168ba",
+            "target--targeting-audit--country--6ff28da594055e910861",
+            "target--targeting-audit--country--82cdc5812d8be5b98ece",
+            "target--targeting-audit--country--85491d71f6e465ac98b1",
+            "target--targeting-audit--country--8ba6c97bcb6b50c67b54",
+            "target--targeting-audit--country--a1d0ef6a976950860a50",
+            "target--targeting-audit--country--a23a84e574f57f4fb6ba",
+            "target--targeting-audit--country--a69f351616a0377b76e1",
+            "target--targeting-audit--country--a78ddb709c3b4f3dfd57",
+            "target--targeting-audit--country--ca37dd5b4e620fa9747d",
+            "target--targeting-audit--country--cc0db63fa990598a10a0",
+            "target--targeting-audit--country--e7d17cbe5e04d0e39f52"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--e11c669803fb114c1d2d"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2004-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2013-06-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-observed"
+          },
+          "reported_at": {
+            "value": "2013-06-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "document"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39",
+              "target--activity-rule--country--48cc6b4cc2919459aec9",
+              "target--activity-rule--country--6604ad21c713b8dfd8c7",
+              "target--activity-rule--country--67ce22b843f136bff928",
+              "target--activity-rule--country--6cb716c577f256f44a3e",
+              "target--activity-rule--country--72caf60a2fbce4a1be7a",
+              "target--activity-rule--country--7d3fb601fc3dd41e174c",
+              "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+              "target--activity-rule--country--9e0b33ddb91d0135fb82",
+              "target--activity-rule--country--de0df51cff4adf4fc20b",
+              "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+              "target--activity-rule--country--f35cd09db0a72555b38a",
+              "target--activity-rule--country--f9601e2d842c9a05202b",
+              "target--targeting-audit--country--119b0634a77613d69330",
+              "target--targeting-audit--country--2a4fa45d08ef5cbd2526",
+              "target--targeting-audit--country--2bcfe28e9c86b109f2eb",
+              "target--targeting-audit--country--441ad68212c2f542f406",
+              "target--targeting-audit--country--586767a2ca703f81684f",
+              "target--targeting-audit--country--67c0a983b51ee71168ba",
+              "target--targeting-audit--country--6ff28da594055e910861",
+              "target--targeting-audit--country--82cdc5812d8be5b98ece",
+              "target--targeting-audit--country--85491d71f6e465ac98b1",
+              "target--targeting-audit--country--8ba6c97bcb6b50c67b54",
+              "target--targeting-audit--country--a1d0ef6a976950860a50",
+              "target--targeting-audit--country--a23a84e574f57f4fb6ba",
+              "target--targeting-audit--country--a69f351616a0377b76e1",
+              "target--targeting-audit--country--a78ddb709c3b4f3dfd57",
+              "target--targeting-audit--country--ca37dd5b4e620fa9747d",
+              "target--targeting-audit--country--cc0db63fa990598a10a0",
+              "target--targeting-audit--country--e7d17cbe5e04d0e39f52"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
+    }
+  ],
   "targets": {
     "countries": [
       {
-        "id": "target--targeting-audit--country--b1e665a561b73983f94d",
-        "name": "アフガニスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてアフガニスタンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--29f976cc160b34c49bf7",
+        "id": "target--activity-rule--country--9e0b33ddb91d0135fb82",
         "name": "イラン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてイランが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--e96819a3753684dc7d46",
+        "id": "target--activity-rule--country--48cc6b4cc2919459aec9",
         "name": "インド",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてインドが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--deeac868a7fa07b5be99",
-        "name": "インドネシア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてインドネシアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--fc70a870fdd80d9e0381",
+        "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてウクライナが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--d80e37ace31a6d40c761",
-        "name": "ウズベキスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてウズベキスタンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--8fd41279721606ca9200",
+        "id": "target--activity-rule--country--7d3fb601fc3dd41e174c",
         "name": "オーストラリア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてオーストラリアが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--119b0634a77613d69330",
         "name": "オーストリア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてオーストリアが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--85491d71f6e465ac98b1",
         "name": "カザフスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてカザフスタンが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--2bcfe28e9c86b109f2eb",
         "name": "カタール",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてカタールが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--f50faa1b76424b068fe3",
+        "id": "target--activity-rule--country--ee55e5e8faa5dd675d7b",
         "name": "カナダ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてカナダが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--113216d5db53bae96126",
-        "name": "カンボジア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてカンボジアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--cc0db63fa990598a10a0",
         "name": "キルギス",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてキルギスが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--a69f351616a0377b76e1",
         "name": "ギリシャ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてギリシャが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--824b596bf28d0dc3254a",
-        "name": "シリア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてシリアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--441ad68212c2f542f406",
         "name": "スペイン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてスペインが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--8a7516010d4ba295736e",
-        "name": "スリナム",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてスリナムが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--5bdb362dc9642f30fcd5",
-        "name": "スロベニア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてスロベニアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--e7d17cbe5e04d0e39f52",
         "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてタイが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--67c0a983b51ee71168ba",
         "name": "タジキスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてタジキスタンが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--6ff28da594055e910861",
         "name": "チリ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてチリが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--6b50325ad2ede2c1e745",
-        "name": "トルクメニスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてトルクメニスタンが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--a78ddb709c3b4f3dfd57",
         "name": "トルコ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてトルコが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--4067217d84d1a5f7997d",
+        "id": "target--activity-rule--country--de0df51cff4adf4fc20b",
         "name": "ドイツ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてドイツが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--0271850da6cca940827e",
-        "name": "ネパール",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてネパールが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--5836215981b9ed7b70da",
-        "name": "バングラデシュ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてバングラデシュが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--192e9435d87613a35ebe",
+        "id": "target--activity-rule--country--67ce22b843f136bff928",
         "name": "パキスタン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてパキスタンが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--a23a84e574f57f4fb6ba",
         "name": "ベラルーシ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてベラルーシが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--82cdc5812d8be5b98ece",
         "name": "ベルギー",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてベルギーが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
-      },
-      {
-        "id": "target--targeting-audit--country--7e03c187ccea7b21261a",
-        "name": "マレーシア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてマレーシアが記録されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--a1d0ef6a976950860a50",
         "name": "モロッコ",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてモロッコが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--586767a2ca703f81684f",
         "name": "モンゴル",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてモンゴルが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--2a4fa45d08ef5cbd2526",
         "name": "ヨルダン",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてヨルダンが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--8ba6c97bcb6b50c67b54",
         "name": "リトアニア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてリトアニアが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--b9f6a836e488fb69df8b",
+        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
         "name": "ロシア",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国としてロシアが記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--a054f06f24034dc837c9",
+        "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
         "name": "中国",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として中国が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--11ce5e4fb0873e9adc96",
+        "id": "target--activity-rule--country--f35cd09db0a72555b38a",
         "name": "日本",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として日本が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--4674b07951d2bb37c27f",
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
         "name": "米国",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として米国が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--e7ef1f1df740009b6e50",
+        "id": "target--activity-rule--country--f9601e2d842c9a05202b",
         "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として英国が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
-        "id": "target--targeting-audit--country--09f3393e6c2508d03223",
+        "id": "target--activity-rule--country--6cb716c577f256f44a3e",
         "name": "韓国",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として韓国が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--ca37dd5b4e620fa9747d",
         "name": "香港",
-        "description": "構造化OSINTの被害国フィールドでNetTravelerの標的・被害国として香港が記録されている。",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [
       {
-        "id": "target--targeting-audit--region--54a4f6dc1f9c0a1e20fe",
-        "name": "チベット",
-        "description": "レビュー済みアクターマッピングの標的欄に記録されたチベットを構造化した。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
-      },
-      {
-        "id": "target--targeting-audit--region--e111d0cb903a3ae001ab",
-        "name": "中南米",
-        "description": "スリナム、チリで確認された標的・被害事例を中南米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
         "id": "target--targeting-audit--region--984e626260360930ddf6",
         "name": "中央アジア",
-        "description": "ウズベキスタン、カザフスタン、キルギス、タジキスタン、トルクメニスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。",
+        "description": "カザフスタン、キルギス、タジキスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1089,15 +1055,14 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
         "id": "target--targeting-audit--region--0ce20888911713692b9c",
         "name": "中東",
-        "description": "イラン、カタール、シリア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。",
+        "description": "イラン、カタール、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1112,7 +1077,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
@@ -1134,15 +1099,14 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
         "id": "target--targeting-audit--region--2bbdd1fd1422e3b1e0ca",
         "name": "南アジア",
-        "description": "アフガニスタン、インド、ネパール、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "description": "インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1157,15 +1121,14 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
         "id": "target--targeting-audit--region--e744df8a676d049bbb99",
         "name": "南欧",
-        "description": "ギリシャ、スペイン、スロベニアで確認された標的・被害事例を南欧として集約した地域表示。",
+        "description": "ギリシャ、スペインで確認された標的・被害事例を南欧として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1180,31 +1143,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--d40ecebc141cffb8bd60",
-        "name": "南米",
-        "description": "スリナム、チリで確認された標的・被害事例を南米として集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
@@ -1226,30 +1165,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
-      },
-      {
-        "id": "target--targeting-audit--region--a76ae2428ea64c89304f",
-        "name": "東南アジア",
-        "description": "インドネシア、カンボジア、タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
@@ -1271,15 +1187,14 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
         "id": "target--targeting-audit--region--3ea5e9f4f38d8a3d2cca",
         "name": "欧州",
-        "description": "ウクライナ、オーストリア、ギリシャ、スペイン、スロベニア、トルコ、ドイツ、ベラルーシ、ベルギー、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。",
+        "description": "ウクライナ、オーストリア、ギリシャ、スペイン、トルコ、ドイツ、ベラルーシ、ベルギー、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1294,39 +1209,126 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--target-audit-etda-threat-group-cards",
-          "source--target-audit-misp-threat-actor"
+          "source--kaspersky-nettraveler-2013"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       }
     ],
     "sectors": [
       {
-        "id": "target--sector--nonprofit-and-civil-society",
-        "name": "Nonprofit and Civil Society",
-        "description": "Targeting text indicates the Nonprofit and Civil Society sector.",
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--kaspersky-nettraveler-2013"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "name": "非営利・市民社会",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "name": "エネルギー",
+        "description": "活動「NetTraveler／Red Starサイバースパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2004-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2013-06-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-observed; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-nettraveler-2013"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [],
   "sources": [
@@ -1521,6 +1523,63 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--kaspersky-nettraveler-2013",
+      "path": "https://securelist.com/nettraveler-is-running-red-star-apt-attacks-compromise-high-profile-victims/35936/",
+      "url": "https://securelist.com/nettraveler-is-running-red-star-apt-attacks-compromise-high-profile-victims/35936/",
+      "archive_url": null,
+      "title": "NetTraveler is Running! - Red Star APT Attacks Compromise High-Profile Victims",
+      "publisher": "Kaspersky Global Research and Analysis Team",
+      "published_at": {
+        "value": "2013-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "malware",
+        "targeting",
+        "motivation",
+        "attribution",
+        "ttp"
+      ],
+      "analyst_notes": "Kaspersky uses NetTraveler for both the operator group/campaign and the principal malware/toolkit; the two entities are modeled separately."
+    },
+    {
+      "source_id": "source--kaspersky-q2-2016-danti",
+      "path": "https://securelist.com/it-threat-evolution-in-q2-2016-overview/75615/",
+      "url": "https://securelist.com/it-threat-evolution-in-q2-2016-overview/75615/",
+      "archive_url": null,
+      "title": "IT threat evolution in Q2 2016. Overview",
+      "publisher": "Kaspersky",
+      "published_at": {
+        "value": "2016-08-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "relationship",
+        "attribution"
+      ],
+      "analyst_notes": "Kaspersky expresses only a suspected connection between Danti and the separately tracked NetTraveler and DragonOK groups."
     }
   ],
   "assessment": {
@@ -1530,18 +1589,86 @@
       "Automatically mapped aliases, targets, and workbook software require analyst review."
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Vendor cluster boundaries may differ from the canonical name used here.",
+      "2 alias lead(s) remain non-canonical pending original-source review."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/nettraveler.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/nettraveler.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "NetTravelerの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+    "executive_summary": "NetTravelerは少なくとも2004年から2013年にかけて40か国・350件超の高位標的を侵害したサイバースパイ活動集合である。同名ツールキットを別マルウェア実体として記録し、Dantiとの関係はKasperskyの低確度な接続疑義に限定する。",
     "history": "",
     "capability_details": "NetTraveler",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、イラン、インド、インドネシア、ウクライナ、ウズベキスタン、オーストラリア、オーストリア、カザフスタン、カタール、カナダ、カンボジア、キルギス、ギリシャ、シリア、スペイン、スリナム、スロベニア、タイ、タジキスタン、チリ、トルクメニスタン、トルコ、ドイツほか17か国。標的地域=チベット、中南米、中央アジア、中東、北米、南アジア、南欧、南米、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets computer networks associated with Tibetan and Uyghur activists for espionage purposes.",
+    "targeting_details": "構造化ターゲット監査: 標的国=イラン、インド、ウクライナ、オーストラリア、オーストリア、カザフスタン、カタール、カナダ、キルギス、ギリシャ、スペイン、タイ、タジキスタン、チリ、トルコ、ドイツ、パキスタン、ベラルーシ、ベルギー、モロッコ、モンゴル、ヨルダン、リトアニア、ロシアほか6か国。標的地域=中央アジア、中東、北米、南アジア、南欧、東アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets computer networks associated with Tibetan and Uyghur activists for espionage purposes.",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
-  "victim_cases": []
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--e11c669803fb114c1d2d",
+      "name": "被害事例: NetTraveler／Red Starサイバースパイ活動",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Kasperskyは、モンゴル、ロシア、インド、カザフスタン、キルギス、中国、タジキスタン、韓国、スペイン、ドイツ、米国、カナダ、英国、チリ、モロッコ、ギリシャ、ベルギー、オーストリア、ウクライナ、リトアニア、ベラルーシ、オーストラリア、香港、日本、イラン、トルコ、パキスタン、タイ、カタール、ヨルダンを含む40か国で侵害を確認した。標的は政府機関、大使館、石油・ガス、研究機関、大学、防衛・軍事請負企業、活動家等で、NetTravelerマルウェアを用いて機微情報を窃取した。",
+      "activity_refs": [
+        "activity--nettraveler-red-star-2004-2013"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--67ce22b843f136bff928",
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--country--72caf60a2fbce4a1be7a",
+        "target--activity-rule--country--7d3fb601fc3dd41e174c",
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--country--9e0b33ddb91d0135fb82",
+        "target--activity-rule--country--de0df51cff4adf4fc20b",
+        "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--activity-rule--country--f9601e2d842c9a05202b",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "malware_refs": [
+        "malware--nettraveler"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "NetTraveler／Red Starサイバースパイ活動"
+        }
+      ],
+      "first_observed": {
+        "value": "2004-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2013-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-observed"
+      },
+      "reported_at": {
+        "value": "2013-06-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-nettraveler-2013"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

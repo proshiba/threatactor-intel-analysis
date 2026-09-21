@@ -41,6 +41,18 @@ profiles/<actor-slug>/
     └── profile.stix2.json      # STIX 2.1 Bundle
 ```
 
+OpenCTIへファイル取込する用途では、全アクターをアクター単位、Campaign単位、
+Incident/Grouping単位に分割した
+[OpenCTI import bundles](opencti/README.md)を使用できます。
+
+```text
+opencti/
+├── manifest.json
+├── actors/<actor-slug>.stix2.json
+├── campaigns/<actor-slug>/<activity-id>.stix2.json
+└── activities/<actor-slug>/<activity-id>.stix2.json
+```
+
 `actor-profile.json`には、名称とalias、帰属、モチベーション、他アクターとの関係、
 アクター全体および活動別のDiamond Model、能力、マルウェア、インフラ、MITRE ATT&CK TTP、活動履歴、
 標的国・産業、出典、分析上の留保を保存しています。構造化しきれない重要情報は
@@ -85,6 +97,7 @@ IOCはファイルハッシュ、IPアドレス、ドメイン、URLなどです
 - [フレームワークの利用方法](actor_profile/README.md)
 - [データ作成・品質管理ルール](actor_profile/RULES.md)
 - [生成・エージェント用ガードレール](actor_profile/GENERATION_RULES.md)
+- [OpenCTI / STIX取込モデリング規則](actor_profile/OPENCTI_INGESTION_RULES.md)
 - [エージェント作業規則](AGENTS.md)
 - [OSINT調査ルール](actor_profile/OSINT_RULES.md)
 - [日次ニュース取込](parse-daily/README.md)
@@ -99,12 +112,16 @@ Python 3で実行できます。PDF・XLSXを新たに取り込む場合は、`p
 
 ```bash
 # 活動情報を更新した後、全件の標的国・地域を再監査
+python3 actor_profile/scripts/apply_primary_source_corrections.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 
 # 既存のIOC/artifactを使って全プロファイルを再生成・検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+
+# OpenCTI向けにアクター別・Campaign別・Incident/Grouping別の自己完結STIX 2.1 Bundleを生成
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 
 # 単体テスト
 python3 -m unittest discover -s actor_profile/tests -v

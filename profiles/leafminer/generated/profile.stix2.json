@@ -7,37 +7,27 @@
       "spec_version": "2.1",
       "id": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Leafminer",
       "aliases": [
-        "Flash Kitten",
         "Raspite"
       ],
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) is an Iranian threat group that has targeted government organizations and business entities in the Middle East since at least early 2017. (Citation: Symantec Leafminer July 2018)",
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--leafminer",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
-        {
-          "name": "Flash Kitten",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--actor-mapping-workbook"
-          ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
-        },
         {
           "name": "Raspite",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-2"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
         }
@@ -56,16 +46,17 @@
         "history": "",
         "capability_details": "Sorgu, guester / Trojan.Imecab, MailSniper, Mimikatz, LaZagne, PsExec",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、クウェート、レバノン、米国。標的地域=中東、東アジア、欧州。日本は確認時に個別国として保持する。\n\nMENA Region",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東。日本は確認時に個別国として保持する。\n\nMENA Region",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--leafminer",
         "actor_name": "Leafminer",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -74,6 +65,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -85,6 +77,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "bde56229-34b6-4a33-b6c0-358d41416ee3",
@@ -125,7 +118,34 @@
                 "https://dragos.com/resource/raspite/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Leafminer%2C+Raspite&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2017",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Energy",
+                  "Financial",
+                  "Government",
+                  "Transportation"
+                ],
+                "observed-countries": [
+                  "Israel",
+                  "Kuwait",
+                  "Lebanon",
+                  "USA",
+                  "Europe and East Asia"
+                ],
+                "tools": [
+                  "Imecab",
+                  "LaZagne",
+                  "Mimikatz",
+                  "PhpSpy",
+                  "Sorgu"
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -161,7 +181,12 @@
                 "https://symantec-blogs.broadcom.com/blogs/threat-intelligence/leafminer-espionage-middle-east",
                 "https://attack.mitre.org/groups/G0077/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "targeted-sector": [
+                  "Electric"
+                ]
+              }
             },
             {
               "entry_uuid": "6e899dd4-f95e-42a0-a5a3-e57249f017cf",
@@ -184,11 +209,130 @@
               "refs": [
                 "https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "32bca8ff-d900-4877-aa65-d70baa041b74",
+              "entry_value": "Leafminer - G0077",
+              "external_id": "G0077",
+              "matched_names": [
+                {
+                  "normalized": "leafminer",
+                  "profile_value": "Leafminer",
+                  "dataset_value": "Leafminer"
+                },
+                {
+                  "normalized": "raspite",
+                  "profile_value": "Raspite",
+                  "dataset_value": "Raspite"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Leafminer",
+                "Raspite"
+              ],
+              "countries": [],
+              "description": "[Leafminer](https://attack.mitre.org/groups/G0077) is an Iranian threat group that has targeted government organizations and business entities in the Middle East since at least early 2017. (Citation: Symantec Leafminer July 2018)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0077",
+                "https://www.dragos.com/blog/20180802Raspite.html",
+                "https://www.symantec.com/blogs/threat-intelligence/leafminer-espionage-middle-east"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "0f4a0c76-ab2d-4cb0-85d3-3f0efb8cba0d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1ecfdab8-7d59-4c98-95d4-dc41970f57fc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3fc9b85a-2862-4363-a64d-d692e3ffbee0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "58a3e6aa-4453-4cc8-a51f-4befe80b31a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "635cbe30-392d-4e27-978e-66774357c762",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "692074ae-bb62-4a5e-a735-02cb6bde458c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "6add2ab5-2711-4e9d-87c8-7a0be8531530",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7007935a-a8a7-4c0b-bd98-4e85be8ed197",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "837f9164-50af-4ac0-8219-379d8a74cefc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "999c4e6e-b8dc-4b4f-8d6e-1b829f29997e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b4694861-542c-48ea-9eb1-10d356e7140a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b76b2d94-60e4-4107-a903-4a3a7622fb3b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d511a6f6-4a33-41d5-bc95-c343875d1377",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d742a578-d70e-4d0e-96a6-02a9c30204e6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3a12395-188d-4051-9a16-ea8e14d07b88",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "32bca8ff-d900-4877-aa65-d70baa041b74",
@@ -304,25 +448,53 @@
                   "dest-uuid": "ff6caf67-ea1f-4895-b80e-4bb0fc31c6db",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "b5c28235-d441-40d9-8da2-d49ba2f2568b",
+              "entry_value": "Leafminer",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "leafminer",
+                  "profile_value": "Leafminer",
+                  "dataset_value": "Leafminer"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Leafminer"
+              ],
+              "countries": [
+                "IR"
+              ],
+              "description": "[Leafminer](https://app.tidalcyber.com/groups/b5c28235-d441-40d9-8da2-d49ba2f2568b) is an Iranian threat group that has targeted government organizations and business entities in the Middle East since at least early 2017. <sup>[[Symantec Leafminer July 2018](https://app.tidalcyber.com/references/01130af7-a2d4-435e-8790-49933e041451)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Aerospace",
+                  "Construction",
+                  "Energy",
+                  "Financial Services",
+                  "Government",
+                  "Telecommunications",
+                  "Transportation",
+                  "Utilities"
+                ]
+              }
+            }
+          ]
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--sorgu",
-            "profile_name": "Sorgu",
-            "entry_uuid": "bc135ba5-637b-46c9-94fc-2eef5e018bb5",
-            "entry_value": "Sorgu",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.sorgu",
-              "https://symantec-blogs.broadcom.com/blogs/threat-intelligence/leafminer-espionage-middle-east",
-              "https://www.symantec.com/blogs/threat-intelligence/leafminer-espionage-middle-east"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -349,65 +521,38 @@
       }
     },
     {
-      "type": "malware",
+      "type": "tool",
       "spec_version": "2.1",
-      "id": "malware--113db7f7-15c8-44b2-9c3f-6c69f72a57d4",
+      "id": "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Sorgu",
-      "description": "The actor-mapping workbook lists this software or tool.",
+      "name": "LaZagne",
+      "description": "[LaZagne](https://attack.mitre.org/software/S0349) is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [LaZagne](https://attack.mitre.org/software/S0349) is publicly available on GitHub.(Citation: GitHub LaZagne Dec 2018)",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
-      "x_profile_object_id": "malware--sorgu",
-      "x_confidence": "medium",
+      "x_profile_object_id": "tool--lazagne",
+      "x_confidence": "high",
       "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--fd169564-b237-468c-8d8d-00a49fd04c49",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "guester / Trojan.Imecab",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--guester-trojan-imecab",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
+      "tool_types": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ]
     },
     {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--ce3682e3-976f-4e44-b34a-31280bce9caa",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -417,7 +562,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--mailsniper",
@@ -433,7 +578,7 @@
       "spec_version": "2.1",
       "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -443,7 +588,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--mimikatz",
@@ -456,36 +601,9 @@
     {
       "type": "tool",
       "spec_version": "2.1",
-      "id": "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "LaZagne",
-      "description": "[LaZagne](https://attack.mitre.org/software/S0349) is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [LaZagne](https://attack.mitre.org/software/S0349) is publicly available on GitHub.(Citation: GitHub LaZagne Dec 2018)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "tool--lazagne",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "tool_types": [
-        "Linux",
-        "Windows",
-        "macOS"
-      ]
-    },
-    {
-      "type": "tool",
-      "spec_version": "2.1",
       "id": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -495,7 +613,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--psexec",
@@ -508,97 +626,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--27bb1335-8f1b-49f2-8d71-5f714a61ceee",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イスラエル",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでLeafminerの標的・被害国としてイスラエルが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1ad90a42-e5ad-4ce7-8c95-fc787ec64331",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "クウェート",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでLeafminerの標的・被害国としてクウェートが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--a1059b30-5e91-4b25-a22a-6f2dcba22020",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "レバノン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでLeafminerの標的・被害国としてレバノンが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--25ee1b64-5508-48a7-83ef-767fa92cb001",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでLeafminerの標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--98004793-7f9a-4e7d-a513-cffa2431c6ab",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -609,12 +639,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -623,53 +648,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--72ca8ecd-ef2f-4654-b9fa-fcbcefbac94f",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東アジア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLeafminerの標的範囲として東アジアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--da3e770a-caf9-4ae3-b89f-94b303d0658a",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでLeafminerの標的範囲として欧州が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--35a268cb-db7c-43b9-b267-fa0ee3d988f5",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -680,7 +661,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -691,7 +672,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -706,7 +687,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-001--general",
@@ -734,7 +715,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a274589a-08ff-430d-b637-a25f8b4d9cb7",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -749,7 +730,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-004--general",
@@ -777,7 +758,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b0dba519-45ce-401b-a37d-254f41f610f8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -792,7 +773,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1003-005--general",
@@ -820,7 +801,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -835,7 +816,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1018--general",
@@ -863,7 +844,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -878,7 +859,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1027-010--general",
@@ -906,7 +887,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -921,7 +902,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1046--general",
@@ -949,7 +930,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--368ee988-e5e5-4c6b-8651-2d236af6a2a6",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -964,7 +945,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1055-013--general",
@@ -992,7 +973,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1007,7 +988,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-007--general",
@@ -1035,7 +1016,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1050,7 +1031,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1083--general",
@@ -1078,7 +1059,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1093,7 +1074,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1110-003--general",
@@ -1121,7 +1102,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1136,7 +1117,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1114-002--general",
@@ -1164,7 +1145,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--dda979a7-bc3c-40f7-9506-44530264972a",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1179,7 +1160,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1136-001--general",
@@ -1207,7 +1188,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d8c681cd-f0f9-4ebe-940d-9a300228b200",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1222,7 +1203,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1189--general",
@@ -1250,7 +1231,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--28dc4c88-e7a1-4c89-9ca3-0061b6909ab3",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1265,7 +1246,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1552-001--general",
@@ -1293,7 +1274,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1308,7 +1289,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555--general",
@@ -1336,7 +1317,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1351,7 +1332,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555-003--general",
@@ -1379,7 +1360,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-20T13:48:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1394,7 +1375,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -1420,69 +1401,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--c78d1486-9133-4a76-bc71-3f3bd7e5cf90",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "malware--113db7f7-15c8-44b2-9c3f-6c69f72a57d4",
-      "description": "Leafminer uses Sorgu.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--965a5307-1351-4064-a5fc-40a0f1211942",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "malware--fd169564-b237-468c-8d8d-00a49fd04c49",
-      "description": "Leafminer uses guester / Trojan.Imecab.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8e99aa65-e316-4294-9413-375c4c90d67d",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "tool--ce3682e3-976f-4e44-b34a-31280bce9caa",
-      "description": "Leafminer uses MailSniper.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--eaf5c568-fcf3-4ea6-93e0-6520fd84b6fd",
-      "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-      "description": "Leafminer uses Mimikatz.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--d0f3b948-c804-4c2c-bcdf-1cb20f22cf1c",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1490,14 +1411,65 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
       "description": "Leafminer uses LaZagne.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8e99aa65-e316-4294-9413-375c4c90d67d",
+      "created": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
+      "target_ref": "tool--ce3682e3-976f-4e44-b34a-31280bce9caa",
+      "description": "Leafminer uses MailSniper.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eaf5c568-fcf3-4ea6-93e0-6520fd84b6fd",
+      "created": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
+      "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
+      "description": "Leafminer uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aa556bad-d4dc-4f6f-9b4b-72e15e8df6e2",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1505,74 +1477,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "description": "Leafminer uses PsExec.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5fe79891-2d70-4d60-87f6-51b78a153d69",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--27bb1335-8f1b-49f2-8d71-5f714a61ceee",
-      "description": "Leafminer targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e014f122-c753-4c72-b448-a6dbbd19ebf9",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--1ad90a42-e5ad-4ce7-8c95-fc787ec64331",
-      "description": "Leafminer targets クウェート (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--38221096-94ff-4fcb-a962-1fdd174537ec",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--a1059b30-5e91-4b25-a22a-6f2dcba22020",
-      "description": "Leafminer targets レバノン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--95fb36ec-a340-4c12-9c15-e8899d30958b",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--25ee1b64-5508-48a7-83ef-767fa92cb001",
-      "description": "Leafminer targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4f732eff-0b3e-49d0-8c20-ad142c07d58b",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1580,44 +1499,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "identity--98004793-7f9a-4e7d-a513-cffa2431c6ab",
       "description": "Leafminer targets 中東 (profile target category: regions).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--28facace-95a3-488e-a5ef-5399748db026",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--72ca8ecd-ef2f-4654-b9fa-fcbcefbac94f",
-      "description": "Leafminer targets 東アジア (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fded7be8-077a-4a27-a0f8-71481b59dc55",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-      "target_ref": "identity--da3e770a-caf9-4ae3-b89f-94b303d0658a",
-      "description": "Leafminer targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--54296fbe-4024-4028-9303-5db997c2122f",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1625,14 +1521,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "identity--35a268cb-db7c-43b9-b267-fa0ee3d988f5",
       "description": "Leafminer targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7498f4ed-4f44-4bfa-acb5-43a1f3df4048",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1640,14 +1543,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne and Mimikatz.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ff3bdfa4-954d-47bf-b040-a9cc6ca9bd87",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1655,14 +1565,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--a274589a-08ff-430d-b637-a25f8b4d9cb7",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--425e3d0c-0133-402a-abec-e9197996c0cc",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1670,14 +1587,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--b0dba519-45ce-401b-a37d-254f41f610f8",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--28591a7a-ecf8-4c2e-b246-4845580ed095",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1685,14 +1609,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used Microsoft’s Sysinternals tools to gather detailed information about remote systems.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ebcf6f9e-b13c-4e38-8248-dc61cf1a3bcb",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1700,14 +1631,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) obfuscated scripts that were used on victim machines.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0bd5232-cb41-4a15-9c8d-2e297ce2c43f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1715,14 +1653,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) scanned network services to search for vulnerabilities in the victim system.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fc6f2885-8060-42ce-8ca2-ba4e1911143d",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1730,14 +1675,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--368ee988-e5e5-4c6b-8651-2d236af6a2a6",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) has used [Process Doppelgänging](https://attack.mitre.org/techniques/T1055/013) to evade security software while deploying tools on compromised systems.(Citation: Symantec Leafminer July 2018)\t",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--005bd7bc-609d-4a7c-9299-e9dbb7a18745",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1745,14 +1697,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) infected victims using JavaScript code.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22c37fd7-79c7-4ae6-ba7b-e7381c0b37c4",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1760,14 +1719,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called MailSniper to search for files on the desktop and another utility called Sobolsoft to extract attachments from EML files.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2e188859-f2a1-4fda-abbe-71dd40fa27ec",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1775,14 +1741,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called Total SMB BruteForcer to perform internal password spraying.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cb00300d-eb86-471d-be56-aaa434c75f72",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1790,14 +1763,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called MailSniper to search through the Exchange server mailboxes for keywords.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f0a248e9-f71d-438e-816f-d147ab33064e",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1805,14 +1785,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--dda979a7-bc3c-40f7-9506-44530264972a",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used a tool called Imecab to set up a persistent remote access account on the victim machine.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f01c3bfe-8225-48d7-884b-ea65568c2cd4",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1820,14 +1807,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--d8c681cd-f0f9-4ebe-940d-9a300228b200",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) has infected victims using watering holes.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0239088-d9fc-4c57-8158-756badeac0cb",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1835,14 +1829,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--28dc4c88-e7a1-4c89-9ca3-0061b6909ab3",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7570b43f-8f9e-43a5-98f2-e6559da82f03",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1850,14 +1851,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--a7a8b94b-ccbf-4420-b155-a25efce2ebd8",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--30302f06-1472-4a11-921d-93a99c229400",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1865,14 +1873,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) used several tools for retrieving login and password information, including LaZagne.(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--404e669e-df5d-437c-afdf-370157e10a7f",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1880,14 +1895,21 @@
       "source_ref": "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[Leafminer](https://attack.mitre.org/groups/G0077) has obtained and used tools such as [LaZagne](https://attack.mitre.org/software/S0349), [Mimikatz](https://attack.mitre.org/software/S0002), [PsExec](https://attack.mitre.org/software/S0029), and [MailSniper](https://attack.mitre.org/software/S0413).(Citation: Symantec Leafminer July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--79bd9894-0f2a-4794-a204-1163bada3909",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1897,14 +1919,14 @@
         "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 22
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--167777df-89d0-43e5-8732-d79989aa97d8",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1913,22 +1935,14 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--c56f1bf3-a7f1-4986-93bc-18c256f99abd",
-        "malware--113db7f7-15c8-44b2-9c3f-6c69f72a57d4",
-        "malware--fd169564-b237-468c-8d8d-00a49fd04c49",
+        "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
         "tool--ce3682e3-976f-4e44-b34a-31280bce9caa",
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-        "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
-        "identity--27bb1335-8f1b-49f2-8d71-5f714a61ceee",
-        "identity--1ad90a42-e5ad-4ce7-8c95-fc787ec64331",
-        "identity--a1059b30-5e91-4b25-a22a-6f2dcba22020",
-        "identity--25ee1b64-5508-48a7-83ef-767fa92cb001",
         "identity--98004793-7f9a-4e7d-a513-cffa2431c6ab",
-        "identity--72ca8ecd-ef2f-4654-b9fa-fcbcefbac94f",
-        "identity--da3e770a-caf9-4ae3-b89f-94b303d0658a",
         "identity--35a268cb-db7c-43b9-b267-fa0ee3d988f5",
         "attack-pattern--5406f5b4-49e0-406c-8341-58dbfd14a2ec",
         "attack-pattern--a274589a-08ff-430d-b637-a25f8b4d9cb7",
@@ -1948,7 +1962,7 @@
         "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

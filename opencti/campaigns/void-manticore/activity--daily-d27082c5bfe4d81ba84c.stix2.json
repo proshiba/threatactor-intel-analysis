@@ -1,0 +1,915 @@
+{
+  "type": "bundle",
+  "id": "bundle--85e0e715-8ac1-4f83-8081-0b28c798d789",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--cd73f70c-14b1-4996-b062-7f1123d4ffb9",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Data Destruction",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1485",
+          "url": "https://attack.mitre.org/techniques/T1485/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--7e8a4b46dd7a5b9c6c08",
+      "x_tactic": "Impact",
+      "x_activity_refs": [
+        "activity--daily-d27082c5bfe4d81ba84c"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "created": "2026-07-27T11:17:27Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "description": "新バージョンのBiBi Wiperがディスクパーティションテーブルを破壊 攻撃はイスラエルとアルバニアで発生 攻撃者はイランのハッカーグループであるVoid Manticore Void Manticoreは多様な破壊ツールを使用 新バージョンはデータ復旧を困難にする",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-d27082c5bfe4d81ba84c",
+      "x_activity_type": "disruptive-activity",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--d27082c5bfe4d81ba84c12d3 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はイランのハッカーグループであるVoid Manticore",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--void-manticore",
+          "name": "VOID MANTICORE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--7e8a4b46dd7a5b9c6c08"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--country--d8e7a06129151caf4b40",
+            "target--targeting-audit--country--732e902cdc1639b39dba"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--780f3983aa8216977285"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-05-21T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "disruptive-activity",
+          "phases": [
+            "Impact"
+          ],
+          "results": [
+            "destruction"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--mitre-group--country--d8e7a06129151caf4b40",
+              "target--targeting-audit--country--732e902cdc1639b39dba"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-0d70b2cb1fe1f39ff860"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3dd4bc63-34cb-4248-a047-b87fdf1d80c1",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T03:17:47Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "identity_class": "organization",
+      "description": "新バージョンのBiBi Wiperがディスクパーティションテーブルを破壊 攻撃はイスラエルとアルバニアで発生 攻撃者はイランのハッカーグループであるVoid Manticore Void Manticoreは多様な破壊ツールを使用 新バージョンはデータ復旧を困難にする",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--780f3983aa8216977285",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--mitre-group--country--d8e7a06129151caf4b40"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--7e8a4b46dd7a5b9c6c08"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "destruction",
+          "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+      "created": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-21T02:39:41Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "VOID MANTICORE",
+      "aliases": [
+        "BANISHED KITTEN",
+        "COBALT MYSTIQUE",
+        "Handala Hack",
+        "Homeland Justice",
+        "Karma",
+        "Karmabelow80",
+        "Red Sandstorm"
+      ],
+      "description": "[VOID MANTICORE](https://attack.mitre.org/groups/G1055) is a threat group assessed to operate on behalf of Iran’s Ministry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts destructive cyber operations, combining wiper attacks with hack-and-leak campaigns. The group has operated under multiple public-facing personas, including [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) in operations against Albania, Karma and Karma Below in campaigns targeting Israeli organizations, and Handala Hack, its current primary persona, which has claimed activity against Israeli and U.S. entities, including a March 2026 attack against Stryker Corporation.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: DOJ FBI Handala Hack March 2026)  [VOID MANTICORE](https://attack.mitre.org/groups/G1055) has been observed collaborating with Scarred Manticore, which has been linked to initial access operations preceding VOID MANTICORE’s activity.(Citation: Domain Tools Handala Hack Karma Homeland Justice MOIS April 2026) ",
+      "goals": [],
+      "external_references": [],
+      "x_profile_id": "actor--void-manticore",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "BANISHED KITTEN",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "COBALT MYSTIQUE",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Handala Hack",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Homeland Justice",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Karma",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Karmabelow80",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Red Sandstorm",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+      },
+      "x_free_text": {
+        "executive_summary": "VOID MANTICOREの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=アルバニア、イスラエル、イラン、米国。標的地域=中東。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--05270374-75a4-43c5-bd69-d49a0b973f5f",
+      "created": "2026-07-29T15:36:12Z",
+      "modified": "2026-09-21T03:17:47Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Israel",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--mitre-group--country--d8e7a06129151caf4b40",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "ISR",
+      "x_opencti_reference_id": "location--e9cbb2ff-9bba-4ab8-91c0-2a02bb2ac1ad",
+      "x_opencti_aliases": [
+        "IL",
+        "ISR",
+        "イスラエル"
+      ],
+      "latitude": 31.046051,
+      "longitude": 34.851612,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "location",
+      "spec_version": "2.1",
+      "id": "location--d4b08a4f-8441-4139-8298-74ec70bedac1",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T03:17:47Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Albania",
+      "x_target_category": "countries",
+      "x_profile_object_id": "target--targeting-audit--country--732e902cdc1639b39dba",
+      "confidence": 100,
+      "x_opencti_location_type": "Country",
+      "country": "ALB",
+      "x_opencti_reference_id": "location--1a313886-1cf1-4719-91e6-0f870ee45dad",
+      "x_opencti_aliases": [
+        "AL",
+        "ALB",
+        "アルバニア"
+      ],
+      "latitude": 41.153332,
+      "longitude": 20.168331,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--03c25739-0ed2-484c-93b7-82b77967fae7",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "target_ref": "attack-pattern--cd73f70c-14b1-4996-b062-7f1123d4ffb9",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 uses ttp--activity-rule--7e8a4b46dd7a5b9c6c08.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--28739a9b-5fb4-4e9a-8bd4-e114e776645f",
+      "created": "2026-09-21T03:17:47Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "target_ref": "location--d4b08a4f-8441-4139-8298-74ec70bedac1",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 targets target--targeting-audit--country--732e902cdc1639b39dba.\n\nEvidence: MITRE ATT&CKのGroup概要でVOID MANTICOREの標的国として明示されている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3c4c312a-4293-4ad0-ab87-df37fe5836f7",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+      "target_ref": "location--d4b08a4f-8441-4139-8298-74ec70bedac1",
+      "description": "VOID MANTICORE targets アルバニア (profile target category: countries).\n\nEvidence: MITRE ATT&CKのGroup概要でVOID MANTICOREの標的国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-05-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-09-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-05-01T04:00:00.000Z",
+      "stop_time": "2022-09-01T04:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d9a73d8-2724-49f6-af08-25281ef74da2",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "target_ref": "identity--3dd4bc63-34cb-4248-a047-b87fdf1d80c1",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 affected victim--activity-rule--780f3983aa8216977285.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--561319ed-b9b6-4e2c-a2bd-0997408ff07e",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+      "target_ref": "attack-pattern--cd73f70c-14b1-4996-b062-7f1123d4ffb9",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--987c133d-7d10-482c-b3ea-6f0f808e8195",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+      "target_ref": "location--05270374-75a4-43c5-bd69-d49a0b973f5f",
+      "description": "VOID MANTICORE targets イスラエル (profile target category: countries).\n\nEvidence: istry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts destructive cyber operations, combining wiper attacks with hack-and-leak campaigns.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860"
+        }
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a46d8f74-86f7-43a3-92ad-2a435b3551ad",
+      "created": "2026-09-21T03:17:47Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "target_ref": "location--05270374-75a4-43c5-bd69-d49a0b973f5f",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 targets target--mitre-group--country--d8e7a06129151caf4b40.\n\nEvidence: istry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts destructive cyber operations, combining wiper attacks with hack-and-leak campaigns.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f29686c3-6d6c-43f3-8fac-791ebfcc3635",
+      "created": "2026-07-27T11:17:27Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+      "target_ref": "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+      "description": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 is attributed or linked to VOID MANTICORE.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--67c6bbb0-06d0-430d-9dcd-331c7f97a104",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "relationship--28739a9b-5fb4-4e9a-8bd4-e114e776645f",
+        "relationship--3c4c312a-4293-4ad0-ab87-df37fe5836f7",
+        "relationship--987c133d-7d10-482c-b3ea-6f0f808e8195",
+        "relationship--a46d8f74-86f7-43a3-92ad-2a435b3551ad"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--void-manticore:activity--daily-d27082c5bfe4d81ba84c",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--6d532bb9-fcbb-4133-8023-a5e3fa156910",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2024-05-21T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--cd73f70c-14b1-4996-b062-7f1123d4ffb9",
+        "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+        "identity--3dd4bc63-34cb-4248-a047-b87fdf1d80c1",
+        "relationship--03c25739-0ed2-484c-93b7-82b77967fae7",
+        "relationship--28739a9b-5fb4-4e9a-8bd4-e114e776645f",
+        "relationship--3c4c312a-4293-4ad0-ab87-df37fe5836f7",
+        "relationship--4d9a73d8-2724-49f6-af08-25281ef74da2",
+        "relationship--561319ed-b9b6-4e2c-a2bd-0997408ff07e",
+        "relationship--987c133d-7d10-482c-b3ea-6f0f808e8195",
+        "relationship--a46d8f74-86f7-43a3-92ad-2a435b3551ad",
+        "relationship--f29686c3-6d6c-43f3-8fac-791ebfcc3635"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "external_id": "source--daily-0d70b2cb1fe1f39ff860",
+          "url": "https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-0d70b2cb1fe1f39ff860",
+      "x_evidence_slice_scope": "campaign:actor--void-manticore:activity--daily-d27082c5bfe4d81ba84c",
+      "x_source_publisher": "bleepingcomputer.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2da837f7-5683-4042-a9f5-54d66c03a75a",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "VOID MANTICORE / BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊",
+      "description": "新バージョンのBiBi Wiperがディスクパーティションテーブルを破壊 攻撃はイスラエルとアルバニアで発生 攻撃者はイランのハッカーグループであるVoid Manticore Void Manticoreは多様な破壊ツールを使用 新バージョンはデータ復旧を困難にする",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T04:35:03Z",
+      "object_refs": [
+        "attack-pattern--cd73f70c-14b1-4996-b062-7f1123d4ffb9",
+        "campaign--068b13c3-2eed-4554-8117-bbf1f0895d2a",
+        "identity--3dd4bc63-34cb-4248-a047-b87fdf1d80c1",
+        "intrusion-set--9273d1a3-d835-4952-bd62-1f870304c275",
+        "location--05270374-75a4-43c5-bd69-d49a0b973f5f",
+        "location--d4b08a4f-8441-4139-8298-74ec70bedac1",
+        "relationship--03c25739-0ed2-484c-93b7-82b77967fae7",
+        "relationship--28739a9b-5fb4-4e9a-8bd4-e114e776645f",
+        "relationship--3c4c312a-4293-4ad0-ab87-df37fe5836f7",
+        "relationship--4d9a73d8-2724-49f6-af08-25281ef74da2",
+        "relationship--561319ed-b9b6-4e2c-a2bd-0997408ff07e",
+        "relationship--987c133d-7d10-482c-b3ea-6f0f808e8195",
+        "relationship--a46d8f74-86f7-43a3-92ad-2a435b3551ad",
+        "relationship--f29686c3-6d6c-43f3-8fac-791ebfcc3635",
+        "report--67c6bbb0-06d0-430d-9dcd-331c7f97a104",
+        "report--6d532bb9-fcbb-4133-8023-a5e3fa156910"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--void-manticore",
+      "x_activity_id": "activity--daily-d27082c5bfe4d81ba84c"
+    }
+  ]
+}

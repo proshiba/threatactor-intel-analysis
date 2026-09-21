@@ -7,12 +7,13 @@
       "spec_version": "2.1",
       "id": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T03:17:45Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT42",
       "aliases": [
+        "CALANQUE",
         "CALANQUE ION"
       ],
       "description": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
@@ -21,16 +22,28 @@
       ],
       "external_references": [],
       "x_profile_id": "actor--apt42",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
+        {
+          "name": "CALANQUE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
         {
           "name": "CALANQUE ION",
           "vendor": "Google Threat Intelligence Group",
           "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--gtig-adversarial-ai-2026"
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。"
+          "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         }
       ],
       "x_attribution": {
@@ -47,16 +60,17 @@
         "history": "",
         "capability_details": "NICECURL, TAMECAT",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、イスラエル、イタリア、イラン、ウクライナ、オーストラリア、ノルウェー、ブルガリア、マレーシア、ロシア、米国、英国。標的地域=中東、東欧、欧州。日本は確認時に個別国として保持する。\n\nWestern think tanks, researchers, journalists, current Western government officials, former Iranian government officials, and the Iranian diaspora abroad",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東。日本は確認時に個別国として保持する。\n\nWestern think tanks, researchers, journalists, current Western government officials, former Iranian government officials, and the Iranian diaspora abroad",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt42",
         "actor_name": "APT42",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -65,16 +79,56 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
             "APT42",
+            "CALANQUE",
             "CALANQUE ION"
           ],
           "mitre_group_id": "G1044"
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-calanque-ion",
+              "entry_value": "CALANQUE ION",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt42",
+                  "profile_value": "APT42",
+                  "dataset_value": "APT42"
+                },
+                {
+                  "normalized": "calanque",
+                  "profile_value": "CALANQUE",
+                  "dataset_value": "CALANQUE"
+                },
+                {
+                  "normalized": "calanqueion",
+                  "profile_value": "CALANQUE ION",
+                  "dataset_value": "CALANQUE ION"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "CALANQUE ION",
+                "APT42",
+                "CALANQUE"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT42 and CALANQUE.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "fa55484b-2760-4ac1-9105-96199054d1df",
@@ -102,7 +156,62 @@
                 "https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+42&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2015",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Education",
+                  "Government",
+                  "Healthcare",
+                  "Manufacturing",
+                  "Media",
+                  "Non-profit organizations",
+                  "Pharmaceutical",
+                  "Legal and professional services"
+                ],
+                "observed-countries": [
+                  "Australia",
+                  "Bulgaria",
+                  "Iran",
+                  "Italy",
+                  "Malaysia",
+                  "Norway",
+                  "UAE",
+                  "UK",
+                  "Ukraine",
+                  "USA"
+                ],
+                "tools": [
+                  "BROKEYOLK",
+                  "CHAIRSMACK",
+                  "DOSTEALER",
+                  "Ghambar",
+                  "GORBLE",
+                  "MAGICDROP",
+                  "PINEFLOWER",
+                  "POWERPOST",
+                  "SILENTUPLOADER",
+                  "TABBYCAT",
+                  "TAMECAT",
+                  "VBREVSHELL",
+                  "VINETHORN"
+                ],
+                "operations": [
+                  {
+                    "date": "2022-09",
+                    "activity": "Iran: State-Backed Hacking of Activists, Journalists, Politicians\nhttps://www.hrw.org/news/2022/12/05/iran-state-backed-hacking-activists-journalists-politicians"
+                  },
+                  {
+                    "date": "2024-02",
+                    "activity": "Iranian backed group steps up phishing campaigns against Israel, U.S.\nhttps://blog.google/threat-analysis-group/iranian-backed-group-steps-up-phishing-campaigns-against-israel-us/"
+                  }
+                ],
+                "sponsor": "State-sponsored, Islamic Revolutionary Guard Corps (IRGC)’s Intelligence Organization (IRGC-IO)",
+                "last-card-change": "2024-10-23"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -117,6 +226,16 @@
                   "normalized": "apt42",
                   "profile_value": "APT42",
                   "dataset_value": "APT42"
+                },
+                {
+                  "normalized": "calanque",
+                  "profile_value": "CALANQUE",
+                  "dataset_value": "CALANQUE"
+                },
+                {
+                  "normalized": "calanqueion",
+                  "profile_value": "CALANQUE ION",
+                  "dataset_value": "CALANQUE ION"
                 }
               ],
               "match_basis": "canonical-name",
@@ -124,7 +243,8 @@
               "candidate_names": [
                 "APT42",
                 "UNC788",
-                "CALANQUE"
+                "CALANQUE",
+                "CALANQUE ION"
               ],
               "countries": [
                 "IR",
@@ -133,7 +253,8 @@
               "description": "Iranian state-sponsored cyber espionage group tasked with conducting information collection and surveillance operations against individuals and organizations of strategic interest to the Iranian government.",
               "refs": [
                 "https://www.mandiant.com/resources/blog/apt42-charms-cons-compromises",
-                "https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf"
+                "https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": [
                 {
@@ -150,11 +271,201 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "Australia",
+                  "Europe",
+                  "Israel",
+                  "Middle East",
+                  "United States"
+                ],
+                "cfr-target-category": [
+                  "Education",
+                  "Government",
+                  "Military",
+                  "Defense",
+                  "Energy",
+                  "Finance",
+                  "Healthcare",
+                  "Pharmaceuticals",
+                  "Civil Society",
+                  "Legal",
+                  "Manufacturing",
+                  "Media",
+                  "NGOs",
+                  "Pharmaceuticals"
+                ],
+                "cfr-type-of-incident": "Espionage"
+              }
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "c0291346-defe-48d7-9542-9e074ba1bdfb",
+              "entry_value": "APT42 - G1044",
+              "external_id": "G1044",
+              "matched_names": [
+                {
+                  "normalized": "apt42",
+                  "profile_value": "APT42",
+                  "dataset_value": "APT42"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "APT42"
+              ],
+              "countries": [],
+              "description": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
+              "refs": [
+                "https://attack.mitre.org/groups/G1044",
+                "https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations",
+                "https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "01a5a209-b94c-450b-b7f9-946497d91055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0259baeb-9f63-4c69-bf10-eb038c390688",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "04fd5427-79c7-44ea-ae13-11b24778ff1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0659f55c-3b68-4e5d-8071-12ded6684731",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "09a60ea3-a8d1-4ae5-976e-5783248b72a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "10ffac09-e42d-4f56-ab20-db94c67d76ff",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "12fdf05a-4bd1-4f45-9cde-d3af35f82db1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "143122a8-fcda-4dd7-aded-5b9387d9c2d6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1ecb2399-e8ba-4f6b-8ba7-5c27d49405cf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "25659dd6-ea12-45c4-97e6-381e3e4b593e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2b742742-28c3-4e1b-bab7-8350d6300fa7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3298ce88-1628-43b1-87d9-0b5336b193d7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ee16395-03f0-4690-a32e-69ce9ada0f9e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40f5caa0-4cb7-4117-89fc-d421bb493df3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "438c967d-3996-4870-bfc2-3954752a1927",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "57340c81-c025-4189-8fa0-fc7ede51bae4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "58a3e6aa-4453-4cc8-a51f-4befe80b31a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65013dd2-bc61-43e3-afb5-a14c4fa7437a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "799ace7f-e227-4411-baa0-8868704f2a69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "79da0971-3147-4af6-a4f5-e8cd447cd795",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "830c9528-df21-472c-8c14-a036bf17d665",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bb5a00de-e086-4859-a231-fa793f6797e2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf176076-b789-408e-8cba-7275e81c0ada",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cba37adb-d6fb-4610-b069-dd04c0643384",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cd92d2b8-ce43-4666-9472-f1b4b9f4f8be",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dd43c543-bb85-4a6f-aa6e-160d90d06a49",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "c0291346-defe-48d7-9542-9e074ba1bdfb",
@@ -316,10 +627,55 @@
                   "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "c4336f3a-1902-5eb1-8ad1-204da1267dcc",
+              "entry_value": "APT42",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt42",
+                  "profile_value": "APT42",
+                  "dataset_value": "APT42"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "APT42"
+              ],
+              "countries": [
+                "IR"
+              ],
+              "description": "[APT42](https://app.tidalcyber.com/groups/c4336f3a-1902-5eb1-8ad1-204da1267dcc) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.<sup>[[Mandiant APT42-charms](https://app.tidalcyber.com/references/12e517a6-0045-5434-b9ef-e3ecd9ec8508)]</sup> The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.<sup>[[Mandiant APT42-charms](https://app.tidalcyber.com/references/12e517a6-0045-5434-b9ef-e3ecd9ec8508)]</sup> [APT42](https://app.tidalcyber.com/groups/c4336f3a-1902-5eb1-8ad1-204da1267dcc) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.<sup>[[Mandiant APT42-charms](https://app.tidalcyber.com/references/12e517a6-0045-5434-b9ef-e3ecd9ec8508)]</sup> Finally, [APT42](https://app.tidalcyber.com/groups/c4336f3a-1902-5eb1-8ad1-204da1267dcc) exfiltrates data using native features and open-source tools.<sup>[[Mandiant APT42-untangling](https://app.tidalcyber.com/references/64b19eab-8190-5e22-89a0-f7555f9f7fa2)]</sup> \n\n[APT42](https://app.tidalcyber.com/groups/c4336f3a-1902-5eb1-8ad1-204da1267dcc) activities have been linked to [Magic Hound](https://app.tidalcyber.com/groups/7a9d653c-8812-4b96-81d1-b0a27ca918b4) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://app.tidalcyber.com/groups/7a9d653c-8812-4b96-81d1-b0a27ca918b4) and [APT42](https://app.tidalcyber.com/groups/c4336f3a-1902-5eb1-8ad1-204da1267dcc), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "observed_motivations": [
+                  "Cyber Espionage"
+                ],
+                "target_categories": [
+                  "Defense",
+                  "Education",
+                  "Energy",
+                  "Financial Services",
+                  "Government",
+                  "Healthcare",
+                  "Human Rights",
+                  "Legal",
+                  "Manufacturing",
+                  "Media",
+                  "NGOs",
+                  "Pharmaceuticals"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
           {
@@ -389,7 +745,7 @@
       "spec_version": "2.1",
       "id": "malware--9afda9d1-2024-44dd-ae7e-b3f87ae5acc2",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -399,7 +755,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--nicecurl",
@@ -418,7 +774,7 @@
       "spec_version": "2.1",
       "id": "malware--323a7a0d-35ab-4ff7-88f9-864802b482a5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -428,7 +784,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--tamecat",
@@ -447,7 +803,7 @@
       "spec_version": "2.1",
       "id": "campaign--d06ea16d-db2a-47ea-a05e-16265e000a3f",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -461,14 +817,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-378e1b9987e0f8734e76",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--378e1b9987e0f8734e760b13 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。",
-      "x_reported_at": {
-        "value": "2026-02-13T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt42",
@@ -484,9 +836,7 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--country--72caf60a2fbce4a1be7a"
-          ],
+          "target_refs": [],
           "victim_refs": [
             "victim--activity-rule--8d9f800c14d1007aa798"
           ]
@@ -517,9 +867,7 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [
-              "target--activity-rule--country--72caf60a2fbce4a1be7a"
-            ],
+            "target_country_refs": [],
             "target_region_refs": []
           }
         },
@@ -528,6 +876,24 @@
           "source--daily-2cce580b31452f445118"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-02-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -535,7 +901,7 @@
       "spec_version": "2.1",
       "id": "campaign--e5dc1f8c-a20f-48f0-9557-0af8d78434a7",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -549,14 +915,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-44334d9d451bb0daecc6",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--44334d9d451bb0daecc652bb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - イランのAPTアクターがGeminiの最も頻繁な利用者であり、APT42というハッキンググループは、この国のハッカーによるGemini利用の30%以上を占めています。",
-      "x_reported_at": {
-        "value": "2025-01-31T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt42",
@@ -612,6 +974,24 @@
           "source--daily-e07d98b8e6a40e245f21"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-01-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -619,7 +999,7 @@
       "spec_version": "2.1",
       "id": "campaign--4f50f166-933d-43ce-956a-956095be1b14",
       "created": "2026-07-27T11:17:22Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -633,14 +1013,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-a846d20a187dffe844c6",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--a846d20a187dffe844c6dc97 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - イランのAPT42、ジャーナリストになりすましマルウェアを配布。",
-      "x_reported_at": {
-        "value": "2024-05-06T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--apt42",
@@ -692,293 +1068,32 @@
           "source--daily-0917cfe45c04f45174f4"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-05-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--d4e47f7b-61e5-482b-b32f-17ec48b2a722",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アラブ首長国連邦",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてアラブ首長国連邦が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--1428a065-6c89-430e-8420-63b290e343f9",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イスラエル",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイスラエルが記録されている。",
-      "external_references": [
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6d74c6a6-bae5-4bee-96d5-fa21c0ba94d0",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イタリア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイタリアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ddf53639-03d5-4d8b-9657-dcd8721080ea",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラン",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録されたイランを構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2ea6ece4-3c3c-46a9-bb86-6550b0c1858a",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ウクライナ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてウクライナが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--3a20847c-0702-4834-9c5d-c40c7d085437",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "オーストラリア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてオーストラリアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--64081222-c6a9-4514-846d-69d9cd06b1f6",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ノルウェー",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてノルウェーが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--2266c40d-c2f3-4986-9c0e-276477f4339c",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ブルガリア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてブルガリアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--425463cb-13d4-443e-bc8a-9622759ae1a1",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "マレーシア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国としてマレーシアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ロシア",
-      "identity_class": "organization",
-      "description": "活動「Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘」の記述で標的として明示された国・地域。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/",
-          "external_id": "source--daily-2cce580b31452f445118"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--49ca18df-9a07-4242-81a5-9b44670b81f5",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--f1427091-44de-42a8-a58b-33542ee09f36",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "英国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでAPT42の標的・被害国として英国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
     },
     {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--ca5cbb26-c215-470b-b888-1a9c21ce4897",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -987,82 +1102,13 @@
       "description": "MITRE ATT&CKのGroup概要でAPT42の標的範囲として中東が明示されている。",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
       "x_confidence": "high"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--72b56349-9c41-4e29-9cd3-f84367a50480",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東欧",
-      "identity_class": "organization",
-      "description": "ウクライナ、ブルガリア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/",
-          "external_id": "source--daily-2cce580b31452f445118"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6461a203-4b6e-49f4-a322-c50d7336b32a",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害地域フィールドでAPT42の標的範囲として欧州が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
     },
     {
       "type": "identity",
@@ -1089,75 +1135,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Education and Research",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Education and Research sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Government",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Government sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--4ade189c-13d3-43ed-b204-a23138c98e72",
-      "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Media",
-      "identity_class": "organization",
-      "description": "Targeting text indicates the Media sector.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--6bd54dde-f722-4a6e-b24e-cc65fecc61e8",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T03:17:45Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1175,9 +1155,7 @@
       "x_disclosure_status": "anonymous",
       "x_victim_type": "unknown",
       "x_case_status": "reported",
-      "x_target_refs": [
-        "target--activity-rule--country--72caf60a2fbce4a1be7a"
-      ],
+      "x_target_refs": [],
       "x_malware_refs": [],
       "x_ttp_refs": [],
       "x_affected_assets": [],
@@ -1264,7 +1242,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1279,7 +1257,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1016--general",
@@ -1307,7 +1285,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1322,7 +1300,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1036-005--general",
@@ -1350,7 +1328,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1365,7 +1343,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1047--general",
@@ -1393,7 +1371,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1408,7 +1386,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1053-005--general",
@@ -1436,7 +1414,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--b8099ff7-32f8-404b-9eee-bcd568231b56",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1451,7 +1429,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1056--general",
@@ -1479,7 +1457,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--8cab9024-143a-4bf6-95a6-5b8a98a46aa9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1494,7 +1472,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1056-001--general",
@@ -1522,7 +1500,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1537,7 +1515,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -1565,7 +1543,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1580,7 +1558,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-005--general",
@@ -1608,7 +1586,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7360fc09-38d9-4bf5-b36b-c67ccc3285da",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1623,7 +1601,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1070--general",
@@ -1651,7 +1629,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7fd00b23-75a1-4cd1-b49f-dbce98e3d4c4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1666,7 +1644,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1070-008--general",
@@ -1694,7 +1672,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1709,7 +1687,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1071-001--general",
@@ -1737,7 +1715,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1752,7 +1730,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1082--general",
@@ -1780,7 +1758,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4b87bea7-ab73-4a53-b541-9766bad896d9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1795,7 +1773,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1087-001--general",
@@ -1823,7 +1801,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--cef95057-8b46-40d4-b1ba-ceca3f27b32d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1838,7 +1816,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1102--general",
@@ -1866,7 +1844,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--6543f70d-01c6-4e6b-9088-d2ea916959a6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1881,7 +1859,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1111--general",
@@ -1909,7 +1887,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--452b40d3-baa3-4757-8dbd-aab3fa4fa5ee",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1924,7 +1902,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1112--general",
@@ -1952,7 +1930,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--217b4025-5aeb-40c7-b234-45eef4dfba56",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1967,7 +1945,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1113--general",
@@ -1995,7 +1973,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--59e1f8bb-d7dc-43a1-a846-9aac9454642d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2010,7 +1988,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1132-001--general",
@@ -2081,7 +2059,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--ad0d52fc-0289-4fa8-8cac-130401551f8c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2096,7 +2074,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1518-001--general",
@@ -2124,7 +2102,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--26fb5844-c167-4b1e-9489-ef85b874261f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2139,7 +2117,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1530--general",
@@ -2167,7 +2145,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--88cbabc2-0c05-4015-bf07-1690da8bd0db",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2182,7 +2160,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1539--general",
@@ -2210,7 +2188,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4874ad75-876e-4968-aff9-29ce10415636",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2225,7 +2203,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1547--general",
@@ -2253,7 +2231,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2268,7 +2246,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1555-003--general",
@@ -2296,7 +2274,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2311,7 +2289,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-002--general",
@@ -2339,7 +2317,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--cee7b36e-23cc-45b8-a0e6-fd35534c6067",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2354,7 +2332,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1573-002--general",
@@ -2382,7 +2360,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2397,7 +2375,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-001--general",
@@ -2425,7 +2403,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--5197e629-1cf6-4045-9d96-9e86c5047890",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2440,7 +2418,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1583-003--general",
@@ -2468,7 +2446,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2483,7 +2461,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1585-002--general",
@@ -2511,7 +2489,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2526,7 +2504,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -2554,7 +2532,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2569,7 +2547,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1608-001--general",
@@ -2597,7 +2575,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f7e922c6-f285-4781-b3c0-535a5a2c6520",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2612,7 +2590,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1682--general",
@@ -2640,7 +2618,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--2c24f715-4577-4c2d-a5b5-cc2ec5e521b9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2655,7 +2633,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1684-001--general",
@@ -2683,7 +2661,7 @@
       "spec_version": "2.1",
       "id": "relationship--c13be171-69ed-4751-8e1f-204829900830",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2691,14 +2669,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "malware--9afda9d1-2024-44dd-ae7e-b3f87ae5acc2",
       "description": "APT42 uses NICECURL.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--67bf5dfc-0271-4d0b-abe7-0c18a553d0d9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2706,194 +2691,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "malware--323a7a0d-35ab-4ff7-88f9-864802b482a5",
       "description": "APT42 uses TAMECAT.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--23c87799-796b-4ca7-8398-07a706e26a47",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--d4e47f7b-61e5-482b-b32f-17ec48b2a722",
-      "description": "APT42 targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a5ebb1fd-56ad-491b-b073-92694672bf6a",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--1428a065-6c89-430e-8420-63b290e343f9",
-      "description": "APT42 targets イスラエル (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1ee42273-4888-4900-862f-d3dd0567cc16",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--6d74c6a6-bae5-4bee-96d5-fa21c0ba94d0",
-      "description": "APT42 targets イタリア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--bf3d5407-b78d-485c-818e-be3922f629ed",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--ddf53639-03d5-4d8b-9657-dcd8721080ea",
-      "description": "APT42 targets イラン (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d172704d-ac7c-49ca-a4a0-0460fb129169",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--2ea6ece4-3c3c-46a9-bb86-6550b0c1858a",
-      "description": "APT42 targets ウクライナ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--0ddf0836-2d70-45d1-9a57-90ca15cf9228",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--3a20847c-0702-4834-9c5d-c40c7d085437",
-      "description": "APT42 targets オーストラリア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c3cb0f59-4e42-4a64-82d6-70dbe4563fb4",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--64081222-c6a9-4514-846d-69d9cd06b1f6",
-      "description": "APT42 targets ノルウェー (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--651bbd19-65a8-4bf7-8b26-b85042461a96",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--2266c40d-c2f3-4986-9c0e-276477f4339c",
-      "description": "APT42 targets ブルガリア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d6d8907f-0707-485c-be16-c2d5ea1c10be",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--425463cb-13d4-443e-bc8a-9622759ae1a1",
-      "description": "APT42 targets マレーシア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3abde260-e2d6-4bd6-8009-5cf05a034856",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
-      "description": "APT42 targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3817ed34-2309-44a4-8ca3-49bf3ad818db",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--49ca18df-9a07-4242-81a5-9b44670b81f5",
-      "description": "APT42 targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--882c3414-49ce-4db8-8e94-d3ca07c11012",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--f1427091-44de-42a8-a58b-33542ee09f36",
-      "description": "APT42 targets 英国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c5c1dc79-1301-435e-bf3e-d9fe683bc620",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2901,44 +2713,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "identity--ca5cbb26-c215-470b-b888-1a9c21ce4897",
       "description": "APT42 targets 中東 (profile target category: regions).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--25ebde15-d7e0-4a94-a8a7-37633c20222d",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--72b56349-9c41-4e29-9cd3-f84367a50480",
-      "description": "APT42 targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--07786834-f669-402d-8c3a-dc7045466247",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--6461a203-4b6e-49f4-a322-c50d7336b32a",
-      "description": "APT42 targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7dfc1bac-e942-49e9-91c8-7f889c87c1da",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2946,59 +2735,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "description": "APT42 targets 防衛・軍事 (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--06d95a46-09b7-4ef4-b6da-8c1fa57972df",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-      "description": "APT42 targets Education and Research (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e636f908-3c46-465f-8007-231d60944772",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "description": "APT42 targets Government (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f20f7aab-11cc-4e60-9840-5d337aa9d4a6",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
-      "target_ref": "identity--4ade189c-13d3-43ed-b204-a23138c98e72",
-      "description": "APT42 targets Media (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html",
+          "external_id": "source--daily-e07d98b8e6a40e245f21"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--393bde4e-21e2-443e-8544-103ea171010b",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-27T11:04:30Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3006,29 +2757,45 @@
       "source_ref": "campaign--d06ea16d-db2a-47ea-a05e-16265e000a3f",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 is attributed or linked to APT42.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5f161d1c-98fc-4081-9176-a9c44b82af47",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/",
+          "external_id": "source--daily-2cce580b31452f445118"
+        }
       ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--d06ea16d-db2a-47ea-a05e-16265e000a3f",
-      "target_ref": "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
-      "description": "Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 targets target--activity-rule--country--72caf60a2fbce4a1be7a.",
-      "x_confidence": "medium"
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2a8b233f-b334-4a73-925b-eac5a0515a92",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3036,14 +2803,45 @@
       "source_ref": "campaign--d06ea16d-db2a-47ea-a05e-16265e000a3f",
       "target_ref": "identity--6bd54dde-f722-4a6e-b24e-cc65fecc61e8",
       "description": "Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 affected victim--activity-rule--8d9f800c14d1007aa798.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/",
+          "external_id": "source--daily-2cce580b31452f445118"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-02-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d6a9efd9-6139-4e05-99b4-5b79d42d9f73",
       "created": "2026-07-27T11:04:30Z",
-      "modified": "2026-07-27T11:04:30Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3051,14 +2849,45 @@
       "source_ref": "campaign--e5dc1f8c-a20f-48f0-9557-0af8d78434a7",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 is attributed or linked to APT42.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html",
+          "external_id": "source--daily-e07d98b8e6a40e245f21"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-01-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33f6f341-1f10-4938-8466-65c75356b73c",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3066,14 +2895,45 @@
       "source_ref": "campaign--e5dc1f8c-a20f-48f0-9557-0af8d78434a7",
       "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "description": "Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 targets target--activity-rule--sector--b94dc560a327b601965d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html",
+          "external_id": "source--daily-e07d98b8e6a40e245f21"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-01-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0a357e9-1df4-4dbf-9dcc-78ba91bcd24c",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3081,14 +2941,45 @@
       "source_ref": "campaign--e5dc1f8c-a20f-48f0-9557-0af8d78434a7",
       "target_ref": "identity--dfc8dc6d-2df2-4a51-b4b0-182664be2203",
       "description": "Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 affected victim--activity-rule--d615c41a7c601d64d3ee.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html",
+          "external_id": "source--daily-e07d98b8e6a40e245f21"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2025-01-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4cff9a2c-bf3c-4ed5-90ef-103a3ac9c20f",
       "created": "2026-07-27T11:17:22Z",
-      "modified": "2026-07-27T11:17:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3096,14 +2987,45 @@
       "source_ref": "campaign--4f50f166-933d-43ce-956a-956095be1b14",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "イランのハッカーがジャーナリストになりすまし、バックドアマルウェアを配布 is attributed or linked to APT42.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/iranian-hackers-pose-as-journalists-to-push-backdoor-malware/",
+          "external_id": "source--daily-0917cfe45c04f45174f4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2024-05-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2a788eff-8624-492d-8aa9-9d6e21cbcb02",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3111,14 +3033,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect network information.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4bdea3df-35f0-4089-8a5e-fb412f48e7c7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3126,14 +3055,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has masqueraded the VINETHORN payload as a VPN application.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e00c473-9a37-475b-8ade-ea4b9cd255cd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3141,14 +3077,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to query anti-virus products.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3b8ae25b-9102-471c-b5f3-aca105929c94",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3156,14 +3099,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used scheduled tasks for persistence.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--68751f4d-c993-4b42-903a-d1433401e622",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3171,14 +3121,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--b8099ff7-32f8-404b-9eee-bcd568231b56",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used credential harvesting websites.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--838c1885-61c1-4da1-8401-2f244d11eda8",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3186,14 +3143,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--8cab9024-143a-4bf6-95a6-5b8a98a46aa9",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to log keystrokes.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b6a43dca-d499-41cf-92fe-4e570b837af2",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3201,14 +3165,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has downloaded and executed PowerShell payloads.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3763c78a-01b5-4323-af0d-96ccde29146d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3216,14 +3187,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--68046890-8fe8-4d1d-a4e8-0e095a2f7625",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used a VBScript to query anti-virus products.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--487e6e07-9c4c-4b62-aedf-44111aae666c",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3231,14 +3209,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--7360fc09-38d9-4bf5-b36b-c67ccc3285da",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has cleared Chrome browser history.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6a590b1c-5fd3-46a2-9aa7-7b4845e7ec21",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3246,14 +3231,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--7fd00b23-75a1-4cd1-b49f-dbce98e3d4c4",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has deleted login notification emails and has cleared the Sent folder to cover their tracks.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8db790b0-ac63-457e-8cef-0ed04ae44d78",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3261,14 +3253,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4b9e8c96-8ef4-4ce5-8af6-f9744d3b3bac",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3276,14 +3275,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect system information.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed4b2c49-8f1e-4fe3-860a-e6fafbc80508",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3291,14 +3297,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--4b87bea7-ab73-4a53-b541-9766bad896d9",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used the PowerShell-based POWERPOST script to collect local account names from the victim machine.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ace6dccf-b0ca-4c0f-bf49-d3d03c741abb",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3306,14 +3319,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--cef95057-8b46-40d4-b1ba-ceca3f27b32d",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used various links, such as links with typo-squatted domains, links to Dropbox files and links to fake Google sites, in spearphishing operations.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)(Citation: TAG APT42) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--20a6493f-4ab6-4acf-bf17-28210a306610",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3321,14 +3341,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--6543f70d-01c6-4e6b-9088-d2ea916959a6",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has intercepted SMS-based one-time passwords and has set up two-factor authentication.(Citation: Mandiant APT42-charms) Additionally, [APT42](https://attack.mitre.org/groups/G1044) has used cloned or fake websites to capture MFA tokens.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--247942de-79bb-480b-9bfc-bc27e5f64fa7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3336,14 +3363,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--452b40d3-baa3-4757-8dbd-aab3fa4fa5ee",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has modified Registry keys to maintain persistence.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7501bd7d-2cd1-40e7-82df-25d2e83dae64",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3351,14 +3385,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--217b4025-5aeb-40c7-b234-45eef4dfba56",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to take screenshots.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--77e35254-fac8-43db-9c4b-a5c770900dc0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3366,14 +3407,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--59e1f8bb-d7dc-43a1-a846-9aac9454642d",
       "description": " [APT42](https://attack.mitre.org/groups/G1044) has encoded C2 traffic with Base64.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f6c2c4c1-b577-477a-ba89-14291a06654e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3381,14 +3429,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "description": "summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf {\"page\": 7} APT42 后门 NA 10 T1190 Windows MSDT 远程代码执行漏洞 CVE-2022-30190 系统漏洞 攻击公开暴露应用并植入后门 NA 11 T1190 Windows 脚本语言远程代码执行漏洞 CVE-2022-41128 系统漏洞 攻击公开暴露应用并植入后门 APT37 12 T1190 Apache log4j2 远程代码执行漏洞 CVE-2021-44228 应用程序漏洞 攻击公开暴露应用并植入后门 Lazarus/APT42 13 T1190 Atlassian Conﬂuence Server 远程代码执行漏洞 CVE-2022-26134 应用程序漏洞 攻",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "source--apt42--ecc18e15a462bb18",
+          "description": "Local source: actor_profile/evidence/apt42.csv",
+          "external_id": "source--apt42--ecc18e15a462bb18"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--16ad755d-6648-4b19-9fff-ae086775f9bd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3396,14 +3451,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--ad0d52fc-0289-4fa8-8cac-130401551f8c",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to check for anti-virus products.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1dd6b4cc-5b54-48cb-845e-d3d02981a06d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3411,14 +3473,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--26fb5844-c167-4b1e-9489-ef85b874261f",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has collected data from Microsoft 365 environments.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)   ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9e67255d-cb92-43db-a986-6cf1d9acdfc1",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3426,14 +3495,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--88cbabc2-0c05-4015-bf07-1690da8bd0db",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal login and cookie data from common browsers.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--841538ad-7399-4281-bf61-4bc32d759021",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3441,14 +3517,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--4874ad75-876e-4968-aff9-29ce10415636",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has modified the Registry to maintain persistence.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--607ecb73-d4aa-4607-919f-299c1e38ebb9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3456,14 +3539,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--a6874cd1-cc3d-4063-a9e7-085570e262a8",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal credentials.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7ce3a61a-b64f-4225-b4b5-64fb19afdaf3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3471,14 +3561,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has sent spearphishing emails containing malicious links.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)(Citation: TAG APT42) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--646cf3eb-c30f-4e67-b822-0aafe91cae02",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3486,14 +3583,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--cee7b36e-23cc-45b8-a0e6-fd35534c6067",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--91cd5926-8447-40d0-91a1-f2c2818dbaf2",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3501,14 +3605,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has registered domains, several of which masqueraded as news outlets and login services, for use in operations.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--61892aaf-8342-4441-9be9-aef1ab58bd7e",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3516,14 +3627,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--5197e629-1cf6-4045-9d96-9e86c5047890",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used anonymized infrastructure and Virtual Private Servers (VPSs) to interact with the victim’s environment.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2814171e-6f27-4712-8313-423bbc2f00af",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3531,14 +3649,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--72c3ac91-6635-4626-9636-8d0c0672be46",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has created email accounts to use in spearphishing operations.(Citation: TAG APT42)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4bb32151-02cc-4dd6-a580-4bb692157e6b",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3546,14 +3671,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used built-in features in the Microsoft 365 environment and publicly available tools to avoid detection.(Citation: Mandiant APT42-untangling) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--365ad155-efd6-4d68-bb6c-569b07b0aebb",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3561,14 +3693,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--bc2293a2-3419-46ae-815c-a9648631eae7",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has used its infrastructure for C2 and for staging the VINETHORN payload, which masqueraded as a VPN application.(Citation: Mandiant APT42-charms) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2b45b4c3-d5e9-4d78-abd6-f7334e9f5194",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3576,14 +3715,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--f7e922c6-f285-4781-b3c0-535a5a2c6520",
       "description": "APT42 has leveraged LLMs to search for official emails to build target lists, and conduct reconnaissance on potential business partners.(Citation: GTIG AI Threat Tracker)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d16b9768-e699-4a13-8da1-b7475c94e4d9",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3591,14 +3737,21 @@
       "source_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "target_ref": "attack-pattern--2c24f715-4577-4c2d-a5b5-cc2ec5e521b9",
       "description": "[APT42](https://attack.mitre.org/groups/G1044) has impersonated legitimate people in phishing emails to gain credentials.(Citation: Mandiant APT42-charms)(Citation: TAG APT42) ",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b07e145d-734e-480b-a5cb-c93a9ef78e88",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3621,7 +3774,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:15a78fed93a3ac5ff20f4729d990d52900dbdf62c1e9ccb7be07e392392f38e4",
+          "observation_id": "observation--sha256:2b0ff4d66050f872410bda4904afeb7966f46e4f81b6cc511d7ae4cf48b8ef93",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3637,7 +3790,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3657,7 +3810,7 @@
       "spec_version": "2.1",
       "id": "relationship--69473c64-494b-4b8d-ab1c-a56e30c03ccd",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3665,14 +3818,15 @@
       "source_ref": "indicator--b07e145d-734e-480b-a5cb-c93a9ef78e88",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9fe79e9a-50a0-4132-b6a5-c4bfbbbe3068",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3695,7 +3849,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e5ba31e222a26eed6b5bb54140e3ec06dcbe95dd05d6ac486a59ad4a3abeb7ae",
+          "observation_id": "observation--sha256:e6f83892cfc1ae8960d6cfcbfc97f981cd0a94d742476af14162aa7fda70ad00",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3711,7 +3865,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3731,7 +3885,7 @@
       "spec_version": "2.1",
       "id": "relationship--64bb7a7d-d18a-4d6f-ac1e-889a6ae6c2ad",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3739,14 +3893,15 @@
       "source_ref": "indicator--9fe79e9a-50a0-4132-b6a5-c4bfbbbe3068",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0e03b3f0-6093-4f7e-92c1-aadcd1fe3158",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3769,7 +3924,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1588de52479d92efbb09739e186663bc5746288247294bf9528cb2c031a1c63b",
+          "observation_id": "observation--sha256:b1b4e8c5a7fe336028d74a8d5b8a7c18514abfdb33d81f6e0af30a97285f7fad",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3785,7 +3940,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3805,7 +3960,7 @@
       "spec_version": "2.1",
       "id": "relationship--32699f48-5882-4abb-9a51-168adab427c0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3813,14 +3968,15 @@
       "source_ref": "indicator--0e03b3f0-6093-4f7e-92c1-aadcd1fe3158",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3f0fc025-2ba1-4644-986f-b64a6c8394cc",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3843,7 +3999,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:c6f3e0775f8e39a1d8d9b8632aaa80025caedf0d2e3be4b5bc3886860ac7b55b",
+          "observation_id": "observation--sha256:1654b871e0f06fd20bb4c7b865c7946a06f33185c1d119a22e9827e41433a985",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3859,7 +4015,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3879,7 +4035,7 @@
       "spec_version": "2.1",
       "id": "relationship--15d09d3a-96ee-449c-83eb-787baef22e66",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3887,14 +4043,15 @@
       "source_ref": "indicator--3f0fc025-2ba1-4644-986f-b64a6c8394cc",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--32ec0aae-7e0c-464a-8047-c4958f1f5c78",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3917,7 +4074,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:691bd1c81bfca59341516bf48fc3ca7886b357db53682ca8aa1a3b0e19362169",
+          "observation_id": "observation--sha256:454304ccc22fb184ff34bc0572ec709849cce8a7cc9d8db3bc088d6ea257e647",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3933,7 +4090,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3953,7 +4110,7 @@
       "spec_version": "2.1",
       "id": "relationship--08f7bd61-d4e0-4a50-9b90-31752a7dece6",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3961,14 +4118,15 @@
       "source_ref": "indicator--32ec0aae-7e0c-464a-8047-c4958f1f5c78",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--856d0842-a095-4600-8576-c2bf2872dfd0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3991,7 +4149,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b19514b2cf6ddf95017eae537e69df9bf294dbe9a5682e941833c28a1a53141e",
+          "observation_id": "observation--sha256:b23dec5bc15609146a46edd27f1021854150bad5c6023bc0c9ee4dce6cb44a8f",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -4007,7 +4165,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4027,7 +4185,7 @@
       "spec_version": "2.1",
       "id": "relationship--e79312c2-428f-4562-a06a-01336495490d",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4035,14 +4193,15 @@
       "source_ref": "indicator--856d0842-a095-4600-8576-c2bf2872dfd0",
       "target_ref": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--eb147ec0-475c-4a9e-96e4-a7666e87569f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4065,7 +4224,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:14b47576cc2e5de741732900ffa81fb794457fe216538d4ae67070b439fb22d2",
+          "observation_id": "observation--sha256:38efa60d9b20f6b1b5085cabbed2e6177cd1f37d53e509539098d297ab325dbc",
           "observed_at": {
             "value": "2022-09-01T00:00:00Z",
             "precision": "month",
@@ -4081,7 +4240,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 55
+            "row": 72
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4101,7 +4260,7 @@
       "spec_version": "2.1",
       "id": "indicator--c26bcafd-bb7a-46ea-9cd0-801bac9efa34",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4124,7 +4283,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:60945a091b65b09283add4fccc6b207744120f31a5dbc3ad7b3d25b7a9efde24",
+          "observation_id": "observation--sha256:3eed3cd9ae48e0873649fbf1d07fe9e2a018dad2413754325bf139112342c0fb",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -4140,7 +4299,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 41
+            "row": 58
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4160,7 +4319,7 @@
       "spec_version": "2.1",
       "id": "indicator--e6ccec89-f9d1-4a30-bfeb-a7e6d5cdfde3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4183,7 +4342,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:386c20586d39415939031f77ab1542df27e61e3641abb3ce88066740c5f5255f",
+          "observation_id": "observation--sha256:35a93be1f9dd728d65028bb395651a6e6f272e038ed736cf48e1141ca480ac48",
           "observed_at": {
             "value": "2022-08-09T00:00:00Z",
             "precision": "day",
@@ -4199,7 +4358,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 28
+            "row": 45
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4219,7 +4378,7 @@
       "spec_version": "2.1",
       "id": "indicator--a94baeac-01e5-455d-947d-dad95896e7c7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4242,7 +4401,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b0050f83f98cc03ec7b2ec6d938dde81f68fe708283a804c986762ddfae580f5",
+          "observation_id": "observation--sha256:a8b97a1de0f543870859284fb737ceaf0d3a1180e6077488409ea90a12b6024e",
           "observed_at": {
             "value": "2022-08-09T00:00:00Z",
             "precision": "day",
@@ -4258,7 +4417,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 28
+            "row": 45
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4397,7 +4556,7 @@
       "spec_version": "2.1",
       "id": "note--5f413164-c9be-49b7-807e-3e5c4a9ceb49",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4407,14 +4566,14 @@
         "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 63
+      "x_artifact_observation_count": 4
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--b3acdb9c-7dd7-43bd-89ba-5e0ec700c759",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4423,7 +4582,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
         "malware--9afda9d1-2024-44dd-ae7e-b3f87ae5acc2",
@@ -4431,25 +4590,8 @@
         "campaign--d06ea16d-db2a-47ea-a05e-16265e000a3f",
         "campaign--e5dc1f8c-a20f-48f0-9557-0af8d78434a7",
         "campaign--4f50f166-933d-43ce-956a-956095be1b14",
-        "identity--d4e47f7b-61e5-482b-b32f-17ec48b2a722",
-        "identity--1428a065-6c89-430e-8420-63b290e343f9",
-        "identity--6d74c6a6-bae5-4bee-96d5-fa21c0ba94d0",
-        "identity--ddf53639-03d5-4d8b-9657-dcd8721080ea",
-        "identity--2ea6ece4-3c3c-46a9-bb86-6550b0c1858a",
-        "identity--3a20847c-0702-4834-9c5d-c40c7d085437",
-        "identity--64081222-c6a9-4514-846d-69d9cd06b1f6",
-        "identity--2266c40d-c2f3-4986-9c0e-276477f4339c",
-        "identity--425463cb-13d4-443e-bc8a-9622759ae1a1",
-        "identity--362fcfcd-d2f4-40a4-9ac4-8c87a5d13b32",
-        "identity--49ca18df-9a07-4242-81a5-9b44670b81f5",
-        "identity--f1427091-44de-42a8-a58b-33542ee09f36",
         "identity--ca5cbb26-c215-470b-b888-1a9c21ce4897",
-        "identity--72b56349-9c41-4e29-9cd3-f84367a50480",
-        "identity--6461a203-4b6e-49f4-a322-c50d7336b32a",
         "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
-        "identity--ae48df95-eaed-49f0-a7f5-6ec0514b2558",
-        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-        "identity--4ade189c-13d3-43ed-b204-a23138c98e72",
         "identity--6bd54dde-f722-4a6e-b24e-cc65fecc61e8",
         "identity--dfc8dc6d-2df2-4a51-b4b0-182664be2203",
         "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
@@ -4497,7 +4639,7 @@
         "indicator--a94baeac-01e5-455d-947d-dad95896e7c7",
         "indicator--654d72cc-76a1-4396-bb73-5bf0035d4710"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

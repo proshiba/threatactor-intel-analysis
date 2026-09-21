@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--jewelbug`
 - 状態: draft
-- 更新日時: 2026-08-25T22:34:54Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:02Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -46,11 +46,43 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | Symantecが中国拠点のhack-for-hire型APTと評価するクラスタJewelbug。運用者は湖南省長沙市に登記された企業と結び付き、UTC+8の稼働パターンを示す。後援主体は特定されていない。 |
-| Capability | WindowsバックドアAntino、悪意あるブラウザー拡張機能PDF Viewer、Rust実装のLinux/ルーターインプラントClientKing、自作の遠隔操作・情報窃取プラットフォームXG-Web。カーネルモジュール型ルートキットとsu/sudoフック型認証モジュールを併用する。 |
-| Infrastructure | 侵害した国営通信事業者の共有Webメールホスティング、40台超のCMSサーバーと数百の類似ドメイン、Google Fontsを模したC&Cドメイン、C&CチャネルとしてのMicrosoft Graph API、Google Docs経由のペイロード配信。 |
-| Victim | 中東・東南アジア・南アジアの政府省庁、軍、国営通信事業者、警察。詐欺側では中国語話者の暗号資産利用者。 |
-| Socio-political | 政府・軍への諜報という国家的関心の対象と、中国語話者を狙う金銭目的の詐欺が、同一の運用者・同一の管理パネルで並行している。Symantecはこれをhack-for-hireの性格として整理している。 |
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim |  |
+| Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-21T02:39:13Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: あり
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
+| etda-threat-group-cards | Earth Alux | single-alias-intersection | 中 | China | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Earth+Alux&n=1 |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | REF7707 | canonical-name | 高 | CN | https://unit42.paloaltonetworks.com/advanced-backdoor-squidoor/<br>https://www.elastic.co/security-labs/fragile-web-ref7707<br>https://www.security.com/threat-intelligence/jewelbug-apt-russia |
+| misp-threat-actor | Earth Alux | single-alias-intersection | 中 | CN | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html<br>https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -104,7 +136,7 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | SEOポイズニングと偽取引所サイトによる暗号資産詐欺 | financial-fraud | 不明 | 不明 | 2026-08-13 | target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--63c9fa67327d005b07b7, target--jewelbug--role--chinese-speaking-crypto-users | malware--jewelbug-pdf-viewer-extension | ttp--jewelbug-t1036-005, ttp--jewelbug-t1608-006 | victim--activity-rule--da2d2e0da904c89a5535 | 諜報活動と同一の管理パネルから運用される、中国語話者を標的とする暗号資産詐欺。40台超のコンテンツ管理サーバーと数百の類似ドメインを用い、AI生成の偽取引所ダウンロードページ、OKX・Binanceのタイポスクワットドメイン、クローラー向けに内容を出し分けるクローキングページを配信する。クリックボットで検索順位を操作するSEOポイズニングにより被害者を誘導し、悪意あるブラウザー拡張機能の暗号資産アドレス差し替えモジュールと組み合わせて資金を窃取する。スポーツ賭博、海賊版ライブ配信サイト、私立探偵詐欺といった別の誘導手口も併用されている。 | 高 | `source--symantec-jewelbug-2026` |
-| 共有Webメールホスティング侵害による政府・軍への諜報活動 | cyber-espionage | 不明 | 不明 | 2026-08-13 | target--activity-rule--sector--97fa6f38a056d42117be, target--jewelbug--country--taiwan, target--jewelbug--region--middle-east, target--jewelbug--region--south-asia, target--jewelbug--region--southeast-asia, target--jewelbug--sector--defense, target--jewelbug--sector--government, target--jewelbug--sector--law-enforcement, target--jewelbug--sector--telecommunications | malware--jewelbug-antino, malware--jewelbug-pdf-viewer-extension, malware--jewelbug-clientking | ttp--activity-rule--d370d222c172b5e5788d, ttp--jewelbug-t1014, ttp--jewelbug-t1036-005, ttp--jewelbug-t1071-004, ttp--jewelbug-t1090, ttp--jewelbug-t1102-002, ttp--jewelbug-t1176-001, ttp--jewelbug-t1189, ttp--jewelbug-t1204-002, ttp--jewelbug-t1539, ttp--jewelbug-t1556-003, ttp--jewelbug-t1584-004 | victim--activity-rule--60d3466b22698b895c22, victim--jewelbug-government-webmail-tenants | 国営通信事業者などが運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ共通の悪意あるJavaScriptを配信した。スクリプトはWebメールのcookieと電子メールアドレスを窃取し、重要標的には偽のAdobe Flash更新等を表示してWindowsバックドアAntinoと悪意あるブラウザー拡張機能「PDF Viewer」を追加投入する。LinuxホストとルーターにはRust実装のインプラントClientKingを配置し、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール型ルートキット、su/sudoフックによる認証情報窃取を行う。内部の仮想化管理クラスタや政府の通信システムにも到達している。攻撃者の基盤には約110万件の位置情報イベント、58万件超のcookie、数千件の認証情報、2,300件超のメール本文が記録されていた。 | 高 | `source--symantec-jewelbug-2026` |
+| 共有Webメールホスティング侵害による政府・軍への諜報活動 | cyber-espionage | 不明 | 不明 | 2026-08-13 | target--activity-rule--sector--97fa6f38a056d42117be, target--jewelbug--country--taiwan, target--jewelbug--region--middle-east, target--jewelbug--region--south-asia, target--jewelbug--region--southeast-asia, target--jewelbug--sector--defense, target--jewelbug--sector--government, target--jewelbug--sector--law-enforcement, target--jewelbug--sector--telecommunications | malware--jewelbug-antino, malware--jewelbug-clientking, malware--jewelbug-pdf-viewer-extension | ttp--activity-rule--d370d222c172b5e5788d, ttp--jewelbug-t1014, ttp--jewelbug-t1036-005, ttp--jewelbug-t1071-004, ttp--jewelbug-t1090, ttp--jewelbug-t1102-002, ttp--jewelbug-t1176-001, ttp--jewelbug-t1189, ttp--jewelbug-t1204-002, ttp--jewelbug-t1539, ttp--jewelbug-t1556-003, ttp--jewelbug-t1584-004 | victim--activity-rule--60d3466b22698b895c22, victim--jewelbug-government-webmail-tenants | 国営通信事業者などが運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ共通の悪意あるJavaScriptを配信した。スクリプトはWebメールのcookieと電子メールアドレスを窃取し、重要標的には偽のAdobe Flash更新等を表示してWindowsバックドアAntinoと悪意あるブラウザー拡張機能「PDF Viewer」を追加投入する。LinuxホストとルーターにはRust実装のインプラントClientKingを配置し、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール型ルートキット、su/sudoフックによる認証情報窃取を行う。内部の仮想化管理クラスタや政府の通信システムにも到達している。攻撃者の基盤には約110万件の位置情報イベント、58万件超のcookie、数千件の認証情報、2,300件超のメール本文が記録されていた。 | 高 | `source--symantec-jewelbug-2026` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -133,7 +165,7 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 | sectors | 通信 | 国営通信事業者およびナショナルキャリアが、直接の標的であると同時に共有ホスティング侵害を通じた配信経路としても利用された。 | 不明 | 不明 | 高 | `source--symantec-jewelbug-2026` |
 | roles | 中国語話者の暗号資産利用者 | 暗号資産詐欺側のSEOポイズニングとタイポスクワットは中国語話者の暗号資産利用者を対象としている。 | 不明 | 不明 | 高 | `source--symantec-jewelbug-2026` |
 
-選定ロジック: 諜報側は政府・軍・通信・法執行のWebメールと通信系システムを、共有ホスティングの侵害によって広く同時に取得できる標的として選定している。詐欺側は検索経由で偽の取引所配布ページへ誘導できる中国語話者の暗号資産利用者を対象とする。両者は同一の管理パネルと重複する基盤・手法で運用されている。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 諜報側は政府・軍・通信・法執行のWebメールと通信系システムを、共有ホスティングの侵害によって広く同時に取得できる標的として選定している。詐欺側は検索経由で偽の取引所配布ページへ誘導できる中国語話者の暗号資産利用者を対象とする。両者は同一の管理パネルと重複する基盤・手法で運用されている。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -163,8 +195,8 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 
 ## IOC／artifact概要
 
-- IOC値: 52件
-- IOC観測: 52件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
@@ -189,6 +221,7 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 
 - Earth Alux(Trend Micro, 2025-03-31)およびREF7707(Elastic, 2025-02-13)の観測期間・マルウェア群はSymantecがJewelbugとして報告した実装群と重ならないため、3者が同一クラスタであるかは未解決である。aliasのscopeはoverlappingとし、実績を相互に流用していない。
 - hack-for-hireという性格付けはSymantecの評価であり、顧客・発注関係を示す直接証拠は公開されていない。
+- Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
 
 ## 出典
 
@@ -197,6 +230,8 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 | source--symantec-jewelbug-2026 | Jewelbug: Crypto Fraud and Espionage | Symantec Threat Hunter Team | 2026-08-13 | https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage | vendor-research-report | TLP:CLEAR | 高 |
 | source--trendmicro-earth-alux-2025 | The Espionage Toolkit of Earth Alux: A Closer Look at its Advanced Techniques | Trend Micro | 2025-03-31 | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html | vendor-research-report | TLP:CLEAR | 高 |
 | source--elastic-ref7707-2025 | From South America to Southeast Asia: The Fragile Web of REF7707 | Elastic Security Labs | 2025-02-13 | https://www.elastic.co/security-labs/fragile-web-ref7707 | vendor-research-report | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

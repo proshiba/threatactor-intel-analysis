@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--darkhydrus",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "RogueRobin, Cobalt Strike, Mimikatz",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=イラン。標的地域=中東。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--darkhydrus",
         "actor_name": "DarkHydrus",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "2849cc26-d6c8-4484-821e-cb0f7006bddc",
@@ -89,7 +93,43 @@
                 "https://unit42.paloaltonetworks.com/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=DarkHydrus%2C+LazyMeerkat&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2016",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Education",
+                  "Government"
+                ],
+                "observed-countries": [
+                  "Iran",
+                  "Middle East"
+                ],
+                "tools": [
+                  "Cobalt Strike",
+                  "Mimikatz",
+                  "Phishery",
+                  "RogueRobin"
+                ],
+                "operations": [
+                  {
+                    "date": "2018-06",
+                    "activity": "On June 24, 2018, Unit 42 observed DarkHydrus carrying out a credential harvesting attack on an educational institution in the Middle East. The attack involved a spear-phishing email with a subject of “Project Offer” and a malicious Word document as an attachment.\nhttps://unit42.paloaltonetworks.com/unit42-darkhydrus-uses-phishery-harvest-credentials-middle-east/"
+                  },
+                  {
+                    "date": "2018-07",
+                    "activity": "Attack on Middle East Government\nThis attack diverged from previous attacks we observed from this group as it involved spear-phishing emails sent to targeted organizations with password protected RAR archive attachments that contained malicious Excel Web Query files (.iqy).\nhttps://unit42.paloaltonetworks.com/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"
+                  },
+                  {
+                    "date": "2019-01",
+                    "activity": "New Attacks in the Middle East\n360 Threat Intelligence Center captured several lure Excel documents written in Arabic in January 9, 2019. A backdoor dropped by macro in the lure documents can communicate with C2 server through DNS tunnel, as well as Google Drive API.\nhttps://ti.360.net/blog/articles/latest-target-attack-of-darkhydruns-group-against-middle-east-en/\nhttps://unit42.paloaltonetworks.com/darkhydrus-delivers-new-trojan-that-can-use-google-drive-for-c2-communications/"
+                  }
+                ],
+                "sponsor": "State-sponsored",
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -125,11 +165,80 @@
                 "https://attack.mitre.org/groups/G0079/",
                 "https://unit42.paloaltonetworks.com/atoms/obscureserpens/"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "6b9ebeb5-20bf-48b0-afb7-988d769a2f01",
+              "entry_value": "DarkHydrus - G0079",
+              "external_id": "G0079",
+              "matched_names": [
+                {
+                  "normalized": "darkhydrus",
+                  "profile_value": "DarkHydrus",
+                  "dataset_value": "DarkHydrus"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "DarkHydrus"
+              ],
+              "countries": [],
+              "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) is a threat group that has targeted government agencies and educational institutions in the Middle East since at least 2016. The group heavily leverages open-source tools and custom payloads for carrying out attacks. (Citation: Unit 42 DarkHydrus July 2018) (Citation: Unit 42 Playbook Dec 2017)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0079",
+                "https://pan-unit42.github.io/playbook_viewer/",
+                "https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8ec6e3b4-b06d-4805-b6aa-af916acc2122",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a7881f21-e978-4fe4-af56-92c9416a2616",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b77cf5f3-6060-475d-bd60-40ccbf28fdc2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cbb66055-0325-4111-aca0-40547b6ad5b0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dc31fe1e-d722-49da-8f5f-92c7b5aff534",
+                  "type": "uses"
+                }
+              ],
+              "research_data": {}
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "6b9ebeb5-20bf-48b0-afb7-988d769a2f01",
@@ -195,25 +304,42 @@
                   "dest-uuid": "dc31fe1e-d722-49da-8f5f-92c7b5aff534",
                   "type": "uses"
                 }
-              ]
+              ],
+              "research_data": {}
             }
           ],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": [
+            {
+              "entry_uuid": "f2b31240-0b4a-4fa4-82a4-6bb00e146e75",
+              "entry_value": "DarkHydrus",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "darkhydrus",
+                  "profile_value": "DarkHydrus",
+                  "dataset_value": "DarkHydrus"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "DarkHydrus"
+              ],
+              "countries": [],
+              "description": "[DarkHydrus](https://app.tidalcyber.com/groups/f2b31240-0b4a-4fa4-82a4-6bb00e146e75) is a threat group that has targeted government agencies and educational institutions in the Middle East since at least 2016. The group heavily leverages open-source tools and custom payloads for carrying out attacks. <sup>[[Unit 42 DarkHydrus July 2018](https://app.tidalcyber.com/references/800279cf-e6f8-4721-818f-46e35ec7892a)]</sup> <sup>[[Unit 42 Playbook Dec 2017](https://app.tidalcyber.com/references/9923f9ff-a7b8-4058-8213-3c83c54c10a6)]</sup>",
+              "refs": [],
+              "related": [],
+              "research_data": {
+                "target_categories": [
+                  "Education",
+                  "Government"
+                ]
+              }
+            }
+          ]
         },
         "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--roguerobin",
-            "profile_name": "RogueRobin",
-            "entry_uuid": "1e27a569-1899-4f6f-8c42-aa91bf0a539d",
-            "entry_value": "RogueRobin",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.roguerobin",
-              "https://ironnet.com/blog/dns-tunneling-series-part-3-the-siren-song-of-roguerobin/",
-              "https://docs.google.com/document/d/1oYX3uN6KxIX_StzTH0s0yFNNoHDnV8VgmVqU5WoeErc/edit#heading=h.ez428aw98bca",
-              "https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          },
           {
             "profile_malware_id": "malware--cobalt-strike",
             "profile_name": "Cobalt Strike",
@@ -1006,6 +1132,19 @@
               "https://isc.sans.edu/diary/28636"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          },
+          {
+            "profile_malware_id": "malware--roguerobin",
+            "profile_name": "RogueRobin",
+            "entry_uuid": "1e27a569-1899-4f6f-8c42-aa91bf0a539d",
+            "entry_value": "RogueRobin",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.roguerobin",
+              "https://ironnet.com/blog/dns-tunneling-series-part-3-the-siren-song-of-roguerobin/",
+              "https://docs.google.com/document/d/1oYX3uN6KxIX_StzTH0s0yFNNoHDnV8VgmVqU5WoeErc/edit#heading=h.ez428aw98bca",
+              "https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           }
         ],
         "relationship_candidates": [],
@@ -1034,38 +1173,9 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
-      "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "RogueRobin",
-      "description": "[RogueRobin](https://attack.mitre.org/software/S0270) is a payload used by [DarkHydrus](https://attack.mitre.org/groups/G0079) that has been developed in PowerShell and C#. (Citation: Unit 42 DarkHydrus July 2018)(Citation: Unit42 DarkHydrus Jan 2019)",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--roguerobin",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "RogueRobin"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1075,7 +1185,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "malware--cobalt-strike",
@@ -1092,11 +1202,40 @@
       ]
     },
     {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
+      "created": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-20T13:48:11Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "RogueRobin",
+      "description": "[RogueRobin](https://attack.mitre.org/software/S0270) is a payload used by [DarkHydrus](https://attack.mitre.org/groups/G0079) that has been developed in PowerShell and C#. (Citation: Unit 42 DarkHydrus July 2018)(Citation: Unit42 DarkHydrus Jan 2019)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_profile_object_id": "malware--roguerobin",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "RogueRobin"
+      ]
+    },
+    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1106,7 +1245,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "tool--mimikatz",
@@ -1119,31 +1258,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--b3fc98bd-f5a7-4d01-b770-372fb85d0945",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラン",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでDarkHydrusの標的・被害国としてイランが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--32794fb8-91d3-469a-b1e0-b6df5df80d33",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1154,12 +1271,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "regions",
@@ -1170,7 +1282,7 @@
       "spec_version": "2.1",
       "id": "identity--5a989583-2551-4614-a8a2-6b7743211d77",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1181,7 +1293,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1192,7 +1304,7 @@
       "spec_version": "2.1",
       "id": "identity--b6ac9cd8-b0cf-40e8-9f41-bc1b46980fe5",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1203,7 +1315,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_target_category": "sectors",
@@ -1214,7 +1326,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1229,7 +1341,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1059-001--general",
@@ -1257,7 +1369,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--212740a6-60dc-4208-9c6d-a7a98097d778",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1272,7 +1384,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1187--general",
@@ -1300,7 +1412,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1315,7 +1427,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1204-002--general",
@@ -1343,7 +1455,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--32e4c9e4-6467-4a0a-9168-6ff0d788bca9",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1358,7 +1470,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1221--general",
@@ -1386,7 +1498,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--1455b941-2337-45e9-ad29-7ba76ce35680",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1401,7 +1513,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1564-003--general",
@@ -1429,7 +1541,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1444,7 +1556,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1566-001--general",
@@ -1472,7 +1584,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T13:48:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1487,7 +1599,7 @@
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
+          "external_id": "source--mitre-attack-19-2"
         }
       ],
       "x_profile_object_id": "ttp--t1588-002--general",
@@ -1513,24 +1625,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a5f230d0-f900-4a36-8373-786cceb5e676",
-      "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
-      "target_ref": "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
-      "description": "DarkHydrus uses RogueRobin.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--c9999ab2-b2be-4c52-baa5-c88df4e3b375",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1538,14 +1635,43 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
       "description": "DarkHydrus uses Cobalt Strike.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5f230d0-f900-4a36-8373-786cceb5e676",
+      "created": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
+      "target_ref": "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
+      "description": "DarkHydrus uses RogueRobin.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f2e9e136-0046-40a9-bb11-d0b7af4eca6c",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1553,29 +1679,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
       "description": "DarkHydrus uses Mimikatz.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--054ca14f-44af-4e10-b14b-429b938babb1",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
-      "target_ref": "identity--b3fc98bd-f5a7-4d01-b770-372fb85d0945",
-      "description": "DarkHydrus targets イラン (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9532b752-9ae7-440c-a37c-887483326b4e",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1583,14 +1701,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "identity--32794fb8-91d3-469a-b1e0-b6df5df80d33",
       "description": "DarkHydrus targets 中東 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d199e6a9-46e3-4a26-8164-56d1ea96943f",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1598,14 +1723,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "identity--5a989583-2551-4614-a8a2-6b7743211d77",
       "description": "DarkHydrus targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ed9d871f-ea48-46ac-ad30-9eeeb376085d",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1613,14 +1745,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "identity--b6ac9cd8-b0cf-40e8-9f41-bc1b46980fe5",
       "description": "DarkHydrus targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1bdb4ced-64cc-43ee-8c30-2f4e73a2f33f",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1628,14 +1767,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) leveraged PowerShell to download and execute additional scripts for execution.(Citation: Unit 42 DarkHydrus July 2018)(Citation: Unit 42 Playbook Dec 2017)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--81cf3c2c-fe6a-4c3b-aa5c-a841f3edc3f3",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1643,14 +1789,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--212740a6-60dc-4208-9c6d-a7a98097d778",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) used [Template Injection](https://attack.mitre.org/techniques/T1221) to launch an authentication window for users to enter their credentials.(Citation: Unit 42 Phishery Aug 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f15e068d-2227-4c5d-a498-932d068bec38",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1658,14 +1811,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--eb8865e3-5ad1-4786-a6fa-cf58ebdf5cd9",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) has sent malware that required users to hit the enable button in Microsoft Excel to allow an .iqy file to be downloaded.(Citation: Unit 42 DarkHydrus July 2018)(Citation: Unit 42 Playbook Dec 2017)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9ee9c79d-45d5-4573-b12a-cde62511a024",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1673,14 +1833,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--32e4c9e4-6467-4a0a-9168-6ff0d788bca9",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) used an open-source tool, Phishery, to inject malicious remote template URLs into Microsoft Word documents and then sent them to victims to enable [Forced Authentication](https://attack.mitre.org/techniques/T1187).(Citation: Unit 42 Phishery Aug 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3c6b4ae6-7a43-48c5-955d-113e5c975037",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1688,14 +1855,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--1455b941-2337-45e9-ad29-7ba76ce35680",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) has used <code>-WindowStyle Hidden</code> to conceal [PowerShell](https://attack.mitre.org/techniques/T1059/001) windows. (Citation: Unit 42 DarkHydrus July 2018)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--017d81db-f217-418a-8c6a-fecd91f8b628",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1703,14 +1877,21 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) has sent spearphishing emails with password-protected RAR archives containing malicious Excel Web Query files (.iqy). The group has also sent spearphishing emails that contained malicious Microsoft Office documents that use the “attachedTemplate” technique to load a template from a remote server.(Citation: Unit 42 DarkHydrus July 2018)(Citation: Unit 42 Phishery Aug 2018)(Citation: Unit 42 Playbook Dec 2017)",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--be1470c0-357e-41c8-a715-f7f0698e19cc",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1718,81 +1899,14 @@
       "source_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "description": "[DarkHydrus](https://attack.mitre.org/groups/G0079) has obtained and used tools such as [Mimikatz](https://attack.mitre.org/software/S0002), [Empire](https://attack.mitre.org/software/S0363), and [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: Unit 42 DarkHydrus July 2018)",
-      "x_confidence": "high"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--76481634-0d25-4bf3-b2bd-750b3a0ae5ba",
-      "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: readme.md",
-      "pattern": "[domain-name:value = 'readme.md']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:56Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
+      "x_confidence": "high",
+      "external_references": [
         {
-          "observation_id": "observation--sha256:48aa21a6b3c07c0248a1919390fa9bbb20c37021d7b9a69d470bd62334270391",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--darkhydrus--83afef5d27f090ba",
-          "source_path": "actor_profile/evidence/darkhydrus.csv",
-          "source_location": {
-            "row": 15
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "International Strategic/Iran/README.MD {\"line\": 91} DarkHydrus nstitutions with spear-phishing attacks and credential harvesting campaigns. DarkHydrus is a more sophisticated group when compared to others operating in the region, as their toolset and TTPs show a higher skill level. DarkHydrus has used custom tools in addition to publicly available red-teaming tools such as Phishery. They have also been observed using Google Drive for their C2 channel.",
-          "analyst_notes": "",
-          "raw_value": "README.MD"
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
         }
       ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9555afc2-366e-4e74-a349-a5519e74d6b7",
-      "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--76481634-0d25-4bf3-b2bd-750b3a0ae5ba",
-      "target_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
     },
     {
       "type": "indicator",
@@ -1858,7 +1972,7 @@
       "spec_version": "2.1",
       "id": "relationship--2d75550f-2e57-4689-ba42-22a320b92705",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1866,7 +1980,8 @@
       "source_ref": "indicator--7be4eb31-9031-446b-a5bd-008b7ccadfc0",
       "target_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -1932,7 +2047,7 @@
       "spec_version": "2.1",
       "id": "relationship--f74416f4-107a-4d2b-bdc8-b6dabe378840",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1940,7 +2055,8 @@
       "source_ref": "indicator--ba988894-f439-4fbb-938d-ee4bbeeecf20",
       "target_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "indicator",
@@ -2006,7 +2122,7 @@
       "spec_version": "2.1",
       "id": "relationship--50d25ee0-26a4-4756-aea1-07e0dbfbea33",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2014,14 +2130,15 @@
       "source_ref": "indicator--ee52c24d-7ca0-41f0-a3f3-b9e23ac059d2",
       "target_ref": "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": []
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--489441e9-3670-46a6-8ab5-ae35a2096414",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2031,14 +2148,14 @@
         "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 26
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--cef80a02-4e6f-456d-8c4d-7a951f2b59a3",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:18:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2047,13 +2164,12 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:18:00Z",
       "object_refs": [
         "intrusion-set--714fca86-621f-40c7-b37f-6bf8c241d662",
-        "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
         "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
+        "malware--d66d8035-b5be-44d4-8444-ded8ee3923d6",
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
-        "identity--b3fc98bd-f5a7-4d01-b770-372fb85d0945",
         "identity--32794fb8-91d3-469a-b1e0-b6df5df80d33",
         "identity--5a989583-2551-4614-a8a2-6b7743211d77",
         "identity--b6ac9cd8-b0cf-40e8-9f41-bc1b46980fe5",
@@ -2064,12 +2180,11 @@
         "attack-pattern--1455b941-2337-45e9-ad29-7ba76ce35680",
         "attack-pattern--e5d9b1e7-cef7-4416-bdb8-dc38202d410b",
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
-        "indicator--76481634-0d25-4bf3-b2bd-750b3a0ae5ba",
         "indicator--7be4eb31-9031-446b-a5bd-008b7ccadfc0",
         "indicator--ba988894-f439-4fbb-938d-ee4bbeeecf20",
         "indicator--ee52c24d-7ca0-41f0-a3f3-b9e23ac059d2"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

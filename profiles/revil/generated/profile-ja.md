@@ -1,40 +1,35 @@
-# Revil 脅威アクタープロファイル
+# REvil 脅威アクタープロファイル
 
 - プロファイルID: `actor--revil`
-- 状態: draft
-- 更新日時: 2026-07-29T23:13:55Z
+- 状態: deprecated
+- 更新日時: 2026-09-21T02:11:27Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-Revilの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+REvilは旧プロファイルをdeprecatedとして保持する。MITRE ATT&CKではREvilはSoftware S0496であり、REvil RaaSを運営するGroupはGOLD SOUTHFIELD G0115として分離される。
 
 ## アクター名とAlias
 
-- 正規名: **Revil**
+- 正規名: **REvil**
 - 初回観測: 不明
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| GrandCrab | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Water Mare | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Russia worksheet.
+Deprecated entity conflation; no state sponsor is asserted for this legacy profile.
 
-- 国: Russia
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -45,10 +40,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | Sodinokibi, IcedID, Qakbot, PsExec, FileZilla |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Transportation, Financial, Oil and Gas, Technology, Healthcare, in United States, Mexico, Germany, Japan, Israel |
-| Socio-political | Russia |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
@@ -83,13 +78,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--sodinokibi | Sodinokibi | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--icedid | IcedID | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--qakbot | Qakbot | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--psexec | PsExec | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--filezilla | FileZilla | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -113,35 +102,19 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Medibank November 2022 | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Medibank November 2022 | Revil | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
-Medibank November 2022
+
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | イスラエル | Targeting text mentions israel. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | メキシコ | Targeting text mentions mexico. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | 北米 | メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Deprecated legacy actor profile; no canonical target assertions. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -153,24 +126,24 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 9件
+- IOC値: 10件
+- IOC観測: 11件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 5件
-- 非IOC artifact観測: 108件（`artifacts.csv`）
+- 非IOC artifact観測: 2件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| REvil is deprecated as a standalone actor identity in this repository; MITRE models REvil as Software S0496 and GOLD SOUTHFIELD G0115 as the group operating the REvil RaaS. | 高 | `source--mitre-attack-19-1` | Entity-type correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
+- Historical reporting may use 'REvil' colloquially for operators, affiliates, the RaaS brand, or the ransomware family; those scopes must be disambiguated per source.
 
 ## 出典
 
@@ -217,7 +190,8 @@ TTPなし
 | source--revil--151f8841f0b18e24 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--revil--4bb4c0e2f1297195 | 2024 cybersecurity trends report |  | 2024 | summary/2025/2024-cybersecurity-trends-report.pdf | report | TLP:CLEAR | 中 |
 | source--revil--7a5e0bd233c6a037 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+actor--revilは既存参照互換性のため保持するが、新規のActor帰属には使用しない。

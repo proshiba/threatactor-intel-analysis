@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T03:52:12Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -35,6 +35,7 @@
         }
       ],
       "x_profile_id": "actor--qtfy",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Quartermaster",
@@ -51,7 +52,7 @@
         "countries": [
           "China"
         ],
-        "sponsor_type": "state-sponsored",
+        "sponsor_type": "state",
         "organizations": [
           {
             "id": "organization--nanjing-xinjiuwei",
@@ -97,8 +98,98 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "FBIが差し押さえたドメインは qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com である。いずれもQScanとQTRouterにハードコードされ、通信と認証に用いられていた。fastlink[.]ws はFast Labyrinth中継網でノードとして利用された中国の商用プロキシサービスであり、乗っ取られた正規サービス側の資産である点で他の3件と性質が異なる。QScanのタスクブローカーは mq-task.qt-proxy.org (154.64.238[.]222)、結果集約基盤は mq-result.qt-proxy.org (154.64.238[.]247) にある。走査ワーカーは30日周期で/24サブネットブロックを切り替え、閾値型の検知を回避する。",
-        "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=アジア、アジア太平洋。日本は確認時に個別国として保持する。\n\nDOJが標的として列挙したのは米国の連邦政府機関である。ただし2026年8月28日の訂正により、これらは「標的」であって「被害者」ではないことが明確化されており、侵害の成立を意味しない。Lumenの観測では、Fast Labyrinth経由のプロファイリングは世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、政府・防衛・公共部門ネットワークに集中し、米国・英国・アジア太平洋地域が中心である。米国では軍・防衛ネットワーク、通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が重点対象であり、地質・環境関連機関、欧州のインフラ、各国の司法ノードも関心対象とされる。これらはいずれも基盤経由で観測されたプロファイリング対象であり、侵害された組織の一覧ではない。",
+        "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=アジア太平洋。日本は確認時に個別国として保持する。\n\nDOJが標的として列挙したのは米国の連邦政府機関である。ただし2026年8月28日の訂正により、これらは「標的」であって「被害者」ではないことが明確化されており、侵害の成立を意味しない。Lumenの観測では、Fast Labyrinth経由のプロファイリングは世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、政府・防衛・公共部門ネットワークに集中し、米国・英国・アジア太平洋地域が中心である。米国では軍・防衛ネットワーク、通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が重点対象であり、地質・環境関連機関、欧州のインフラ、各国の司法ノードも関心対象とされる。これらはいずれも基盤経由で観測されたプロファイリング対象であり、侵害された組織の一覧ではない。",
         "additional_notes": ""
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--qtfy",
+        "actor_name": "QTFY",
+        "searched_at": "2026-09-21T02:39:13Z",
+        "search_scope": {
+          "datasets": [
+            "gtig-threat-actor-naming",
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-tidal-groups",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "QTFY",
+            "Quartermaster"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "gtig-threat-actor-naming": [],
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "1ac591bf-cd86-4520-a82a-dde2245c85d3",
+              "entry_value": "QTFY",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "qtfy",
+                  "profile_value": "QTFY",
+                  "dataset_value": "QTFY"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "QTFY"
+              ],
+              "countries": [
+                "CN"
+              ],
+              "description": "QTFY is a state-sponsored group from the People's Republic of China, operating as an infrastructure quartermaster that provides reconnaissance, access, and obfuscation services to various state customers, including the MSS and PLA. It developed QScan and QTRouter, leveraging high-tier commercial proxy services like fastlink.ws to obscure its traffic. QTFY personnel, including former PLA members, engage in exploit brokering and operate within a supply chain rather than merely deploying malware. The group has been linked to specific domains and infrastructure, with evidence of TLS certificate collection as part of its operational tactics.",
+              "refs": [
+                "https://zerotracelab.com/blog/qtfy-hunt-internet-sensor"
+              ],
+              "related": [],
+              "research_data": {}
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": [],
+          "misp-tidal-groups": []
+        },
+        "malware_catalog_matches": [],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [
+            "china"
+          ],
+          "external_values": [
+            "china"
+          ],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -223,114 +314,9 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
-      "id": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
-      "description": "米司法省は、中国国家支援グループQTFYによる攻撃について、NASAやFRB、司法省など複数の米政府機関を「被害者」ではなく「標的」とするよう過去の発表を訂正した。 QTFYは中国企業Nanjing Xinjiuwei Network Technologyに所属し、中国国家安全部からの支払いを受けて北京のためにサイバー活動を実施しているとみられる。 同グループは2018年頃から活動し、QScanとQTRouterを用いて脆弱なIoT機器を侵害し、攻撃元を隠蔽するOperational Relay Boxネットワークを構築してきた。 2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。 FBIはQScanとQTRouterが使用する3ドメインを差し押さえて機能を停止させたが、訂正により標的となった全組織が実際に侵害されたわけではないことが明確化された。",
-      "external_references": [
-        {
-          "source_name": "thehackernews.com",
-          "description": "Local source: https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
-          "external_id": "source--daily-0a5826ce9e99e3db29e4"
-        },
-        {
-          "source_name": "justice.gov",
-          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
-          "external_id": "source--daily-f3e970d5f0009ebe4c40"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-a49b84f62f89cb5c3f4b",
-      "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--a49b84f62f89cb5c3f4b7b9a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(米司法省プレスリリース、2026-08-26公表・2026-08-28更新、Press Release Number 26-972)をHTTP 200で取得して確認。法廷文書に基づき「a People's Republic of China (PRC) state-sponsored group known as 'QTFY,' employed by China-based Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司), created and operated QScan and QTRouter」と明記されており、QTFYを実行主体として名指ししている。政府・法執行機関による一次資料であり、AGENT.mdの情報源優先順位で最上位に当たる。IOC 4件のうち qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com はDOJが差し押さえたQScan/QTRouterのハードコード済みドメインで、原文に対応する記述がある。fastlink[.]ws はIOC CSV上の参照が二次報道(thehackernews)であり、Lumen Black Lotus Labs報告でFast Labyrinth中継網に組み込まれた商用プロキシサービスとして確認できた。同一事案の記事とIOCを1活動へまとめるため、config.jsonのactivity_reference_aliasesでthehackernewsのURLをDOJのURLへ写像した。各Observationのsource_idは実際に当該IOCを掲載したURLごとに保持されている。活動期間: DOJは差押えの実施日を述べるのみで攻撃の観測期間を明示していない。FBI・NSAの共同アドバイザリがQTFYの活動を「dating back to at least 2018」として分析しているとの記述はあるが、アドバイザリ本体は未確認のため活動期間はunknownとし、プロファイルのactor.first_seenにのみ2018年を根拠付きで記録した。重要な留保: 本プレスリリースは2026-08-28に更新され、末尾に「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された米政府機関(NASA、連邦準備制度、エネルギー省、司法省、保健福祉省、国立衛生研究所、米国上院)は「標的」であって「被害者」ではないため、victim_casesは作成しない。",
-      "x_reported_at": {
-        "value": "2026-09-01T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--qtfy",
-          "name": "QTFY",
-          "attribution_countries": [
-            "China"
-          ],
-          "organization_refs": [
-            "organization--nanjing-xinjiuwei",
-            "organization--pla",
-            "organization--prc-mss"
-          ]
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--qscan",
-            "malware--qtrouter"
-          ],
-          "ttp_refs": [
-            "ttp--activity-rule--dad2781185b18bbdcf37"
-          ]
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--015651a588ad0e25bc2c"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": "2026-09-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "intrusion",
-          "phases": [
-            "Initial Access"
-          ],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "China"
-            ],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-0a5826ce9e99e3db29e4",
-          "source--daily-f3e970d5f0009ebe4c40"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
       "id": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -344,14 +330,10 @@
         }
       ],
       "x_profile_object_id": "activity--qtfy--lumen-quartermaster-2026",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "Lumenは観測期間を「For the past year」とのみ述べ、開始日・終了日を明示していないため活動期間はunknownとし、公開日2026-08-26はreported_atへ分離した。confidenceをmediumとしたのは、Lumen報告が「QTFY」の名を用いておらず、本プロファイルへの結び付けがDOJプレスリリースの参照に依拠するためである。また、ここで観測された profiling の一部は顧客アクターの作戦である可能性があり、QTFY自身の作戦と分離できない。標的の記述は基盤経由で観測されたプロファイリング対象であり、侵害の確認ではない。 表記上の注意: 本活動の名称とdescriptionからは攻撃者側の帰属国名(中国)を意図的に除いている。帰属はattribution.countriesおよびattribution.assessmentに保持しており、活動記述からの標的抽出が帰属国を標的国として拾わないようにするためである(AGENT.md: 帰属国やインフラ所在国を標的国へ流用しない)。本活動を支える基盤の利用者が中国系の諜報アクターである点は、attributionおよびfree_text.executive_summaryに記載している。",
-      "x_reported_at": {
-        "value": "2026-08-26T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--qtfy",
@@ -385,7 +367,8 @@
             "target--activity-rule--sector--260bd106ff4950e5430d",
             "target--activity-rule--sector--b8d6639a1884e2bacaa4",
             "target--activity-rule--sector--b94dc560a327b601965d",
-            "target--activity-rule--sector--e7608f51421ca8b1e297"
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--targeting-audit--region--9774112d109d08f275a9"
           ],
           "victim_refs": [
             "victim--activity-rule--547eb506c9eb1e68e54f"
@@ -424,7 +407,9 @@
               "target--activity-rule--country--6604ad21c713b8dfd8c7",
               "target--activity-rule--country--f9601e2d842c9a05202b"
             ],
-            "target_region_refs": []
+            "target_region_refs": [
+              "target--targeting-audit--region--9774112d109d08f275a9"
+            ]
           }
         },
         "confidence": "medium",
@@ -432,6 +417,24 @@
           "source--qtfy--lumen-quartermaster"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
       }
     },
     {
@@ -476,28 +479,6 @@
         }
       ],
       "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--71c5a20f-6d19-4e27-b8c4-612d64cd06a0",
-      "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アジア",
-      "identity_class": "organization",
-      "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジアが明示されている。",
-      "external_references": [
-        {
-          "source_name": "Lumen Technologies (Black Lotus Labs)",
-          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
-          "external_id": "source--qtfy--lumen-quartermaster"
-        }
-      ],
-      "x_target_category": "regions",
       "x_confidence": "medium"
     },
     {
@@ -825,11 +806,139 @@
       "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--cbfd32e7-f57a-4dad-9ccc-f732d7aa099f",
+      "created": "2026-09-21T04:35:03Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
+      "description": "米司法省は、中国国家支援グループQTFYによる攻撃について、NASAやFRB、司法省など複数の米政府機関を「被害者」ではなく「標的」とするよう過去の発表を訂正した。 QTFYは中国企業Nanjing Xinjiuwei Network Technologyに所属し、中国国家安全部からの支払いを受けて北京のためにサイバー活動を実施しているとみられる。 同グループは2018年頃から活動し、QScanとQTRouterを用いて脆弱なIoT機器を侵害し、攻撃元を隠蔽するOperational Relay Boxネットワークを構築してきた。 2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。 FBIはQScanとQTRouterが使用する3ドメインを差し押さえて機能を停止させたが、訂正により標的となった全組織が実際に侵害されたわけではないことが明確化された。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "attack-pattern--852b6ee7-855d-4ffe-9042-010753c78e9b",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--809a143d-fc12-4cf2-b0fd-582c5e0153d2",
+        "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
+        "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
+        "malware--98460a44-3489-41c1-9ec7-977c3bfddd5c"
+      ],
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
+          "external_id": "source--daily-0a5826ce9e99e3db29e4"
+        },
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "external_id": "source--daily-f3e970d5f0009ebe4c40"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-a49b84f62f89cb5c3f4b",
+      "x_activity_type": "intrusion",
+      "x_stix_object_type": "grouping",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--a49b84f62f89cb5c3f4b7b9a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(米司法省プレスリリース、2026-08-26公表・2026-08-28更新、Press Release Number 26-972)をHTTP 200で取得して確認。法廷文書に基づき「a People's Republic of China (PRC) state-sponsored group known as 'QTFY,' employed by China-based Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司), created and operated QScan and QTRouter」と明記されており、QTFYを実行主体として名指ししている。政府・法執行機関による一次資料であり、AGENT.mdの情報源優先順位で最上位に当たる。IOC 4件のうち qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com はDOJが差し押さえたQScan/QTRouterのハードコード済みドメインで、原文に対応する記述がある。fastlink[.]ws はIOC CSV上の参照が二次報道(thehackernews)であり、Lumen Black Lotus Labs報告でFast Labyrinth中継網に組み込まれた商用プロキシサービスとして確認できた。同一事案の記事とIOCを1活動へまとめるため、config.jsonのactivity_reference_aliasesでthehackernewsのURLをDOJのURLへ写像した。各Observationのsource_idは実際に当該IOCを掲載したURLごとに保持されている。活動期間: DOJは差押えの実施日を述べるのみで攻撃の観測期間を明示していない。FBI・NSAの共同アドバイザリがQTFYの活動を「dating back to at least 2018」として分析しているとの記述はあるが、アドバイザリ本体は未確認のため活動期間はunknownとし、プロファイルのactor.first_seenにのみ2018年を根拠付きで記録した。重要な留保: 本プレスリリースは2026-08-28に更新され、末尾に「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された米政府機関(NASA、連邦準備制度、エネルギー省、司法省、保健福祉省、国立衛生研究所、米国上院)は「標的」であって「被害者」ではないため、victim_casesは作成しない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--qtfy",
+          "name": "QTFY",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": [
+            "organization--nanjing-xinjiuwei",
+            "organization--pla",
+            "organization--prc-mss"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--qscan",
+            "malware--qtrouter"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--dad2781185b18bbdcf37"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--015651a588ad0e25bc2c"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0a5826ce9e99e3db29e4",
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--63cd2089-face-4f61-b3d2-7508676762a3",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -837,14 +946,26 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "malware--98460a44-3489-41c1-9ec7-977c3bfddd5c",
       "description": "QTFY uses QScan.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "external_id": "source--daily-f3e970d5f0009ebe4c40"
+        },
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6f803794-bd99-48ea-acf9-00888fbaecd3",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -852,14 +973,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "malware--e121fc2f-03bf-4312-97f3-9ed8e196ef88",
       "description": "QTFY uses QTProxy.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--95a87f14-410b-4ae0-9336-c872ad1ed5f8",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -867,14 +995,26 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
       "description": "QTFY uses QTRouter.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "external_id": "source--daily-f3e970d5f0009ebe4c40"
+        },
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--386219cc-4018-43b3-866a-b4d96a9e18a9",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -882,14 +1022,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "infrastructure--670874d7-88a0-4bf4-906f-ca1be72e7259",
       "description": "QTFY uses Fast Labyrinth.",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--61bf0da1-a0a2-455d-b081-5f007b8cf9fe",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -897,14 +1044,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "description": "QTFY targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--87709fe7-d6c4-4f03-b193-e278addff567",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -912,29 +1066,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--48a6cd0e-61b2-4adf-9bd6-2675594e291d",
       "description": "QTFY targets 英国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b265a338-76b7-46b4-a6f2-25e1987c9c49",
-      "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "target_ref": "identity--71c5a20f-6d19-4e27-b8c4-612d64cd06a0",
-      "description": "QTFY targets アジア (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8adc9f5-55ff-477c-ae31-4f7e31bcade8",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -942,14 +1088,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--498de37c-fb71-43f8-a6b2-df11d61811dc",
       "description": "QTFY targets アジア太平洋 (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8b566f06-f407-4779-8699-a100cffa5655",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -957,14 +1110,26 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "QTFY targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
+          "external_id": "source--daily-0a5826ce9e99e3db29e4"
+        },
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "external_id": "source--daily-f3e970d5f0009ebe4c40"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--295b8dee-fc48-47ec-927b-ba0b50dda126",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -972,14 +1137,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
       "description": "QTFY targets 医療・ヘルスケア (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5674a46f-2a62-4755-b809-8a1d31b6003e",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -987,14 +1159,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
       "description": "QTFY targets 運輸・航空・海運 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c19e6211-cdff-4752-8073-fa34c4bb8bee",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1002,14 +1181,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "description": "QTFY targets 防衛・軍事 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7507b9d5-dd5f-42ac-be43-1690580c02a1",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1017,104 +1203,21 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "QTFY targets 教育・研究 (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7f3ae087-1436-415f-ad14-603ba33db604",
-      "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 is attributed or linked to QTFY.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c1b3fd39-4edb-4157-9344-db3c275e2f84",
-      "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "malware--98460a44-3489-41c1-9ec7-977c3bfddd5c",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 uses malware--qscan.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6bd4f7f9-f2a6-47e7-998d-181f861fc516",
-      "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T12:59:04Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 uses malware--qtrouter.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--825041ac-6719-4ecf-a881-479d2788dc68",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 targets target--activity-rule--sector--210dddb39397dbe50e91.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--237cf838-d5e9-4126-96ab-90d86332009a",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "attack-pattern--852b6ee7-855d-4ffe-9042-010753c78e9b",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 uses ttp--activity-rule--dad2781185b18bbdcf37.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c87b5507-db0e-4f9a-a778-20bcda53ef2b",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
-      "target_ref": "identity--809a143d-fc12-4cf2-b0fd-582c5e0153d2",
-      "description": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 affected victim--activity-rule--015651a588ad0e25bc2c.",
-      "x_confidence": "high"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9348a2b1-1582-4bc9-a040-ba110ac17018",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1122,14 +1225,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) is attributed or linked to QTFY.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--945f269c-d39a-4cb4-9a69-7552ee0f9387",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1137,29 +1271,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "malware--98460a44-3489-41c1-9ec7-977c3bfddd5c",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) uses malware--qscan.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--58d95b9a-fe7e-4910-8c42-f8b6631e20f6",
-      "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
       ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
-      "target_ref": "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
-      "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) uses malware--qtrouter.",
-      "x_confidence": "medium"
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--36440f26-ddb0-4beb-b101-52e0654a09b6",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1167,14 +1317,91 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "malware--e121fc2f-03bf-4312-97f3-9ed8e196ef88",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) uses malware--qtproxy.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--58d95b9a-fe7e-4910-8c42-f8b6631e20f6",
+      "created": "2026-09-02T12:59:04Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
+      "target_ref": "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
+      "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) uses malware--qtrouter.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--572ec415-f032-40ae-98e1-561f36d24338",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1182,14 +1409,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "infrastructure--670874d7-88a0-4bf4-906f-ca1be72e7259",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) uses infrastructure--fast-labyrinth.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d125bc62-266b-4db8-8948-56b13297ee98",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1197,14 +1455,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9efa6946-3b16-4e0c-91db-4f45dd9feb4c",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1212,14 +1501,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--48a6cd0e-61b2-4adf-9bd6-2675594e291d",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--country--f9601e2d842c9a05202b.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7921dc19-42c4-4c44-bb28-3b16cc2fd508",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1227,14 +1547,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--sector--260bd106ff4950e5430d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--66775000-3493-42d1-a840-73a3b7e44493",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1242,14 +1593,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--db3a8e46-664a-4c93-ac1a-59002253b569",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1257,14 +1639,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--sector--b94dc560a327b601965d.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--65d84545-b372-452c-83c8-8085d88778bf",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1272,14 +1685,91 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--activity-rule--sector--e7608f51421ca8b1e297.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--42e61d23-5da7-4e9e-9a27-883a3582374a",
+      "created": "2026-09-21T02:05:25Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
+      "target_ref": "identity--498de37c-fb71-43f8-a6b2-df11d61811dc",
+      "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) targets target--targeting-audit--region--9774112d109d08f275a9.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cd852d53-efab-4eaf-a77c-b069f10084ea",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1287,14 +1777,45 @@
       "source_ref": "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
       "target_ref": "identity--05498d0e-74bb-4fab-bbad-11b4b5fa3fbf",
       "description": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan) affected victim--activity-rule--547eb506c9eb1e68e54f.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "Lumen Technologies (Black Lotus Labs)",
+          "description": "Local source: https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "external_id": "source--qtfy--lumen-quartermaster"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--67b721f2-e93d-44d5-9450-835869b16142",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-02T13:05:31Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1302,347 +1823,19 @@
       "source_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
       "target_ref": "attack-pattern--852b6ee7-855d-4ffe-9042-010753c78e9b",
       "description": "2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--f81fa3bc-c6bc-4aa0-96f9-a44ec395e183",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: qtproxy.xyz",
-      "pattern": "[domain-name:value = 'qtproxy.xyz']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-08-31T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-a49b84f62f89cb5c3f4b"
-      ],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
+      "x_confidence": "medium",
+      "external_references": [
         {
-          "observation_id": "observation--sha256:2577b270867d3d82b6815301c9983434f97c4cbe8f28a904d54fc07182c4167d",
-          "observed_at": {
-            "value": "2026-08-31T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-f3e970d5f0009ebe4c40",
-          "source_path": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
-            "path": "daily-news/iocs/2026_07-09/20260901.csv",
-            "row": 23
-          },
-          "campaign_refs": [
-            "activity--daily-a49b84f62f89cb5c3f4b"
-          ],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "qtproxy.xyz",
-          "context_excerpt": "AI generated. Domain hardcoded into the QScan and QTRouter platforms and seized by the FBI.",
-          "analyst_notes": "actor field: QTFY; actor_attribute: china; reference: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers"
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
+          "external_id": "source--daily-0a5826ce9e99e3db29e4"
+        },
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "external_id": "source--daily-f3e970d5f0009ebe4c40"
         }
       ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9daab939-2987-415f-8fba-1078ad5f434d",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--f81fa3bc-c6bc-4aa0-96f9-a44ec395e183",
-      "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--2d7bfdaa-4272-41ec-b79d-8302d5f99063",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: qt-proxy.org",
-      "pattern": "[domain-name:value = 'qt-proxy.org']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-08-31T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-a49b84f62f89cb5c3f4b"
-      ],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:d82b4de4d73a3adcdc812db649c46812dc9120e44a6ae1fb0b5d8730eb4e4bc9",
-          "observed_at": {
-            "value": "2026-08-31T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-f3e970d5f0009ebe4c40",
-          "source_path": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
-            "path": "daily-news/iocs/2026_07-09/20260901.csv",
-            "row": 24
-          },
-          "campaign_refs": [
-            "activity--daily-a49b84f62f89cb5c3f4b"
-          ],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "qt-proxy.org",
-          "context_excerpt": "AI generated. Domain hardcoded into the QScan and QTRouter platforms and seized by the FBI.",
-          "analyst_notes": "actor field: QTFY; actor_attribute: china; reference: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9b540d4a-4b85-4c34-ada1-59081937c936",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--2d7bfdaa-4272-41ec-b79d-8302d5f99063",
-      "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--a93c3071-3f09-4dba-9b81-7930d77f8dde",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: qt-team.com",
-      "pattern": "[domain-name:value = 'qt-team.com']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-08-31T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-a49b84f62f89cb5c3f4b"
-      ],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:62fc5de0fc8772ecd4d5ef4e1221ec10c6108d240a2aeb855b07881871f88ec7",
-          "observed_at": {
-            "value": "2026-08-31T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-f3e970d5f0009ebe4c40",
-          "source_path": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
-            "path": "daily-news/iocs/2026_07-09/20260901.csv",
-            "row": 25
-          },
-          "campaign_refs": [
-            "activity--daily-a49b84f62f89cb5c3f4b"
-          ],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "qt-team.com",
-          "context_excerpt": "AI generated. Domain hardcoded into the QScan and QTRouter platforms and seized by the FBI.",
-          "analyst_notes": "actor field: QTFY; actor_attribute: china; reference: https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--4ec589b4-dc6d-49e1-a702-a6e4c3e8e496",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--a93c3071-3f09-4dba-9b81-7930d77f8dde",
-      "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--0b2d2eac-069c-4b09-9afc-a40cc08082ed",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: fastlink.ws",
-      "pattern": "[domain-name:value = 'fastlink.ws']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-08-31T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-a49b84f62f89cb5c3f4b"
-      ],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:17aa340db6dd7a559d6bdb2260b8a5be43788a5ccc87cbd0da12b14fc3a22528",
-          "observed_at": {
-            "value": "2026-08-31T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--daily-0a5826ce9e99e3db29e4",
-          "source_path": "https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
-            "path": "daily-news/iocs/2026_07-09/20260901.csv",
-            "row": 26
-          },
-          "campaign_refs": [
-            "activity--daily-a49b84f62f89cb5c3f4b"
-          ],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "fastlink.ws",
-          "context_excerpt": "AI generated. Chinese commercial proxy service reported as a relay node in the actor obfuscation network.",
-          "analyst_notes": "actor field: QTFY; actor_attribute: china; reference: https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c35f1bd3-000c-40af-81ed-d86b0e3bbc6f",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--0b2d2eac-069c-4b09-9afc-a40cc08082ed",
-      "target_ref": "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
     },
     {
       "type": "note",
@@ -1666,7 +1859,7 @@
       "spec_version": "2.1",
       "id": "report--f9b55ef9-b1d8-4d1f-a586-c93c7d9d9b5c",
       "created": "2026-09-02T12:59:04Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1675,18 +1868,16 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-02T13:11:10Z",
+      "published": "2026-09-21T04:35:03Z",
       "object_refs": [
         "intrusion-set--18cd7fc2-8cec-46fa-b170-920ce9ee3f5c",
         "malware--98460a44-3489-41c1-9ec7-977c3bfddd5c",
         "malware--e121fc2f-03bf-4312-97f3-9ed8e196ef88",
         "malware--8e9901e3-0c86-48df-aed4-b44bef71eff6",
         "infrastructure--670874d7-88a0-4bf4-906f-ca1be72e7259",
-        "campaign--b8e6528b-ce21-4ad9-bd3d-cebe4de843a7",
         "campaign--c0eae448-b67b-4a79-b28c-403d9192a90b",
         "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
         "identity--48a6cd0e-61b2-4adf-9bd6-2675594e291d",
-        "identity--71c5a20f-6d19-4e27-b8c4-612d64cd06a0",
         "identity--498de37c-fb71-43f8-a6b2-df11d61811dc",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
         "identity--23941aff-b10f-4ed3-afee-b0e0f96b4f33",
@@ -1696,12 +1887,9 @@
         "identity--809a143d-fc12-4cf2-b0fd-582c5e0153d2",
         "identity--05498d0e-74bb-4fab-bbad-11b4b5fa3fbf",
         "attack-pattern--852b6ee7-855d-4ffe-9042-010753c78e9b",
-        "indicator--f81fa3bc-c6bc-4aa0-96f9-a44ec395e183",
-        "indicator--2d7bfdaa-4272-41ec-b79d-8302d5f99063",
-        "indicator--a93c3071-3f09-4dba-9b81-7930d77f8dde",
-        "indicator--0b2d2eac-069c-4b09-9afc-a40cc08082ed"
+        "grouping--cbfd32e7-f57a-4dad-9ccc-f732d7aa099f"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

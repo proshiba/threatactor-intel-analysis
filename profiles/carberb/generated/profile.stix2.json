@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T02:20:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -27,16 +27,17 @@
         }
       ],
       "x_profile_id": "actor--carberb",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Carberb",
           "vendor": "legacy-corpus",
-          "scope": "unknown",
+          "scope": "exact",
           "confidence": "low",
           "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--actor-census-curation-carberp"
           ],
-          "analyst_notes": "Legacy corpus spelling retained only for lookup compatibility; canonicalized to Carberp after actor-specific review."
+          "analyst_notes": "Legacy repository spelling retained as an exact lookup variant of the reviewed canonical name Carberp; confidence remains low because the misspelling is corpus-local."
         }
       ],
       "x_attribution": {
@@ -62,9 +63,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--carberb",
         "actor_name": "Carberp",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -73,6 +75,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -83,6 +86,7 @@
         },
         "overall_assessment": "no-match",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [],
           "microsoft-threat-actor-mapping": [],
@@ -90,7 +94,8 @@
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -119,7 +124,7 @@
       "spec_version": "2.1",
       "id": "identity--bafc335f-e28d-460e-970e-3fcd9453137b",
       "created": "2026-09-19T00:00:50Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T02:20:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -127,11 +132,6 @@
       "identity_class": "organization",
       "description": "Group-IB lists the geography of Carberp attacks as Worldwide.",
       "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
         {
           "source_name": "Group-IB",
           "description": "Local source: https://www.group-ib.com/top-investigations/carberp-gang/",
@@ -168,7 +168,7 @@
       "spec_version": "2.1",
       "id": "relationship--0033524d-a27f-455a-85bf-f74db2423868",
       "created": "2026-09-19T00:00:50Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T02:20:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -176,14 +176,21 @@
       "source_ref": "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
       "target_ref": "identity--bafc335f-e28d-460e-970e-3fcd9453137b",
       "description": "Carberp targets 全世界 (profile target category: regions).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Group-IB",
+          "description": "Local source: https://www.group-ib.com/top-investigations/carberp-gang/",
+          "external_id": "source--group-ib-carberp-gang"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a7dad7fc-fdb2-4d68-a2ad-4009c51603c7",
       "created": "2026-09-19T00:00:50Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T02:20:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -191,14 +198,199 @@
       "source_ref": "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
       "target_ref": "identity--1bcf7d56-038b-4a8b-8bb3-ac703c393a0b",
       "description": "Carberp targets 金融 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Group-IB",
+          "description": "Local source: https://www.group-ib.com/top-investigations/carberp-gang/",
+          "external_id": "source--group-ib-carberp-gang"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a28227d0-741c-4451-a57d-9c021677a07e",
+      "created": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-19T00:00:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://401trg.com/burning-umbrella/",
+      "pattern": "[url:value = 'https://401trg.com/burning-umbrella/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:67472ee5a5b74309f15f2edcec402e3c19459914f54f9014d8db6f059288044c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--carberb--5501c7dbfeb0afae",
+          "source_path": "actor_profile/evidence/carberb.csv",
+          "source_location": {
+            "row": 3
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 40, \"sheet\": \"China\"} Carberp PassCV TG-3279 Winnti Umbrella, China Cracking Group, Sabre, Kitkiot, Conpee, Etso, Runxx, dnsenum, s (custom port scanner), rdp_crk, icmp_shell, Jynxkit, Gh0st RAT, NetCommander, Carberp RAT Gaming Companies Winnti Personas: Laurentiu Moon, Sincoder https://blog.cylance.com/digitally-signed-malware-targeting-gaming-companies https://401trg.com/burning-umbrella/ https://www.secureworks.com/research/threa",
+          "analyst_notes": "",
+          "raw_value": "https://401trg.com/burning-umbrella/"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--64abbd34-97b7-4281-8e08-a9cdd2da38f1",
+      "created": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-19T00:00:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://www.eff.org/deeplinks/2015/08/new-spear-phishing-",
+      "pattern": "[url:value = 'https://www.eff.org/deeplinks/2015/08/new-spear-phishing-']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2015-08-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 3,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0248ca436810b87324e3d7623b55725fb0c1ff6623a52d50fdab2fee1b5a9c7b",
+          "observed_at": {
+            "value": "2015-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--carberb--5501c7dbfeb0afae",
+          "source_path": "actor_profile/evidence/carberb.csv",
+          "source_location": {
+            "row": 10
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "A_Threat_Actor_Encyclopedia.pdf {\"page\": 209} carberp rl electronicfrontierfoundation.org. <https://www.eff.org/deeplinks/2015/08/new-spear-phishing- campaign-pretends-be-eff> Sep 2015 Bootstrapped Firefox Add-on <https://labsblog.f-secure.com/2015/09/08/sofacy-recycles-carberp- and-metasploit-code/> Oct 2015 Attack on Bellingcat",
+          "analyst_notes": "",
+          "raw_value": "https://www.eff.org/deeplinks/2015/08/new-spear-phishing-"
+        },
+        {
+          "observation_id": "observation--sha256:74760f03c6d27837f9d9807e9ac97fffb39069e80f2ae1e53cd07446cf2b6109",
+          "observed_at": {
+            "value": "2015-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--carberb--5501c7dbfeb0afae",
+          "source_path": "actor_profile/evidence/carberb.csv",
+          "source_location": {
+            "row": 12
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "Threat Group Cards.pdf {\"page\": 209} carberp rl electronicfrontierfoundation.org. <https://www.eff.org/deeplinks/2015/08/new-spear-phishing- campaign-pretends-be-eff> Sep 2015 Bootstrapped Firefox Add-on <https://labsblog.f-secure.com/2015/09/08/sofacy-recycles-carberp- and-metasploit-code/>",
+          "analyst_notes": "",
+          "raw_value": "https://www.eff.org/deeplinks/2015/08/new-spear-phishing-"
+        },
+        {
+          "observation_id": "observation--sha256:4a67844cb7c04bff5c256ec432bb8a4cf7db77f0755bf88545878418299308d5",
+          "observed_at": {
+            "value": "2015-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--carberb--5501c7dbfeb0afae",
+          "source_path": "actor_profile/evidence/carberb.csv",
+          "source_location": {
+            "row": 14
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "Threat_Group_Cards_v2.0.pdf {\"page\": 298} carberp rl electronicfrontierfoundation.org. <https://www.eff.org/deeplinks/2015/08/new-spear-phishing- campaign-pretends-be-eff> Sep 2015 Bootstrapped Firefox Add-on <https://labsblog.f-secure.com/2015/09/08/sofacy-recycles-carberp- and-metasploit-code/> Oct 2015 Attack on Bellingcat Eliot Higgins and other journalists associated with Bellingcat, a group researching the shoot down of Malaysia Airlines Flight 17 over Ukraine, were targeted by n",
+          "analyst_notes": "",
+          "raw_value": "https://www.eff.org/deeplinks/2015/08/new-spear-phishing-"
+        }
+      ]
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--6b43c645-7d42-463d-a92a-7cc4f0b60c8a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -208,14 +400,14 @@
         "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 1
+      "x_artifact_observation_count": 2
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--5040c562-6eb7-4de8-abb1-3438a46a3ab4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-19T00:00:50Z",
+      "modified": "2026-09-21T02:20:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -224,13 +416,15 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T00:00:50Z",
+      "published": "2026-09-21T02:20:30Z",
       "object_refs": [
         "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
         "identity--bafc335f-e28d-460e-970e-3fcd9453137b",
-        "identity--1bcf7d56-038b-4a8b-8bb3-ac703c393a0b"
+        "identity--1bcf7d56-038b-4a8b-8bb3-ac703c393a0b",
+        "indicator--a28227d0-741c-4451-a57d-9c021677a07e",
+        "indicator--64abbd34-97b7-4281-8e08-a9cdd2da38f1"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

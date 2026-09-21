@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--fruityarmor",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "MS16-120 / CVE-2016-3393 0day exploits, 0day CVE-2018-8453, PowerShell backdoor, CVE-2018-8611",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、オランダ、サウジアラビア、タイ、英国。標的地域=中東、欧州。日本は確認時に個別国として保持する。\n\nMiddle Eastern region",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nMiddle Eastern region",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--fruityarmor",
         "actor_name": "FruityArmor",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "6d2ff349-ad5d-4237-9cb3-3d8891c35fbf",
@@ -88,7 +92,59 @@
                 "https://citizenlab.ca/2016/05/stealth-falcon/",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Stealth+Falcon%2C+FruityArmor&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2012",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-sectors": [
+                  "Civil society groups and Emirati journalists, activists and dissidents"
+                ],
+                "observed-countries": [
+                  "Netherlands",
+                  "Saudi Arabia",
+                  "Thailand",
+                  "UAE",
+                  "UK"
+                ],
+                "tools": [
+                  "Deadglyph",
+                  "StealthFalcon",
+                  "0-day exploits"
+                ],
+                "operations": [
+                  {
+                    "date": "2014",
+                    "activity": "Ex-NSA operatives reveal how they helped spy on targets for the Arab monarchy — dissidents, rival leaders and journalists.\nhttps://www.reuters.com/investigates/special-report/usa-spying-raven/"
+                  },
+                  {
+                    "date": "2016-10",
+                    "activity": "Windows zero-day exploit used in targeted attacks by FruityArmor APT\nhttps://securelist.com/windows-zero-day-exploit-used-in-targeted-attacks-by-fruityarmor-apt/76396/"
+                  },
+                  {
+                    "date": "2018-10",
+                    "activity": "Zero-day exploit (CVE-2018-8453) used in targeted attacks\nhttps://securelist.com/cve-2018-8453-used-in-targeted-attacks/88151/"
+                  },
+                  {
+                    "date": "2018-10",
+                    "activity": "Zero-day in Windows Kernel Transaction Manager (CVE-2018-8611)\nhttps://securelist.com/zero-day-in-windows-kernel-transaction-manager-cve-2018-8611/89253/"
+                  },
+                  {
+                    "date": "2019-09",
+                    "activity": "ESET researchers discovered a backdoor linked to malware used by the Stealth Falcon group, an operator of targeted spyware attacks against journalists, activists and dissidents in the Middle East.\nhttps://www.welivesecurity.com/2019/09/09/backdoor-stealth-falcon-group/"
+                  },
+                  {
+                    "date": "2023",
+                    "activity": "Stealth Falcon preying over Middle Eastern skies with Deadglyph\nhttps://www.welivesecurity.com/en/eset-research/stealth-falcon-preying-middle-eastern-skies-deadglyph/"
+                  },
+                  {
+                    "date": "2025-03",
+                    "activity": "Inside Stealth Falcon’s Espionage Campaign Using a Microsoft Zero-Day\nhttps://blog.checkpoint.com/research/inside-stealth-falcons-espionage-campaign-using-a-microsoft-zero-day/"
+                  }
+                ],
+                "last-card-change": "2025-08-16"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -117,7 +173,8 @@
               "refs": [
                 "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-threat-actor": [
@@ -158,7 +215,23 @@
                   ],
                   "type": "similar"
                 }
-              ]
+              ],
+              "research_data": {
+                "cfr-suspected-victims": [
+                  "United Arab Emirates",
+                  "United Kingdom"
+                ],
+                "cfr-target-category": [
+                  "Civil society"
+                ],
+                "cfr-type-of-incident": "Espionage",
+                "targeted-sector": [
+                  "Activists",
+                  "Dissidents",
+                  "Journalist",
+                  "Civil society"
+                ]
+              }
             }
           ],
           "misp-microsoft-activity-group": [
@@ -188,12 +261,14 @@
               "refs": [
                 "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [],
         "relationship_candidates": [],
@@ -222,463 +297,11 @@
       }
     },
     {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--93e54cf2-20bb-4478-89d8-bfdc88440d30",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "MS16-120 / CVE-2016-3393 0day exploits",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--ms16-120-cve-2016-3393-0day-exploits",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--b4207ab2-98cf-4ada-a822-562e5cf118dc",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "0day CVE-2018-8453",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--0day-cve-2018-8453",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--48d28a6e-dd00-439a-82af-d9bd04cb244c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PowerShell backdoor",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--powershell-backdoor",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--e76cf225-57b0-411d-a8d7-96f508b800b2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "CVE-2018-8611",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--cve-2018-8611",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--06292035-dad4-4cde-9782-606880a7b0b6",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "アラブ首長国連邦",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでFruityArmorの標的・被害国としてアラブ首長国連邦が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--18326992-3507-419d-89ff-4ff5ce7739a4",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "オランダ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでFruityArmorの標的・被害国としてオランダが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--571de727-8505-4cc6-a1c3-f2fea0d918b2",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "サウジアラビア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでFruityArmorの標的・被害国としてサウジアラビアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--99699fe0-4c17-4ff6-a31e-0c549d3440c9",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "タイ",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでFruityArmorの標的・被害国としてタイが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--50bc5bca-acb2-48d3-884b-7b7abe95820b",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "英国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでFruityArmorの標的・被害国として英国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--ee421675-42d4-4fb2-aff5-274e286a753a",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "中東",
-      "identity_class": "organization",
-      "description": "レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--0046a40c-b105-4b29-8758-efa2b89fbd61",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "欧州",
-      "identity_class": "organization",
-      "description": "オランダ、英国で確認された標的・被害事例を欧州として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        },
-        {
-          "source_name": "MISP Project / Council on Foreign Relations",
-          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
-          "external_id": "source--target-audit-misp-threat-actor"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--882b263f-16d4-491a-bbfd-63434354d802",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "malware--93e54cf2-20bb-4478-89d8-bfdc88440d30",
-      "description": "FruityArmor uses MS16-120 / CVE-2016-3393 0day exploits.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b2bbc3da-c336-4346-9923-b381820a2b78",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "malware--b4207ab2-98cf-4ada-a822-562e5cf118dc",
-      "description": "FruityArmor uses 0day CVE-2018-8453.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--92cdbc2e-afa1-40f4-879e-f9701853e4fe",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "malware--48d28a6e-dd00-439a-82af-d9bd04cb244c",
-      "description": "FruityArmor uses PowerShell backdoor.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2f86a0ae-20b6-45a2-a676-545cc350ef89",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "malware--e76cf225-57b0-411d-a8d7-96f508b800b2",
-      "description": "FruityArmor uses CVE-2018-8611.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--40436271-2078-48c8-97b4-52bc43fa6c83",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--06292035-dad4-4cde-9782-606880a7b0b6",
-      "description": "FruityArmor targets アラブ首長国連邦 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--903e9452-1d4e-4772-8ed9-26936483eba6",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--18326992-3507-419d-89ff-4ff5ce7739a4",
-      "description": "FruityArmor targets オランダ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--94fb1308-44f1-4c7a-b05c-66d326185c01",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--571de727-8505-4cc6-a1c3-f2fea0d918b2",
-      "description": "FruityArmor targets サウジアラビア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6e981f33-b283-44b6-b9c3-f3f0f45bb942",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--99699fe0-4c17-4ff6-a31e-0c549d3440c9",
-      "description": "FruityArmor targets タイ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--760235e1-b76b-43a2-8d57-f51d49d85764",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--50bc5bca-acb2-48d3-884b-7b7abe95820b",
-      "description": "FruityArmor targets 英国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9c66b88a-53d4-4388-9e68-fa546b8b340e",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--ee421675-42d4-4fb2-aff5-274e286a753a",
-      "description": "FruityArmor targets 中東 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f04067cf-e1d8-43af-a2bc-8992fd7ced6d",
-      "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-      "target_ref": "identity--0046a40c-b105-4b29-8758-efa2b89fbd61",
-      "description": "FruityArmor targets 欧州 (profile target category: regions).",
-      "x_confidence": "medium"
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--4875030c-07e2-4a79-9104-3a27654fd16f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-09-21T01:54:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -688,14 +311,14 @@
         "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 27
+      "x_artifact_observation_count": 2
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--18da871c-30b3-4114-aacb-71bf2da8e70c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -704,22 +327,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
-        "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6",
-        "malware--93e54cf2-20bb-4478-89d8-bfdc88440d30",
-        "malware--b4207ab2-98cf-4ada-a822-562e5cf118dc",
-        "malware--48d28a6e-dd00-439a-82af-d9bd04cb244c",
-        "malware--e76cf225-57b0-411d-a8d7-96f508b800b2",
-        "identity--06292035-dad4-4cde-9782-606880a7b0b6",
-        "identity--18326992-3507-419d-89ff-4ff5ce7739a4",
-        "identity--571de727-8505-4cc6-a1c3-f2fea0d918b2",
-        "identity--99699fe0-4c17-4ff6-a31e-0c549d3440c9",
-        "identity--50bc5bca-acb2-48d3-884b-7b7abe95820b",
-        "identity--ee421675-42d4-4fb2-aff5-274e286a753a",
-        "identity--0046a40c-b105-4b29-8758-efa2b89fbd61"
+        "intrusion-set--fb74525d-460e-4582-9114-c6807ee09cd6"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

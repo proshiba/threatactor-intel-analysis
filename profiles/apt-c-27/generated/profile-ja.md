@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt-c-27`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:01Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -16,11 +16,7 @@ APT-C-27の標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Golden Rat | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Goldmouse | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Goldmouse/Gold Mouse/Gold Rat | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -48,18 +44,19 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | Adversary |  |
 | Capability |  |
 | Infrastructure |  |
-| Victim | Middle East |
-| Socio-political | China |
+| Victim |  |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Goldmouse, APT-C-27 | canonical-name | 高 | Syria | https://ti.360.net/blog/articles/apt-c-27-(goldmouse):-suspected-target-attack-against-the-middle-east-with-winrar-exploit-en/<br>https://blog.360totalsecurity.com/en/the-sample-analysis-of-apt-c-27s-recent-attack/<br>http://blogs.360.cn/post/SEA_role_influence_cyberattacks.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -68,6 +65,7 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 黄金鼠 - APT-C-27 | canonical-name | 高 |  | https://apt.360.net/report/apts/100.html<br>https://apt.360.net/report/apts/98.html<br>https://apt.360.net/report/apts/26.html |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -117,13 +115,13 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | target--country--syria | malware--silverhawk, malware--meta-unnamed-android-2021 |  | victim--activity-rule--fd272643244685f97d5e | APT-C-27: Meta disrupted SEA/APT-C-27 accounts and infrastructure linked to Syrian Air Force Intelligence. The actor used credential phishing and trojanized Android applications. | 高 | `source--meta-syria-hackers-2021` |
+| Meta APT-C-27 network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | target--country--syria | malware--meta-unnamed-android-2021, malware--silverhawk |  | victim--activity-rule--5302d8f8387a8e7d185d | APT-C-27: Meta disrupted SEA/APT-C-27 accounts and infrastructure linked to Syrian Air Force Intelligence. The actor used credential phishing and trojanized Android applications. | 高 | `source--meta-syria-hackers-2021` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Meta Syrian network disruption (October 2021) | APT-C-27 | Unnamed Android family (Meta 2021), SilverHawk | 情報なし | APT-C-27 command-and-control infrastructure, APT-C-27 Android malware delivery infrastructure, APT-C-27 credential phishing infrastructure | シリア | 被害事例: Meta Syrian network disruption (October 2021) | 高 |
+| Meta APT-C-27 network disruption (October 2021) | APT-C-27 | Unnamed Android family (Meta 2021), SilverHawk | 情報なし | APT-C-27 command-and-control infrastructure, APT-C-27 Android malware delivery infrastructure, APT-C-27 credential phishing infrastructure | シリア | 被害事例: Meta APT-C-27 network disruption (October 2021) | 高 |
 
 
 
@@ -131,10 +129,7 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | シリア | Meta observed targeting of people and organizations in Syria. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでAPT-C-27の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでAPT-C-27の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net` |
-| regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--meta-syria-hackers-2021`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| countries | シリア | Meta observed targeting of people and organizations in Syria. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Civil Society | Meta's observed victim set included Civil Society targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Defense | Meta's observed victim set included Defense targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Government | Meta's observed victim set included Government targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
@@ -143,13 +138,13 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | roles | journalists | Meta identified journalists in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | roles | military opposition | Meta identified military opposition in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 
-選定ロジック: Syrian civil-society, media, humanitarian, opposition, and former military targets holding politically or militarily relevant information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Syrian civil-society, media, humanitarian, opposition, and former military targets holding politically or militarily relevant information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Meta Syrian network disruption (October 2021) | 非公開 | anonymous | unknown | reported | target--country--syria | malware--meta-unnamed-android-2021, malware--silverhawk |  | モバイル端末 |  | 2021-10 | 2021-10 | 2021-11-16 | 高 | `source--meta-syria-hackers-2021` |
+| 被害事例: Meta APT-C-27 network disruption (October 2021) | 非公開 | anonymous | unknown | reported | target--country--syria | malware--meta-unnamed-android-2021, malware--silverhawk |  | モバイル端末 |  | 2021-10 | 2021-10 | 2021-11-16 | 高 | `source--meta-syria-hackers-2021` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -161,7 +156,7 @@ TTPなし
 - IOC観測: 15件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 6件
-- 非IOC artifact観測: 23件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -178,6 +173,7 @@ TTPなし
 
 - Vendor cluster boundaries may differ from the canonical name used here.
 - Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
+- 3 alias lead(s) remain non-canonical pending original-source review.
 
 ## 出典
 
@@ -194,8 +190,8 @@ TTPなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--meta-syria-hackers-2021 | Taking Action Against Hackers in Pakistan and Syria | Meta | 2021-11-16 | https://about.fb.com/news/2021/11/taking-action-against-hackers-in-pakistan-and-syria/ | vendor-research | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--uac-0026",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -32,16 +33,17 @@
         "history": "",
         "capability_details": "Scieron, Trojan.Scieron, Trojan.Scieron.B",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、シリア、ロシア、米国。標的地域=東欧。日本は確認時に個別国として保持する。\n\nRussia, Ukraine",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nRussia, Ukraine",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--uac-0026",
         "actor_name": "UAC-0026",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "fdce7dae-4820-43ae-b2c7-8dc50e010c6c",
@@ -85,7 +89,29 @@
                 "https://web.archive.org/web/20150124025612/http:/www.symantec.com:80/connect/blogs/scarab-attackers-took-aim-select-russian-targets-2012",
                 "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Scarab&n=1"
               ],
-              "related": []
+              "related": [],
+              "research_data": {
+                "first-seen": "2012",
+                "motivation": [
+                  "Information theft and espionage"
+                ],
+                "observed-countries": [
+                  "Russia",
+                  "Syria",
+                  "Ukraine",
+                  "USA"
+                ],
+                "tools": [
+                  "Scieron"
+                ],
+                "operations": [
+                  {
+                    "date": "2022-03",
+                    "activity": "Chinese Threat Actor Scarab Targeting Ukraine\nhttps://www.sentinelone.com/labs/chinese-threat-actor-scarab-targeting-ukraine/"
+                  }
+                ],
+                "last-card-change": "2022-04-04"
+              }
             }
           ],
           "cert-ua-uac-index": [],
@@ -94,24 +120,10 @@
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
-        "malware_catalog_matches": [
-          {
-            "profile_malware_id": "malware--scieron",
-            "profile_name": "Scieron",
-            "entry_uuid": "e343583b-8338-42ea-af60-311578146151",
-            "entry_value": "Scieron",
-            "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.scieron",
-              "https://www.sentinelone.com/labs/chinese-threat-actor-scarab-targeting-ukraine/",
-              "https://www.sentinelone.com/labs/chinese-threat-actor-scarab-targeting-ukraine",
-              "https://inquest.net/blog/2022/04/07/ukraine-cyberwar-overview",
-              "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=8bfa7311-fdd9-4f8d-b813-1ab6c9d2c363"
-            ],
-            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
-          }
-        ],
+        "malware_catalog_matches": [],
         "relationship_candidates": [],
         "country_comparison": {
           "profile_values": [],
@@ -134,332 +146,6 @@
           "A Malpedia name match confirms catalogue presence only, not actor use."
         ]
       }
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--eb5f71fb-ee99-4416-9053-73bb3d49869b",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Scieron",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--scieron",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--a623a4ba-09dd-4e3e-a5e2-83cd19bbd5b5",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Trojan.Scieron",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--trojan-scieron",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--bb5c27b1-0328-4a8a-b968-84dab7705c11",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Trojan.Scieron.B",
-      "description": "The actor-mapping workbook lists this software or tool.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        }
-      ],
-      "x_profile_object_id": "malware--trojan-scieron-b",
-      "x_confidence": "medium",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "unknown"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--a3910d9f-1c48-48cd-9b90-436b1cdd430e",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ウクライナ",
-      "identity_class": "organization",
-      "description": "Targeting text mentions ukraine.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--4161c0a3-5b7a-453c-a44f-258b55f80fb9",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "シリア",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUAC-0026の標的・被害国としてシリアが記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--50f3b1fb-ac4e-4383-bcb8-1680660438b4",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ロシア",
-      "identity_class": "organization",
-      "description": "Targeting text mentions russia.",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--7696fe9f-0eb9-4811-8464-1c0775aae3ba",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "米国",
-      "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでUAC-0026の標的・被害国として米国が記録されている。",
-      "external_references": [
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "countries",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--02efbfc0-aa35-4eb2-a005-e2c88b701781",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "東欧",
-      "identity_class": "organization",
-      "description": "ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
-      "external_references": [
-        {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
-        },
-        {
-          "source_name": "ETDA / ThaiCERT",
-          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
-          "external_id": "source--target-audit-etda-threat-group-cards"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--05defd15-ba93-4f37-8afd-b6e9e840ad90",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "malware--eb5f71fb-ee99-4416-9053-73bb3d49869b",
-      "description": "UAC-0026 uses Scieron.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ac039ffe-6243-479f-8488-e41b336d7d39",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "malware--a623a4ba-09dd-4e3e-a5e2-83cd19bbd5b5",
-      "description": "UAC-0026 uses Trojan.Scieron.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5f9acb38-5ba3-435b-a10f-0add702d2b94",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "malware--bb5c27b1-0328-4a8a-b968-84dab7705c11",
-      "description": "UAC-0026 uses Trojan.Scieron.B.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9835104d-5d34-4831-ad3b-5f00578cd29a",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "identity--a3910d9f-1c48-48cd-9b90-436b1cdd430e",
-      "description": "UAC-0026 targets ウクライナ (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--56bc95d9-aa21-40d5-8274-5566b7d48133",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "identity--4161c0a3-5b7a-453c-a44f-258b55f80fb9",
-      "description": "UAC-0026 targets シリア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--453c3096-fae5-4827-a018-c6be6477f7fb",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "identity--50f3b1fb-ac4e-4383-bcb8-1680660438b4",
-      "description": "UAC-0026 targets ロシア (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7081c6a0-95cf-40d4-90c4-6dcbc1abf7da",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "identity--7696fe9f-0eb9-4811-8464-1c0775aae3ba",
-      "description": "UAC-0026 targets 米国 (profile target category: countries).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a84b4a5a-0612-48f8-91e1-89dae5852761",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-      "target_ref": "identity--02efbfc0-aa35-4eb2-a005-e2c88b701781",
-      "description": "UAC-0026 targets 東欧 (profile target category: regions).",
-      "x_confidence": "medium"
     },
     {
       "type": "indicator",
@@ -584,7 +270,7 @@
       "spec_version": "2.1",
       "id": "note--3f7dcb3f-c339-45b8-8b74-9aff910eec5e",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -594,14 +280,14 @@
         "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 2
+      "x_artifact_observation_count": 0
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--ad47a19d-39d2-49ee-b495-e946e8bf0d8f",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:13Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -610,21 +296,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T02:39:13Z",
       "object_refs": [
         "intrusion-set--f96b26f1-cced-4f63-88ab-9613719c93f5",
-        "malware--eb5f71fb-ee99-4416-9053-73bb3d49869b",
-        "malware--a623a4ba-09dd-4e3e-a5e2-83cd19bbd5b5",
-        "malware--bb5c27b1-0328-4a8a-b968-84dab7705c11",
-        "identity--a3910d9f-1c48-48cd-9b90-436b1cdd430e",
-        "identity--4161c0a3-5b7a-453c-a44f-258b55f80fb9",
-        "identity--50f3b1fb-ac4e-4383-bcb8-1680660438b4",
-        "identity--7696fe9f-0eb9-4811-8464-1c0775aae3ba",
-        "identity--02efbfc0-aa35-4eb2-a005-e2c88b701781",
         "indicator--c78dd229-82d8-43d1-8e7e-824493e8213b",
         "indicator--09be8518-d18b-4446-9a23-6a9342ff85e9"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

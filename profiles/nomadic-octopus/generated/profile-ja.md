@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--nomadic-octopus`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:18:00Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,7 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| DustSquad | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| DustSquad | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -33,7 +33,7 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -43,29 +43,31 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | <br>[Nomadic Octopus](https://attack.mitre.org/groups/G0133) is a Russian-speaking cyber espionage threat group that has primarily targeted Central Asia, including local governments, diplomatic missions, and individuals, since at least 2014. [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has been observed conducting campaigns involving Android and Windows malware, mainly using the Delphi programming language, and building custom variants.(Citation: Security Affairs DustSquad Oct 2018)(Citation: Securelist Octopus Oct 2018)(Citation: ESET Nomadic Octopus 2018) |
-| Capability | Octopus |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Central Asian users and diplomatic entities |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | DustSquad, Golden Falcon | canonical-name | 高 | Russia | https://securelist.com/octopus-infested-seas-of-central-asia/88200/<br>https://www.zdnet.com/article/extensive-hacking-operation-discovered-in-kazakhstan/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=DustSquad%2C+Golden+Falcon&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | DustSquad | canonical-name | 高 | RU | https://securelist.com/octopus-infested-seas-of-central-asia/88200/<br>https://www.prodaft.com/m/reports/PAPERBUG_TLPWHITE-1.pdf<br>https://www.virusbulletin.com/conference/vb2018/abstracts/nomadic-octopus-cyber-espionage-central-asia/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Nomadic Octopus - G0133 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0133<br>https://securelist.com/octopus-infested-seas-of-central-asia/88200/<br>https://securityaffairs.co/wordpress/77165/apt/russia-linked-apt-dustsquad.html |
 | misp-mitre-intrusion-set | Nomadic Octopus - G0133 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0133<br>https://securelist.com/octopus-infested-seas-of-central-asia/88200/<br>https://securityaffairs.co/wordpress/77165/apt/russia-linked-apt-dustsquad.html |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Nomadic Octopus | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -84,7 +86,7 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--octopus | Octopus | [Octopus](https://attack.mitre.org/software/S0340) is a Windows Trojan written in the Delphi programming language that has been used by [Nomadic Octopus](https://attack.mitre.org/groups/G0133) to target government organizations in Central Asia since at least 2014.(Citation: Securelist Octopus Oct 2018)(Citation: Security Affairs DustSquad Oct 2018)(Citation: ESET Nomadic Octopus 2018)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--octopus | Octopus | [Octopus](https://attack.mitre.org/software/S0340) is a Windows Trojan written in the Delphi programming language that has been used by [Nomadic Octopus](https://attack.mitre.org/groups/G0133) to target government organizations in Central Asia since at least 2014.(Citation: Securelist Octopus Oct 2018)(Citation: Security Affairs DustSquad Oct 2018)(Citation: ESET Nomadic Octopus 2018)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -120,13 +122,10 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでNomadic Octopusの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カザフスタン | 構造化OSINTの被害国フィールドでNomadic Octopusの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アジア | MITRE ATT&CKのGroup概要でNomadic Octopusの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| regions | 中央アジア | MITRE ATT&CKのGroup概要でNomadic Octopusの標的範囲として中央アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| regions | 中央アジア | MITRE ATT&CKのGroup概要でNomadic Octopusの標的範囲として中央アジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -144,7 +143,7 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 | Lateral Movement | T1021 | Remote Services | system T1007 System Service Discovery List services and tasks runn Lateral Movement T1570 Lateral Tool Transfer Tools are transfered in between victim machines T1021 Remote Services .001 Remote Desktop Protocol RDP is used to view and control devices of victims .005 VNC VNC is used to view and control devices of victims T1091 Replication Through Removable Media Malware checks for USB drives and tries to infect DISCLAIMER : This document and |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Collection | T1025 | Data from Removable Media | inconspicously named directories like C : extbackslash intel T1005 Data from Local System Important files, like documents, in the local system are exfiltrated T1025 Data from Removable Media Files from the removable devices are exfiltrated T1114 Email Collection .001 Local Email Collection The operators collect and read emails of victims T1113 Screen Capture The operators capture the screen of victims Command And Control T1071 Application L |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Discovery | T1033 | System Owner/User Discovery | re checks the hosts file T1016 System Network Configuration Discovery .001 Internet Connection Discovery Pings network endpoints to check if they are reachable T1033 System Owner/User Discovery Lists all the users registered in the system T1007 System Service Discovery List services and tasks runn Lateral Movement T1570 Lateral Tool Transfer Tools are transfered in between victim machines T1021 Remote Services .001 Remote Desktop Protocol RD |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
-| Stealth | T1036 | Masquerading | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) attempted to make [Octopus](https://attack.mitre.org/software/S0340) appear as a  Telegram Messenger with a Russian interface.(Citation: Securelist Octopus Oct 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--nomadic-octopus--85beb3f33e9c346d` |
+| Stealth | T1036 | Masquerading | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) attempted to make [Octopus](https://attack.mitre.org/software/S0340) appear as a  Telegram Messenger with a Russian interface.(Citation: Securelist Octopus Oct 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--nomadic-octopus--85beb3f33e9c346d` |
 | Credential Access, Discovery | T1040 | Network Sniffing | aperbug Discovery T1083 File and Directory Discovery Reads and writes ini files T1135 Network Share Discovery Lists network shares and printers using net share T1040 Network Sniffing Uses victim machines to sniff network packets T1120 Peripheral Device Discovery The malware checks peripheral devices in hopes of duplicating itself. T1057 Process Discovery Uses the command tasklist to list processes T1012 Query Registry Queries and edits regis |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Exfiltration | T1041 | Exfiltration Over C2 Channel | filtration T1048 Exfiltration Over Alternative Protocol .003 Exfiltration Over Unencrypted/ Obfuscated Non-C2 Protocol Data is exfiltrated to via HTTP requests T1041 Exfiltration Over C2 Channel Data is exfiltrated via DustSquad’s C2 server DISCLAIMER : This document and its contents shall be deemed as proprietary and privileged information of PRODAFT and shall be subjected to articles and provisions that have been stipulated in the General |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Execution | T1047 | Windows Management Instrumentation | b .002 At (Windows) Schedules tasks on widows using SCHTASKS to gain persistence .005 Scheduled Task Schedules their malware to run periodically on the machine T1047 Windows Management Instrumentation Use wmic to get information on hotfixes Persistence T1547 Boot or Logon Autostart Execution .001 Registry Run Keys / Startup Folder Adds malware into the Startup folder of compromised machines T1136 Create Account .001 Local Account Creates a u |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
@@ -152,14 +151,14 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 | Execution, Persistence, Privilege Escalation | T1053 | Scheduled Task/Job | i machine Execution T1059 Command and Scripting Interpreter .001 PowerShell Powershell is used to execute commans .003 Windows Command Shell cmd.exe /c is used T1053 Scheduled Task/Job .002 At (Windows) Schedules tasks on widows using SCHTASKS to gain persistence .005 Scheduled Task Schedules their malware to run periodically on the machine T1047 Windows Management Instrumentation Use wmic to get information on hotfixes Persistence T1547 Boo |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Discovery | T1057 | Process Discovery | Sniffing Uses victim machines to sniff network packets T1120 Peripheral Device Discovery The malware checks peripheral devices in hopes of duplicating itself. T1057 Process Discovery Uses the command tasklist to list processes T1012 Query Registry Queries and edits registry keys to setup proxy for browser T1018 Remote System Discovery Malware checks the hosts file T1016 System Network Configuration Discovery .001 Internet Connection Discove |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Execution | T1059 | Command and Scripting Interpreter | .002 Domain Accounts Scans the available domain accounts in the network. .003 Local Accounts Scans the local accounts registered in the victi machine Execution T1059 Command and Scripting Interpreter .001 PowerShell Powershell is used to execute commans .003 Windows Command Shell cmd.exe /c is used T1053 Scheduled Task/Job .002 At (Windows) Schedules tasks on widows using SCHTASKS to gain persistence .005 Scheduled Task Schedules their malwa |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
-| Execution | T1059.001 | PowerShell | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used PowerShell for execution.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) used <code>cmd.exe /c</code> within a malicious macro.(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used PowerShell for execution.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) used <code>cmd.exe /c</code> within a malicious macro.(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Command And Control | T1071 | Application Layer Protocol | 01 Local Email Collection The operators collect and read emails of victims T1113 Screen Capture The operators capture the screen of victims Command And Control T1071 Application Layer Protocol .001 Web Protocols Posts data to the C2 server .004 DNS Runs a DNS lookup for the web server T1132 Data Encoding .001 Standard Encoding Data sent to the C2 server is base64 encoded T1573 Encrypted Channel .002 Asymmetric Cryptography Data sent to the C |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Collection | T1074 | Data Staged | e exfiltrated are compressed using the 7z utility T1185 Browser Session Hijacking Custom proxy is set for browsers to analyze outgoing traffic (185.32.126.102) T1074 Data Staged .001 Local Data Staging Tools and exfiltrated files are first moved to inconspicously named directories like C : extbackslash intel T1005 Data from Local System Important files, like documents, in the local system are exfiltrated T1025 Data from Removable Media Files |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | Nomadic Octopus’ Tajikistan Campaign : Paperbug Initial Access T1091 Replication Through Removable Media Malware checks for USB drives and tries to infect them T1078 Valid Accounts .002 Domain Accounts Scans the available domain accounts in the network. .003 Local Accounts Scans the local accounts registered in the victi machine Execution T1059 Command and Scripting Interpreter .001 PowerShell Powershell is used to execute commans .003 Windo |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Discovery | T1083 | File and Directory Discovery | TLP:CLEAR Nomadic Octopus’ Tajikistan Campaign : Paperbug Discovery T1083 File and Directory Discovery Reads and writes ini files T1135 Network Share Discovery Lists network shares and printers using net share T1040 Network Sniffing Uses victim machines to sniff network packets T1120 Peripheral Device Discovery The malware checks peripheral devices in |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Initial Access, Lateral Movement | T1091 | Replication Through Removable Media | TLP:CLEAR Nomadic Octopus’ Tajikistan Campaign : Paperbug Initial Access T1091 Replication Through Removable Media Malware checks for USB drives and tries to infect them T1078 Valid Accounts .002 Domain Accounts Scans the available domain accounts in the network. .003 Local Accounts Scans the local accounts registered in the victi machine Execution T1059 C |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
-| Command And Control | T1105 | Ingress Tool Transfer | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used malicious macros to download additional files to the victim's machine.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used malicious macros to download additional files to the victim's machine.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Collection | T1113 | Screen Capture | able Media Files from the removable devices are exfiltrated T1114 Email Collection .001 Local Email Collection The operators collect and read emails of victims T1113 Screen Capture The operators capture the screen of victims Command And Control T1071 Application Layer Protocol .001 Web Protocols Posts data to the C2 server .004 DNS Runs a DNS lookup for the web server T1132 Data Encoding .001 Standard Encoding Data sent to the C2 server is b |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Collection | T1114 | Email Collection | al System Important files, like documents, in the local system are exfiltrated T1025 Data from Removable Media Files from the removable devices are exfiltrated T1114 Email Collection .001 Local Email Collection The operators collect and read emails of victims T1113 Screen Capture The operators capture the screen of victims Command And Control T1071 Application Layer Protocol .001 Web Protocols Posts data to the C2 server .004 DNS Runs a DNS |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Discovery | T1120 | Peripheral Device Discovery | ini files T1135 Network Share Discovery Lists network shares and printers using net share T1040 Network Sniffing Uses victim machines to sniff network packets T1120 Peripheral Device Discovery The malware checks peripheral devices in hopes of duplicating itself. T1057 Process Discovery Uses the command tasklist to list processes T1012 Query Registry Queries and edits registry keys to setup proxy for browser T1018 Remote System Discovery Mal |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
@@ -168,15 +167,15 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 | Persistence | T1136 | Create Account | tfixes Persistence T1547 Boot or Logon Autostart Execution .001 Registry Run Keys / Startup Folder Adds malware into the Startup folder of compromised machines T1136 Create Account .001 Local Account Creates a user called Admin on compromised machines DISCLAIMER : This document and its contents shall be deemed as proprietary and privileged information of PRODAFT and shall be subjected to articles and provisions that have been stipulated in t |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Collection | T1185 | Browser Session Hijacking | pus’ Tajikistan Campaign : Paperbug Collection T1560 Archive Collected Data .001 Archive via Utility Data to be exfiltrated are compressed using the 7z utility T1185 Browser Session Hijacking Custom proxy is set for browsers to analyze outgoing traffic (185.32.126.102) T1074 Data Staged .001 Local Data Staging Tools and exfiltrated files are first moved to inconspicously named directories like C : extbackslash intel T1005 Data from Local Sys |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Credential Access | T1187 | Forced Authentication | k or Service Renames tools to appear as system tasks .005 Match Legitimate Name or Location Renames tools and puts them in the Mozilla folder Credential Access T1187 Forced Authentication Runs a SCF file attack, with the filename pentesterlab.ico T1555 Credentials from Password Stores .001 Windows Credential Manager Uses LaZagne to steal credentials from vault files .003 Credentials from Web Browsers Uses LaZagne to steal credentials from br |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
-| Execution | T1204.002 | Malicious File | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) as attempted to lure victims into clicking on malicious attachments within spearphishing emails.(Citation: Securelist Octopus Oct 2018)(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) as attempted to lure victims into clicking on malicious attachments within spearphishing emails.(Citation: Securelist Octopus Oct 2018)(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Persistence, Privilege Escalation | T1547 | Boot or Logon Autostart Execution | ed Task Schedules their malware to run periodically on the machine T1047 Windows Management Instrumentation Use wmic to get information on hotfixes Persistence T1547 Boot or Logon Autostart Execution .001 Registry Run Keys / Startup Folder Adds malware into the Startup folder of compromised machines T1136 Create Account .001 Local Account Creates a user called Admin on compromised machines DISCLAIMER : This document and its contents shall be |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Credential Access | T1552 | Unsecured Credentials | indows Credential Manager Uses LaZagne to steal credentials from vault files .003 Credentials from Web Browsers Uses LaZagne to steal credentials from browsers T1552 Unsecured Credentials .001 Credentials In Files Searches for the string password in the whole computer using LaZagne DISCLAIMER : This document and its contents shall be deemed as proprietary and privileged information of PRODAFT and shall be subjected to articles and provisions |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Credential Access | T1555 | Credentials from Password Stores | tion Renames tools and puts them in the Mozilla folder Credential Access T1187 Forced Authentication Runs a SCF file attack, with the filename pentesterlab.ico T1555 Credentials from Password Stores .001 Windows Credential Manager Uses LaZagne to steal credentials from vault files .003 Credentials from Web Browsers Uses LaZagne to steal credentials from browsers T1552 Unsecured Credentials .001 Credentials In Files Searches for the string pa |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Collection | T1560 | Archive Collected Data | TLP:CLEAR Nomadic Octopus’ Tajikistan Campaign : Paperbug Collection T1560 Archive Collected Data .001 Archive via Utility Data to be exfiltrated are compressed using the 7z utility T1185 Browser Session Hijacking Custom proxy is set for browsers to analyze outgoing traffic (185.32.126.102) T1074 Data Staged .001 Local Data Staging Tools and exfiltrate |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Uncategorized | T1562 | MITRE ATT&CK T1562 | LEAR Nomadic Octopus’ Tajikistan Campaign : Paperbug Defense Evasion T1564 Hide Artifacts .003 Hidden Window Creates a hidden powershell window to run commands T1562 Impair Defenses .004 Disable or Modify System Firewall Changes the firewall settings so that it allows their surveillance programs. T1036 Masquerading .004 Masquerade Task or Service Renames tools to appear as system tasks .005 Match Legitimate Name or Location Renames tools and |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Stealth | T1564 | Hide Artifacts | TLP:CLEAR Nomadic Octopus’ Tajikistan Campaign : Paperbug Defense Evasion T1564 Hide Artifacts .003 Hidden Window Creates a hidden powershell window to run commands T1562 Impair Defenses .004 Disable or Modify System Firewall Changes the firewall settings so that it allows their surveillance programs. T1036 Masquerading .004 Masquerade Task or Service Renam |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
-| Stealth | T1564.003 | Hidden Window | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) executed PowerShell in a hidden window.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has targeted victims with spearphishing emails containing malicious attachments.(Citation: Security Affairs DustSquad Oct 2018)(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1564.003 | Hidden Window | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) executed PowerShell in a hidden window.(Citation: ESET Nomadic Octopus 2018)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Nomadic Octopus](https://attack.mitre.org/groups/G0133) has targeted victims with spearphishing emails containing malicious attachments.(Citation: Security Affairs DustSquad Oct 2018)(Citation: ESET Nomadic Octopus 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Lateral Movement | T1570 | Lateral Tool Transfer | ble T1033 System Owner/User Discovery Lists all the users registered in the system T1007 System Service Discovery List services and tasks runn Lateral Movement T1570 Lateral Tool Transfer Tools are transfered in between victim machines T1021 Remote Services .001 Remote Desktop Protocol RDP is used to view and control devices of victims .005 VNC VNC is used to view and control devices of victims T1091 Replication Through Removable Media Malwa |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Command And Control | T1573 | Encrypted Channel | sts data to the C2 server .004 DNS Runs a DNS lookup for the web server T1132 Data Encoding .001 Standard Encoding Data sent to the C2 server is base64 encoded T1573 Encrypted Channel .002 Asymmetric Cryptography Data sent to the C2 server is encrypted Exfiltration T1048 Exfiltration Over Alternative Protocol .003 Exfiltration Over Unencrypted/ Obfuscated Non-C2 Protocol Data is exfiltrated to via HTTP requests T1041 Exfiltration Over C2 Cha |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
 | Resource Development | T1587 | Develop Capabilities | t victim’s connections to other possible victims .004 Identify Roles Tries to identift the role of the victim within the business context. Resource Development T1587 Develop Capabilities .001 Malware Installs malware on victim machines to gain control. DISCLAIMER : This document and its contents shall be deemed as proprietary and privileged information of PRODAFT and shall be subjected to articles and provisions that have been stipulated in |  |  | 不明 | 不明 | 中 | `source--nomadic-octopus--85beb3f33e9c346d` |
@@ -188,11 +187,11 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 31件
-- IOC観測: 42件
+- IOC値: 35件
+- IOC観測: 48件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 6件
-- 非IOC artifact観測: 96件（`artifacts.csv`）
+- 非IOC artifact観測: 94件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -211,14 +210,17 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--nomadic-octopus--85beb3f33e9c346d | Nomadic Octopus’ Paperbug Campaign |  | 不明 | DustSquad/Nomadic Octopus’ Paperbug Campaign.pdf | report | TLP:CLEAR | 中 |
 | source--nomadic-octopus--7d9417ca3cd26395 | README |  | 不明 | DustSquad/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

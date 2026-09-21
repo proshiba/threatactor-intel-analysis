@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--water-galura`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T08:15:06Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,7 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| GOLD FEATHER | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| GOLD FEATHER | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -41,8 +41,8 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 要素 | 内容 |
 |---|---|
-| Adversary | [Water Galura](https://attack.mitre.org/groups/G1050) are the operators of the [Qilin](https://attack.mitre.org/software/S1242) Ransomware-as-a-Service (RaaS) who handle payload generation, ransom negotiations, and the publication of stolen data for [Qilin](https://attack.mitre.org/software/S1242) affilates recruited on Russian cybercrime forums. [Water Galura](https://attack.mitre.org/groups/G1050) have been active since at least 2022 and use a double extortion model where they demand payment for providing decryption keys and for refraining from publishing the stolen data to their leak site.(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025) |
-| Capability | Qilin, Tor |
+| Adversary |  |
+| Capability |  |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -50,20 +50,22 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Water Galura - G1050 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1050<br>https://blog.bushidotoken.net/2024/06/tracking-adversaries-qilin-raas.html<br>https://news.sophos.com/en-us/2025/04/01/sophos-mdr-tracks-ongoing-campaign-by-qilin-affiliates-targeting-screenconnect/ |
 | misp-mitre-intrusion-set | Water Galura - G1050 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1050<br>https://blog.bushidotoken.net/2024/06/tracking-adversaries-qilin-raas.html<br>https://news.sophos.com/en-us/2025/04/01/sophos-mdr-tracks-ongoing-campaign-by-qilin-affiliates-targeting-screenconnect/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -82,13 +84,13 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--qilin | Qilin | [Qilin](https://attack.mitre.org/software/S1242) is a ransomware family operated as a ransomware-as-a-service (RaaS) that has been active since at least 2022. It includes variants written in Go and Rust capable of targeting Windows, Linux, and VMware ESXi environments. [Qilin](https://attack.mitre.org/software/S1242) shares functionality overlaps with [Black Basta](https://attack.mitre.org/software/S1070), [REvil](https://attack.mitre.org/software/S0496), and [BlackCat](https://attack.mitre.org/software/S1068) ransomware. [Qilin](https://attack.mitre.org/software/S1242) affiliates have targeted multiple entities worldwide with the majority of victims in the US, France, Canada, and the UK, primarily in the manufacturing, technology, financial services, and healthcare sectors.(Citation: Trend Micro Agenda Ransomware AUG 2022)(Citation: SentinelOne Qilin NOV 2022)(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025)(Citation: Trend Micro Agenda Ransomware OCT 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--qilin | Qilin | [Qilin](https://attack.mitre.org/software/S1242) is a ransomware family operated as a ransomware-as-a-service (RaaS) that has been active since at least 2022. It includes variants written in Go and Rust capable of targeting Windows, Linux, and VMware ESXi environments. [Qilin](https://attack.mitre.org/software/S1242) shares functionality overlaps with [Black Basta](https://attack.mitre.org/software/S1070), [REvil](https://attack.mitre.org/software/S0496), and [BlackCat](https://attack.mitre.org/software/S1068) ransomware. [Qilin](https://attack.mitre.org/software/S1242) affiliates have targeted multiple entities worldwide with the majority of victims in the US, France, Canada, and the UK, primarily in the manufacturing, technology, financial services, and healthcare sectors.(Citation: Trend Micro Agenda Ransomware AUG 2022)(Citation: SentinelOne Qilin NOV 2022)(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025)(Citation: Trend Micro Agenda Ransomware OCT 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--tor | Tor | [Tor](https://attack.mitre.org/software/S0183) is a software suite and network that provides increased anonymity on the Internet. It creates a multi-hop proxy network and utilizes multilayer encryption to protect both the message and routing information. [Tor](https://attack.mitre.org/software/S0183) utilizes "Onion Routing," in which messages are encrypted with multiple layers of encryption; at each step in the proxy network, the topmost layer is decrypted and the contents forwarded on to the next node until it reaches its destination. (Citation: Dingledine Tor The Second-Generation Onion Router) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--tor | Tor | [Tor](https://attack.mitre.org/software/S0183) is a software suite and network that provides increased anonymity on the Internet. It creates a multi-hop proxy network and utilizes multilayer encryption to protect both the message and routing information. [Tor](https://attack.mitre.org/software/S0183) utilizes "Onion Routing," in which messages are encrypted with multiple layers of encryption; at each step in the proxy network, the topmost layer is decrypted and the contents forwarded on to the next node until it reaches its destination. (Citation: Dingledine Tor The Second-Generation Onion Router) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -110,13 +112,13 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | ransomware-extortion | 2025-04 | 2025-04 | 2025-06-21 |  | malware--qilin |  | victim--activity-rule--9b7b741f64f7e01f539a | QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
+| Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加 | ransomware-extortion | 2025-04 | 2025-05 | 2025-06-20 |  | malware--qilin |  | victim--activity-rule--9b7b741f64f7e01f539a | Water Galuraが運営するQilin RaaSは、アフィリエイト向けパネルへ被害者に支払い圧力をかける「Call Lawyer」機能を追加した。公開集計ではQilinの被害主張が2025年4月に72件、5月に55件確認され、Rust/C製ペイロード、ネットワーク拡散、ログ消去、交渉自動化、DDoS、スパム、データ保管などを提供するサービスとして報告された。QilinはRaaS／ランサムウェア名であり、Water Galuraの無条件な別名としては扱わない。 | 中 | `source--daily-3c55cd8958f6103f4eaf`, `source--mitre-attack-19-2` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | Water Galura | Qilin | 情報なし | 情報なし | 情報なし | 被害事例: Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | 中 |
+| Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加 | Water Galura | Qilin | 情報なし | 情報なし | 情報なし | 被害事例: Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加 | 中 |
 
 
 
@@ -124,21 +126,21 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | 非公開 | aggregate | multiple-organizations | reported |  | malware--qilin |  |  | encryption: Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | 2025-04 | 2025-04 | 2025-06-21 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
+| 被害事例: Water Galuraが運営するQilin RaaS、被害者への法的圧力機能を追加 | 非公開 | aggregate | multiple-organizations | reported |  | malware--qilin |  |  | encryption: QilinはRaaS／ランサムウェア名であり、Water Galuraの無条件な別名としては扱わない。 | 2025-04 | 2025-05 | 2025-06-20 | 中 | `source--daily-3c55cd8958f6103f4eaf`, `source--mitre-attack-19-2` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Impact | T1486 | Data Encrypted for Impact | [Water Galura](https://attack.mitre.org/groups/G1050) has encrypted files on victim networks through the generation of [Qilin](https://attack.mitre.org/software/S1242) ransomware payloads.(Citation: BushidoToken Qilin RaaS JUN 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | [Water Galura](https://attack.mitre.org/groups/G1050) operates a news channel on Telegram to make announcements for the [Qilin](https://attack.mitre.org/software/S1242) RaaS.(Citation: BushidoToken Qilin RaaS JUN 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1657 | Financial Theft |  [Water Galura](https://attack.mitre.org/groups/G1050) has extorted victims for ransomware decryption keys and to prevent publication of data exfiltrated to their [Tor](https://attack.mitre.org/software/S0183) data leak site.(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: HC3 Qilin Threat Profile JUN 2024)<br><br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [Water Galura](https://attack.mitre.org/groups/G1050) has encrypted files on victim networks through the generation of [Qilin](https://attack.mitre.org/software/S1242) ransomware payloads.(Citation: BushidoToken Qilin RaaS JUN 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.001 | Social Media Accounts | [Water Galura](https://attack.mitre.org/groups/G1050) operates a news channel on Telegram to make announcements for the [Qilin](https://attack.mitre.org/software/S1242) RaaS.(Citation: BushidoToken Qilin RaaS JUN 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Impact | T1657 | Financial Theft |  [Water Galura](https://attack.mitre.org/groups/G1050) has extorted victims for ransomware decryption keys and to prevent publication of data exfiltrated to their [Tor](https://attack.mitre.org/software/S0183) data leak site.(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: HC3 Qilin Threat Profile JUN 2024)<br><br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -146,7 +148,7 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 2件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -166,11 +168,13 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--daily-3c55cd8958f6103f4eaf | Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | thehackernews.com | 2025-06-21 | https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--daily-3c55cd8958f6103f4eaf | Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | The Hacker News | 2025-06-20 | https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html | news-report | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--water-galura--280658d2598270cb | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
 | source--water-galura--83ea455fedc5476b | water galura |  | 不明 | actor_profile/evidence/water-galura.csv | structured-data | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

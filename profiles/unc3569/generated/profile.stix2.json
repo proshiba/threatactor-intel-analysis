@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T02:39:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17,6 +17,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--unc3569",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -39,9 +40,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--unc3569",
         "actor_name": "UNC3569",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-21T02:39:13Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -50,6 +52,7 @@
             "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-360net",
+            "misp-tidal-groups",
             "misp-malpedia"
           ],
           "name_inputs": [
@@ -59,6 +62,7 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [],
           "cert-ua-uac-index": [],
           "microsoft-threat-actor-mapping": [],
@@ -86,13 +90,15 @@
               "refs": [
                 "https://cloud.google.com/blog/topics/threat-intelligence/ivanti-post-exploitation-lateral-movement"
               ],
-              "related": []
+              "related": [],
+              "research_data": {}
             }
           ],
           "misp-microsoft-activity-group": [],
           "misp-mitre-enterprise-intrusion-set": [],
           "misp-mitre-intrusion-set": [],
-          "misp-360net": []
+          "misp-360net": [],
+          "misp-tidal-groups": []
         },
         "malware_catalog_matches": [
           {
@@ -163,7 +169,7 @@
       "spec_version": "2.1",
       "id": "campaign--d1925560-4d48-4de5-8ca2-10650a385884",
       "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -177,14 +183,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-275de70be84e2eaca363",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--275de70be84e2eaca363e063 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Gen Digital原文(2026-09-10公開、アクセス2026-09-15)を確認して承認。原文は「We observed this vulnerability actively exploited in the wild by the UNC3569 threat group to deploy the GRAYRABBIT backdoor through a crafted link.」と実行主体を明記する。exact名一致・IOC CSVの構造化actor列・原文の実行主体記述が揃い、同名製品、別クラスタ、法執行報道、過去事例への言及のいずれでもないことを原文で確認した。Tencent Sogou Input Method(Windows)のRCE脆弱性CVE-2026-51990を悪用し、sgbiz: URIの引数検証不備、WebViewの任意URL読み込み、古くサンドボックス化されていないChromium(CEF)の3点を連鎖させてGRAYRABBITバックドアを展開する。Tencentは2026-04-21公開の16.3.0.3498で修正。原文に攻撃の観測日の明示がないため活動期間はunknownとし、公開日2026-09-10はreported_atへ分離する。IOC CSVのobserved_date 2026-09-10は公開日と同一であり、活動期間へ転用していない。原文が言及するUNC3569とi-SOONの関係は「potential business relationships」と推測に留まるため、アクター間関係は追加しない。同じくRABBITFUR(proprietary downloader)は本活動での利用を原文が直接記述していないためCapabilityへ含めない。",
-      "x_reported_at": {
-        "value": "2026-09-14T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc3569",
@@ -238,6 +240,24 @@
           "source--daily-a44134da0f07029e3862"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -245,7 +265,7 @@
       "spec_version": "2.1",
       "id": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -259,14 +279,10 @@
         }
       ],
       "x_profile_object_id": "activity--daily-48716db321e86ff0f407",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
       "x_confidence": "medium",
       "x_analyst_notes": "日次収集レコード daily-record--48716db321e86ff0f40754a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国関与の国家支援系と推定；UNC3569/Earth Baxia/APT41/Earth Luscaなどが関連し、ギャンブル業界やアジア政府機関を狙う。",
-      "x_reported_at": {
-        "value": "2026-01-28T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
       "x_diamond_model": {
         "adversary": {
           "actor_ref": "actor--unc3569",
@@ -275,7 +291,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--daily-92623c41cfe9d6459335"
+          ],
           "ttp_refs": [
             "ttp--activity-rule--d23ef70e9a6b6307bc52"
           ]
@@ -285,7 +303,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91"
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--targeting-audit--country--39881b6f27f0986ea931",
+            "target--targeting-audit--region--af8e0b8ea3f352b88f87"
           ],
           "victim_refs": [
             "victim--activity-rule--b58e62cfdbc20134f3f1"
@@ -320,8 +340,12 @@
           ],
           "direction": {
             "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
+            "target_country_refs": [
+              "target--targeting-audit--country--39881b6f27f0986ea931"
+            ],
+            "target_region_refs": [
+              "target--targeting-audit--region--af8e0b8ea3f352b88f87"
+            ]
           }
         },
         "confidence": "medium",
@@ -329,6 +353,24 @@
           "source--daily-c20a23c702af45ff32d4"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       }
     },
     {
@@ -402,7 +444,7 @@
       "spec_version": "2.1",
       "id": "identity--d0ab6f2a-8ef6-47fe-9b39-40d66e43b48d",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T03:50:44Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -423,7 +465,9 @@
       "x_target_refs": [
         "target--activity-rule--sector--210dddb39397dbe50e91"
       ],
-      "x_malware_refs": [],
+      "x_malware_refs": [
+        "malware--daily-92623c41cfe9d6459335"
+      ],
       "x_ttp_refs": [
         "ttp--activity-rule--d23ef70e9a6b6307bc52"
       ],
@@ -509,7 +553,7 @@
       "spec_version": "2.1",
       "id": "relationship--5deeaf1d-d551-410f-af01-8ea50512b7c0",
       "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -517,14 +561,21 @@
       "source_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "target_ref": "malware--31210e00-fe68-47fc-9d55-65cedf55bd5c",
       "description": "UNC3569 uses GRAYRABBIT.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "gendigital.com",
+          "description": "Local source: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+          "external_id": "source--daily-a44134da0f07029e3862"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8966fd5e-66b7-45bf-bac6-73233c80306c",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -532,14 +583,21 @@
       "source_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "target_ref": "identity--731ca60a-047c-4bd6-ada8-a18fdf3b64af",
       "description": "UNC3569 targets フィリピン (profile target category: countries).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9814333c-24be-40b4-b17e-d7402750d0e1",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -547,14 +605,21 @@
       "source_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "target_ref": "identity--f23a317e-61c9-4f0f-ae5e-616b46b156f8",
       "description": "UNC3569 targets アジア (profile target category: regions).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ece61c9e-e823-43ab-aa9c-da557b10264a",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -562,14 +627,21 @@
       "source_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "UNC3569 targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5bd508f4-ef5b-4cc6-b6e7-77fdcebaa7dd",
       "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -577,14 +649,45 @@
       "source_ref": "campaign--d1925560-4d48-4de5-8ca2-10650a385884",
       "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "description": "ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 is attributed or linked to UNC3569.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "gendigital.com",
+          "description": "Local source: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+          "external_id": "source--daily-a44134da0f07029e3862"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--88d2190f-eb04-47c9-a6a9-941491e8a363",
       "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -592,14 +695,45 @@
       "source_ref": "campaign--d1925560-4d48-4de5-8ca2-10650a385884",
       "target_ref": "malware--31210e00-fe68-47fc-9d55-65cedf55bd5c",
       "description": "ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 uses malware--daily-92623c41cfe9d6459335.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "gendigital.com",
+          "description": "Local source: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+          "external_id": "source--daily-a44134da0f07029e3862"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33e11e16-1ab3-41b3-b063-515485959b69",
       "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-27T11:04:37Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -607,14 +741,91 @@
       "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
       "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 is attributed or linked to UNC3569.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bd595344-c2dc-4e8a-9be9-6d55ada25374",
+      "created": "2026-09-21T03:50:44Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
+      "target_ref": "malware--31210e00-fe68-47fc-9d55-65cedf55bd5c",
+      "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 uses malware--daily-92623c41cfe9d6459335.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--785316c5-58f5-4ad2-a554-d4a7668623cc",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -622,14 +833,137 @@
       "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 targets target--activity-rule--sector--210dddb39397dbe50e91.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20e1a715-8633-4178-aaf9-16504fd0c6c3",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
+      "target_ref": "identity--731ca60a-047c-4bd6-ada8-a18fdf3b64af",
+      "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 targets target--targeting-audit--country--39881b6f27f0986ea931.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--22593c45-60a5-4878-8c4b-6cf4b0a3ad3e",
+      "created": "2026-09-21T02:05:26Z",
+      "modified": "2026-09-21T04:35:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
+      "target_ref": "identity--f23a317e-61c9-4f0f-ae5e-616b46b156f8",
+      "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 targets target--targeting-audit--region--af8e0b8ea3f352b88f87.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--266e886d-f494-4c4e-8cf7-239c367271fa",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -637,14 +971,45 @@
       "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
       "target_ref": "attack-pattern--dcac6052-81e1-460e-b42d-db1093c8fc6e",
       "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 uses ttp--activity-rule--d23ef70e9a6b6307bc52.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7c6cd107-a7cb-41b1-b0bf-257966749749",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -652,14 +1017,45 @@
       "source_ref": "campaign--f06cefe8-6992-4e08-a448-604a33502cd6",
       "target_ref": "identity--d0ab6f2a-8ef6-47fe-9b39-40d66e43b48d",
       "description": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 affected victim--activity-rule--b58e62cfdbc20134f3f1.",
-      "x_confidence": "medium"
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--62c55bf7-03b4-4bd1-bb68-e30b0c870912",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -667,548 +1063,21 @@
       "source_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
       "target_ref": "attack-pattern--dcac6052-81e1-460e-b42d-db1093c8fc6e",
       "description": "SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--5523e6aa-434c-4e24-a578-fe589c88afab",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: mail.uaiubifas.top",
-      "pattern": "[domain-name:value = 'mail.uaiubifas.top']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
+      "x_confidence": "medium",
+      "external_references": [
         {
-          "observation_id": "observation--sha256:0e7b52d241c55b787bc6a9f17feba7fad8895c86c031264980688236aba630fb",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 2
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "mail.uaiubifas.top",
-          "context_excerpt": "AI generated. C2 domain used by the GRAYRABBIT backdoor over TCP port 443 with RC4-encrypted traffic.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+          "external_id": "source--daily-c20a23c702af45ff32d4"
         }
       ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1bf7e321-8280-4dea-99f1-0742a12d0123",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--5523e6aa-434c-4e24-a578-fe589c88afab",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--840ec57c-75e8-48d8-8dae-834972f19761",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: noht1ng.top",
-      "pattern": "[domain-name:value = 'noht1ng.top']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "phishing"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:d134c22e838b463b126659311d46b580fe37ffe3e9020f60bc7587c424440477",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 3
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "phishing"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "noht1ng.top",
-          "context_excerpt": "AI generated. Attacker-controlled domain hosting the exploit page loaded by the Sogou Input Method WebView.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--01bcf0e9-b19a-40c3-8f2b-de1e1b256351",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--840ec57c-75e8-48d8-8dae-834972f19761",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--3a98b208-6e5d-4db9-85ce-55a382a4222e",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "ipv4: 8.218.50.207",
-      "pattern": "[ipv4-addr:value = '8.218.50.207']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:e7880f91c7844cc103cc0b52f7ec1e49e4728eaca7b154f5cc6fd10a85e0d874",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 4
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "8.218.50.207",
-          "context_excerpt": "AI generated. Attacker staging server hosted on Alibaba Cloud in the Hong Kong region.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--fc1adbcd-cca3-40b8-a7f7-54039fe395b8",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--3a98b208-6e5d-4db9-85ce-55a382a4222e",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--47dcb218-595d-4f39-a4cc-db6798bd9c68",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "sha256: 29c7ee41d0cc9e07d981e451df56d0c3d37c41ac4ec10c7b516cc033ee397a63",
-      "pattern": "[file:hashes.'SHA-256' = '29c7ee41d0cc9e07d981e451df56d0c3d37c41ac4ec10c7b516cc033ee397a63']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "related-file"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:df656be02783ee5cf9470797cae1cd89e60b2538d9a5a3dabdda0e69e8e09a58",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 5
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "related-file"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "29c7ee41d0cc9e07d981e451df56d0c3d37c41ac4ec10c7b516cc033ee397a63",
-          "context_excerpt": "AI generated. SHA256 of the trojanized DLL loader (boy.dll) listed in the primary source.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b8f5186c-de4f-4e9f-9332-44219c74605c",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--47dcb218-595d-4f39-a4cc-db6798bd9c68",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--ef1bb5a2-e233-4730-906c-846ceddd5613",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "sha256: 749160a2f20f82744026719cf72e483595c6aad718efa74d675a98662e02422e",
-      "pattern": "[file:hashes.'SHA-256' = '749160a2f20f82744026719cf72e483595c6aad718efa74d675a98662e02422e']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "related-file"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:46e612f1a44f6f46247cee841c351fc1fbf8da0ce1a93c57054fc7ea3186762a",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 6
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "related-file"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "749160a2f20f82744026719cf72e483595c6aad718efa74d675a98662e02422e",
-          "context_excerpt": "AI generated. SHA256 of the encrypted PE loader shellcode listed in the primary source.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--199bea04-cf7a-42d3-8aa5-0b2ccebc3ed1",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--ef1bb5a2-e233-4730-906c-846ceddd5613",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--eac8e1e1-14d0-492b-b721-e91d00a5c1fd",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "sha256: d7a3c7eb94edc0e020f74c678743d71d61e944634aade4a67a96c3589e828b3a",
-      "pattern": "[file:hashes.'SHA-256' = 'd7a3c7eb94edc0e020f74c678743d71d61e944634aade4a67a96c3589e828b3a']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-09-10T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-275de70be84e2eaca363"
-      ],
-      "x_malware_refs": [
-        "malware--daily-92623c41cfe9d6459335"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:6781cc37735b6a1add7164b69d997730d2fbfbd1422dac8063d5591e204cac58",
-          "observed_at": {
-            "value": "2026-09-10T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-09-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-a44134da0f07029e3862",
-          "source_path": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-            "path": "daily-news/iocs/2026_07-09/20260914.csv",
-            "row": 7
-          },
-          "campaign_refs": [
-            "activity--daily-275de70be84e2eaca363"
-          ],
-          "malware_refs": [
-            "malware--daily-92623c41cfe9d6459335"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "d7a3c7eb94edc0e020f74c678743d71d61e944634aade4a67a96c3589e828b3a",
-          "context_excerpt": "AI generated. SHA256 of the GRAYRABBIT backdoor payload (core.dll) listed in the primary source.",
-          "analyst_notes": "actor field: UNC3569; actor_attribute: china; reference: https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--b571f20e-6410-416b-8a19-9be90fa935a3",
-      "created": "2026-09-15T22:14:22Z",
-      "modified": "2026-09-15T22:14:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--eac8e1e1-14d0-492b-b721-e91d00a5c1fd",
-      "target_ref": "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
     },
     {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--6fc43595-e7dc-4f16-81bf-ef60499bc7d7",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-07-25T15:23:07Z",
+      "modified": "2026-09-21T01:54:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1225,7 +1094,7 @@
       "spec_version": "2.1",
       "id": "report--ed200e08-bffc-465c-bb3b-08d9af79e0aa",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-21T04:35:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1234,7 +1103,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-21T04:35:03Z",
       "object_refs": [
         "intrusion-set--92e8f34b-9ea6-43af-a8c8-c8ccc745b63c",
         "malware--31210e00-fe68-47fc-9d55-65cedf55bd5c",
@@ -1244,15 +1113,9 @@
         "identity--f23a317e-61c9-4f0f-ae5e-616b46b156f8",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
         "identity--d0ab6f2a-8ef6-47fe-9b39-40d66e43b48d",
-        "attack-pattern--dcac6052-81e1-460e-b42d-db1093c8fc6e",
-        "indicator--5523e6aa-434c-4e24-a578-fe589c88afab",
-        "indicator--840ec57c-75e8-48d8-8dae-834972f19761",
-        "indicator--3a98b208-6e5d-4db9-85ce-55a382a4222e",
-        "indicator--47dcb218-595d-4f39-a4cc-db6798bd9c68",
-        "indicator--ef1bb5a2-e233-4730-906c-846ceddd5613",
-        "indicator--eac8e1e1-14d0-492b-b721-e91d00a5c1fd"
+        "attack-pattern--dcac6052-81e1-460e-b42d-db1093c8fc6e"
       ],
-      "x_schema_version": "1.2.0"
+      "x_schema_version": "1.3.0"
     }
   ]
 }

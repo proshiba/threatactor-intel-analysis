@@ -1,0 +1,602 @@
+{
+  "type": "bundle",
+  "id": "bundle--29cc1627-a156-4c2f-afa2-522e94a0c93d",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T08:16:06Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--be9df4470bc382b06ff7",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-2f8e62cf1cd00748b2b7"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "created": "2026-08-01T23:18:26Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-2f8e62cf1cd00748b2b7",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--2f8e62cf1cd00748b2b7502c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 原文(AllSecure blog, 2026-07-29公開)を確認。本文は「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記し、macOS ClickFix偽アップデート、EtherHiding経由のブロックチェーン型C2、暗号資産・開発者認証情報窃取という手口をContagious Interviewの既知の戦術と一致すると評価している。新規ドメイン(rg-telemetry.sbs, th-updates.sbs)は未公開の新規インフラと記載。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--be9df4470bc382b06ff7"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--792dfdc99346396f95d8"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Execution"
+          ],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f258b76090beb4d8cca9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "identity_class": "organization",
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--792dfdc99346396f95d8",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--be9df4470bc382b06ff7"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "created": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T02:39:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Contagious Interview",
+      "aliases": [
+        "DeceptiveDevelopment",
+        "DEV#POPPER",
+        "Gwisin Gang",
+        "PurpleBravo",
+        "TAG-121",
+        "Tenacious Pungsan",
+        "WaterPlum"
+      ],
+      "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) is a North Korea–aligned threat group active since 2023. The group conducts both cyberespionage and financially motivated operations, including the theft of cryptocurrency and user credentials. [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. (Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Datadog Contagious Interview Tenacious Pungsan October 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection.",
+        "Financially motivated intrusion or fraud."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--contagious-interview",
+      "x_profile_status": "review",
+      "x_alias_assessments": [
+        {
+          "name": "DeceptiveDevelopment",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "DEV#POPPER",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Gwisin Gang",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "PurpleBravo",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TAG-121",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Tenacious Pungsan",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "WaterPlum",
+          "vendor": "警察庁 (NPA) 他 共同注意喚起",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--npa-waterplum-joint-advisory-2026-09"
+          ],
+          "analyst_notes": "本資料は警察庁・国家サイバー統括室(NCO)・FBI・米国防総省サイバー犯罪センター(DC3)・豪州通信情報局(ASD)豪州サイバーセキュリティセンター(ACSC)・ドイツ連邦情報庁(BND)・ドイツ連邦憲法擁護庁(BfV)による共同の注意喚起である。原文は「北朝鮮を背景とするサイバー攻撃グループ「WaterPlum」（ウォータープラム）（関連名称： Contagious Interview）」と記載する。「関連名称」は同一性の断定ではないため scope は exact へ昇格させず overlapping とする。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Contagious Interviewの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "InvisibleFerret, HexEval Loader, BeaverTail, XORIndex Loader",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=タイ、日本。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53c7a268-79d8-46b6-bf4a-93b4213cb58d",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "target_ref": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7ad3c28c-597e-4a51-8615-8485170dafcd",
+      "created": "2026-08-07T10:35:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "target_ref": "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 affected victim--activity-rule--792dfdc99346396f95d8.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7cdecb78-a431-46eb-9f22-6ebef2e61b79",
+      "created": "2026-08-07T10:35:09Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "target_ref": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 uses ttp--activity-rule--be9df4470bc382b06ff7.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99adf1a0-8450-458e-a06d-754721716b41",
+      "created": "2026-08-01T23:18:26Z",
+      "modified": "2026-09-21T04:38:04Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 is attributed or linked to Contagious Interview.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1512f191-430d-483e-a7e7-2fb64c83fb86",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-31T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+        "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+        "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+        "relationship--53c7a268-79d8-46b6-bf4a-93b4213cb58d",
+        "relationship--7ad3c28c-597e-4a51-8615-8485170dafcd",
+        "relationship--7cdecb78-a431-46eb-9f22-6ebef2e61b79",
+        "relationship--99adf1a0-8450-458e-a06d-754721716b41"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "external_id": "source--daily-f258b76090beb4d8cca9",
+          "url": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-f258b76090beb4d8cca9",
+      "x_evidence_slice_scope": "campaign:actor--contagious-interview:activity--daily-2f8e62cf1cd00748b2b7",
+      "x_source_publisher": "allsecure.io",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "daily-news-file-date",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b9a9c357-95fb-44e0-9b5c-f1b150e2d69c",
+      "created": "2026-09-21T08:15:06Z",
+      "modified": "2026-09-21T08:15:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Contagious Interview / ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T08:15:06Z",
+      "object_refs": [
+        "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+        "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+        "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+        "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+        "relationship--53c7a268-79d8-46b6-bf4a-93b4213cb58d",
+        "relationship--7ad3c28c-597e-4a51-8615-8485170dafcd",
+        "relationship--7cdecb78-a431-46eb-9f22-6ebef2e61b79",
+        "relationship--99adf1a0-8450-458e-a06d-754721716b41",
+        "report--1512f191-430d-483e-a7e7-2fb64c83fb86"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--contagious-interview",
+      "x_activity_id": "activity--daily-2f8e62cf1cd00748b2b7"
+    }
+  ]
+}

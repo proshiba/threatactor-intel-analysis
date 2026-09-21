@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc3569`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T04:35:03Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -62,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -107,14 +109,14 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 | cyber-espionage | 不明 | 不明 | 2026-09-14 |  | malware--daily-92623c41cfe9d6459335 |  |  | 中国系サイバー諜報グループUNC3569が、TencentのWindows向けSogou Input Methodの重大なRCE脆弱性CVE-2026-51990を実際の攻撃で悪用している。 攻撃はsgbiz: URIの引数検証不備、WebViewの任意URL読み込み、古くサンドボックス化されていないChromiumという3つの弱点を連鎖させる。 被害者が細工されたリンクをクリックするとSogouの正規プロセスが攻撃者管理ページを読み込み、古いChromiumの既知脆弱性を悪用してコード実行に至る。 攻撃成功後はGrayRabbitバックドアが導入され、プロセス実行、リバースシェル、ファイル送受信、端末情報収集、メモリ内プラグイン実行などが可能になる。 Tencentは2026年4月21日公開のSogou Input Method 16.3.0.3498で修正したが、内蔵ブラウザ自体は依然古く、サンドボックスなしで動作すると警告されている。 | 中 | `source--daily-a44134da0f07029e3862` |
-| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | infrastructure-operation | 不明 | 不明 | 2026-01-28 | target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--d23ef70e9a6b6307bc52 | victim--activity-rule--b58e62cfdbc20134f3f1 | Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。 | 中 | `source--daily-c20a23c702af45ff32d4` |
+| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | infrastructure-operation | 不明 | 不明 | 2026-01-28 | target--activity-rule--sector--210dddb39397dbe50e91, target--targeting-audit--country--39881b6f27f0986ea931, target--targeting-audit--region--af8e0b8ea3f352b88f87 | malware--daily-92623c41cfe9d6459335 | ttp--activity-rule--d23ef70e9a6b6307bc52 | victim--activity-rule--b58e62cfdbc20134f3f1 | Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。 | 中 | `source--daily-c20a23c702af45ff32d4` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 | UNC3569 | GRAYRABBIT | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | UNC3569 | 情報なし | T1555.003 Credentials from Web Browsers | 情報なし | 政府・行政 | 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 中 |
+| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | UNC3569 | GRAYRABBIT | T1555.003 Credentials from Web Browsers | 情報なし | 政府・行政, フィリピン, アジア | 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 中 |
 
 
 
@@ -126,13 +128,13 @@ Aliasなし
 | regions | アジア | 活動「中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-c20a23c702af45ff32d4` |
 | sectors | 政府・行政 | 活動「中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-c20a23c702af45ff32d4` |
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--d23ef70e9a6b6307bc52 |  | credential-theft: SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。<br>espionage: SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 | 不明 | 不明 | 2026-01-28 | 中 | `source--daily-c20a23c702af45ff32d4` |
+| 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91 | malware--daily-92623c41cfe9d6459335 | ttp--activity-rule--d23ef70e9a6b6307bc52 |  | credential-theft: SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。<br>espionage: SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 | 不明 | 不明 | 2026-01-28 | 中 | `source--daily-c20a23c702af45ff32d4` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -142,8 +144,8 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 6件
-- IOC観測: 6件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）

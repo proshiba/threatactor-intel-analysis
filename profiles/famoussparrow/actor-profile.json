@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "profile_id": "actor--famoussparrow",
   "name": "FamousSparrow",
   "status": "draft",
   "created_at": "2026-09-20T01:30:00Z",
-  "updated_at": "2026-09-20T07:53:26Z",
+  "updated_at": "2026-09-21T04:35:02Z",
   "languages": [
     "ja"
   ],
@@ -110,7 +110,7 @@
     "infrastructure": "",
     "victim": "",
     "socio_political": "",
-    "analyst_notes": "活動別ダイヤモンドモデルは materialize_activity_diamonds.py が活動単位で生成する。"
+    "analyst_notes": "Legacy source-unbound prose was cleared in the 2026-09 evidence audit; use evidence-linked activity-level Diamond models."
   },
   "capabilities": {
     "malware": [
@@ -174,7 +174,14 @@
       },
       "description": "中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。",
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91"
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--targeting-audit--country--0241a2eb55502ccf50d4",
+        "target--targeting-audit--country--10a5063a82e414b95408",
+        "target--targeting-audit--country--2cf29d18337a08e084d8",
+        "target--targeting-audit--country--40cd7a37e880686f66ac",
+        "target--targeting-audit--country--6a93aca55900d94aefce",
+        "target--targeting-audit--country--90eb33789aa52aea1f7e",
+        "target--targeting-audit--region--517128e07ed31657f60b"
       ],
       "malware_refs": [
         "malware--daily-0304bc2996ed2600a585"
@@ -216,7 +223,14 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91"
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--targeting-audit--country--0241a2eb55502ccf50d4",
+            "target--targeting-audit--country--10a5063a82e414b95408",
+            "target--targeting-audit--country--2cf29d18337a08e084d8",
+            "target--targeting-audit--country--40cd7a37e880686f66ac",
+            "target--targeting-audit--country--6a93aca55900d94aefce",
+            "target--targeting-audit--country--90eb33789aa52aea1f7e",
+            "target--targeting-audit--region--517128e07ed31657f60b"
           ],
           "victim_refs": [
             "victim--activity-rule--1f2ead709658f7c05ba9"
@@ -255,8 +269,17 @@
             "source_countries": [
               "China"
             ],
-            "target_country_refs": [],
-            "target_region_refs": []
+            "target_country_refs": [
+              "target--targeting-audit--country--0241a2eb55502ccf50d4",
+              "target--targeting-audit--country--10a5063a82e414b95408",
+              "target--targeting-audit--country--2cf29d18337a08e084d8",
+              "target--targeting-audit--country--40cd7a37e880686f66ac",
+              "target--targeting-audit--country--6a93aca55900d94aefce",
+              "target--targeting-audit--country--90eb33789aa52aea1f7e"
+            ],
+            "target_region_refs": [
+              "target--targeting-audit--region--517128e07ed31657f60b"
+            ]
           }
         },
         "confidence": "high",
@@ -265,7 +288,10 @@
           "source--daily-8ad4c8f610ba00d8b741"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
     }
   ],
   "victim_cases": [
@@ -518,18 +544,18 @@
       {
         "id": "target--targeting-audit--region--75b22ced3e8ad3742979",
         "name": "南米",
-        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。",
+        "description": "アルゼンチン、エクアドル、ベネズエラ、ペルーで確認された標的・被害事例を南米として集約した地域表示。",
         "first_observed": {
-          "value": "2025-08-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "last_observed": {
-          "value": "2026-06-17T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
@@ -537,7 +563,7 @@
           "source--daily-8ad4c8f610ba00d8b741",
           "source--eset-famoussparrow-sparrowocky-2026"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       }
     ],
     "sectors": [
@@ -566,8 +592,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "標的は活動単位の記述から enrich_targeting_scope.py が再集約する。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。 2026-09-20: 活動記述からの自動構造化が「米国」を標的国として抽出したが、ESET原文およびtech-memo要約における米国は、中南米への関与を強める地政学的主体として言及されるだけであり被害側ではない(「中南米政府が米国からの圧力へどう対応するかを監視・予測する目的」)。actor_profile/RULES.mdの標的記録規則に反するため当該エントリと参照を削除した。activity-observation-rules.jsonの国名抽出は文中の標的文脈語(諜報等)だけを見るため、同じ文型では再び抽出される。除外文脈の規則化は別作業とする。"
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "標的は活動単位の記述から enrich_targeting_scope.py が再集約する。 2026-09-20: 活動記述からの自動構造化が「米国」を標的国として抽出したが、ESET原文およびtech-memo要約における米国は、中南米への関与を強める地政学的主体として言及されるだけであり被害側ではない(「中南米政府が米国からの圧力へどう対応するかを監視・予測する目的」)。actor_profile/RULES.mdの標的記録規則に反するため当該エントリと参照を削除した。activity-observation-rules.jsonの国名抽出は文中の標的文脈語(諜報等)だけを見るため、同じ文型では再び抽出される。除外文脈の規則化は別作業とする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -650,7 +676,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260918.md; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260918.md; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--daily-8ad4c8f610ba00d8b741",
@@ -668,7 +704,17 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260918.csv; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260918.csv; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+      "accessed_at": null,
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     },
     {
       "source_id": "source--eset-famoussparrow-2021",
@@ -688,7 +734,12 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Matthieu Faou / Tahseen Bin Taj、表示公開日 23 Sep 2021。命名の初報であり、ホテル・政府・民間企業を標的とするサイバースパイ活動グループとして記述する。"
+      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Matthieu Faou / Tahseen Bin Taj、表示公開日 23 Sep 2021。命名の初報であり、ホテル・政府・民間企業を標的とするサイバースパイ活動グループとして記述する。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "attribution",
+        "motivation"
+      ]
     },
     {
       "source_id": "source--eset-famoussparrow-sparrowdoor-2025",
@@ -708,7 +759,11 @@
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Alexandre Côté Cyr、表示公開日 26 Mar 2025。2024年7月に米国の金融分野の業界団体で観測した侵害と、未文書化のSparrowDoor 2版の解析を扱う。本プロファイルでは活動レコードを作成せず、グループの継続性と SparrowDoor 専有性の根拠として参照する。"
+      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Alexandre Côté Cyr、表示公開日 26 Mar 2025。2024年7月に米国の金融分野の業界団体で観測した侵害と、未文書化のSparrowDoor 2版の解析を扱う。本プロファイルでは活動レコードを作成せず、グループの継続性と SparrowDoor 専有性の根拠として参照する。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "profile-source"
+      ]
     },
     {
       "source_id": "source--eset-famoussparrow-sparrowocky-2026",
@@ -735,6 +790,135 @@
         "victim-impact"
       ],
       "analyst_notes": "curlでHTTP 200を取得して原文を直接確認した。SparroWockyの展開先として8か国の政府機関を列挙する。"
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
+    },
+    {
+      "source_id": "source--osint-misp-microsoft-activity-group",
+      "path": "actor_profile/reference/osint/misp-microsoft-activity-group.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/microsoft-activity-group.json",
+      "title": "MISP Galaxy Microsoft Activity Group",
+      "publisher": "MISP Project / Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "528ebc0d377df42b9c5e1bd42e96cb9e1287123018cf8c44e55905f2c03ed949",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=23. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -765,7 +949,7 @@
       "本プロファイルの作成により、同一の集約クラスタを指し得る famoussparrow / salt-typhoon / unc2286 の3プロファイルが併存する。統合または関係の確定には一次資料が必要である。",
       "昇格根拠として確認できた actor-specific な一次資料はESETの3本で、いずれも同一ベンダーである。第三者の一次資料としてはTrend Micro(Earth Estriesとの関連)とBitdefenderのSilkParasite報告(2026-08-19、FamousSparrowとの重複を指摘)があるが、どちらも本走査では原典を未確認であり、ESETおよびHunt.io経由の言及にとどまる。"
     ],
-    "collection_notes": "2026-09-20の日次チェックにおいて、ESET Researchの公開一覧巡回と tech-memo daily-news 2026-09-18 の収録記事の双方から検知した。原文3本はいずれもcurlで取得して直接確認している。",
+    "collection_notes": "2026-09-20の日次チェックにおいて、ESET Researchの公開一覧巡回と tech-memo daily-news 2026-09-18 の収録記事の双方から検知した。原文3本はいずれもcurlで取得して直接確認している。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": "status は draft から開始する。"
   },
   "free_text": {

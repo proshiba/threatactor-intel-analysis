@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--syrian-electronic-army-sea`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
-- 構造バージョン: 1.2.0
+- 更新日時: 2026-09-21T02:39:13Z
+- 構造バージョン: 1.3.0
 
 ## エグゼクティブサマリー
 
@@ -18,7 +18,8 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Deadeye Jackal | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Deadeye Jackal | CrowdStrike | overlapping | 中 | `source--crowdstrike-sea-deadeye-jackal-2015` | CrowdStrike's 2015 report states that it tracked the Syrian Electronic Army as DEADEYE JACKAL. Scope remains overlapping because the vendor tracking boundary may not be identical to the public SEA label. |
+| Deadeye Hawk | CrowdStrike | overlapping | 中 | `source--syrian-electronic-army-sea--bfcd17832a028098` | CrowdStrike's 2023 report renamed its Syria-nexus adversary from DEADEYE JACKAL to DEADEYE HAWK. This is retained as a scoped rename rather than an exact identity assertion. |
 
 ## 帰属
 
@@ -42,20 +43,21 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | SeANux: Sea Shell (Basic Web Shell), Executer Webshell |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Commercial, Financial, Media, Social Networking |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `possible-match`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-21T02:39:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Syrian Electronic Army (SEA), Deadeye Jackal | single-alias-intersection | 中 | Syria | http://blogs.360.cn/post/SEA_role_influence_cyberattacks.html<br>https://en.wikipedia.org/wiki/Syrian_Electronic_Army<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Syrian+Electronic+Army+%28SEA%29%2C+Deadeye+Jackal&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -64,6 +66,7 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -80,10 +83,7 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--seanux-sea-shell-basic-web-shell | SeANux: Sea Shell (Basic Web Shell) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--executer-webshell | Executer Webshell | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -117,12 +117,9 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Media | Targeting text indicates the Media sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -138,7 +135,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 8件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -161,6 +158,7 @@ TTPなし
 | source--syrian-electronic-army-sea--2a175decc9b12af7 | syrian electronic army sea |  | 不明 | actor_profile/evidence/syrian-electronic-army-sea.csv | structured-data | TLP:CLEAR | 中 |
 | source--syrian-electronic-army-sea--b3473908897c477a | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--syrian-electronic-army-sea--bfcd17832a028098 | CrowdStrike2023GlobalThreatReport |  | 2023 | summary/2023/CrowdStrike2023GlobalThreatReport.pdf | report | TLP:CLEAR | 中 |
+| source--crowdstrike-sea-deadeye-jackal-2015 | CrowdStrike 2015 Global Threat Report Executive Summary | CrowdStrike | 2015 | https://www.crowdstrike.com/wp-content/uploads/Global_Threat_Report-2015/Exec-Summary/crowdStrike-2015-threat-report-exec-summary.pdf | vendor-threat-research | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
