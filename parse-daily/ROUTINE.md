@@ -38,9 +38,9 @@ securelist.ru と「4. 未帰属クラスタの記録」の節、台帳追記の
 ```text
 proshiba/threatactor-intel-analysis で、脅威アクタープロファイルの日次更新チェックを実行してください。
 
-全673アクターを毎日確認するのは現実的でないため、次の2観点に絞ります。
+全アクタープロファイルを毎日確認するのは現実的でないため、次の2観点に絞ります。
 
-1. 直近に活動があったアクター（過去365日、約75件）に新しい報告がないか
+1. 直近に活動があったアクター（過去365日）に新しい報告がないか
 2. tech-memo の daily-news で言及されたアクターの活動記載
 
 ## 1. 決定的な検知
@@ -86,7 +86,8 @@ activity_claim.assessment が strong-subject / attributed-subject でも自動�
 
 ## 4. 未帰属クラスタの記録
 
-既存プロファイルに一致しない名前を見つけたら、まず
+既存プロファイルに一致しない名前を見つけたら、既存アクターの検証済みでない呼称
+（照合語彙は検証済みaliasに絞られています）の可能性を先に確認し、次に
 parse-daily/unknown-clusters.json を照合してください。判断規則は
 parse-daily/AGENT.md の「アクター照合」に従います。
 
@@ -138,11 +139,13 @@ actor 列に現れなかったため、前者だけでは検知できません�
 
 ## 反映まで任せる場合
 
-上記は意図的に承認・反映を含めていません。全履歴監査では1,006件中651件が保留
-（name-collision 113件、scope-review-required 155件、attribution-uncertain 72件）で、
-大半が判断を要するためです。
+上記は意図的に承認・反映を含めていません。保留判定の大半（name-collision、
+scope-review-required、attribution-uncertain）が人の判断を要するためです。
 
-数日運用して安全に自動採用できる判定種別が見えてから、`AGENT.md` の手順
-（validate_daily.py → apply_review_queue.py --apply → validate_daily.py --check-applied
-→ ui/build_data.py → ui/build_portal_index.py）を段階的にプロンプトへ加えてください。
+数日運用して安全に自動採用できる判定種別が見えてから、`AGENT.md` の実行順序
+9〜14（validate_daily.py → apply_review_queue.py --apply → migrate_stix_modeling /
+enrich系 → validate_daily.py --check-applied → claim audits / OpenCTI Bundle /
+research dossier の再生成 → ui/build_data.py と ui/build_portal_index.py）を
+段階的にプロンプトへ加えてください。OpenCTI Bundle は `--actor` と `--prune` を
+併用すると他アクターのBundleを削除するため、必ず全件で実行します。
 その際も `state.json` はレビュー完了日までしか進めないでください。

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """日次のアクター更新チェック（読み取り専用）。
 
-全673アクターを毎日見るのは現実的でないため、次の2観点に絞って
+全アクター（deprecatedを除く）を毎日見るのは現実的でないため、次の2観点に絞って
 確認すべきものだけを抽出する。
 
   観点1: 直近に活動があったアクター（既定は過去365日）に新しい報告がないか
@@ -93,6 +93,9 @@ def collect_recent_actors(days: int) -> list[dict]:
         path = profile_dir / "actor-profile.json"
         if path.exists():
             profile = load_json(path)
+            # curationで統合済みのtombstone。活動は統合先が持つため対象にしない。
+            if profile.get("status") == "deprecated":
+                continue
             point, basis = latest_activity(profile)
             if point and point >= cutoff:
                 rows.append({

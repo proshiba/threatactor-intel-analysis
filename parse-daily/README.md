@@ -5,10 +5,10 @@
 
 ## 日次チェック
 
-全673アクターを毎日見るのは現実的でないため、`daily_check.py`が次の2観点に絞って
-確認対象を抽出します。プロファイルは変更しません。
+全アクタープロファイル（deprecatedを除く）を毎日見るのは現実的でないため、
+`daily_check.py`が次の2観点に絞って確認対象を抽出します。プロファイルは変更しません。
 
-1. 直近に活動があったアクター（既定は過去365日、現在75件）に新しい報告がないか
+1. 直近に活動があったアクター（既定は過去365日）に新しい報告がないか
 2. tech-memoのdaily-newsで言及されたアクターの活動記載
 
 ```bash
@@ -54,6 +54,12 @@ python3 parse-daily/apply_review_queue.py parse-daily/output/review-queue.json -
 # 6. 反映確認
 python3 parse-daily/validate_daily.py \
   parse-daily/output/review-queue.json --check-applied
+
+# 7. 反映後の派生データ再生成（enrich系はAGENT.md 実行順序10〜11を参照）
+python3 actor_profile/scripts/build_claim_audits.py --actor <slug>
+python3 actor_profile/scripts/build_opencti_bundles.py --prune  # 必ず全件で実行
+python3 actor_profile/scripts/build_actor_research_dossiers.py
+python3 ui/build_data.py && python3 ui/build_portal_index.py
 ```
 
 既存プロファイルへ帰属できないクラスタは`unknown-clusters.json`へ記録します。
