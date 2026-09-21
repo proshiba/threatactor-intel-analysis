@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T04:38:32Z",
+  "generated_at": "2026-09-21T12:36:06Z",
   "actor_ref": "actor--unc5174",
   "actor_name": "UNC5174",
-  "profile_updated_at": "2026-09-21T04:35:03Z",
+  "profile_updated_at": "2026-09-21T08:15:06Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
-      "relationships": "unknown",
-      "malware": "unknown",
+      "relationships": "canonical-present",
+      "malware": "canonical-present",
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "lead-only",
@@ -18,9 +18,9 @@
     "canonical_counts": {
       "activities": 3,
       "dated_activities": 0,
-      "relationships": 0,
-      "malware": 0,
-      "activity_linked_malware": 0,
+      "relationships": 1,
+      "malware": 2,
+      "activity_linked_malware": 2,
       "tools": 0,
       "targets": 2,
       "motivations": 0
@@ -50,11 +50,51 @@
       "claim_assessments": []
     },
     "motivations": [],
-    "relationships": [],
+    "relationships": [
+      {
+        "relationship_id": "relationship--unc5174--verified--6f210e44af188c10",
+        "target_actor": "CL-STA-1015",
+        "relationship_type": "taxonomy-overlaps-with",
+        "description": "Unit 42 maps its CL-STA-1015 activity cluster to UNC5174; the mapping is preserved as a cross-taxonomy overlap rather than a global exact identity.",
+        "confidence": "medium",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "evidence_refs": [
+          "source--unit42-react2shell-cl-sta-1015-2025"
+        ],
+        "analyst_notes": "Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor cluster mapping. It is retained as overlapping until scope stability is independently confirmed.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--d192d7dad0ea8ca7d88629b8",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
+            "statement": "UNC5174 taxonomy-overlaps-with CL-STA-1015: Unit 42 maps its CL-STA-1015 activity cluster to UNC5174; the mapping is preserved as a cross-taxonomy overlap rather than a global exact identity.",
+            "evidence_refs": [
+              "source--unit42-react2shell-cl-sta-1015-2025"
+            ],
+            "verification_rationale": "Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor cluster mapping. It is retained as overlapping until scope stability is independently confirmed.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": "actor--cl-sta-1015",
+        "target_resolution": "catalog-profile"
+      }
+    ],
     "activity_timeline": [
       {
         "activity_id": "activity--daily-cdb2b24b57d09645a48d",
-        "name": "React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱",
+        "name": "CL-STA-1015／UNC5174と整合するReact2Shell後続活動",
         "activity_type": "intrusion",
         "first_observed": {
           "value": null,
@@ -69,24 +109,27 @@
           "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-12-08T00:00:00Z",
+          "value": "2025-12-12T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "React2Shell（CVE-2025-55182）が公表直後から悪用され、既に30超の組織侵害と7万7,664の脆弱IPが確認。 RSCの安全でないデシリアライズが原因で、Next.js等の実装に影響し、単一HTTP要求で未認証RCEが可能。 PoC公開後にスキャンが急増し、GreyNoiseは直近24時間で181の発信元を観測、複数国からの自動化攻撃が目立つ。 侵害では偵察やAWS資格情報窃取試行、23[.]235[.]188[.]3から第2段階PS取得、Cobalt Strike設置が報告。 CISAはKEVに追加し、即時の更新・再ビルド/再デプロイとPS/シェル実行痕跡のログ確認を助言。",
+        "description": "Unit 42はReact2Shell（CVE-2025-55182）悪用後、CL-STA-1015と高い確度で整合する活動を観測した。攻撃者はcurl/wgetでsltシェルスクリプトをファイルレス実行し、SNOWLIGHTとVShellを展開した。React2Shell全体の侵害数や脆弱ホスト数は複数主体を含むため、このクラスタ固有の被害数・標的としては記録しない。",
         "target_refs": [],
-        "malware_refs": [],
+        "malware_refs": [
+          "malware--snowlight",
+          "malware--vshell"
+        ],
         "infrastructure_refs": [],
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-f47a43f682d4bb61a2bc"
+          "source--daily-f47a43f682d4bb61a2bc",
+          "source--gtig-react2shell-multiple-actors-2025",
+          "source--unit42-react2shell-cl-sta-1015-2025"
         ],
-        "analyst_notes": "日次収集レコード daily-record--cdb2b24b57d09645a48d146a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者情報：中国関与とされるEarth Lamia／Jackpot PandaやUNC5174の関与が報告",
+        "analyst_notes": "Unit 42の直接観測は強いが、広域スキャン・30組織侵害・7.7万IP等をUNC5174単独へ割り当てる根拠はない。GTIGの別クラスタUNC6586も考慮。",
         "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--8d6a477bac79692c0bf5"
-        ],
+        "victim_refs": [],
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--unc5174",
@@ -95,7 +138,10 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--snowlight",
+              "malware--vshell"
+            ],
             "ttp_refs": []
           },
           "infrastructure": {
@@ -103,9 +149,7 @@
           },
           "victim": {
             "target_refs": [],
-            "victim_refs": [
-              "victim--activity-rule--8d6a477bac79692c0bf5"
-            ]
+            "victim_refs": []
           },
           "meta_features": {
             "first_observed": {
@@ -121,10 +165,10 @@
               "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2025-12-08T00:00:00Z",
+              "value": "2025-12-12T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "intrusion",
             "phases": [],
@@ -137,32 +181,43 @@
           },
           "confidence": "medium",
           "evidence_refs": [
-            "source--daily-f47a43f682d4bb61a2bc"
+            "source--daily-f47a43f682d4bb61a2bc",
+            "source--gtig-react2shell-multiple-actors-2025",
+            "source--unit42-react2shell-cl-sta-1015-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "grouping",
+        "activity_refs": [],
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
             "claim_id": "claim--e3b52085ee8bc2beacf08e1d",
             "category": "activity",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
-            "statement": "UNC5174 conducted or is associated with React2Shellの欠陥が30組織の侵害に悪用、7.7万のIPアドレスが脆弱: React2Shell（CVE-2025-55182）が公表直後から悪用され、既に30超の組織侵害と7万7,664の脆弱IPが確認。 RSCの安全でないデシリアライズが原因で、Next.js等の実装に影響し、単一HTTP要求で未認証RCEが可能。 PoC公開後にスキャンが急増し、GreyNoiseは直近24時間で181の発信元を観測、複数国からの自動化攻撃が目立つ。 侵害では偵察やAWS資格情報窃取試行、23[.]235[.]188[.]3から第2段階PS取得、Cobalt Strike設置が報告。 CISAはKEVに追加し、即時の更新・再ビルド/再デプロイとPS/シェル実行痕跡のログ確認を助言。",
+            "statement": "UNC5174 conducted or is associated with CL-STA-1015／UNC5174と整合するReact2Shell後続活動: Unit 42はReact2Shell（CVE-2025-55182）悪用後、CL-STA-1015と高い確度で整合する活動を観測した。攻撃者はcurl/wgetでsltシェルスクリプトをファイルレス実行し、SNOWLIGHTとVShellを展開した。React2Shell全体の侵害数や脆弱ホスト数は複数主体を含むため、このクラスタ固有の被害数・標的としては記録しない。",
             "evidence_refs": [
-              "source--daily-f47a43f682d4bb61a2bc"
+              "source--daily-f47a43f682d4bb61a2bc",
+              "source--gtig-react2shell-multiple-actors-2025",
+              "source--unit42-react2shell-cl-sta-1015-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
-        "malware": [],
-        "targets": [],
-        "victims": [
+        "malware": [
           {
-            "id": "victim--activity-rule--8d6a477bac79692c0bf5",
-            "name": "aggregate"
+            "id": "malware--snowlight",
+            "name": "SNOWLIGHT"
+          },
+          {
+            "id": "malware--vshell",
+            "name": "VShell"
           }
         ],
+        "targets": [],
+        "victims": [],
         "techniques": []
       },
       {
@@ -256,6 +311,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--bb1e9afa11ea74c386ee457a",
@@ -377,6 +435,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--f50f97497d3d24552d71826f",
@@ -411,7 +472,160 @@
         "techniques": []
       }
     ],
-    "malware_usage": [],
+    "malware_usage": [
+      {
+        "id": "malware--snowlight",
+        "name": "SNOWLIGHT",
+        "aliases": [],
+        "types": [
+          "Linux"
+        ],
+        "description": "Linux dropper used to retrieve follow-on malware including VShell.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--unit42-react2shell-cl-sta-1015-2025"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--3f52626d0d0c638b154151d0",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "UNC5174 uses or has used SNOWLIGHT.",
+            "evidence_refs": [
+              "source--unit42-react2shell-cl-sta-1015-2025"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-cdb2b24b57d09645a48d",
+            "activity_name": "CL-STA-1015／UNC5174と整合するReact2Shell後続活動",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-f47a43f682d4bb61a2bc",
+              "source--gtig-react2shell-multiple-actors-2025",
+              "source--unit42-react2shell-cl-sta-1015-2025"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--vshell",
+        "name": "VShell",
+        "aliases": [],
+        "types": [
+          "Linux"
+        ],
+        "description": "Remote access trojan deployed after SNOWLIGHT.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--unit42-react2shell-cl-sta-1015-2025"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--744602cba32555f6cb9330ac",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "UNC5174 uses or has used VShell.",
+            "evidence_refs": [
+              "source--unit42-react2shell-cl-sta-1015-2025"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-cdb2b24b57d09645a48d",
+            "activity_name": "CL-STA-1015／UNC5174と整合するReact2Shell後続活動",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-f47a43f682d4bb61a2bc",
+              "source--gtig-react2shell-multiple-actors-2025",
+              "source--unit42-react2shell-cl-sta-1015-2025"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
     "tool_usage": [],
     "targets": [
       {
@@ -596,9 +810,9 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 3,
-    "partially-supported": 8
+    "unresolved": 1,
+    "supported": 8,
+    "partially-supported": 7
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -804,11 +1018,68 @@
         "motivation-lead"
       ],
       "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--unit42-react2shell-cl-sta-1015-2025": {
+      "source_id": "source--unit42-react2shell-cl-sta-1015-2025",
+      "path": "https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+      "url": "https://unit42.paloaltonetworks.com/cve-2025-55182-react-and-cve-2025-66478-next/",
+      "title": "Exploitation of Critical Vulnerability in React Server Components",
+      "publisher": "Palo Alto Networks Unit 42",
+      "published_at": {
+        "value": "2025-12-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "activity",
+        "attribution",
+        "capability",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Unit 42 assesses the observed sequence with high confidence as consistent with CL-STA-1015 and calls that cluster aka UNC5174. The cross-vendor mapping is preserved as overlap rather than a universal exact alias."
+    },
+    "source--gtig-react2shell-multiple-actors-2025": {
+      "source_id": "source--gtig-react2shell-multiple-actors-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/threat-actors-exploit-react2shell-cve-2025-55182",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/threat-actors-exploit-react2shell-cve-2025-55182",
+      "title": "Multiple Threat Actors Exploit React2Shell (CVE-2025-55182)",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2025-12-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "boundary",
+      "claims_supported": [
+        "activity",
+        "attribution-boundary",
+        "capability",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GTIG describes multiple React2Shell clusters and separately tracks a SNOWLIGHT-using cluster as UNC6586. Shared malware in this exploitation window is not sufficient to collapse all activity into UNC5174."
     }
   },
   "research_gaps": [
     "Canonical activities exist, but their observation periods are unknown.",
-    "No canonical cross-actor relationship is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]

@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T04:38:32Z",
+  "generated_at": "2026-09-21T12:36:06Z",
   "actor_ref": "actor--scattered-spider",
   "actor_name": "Scattered Spider",
-  "profile_updated_at": "2026-09-21T04:35:03Z",
+  "profile_updated_at": "2026-09-21T08:16:06Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -16,8 +16,8 @@
       "attribution": "unknown"
     },
     "canonical_counts": {
-      "activities": 24,
-      "dated_activities": 3,
+      "activities": 22,
+      "dated_activities": 4,
       "relationships": 1,
       "malware": 3,
       "activity_linked_malware": 0,
@@ -257,6 +257,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--bf6937e2a4d72da01a0c8760",
@@ -428,36 +431,37 @@
         ]
       },
       {
-        "activity_id": "activity--daily-3614985905a497f6500b",
-        "name": "サービスデスクが攻撃の標的に：私たちにできる対策は？",
-        "activity_type": "reported-activity",
+        "activity_id": "activity--daily-483a8ab1bd549ba753ad",
+        "name": "UNC3944／Scattered Spider、航空・小売・保険を狙うvSphere侵入",
+        "activity_type": "intrusion",
         "first_observed": {
-          "value": "2025-04-01T00:00:00Z",
-          "precision": "month",
+          "value": "2025-01-01T00:00:00Z",
+          "precision": "year",
           "status": "known",
-          "basis": "activity-description-explicit-period"
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": "2025-05-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "activity-description-explicit-period"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-05-21T00:00:00Z",
+          "value": "2025-07-23T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "サービスデスクがソーシャルエンジニアリング攻撃の標的となり、攻撃者が従業員を装って認証情報を取得。 2025年4月～5月にかけて、Marks & Spencer、Co-Op Group、Harrods、Diorなどが被害を受けた。 攻撃者は、Scattered Spiderとされる米英拠点のサイバー犯罪グループ。 攻撃手法は、緊急性や信頼を装い、サービスデスク担当者にパスワードリセットやMFA無効化を依頼。 一部企業では、オンラインサービスの停止や顧客データの漏洩が発生。",
+        "description": "Mandiantは2025年半ば、UNC3944が小売、航空、保険組織を狙ったキャンペーンを実施したと報告した。攻撃者はヘルプデスクへのソーシャルエンジニアリングからActive Directory権限を取得し、VMware vCenter／ESXiへ到達して防御を回避した。MandiantはUNC3944をScattered Spider等と重なるクラスタとして扱う。一次資料がこのキャンペーンの被害者として明示しない企業名は関連づけない。",
         "target_refs": [],
         "malware_refs": [],
         "infrastructure_refs": [],
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-4e50a94f394205333edf"
+          "source--daily-21728e38bdfb2401ffa0",
+          "source--mandiant-unc3944-vsphere-2025"
         ],
-        "analyst_notes": "日次収集レコード daily-record--3614985905a497f6500b392a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は、Scattered Spiderとされる米英拠点のサイバー犯罪グループ。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+        "analyst_notes": "Mandiantが明示したsector-level campaignのみを採用。WestJet、Hawaiian等の個別帰属は本一次資料から確定できないため除外した。",
         "ttp_refs": [],
         "victim_refs": [],
         "diamond_model": {
@@ -480,6 +484,120 @@
           },
           "meta_features": {
             "first_observed": {
+              "value": "2025-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "reported_at": {
+              "value": "2025-07-23T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "intrusion",
+            "phases": [],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--daily-21728e38bdfb2401ffa0",
+            "source--mandiant-unc3944-vsphere-2025"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b8f258c0cd967e716f20aee9",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Scattered Spider conducted or is associated with UNC3944／Scattered Spider、航空・小売・保険を狙うvSphere侵入: Mandiantは2025年半ば、UNC3944が小売、航空、保険組織を狙ったキャンペーンを実施したと報告した。攻撃者はヘルプデスクへのソーシャルエンジニアリングからActive Directory権限を取得し、VMware vCenter／ESXiへ到達して防御を回避した。MandiantはUNC3944をScattered Spider等と重なるクラスタとして扱う。一次資料がこのキャンペーンの被害者として明示しない企業名は関連づけない。",
+            "evidence_refs": [
+              "source--daily-21728e38bdfb2401ffa0",
+              "source--mandiant-unc3944-vsphere-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [],
+        "targets": [],
+        "victims": [],
+        "techniques": []
+      },
+      {
+        "activity_id": "activity--daily-3614985905a497f6500b",
+        "name": "英国小売インシデント群とScattered Spider帰属の未確認関連",
+        "activity_type": "reported-activity",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period"
+        },
+        "last_observed": {
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period"
+        },
+        "reported_at": {
+          "value": "2025-05-04T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "2025年4～5月にMarks & Spencer、Co-op、Harrodsなど英国小売業でインシデントが相次ぎ、報道ではScattered Spiderとの関連が論じられた。しかし英国NCSCは2025年5月4日時点で、各事案が関連するか、単一の攻撃者によるものかを判断できないと明記した。従って直接のCampaign帰属ではなく、後続分析用のGroupingとして保持する。",
+        "target_refs": [
+          "target--activity-rule--country--f9601e2d842c9a05202b"
+        ],
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "confidence": "low",
+        "evidence_refs": [
+          "source--daily-4e50a94f394205333edf",
+          "source--ncsc-uk-retail-incidents-2025"
+        ],
+        "analyst_notes": "NCSCの否定的境界を優先。企業間の時期・手口の近さは調査リードであり、Scattered Spiderへの確定帰属または単一キャンペーンの根拠ではない。",
+        "ttp_refs": [],
+        "victim_refs": [],
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--scattered-spider",
+            "name": "Scattered Spider",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [],
+            "ttp_refs": []
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--activity-rule--country--f9601e2d842c9a05202b"
+            ],
+            "victim_refs": []
+          },
+          "meta_features": {
+            "first_observed": {
               "value": "2025-04-01T00:00:00Z",
               "precision": "month",
               "status": "known",
@@ -492,42 +610,54 @@
               "basis": "activity-description-explicit-period"
             },
             "reported_at": {
-              "value": "2025-05-21T00:00:00Z",
+              "value": "2025-05-04T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "reported-activity",
             "phases": [],
             "results": [],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [],
+              "target_country_refs": [
+                "target--activity-rule--country--f9601e2d842c9a05202b"
+              ],
               "target_region_refs": []
             }
           },
-          "confidence": "medium",
+          "confidence": "low",
           "evidence_refs": [
-            "source--daily-4e50a94f394205333edf"
+            "source--daily-4e50a94f394205333edf",
+            "source--ncsc-uk-retail-incidents-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "grouping",
+        "activity_refs": [],
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
             "claim_id": "claim--8439a429da3cbe1a6ac1a23d",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Scattered Spider conducted or is associated with サービスデスクが攻撃の標的に：私たちにできる対策は？: サービスデスクがソーシャルエンジニアリング攻撃の標的となり、攻撃者が従業員を装って認証情報を取得。 2025年4月～5月にかけて、Marks & Spencer、Co-Op Group、Harrods、Diorなどが被害を受けた。 攻撃者は、Scattered Spiderとされる米英拠点のサイバー犯罪グループ。 攻撃手法は、緊急性や信頼を装い、サービスデスク担当者にパスワードリセットやMFA無効化を依頼。 一部企業では、オンラインサービスの停止や顧客データの漏洩が発生。",
+            "verification_status": "supported",
+            "confidence": "low",
+            "statement": "Scattered Spider conducted or is associated with 英国小売インシデント群とScattered Spider帰属の未確認関連: 2025年4～5月にMarks & Spencer、Co-op、Harrodsなど英国小売業でインシデントが相次ぎ、報道ではScattered Spiderとの関連が論じられた。しかし英国NCSCは2025年5月4日時点で、各事案が関連するか、単一の攻撃者によるものかを判断できないと明記した。従って直接のCampaign帰属ではなく、後続分析用のGroupingとして保持する。",
             "evidence_refs": [
-              "source--daily-4e50a94f394205333edf"
+              "source--daily-4e50a94f394205333edf",
+              "source--ncsc-uk-retail-incidents-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=authoritative; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
         "malware": [],
-        "targets": [],
+        "targets": [
+          {
+            "id": "target--activity-rule--country--f9601e2d842c9a05202b",
+            "name": "英国"
+          }
+        ],
         "victims": [],
         "techniques": []
       },
@@ -624,6 +754,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--22a75dcbb534600e86e797ef",
@@ -737,6 +870,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--fbfac4d6eb79135fab742db8",
@@ -852,6 +988,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--1742ca51bd6a095d18e0fb00",
@@ -975,6 +1114,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--a63e6a0057217c44a803dd18",
@@ -1108,6 +1250,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--ad2c8a34aceef8046df280e3",
@@ -1241,6 +1386,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--52fea4a9ea3438452bfec552",
@@ -1371,6 +1519,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--7859757ffaa4ba1953974f9f",
@@ -1401,9 +1552,9 @@
         "techniques": []
       },
       {
-        "activity_id": "activity--daily-ed14eeec16626d49c2e3",
-        "name": "Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表",
-        "activity_type": "intrusion",
+        "activity_id": "activity--daily-bd819e551e72e0636426",
+        "name": "Qantas顧客プラットフォーム侵害とScattered Spider帰属の未確認関連",
+        "activity_type": "reported-activity",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1417,25 +1568,26 @@
           "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-07-03T00:00:00Z",
+          "value": "2025-07-02T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "Qantasはコールセンターのサードパーティプラットフォームで異常を検知後、攻撃を封じ込めた。 約600万人の顧客名、メール、電話番号、生年月日、フリークエントフライヤー番号が窃取された。 クレジットカード情報やパスワード、PIN等は侵害されていないとQantasは説明。 同社は豪州サイバーセキュリティセンター等へ通知し、調査を継続中。 Scattered Spiderの航空業界攻撃と類似し、Hawaiian AirlinesやWestJetも被害報告。",
+        "description": "Qantasは2025年7月2日、コールセンターで使用する第三者顧客サービス基盤への侵入を公表し、約600万件の顧客サービスレコードが存在するシステムへのアクセスを確認した。氏名、メール、電話番号、生年月日、会員番号等が含まれ得る一方、カード情報、金融情報、パスポート情報、パスワード、PIN、ログイン情報は含まれないとした。Qantasの一次発表は攻撃者をScattered Spiderへ帰属していないため、関連候補をGroupingで保持し、直接のactor-victim関係は作らない。",
         "target_refs": [
           "target--activity-rule--sector--b8d6639a1884e2bacaa4"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
-        "confidence": "high",
+        "confidence": "low",
         "evidence_refs": [
-          "source--daily-0a6ab6298790c80e707e"
+          "source--daily-73035cf449d00dd55adf",
+          "source--qantas-call-centre-incident-2025"
         ],
-        "analyst_notes": "日次収集レコード daily-record--ed14eeec16626d49c2e30376 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表",
+        "analyst_notes": "Qantas一次発表はインシデントと影響範囲のみを裏づける。アクター帰属は二次報道上の調査リードとして残し、確定Incidentとして出力しない。",
         "ttp_refs": [],
         "victim_refs": [
-          "victim--activity-rule--25ca8e3c2b8da0678e43"
+          "victim--activity-rule--77720e8c9be80751d719"
         ],
         "diamond_model": {
           "adversary": {
@@ -1456,7 +1608,7 @@
               "target--activity-rule--sector--b8d6639a1884e2bacaa4"
             ],
             "victim_refs": [
-              "victim--activity-rule--25ca8e3c2b8da0678e43"
+              "victim--activity-rule--77720e8c9be80751d719"
             ]
           },
           "meta_features": {
@@ -1473,35 +1625,42 @@
               "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2025-07-03T00:00:00Z",
+              "value": "2025-07-02T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
-            "activity_type": "intrusion",
+            "activity_type": "reported-activity",
             "phases": [],
-            "results": [],
+            "results": [
+              "data-theft"
+            ],
             "direction": {
               "source_countries": [],
               "target_country_refs": [],
               "target_region_refs": []
             }
           },
-          "confidence": "high",
+          "confidence": "low",
           "evidence_refs": [
-            "source--daily-0a6ab6298790c80e707e"
+            "source--daily-73035cf449d00dd55adf",
+            "source--qantas-call-centre-incident-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "grouping",
+        "activity_refs": [],
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
-            "claim_id": "claim--361adc2a846b6f29b9d6f0a8",
+            "claim_id": "claim--73741fddf65928f634dd54a7",
             "category": "activity",
             "verification_status": "partially-supported",
-            "confidence": "high",
-            "statement": "Scattered Spider conducted or is associated with Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表: Qantasはコールセンターのサードパーティプラットフォームで異常を検知後、攻撃を封じ込めた。 約600万人の顧客名、メール、電話番号、生年月日、フリークエントフライヤー番号が窃取された。 クレジットカード情報やパスワード、PIN等は侵害されていないとQantasは説明。 同社は豪州サイバーセキュリティセンター等へ通知し、調査を継続中。 Scattered Spiderの航空業界攻撃と類似し、Hawaiian AirlinesやWestJetも被害報告。",
+            "confidence": "low",
+            "statement": "Scattered Spider conducted or is associated with Qantas顧客プラットフォーム侵害とScattered Spider帰属の未確認関連: Qantasは2025年7月2日、コールセンターで使用する第三者顧客サービス基盤への侵入を公表し、約600万件の顧客サービスレコードが存在するシステムへのアクセスを確認した。氏名、メール、電話番号、生年月日、会員番号等が含まれ得る一方、カード情報、金融情報、パスポート情報、パスワード、PIN、ログイン情報は含まれないとした。Qantasの一次発表は攻撃者をScattered Spiderへ帰属していないため、関連候補をGroupingで保持し、直接のactor-victim関係は作らない。",
             "evidence_refs": [
-              "source--daily-0a6ab6298790c80e707e"
+              "source--daily-73035cf449d00dd55adf",
+              "source--qantas-call-centre-incident-2025"
             ],
             "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
             "counterevidence": []
@@ -1516,7 +1675,7 @@
         ],
         "victims": [
           {
-            "id": "victim--activity-rule--25ca8e3c2b8da0678e43",
+            "id": "victim--activity-rule--77720e8c9be80751d719",
             "name": "Qantas"
           }
         ],
@@ -1619,6 +1778,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--97aacb8bae0de05d272e045c",
@@ -1757,6 +1919,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--78942a7c390646c91590022c",
@@ -1907,6 +2072,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--edaa195beee907ca5597fbd9",
@@ -1949,119 +2117,6 @@
             "name": "Inhibit System Recovery"
           }
         ]
-      },
-      {
-        "activity_id": "activity--daily-483a8ab1bd549ba753ad",
-        "name": "Scattered Spiderのハッカー、航空および輸送企業への標的をシフト",
-        "activity_type": "intrusion",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-06-28T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "Scattered Spiderが保険・小売セクターから航空・輸送業界へ標的を拡大。 6月12日、カナダのWestJetが内部サービスとモバイルアプリを一時的に停止。 攻撃者はセルフサービスポスワードリセットでMFA登録後、Citrix経由で侵入。 Hawaiian Airlinesもサイバー攻撃を公表、同一勢力の可能性が示唆。 MandiantとPalo Altoが対応支援、ヘルプデスク認証強化を推奨。",
-        "target_refs": [],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-21728e38bdfb2401ffa0"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--483a8ab1bd549ba753ad10a4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Scattered Spiderのハッカー、航空および輸送企業への標的をシフト",
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--7733bdead3bf1eba1211"
-        ],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--scattered-spider",
-            "name": "Scattered Spider",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [],
-            "victim_refs": [
-              "victim--activity-rule--7733bdead3bf1eba1211"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-06-28T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "intrusion",
-            "phases": [],
-            "results": [],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "high",
-          "evidence_refs": [
-            "source--daily-21728e38bdfb2401ffa0"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--b8f258c0cd967e716f20aee9",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "high",
-            "statement": "Scattered Spider conducted or is associated with Scattered Spiderのハッカー、航空および輸送企業への標的をシフト: Scattered Spiderが保険・小売セクターから航空・輸送業界へ標的を拡大。 6月12日、カナダのWestJetが内部サービスとモバイルアプリを一時的に停止。 攻撃者はセルフサービスポスワードリセットでMFA登録後、Citrix経由で侵入。 Hawaiian Airlinesもサイバー攻撃を公表、同一勢力の可能性が示唆。 MandiantとPalo Altoが対応支援、ヘルプデスク認証強化を推奨。",
-            "evidence_refs": [
-              "source--daily-21728e38bdfb2401ffa0"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [],
-        "victims": [
-          {
-            "id": "victim--activity-rule--7733bdead3bf1eba1211",
-            "name": "aggregate"
-          }
-        ],
-        "techniques": []
       },
       {
         "activity_id": "activity--daily-dbd77cbba1df36c2fb27",
@@ -2156,6 +2211,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--1db2cd2ecbb0fb6887ecafaa",
@@ -2277,6 +2335,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--23eae51b9d5bd03a702436d4",
@@ -2394,6 +2455,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--7c6164cd149a6111446b9e02",
@@ -2507,6 +2571,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--e43aecceb6b466bee3784e6d",
@@ -2527,121 +2594,6 @@
           {
             "id": "victim--activity-rule--fc53273c37fee98260ae",
             "name": "anonymous"
-          }
-        ],
-        "techniques": []
-      },
-      {
-        "activity_id": "activity--daily-a97d2692a7a3198fb7f6",
-        "name": "カンタス航空、570万人の顧客に影響を及ぼすデータ侵害を確認",
-        "activity_type": "intrusion",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-07-10T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "7月1日にカンタス航空はサードパーティプラットフォームへのサイバー攻撃を検知したと発表。 攻撃者は570万件の顧客データを窃取し、公開阻止のために身代金を要求。 流出データは名前、メール、Qantas Frequent Flyer(FF)会員情報が主で、170万人は住所や生年月日等も含む。 パスワードや金融情報、パスポート詳細は漏洩せず、追加のセキュリティ対策を実施中。 カンタスは影響顧客に通知し、偽メールによる二次被害への注意を呼び掛け。",
-        "target_refs": [],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-af6fa62de402bc99a853"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--a97d2692a7a3198fb7f6a82e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は「Scattered Spider」と分類され、ソーシャルエンジニアリングで侵害を実行。",
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--d239cfd052c9518533af"
-        ],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--scattered-spider",
-            "name": "Scattered Spider",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [],
-            "victim_refs": [
-              "victim--activity-rule--d239cfd052c9518533af"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-07-10T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "intrusion",
-            "phases": [],
-            "results": [
-              "data-theft"
-            ],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-af6fa62de402bc99a853"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--fc4947f7e77db9327b9853ea",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Scattered Spider conducted or is associated with カンタス航空、570万人の顧客に影響を及ぼすデータ侵害を確認: 7月1日にカンタス航空はサードパーティプラットフォームへのサイバー攻撃を検知したと発表。 攻撃者は570万件の顧客データを窃取し、公開阻止のために身代金を要求。 流出データは名前、メール、Qantas Frequent Flyer(FF)会員情報が主で、170万人は住所や生年月日等も含む。 パスワードや金融情報、パスポート詳細は漏洩せず、追加のセキュリティ対策を実施中。 カンタスは影響顧客に通知し、偽メールによる二次被害への注意を呼び掛け。",
-            "evidence_refs": [
-              "source--daily-af6fa62de402bc99a853"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [],
-        "victims": [
-          {
-            "id": "victim--activity-rule--d239cfd052c9518533af",
-            "name": "カンタス航空"
           }
         ],
         "techniques": []
@@ -2745,6 +2697,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--ea2cd45518a6b230af452088",
@@ -2782,130 +2737,6 @@
           {
             "id": "victim--activity-rule--84506b75a511c156414e",
             "name": "aggregate"
-          }
-        ],
-        "techniques": []
-      },
-      {
-        "activity_id": "activity--daily-bd819e551e72e0636426",
-        "name": "最近のデータ窃取サイバー攻撃でQantasが身代金要求を受ける",
-        "activity_type": "reported-activity",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-07-08T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "Qantasは7月1日に第三者システムの不審な活動を検知し攻撃を公表。 約600万顧客の氏名、メール、電話、生年月日、マイレージ番号が流出。 クレジットカードやパスワードなどの機密情報は含まれず。 攻撃者はScattered Spiderで、最近は航空業界を標的にしている。 Qantasはオーストラリア連邦警察と協力し調査中と発表。",
-        "target_refs": [
-          "target--activity-rule--sector--b8d6639a1884e2bacaa4"
-        ],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-73035cf449d00dd55adf"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--bd819e551e72e06364260949 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScattered Spiderで、最近は航空業界を標的にしている。",
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--77720e8c9be80751d719"
-        ],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--scattered-spider",
-            "name": "Scattered Spider",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [
-              "target--activity-rule--sector--b8d6639a1884e2bacaa4"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--77720e8c9be80751d719"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-07-08T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "reported-activity",
-            "phases": [],
-            "results": [
-              "data-theft"
-            ],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-73035cf449d00dd55adf"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--73741fddf65928f634dd54a7",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Scattered Spider conducted or is associated with 最近のデータ窃取サイバー攻撃でQantasが身代金要求を受ける: Qantasは7月1日に第三者システムの不審な活動を検知し攻撃を公表。 約600万顧客の氏名、メール、電話、生年月日、マイレージ番号が流出。 クレジットカードやパスワードなどの機密情報は含まれず。 攻撃者はScattered Spiderで、最近は航空業界を標的にしている。 Qantasはオーストラリア連邦警察と協力し調査中と発表。",
-            "evidence_refs": [
-              "source--daily-73035cf449d00dd55adf"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [
-          {
-            "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
-            "name": "運輸・航空・海運"
-          }
-        ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--77720e8c9be80751d719",
-            "name": "anonymous"
           }
         ],
         "techniques": []
@@ -3007,6 +2838,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "grouping",
+        "activity_refs": [],
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
             "claim_id": "claim--0508740be0f5f00930bf4013",
@@ -3135,6 +2969,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--aba7eced6ae6335932fbb644",
@@ -3265,6 +3102,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--606afd15fae79d4a7c3c561c",
@@ -3930,43 +3770,47 @@
         "name": "英国",
         "description": "活動「英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-04302db7cea311067bd3",
           "source--daily-087eb7c60fcfe537fd54",
           "source--daily-4cd1fe293925310c02b7",
+          "source--daily-4e50a94f394205333edf",
           "source--daily-8516c3813705dff8c58d",
           "source--daily-b562a237b8d95c792fb9",
-          "source--daily-d0008bd69d4947eb98cb"
+          "source--daily-d0008bd69d4947eb98cb",
+          "source--ncsc-uk-retail-incidents-2025"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
             "claim_id": "claim--425f440314fdfe0378fb1cc4",
             "category": "target-country",
-            "verification_status": "partially-supported",
+            "verification_status": "supported",
             "confidence": "medium",
             "statement": "Scattered Spider targets country 英国.",
             "evidence_refs": [
               "source--daily-04302db7cea311067bd3",
               "source--daily-087eb7c60fcfe537fd54",
               "source--daily-4cd1fe293925310c02b7",
+              "source--daily-4e50a94f394205333edf",
               "source--daily-8516c3813705dff8c58d",
               "source--daily-b562a237b8d95c792fb9",
-              "source--daily-d0008bd69d4947eb98cb"
+              "source--daily-d0008bd69d4947eb98cb",
+              "source--ncsc-uk-retail-incidents-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
+            "verification_rationale": "Evidence tier=authoritative; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
           }
         ],
@@ -3974,6 +3818,7 @@
         "activity_refs": [
           "activity--daily-2cae336562aa7b8a77d2",
           "activity--daily-35a1595d993888ebde31",
+          "activity--daily-3614985905a497f6500b",
           "activity--daily-9924d123a9cdac2c4da2",
           "activity--daily-bb217a34a819e9d67daa",
           "activity--daily-c1df0f8ea800465fc777",
@@ -4108,8 +3953,7 @@
         "activity_refs": [
           "activity--daily-1787c9fe7ff132035cc2",
           "activity--daily-bd819e551e72e0636426",
-          "activity--daily-c9cf216ee82eaf46cf94",
-          "activity--daily-ed14eeec16626d49c2e3"
+          "activity--daily-c9cf216ee82eaf46cf94"
         ]
       },
       {
@@ -7910,8 +7754,8 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 117,
-    "partially-supported": 56
+    "supported": 123,
+    "partially-supported": 48
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -9602,6 +9446,118 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--ncsc-uk-retail-incidents-2025": {
+      "source_id": "source--ncsc-uk-retail-incidents-2025",
+      "path": "https://www.ncsc.gov.uk/blog-post/incidents-impacting-retailers",
+      "url": "https://www.ncsc.gov.uk/blog-post/incidents-impacting-retailers",
+      "title": "Incidents impacting retailers",
+      "publisher": "UK National Cyber Security Centre",
+      "published_at": {
+        "value": "2025-05-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "unconfirmed",
+      "claims_supported": [
+        "activity",
+        "victim-case",
+        "attribution-boundary"
+      ],
+      "analyst_notes": "NCSC explicitly said it was not yet in a position to determine whether the retailer incidents were linked or whether one actor was responsible."
+    },
+    "source--mandiant-unc3944-vsphere-2025": {
+      "source_id": "source--mandiant-unc3944-vsphere-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944",
+      "title": "From Help Desk to Hypervisor: Defending Your VMware vSphere Estate from UNC3944",
+      "publisher": "Google Threat Intelligence Group / Mandiant",
+      "published_at": {
+        "value": "2025-07-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Mandiant describes a mid-2025 UNC3944 campaign against retail, airline, and insurance organizations and states that UNC3944 overlaps Scattered Spider."
+    },
+    "source--qantas-call-centre-incident-2025": {
+      "source_id": "source--qantas-call-centre-incident-2025",
+      "path": "https://investor.qantas.com/DownloadFile.axd?file=/Report/ComNews/20250702/02963135.pdf",
+      "url": "https://investor.qantas.com/DownloadFile.axd?file=/Report/ComNews/20250702/02963135.pdf",
+      "title": "Qantas provides update on customer data cyber incident",
+      "publisher": "Qantas Airways Limited",
+      "published_at": {
+        "value": "2025-07-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "first-party-incident-disclosure",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "unconfirmed",
+      "claims_supported": [
+        "activity",
+        "victim-case",
+        "impact",
+        "attribution-boundary"
+      ],
+      "analyst_notes": "Qantas confirms the third-party customer-platform incident and affected record categories but does not attribute the intrusion to Scattered Spider."
+    },
+    "source--fbi-cisa-scattered-spider-2025": {
+      "source_id": "source--fbi-cisa-scattered-spider-2025",
+      "path": "https://www.fbi.gov/file-repository/cyber-alerts/scattered-spider-072925.pdf",
+      "url": "https://www.fbi.gov/file-repository/cyber-alerts/scattered-spider-072925.pdf",
+      "title": "Scattered Spider Joint Cybersecurity Advisory",
+      "publisher": "FBI, CISA, and international partners",
+      "published_at": {
+        "value": "2025-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "activity",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "The joint advisory lists cross-industry tracking names and updated TTPs. The names are retained as overlaps because vendor cluster boundaries need not be globally one-to-one."
     }
   },
   "research_gaps": [
