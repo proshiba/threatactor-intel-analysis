@@ -394,6 +394,116 @@ class PrimarySourceCorrectionTests(unittest.TestCase):
         self.assertEqual(len(ids), 2)
         self.assertEqual(len(victim_ids), 2)
 
+    def test_scattered_spider_unconfirmed_victims_are_groupings(self) -> None:
+        profile = self.load_profile("scattered-spider")
+        activities = {item["activity_id"]: item for item in profile["activities"]}
+        retail = activities["activity--daily-3614985905a497f6500b"]
+        qantas = activities["activity--daily-bd819e551e72e0636426"]
+        self.assertEqual(retail["stix_object_type"], "grouping")
+        self.assertEqual(qantas["stix_object_type"], "grouping")
+        self.assertIn("source--ncsc-uk-retail-incidents-2025", retail["evidence_refs"])
+        self.assertIn("source--qantas-call-centre-incident-2025", qantas["evidence_refs"])
+        self.assertNotIn(
+            "activity--daily-a97d2692a7a3198fb7f6", activities
+        )
+        self.assertNotIn(
+            "activity--daily-ed14eeec16626d49c2e3", activities
+        )
+        self.assertIn("帰属していない", qantas["description"])
+
+    def test_react2shell_counts_are_not_assigned_to_unc5174(self) -> None:
+        profile = self.load_profile("unc5174")
+        activity = next(
+            item
+            for item in profile["activities"]
+            if item["activity_id"] == "activity--daily-cdb2b24b57d09645a48d"
+        )
+        self.assertEqual(activity["stix_object_type"], "grouping")
+        self.assertEqual(activity["victim_refs"], [])
+        self.assertEqual(
+            set(activity["malware_refs"]),
+            {"malware--snowlight", "malware--vshell"},
+        )
+        relationship = next(
+            item
+            for item in profile["relationships"]
+            if item["target_actor"] == "CL-STA-1015"
+        )
+        self.assertEqual(relationship["relationship_type"], "taxonomy-overlaps-with")
+        self.assertEqual(relationship["confidence"], "medium")
+
+    def test_moonstone_sleet_keeps_diamond_sleet_distinct(self) -> None:
+        profile = self.load_profile("moonstone-sleet")
+        aliases = {item["name"]: item for item in profile["actor"]["aliases"]}
+        self.assertEqual(aliases["Storm-1789"]["scope"], "exact")
+        relationship = next(
+            item
+            for item in profile["relationships"]
+            if item["target_actor"] == "Diamond Sleet"
+        )
+        self.assertEqual(relationship["relationship_type"], "overlaps-with")
+        self.assertIn("distinct actor", relationship["analyst_notes"])
+        malware = {item["name"] for item in profile["capabilities"]["malware"]}
+        self.assertTrue({"FakePenny", "SplitLoader", "YouieLoad"} <= malware)
+
+    def test_storm1849_has_primary_arcanedoor_and_firestarter_activity(self) -> None:
+        profile = self.load_profile("storm-1849")
+        aliases = {item["name"]: item for item in profile["actor"]["aliases"]}
+        self.assertEqual(aliases["UAT4356"]["scope"], "exact")
+        activities = {item["activity_id"]: item for item in profile["activities"]}
+        firestarter = activities["activity--storm-1849--firestarter-2026"]
+        self.assertEqual(firestarter["stix_object_type"], "campaign")
+        self.assertEqual(firestarter["first_observed"]["status"], "unknown")
+        self.assertEqual(
+            firestarter["evidence_refs"],
+            ["source--cisco-talos-uat4356-firestarter-2026"],
+        )
+        self.assertIn("malware--firestarter", firestarter["malware_refs"])
+
+    def test_toolshell_actor_boundaries_remove_nNSA_conflation(self) -> None:
+        storm = self.load_profile("storm-2603")
+        storm_activities = {
+            item["activity_id"]: item for item in storm["activities"]
+        }
+        self.assertNotIn("activity--daily-e8fd6208405a17b2c79d", storm_activities)
+        self.assertNotIn("activity--daily-aacbe5410f1223b930a5", storm_activities)
+        toolshell = storm_activities["activity--daily-b80b607914fb7f62f988"]
+        self.assertEqual(toolshell["victim_refs"], [])
+        self.assertNotIn("NNSA", toolshell["description"])
+        self.assertIn("activity--storm-2603--parallel-intrusion-2026", storm_activities)
+        zirconium = self.load_profile("zirconium")
+        zirconium_ids = {item["activity_id"] for item in zirconium["activities"]}
+        self.assertNotIn("activity--daily-f8164c2182ec1f2d8e79", zirconium_ids)
+
+    def test_reviewed_campaigns_have_primary_source_dates(self) -> None:
+        checks = (
+            (
+                "apt41",
+                "activity--daily-207ba8f2eb504435e5e4",
+                "source--mandiant-apt41-arisen-from-dust-2024",
+                "2023-01-01T00:00:00Z",
+            ),
+            (
+                "unc5820",
+                "activity--daily-6531aa0646bd2b399aec",
+                "source--mandiant-unc5820-fortimanager-2024",
+                "2024-06-27T00:00:00Z",
+            ),
+            (
+                "unc6395",
+                "activity--daily-75ed648ec068d5993ef2",
+                "source--gtig-unc6395-salesloft-drift-2025",
+                "2025-03-22T00:00:00Z",
+            ),
+        )
+        for slug, activity_id, source_id, first_observed in checks:
+            profile = self.load_profile(slug)
+            activity = next(
+                item for item in profile["activities"] if item["activity_id"] == activity_id
+            )
+            self.assertIn(source_id, activity["evidence_refs"])
+            self.assertEqual(activity["first_observed"]["value"], first_observed)
+
 
 if __name__ == "__main__":
     unittest.main()

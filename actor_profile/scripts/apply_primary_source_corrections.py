@@ -74,6 +74,8 @@ def source_record(
     actor_scope: str,
     note: str,
     language: str = "en",
+    source_type: str = "vendor-threat-research",
+    reliability: str = "high",
 ) -> dict[str, Any]:
     return {
         "source_id": source_id,
@@ -86,9 +88,9 @@ def source_record(
         ),
         "accessed_at": "2026-09-21T00:00:00Z",
         "language": language,
-        "source_type": "vendor-threat-research",
+        "source_type": source_type,
         "tlp": "TLP:CLEAR",
-        "reliability": "high",
+        "reliability": reliability,
         "sha256": None,
         "actor_scope": actor_scope,
         "claims_supported": claims,
@@ -307,6 +309,341 @@ GITLAB_CLICKFIX_SOURCE = source_record(
     ),
 )
 
+SEC_SOLARWINDS_SOURCE = source_record(
+    source_id="source--sec-solarwinds-disclosure-enforcement-2024",
+    url="https://www.sec.gov/newsroom/press-releases/2024-174",
+    title="SEC Charges Four Companies With Misleading Cyber Disclosures",
+    publisher="U.S. Securities and Exchange Commission",
+    published="2024-10-22",
+    claims=["activity", "victim-case", "attribution-context"],
+    actor_scope="overlapping",
+    note=(
+        "The SEC names Unisys, Avaya, Check Point, and Mimecast and describes the "
+        "intruder only as the threat actor likely behind the SolarWinds Orion hack. "
+        "It supports the enforcement aftermath, not a fresh APT29 intrusion or a "
+        "standalone exact-attribution claim."
+    ),
+    source_type="government-press-release",
+)
+
+MANDIANT_APT41_SOURCE = source_record(
+    source_id="source--mandiant-apt41-arisen-from-dust-2024",
+    url="https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust",
+    title="APT41 Has Arisen From the DUST",
+    publisher="Mandiant",
+    published="2024-07-18",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Mandiant directly attributes the sustained campaign observed since 2023 "
+        "to APT41 and enumerates the affected countries, sectors, and toolchain."
+    ),
+)
+
+CISCO_APT41_TAIWAN_SOURCE = source_record(
+    source_id="source--cisco-talos-apt41-taiwan-institute-2024",
+    url=(
+        "https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-"
+        "taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/"
+    ),
+    title=(
+        "Chinese hacking group APT41 compromised Taiwanese government-affiliated "
+        "research institute with ShadowPad and Cobalt Strike"
+    ),
+    publisher="Cisco Talos",
+    published="2024-08-01",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc", "victim-case"],
+    actor_scope="direct",
+    note=(
+        "Cisco Talos attributes the single-institute intrusion to APT41 with "
+        "medium confidence and dates the initial compromise to mid-July 2023."
+    ),
+)
+
+ZSCALER_TRANSLATEXT_SOURCE = source_record(
+    source_id="source--zscaler-kimsuky-translatext-2024",
+    url=(
+        "https://www.zscaler.com/blogs/security-research/"
+        "kimsuky-deploys-translatext-target-south-korean-academia"
+    ),
+    title="Kimsuky Deploys TRANSLATEXT to Target South Korean Academia",
+    publisher="Zscaler ThreatLabz",
+    published="2024-06-27",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Zscaler observed the campaign in March 2024 and documents the malicious "
+        "Chrome extension's credential, cookie, and screenshot collection."
+    ),
+)
+
+CHECKMARX_MOONSTONE_SOURCE = source_record(
+    source_id="source--checkmarx-moonstone-npm-2024",
+    url=(
+        "https://checkmarx.com/blog/"
+        "a-new-north-korean-group-emerges-disrupting-the-open-source-ecosystem/"
+    ),
+    title="A New North Korean Group Emerges, Disrupting the Open-Source Ecosystem",
+    publisher="Checkmarx",
+    published="2024-06-13",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Checkmarx documents Moonstone Sleet malicious npm packages in the first "
+        "and second quarters of 2024, including added obfuscation and Linux support."
+    ),
+)
+
+MICROSOFT_MOONSTONE_SOURCE = source_record(
+    source_id="source--microsoft-moonstone-sleet-2024",
+    url=(
+        "https://www.microsoft.com/en-us/security/blog/2024/05/28/"
+        "moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/"
+    ),
+    title="Moonstone Sleet emerges as new North Korean threat actor with new bag of tricks",
+    publisher="Microsoft Threat Intelligence",
+    published="2024-05-28",
+    claims=["identity", "alias", "activity", "attribution", "relationship", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Microsoft says Moonstone Sleet was formerly Storm-1789, initially reused "
+        "Diamond Sleet code and techniques, then moved to its own infrastructure "
+        "and conducted concurrent operations as a distinct actor."
+    ),
+)
+
+NCSC_UK_RETAIL_SOURCE = source_record(
+    source_id="source--ncsc-uk-retail-incidents-2025",
+    url="https://www.ncsc.gov.uk/blog-post/incidents-impacting-retailers",
+    title="Incidents impacting retailers",
+    publisher="UK National Cyber Security Centre",
+    published="2025-05-04",
+    claims=["activity", "victim-case", "attribution-boundary"],
+    actor_scope="unconfirmed",
+    note=(
+        "NCSC explicitly said it was not yet in a position to determine whether "
+        "the retailer incidents were linked or whether one actor was responsible."
+    ),
+    source_type="government-advisory",
+)
+
+MANDIANT_UNC3944_VSPHERE_SOURCE = source_record(
+    source_id="source--mandiant-unc3944-vsphere-2025",
+    url="https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944",
+    title="From Help Desk to Hypervisor: Defending Your VMware vSphere Estate from UNC3944",
+    publisher="Google Threat Intelligence Group / Mandiant",
+    published="2025-07-23",
+    claims=["identity", "activity", "attribution", "capability", "targeting", "ttp"],
+    actor_scope="overlapping",
+    note=(
+        "Mandiant describes a mid-2025 UNC3944 campaign against retail, airline, "
+        "and insurance organizations and states that UNC3944 overlaps Scattered Spider."
+    ),
+)
+
+QANTAS_INCIDENT_SOURCE = source_record(
+    source_id="source--qantas-call-centre-incident-2025",
+    url="https://investor.qantas.com/DownloadFile.axd?file=/Report/ComNews/20250702/02963135.pdf",
+    title="Qantas provides update on customer data cyber incident",
+    publisher="Qantas Airways Limited",
+    published="2025-07-02",
+    claims=["activity", "victim-case", "impact", "attribution-boundary"],
+    actor_scope="unconfirmed",
+    note=(
+        "Qantas confirms the third-party customer-platform incident and affected "
+        "record categories but does not attribute the intrusion to Scattered Spider."
+    ),
+    source_type="first-party-incident-disclosure",
+)
+
+FBI_SCATTERED_SPIDER_SOURCE = source_record(
+    source_id="source--fbi-cisa-scattered-spider-2025",
+    url="https://www.fbi.gov/file-repository/cyber-alerts/scattered-spider-072925.pdf",
+    title="Scattered Spider Joint Cybersecurity Advisory",
+    publisher="FBI, CISA, and international partners",
+    published="2025-07-29",
+    claims=["identity", "alias", "activity", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="overlapping",
+    note=(
+        "The joint advisory lists cross-industry tracking names and updated TTPs. "
+        "The names are retained as overlaps because vendor cluster boundaries need "
+        "not be globally one-to-one."
+    ),
+    source_type="government-advisory",
+)
+
+MICROSOFT_TOOLSHELL_SOURCE = source_record(
+    source_id="source--microsoft-toolshell-2025",
+    url=(
+        "https://www.microsoft.com/en-us/security/blog/2025/07/22/"
+        "disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+    ),
+    title="Disrupting active exploitation of on-premises SharePoint vulnerabilities",
+    publisher="Microsoft Threat Intelligence",
+    published="2025-07-22",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Microsoft separately attributes exploitation to Linen Typhoon, Violet "
+        "Typhoon, and Storm-2603. It does not uniquely attribute the reported NNSA "
+        "victim event to any one of those clusters."
+    ),
+)
+
+UNIT42_REACT2SHELL_SOURCE = source_record(
+    source_id="source--unit42-react2shell-cl-sta-1015-2025",
+    url=(
+        "https://unit42.paloaltonetworks.com/"
+        "cve-2025-55182-react-and-cve-2025-66478-next/"
+    ),
+    title="Exploitation of Critical Vulnerability in React Server Components",
+    publisher="Palo Alto Networks Unit 42",
+    published="2025-12-12",
+    claims=["identity", "alias", "activity", "attribution", "capability", "ttp", "ioc"],
+    actor_scope="overlapping",
+    note=(
+        "Unit 42 assesses the observed sequence with high confidence as consistent "
+        "with CL-STA-1015 and calls that cluster aka UNC5174. The cross-vendor "
+        "mapping is preserved as overlap rather than a universal exact alias."
+    ),
+)
+
+GTIG_REACT2SHELL_SOURCE = source_record(
+    source_id="source--gtig-react2shell-multiple-actors-2025",
+    url=(
+        "https://cloud.google.com/blog/topics/threat-intelligence/"
+        "threat-actors-exploit-react2shell-cve-2025-55182"
+    ),
+    title="Multiple Threat Actors Exploit React2Shell (CVE-2025-55182)",
+    publisher="Google Threat Intelligence Group",
+    published="2025-12-12",
+    claims=["activity", "attribution-boundary", "capability", "ttp", "ioc"],
+    actor_scope="boundary",
+    note=(
+        "GTIG describes multiple React2Shell clusters and separately tracks a "
+        "SNOWLIGHT-using cluster as UNC6586. Shared malware in this exploitation "
+        "window is not sufficient to collapse all activity into UNC5174."
+    ),
+)
+
+ECLECTICIQ_UNC5221_SOURCE = source_record(
+    source_id="source--eclecticiq-unc5221-epmm-2025",
+    url=(
+        "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-"
+        "ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability"
+    ),
+    title=(
+        "China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager "
+        "Mobile (CVE-2025-4428) Vulnerability"
+    ),
+    publisher="EclecticIQ",
+    published="2025-05-21",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "EclecticIQ attributes the exploitation observed from May 15 with high "
+        "confidence to UNC5221 and documents KrustyLoader, Sliver, and AWS S3 use."
+    ),
+)
+
+MANDIANT_UNC5820_SOURCE = source_record(
+    source_id="source--mandiant-unc5820-fortimanager-2024",
+    url=(
+        "https://cloud.google.com/blog/topics/threat-intelligence/"
+        "fortimanager-zero-day-exploitation-cve-2024-47575"
+    ),
+    title="Investigating FortiManager Zero-Day Exploitation (CVE-2024-47575)",
+    publisher="Mandiant",
+    published="2024-10-23",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Mandiant observed UNC5820 exploitation from June 27 through at least "
+        "September 23, 2024, across more than 50 potentially compromised devices; "
+        "motivation and actor location remained unknown."
+    ),
+)
+
+GTIG_UNC6395_SOURCE = source_record(
+    source_id="source--gtig-unc6395-salesloft-drift-2025",
+    url=(
+        "https://cloud.google.com/blog/topics/threat-intelligence/"
+        "data-theft-salesforce-instances-via-salesloft-drift"
+    ),
+    title="Widespread Data Theft Targets Salesforce Instances via Salesloft Drift",
+    publisher="Google Threat Intelligence Group / Mandiant",
+    published="2025-08-26",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "GTIG tracks the August 8-18 data-theft campaign as UNC6395 and warns that "
+        "all Drift-connected tokens may have been exposed."
+    ),
+)
+
+SALESLOFT_INCIDENT_SOURCE = source_record(
+    source_id="source--salesloft-drift-incident-2025",
+    url="https://trust.salesloft.com/?uid=Drift%2FSalesforce+Security+Update",
+    title="Update on Mandiant Drift and Salesloft Application Investigations",
+    publisher="Salesloft",
+    published="2025-09-06",
+    claims=["activity", "victim-case", "impact", "ttp"],
+    actor_scope="unattributed",
+    note=(
+        "Salesloft's first-party timeline covers GitHub access and reconnaissance "
+        "from March through June 2025, followed by theft and use of Drift OAuth tokens."
+    ),
+    source_type="first-party-incident-disclosure",
+)
+
+CISCO_ARCANEDOOR_SOURCE = source_record(
+    source_id="source--cisco-talos-arcanedoor-2024",
+    url=(
+        "https://blog.talosintelligence.com/"
+        "arcanedoor-new-espionage-focused-campaign-found-targeting-perimeter-network-devices/"
+    ),
+    title="ArcaneDoor - New espionage-focused campaign found targeting perimeter network devices",
+    publisher="Cisco Talos",
+    published="2024-04-24",
+    claims=["identity", "alias", "activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="exact",
+    note=(
+        "Cisco identifies the actor as UAT4356 and states that Microsoft tracks the "
+        "same actor as Storm-1849; it documents Line Runner and Line Dancer."
+    ),
+)
+
+CISCO_FIRESTARTER_SOURCE = source_record(
+    source_id="source--cisco-talos-uat4356-firestarter-2026",
+    url="https://blog.talosintelligence.com/uat-4356-firestarter/",
+    title="UAT-4356's Targeting of Cisco Firepower Devices",
+    publisher="Cisco Talos",
+    published="2026-04-23",
+    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    actor_scope="direct",
+    note=(
+        "Cisco reports continued UAT4356 targeting of Firepower/FXOS devices, "
+        "n-day exploitation, and deployment of the custom FIRESTARTER backdoor."
+    ),
+)
+
+MICROSOFT_STORM2603_PARALLEL_SOURCE = source_record(
+    source_id="source--microsoft-storm2603-parallel-intrusion-2026",
+    url=(
+        "https://www.microsoft.com/en-us/security/blog/2026/06/22/"
+        "one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+    ),
+    title="One intrusion, two cyberattackers: Uncovering parallel threat activity",
+    publisher="Microsoft Defender Experts Cybersecurity Incident Response",
+    published="2026-06-22",
+    claims=["activity", "attribution", "capability", "ttp", "victim-case"],
+    actor_scope="direct",
+    note=(
+        "Microsoft separates Storm-2603 activity from a second unrelated actor in "
+        "the same environment; shared victim presence is not an actor relationship."
+    ),
+)
+
 
 def merge_source(profile: dict[str, Any], source: dict[str, Any]) -> None:
     profile["sources"] = [
@@ -328,6 +665,49 @@ def find_activity(profile: dict[str, Any], activity_id: str) -> dict[str, Any]:
         for item in profile.get("activities", [])
         if item.get("activity_id") == activity_id
     )
+
+
+def remove_activity(profile: dict[str, Any], activity_id: str) -> None:
+    """Remove a superseded activity and dependent victim/activity references."""
+
+    profile["activities"] = [
+        item
+        for item in profile.get("activities", [])
+        if item.get("activity_id") != activity_id
+    ]
+    retained_victims = []
+    for victim in profile.get("victim_cases", []):
+        original_refs = victim.get("activity_refs", [])
+        if activity_id not in original_refs:
+            retained_victims.append(victim)
+            continue
+        victim["activity_refs"] = [
+            ref for ref in original_refs if ref != activity_id
+        ]
+        if victim["activity_refs"]:
+            retained_victims.append(victim)
+    profile["victim_cases"] = retained_victims
+    for ttp in profile.get("ttps", []):
+        ttp["activity_refs"] = [
+            ref for ref in ttp.get("activity_refs", []) if ref != activity_id
+        ]
+
+
+def upsert_activity(profile: dict[str, Any], activity: dict[str, Any]) -> None:
+    profile["activities"] = [
+        item
+        for item in profile.get("activities", [])
+        if item.get("activity_id") != activity["activity_id"]
+    ] + [activity]
+
+
+def add_source_to_linked_victims(
+    profile: dict[str, Any], activity: dict[str, Any], source_id: str
+) -> None:
+    victim_ids = set(activity.get("victim_refs", []))
+    for victim in profile.get("victim_cases", []):
+        if victim.get("victim_case_id") in victim_ids:
+            add_evidence(victim, source_id)
 
 
 def merge_alias(
@@ -1390,6 +1770,9 @@ def fix_vanilla_tempest(profile: dict[str, Any]) -> None:
         "activity_id": historical_id,
         "name": "DEV-0832／Vanilla Tempestによる2022年の教育機関向け恐喝活動",
         "activity_type": "ransomware-extortion",
+        "stix_object_type": "campaign",
+        "grouping_context": None,
+        "activity_refs": [],
         "first_observed": time_point(
             "2022-07-01T00:00:00Z", "month", "known", "source-stated"
         ),
@@ -1570,6 +1953,934 @@ def fix_ta444(profile: dict[str, Any], apt38: dict[str, Any]) -> None:
         )
         activity.setdefault("malware_refs", []).append(malware_id)
     activity["malware_refs"] = sorted(set(activity["malware_refs"]))
+
+
+def fix_reviewed_primary_activity_evidence(
+    apt29: dict[str, Any],
+    apt41: dict[str, Any],
+    kimsuky: dict[str, Any],
+    moonstone: dict[str, Any],
+    unc5221: dict[str, Any],
+    unc5820: dict[str, Any],
+    unc6395: dict[str, Any],
+) -> None:
+    """Replace secondary-only activity claims with checked original reporting."""
+
+    merge_source(apt29, SEC_SOLARWINDS_SOURCE)
+    sec_activity = find_activity(apt29, "activity--daily-1f4283bbe40d968dcd5d")
+    sec_activity.update(
+        {
+            "name": "SEC、SolarWinds関連開示を巡り技術企業4社を処分",
+            "description": (
+                "米SECは、SolarWinds Orion侵害に関連するサイバーリスクと影響の"
+                "開示が投資家を誤解させたとして、Unisys、Avaya、Check Point、"
+                "Mimecastを処分した。SEC原文は侵入者を『SolarWinds Orion攻撃の"
+                "背後にいる可能性が高い脅威アクター』と記すにとどまり、APT29を"
+                "名指ししていない。このレコードは2020年の侵害そのものではなく、"
+                "2024年の法執行・開示上の後続事象を整理するGroupingである。"
+            ),
+            "reported_at": time_point(
+                "2024-10-22T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "medium",
+            "stix_object_type": "grouping",
+            "grouping_context": "suspicious-activity",
+            "analyst_notes": (
+                "SEC一次資料は企業名と処分理由を裏づけるがAPT29という名称は使わない。"
+                "既知のSolarWinds帰属との文脈的関連として保持し、新規侵入を表す"
+                "Campaign/Incident関係は生成しない。"
+            ),
+        }
+    )
+    add_evidence(sec_activity, SEC_SOLARWINDS_SOURCE["source_id"])
+    add_source_to_linked_victims(
+        apt29, sec_activity, SEC_SOLARWINDS_SOURCE["source_id"]
+    )
+
+    for source in (MANDIANT_APT41_SOURCE, CISCO_APT41_TAIWAN_SOURCE):
+        merge_source(apt41, source)
+    dust = find_activity(apt41, "activity--daily-207ba8f2eb504435e5e4")
+    dust.update(
+        {
+            "name": "APT41、2023年以降に複数国・複数業種へ継続侵入",
+            "description": (
+                "Mandiantは、APT41が2023年以降、イタリア、スペイン、台湾、タイ、"
+                "トルコ、英国の海運・物流、メディア・娯楽、技術、自動車組織へ"
+                "継続的に侵入したと報告した。攻撃ではANTSword、BLUEBEAM、"
+                "DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを"
+                "組み合わせ、長期アクセスとデータ窃取を行った。"
+            ),
+            "first_observed": time_point(
+                "2023-01-01T00:00:00Z", "year", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2024-07-18T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "開始年のみ一次資料が明示するためyear精度とし、公開日を活動終期には"
+                "使用していない。国・業種はMandiantが列挙した範囲に限定した。"
+            ),
+        }
+    )
+    add_evidence(dust, MANDIANT_APT41_SOURCE["source_id"])
+    apt41_specs = (
+        ("malware--antsword", "ANTSword", "Web shell used in the sustained APT41 campaign."),
+        ("malware--bluebeam", "BLUEBEAM", "Backdoor used in the sustained APT41 campaign."),
+        ("malware--dustpan", "DUSTPAN", "In-memory dropper used by APT41."),
+        ("malware--dusttrap", "DUSTTRAP", "Modular multi-stage plugin framework used by APT41."),
+        ("malware--sqluldr2", "SQLULDR2", "Utility used to export Oracle database content."),
+        ("malware--pinegrove", "PINEGROVE", "Command-line OneDrive uploader used for exfiltration."),
+    )
+    for malware_id, name, description in apt41_specs:
+        merge_malware(
+            apt41,
+            malware_id=malware_id,
+            name=name,
+            aliases=[],
+            platforms=["Windows"],
+            description=description,
+            first_observed=dust["first_observed"],
+            last_observed=dust["last_observed"],
+            evidence_refs=[MANDIANT_APT41_SOURCE["source_id"]],
+        )
+        dust.setdefault("malware_refs", []).append(malware_id)
+    dust["malware_refs"] = sorted(set(dust["malware_refs"]))
+    add_source_to_linked_victims(apt41, dust, MANDIANT_APT41_SOURCE["source_id"])
+
+    taiwan = find_activity(apt41, "activity--daily-7e72b05415dea6793880")
+    taiwan.update(
+        {
+            "name": "APT41、台湾の政府系研究機関1組織を侵害",
+            "description": (
+                "Cisco Talosは、2023年7月中旬から台湾の政府関連研究機関1組織で"
+                "観測された侵入を、中程度の確度でAPT41へ帰属した。攻撃者は"
+                "ShadowPadとCobalt Strikeに加え、Webシェルと独自ツールを使用した。"
+                "単一組織の事例であるためIncidentとして保持する。"
+            ),
+            "first_observed": time_point(
+                "2023-07-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2024-08-01T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "medium",
+            "stix_object_type": "incident",
+            "grouping_context": None,
+            "analyst_notes": (
+                "Cisco Talosの帰属確度（medium confidence）をそのまま反映。"
+                "公開日を侵入終期として扱っていない。"
+            ),
+        }
+    )
+    add_evidence(taiwan, CISCO_APT41_TAIWAN_SOURCE["source_id"])
+    add_source_to_linked_victims(
+        apt41, taiwan, CISCO_APT41_TAIWAN_SOURCE["source_id"]
+    )
+
+    merge_source(kimsuky, ZSCALER_TRANSLATEXT_SOURCE)
+    translatext = find_activity(kimsuky, "activity--daily-a75732bcf0cbd93ba89d")
+    translatext.update(
+        {
+            "first_observed": time_point(
+                "2024-03-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2024-03-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2024-06-27T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "Zscaler一次分析で2024年3月の観測、標的範囲、TRANSLATEXTの"
+                "情報窃取機能を確認。3月内の厳密な開始・終了日は未確定。"
+            ),
+        }
+    )
+    add_evidence(translatext, ZSCALER_TRANSLATEXT_SOURCE["source_id"])
+
+    for source in (CHECKMARX_MOONSTONE_SOURCE, MICROSOFT_MOONSTONE_SOURCE):
+        merge_source(moonstone, source)
+    merge_alias(
+        moonstone,
+        name="Storm-1789",
+        vendor="Microsoft Threat Intelligence",
+        source_ids=[MICROSOFT_MOONSTONE_SOURCE["source_id"]],
+        scope="exact",
+        note="Microsoft explicitly states that Moonstone Sleet was formerly Storm-1789.",
+    )
+    add_relationship(
+        moonstone,
+        source_slug="moonstone-sleet",
+        target_actor="Diamond Sleet",
+        relationship_type="overlaps-with",
+        description=(
+            "Microsoft observed strong initial code and tradecraft overlap with "
+            "Diamond Sleet, followed by Moonstone Sleet's shift to its own "
+            "infrastructure and concurrent, distinct operations."
+        ),
+        evidence_refs=[MICROSOFT_MOONSTONE_SOURCE["source_id"]],
+        note=(
+            "Historical operational overlap only; the source explicitly treats "
+            "Moonstone Sleet as a distinct actor, so this is not an exact alias."
+        ),
+    )
+    npm = find_activity(moonstone, "activity--daily-7319b51d47c031c67b7d")
+    npm.update(
+        {
+            "name": "Moonstone Sleet、悪性npmパッケージをLinux対応へ拡張",
+            "description": (
+                "Checkmarxは、Moonstone Sleetが2024年第1・第2四半期に公開npm"
+                "レジストリへ悪性パッケージを継続投入し、第2四半期には難読化と"
+                "Linux対応を追加したと報告した。Microsoftも、偽の技術課題として"
+                "悪性npmプロジェクトを配布し、SplitLoaderや資格情報窃取へつなげる"
+                "活動を観測している。"
+            ),
+            "first_observed": time_point(
+                "2024-01-01T00:00:00Z", "year", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2024-01-01T00:00:00Z", "year", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2024-06-13T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "四半期単位の記述を日付へ過剰変換せず、2024年内の活動としてyear精度"
+                "で保持。Jade Sleet等の別DPRKクラスタと同一主体とは扱わない。"
+            ),
+        }
+    )
+    for source_id in (
+        CHECKMARX_MOONSTONE_SOURCE["source_id"],
+        MICROSOFT_MOONSTONE_SOURCE["source_id"],
+    ):
+        add_evidence(npm, source_id)
+    fakepenny = find_activity(moonstone, "activity--daily-bf96dfd17fad7ae3914b")
+    fakepenny.update(
+        {
+            "name": "Moonstone Sleet、侵害済み企業へFakePennyランサムウェアを展開",
+            "description": (
+                "Microsoftは、Moonstone Sleetが2024年2月に侵害した企業へ同年4月、"
+                "独自のFakePennyランサムウェアを展開し660万米ドル相当のBitcoinを"
+                "要求したと報告した。FakePennyはローダーと暗号化機能で構成され、"
+                "Microsoftは金銭目的と評価している。"
+            ),
+            "first_observed": time_point(
+                "2024-04-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2024-04-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2024-05-28T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "ランサムウェア展開月を活動期間とし、先行侵害月はdescriptionへ分離。"
+            ),
+        }
+    )
+    add_evidence(fakepenny, MICROSOFT_MOONSTONE_SOURCE["source_id"])
+    moonstone_malware = (
+        (
+            "malware--splitloader",
+            "SplitLoader",
+            "Multi-stage loader delivered by trojanized PuTTY and malicious npm projects.",
+            time_point("2023-08-01T00:00:00Z", "month", "known", "source-stated"),
+            time_point(None),
+        ),
+        (
+            "malware--youieload",
+            "YouieLoad",
+            "Custom in-memory loader delivered with the DeTankWar game.",
+            time_point("2024-02-01T00:00:00Z", "month", "known", "source-stated"),
+            time_point("2024-05-01T00:00:00Z", "month", "known", "source-stated"),
+        ),
+        (
+            "malware--fakepenny",
+            "FakePenny",
+            "Custom Moonstone Sleet ransomware composed of a loader and encryptor.",
+            fakepenny["first_observed"],
+            fakepenny["last_observed"],
+        ),
+    )
+    for malware_id, name, description, first, last in moonstone_malware:
+        merge_malware(
+            moonstone,
+            malware_id=malware_id,
+            name=name,
+            aliases=[],
+            platforms=["Windows"],
+            description=description,
+            first_observed=first,
+            last_observed=last,
+            evidence_refs=[MICROSOFT_MOONSTONE_SOURCE["source_id"]],
+        )
+    npm["malware_refs"] = sorted(set(npm.get("malware_refs", [])) | {"malware--splitloader"})
+    fakepenny["malware_refs"] = sorted(
+        set(fakepenny.get("malware_refs", [])) | {"malware--fakepenny"}
+    )
+
+    merge_source(unc5221, ECLECTICIQ_UNC5221_SOURCE)
+    epmm = find_activity(unc5221, "activity--daily-fd8d76592cb438a30641")
+    epmm.update(
+        {
+            "name": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
+            "description": (
+                "EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させた"
+                "Ivanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、"
+                "北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを"
+                "介してSliverを展開し、AWS S3を配布基盤に使用した。"
+            ),
+            "first_observed": time_point(
+                "2025-05-15T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-05-21T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "EclecticIQ一次分析の帰属確度と開始日を採用。公開日を活動終期にしない。"
+            ),
+        }
+    )
+    add_evidence(epmm, ECLECTICIQ_UNC5221_SOURCE["source_id"])
+    for malware_id, name, description in (
+        ("malware--krustyloader", "KrustyLoader", "Rust-based loader used to deploy Sliver."),
+        ("malware--sliver", "Sliver", "Open-source command-and-control framework deployed after EPMM exploitation."),
+    ):
+        merge_malware(
+            unc5221,
+            malware_id=malware_id,
+            name=name,
+            aliases=[],
+            platforms=["Linux"],
+            description=description,
+            first_observed=epmm["first_observed"],
+            last_observed=epmm["last_observed"],
+            evidence_refs=[ECLECTICIQ_UNC5221_SOURCE["source_id"]],
+        )
+        epmm.setdefault("malware_refs", []).append(malware_id)
+    epmm["malware_refs"] = sorted(set(epmm["malware_refs"]))
+    add_source_to_linked_victims(unc5221, epmm, ECLECTICIQ_UNC5221_SOURCE["source_id"])
+
+    merge_source(unc5820, MANDIANT_UNC5820_SOURCE)
+    fortimanager = find_activity(unc5820, "activity--daily-6531aa0646bd2b399aec")
+    fortimanager.update(
+        {
+            "name": "UNC5820、FortiManager 50台超から構成情報を窃取",
+            "description": (
+                "Mandiantは、UNC5820がCVE-2024-47575を悪用し、50台超のFortiManager"
+                "機器を潜在的に侵害したと報告した。2024年6月27日と9月23日に同一"
+                "指標の悪用を観測し、管理対象FortiGateの構成とユーザー情報を"
+                "圧縮・流出させた。公開時点で横展開の証拠はなく、動機と所在も不明。"
+            ),
+            "first_observed": time_point(
+                "2024-06-27T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2024-09-23T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2024-10-23T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "Mandiantの直接観測日を期間に採用。構成情報の潜在的悪用と、未観測の"
+                "横展開を区別し、国家帰属や動機を補完していない。"
+            ),
+        }
+    )
+    add_evidence(fortimanager, MANDIANT_UNC5820_SOURCE["source_id"])
+    add_source_to_linked_victims(
+        unc5820, fortimanager, MANDIANT_UNC5820_SOURCE["source_id"]
+    )
+
+    for source in (GTIG_UNC6395_SOURCE, SALESLOFT_INCIDENT_SOURCE):
+        merge_source(unc6395, source)
+    drift = find_activity(unc6395, "activity--daily-75ed648ec068d5993ef2")
+    drift.update(
+        {
+            "name": "UNC6395、Salesloft Drift侵害から顧客SaaSデータ窃取へ展開",
+            "description": (
+                "SalesloftとMandiantの調査では、攻撃者が2025年3月22日から9月5日まで"
+                "Drift環境へ侵入し、GitHub PATによる偵察・リポジトリ取得、AWS環境への"
+                "アクセス、OAuthトークン窃取を行った。GTIGは8月8～18日に盗まれた"
+                "トークンでSalesforce顧客データを大量取得した活動をUNC6395として"
+                "追跡する。ShinyHuntersやScattered Spiderとの同一性は一次資料が"
+                "確定していないため本活動の帰属根拠には用いない。"
+            ),
+            "first_observed": time_point(
+                "2025-03-22T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2025-09-05T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2025-09-06T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "供給元の侵入期間はSalesloft、下流の大量窃取とUNC6395帰属はGTIGを"
+                "根拠とする。両資料の観測範囲を分けて記録した。"
+            ),
+        }
+    )
+    for source_id in (
+        GTIG_UNC6395_SOURCE["source_id"],
+        SALESLOFT_INCIDENT_SOURCE["source_id"],
+    ):
+        add_evidence(drift, source_id)
+        add_source_to_linked_victims(unc6395, drift, source_id)
+    theft = find_activity(unc6395, "activity--daily-8c3751b2994642569734")
+    theft.update(
+        {
+            "name": "UNC6395、盗難Drift OAuthトークンでSalesforceデータを大量窃取",
+            "first_observed": time_point(
+                "2025-08-08T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2025-08-18T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2025-08-26T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "GTIGがUNC6395として明示した8月8～18日の下流窃取期間に限定。"
+            ),
+        }
+    )
+    add_evidence(theft, GTIG_UNC6395_SOURCE["source_id"])
+    add_source_to_linked_victims(unc6395, theft, GTIG_UNC6395_SOURCE["source_id"])
+
+
+def fix_scattered_spider_primary_boundaries(profile: dict[str, Any]) -> None:
+    """Keep confirmed sector activity separate from unconfirmed victim attribution."""
+
+    for source in (
+        NCSC_UK_RETAIL_SOURCE,
+        MANDIANT_UNC3944_VSPHERE_SOURCE,
+        QANTAS_INCIDENT_SOURCE,
+        FBI_SCATTERED_SPIDER_SOURCE,
+    ):
+        merge_source(profile, source)
+
+    alias_note = (
+        "The joint advisory and Mandiant describe cross-vendor overlap; retain "
+        "separate collection boundaries instead of asserting universal identity."
+    )
+    for name, vendor in (
+        ("UNC3944", "Mandiant / FBI-CISA joint advisory"),
+        ("0ktapus", "FBI-CISA joint advisory"),
+        ("Scatter Swine", "FBI-CISA joint advisory"),
+        ("Muddled Libra", "FBI-CISA joint advisory"),
+    ):
+        merge_alias(
+            profile,
+            name=name,
+            vendor=vendor,
+            source_ids=[
+                FBI_SCATTERED_SPIDER_SOURCE["source_id"],
+                MANDIANT_UNC3944_VSPHERE_SOURCE["source_id"],
+            ],
+            scope="overlapping",
+            note=alias_note,
+        )
+
+    retail = find_activity(profile, "activity--daily-3614985905a497f6500b")
+    retail.update(
+        {
+            "name": "英国小売インシデント群とScattered Spider帰属の未確認関連",
+            "description": (
+                "2025年4～5月にMarks & Spencer、Co-op、Harrodsなど英国小売業で"
+                "インシデントが相次ぎ、報道ではScattered Spiderとの関連が論じられた。"
+                "しかし英国NCSCは2025年5月4日時点で、各事案が関連するか、単一の"
+                "攻撃者によるものかを判断できないと明記した。従って直接のCampaign"
+                "帰属ではなく、後続分析用のGroupingとして保持する。"
+            ),
+            "reported_at": time_point(
+                "2025-05-04T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "low",
+            "stix_object_type": "grouping",
+            "grouping_context": "suspicious-activity",
+            "analyst_notes": (
+                "NCSCの否定的境界を優先。企業間の時期・手口の近さは調査リードであり、"
+                "Scattered Spiderへの確定帰属または単一キャンペーンの根拠ではない。"
+            ),
+        }
+    )
+    add_evidence(retail, NCSC_UK_RETAIL_SOURCE["source_id"])
+
+    aviation = find_activity(profile, "activity--daily-483a8ab1bd549ba753ad")
+    profile["victim_cases"] = [
+        item
+        for item in profile.get("victim_cases", [])
+        if aviation["activity_id"] not in item.get("activity_refs", [])
+    ]
+    aviation.update(
+        {
+            "name": "UNC3944／Scattered Spider、航空・小売・保険を狙うvSphere侵入",
+            "description": (
+                "Mandiantは2025年半ば、UNC3944が小売、航空、保険組織を狙った"
+                "キャンペーンを実施したと報告した。攻撃者はヘルプデスクへの"
+                "ソーシャルエンジニアリングからActive Directory権限を取得し、"
+                "VMware vCenter／ESXiへ到達して防御を回避した。MandiantはUNC3944を"
+                "Scattered Spider等と重なるクラスタとして扱う。一次資料がこの"
+                "キャンペーンの被害者として明示しない企業名は関連づけない。"
+            ),
+            "first_observed": time_point(
+                "2025-01-01T00:00:00Z", "year", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-07-23T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "victim_refs": [],
+            "confidence": "high",
+            "analyst_notes": (
+                "Mandiantが明示したsector-level campaignのみを採用。WestJet、Hawaiian"
+                "等の個別帰属は本一次資料から確定できないため除外した。"
+            ),
+        }
+    )
+    add_evidence(aviation, MANDIANT_UNC3944_VSPHERE_SOURCE["source_id"])
+
+    canonical_qantas_id = "activity--daily-bd819e551e72e0636426"
+    for duplicate_id in (
+        "activity--daily-a97d2692a7a3198fb7f6",
+        "activity--daily-ed14eeec16626d49c2e3",
+    ):
+        remove_activity(profile, duplicate_id)
+    qantas = find_activity(profile, canonical_qantas_id)
+    qantas.update(
+        {
+            "name": "Qantas顧客プラットフォーム侵害とScattered Spider帰属の未確認関連",
+            "description": (
+                "Qantasは2025年7月2日、コールセンターで使用する第三者顧客サービス"
+                "基盤への侵入を公表し、約600万件の顧客サービスレコードが存在する"
+                "システムへのアクセスを確認した。氏名、メール、電話番号、生年月日、"
+                "会員番号等が含まれ得る一方、カード情報、金融情報、パスポート情報、"
+                "パスワード、PIN、ログイン情報は含まれないとした。Qantasの一次発表は"
+                "攻撃者をScattered Spiderへ帰属していないため、関連候補をGroupingで"
+                "保持し、直接のactor-victim関係は作らない。"
+            ),
+            "first_observed": time_point(None),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-07-02T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "low",
+            "stix_object_type": "grouping",
+            "grouping_context": "suspicious-activity",
+            "analyst_notes": (
+                "Qantas一次発表はインシデントと影響範囲のみを裏づける。アクター帰属は"
+                "二次報道上の調査リードとして残し、確定Incidentとして出力しない。"
+            ),
+        }
+    )
+    add_evidence(qantas, QANTAS_INCIDENT_SOURCE["source_id"])
+    qantas_victims = [
+        item
+        for item in profile.get("victim_cases", [])
+        if canonical_qantas_id in item.get("activity_refs", [])
+    ]
+    if qantas_victims:
+        victim = qantas_victims[0]
+        victim.update(
+            {
+                "name": "被害事例: Qantas第三者顧客サービス基盤侵害",
+                "victim_name": "Qantas",
+                "disclosure_status": "named",
+                "victim_type": "organization",
+                "description": qantas["description"],
+                "reported_at": qantas["reported_at"],
+                "confidence": "high",
+                "evidence_refs": [QANTAS_INCIDENT_SOURCE["source_id"]],
+                "analyst_notes": (
+                    "被害事象はQantas一次発表で確認。Scattered Spiderへの帰属は"
+                    "確認されていないため、被害者オブジェクト自体に帰属を含めない。"
+                ),
+            }
+        )
+
+
+def fix_react2shell_cluster_boundary(
+    unc5174: dict[str, Any], cl_sta_1015: dict[str, Any]
+) -> None:
+    for profile in (unc5174, cl_sta_1015):
+        merge_source(profile, UNIT42_REACT2SHELL_SOURCE)
+        merge_source(profile, GTIG_REACT2SHELL_SOURCE)
+    alias_note = (
+        "Unit 42 writes CL-STA-1015 (aka UNC5174), but this is a cross-vendor "
+        "cluster mapping. It is retained as overlapping until scope stability is "
+        "independently confirmed."
+    )
+    merge_alias(
+        unc5174,
+        name="CL-STA-1015",
+        vendor="Palo Alto Networks Unit 42",
+        source_ids=[UNIT42_REACT2SHELL_SOURCE["source_id"]],
+        scope="overlapping",
+        note=alias_note,
+    )
+    merge_alias(
+        cl_sta_1015,
+        name="UNC5174",
+        vendor="Palo Alto Networks Unit 42 / Google Threat Intelligence Group",
+        source_ids=[UNIT42_REACT2SHELL_SOURCE["source_id"]],
+        scope="overlapping",
+        note=alias_note,
+    )
+    relationship_description = (
+        "Unit 42 maps its CL-STA-1015 activity cluster to UNC5174; the mapping is "
+        "preserved as a cross-taxonomy overlap rather than a global exact identity."
+    )
+    for profile, slug, target in (
+        (unc5174, "unc5174", "CL-STA-1015"),
+        (cl_sta_1015, "cl-sta-1015", "UNC5174"),
+    ):
+        add_relationship(
+            profile,
+            source_slug=slug,
+            target_actor=target,
+            relationship_type="taxonomy-overlaps-with",
+            description=relationship_description,
+            evidence_refs=[UNIT42_REACT2SHELL_SOURCE["source_id"]],
+            note=alias_note,
+            confidence="medium",
+        )
+        boundary = (
+            "React2Shell reporting contains multiple actor clusters. Unit 42 maps "
+            "CL-STA-1015 to UNC5174, while GTIG separately tracks a SNOWLIGHT-using "
+            "cluster as UNC6586; malware reuse alone must not merge those clusters."
+        )
+        if boundary not in profile["assessment"].setdefault("uncertainties", []):
+            profile["assessment"]["uncertainties"].append(boundary)
+
+    react = find_activity(unc5174, "activity--daily-cdb2b24b57d09645a48d")
+    unc5174["victim_cases"] = [
+        item
+        for item in unc5174.get("victim_cases", [])
+        if react["activity_id"] not in item.get("activity_refs", [])
+    ]
+    react.update(
+        {
+            "name": "CL-STA-1015／UNC5174と整合するReact2Shell後続活動",
+            "description": (
+                "Unit 42はReact2Shell（CVE-2025-55182）悪用後、CL-STA-1015と"
+                "高い確度で整合する活動を観測した。攻撃者はcurl/wgetでsltシェル"
+                "スクリプトをファイルレス実行し、SNOWLIGHTとVShellを展開した。"
+                "React2Shell全体の侵害数や脆弱ホスト数は複数主体を含むため、この"
+                "クラスタ固有の被害数・標的としては記録しない。"
+            ),
+            "first_observed": time_point(None),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-12-12T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "target_refs": [],
+            "victim_refs": [],
+            "confidence": "medium",
+            "stix_object_type": "grouping",
+            "grouping_context": "suspicious-activity",
+            "analyst_notes": (
+                "Unit 42の直接観測は強いが、広域スキャン・30組織侵害・7.7万IP等を"
+                "UNC5174単独へ割り当てる根拠はない。GTIGの別クラスタUNC6586も考慮。"
+            ),
+        }
+    )
+    for source_id in (
+        UNIT42_REACT2SHELL_SOURCE["source_id"],
+        GTIG_REACT2SHELL_SOURCE["source_id"],
+    ):
+        add_evidence(react, source_id)
+    for malware_id, name, description in (
+        ("malware--snowlight", "SNOWLIGHT", "Linux dropper used to retrieve follow-on malware including VShell."),
+        ("malware--vshell", "VShell", "Remote access trojan deployed after SNOWLIGHT."),
+    ):
+        merge_malware(
+            unc5174,
+            malware_id=malware_id,
+            name=name,
+            aliases=[],
+            platforms=["Linux"],
+            description=description,
+            first_observed=time_point(None),
+            last_observed=time_point(None),
+            evidence_refs=[UNIT42_REACT2SHELL_SOURCE["source_id"]],
+        )
+        react.setdefault("malware_refs", []).append(malware_id)
+    react["malware_refs"] = sorted(set(react["malware_refs"]))
+
+
+def fix_new_actor_links_and_activity(
+    breeze: dict[str, Any],
+    storm1849: dict[str, Any],
+    storm2603: dict[str, Any],
+    zirconium: dict[str, Any],
+) -> None:
+    """Add current primary-source activity and explicit cross-taxonomy links."""
+
+    breeze_source_id = "source--breeze-comet--gtig-brazil-2026"
+    for target in ("Plump Spider", "SHADOW-AETHER-064"):
+        add_relationship(
+            breeze,
+            source_slug="breeze-comet",
+            target_actor=target,
+            relationship_type="overlaps-with",
+            description=(
+                "GTIG states that BREEZE COMET activity overlaps operations "
+                f"publicly reported as {target}."
+            ),
+            evidence_refs=[breeze_source_id],
+            note=(
+                "Operational overlap only; the cited primary source does not "
+                "establish exact actor identity and the original external report "
+                "has not been independently verified."
+            ),
+            confidence="medium",
+        )
+    for source in breeze.get("sources", []):
+        if source.get("source_id") == breeze_source_id:
+            source["actor_scope"] = "direct"
+            source["claims_supported"] = sorted(
+                set(source.get("claims_supported", []))
+                | {"activity", "identity", "alias", "relationship", "capability", "targeting", "ttp", "ioc"}
+            )
+
+    for source in (CISCO_ARCANEDOOR_SOURCE, CISCO_FIRESTARTER_SOURCE):
+        merge_source(storm1849, source)
+    merge_alias(
+        storm1849,
+        name="UAT4356",
+        vendor="Cisco Talos / Microsoft Threat Intelligence",
+        source_ids=[CISCO_ARCANEDOOR_SOURCE["source_id"]],
+        scope="exact",
+        note=(
+            "Cisco states that the actor it tracks as UAT4356 is tracked by "
+            "Microsoft as Storm-1849. Exactness is scoped to that explicit mapping."
+        ),
+    )
+    arcanedoor = find_activity(storm1849, "activity--daily-1baaec4e789e123f6605")
+    arcanedoor.update(
+        {
+            "name": "UAT4356／Storm-1849によるArcaneDoor作戦",
+            "description": (
+                "Cisco Talosは、UAT4356（Microsoft: Storm-1849）が世界各地の政府"
+                "ネットワークにあるCisco ASAを狙った諜報作戦ArcaneDoorを報告した。"
+                "主活動は2023年12月～2024年1月で、Line DancerとLine Runnerを用いて"
+                "設定変更、偵察、通信取得・流出、永続化を行った。"
+            ),
+            "first_observed": time_point(
+                "2023-12-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "last_observed": time_point(
+                "2024-01-01T00:00:00Z", "month", "known", "source-stated"
+            ),
+            "reported_at": time_point(
+                "2024-04-24T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "confidence": "high",
+            "analyst_notes": (
+                "Cisco一次分析が明示する主活動期間と高確度の国家支援評価を採用。"
+            ),
+        }
+    )
+    add_evidence(arcanedoor, CISCO_ARCANEDOOR_SOURCE["source_id"])
+    for malware_id, name, description in (
+        ("malware--line-dancer", "Line Dancer", "Memory-resident shellcode interpreter used on Cisco ASA devices."),
+        ("malware--line-runner", "Line Runner", "Persistent Lua-based backdoor used on Cisco ASA devices."),
+    ):
+        merge_malware(
+            storm1849,
+            malware_id=malware_id,
+            name=name,
+            aliases=[],
+            platforms=["Network Device"],
+            description=description,
+            first_observed=arcanedoor["first_observed"],
+            last_observed=arcanedoor["last_observed"],
+            evidence_refs=[CISCO_ARCANEDOOR_SOURCE["source_id"]],
+        )
+        arcanedoor.setdefault("malware_refs", []).append(malware_id)
+    arcanedoor["malware_refs"] = sorted(set(arcanedoor["malware_refs"]))
+
+    firestarter_id = "activity--storm-1849--firestarter-2026"
+    firestarter = {
+        "activity_id": firestarter_id,
+        "name": "UAT4356、Cisco FirepowerへFIRESTARTERを展開",
+        "activity_type": "malware-campaign",
+        "first_observed": time_point(None),
+        "last_observed": time_point(None),
+        "reported_at": time_point(
+            "2026-04-23T00:00:00Z", "day", "known", "source-publication"
+        ),
+        "description": (
+            "Cisco Talosは、UAT4356がCisco Firepower/FXOS機器を継続的に標的とし、"
+            "CVE-2025-20333とCVE-2025-20362を悪用して独自バックドアFIRESTARTERを"
+            "展開したと報告した。FIRESTARTERはLINAプロセス内で任意コードを実行し、"
+            "CSP_MOUNT_LISTを改変して再起動をまたぐ永続化を行う。"
+        ),
+        "target_refs": [],
+        "malware_refs": ["malware--firestarter"],
+        "infrastructure_refs": [],
+        "confidence": "high",
+        "evidence_refs": [CISCO_FIRESTARTER_SOURCE["source_id"]],
+        "analyst_notes": (
+            "Ciscoはcontinued active targetingとするが観測開始・終了日は明示しないため"
+            "期間はunknown、公開日はreported_atにのみ設定した。"
+        ),
+        "ttp_refs": [],
+        "victim_refs": [],
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": None,
+    }
+    upsert_activity(storm1849, firestarter)
+    merge_malware(
+        storm1849,
+        malware_id="malware--firestarter",
+        name="FIRESTARTER",
+        aliases=[],
+        platforms=["Network Device"],
+        description=(
+            "Custom UAT4356 backdoor executing inside Cisco LINA and persisting "
+            "through CSP_MOUNT_LIST manipulation."
+        ),
+        first_observed=time_point(None),
+        last_observed=time_point(None),
+        evidence_refs=[CISCO_FIRESTARTER_SOURCE["source_id"]],
+    )
+
+    for source in (MICROSOFT_TOOLSHELL_SOURCE, MICROSOFT_STORM2603_PARALLEL_SOURCE):
+        merge_source(storm2603, source)
+    toolshell = find_activity(storm2603, "activity--daily-b80b607914fb7f62f988")
+    storm2603["victim_cases"] = [
+        item
+        for item in storm2603.get("victim_cases", [])
+        if toolshell["activity_id"] not in item.get("activity_refs", [])
+    ]
+    toolshell.update(
+        {
+            "name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
+            "description": (
+                "Microsoftは、Storm-2603が2025年7月18日以降、オンプレミス"
+                "SharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、"
+                "グループポリシーでWarlockランサムウェアを展開したと報告した。"
+                "同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、"
+                "個別被害組織をStorm-2603へ一括帰属しない。"
+            ),
+            "first_observed": time_point(
+                "2025-07-18T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-07-22T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "target_refs": [],
+            "victim_refs": [],
+            "confidence": "high",
+            "analyst_notes": (
+                "MicrosoftがStorm-2603固有として記述した侵入チェーンだけを保持。"
+                "NNSAその他の個別被害者は同クラスタへの帰属が明示されないため除外。"
+            ),
+        }
+    )
+    toolshell["evidence_refs"] = [MICROSOFT_TOOLSHELL_SOURCE["source_id"]]
+    remove_activity(storm2603, "activity--daily-aacbe5410f1223b930a5")
+    remove_activity(storm2603, "activity--daily-e8fd6208405a17b2c79d")
+    merge_malware(
+        storm2603,
+        malware_id="malware--warlock-ransomware",
+        name="Warlock ransomware",
+        aliases=["Warlock"],
+        platforms=["Windows"],
+        description="Ransomware deployed by Storm-2603 after ToolShell exploitation.",
+        first_observed=toolshell["first_observed"],
+        last_observed=toolshell["last_observed"],
+        evidence_refs=[MICROSOFT_TOOLSHELL_SOURCE["source_id"]],
+    )
+    toolshell["malware_refs"] = sorted(
+        set(toolshell.get("malware_refs", [])) | {"malware--warlock-ransomware"}
+    )
+    parallel_id = "activity--storm-2603--parallel-intrusion-2026"
+    upsert_activity(
+        storm2603,
+        {
+            "activity_id": parallel_id,
+            "name": "Storm-2603と無関係な第2主体が同居した並行侵入事例",
+            "activity_type": "intrusion",
+            "first_observed": time_point(None),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2026-06-22T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "description": (
+                "Microsoft DARTは、一つの被害環境でStorm-2603と無関係な第2主体が"
+                "並行して活動した事例を報告した。Storm-2603側はSharePointを探索し、"
+                "Velociraptor、Cloudflare Tunnel、Zoho Assist、VS Code経由SSHなどを"
+                "用いて権限・永続性・遠隔アクセスを確保した。別主体のDLLサイド"
+                "ローディングや独自バックドアはStorm-2603の能力として扱わない。"
+            ),
+            "target_refs": [],
+            "malware_refs": [],
+            "infrastructure_refs": [],
+            "confidence": "high",
+            "evidence_refs": [MICROSOFT_STORM2603_PARALLEL_SOURCE["source_id"]],
+            "analyst_notes": (
+                "同一被害環境と時間的重複はactor relationshipを意味しない。"
+                "Microsoftがunrelatedと明記した境界を保持する。"
+            ),
+            "ttp_refs": [],
+            "victim_refs": [],
+            "stix_object_type": "incident",
+            "activity_refs": [],
+            "grouping_context": None,
+        },
+    )
+
+    merge_source(zirconium, MICROSOFT_TOOLSHELL_SOURCE)
+    remove_activity(zirconium, "activity--daily-f8164c2182ec1f2d8e79")
+    violet = find_activity(zirconium, "activity--daily-f1508e67055f2e956163")
+    zirconium["victim_cases"] = [
+        item
+        for item in zirconium.get("victim_cases", [])
+        if violet["activity_id"] not in item.get("activity_refs", [])
+    ]
+    violet.update(
+        {
+            "name": "Violet Typhoon、オンプレミスSharePointのToolShellを悪用",
+            "description": (
+                "Microsoftは、Violet Typhoon（ZIRCONIUM/APT31）が2025年7月7日頃から"
+                "オンプレミスSharePointの脆弱性を悪用したと報告した。同じ脆弱性は"
+                "Linen TyphoonとStorm-2603にも別個に悪用されており、NNSAを含む"
+                "個別被害組織をViolet Typhoonへ一括帰属する根拠は示されていない。"
+            ),
+            "first_observed": time_point(
+                "2025-07-07T00:00:00Z", "day", "known", "source-stated"
+            ),
+            "last_observed": time_point(None),
+            "reported_at": time_point(
+                "2025-07-22T00:00:00Z", "day", "known", "source-publication"
+            ),
+            "target_refs": [],
+            "victim_refs": [],
+            "confidence": "high",
+            "evidence_refs": [MICROSOFT_TOOLSHELL_SOURCE["source_id"]],
+            "analyst_notes": (
+                "MicrosoftがViolet Typhoonへ帰属した活動範囲に限定。複数主体が同じ"
+                "脆弱性を悪用したため、共通IOCだけで各被害を再帰属しない。"
+            ),
+        }
+    )
 
 
 def update_daily_review_state(profiles_root: Path, decisions_path: Path) -> None:
@@ -2223,6 +3534,19 @@ def main() -> int:
         "unc6671",
         "unc2286",
         "salt-typhoon",
+        "apt29",
+        "apt41",
+        "moonstone-sleet",
+        "scattered-spider",
+        "breeze-comet",
+        "unc5174",
+        "cl-sta-1015",
+        "unc5221",
+        "unc5820",
+        "unc6395",
+        "storm-1849",
+        "storm-2603",
+        "zirconium",
     ):
         profiles[slug] = load_json(args.profiles_root / slug / "actor-profile.json")
 
@@ -2254,6 +3578,25 @@ def main() -> int:
         profiles["salt-typhoon"],
     )
     fix_ta406_konni_boundary(profiles["ta406"], profiles["konni"])
+    fix_reviewed_primary_activity_evidence(
+        profiles["apt29"],
+        profiles["apt41"],
+        profiles["kimsuky"],
+        profiles["moonstone-sleet"],
+        profiles["unc5221"],
+        profiles["unc5820"],
+        profiles["unc6395"],
+    )
+    fix_scattered_spider_primary_boundaries(profiles["scattered-spider"])
+    fix_react2shell_cluster_boundary(
+        profiles["unc5174"], profiles["cl-sta-1015"]
+    )
+    fix_new_actor_links_and_activity(
+        profiles["breeze-comet"],
+        profiles["storm-1849"],
+        profiles["storm-2603"],
+        profiles["zirconium"],
+    )
 
     for slug, profile in profiles.items():
         profile["actor"]["aliases"].sort(
@@ -2274,7 +3617,7 @@ def main() -> int:
             {
                 "profiles_updated": sorted(profiles),
                 "removed_false_activity": VANILLA_FALSE_ACTIVITY_ID,
-                "primary_sources_added": 14,
+                "primary_sources_added": 34,
             },
             ensure_ascii=False,
         )

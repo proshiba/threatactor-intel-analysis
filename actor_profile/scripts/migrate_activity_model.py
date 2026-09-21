@@ -11,6 +11,7 @@ from typing import Any
 
 from common import load_json, unknown_time, write_json_atomic
 from activity_diamond import SCHEMA_VERSION, materialize_profile_diamonds
+from stix_modeling import apply_activity_modeling_defaults
 
 
 PUBLICATION_BASIS = re.compile(
@@ -78,6 +79,7 @@ def migrate(profile: dict[str, Any]) -> tuple[dict[str, Any], bool]:
         if item.get("activity_id")
     }
     for activity in activities:
+        changed = apply_activity_modeling_defaults(activity) or changed
         for field in ("ttp_refs", "victim_refs"):
             if field not in activity:
                 activity[field] = []

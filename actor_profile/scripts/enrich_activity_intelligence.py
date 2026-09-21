@@ -1359,6 +1359,9 @@ def add_mitre_campaigns(
                 "activity_id": f"activity--mitre-campaign--{digest}",
                 "name": campaign.get("name", campaign.get("external_id", "Campaign")),
                 "activity_type": "campaign",
+                "stix_object_type": "campaign",
+                "grouping_context": None,
+                "activity_refs": [],
                 "first_observed": (
                     {
                         "value": campaign["first_seen"],

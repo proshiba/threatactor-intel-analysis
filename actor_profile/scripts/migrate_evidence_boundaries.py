@@ -336,6 +336,9 @@ def fix_invisimole_primary_evidence(profile: dict[str, Any]) -> None:
             "activity_id": activity_id,
             "name": "InvisiMoleによる東欧の軍事・外交組織へのスパイ活動",
             "activity_type": "cyber-espionage",
+            "stix_object_type": "campaign",
+            "grouping_context": None,
+            "activity_refs": [],
             "first_observed": time_point(
                 "2019-10-01T00:00:00Z", "month", "known", "source-stated"
             ),
@@ -517,6 +520,9 @@ def fix_konni_primary_evidence(profile: dict[str, Any]) -> None:
             "activity_id": "activity--konni-fractured-statue-2019",
             "name": "Fractured Statueキャンペーン",
             "activity_type": "phishing-campaign",
+            "stix_object_type": "campaign",
+            "grouping_context": None,
+            "activity_refs": [],
             "first_observed": time_point(
                 "2019-07-01T00:00:00Z", "month", "known", "source-stated"
             ),
@@ -710,6 +716,9 @@ def fix_nettraveler_primary_evidence(profile: dict[str, Any]) -> None:
             "activity_id": "activity--nettraveler-red-star-2004-2013",
             "name": "NetTraveler／Red Starサイバースパイ活動",
             "activity_type": "cyber-espionage",
+            "stix_object_type": "campaign",
+            "grouping_context": None,
+            "activity_refs": [],
             "first_observed": time_point(
                 "2004-01-01T00:00:00Z", "year", "known", "source-stated"
             ),

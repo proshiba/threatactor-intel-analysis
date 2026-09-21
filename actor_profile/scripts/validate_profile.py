@@ -142,8 +142,8 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     missing = required - set(profile)
     for key in sorted(missing):
         issue(issues, "error", "$", f"missing top-level field: {key}")
-    if profile.get("schema_version") != "1.2.0":
-        issue(issues, "error", "$.schema_version", "expected 1.2.0")
+    if profile.get("schema_version") != "1.3.0":
+        issue(issues, "error", "$.schema_version", "expected 1.3.0")
     if not re.match(r"^actor--[a-z0-9][a-z0-9-]*$", profile.get("profile_id", "")):
         issue(issues, "error", "$.profile_id", "invalid profile ID")
 
@@ -224,6 +224,31 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     target_ids = check_unique_ids(target_items, "id", "$.targets.*", issues)
 
     for index, activity in enumerate(activities):
+        stix_type = activity.get("stix_object_type")
+        if stix_type not in {"campaign", "incident", "grouping"}:
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].stix_object_type",
+                "must explicitly be campaign, incident, or grouping",
+            )
+        grouping_context = activity.get("grouping_context")
+        if stix_type == "grouping" and grouping_context not in {
+            "suspicious-activity", "malware-analysis", "unspecified"
+        }:
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].grouping_context",
+                "Grouping requires an explicit STIX grouping context",
+            )
+        if stix_type != "grouping" and grouping_context is not None:
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].grouping_context",
+                "non-Grouping activity must use null grouping_context",
+            )
         validate_observation_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
         validate_observation_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
         validate_time(activity.get("reported_at"), f"$.activities[{index}].reported_at", issues)
@@ -240,6 +265,11 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in activity.get("victim_refs", []):
             if ref not in victim_ids:
                 issue(issues, "error", f"$.activities[{index}].victim_refs", f"dangling victim reference: {ref}")
+        for ref in activity.get("activity_refs", []):
+            if ref not in activity_ids:
+                issue(issues, "error", f"$.activities[{index}].activity_refs", f"dangling activity reference: {ref}")
+            if ref == activity.get("activity_id"):
+                issue(issues, "error", f"$.activities[{index}].activity_refs", "activity cannot contain itself")
         if not isinstance(activity.get("diamond_model"), dict):
             issue(
                 issues,

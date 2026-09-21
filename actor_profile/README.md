@@ -86,6 +86,9 @@ python3 actor_profile/scripts/validate_profile.py \
   --artifacts profiles/actor-name/artifacts.csv \
   --stix profiles/actor-name/generated/profile.stix2.json \
   --strict
+
+# OpenCTI ImportFileStix向けのアクター別・Activity別Bundleを全件生成
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 ```
 
 実際には、CodexのバンドルPythonを使うとPDF・XLSX取込も有効になります。
@@ -109,10 +112,14 @@ ZIP、RAR、7z、実行ファイル、DLL、マルウェアサンプルは開き
 詳細な規約は[RULES.md](RULES.md)を参照してください。
 自動生成・エージェント更新時の禁止事項と判断手順は
 [GENERATION_RULES.md](GENERATION_RULES.md)を必ず併読してください。
+Campaign / Incident / Grouping、Infrastructure、Observable、時刻相関、Source Reportの
+OpenCTI取込判断は[OPENCTI_INGESTION_RULES.md](OPENCTI_INGESTION_RULES.md)を正とします。
 
 既存profileに旧生成ロジック由来のcountry→state→espionage推定が残っている場合は、
 `python3 actor_profile/scripts/migrate_generated_attribution.py --apply`を使用します。
 このmigrationは定型的な旧自動生成値だけを対象にし、手動attributionや日次Activity、IOC等は保持します。
+ActivityのSTIX entity種別を明示する移行は
+`python3 actor_profile/scripts/migrate_stix_modeling.py --apply`を使用します。
 
 ## 全アクターの一括処理
 
@@ -150,6 +157,9 @@ python3 actor_profile/scripts/apply_alias_overlap_relationships.py
 
 # 既存のIOC/artifactを使って再レンダリング・再検証のみ
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+
+# OpenCTI取込用STIXをアクター別・Activity別に分割して生成
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 
 # Activity、TTP、被害事例、標的の参照から活動別Diamond Modelを再生成
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply

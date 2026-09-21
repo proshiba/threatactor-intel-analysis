@@ -78,6 +78,12 @@ Activityは`first_observed`、`last_observed`に加えて`reported_at`を必ず�
 マルウェア期間集計と並び替えには`reported_at`を使用しない。報告日は活動時期不明の
 理由を明示する補助表示に限り、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
 
+Activityは`activity_type`とは別に、STIX entity境界を明示する`stix_object_type`を必ず持つ。
+値は`campaign`、`incident`、`grouping`のいずれかとする。`intrusion`等の意味ラベルだけから
+全件をCampaignへ変換してはいけない。Groupingは`grouping_context`と`activity_refs`を持ち、
+包含されたオブジェクト間のRelationshipを暗黙に主張しない。詳細な判断と時間相関規則は
+[OPENCTI_INGESTION_RULES.md](OPENCTI_INGESTION_RULES.md)を正とする。
+
 Activityは`ttp_refs`と`victim_refs`も必ず持つ。参照先が判明しない場合は空配列にする。
 TTP・マルウェア・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
 利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ
@@ -415,7 +421,7 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 - Tool: `tool`
 - Infrastructure: `infrastructure`
 - TTP: `attack-pattern`
-- Activity: `campaign`
+- Activity: 明示した`stix_object_type`に従い`campaign`、`incident`、`grouping`
 - Targets/attribution organizations: `identity`
 - IOC: `indicator`
 - 観測: `observed-data`と`note`、またはIndicatorの外部参照
@@ -426,6 +432,33 @@ STIXに直接表しにくい精度、証拠、自由記述は`x_`カスタムプ
 `artifacts.csv`の非IOC artifactは、該当するSCOへ安全に変換できる場合だけSTIXへ含める。
 変換できないコマンドや文字列は、STIX `artifact` SCOへ無理に格納せず、`note`または
 カスタムプロパティで参照する。
+
+### 11.1 OpenCTI取込用Bundle
+
+OpenCTI向け出力は`opencti/actors/`のアクター単位Bundle、
+`opencti/campaigns/<actor>/`のCampaign Bundle、`opencti/activities/<actor>/`の
+Incident/Grouping Bundleへ分割する。
+
+- Actor BundleはActivityを含めず、アクター全体の知識とActivity未割当IOCを保持する。
+- 各Activity Bundleは主となるCampaign/Incident/Groupingを明示し、同じ活動へ明示参照されたオブジェクトだけを
+  含める。アクター一般の利用実績から活動別マルウェア、TTP、標的を補完しない。
+- 各Bundleは`created_by_ref`、Relationshipの両端、Reportの`object_refs`をBundle内で解決し、
+  標準TLP marking以外の参照切れを許可しない。
+- Reportの`object_refs`にはRelationshipも含め、OpenCTI上で知識コンテナとして確認できるようにする。
+- 国・地域は`Location`、産業・役割は`identity_class: class`の`Identity`へ変換する。
+- 国は`reference/opencti-country-index.json`で固定したOpenCTI公式Countryの英語名、
+  ISO 3166-1 alpha-3コード、座標、aliasへ照合する。一致しない国コードは推測しない。
+  公式IDは参照値として保持する。actor-specificな標的説明と出典は、重複排除される
+  Country本体ではなく、そのCountryを対象とするRelationshipへ移す。
+- アクター関係の対象をcanonical名、Profile ID、根拠付き`exact` aliasで一意に解決できない場合、
+  新しいIntrusion Setを推測生成しない。元関係は`Note`とmanifestへ残す。
+- Activity割当済みIOCは該当Activity Bundleへ、未割当IOCはActor Bundleへ収録する。
+- Network Observableは値ごとの安定SCOとして出力し、明示的な`infrastructure_refs`がある場合だけ
+  Infrastructureから`consists-of`を結ぶ。実観測日時がないRelationshipへ公開日由来の
+  `start_time`/`stop_time`を付けない。
+- 公開日が判明するSourceは原典Reportとして`Report.published`を保持する。公開日不明のSourceへ
+  profile更新日時等を代入しない。
+- OpenCTI既定の50 MiB取込上限を下回るよう、生成時の上限は45 MiBとする。
 
 ## 12. 検証の重大度
 

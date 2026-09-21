@@ -155,6 +155,10 @@ class EntityBoundaryTests(unittest.TestCase):
             activity_names,
         )
         self.assertIn(
+            "Violet Typhoon、オンプレミスSharePointのToolShellを悪用",
+            activity_names,
+        )
+        self.assertNotIn(
             "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
             activity_names,
         )
@@ -163,7 +167,7 @@ class EntityBoundaryTests(unittest.TestCase):
         }
         self.assertIn("非営利・市民社会", sector_names)
         victim_names = {item["name"] for item in zirconium["victim_cases"]}
-        self.assertIn(
+        self.assertNotIn(
             "被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
             victim_names,
         )

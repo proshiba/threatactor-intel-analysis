@@ -213,6 +213,10 @@ lifecycle claim 1件だけを保持し、現行コレクション集計から除
 - [ ] state-sponsoredをespionageへ変換していない
 - [ ] vendor/productをadversaryへ変換していない
 - [ ] software/campaign/organizationをactorとして新設していない
+- [ ] ActivityごとにCampaign / Incident / Groupingを明示し、全件Campaign化していない
+- [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
+- [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
+- [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
 - [ ] alias一致だけでexact identityにしていない
 - [ ] unresolved/partial claimを確定値へ昇格していない
 - [ ] actor-specific evidence_refが重要主張に付いている
@@ -230,6 +234,7 @@ python3 actor_profile/scripts/materialize_actor_census.py
 
 # 旧生成ルールで既存profileへ入った地理由来のstate/espionage等だけを安全に移行
 python3 actor_profile/scripts/migrate_generated_attribution.py --apply
+python3 actor_profile/scripts/migrate_stix_modeling.py --apply
 
 # 新規profileをbootstrapする場合のみ使用（既存profileの一括overwriteは禁止）
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
@@ -245,6 +250,7 @@ python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+python3 actor_profile/scripts/build_opencti_bundles.py --prune
 python3 actor_profile/scripts/build_tidal_activity_index.py
 python3 actor_profile/scripts/build_actor_research_dossiers.py
 

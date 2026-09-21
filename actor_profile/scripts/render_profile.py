@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from common import load_json, stable_digest, write_json_atomic
+from stix_modeling import activity_stix_object_type
 
 
 TLP_CLEAR = "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
@@ -606,6 +607,42 @@ def external_refs(
     return result
 
 
+def relationship_time_properties(
+    first_observed: dict[str, Any] | None,
+    last_observed: dict[str, Any] | None,
+    reported_at: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Preserve temporal provenance without treating publication as validity."""
+
+    if (
+        not (first_observed or {}).get("value")
+        and not (last_observed or {}).get("value")
+        and reported_at is None
+    ):
+        return {}
+    first = first_observed or {}
+    last = last_observed or {}
+    result: dict[str, Any] = {
+        "x_first_observed": first,
+        "x_last_observed": last,
+        "x_temporal_basis": {
+            "first": first.get("basis", "not-stated"),
+            "last": last.get("basis", "not-stated"),
+            "first_precision": first.get("precision", "unknown"),
+            "last_precision": last.get("precision", "unknown"),
+        },
+    }
+    if reported_at is not None:
+        result["x_reported_at"] = reported_at
+    first_value = first.get("value")
+    last_value = last.get("value")
+    if first_value:
+        result["start_time"] = first_value
+    if last_value and (not first_value or last_value > first_value):
+        result["stop_time"] = last_value
+    return result
+
+
 def render_stix(
     profile: dict[str, Any],
     iocs: dict[str, Any] | None,
@@ -688,29 +725,48 @@ def render_stix(
             objects.append(obj)
             object_id_by_profile_id[item["id"]] = obj["id"]
 
+    deferred_groupings: list[dict[str, Any]] = []
     for activity in profile["activities"]:
+        stix_kind = activity_stix_object_type(activity)
+        object_id_by_profile_id[activity["activity_id"]] = stix_id(
+            stix_kind, activity["activity_id"]
+        )
+        if stix_kind == "grouping":
+            deferred_groupings.append(activity)
+            continue
+        temporal = {
+            "x_first_observed": activity["first_observed"],
+            "x_last_observed": activity["last_observed"],
+            "x_reported_at": activity["reported_at"],
+        }
+        if stix_kind == "campaign":
+            temporal.update(
+                {
+                    "first_seen": activity["first_observed"].get("value"),
+                    "last_seen": activity["last_observed"].get("value"),
+                }
+            )
         obj = stix_base(
-            "campaign",
+            stix_kind,
             activity["activity_id"],
             now,
             {
                 "name": activity["name"],
                 "description": activity["description"],
-                "first_seen": activity["first_observed"].get("value"),
-                "last_seen": activity["last_observed"].get("value"),
                 "external_references": external_refs(activity["evidence_refs"], source_by_id),
                 "x_profile_object_id": activity["activity_id"],
+                "x_activity_type": activity["activity_type"],
+                "x_stix_object_type": stix_kind,
                 "x_confidence": activity["confidence"],
                 "x_analyst_notes": activity.get("analyst_notes", ""),
-                "x_reported_at": activity["reported_at"],
                 "x_diamond_model": activity["diamond_model"],
+                **temporal,
             },
         )
         for key in ("first_seen", "last_seen"):
-            if obj[key] is None:
-                del obj[key]
+            if obj.get(key) is None:
+                obj.pop(key, None)
         objects.append(obj)
-        object_id_by_profile_id[activity["activity_id"]] = obj["id"]
 
     for category in ("countries", "regions", "sectors", "roles"):
         for target in profile["targets"][category]:
@@ -798,12 +854,58 @@ def render_stix(
         objects.append(obj)
         object_id_by_profile_id[ttp["ttp_id"]] = obj["id"]
 
+    for activity in deferred_groupings:
+        contained_profile_refs = {
+            profile["profile_id"],
+            *activity.get("activity_refs", []),
+            *activity.get("malware_refs", []),
+            *activity.get("infrastructure_refs", []),
+            *activity.get("target_refs", []),
+            *activity.get("ttp_refs", []),
+            *activity.get("victim_refs", []),
+        }
+        object_refs = sorted(
+            object_id_by_profile_id[ref]
+            for ref in contained_profile_refs
+            if ref in object_id_by_profile_id
+        )
+        objects.append(
+            stix_base(
+                "grouping",
+                activity["activity_id"],
+                now,
+                {
+                    "name": activity["name"],
+                    "description": activity["description"],
+                    "context": activity.get("grouping_context")
+                    or "suspicious-activity",
+                    "object_refs": object_refs,
+                    "external_references": external_refs(
+                        activity["evidence_refs"], source_by_id
+                    ),
+                    "x_profile_object_id": activity["activity_id"],
+                    "x_activity_type": activity["activity_type"],
+                    "x_stix_object_type": "grouping",
+                    "x_first_observed": activity["first_observed"],
+                    "x_last_observed": activity["last_observed"],
+                    "x_reported_at": activity["reported_at"],
+                    "x_confidence": activity["confidence"],
+                    "x_analyst_notes": activity.get("analyst_notes", ""),
+                    "x_diamond_model": activity["diamond_model"],
+                },
+            )
+        )
+
     def add_relationship(
         source_ref: str,
         relationship_type: str,
         target_ref: str,
         description: str,
         confidence: str,
+        evidence_refs: list[str] | None = None,
+        first_observed: dict[str, Any] | None = None,
+        last_observed: dict[str, Any] | None = None,
+        reported_at: dict[str, Any] | None = None,
     ) -> None:
         key = f"{source_ref}:{relationship_type}:{target_ref}"
         objects.append(
@@ -817,6 +919,12 @@ def render_stix(
                     "target_ref": target_ref,
                     "description": description,
                     "x_confidence": confidence,
+                    "external_references": external_refs(
+                        evidence_refs or [], source_by_id
+                    ),
+                    **relationship_time_properties(
+                        first_observed, last_observed, reported_at
+                    ),
                 },
             )
         )
@@ -829,6 +937,9 @@ def render_stix(
                 object_id_by_profile_id[item["id"]],
                 f"{actor['canonical_name']} uses {item['name']}.",
                 item["confidence"],
+                item["evidence_refs"],
+                item["first_observed"],
+                item["last_observed"],
             )
     for category in ("countries", "regions", "sectors", "roles"):
         for target in profile["targets"][category]:
@@ -841,51 +952,78 @@ def render_stix(
                     f"(profile target category: {category})."
                 ),
                 target["confidence"],
+                target["evidence_refs"],
+                target["first_observed"],
+                target["last_observed"],
             )
     for activity in profile["activities"]:
-        campaign_id = object_id_by_profile_id[activity["activity_id"]]
+        if activity_stix_object_type(activity) == "grouping":
+            # Grouping is a container. Containment does not assert an outgoing
+            # relationship to every object included for analyst review.
+            continue
+        activity_id = object_id_by_profile_id[activity["activity_id"]]
         add_relationship(
-            campaign_id,
+            activity_id,
             "attributed-to",
             intrusion["id"],
             f"{activity['name']} is attributed or linked to {actor['canonical_name']}.",
             activity["confidence"],
+            activity["evidence_refs"],
+            activity["first_observed"],
+            activity["last_observed"],
+            activity["reported_at"],
         )
         for ref in activity["malware_refs"] + activity["infrastructure_refs"]:
             if ref in object_id_by_profile_id:
                 add_relationship(
-                    campaign_id,
+                    activity_id,
                     "uses",
                     object_id_by_profile_id[ref],
                     f"{activity['name']} uses {ref}.",
                     activity["confidence"],
+                    activity["evidence_refs"],
+                    activity["first_observed"],
+                    activity["last_observed"],
+                    activity["reported_at"],
                 )
         for ref in activity["target_refs"]:
             if ref in object_id_by_profile_id:
                 add_relationship(
-                    campaign_id,
+                    activity_id,
                     "targets",
                     object_id_by_profile_id[ref],
                     f"{activity['name']} targets {ref}.",
                     activity["confidence"],
+                    activity["evidence_refs"],
+                    activity["first_observed"],
+                    activity["last_observed"],
+                    activity["reported_at"],
                 )
         for ref in activity.get("ttp_refs", []):
             if ref in object_id_by_profile_id:
                 add_relationship(
-                    campaign_id,
+                    activity_id,
                     "uses",
                     object_id_by_profile_id[ref],
                     f"{activity['name']} uses {ref}.",
                     activity["confidence"],
+                    activity["evidence_refs"],
+                    activity["first_observed"],
+                    activity["last_observed"],
+                    activity["reported_at"],
                 )
         for ref in activity.get("victim_refs", []):
             if ref in object_id_by_profile_id:
                 add_relationship(
-                    campaign_id,
+                    activity_id,
                     "targets",
                     object_id_by_profile_id[ref],
                     f"{activity['name']} affected {ref}.",
                     activity["confidence"],
+                    activity["evidence_refs"],
+                    activity["first_observed"],
+                    activity["last_observed"],
+                    activity["reported_at"],
                 )
     for ttp in profile["ttps"]:
         attack_id = object_id_by_profile_id[ttp["ttp_id"]]
@@ -895,6 +1033,9 @@ def render_stix(
             attack_id,
             ttp["observed_behavior"],
             ttp["confidence"],
+            ttp["evidence_refs"],
+            ttp["first_observed"],
+            ttp["last_observed"],
         )
 
     if iocs:
