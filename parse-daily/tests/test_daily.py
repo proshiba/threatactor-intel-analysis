@@ -531,8 +531,85 @@ class DailyCommonTests(unittest.TestCase):
         )
 
 
+class CurationMergeResolutionTests(unittest.TestCase):
+    """entity境界curationで統合された旧canonical名の照合保証。
+
+    実データに対する不変条件テスト。actor-census-curation.jsonのmerge判断で
+    deprecated化した旧canonical名は、統合先のactive profileへ一意に解決しなければ
+    ならない（AGENT.md アクター照合）。alias再検証やcensus再materializeで統合先の
+    aliasが失われると、日次の検知がtombstone名で取りこぼすため、ここで検出する。
+    """
+
+    REPO_ROOT = HERE.parent
+
+    def test_merged_tombstone_names_resolve_to_target_slug(self) -> None:
+        curation_path = (
+            self.REPO_ROOT / "actor_profile" / "actor-census-curation.json"
+        )
+        profiles_root = self.REPO_ROOT / "profiles"
+        if not curation_path.exists() or not profiles_root.is_dir():
+            self.skipTest("repository data is not available")
+        with curation_path.open(encoding="utf-8") as handle:
+            curation = json.load(handle)
+        with (HERE / "config.json").open(encoding="utf-8") as handle:
+            config = json.load(handle)
+        registry = ActorRegistry(profiles_root, config)
+        checked = 0
+        for rule in curation.get("identities", {}).values():
+            if not isinstance(rule, dict) or rule.get("action") != "merge":
+                continue
+            source_slug = rule.get("source_slug")
+            target_slug = rule.get("target_slug")
+            if not source_slug or not target_slug:
+                continue  # tombstoneを持たないcensus内部のmerge
+            tombstone_path = (
+                profiles_root / source_slug / "actor-profile.json"
+            )
+            if not tombstone_path.exists():
+                continue
+            with tombstone_path.open(encoding="utf-8") as handle:
+                tombstone = json.load(handle)
+            self.assertEqual(
+                tombstone.get("status"),
+                "deprecated",
+                f"merge元 {source_slug} はtombstoneであるべき",
+            )
+            name = (
+                tombstone.get("name")
+                or (tombstone.get("actor") or {}).get("canonical_name")
+                or ""
+            )
+            matches = registry.exact(name, "ioc-actor-field")
+            self.assertEqual(
+                sorted({match.slug for match in matches}),
+                [target_slug],
+                f"旧canonical名 {name!r} は {target_slug} へ一意に解決すべき",
+            )
+            checked += 1
+        self.assertGreater(checked, 0, "merge判断が1件も検査されていない")
+
+
 class DailyCheckTests(unittest.TestCase):
     """日次チェックの抽出ロジック（daily_check.py）。"""
+
+    def test_deprecated_profiles_are_not_recent_actors(self) -> None:
+        """curationで統合済みのtombstoneは直近活動アクターに数えない。"""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for slug, status in (("active-actor", "draft"), ("dead-actor", "deprecated")):
+                (root / slug).mkdir()
+                (root / slug / "actor-profile.json").write_text(
+                    json.dumps({
+                        "name": slug,
+                        "status": status,
+                        "actor": {"last_seen": known_point("2099-01-01T00:00:00Z")},
+                        "activities": [],
+                    }),
+                    encoding="utf-8",
+                )
+            with mock.patch.object(daily_check, "PROFILES_DIR", root):
+                rows = daily_check.collect_recent_actors(365)
+        self.assertEqual([row["slug"] for row in rows], ["active-actor"])
 
     def test_report_date_is_used_when_period_is_unknown(self) -> None:
         """攻撃期間不明でも reported_at があれば直近活動として拾う。"""

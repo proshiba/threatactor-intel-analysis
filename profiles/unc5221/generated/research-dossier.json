@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T04:38:32Z",
+  "generated_at": "2026-09-21T12:36:06Z",
   "actor_ref": "actor--unc5221",
   "actor_name": "UNC5221",
-  "profile_updated_at": "2026-09-21T04:35:03Z",
+  "profile_updated_at": "2026-09-21T08:16:06Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "lead-only",
-      "malware": "lead-only",
+      "malware": "canonical-present",
       "tools": "lead-only",
       "targets": "canonical-present",
       "motivations": "lead-only",
@@ -19,10 +19,10 @@
       "activities": 4,
       "dated_activities": 1,
       "relationships": 0,
-      "malware": 0,
-      "activity_linked_malware": 0,
+      "malware": 2,
+      "activity_linked_malware": 2,
       "tools": 0,
-      "targets": 1,
+      "targets": 4,
       "motivations": 0
     },
     "external_lead_counts": {
@@ -54,35 +54,43 @@
     "activity_timeline": [
       {
         "activity_id": "activity--daily-fd8d76592cb438a30641",
-        "name": "Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用",
+        "name": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
         "activity_type": "intrusion",
         "first_observed": {
           "value": "2025-05-15T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "activity-description-explicit-period"
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": "2025-05-15T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "activity-description-explicit-period"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-05-23T00:00:00Z",
+          "value": "2025-05-21T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "中国系ハッカーが、Ivanti Endpoint Manager Mobile（EPMM）のリモートコード実行脆弱性（CVE-2025-4428）を悪用。 この脆弱性は、特別に細工されたAPIリクエストにより、バージョン12.5.0.0以前のEPMMでコード実行が可能。 Ivantiは、認証バイパスの脆弱性（CVE-2025-4427）とともに、2025年5月13日にこれらの脆弱性を修正。 EclecticIQの研究者は、2025年5月15日以降、CVE-2025-4428が広範に悪用されていることを確認。 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。",
-        "target_refs": [],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-9c44f6340b9488e0ae9a"
+        "description": "EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。",
+        "target_refs": [
+          "target--targeting-audit--region--180d1b3625871cf9d7dd",
+          "target--targeting-audit--region--5fdf840a1b32be12ea15",
+          "target--targeting-audit--region--fa76e62075b99f42c3b7"
         ],
-        "analyst_notes": "日次収集レコード daily-record--fd8d76592cb438a306413e07 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+        "malware_refs": [
+          "malware--krustyloader",
+          "malware--sliver"
+        ],
+        "infrastructure_refs": [],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "EclecticIQ一次分析の帰属確度と開始日を採用。公開日を活動終期にしない。",
         "ttp_refs": [],
         "victim_refs": [
           "victim--activity-rule--2777d9aa01e356b0a630"
@@ -95,14 +103,21 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--krustyloader",
+              "malware--sliver"
+            ],
             "ttp_refs": []
           },
           "infrastructure": {
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [],
+            "target_refs": [
+              "target--targeting-audit--region--180d1b3625871cf9d7dd",
+              "target--targeting-audit--region--5fdf840a1b32be12ea15",
+              "target--targeting-audit--region--fa76e62075b99f42c3b7"
+            ],
             "victim_refs": [
               "victim--activity-rule--2777d9aa01e356b0a630"
             ]
@@ -112,19 +127,19 @@
               "value": "2025-05-15T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "activity-description-explicit-period"
+              "basis": "source-stated"
             },
             "last_observed": {
-              "value": "2025-05-15T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "activity-description-explicit-period"
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2025-05-23T00:00:00Z",
+              "value": "2025-05-21T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "intrusion",
             "phases": [],
@@ -132,31 +147,62 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [],
-              "target_region_refs": []
+              "target_region_refs": [
+                "target--targeting-audit--region--180d1b3625871cf9d7dd",
+                "target--targeting-audit--region--5fdf840a1b32be12ea15",
+                "target--targeting-audit--region--fa76e62075b99f42c3b7"
+              ]
             }
           },
-          "confidence": "medium",
+          "confidence": "high",
           "evidence_refs": [
-            "source--daily-9c44f6340b9488e0ae9a"
+            "source--daily-9c44f6340b9488e0ae9a",
+            "source--eclecticiq-unc5221-epmm-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--3dd4dc5ea7b0caebde1fd585",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "UNC5221 conducted or is associated with Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用: 中国系ハッカーが、Ivanti Endpoint Manager Mobile（EPMM）のリモートコード実行脆弱性（CVE-2025-4428）を悪用。 この脆弱性は、特別に細工されたAPIリクエストにより、バージョン12.5.0.0以前のEPMMでコード実行が可能。 Ivantiは、認証バイパスの脆弱性（CVE-2025-4427）とともに、2025年5月13日にこれらの脆弱性を修正。 EclecticIQの研究者は、2025年5月15日以降、CVE-2025-4428が広範に悪用されていることを確認。 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "UNC5221 conducted or is associated with UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用: EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。",
             "evidence_refs": [
-              "source--daily-9c44f6340b9488e0ae9a"
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
-        "malware": [],
-        "targets": [],
+        "malware": [
+          {
+            "id": "malware--krustyloader",
+            "name": "KrustyLoader"
+          },
+          {
+            "id": "malware--sliver",
+            "name": "Sliver"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--targeting-audit--region--180d1b3625871cf9d7dd",
+            "name": "アジア太平洋"
+          },
+          {
+            "id": "target--targeting-audit--region--5fdf840a1b32be12ea15",
+            "name": "欧州"
+          },
+          {
+            "id": "target--targeting-audit--region--fa76e62075b99f42c3b7",
+            "name": "北米"
+          }
+        ],
         "victims": [
           {
             "id": "victim--activity-rule--2777d9aa01e356b0a630",
@@ -250,6 +296,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--9006bc70eacf384b1d491c36",
@@ -367,6 +416,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--c0219825f2a9000ec2c97bd6",
@@ -487,6 +539,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--966eb3d49ec487553241b96f",
@@ -513,7 +568,158 @@
         ]
       }
     ],
-    "malware_usage": [],
+    "malware_usage": [
+      {
+        "id": "malware--krustyloader",
+        "name": "KrustyLoader",
+        "aliases": [],
+        "types": [
+          "Linux"
+        ],
+        "description": "Rust-based loader used to deploy Sliver.",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--9cc0fd71b4cb85f2fc8a7dba",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "UNC5221 uses or has used KrustyLoader.",
+            "evidence_refs": [
+              "source--eclecticiq-unc5221-epmm-2025"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-fd8d76592cb438a30641",
+            "activity_name": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
+            "first_observed": {
+              "value": "2025-05-15T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--sliver",
+        "name": "Sliver",
+        "aliases": [],
+        "types": [
+          "Linux"
+        ],
+        "description": "Open-source command-and-control framework deployed after EPMM exploitation.",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--d7acccaed09e8be63f84ccf6",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "UNC5221 uses or has used Sliver.",
+            "evidence_refs": [
+              "source--eclecticiq-unc5221-epmm-2025"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-fd8d76592cb438a30641",
+            "activity_name": "UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
+            "first_observed": {
+              "value": "2025-05-15T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
     "tool_usage": [],
     "targets": [
       {
@@ -554,6 +760,132 @@
         "category": "countrie",
         "activity_refs": [
           "activity--daily-9ac4b7d72f47c1e3e402"
+        ]
+      },
+      {
+        "id": "target--targeting-audit--region--180d1b3625871cf9d7dd",
+        "name": "アジア太平洋",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域としてアジア太平洋が明示されている。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--1e92c7d2fe422a3510263eed",
+            "category": "target-region",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "UNC5221 targets region アジア太平洋.",
+            "evidence_refs": [
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "region",
+        "activity_refs": [
+          "activity--daily-fd8d76592cb438a30641"
+        ]
+      },
+      {
+        "id": "target--targeting-audit--region--fa76e62075b99f42c3b7",
+        "name": "北米",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域として北米が明示されている。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--ae09402b31c3c0b4a01ae122",
+            "category": "target-region",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "UNC5221 targets region 北米.",
+            "evidence_refs": [
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "region",
+        "activity_refs": [
+          "activity--daily-fd8d76592cb438a30641"
+        ]
+      },
+      {
+        "id": "target--targeting-audit--region--5fdf840a1b32be12ea15",
+        "name": "欧州",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的地域として欧州が明示されている。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--2c77589fb7329e9eae3802d6",
+            "category": "target-region",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "UNC5221 targets region 欧州.",
+            "evidence_refs": [
+              "source--daily-9c44f6340b9488e0ae9a",
+              "source--eclecticiq-unc5221-epmm-2025"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "region",
+        "activity_refs": [
+          "activity--daily-fd8d76592cb438a30641"
         ]
       }
     ]
@@ -1725,9 +2057,9 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 8
+    "unresolved": 1,
+    "supported": 9,
+    "partially-supported": 6
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -2231,6 +2563,35 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    "source--eclecticiq-unc5221-epmm-2025": {
+      "source_id": "source--eclecticiq-unc5221-epmm-2025",
+      "path": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+      "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+      "title": "China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager Mobile (CVE-2025-4428) Vulnerability",
+      "publisher": "EclecticIQ",
+      "published_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "EclecticIQ attributes the exploitation observed from May 15 with high confidence to UNC5221 and documents KrustyLoader, Sliver, and AWS S3 use."
     }
   },
   "research_gaps": [

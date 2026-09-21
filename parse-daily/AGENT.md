@@ -36,29 +36,51 @@
    差し替えでは作り直されない。
 6. `capability_decisions`は候補ごとに`approved`、`rejected`、
    `related-only`を判断する。`pending`を残したレコードは承認済みにできない。
-7. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ
+7. 承認する活動の`stix_object_type`を確認する。日次取込は`activity_type`から
+   保守的な既定値（`intrusion`→incident、`reported-activity`等→grouping、
+   作戦ラベル→campaign）を設定するが、これは初期値であり判断ではない。
+   判断基準は`actor_profile/OPENCTI_INGESTION_RULES.md`を正とする。
+   1組織への個別侵害をcampaignにしない。作戦・主体・関係を確定できない
+   調査集合はgroupingに留める。既定値と違う判断になった場合は
+   `actor_profile/activity-stix-model-curation.json`の`decisions`へ
+   `profile_id`・`activity_id`・`stix_object_type`・理由を追加し、反映手順の
+   `migrate_stix_modeling.py --apply`で既定値より優先して適用する。
+8. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ
    artifact側へ`review_status: approved`を付ける。
-8. `validate_daily.py`、`apply_review_queue.py`のdry-run、`--apply`の順に実行する。
-9. `python3 actor_profile/scripts/migrate_activity_model.py --apply`を実行後、
-   `python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
-   --report actor_profile/activity-intelligence-report.json`を実行する。これにより、
-   レビュー済み活動の標的・被害事例・明示TTPと、公式ATT&CKキャンペーンの
-   TTP／マルウェアを活動へ結び付ける。抽出ルール変更時は
-   `actor_profile/activity-observation-rules.json`の差分と誤検出監査を行う。
-10. 続けて`python3 actor_profile/scripts/enrich_targeting_scope.py --apply`を実行する。
+9. `validate_daily.py`、`apply_review_queue.py`のdry-run、`--apply`の順に実行する。
+10. `python3 actor_profile/scripts/migrate_stix_modeling.py --apply`で
+    STIX種別のcuration判断を適用し、続けて
+    `python3 actor_profile/scripts/migrate_activity_model.py --apply`、
+    `python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+    --report actor_profile/activity-intelligence-report.json`を実行する。これにより、
+    レビュー済み活動の標的・被害事例・明示TTPと、公式ATT&CKキャンペーンの
+    TTP／マルウェアを活動へ結び付ける。抽出ルール変更時は
+    `actor_profile/activity-observation-rules.json`の差分と誤検出監査を行う。
+    帰属国を標的候補に流用しない規則は`GENERATION_RULES.md` 2.を参照する。
+11. 続けて`python3 actor_profile/scripts/enrich_targeting_scope.py --apply`を実行する。
     活動単位の標的更新後に行うことで、個別国、全世界等の広域表示、複数国から
     導出するUI用地域を再集約できる。日本は被害が確認できる場合に個別国として残す。
     `profiles/targeting-audit.json`の未解決値と地理情報なしのアクターを確認し、
     帰属国やインフラ所在国を標的国へ流用しない。
     最後に`python3 actor_profile/scripts/materialize_activity_diamonds.py --apply`で
     活動別Diamond Modelを再生成する（上記2つのenrichスクリプトからも自動実行される）。
-11. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
+12. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
     TTPの期間集計では`reported_at`を観測日として使用していないこと、活動・TTP・
     被害事例の双方向参照が切れていないことも確認する。
-12. UIへ公開する場合は`python3 ui/build_data.py`を実行し、TTP Matrixと
-    マルウェア利用履歴のall time／過去3年／過去1年を確認する。
-13. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
-14. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
+13. 変更したアクターの派生データを再生成する。
+    - `python3 actor_profile/scripts/build_claim_audits.py --actor <slug>`
+      （新しい活動・capabilityはclaim監査台帳の対象。変更アクターごとに実行）
+    - `python3 actor_profile/scripts/build_opencti_bundles.py --prune`
+      （OpenCTI取込Bundleとmanifest.jsonの再生成。**必ず全件で実行する。**
+      `--actor`はmanifestを対象アクターだけへ書き換え、`--prune`併用時は
+      他アクターのBundleを削除するため、日次では使わない）
+    - `python3 actor_profile/scripts/build_actor_research_dossiers.py`
+      （`generated/research-dossier.json`と集計の再生成。全件実行）
+14. UIへ公開する場合は`python3 ui/build_data.py`と
+    `python3 ui/build_portal_index.py`を実行し、TTP Matrixと
+    マルウェア利用履歴のall time／過去3年／過去1年、公開索引の件数を確認する。
+15. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
+16. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
     `last_scanned_date`より先へ進めない。
 
 ## アクター照合
@@ -83,6 +105,21 @@
   `historical-reference`、`non-operational`は一括承認しない。
 - 既存プロファイルにない名前は無理に近いアクターへ寄せず、
   `unmatched_actor_values`へ残す。新規プロファイル作成は別のレビュー対象とする。
+- 照合語彙は検証済みaliasだけに絞られている。alias監査（2026-09）で、mapping
+  workbookだけを根拠とするaliasは全プロファイルから除去された。これにより
+  `Asia`や国名のような衝突は激減した一方、`UNC1151`(Ghostwriter)、`TA542`、
+  `DEV-xxxx`系のような実在するベンダー呼称も未一致になる。**未一致は「新規クラスタ」
+  ではなく、まず既存アクターの検証済みでない呼称の可能性を疑う。**
+  actor-specificな一次資料（命名元ベンダーの記述、ATT&CKのAssociated Groups等）で
+  既存アクターの呼称だと確認できた場合は、unknown-clustersへ入れずに、対象profileの
+  `actor.aliases`へ`vendor`・`scope`・`evidence_refs`付きで追加する提案として報告する
+  （追加自体はRULES.md 5.とGENERATION_RULES.md 7.の確認を経て行う）。
+- `config.json`の`actor_value_aliases`は、IOC CSVの`actor`列に現れる修飾付き・複合の
+  表記（`BlueDelta (APT28/...)`等）を正規名へ寄せる日次側の写像である。プロファイルの
+  alias管理の代替に使わない。原典が単一のexact対応を明示する表記だけを追加する。
+- 同名が複数プロファイルへ一致する場合（例: `Sapphire Sleet`はapt38とta444）は
+  自動解決しない。原典がどちらのクラスタ境界で追跡しているかを確認し、決められない
+  場合は保留する。
 - `unmatched_actor_values`はIOC CSVの`actor`列だけを対象とするため、IOCが公開されて
   いない記事の新規アクター名は現れない。この取りこぼしを補うため、記事本文の実行主体
   表現から抽出した名前を`unmatched_name_candidates`へ別建てで残す。抽出は日本語の

@@ -1,28 +1,28 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T04:38:32Z",
+  "generated_at": "2026-09-21T12:36:06Z",
   "actor_ref": "actor--storm-1849",
   "actor_name": "Storm-1849",
-  "profile_updated_at": "2026-09-21T02:39:13Z",
+  "profile_updated_at": "2026-09-21T08:16:06Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
-      "malware": "unknown",
+      "malware": "canonical-present",
       "tools": "unknown",
-      "targets": "unknown",
+      "targets": "canonical-present",
       "motivations": "unknown",
       "attribution": "unknown"
     },
     "canonical_counts": {
-      "activities": 2,
-      "dated_activities": 0,
+      "activities": 3,
+      "dated_activities": 1,
       "relationships": 0,
-      "malware": 0,
-      "activity_linked_malware": 0,
+      "malware": 3,
+      "activity_linked_malware": 3,
       "tools": 0,
-      "targets": 0,
+      "targets": 1,
       "motivations": 0
     },
     "external_lead_counts": {
@@ -54,35 +54,41 @@
     "activity_timeline": [
       {
         "activity_id": "activity--daily-1baaec4e789e123f6605",
-        "name": "ArcaneDoorハッカー、政府ネットワーク侵入にシスコのゼロデイを利用",
+        "name": "UAT4356／Storm-1849によるArcaneDoor作戦",
         "activity_type": "malware-campaign",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "reported_at": {
-          "value": "2024-04-25T00:00:00Z",
+          "value": "2024-04-24T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "ArcaneDoorグループがシスコ製品の脆弱性を悪用。 政府機関のネットワークが全世界で影響を受ける。 CiscoのAdaptive Security Appliance（ASA）またはFirepower Threat Defense（FTD）で、2つのゼロデイ脆弱性が利用された。 CVE-2024-20353（サービス拒否）とCVE-2024-20359（永続的なローカルコード実行） Line RunnerとLine Dancerという2つのマルウェアを使い、機器の制御とデータ抽出を実行。 シスコが修正パッチの配布とアップグレードを推奨。",
-        "target_refs": [],
-        "malware_refs": [],
+        "description": "Cisco Talosは、UAT4356（Microsoft: Storm-1849）が世界各地の政府ネットワークにあるCisco ASAを狙った諜報作戦ArcaneDoorを報告した。主活動は2023年12月～2024年1月で、Line DancerとLine Runnerを用いて設定変更、偵察、通信取得・流出、永続化を行った。",
+        "target_refs": [
+          "target--targeting-audit--region--23d705447763748f4693"
+        ],
+        "malware_refs": [
+          "malware--line-dancer",
+          "malware--line-runner"
+        ],
         "infrastructure_refs": [],
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
+          "source--cisco-talos-arcanedoor-2024",
           "source--daily-d9c025cbaad1eeab6c4c"
         ],
-        "analyst_notes": "日次収集レコード daily-record--1baaec4e789e123f6605be78 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者UAT4356(別名:STORM-1849)は、国家支援の疑いがあり高度なスキルを有する。",
+        "analyst_notes": "Cisco一次分析が明示する主活動期間と高確度の国家支援評価を採用。",
         "ttp_refs": [],
         "victim_refs": [],
         "diamond_model": {
@@ -93,34 +99,39 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--line-dancer",
+              "malware--line-runner"
+            ],
             "ttp_refs": []
           },
           "infrastructure": {
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [],
+            "target_refs": [
+              "target--targeting-audit--region--23d705447763748f4693"
+            ],
             "victim_refs": []
           },
           "meta_features": {
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2023-12-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
             },
             "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
             },
             "reported_at": {
-              "value": "2024-04-25T00:00:00Z",
+              "value": "2024-04-24T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "malware-campaign",
             "phases": [],
@@ -128,31 +139,52 @@
             "direction": {
               "source_countries": [],
               "target_country_refs": [],
-              "target_region_refs": []
+              "target_region_refs": [
+                "target--targeting-audit--region--23d705447763748f4693"
+              ]
             }
           },
-          "confidence": "medium",
+          "confidence": "high",
           "evidence_refs": [
+            "source--cisco-talos-arcanedoor-2024",
             "source--daily-d9c025cbaad1eeab6c4c"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--db4f1f065cbe56d7ce425c86",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-1849 conducted or is associated with ArcaneDoorハッカー、政府ネットワーク侵入にシスコのゼロデイを利用: ArcaneDoorグループがシスコ製品の脆弱性を悪用。 政府機関のネットワークが全世界で影響を受ける。 CiscoのAdaptive Security Appliance（ASA）またはFirepower Threat Defense（FTD）で、2つのゼロデイ脆弱性が利用された。 CVE-2024-20353（サービス拒否）とCVE-2024-20359（永続的なローカルコード実行） Line RunnerとLine Dancerという2つのマルウェアを使い、機器の制御とデータ抽出を実行。 シスコが修正パッチの配布とアップグレードを推奨。",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-1849 conducted or is associated with UAT4356／Storm-1849によるArcaneDoor作戦: Cisco Talosは、UAT4356（Microsoft: Storm-1849）が世界各地の政府ネットワークにあるCisco ASAを狙った諜報作戦ArcaneDoorを報告した。主活動は2023年12月～2024年1月で、Line DancerとLine Runnerを用いて設定変更、偵察、通信取得・流出、永続化を行った。",
             "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024",
               "source--daily-d9c025cbaad1eeab6c4c"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
-        "malware": [],
-        "targets": [],
+        "malware": [
+          {
+            "id": "malware--line-dancer",
+            "name": "Line Dancer"
+          },
+          {
+            "id": "malware--line-runner",
+            "name": "Line Runner"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--targeting-audit--region--23d705447763748f4693",
+            "name": "全世界"
+          }
+        ],
         "victims": [],
         "techniques": []
       },
@@ -245,6 +277,9 @@
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "grouping",
+        "activity_refs": [],
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
             "claim_id": "claim--dd18b3b0c39b88a65b9f05ad",
@@ -268,11 +303,395 @@
           }
         ],
         "techniques": []
+      },
+      {
+        "activity_id": "activity--storm-1849--firestarter-2026",
+        "name": "UAT4356、Cisco FirepowerへFIRESTARTERを展開",
+        "activity_type": "malware-campaign",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "reported_at": {
+          "value": "2026-04-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "Cisco Talosは、UAT4356がCisco Firepower/FXOS機器を継続的に標的とし、CVE-2025-20333とCVE-2025-20362を悪用して独自バックドアFIRESTARTERを展開したと報告した。FIRESTARTERはLINAプロセス内で任意コードを実行し、CSP_MOUNT_LISTを改変して再起動をまたぐ永続化を行う。",
+        "target_refs": [],
+        "malware_refs": [
+          "malware--firestarter"
+        ],
+        "infrastructure_refs": [],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisco-talos-uat4356-firestarter-2026"
+        ],
+        "analyst_notes": "Ciscoはcontinued active targetingとするが観測開始・終了日は明示しないため期間はunknown、公開日はreported_atにのみ設定した。",
+        "ttp_refs": [],
+        "victim_refs": [],
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--storm-1849",
+            "name": "Storm-1849",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--firestarter"
+            ],
+            "ttp_refs": []
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [],
+            "victim_refs": []
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "reported_at": {
+              "value": "2026-04-23T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "malware-campaign",
+            "phases": [],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--cisco-talos-uat4356-firestarter-2026"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--afe3cb2f3dad142192381764",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-1849 conducted or is associated with UAT4356、Cisco FirepowerへFIRESTARTERを展開: Cisco Talosは、UAT4356がCisco Firepower/FXOS機器を継続的に標的とし、CVE-2025-20333とCVE-2025-20362を悪用して独自バックドアFIRESTARTERを展開したと報告した。FIRESTARTERはLINAプロセス内で任意コードを実行し、CSP_MOUNT_LISTを改変して再起動をまたぐ永続化を行う。",
+            "evidence_refs": [
+              "source--cisco-talos-uat4356-firestarter-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--firestarter",
+            "name": "FIRESTARTER"
+          }
+        ],
+        "targets": [],
+        "victims": [],
+        "techniques": []
       }
     ],
-    "malware_usage": [],
+    "malware_usage": [
+      {
+        "id": "malware--firestarter",
+        "name": "FIRESTARTER",
+        "aliases": [],
+        "types": [
+          "Network Device"
+        ],
+        "description": "Custom UAT4356 backdoor executing inside Cisco LINA and persisting through CSP_MOUNT_LIST manipulation.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisco-talos-uat4356-firestarter-2026"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--0ec8cc3d90abab7e4314fc89",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-1849 uses or has used FIRESTARTER.",
+            "evidence_refs": [
+              "source--cisco-talos-uat4356-firestarter-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--storm-1849--firestarter-2026",
+            "activity_name": "UAT4356、Cisco FirepowerへFIRESTARTERを展開",
+            "first_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--cisco-talos-uat4356-firestarter-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--line-dancer",
+        "name": "Line Dancer",
+        "aliases": [],
+        "types": [
+          "Network Device"
+        ],
+        "description": "Memory-resident shellcode interpreter used on Cisco ASA devices.",
+        "first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisco-talos-arcanedoor-2024"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--31ac7993082d3862d07f3000",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-1849 uses or has used Line Dancer.",
+            "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-1baaec4e789e123f6605",
+            "activity_name": "UAT4356／Storm-1849によるArcaneDoor作戦",
+            "first_observed": {
+              "value": "2023-12-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024",
+              "source--daily-d9c025cbaad1eeab6c4c"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--line-runner",
+        "name": "Line Runner",
+        "aliases": [],
+        "types": [
+          "Network Device"
+        ],
+        "description": "Persistent Lua-based backdoor used on Cisco ASA devices.",
+        "first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisco-talos-arcanedoor-2024"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--4e56e3a1741d66659af05672",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-1849 uses or has used Line Runner.",
+            "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-1baaec4e789e123f6605",
+            "activity_name": "UAT4356／Storm-1849によるArcaneDoor作戦",
+            "first_observed": {
+              "value": "2023-12-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024",
+              "source--daily-d9c025cbaad1eeab6c4c"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
     "tool_usage": [],
-    "targets": []
+    "targets": [
+      {
+        "id": "target--targeting-audit--region--23d705447763748f4693",
+        "name": "全世界",
+        "description": "活動「UAT4356／Storm-1849によるArcaneDoor作戦」の記述で標的地域として全世界が明示されている。",
+        "first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisco-talos-arcanedoor-2024",
+          "source--daily-d9c025cbaad1eeab6c4c"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--406b166b3728072ce2403684",
+            "category": "target-region",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "Storm-1849 targets region 全世界.",
+            "evidence_refs": [
+              "source--cisco-talos-arcanedoor-2024",
+              "source--daily-d9c025cbaad1eeab6c4c"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "region",
+        "activity_refs": [
+          "activity--daily-1baaec4e789e123f6605"
+        ]
+      }
+    ]
   },
   "external_research_leads": {
     "aliases": [],
@@ -300,9 +719,9 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 3
+    "unresolved": 1,
+    "supported": 9,
+    "partially-supported": 2
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -433,12 +852,70 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    "source--cisco-talos-arcanedoor-2024": {
+      "source_id": "source--cisco-talos-arcanedoor-2024",
+      "path": "https://blog.talosintelligence.com/arcanedoor-new-espionage-focused-campaign-found-targeting-perimeter-network-devices/",
+      "url": "https://blog.talosintelligence.com/arcanedoor-new-espionage-focused-campaign-found-targeting-perimeter-network-devices/",
+      "title": "ArcaneDoor - New espionage-focused campaign found targeting perimeter network devices",
+      "publisher": "Cisco Talos",
+      "published_at": {
+        "value": "2024-04-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Cisco identifies the actor as UAT4356 and states that Microsoft tracks the same actor as Storm-1849; it documents Line Runner and Line Dancer."
+    },
+    "source--cisco-talos-uat4356-firestarter-2026": {
+      "source_id": "source--cisco-talos-uat4356-firestarter-2026",
+      "path": "https://blog.talosintelligence.com/uat-4356-firestarter/",
+      "url": "https://blog.talosintelligence.com/uat-4356-firestarter/",
+      "title": "UAT-4356's Targeting of Cisco Firepower Devices",
+      "publisher": "Cisco Talos",
+      "published_at": {
+        "value": "2026-04-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Cisco reports continued UAT4356 targeting of Firepower/FXOS devices, n-day exploitation, and deployment of the custom FIRESTARTER backdoor."
     }
   },
   "research_gaps": [
-    "Canonical activities exist, but their observation periods are unknown.",
     "No canonical cross-actor relationship is structured.",
-    "No canonical target country, region, sector, or role is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
   ]

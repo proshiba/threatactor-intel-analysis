@@ -1,28 +1,28 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T04:38:32Z",
+  "generated_at": "2026-09-21T12:36:06Z",
   "actor_ref": "actor--storm-2603",
   "actor_name": "Storm-2603",
-  "profile_updated_at": "2026-09-21T04:35:03Z",
+  "profile_updated_at": "2026-09-21T08:16:06Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
-      "malware": "unknown",
+      "malware": "canonical-present",
       "tools": "unknown",
       "targets": "canonical-present",
       "motivations": "unknown",
       "attribution": "lead-only"
     },
     "canonical_counts": {
-      "activities": 3,
-      "dated_activities": 0,
+      "activities": 2,
+      "dated_activities": 1,
       "relationships": 0,
-      "malware": 0,
-      "activity_linked_malware": 0,
+      "malware": 1,
+      "activity_linked_malware": 1,
       "tools": 0,
-      "targets": 4,
+      "targets": 2,
       "motivations": 0
     },
     "external_lead_counts": {
@@ -54,13 +54,13 @@
     "activity_timeline": [
       {
         "activity_id": "activity--daily-b80b607914fb7f62f988",
-        "name": "Microsoft: SharePointサーバーもランサムウェア攻撃の標的に",
+        "name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
         "activity_type": "ransomware-extortion",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
           "value": null,
@@ -69,29 +69,26 @@
           "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-07-24T00:00:00Z",
+          "value": "2025-07-22T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
-        "target_refs": [
-          "target--targeting-audit--region--69e0b1175c60b8a211cb",
-          "target--targeting-audit--region--6c0b59266dc90d2e8805"
+        "description": "Microsoftは、Storm-2603が2025年7月18日以降、オンプレミスSharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、グループポリシーでWarlockランサムウェアを展開したと報告した。同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、個別被害組織をStorm-2603へ一括帰属しない。",
+        "target_refs": [],
+        "malware_refs": [
+          "malware--warlock-ransomware"
         ],
-        "malware_refs": [],
         "infrastructure_refs": [],
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-5c143f1d91377b49cfcc"
+          "source--microsoft-toolshell-2025"
         ],
-        "analyst_notes": "日次収集レコード daily-record--b80b607914fb7f62f9889fd0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入",
+        "analyst_notes": "MicrosoftがStorm-2603固有として記述した侵入チェーンだけを保持。NNSAその他の個別被害者は同クラスタへの帰属が明示されないため除外。",
         "ttp_refs": [
           "ttp--activity-rule--af1214636f4d588f7138"
         ],
-        "victim_refs": [
-          "victim--activity-rule--2fb3ba4fffbab5417544"
-        ],
+        "victim_refs": [],
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--storm-2603",
@@ -100,7 +97,9 @@
             "organization_refs": []
           },
           "capability": {
-            "malware_refs": [],
+            "malware_refs": [
+              "malware--warlock-ransomware"
+            ],
             "ttp_refs": [
               "ttp--activity-rule--af1214636f4d588f7138"
             ]
@@ -109,20 +108,15 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [
-              "target--targeting-audit--region--69e0b1175c60b8a211cb",
-              "target--targeting-audit--region--6c0b59266dc90d2e8805"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--2fb3ba4fffbab5417544"
-            ]
+            "target_refs": [],
+            "victim_refs": []
           },
           "meta_features": {
             "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
+              "value": "2025-07-18T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated"
             },
             "last_observed": {
               "value": null,
@@ -131,64 +125,54 @@
               "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2025-07-24T00:00:00Z",
+              "value": "2025-07-22T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "ransomware-extortion",
             "phases": [
               "Initial Access"
             ],
-            "results": [
-              "encryption"
-            ],
+            "results": [],
             "direction": {
               "source_countries": [],
               "target_country_refs": [],
-              "target_region_refs": [
-                "target--targeting-audit--region--69e0b1175c60b8a211cb",
-                "target--targeting-audit--region--6c0b59266dc90d2e8805"
-              ]
+              "target_region_refs": []
             }
           },
-          "confidence": "medium",
+          "confidence": "high",
           "evidence_refs": [
-            "source--daily-5c143f1d91377b49cfcc"
+            "source--daily-5c143f1d91377b49cfcc",
+            "source--microsoft-toolshell-2025"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
         "claim_assessments": [
           {
             "claim_id": "claim--46384afd4e5aed6e69a4517a",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-2603 conducted or is associated with Microsoft: SharePointサーバーもランサムウェア攻撃の標的に: 中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-2603 conducted or is associated with Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開: Microsoftは、Storm-2603が2025年7月18日以降、オンプレミスSharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、グループポリシーでWarlockランサムウェアを展開したと報告した。同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、個別被害組織をStorm-2603へ一括帰属しない。",
             "evidence_refs": [
-              "source--daily-5c143f1d91377b49cfcc"
+              "source--microsoft-toolshell-2025"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
-        "malware": [],
-        "targets": [
+        "malware": [
           {
-            "id": "target--targeting-audit--region--69e0b1175c60b8a211cb",
-            "name": "中東"
-          },
-          {
-            "id": "target--targeting-audit--region--6c0b59266dc90d2e8805",
-            "name": "欧州"
+            "id": "malware--warlock-ransomware",
+            "name": "Warlock ransomware"
           }
         ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--2fb3ba4fffbab5417544",
-            "name": "anonymous"
-          }
-        ],
+        "targets": [],
+        "victims": [],
         "techniques": [
           {
             "id": "ttp--activity-rule--af1214636f4d588f7138",
@@ -198,134 +182,8 @@
         ]
       },
       {
-        "activity_id": "activity--daily-aacbe5410f1223b930a5",
-        "name": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
-        "activity_type": "ransomware-extortion",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "reported_at": {
-          "value": "2025-08-05T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-news-file-date"
-        },
-        "description": "Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
-        "target_refs": [
-          "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-        ],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-0e75e392e2685f601677"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--aacbe5410f1223b930a5ab56 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国の国家系グループ（Linen Typhoon, Violet Typhoon, Storm-2603）でスパイ目的と推定。",
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--c1764ef2f19cd9e2befc"
-        ],
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--storm-2603",
-            "name": "Storm-2603",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [
-              "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--c1764ef2f19cd9e2befc"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "last_observed": {
-              "value": null,
-              "precision": "unknown",
-              "status": "unknown",
-              "basis": "not-stated"
-            },
-            "reported_at": {
-              "value": "2025-08-05T00:00:00Z",
-              "precision": "day",
-              "status": "known",
-              "basis": "daily-news-file-date"
-            },
-            "activity_type": "ransomware-extortion",
-            "phases": [],
-            "results": [
-              "encryption"
-            ],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [
-                "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
-              ],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-0e75e392e2685f601677"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--1690718a90c4ca651eacd72f",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-2603 conducted or is associated with ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢: Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
-            "evidence_refs": [
-              "source--daily-0e75e392e2685f601677"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [
-          {
-            "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
-            "name": "中国"
-          }
-        ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--c1764ef2f19cd9e2befc",
-            "name": "aggregate"
-          }
-        ],
-        "techniques": []
-      },
-      {
-        "activity_id": "activity--daily-e8fd6208405a17b2c79d",
-        "name": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
+        "activity_id": "activity--storm-2603--parallel-intrusion-2026",
+        "name": "Storm-2603と無関係な第2主体が同居した並行侵入事例",
         "activity_type": "intrusion",
         "first_observed": {
           "value": null,
@@ -340,28 +198,25 @@
           "basis": "not-stated"
         },
         "reported_at": {
-          "value": "2025-07-24T00:00:00Z",
+          "value": "2026-06-22T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
-        "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
-        "target_refs": [
-          "target--activity-rule--country--6604ad21c713b8dfd8c7",
-          "target--targeting-audit--region--69e0b1175c60b8a211cb",
-          "target--targeting-audit--region--6c0b59266dc90d2e8805"
-        ],
+        "description": "Microsoft DARTは、一つの被害環境でStorm-2603と無関係な第2主体が並行して活動した事例を報告した。Storm-2603側はSharePointを探索し、Velociraptor、Cloudflare Tunnel、Zoho Assist、VS Code経由SSHなどを用いて権限・永続性・遠隔アクセスを確保した。別主体のDLLサイドローディングや独自バックドアはStorm-2603の能力として扱わない。",
+        "target_refs": [],
         "malware_refs": [],
         "infrastructure_refs": [],
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--daily-c9fa26bbe8d21f50b441"
+          "source--microsoft-storm2603-parallel-intrusion-2026"
         ],
-        "analyst_notes": "日次収集レコード daily-record--e8fd6208405a17b2c79dc068 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。",
+        "analyst_notes": "同一被害環境と時間的重複はactor relationshipを意味しない。Microsoftがunrelatedと明記した境界を保持する。",
         "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--b17097a14592b324966d"
-        ],
+        "victim_refs": [],
+        "stix_object_type": "incident",
+        "activity_refs": [],
+        "grouping_context": null,
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--storm-2603",
@@ -377,14 +232,8 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [
-              "target--activity-rule--country--6604ad21c713b8dfd8c7",
-              "target--targeting-audit--region--69e0b1175c60b8a211cb",
-              "target--targeting-audit--region--6c0b59266dc90d2e8805"
-            ],
-            "victim_refs": [
-              "victim--activity-rule--b17097a14592b324966d"
-            ]
+            "target_refs": [],
+            "victim_refs": []
           },
           "meta_features": {
             "first_observed": {
@@ -400,70 +249,124 @@
               "basis": "not-stated"
             },
             "reported_at": {
-              "value": "2025-07-24T00:00:00Z",
+              "value": "2026-06-22T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
             "activity_type": "intrusion",
             "phases": [],
             "results": [],
             "direction": {
               "source_countries": [],
-              "target_country_refs": [
-                "target--activity-rule--country--6604ad21c713b8dfd8c7"
-              ],
-              "target_region_refs": [
-                "target--targeting-audit--region--69e0b1175c60b8a211cb",
-                "target--targeting-audit--region--6c0b59266dc90d2e8805"
-              ]
+              "target_country_refs": [],
+              "target_region_refs": []
             }
           },
-          "confidence": "medium",
+          "confidence": "high",
           "evidence_refs": [
-            "source--daily-c9fa26bbe8d21f50b441"
+            "source--microsoft-storm2603-parallel-intrusion-2026"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
         "claim_assessments": [
           {
-            "claim_id": "claim--0b60492a3aac292b9ea8a19a",
+            "claim_id": "claim--303757e3e5fcccd73bd30f23",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-2603 conducted or is associated with 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害: Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-2603 conducted or is associated with Storm-2603と無関係な第2主体が同居した並行侵入事例: Microsoft DARTは、一つの被害環境でStorm-2603と無関係な第2主体が並行して活動した事例を報告した。Storm-2603側はSharePointを探索し、Velociraptor、Cloudflare Tunnel、Zoho Assist、VS Code経由SSHなどを用いて権限・永続性・遠隔アクセスを確保した。別主体のDLLサイドローディングや独自バックドアはStorm-2603の能力として扱わない。",
             "evidence_refs": [
-              "source--daily-c9fa26bbe8d21f50b441"
+              "source--microsoft-storm2603-parallel-intrusion-2026"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
         "malware": [],
-        "targets": [
-          {
-            "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "name": "米国"
-          },
-          {
-            "id": "target--targeting-audit--region--69e0b1175c60b8a211cb",
-            "name": "中東"
-          },
-          {
-            "id": "target--targeting-audit--region--6c0b59266dc90d2e8805",
-            "name": "欧州"
-          }
-        ],
-        "victims": [
-          {
-            "id": "victim--activity-rule--b17097a14592b324966d",
-            "name": "anonymous"
-          }
-        ],
+        "targets": [],
+        "victims": [],
         "techniques": []
       }
     ],
-    "malware_usage": [],
+    "malware_usage": [
+      {
+        "id": "malware--warlock-ransomware",
+        "name": "Warlock ransomware",
+        "aliases": [
+          "Warlock"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "Ransomware deployed by Storm-2603 after ToolShell exploitation.",
+        "first_observed": {
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "Primary-source-verified capability used in the linked activity.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--641146c94474c82536cb49d6",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Storm-2603 uses or has used Warlock ransomware.",
+            "evidence_refs": [
+              "source--microsoft-toolshell-2025"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-b80b607914fb7f62f988",
+            "activity_name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
+            "first_observed": {
+              "value": "2025-07-18T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "not-stated"
+            },
+            "evidence_refs": [
+              "source--microsoft-toolshell-2025"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
     "tool_usage": [],
     "targets": [
       {
@@ -502,9 +405,7 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": [
-          "activity--daily-aacbe5410f1223b930a5"
-        ]
+        "activity_refs": []
       },
       {
         "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
@@ -542,95 +443,7 @@
           }
         ],
         "category": "countrie",
-        "activity_refs": [
-          "activity--daily-e8fd6208405a17b2c79d"
-        ]
-      },
-      {
-        "id": "target--targeting-audit--region--69e0b1175c60b8a211cb",
-        "name": "中東",
-        "description": "活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として中東が明示されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-5c143f1d91377b49cfcc",
-          "source--daily-c9fa26bbe8d21f50b441"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--494f89ca0ea8d63d16119258",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-2603 targets region 中東.",
-            "evidence_refs": [
-              "source--daily-5c143f1d91377b49cfcc",
-              "source--daily-c9fa26bbe8d21f50b441"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": [
-          "activity--daily-b80b607914fb7f62f988",
-          "activity--daily-e8fd6208405a17b2c79d"
-        ]
-      },
-      {
-        "id": "target--targeting-audit--region--6c0b59266dc90d2e8805",
-        "name": "欧州",
-        "description": "活動「Microsoft: SharePointサーバーもランサムウェア攻撃の標的に」の記述で標的地域として欧州が明示されている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-5c143f1d91377b49cfcc",
-          "source--daily-c9fa26bbe8d21f50b441"
-        ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--6c5864987f162826ea68b1a0",
-            "category": "target-region",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Storm-2603 targets region 欧州.",
-            "evidence_refs": [
-              "source--daily-5c143f1d91377b49cfcc",
-              "source--daily-c9fa26bbe8d21f50b441"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": [
-          "activity--daily-b80b607914fb7f62f988",
-          "activity--daily-e8fd6208405a17b2c79d"
-        ]
+        "activity_refs": []
       }
     ]
   },
@@ -704,9 +517,9 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "unresolved": 2,
-    "supported": 1,
-    "partially-supported": 11
+    "unresolved": 1,
+    "supported": 5,
+    "partially-supported": 3
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -919,10 +732,66 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    "source--microsoft-toolshell-2025": {
+      "source_id": "source--microsoft-toolshell-2025",
+      "path": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+      "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+      "title": "Disrupting active exploitation of on-premises SharePoint vulnerabilities",
+      "publisher": "Microsoft Threat Intelligence",
+      "published_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "Microsoft separately attributes exploitation to Linen Typhoon, Violet Typhoon, and Storm-2603. It does not uniquely attribute the reported NNSA victim event to any one of those clusters."
+    },
+    "source--microsoft-storm2603-parallel-intrusion-2026": {
+      "source_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+      "path": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+      "title": "One intrusion, two cyberattackers: Uncovering parallel threat activity",
+      "publisher": "Microsoft Defender Experts Cybersecurity Incident Response",
+      "published_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "ttp",
+        "victim-case"
+      ],
+      "analyst_notes": "Microsoft separates Storm-2603 activity from a second unrelated actor in the same environment; shared victim presence is not an actor relationship."
     }
   },
   "research_gaps": [
-    "Canonical activities exist, but their observation periods are unknown.",
     "No canonical cross-actor relationship is structured.",
     "Motivation remains unknown or unstructured.",
     "Attribution remains unknown or unstructured."
