@@ -31,6 +31,43 @@ opencti/
 - `manifest.json`: 全ファイル、表示名、元Profile/Activity ID、オブジェクト数、サイズ、
   解決できなかったアクター関係を列挙します。
 
+## ダウンロードとRelease配布
+
+OpenCTIへ取り込む配布物は、この`opencti/`だけを使用します。
+`profiles/*/generated/profile.stix2.json`はプロファイル単位の別表現であり、deprecatedな
+旧プロファイルも保持するため、OpenCTI Bundleと混在させて取り込まないでください。
+
+[GitHub Releases](https://github.com/proshiba/threatactor-intel-analysis/releases)では、
+次のassetを配布します。Archiveは1個の巨大なSTIX Bundleではなく、このディレクトリの
+自己完結Bundleをそのまま保持します。OpenCTIへはArchive自体を渡さず、展開後のJSONを
+取り込んでください。
+
+- `opencti-stix-all.tar.gz`: README、corpus-wide manifest、全Bundle。
+- `opencti-stix-all.zip`: 上記と同じ内容のZIP版。
+- `opencti-stix-actors.tar.gz`: README、corpus-wide manifest、Actor Bundle。
+- `opencti-stix-campaigns.tar.gz`: README、corpus-wide manifest、Campaign Bundle。
+- `opencti-stix-activities.tar.gz`: README、corpus-wide manifest、Incident/Grouping Bundle。
+- `opencti-manifest.json`: Archive内`opencti/manifest.json`のbyte同一コピー。
+- `SHA256SUMS`: 上記6 assetのSHA-256。自身は一覧に含めません。
+
+分類別Archive内のmanifestも全corpusを記述します。そのArchiveだけに含まれるファイルの
+一覧ではないため、分類別の実ファイルはmanifestの`actors`、`campaigns`、`activities`の
+該当配列を参照してください。
+
+GitHub CLIで全体tar.gzを取得する例:
+
+```bash
+gh release download \
+  --repo proshiba/threatactor-intel-analysis \
+  --pattern 'opencti-stix-all.tar.gz' \
+  --pattern 'SHA256SUMS'
+sha256sum --ignore-missing -c SHA256SUMS
+tar -xzf opencti-stix-all.tar.gz
+```
+
+macOSでは検証行を絞って
+`grep 'opencti-stix-all.tar.gz$' SHA256SUMS | shasum -a 256 -c -`を使用できます。
+
 国・地域はOpenCTIの`Location`（`x_opencti_location_type`を付与）、産業・役割は
 `identity_class: class`の`Identity`として出力します。国は固定したOpenCTI公式データセットの
 英語名、ISO 3166-1 alpha-3コード、座標、aliasへ照合し、元の日本語名もaliasとして保持します。
@@ -68,6 +105,23 @@ OpenCTI公式資料:
 ```bash
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 python3 actor_profile/scripts/build_opencti_bundles.py --prune
+
+# manifestと全Bundleを検証し、再現可能なRelease assetとSHA256SUMSを作成
+python3 actor_profile/scripts/package_opencti_release.py \
+  --output-dir dist/opencti-release
+```
+
+`Package and release OpenCTI STIX` Workflowは、手動実行時には14日保持のActions artifactを
+作成し、`opencti-vYYYY.MM.DD`形式のtag push時には同じ検証済みassetをGitHub Releaseへ
+公開します。Release tagは`main`上のcommitを指す移動されていないlightweight tagだけを
+許可します。同日に複数回公開する場合は
+`opencti-vYYYY.MM.DD-2`のように末尾へ番号を付けます。
+
+```bash
+git switch main
+git pull --ff-only
+git tag opencti-vYYYY.MM.DD
+git push origin opencti-vYYYY.MM.DD
 ```
 
 このディレクトリは生成物です。修正は`profiles/<actor>/actor-profile.json`、`iocs.json`、

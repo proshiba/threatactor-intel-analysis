@@ -289,6 +289,32 @@ Intrusion Set objectを再利用する。Bundle自己完結化のためにNote�
   profile固有の説明・出典・期間は共有SDOへ混在させず、Relationship、Noteまたは
   profile-scoped IDへ保存する。
 
+### 7.2 Release配布の不変条件
+
+OpenCTI向けReleaseは`opencti/`だけを正規配布元とし、
+`profiles/*/generated/profile.stix2.json`を混在させない。後者にはdeprecatedな旧profileが
+残り得るうえ、同じ安定IDをprofile全体表現とOpenCTI slice表現で共有する場合がある。
+
+全データを1個の巨大なSTIX Bundleへ連結しない。アクター別・Activity別の自己完結Bundleを
+維持したままArchive化し、利用者が展開後に`actors`、`campaigns`、`activities`の順で
+取り込めるようにする。Release生成前に次をfail closedで検証する。
+
+1. manifestの3分類のpath集合と実際の`.stix2.json`集合が一致する。
+2. 各Bundleのbyte sizeとobject countがmanifestと一致する。
+3. Actorは`profile_id`から安定生成した主Intrusion Setをちょうど1件含み、Activityは
+   `activity_id`と`x_profile_object_id`が一致する主STIX objectをちょうど1件含む。
+4. ActorごとのCampaign/Activity件数、3分類の総数、取込順がmanifestと一致する。
+5. Standalone Activityのflag付きentry集合と`standalone_activities`が完全一致し、別件として
+   二重加算しない。
+6. manifestの最大サイズと実測値が一致し、各Bundleが45 MiB以下である。
+7. 未記載ファイル、path traversal、symlinkを配布物へ含めない。
+8. Archive memberの順序・mtime・owner・modeを固定し、同じ入力から同じbyte列を生成する。
+9. 全assetのSHA-256を`SHA256SUMS`へ保存し、公開前とdownload後に検証する。
+
+分類別Archiveにもcorpus-wideの同一manifestを含める。これは分類別Archiveだけの内容一覧では
+ないため、READMEで該当する`actors` / `campaigns` / `activities`配列を参照するよう明記する。
+Release Workflowは検証済みtagだけを対象とし、mainに含まれないcommitから公開しない。
+
 ## 8. 非標準RelationshipのOpenCTIフォールバック
 
 `entity_relationships.relationship_type`は正規データ上ではopen vocabularyとして扱い、

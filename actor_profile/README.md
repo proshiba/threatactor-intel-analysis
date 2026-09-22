@@ -89,6 +89,10 @@ python3 actor_profile/scripts/validate_profile.py \
 
 # OpenCTI ImportFileStix向けのアクター別・Activity別Bundleを全件生成
 python3 actor_profile/scripts/build_opencti_bundles.py --prune
+
+# manifestとBundleを検証してGitHub Release用の再現可能Archiveを生成
+python3 actor_profile/scripts/package_opencti_release.py \
+  --output-dir dist/opencti-release
 ```
 
 実際には、CodexのバンドルPythonを使うとPDF・XLSX取込も有効になります。
