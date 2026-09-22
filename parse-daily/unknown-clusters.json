@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-22T00:00:00Z",
+  "generated_at": "2026-09-22T01:10:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -4740,6 +4740,74 @@
         "インフラ重複が共同運用、同一運用者、再利用のどれを示すかは未確定。"
       ],
       "analyst_notes": "GOFFEE側にもmedium-confidence relationshipを記録するが、HeartlessSoulはunknown clusterに留める。"
+    },
+    {
+      "cluster_id": "unknown-cluster--payload-ransomware",
+      "primary_name": "PAYLOAD ランサムウェアの運用者（未命名）",
+      "aliases": [
+        "PAYLOAD"
+      ],
+      "status": "tracking",
+      "entity_type": "group",
+      "first_seen": "2026-09-22",
+      "last_seen": "2026-09-22",
+      "detected_via": "2026-09-22 の日次チェックにおいて、一次情報源の公開一覧巡回(Kaspersky Securelist)で発見した。tech-memo daily-news には未掲載のため daily_check.py --run-scan では検知されず、IOC CSV の actor 列にも現れていない。本記事の公開は 2026-09-21(datePublished)であり、前回走査の完了時刻 2026-09-20T08:20:00Z より後であるため、前回走査の取りこぼしではない。既存775プロファイルの canonical name / alias、本台帳の clusters および excluded_name_collisions のいずれにも PAYLOAD は存在しないことを確認した(canonical/alias の完全一致走査、および actor_profile/reference/osint の集約参照データを確認)。参照データ misp-malpedia.json にも PAYLOAD という名称のランサムウェアファミリは存在しない。",
+      "attribution": {
+        "state": "unattributed-in-this-source",
+        "actor_type": "ransomware-operator",
+        "notes": "Kaspersky Security Services は本稿で運用者の帰属を一切行わず、既知ランサムウェアグループとの関連付けも否定も行っていない。PAYLOAD は Kaspersky がインシデントで確認したランサムウェアに付した名称であり、運用者の呼称ではない。本台帳では当該オペレーションの未命名運用者をクラスタとして記録する(MovieReaper / PasteSwitch の未命名運用者エントリと同じ扱い)。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-22",
+          "publisher": "Kaspersky Security Services (Securelist)",
+          "url": "https://securelist.com/payload-ransomware-via-group-policy/121335/",
+          "title": "Group Policy hijacked: PAYLOAD ransomware weaponizes Active Directory GPO",
+          "published_at": "2026-09-21",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2026-04-11〜2026-04-15(原文が明示する単一インシデントのタイムライン)。初期VPNアクセス 4/11、悪性GPO作成とSYSVOLステージング 4/13、データ窃取 4/13〜4/14、再起動時の一斉起動 4/14、Kaspersky GERT 関与開始 4/15。公開日 2026-09-21 は reported_at として分離し、activity_period へ転用しない。",
+          "targets": "中東地域の製造業組織1社(原文は匿名化して THECOMPANY と表記)。ドメイン参加の Windows ワークステーション、ファイルサーバー、ESXi/Linux サーバーが対象。被害組織名は非公開。",
+          "malware": [],
+          "tools": [
+            "Active Directory Group Policy Object (GPO Preferences / Security Settings) の悪用",
+            "killer.exe (MD5 0108656A3E1ADE6CA4F21B084F5E1208)",
+            "kill.exe (MD5 BEA5E267F24D7DA59F6821BFFDBFF293)"
+          ],
+          "exploited_vulnerabilities": [],
+          "summary": "攻撃者はドメイン管理者相当の権限を取得し、ドメインルートに悪性GPOを2つ作成した。PAYLOAD GPO ({C897F2C7-C2AC-4E6F-BF48-58036FF29E79}) は SYSVOL 経由で身代金要求の壁紙・ロック画面画像(payload.jpg)を配布し、legalnoticecaption/legalnoticetext レジストリ値を改変してログオンバナーに身代金要求を表示、README-payload.txt を読み取り専用の身代金メモとして各端末へ配布し、Security Settings でローカル管理者アカウントを無効化した。もう1つのGPO ({22099AD2-E062-4F56-B574-5099BBA4E7A6}) は全プロファイルの Windows Firewall を無効化した。特徴は暗号化なし・ディスク常駐バイナリなし・永続化なし・悪性プロセスなしで、正規のグループポリシー機構のみを用いて『純粋な impact』(データ破壊・恐喝)を狙う点にある。GPO は 4/13 に作成され、端末の再起動が発生する 4/14 に一斉適用された。この時間差(dormancy window)がデータ窃取に利用された。killer.exe / kill.exe が使用されている。",
+          "attribution_basis": "原文に帰属根拠の記述はない。運用者の国籍・支援国・既知グループとの関係のいずれにも言及がない。",
+          "iocs": {
+            "md5": [
+              "0108656A3E1ADE6CA4F21B084F5E1208",
+              "BEA5E267F24D7DA59F6821BFFDBFF293"
+            ],
+            "ipv4": [
+              "37.19.210.12",
+              "146.70.117.239",
+              "149.102.229.154",
+              "104.164.55.46",
+              "104.28.162.228",
+              "104.28.163.162",
+              "64.190.76.14",
+              "192.42.116.50",
+              "192.42.116.12",
+              "192.42.116.56",
+              "192.42.116.97",
+              "192.42.116.52"
+            ],
+            "notes": "GPO GUID {C897F2C7-C2AC-4E6F-BF48-58036FF29E79}(PAYLOAD)・{22099AD2-E062-4F56-B574-5099BBA4E7A6}(Firewall Off)、ファイル名 payload.jpg / hello.txt / README-payload.txt / killer.exe / kill.exe、レジストリ値 legalnoticecaption=\"Welcome to Payload!\"、SYSVOLパス、検知イベントID 5136/5137 は AGENT.md に従い IOC ではなく artifact として扱う。IP のうち複数(192.42.116.0/24 等)は Tor 出口/VPN の可能性があり、原文の文脈確認が必要。"
+          },
+          "verified_by_analyst": "WebFetch の要約に加えて curl で HTTP 200 を取得し原文タイトル『PAYLOAD ransomware attacks through Active Directory GPO | Securelist』を直接確認した。datePublished 2026-09-21、著者 Ahmad Zaidi Said / Elsayed Elrefaei / Kaspersky Security Services、GPO悪用の手法、インシデントのタイムライン、IOC(MD5 2件・IP 12件・GPO GUID・ファイル名)を確認している。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "独立したトラッキング対象とすべきか、単なるマルウェアファミリ名として扱うべきかの判断が残る。PAYLOAD は Kaspersky が単一インシデントで観測したランサムウェアの名称であり、運用者の帰属・恒久的な命名は存在しない。本台帳の MovieReaper / PasteSwitch と同型(named operation + 未命名運用者)として tracking で登録したが、昇格閾値(独立した一次資料2本以上)は未充足である。",
+        "既知ランサムウェアグループとの関係が未確認である。GPO を暗号化なしの impact 目的で悪用する手法は特徴的だが、原文は既知グループとの関連付けを行っていない。他ベンダーの独立報告が現れた時点で照合する。",
+        "IOC の IP 群(特に 192.42.116.0/24)が Tor 出口ノード/共有VPNである可能性があり、他クラスタとの誤った関連付けを避けるため原文の各IPの文脈(初期アクセス元か否か)の精査を要する。"
+      ],
+      "analyst_notes": "tech-memo 未掲載かつ IOC CSV 未作成の一次資料は daily_check.py の検知経路2系統のいずれにも掛からない。NightEagle(2026-09-17)、2026-09-15 の Acronis/Red Heron に続く同型の事例であり、一次情報源の公開一覧巡回が唯一の検知経路として機能した。本ルーチンは検知・記録までであり、プロファイル昇格は提案に留め指示を待つ。"
     }
   ],
   "excluded_name_collisions": [
