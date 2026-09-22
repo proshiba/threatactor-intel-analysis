@@ -45,6 +45,10 @@ OpenCTIへファイル取込する用途では、全アクターをアクター�
 Incident/Grouping単位に分割した
 [OpenCTI import bundles](opencti/README.md)を使用できます。
 
+全OpenCTI Bundleは[GitHub Releases](https://github.com/proshiba/threatactor-intel-analysis/releases)
+からtar.gzまたはzipでまとめて取得できます。Release Archiveを展開し、`opencti/`内のJSONを
+`actors`、`campaigns`、`activities`の順に取り込んでください。
+
 ```text
 opencti/
 ├── manifest.json
