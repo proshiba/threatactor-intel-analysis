@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 import json
 from collections import defaultdict
@@ -37,11 +38,13 @@ from ingest_observables import (  # noqa: E402
     certificate_hash_algorithm,
     classified_record_values,
     classify_hash,
+    coalesce_dataset_sources,
     extract_artifacts,
     extract_iocs,
     explicitly_excluded_ioc,
     filter_canonical_refs,
     looks_like_hash,
+    time_from_record,
     validate_certificate_fingerprint,
 )
 
@@ -173,6 +176,108 @@ class AttackReferenceTests(unittest.TestCase):
 
 
 class ObservableBoundaryTests(unittest.TestCase):
+    def test_shared_source_identity_keeps_all_evidence_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            first = root / "first.csv"
+            second = root / "second.csv"
+            known_publication = {
+                "value": "2026-08-12T00:00:00Z",
+                "precision": "day",
+                "status": "known",
+                "basis": "source-publication",
+            }
+            items = [
+                {
+                    "source_id": "source--shared",
+                    "resolved_path": first,
+                    "published_at": {
+                        "value": None,
+                        "precision": "unknown",
+                        "status": "unknown",
+                        "basis": "not-stated",
+                    },
+                    "confidence": None,
+                    "tlp": "TLP:CLEAR",
+                    "analyst_notes": "first note",
+                    "field_map": {"value": "value"},
+                },
+                {
+                    "source_id": "source--shared",
+                    "resolved_path": second,
+                    "published_at": known_publication,
+                    "confidence": "high",
+                    "tlp": "TLP:CLEAR",
+                    "analyst_notes": "second note",
+                    "field_map": {"value": "indicator"},
+                },
+            ]
+
+            rows = coalesce_dataset_sources(items, root)
+
+            self.assertEqual(len(rows), 1)
+            self.assertEqual(rows[0]["path"], "first.csv")
+            self.assertEqual(
+                rows[0]["evidence_paths"], ["first.csv", "second.csv"]
+            )
+            self.assertIn("first note", rows[0]["analyst_notes"])
+            self.assertIn("second.csv", rows[0]["analyst_notes"])
+            self.assertEqual(rows[0]["published_at"], known_publication)
+            self.assertEqual(rows[0]["confidence"], "high")
+            self.assertEqual(items[0]["confidence"], "high")
+            self.assertEqual(items[0]["published_at"], known_publication)
+            self.assertEqual(items[0]["field_map"], {"value": "value"})
+            self.assertEqual(items[1]["field_map"], {"value": "indicator"})
+
+    def test_distinct_manifest_sources_remain_distinct(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            items = [
+                {
+                    "source_id": "source--one",
+                    "resolved_path": root / "one.csv",
+                    "confidence": "medium",
+                    "tlp": "TLP:CLEAR",
+                },
+                {
+                    "source_id": "source--two",
+                    "resolved_path": root / "two.csv",
+                    "confidence": "high",
+                    "tlp": "TLP:AMBER",
+                },
+            ]
+
+            rows = coalesce_dataset_sources(items, root)
+
+            self.assertEqual(
+                [item["source_id"] for item in rows],
+                ["source--one", "source--two"],
+            )
+            self.assertTrue(
+                all("evidence_paths" not in item for item in rows)
+            )
+
+    def test_shared_source_semantic_conflict_fails_before_ingest(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            items = [
+                {
+                    "source_id": "source--shared",
+                    "resolved_path": root / "one.csv",
+                    "confidence": "high",
+                    "tlp": "TLP:CLEAR",
+                },
+                {
+                    "source_id": "source--shared",
+                    "resolved_path": root / "two.csv",
+                    "confidence": "low",
+                    "tlp": "TLP:CLEAR",
+                },
+            ]
+
+            with self.assertRaisesRegex(ValueError, "conflicting confidence"):
+                coalesce_dataset_sources(items, root)
+
     def test_certificate_fingerprint_algorithm_controls_x509_pattern(self) -> None:
         cases = {
             "md5": ("MD5", "aa" * 16),
@@ -621,6 +726,27 @@ class TimeTests(unittest.TestCase):
         self.assertEqual(point["status"], "unknown")
         self.assertIsNone(point["value"])
         self.assertEqual(point["basis"], "invalid-calendar-date:same-record")
+
+    def test_blank_mapped_observed_at_does_not_scrape_campaign_year(self) -> None:
+        record = {
+            "text": (
+                "hepog.org,domain,activity--goffee-q2-container-campaign-2026,"
+                "source--kaspersky-goffee-q2-2026,"
+            ),
+            "fields": {
+                "value": "hepog.org",
+                "observed_at": "",
+                "campaign_refs": "activity--goffee-q2-container-campaign-2026",
+            },
+        }
+        point = time_from_record(
+            record,
+            {
+                "field_map": {"observed_at": "observed_at"},
+            },
+        )
+        self.assertEqual(point["status"], "unknown")
+        self.assertIsNone(point["value"])
 
 
 class GenerationGuardrailTests(unittest.TestCase):

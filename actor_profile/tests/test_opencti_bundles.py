@@ -14,14 +14,18 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from build_opencti_bundles import (  # noqa: E402
+    PRODUCER_CREATED,
+    PRODUCER_MODIFIED,
     build_actor_bundle,
     build_actor_index,
     build_activity_bundle,
     build_campaign_bundle,
+    campaign_dependency_profile_ids,
     normalize_shared_object_versions,
     prepare_profile_objects,
     profile_scoped_stix_id,
     producer_identity,
+    repository_producer_identity,
     validate_bundle,
     validate_shared_object_definitions,
 )
@@ -107,6 +111,12 @@ def fixture_profile() -> dict[str, object]:
                     "name": "Example Infrastructure",
                 }
             ],
+            "tools": [
+                {
+                    "id": "tool--example",
+                    "name": "Example Tool",
+                }
+            ],
         },
         "targets": {
             "countries": [
@@ -138,6 +148,7 @@ def fixture_profile() -> dict[str, object]:
                 "activity_refs": [],
                 "description": "Example campaign.",
                 "malware_refs": ["malware--example"],
+                "tool_refs": ["tool--example"],
                 "infrastructure_refs": ["infra--example"],
                 "target_refs": ["target--country-example"],
                 "ttp_refs": ["ttp--example"],
@@ -184,6 +195,7 @@ def fixture_bundle(profile: dict[str, object]) -> dict[str, object]:
     actor_id = stix_id("intrusion-set", profile["profile_id"])
     campaign_id = stix_id("campaign", "activity--example-operation")
     malware_id = stix_id("malware", "malware--example")
+    tool_id = stix_id("tool", "tool--example")
     infrastructure_id = stix_id("infrastructure", "infra--example")
     country_id = stix_id("identity", "target--country-example")
     sector_id = stix_id("identity", "target--sector-example")
@@ -258,6 +270,16 @@ def fixture_bundle(profile: dict[str, object]) -> dict[str, object]:
             },
         ),
         stix_base(
+            "tool",
+            "tool--example",
+            NOW,
+            {
+                "name": "Example Tool",
+                "tool_types": ["remote-access"],
+                "x_profile_object_id": "tool--example",
+            },
+        ),
+        stix_base(
             "identity",
             "target--country-example",
             NOW,
@@ -320,6 +342,16 @@ def fixture_bundle(profile: dict[str, object]) -> dict[str, object]:
                 "relationship_type": "uses",
                 "source_ref": campaign_id,
                 "target_ref": infrastructure_id,
+            },
+        ),
+        stix_base(
+            "relationship",
+            f"{campaign_id}:uses:{tool_id}",
+            NOW,
+            {
+                "relationship_type": "uses",
+                "source_ref": campaign_id,
+                "target_ref": tool_id,
             },
         ),
         stix_base(
@@ -413,6 +445,12 @@ class OpenCTIBundleTests(unittest.TestCase):
             "iocs": iocs,
             "objects": objects,
         }
+
+    def test_repository_producer_has_its_own_pinned_version(self) -> None:
+        producer = repository_producer_identity()
+        self.assertEqual(producer["created"], PRODUCER_CREATED)
+        self.assertEqual(producer["modified"], PRODUCER_MODIFIED)
+        self.assertNotEqual(producer["modified"], NOW)
 
     def test_opencti_target_types_are_preserved_without_fake_organizations(self) -> None:
         country = next(
@@ -732,6 +770,7 @@ class OpenCTIBundleTests(unittest.TestCase):
         names = {item.get("name") for item in bundle["objects"]}
         self.assertIn("domain: scoped.example", names)
         self.assertNotIn("domain: unscoped.example", names)
+        self.assertIn("Example Tool", names)
         country = next(
             item
             for item in bundle["objects"]
@@ -760,6 +799,19 @@ class OpenCTIBundleTests(unittest.TestCase):
             any(
                 item.get("relationship_type") == "indicates"
                 and item.get("target_ref") == campaign_ref
+                for item in bundle["objects"]
+            )
+        )
+        tool = next(
+            item
+            for item in bundle["objects"]
+            if item.get("x_profile_object_id") == "tool--example"
+        )
+        self.assertTrue(
+            any(
+                item.get("relationship_type") == "uses"
+                and item.get("source_ref") == campaign_ref
+                and item.get("target_ref") == tool["id"]
                 for item in bundle["objects"]
             )
         )
@@ -868,6 +920,126 @@ class OpenCTIBundleTests(unittest.TestCase):
         self.assertFalse(
             any(item.get("type") == "relationship" for item in bundle["objects"])
         )
+
+    def test_parent_grouping_keeps_child_grouping_definition_identical(self) -> None:
+        record = copy.deepcopy(self.record)
+        profile = record["profile"]
+        parent = profile["activities"][0]
+        parent["stix_object_type"] = "grouping"
+        parent["grouping_context"] = "suspicious-activity"
+        old_parent_ref = profile_scoped_stix_id(
+            profile["profile_id"],
+            "campaign",
+            stix_id("campaign", parent["activity_id"]),
+        )
+        parent_ref = profile_scoped_stix_id(
+            profile["profile_id"],
+            "grouping",
+            stix_id("grouping", parent["activity_id"]),
+        )
+        converted: list[dict[str, object]] = []
+        for obj in record["objects"]:
+            if obj.get("type") == "relationship" and old_parent_ref in {
+                obj.get("source_ref"),
+                obj.get("target_ref"),
+            }:
+                continue
+            if obj.get("id") == old_parent_ref:
+                obj["type"] = "grouping"
+                obj["id"] = parent_ref
+                obj["context"] = "suspicious-activity"
+                obj["object_refs"] = []
+                obj["x_stix_object_type"] = "grouping"
+            converted.append(obj)
+        record["objects"] = converted
+        child_id = "activity--child-evidence-grouping"
+        child = {
+            "activity_id": child_id,
+            "name": "Child evidence grouping",
+            "activity_type": "information-collection",
+            "stix_object_type": "grouping",
+            "grouping_context": "suspicious-activity",
+            "activity_refs": [],
+            "malware_refs": ["malware--example"],
+            "tool_refs": ["tool--example"],
+            "infrastructure_refs": ["infra--example"],
+            "target_refs": ["target--country-example"],
+            "ttp_refs": ["ttp--example"],
+            "victim_refs": ["victim--example"],
+        }
+        profile["activities"].append(child)
+        parent["activity_refs"] = [child_id]
+        child_ref = profile_scoped_stix_id(
+            profile["profile_id"], "grouping", stix_id("grouping", child_id)
+        )
+        record["objects"].append(
+            stix_base(
+                "grouping",
+                f"{profile['profile_id']}:grouping:{stix_id('grouping', child_id)}",
+                NOW,
+                {
+                    "name": child["name"],
+                    "context": "suspicious-activity",
+                    "object_refs": [],
+                    "x_profile_object_id": child_id,
+                    "created_by_ref": self.producer["id"],
+                },
+            )
+        )
+        # stix_base above uses the same scoped key formula but assert explicitly
+        # so a future ID helper change cannot make the fixture silently invalid.
+        record["objects"][-1]["id"] = child_ref
+
+        cross_activity_note = stix_base(
+            "note",
+            "cross-activity-hunting-note",
+            NOW,
+            {
+                "abstract": "Cross-activity note",
+                "content": "This note must be sliced, not put in the child grouping.",
+                "object_refs": [parent_ref, child_ref],
+                "x_profile_hunting_pivot_id": "hunting-pivot--cross-activity",
+                "created_by_ref": self.producer["id"],
+            },
+        )
+        record["objects"].append(cross_activity_note)
+
+        parent_bundle = build_activity_bundle(record, parent, self.producer)
+        child_bundle = build_activity_bundle(record, child, self.producer)
+        self.assertEqual(validate_bundle(parent_bundle, expected_scope="grouping"), [])
+        self.assertEqual(validate_bundle(child_bundle, expected_scope="grouping"), [])
+        parent_child = next(
+            item for item in parent_bundle["objects"] if item["id"] == child_ref
+        )
+        standalone_child = next(
+            item for item in child_bundle["objects"] if item["id"] == child_ref
+        )
+        self.assertEqual(parent_child, standalone_child)
+        self.assertNotIn(cross_activity_note["id"], standalone_child["object_refs"])
+        self.assertTrue(
+            any(
+                item.get("x_profile_object_id") == "tool--example"
+                for item in parent_bundle["objects"]
+            )
+        )
+
+    def test_activity_dependency_cycles_terminate(self) -> None:
+        record = copy.deepcopy(self.record)
+        profile = record["profile"]
+        parent = profile["activities"][0]
+        parent["stix_object_type"] = "grouping"
+        parent["grouping_context"] = "suspicious-activity"
+        child = {
+            **copy.deepcopy(parent),
+            "activity_id": "activity--cycle-child",
+            "name": "Cycle child",
+            "activity_refs": [parent["activity_id"]],
+        }
+        parent["activity_refs"] = [child["activity_id"]]
+        profile["activities"].append(child)
+        dependencies = campaign_dependency_profile_ids(profile, parent)
+        self.assertIn(child["activity_id"], dependencies)
+        self.assertIn(parent["activity_id"], dependencies)
 
     def test_country_index_covers_every_canonical_country(self) -> None:
         actor_profile_root = Path(__file__).resolve().parents[1]

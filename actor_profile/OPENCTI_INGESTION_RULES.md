@@ -88,6 +88,7 @@ Relationshipがあるとはみなしません。関係を裏付ける根拠が�
 
 ```text
 Campaign ──uses────> Malware
+Campaign ──uses────> Tool
 Campaign ──uses────> Infrastructure
 Campaign ──targets─> Country / Sector / Victim
 Infrastructure ──consists-of─> IP / Domain / URL / Email / Certificate SCO
@@ -95,6 +96,12 @@ Infrastructure ──consists-of─> IP / Domain / URL / Email / Certificate SCO
 
 同じIP等は値ごとに一つの安定SCO IDを使います。異なるInfrastructureやCampaignで同じ
 値が観測された場合、SCOを複製せず、それぞれの根拠付きRelationshipを作ります。
+
+正規RMM、OS標準機能、ペンテストフレームワーク等はMalwareへ変換せずToolとして保持し、
+一次資料が当該Activityでの利用を明示した場合だけ`activity.tool_refs`から
+`Campaign/Incident ──uses──> Tool`を生成します。Actor全体での使用歴だけを根拠に
+Activityへ補完しません。GroupingではToolを`object_refs`へ含められますが、包含だけから
+`uses` Relationshipは生成しません。
 
 次は原典がその動作を明示した場合だけ作ります。
 
@@ -127,6 +134,14 @@ Infrastructure–Observable関係には次の補助値を出力します。
 - `x_temporal_basis: unknown`: 観測時刻も公開日も不明。
 - `x_time_correlation_eligible`: 実観測時刻を使える場合だけ`true`。
 - `x_report_published_fallback`: 弱い調査手掛かりとしての出典公開日。関係期間ではない。
+
+STIX 2.1 Indicatorでは`valid_from`が必須だが、観測時刻が不明なIOCへ出典公開日を入れては
+ならない。その場合はIndicator生成の技術的fallbackとしてprofileの安定`created_at`を使い、
+`x_valid_from_basis: stix-required-created-fallback`、
+`x_time_correlation_eligible: false`、unknownの`x_first_observed` / `x_last_observed`を併記する。
+実観測がある場合だけ`x_valid_from_basis: first-observed`とし、時間相関対象にする。
+`valid_from`のfallback単独を攻撃観測日、Infrastructure利用開始日、Relationship開始日として
+読んではならない。
 
 時刻未設定は「永続的に有効」を意味せず「期間不明」を意味します。OpenCTIの全体Relation
 graphだけでIP共有を評価すると、1年離れた再利用IPも近接観測と同じに見えます。相関時は
@@ -219,8 +234,45 @@ opencti/
 - `actors/`: Intrusion Setとアクター全体の知識。Activityは含めない。
 - `campaigns/`: 主オブジェクトがCampaignのActivity。
 - `activities/`: 主オブジェクトがIncidentまたはGroupingのActivity。
-- Grouping Bundleは`activity_refs`で参照したCampaign/Incidentを含められる。
+- Grouping Bundleは`activity_refs`で参照したCampaign/Incidentを含められる。Activityで
+  明示参照したMalware、Tool、Infrastructure、TTP、標的も同じsliceへ含める。
+- 親Groupingが`activity_refs`で子Activityを含む場合、子の`activity_refs`、Malware、Tool、
+  Infrastructure、TTP、標的、被害事例の依存をcycle-safeに再帰展開する。親Bundle内の
+  子Groupingは、子自身のBundleと同一の`object_refs`を持たせ、親だけのオブジェクトを
+  containmentへ混入させない。複数Activityを横断するNoteはbundle固有sliceになるため、
+  子Groupingのcanonical containmentへ暗黙に含めない。
+- Campaign / Incidentの`activity_refs`は空配列にする。複数Activityを同じ調査集合へ
+  束ねる必要がある場合は別のGroupingを作り、明示的な`part-of`等を主張する場合は
+  そのRelationship自体の根拠を別途保持する。
 - 推奨順は`actors`、`campaigns`、`activities`。各Bundleは単独でも参照解決できる。
+
+全Bundleに含めるproducer Identityは、actorやCampaignの最終更新時刻ではなく、producer
+Identity自身のメタデータ版を示す固定の`created` / `modified`を使う。actorを1件更新した
+だけでproducerの`modified`を進めると全Bundleが不要に変わり、部分取込時には同一STIX IDの
+異なる定義が混在し得る。producerの名称・説明・参照先等を実際に変更した場合だけ、
+`PRODUCER_MODIFIED`を更新して全Bundleを再生成する。
+
+### 7.1 Actorへ昇格しないStandalone Activity
+
+根拠のあるCampaign / Incident / Groupingが存在しても、運用主体の境界が不明な場合は
+Intrusion SetやThreat Actorを作らない。レビュー済みの対象だけを
+`standalone-activity-curation.json`へ明示的にallowlistし、次へ出力する。
+
+```text
+opencti/campaigns/unattributed/<activity-id>.stix2.json
+opencti/activities/unattributed/<activity-id>.stix2.json
+```
+
+`parse-daily/unknown-clusters.json`は調査台帳であり、内容が不均一なので全件を自動出力しない。
+curationには安定Activity ID、Campaign / Incident / Groupingの判断、時間精度、採用する
+ledger observation、IOC昇格方針と判断理由を保存する。名前付きoperator、自己申告handle、
+vendorの帰属評価があっても、curationされたStandalone Bundleには`intrusion-set`、
+`threat-actor`、Activity→Actor Relationshipを生成しない。
+
+未検証の自己主張はGrouping + Noteに限定し、主張された期間を
+`first_observed` / `last_observed`へ転用しない。Groupingの`object_refs`は証拠集合だけを表し、
+包含からRelationshipを生成しない。exact IOCへ昇格できないwildcard、共有サービスroot、
+汎用relay等はSource Noteへ残し、Indicator化しない。
 
 同一STIX IDを複数Bundleへ含める場合、そのobjectは`created` / `modified`を含めてbyte同一にする。
 別Actor profileのTTP観測、Indicator assertion、Capability、Activity、標的・被害レコード等、

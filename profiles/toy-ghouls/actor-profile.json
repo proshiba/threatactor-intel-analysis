@@ -1,0 +1,2982 @@
+{
+  "schema_version": "1.4.0",
+  "profile_id": "actor--toy-ghouls",
+  "name": "Toy Ghouls",
+  "status": "draft",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "Toy Ghouls",
+    "aliases": [
+      {
+        "name": "Bearlyfy",
+        "vendor": "Kaspersky / F6",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "KasperskyとF6がそれぞれToy Ghouls/Bearlyfyを同じ追跡対象として記述する。ただしベンダー間の収集境界まで完全一致すると立証されたわけではないためexactにはしない。"
+      },
+      {
+        "name": "Labubu",
+        "vendor": "F6 / Kaspersky",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "F6の「Bearlyfy (aka Labubu)」とKasperskyの別名列挙に基づく。Labuibは採用しない。"
+      },
+      {
+        "name": "Laboo.boo",
+        "vendor": "Kaspersky",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "KasperskyがToy Ghoulsの別名として一貫して列挙する。連絡先ドメインとの同名性だけでなく本文の明示的対応に基づくが、ベンダー内スコープとして保持する。"
+      },
+      {
+        "name": "Feral Wolf",
+        "vendor": "Kaspersky",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "2026-09-04のKaspersky記事1本でのみ別名として確認したためmedium。exactへ昇格しない。"
+      }
+    ],
+    "actor_types": [
+      "threat-group",
+      "ransomware",
+      "extortion"
+    ],
+    "first_seen": {
+      "value": "2025-01-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-07-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "unknown",
+    "description": "Toy Ghoulsは、KasperskyとF6が少なくとも2025年1月から追跡する、ロシアの組織を標的としたランサムウェア／恐喝活動クラスタである。LockBit 3 Black、改変Babuk、RedAlert、PolyViceを利用し、2026年3月以降はWindows・Linux・ESXi向けの独自ランサムウェアGenieLocker、2026年7月にはMQTTとMatrixをそれぞれC2に使う独自バックドアmqtt-bird-agentとmatrix-bird-agentを使用した。",
+    "analyst_notes": "draft intrusion-setとして管理する。Kasperskyの技術分析3本と独立したF6の観測が主体・時系列・道具立てを相互補強するため、単なるGroupingより継続主体として扱える。一方、地理的帰属、運営者、Head Mareとの組織境界は未確定である。last_seenはKasperskyが独自バックドアを初めて観測した2026年7月であり、記事公開日の9月へ延長していない。activeも公開日から推定せずunknownとした。"
+  },
+  "attribution": {
+    "countries": [],
+    "sponsor_type": "criminal",
+    "organizations": [],
+    "assessment": "KasperskyはToy Ghoulsを金銭目的のランサムウェア集団として扱い、F6は恐喝と妨害を組み合わせるサイバー犯罪グループとして記述し、2026-03-25発表ではBearlyfyをpro-Ukrainianと形容する。この行為類型に限ってcriminalを付与し、pro-UkrainianはF6のsource-scopedな政治的整列評価として注記するが、出身国、所在国、国家後援、運営企業はどの一次資料も特定していない。",
+    "confidence": "high",
+    "evidence_refs": [
+      "source--kaspersky-toy-ghouls-2026-03-12",
+      "source--f6-bearlyfy-2026-03-25",
+      "source--kaspersky-genielocker-2026-07-30"
+    ],
+    "analyst_notes": "標的国がロシアであることやF6のpro-Ukrainian表現を、Toy Ghoulsの国籍・origin・国家支援へ転用しない。criminalは地理帰属ではなく、観測された恐喝・身代金要求という行為類型に対するsource-scoped評価である。"
+  },
+  "motivations": [
+    {
+      "type": "financial-gain",
+      "description": "身代金要求による金銭獲得。F6は要求額と支払率に関する集計を示し、Kasperskyも恐喝を主要目的として記述する。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12",
+        "source--f6-bearlyfy-2026-03-25",
+        "source--kaspersky-genielocker-2026-07-30"
+      ],
+      "analyst_notes": "実際の支払率はF6の集計に依存するため、個々の被害事例へ一般化しない。"
+    },
+    {
+      "type": "destruction",
+      "description": "F6はToy Ghoulsの活動を恐喝だけでなく企業活動の妨害・サボタージュとの二重目的として評価する。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2026-03-25"
+      ],
+      "analyst_notes": "F6単独の評価であり、KasperskyのGenieLocker事例では情報流出や二重恐喝の証拠が確認されていない。"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--toy-ghouls--head-mare--shares-infrastructure",
+      "target_actor": "Head Mare",
+      "relationship_type": "shares-infrastructure-with",
+      "description": "Kasperskyは195.133.32.213をToy Ghoulsの一攻撃のC2として観測し、同じIPがHead Mareにも少なくとも2025年8月から使われたと報告した。31.56.27.60とnextcloud.soft-trust.comも、Toy Ghouls環境で実行されたツールの接続先として、Head Mareの既知C2と重なる。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "toy-ghouls-overlap-date-not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "Kaspersky自身が共同活動を断定するには証拠不足と留保する。クラウド/VPS再割当や共有業者による重複もあり得るため、共有IOCを両者の専有資産として扱わず、part-ofやexactへ変換しない。"
+    },
+    {
+      "relationship_id": "relationship--toy-ghouls--head-mare--shares-tools",
+      "target_actor": "Head Mare",
+      "relationship_type": "shares-tools-with",
+      "description": "Toy Ghoulsの被害環境で、Head Mareの既知C2へ接続するMeshAgentおよびRsocx/Socks5Proxyが観測された。また両クラスタで使われたLockBit検体のコード類似が報告された。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "MeshAgent、Rsocx、LockBitはいずれも共有・再利用可能な道具であり、単独では組織的同一性を示さない。"
+    },
+    {
+      "relationship_id": "relationship--toy-ghouls--head-mare--cooperates",
+      "target_actor": "Head Mare",
+      "relationship_type": "cooperates-with",
+      "description": "F6はBearlyfy/Toy Ghoulsについて、Head Mareのような、より経験豊富なpro-Ukrainianグループとの協力を観測したと報告する。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--f6-bearlyfy-2026-03-25"
+      ],
+      "analyst_notes": "F6の直接評価をsource-scopedで記録する。協力の期間、指揮関係、メンバー重複は示されていない。Kasperskyは同時期の記事で共同活動の断定を留保しているため、part-of、subgroup、exact identityは作らない。pro-Ukrainianという協力相手の記述をToy Ghouls自身のoriginへ移さない。"
+    },
+    {
+      "relationship_id": "relationship--toy-ghouls--phantomcore--shares-infrastructure",
+      "target_actor": "PhantomCore",
+      "relationship_type": "shares-infrastructure-with",
+      "description": "F6は2025年のBearlyfy調査でMeshCentralサーバー集合の一部がPhantomCoreの2025年3月攻撃でも使われ、185.158.248.107はBearlyfyの2025年6月攻撃とPhantomCoreの2024年7月攻撃の双方で使われたと報告した。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "cross-actor-use-not-contemporaneous"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "185.158.248.107の明示例はPhantomCore側が2024年7月、Bearlyfy側が2025年6月で同時利用ではない。MeshCentral集合も両側の同時利用期間が確定しないためRelationship期間はunknownとし、各側の観測月は説明にのみ残す。F6はTTPの顕著な差異からBearlyfyを別個の自律的構造と明記する。MeshCentral一覧のうちPhantomCoreと重なった個別値を原文は全て特定していないため、一覧全体を候補集合としてnon-exclusiveに保持し、exact identity、part-of、cooperationへ昇格しない。"
+    }
+  ],
+  "associated_entities": [],
+  "entity_relationships": [],
+  "hunting_pivots": [
+    {
+      "pivot_id": "hunting-pivot--toy-ghouls-head-mare-shared-ip",
+      "category": "infrastructure",
+      "pivot_type": "ipv4",
+      "value": "195.133.32.213",
+      "description": "Toy Ghoulsの一攻撃とHead Mareの過去活動に重複するC2 IP。近接時刻の追加観測や同居サービスを検証するための共有ピボットであり、単独帰属には使わない。",
+      "stix_pattern": "[ipv4-addr:value = '195.133.32.213']",
+      "attribution_scope": "shared",
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-head-mare-shared"
+      ],
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026"
+      ],
+      "indicator_refs": [
+        "indicator--sha256:3f23c7790795429fc6ba24fc3144fca828d864f08d6e76e4b61c69248f7b94b5"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--toy-ghouls-head-mare-shared-ip-kaspersky",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "toy-ghouls-use-date-not-stated"
+          },
+          "source_ref": "source--kaspersky-toy-ghouls-2026-03-12",
+          "activity_ref": "activity--toy-ghouls-ransomware-2025-2026",
+          "context": "Toy Ghoulsの一攻撃のC2として観測。Head Mareも少なくとも2025年8月から使用したとKasperskyが記述。",
+          "count": 1,
+          "count_basis": "documented-events"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "toy-ghouls-use-date-not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 1,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去観測だけを確認。受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "shodan",
+          "query": "net:195.133.32.213/32",
+          "purpose": "現在のサービス、証明書、近接インフラを確認し、追加観測との時間的近接性を検証する。",
+          "requires_validation": true,
+          "false_positive_notes": "VPSの再割当、共有ホスティング、第三者による再利用があり得る。IP一致だけでToy GhoulsまたはHead Mareへ帰属しない。"
+        }
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "Head Mareとの重複を検出するための時間依存ピボット。Kaspersky記事の公開日は観測時刻へ転用していない。"
+    },
+    {
+      "pivot_id": "hunting-pivot--toy-ghouls-matrix-c2",
+      "category": "infrastructure",
+      "pivot_type": "domain",
+      "value": "meet.element.tw",
+      "description": "matrix-bird-agentが使用したMatrixサーバー。DNS、TLS、Matrix公開メタデータを横断して同時期の関連インフラを検証するためのピボット。",
+      "stix_pattern": "[domain-name:value = 'meet.element.tw']",
+      "attribution_scope": "unknown",
+      "malware_refs": [
+        "malware--matrix-bird-agent"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-bird-c2"
+      ],
+      "activity_refs": [
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "indicator_refs": [
+        "indicator--sha256:ef2c28bc99d58cac5212ccfdd044f9c7bf8ac416776d9a3b2f9fd69669b86bfa"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--toy-ghouls-matrix-c2-kaspersky",
+          "observed_at": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "source_ref": "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04",
+          "activity_ref": "activity--toy-ghouls-bird-backdoors-july-2026",
+          "context": "2026年7月初旬に初観測されたmatrix-bird-agentのIOCとして掲載。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 1,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去観測だけを確認。受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: meet.element.tw",
+          "purpose": "当該ホストの証明書・DNS履歴と、同時期のMatrixインフラ候補を調査する。",
+          "requires_validation": true,
+          "false_positive_notes": "Matrixサーバーは複数利用者に共有され得る。ドメインや証明書の一致だけで全利用者・全通信をToy Ghoulsへ帰属しない。"
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "継続利用は未検証。記事公開日はlast_observedに用いていない。"
+    }
+  ],
+  "diamond_model": {
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "Legacy summary is intentionally empty; use evidence-linked activity-level Diamond models."
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--redalert",
+        "name": "RedAlert",
+        "aliases": [],
+        "types": [
+          "ransomware"
+        ],
+        "description": "KasperskyがToy Ghoulsの攻撃で使用を確認し、IOC節に3件のMD5を掲載したランサムウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "Toy Ghouls専用マルウェアとは扱わない。"
+      },
+      {
+        "id": "malware--lockbit-3-black",
+        "name": "LockBit 3.0 Black",
+        "aliases": [
+          "LockBit Black"
+        ],
+        "types": [
+          "ransomware"
+        ],
+        "description": "KasperskyとF6がToy Ghouls/Bearlyfyによる使用を報告した公開・流通ランサムウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25"
+        ],
+        "analyst_notes": "流出ビルダー等で複数主体が利用できるため、ファミリ使用だけを帰属根拠にしない。"
+      },
+      {
+        "id": "malware--babuk",
+        "name": "Babuk",
+        "aliases": [],
+        "types": [
+          "ransomware",
+          "linux"
+        ],
+        "description": "Toy Ghoulsが改変版を使用したとF6が報告し、KasperskyがLinux検体のMD5を掲載したランサムウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25"
+        ],
+        "analyst_notes": "共有可能なランサムウェアであり専有性を主張しない。"
+      },
+      {
+        "id": "malware--polyvice",
+        "name": "PolyVice",
+        "aliases": [],
+        "types": [
+          "ransomware"
+        ],
+        "description": "F6は2025年5月以降の一部攻撃でBearlyfyがPolyViceを使用したと報告する。",
+        "first_observed": {
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2026-03-25"
+        ],
+        "analyst_notes": "F6単独の観測。"
+      },
+      {
+        "id": "malware--genielocker",
+        "name": "GenieLocker",
+        "aliases": [],
+        "types": [
+          "ransomware",
+          "windows",
+          "linux",
+          "esxi"
+        ],
+        "description": "Toy Ghoulsが2026年3月から使用した独自ランサムウェア。KasperskyはWindows、Linux、ESXi版を分析し、F6も3月初旬からの使用を独立に報告した。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "公開日は活動終期へ転用しない。Kasperskyが分析した一事例では情報流出の証拠を確認せず、二重恐喝を実施していなかった。"
+      },
+      {
+        "id": "malware--mqtt-bird-agent",
+        "name": "mqtt-bird-agent",
+        "aliases": [
+          "mqtt-bird-agent 0.1.0"
+        ],
+        "types": [
+          "windows",
+          "backdoor",
+          "mqtt"
+        ],
+        "description": "Toy Ghoulsの独自Rustバックドア。MQTTをC2に使用し、config.tomlの一部をMachineGuid由来鍵のChaCha20-Poly1305で保護する。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "broker.hivemq.comは正規共有サービスのためIOC化せず、サービス名・設定・通信文脈と組み合わせてハントする。"
+      },
+      {
+        "id": "malware--matrix-bird-agent",
+        "name": "matrix-bird-agent",
+        "aliases": [
+          "matrix-bird-agent 0.1.0"
+        ],
+        "types": [
+          "windows",
+          "backdoor",
+          "matrix"
+        ],
+        "description": "Toy Ghoulsの独自Rustバックドア。Matrix/ElementをC2に使い、設定をHKLM\\Software\\synapse\\Config\\SealedConfigへ保存する。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "Matrixの利用自体は一般的であるため、meet.element.tw、panel-bot、サービス・レジストリ・イベント種別を組み合わせて検証する。"
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool--meshagent",
+        "name": "MeshAgent",
+        "aliases": [],
+        "types": [
+          "remote-management"
+        ],
+        "description": "Toy Ghouls被害環境で観測され、Head Mareの既知C2へ接続した遠隔管理エージェント。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "正規用途もある共有ツールであり、MD5 44039de9f0ea354d55240438818d58eaも専有IOCではない。"
+      },
+      {
+        "id": "tool--rsocx-socks5proxy",
+        "name": "Rsocx / Socks5Proxy",
+        "aliases": [
+          "Rsocx",
+          "Socks5Proxy"
+        ],
+        "types": [
+          "proxy",
+          "tunneling"
+        ],
+        "description": "Toy Ghouls被害環境で観測され、Head Mareの既知C2へ接続したプロキシツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "MD5 cd915c6d6cb455fb2786cb4e2debdafcは共有ツール観測として扱う。"
+      },
+      {
+        "id": "tool--toy-ghouls-network-scanners",
+        "name": "fscan and Advanced IP Scanner",
+        "aliases": [
+          "fscan",
+          "Advanced IP Scanner"
+        ],
+        "types": [
+          "network-scanner"
+        ],
+        "description": "侵害環境のネットワーク探索に使用されたスキャンツール群。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "一般に利用可能なツールであり帰属力は低い。"
+      },
+      {
+        "id": "tool--localtonet",
+        "name": "Localtonet",
+        "aliases": [],
+        "types": [
+          "tunneling"
+        ],
+        "description": "侵害環境から外部へトンネルを作成するために使用されたツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "正規サービス／共有ツールとしての利用可能性があり、単独で帰属しない。"
+      },
+      {
+        "id": "tool--evil-winrm-winrm-fs",
+        "name": "Evil-WinRM and WinRM-fs",
+        "aliases": [
+          "Evil-WinRM",
+          "WinRM-fs"
+        ],
+        "types": [
+          "remote-access",
+          "file-transfer"
+        ],
+        "description": "Toy Ghoulsがbird-agentをWinRM経由で配布する際に使用したツール群。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "公開ツールであり専有性はない。"
+      },
+      {
+        "id": "tool--cloudflared",
+        "name": "cloudflared",
+        "aliases": [
+          "Cloudflare Tunnel client"
+        ],
+        "types": [
+          "tunneling"
+        ],
+        "description": "2025年6月攻撃で外部接続・ネットワーク中継に用いられた公開Cloudflare Tunnelクライアント。",
+        "first_observed": {
+          "value": "2025-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "正規公開ツール。ハッシュとサービス・通信文脈なしに悪性判定しない。"
+      },
+      {
+        "id": "tool--gost",
+        "name": "GOST",
+        "aliases": [
+          "GO Simple Tunnel"
+        ],
+        "types": [
+          "proxy",
+          "tunneling"
+        ],
+        "description": "2025年6月攻撃で使われた公開ソース由来のプロキシ／トンネル。F6は改変版の利用を報告した。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "公開ツールであり専有性はない。"
+      },
+      {
+        "id": "tool--psmapexec",
+        "name": "PsMapExec",
+        "aliases": [],
+        "types": [
+          "lateral-movement"
+        ],
+        "description": "2025年6月攻撃でWindows/Active Directory内の移動に使用されたツール。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "公開ツールであり利用だけでは帰属しない。"
+      },
+      {
+        "id": "tool--modified-shinysocks",
+        "name": "Modified ShinySocks",
+        "aliases": [
+          "winScHost.exe"
+        ],
+        "types": [
+          "proxy",
+          "windows-service"
+        ],
+        "description": "ShinySOCKS v1.3.3の公開コードを基にし、winScHostサービスとして動作するよう改変されたプロキシ。",
+        "first_observed": {
+          "value": "2025-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "改変版の検体SHA1はIOCデータで管理する。"
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infrastructure--toy-ghouls-laboo",
+        "name": "Laboo.boo contact infrastructure",
+        "aliases": [],
+        "types": [
+          "email",
+          "extortion-contact"
+        ],
+        "description": "support、oil、far、xjiebの各laboo.booメールアドレスを含む攻撃者連絡用インフラ。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "記事公開日は利用期間へ転用しない。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-1cbit",
+        "name": "Toy Ghouls 1cbit.dev infrastructure",
+        "aliases": [],
+        "types": [
+          "domain",
+          "c2"
+        ],
+        "description": "1cbit.dev、akselerator.1cbit.dev、nextcloud.1cbit.dev。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "Head Mareの1cbit-dev.comとの名称類似は弱い補助情報にとどめ、同一資産とは扱わない。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-ransomware-operations",
+        "name": "Toy Ghouls ransomware-operation infrastructure",
+        "aliases": [],
+        "types": [
+          "c2",
+          "operational"
+        ],
+        "description": "202.71.14.145、31.57.93.105、217.154.172.41など、KasperskyがToy Ghouls IOCとして列挙した運用インフラ。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "個別の観測時刻は公表されていない。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-head-mare-shared",
+        "name": "Toy Ghouls / Head Mare shared infrastructure observations",
+        "aliases": [],
+        "types": [
+          "c2",
+          "shared-infrastructure"
+        ],
+        "description": "195.133.32.213、31.56.27.60、nextcloud.soft-trust.comと、そこへ接続したMeshAgent/Rsocxの観測をまとめる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "toy-ghouls-use-date-not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "共有観測用の分析コンテナであり、所有権や同一主体を表さない。全IOCをnon-exclusiveとして扱う。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-phantomcore-overlap",
+        "name": "Bearlyfy / PhantomCore infrastructure-overlap observations",
+        "aliases": [],
+        "types": [
+          "meshcentral",
+          "c2",
+          "shared-infrastructure"
+        ],
+        "description": "F6がBearlyfyの2025年4月攻撃から得たMeshCentralサーバー集合と、185.158.248.107の明示的なPhantomCore重複をまとめる分析コンテナ。",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "F6はMeshCentral一覧の『一部』がPhantomCoreでも使われたとするが、一覧中の個別対応は全て示さない。185.158.248.107だけは両者での使用を明示する。候補集合の全値をshared/non-exclusiveとし、所有権・同一主体・共同活動を推定しない。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-genielocker-c2",
+        "name": "GenieLocker C2 infrastructure",
+        "aliases": [],
+        "types": [
+          "c2",
+          "ipv4"
+        ],
+        "description": "Kaspersky IOC節に掲載された89.125.66.101。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-linked-incident"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "継続利用や現在の割当は未検証。"
+      },
+      {
+        "id": "infrastructure--toy-ghouls-bird-c2",
+        "name": "Toy Ghouls bird-agent messaging infrastructure",
+        "aliases": [],
+        "types": [
+          "mqtt",
+          "matrix",
+          "c2"
+        ],
+        "description": "matrix-bird-agentのmeet.element.twと、正規HiveMQブローカーを利用するmqtt-bird-agentの通信構成。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "broker.hivemq.comとip-api.comは正規共有サービスであり、IOCセットから除外する。"
+      }
+    ],
+    "delivery_formats": [
+      {
+        "id": "delivery--toy-ghouls-1c-external-processing",
+        "name": "1C external processing files",
+        "aliases": [
+          "EPF"
+        ],
+        "types": [
+          "1c",
+          "external-processing"
+        ],
+        "description": "fix.epf、Исправление.epf、ЗагрузкаXML.epfとして観測された1C外部処理ファイル。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "ファイル名だけで悪性判定せず、ハッシュと実行文脈を併用する。"
+      }
+    ],
+    "vulnerabilities": [
+      {
+        "id": "vulnerability--cve-2020-1472",
+        "name": "CVE-2020-1472 (Zerologon)",
+        "aliases": [
+          "Zerologon"
+        ],
+        "types": [
+          "privilege-escalation",
+          "lateral-movement"
+        ],
+        "description": "F6は2025年6月のコンサルティング会社攻撃で、脆弱なWindows Serverドメインコントローラーに対するZerologon悪用を報告した。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "脆弱なBitrixも報告されるが、製品バージョン/CVEが不明なため別の脆弱性IDを推測で作らない。"
+      }
+    ],
+    "operational_capabilities": [
+      {
+        "id": "capability--toy-ghouls-cross-platform-encryption",
+        "name": "Cross-platform encryption",
+        "aliases": [],
+        "types": [
+          "impact"
+        ],
+        "description": "GenieLockerでWindows、Linux、ESXi環境を暗号化する能力。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "Kasperskyが分析した一事例については情報流出を確認していない。"
+      },
+      {
+        "id": "capability--toy-ghouls-winrm-deployment",
+        "name": "WinRM-based backdoor deployment",
+        "aliases": [],
+        "types": [
+          "lateral-movement",
+          "deployment"
+        ],
+        "description": "有効な認証情報とEvil-WinRM/WinRM-fsを使ってbird-agentを遠隔配布する。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "WinRM利用だけでは帰属できない。"
+      },
+      {
+        "id": "capability--toy-ghouls-messaging-c2",
+        "name": "Messaging-protocol C2",
+        "aliases": [],
+        "types": [
+          "command-and-control"
+        ],
+        "description": "MQTTおよびMatrix/Elementのメッセージング基盤をC2として使用する。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "正規サービスの利用を悪性とみなさず、サービス・レジストリ・アカウント・メッセージ種別の組合せで検証する。"
+      }
+    ],
+    "analyst_notes": "共有可能なランサムウェア、正規遠隔管理ツール、正規クラウド/メッセージングサービスをToy Ghouls専有能力として扱わない。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--toy-ghouls-ransomware-2025-2026",
+      "name": "Toy Ghouls ransomware and extortion operations since January 2025",
+      "activity_type": "ransomware-extortion",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-03-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "少なくとも2025年1月からロシアの組織を標的とし、LockBit 3 Black、RedAlert、改変Babuk、2025年5月以降の一部ではPolyViceを用いた継続的な恐喝・暗号化活動。F6は2026年3月時点で70件超の攻撃を観測したと報告する。",
+      "target_refs": [
+        "target--country-russia"
+      ],
+      "malware_refs": [
+        "malware--redalert",
+        "malware--lockbit-3-black",
+        "malware--babuk",
+        "malware--polyvice"
+      ],
+      "tool_refs": [
+        "tool--meshagent",
+        "tool--rsocx-socks5proxy",
+        "tool--toy-ghouls-network-scanners",
+        "tool--localtonet",
+        "tool--cloudflared",
+        "tool--gost",
+        "tool--psmapexec",
+        "tool--modified-shinysocks"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-laboo",
+        "infrastructure--toy-ghouls-1cbit",
+        "infrastructure--toy-ghouls-ransomware-operations",
+        "infrastructure--toy-ghouls-head-mare-shared"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact",
+        "ttp--toy-ghouls-network-service-scanning",
+        "ttp--toy-ghouls-proxy",
+        "ttp--toy-ghouls-head-mare-shared-proxy-observation",
+        "ttp--toy-ghouls-os-credential-dumping"
+      ],
+      "victim_refs": [
+        "victim--toy-ghouls-russian-organizations-aggregate"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--babuk",
+            "malware--lockbit-3-black",
+            "malware--polyvice",
+            "malware--redalert"
+          ],
+          "ttp_refs": [
+            "ttp--toy-ghouls-data-encrypted-for-impact",
+            "ttp--toy-ghouls-head-mare-shared-proxy-observation",
+            "ttp--toy-ghouls-network-service-scanning",
+            "ttp--toy-ghouls-os-credential-dumping",
+            "ttp--toy-ghouls-proxy"
+          ],
+          "tool_refs": [
+            "tool--cloudflared",
+            "tool--gost",
+            "tool--localtonet",
+            "tool--meshagent",
+            "tool--modified-shinysocks",
+            "tool--psmapexec",
+            "tool--rsocx-socks5proxy",
+            "tool--toy-ghouls-network-scanners"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-1cbit",
+            "infrastructure--toy-ghouls-head-mare-shared",
+            "infrastructure--toy-ghouls-laboo",
+            "infrastructure--toy-ghouls-ransomware-operations"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia"
+          ],
+          "victim_refs": [
+            "victim--toy-ghouls-russian-organizations-aggregate"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-03-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "command-and-control",
+            "credential-access",
+            "discovery",
+            "impact"
+          ],
+          "results": [
+            "disruption",
+            "encryption",
+            "financial-loss"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23",
+        "source--kaspersky-toy-ghouls-2026-03-12",
+        "source--f6-bearlyfy-2026-03-25"
+      ],
+      "analyst_notes": "複数回の攻撃と道具立ての変遷が明示されるためcampaignとした。個別Incident/Groupingは同じToy Ghoulsプロファイル内に独立して保持し、CampaignをGroupingのような包含コンテナには使わない。70件超という数はF6の集計であり、Kasperskyの事例数として扱わない。公開日は終期へ転用しない。"
+    },
+    {
+      "activity_id": "activity--toy-ghouls-april-2025-oil-incident",
+      "name": "April 2025 Russian oil-company incident",
+      "activity_type": "ransomware-incident",
+      "stix_object_type": "incident",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-09-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "ロシアの石油企業に対する2025年4月の単発事例。WindowsをLockBit 3 Black、ハイパーバイザーをBabukで暗号化し、RDP、PowerShell、PsExec/Admin Sharesを使用した。MeshAgent検体からMeshCentralサーバー一覧が得られ、その一部がPhantomCoreでも使われたとF6が報告した。",
+      "target_refs": [
+        "target--country-russia",
+        "target--sector-energy"
+      ],
+      "malware_refs": [
+        "malware--lockbit-3-black",
+        "malware--babuk"
+      ],
+      "tool_refs": [
+        "tool--meshagent"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-phantomcore-overlap"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact",
+        "ttp--toy-ghouls-rdp",
+        "ttp--toy-ghouls-windows-admin-shares",
+        "ttp--toy-ghouls-powershell"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--babuk",
+            "malware--lockbit-3-black"
+          ],
+          "ttp_refs": [
+            "ttp--toy-ghouls-data-encrypted-for-impact",
+            "ttp--toy-ghouls-powershell",
+            "ttp--toy-ghouls-rdp",
+            "ttp--toy-ghouls-windows-admin-shares"
+          ],
+          "tool_refs": [
+            "tool--meshagent"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-phantomcore-overlap"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia",
+            "target--sector-energy"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-09-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-incident",
+          "phases": [
+            "execution",
+            "impact",
+            "initial-access",
+            "lateral-movement"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "被害組織名は非公開。F6一次URLのInternet Archive保存版本文で確認し、記事公開日を事件日へ流用していない。"
+    },
+    {
+      "activity_id": "activity--toy-ghouls-june-2025-attacks",
+      "name": "June 2025 consulting and engineering attacks",
+      "activity_type": "ransomware-activity",
+      "stix_object_type": "grouping",
+      "grouping_context": "suspicious-activity",
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-09-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "ロシアのコンサルティング会社とエンジニアリング会社に対する別個の6月攻撃をまとめたGrouping。脆弱なBitrix、Zerologon、WinRM、PsMapExec、Cloudflared、GOST、ShinySocks改変版、RDP、SSHトンネルを利用し、LockBit 3 BlackとBabukで暗号化した。",
+      "target_refs": [
+        "target--country-russia",
+        "target--sector-professional-services",
+        "target--sector-engineering"
+      ],
+      "malware_refs": [
+        "malware--lockbit-3-black",
+        "malware--babuk"
+      ],
+      "tool_refs": [
+        "tool--cloudflared",
+        "tool--gost",
+        "tool--psmapexec",
+        "tool--modified-shinysocks"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-ransomware-operations",
+        "infrastructure--toy-ghouls-phantomcore-overlap"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact",
+        "ttp--toy-ghouls-exploit-public-facing-application",
+        "ttp--toy-ghouls-exploitation-remote-services",
+        "ttp--toy-ghouls-rdp",
+        "ttp--toy-ghouls-winrm",
+        "ttp--toy-ghouls-valid-accounts",
+        "ttp--toy-ghouls-proxy"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--babuk",
+            "malware--lockbit-3-black"
+          ],
+          "ttp_refs": [
+            "ttp--toy-ghouls-data-encrypted-for-impact",
+            "ttp--toy-ghouls-exploit-public-facing-application",
+            "ttp--toy-ghouls-exploitation-remote-services",
+            "ttp--toy-ghouls-proxy",
+            "ttp--toy-ghouls-rdp",
+            "ttp--toy-ghouls-valid-accounts",
+            "ttp--toy-ghouls-winrm"
+          ],
+          "tool_refs": [
+            "tool--cloudflared",
+            "tool--gost",
+            "tool--modified-shinysocks",
+            "tool--psmapexec"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-phantomcore-overlap",
+            "infrastructure--toy-ghouls-ransomware-operations"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia",
+            "target--sector-engineering",
+            "target--sector-professional-services"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-09-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-activity",
+          "phases": [
+            "command-and-control",
+            "defense-evasion",
+            "impact",
+            "initial-access",
+            "lateral-movement",
+            "persistence",
+            "privilege-escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "同月の2組織に対する活動を一つのIncidentへ融合せず、複数観測のGroupingとして扱う。185.158.248.107はPhantomCoreでも使用された共有値であり専有扱いしない。"
+    },
+    {
+      "activity_id": "activity--toy-ghouls-july-2025-construction-incident",
+      "name": "July 2025 Russian construction-company incident",
+      "activity_type": "ransomware-incident",
+      "stix_object_type": "incident",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-09-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "ロシアの建設会社を暗号化し、8万ユーロを要求した2025年7月の単発事例。RDPセッションのクリップボード、スケジュールタスク、PowerShell/SMBの3方式でランサムウェアを配布・実行し、45.158.169.131:443へのSSHトンネルを構成した。",
+      "target_refs": [
+        "target--country-russia",
+        "target--sector-construction"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-ransomware-operations"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact",
+        "ttp--toy-ghouls-rdp",
+        "ttp--toy-ghouls-windows-admin-shares",
+        "ttp--toy-ghouls-scheduled-task",
+        "ttp--toy-ghouls-powershell",
+        "ttp--toy-ghouls-proxy"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--toy-ghouls-data-encrypted-for-impact",
+            "ttp--toy-ghouls-powershell",
+            "ttp--toy-ghouls-proxy",
+            "ttp--toy-ghouls-rdp",
+            "ttp--toy-ghouls-scheduled-task",
+            "ttp--toy-ghouls-windows-admin-shares"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-ransomware-operations"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia",
+            "target--sector-construction"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-09-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-incident",
+          "phases": [
+            "command-and-control",
+            "execution",
+            "impact",
+            "initial-access",
+            "lateral-movement",
+            "persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "F6はこの段落でランサムウェアのファミリを明示しないためmalware_refsは空にした。要求額は初期要求であり、支払済みとは扱わない。"
+    },
+    {
+      "activity_id": "activity--toy-ghouls-genielocker-march-2026",
+      "name": "GenieLocker campaign from March 2026",
+      "activity_type": "ransomware-extortion",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Toy Ghoulsが2026年3月から独自GenieLockerをWindows、Linux、ESXi環境へ展開した活動。Kasperskyは3月末の一事例を詳細分析した。",
+      "target_refs": [
+        "target--country-russia"
+      ],
+      "malware_refs": [
+        "malware--genielocker"
+      ],
+      "tool_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-genielocker-c2"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--genielocker"
+          ],
+          "ttp_refs": [
+            "ttp--toy-ghouls-data-encrypted-for-impact"
+          ],
+          "tool_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-genielocker-c2"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-30T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "impact"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-2026-03-12"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2026-03-25",
+        "source--kaspersky-genielocker-2026-07-30"
+      ],
+      "analyst_notes": "F6が3月初旬からの使用、Kasperskyが3月末の侵害と多数の検体を独立に報告する。Kasperskyの分析事例ではデータ流出の証拠はなく、二重恐喝を確認していないため、それを他事例へ一般化しない。"
+    },
+    {
+      "activity_id": "activity--toy-ghouls-bird-backdoors-july-2026",
+      "name": "Toy Ghouls bird-agent malware-analysis grouping",
+      "activity_type": "custom-backdoor-deployment",
+      "stix_object_type": "grouping",
+      "grouping_context": "malware-analysis",
+      "activity_refs": [],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "2026年7月初旬に初観測されたmqtt-bird-agentとmatrix-bird-agentの配布・永続化・C2挙動をまとめた分析単位。反復する独立キャンペーン波は資料から確定できないためGroupingとした。",
+      "target_refs": [
+        "target--country-russia"
+      ],
+      "malware_refs": [
+        "malware--mqtt-bird-agent",
+        "malware--matrix-bird-agent"
+      ],
+      "tool_refs": [
+        "tool--evil-winrm-winrm-fs"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-bird-c2"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-valid-accounts",
+        "ttp--toy-ghouls-winrm",
+        "ttp--toy-ghouls-windows-service",
+        "ttp--toy-ghouls-modify-registry",
+        "ttp--toy-ghouls-web-service"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--toy-ghouls",
+          "name": "Toy Ghouls",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--matrix-bird-agent",
+            "malware--mqtt-bird-agent"
+          ],
+          "ttp_refs": [
+            "ttp--toy-ghouls-modify-registry",
+            "ttp--toy-ghouls-valid-accounts",
+            "ttp--toy-ghouls-web-service",
+            "ttp--toy-ghouls-windows-service",
+            "ttp--toy-ghouls-winrm"
+          ],
+          "tool_refs": [
+            "tool--evil-winrm-winrm-fs"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--toy-ghouls-bird-c2"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--country-russia"
+          ],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "custom-backdoor-deployment",
+          "phases": [
+            "command-and-control",
+            "defense-evasion",
+            "initial-access",
+            "lateral-movement",
+            "persistence",
+            "privilege-escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country-russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "資料公開日は観測終期へ転用しない。broker.hivemq.comとip-api.comは正規共有サービスのためIOCではなく挙動文脈としてのみ保持する。"
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--toy-ghouls-russian-organizations-aggregate",
+      "name": "F6 aggregate of more than 70 Russian-company attacks",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "F6は2025年1月以降、ロシア企業への70件超のBearlyfy攻撃を観測したと報告した。個別組織名と全件の技術詳細は公開されていない。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026"
+      ],
+      "target_refs": [
+        "target--country-russia"
+      ],
+      "malware_refs": [
+        "malware--lockbit-3-black",
+        "malware--babuk",
+        "malware--polyvice"
+      ],
+      "ttp_refs": [
+        "ttp--toy-ghouls-data-encrypted-for-impact"
+      ],
+      "affected_assets": [
+        "enterprise Windows/Linux/virtualization environments (aggregate; exact assets not enumerated)"
+      ],
+      "impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "ランサムウェアによる暗号化。"
+        },
+        {
+          "impact_type": "financial-loss",
+          "description": "身代金要求と一部被害者による支払。"
+        },
+        {
+          "impact_type": "disruption",
+          "description": "F6が二重目的の一つとして事業妨害を評価。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-03-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2026-03-25"
+      ],
+      "analyst_notes": "攻撃件数と支払率はF6のsource-stated集計であり、Kasperskyの件数や個別被害者へ変換しない。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--country-russia",
+        "name": "Russia",
+        "description": "KasperskyとF6がロシアの組織・企業を主要標的として報告する。",
+        "first_observed": {
+          "value": "2025-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "標的国であり、攻撃者の帰属国ではない。"
+      }
+    ],
+    "regions": [],
+    "sectors": [
+      {
+        "id": "target--sector-manufacturing",
+        "name": "Manufacturing",
+        "description": "KasperskyがToy Ghoulsの標的業種として列挙。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "個別被害事例との対応と観測期間は非公開。"
+      },
+      {
+        "id": "target--sector-construction",
+        "name": "Construction",
+        "description": "F6が2025年7月のロシア建設会社への攻撃を報告し、KasperskyもToy Ghoulsの標的業種として列挙。",
+        "first_observed": {
+          "value": "2025-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "F6の個別組織名は非公開。Kasperskyの列挙には個別被害事例との対応と観測期間がない。"
+      },
+      {
+        "id": "target--sector-financial-services",
+        "name": "Financial services",
+        "description": "KasperskyがToy Ghoulsの標的業種として列挙。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "個別被害事例との対応と観測期間は非公開。"
+      },
+      {
+        "id": "target--sector-retail",
+        "name": "Retail",
+        "description": "KasperskyがToy Ghoulsの標的業種として列挙。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "個別被害事例との対応と観測期間は非公開。"
+      },
+      {
+        "id": "target--sector-technology",
+        "name": "Technology",
+        "description": "KasperskyがToy Ghoulsの標的業種として列挙。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-genielocker-2026-07-30"
+        ],
+        "analyst_notes": "個別被害事例との対応と観測期間は非公開。"
+      },
+      {
+        "id": "target--sector-energy",
+        "name": "Energy (oil)",
+        "description": "F6が2025年4月のロシア石油企業への攻撃を報告。",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "個別組織名は非公開。"
+      },
+      {
+        "id": "target--sector-professional-services",
+        "name": "Professional services (consulting)",
+        "description": "F6が2025年6月のロシアのコンサルティング会社への攻撃を報告。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "個別組織名は非公開。"
+      },
+      {
+        "id": "target--sector-engineering",
+        "name": "Engineering",
+        "description": "F6が2025年6月のロシアのエンジニアリング会社への攻撃を報告。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "個別組織名は非公開。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "ロシアの組織を広く標的とし、Kasperskyは製造、建設、金融、流通、小売、IT・通信を含む複数業種を挙げる。公開資料から特定の規模・地域・役職選別は確定できない。標的国・地域は、活動本文と一次資料でレビューした個別主張から収録し、集約OSINTの値はexternal research leadに隔離する。",
+    "analyst_notes": "標的属性を攻撃者のoriginや国家支援へ転用しない。業種は個別活動へ無理に紐付けずactor-levelの観測として保持する。集約資料由来の標的情報は原典確認前にcanonicalへ昇格しない。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--toy-ghouls-data-encrypted-for-impact",
+      "tactic": "impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "LockBit、RedAlert、Babuk、PolyVice、GenieLockerを用いてWindows、Linux、ESXiのデータを暗号化した。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026",
+        "activity--toy-ghouls-april-2025-oil-incident",
+        "activity--toy-ghouls-june-2025-attacks",
+        "activity--toy-ghouls-july-2025-construction-incident",
+        "activity--toy-ghouls-genielocker-march-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23",
+        "source--kaspersky-toy-ghouls-2026-03-12",
+        "source--f6-bearlyfy-2026-03-25",
+        "source--kaspersky-genielocker-2026-07-30"
+      ],
+      "analyst_notes": "last_observedはGenieLockerの明示された初出月であり、暗号化活動の終了を示さない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-network-service-scanning",
+      "tactic": "discovery",
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "observed_behavior": "SoftPerfect Network Scanner、fscan、netstat、pingなどで内部ネットワークとサービスを探索した。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-ransomware-operations"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "公開ツールの利用は単独帰属力が低い。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-proxy",
+      "tactic": "command-and-control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "F6が2025年6月・7月の事例で、逆SSHトンネル、GOST、cloudflared等による通信中継を観測した。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026",
+        "activity--toy-ghouls-june-2025-attacks",
+        "activity--toy-ghouls-july-2025-construction-incident"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-ransomware-operations"
+      ],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "このTTPはF6が事例日を示した6月・7月の通信中継だけを表す。KasperskyのHead Mare共有インフラ観測は、期間不明の別TTPへ分離した。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-head-mare-shared-proxy-observation",
+      "tactic": "command-and-control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "Kasperskyは、Toy Ghoulsの被害環境で実行されたRsocx/Socks5Proxy等がHead Mareの既知C2へ接続したと報告した。共有ツール・共有インフラの観測であり、所有権、共同運用、同一主体を意味しない。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-head-mare-shared"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "toy-ghouls-use-date-not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "日付が明示された2025年6月・7月のF6事例には結び付けない。記事公開日も観測時刻へ転用しない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-os-credential-dumping",
+      "tactic": "credential-access",
+      "technique_id": "T1003",
+      "technique_name": "OS Credential Dumping",
+      "observed_behavior": "Mimikatz、ntdsutil等を使った資格情報・ドメイン情報へのアクセスをKasperskyが報告した。",
+      "activity_refs": [
+        "activity--toy-ghouls-ransomware-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-ransomware-operations"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-2026-03-12"
+      ],
+      "analyst_notes": "公開IOCのMimikatz検体名・MD5だけから特定サブテクニックへ過剰分類せずT1003にとどめる。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-valid-accounts",
+      "tactic": "initial-access, persistence, privilege-escalation, defense-evasion",
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "observed_behavior": "2025年6月攻撃ではローカル管理者・ドメイン管理者のアカウントを用い、2026年7月のbird-agent活動では侵害済みの正規認証情報をWinRM接続に使用した。",
+      "activity_refs": [
+        "activity--toy-ghouls-june-2025-attacks",
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23",
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "認証情報の取得経路はこの資料から確定できない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-winrm",
+      "tactic": "lateral-movement",
+      "technique_id": "T1021.006",
+      "technique_name": "Windows Remote Management",
+      "observed_behavior": "2025年6月攻撃でWinRMとPsMapExecを内部移動に使用し、2026年7月にはEvil-WinRMとWinRM-fsでbird-agentを遠隔システムへ配置した。",
+      "activity_refs": [
+        "activity--toy-ghouls-june-2025-attacks",
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23",
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "公開ツール名とサービス作成痕跡を組み合わせて検証する。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-windows-service",
+      "tactic": "persistence, privilege-escalation",
+      "technique_id": "T1543.003",
+      "technique_name": "Windows Service",
+      "observed_behavior": "mqtt-bird-agentをcplsupport、matrix-bird-agentをwtasというWindowsサービスとして登録した。",
+      "activity_refs": [
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "malware_refs": [
+        "malware--mqtt-bird-agent",
+        "malware--matrix-bird-agent"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "サービス表示名はProblem Reports Control PanelとWindows Telemetry Aggregator Service。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-modify-registry",
+      "tactic": "defense-evasion, persistence",
+      "technique_id": "T1112",
+      "technique_name": "Modify Registry",
+      "observed_behavior": "matrix-bird-agentが暗号化設定をHKLM\\Software\\synapse\\Config\\SealedConfig、メトリクス間隔をHKLM\\Software\\SynapseAgent\\metrics_intervalへ保存した。",
+      "activity_refs": [
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "malware_refs": [
+        "malware--matrix-bird-agent"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "MachineGuidはmqtt-bird-agentの鍵導出素材であり、攻撃者が書き込む値とは区別する。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-web-service",
+      "tactic": "command-and-control",
+      "technique_id": "T1102",
+      "technique_name": "Web Service",
+      "observed_behavior": "mqtt-bird-agentがHiveMQのMQTTブローカー、matrix-bird-agentがMatrix/ElementをC2として利用した。",
+      "activity_refs": [
+        "activity--toy-ghouls-bird-backdoors-july-2026"
+      ],
+      "malware_refs": [
+        "malware--mqtt-bird-agent",
+        "malware--matrix-bird-agent"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--toy-ghouls-bird-c2"
+      ],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+      ],
+      "analyst_notes": "broker.hivemq.comとip-api.comは正規共有サービスのためIOCではない。ネットワーク接続だけでなく端末アーティファクトを併用する。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-rdp",
+      "tactic": "initial-access, lateral-movement",
+      "technique_id": "T1021.001",
+      "technique_name": "Remote Desktop Protocol",
+      "observed_behavior": "4月・6月・7月の攻撃でRDP接続を用い、7月にはRDPクリップボードでランサムウェアを配布した。",
+      "activity_refs": [
+        "activity--toy-ghouls-april-2025-oil-incident",
+        "activity--toy-ghouls-june-2025-attacks",
+        "activity--toy-ghouls-july-2025-construction-incident"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "RDP利用自体は一般的であり、他の痕跡と組み合わせる。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-windows-admin-shares",
+      "tactic": "lateral-movement",
+      "technique_id": "T1021.002",
+      "technique_name": "SMB/Windows Admin Shares",
+      "observed_behavior": "4月攻撃ではLockBitのAdmin Shares/PsExec自己拡散が有効化され、7月攻撃ではPowerShellからSMB経由で未暗号化システムを暗号化した。",
+      "activity_refs": [
+        "activity--toy-ghouls-april-2025-oil-incident",
+        "activity--toy-ghouls-july-2025-construction-incident"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "7月事例のランサムウェアファミリは明示されないため、TTPのmalware_refsは4月に明示されたLockBitだけを保持する。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-powershell",
+      "tactic": "execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "4月攻撃でBabukをPowerShellスクリプトから起動し、7月攻撃ではPowerShellからSMB経由の暗号化を実行した。",
+      "activity_refs": [
+        "activity--toy-ghouls-april-2025-oil-incident",
+        "activity--toy-ghouls-july-2025-construction-incident"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "PowerShellの存在だけでは帰属しない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-scheduled-task",
+      "tactic": "execution, persistence",
+      "technique_id": "T1053.005",
+      "technique_name": "Scheduled Task/Job: Scheduled Task",
+      "observed_behavior": "2025年7月の建設会社攻撃でスケジュールタスクを作成し、ランサムウェアの配布と実行に用いた。",
+      "activity_refs": [
+        "activity--toy-ghouls-july-2025-construction-incident"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "タスク名は公開本文から確認できない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-exploit-public-facing-application",
+      "tactic": "initial-access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "2025年6月のコンサルティング会社攻撃では脆弱なBitrixが初期アクセス経路になった。",
+      "activity_refs": [
+        "activity--toy-ghouls-june-2025-attacks"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "Bitrixの製品バージョンとCVEは原文で特定されないため推測しない。"
+    },
+    {
+      "ttp_id": "ttp--toy-ghouls-exploitation-remote-services",
+      "tactic": "lateral-movement",
+      "technique_id": "T1210",
+      "technique_name": "Exploitation of Remote Services",
+      "observed_behavior": "2025年6月のコンサルティング会社攻撃でZerologonを悪用し、権限昇格と内部移動を行った。",
+      "activity_refs": [
+        "activity--toy-ghouls-june-2025-attacks"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--f6-bearlyfy-2025-09-23"
+      ],
+      "analyst_notes": "ZerologonはCVE-2020-1472として構造化するが、侵害システムの詳細は非公開。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--f6-bearlyfy-2025-09-23",
+      "path": "https://www.f6.ru/blog/bearlyfy/",
+      "url": "https://www.f6.ru/blog/bearlyfy/",
+      "archive_url": "https://web.archive.org/web/20251006200710id_/https://www.f6.ru/blog/bearlyfy/",
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "actor_scope": "direct",
+      "claims_supported": [
+        "actor-history",
+        "activity",
+        "targeting",
+        "capability",
+        "ttp",
+        "ioc",
+        "relationship-boundary"
+      ],
+      "title": "Bearlyfy: эволюция новой группировки вымогателей и её связь с PhantomCore",
+      "publisher": "F6 Threat Intelligence / F6 Digital Forensics and Malware Analysis Laboratory",
+      "published_at": {
+        "value": "2025-09-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "language": "ru",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "baca14b555e6dbcc26516f079c9dee019185772a5938c5e67bac65fc143e5fc1",
+      "analyst_notes": "F6の一次調査。現行URLは2026-09-22の取得時に記事本文が空のHTMLを返したため、Internet Archiveの2025-10-06保存版を直接取得して本文、IOC節、公開日時を再確認した。sha256はWayback raw replay（id_）から取得したHTML 109811 bytesの値。2025-01-15/02-11/02-17/02-25の検体、4月・6月・7月の活動、30件以上という2025年8月時点集計を確認し、構造化CSV全63行の値が保存版本文に存在することを63/63件で機械照合した。記事公開日は個別IOCや攻撃の観測時刻へ転用していない。"
+    },
+    {
+      "source_id": "source--kaspersky-toy-ghouls-2026-03-12",
+      "path": "https://securelist.ru/tr/toy-ghouls/115909/",
+      "url": "https://securelist.ru/tr/toy-ghouls/115909/",
+      "archive_url": null,
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "actor_scope": "direct",
+      "claims_supported": [
+        "actor-history",
+        "activity",
+        "targeting",
+        "capability",
+        "ttp",
+        "ioc",
+        "relationship"
+      ],
+      "title": "Вас посетил вымогатель Лабубу: Toy Ghouls шифруют данные российских компаний",
+      "publisher": "Kaspersky Threat Research / Securelist",
+      "published_at": {
+        "value": "2026-03-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "language": "ru",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Kasperskyの直接観測に基づくUnified Kill Chain分析。ページ表示日とJSON-LD datePublished（2026-03-12T10:00:41+00:00）を確認。Head Mareとのインフラ・ツール重複を示す一方、共同活動を断定する証拠は不足すると明記するため、その留保を関係データへ保持した。IOC節の重複IPは一意化し、伏字メールは取り込んでいない。"
+    },
+    {
+      "source_id": "source--f6-bearlyfy-2026-03-25",
+      "path": "https://www.f6.ru/media-center/press-releases/bearlyfy-research/",
+      "url": "https://www.f6.ru/media-center/press-releases/bearlyfy-research/",
+      "archive_url": null,
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "actor-history",
+        "activity",
+        "motivation",
+        "capability",
+        "relationship"
+      ],
+      "title": "Bearlyfy выпустили джинна: F6 проанализировала свежие атаки группы",
+      "publisher": "F6 Digital Forensics Laboratory",
+      "published_at": {
+        "value": "2026-03-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "language": "ru",
+      "source_type": "vendor-press-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "F6が自社観測を要約した一次発表。2026-09-22に一次URL本文を直接取得し、Bearlyfy（別名Labubu）、2025年1月以降70件超、LockBit 3 Black・改変Babuk・2025年5月以降のPolyVice、2026年3月以降のGenieLocker、Head Mare等とのcollaboration、恐喝と妨害の二重目的を確認した。F6はBearlyfy自体をpro-Ukrainianと表現するが、これはF6のsource-scopedな政治的整列評価としてのみ扱い、origin、国籍、国家後援には変換しない。動的ページの取得ハッシュは固定証拠として保存していない。"
+    },
+    {
+      "source_id": "source--kaspersky-genielocker-2026-07-30",
+      "path": "https://securelist.com/genielocker-ransomware-for-windows-linux-and-esxi/120843/",
+      "url": "https://securelist.com/genielocker-ransomware-for-windows-linux-and-esxi/120843/",
+      "archive_url": null,
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "targeting",
+        "capability",
+        "ioc"
+      ],
+      "title": "New GenieLocker ransomware for Windows, ESXi, and Linux",
+      "publisher": "Kaspersky Securelist",
+      "published_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "KasperskyのGenieLocker技術分析。JSON-LD datePublished（2026-07-30T08:00:57+00:00）を確認。2026年3月末事例と24件のMD5、89.125.66.101を構造化した。分析対象事例で情報流出が確認されなかった点をグループ全体の恒常的性質へ一般化しない。"
+    },
+    {
+      "source_id": "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04",
+      "path": "https://securelist.com/toy-ghouls-new-hivemq-and-element-backdoors/121270/",
+      "url": "https://securelist.com/toy-ghouls-new-hivemq-and-element-backdoors/121270/",
+      "archive_url": null,
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "activity",
+        "capability",
+        "ttp",
+        "ioc",
+        "hunting"
+      ],
+      "title": "New backdoors from Toy Ghouls",
+      "publisher": "Kaspersky Securelist",
+      "published_at": {
+        "value": "2026-09-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Kasperskyのmqtt-bird-agent / matrix-bird-agent技術分析。JSON-LD datePublished（2026-09-04T10:00:05+00:00）を確認。公開IOCは2件のMD5とmeet.element.tw。broker.hivemq.comとip-api.comは正規共有サービスのためIOCから除外し、通信・設定の挙動文脈としてのみ保持した。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "Toy Ghouls/Bearlyfyは、少なくとも2025年1月から継続して観測され、標的・恐喝目的・ランサムウェア群・インフラ・独自マルウェア開発の時系列が複数の独立一次情報源で整理できるため、draft intrusion-setとして管理する根拠がある。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23",
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "KasperskyとF6は独立した観測主体であり、F6 2025はInternet Archive保存版本文・IOC節を直接取得して再現確認した。"
+      },
+      {
+        "statement": "Head Mareとのインフラ・ツール重複およびF6が報告する協力は、Toy GhoulsがHead Mareの一部または同一主体であることを立証しない。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-toy-ghouls-2026-03-12",
+          "source--f6-bearlyfy-2026-03-25"
+        ],
+        "analyst_notes": "Kasperskyの明示的留保とF6の協力評価を別Relationshipに保持した。"
+      },
+      {
+        "statement": "PhantomCoreとの関係はインフラ重複に限定され、F6は両者のTTP差からBearlyfyを別個の自律的構造と評価する。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2025-09-23"
+        ],
+        "analyst_notes": "shared IOCを同一主体、part-of、協力関係へ昇格しない。"
+      },
+      {
+        "statement": "2026年にはGenieLockerと2種のbird-agentという独自ツールが確認され、公開・流出ツール中心だった2025年から能力開発が進んだ。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--f6-bearlyfy-2026-03-25",
+          "source--kaspersky-genielocker-2026-07-30",
+          "source--kaspersky-toy-ghouls-bird-backdoors-2026-09-04"
+        ],
+        "analyst_notes": "GenieLockerはF6とKasperskyが独立に報告し、bird-agentは現時点でKaspersky単独の技術分析。"
+      }
+    ],
+    "gaps": [
+      "Toy Ghouls運営者の実名、国籍、所在、国家または組織的後援は不明。",
+      "F6 2025記事はWayback raw replayと取得本文ハッシュを固定したが、現行一次URLの将来の可用性は保証されない。",
+      "Head Mareとの協力の期間、契約・指揮関係、メンバー重複は不明。",
+      "PhantomCoreと重複したMeshCentral一覧中の個別サーバー対応は、185.158.248.107以外は原文から一意に特定できない。",
+      "IOCの現在の稼働状況、再割当、証明書履歴は受動スキャンで未検証。"
+    ],
+    "uncertainties": [
+      "F6のpro-Ukrainian表現は政治的整列のベンダー評価であり、攻撃者のorigin・国籍・国家後援とは同義ではない。",
+      "共有ホスティング、公開ツール、正規サービスの一致だけでは関係性や帰属を確定できない。",
+      "Feral WolfはKaspersky 2026-09-04の1資料だけで確認された別名である。",
+      "Kasperskyの2026-07-30事例で情報流出が確認されなかったことは、Toy Ghoulsの全活動で流出がないことを意味しない。"
+    ],
+    "collection_notes": "公開一次資料だけを使用し、公開日を活動観測日・Relationship期間へ転用していない。F6 2025はWayback raw replayの保存本文とハッシュを固定し、構造化IOCを原文と機械照合した。F6 2026-03-25は2026-09-22に現行一次URL本文を直接取得して確認した。IOCの観測日時は資料が個別の検体発見日または攻撃月を明記した場合だけ設定し、それ以外はunknownとした。",
+    "analyst_notes": "本プロファイルはdraft。別名はベンダーの追跡境界を越えたexact identityではなくoverlappingとして管理する。"
+  },
+  "free_text": {
+    "executive_summary": "Toy Ghouls（Bearlyfy、Labubu、Laboo.boo、Feral Wolf）は、2025年1月以降ロシア企業を標的にするランサムウェア／恐喝クラスタである。2025年にはLockBit、Babuk、PolyVice等と公開ツールを使用し、2026年には独自GenieLocker、mqtt-bird-agent、matrix-bird-agentへ発展した。Head Mareとの共有インフラ・ツールと協力、PhantomCoreとのインフラ重複が報告されるが、同一主体・包含関係を示す証拠はない。",
+    "history": "F6は2025年1月15日のLockBit検体を起点に、2月の追加検体、4月の石油企業、6月のコンサルティング・エンジニアリング企業、7月の建設企業への攻撃を記録した。Kasperskyは2026年3月に詳細なKill ChainとHead Mare重複を報告し、F6は同月までに70件超とGenieLocker移行を報告した。Kasperskyは7月のbird-agent初観測を9月に公表した。",
+    "capability_details": "暗号化に加え、RDP/WinRM/SMB、Zerologon、スケジュールタスク、PowerShell、各種プロキシ・トンネル、MeshAgent、ネットワークスキャナを組み合わせる。独自マルウェアはクロスプラットフォームGenieLockerと、MQTT/Matrixを使うRustバックドア2種。",
+    "infrastructure_details": "IOCは一次資料別に分離し、観測時刻・活動・マルウェア・インフラ参照を保持する。Head MareやPhantomCoreと重なる値はshared/non-exclusive。broker.hivemq.comとip-api.comは正規共有サービスのためIOCから除外した。",
+    "targeting_details": "ロシアの組織を標的とし、石油、製造、建設、コンサルティング、エンジニアリング、金融、小売、技術分野が報告される。標的国を攻撃者の帰属国へ転用しない。",
+    "additional_notes": "継続利用や現在のC2稼働は未検証。Shodan/Censys等の結果は割当履歴と時間的近接性を確認し、IP・証明書・共有サービスの単独一致で帰属しない。"
+  }
+}

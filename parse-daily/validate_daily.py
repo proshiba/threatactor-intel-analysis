@@ -4,17 +4,23 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
 from daily_common import is_file_like, load_json
 from daily_materializer import (
+    activity_id_override_issue,
+    activity_reported_at,
     activity_id_for,
+    canonical_source_url,
+    generated_activity_id_for,
+    reviewed_reported_at_issue,
     source_for_row,
-    source_id_for_value,
+    source_id_for_url,
     source_items,
 )
 
@@ -29,7 +35,11 @@ VALID_IOC_TYPES = {
 }
 
 
-def ioc_bearing_source_ids(record: dict[str, Any], queue: dict[str, Any]) -> set[str]:
+def ioc_bearing_source_ids(
+    record: dict[str, Any],
+    queue: dict[str, Any],
+    existing_sources: list[dict[str, Any]] | None = None,
+) -> set[str]:
     """IOC行が実際に掲載されていた出典のIDだけを返す。
 
     activity_reference_aliases で同一活動へ集約した記事のように、レコードの出典
@@ -37,7 +47,7 @@ def ioc_bearing_source_ids(record: dict[str, Any], queue: dict[str, Any]) -> set
     materializationの欠落検証はIOCを掲載した出典に限って行う。
     """
     return {
-        source_id_for_value(source_for_row(record, row, queue)["url"])
+        source_id_for_url(source_for_row(record, row, queue), existing_sources)
         for row in record.get("iocs", [])
     }
 
@@ -47,6 +57,38 @@ def finding(level: str, code: str, message: str, record_id: str = "") -> dict[st
     if record_id:
         result["record_id"] = record_id
     return result
+
+
+def exact_id_locations(value: Any, expected: str, path: str) -> list[str]:
+    """Return structured locations containing one exact object identifier."""
+    found: list[str] = []
+    if isinstance(value, dict):
+        for key, item in value.items():
+            found.extend(exact_id_locations(item, expected, f"{path}.{key}"))
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            found.extend(exact_id_locations(item, expected, f"{path}[{index}]"))
+    elif value == expected:
+        found.append(path)
+    return found
+
+
+def artifact_activity_id_locations(
+    rows: list[dict[str, str]], expected: str
+) -> list[str]:
+    """Return artifact CSV locations containing an exact Activity reference."""
+    found: list[str] = []
+    for index, row in enumerate(rows):
+        for field, value in row.items():
+            if value == expected:
+                found.append(f"artifacts[{index}].{field}")
+        try:
+            campaign_refs = json.loads(row.get("campaign_refs") or "[]")
+        except (json.JSONDecodeError, TypeError):
+            continue
+        if isinstance(campaign_refs, list) and expected in campaign_refs:
+            found.append(f"artifacts[{index}].campaign_refs")
+    return found
 
 
 def main() -> int:
@@ -68,6 +110,7 @@ def main() -> int:
         issues.append(finding("error", "unused-review-decision", message))
     seen: set[str] = set()
     approved_by_actor: Counter[str] = Counter()
+    override_claims: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
     for record in records:
         record_id = record.get("record_id", "")
         for message in record.get("decision_issues", []):
@@ -80,12 +123,51 @@ def main() -> int:
         status = record.get("review_status")
         if status not in VALID_STATUS:
             issues.append(finding("error", "review-status", f"invalid status: {status}", record_id))
+        override_issue = None
+        if "activity_id_override" in record:
+            override_issue = activity_id_override_issue(
+                record["activity_id_override"], record.get("actor", {}).get("slug", "")
+            )
+            if override_issue:
+                issues.append(
+                    finding(
+                        "error",
+                        "activity-id-override",
+                        override_issue,
+                        record_id,
+                    )
+                )
         actor = record.get("actor", {})
         slug = actor.get("slug", "")
-        if not (args.profiles_root / slug / "actor-profile.json").exists():
+        actor_profile_path = args.profiles_root / slug / "actor-profile.json"
+        if not actor_profile_path.exists():
             issues.append(finding("error", "actor-missing", f"profile not found: {slug}", record_id))
+        elif "reported_at" in record:
+            actor_profile = load_json(actor_profile_path)
+            try:
+                activity_reported_at(record, actor_profile.get("sources", []))
+            except ValueError as exc:
+                issues.append(
+                    finding(
+                        "error",
+                        "reported-at-source-conflict",
+                        str(exc),
+                        record_id,
+                    )
+                )
         if status == "approved":
             approved_by_actor[slug] += 1
+            if "activity_id_override" in record and not override_issue:
+                try:
+                    generated_id = generated_activity_id_for(record)
+                except (KeyError, TypeError):
+                    # The ordinary activity-required finding below owns malformed
+                    # activity records; do not obscure it with a second traceback.
+                    pass
+                else:
+                    override_claims[record["activity_id_override"]].append(
+                        (slug, generated_id, record_id)
+                    )
             if actor.get("scope") != "exact":
                 issues.append(
                     finding(
@@ -105,6 +187,17 @@ def main() -> int:
         date = activity.get("news_date")
         if date and not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", date):
             issues.append(finding("error", "news-date", f"invalid news date: {date}", record_id))
+        if "reported_at" in record:
+            reported_issue = reviewed_reported_at_issue(record["reported_at"])
+            if reported_issue:
+                issues.append(
+                    finding(
+                        "error",
+                        "reported-at",
+                        reported_issue,
+                        record_id,
+                    )
+                )
         for row in record.get("iocs", []):
             if row.get("type") not in VALID_IOC_TYPES:
                 issues.append(
@@ -176,6 +269,19 @@ def main() -> int:
                 )
             )
 
+    for override, claims in sorted(override_claims.items()):
+        owners = {(slug, generated_id) for slug, generated_id, _ in claims}
+        if len(owners) > 1:
+            record_ids = ", ".join(record_id for _, _, record_id in claims)
+            issues.append(
+                finding(
+                    "error",
+                    "activity-id-collision",
+                    f"{override} is claimed by multiple actor/generated "
+                    f"Activities ({record_ids})",
+                )
+            )
+
     if args.check_applied:
         for slug, expected in approved_by_actor.items():
             ledger_path = args.profiles_root / slug / "daily-observations.json"
@@ -183,7 +289,10 @@ def main() -> int:
                 issues.append(finding("error", "ledger-missing", f"missing ledger for {slug}"))
                 continue
             ledger = load_json(ledger_path)
-            ledger_ids = {item.get("record_id") for item in ledger.get("records", [])}
+            ledger_by_id = {
+                item.get("record_id"): item for item in ledger.get("records", [])
+            }
+            ledger_ids = set(ledger_by_id)
             queue_ids = {
                 item["record_id"]
                 for item in records
@@ -200,6 +309,11 @@ def main() -> int:
                 item["activity_id"] for item in profile.get("activities", [])
             }
             dataset = load_json(args.profiles_root / slug / "iocs.json")
+            artifacts_path = args.profiles_root / slug / "artifacts.csv"
+            with artifacts_path.open(encoding="utf-8", newline="") as stream:
+                artifact_rows = list(csv.DictReader(stream))
+            manifest_path = args.profiles_root / slug / "ioc-sources.json"
+            manifest = load_json(manifest_path) if manifest_path.exists() else None
             ioc_source_ids = {item["source_id"] for item in dataset.get("sources", [])}
             observation_source_ids = {
                 observation["source_id"]
@@ -209,8 +323,38 @@ def main() -> int:
             for item in records:
                 if item.get("review_status") != "approved" or item["actor"]["slug"] != slug:
                     continue
+                for source in source_items(item, queue):
+                    source_url = source.get("url") or source.get("path") or ""
+                    canonical_url = canonical_source_url(source_url)
+                    profile_matches = {
+                        candidate["source_id"]
+                        for candidate in profile.get("sources", [])
+                        if canonical_url
+                        and canonical_source_url(
+                            candidate.get("url") or candidate.get("path") or ""
+                        )
+                        == canonical_url
+                    }
+                    dataset_matches = {
+                        candidate["source_id"]
+                        for candidate in dataset.get("sources", [])
+                        if canonical_url
+                        and canonical_source_url(
+                            candidate.get("url") or candidate.get("path") or ""
+                        )
+                        == canonical_url
+                    }
+                    if len(profile_matches) > 1 or len(dataset_matches) > 1:
+                        issues.append(
+                            finding(
+                                "error",
+                                "duplicate-canonical-source",
+                                source_url,
+                                item["record_id"],
+                            )
+                        )
                 expected_source_ids = {
-                    source_id_for_value(source["url"])
+                    source_id_for_url(source, profile.get("sources", []))
                     for source in source_items(item, queue)
                 }
                 activity_id = activity_id_for(item)
@@ -227,10 +371,61 @@ def main() -> int:
                     issues.append(
                         finding("error", "profile-activity-missing", activity_id, item["record_id"])
                     )
+                if item.get("activity_id_override"):
+                    old_activity_id = generated_activity_id_for(item)
+                    stable_count = sum(
+                        activity.get("activity_id") == activity_id
+                        for activity in profile.get("activities", [])
+                    )
+                    if stable_count != 1:
+                        issues.append(
+                            finding(
+                                "error",
+                                "activity-override-cardinality",
+                                f"{activity_id}: expected exactly one profile Activity, "
+                                f"found {stable_count}",
+                                item["record_id"],
+                            )
+                        )
+                    ledger_record = ledger_by_id.get(item["record_id"]) or {}
+                    if ledger_record.get("activity_id_override") != activity_id:
+                        issues.append(
+                            finding(
+                                "error",
+                                "activity-override-ledger-missing",
+                                activity_id,
+                                item["record_id"],
+                            )
+                        )
+                    stale_locations = [
+                        *exact_id_locations(profile, old_activity_id, "profile"),
+                        *exact_id_locations(dataset, old_activity_id, "iocs"),
+                        *artifact_activity_id_locations(
+                            artifact_rows, old_activity_id
+                        ),
+                    ]
+                    if manifest is not None:
+                        stale_locations.extend(
+                            exact_id_locations(
+                                manifest, old_activity_id, "ioc-sources"
+                            )
+                        )
+                    if stale_locations:
+                        issues.append(
+                            finding(
+                                "error",
+                                "stale-activity-id",
+                                f"{old_activity_id}: "
+                                + ", ".join(stale_locations[:8]),
+                                item["record_id"],
+                            )
+                        )
                 if item.get("iocs"):
                     # レコードの全出典ではなく、IOCを掲載した出典だけを検証する。
                     # プロファイル側のsource参照は上のprofile-source-missingで検証済み。
-                    missing_ioc_sources = ioc_bearing_source_ids(item, queue) - (
+                    missing_ioc_sources = ioc_bearing_source_ids(
+                        item, queue, dataset.get("sources", [])
+                    ) - (
                         ioc_source_ids & observation_source_ids
                     )
                     for source_id in sorted(missing_ioc_sources):
@@ -242,6 +437,31 @@ def main() -> int:
                                 item["record_id"],
                             )
                         )
+                    for row in item.get("iocs", []):
+                        row_source = source_for_row(item, row, queue)
+                        source_url = row_source["url"]
+                        expected_source_id = source_id_for_url(
+                            row_source, profile.get("sources", [])
+                        )
+                        stale_ids = {
+                            observation.get("source_id", "")
+                            for indicator in dataset.get("indicators", [])
+                            for observation in indicator.get("observations", [])
+                            if canonical_source_url(
+                                observation.get("source_path", "")
+                            )
+                            == canonical_source_url(source_url)
+                            and observation.get("source_id") != expected_source_id
+                        }
+                        if stale_ids:
+                            issues.append(
+                                finding(
+                                    "error",
+                                    "stale-ioc-source-identity",
+                                    f"{source_url}: {', '.join(sorted(stale_ids))}",
+                                    item["record_id"],
+                                )
+                            )
 
     counts = Counter(item["level"] for item in issues)
     result: dict[str, Any] = {

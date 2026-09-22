@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--daggerfly`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-21T22:43:14Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -148,13 +148,13 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | cyber-espionage | 不明 | 不明 | 2025-02-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  | ttp--activity-rule--05c6be6b3497b5378ff5 | victim--activity-rule--a4c4ccaf269236ce161c | 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。 この攻撃スイートは「ELF/Sshdinjector.A!tr」と名付けられ、SSHデーモンに注入されたマルウェアの集合体であり、システム偵察、資格情報の窃取、プロセス監視、リモートコマンド実行、ファイル操作などの幅広い機能を持つ。 攻撃者は、デバイスが既に感染しているか、root権限で実行されているかを確認し、条件が満たされると、SSHライブラリ（libssdh.so）などの複数のバイナリをターゲットマシンにドロップする。 このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 | 中 | `source--daily-3416f994a1eefc895ed4` |
+| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | cyber-espionage | 不明 | 不明 | 2025-02-05 |  |  | ttp--activity-rule--05c6be6b3497b5378ff5 |  | 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。 この攻撃スイートは「ELF/Sshdinjector.A!tr」と名付けられ、SSHデーモンに注入されたマルウェアの集合体であり、システム偵察、資格情報の窃取、プロセス監視、リモートコマンド実行、ファイル操作などの幅広い機能を持つ。 攻撃者は、デバイスが既に感染しているか、root権限で実行されているかを確認し、条件が満たされると、SSHライブラリ（libssdh.so）などの複数のバイナリをターゲットマシンにドロップする。 このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 | 中 | `source--daily-3416f994a1eefc895ed4` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | Daggerfly | 情報なし | T1082 System Information Discovery | 情報なし | 中国 | 被害事例: 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | 中 |
+| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | Daggerfly | 情報なし | T1082 System Information Discovery | 情報なし | 情報なし | 情報なし | 中 |
 
 
 
@@ -162,7 +162,6 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 中国 | 活動「中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-3416f994a1eefc895ed4` |
 | sectors | 政府・行政 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 非営利・市民社会 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 情報通信 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -171,9 +170,7 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  | ttp--activity-rule--05c6be6b3497b5378ff5 | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2025-02-05 | 中 | `source--daily-3416f994a1eefc895ed4` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 

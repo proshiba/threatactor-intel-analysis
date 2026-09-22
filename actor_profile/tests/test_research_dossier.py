@@ -115,6 +115,36 @@ class ResearchDossierTests(unittest.TestCase):
         self.assertIsNone(result["derived_first_observed"]["value"])
         self.assertIn("actor-level-only", result["temporal_assessment"])
 
+    def test_tool_use_period_uses_explicit_activity_tool_refs(self) -> None:
+        profile = {
+            "capabilities": {
+                "tools": [
+                    {
+                        "id": "tool--sample",
+                        "name": "Sample Tool",
+                        "evidence_refs": ["source--one"],
+                    }
+                ]
+            },
+            "activities": [
+                {
+                    "activity_id": "activity--one",
+                    "name": "One",
+                    "tool_refs": ["tool--sample"],
+                    "first_observed": point("2024-01-01T00:00:00Z"),
+                    "last_observed": point("2024-01-02T00:00:00Z"),
+                    "evidence_refs": ["source--one"],
+                }
+            ],
+            "ttps": [],
+        }
+        result = malware_records(profile, {}, "tools")[0]
+        self.assertEqual(
+            [item["activity_id"] for item in result["activity_observations"]],
+            ["activity--one"],
+        )
+        self.assertEqual(result["temporal_assessment"], "activity-linked")
+
 
 if __name__ == "__main__":
     unittest.main()

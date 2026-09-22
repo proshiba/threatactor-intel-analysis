@@ -47,6 +47,13 @@ APT37_FALSE_TITLE_ACTIVITY_ID = "activity--daily-c093c6edea29f9fcc0ac"
 APT38_AWS_SUPPLY_CHAIN_ACTIVITY_ID = "activity--daily-e7e43253a3ee354a7560"
 WATER_GALURA_QILIN_ACTIVITY_ID = "activity--daily-e30bc3c3abfd77cddd94"
 CLICKFIX_BEAVERTAIL_SOURCE_ID = "source--daily-dddef70e68c0dc59a5d3"
+STORM2603_TOOLSHELL_LEGACY_ACTIVITY_ID = "activity--daily-b80b607914fb7f62f988"
+STORM2603_TOOLSHELL_ACTIVITY_ID = "activity--storm-2603--toolshell-warlock-2025"
+STORM2603_SUPERSEDED_SOURCE_IDS = {
+    "source--daily-0e75e392e2685f601677",
+    "source--daily-5c143f1d91377b49cfcc",
+    "source--daily-c9fa26bbe8d21f50b441",
+}
 
 
 def time_point(
@@ -73,6 +80,7 @@ def source_record(
     claims: list[str],
     actor_scope: str,
     note: str,
+    accessed: str = "2026-09-21",
     language: str = "en",
     source_type: str = "vendor-threat-research",
     reliability: str = "high",
@@ -86,7 +94,7 @@ def source_record(
         "published_at": time_point(
             f"{published}T00:00:00Z", "day", "known", "source-publication"
         ),
-        "accessed_at": "2026-09-21T00:00:00Z",
+        "accessed_at": f"{accessed}T00:00:00Z",
         "language": language,
         "source_type": source_type,
         "tlp": "TLP:CLEAR",
@@ -481,12 +489,28 @@ MICROSOFT_TOOLSHELL_SOURCE = source_record(
     title="Disrupting active exploitation of on-premises SharePoint vulnerabilities",
     publisher="Microsoft Threat Intelligence",
     published="2025-07-22",
-    claims=["activity", "attribution", "capability", "targeting", "ttp", "ioc"],
+    claims=[
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc",
+        "hunting",
+    ],
     actor_scope="direct",
+    accessed="2026-09-22",
     note=(
         "Microsoft separately attributes exploitation to Linen Typhoon, Violet "
         "Typhoon, and Storm-2603. It does not uniquely attribute the reported NNSA "
-        "victim event to any one of those clusters."
+        "victim event to any one of those clusters. The IOC table and actor-specific "
+        "hunting query were directly rechecked on 2026-09-22: only four web-shell "
+        "hashes tied to a named Storm-2603 C2, twelve IIS_Server_dll.dll hashes "
+        "explicitly labeled as the Storm-2603 IIS Backdoor, "
+        "update.updatemicfosoft.com, msupdate.updatemicfosoft.com, and "
+        "65.38.121.198 are retained as 19 exact indicators. The generic "
+        "spinstall0.aspx hash, unattributed exploitation IPs, and other "
+        "actor-unspecific rows are excluded."
     ),
 )
 
@@ -665,6 +689,40 @@ def find_activity(profile: dict[str, Any], activity_id: str) -> dict[str, Any]:
         for item in profile.get("activities", [])
         if item.get("activity_id") == activity_id
     )
+
+
+def migrate_profile_activity_id(
+    profile: dict[str, Any], old_id: str, new_id: str
+) -> dict[str, Any] | None:
+    """Rename one Activity and every exact structured reference idempotently."""
+    old_matches = [
+        item
+        for item in profile.get("activities", [])
+        if item.get("activity_id") == old_id
+    ]
+    new_matches = [
+        item
+        for item in profile.get("activities", [])
+        if item.get("activity_id") == new_id
+    ]
+    if len(old_matches) > 1 or len(new_matches) > 1 or (old_matches and new_matches):
+        raise ValueError(f"unsafe Activity ID collision: {old_id} -> {new_id}")
+
+    def replace(value: Any) -> Any:
+        if isinstance(value, dict):
+            for key, item in list(value.items()):
+                value[key] = replace(item)
+        elif isinstance(value, list):
+            for index, item in enumerate(value):
+                value[index] = replace(item)
+        elif value == old_id:
+            return new_id
+        return value
+
+    if old_matches:
+        replace(profile)
+        return old_matches[0]
+    return new_matches[0] if new_matches else None
 
 
 def remove_activity(profile: dict[str, Any], activity_id: str) -> None:
@@ -2762,7 +2820,52 @@ def fix_new_actor_links_and_activity(
 
     for source in (MICROSOFT_TOOLSHELL_SOURCE, MICROSOFT_STORM2603_PARALLEL_SOURCE):
         merge_source(storm2603, source)
-    toolshell = find_activity(storm2603, "activity--daily-b80b607914fb7f62f988")
+    toolshell = migrate_profile_activity_id(
+        storm2603,
+        STORM2603_TOOLSHELL_LEGACY_ACTIVITY_ID,
+        STORM2603_TOOLSHELL_ACTIVITY_ID,
+    )
+    if toolshell is None:
+        known_tool_ids = {
+            item.get("id")
+            for item in storm2603.get("capabilities", {}).get("tools", [])
+        }
+        known_ttp_ids = {
+            item.get("ttp_id") for item in storm2603.get("ttps", [])
+        }
+        toolshell = {
+            "activity_id": STORM2603_TOOLSHELL_ACTIVITY_ID,
+            "activity_type": "ransomware-extortion",
+            "stix_object_type": "campaign",
+            "grouping_context": None,
+            "activity_refs": [],
+            "target_refs": [],
+            "malware_refs": [],
+            "tool_refs": sorted(
+                known_tool_ids
+                & {
+                    "tool--storm-2603-mimikatz",
+                    "tool--storm-2603-psexec",
+                    "tool--storm-2603-impacket",
+                }
+            ),
+            "infrastructure_refs": [
+                "infrastructure--storm-2603-post-exploitation-c2",
+                "infrastructure--storm-2603-updatemicfosoft-c2",
+            ],
+            "ttp_refs": sorted(
+                known_ttp_ids
+                & {
+                    "ttp--storm-2603-toolshell-credential-dumping",
+                    "ttp--storm-2603-toolshell-service-execution",
+                    "ttp--storm-2603-toolshell-domain-policy",
+                    "ttp--storm-2603-toolshell-encryption-impact",
+                }
+            ),
+            "victim_refs": [],
+            "evidence_refs": [],
+        }
+        storm2603.setdefault("activities", []).append(toolshell)
     storm2603["victim_cases"] = [
         item
         for item in storm2603.get("victim_cases", [])
@@ -2770,6 +2873,7 @@ def fix_new_actor_links_and_activity(
     ]
     toolshell.update(
         {
+            "activity_id": STORM2603_TOOLSHELL_ACTIVITY_ID,
             "name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
             "description": (
                 "Microsoftは、Storm-2603が2025年7月18日以降、オンプレミス"
@@ -2788,6 +2892,14 @@ def fix_new_actor_links_and_activity(
             "target_refs": [],
             "victim_refs": [],
             "confidence": "high",
+            "activity_type": "ransomware-extortion",
+            "stix_object_type": "campaign",
+            "grouping_context": None,
+            "activity_refs": [],
+            "infrastructure_refs": [
+                "infrastructure--storm-2603-post-exploitation-c2",
+                "infrastructure--storm-2603-updatemicfosoft-c2",
+            ],
             "analyst_notes": (
                 "MicrosoftがStorm-2603固有として記述した侵入チェーンだけを保持。"
                 "NNSAその他の個別被害者は同クラスタへの帰属が明示されないため除外。"
@@ -2797,6 +2909,30 @@ def fix_new_actor_links_and_activity(
     toolshell["evidence_refs"] = [MICROSOFT_TOOLSHELL_SOURCE["source_id"]]
     remove_activity(storm2603, "activity--daily-aacbe5410f1223b930a5")
     remove_activity(storm2603, "activity--daily-e8fd6208405a17b2c79d")
+    retained_profile = {
+        key: value for key, value in storm2603.items() if key != "sources"
+    }
+
+    def references_superseded_source(value: Any, source_id: str) -> bool:
+        if isinstance(value, dict):
+            return any(
+                references_superseded_source(item, source_id)
+                for item in value.values()
+            )
+        if isinstance(value, list):
+            return any(
+                references_superseded_source(item, source_id) for item in value
+            )
+        return value == source_id
+
+    storm2603["sources"] = [
+        source
+        for source in storm2603.get("sources", [])
+        if source.get("source_id") not in STORM2603_SUPERSEDED_SOURCE_IDS
+        or references_superseded_source(
+            retained_profile, source.get("source_id", "")
+        )
+    ]
     merge_malware(
         storm2603,
         malware_id="malware--warlock-ransomware",
@@ -2812,6 +2948,21 @@ def fix_new_actor_links_and_activity(
         set(toolshell.get("malware_refs", [])) | {"malware--warlock-ransomware"}
     )
     parallel_id = "activity--storm-2603--parallel-intrusion-2026"
+    parallel_tool_ids = {
+        "tool--storm-2603-velociraptor",
+        "tool--storm-2603-cloudflare-tunnel",
+        "tool--zoho-assist-unattended-agent",
+        "tool--storm-2603-vscode-remote-ssh",
+    }
+    known_parallel_tool_ids = {
+        item.get("id")
+        for item in storm2603.get("capabilities", {}).get("tools", [])
+    } & parallel_tool_ids
+    parallel_ttp_ids = {
+        item.get("ttp_id")
+        for item in storm2603.get("ttps", [])
+        if parallel_id in item.get("activity_refs", [])
+    }
     upsert_activity(
         storm2603,
         {
@@ -2832,6 +2983,7 @@ def fix_new_actor_links_and_activity(
             ),
             "target_refs": [],
             "malware_refs": [],
+            "tool_refs": sorted(known_parallel_tool_ids),
             "infrastructure_refs": [],
             "confidence": "high",
             "evidence_refs": [MICROSOFT_STORM2603_PARALLEL_SOURCE["source_id"]],
@@ -2839,7 +2991,7 @@ def fix_new_actor_links_and_activity(
                 "同一被害環境と時間的重複はactor relationshipを意味しない。"
                 "Microsoftがunrelatedと明記した境界を保持する。"
             ),
-            "ttp_refs": [],
+            "ttp_refs": sorted(parallel_ttp_ids),
             "victim_refs": [],
             "stix_object_type": "incident",
             "activity_refs": [],
@@ -2922,6 +3074,55 @@ def update_daily_review_state(profiles_root: Path, decisions_path: Path) -> None
         "review_notes": note,
         "review_status": "rejected",
     }
+
+    storm_ledger_path = profiles_root / "storm-2603" / "daily-observations.json"
+    storm_ledger = load_json(storm_ledger_path)
+    superseded_storm_notes = {
+        (
+            "https://www.bleepingcomputer.com/news/security/"
+            "microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/"
+        ): (
+            "Microsoft一次資料に基づくstable ToolShell activityへ置換済みのため不採用。"
+            "この記事は二次報道であり、同時期の複数主体・個別被害・Warlock展開を一つの"
+            "Storm-2603 activityへ混在させない。一次資料がStorm-2603固有に記述した侵入"
+            "チェーンだけをcurated activityで保持する。"
+        ),
+        (
+            "https://www.bleepingcomputer.com/news/security/"
+            "ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/"
+        ): (
+            "Microsoft一次資料に基づくstable ToolShell activityへ置換済みのため不採用。"
+            "この記事は複数の国家系主体とランサムウェア主体を集約した二次報道であり、"
+            "共有脆弱性や被害集計からStorm-2603固有の活動・動機・被害者を拡張しない。"
+        ),
+        (
+            "https://www.bleepingcomputer.com/news/security/"
+            "us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/"
+        ): (
+            "Microsoft一次資料に基づくstable ToolShell activityへ置換済みのため不採用。"
+            "二次報道が列挙するNNSAその他の個別被害はStorm-2603へ個別帰属されていない"
+            "ため、Storm-2603 activityのvictim/target根拠として取り込まない。"
+        ),
+    }
+    for reference, rejection_note in superseded_storm_notes.items():
+        decisions.setdefault(f"storm-2603|{reference}", {}).update(
+            {
+                "confidence": "medium",
+                "review_notes": rejection_note,
+                "review_status": "rejected",
+            }
+        )
+    for record in storm_ledger.get("records", []):
+        reference = record.get("activity", {}).get("activity_reference", "")
+        if reference not in superseded_storm_notes:
+            continue
+        decision = decisions[f"storm-2603|{reference}"]
+        record["review_status"] = "rejected"
+        record["suggested_action"] = "reject"
+        record["confidence"] = decision.get("confidence", "medium")
+        record["review_notes"] = decision["review_notes"]
+    storm_ledger["updated_at"] = utc_now()
+    write_json_atomic(storm_ledger_path, storm_ledger)
 
     apt37_title = "APT37、侵害端末のKメッセンジャーからHWP／LNKとRoKRATを拡散"
     apt37_summary = (

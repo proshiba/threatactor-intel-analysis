@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-21T22:43:14Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -163,13 +163,13 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297, target--targeting-audit--region--08d97b9230a613ff9537 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--sector--e7608f51421ca8b1e297, target--targeting-audit--region--08d97b9230a613ff9537 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | Callisto Group | 情報なし | T1105 Ingress Tool Transfer, T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア, 教育・研究, NATO加盟国 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 中 |
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | Callisto Group | 情報なし | T1105 Ingress Tool Transfer, T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | 教育・研究, NATO加盟国 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 中 |
 
 
 
@@ -177,7 +177,6 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ロシア | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 | regions | NATO加盟国 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 | sectors | 教育・研究 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
@@ -187,7 +186,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b |  | data-theft: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 不明 | 不明 | 2025-05-09 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b |  | data-theft: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 不明 | 不明 | 2025-05-09 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ## MITRE ATT&CK Matrixデータ
 

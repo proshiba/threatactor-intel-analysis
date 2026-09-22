@@ -41,6 +41,10 @@
   `evidence_refs`で参照する。
 - IOCとartifactは、原文で同一キャンペーン／マルウェアとの関係を確認できた場合のみ
   その参照を付与する。
+- 構造化IOC表で`observed_at`列をmappingしているのにセルが空の場合は、観測時刻が
+  明示されていないものとしてunknownを維持する。同じ行のcampaign ID、source ID、
+  ファイル名、説明に含まれる年を代替のIOC観測時刻として抽出しない。資料が明示した
+  Campaign期間も、個別IOCの観測日とは別に管理する。
 - 既存情報と競合する場合は上書きせず、`assessment.uncertainties`と
   `analyst_notes`へ両論を残す。
 - 集約データセットのcampaign、malware、標的、動機、帰属は調査候補として別層に保存し、
@@ -63,6 +67,10 @@ APTクラスタから分離して確認する。
   攻撃への関与が根拠付きで識別できる場合だけ`threat-actor-individual`とする。
 - 雇用、役員、創業、請負、政府所属、APT membershipは別々のclaimとして監査する。
   雇用先がAPTへ関与したことだけを理由に、従業員をそのAPTのmemberまたはoperatorとしない。
+- 原典が「member、employee、contractor、affiliateのいずれか」のように複数の関係を
+  選言でまとめ、人物ごとの区分を示さない場合、いずれか一つの動詞へ確定しない。
+  `alleged-associated-with`等の上位関係で選言を保ち、個別に明示されたfounder等だけを
+  別Relationshipとして記録する。
 - 起訴状、訴追資料、逮捕発表は、当局が直接主張している内容と裁判で確定した事実を分ける。
   起訴・訴追は`legal_actions`へ`status: alleged`として記録し、後日の有罪判決または量刑は
   別資料・別actionで追加する。

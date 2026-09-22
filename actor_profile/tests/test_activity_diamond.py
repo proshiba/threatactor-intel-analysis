@@ -37,6 +37,10 @@ class ActivityDiamondTests(unittest.TestCase):
                     {"id": "malware--linked", "name": "LinkedRAT"},
                     {"id": "malware--general", "name": "GeneralRAT"},
                 ],
+                "tools": [
+                    {"id": "tool--linked", "name": "Linked Tool"},
+                    {"id": "tool--general", "name": "General Tool"},
+                ],
                 "infrastructure": [
                     {"id": "infra--linked", "name": "Linked C2"}
                 ],
@@ -58,6 +62,7 @@ class ActivityDiamondTests(unittest.TestCase):
                     "description": "",
                     "target_refs": ["target--japan"],
                     "malware_refs": ["malware--linked"],
+                    "tool_refs": ["tool--linked"],
                     "infrastructure_refs": [],
                     "ttp_refs": ["ttp--example"],
                     "victim_refs": ["victim--example"],
@@ -99,6 +104,8 @@ class ActivityDiamondTests(unittest.TestCase):
             diamond["capability"]["malware_refs"], ["malware--linked"]
         )
         self.assertNotIn("malware--general", diamond["capability"]["malware_refs"])
+        self.assertEqual(diamond["capability"]["tool_refs"], ["tool--linked"])
+        self.assertNotIn("tool--general", diamond["capability"]["tool_refs"])
         self.assertEqual(
             diamond["infrastructure"]["infrastructure_refs"],
             ["infra--linked"],

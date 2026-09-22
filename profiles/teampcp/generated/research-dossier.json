@@ -1,16 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T15:42:48Z",
+  "generated_at": "2026-09-21T23:44:05Z",
   "actor_ref": "actor--teampcp",
   "actor_name": "TeamPCP",
-  "profile_updated_at": "2026-09-21T13:20:00Z",
+  "profile_updated_at": "2026-09-22T00:00:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
       "relationships": "unknown",
-      "associated_entities": "unknown",
-      "hunting_pivots": "unknown",
+      "associated_entities": "canonical-present",
+      "hunting_pivots": "canonical-present",
       "malware": "canonical-present",
       "tools": "unknown",
       "targets": "canonical-present",
@@ -21,15 +21,15 @@
       "activities": 2,
       "dated_activities": 2,
       "relationships": 0,
-      "associated_entities": 0,
-      "entity_relationships": 0,
-      "hunting_pivots": 0,
-      "hunting_pivot_observations": 0,
+      "associated_entities": 2,
+      "entity_relationships": 2,
+      "hunting_pivots": 3,
+      "hunting_pivot_observations": 8,
       "malware": 6,
       "activity_linked_malware": 3,
       "tools": 0,
-      "targets": 6,
-      "motivations": 2
+      "targets": 5,
+      "motivations": 1
     },
     "external_lead_counts": {
       "aliases": 0,
@@ -74,47 +74,26 @@
     },
     "motivations": [
       {
-        "type": "financial",
+        "type": "financial-gain",
         "description": "資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。",
         "confidence": "high",
         "evidence_refs": [
+          "source--mitre-attack-19-2",
           "source--oligo-teampcp-2026",
           "source--sentinellabs-pcpjack-2026"
         ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--9fa4e579c2c3fcfa3ee6fd24",
-            "category": "motivation",
-            "verification_status": "supported",
-            "confidence": "high",
-            "statement": "TeamPCP has motivation financial: 資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。",
-            "evidence_refs": [
-              "source--oligo-teampcp-2026",
-              "source--sentinellabs-pcpjack-2026"
-            ],
-            "verification_rationale": "Evidence tier=research; motivation is not inferred from sponsorship.",
-            "counterevidence": []
-          }
-        ]
-      },
-      {
-        "type": "financial-gain",
-        "description": "Financially motivated intrusion or fraud.",
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-2"
-        ],
-        "analyst_notes": "Derived from explicit MITRE ATT&CK actor description.",
+        "analyst_notes": "MITRE ATT&CKの金銭目的評価と、Oligo/SentinelLabsが記述する資格情報窃取・ランサムウェア・恐喝による収益化を統合した。重複するfinancial表記は別motivationとして数えない。",
         "claim_assessments": [
           {
             "claim_id": "claim--908b3f29b57c9dce8ec5f929",
             "category": "motivation",
             "verification_status": "supported",
             "confidence": "high",
-            "statement": "TeamPCP has motivation financial-gain: Financially motivated intrusion or fraud.",
+            "statement": "TeamPCP has motivation financial-gain: 資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。",
             "evidence_refs": [
-              "source--mitre-attack-19-2"
+              "source--mitre-attack-19-2",
+              "source--oligo-teampcp-2026",
+              "source--sentinellabs-pcpjack-2026"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; motivation is not inferred from sponsorship.",
             "counterevidence": []
@@ -123,14 +102,623 @@
       }
     ],
     "relationships": [],
-    "associated_entities": [],
-    "entity_relationships": [],
-    "hunting_pivots": [],
+    "associated_entities": [
+      {
+        "entity_id": "threat-actor-individual--ruben-ian-thomson",
+        "name": "Ruben Ian Thomson",
+        "entity_type": "threat-actor-individual",
+        "aliases": [],
+        "description": "Australian and South African national whom Australian and U.S. authorities allege participated in TeamPCP activity. The allegations have not been adjudicated.",
+        "countries": [
+          "Australia",
+          "South Africa"
+        ],
+        "roles": [
+          "alleged-teampcp-member",
+          "alleged-leader"
+        ],
+        "threat_actor_types": [
+          "hacker"
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "legal_actions": [
+          {
+            "action_id": "legal-action--ruben-ian-thomson-arrest-2026-au",
+            "action_type": "arrest",
+            "authority": "Australian Federal Police",
+            "action_date": {
+              "value": "2026-08-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "arrest-date"
+            },
+            "status": "completed",
+            "description": "Arrested in Western Australia in the AFP/FBI/WAPF operation.",
+            "evidence_refs": [
+              "source--afp-teampcp-arrests-2026",
+              "source--doj-teampcp-thomson-indictment-2026"
+            ],
+            "analyst_notes": "Arrest is recorded as an event; it does not establish guilt."
+          },
+          {
+            "action_id": "legal-action--ruben-ian-thomson-charge-2026-au",
+            "action_type": "charge",
+            "authority": "Australian Federal Police / Australian courts",
+            "action_date": {
+              "value": "2026-08-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "charge-date"
+            },
+            "status": "alleged",
+            "description": "Charged in Australia with eight alleged offences described by the AFP.",
+            "evidence_refs": [
+              "source--afp-teampcp-arrests-2026",
+              "source--abc-teampcp-arrests-2026"
+            ],
+            "analyst_notes": "Charges are allegations and are not convictions."
+          },
+          {
+            "action_id": "legal-action--ruben-ian-thomson-indictment-2026-us",
+            "action_type": "indictment",
+            "authority": "U.S. District Court for the Northern District of California",
+            "action_date": {
+              "value": "2026-08-25T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "indictment-filed-date"
+            },
+            "status": "alleged",
+            "description": "Federally indicted for alleged conspiracy to violate the Computer Fraud and Abuse Act and obtaining information from a protected computer.",
+            "evidence_refs": [
+              "source--doj-teampcp-thomson-indictment-2026"
+            ],
+            "analyst_notes": "The indictment was filed on August 25 and unsealed on August 26; only Thomson is named in the U.S. case."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--afp-teampcp-arrests-2026",
+          "source--abc-teampcp-arrests-2026",
+          "source--doj-teampcp-thomson-indictment-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--5ba52a5c96dff21495b66ae7",
+            "category": "associated-entity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Ruben Ian Thomson is retained as a distinct threat-actor-individual associated with the research context for TeamPCP: Australian and South African national whom Australian and U.S. authorities allege participated in TeamPCP activity. The allegations have not been adjudicated.",
+            "evidence_refs": [
+              "source--abc-teampcp-arrests-2026",
+              "source--afp-teampcp-arrests-2026",
+              "source--doj-teampcp-thomson-indictment-2026"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; identity does not itself prove APT membership or operational participation.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "entity_id": "threat-actor-individual--louis-michael-gaebler",
+        "name": "Louis Michael Gaebler",
+        "entity_type": "threat-actor-individual",
+        "aliases": [],
+        "description": "Western Australian resident whom Australian authorities allege participated in TeamPCP activity. Public residence information is not treated as nationality.",
+        "countries": [],
+        "roles": [
+          "alleged-teampcp-member"
+        ],
+        "threat_actor_types": [
+          "hacker"
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "legal_actions": [
+          {
+            "action_id": "legal-action--louis-michael-gaebler-arrest-2026-au",
+            "action_type": "arrest",
+            "authority": "Australian Federal Police",
+            "action_date": {
+              "value": "2026-08-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "arrest-date"
+            },
+            "status": "completed",
+            "description": "Arrested in Western Australia in the AFP/FBI/WAPF operation.",
+            "evidence_refs": [
+              "source--afp-teampcp-arrests-2026"
+            ],
+            "analyst_notes": "Arrest is recorded as an event; it does not establish guilt."
+          },
+          {
+            "action_id": "legal-action--louis-michael-gaebler-charge-2026-au",
+            "action_type": "charge",
+            "authority": "Australian Federal Police / Australian courts",
+            "action_date": {
+              "value": "2026-08-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "charge-date"
+            },
+            "status": "alleged",
+            "description": "Charged in Australia with six alleged offences described by the AFP.",
+            "evidence_refs": [
+              "source--afp-teampcp-arrests-2026",
+              "source--abc-teampcp-arrests-2026"
+            ],
+            "analyst_notes": "Charges are allegations and are not convictions. No U.S. indictment is asserted for Gaebler."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--afp-teampcp-arrests-2026",
+          "source--abc-teampcp-arrests-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--7bbbc04b82142a7e2531c33f",
+            "category": "associated-entity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "Louis Michael Gaebler is retained as a distinct threat-actor-individual associated with the research context for TeamPCP: Western Australian resident whom Australian authorities allege participated in TeamPCP activity. Public residence information is not treated as nationality.",
+            "evidence_refs": [
+              "source--abc-teampcp-arrests-2026",
+              "source--afp-teampcp-arrests-2026"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; identity does not itself prove APT membership or operational participation.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
+    "entity_relationships": [
+      {
+        "relationship_id": "entity-relationship--ruben-ian-thomson-alleged-member-of-teampcp",
+        "source_ref": "threat-actor-individual--ruben-ian-thomson",
+        "target_ref": "actor--teampcp",
+        "relationship_type": "alleged-member-of",
+        "description": "Australian and U.S. authorities allege that Thomson participated in TeamPCP; ABC reports investigators described him as an alleged leader.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--afp-teampcp-arrests-2026",
+          "source--abc-teampcp-arrests-2026",
+          "source--doj-teampcp-thomson-indictment-2026"
+        ],
+        "analyst_notes": "The relationship is an allegation and does not establish membership or leadership as adjudicated fact.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--e8fba44d1b238e2f402250ff",
+            "category": "entity-relationship",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "threat-actor-individual--ruben-ian-thomson alleged-member-of actor--teampcp: Australian and U.S. authorities allege that Thomson participated in TeamPCP; ABC reports investigators described him as an alleged leader.",
+            "evidence_refs": [
+              "source--abc-teampcp-arrests-2026",
+              "source--afp-teampcp-arrests-2026",
+              "source--doj-teampcp-thomson-indictment-2026"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; relationship wording and temporal scope are preserved without membership propagation.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "relationship_id": "entity-relationship--louis-michael-gaebler-alleged-member-of-teampcp",
+        "source_ref": "threat-actor-individual--louis-michael-gaebler",
+        "target_ref": "actor--teampcp",
+        "relationship_type": "alleged-member-of",
+        "description": "Australian authorities allege that Gaebler participated in TeamPCP.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--afp-teampcp-arrests-2026",
+          "source--abc-teampcp-arrests-2026"
+        ],
+        "analyst_notes": "The relationship is an allegation and does not establish membership as adjudicated fact.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--7c66bc382f28d99b7fd2242b",
+            "category": "entity-relationship",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "threat-actor-individual--louis-michael-gaebler alleged-member-of actor--teampcp: Australian authorities allege that Gaebler participated in TeamPCP.",
+            "evidence_refs": [
+              "source--abc-teampcp-arrests-2026",
+              "source--afp-teampcp-arrests-2026"
+            ],
+            "verification_rationale": "Evidence tier=authoritative; relationship wording and temporal scope are preserved without membership propagation.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
+    "hunting_pivots": [
+      {
+        "pivot_id": "hunting-pivot--teampcp-masscan-ct-records",
+        "category": "infrastructure",
+        "pivot_type": "certificate-transparency-record-set",
+        "value": "crt.sh IDs 18348750576, 18348751301, 18349037873, 18349038225; masscan.cloud / matrix.masscan.cloud; issuer Let's Encrypt E6; CT first seen 2025-05-11",
+        "description": "Oligoが示した4件のCertificate Transparencyレコードを、対象ドメインとissuerを組み合わせて追跡するためのpivot。数値はcrt.shのレコードIDであり、証明書fingerprint、serial、公開鍵hashではない。issuer E6単独は汎用的なため帰属根拠にしない。",
+        "stix_pattern": null,
+        "attribution_scope": "shared",
+        "malware_refs": [],
+        "infrastructure_refs": [
+          "infra--masscan-cloud"
+        ],
+        "activity_refs": [
+          "activity--teampcp-oligo-lineage-2020-2026"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:b4d921af67e2310fcaf4ab9e330fc0c6c8105824bb6e05cc07b09241365aa90e",
+          "indicator--sha256:f247f74c86c4f15b840a14bc6098dbfafd265dab1f3c7f83546dabefa77ad955"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--teampcp-masscan-ct-records-2025",
+            "observed_at": {
+              "value": null,
+              "precision": "unknown",
+              "status": "unknown",
+              "basis": "certificate-transparency-first-seen-not-activity-time"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "Oligo table lists four crt.sh record IDs for masscan.cloud and matrix.masscan.cloud with Let's Encrypt E6 and CT first-seen 2025-05-11. The CT timestamp is retained in context and is not converted into an attack-observation time.",
+            "count": 4,
+            "count_basis": "documented-observables"
+          }
+        ],
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "ct-first-seen-is-not-activity-observation"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "ct-first-seen-is-not-activity-observation"
+        },
+        "observation_count": 4,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-22T00:00:00Z",
+          "basis": "One source-backed CT table containing four record IDs; no current CT or passive-DNS search was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "other",
+            "query": "crt.sh IDs IN (18348750576,18348751301,18349037873,18349038225) OR (name IN (masscan.cloud,matrix.masscan.cloud) AND issuer contains \"E6\")",
+            "purpose": "Resolve the exact historical certificates and inspect SANs or fingerprints without mistaking record IDs for digests.",
+            "requires_validation": true,
+            "false_positive_notes": "Let's Encrypt E6 is generic. Require the exact CT ID or domain plus certificate material and corroborate against the dated TeamPCP infrastructure before attribution."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "CT first-seen 2025-05-11 is certificate-log timing, not an attack date. No certificate-fingerprint Indicator is created.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f9261f1806f1979498cce537",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "TeamPCP research retains the certificate-transparency-record-set pivot crt.sh IDs 18348750576, 18348751301, 18349037873, 18349038225; masscan.cloud / matrix.masscan.cloud; issuer Let's Encrypt E6; CT first seen 2025-05-11: Oligoが示した4件のCertificate Transparencyレコードを、対象ドメインとissuerを組み合わせて追跡するためのpivot。数値はcrt.shのレコードIDであり、証明書fingerprint、serial、公開鍵hashではない。issuer E6単独は汎用的なため帰属根拠にしない。",
+            "evidence_refs": [
+              "source--oligo-teampcp-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "pivot_id": "hunting-pivot--teampcp-masscan-wildcard-phishing",
+        "category": "infrastructure",
+        "pivot_type": "wildcard-domain-family",
+        "value": "*.bank-phish.masscan.cloud; *.test-phish.masscan.cloud; *.zendesk.masscan.cloud",
+        "description": "Oligoがwildcardで報告したフィッシング／試験用サブドメイン族。wildcard文字列そのものをexact domain IOCにはせず、観測した完全修飾hostnameを別途検証する候補生成用patternとして保持する。",
+        "stix_pattern": "[domain-name:value MATCHES '^[^.]+\\.(bank-phish|test-phish|zendesk)\\.masscan\\.cloud$']",
+        "attribution_scope": "actor-specific",
+        "malware_refs": [],
+        "infrastructure_refs": [
+          "infra--masscan-cloud"
+        ],
+        "activity_refs": [
+          "activity--teampcp-oligo-lineage-2020-2026"
+        ],
+        "indicator_refs": [],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--teampcp-masscan-wildcards-2026-01-02",
+            "observed_at": {
+              "value": "2026-01-02T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-first-observed"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "Oligo lists three wildcard families as first observed on 2026-01-02; the report does not enumerate exact child hostnames.",
+            "count": 3,
+            "count_basis": "documented-observables"
+          }
+        ],
+        "first_observed": {
+          "value": "2026-01-02T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated-first-observed"
+        },
+        "last_observed": {
+          "value": "2026-01-02T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated-first-observed"
+        },
+        "observation_count": 3,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "single-observation",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-22T00:00:00Z",
+          "basis": "One source reports three wildcard families. No live DNS, CT, or passive scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "other",
+            "query": "lower(fqdn) matches ^[^.]+\\.(bank-phish|test-phish|zendesk)\\.masscan\\.cloud$",
+            "purpose": "Generate exact child-host candidates from DNS, CT, proxy, or SIEM telemetry.",
+            "requires_validation": true,
+            "false_positive_notes": "Do not convert the wildcard itself into an IOC. Validate each exact hostname, observation time, content, resolution, and continued control before linking it to TeamPCP."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "The source table marks the three wildcard families' status as unknown; active_status therefore remains unknown.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b24c1e1d3850980e8d660c9b",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "TeamPCP research retains the wildcard-domain-family pivot *.bank-phish.masscan.cloud; *.test-phish.masscan.cloud; *.zendesk.masscan.cloud: Oligoがwildcardで報告したフィッシング／試験用サブドメイン族。wildcard文字列そのものをexact domain IOCにはせず、観測した完全修飾hostnameを別途検証する候補生成用patternとして保持する。",
+            "evidence_refs": [
+              "source--oligo-teampcp-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=actor-specific; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      },
+      {
+        "pivot_id": "hunting-pivot--teampcp-deployment-path-lineage",
+        "category": "infrastructure",
+        "pivot_type": "uri-path-lineage",
+        "value": "/EP9ts2/; /ep9TS2/ndt.sh; /files/netsh; /files/keyen.sh",
+        "description": "TA-NATALSTATUS、ShadowRay 2.0、TeamPCP関連活動を横断して報告された、大文字小文字を含む配置pathとpayload名の組合せ。単独のファイル名や/files/は一般的になり得るため、既知host・port・時刻との組合せで確認する。",
+        "stix_pattern": null,
+        "attribution_scope": "shared",
+        "malware_refs": [],
+        "infrastructure_refs": [
+          "infra--masscan-cloud"
+        ],
+        "activity_refs": [
+          "activity--teampcp-oligo-lineage-2020-2026"
+        ],
+        "indicator_refs": [
+          "indicator--sha256:024b11f9076d1755ffe5166033bf7051273c617971597dafe726c97266406bf9",
+          "indicator--sha256:1cce7886ad06011d43fe5d0a4c0607940ad97cee2d3975af87fc709655f6b583",
+          "indicator--sha256:9f81cdb9664da6e46eaf442710c654c2543bf1cb7718649057fb32567e60abe1",
+          "indicator--sha256:b4d921af67e2310fcaf4ab9e330fc0c6c8105824bb6e05cc07b09241365aa90e",
+          "indicator--sha256:f247f74c86c4f15b840a14bc6098dbfafd265dab1f3c7f83546dabefa77ad955",
+          "indicator--sha256:fab8ab4cc312f6562db4648e01d238acbb5f3349a580d044a601993176442a7b"
+        ],
+        "observations": [
+          {
+            "observation_id": "pivot-observation--teampcp-ep9ts2-2025-06",
+            "observed_at": {
+              "value": "2025-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-month"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "103.79.77.16 served /ep9TS2/ndt.sh in the wild during June 2025.",
+            "count": 1,
+            "count_basis": "documented-observables"
+          },
+          {
+            "observation_id": "pivot-observation--teampcp-ep9ts2-2025-07-26",
+            "observed_at": {
+              "value": "2025-07-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-command-date"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "A compromised Ray cluster logged wget https://matrix.masscan.cloud/ep9TS2/ndt.sh on 2025-07-26.",
+            "count": 1,
+            "count_basis": "documented-events"
+          },
+          {
+            "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-21",
+            "observed_at": {
+              "value": "2025-09-21T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-payload-date"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "67.217.57.240:666/files/netsh appears in the dated payload-evolution table.",
+            "count": 1,
+            "count_basis": "documented-events"
+          },
+          {
+            "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-26",
+            "observed_at": {
+              "value": "2025-09-26T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-payload-date"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "67.217.57.240:666/files/netsh appears again in the dated payload-evolution table.",
+            "count": 1,
+            "count_basis": "documented-events"
+          },
+          {
+            "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-28",
+            "observed_at": {
+              "value": "2025-09-28T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-payload-date"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "67.217.57.240:666/files/netsh appears a third time in the dated payload-evolution table.",
+            "count": 1,
+            "count_basis": "documented-events"
+          },
+          {
+            "observation_id": "pivot-observation--teampcp-files-keyen-2025-10-02",
+            "observed_at": {
+              "value": "2025-10-02T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-stated-payload-date"
+            },
+            "source_ref": "source--oligo-teampcp-2026",
+            "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+            "context": "67.217.57.240:666/files/keyen.sh appears in the dated payload-evolution table.",
+            "count": 1,
+            "count_basis": "documented-events"
+          }
+        ],
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-month"
+        },
+        "last_observed": {
+          "value": "2025-10-02T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated-payload-date"
+        },
+        "observation_count": 6,
+        "source_count": 1,
+        "activity_count": 1,
+        "continuity": {
+          "assessment": "reused",
+          "active_status": "unknown",
+          "evaluated_at": "2026-09-22T00:00:00Z",
+          "basis": "Oligo documents the path lineage on multiple dates and hosts from June through October 2025. No current telemetry or passive scan was performed.",
+          "passive_scan_performed": false,
+          "checks": []
+        },
+        "hunt_queries": [
+          {
+            "platform": "siem",
+            "query": "url.path IN (\"/ep9TS2/ndt.sh\",\"/files/netsh\",\"/files/keyen.sh\") OR command_line contains \"/EP9ts2/\"",
+            "purpose": "Find the reported deployment-path lineage in proxy, web, process, or command telemetry.",
+            "requires_validation": true,
+            "false_positive_notes": "Path fragments and filenames can be shared. Require a known TeamPCP-linked host, port 666, payload behavior, or temporal overlap before attribution."
+          }
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "Case is preserved because the report uses both /EP9ts2/ and /ep9TS2/ndt.sh forms.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b28dfd1b782080d8c5018cc1",
+            "category": "hunting-pivot",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "TeamPCP research retains the uri-path-lineage pivot /EP9ts2/; /ep9TS2/ndt.sh; /files/netsh; /files/keyen.sh: TA-NATALSTATUS、ShadowRay 2.0、TeamPCP関連活動を横断して報告された、大文字小文字を含む配置pathとpayload名の組合せ。単独のファイル名や/files/は一般的になり得るため、既知host・port・時刻との組合せで確認する。",
+            "evidence_refs": [
+              "source--oligo-teampcp-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution scope=shared; active status=unknown; observation counts use their explicit count_basis.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
     "activity_timeline": [
       {
-        "activity_id": "activity--daily-5aa545c901df820c7aa2",
-        "name": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
-        "activity_type": "infrastructure-operation",
+        "activity_id": "activity--teampcp-oligo-lineage-2020-2026",
+        "name": "Oligoが関連付けた2020–2026年の複数活動・基盤系譜",
+        "activity_type": "historical-activity-cluster",
         "first_observed": {
           "basis": "source-stated",
           "precision": "year",
@@ -144,29 +732,32 @@
           "value": "2026-04-01T00:00:00Z"
         },
         "reported_at": {
-          "value": "2026-08-08T00:00:00Z",
+          "value": "2026-08-05T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "daily-news-file-date"
+          "basis": "source-publication"
         },
         "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
         "target_refs": [],
         "malware_refs": [],
-        "infrastructure_refs": [],
+        "infrastructure_refs": [
+          "infra--masscan-cloud",
+          "infra--teampcp-shadowray-ironern-control",
+          "infra--teampcp-oss-staging-2026"
+        ],
         "ttp_refs": [
           "ttp--teampcp-t1059-004-ndt-sh",
           "ttp--teampcp-t1190-exposed-services",
           "ttp--teampcp-t1486-ransomware"
         ],
         "victim_refs": [
-          "victim--activity-rule--829e65b1ac18ce5ea420",
           "victim--teampcp-exposed-cloud-services"
         ],
-        "confidence": "high",
+        "confidence": "medium",
         "evidence_refs": [
-          "source--daily-48f251212f832ab9b6df"
+          "source--oligo-teampcp-2026"
         ],
-        "analyst_notes": "日次収集レコード daily-record--5aa545c901df820c7aa23b26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
+        "analyst_notes": "一次資料(Oligo Security, 2026-08-05公開)を原文で確認した。OligoはShadowRay 2.0をTeamPCPへ関連付け、TA-NATALSTATUS/IronErnから続く基盤・手法の系譜を2020年まで遡及する。ただし複数キャンペーンを横断し、同一運用者・密接な協力・共有基盤のどれが連続性を説明するか確定していないため、単一CampaignではなくGrouping、確度mediumで表現する。2026年4月はmasscan.cloudの名前解決変更という資料内観測であり、公開日とは分離する。",
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--teampcp",
@@ -186,13 +777,14 @@
           },
           "infrastructure": {
             "infrastructure_refs": [
-              "infra--masscan-cloud"
+              "infra--masscan-cloud",
+              "infra--teampcp-oss-staging-2026",
+              "infra--teampcp-shadowray-ironern-control"
             ]
           },
           "victim": {
             "target_refs": [],
             "victim_refs": [
-              "victim--activity-rule--829e65b1ac18ce5ea420",
               "victim--teampcp-exposed-cloud-services"
             ]
           },
@@ -210,12 +802,12 @@
               "value": "2026-04-01T00:00:00Z"
             },
             "reported_at": {
-              "value": "2026-08-08T00:00:00Z",
+              "value": "2026-08-05T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "daily-news-file-date"
+              "basis": "source-publication"
             },
-            "activity_type": "infrastructure-operation",
+            "activity_type": "historical-activity-cluster",
             "phases": [
               "Execution",
               "Impact",
@@ -224,8 +816,7 @@
             "results": [
               "account-compromise",
               "credential-theft",
-              "encryption",
-              "supply-chain"
+              "encryption"
             ],
             "direction": {
               "source_countries": [],
@@ -233,38 +824,33 @@
               "target_region_refs": []
             }
           },
-          "confidence": "high",
+          "confidence": "medium",
           "evidence_refs": [
-            "source--daily-48f251212f832ab9b6df",
             "source--oligo-teampcp-2026",
             "source--sentinellabs-pcpjack-2026"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
         },
-        "stix_object_type": "campaign",
+        "stix_object_type": "grouping",
         "activity_refs": [],
-        "grouping_context": null,
+        "grouping_context": "suspicious-activity",
         "claim_assessments": [
           {
-            "claim_id": "claim--8dee9ff3f49638dcb70b2e8a",
+            "claim_id": "claim--f6d1ec6437ea5758bafdfbdf",
             "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "high",
-            "statement": "TeamPCP conducted or is associated with 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及: Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "TeamPCP conducted or is associated with Oligoが関連付けた2020–2026年の複数活動・基盤系譜: Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
             "evidence_refs": [
-              "source--daily-48f251212f832ab9b6df"
+              "source--oligo-teampcp-2026"
             ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
             "counterevidence": []
           }
         ],
         "malware": [],
         "targets": [],
         "victims": [
-          {
-            "id": "victim--activity-rule--829e65b1ac18ce5ea420",
-            "name": "anonymous"
-          },
           {
             "id": "victim--teampcp-exposed-cloud-services",
             "name": "aggregate"
@@ -320,7 +906,7 @@
           "malware--teampcp-cloud-stealer"
         ],
         "infrastructure_refs": [
-          "infra--masscan-cloud"
+          "infra--teampcp-oss-staging-2026"
         ],
         "ttp_refs": [
           "ttp--teampcp-t1195-002-oss-supply-chain",
@@ -350,7 +936,7 @@
           },
           "infrastructure": {
             "infrastructure_refs": [
-              "infra--masscan-cloud"
+              "infra--teampcp-oss-staging-2026"
             ]
           },
           "victim": {
@@ -401,6 +987,7 @@
           "evidence_refs": [
             "source--gtig-adversarial-ai-2026",
             "source--gtig-ai-threat-tracker-2026-05",
+            "source--oligo-teampcp-2026",
             "source--sentinellabs-pcpjack-2026"
           ],
           "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
@@ -409,6 +996,7 @@
         "evidence_refs": [
           "source--gtig-adversarial-ai-2026",
           "source--gtig-ai-threat-tracker-2026-05",
+          "source--oligo-teampcp-2026",
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。",
@@ -425,6 +1013,7 @@
             "evidence_refs": [
               "source--gtig-adversarial-ai-2026",
               "source--gtig-ai-threat-tracker-2026-05",
+              "source--oligo-teampcp-2026",
               "source--sentinellabs-pcpjack-2026"
             ],
             "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
@@ -591,6 +1180,7 @@
             "evidence_refs": [
               "source--gtig-adversarial-ai-2026",
               "source--gtig-ai-threat-tracker-2026-05",
+              "source--oligo-teampcp-2026",
               "source--sentinellabs-pcpjack-2026"
             ]
           }
@@ -728,6 +1318,7 @@
             "evidence_refs": [
               "source--gtig-adversarial-ai-2026",
               "source--gtig-ai-threat-tracker-2026-05",
+              "source--oligo-teampcp-2026",
               "source--sentinellabs-pcpjack-2026"
             ]
           }
@@ -867,6 +1458,7 @@
             "evidence_refs": [
               "source--gtig-adversarial-ai-2026",
               "source--gtig-ai-threat-tracker-2026-05",
+              "source--oligo-teampcp-2026",
               "source--sentinellabs-pcpjack-2026"
             ]
           }
@@ -888,46 +1480,6 @@
     ],
     "tool_usage": [],
     "targets": [
-      {
-        "id": "target--teampcp--region--global",
-        "name": "全世界",
-        "description": "一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--oligo-teampcp-2026",
-          "source--gtig-ai-threat-tracker-2026-05"
-        ],
-        "analyst_notes": "",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--a8e2f6d76eb841a6b233bd03",
-            "category": "target-region",
-            "verification_status": "supported",
-            "confidence": "medium",
-            "statement": "TeamPCP targets region 全世界.",
-            "evidence_refs": [
-              "source--gtig-ai-threat-tracker-2026-05",
-              "source--oligo-teampcp-2026"
-            ],
-            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "region",
-        "activity_refs": []
-      },
       {
         "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
         "name": "IT・ソフトウェア",
@@ -1156,35 +1708,9 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 80,
-    "partially-supported": 2
+    "supported": 93
   },
   "evidence_catalog": {
-    "source--daily-48f251212f832ab9b6df": {
-      "source_id": "source--daily-48f251212f832ab9b6df",
-      "path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-      "title": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
-      "publisher": "oligo.security",
-      "published_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-      "accessed_at": null,
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "activity",
-        "victim-case"
-      ]
-    },
     "source--gtig-ai-threat-tracker-2026-05": {
       "source_id": "source--gtig-ai-threat-tracker-2026-05",
       "path": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
@@ -1225,23 +1751,26 @@
         "value": "2026-08-05T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "source-stated"
+        "basis": "source-publication"
       },
       "language": "en",
       "source_type": "vendor-research-report",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
-      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "analyst_notes": "一次資料を2026-09-22 JSTに再確認。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。IOC、CTレコード、wildcard、配置pathは本文と時系列表へ再照合した。",
       "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-      "accessed_at": null,
+      "accessed_at": "2026-09-21T23:12:01Z",
       "actor_scope": "unknown",
       "claims_supported": [
         "activity",
         "assessment",
         "attribution",
         "capability",
+        "hunting-pivot",
         "identity",
+        "infrastructure",
+        "ioc",
         "motivation",
         "targeting",
         "ttp",
@@ -1435,6 +1964,85 @@
         "ttp"
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--afp-teampcp-arrests-2026": {
+      "source_id": "source--afp-teampcp-arrests-2026",
+      "path": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+      "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+      "title": "Two WA men charged following AFP, FBI, WAPF disruption of alleged global cybercrime syndicate",
+      "publisher": "Australian Federal Police",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "government-legal-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "AFP states that two Western Australian men were arrested and charged on 2026-08-26. Residence and arrest location are not treated as nationality.",
+      "archive_url": "https://web.archive.org/web/20260831071008/https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+    },
+    "source--abc-teampcp-arrests-2026": {
+      "source_id": "source--abc-teampcp-arrests-2026",
+      "path": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+      "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+      "title": "Two WA men charged after investigation into alleged cybercrime syndicate TeamPCP",
+      "publisher": "ABC News Australia",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "public-broadcaster-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "ABC identifies Ruben Ian Thomson and Louis Michael Gaebler. Its report attributes the alleged TeamPCP leadership description to investigators; it does not establish guilt."
+    },
+    "source--doj-teampcp-thomson-indictment-2026": {
+      "source_id": "source--doj-teampcp-thomson-indictment-2026",
+      "path": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+      "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+      "title": "Australian Man Indicted For ‘TeamPCP’ Cyberattacks On Software Supply Chain",
+      "publisher": "U.S. Attorney's Office, Northern District of California",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "government-legal-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "The release states that Thomson's indictment was filed on 2026-08-25 and unsealed on 2026-08-26. Only the filed date is used as action_date."
     }
   },
   "research_gaps": [

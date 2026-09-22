@@ -27,6 +27,10 @@ from daily_common import (
     utc_now,
     write_json_atomic,
 )
+from daily_materializer import (
+    activity_id_override_issue,
+    reviewed_reported_at_issue,
+)
 
 
 HERE = Path(__file__).resolve().parent
@@ -157,11 +161,33 @@ def apply_decision(
     for field in ("review_status", "confidence", "review_notes", "activity_type"):
         if field in decision:
             record[field] = decision[field]
+    if "activity_id_override" in decision:
+        override_issue = activity_id_override_issue(
+            decision["activity_id_override"], record["actor"]["slug"]
+        )
+        if override_issue:
+            record.setdefault("decision_issues", []).append(
+                f"activity_id_overrideが不正: {override_issue}"
+            )
+        else:
+            record["activity_id_override"] = decision["activity_id_override"]
     if "activity_period" in decision:
         record["activity_period"] = decision["activity_period"]
+    if "reported_at" in decision:
+        # A reviewed primary-source publication date takes precedence over the
+        # tech-memo collection-file date.  It remains report metadata and must
+        # never be copied into the activity observation period.
+        reported_issue = reviewed_reported_at_issue(decision["reported_at"])
+        if reported_issue:
+            record.setdefault("decision_issues", []).append(
+                f"reported_atが不正: {reported_issue}"
+            )
+        else:
+            record["reported_at"] = dict(decision["reported_at"])
     # 記事見出しが同じ資料内の別クラスタの作戦を指している場合、そのままでは
     # 活動名が誤りになる。原文を確認したレビューでのみ表示名を差し替える。
-    # activity ID と record ID は activity_reference から生成するため影響しない。
+    # 表示上の差し替えはidentity入力を変えない。Activity IDを変更できるのは、
+    # 独立して検証される明示activity_id_overrideだけである。
     overrides = decision.get("activity_overrides") or {}
     for field in ("title", "summary"):
         if field in overrides:

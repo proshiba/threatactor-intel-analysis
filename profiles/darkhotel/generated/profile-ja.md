@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--darkhotel`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-21T22:20:01Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -18,6 +18,7 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
+| APT-C-06 | 360高级威胁研究院 / 360威胁情报中心 | overlapping | 高 | `source--360-apt-c-06-darkhotel-kctv-lure-2026` | 360の一次資料は記事名と本文でAPT-C-06（Darkhotel）と併記し、既知のDarkhotel沿革も説明する。360内の呼称対応は明示されるが、cross-vendorの収集境界が完全一致するとは限らないためscopeはoverlappingとする。 |
 | DUBNIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Zigzag Hail | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
@@ -142,13 +143,13 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | phishing-campaign | 2026-04 | 2026-05 | 2026-08-15 | target--country--north-korea, target--mitre-group--sector--5c5a9838308d2dd44cc2, target--targeting-audit--country--52f2bb4846e67d9651e3 |  | ttp--activity-rule--234a71d43cad975ee342 | victim--activity-rule--0c91d7d3acc71ef96831 | APT-C-06（Darkhotel）は2026年4月、北朝鮮中央テレビをリアルタイム視聴するアプリの解説文書を囮に、利用者へ悪意あるアプリの導入を誘導した。 5月末には同じアプリを含む圧縮ファイルをフィッシングメールで配布し、MSIからVBScriptとPowerShellを利用する攻撃チェーンへ発展した。 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 第2段階MSIの一部は悪意あるDLLを読み込み、ChaCha20で外部ファイルとShellcodeを復号して実行するが、最終Shellcodeの機能は未解明である。 2025年以降のDarkhotelではPowerShellがダウンロードや永続化に高頻度で使われており、今回も多数の標的が確認されたが実際のコード実行は比較的少なかった。 | 高 | `source--daily-a945409955df891618a3` |
+| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | phishing-campaign | 2026-04 | 2026-05 | 2026-08-12 |  |  | ttp--activity-rule--234a71d43cad975ee342 |  | APT-C-06（Darkhotel）は2026年4月、北朝鮮中央テレビをリアルタイム視聴するアプリの解説文書を囮に、利用者へ悪意あるアプリの導入を誘導した。 5月末には同じアプリを含む圧縮ファイルをフィッシングメールで配布し、MSIからVBScriptとPowerShellを利用する攻撃チェーンへ発展した。 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 第2段階MSIの一部は悪意あるDLLを読み込み、ChaCha20で外部ファイルとShellcodeを復号して実行するが、最終Shellcodeの機能は未解明である。 2025年以降のDarkhotelではPowerShellがダウンロードや永続化に高頻度で使われており、今回も多数の標的が確認されたが実際のコード実行は比較的少なかった。 | 高 | `source--360-apt-c-06-darkhotel-kctv-lure-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | Darkhotel | 情報なし | T1053.005 Scheduled Task | 情報なし | 北朝鮮, 小売・ホスピタリティ, タイ | 被害事例: APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | 高 |
+| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | Darkhotel | 情報なし | T1053.005 Scheduled Task | 情報なし | 情報なし | 情報なし | 高 |
 
 Daybreak?; Fallout Team; WizardOpium
 
@@ -156,26 +157,20 @@ Daybreak?; Fallout Team; WizardOpium
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | タイ | 活動「APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析」の記述で標的・被害国として明示されている。 | 2026-04 | 2026-05 | 中 | `source--daily-a945409955df891618a3` |
-| countries | 北朝鮮 | Targeting text mentions north korea. | 2026-04 | 2026-05 | 中 | `source--daily-a945409955df891618a3` |
-| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--mitre-attack-19-1` |
-| regions | 東アジア | MITRE ATT&CKのGroup概要でDarkhotelの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--daily-a945409955df891618a3`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
-| sectors | 小売・ホスピタリティ | [Darkhotel](https://attack.mitre.org/groups/G0012) is a suspected South Korean threat group that has targeted victims primarily in East Asia since at least 2004. | 2026-04 | 2026-05 | 高 | `source--daily-a945409955df891618a3`, `source--mitre-attack-19-2` |
+| regions | 東アジア | MITRE ATT&CKのGroup概要でDarkhotelの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | 防衛・軍事 | rkhotel](https://attack.mitre.org/groups/G0012) has also conducted spearphishing campaigns and infected victims through peer-to-peer and file sharing networks.(Citation: Kaspersky Darkhotel)(Citation: Securelist Darkhotel Aug 2015)(Citation: Microsoft Digital Defense FY20 Sept 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | 非公開 | aggregate | multiple-organizations | reported | target--country--north-korea, target--mitre-group--sector--5c5a9838308d2dd44cc2 |  | ttp--activity-rule--234a71d43cad975ee342 | メール／メールアカウント |  | 2026-04 | 2026-05 | 2026-08-15 | 高 | `source--daily-a945409955df891618a3` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 |  | activity--daily-fbc4f59c4a844e18e5ab | 2026-04 | 2026-05 | 中 | `source--daily-a945409955df891618a3` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 |  | activity--darkhotel-kctv-lure-2026 | 2026-04 | 2026-05 | 中 | `source--360-apt-c-06-darkhotel-kctv-lure-2026` |
 | Command And Control | T1001 | Data Obfuscation | 6 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protocol T1024 Custom Cryptographic Protocol T1001 Data Obfuscation T1065 Uncommonly Used Port 6.4 参考文章 1） https://malware.prevenity.com/2018/03/happy-new-year-wishes-from-china.ht ml 2） https://s.tencent.com/research/report/762.html |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
 | Collection | T1005 | Data from Local System | 御见威胁情报中心 72 / 73 T1082 System Information Discovery T1007 System Service Discovery Lateral Movement T1534 Internal Spearphishing Collection T1123 Audio Capture T1005 Data from Local System T1114 Email Collection T1056 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protocol T1024 Custom Cryptographic Protocol T1001 Data Obfuscation T1065 Uncommonly Used Port 6.4 参考文章 1） https:/ |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
 | Discovery | T1007 | System Service Discovery | TLP：WHITE 腾讯安全御见威胁情报中心 72 / 73 T1082 System Information Discovery T1007 System Service Discovery Lateral Movement T1534 Internal Spearphishing Collection T1123 Audio Capture T1005 Data from Local System T1114 Email Collection T1056 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protoc |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
@@ -231,11 +226,11 @@ Daybreak?; Fallout Team; WizardOpium
 
 ## IOC／artifact概要
 
-- IOC値: 96件
-- IOC観測: 118件
+- IOC値: 101件
+- IOC観測: 123件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 77件
-- 非IOC artifact観測: 45件（`artifacts.csv`）
+- 非IOC artifact観測: 60件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -254,11 +249,13 @@ Daybreak?; Fallout Team; WizardOpium
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
+| source--360-apt-c-06-darkhotel-kctv-lure-2026 | APT-C-06（Darkhotel）近期利用朝鲜相关诱饵发起的攻击活动分析 | 360高级威胁研究院 / 360威胁情报中心 | 2026-08-12 | https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q | vendor-threat-research | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--daily-a945409955df891618a3 | APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | mp.weixin.qq.com | 2026-08-15 | https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q | osint-report | TLP:CLEAR | 中 |
 | source--darkhotel--6be8f2f16af88e57 | README |  | 不明 | Darkhotel/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--darkhotel--a8acea942272273e | README |  | 不明 | Darkhotel/higaisa/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--darkhotel--ce28b9f812e95fb7 | higaisa apt report |  | 不明 | Darkhotel/higaisa/higaisa_apt_report.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
@@ -268,10 +265,8 @@ Daybreak?; Fallout Team; WizardOpium
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

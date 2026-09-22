@@ -474,8 +474,12 @@ def render_markdown(
         ]
     )
     lines.extend(["## 攻撃活動の履歴", ""])
-    activity_rows = [
-        [
+    has_activity_tools = any(
+        item.get("tool_refs") for item in profile.get("activities", [])
+    )
+    activity_rows = []
+    for item in profile.get("activities", []):
+        row = [
             item["name"],
             item["activity_type"],
             time_label(item["first_observed"]),
@@ -483,17 +487,22 @@ def render_markdown(
             time_label(item["reported_at"]),
             ", ".join(item.get("target_refs", [])),
             ", ".join(item.get("malware_refs", [])),
-            ", ".join(item.get("ttp_refs", [])),
-            ", ".join(item.get("victim_refs", [])),
-            item["description"],
-            confidence_label(item["confidence"]),
-            refs_label(item["evidence_refs"], sources),
         ]
-        for item in profile.get("activities", [])
-    ]
+        if has_activity_tools:
+            row.append(", ".join(item.get("tool_refs", [])))
+        row.extend(
+            [
+                ", ".join(item.get("ttp_refs", [])),
+                ", ".join(item.get("victim_refs", [])),
+                item["description"],
+                confidence_label(item["confidence"]),
+                refs_label(item["evidence_refs"], sources),
+            ]
+        )
+        activity_rows.append(row)
     capability_names = {
         item["id"]: item["name"]
-        for category in ("malware", "infrastructure")
+        for category in ("malware", "tools", "infrastructure")
         for item in profile["capabilities"].get(category, [])
     }
     ttp_names = {
@@ -509,13 +518,16 @@ def render_markdown(
         item["victim_case_id"]: item.get("victim_name") or item["name"]
         for item in profile.get("victim_cases", [])
     }
+    has_diamond_tools = any(
+        item.get("diamond_model", {}).get("capability", {}).get("tool_refs")
+        for item in profile.get("activities", [])
+    )
     activity_diamond_rows = []
     for item in profile.get("activities", []):
         diamond = item["diamond_model"]
         capability = diamond["capability"]
         victim = diamond["victim"]
-        activity_diamond_rows.append(
-            [
+        row = [
                 item["name"],
                 diamond["adversary"]["name"],
                 ", ".join(
@@ -523,6 +535,17 @@ def render_markdown(
                     for ref in capability["malware_refs"]
                 )
                 or "情報なし",
+        ]
+        if has_diamond_tools:
+            row.append(
+                ", ".join(
+                    capability_names.get(ref, ref)
+                    for ref in capability.get("tool_refs", [])
+                )
+                or "情報なし"
+            )
+        row.extend(
+            [
                 ", ".join(
                     ttp_names.get(ref, ref) for ref in capability["ttp_refs"]
                 )
@@ -543,13 +566,23 @@ def render_markdown(
                 confidence_label(diamond["confidence"]),
             ]
         )
+        activity_diamond_rows.append(row)
+    activity_headers = [
+        "活動", "種別", "初回", "最終", "報告日", "標的", "マルウェア",
+    ]
+    if has_activity_tools:
+        activity_headers.append("ツール")
+    activity_headers.extend(["TTP", "被害事例", "説明", "確度", "証拠"])
+    diamond_headers = ["活動", "攻撃者", "マルウェア"]
+    if has_diamond_tools:
+        diamond_headers.append("ツール")
+    diamond_headers.extend(
+        ["TTP", "インフラ", "標的属性", "被害事例", "確度"]
+    )
     lines.extend(
         [
             table(
-                [
-                    "活動", "種別", "初回", "最終", "報告日", "標的", "マルウェア",
-                    "TTP", "被害事例", "説明", "確度", "証拠",
-                ],
+                activity_headers,
                 activity_rows,
             )
             if activity_rows
@@ -558,10 +591,7 @@ def render_markdown(
             "### 活動別ダイヤモンドモデル",
             "",
             table(
-                [
-                    "活動", "攻撃者", "マルウェア", "TTP", "インフラ",
-                    "標的属性", "被害事例", "確度",
-                ],
+                diamond_headers,
                 activity_diamond_rows,
             )
             if activity_diamond_rows
@@ -1026,6 +1056,11 @@ def render_stix(
                 "x_confidence": activity["confidence"],
                 "x_analyst_notes": activity.get("analyst_notes", ""),
                 "x_diamond_model": activity["diamond_model"],
+                **(
+                    {"x_tool_refs": activity.get("tool_refs", [])}
+                    if "tool_refs" in activity
+                    else {}
+                ),
                 **temporal,
             },
         )
@@ -1125,6 +1160,7 @@ def render_stix(
             profile["profile_id"],
             *activity.get("activity_refs", []),
             *activity.get("malware_refs", []),
+            *activity.get("tool_refs", []),
             *activity.get("infrastructure_refs", []),
             *activity.get("target_refs", []),
             *activity.get("ttp_refs", []),
@@ -1158,6 +1194,11 @@ def render_stix(
                     "x_confidence": activity["confidence"],
                     "x_analyst_notes": activity.get("analyst_notes", ""),
                     "x_diamond_model": activity["diamond_model"],
+                    **(
+                        {"x_tool_refs": activity.get("tool_refs", [])}
+                        if "tool_refs" in activity
+                        else {}
+                    ),
                 },
             )
         )
@@ -1275,7 +1316,11 @@ def render_stix(
             activity["last_observed"],
             activity["reported_at"],
         )
-        for ref in activity["malware_refs"] + activity["infrastructure_refs"]:
+        for ref in (
+            activity["malware_refs"]
+            + activity.get("tool_refs", [])
+            + activity["infrastructure_refs"]
+        ):
             if ref in object_id_by_profile_id:
                 add_relationship(
                     activity_id,
@@ -1383,6 +1428,12 @@ def render_stix(
                     "x_attribution_scope": pivot["attribution_scope"],
                     "x_first_observed": pivot["first_observed"],
                     "x_last_observed": pivot["last_observed"],
+                    "x_valid_from_basis": (
+                        "first-observed"
+                        if observed_values
+                        else "stix-required-created-fallback"
+                    ),
+                    "x_time_correlation_eligible": bool(observed_values),
                     "x_observation_count": pivot["observation_count"],
                     "x_source_count": pivot["source_count"],
                     "x_activity_count": pivot["activity_count"],
@@ -1429,12 +1480,18 @@ def render_stix(
 
     if iocs:
         for indicator in iocs.get("indicators", []):
-            indicator_stix_id = stix_id("indicator", indicator["indicator_id"])
-            previous_indicator = previous_by_id.get(indicator_stix_id, {})
-            valid_from = (
-                indicator["first_observed"].get("value")
-                or previous_indicator.get("valid_from")
-                or profile["created_at"]
+            first_observed_value = indicator["first_observed"].get("value")
+            valid_from = first_observed_value or profile["created_at"]
+            report_publications = sorted(
+                (
+                    {
+                        "source_id": observation.get("source_id", ""),
+                        **observation["source_published_at"],
+                    }
+                    for observation in indicator.get("observations", [])
+                    if observation.get("source_published_at", {}).get("value")
+                ),
+                key=lambda item: (item.get("value", ""), item.get("source_id", "")),
             )
             obj = stix_base(
                 "indicator",
@@ -1457,6 +1514,15 @@ def render_stix(
                     "x_infrastructure_refs": indicator["infrastructure_refs"],
                     "x_roles": indicator["roles"],
                     "x_observations": indicator["observations"],
+                    "x_first_observed": indicator["first_observed"],
+                    "x_last_observed": indicator["last_observed"],
+                    "x_valid_from_basis": (
+                        "first-observed"
+                        if first_observed_value
+                        else "stix-required-created-fallback"
+                    ),
+                    "x_time_correlation_eligible": bool(first_observed_value),
+                    "x_report_published_fallback": report_publications,
                 },
             )
             if indicator.get("hash_algorithm"):

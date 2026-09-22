@@ -62,6 +62,7 @@ def build_activity_diamond(
         + [ref for victim in linked_victims for ref in victim.get("malware_refs", [])]
         + [ref for ttp in linked_ttps for ref in ttp.get("malware_refs", [])]
     )
+    tool_refs = _unique(list(activity.get("tool_refs", [])))
     infrastructure_refs = _unique(
         list(activity.get("infrastructure_refs", []))
         + [
@@ -122,6 +123,16 @@ def build_activity_diamond(
         "空配列は活動単位の根拠が確認できないことを示し、"
         "アクター全体の実績では補完しない。"
     )
+    capability = {
+        "malware_refs": malware_refs,
+        "ttp_refs": ttp_refs,
+    }
+    # tool_refs was added without forcing a repository-wide migration.  Keep
+    # legacy activity diamonds byte-stable unless an activity explicitly uses
+    # the new field.
+    if "tool_refs" in activity:
+        capability["tool_refs"] = tool_refs
+
     return {
         "adversary": {
             "actor_ref": actor_ref,
@@ -133,10 +144,7 @@ def build_activity_diamond(
                 [item.get("id", "") for item in organizations]
             ),
         },
-        "capability": {
-            "malware_refs": malware_refs,
-            "ttp_refs": ttp_refs,
-        },
+        "capability": capability,
         "infrastructure": {
             "infrastructure_refs": infrastructure_refs,
         },

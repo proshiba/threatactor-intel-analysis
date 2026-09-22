@@ -1,0 +1,656 @@
+{
+  "type": "bundle",
+  "id": "bundle--935be267-af8e-4655-9c64-3065423f3b9b",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Desktop Software",
+      "description": "Storm-2603がZoho Assist Unattended Agentのインストーラーを展開し、ユーザーがログオンしていない端末への持続的・秘匿的な遠隔操作を試みた。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219.002",
+          "url": "https://attack.mitre.org/techniques/T1219/002/"
+        },
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603--zoho-assist-t1219-002",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--storm-2603--zoho-assist-incident-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "Talosの個別記述からT1219.002へ分析者対応付けした。四半期全体のATT&CK表を一括してStorm-2603へ帰属していない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "incident",
+      "spec_version": "2.1",
+      "id": "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2603によるZoho Assist Unattended Agent展開事例",
+      "description": "Cisco Talos IRはQ2 2026の1件のインシデントで、Warlock ransomware operators（Storm-2603）が正規RMM製品Zoho AssistのUnattended Agentインストーラーを展開したと報告した。TalosがWarlockへの利用を確認したのは初めてで、ユーザーのアクティブセッションなしに持続的な遠隔操作を試みた。本件では暗号化には至っておらず、四半期全体のランサムウェア統計・標的業種・ATT&CK表をこの個別事例へ転用しない。",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_profile_object_id": "activity--storm-2603--zoho-assist-incident-2026",
+      "x_activity_type": "intrusion",
+      "x_stix_object_type": "incident",
+      "x_confidence": "high",
+      "x_analyst_notes": "単発のIncidentとして記録する。Talosが比較した2026年5月の別の成功したWarlock ransomware attackと本件を同一インシデントまたはCampaignへ統合しない。被害組織は匿名で国・業種・個別活動日は不明。Zoho Assistは正規ToolでありMalwareへ分類しない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-2603",
+          "name": "Storm-2603",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--storm-2603--zoho-assist-t1219-002"
+          ],
+          "tool_refs": [
+            "tool--zoho-assist-unattended-agent"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--talos-ir-trends-q2-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_tool_refs": [
+        "tool--zoho-assist-unattended-agent"
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "created": "2026-07-25T15:23:03Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2603",
+      "aliases": [],
+      "description": "Storm-2603の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_id": "actor--storm-2603",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [
+          "China"
+        ],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "Microsoft assesses with medium confidence that Storm-2603 is a China-based threat actor and states that it has not identified links to other known Chinese threat actors.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "China-basedはMicrosoftの明示的な中確度評価として保持する。国家支援、政府組織との関係、動機は同資料から推定しない。"
+      },
+      "x_free_text": {
+        "executive_summary": "Storm-2603の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "Microsoftは2025年7月のToolShell CampaignでWarlock展開を明示し、別にStorm-2603による過去のLockBit利用を報告する。LockBitの活動・亜種・時期は不明なためactor-level capabilityに限定し、ToolShell Campaignへ接続しない。",
+        "infrastructure_details": "Microsoft一次記事がStorm-2603へ明示的に対応付けたC2はupdate.updatemicfosoft.com、msupdate.updatemicfosoft.com、65.38.121.198。個別観測日は不明で、現在の稼働状態も未確認。",
+        "targeting_details": "構造化ターゲット監査: Storm-2603固有に確定できる標的国・地域は未特定。中国はMicrosoftの帰属評価であり標的ではない。ToolShellの個別被害組織や地域は、Microsoft資料がStorm-2603へ個別帰属していない限り収録しない。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0160c71b-4529-4110-9c0e-393146f15b8f",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+      "target_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "description": "Storm-2603によるZoho Assist Unattended Agent展開事例 is attributed or linked to Storm-2603.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--38c84f16-86ed-485c-a147-94f820f7cef9",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+      "target_ref": "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+      "description": "Storm-2603によるZoho Assist Unattended Agent展開事例 uses tool--zoho-assist-unattended-agent.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+      "description": "Storm-2603 uses Zoho Assist Unattended Agent.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        },
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+      "description": "Storm-2603がZoho Assist Unattended Agentのインストーラーを展開し、ユーザーがログオンしていない端末への持続的・秘匿的な遠隔操作を試みた。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f21ebdda-8951-4f3a-9adf-1214e719f34e",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+      "target_ref": "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+      "description": "Storm-2603によるZoho Assist Unattended Agent展開事例 uses ttp--storm-2603--zoho-assist-t1219-002.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--233c4425-00fd-457c-90a7-ce730fdeb706",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "IR Trends Q2 2026: Phishing and weaponized remote management tools drive attack chains",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-28T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+        "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+        "relationship--0160c71b-4529-4110-9c0e-393146f15b8f",
+        "relationship--38c84f16-86ed-485c-a147-94f820f7cef9",
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+        "relationship--f21ebdda-8951-4f3a-9adf-1214e719f34e",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--talos-ir-trends-q2-2026",
+      "x_evidence_slice_scope": "incident:actor--storm-2603:activity--storm-2603--zoho-assist-incident-2026",
+      "x_source_publisher": "Cisco Talos Incident Response",
+      "x_source_type": "vendor-incident-response",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--628a0f5e-cdf5-4a21-b42b-730c34f835c0",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2025-07-22T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-toolshell-2025",
+          "description": "Repository source: profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--microsoft-toolshell-2025",
+      "x_evidence_slice_scope": "incident:actor--storm-2603:activity--storm-2603--zoho-assist-incident-2026",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--7c3a3aa2-7b96-477d-9ca3-2616d12eb8b7",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "One intrusion, two cyberattackers: Uncovering parallel threat activity",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-06-22T00:00:00Z",
+      "object_refs": [
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+      "x_evidence_slice_scope": "incident:actor--storm-2603:activity--storm-2603--zoho-assist-incident-2026",
+      "x_source_publisher": "Microsoft Defender Experts Cybersecurity Incident Response",
+      "x_source_type": "vendor-threat-research",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Zoho Assist Unattended Agent",
+      "description": "正規のリモート監視・管理ツール。Microsoft DARTの並行侵入事例とCisco Talos IRの別の単一インシデントで、Storm-2603側の遠隔操作手段として展開された。製品ベンダーを攻撃主体と解釈しない。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        },
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_profile_object_id": "tool--zoho-assist-unattended-agent",
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftとTalosの2資料は別事例であり統合しない。いずれも正確な利用日が明示されないため期間はunknownとする。",
+      "tool_types": [
+        "remote-access"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--bb6bb2b3-6304-4834-b2f4-68d23b0fe549",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2603 / Storm-2603によるZoho Assist Unattended Agent展開事例",
+      "description": "Cisco Talos IRはQ2 2026の1件のインシデントで、Warlock ransomware operators（Storm-2603）が正規RMM製品Zoho AssistのUnattended Agentインストーラーを展開したと報告した。TalosがWarlockへの利用を確認したのは初めてで、ユーザーのアクティブセッションなしに持続的な遠隔操作を試みた。本件では暗号化には至っておらず、四半期全体のランサムウェア統計・標的業種・ATT&CK表をこの個別事例へ転用しない。",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-21T22:28:38Z",
+      "object_refs": [
+        "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+        "incident--38ebf48a-5077-4b0c-85de-877229b33807",
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+        "relationship--0160c71b-4529-4110-9c0e-393146f15b8f",
+        "relationship--38c84f16-86ed-485c-a147-94f820f7cef9",
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+        "relationship--f21ebdda-8951-4f3a-9adf-1214e719f34e",
+        "report--233c4425-00fd-457c-90a7-ce730fdeb706",
+        "report--628a0f5e-cdf5-4a21-b42b-730c34f835c0",
+        "report--7c3a3aa2-7b96-477d-9ca3-2616d12eb8b7",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "incident",
+      "x_profile_id": "actor--storm-2603",
+      "x_activity_id": "activity--storm-2603--zoho-assist-incident-2026"
+    }
+  ]
+}

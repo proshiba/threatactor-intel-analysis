@@ -84,6 +84,23 @@ activity_claim.assessment が strong-subject / attributed-subject でも自動�
 確定ではありません。evidence_text がアクターを実行主体としていること、同名製品・
 別クラスタ・法執行記事・過去言及でないかを原文で確認してください。
 
+法執行記事は攻撃Activityとして承認しません。ただし情報自体を破棄せず、実名の個人・
+組織へ紐づく逮捕、起訴、charge、制裁をschema 1.4の
+`associated_entities[].legal_actions[]`へ反映すべき候補として、対象者、法域、行為日、
+公開日／unseal日との差、一次URLを報告してください。起訴・chargeは有罪認定ではなく
+`alleged`です。主体や行為日が不明なら推測せずunknownとし、旧式のlaw-enforcement
+Activityは作りません。このルーチンは検知専用なので、profileへの反映は提案に留めます。
+
+日次ID (`source--daily-*` / `activity--daily-*`) は再構築対象です。法的措置や分析者が
+精査した恒久Activityを日次IDの下へ追加せず、stable curated IDへ分離してください。
+承認済みの日次Activity自体を恒久identityへ昇格する場合は、`review-decisions.json`へ
+actor-scopedな`activity_id_override`を保存し、旧IDのprofile/IOC/artifact/manifest参照を
+検証済みmigrationで一括更新します。衝突や動的入力がある場合は推測で統合せず停止します。
+同一URLのcurated Sourceが既にあれば、そのIDをIOCとartifactにも再利用します。
+`--rebuild-daily`の事前監査が恒久claimから日次IDへの参照を検出した場合、参照を消して
+続行してはいけません。根拠をstable curated IDへ移行し、全actorの事前監査が通ってから
+再構築します。rejected recordだけ、または旧台帳だけが残るactorも対象外にしません。
+
 ## 4. 未帰属クラスタの記録
 
 既存プロファイルに一致しない名前を見つけたら、既存アクターの検証済みでない呼称

@@ -216,6 +216,13 @@ def compile_literal(alias: str) -> re.Pattern[str]:
             rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])",
             re.IGNORECASE,
         )
+    if re.fullmatch(r"[ァ-ヴーヽヾ・]+", alias):
+        # Katakana country names are often substrings of unrelated words:
+        # タイ in リアルタイム/タイポスクワッティング, シリア in
+        # デシリアライズ, and インド in インドネシア.  Require standalone
+        # Katakana-token boundaries while still allowing punctuation-delimited
+        # country lists such as ``タイ・米国``.
+        return re.compile(rf"(?<![ァ-ヴーヽヾ]){escaped}(?![ァ-ヴーヽヾ])")
     return re.compile(escaped)
 
 
@@ -416,7 +423,19 @@ def cleanup_generated(profile: dict[str, Any]) -> None:
         item["id"]
         for category in ("countries", "regions")
         for item in profile["targets"].get(category, [])
-        if item.get("id", "").startswith(GENERATED_PREFIX)
+        if (
+            item.get("id", "").startswith(GENERATED_PREFIX)
+            # A legacy canonicalization pass sometimes replaced a generated
+            # geography ID with a stable target--country-- ID.  The derivation
+            # marker alone is not sufficient provenance: reviewed/manual
+            # targets also acquired it when audit evidence was merged.  Remove
+            # only the legacy auto-structured objects that carry both markers.
+            or (
+                DERIVATION_NOTE in (item.get("analyst_notes") or "")
+                and "Automatically structured from target text; review scope and granularity."
+                in (item.get("analyst_notes") or "")
+            )
+        )
     }
     for category in ("countries", "regions"):
         retained: list[dict[str, Any]] = []

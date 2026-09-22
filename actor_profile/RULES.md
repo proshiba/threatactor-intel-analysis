@@ -87,9 +87,11 @@ Activityは`activity_type`とは別に、STIX entity境界を明示する`stix_o
 [OPENCTI_INGESTION_RULES.md](OPENCTI_INGESTION_RULES.md)を正とする。
 
 Activityは`ttp_refs`と`victim_refs`も必ず持つ。参照先が判明しない場合は空配列にする。
-TTP・マルウェア・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
-利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ
-結び付けない。
+正規の管理ツール、RMM、OS標準機能、攻撃フレームワーク等を活動内で利用した根拠がある場合は、
+Malwareへ混在させず`capabilities.tools`のToolを`tool_refs`で参照する。`tool_refs`は後方互換の
+任意フィールドであり、未評価と利用なしを区別する必要がある場合だけ明示的な空配列を使う。
+TTP・マルウェア・ツール・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
+利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ結び付けない。
 
 ### 4.1 活動別ダイヤモンドモデル
 
@@ -97,7 +99,8 @@ TTP・マルウェア・標的・被害事例を活動へ結び付ける際は�
 別物であり、その活動に直接結び付いた構造化情報だけから次の4頂点を構成する。
 
 - `adversary`: `actor_ref`、正規名、帰属国、帰属組織参照
-- `capability`: 活動・被害事例・活動TTPに結び付いた`malware_refs`と`ttp_refs`
+- `capability`: 活動・被害事例・活動TTPに結び付いた`malware_refs`、明示された
+  `tool_refs`、`ttp_refs`
 - `infrastructure`: 活動または活動TTPに結び付いた`infrastructure_refs`
 - `victim`: 活動と被害事例に結び付いた`target_refs`と`victim_refs`
 
