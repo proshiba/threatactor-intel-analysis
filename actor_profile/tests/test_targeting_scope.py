@@ -108,6 +108,42 @@ class TargetingScopeTests(unittest.TestCase):
         self.assertNotIn("中国", countries)
         self.assertIn("東南アジア", regions)
 
+    def test_katakana_country_substrings_are_not_victim_locations(self) -> None:
+        countries, _ = self.geography.target_mentions(
+            (
+                "攻撃者はデシリアライズ、タイポスクワッティング、"
+                "ワンタイムパスコード、リアルタイム通信を用いて"
+                "日本の企業を標的にした。"
+            ),
+            target_context_patterns=self.rules["_target_context_patterns"],
+            actor_pattern=self.rules.get("_actor_pattern"),
+            mitre=False,
+        )
+
+        self.assertIn("日本", countries)
+        self.assertNotIn("シリア", countries)
+        self.assertNotIn("タイ", countries)
+
+    def test_standalone_katakana_country_is_still_detected(self) -> None:
+        countries, _ = self.geography.target_mentions(
+            "攻撃者はタイの政府機関を標的にした。",
+            target_context_patterns=self.rules["_target_context_patterns"],
+            actor_pattern=self.rules.get("_actor_pattern"),
+            mitre=False,
+        )
+
+        self.assertIn("タイ", countries)
+
+    def test_katakana_country_before_list_separator_is_detected(self) -> None:
+        countries, _ = self.geography.target_mentions(
+            "攻撃者はタイ・米国の政府機関を標的にした。",
+            target_context_patterns=self.rules["_target_context_patterns"],
+            actor_pattern=self.rules.get("_actor_pattern"),
+            mitre=False,
+        )
+
+        self.assertIn("タイ", countries)
+
     def test_southeast_asia_does_not_imply_south_asia_or_generic_asia(self) -> None:
         countries, regions = self.geography.target_mentions(
             "攻撃者は東南アジアの外交官を標的にした。",
@@ -129,6 +165,33 @@ class TargetingScopeTests(unittest.TestCase):
 
         self.assertIn("ドイツ", countries)
         self.assertNotIn("NATO加盟国", regions)
+
+    def test_takedown_partner_country_is_not_treated_as_victim_location(self) -> None:
+        countries, _ = self.geography.target_mentions(
+            (
+                "攻撃は120か国の政府機関や企業を標的とした。"
+                "Microsoft、FBI、米司法省、ポーランド政府の連携で"
+                "攻撃インフラは停止された。"
+            ),
+            target_context_patterns=self.rules["_target_context_patterns"],
+            actor_pattern=self.rules.get("_actor_pattern"),
+            mitre=False,
+        )
+
+        self.assertNotIn("ポーランド", countries)
+
+    def test_takedown_partner_country_is_kept_when_directly_targeted(self) -> None:
+        countries, _ = self.geography.target_mentions(
+            (
+                "攻撃者はポーランドを標的にした。"
+                "その後、ポーランド政府の連携で攻撃インフラは停止された。"
+            ),
+            target_context_patterns=self.rules["_target_context_patterns"],
+            actor_pattern=self.rules.get("_actor_pattern"),
+            mitre=False,
+        )
+
+        self.assertIn("ポーランド", countries)
 
     def test_attribution_country_is_not_read_as_target_from_mitre_summary(
         self,
@@ -396,6 +459,108 @@ class TargetingScopeTests(unittest.TestCase):
 
         countries = {item["name"] for item in profile["targets"]["countries"]}
         self.assertEqual(countries, {"米国"})
+
+    def test_canonicalized_stale_generated_target_is_removed(self) -> None:
+        profile = self.profile("Darkhotel", "darkhotel")
+        unknown = {
+            "value": None,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated",
+        }
+        profile["actor"]["aliases"] = [{"name": "APT-C-06"}]
+        profile["targets"]["countries"] = [
+            {
+                "id": "target--country--north-korea",
+                "name": "北朝鮮",
+                "description": "以前の誤抽出。",
+                "first_observed": copy.deepcopy(unknown),
+                "last_observed": copy.deepcopy(unknown),
+                "confidence": "medium",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": (
+                    "Automatically structured from target text; review scope and "
+                    f"granularity. {TARGET_DERIVATION_NOTE} 旧生成値。"
+                ),
+            }
+        ]
+        profile["activities"] = [
+            {
+                "activity_id": "activity--darkhotel-lure",
+                "name": "APT-C-06（Darkhotel）の北朝鮮関連囮キャンペーン",
+                "description": "北朝鮮関連の囮文書を利用して多数の利用者を攻撃した。",
+                "first_observed": copy.deepcopy(unknown),
+                "last_observed": copy.deepcopy(unknown),
+                "reported_at": copy.deepcopy(unknown),
+                "activity_type": "phishing-campaign",
+                "target_refs": ["target--country--north-korea"],
+                "malware_refs": [],
+                "infrastructure_refs": [],
+                "ttp_refs": [],
+                "victim_refs": [],
+                "confidence": "high",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "",
+            }
+        ]
+
+        process_profile(
+            profile,
+            slug="darkhotel",
+            geography=self.geography,
+            compiled_rules=self.rules,
+            group=None,
+            crosscheck=None,
+            dataset_indexes={},
+            curation=None,
+        )
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("北朝鮮", countries)
+        self.assertNotIn(
+            "target--country--north-korea",
+            profile["activities"][0]["target_refs"],
+        )
+
+    def test_reviewed_stable_target_with_audit_marker_is_preserved(self) -> None:
+        profile = self.profile("Example Actor", "example")
+        unknown = {
+            "value": None,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated",
+        }
+        profile["targets"]["countries"] = [
+            {
+                "id": "target--country--japan",
+                "name": "日本",
+                "description": "一次資料で確認した標的国。",
+                "first_observed": copy.deepcopy(unknown),
+                "last_observed": copy.deepcopy(unknown),
+                "confidence": "high",
+                "evidence_refs": ["source--primary-report"],
+                "analyst_notes": (
+                    "[observation-time-audit-v1] 公開日を観測日に転用しない。 "
+                    f"{TARGET_DERIVATION_NOTE} 活動記述の根拠を追加。"
+                ),
+            }
+        ]
+
+        process_profile(
+            profile,
+            slug="example",
+            geography=self.geography,
+            compiled_rules=self.rules,
+            group=None,
+            crosscheck=None,
+            dataset_indexes={},
+            curation=None,
+        )
+
+        self.assertEqual(
+            [item["id"] for item in profile["targets"]["countries"]],
+            ["target--country--japan"],
+        )
 
 
 if __name__ == "__main__":

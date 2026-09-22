@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T15:42:48Z",
+  "generated_at": "2026-09-21T23:44:05Z",
   "actor_ref": "actor--goffee",
   "actor_name": "GOFFEE",
-  "profile_updated_at": "2026-09-21T13:20:00Z",
+  "profile_updated_at": "2026-09-22T00:00:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
       "activities": "canonical-present",
-      "relationships": "unknown",
+      "relationships": "canonical-present",
       "associated_entities": "unknown",
       "hunting_pivots": "unknown",
       "malware": "canonical-present",
@@ -18,17 +18,17 @@
       "attribution": "canonical-present"
     },
     "canonical_counts": {
-      "activities": 4,
-      "dated_activities": 4,
-      "relationships": 0,
+      "activities": 5,
+      "dated_activities": 5,
+      "relationships": 1,
       "associated_entities": 0,
       "entity_relationships": 0,
       "hunting_pivots": 0,
       "hunting_pivot_observations": 0,
       "malware": 8,
       "activity_linked_malware": 8,
-      "tools": 5,
-      "targets": 10,
+      "tools": 10,
+      "targets": 12,
       "motivations": 2
     },
     "external_lead_counts": {
@@ -122,7 +122,47 @@
         ]
       }
     ],
-    "relationships": [],
+    "relationships": [
+      {
+        "relationship_id": "relationship--goffee-heartlesssoul-shared-operators",
+        "target_actor": "HeartlessSoul",
+        "relationship_type": "suspected-shared-operators",
+        "description": "Kaspersky assesses with medium confidence that GOFFEE and HeartlessSoul may be operated by the same attackers, while explicitly noting that their toolsets differ substantially.",
+        "confidence": "medium",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "relationship-period-not-stated"
+        },
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "A medium-confidence shared-operator assessment is not exact identity. HeartlessSoul remains an unknown-cluster entry rather than a GOFFEE alias.",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--202401449380bfe1ba2a9add",
+            "category": "relationship",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
+            "statement": "GOFFEE suspected-shared-operators HeartlessSoul: Kaspersky assesses with medium confidence that GOFFEE and HeartlessSoul may be operated by the same attackers, while explicitly noting that their toolsets differ substantially.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+            ],
+            "verification_rationale": "A medium-confidence shared-operator assessment is not exact identity. HeartlessSoul remains an unknown-cluster entry rather than a GOFFEE alias.",
+            "counterevidence": []
+          }
+        ],
+        "target_actor_ref": null,
+        "target_resolution": "external-name-only"
+      }
+    ],
     "associated_entities": [],
     "entity_relationships": [],
     "hunting_pivots": [],
@@ -909,7 +949,7 @@
           "value": "2026-08-28T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-publication"
         },
         "description": "Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。",
         "target_refs": [
@@ -919,7 +959,6 @@
           "target--goffee--sector--manufacturing"
         ],
         "malware_refs": [
-          "malware--goffee-powertaskel",
           "malware--goffee-powertaskel-v2",
           "malware--goffee-warprat"
         ],
@@ -941,7 +980,7 @@
         "evidence_refs": [
           "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
         ],
-        "analyst_notes": "観測期間は原文が明示する「В марте 2026 года мы зафиксировали кампанию」から月精度で採用した。資料公開日2026-08-28はreported_atへ分離しており、期間集計へ入れていない。本活動の記述に現れる「РФ」「ロシア連邦」は被害側であり、攻撃者の帰属国ではない。",
+        "analyst_notes": "観測期間は原文が明示する2026年3月を月精度で採用した。資料公開日2026-08-28はreported_atへ分離した。PowerTaskel v2は旧PowerTaskelとは別capabilityであるため、本Campaignのmalware_refsから旧PowerTaskelを除外した。MythicとInno Setup 6.7.0は同じ一次資料が当該Campaignでの利用を直接裏付けるためtool_refsで参照した。",
         "diamond_model": {
           "adversary": {
             "actor_ref": "actor--goffee",
@@ -951,7 +990,6 @@
           },
           "capability": {
             "malware_refs": [
-              "malware--goffee-powertaskel",
               "malware--goffee-powertaskel-v2",
               "malware--goffee-warprat"
             ],
@@ -961,6 +999,10 @@
               "ttp--goffee--sandbox-evasion",
               "ttp--goffee--spearphishing-link",
               "ttp--goffee--user-execution-installer"
+            ],
+            "tool_refs": [
+              "tool--goffee-inno-setup",
+              "tool--goffee-mythic"
             ]
           },
           "infrastructure": {
@@ -997,7 +1039,7 @@
               "value": "2026-08-28T00:00:00Z",
               "precision": "day",
               "status": "known",
-              "basis": "source-stated"
+              "basis": "source-publication"
             },
             "activity_type": "espionage-campaign",
             "phases": [
@@ -1027,6 +1069,10 @@
         "stix_object_type": "campaign",
         "activity_refs": [],
         "grouping_context": null,
+        "tool_refs": [
+          "tool--goffee-mythic",
+          "tool--goffee-inno-setup"
+        ],
         "claim_assessments": [
           {
             "claim_id": "claim--2bd7c9c5844ef77a25d574cd",
@@ -1043,16 +1089,22 @@
         ],
         "malware": [
           {
-            "id": "malware--goffee-powertaskel",
-            "name": "PowerTaskel"
-          },
-          {
             "id": "malware--goffee-powertaskel-v2",
             "name": "PowerTaskel v2"
           },
           {
             "id": "malware--goffee-warprat",
             "name": "WarpRAT"
+          }
+        ],
+        "tools": [
+          {
+            "id": "tool--goffee-mythic",
+            "name": "Mythic"
+          },
+          {
+            "id": "tool--goffee-inno-setup",
+            "name": "Inno Setup"
           }
         ],
         "targets": [
@@ -1104,6 +1156,239 @@
             "id": "ttp--goffee--user-execution-installer",
             "technique_id": "T1204.002",
             "name": "Malicious File"
+          }
+        ]
+      },
+      {
+        "activity_id": "activity--goffee-q2-container-campaign-2026",
+        "name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+        "activity_type": "espionage-campaign",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "reported_at": {
+          "value": "2026-07-29T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "Kasperskyは2026年第2四半期、GOFFEEが主にロシアのテクノロジー企業を標的とし、ベラルーシにも対象を拡大した新たなフィッシングCampaignを観測した。SMB/WebDAV上のリモートテンプレート注入、curl・wget・certutil・Invoke-WebRequest、持ち込んで改名したmshta.exe、User-Agentによるデータ送信、InstallUtilを用いたサービス永続化、pgAdminのソース改変を使用した。Linuxコンテナでは/opt/bitnami/scripts/rabbitmq/setup.shを通じた可能性が高いMythicエージェントの導入とmemfd_create実行を確認した。公開IOCは24ドメイン、4 IPv4、58 MD5の計86個である。個別マルウェアファミリの帰属が資料で示されないため、PowerTaskel/PowerModul/PowerTaskel v2をこのCampaignへ結び付けない。",
+        "target_refs": [
+          "target--goffee--country--russia",
+          "target--goffee--country--belarus",
+          "target--goffee--sector--technology"
+        ],
+        "malware_refs": [],
+        "tool_refs": [
+          "tool--goffee-mythic",
+          "tool--goffee-powershell",
+          "tool--goffee-certutil",
+          "tool--goffee-mshta",
+          "tool--goffee-installutil",
+          "tool--goffee-pgadmin"
+        ],
+        "infrastructure_refs": [
+          "infra--goffee-per-campaign-domains"
+        ],
+        "ttp_refs": [
+          "ttp--goffee-q2-template-injection",
+          "ttp--goffee-q2-wmi",
+          "ttp--goffee-q2-powershell",
+          "ttp--goffee-q2-ingress-tool-transfer",
+          "ttp--goffee-q2-mshta",
+          "ttp--goffee-q2-installutil",
+          "ttp--goffee-q2-reflective-code-loading"
+        ],
+        "victim_refs": [],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "期間はsource-stated quarterを月精度で表し、公開日を期間へ転用しない。hepog.orgの2026-07-17接続観測はIOCの個別ObservationでありCampaign終期を7月へ延長する根拠にはしない。Mythic、PowerShell、certutil、mshta、InstallUtil、pgAdminは一次資料が当該Campaignでの利用を明示するためtool_refsで参照する。ATT&CK techniqueは原文の具体的挙動を活動限定で分析者対応付けし、アクター全体へ一般化しない。",
+        "stix_object_type": "campaign",
+        "activity_refs": [],
+        "grouping_context": null,
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--goffee",
+            "name": "GOFFEE",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [],
+            "ttp_refs": [
+              "ttp--goffee-q2-ingress-tool-transfer",
+              "ttp--goffee-q2-installutil",
+              "ttp--goffee-q2-mshta",
+              "ttp--goffee-q2-powershell",
+              "ttp--goffee-q2-reflective-code-loading",
+              "ttp--goffee-q2-template-injection",
+              "ttp--goffee-q2-wmi"
+            ],
+            "tool_refs": [
+              "tool--goffee-certutil",
+              "tool--goffee-installutil",
+              "tool--goffee-mshta",
+              "tool--goffee-mythic",
+              "tool--goffee-pgadmin",
+              "tool--goffee-powershell"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": [
+              "infra--goffee-per-campaign-domains"
+            ]
+          },
+          "victim": {
+            "target_refs": [
+              "target--goffee--country--belarus",
+              "target--goffee--country--russia",
+              "target--goffee--sector--technology"
+            ],
+            "victim_refs": []
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "reported_at": {
+              "value": "2026-07-29T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "espionage-campaign",
+            "phases": [
+              "Command and Control",
+              "Defense Evasion",
+              "Execution"
+            ],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [
+                "target--goffee--country--belarus",
+                "target--goffee--country--russia"
+              ],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--kaspersky-goffee-q2-containers-2026"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--86d097c0490f272e05171871",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE conducted or is associated with GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン: Kasperskyは2026年第2四半期、GOFFEEが主にロシアのテクノロジー企業を標的とし、ベラルーシにも対象を拡大した新たなフィッシングCampaignを観測した。SMB/WebDAV上のリモートテンプレート注入、curl・wget・certutil・Invoke-WebRequest、持ち込んで改名したmshta.exe、User-Agentによるデータ送信、InstallUtilを用いたサービス永続化、pgAdminのソース改変を使用した。Linuxコンテナでは/opt/bitnami/scripts/rabbitmq/setup.shを通じた可能性が高いMythicエージェントの導入とmemfd_create実行を確認した。公開IOCは24ドメイン、4 IPv4、58 MD5の計86個である。個別マルウェアファミリの帰属が資料で示されないため、PowerTaskel/PowerModul/PowerTaskel v2をこのCampaignへ結び付けない。",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [],
+        "tools": [
+          {
+            "id": "tool--goffee-mythic",
+            "name": "Mythic"
+          },
+          {
+            "id": "tool--goffee-powershell",
+            "name": "PowerShell"
+          },
+          {
+            "id": "tool--goffee-certutil",
+            "name": "certutil"
+          },
+          {
+            "id": "tool--goffee-mshta",
+            "name": "mshta.exe"
+          },
+          {
+            "id": "tool--goffee-installutil",
+            "name": "InstallUtil.exe"
+          },
+          {
+            "id": "tool--goffee-pgadmin",
+            "name": "pgAdmin"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--goffee--country--russia",
+            "name": "ロシア"
+          },
+          {
+            "id": "target--goffee--country--belarus",
+            "name": "ベラルーシ"
+          },
+          {
+            "id": "target--goffee--sector--technology",
+            "name": "テクノロジー"
+          }
+        ],
+        "victims": [],
+        "techniques": [
+          {
+            "id": "ttp--goffee-q2-template-injection",
+            "technique_id": "T1221",
+            "name": "Template Injection"
+          },
+          {
+            "id": "ttp--goffee-q2-wmi",
+            "technique_id": "T1047",
+            "name": "Windows Management Instrumentation"
+          },
+          {
+            "id": "ttp--goffee-q2-powershell",
+            "technique_id": "T1059.001",
+            "name": "PowerShell"
+          },
+          {
+            "id": "ttp--goffee-q2-ingress-tool-transfer",
+            "technique_id": "T1105",
+            "name": "Ingress Tool Transfer"
+          },
+          {
+            "id": "ttp--goffee-q2-mshta",
+            "technique_id": "T1218.005",
+            "name": "System Binary Proxy Execution: Mshta"
+          },
+          {
+            "id": "ttp--goffee-q2-installutil",
+            "technique_id": "T1218.004",
+            "name": "System Binary Proxy Execution: InstallUtil"
+          },
+          {
+            "id": "ttp--goffee-q2-reflective-code-loading",
+            "technique_id": "T1620",
+            "name": "Reflective Code Loading"
           }
         ]
       }
@@ -1462,25 +1747,6 @@
             "evidence_refs": [
               "source--kaspersky-goffee-recent-attacks-2025"
             ]
-          },
-          {
-            "activity_id": "activity--goffee-warprat-powertaskel-v2-2026",
-            "activity_name": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布",
-            "first_observed": {
-              "value": "2026-03-01T00:00:00Z",
-              "precision": "month",
-              "status": "known",
-              "basis": "source-stated"
-            },
-            "last_observed": {
-              "value": "2026-03-01T00:00:00Z",
-              "precision": "month",
-              "status": "known",
-              "basis": "source-stated"
-            },
-            "evidence_refs": [
-              "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
-            ]
           }
         ],
         "derived_first_observed": {
@@ -1490,7 +1756,7 @@
           "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": "2026-03-01T00:00:00Z",
+          "value": "2024-12-01T00:00:00Z",
           "precision": "month",
           "status": "inferred",
           "basis": "explicit-linked-activity-period"
@@ -1803,6 +2069,81 @@
     ],
     "tool_usage": [
       {
+        "id": "tool--goffee-certutil",
+        "name": "certutil",
+        "aliases": [],
+        "types": [
+          "system-utility",
+          "file-transfer"
+        ],
+        "description": "Windows標準の証明書ユーティリティ。2026年第2四半期Campaignでは、curl、wget、Invoke-WebRequestと並ぶファイル取得手段として使用された。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "正規のOS機能の悪用であり、製品やMicrosoftを攻撃主体と解釈しない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--8ba983584de755b4fc4f7f95",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE uses or has used certutil.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
         "id": "tool--goffee-chisel",
         "name": "Chisel",
         "aliases": [],
@@ -1817,16 +2158,16 @@
           "basis": "not-stated"
         },
         "last_observed": {
-          "value": "2024-12-25T00:00:00Z",
-          "precision": "day",
-          "status": "inferred",
-          "basis": "source-stated"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--bizone-paper-werewolf-destructive-2024"
         ],
-        "analyst_notes": "BI.ZONE は個々の実行日を明示していない。last_observed は資料が記述する時点までの観測であることを示す inferred とし、公開日を観測日として断定しない。",
+        "analyst_notes": "BI.ZONE は個々の実行日を明示していない。2024-12-25は資料公開日であり、last_observedへ転用せずunknownとする。",
         "claim_assessments": [
           {
             "claim_id": "claim--f6109f3e6e81b7bd88ac6c5a",
@@ -1949,20 +2290,194 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-warprat-powertaskel-v2-2026",
+            "activity_name": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布",
+            "first_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "tool--goffee-installutil",
+        "name": "InstallUtil.exe",
+        "aliases": [
+          ".NET Installer Tool"
+        ],
+        "types": [
+          "system-binary",
+          "proxy-execution"
+        ],
+        "description": "2026年第2四半期Campaignでサービス永続化とコード実行に悪用された.NET Frameworkの正規ユーティリティ。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "正規のOS/.NET機能の悪用であり、製品ベンダーを攻撃主体と解釈しない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--6524b943f0b90f9595673aca",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE uses or has used InstallUtil.exe.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "tool--goffee-mshta",
+        "name": "mshta.exe",
+        "aliases": [
+          "Microsoft HTML Application Host"
+        ],
+        "types": [
+          "system-binary",
+          "proxy-execution"
+        ],
+        "description": "2026年第2四半期Campaignで攻撃者が持ち込んで改名し、HTA実行に用いたWindows標準バイナリ。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "正規のOSバイナリの悪用であり、ファイル名変更だけをGOFFEE固有Indicatorにしない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b3720adf909e5c2c2369c974",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE uses or has used mshta.exe.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--goffee-mythic",
@@ -1979,18 +2494,19 @@
           "basis": "source-stated"
         },
         "last_observed": {
-          "value": "2026-03-01T00:00:00Z",
+          "value": "2026-06-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated-quarter"
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-q2-containers-2026",
           "source--kaspersky-goffee-recent-attacks-2025",
-          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
-          "source--bizone-paper-werewolf-destructive-2024"
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
         ],
-        "analyst_notes": "Mythic 自体は正規の公開ツールである。",
+        "analyst_notes": "Mythic自体は正規の公開ツールである。2026年3月CampaignではPowerTaskel v2、2026年第2四半期CampaignではLinuxコンテナ内のMythic agentとして一次資料が作戦単位の利用を直接裏付ける。",
         "claim_assessments": [
           {
             "claim_id": "claim--9d6353f2b9daa2a7dd7b06b9",
@@ -2000,6 +2516,7 @@
             "statement": "GOFFEE uses or has used Mythic.",
             "evidence_refs": [
               "source--bizone-paper-werewolf-destructive-2024",
+              "source--kaspersky-goffee-q2-containers-2026",
               "source--kaspersky-goffee-recent-attacks-2025",
               "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
             ],
@@ -2007,20 +2524,207 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-warprat-powertaskel-v2-2026",
+            "activity_name": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布",
+            "first_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "last_observed": {
+              "value": "2026-03-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+            ]
+          },
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "tool--goffee-pgadmin",
+        "name": "pgAdmin",
+        "aliases": [],
+        "types": [
+          "database-administration"
+        ],
+        "description": "Kasperskyは2026年第2四半期Campaignで、攻撃者がpgAdminのソースを改変して悪性動作を組み込んだと報告した。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "改変された正規ソフトウェアであり、pgAdminプロジェクト自体を攻撃主体・悪性製品と扱わない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--a97336f4245628a8c7871e6e",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE uses or has used pgAdmin.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "tool--goffee-powershell",
+        "name": "PowerShell",
+        "aliases": [],
+        "types": [
+          "command-interpreter"
+        ],
+        "description": "Windows標準のコマンド・スクリプト環境。Kasperskyは2026年第2四半期CampaignでInvoke-WebRequestによる取得とPowerShell実行を直接記述している。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "正規のOS機能であり、GOFFEE固有のツールではない。期間は原典のQ2表現の範囲である。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--45fbd7fbc5e8ddecfe5bcc55",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE uses or has used PowerShell.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--goffee-q2-container-campaign-2026",
+            "activity_name": "GOFFEEによるリモートテンプレート・コンテナ環境を用いた2026年第2四半期キャンペーン",
+            "first_observed": {
+              "value": "2026-04-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "last_observed": {
+              "value": "2026-06-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "source-stated-quarter"
+            },
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--goffee-psexec",
@@ -2120,7 +2824,48 @@
         "category": "countrie",
         "activity_refs": [
           "activity--goffee-powermodul-usb-worm-2024",
+          "activity--goffee-q2-container-campaign-2026",
           "activity--goffee-warprat-powertaskel-v2-2026"
+        ]
+      },
+      {
+        "id": "target--goffee--country--belarus",
+        "name": "ベラルーシ",
+        "description": "Kaspersky states that GOFFEE expanded targeting to Belarus in the Q2 2026 campaign.",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "国名は標的地理であり、攻撃者の帰属国ではない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b4b703d3322526dda1f2a03f",
+            "category": "target-country",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE targets country ベラルーシ.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "countrie",
+        "activity_refs": [
+          "activity--goffee-q2-container-campaign-2026"
         ]
       },
       {
@@ -2491,6 +3236,46 @@
         "activity_refs": [
           "activity--goffee-powermodul-usb-worm-2024"
         ]
+      },
+      {
+        "id": "target--goffee--sector--technology",
+        "name": "テクノロジー",
+        "description": "Kaspersky describes Russian technology companies as the primary Q2 2026 targets.",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated-quarter"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-q2-containers-2026"
+        ],
+        "analyst_notes": "資料が明示する当該Campaignの主要標的業種。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--bbddb1021089c2d576fc0fd1",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "GOFFEE targets sector テクノロジー.",
+            "evidence_refs": [
+              "source--kaspersky-goffee-q2-containers-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--goffee-q2-container-campaign-2026"
+        ]
       }
     ]
   },
@@ -2521,7 +3306,8 @@
   },
   "claim_audit_counts": {
     "unresolved": 1,
-    "supported": 91
+    "supported": 106,
+    "partially-supported": 1
   },
   "evidence_catalog": {
     "source--kaspersky-goffee-warprat-powertaskel-v2-2026": {
@@ -2633,10 +3419,38 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--kaspersky-goffee-q2-containers-2026": {
+      "source_id": "source--kaspersky-goffee-q2-containers-2026",
+      "path": "https://securelist.ru/tr/goffee-new-ttps-and-container-attacks/116431/",
+      "url": "https://securelist.ru/tr/goffee-new-ttps-and-container-attacks/116431/",
+      "title": "GOFFEE расширяет свои TTP и осваивает контейнеры",
+      "publisher": "Kaspersky GReAT (Securelist)",
+      "published_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "ru",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "ioc",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "The report explicitly describes a new phishing campaign in Q2 2026. Only hepog.org has a source-stated IOC contact range (2026-06-02 through 2026-07-17); the July IOC contact does not extend the campaign period."
     }
   },
   "research_gaps": [
-    "No canonical cross-actor relationship is structured.",
     "Attribution remains unknown or unstructured."
   ]
 }

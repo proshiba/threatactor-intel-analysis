@@ -59,6 +59,49 @@ def compile_patterns(values: Iterable[str]) -> list[re.Pattern[str]]:
     return [re.compile(value) for value in values]
 
 
+def compile_country_patterns(values: Iterable[str]) -> list[re.Pattern[str]]:
+    """Compile country rules with token boundaries and case-insensitive Latin."""
+    patterns: list[re.Pattern[str]] = []
+    for value in values:
+        if re.fullmatch(r"[ァ-ヴーヽヾ・]+", value):
+            patterns.append(
+                re.compile(rf"(?<![ァ-ヴーヽヾ]){re.escape(value)}(?![ァ-ヴーヽヾ])")
+            )
+        elif re.search(r"[A-Za-z0-9]", value):
+            # Rules are regular expressions (for example Russia|Russian), so
+            # wrap the whole expression instead of escaping it.  Strip a
+            # leading inline case flag before embedding and apply IGNORECASE at
+            # compile time.  Identifier boundaries prevent India in
+            # Indianapolis, German in Germanium, and similar false targets.
+            expression = re.sub(r"^\(\?i\)", "", value)
+            patterns.append(
+                re.compile(
+                    rf"(?<![A-Za-z0-9_])(?:{expression})(?![A-Za-z0-9_])",
+                    re.IGNORECASE,
+                )
+            )
+        else:
+            patterns.append(re.compile(value))
+    return patterns
+
+
+def compile_sector_patterns(values: Iterable[str]) -> list[re.Pattern[str]]:
+    """Compile Latin sector expressions as complete, bounded tokens."""
+    patterns: list[re.Pattern[str]] = []
+    for value in values:
+        if re.search(r"[A-Za-z0-9]", value):
+            expression = re.sub(r"^\(\?i\)", "", value)
+            patterns.append(
+                re.compile(
+                    rf"(?<![A-Za-z0-9_])(?:{expression})(?![A-Za-z0-9_])",
+                    re.IGNORECASE,
+                )
+            )
+        else:
+            patterns.append(re.compile(value))
+    return patterns
+
+
 def compile_rules(
     raw: dict[str, Any],
     catalog: dict[str, Any] | None = None,
@@ -72,7 +115,13 @@ def compile_rules(
     )
     for category in ("countries", "sectors", "assets", "impacts"):
         for rule in rules[category]:
-            rule["_patterns"] = compile_patterns(rule["patterns"])
+            rule["_patterns"] = (
+                compile_country_patterns(rule["patterns"])
+                if category == "countries"
+                else compile_sector_patterns(rule["patterns"])
+                if category == "sectors"
+                else compile_patterns(rule["patterns"])
+            )
     rules["_activity_target_exclusions"] = {
         item["activity_id"]: set(item.get("target_names", []))
         for item in rules.get("activity_target_exclusions", [])
@@ -750,6 +799,185 @@ def actor_attribution_context(
     )
 
 
+def direct_victim_context_before_country(
+    text: str,
+    match: re.Match[str],
+) -> bool:
+    """Return whether a target verb directly governs the country mention.
+
+    This intentionally accepts only a small set of direct English forms.  A
+    broad ``target ... <country>`` window would incorrectly bind the second
+    country in text such as ``targeted Japan using North Korean lures``.
+    """
+    before = text[max(0, match.start() - 120) : match.start()]
+    action = (
+        r"(?:target(?:ed|s|ing)?|attack(?:ed|s|ing)?|"
+        r"breach(?:ed|es|ing)?|compromis(?:e|ed|es|ing)|"
+        r"phish(?:ed|es|ing)?|spy\s+on)"
+    )
+    victim_noun = (
+        r"(?:(?:the|an?)\s+)?"
+        r"(?:(?:government|military|critical|public|private|cloud|network|c2|"
+        r"telecommunications?)\s+){0,3}"
+        r"(?:organizations?|firms?|companies|users?|systems?|entities|"
+        r"officials?|institutes?|parties|sectors?|servers?|infrastructure|"
+        r"hosts?|proxies|proxy|vps|tunnels?|devices?|networks?)"
+        r"\s+(?:in|across|of)"
+    )
+    return bool(
+        re.search(rf"(?i)\b{action}\s*$", before)
+        or re.search(rf"(?i)\b{action}\s+{victim_noun}\s*$", before)
+    )
+
+
+def lure_theme_context(text: str, match: re.Match[str]) -> bool:
+    """Return whether a country mention describes lure content, not a victim.
+
+    A phrase such as ``北朝鮮関連の囮を利用した攻撃`` names the subject of
+    the decoy.  The later attack wording must not turn that country into victim
+    geography.  Conversely, an explicit target phrase directly before the
+    country or between the country and lure term (for example ``targeted North
+    Korea with a lure`` or ``インドの政府機関を狙う囮文書``) is retained.
+    """
+    after = text[match.end() : match.end() + 40]
+    lure = re.search(r"(?i)囮|おとり|デコイ|decoy|lure|bait", after)
+    if not lure:
+        return False
+    if direct_victim_context_before_country(text, match):
+        return False
+    between = after[: lure.start()]
+    return not re.search(
+        r"(?i)標的|攻撃|侵害|狙|被害|向け|対象|フィッシング|窃取|"
+        r"target|attack|breach|compromise|phish|victim",
+        between,
+    )
+
+
+def product_origin_context(text: str, match: re.Match[str]) -> bool:
+    """Return whether a country term only qualifies product origin/language."""
+    after = text[match.end() : match.end() + 40]
+    return bool(
+        re.search(
+            r"(?i)^\s*(?:[-–—]\s*)?(?:made|built|developed|manufactured|designed)\b",
+            after,
+        )
+        or re.search(
+            r"^\s*(?:"
+            r"製(?:の)?(?:品|ソフト(?:ウェア)?|アプリ|ルータ(?:ー)?|"
+            r"機器|装置|端末|部品|チップ|半導体|コンピュータ(?:ー)?|"
+            r"PC|スマートフォン|車両|自動車|ドローン|カメラ|"
+            r"ファームウェア|OS|VPN|ツール|マルウェア|"
+            r"ライブラリ|フレームワーク|アプライアンス)|"
+            r"製\s*(?=$|[、。，,.\u30fb:：;；)）])|"
+            r"語(?:版)?)",
+            after,
+            re.IGNORECASE,
+        )
+        # A country-prefixed malware/product name is not victim geography.
+        # Keep this allowlist narrow so real phrases such as "China government
+        # organizations" remain eligible for explicit target matching.
+        or re.search(r"(?i)^\s+Chopper\b", after)
+    )
+
+
+def infrastructure_location_context(text: str, match: re.Match[str]) -> bool:
+    """Return whether a country only locates routing or attacker infrastructure."""
+    before = text[max(0, match.start() - 100) : match.start()]
+    after = text[match.end() : match.end() + 70]
+    if direct_victim_context_before_country(text, match):
+        return False
+    infrastructure = (
+        r"c2|c&c|command[- ]and[- ]control|servers?|infrastructure|hosts?|"
+        r"proxies|proxy|vps|traffic|tunnels?"
+    )
+    attacker_specific_infrastructure = (
+        r"(?:c2|c&c|command[- ]and[- ]control)"
+        r"(?:\s+(?:servers?|infrastructure|hosts?))?|"
+        r"proxies|proxy|vps|tunnels?"
+    )
+    return bool(
+        re.search(
+            rf"(?i)(?:using|via|through|rout(?:e|ed|ing)|host(?:ed|ing)|located)"
+            rf"[^.!?\n]{{0,55}}(?:{infrastructure})[^.!?\n]{{0,30}}"
+            r"(?:in|via|through)\s*$",
+            before,
+        )
+        or re.search(
+            rf"(?i)(?:{attacker_specific_infrastructure})"
+            r"[^.!?\n]{0,30}(?:in|via|through)\s*$",
+            before,
+        )
+        or re.search(
+            rf"(?i)^\s*[-–—]?\s*(?:hosted|based|located)[^.!?\n]{{0,20}}"
+            rf"(?:{infrastructure})",
+            after,
+        )
+        or re.search(
+            r"^\s*(?:の|に|で)?(?:C2|C&C|コマンド(?:・アンド・)?コントロール|サーバ|"
+            r"インフラ|ホスト|VPS|プロキシ|中継)[^。\n]{0,40}"
+            r"(?:利用|経由|設置|所在|ホスト|ルーティング)",
+            after,
+            re.IGNORECASE,
+        )
+        or (
+            re.search(
+                r"(?i)(?:using|via|through|routed\s+through)\s+(?:an?\s+)?$",
+                before,
+            )
+            and re.search(rf"(?i)^\s*(?:{infrastructure})\b", after)
+        )
+        or (
+            re.search(
+                r"(?:C2|C&C|コマンド(?:・アンド・)?コントロール|"
+                r"プロキシ|VPS|トンネル)[^。\n]{0,30}$",
+                before,
+                re.IGNORECASE,
+            )
+            and re.search(r"^\s*(?:に|で)(?:設置|所在|ホスト|中継)", after)
+        )
+    )
+
+
+def defender_disruptor_context(text: str, match: re.Match[str]) -> bool:
+    """Return whether a country identifies a defender or takedown partner.
+
+    Threat reports often name a government or law-enforcement partner in the
+    same sentence as the victim population.  A broad target-context match must
+    not turn that partner's country into victim geography.  Preserve the
+    country when an explicit victim verb directly governs the mention.
+    """
+    if direct_victim_context_before_country(text, match):
+        return False
+    after = text[match.end() : match.end() + 180]
+    japanese_role = re.search(
+        r"^\s*(?:政府|当局|司法省|法執行機関|警察|捜査機関)?"
+        r"(?:\s*(?:と|との|の))?(?:連携|協力|共同|支援|主導|参加)",
+        after,
+    )
+    japanese_takedown = re.search(
+        r"(?:攻撃(?:者)?(?:管理)?(?:の)?\s*(?:インフラ|基盤|サーバ)|"
+        r"悪性(?:インフラ|基盤)|ボットネット)[^。\n]{0,55}"
+        r"(?:停止|遮断|押収|差し押さえ|無力化|テイクダウン|妨害|阻止|破壊)",
+        after,
+    )
+    if japanese_role and japanese_takedown:
+        return True
+    english_role = re.search(
+        r"(?i)^\s*(?:government|authorities|justice department|"
+        r"law[- ]enforcement|police)?[^.!?\n]{0,35}"
+        r"(?:collaborat|cooperat|partner|work(?:ed|ing)?\s+with|join(?:ed|ing)?|"
+        r"support(?:ed|ing)?)",
+        after,
+    )
+    english_takedown = re.search(
+        r"(?i)(?:disrupt|take\s*down|takedown|seiz|sinkhol|block|dismantl)"
+        r"[^.!?\n]{0,65}(?:attacker|malicious|criminal|botnet|"
+        r"infrastructure|servers?)",
+        after,
+    )
+    return bool(english_role and english_takedown)
+
+
 def contextual_match(
     text: str,
     patterns: Iterable[re.Pattern[str]],
@@ -761,6 +989,14 @@ def contextual_match(
     for pattern in patterns:
         for match in pattern.finditer(text):
             if country and actor_attribution_context(text, match, actor_pattern):
+                continue
+            if country and lure_theme_context(text, match):
+                continue
+            if country and product_origin_context(text, match):
+                continue
+            if country and infrastructure_location_context(text, match):
+                continue
+            if country and defender_disruptor_context(text, match):
                 continue
             # Sector terms need a narrower guard than countries: actor names
             # legitimately follow target sectors in prose.  Only discard an
@@ -955,8 +1191,17 @@ def mitre_target_match(
     """Find a target in an official ATT&CK group summary."""
     for pattern in patterns:
         for match in pattern.finditer(text):
-            if country and actor_attribution_context(text, match, actor_pattern):
-                continue
+            if country:
+                if actor_attribution_context(text, match, actor_pattern):
+                    continue
+                if lure_theme_context(text, match):
+                    continue
+                if product_origin_context(text, match):
+                    continue
+                if infrastructure_location_context(text, match):
+                    continue
+                if defender_disruptor_context(text, match):
+                    continue
             excerpt = excerpt_for(text, match, radius=260)
             if re.search(
                 r"(?i)\b(?:target(?:ed|s|ing)?|victims?|campaigns?\s+against|"
@@ -1292,6 +1537,10 @@ def ensure_campaign_software(
             activity["malware_refs"] = sorted(
                 set(activity.get("malware_refs", [])) | {item["id"]}
             )
+        else:
+            activity["tool_refs"] = sorted(
+                set(activity.get("tool_refs", [])) | {item["id"]}
+            )
 
 
 def mitre_campaign_ttp(
@@ -1491,6 +1740,10 @@ def profile_stats(profile: dict[str, Any]) -> dict[str, int]:
             len(item.get("malware_refs", []))
             for item in profile.get("activities", [])
         ),
+        "activity_tool_refs": sum(
+            len(item.get("tool_refs", []))
+            for item in profile.get("activities", [])
+        ),
         "targets": sum(
             len(profile.get("targets", {}).get(category, []))
             for category in ("countries", "regions", "sectors", "roles")
@@ -1602,6 +1855,7 @@ def main() -> int:
         ),
         "activity_target_refs": sum(row["activity_target_refs"] for row in rows),
         "activity_malware_refs": sum(row["activity_malware_refs"] for row in rows),
+        "activity_tool_refs": sum(row["activity_tool_refs"] for row in rows),
     }
     report = {"summary": summary, "profiles": rows}
     if args.report:

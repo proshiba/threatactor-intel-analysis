@@ -26,6 +26,10 @@ from render_profile import (
     stix_id,
 )
 from stix_modeling import activity_stix_object_type
+from standalone_activity_stix import (
+    build_standalone_activity_bundle,
+    validate_curation as validate_standalone_curation,
+)
 
 
 CONFIDENCE_SCORE = {
@@ -36,9 +40,20 @@ CONFIDENCE_SCORE = {
 }
 PRODUCER_KEY = "opencti-export:proshiba/threatactor-intel-analysis"
 REPOSITORY_URL = "https://github.com/proshiba/threatactor-intel-analysis"
+# These timestamps version the producer Identity itself, not the newest item in
+# the exported corpus. Bump PRODUCER_MODIFIED only when the Identity metadata
+# below changes. Deriving it from max(profile.updated_at) rewrites every bundle
+# after an unrelated actor update and can produce conflicting versions during a
+# partial import.
+PRODUCER_CREATED = "2026-07-25T00:00:00Z"
+PRODUCER_MODIFIED = "2026-09-21T13:20:00Z"
 DEFAULT_OPENCTI_COUNTRY_INDEX = Path(
     "actor_profile/reference/opencti-country-index.json"
 )
+DEFAULT_STANDALONE_CURATION = Path(
+    "actor_profile/standalone-activity-curation.json"
+)
+DEFAULT_UNKNOWN_CLUSTER_LEDGER = Path("parse-daily/unknown-clusters.json")
 OPENCTI_SAFE_ACTOR_RELATIONSHIPS = {"part-of", "related-to"}
 REFERENCE_FIELDS = ("source_ref", "target_ref", "created_by_ref")
 REFERENCE_LIST_FIELDS = ("object_refs", "object_marking_refs")
@@ -116,6 +131,12 @@ def producer_identity(created: str, modified: str) -> dict[str, Any]:
         ],
         "object_marking_refs": [TLP_CLEAR],
     }
+
+
+def repository_producer_identity() -> dict[str, Any]:
+    """Return the corpus-wide producer at its own pinned object version."""
+
+    return producer_identity(PRODUCER_CREATED, PRODUCER_MODIFIED)
 
 
 def observable_object(indicator: dict[str, Any]) -> dict[str, Any] | None:
@@ -980,27 +1001,64 @@ def build_actor_bundle(
 def campaign_dependency_profile_ids(
     profile: dict[str, Any], activity: dict[str, Any]
 ) -> set[str]:
-    result = set(
-        activity.get("activity_refs", [])
-        + activity.get("malware_refs", [])
-        + activity.get("infrastructure_refs", [])
-        + activity.get("target_refs", [])
-        + activity.get("ttp_refs", [])
-        + activity.get("victim_refs", [])
+    """Return the cycle-safe transitive dependency closure for an Activity.
+
+    Parent Campaigns may explicitly contain child Incident/Grouping records.
+    The child Activity and all objects that the child explicitly references
+    must travel together; otherwise object_refs on the child would be sliced
+    differently between its own bundle and the parent bundle.
+    """
+
+    activities = {
+        item["activity_id"]: item for item in profile.get("activities", [])
+    }
+    result: set[str] = set()
+    pending = [activity]
+    visited_activities: set[str] = set()
+    dependency_fields = (
+        "activity_refs",
+        "malware_refs",
+        "tool_refs",
+        "infrastructure_refs",
+        "target_refs",
+        "ttp_refs",
+        "victim_refs",
     )
+    while pending:
+        current = pending.pop()
+        current_id = current.get("activity_id")
+        if current_id in visited_activities:
+            continue
+        if current_id:
+            visited_activities.add(current_id)
+        for field in dependency_fields:
+            refs = current.get(field, [])
+            result.update(refs)
+            if field == "activity_refs":
+                pending.extend(
+                    activities[ref]
+                    for ref in refs
+                    if ref in activities and ref not in visited_activities
+                )
+
     victims = {
         item["victim_case_id"]: item for item in profile.get("victim_cases", [])
     }
     ttps = {item["ttp_id"]: item for item in profile.get("ttps", [])}
-    for victim_ref in activity.get("victim_refs", []):
-        victim = victims.get(victim_ref, {})
-        result.update(victim.get("target_refs", []))
-        result.update(victim.get("malware_refs", []))
-        result.update(victim.get("ttp_refs", []))
-    for ttp_ref in list(result):
-        ttp = ttps.get(ttp_ref, {})
-        result.update(ttp.get("malware_refs", []))
-        result.update(ttp.get("infrastructure_refs", []))
+    expanded: set[str] = set()
+    while True:
+        pending_refs = result - expanded
+        if not pending_refs:
+            break
+        expanded.update(pending_refs)
+        for ref in pending_refs:
+            victim = victims.get(ref, {})
+            result.update(victim.get("target_refs", []))
+            result.update(victim.get("malware_refs", []))
+            result.update(victim.get("ttp_refs", []))
+            ttp = ttps.get(ref, {})
+            result.update(ttp.get("malware_refs", []))
+            result.update(ttp.get("infrastructure_refs", []))
     return result
 
 
@@ -1020,6 +1078,19 @@ def build_activity_bundle(
         for item in profile.get("activities", [])
         if item["activity_id"] in profile_ids
     }
+    activity_profile_ids = {
+        item["activity_id"]
+        for item in profile.get("activities", [])
+    }
+    slice_activity_profile_ids = {
+        activity["activity_id"],
+        *(dependency_ids & activity_profile_ids),
+    }
+    slice_activity_refs = {
+        profile_ids[item]
+        for item in slice_activity_profile_ids
+        if item in profile_ids
+    }
     wanted_ids = {
         stix_id("intrusion-set", profile["profile_id"]),
         activity_ref,
@@ -1038,7 +1109,7 @@ def build_activity_bundle(
         for obj in objects
         if obj.get("type") == "note"
         and obj.get("x_profile_hunting_pivot_id")
-        and activity_ref in obj.get("object_refs", [])
+        and slice_activity_refs.intersection(obj.get("object_refs", []))
     ]
     for note in activity_hunting_notes:
         wanted_ids.add(note["id"])
@@ -1051,7 +1122,9 @@ def build_activity_bundle(
         obj
         for obj in objects
         if obj.get("type") == "indicator"
-        and activity["activity_id"] in obj.get("x_campaign_refs", [])
+        and slice_activity_profile_ids.intersection(
+            obj.get("x_campaign_refs", [])
+        )
     ]
     for indicator in campaign_indicators:
         wanted_ids.add(indicator["id"])
@@ -1066,7 +1139,9 @@ def build_activity_bundle(
     # IDs from the selected canonical IOC records rather than storing actor or
     # campaign metadata on the shared SCO itself.
     for indicator in record.get("iocs", {}).get("indicators", []):
-        if activity["activity_id"] not in indicator.get("campaign_refs", []):
+        if not slice_activity_profile_ids.intersection(
+            indicator.get("campaign_refs", [])
+        ):
             continue
         observable = observable_object(indicator)
         if observable and indicator.get("infrastructure_refs"):
@@ -1122,6 +1197,10 @@ def build_activity_bundle(
     for indicator in campaign_indicators:
         if primary_type == "grouping":
             continue
+        if activity["activity_id"] not in indicator.get("x_campaign_refs", []):
+            # The Indicator belongs to an explicitly contained child Activity,
+            # not automatically to the parent Campaign.
+            continue
         relation = make_relationship(
             key=f"{indicator['id']}:indicates:{activity_ref}",
             now=profile["updated_at"],
@@ -1161,22 +1240,65 @@ def build_activity_bundle(
                     selected.append(relation)
                     existing_relationship_ids.add(relation["id"])
 
-    if primary_type == "grouping":
-        for index, obj in enumerate(selected):
-            if obj.get("id") != activity_ref:
+    # A child Grouping embedded in a parent Campaign must remain byte-identical
+    # to that Grouping in its own bundle. Build containment from the child's
+    # transitive dependency closure, never from every object in the parent
+    # slice. Cross-activity hunting Notes are excluded from Grouping containment
+    # because their bundle-specific sliced IDs are intentionally different.
+    selected_ids = {obj["id"] for obj in selected}
+    activities_by_id = {
+        item["activity_id"]: item for item in profile.get("activities", [])
+    }
+    for index, obj in enumerate(selected):
+        if obj.get("type") != "grouping":
+            continue
+        grouping_activity_id = obj.get("x_profile_object_id")
+        grouping_activity = activities_by_id.get(grouping_activity_id)
+        if not grouping_activity:
+            continue
+        grouping_activity_ref = profile_ids.get(grouping_activity_id)
+        grouping_dependencies = campaign_dependency_profile_ids(
+            profile, grouping_activity
+        )
+        grouping_refs = {
+            stix_id("intrusion-set", profile["profile_id"]),
+            *(
+                profile_ids[item]
+                for item in grouping_dependencies
+                if item in profile_ids
+            ),
+        }
+        for contained in selected:
+            if contained.get("type") == "indicator" and grouping_activity_id in contained.get(
+                "x_campaign_refs", []
+            ):
+                grouping_refs.add(contained["id"])
+            if contained.get("type") == "note" and grouping_activity_ref in contained.get(
+                "object_refs", []
+            ):
+                original = original_by_id.get(contained.get("id"))
+                if original is None:
+                    # This is a bundle-specific sliced Note ID. A Note that was
+                    # cross-activity in the canonical object must not become a
+                    # child-Grouping member only because another activity ref
+                    # was removed for this slice.
+                    continue
+                original_activity_refs = set(original.get("object_refs", [])) & all_activity_ids
+                if original_activity_refs <= {grouping_activity_ref}:
+                    grouping_refs.add(contained["id"])
+        for indicator in record.get("iocs", {}).get("indicators", []):
+            if grouping_activity_id not in indicator.get("campaign_refs", []):
                 continue
-            grouping = copy.deepcopy(obj)
-            grouping["object_refs"] = sorted(
-                set(grouping.get("object_refs", []))
-                | {
-                    contained["id"]
-                    for contained in selected
-                    if contained.get("id") != activity_ref
-                    and contained.get("type") != "report"
-                }
-            )
-            selected[index] = grouping
-            break
+            observable = observable_object(indicator)
+            if observable and observable["id"] in selected_ids:
+                grouping_refs.add(observable["id"])
+        grouping = copy.deepcopy(obj)
+        grouping["object_refs"] = sorted(
+            ref
+            for ref in grouping_refs
+            if ref in selected_ids and ref != grouping_activity_ref
+        )
+        selected[index] = grouping
 
     selected.extend(
         source_report_objects(
@@ -1392,6 +1514,16 @@ def prune_stale(output_root: Path, expected: set[Path]) -> int:
     return removed
 
 
+def load_standalone_records(
+    curation_path: Path, ledger_path: Path
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Load the explicit standalone allowlist; never export the ledger wholesale."""
+
+    curation = load_json(curation_path)
+    ledger = load_json(ledger_path)
+    return curation, validate_standalone_curation(curation, ledger)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -1406,6 +1538,18 @@ def main() -> int:
         type=Path,
         default=DEFAULT_OPENCTI_COUNTRY_INDEX,
         help="pinned OpenCTI Country metadata used for entity deduplication",
+    )
+    parser.add_argument(
+        "--standalone-activity-curation",
+        type=Path,
+        default=DEFAULT_STANDALONE_CURATION,
+        help="explicit allowlist for actor-free Campaign/Incident/Grouping bundles",
+    )
+    parser.add_argument(
+        "--unknown-cluster-ledger",
+        type=Path,
+        default=DEFAULT_UNKNOWN_CLUSTER_LEDGER,
+        help="reviewed ledger referenced by the standalone allowlist",
     )
     parser.add_argument("--actor", action="append", help="only export this slug")
     parser.add_argument(
@@ -1428,6 +1572,12 @@ def main() -> int:
     country_index_path = (
         repository_root / args.opencti_country_index
     ).resolve()
+    standalone_curation_path = (
+        repository_root / args.standalone_activity_curation
+    ).resolve()
+    unknown_cluster_ledger_path = (
+        repository_root / args.unknown_cluster_ledger
+    ).resolve()
     output_root.relative_to(repository_root)
 
     country_index_document = load_json(country_index_path)
@@ -1444,12 +1594,8 @@ def main() -> int:
     records = load_records(catalog_path, profiles_root, set())
     if not records:
         raise SystemExit("no actor profiles selected")
-    created = min(
-        record["profile"].get("created_at") or record["profile"]["updated_at"]
-        for record in records
-    )
     modified = max(record["profile"]["updated_at"] for record in records)
-    producer = producer_identity(created, modified)
+    producer = repository_producer_identity()
     for record in records:
         objects, rewrites = prepare_profile_objects(
             record["profile"],
@@ -1472,6 +1618,7 @@ def main() -> int:
     actor_entries: list[dict[str, Any]] = []
     campaign_entries: list[dict[str, Any]] = []
     activity_entries: list[dict[str, Any]] = []
+    standalone_entries: list[dict[str, Any]] = []
     unresolved_relationships: list[dict[str, str]] = []
     shared_object_definitions: dict[str, str] = {}
     max_size = 0
@@ -1565,9 +1712,67 @@ def main() -> int:
             else:
                 activity_entries.append(entry)
 
+    # Standalone activities are exported only for a full run. ``--actor`` is
+    # an actor-profile selector and must not accidentally imply selection of a
+    # heterogeneous ledger entry. The curation file is an explicit allowlist;
+    # unknown-clusters.json is never traversed as an export queue.
+    if not wanted:
+        standalone_curation, standalone_records = load_standalone_records(
+            standalone_curation_path, unknown_cluster_ledger_path
+        )
+        standalone_updated_at = standalone_curation["updated_at"]
+        for standalone_record in standalone_records:
+            bundle, entry = build_standalone_activity_bundle(
+                record=standalone_record,
+                updated_at=standalone_updated_at,
+                producer=producer,
+            )
+            primary_type = entry["stix_object_type"]
+            bundle_errors = validate_bundle(bundle, expected_scope=primary_type)
+            bundle_errors.extend(
+                validate_shared_object_definitions(bundle, shared_object_definitions)
+            )
+            if bundle_errors:
+                raise ValueError(
+                    f"invalid standalone {primary_type} bundle "
+                    f"{entry['activity_id']}: {bundle_errors[:10]}"
+                )
+            output_section = (
+                "campaigns" if primary_type == "campaign" else "activities"
+            )
+            activity_path = (
+                output_root
+                / output_section
+                / "unattributed"
+                / safe_activity_filename(entry["activity_id"])
+            )
+            write_json_atomic(activity_path, bundle)
+            activity_size = activity_path.stat().st_size
+            if activity_size > args.max_bundle_bytes:
+                raise ValueError(
+                    f"standalone activity bundle exceeds size limit: {activity_path}"
+                )
+            max_size = max(max_size, activity_size)
+            expected_paths.add(activity_path.resolve())
+            entry.update(
+                {
+                    "slug": "unattributed",
+                    "profile_id": None,
+                    "standalone_activity": True,
+                    "path": activity_path.relative_to(repository_root).as_posix(),
+                    "object_count": len(bundle["objects"]),
+                    "size_bytes": activity_size,
+                }
+            )
+            standalone_entries.append(entry)
+            if primary_type == "campaign":
+                campaign_entries.append(entry)
+            else:
+                activity_entries.append(entry)
+
     removed = prune_stale(output_root, expected_paths) if args.prune else 0
     manifest = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "format": "STIX 2.1 bundles for OpenCTI ImportFileStix",
         "generated_at": modified,
         "producer_identity": producer["id"],
@@ -1576,6 +1781,7 @@ def main() -> int:
         "actor_bundle_count": len(actor_entries),
         "campaign_bundle_count": len(campaign_entries),
         "activity_bundle_count": len(activity_entries),
+        "standalone_activity_bundle_count": len(standalone_entries),
         "activity_type_counts": dict(
             sorted(
                 Counter(
@@ -1588,6 +1794,7 @@ def main() -> int:
         "actors": actor_entries,
         "campaigns": campaign_entries,
         "activities": activity_entries,
+        "standalone_activities": standalone_entries,
     }
     write_json_atomic(output_root / "manifest.json", manifest)
     print(
@@ -1596,6 +1803,7 @@ def main() -> int:
                 "actor_bundles": len(actor_entries),
                 "campaign_bundles": len(campaign_entries),
                 "activity_bundles": len(activity_entries),
+                "standalone_activity_bundles": len(standalone_entries),
                 "unresolved_actor_relationships": len(unresolved_relationships),
                 "max_bundle_size_bytes": max_size,
                 "pruned_files": removed,

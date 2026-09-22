@@ -1,0 +1,981 @@
+{
+  "type": "bundle",
+  "id": "bundle--56799983-9abb-4dfa-9caa-696538f83915",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f6b657c0-ed32-44b5-9d17-12acdb79010f",
+      "created": "2026-09-21T19:49:43Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "360高级威胁研究院 / 360威胁情报中心",
+          "description": "Source: https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "url": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--234a71d43cad975ee342",
+      "x_tactic": "Execution, Persistence, Privilege Escalation",
+      "x_activity_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "activity-description-explicit-period; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "activity-description-explicit-period; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析",
+      "description": "APT-C-06（Darkhotel）は2026年4月、北朝鮮中央テレビをリアルタイム視聴するアプリの解説文書を囮に、利用者へ悪意あるアプリの導入を誘導した。 5月末には同じアプリを含む圧縮ファイルをフィッシングメールで配布し、MSIからVBScriptとPowerShellを利用する攻撃チェーンへ発展した。 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 第2段階MSIの一部は悪意あるDLLを読み込み、ChaCha20で外部ファイルとShellcodeを復号して実行するが、最終Shellcodeの機能は未解明である。 2025年以降のDarkhotelではPowerShellがダウンロードや永続化に高頻度で使われており、今回も多数の標的が確認されたが実際のコード実行は比較的少なかった。",
+      "external_references": [
+        {
+          "source_name": "360高级威胁研究院 / 360威胁情报中心",
+          "description": "Source: https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "url": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q"
+        }
+      ],
+      "x_profile_object_id": "activity--darkhotel-kctv-lure-2026",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--fbc4f59c4a844e18e5ab183b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: strong-subject。 レビュー: 一次資料(360高级威胁研究院, WeChat公式アカウント, 2026-08-12 17:30 UTC+8公開。ページ内 ct=1786527000 および createTime='2026-08-12 17:30' で公開日時を確認)の原文を確認。前回スキャン(2026-08-15)では一次ソースを取得できずpendingで残していたが、今回User-Agent付きcurlでHTTP 200・全文取得に成功したため判断を確定した。原文が「2026年4月，APT-C-06（Darkhotel）使用一个名为『조선중앙텔레비죤 실시간방영프로그람 해설서.docx』的诱饵文档开展钓鱼攻击活动」とAPT-C-06(Darkhotel)を実行主体として明記している。APT-C-06は本資料の発行元である360自身の呼称であり、原文が同一組織として扱っているためalias照合の懸念はない。同名製品・別クラスタ・法執行記事のいずれでもなく、原文が「和C06在25年的攻击活动使用的msi有一些不同」と2025年の活動と明示的に対比しているため過去言及でもない。攻撃連鎖は、朝鮮中央テレビをリアルタイム視聴するアプリの解説書を装った囮文書で利用者に導入を促し、第1段階MSIがCustomActionによる内蔵DLL読み込みではなくVBSを直接実行して計画タスク2件(\\Microsoft\\Windows\\AppID\\PolicyManager による tp.ps1 の永続化・次段階取得と、\\ScriptingSchedule による自己削除)を作成する。tp.ps1は system版・AV導入状況・識別子・32/64bit をURLパラメーターへ組み込んで iii ファイル(実体はMSI)を取得し、正規のVdPlayer.exeをC:\\Programdata\\vdplayer へ併せて導入する。第2段階MSIの一部は内蔵の悪性DLLを読み込み、各階層のパス名のhash列と埋め込みhash列を突き合わせる方式で C:\\ProgramData\\0_a^r(9)+!+$&)# を探索し、ChaCha20で復号した内容を鍵として更にShellcodeをChaCha20復号して実行する。最終Shellcodeの復号鍵は原文執筆時点で未入手であり機能は未解明であるため、能力としては登録しない。活動期間は原文が「2026年4月」および「到5月底」と明示しているため、first_observed=2026-04・last_observed=2026-05をprecision: monthで採用し、一次資料公開日2026-08-12はreported_at（basis: source-publication）へ分離し、tech-memo日次ファイル日付2026-08-15は収集日としてのみ保持する(いずれも攻撃観測日へ流用しない)。原文は被害国・被害組織を明記していないため標的は追加せず、囮がKCTV関連であることから標的国を推定することもしない。IOC付録の5件(domain 1・MD5 4)はIOC CSVのactor列が「APT-C-06 (Darkhotel)」という複合名で自動一致しないため、原文のIOC節と本文のartifact 15件を profiles/darkhotel/osint-observables/ の構造化Sourceへ保存し、再生成可能な形で収録する。本レコードの採用により、darkhotelは初めて日付を持つ活動を得る(既存3活動 Daybreak / Fallout Team / WizardOpium はいずれも期間unknown)。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--darkhotel",
+          "name": "Darkhotel",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--234a71d43cad975ee342"
+          ],
+          "tool_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "activity-description-explicit-period",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "activity-description-explicit-period",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-05-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_tool_refs": [],
+      "x_first_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "first_seen": "2026-04-01T00:00:00Z",
+      "last_seen": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--63df506e-ae89-43e3-95f1-1cca78d84a20",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: be6d6d01740d210cb16973d81a1fd782",
+      "pattern": "[file:hashes.'MD5' = 'be6d6d01740d210cb16973d81a1fd782']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:33Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "value": "2026-08-12T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7a8619d3-d44e-4a26-9b4f-3b8661edfd6f",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: d033868f7b4374936dc462b0b016abaf",
+      "pattern": "[file:hashes.'MD5' = 'd033868f7b4374936dc462b0b016abaf']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:33Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "value": "2026-08-12T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b3f8f5db-c94b-4e37-b3db-f86d955df75a",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 4a88efd00ba8b036ec4642fcecbe6df3",
+      "pattern": "[file:hashes.'MD5' = '4a88efd00ba8b036ec4642fcecbe6df3']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:33Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "value": "2026-08-12T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e7ed5e96-595c-458c-856a-d9b21fa3ed58",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: built.3jkg8d.com",
+      "pattern": "[domain-name:value = 'built.3jkg8d.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:33Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "value": "2026-08-12T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f77ef9b0-cb7d-4ae7-b568-3cceb100a983",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 60fd3dbfeb1a44ed2a8ad46113d58262",
+      "pattern": "[file:hashes.'MD5' = '60fd3dbfeb1a44ed2a8ad46113d58262']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T09:00:33Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--darkhotel-kctv-lure-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "value": "2026-08-12T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "x_observation_source_refs": [
+        "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "created": "2026-07-25T15:22:56Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Darkhotel",
+      "aliases": [
+        "APT-C-06",
+        "DUBNIUM",
+        "Zigzag Hail"
+      ],
+      "description": "[Darkhotel](https://attack.mitre.org/groups/G0012) is a suspected South Korean threat group that has targeted victims primarily in East Asia since at least 2004. The group's name is based on cyber espionage operations conducted via hotel Internet networks against traveling executives and other select guests. [Darkhotel](https://attack.mitre.org/groups/G0012) has also conducted spearphishing campaigns and infected victims through peer-to-peer and file sharing networks.(Citation: Kaspersky Darkhotel)(Citation: Securelist Darkhotel Aug 2015)(Citation: Microsoft Digital Defense FY20 Sept 2020)",
+      "goals": [
+        "Actor-specific reporting explicitly describes espionage or intelligence collection."
+      ],
+      "external_references": [],
+      "x_profile_id": "actor--darkhotel",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "APT-C-06",
+          "vendor": "360高级威胁研究院 / 360威胁情报中心",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--360-apt-c-06-darkhotel-kctv-lure-2026"
+          ],
+          "analyst_notes": "360の一次資料は記事名と本文でAPT-C-06（Darkhotel）と併記し、既知のDarkhotel沿革も説明する。360内の呼称対応は明示されるが、cross-vendorの収集境界が完全一致するとは限らないためscopeはoverlappingとする。"
+        },
+        {
+          "name": "DUBNIUM",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "Zigzag Hail",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "Daybreak?; Fallout Team; WizardOpium",
+        "capability_details": "Inexsmar, Higaisa, Win32.Karba, Win32.Pioneer, CVE-2015-8651, Asruex, CVE-2012-0158, CVE-2010-2883, CVE-2016-4171 and CVE-2018-817",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=東アジア。日本は確認時に個別国として保持する。\n\nJapan, Taiwan, China, Russia, South Korea, North Korea Government, Utilities, High-Tech, Automotive",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0fa6ff01-db53-48e6-94e6-321be62cd0f7",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7a8619d3-d44e-4a26-9b4f-3b8661edfd6f",
+      "target_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "description": "md5: d033868f7b4374936dc462b0b016abaf is explicitly scoped to campaign APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1d6270cc-4026-434c-b2a8-4ac6fecc94e5",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b3f8f5db-c94b-4e37-b3db-f86d955df75a",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30006acb-0721-4f32-b2a9-b2c24382d8ea",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e7ed5e96-595c-458c-856a-d9b21fa3ed58",
+      "target_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "description": "domain: built.3jkg8d.com is explicitly scoped to campaign APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80c25d40-ab3a-458c-a017-90e95795b1c5",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b3f8f5db-c94b-4e37-b3db-f86d955df75a",
+      "target_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "description": "md5: 4a88efd00ba8b036ec4642fcecbe6df3 is explicitly scoped to campaign APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--88dc2364-8ea9-4a0a-b3f0-f6abe9216884",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7a8619d3-d44e-4a26-9b4f-3b8661edfd6f",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8b695402-c0f2-4366-a6b0-18b786fe9757",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e7ed5e96-595c-458c-856a-d9b21fa3ed58",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--91731f7a-83af-461d-a226-0b80a6b134f1",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "target_ref": "attack-pattern--f6b657c0-ed32-44b5-9d17-12acdb79010f",
+      "description": "APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 uses ttp--activity-rule--234a71d43cad975ee342.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "360高级威胁研究院 / 360威胁情报中心",
+          "description": "Source: https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "url": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aeb12027-941f-4452-b5fc-80f91cce8dc7",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--63df506e-ae89-43e3-95f1-1cca78d84a20",
+      "target_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "description": "md5: be6d6d01740d210cb16973d81a1fd782 is explicitly scoped to campaign APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b9e63599-1b8f-4def-92a1-390eed366085",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f77ef9b0-cb7d-4ae7-b568-3cceb100a983",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dbed95ba-9388-4aef-a3d5-34782b33ad38",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 is attributed or linked to Darkhotel.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "360高级威胁研究院 / 360威胁情报中心",
+          "description": "Source: https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "url": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period",
+        "last": "activity-description-explicit-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-05-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dcdd00c8-8fef-48eb-9236-560b5addec91",
+      "created": "2026-09-21T18:47:26Z",
+      "modified": "2026-09-21T18:47:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--63df506e-ae89-43e3-95f1-1cca78d84a20",
+      "target_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": [],
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--df57c4ea-4859-47b0-b06f-771e6e299c4b",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f77ef9b0-cb7d-4ae7-b568-3cceb100a983",
+      "target_ref": "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+      "description": "md5: 60fd3dbfeb1a44ed2a8ad46113d58262 is explicitly scoped to campaign APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 in the repository dataset.",
+      "confidence": 80,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fad3b9c2-3599-429e-840f-ddd5bd3dd491",
+      "created": "2026-09-21T19:49:43Z",
+      "modified": "2026-09-21T19:49:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+      "target_ref": "attack-pattern--f6b657c0-ed32-44b5-9d17-12acdb79010f",
+      "description": "第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "360高级威胁研究院 / 360威胁情报中心",
+          "description": "Source: https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "url": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "activity-description-explicit-period; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "activity-description-explicit-period; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "activity-description-explicit-period; activity-period",
+        "last": "activity-description-explicit-period; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-04-01T00:00:00Z",
+      "stop_time": "2026-05-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--b2005e8a-b906-4d69-87df-296d87f3c93b",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-12T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--f6b657c0-ed32-44b5-9d17-12acdb79010f",
+        "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+        "indicator--63df506e-ae89-43e3-95f1-1cca78d84a20",
+        "indicator--7a8619d3-d44e-4a26-9b4f-3b8661edfd6f",
+        "indicator--b3f8f5db-c94b-4e37-b3db-f86d955df75a",
+        "indicator--e7ed5e96-595c-458c-856a-d9b21fa3ed58",
+        "indicator--f77ef9b0-cb7d-4ae7-b568-3cceb100a983",
+        "relationship--91731f7a-83af-461d-a226-0b80a6b134f1",
+        "relationship--dbed95ba-9388-4aef-a3d5-34782b33ad38",
+        "relationship--fad3b9c2-3599-429e-840f-ddd5bd3dd491"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+          "description": "Repository source: profiles/darkhotel/osint-observables/360-apt-c-06-darkhotel-kctv-lure-2026.csv"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--360-apt-c-06-darkhotel-kctv-lure-2026",
+      "x_evidence_slice_scope": "campaign:actor--darkhotel:activity--darkhotel-kctv-lure-2026",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4771eca0-a8d1-4a3d-ba44-f371d57f8f66",
+      "created": "2026-09-21T22:20:01Z",
+      "modified": "2026-09-21T22:20:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Darkhotel / APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析",
+      "description": "APT-C-06（Darkhotel）は2026年4月、北朝鮮中央テレビをリアルタイム視聴するアプリの解説文書を囮に、利用者へ悪意あるアプリの導入を誘導した。 5月末には同じアプリを含む圧縮ファイルをフィッシングメールで配布し、MSIからVBScriptとPowerShellを利用する攻撃チェーンへ発展した。 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 第2段階MSIの一部は悪意あるDLLを読み込み、ChaCha20で外部ファイルとShellcodeを復号して実行するが、最終Shellcodeの機能は未解明である。 2025年以降のDarkhotelではPowerShellがダウンロードや永続化に高頻度で使われており、今回も多数の標的が確認されたが実際のコード実行は比較的少なかった。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-21T22:20:01Z",
+      "object_refs": [
+        "attack-pattern--f6b657c0-ed32-44b5-9d17-12acdb79010f",
+        "campaign--7676ea1f-a2f7-406e-be66-9ee5d93affc2",
+        "indicator--63df506e-ae89-43e3-95f1-1cca78d84a20",
+        "indicator--7a8619d3-d44e-4a26-9b4f-3b8661edfd6f",
+        "indicator--b3f8f5db-c94b-4e37-b3db-f86d955df75a",
+        "indicator--e7ed5e96-595c-458c-856a-d9b21fa3ed58",
+        "indicator--f77ef9b0-cb7d-4ae7-b568-3cceb100a983",
+        "intrusion-set--900c5d0d-9b06-44b4-895a-70841c797e8c",
+        "relationship--0fa6ff01-db53-48e6-94e6-321be62cd0f7",
+        "relationship--1d6270cc-4026-434c-b2a8-4ac6fecc94e5",
+        "relationship--30006acb-0721-4f32-b2a9-b2c24382d8ea",
+        "relationship--80c25d40-ab3a-458c-a017-90e95795b1c5",
+        "relationship--88dc2364-8ea9-4a0a-b3f0-f6abe9216884",
+        "relationship--8b695402-c0f2-4366-a6b0-18b786fe9757",
+        "relationship--91731f7a-83af-461d-a226-0b80a6b134f1",
+        "relationship--aeb12027-941f-4452-b5fc-80f91cce8dc7",
+        "relationship--b9e63599-1b8f-4def-92a1-390eed366085",
+        "relationship--dbed95ba-9388-4aef-a3d5-34782b33ad38",
+        "relationship--dcdd00c8-8fef-48eb-9236-560b5addec91",
+        "relationship--df57c4ea-4859-47b0-b06f-771e6e299c4b",
+        "relationship--fad3b9c2-3599-429e-840f-ddd5bd3dd491",
+        "report--b2005e8a-b906-4d69-87df-296d87f3c93b"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--darkhotel",
+      "x_activity_id": "activity--darkhotel-kctv-lure-2026"
+    }
+  ]
+}

@@ -56,8 +56,43 @@ Russia worksheet
 
 語形を追加するときは、被害側の表現を巻き込まないことを確認し、
 `actor_profile/tests/test_activity_intelligence.py`へ肯定・否定の両方の回帰テストを
-同じ変更に含めてください。既存プロファイルへ過去の取込で入った値は自動では
-削除されないため、規則を直した後に当該エントリと参照を手動で除去します。
+同じ変更に含めてください。国名が囮・デコイの主題を示すだけの場合も標的国にしません。
+ただし、`targeted North Korea with a lure`や`日本を狙う囮文書`のように、標的動詞が
+当該国を直接目的語・被害範囲として支配する場合は被害側として保持します。別の国を標的に
+当該国を題材とする`targeted Japan using North Korea-themed lures`は北朝鮮を保持しません。
+
+英数語の産業語はword boundaryを必須とし、`Darkhotel`の中の`hotel`のような
+部分一致を産業として扱いません。カタカナ国名もカタカナ語境界を要求し、
+`タイ`を`リアルタイム`・`タイポスクワッティング`・`ワンタイム`から、`シリア`を
+`デシリアライズ`から抽出しません。
+国名が`Japanese-made`、`German-built`、`中国製ルータ`、`日本語版`のように製品の製造国・
+開発元・言語だけを修飾する場合も、被害組織の所在を示さないため標的国にしません。
+日本語の`製`は既知の製品名詞または単独の`X製`に限って製品由来と判定し、`中国製薬会社`や
+`中国製造拠点`の`製`を製品原産地の接尾辞として扱いません。
+`China Chopper`のように国名を含むマルウェア・ツール・製品の固有名も、名称中の国名だけを
+標的国へ昇格しません。同じ活動が当該国の組織を明示的に標的としている場合は、その別の
+被害記述を根拠として保持します。
+
+C2、VPS、プロキシ、トンネル等が攻撃者側の所在・経由地として明示された場合は標的国にせず、
+同じ文にある明示的な被害国だけを保持します。一方、`targeted servers in Germany`、
+`critical infrastructure in Ukraine was attacked`、標的機器が`インドに所在`のように、
+サーバ、ホスト、インフラまたは機器そのものが被害資産である場合は、その国を保持します。
+単に`server/infrastructure/host in X`または`Xに所在`という語形だけで攻撃者側インフラと
+決めません。
+
+攻撃インフラの停止、差し押さえ、テイクダウン等に協力した政府・法執行機関の国も、
+その役割だけでは標的国にしません。同じ資料が当該国の被害を別途明示する場合は、協力者としての
+言及ではなく、その被害記述を根拠として保持します。
+
+この囮、製品原産地、言語、インフラ所在の除外規則はActivity本文だけでなく、MITRE ATT&CKの
+Group概要から標的を生成する経路にも同一に適用します。見出しの省略表現や企業名のために
+役割を機械判定できない既知Activityは`activity_target_exclusions`へ根拠とともに明示し、
+同じ国の別Activityや明示的な被害国をアクター全体で一括除外しません。
+
+既存プロファイルの自動生成targetは生成IDを基準に再生成時に除去・再評価します。
+旧処理でcanonical IDへ変換されたものは、旧自動生成文言と
+`[targeting-scope-audit-v1]`の両方が残る場合だけ除去します。導出マーカーは監査根拠を
+既存の手動targetへ追記する場合もあるため、マーカー単独を所有権や削除条件にしません。
 
 ## 3. 国家支援と動機を分離する
 
@@ -238,6 +273,14 @@ lifecycle claim 1件だけを保持し、現行コレクション集計から除
 
 4と5は候補生成・cross-checkには使えますが、それ単独で国家支援や動機を確定しません。
 
+同じ原典を複数の構造化evidence fileへ分ける場合、それらは同じ`source_id`を共有できる。
+`ioc-sources.json`の各entryはpath、field mapping、観測refsを保持したまま全件処理し、
+`iocs.json.sources`のSource metadataだけを`source_id`単位で1件へ集約する。代表`path`に加えて
+全ローカルpathを`evidence_paths`と`analyst_notes`へ残し、再ingestで出典経路を失わない。
+共有ID間の`published_at`、`confidence`、`tlp`は同値、またはunknownから既知値を補完できる場合だけ
+統合する。複数の既知値が競合する場合は、最初のevidence fileを開く前に取込全体を停止し、
+どちらかを推測採用しない。異なる`source_id`の非移行entryは従来どおり別Sourceとして保持する。
+
 ## 10. Census curation
 
 `actor-census.json`からの自動materializationでentity種別や重複を安全に解決できない場合は、
@@ -278,6 +321,9 @@ heuristic抽出済みの値を原典レビューで誤分類と確認した場�
    `activity_ref`と`source_ref`は、それぞれ上位`activity_refs`と`evidence_refs`にも含める。
 3. 証明書の有効期間、Source公開日、VirusTotal等のfirst-seen、scan時刻を攻撃活動日へコピーしない。
    時間の意味を`basis`に残し、活動時点が不明ならunknownのままにする。
+   構造化Sourceが`observed_at`列を明示的にmappingしている場合、空セルはunknownである。
+   CSV行全体へ日付regexを再適用してcampaign IDやsource ID中の年を観測時刻へ補完しない。
+   明示的な`default_observed_at`があるSourceだけ、その既定値を使用できる。
 4. live scanまたは現在のtelemetryを実際に確認していない限り、
    `continuity.active_status`を`active`へしない。既定は`unknown`であり、検索未実施なら
    `passive_scan_performed: false`とする。検索を実施した場合は`continuity.checks`へ実行時刻、

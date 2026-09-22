@@ -143,6 +143,11 @@ def activity_records(
             {"id": ref, "name": malware_names.get(ref, tool_names.get(ref, ref))}
             for ref in activity.get("malware_refs", [])
         ]
+        if "tool_refs" in activity:
+            record["tools"] = [
+                {"id": ref, "name": tool_names.get(ref, ref)}
+                for ref in activity.get("tool_refs", [])
+            ]
         record["targets"] = [
             {"id": ref, "name": target_names.get(ref, ref)}
             for ref in activity.get("target_refs", [])
@@ -178,16 +183,18 @@ def malware_records(
     activities = profile.get("activities", [])
     ttps = profile.get("ttps", [])
     result = []
+    activity_ref_field = "tool_refs" if capability_kind == "tools" else "malware_refs"
     for malware in profile.get("capabilities", {}).get(capability_kind, []):
         malware_id = malware["id"]
         activity_ids = {
             activity["activity_id"]
             for activity in activities
-            if malware_id in activity.get("malware_refs", [])
+            if malware_id in activity.get(activity_ref_field, [])
         }
-        for ttp in ttps:
-            if malware_id in ttp.get("malware_refs", []):
-                activity_ids.update(ttp.get("activity_refs", []))
+        if capability_kind == "malware":
+            for ttp in ttps:
+                if malware_id in ttp.get("malware_refs", []):
+                    activity_ids.update(ttp.get("activity_refs", []))
         observations = [
             {
                 "activity_id": activity["activity_id"],

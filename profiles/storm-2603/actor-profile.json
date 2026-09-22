@@ -4,7 +4,7 @@
   "name": "Storm-2603",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-21T13:20:00Z",
+  "updated_at": "2026-09-21T22:28:38Z",
   "languages": [
     "ja"
   ],
@@ -31,13 +31,17 @@
     "analyst_notes": ""
   },
   "attribution": {
-    "countries": [],
+    "countries": [
+      "China"
+    ],
     "sponsor_type": "unknown",
     "organizations": [],
-    "assessment": "",
-    "confidence": "unknown",
-    "evidence_refs": [],
-    "analyst_notes": ""
+    "assessment": "Microsoft assesses with medium confidence that Storm-2603 is a China-based threat actor and states that it has not identified links to other known Chinese threat actors.",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--microsoft-toolshell-2025"
+    ],
+    "analyst_notes": "China-basedはMicrosoftの明示的な中確度評価として保持する。国家支援、政府組織との関係、動機は同資料から推定しない。"
   },
   "motivations": [],
   "relationships": [],
@@ -78,116 +82,292 @@
           "source--microsoft-toolshell-2025"
         ],
         "analyst_notes": "Primary-source-verified capability used in the linked activity."
+      },
+      {
+        "id": "malware--storm-2603-lockbit-ransomware",
+        "name": "LockBit ransomware",
+        "aliases": [
+          "LockBit"
+        ],
+        "types": [
+          "ransomware"
+        ],
+        "description": "MicrosoftはStorm-2603が過去にLockBitランサムウェアを展開したと報告するが、対象となる活動・亜種・利用時期は示していない。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "actor-levelの過去利用実績としてのみ保持する。Microsoftが2025年7月18日以降のToolShell Campaignで明示したのはWarlockであり、LockBitを同Campaignのmalware_refsへ接続しない。"
       }
     ],
-    "tools": [],
-    "infrastructure": [],
+    "tools": [
+      {
+        "id": "tool--storm-2603-mimikatz",
+        "name": "Mimikatz",
+        "aliases": [],
+        "types": [
+          "credential-dumping"
+        ],
+        "description": "MicrosoftがStorm-2603固有のToolShell侵入チェーンで資格情報取得に使用したと報告した公開セキュリティツール。",
+        "first_observed": {
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "公開ツールの悪用であり、ツール開発者を攻撃主体と解釈しない。"
+      },
+      {
+        "id": "tool--storm-2603-psexec",
+        "name": "PsExec",
+        "aliases": [],
+        "types": [
+          "remote-execution"
+        ],
+        "description": "MicrosoftがStorm-2603固有のToolShell侵入チェーンで横展開に使用したと報告した正規管理ツール。",
+        "first_observed": {
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "正規管理ツールであり、Sysinternals/Microsoftを攻撃主体と解釈しない。"
+      },
+      {
+        "id": "tool--storm-2603-impacket",
+        "name": "Impacket",
+        "aliases": [],
+        "types": [
+          "network-protocol-toolkit",
+          "remote-execution"
+        ],
+        "description": "MicrosoftがStorm-2603固有のToolShell後侵入活動で使用を明示した公開Pythonネットワークプロトコル・ツールキット。",
+        "first_observed": {
+          "value": "2025-07-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "公開ツールキットであり、単独では帰属根拠にしない。"
+      },
+      {
+        "id": "tool--storm-2603-velociraptor",
+        "name": "Velociraptor",
+        "aliases": [],
+        "types": [
+          "endpoint-visibility",
+          "remote-administration"
+        ],
+        "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側の導入を確認した正規DFIR・endpoint visibilityツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-storm2603-parallel-intrusion-2026"
+        ],
+        "analyst_notes": "正規ツールの悪用であり、記事公開日を利用日へ転用しない。"
+      },
+      {
+        "id": "tool--storm-2603-cloudflare-tunnel",
+        "name": "Cloudflare Tunnel",
+        "aliases": [
+          "cloudflared"
+        ],
+        "types": [
+          "tunneling"
+        ],
+        "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側の遠隔アクセス経路として確認した正規トンネリングサービス／クライアント。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-storm2603-parallel-intrusion-2026"
+        ],
+        "analyst_notes": "共有正規サービスであり、Cloudflare rootや任意のTunnel利用を悪性Indicatorにしない。"
+      },
+      {
+        "id": "tool--storm-2603-vscode-remote-ssh",
+        "name": "Visual Studio Code Remote - SSH",
+        "aliases": [
+          "VS Code SSH"
+        ],
+        "types": [
+          "remote-development",
+          "remote-access"
+        ],
+        "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側のSSH経由遠隔アクセスに使用されたと報告した正規開発機能。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-storm2603-parallel-intrusion-2026"
+        ],
+        "analyst_notes": "正規製品機能の悪用であり、MicrosoftやVS Code利用者を攻撃主体と解釈しない。"
+      },
+      {
+        "id": "tool--zoho-assist-unattended-agent",
+        "name": "Zoho Assist Unattended Agent",
+        "aliases": [
+          "Zoho Assist"
+        ],
+        "types": [
+          "remote-access"
+        ],
+        "description": "正規のリモート監視・管理ツール。Microsoft DARTの並行侵入事例とCisco Talos IRの別の単一インシデントで、Storm-2603側の遠隔操作手段として展開された。製品ベンダーを攻撃主体と解釈しない。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-storm2603-parallel-intrusion-2026",
+          "source--talos-ir-trends-q2-2026"
+        ],
+        "analyst_notes": "MicrosoftとTalosの2資料は別事例であり統合しない。いずれも正確な利用日が明示されないため期間はunknownとする。"
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infrastructure--storm-2603-updatemicfosoft-c2",
+        "name": "Storm-2603 updatemicfosoft C2 infrastructure",
+        "aliases": [],
+        "types": [
+          "domain",
+          "c2"
+        ],
+        "description": "MicrosoftがStorm-2603 C2と明示するupdate.updatemicfosoft.comとmsupdate.updatemicfosoft.com。前者は4件のweb-shell SHA256の通信先かつactor-specific hunting queryの対象、後者はIOC表がC2 domainとして独立掲載するFQDNである。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "記事公開日とCampaign開始日は個別C2のfirst/last_observedへ転用しない。現在の稼働状態は未確認。"
+      },
+      {
+        "id": "infrastructure--storm-2603-post-exploitation-c2",
+        "name": "Storm-2603 post-exploitation C2 65.38.121.198",
+        "aliases": [],
+        "types": [
+          "ipv4",
+          "c2"
+        ],
+        "description": "MicrosoftのIOC表がStorm-2603のpost-exploitation C2と明示する65.38.121.198。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "IP再割当・共有ホスティングを考慮し、現在のサービス一致だけでStorm-2603へ帰属しない。記事公開日を観測日へ転用しない。"
+      }
+    ],
     "delivery_formats": [],
     "vulnerabilities": [],
     "operational_capabilities": [],
     "analyst_notes": ""
   },
   "activities": [
-    {
-      "activity_id": "activity--daily-b80b607914fb7f62f988",
-      "name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
-      "activity_type": "ransomware-extortion",
-      "first_observed": {
-        "value": "2025-07-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-stated"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "reported_at": {
-        "value": "2025-07-22T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "description": "Microsoftは、Storm-2603が2025年7月18日以降、オンプレミスSharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、グループポリシーでWarlockランサムウェアを展開したと報告した。同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、個別被害組織をStorm-2603へ一括帰属しない。",
-      "target_refs": [],
-      "malware_refs": [
-        "malware--warlock-ransomware"
-      ],
-      "infrastructure_refs": [],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--microsoft-toolshell-2025"
-      ],
-      "analyst_notes": "MicrosoftがStorm-2603固有として記述した侵入チェーンだけを保持。NNSAその他の個別被害者は同クラスタへの帰属が明示されないため除外。",
-      "ttp_refs": [
-        "ttp--activity-rule--af1214636f4d588f7138"
-      ],
-      "victim_refs": [],
-      "diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--storm-2603",
-          "name": "Storm-2603",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--warlock-ransomware"
-          ],
-          "ttp_refs": [
-            "ttp--activity-rule--af1214636f4d588f7138"
-          ]
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": []
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": "2025-07-18T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-stated"
-          },
-          "last_observed": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "reported_at": {
-            "value": "2025-07-22T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "activity_type": "ransomware-extortion",
-          "phases": [
-            "Initial Access"
-          ],
-          "results": [],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-5c143f1d91377b49cfcc",
-          "source--microsoft-toolshell-2025"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      },
-      "stix_object_type": "campaign",
-      "activity_refs": [],
-      "grouping_context": null
-    },
     {
       "activity_id": "activity--storm-2603--parallel-intrusion-2026",
       "name": "Storm-2603と無関係な第2主体が同居した並行侵入事例",
@@ -213,13 +393,23 @@
       "description": "Microsoft DARTは、一つの被害環境でStorm-2603と無関係な第2主体が並行して活動した事例を報告した。Storm-2603側はSharePointを探索し、Velociraptor、Cloudflare Tunnel、Zoho Assist、VS Code経由SSHなどを用いて権限・永続性・遠隔アクセスを確保した。別主体のDLLサイドローディングや独自バックドアはStorm-2603の能力として扱わない。",
       "target_refs": [],
       "malware_refs": [],
+      "tool_refs": [
+        "tool--storm-2603-cloudflare-tunnel",
+        "tool--storm-2603-velociraptor",
+        "tool--storm-2603-vscode-remote-ssh",
+        "tool--zoho-assist-unattended-agent"
+      ],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
         "source--microsoft-storm2603-parallel-intrusion-2026"
       ],
       "analyst_notes": "同一被害環境と時間的重複はactor relationshipを意味しない。Microsoftがunrelatedと明記した境界を保持する。",
-      "ttp_refs": [],
+      "ttp_refs": [
+        "ttp--storm-2603-parallel-protocol-tunneling",
+        "ttp--storm-2603-parallel-remote-access-software",
+        "ttp--storm-2603-parallel-ssh"
+      ],
       "victim_refs": [],
       "stix_object_type": "incident",
       "activity_refs": [],
@@ -228,12 +418,24 @@
         "adversary": {
           "actor_ref": "actor--storm-2603",
           "name": "Storm-2603",
-          "attribution_countries": [],
+          "attribution_countries": [
+            "China"
+          ],
           "organization_refs": []
         },
         "capability": {
           "malware_refs": [],
-          "ttp_refs": []
+          "ttp_refs": [
+            "ttp--storm-2603-parallel-protocol-tunneling",
+            "ttp--storm-2603-parallel-remote-access-software",
+            "ttp--storm-2603-parallel-ssh"
+          ],
+          "tool_refs": [
+            "tool--storm-2603-cloudflare-tunnel",
+            "tool--storm-2603-velociraptor",
+            "tool--storm-2603-vscode-remote-ssh",
+            "tool--zoho-assist-unattended-agent"
+          ]
         },
         "infrastructure": {
           "infrastructure_refs": []
@@ -262,10 +464,15 @@
             "basis": "source-publication"
           },
           "activity_type": "intrusion",
-          "phases": [],
+          "phases": [
+            "Command And Control",
+            "Lateral Movement"
+          ],
           "results": [],
           "direction": {
-            "source_countries": [],
+            "source_countries": [
+              "China"
+            ],
             "target_country_refs": [],
             "target_region_refs": []
           }
@@ -276,55 +483,246 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
+    },
+    {
+      "activity_id": "activity--storm-2603--toolshell-warlock-2025",
+      "name": "Storm-2603、ToolShell悪用後にWarlockランサムウェアを展開",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-07-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Microsoftは、Storm-2603が2025年7月18日以降、オンプレミスSharePointのToolShell脆弱性を悪用し、MimikatzやPsExecで横展開後、グループポリシーでWarlockランサムウェアを展開したと報告した。同時期にはLinen TyphoonとViolet Typhoonも別個に悪用しており、個別被害組織をStorm-2603へ一括帰属しない。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--warlock-ransomware"
+      ],
+      "tool_refs": [
+        "tool--storm-2603-mimikatz",
+        "tool--storm-2603-psexec",
+        "tool--storm-2603-impacket"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--storm-2603-post-exploitation-c2",
+        "infrastructure--storm-2603-updatemicfosoft-c2"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "MicrosoftがStorm-2603固有として記述した侵入チェーンだけを保持。NNSAその他の個別被害者は同クラスタへの帰属が明示されないため除外。",
+      "ttp_refs": [
+        "ttp--activity-rule--af1214636f4d588f7138",
+        "ttp--storm-2603-toolshell-credential-dumping",
+        "ttp--storm-2603-toolshell-service-execution",
+        "ttp--storm-2603-toolshell-domain-policy",
+        "ttp--storm-2603-toolshell-encryption-impact"
+      ],
+      "victim_refs": [],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-2603",
+          "name": "Storm-2603",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--warlock-ransomware"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--af1214636f4d588f7138",
+            "ttp--storm-2603-toolshell-credential-dumping",
+            "ttp--storm-2603-toolshell-domain-policy",
+            "ttp--storm-2603-toolshell-encryption-impact",
+            "ttp--storm-2603-toolshell-service-execution"
+          ],
+          "tool_refs": [
+            "tool--storm-2603-impacket",
+            "tool--storm-2603-mimikatz",
+            "tool--storm-2603-psexec"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--storm-2603-post-exploitation-c2",
+            "infrastructure--storm-2603-updatemicfosoft-c2"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-07-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-07-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "Credential Access",
+            "Defense Evasion",
+            "Impact",
+            "Initial Access",
+            "Lateral Movement"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "stix_object_type": "campaign",
+      "activity_refs": [],
+      "grouping_context": null
+    },
+    {
+      "activity_id": "activity--storm-2603--zoho-assist-incident-2026",
+      "name": "Storm-2603によるZoho Assist Unattended Agent展開事例",
+      "activity_type": "intrusion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Cisco Talos IRはQ2 2026の1件のインシデントで、Warlock ransomware operators（Storm-2603）が正規RMM製品Zoho AssistのUnattended Agentインストーラーを展開したと報告した。TalosがWarlockへの利用を確認したのは初めてで、ユーザーのアクティブセッションなしに持続的な遠隔操作を試みた。本件では暗号化には至っておらず、四半期全体のランサムウェア統計・標的業種・ATT&CK表をこの個別事例へ転用しない。",
+      "target_refs": [],
+      "malware_refs": [],
+      "tool_refs": [
+        "tool--zoho-assist-unattended-agent"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--talos-ir-trends-q2-2026"
+      ],
+      "analyst_notes": "単発のIncidentとして記録する。Talosが比較した2026年5月の別の成功したWarlock ransomware attackと本件を同一インシデントまたはCampaignへ統合しない。被害組織は匿名で国・業種・個別活動日は不明。Zoho Assistは正規ToolでありMalwareへ分類しない。",
+      "ttp_refs": [
+        "ttp--storm-2603--zoho-assist-t1219-002"
+      ],
+      "victim_refs": [],
+      "stix_object_type": "incident",
+      "activity_refs": [],
+      "grouping_context": null,
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-2603",
+          "name": "Storm-2603",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--storm-2603--zoho-assist-t1219-002"
+          ],
+          "tool_refs": [
+            "tool--zoho-assist-unattended-agent"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--talos-ir-trends-q2-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     }
   ],
   "targets": {
-    "countries": [
-      {
-        "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
-        "name": "中国",
-        "description": "活動「ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-0e75e392e2685f601677"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
-      },
-      {
-        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
-        "name": "米国",
-        "description": "活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-c9fa26bbe8d21f50b441"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
-      }
-    ],
+    "countries": [],
     "regions": [],
     "sectors": [],
     "roles": [],
@@ -337,9 +735,158 @@
       "tactic": "Initial Access",
       "technique_id": "T1190",
       "technique_name": "Exploit Public-Facing Application",
-      "observed_behavior": "中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
+      "observed_behavior": "Microsoftは、Storm-2603が2025年7月18日以降にオンプレミスSharePointのToolShell脆弱性（CVE-2025-49706、CVE-2025-49704、CVE-2025-53770）を悪用して初期アクセスを得たと報告した。MicrosoftがStorm-2603へ個別帰属していない被害組織・地域は含めない。",
       "activity_refs": [
-        "activity--daily-b80b607914fb7f62f988"
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "MicrosoftのStorm-2603固有記述だけをT1190へ対応付けた。被害組織・地域や公開サーバー総数をこのアクターへ一括帰属していない。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-toolshell-credential-dumping",
+      "tactic": "Credential Access",
+      "technique_id": "T1003.001",
+      "technique_name": "OS Credential Dumping: LSASS Memory",
+      "observed_behavior": "Microsoftは、Storm-2603がToolShell侵入後にMimikatzを使って資格情報を取得したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Mimikatzの利用記述をT1003.001へ分析者対応付けした。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-toolshell-service-execution",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1569.002",
+      "technique_name": "System Services: Service Execution",
+      "observed_behavior": "Microsoftは、Storm-2603がToolShell侵入後の横展開にPsExecとImpacketを使用したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Microsoftの具体的なツール利用記述をT1569.002へ分析者対応付けした。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-toolshell-domain-policy",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1484.001",
+      "technique_name": "Domain or Tenant Policy Modification: Group Policy Modification",
+      "observed_behavior": "Microsoftは、Storm-2603がグループポリシーを用いてWarlockランサムウェアを組織内へ配布したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "malware_refs": [
+        "malware--warlock-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "グループポリシーによる配布をT1484.001へ分析者対応付けした。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-toolshell-encryption-impact",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "Microsoftは、Storm-2603がToolShell侵入後にWarlockランサムウェアを展開して暗号化を実行したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "malware_refs": [
+        "malware--warlock-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Warlockによる暗号化をT1486へ分析者対応付けした。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-parallel-remote-access-software",
+      "tactic": "Command And Control",
+      "technique_id": "T1219",
+      "technique_name": "Remote Access Software",
+      "observed_behavior": "Microsoft DARTは、並行侵入事例でStorm-2603側がVelociraptorとZoho Assistを遠隔アクセス・管理に利用したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -355,11 +902,98 @@
         "status": "unknown",
         "basis": "not-stated"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--daily-5c143f1d91377b49cfcc"
+        "source--microsoft-storm2603-parallel-intrusion-2026"
       ],
-      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+      "analyst_notes": "正規ツールの利用であり、製品ベンダーや他の利用者を攻撃主体と解釈しない。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-parallel-protocol-tunneling",
+      "tactic": "Command And Control",
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "observed_behavior": "Microsoft DARTは、並行侵入事例でStorm-2603側がCloudflare Tunnelを遠隔アクセス経路として利用したと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-storm2603-parallel-intrusion-2026"
+      ],
+      "analyst_notes": "共有サービス全体を悪性インフラへ昇格しない。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603-parallel-ssh",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1021.004",
+      "technique_name": "Remote Services: SSH",
+      "observed_behavior": "Microsoft DARTは、並行侵入事例でStorm-2603側がVisual Studio Code Remote - SSHを用いてSSH経由の遠隔アクセスを行ったと報告した。",
+      "activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-storm2603-parallel-intrusion-2026"
+      ],
+      "analyst_notes": "正規開発機能の利用であり、MicrosoftやVS Code利用者を攻撃主体と解釈しない。"
+    },
+    {
+      "ttp_id": "ttp--storm-2603--zoho-assist-t1219-002",
+      "tactic": "Command And Control",
+      "technique_id": "T1219.002",
+      "technique_name": "Remote Desktop Software",
+      "observed_behavior": "Storm-2603がZoho Assist Unattended Agentのインストーラーを展開し、ユーザーがログオンしていない端末への持続的・秘匿的な遠隔操作を試みた。",
+      "activity_refs": [
+        "activity--storm-2603--zoho-assist-incident-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--talos-ir-trends-q2-2026"
+      ],
+      "analyst_notes": "Talosの個別記述からT1219.002へ分析者対応付けした。四半期全体のATT&CK表を一括してStorm-2603へ帰属していない。"
     }
   ],
   "sources": [
@@ -380,85 +1014,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
-    },
-    {
-      "source_id": "source--daily-0e75e392e2685f601677",
-      "path": "https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
-      "title": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
-      "publisher": "bleepingcomputer.com",
-      "published_at": {
-        "value": "2025-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250805.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
-      "accessed_at": null,
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "activity",
-        "targeting",
-        "victim-case"
-      ]
-    },
-    {
-      "source_id": "source--daily-5c143f1d91377b49cfcc",
-      "path": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/",
-      "title": "Microsoft: SharePointサーバーもランサムウェア攻撃の標的に",
-      "publisher": "bleepingcomputer.com",
-      "published_at": {
-        "value": "2025-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/",
-      "accessed_at": null,
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "activity",
-        "targeting",
-        "ttp",
-        "victim-case"
-      ]
-    },
-    {
-      "source_id": "source--daily-c9fa26bbe8d21f50b441",
-      "path": "https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-      "title": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
-      "publisher": "bleepingcomputer.com",
-      "published_at": {
-        "value": "2025-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-      "accessed_at": null,
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "activity",
-        "targeting",
-        "victim-case"
-      ]
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -575,6 +1130,34 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--talos-ir-trends-q2-2026",
+      "path": "https://blog.talosintelligence.com/ir-trends-q2-2026/",
+      "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/",
+      "title": "IR Trends Q2 2026: Phishing and weaponized remote management tools drive attack chains",
+      "publisher": "Cisco Talos Incident Response",
+      "published_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-incident-response",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "ttp",
+        "negative-impact-boundary"
+      ],
+      "analyst_notes": "Talos explicitly equates Warlock ransomware operators with Storm-2603 for this single engagement, identifies Zoho Assist Unattended Agent deployment, and states that the activity did not lead to encryption. Q2 aggregate targeting and ATT&CK statistics are not actor-specific."
+    },
+    {
       "source_id": "source--microsoft-toolshell-2025",
       "path": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
       "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
@@ -586,7 +1169,7 @@
         "status": "known",
         "basis": "source-publication"
       },
-      "accessed_at": "2026-09-21T00:00:00Z",
+      "accessed_at": "2026-09-22T00:00:00Z",
       "language": "en",
       "source_type": "vendor-threat-research",
       "tlp": "TLP:CLEAR",
@@ -599,9 +1182,10 @@
         "capability",
         "targeting",
         "ttp",
-        "ioc"
+        "ioc",
+        "hunting"
       ],
-      "analyst_notes": "Microsoft separately attributes exploitation to Linen Typhoon, Violet Typhoon, and Storm-2603. It does not uniquely attribute the reported NNSA victim event to any one of those clusters."
+      "analyst_notes": "Microsoft separately attributes exploitation to Linen Typhoon, Violet Typhoon, and Storm-2603. It does not uniquely attribute the reported NNSA victim event to any one of those clusters. The IOC table and actor-specific hunting query were directly rechecked on 2026-09-22: only four web-shell hashes tied to a named Storm-2603 C2, twelve IIS_Server_dll.dll hashes explicitly labeled as the Storm-2603 IIS Backdoor, update.updatemicfosoft.com, msupdate.updatemicfosoft.com, and 65.38.121.198 are retained as 19 exact indicators. The generic spinstall0.aspx hash, unattributed exploitation IPs, and other actor-unspecific rows are excluded."
     },
     {
       "source_id": "source--microsoft-storm2603-parallel-intrusion-2026",
@@ -636,24 +1220,242 @@
     "key_judgments": [],
     "gaps": [
       "Unknown observation dates must not be replaced by publication dates.",
-      "Automatically mapped aliases, targets, and workbook software require analyst review."
+      "Automatically mapped aliases, targets, and workbook software require analyst review.",
+      "MicrosoftのIOC表はStorm-2603固有Indicatorの個別観測日時と現在の稼働状態を示さないため、IOCのfirst/last_observedとcontinuity.active_statusはunknownのまま維持する。"
     ],
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-2603.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/storm-2603.csv; profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-21T02:39:13Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
     "executive_summary": "Storm-2603の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
     "history": "",
-    "capability_details": "",
-    "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+    "capability_details": "Microsoftは2025年7月のToolShell CampaignでWarlock展開を明示し、別にStorm-2603による過去のLockBit利用を報告する。LockBitの活動・亜種・時期は不明なためactor-level capabilityに限定し、ToolShell Campaignへ接続しない。",
+    "infrastructure_details": "Microsoft一次記事がStorm-2603へ明示的に対応付けたC2はupdate.updatemicfosoft.com、msupdate.updatemicfosoft.com、65.38.121.198。個別観測日は不明で、現在の稼働状態も未確認。",
+    "targeting_details": "構造化ターゲット監査: Storm-2603固有に確定できる標的国・地域は未特定。中国はMicrosoftの帰属評価であり標的ではない。ToolShellの個別被害組織や地域は、Microsoft資料がStorm-2603へ個別帰属していない限り収録しない。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [],
   "associated_entities": [],
   "entity_relationships": [],
-  "hunting_pivots": []
+  "hunting_pivots": [
+    {
+      "pivot_id": "hunting-pivot--storm-2603-update-c2",
+      "category": "infrastructure",
+      "pivot_type": "domain",
+      "value": "update.updatemicfosoft.com",
+      "description": "Microsoftが4件のweb-shellの通信先とactor-specific hunting queryでStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "stix_pattern": "[domain-name:value = 'update.updatemicfosoft.com']",
+      "attribution_scope": "actor-specific",
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--storm-2603-updatemicfosoft-c2"
+      ],
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "indicator_refs": [
+        "indicator--sha256:413d69ba1149bfb19494b5b932c2c33d1815972f44c3af0fbe8b1f990089d5e7"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-update-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "Microsoftが4件のweb-shellの通信先と独自のhunting queryでupdate.updatemicfosoft.comをStorm-2603 C2と明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 1,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表とhunting queryだけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: update.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。"
+    },
+    {
+      "pivot_id": "hunting-pivot--storm-2603-msupdate-c2",
+      "category": "infrastructure",
+      "pivot_type": "domain",
+      "value": "msupdate.updatemicfosoft.com",
+      "description": "MicrosoftがStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "stix_pattern": "[domain-name:value = 'msupdate.updatemicfosoft.com']",
+      "attribution_scope": "actor-specific",
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--storm-2603-updatemicfosoft-c2"
+      ],
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "indicator_refs": [
+        "indicator--sha256:5fbb37cc7b7c8df1d43097867aacc70ede20f751f10848d9a18cd8fb3db53d6a"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-msupdate-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "MicrosoftのIOC表がmsupdate.updatemicfosoft.comをStorm-2603のC2 domainと明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 1,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: msupdate.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。"
+    },
+    {
+      "pivot_id": "hunting-pivot--storm-2603-post-exploitation-c2-ip",
+      "category": "infrastructure",
+      "pivot_type": "ipv4",
+      "value": "65.38.121.198",
+      "description": "MicrosoftがStorm-2603のpost-exploitation C2と明示したIPv4。現在のサービス、証明書、同一ネットワーク上の近接資産を調べるためのピボット。",
+      "stix_pattern": "[ipv4-addr:value = '65.38.121.198']",
+      "attribution_scope": "actor-specific",
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--storm-2603-post-exploitation-c2"
+      ],
+      "activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "indicator_refs": [
+        "indicator--sha256:0d210a15f63867ceb5e756f682d53c01ace20e1c5b9e85f4180f42767baaca58"
+      ],
+      "observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-post-exploitation-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "MicrosoftのIOC表が65.38.121.198をStorm-2603のpost-exploitation C2と明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "observation_count": 1,
+      "source_count": 1,
+      "activity_count": 1,
+      "continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "hunt_queries": [
+        {
+          "platform": "shodan",
+          "query": "net:65.38.121.198/32",
+          "purpose": "現在の公開サービス、証明書、ホスト名を確認し、追加観測との時間的近接性を検証する。",
+          "requires_validation": true,
+          "false_positive_notes": "VPS再割当、共有ホスティング、第三者による再利用があり得る。IP一致だけで現在のサービスや近接IPをStorm-2603へ帰属しない。"
+        }
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--microsoft-toolshell-2025"
+      ],
+      "analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。"
+    }
+  ]
 }

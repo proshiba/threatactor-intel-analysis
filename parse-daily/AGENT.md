@@ -32,8 +32,12 @@
    クラスターを扱い、見出しが当該アクター以外の作戦を指している場合だけ、
    `review-decisions.json`の`activity_overrides`（`title`、`summary`）で
    差し替える。原文を確認したうえで行い、差し替えた理由を`review_notes`へ残す。
-   activity IDとrecord IDは`activity_reference`から生成するため、表示名の
-   差し替えでは作り直されない。
+   通常のactivity IDとrecord IDは`activity_reference`から生成するため、表示名の
+   差し替えでは作り直されない。日次Activityを根拠精査済みの恒久Activityへ昇格する
+   場合だけ、判断へ例えば
+   `"activity_id_override": "activity--darkhotel-kctv-lure-2026"`を保存できる。
+   overrideは`activity--<actor-slug>-...`の小文字stable IDでなければならず、
+   `activity--daily-*`や別actorのnamespaceを使わない。
 6. `capability_decisions`は候補ごとに`approved`、`rejected`、
    `related-only`を判断する。`pending`を残したレコードは承認済みにできない。
 7. 承認する活動の`stix_object_type`を確認する。日次取込は`activity_type`から
@@ -82,6 +86,27 @@
 15. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
 16. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
     `last_scanned_date`より先へ進めない。
+
+## 法執行・制裁記事のルーティング
+
+- 逮捕、起訴、訴追、制裁、差押え、裁判結果は攻撃Activityではない。法執行記事の
+  公開日を`first_observed` / `last_observed`へ入れず、`latest_activity`の判定にも使わない。
+- 記事が過去の攻撃キャンペーンを一次資料として具体化している場合は、攻撃期間だけを
+  Campaign / Incident / Groupingへ反映する。法的措置は、実名の個人を
+  `associated_entities[]`の`threat-actor-individual`、会社・機関を`organization`として
+  分離し、各entityの`legal_actions[]`へ記録する。旧式の`law-enforcement` Activityを
+  作らない。
+- 逮捕、国内訴追、別法域の起訴、制裁はそれぞれ別のlegal actionである。対象者と法域を
+  一括化せず、各actionへ直接の`evidence_refs`を付ける。起訴・chargeは政府資料であっても
+  `status: alleged`、逮捕・実施済み制裁は`status: completed`とする。有罪判決がない限り
+  犯罪事実を確定表現にしない。
+- `action_date`は逮捕日、起訴状のfiled/returned日、制裁指定日など、資料が明示した行為日
+  だけを使う。プレスリリース公開日、起訴状のunseal日、日次ファイル日を代用しない。
+  行為日が不明ならunknownのままとし、公開日・unseal日はsource metadataまたは説明へ残す。
+- 名前付きentityへ安全に結べない妨害・摘発記事は、レビュー判断と根拠を保持して
+  `rejected`（攻撃Activityとして不採用）にする。これは法的情報を捨てる意味ではない。
+  schema 1.4のentity/legal_actionsへ反映する別レビュー候補として報告し、主体不明の
+  Activityや個人を推測で作らない。
 
 ## アクター照合
 
@@ -165,6 +190,33 @@
   期間集計へ含めず、一次資料で観測期間を確認できた場合だけ置き換える。
 - 攻撃期間が不明でもActivityは作成できる。その場合は期間をunknownとし、資料発行日
   またはtech-memo日次ファイルの日付を`reported_at`へ分離して保存する。
+  一次資料の公開日を原文で確認できた場合は、`review-decisions.json`の
+  `reported_at`に`basis: source-publication`として保存し、日次ファイル日付より優先する。
+  どちらも`first_observed` / `last_observed`には転用しない。
+- reviewed `reported_at`は完全なtimePointとし、knownならRFC 3339 UTC値、正しいprecision、
+  `basis: source-publication`を必須とする。unknownなら`value: null` / `precision: unknown`とする。
+  `year`は1月1日00:00:00Z、`month`は当月1日00:00:00Z、`day`は00:00:00Zへ正規化し、
+  precisionと矛盾する値を受理しない。既存のcanonical Sourceに独立確認済み公開日がある場合、
+  reviewed値との不一致は上書きせず競合として停止する。ただし`daily-news-file-date`は収集日で
+  あって公開日ではないため、この公開日競合判定には使わない。
+  queue validatorを通さずapplyしてはならず、apply側もvalidation issueがあれば書込み前に停止する。
+- `source--daily-*`と`activity--daily-*`は再構築可能な日次slice専用であり、法的措置、恒久的な
+  curated activity、個人・組織等の手動主張の所有IDに使わない。`--rebuild-daily`はこれらを
+  削除するため、手動主張には安定したcurated IDを割り当てる。同じcanonical URLにcurated
+  Sourceがある場合はそのIDをprofile / IOC / artifactで共用し、旧daily IDと観測を移行・重複排除する。
+- Source URLのidentity比較ではHTTP(S)のfragment、末尾`/`、`utm_*`等の既知tracking queryだけを
+  除去する。記事版・文書ID等を選択しうる未知または意味のあるqueryは保持し、同一Sourceと推定しない。
+- Source identityを移行するときは、profileで得た旧→新IDをIOCとartifactへ明示的に伝播する。
+  Observation IDは`tech-memo-*`と`csv-row` / `pdf-text` / `text-line` / `xlsx-row`それぞれの元生成式で
+  再計算し、後者のIOCではcertificateの`hash_algorithm`とcanonicalな`source_location` JSONを含める。
+  元生成方式を判定できない観測は推測で書き換えず、apply前のpreflightで停止する。移行後に同じ
+  Observation IDへ収束した行は、campaign/malware/infrastructure/role refsとcontextを保守的に統合する。
+- 再ingestで旧IDを復活させないため、`ioc-sources.json`の明示`source[]`も旧→新IDが完全一致する
+  全entryの`source_id`だけを更新する。path、field_map、review metadataを変更せず、同じSource IDを
+  共有する複数evidence pathも統合・削除しない。`source_groups[].source_id_prefix`が対象旧IDを生成しうる
+  場合はprefixを推測変更せずpreflightで停止し、manifest設計を個別レビューする。
+- 複数actorを一括applyするときは、必要ファイル、公開日競合、Source移行可否を全actorについて先に
+  preflightする。後続actorの不整合で先行actorだけが書き込まれる部分反映を許可しない。
 - 既存帰属や関係と競合する情報は上書きしない。`claim-audit.json`の
   `contradicted`、`partially-supported`、`unresolved`等で両論とスコープを残す。
 - 「反証が見つからなかった」を「反証なし」と断定しない。検索範囲と未解決点を残す。
@@ -188,6 +240,18 @@
 
 - `record_id`、source ID、activity ID、Observation IDは入力の安定値から生成し、
   表示名の変更で作り直さない。
+- `activity_id_override`は、日次生成Activityのidentityだけをstable curated IDへ
+  移すレビュー判断である。反映前に全actorを監査し、同一stable IDへの複数Activityの
+  収束、別actorでの所有、同一actor内の未立証な既存ID衝突があれば全書込み前に停止する。
+  検証後は旧IDを`actor-profile.json`、`iocs.json`、`artifacts.csv`、
+  `ioc-sources.json`の構造化参照へ伝播する。manifestの動的`campaign_refs`列やglobal
+  OSINT/curation入力が旧IDを再生成し得る場合は自動推測せず停止し、入力側を明示移行する。
+- override付きActivityを再構築する場合、活動名、種別、期間、`reported_at`、説明、
+  confidenceはレビュー判断が所有し、手動追加したtarget/malware/infrastructure/tool/TTP/
+  victim/evidence refsとanalyst notesは和集合で保持する。Diamond Modelはmerge後の参照から
+  再計算する。公開日は`reported_at`/Source metadataであり、観測期間には転用しない。
+- `validate_daily.py --check-applied`では旧日次Activity IDが4 canonical filesに残らないこと、
+  stable Activityがprofileに1件だけ存在すること、台帳が同じoverrideを記録したことを確認する。
 - 承認済みレコードは`profiles/<slug>/daily-observations.json`へ保存する。
 - 反映スクリプトは既存の`iocs.json`と`artifacts.csv`を保持してマージする。
   元レポートがリポジトリに無い状態で`ingest_observables.py`を全件再実行し、
@@ -198,6 +262,18 @@
   `activity_period`として一次資料確認後に保存する。
 - `--rebuild-daily`は日次生成部分だけをレビュー判断から再構築する保守操作である。
   `--since`/`--until`なしの全履歴queueでのみ実行し、通常取込には使わない。
+  対象はapproved recordだけでなく、全履歴queueに現れるactorと既存の
+  `daily-observations.json`を持つactorの和集合とする。恒久alias、relationship、target、
+  hunting pivot等が`source--daily-*` / `activity--daily-*` / `malware--daily-*`を参照して
+  いる場合は、1件も書き込む前に全体を拒否する。参照を削って続行せず、根拠とActivityを
+  stable curated IDへ移行してから再実行する。
+  このdependency監査はapplyだけでなくdry-runでも実行する。IOCでは`tech-memo-*` observationを
+  除いた後に0件となるIndicatorは削除対象であって依存違反ではない。daily/non-dailyが混在する
+  Indicatorはnon-daily observationだけから集約refs・件数・期間を再計算し、その保持観測自体に
+  daily IDが残る場合だけ拒否する。
+  `ioc-sources.json`も保持される生成入力として同じ監査対象にし、明示`source--daily-*`や
+  `campaign_refs`等の`activity--daily-*`が残る場合は拒否する。事前に検証済みのSource旧→新mapで
+  明示entryを移行できる場合だけ、その移行後manifestを監査する。
   `--no-render`使用時は派生Markdown/STIXが古くなるため、
   同一作業内で必ず再生成する。
 

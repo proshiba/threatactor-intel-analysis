@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt41`
 - 状態: review
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-21T22:28:38Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -254,7 +254,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | APT41、2023年以降に複数国・複数業種へ継続侵入 | intrusion | 2023 | 不明 | 2024-07-18 |  | malware--antsword, malware--bluebeam, malware--dustpan, malware--dusttrap, malware--pinegrove, malware--sqluldr2 |  | victim--activity-rule--245a1455d3e9d746af70 | Mandiantは、APT41が2023年以降、イタリア、スペイン、台湾、タイ、トルコ、英国の海運・物流、メディア・娯楽、技術、自動車組織へ継続的に侵入したと報告した。攻撃ではANTSword、BLUEBEAM、DUSTPAN、Cobalt Strike Beacon、DUSTTRAP、SQLULDR2、PINEGROVEを組み合わせ、長期アクセスとデータ窃取を行った。 | 高 | `source--daily-54c9607dee646f91a92f`, `source--mandiant-apt41-arisen-from-dust-2024` |
 | Winntiの新ツール「UNAPIMON」がセキュリティソフトウェアからマルウェアを隠蔽 | malware-campaign | 不明 | 不明 | 2024-04-04 |  |  |  |  | Winnti（APT41）が「UNAPIMON」という未文書化マルウェアを使用 マルウェアはセキュリティソフトウェアの検出を回避する UNAPIMONはAPI関数のフックを解除して検出を逃れる この技術はマイクロソフトのDetoursツールを利用 Trend Microが報告、ユニークな回避手法と評価 | 中 | `source--daily-e4bbba7003815c78f3af` |
 | 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | infrastructure-operation | 不明 | 不明 | 2024-07-12 | target--sector--government |  | ttp--activity-rule--58206d09f24fc91cbbf9, ttp--activity-rule--a2c1d051b47c4140df1d | victim--activity-rule--54c16a0a1cf037960bc2 | 中国のAPT41がDodgeBoxとMoonWalkを用いてマルウェア攻撃を強化 DodgeBoxはMoonWalkバックドアを展開する新しいローダー MoonWalkはGoogle DriveをC2通信に利用 APT41は以前から企業や政府を標的にする活動で知られる DodgeBoxはDLLサイドローディングなどの技術を使用 | 高 | `source--daily-6f4ea1988c3e4d76819a` |
-| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | cyber-espionage | 2024-03 | 2024-03 | 2025-02-19 | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--targeting-audit--country--fd4b6b2174977076f2db | malware--china-chopper | ttp--activity-rule--8495e5c4e1c929b951ec | victim--activity-rule--ae4e24c85c3b100b67ad | 中国系の脅威アクターであるWinnti（APT41）が、2024年3月に日本の製造、素材、エネルギー企業を標的とした「RevivalStone」と呼ばれる新たなキャンペーンを展開しました。 この活動は、Trend Microが「Earth Freybug」として追跡し、Cybereasonが「Operation CuckooBees」として報告しているものと重複しており、APT41のサブグループとみられる。 Winntiは、セキュリティソフトを回避し、重要情報を収集するためのカスタムツールセットを使用し、ステルス性の高い攻撃を行うことで知られています。 最新の攻撃では、未特定のERPシステムのSQLインジェクション脆弱性を悪用し、China ChopperやBehinderといったWebシェルを展開しました。 さらに、共有アカウントを利用してマネージドサービスプロバイダー（MSP）に侵入し、そのインフラを利用して他の3つの組織にマルウェアを拡散させました。 | 高 | `source--daily-936c9eb49c4d8dd15bb1` |
+| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | cyber-espionage | 2024-03 | 2024-03 | 2025-02-19 | target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--fb803c0a91ed53ea76f9 | malware--china-chopper | ttp--activity-rule--8495e5c4e1c929b951ec | victim--activity-rule--ae4e24c85c3b100b67ad | 中国系の脅威アクターであるWinnti（APT41）が、2024年3月に日本の製造、素材、エネルギー企業を標的とした「RevivalStone」と呼ばれる新たなキャンペーンを展開しました。 この活動は、Trend Microが「Earth Freybug」として追跡し、Cybereasonが「Operation CuckooBees」として報告しているものと重複しており、APT41のサブグループとみられる。 Winntiは、セキュリティソフトを回避し、重要情報を収集するためのカスタムツールセットを使用し、ステルス性の高い攻撃を行うことで知られています。 最新の攻撃では、未特定のERPシステムのSQLインジェクション脆弱性を悪用し、China ChopperやBehinderといったWebシェルを展開しました。 さらに、共有アカウントを利用してマネージドサービスプロバイダー（MSP）に侵入し、そのインフラを利用して他の3つの組織にマルウェアを拡散させました。 | 高 | `source--daily-936c9eb49c4d8dd15bb1` |
 | 中国のハッキンググループがサイバースパイ活動で協力 | cyber-espionage | 不明 | 不明 | 2024-06-06 |  |  |  |  | 中国の国家支援ハッカーがサイバースパイ活動で協力。Sophosが「Crimson Palace」として追跡。 Sophosの報告によると、新しいマルウェアと3つの活動クラスターが確認された。この活動クラスタは単一の組織の下で集中的に調整され運用されている可能性が高い。 Mustang Panda、APT41などのグループが関与。 主なターゲットは東南アジアの政府機関。 高度な調整と検出回避戦術が用いられている。 | 中 | `source--daily-5bfba001a636c0367a16` |
 | APT41、台湾の政府系研究機関1組織を侵害 | reported-activity | 2023-07 | 不明 | 2024-08-01 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--mitre-group--sector--7c6d9d0cea82bb2a535f, target--sector--government | malware--cobalt-strike, malware--shadowpad |  | victim--activity-rule--44132c017907996cb8ad | Cisco Talosは、2023年7月中旬から台湾の政府関連研究機関1組織で観測された侵入を、中程度の確度でAPT41へ帰属した。攻撃者はShadowPadとCobalt Strikeに加え、Webシェルと独自ツールを使用した。単一組織の事例であるためIncidentとして保持する。 | 中 | `source--cisco-talos-apt41-taiwan-institute-2024`, `source--daily-84e64bef4061ae862a75` |
 | 中国関与のAPT41、2025年交渉中に米通商当局者を標的 | phishing-campaign | 不明 | 不明 | 2025-09-11 |  |  |  |  | 米下院対中特別委がPRC関与の「進行中」の標的型スパイ活動を警告。 標点は通商政策・外交関係者、政府機関、業界団体、法律事務所など。 Moolenaar下院議員名義のメールでフィッシング。添付/リンクを開かせマルウェア展開を狙う。 目的は機微情報窃取。クラウド/開発者ツール悪用で痕跡隠蔽と持続化。 1月はZPMC名義の偽通知でM365資格情報窃取を試行。APT41関与と評価。 | 高 | `source--daily-455b7c4ce0212f6eaae6` |
@@ -273,7 +273,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | APT41、2023年以降に複数国・複数業種へ継続侵入 | APT41 | ANTSword, BLUEBEAM, DUSTPAN, DUSTTRAP, PINEGROVE, SQLULDR2 | 情報なし | 情報なし | 情報なし | 被害事例: 中国のAPT41が再び活動を再開し、企業を侵害 | 高 |
 | Winntiの新ツール「UNAPIMON」がセキュリティソフトウェアからマルウェアを隠蔽 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | APT41 | 情報なし | T1574.001 DLL, T1102.003 One-Way Communication | 情報なし | Government | 被害事例: 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | 高 |
-| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | APT41 | China Chopper | T1505.003 Web Shell | 情報なし | 日本, エネルギー, 中国 | 被害事例: Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | 高 |
+| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | APT41 | China Chopper | T1505.003 Web Shell | 情報なし | 日本, エネルギー | 被害事例: Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | 高 |
 | 中国のハッキンググループがサイバースパイ活動で協力 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | APT41、台湾の政府系研究機関1組織を侵害 | APT41 | Cobalt Strike, ShadowPad | 情報なし | 情報なし | 台湾, 教育・研究, Government | 被害事例: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | 中 |
 | 中国関与のAPT41、2025年交渉中に米通商当局者を標的 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
@@ -289,11 +289,10 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | イタリア | 活動「APT41：イタリア産業を標的とするKeyPlugの脅威」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9` |
-| countries | 中国 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
 | countries | 台湾 | 活動「中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃」の記述で標的として明示された国・地域。 | 2023-07 | 不明 | 中 | `source--cisco-talos-apt41-taiwan-institute-2024`, `source--daily-84e64bef4061ae862a75` |
 | countries | 日本 | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
 | countries | 米国 | 活動「C0017」の記述で標的として明示された国・地域。 | 2021-05-01T04:00:00.000Z | 2022-02-01T05:00:00.000Z | 中 | `source--mitre-attack-19-2` |
-| regions | 東アジア | 中国、台湾、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--cisco-talos-apt41-taiwan-institute-2024`, `source--daily-84e64bef4061ae862a75`, `source--daily-936c9eb49c4d8dd15bb1` |
+| regions | 東アジア | 台湾、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--cisco-talos-apt41-taiwan-institute-2024`, `source--daily-84e64bef4061ae862a75`, `source--daily-936c9eb49c4d8dd15bb1` |
 | sectors | 運輸・航空・海運 | 活動「APT41 DUST」の記述で標的として明示された産業。 | 2023-01-31T23:00:00.000Z | 2024-06-30T22:00:00.000Z | 中 | `source--mitre-attack-19-2` |
 | sectors | 製造・産業 | 活動「APT41：イタリア産業を標的とするKeyPlugの脅威」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-dbac07148e6695d210a9` |
 | sectors | エネルギー | 活動「Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開」の記述で標的として明示された産業。 | 2024-03 | 2024-03 | 中 | `source--daily-936c9eb49c4d8dd15bb1` |
@@ -540,11 +539,11 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--barium--1daa9a873506d87b | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mandiant-apt41-arisen-from-dust-2024 | APT41 Has Arisen From the DUST | Mandiant | 2024-07-18 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust | vendor-research | TLP:CLEAR | 高 |
-| source--cisco-talos-apt41-taiwan-institute-2024 | Chinese hacking group APT41 compromised Taiwanese government-affiliated research institute with ShadowPad and Cobalt Strike | Cisco Talos | 2024-08-01 | https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/ | vendor-threat-research | TLP:CLEAR | 高 |
 | source--doj-apt41-chengdu404-2020 | Seven International Cyber Defendants, Including APT41 Actors, Charged In Connection With Computer Intrusion Campaigns Against More Than 100 Victims Globally | U.S. Department of Justice | 2020-09-16 | https://www.justice.gov/archives/opa/pr/seven-international-cyber-defendants-including-apt41-actors-charged-connection-computer | government-legal | TLP:CLEAR | 高 |
 | source--doj-apt41-sea-gamer-mall-indictment-2020 | United States v. Wong Ong Hua and Ling Yang Ching indictment | U.S. Department of Justice | 2020-09-16 | https://www.justice.gov/archives/opa/press-release/file/1317211/dl | government-legal | TLP:CLEAR | 高 |
 | source--mandiant-apt41-dual-use-2019 | APT41: A Dual Espionage and Cyber Crime Operation | Mandiant | 2019-08-07 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-dual-espionage-and-cyber-crime-operation | vendor-research | TLP:CLEAR | 高 |
+| source--mandiant-apt41-arisen-from-dust-2024 | APT41 Has Arisen From the DUST | Mandiant | 2024-07-18 | https://cloud.google.com/blog/topics/threat-intelligence/apt41-arisen-from-dust | vendor-threat-research | TLP:CLEAR | 高 |
+| source--cisco-talos-apt41-taiwan-institute-2024 | Chinese hacking group APT41 compromised Taiwanese government-affiliated research institute with ShadowPad and Cobalt Strike | Cisco Talos | 2024-08-01 | https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

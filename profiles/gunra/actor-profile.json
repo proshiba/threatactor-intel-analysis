@@ -4,7 +4,7 @@
   "name": "Gunra",
   "status": "draft",
   "created_at": "2026-08-12T01:53:38Z",
-  "updated_at": "2026-09-21T13:20:00Z",
+  "updated_at": "2026-09-22T08:15:00Z",
   "languages": [
     "ja"
   ],
@@ -366,6 +366,114 @@
           "source--cisa-aa26-222a-gunra"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-psexec",
+        "name": "PsExec",
+        "aliases": [
+          "hotfix.exe"
+        ],
+        "types": [
+          "public-tool",
+          "remote-execution"
+        ],
+        "description": "AhnLabが報告したGunra事例では、hotfix.exeへ改名したPsExecを集中管理ソリューション経由の追加payload配布とPowerShell実行に使用した。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "正規のSysinternalsツールであり、hotfix.exeという名称と実行文脈を組み合わせて調査する。"
+      },
+      {
+        "id": "tool--gunra-socat",
+        "name": "Socat",
+        "aliases": [],
+        "types": [
+          "public-tool",
+          "network-tunneling"
+        ],
+        "description": "AhnLabが分析した2026年3月のGunra感染事例でport forwardingに使用された。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "正規のnetwork relayツールであり、単独では悪性判定に使わない。"
+      },
+      {
+        "id": "tool--gunra-operation-double-barrel-openssh",
+        "name": "OpenSSH (Operation Double Barrel)",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "AhnLabが分析した2026年3月のGunra感染事例で設置され、public-key login、内部移動、reverse tunnelに使用された。匿名state-sponsored cluster側でも同一SSH鍵fingerprintを伴うOpenSSH reverse tunnelが確認された。",
+        "first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "正規ツールであり、同一鍵fingerprintと活動文脈を組み合わせて調査する。既存CISA活動のOpenSSH記録と証拠境界を混在させないため、source-scoped capabilityとして保持する。"
+      },
+      {
+        "id": "tool--gunra-operation-double-barrel-filezilla",
+        "name": "FileZilla (Operation Double Barrel)",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "AhnLabが分析した2026年3月のGunra感染事例で、侵害組織からのデータ持ち出しに使用された。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "正規ツールであり、単独では悪性判定に使わない。既存CISA活動のFileZilla記録と証拠境界を混在させないため、source-scoped capabilityとして保持する。"
       }
     ],
     "infrastructure": [
@@ -395,6 +503,34 @@
           "source--cisa-aa26-222a-gunra"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "infrastructure--gunra-operation-double-barrel-network",
+        "name": "Operation Double BarrelでGunraに関連付けられた共有ネットワーク資産",
+        "aliases": [],
+        "types": [
+          "command-and-control",
+          "staging",
+          "tunneling"
+        ],
+        "description": "AhnLabがGunra ransomware attack casesとして列挙したネットワークobservable群。176.65.128[.]26は、匿名のstate-sponsored threat groupによるOpenSSH reverse tunnelとGunraによる追加payload download/C2の双方で明示的に使用された。jshosting[.]meは両者の脆弱性悪用script配布に使用された。anyonecdn[.]comと4件の追加IPは、付録のwatering-hole側とGunra側の双方に掲載されるが、個別の役割はdownloadまたはC2のいずれかに限定できない。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "共有・再利用された可能性のある非専有インフラとして扱う。Gunra専有や匿名clusterとの同一性を示す資産ではない。IOCごとの時刻は原文にないためunknownとする。"
       }
     ],
     "delivery_formats": [],
@@ -850,6 +986,318 @@
       "stix_object_type": "campaign",
       "activity_refs": [],
       "grouping_context": null
+    },
+    {
+      "activity_id": "activity--gunra-operation-double-barrel-incident-2026-03",
+      "name": "2026年3月の韓国組織に対するGunraランサムウェア侵入",
+      "activity_type": "ransomware-intrusion",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "AhnLabが2026年3月に確認した韓国の匿名組織への侵入事例。韓国の医療機関サイトをwatering holeとして金融セキュリティソフトウェアAの脆弱性を悪用し、正規のSyncHost.exeへcode injectionした。SyncHost.exeはnet.tmp(dropper)とinet.tmp(privilege-escalation tool)を作成・実行し、loaderをuploadmgrサービスとして登録した。攻撃者はOpenSSH reverse tunnelとSocat port forwardingを確立し、SSH sessionからnetwork rangeを走査、NTLM hashを窃取し、RDP/SSHで横展開した。集中管理ソリューションを悪用してhotfix.exeへ改名したPsExecからPowerShellを実行し、176.65.128[.]26:443より追加payloadを取得した。最終的にGunra ransomwareで暗号化し、FileZillaで組織データを持ち出した。報告の結論はGunra側の被害組織を韓国の医薬品会社と記載する。",
+      "target_refs": [
+        "target--gunra--country--south-korea",
+        "target--gunra--sector--pharmaceuticals"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "tool_refs": [
+        "tool--gunra-operation-double-barrel-filezilla",
+        "tool--gunra-operation-double-barrel-openssh",
+        "tool--gunra-psexec",
+        "tool--gunra-socat"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "ttp_refs": [
+        "ttp--gunra-double-barrel-t1003",
+        "ttp--gunra-double-barrel-t1021-001",
+        "ttp--gunra-double-barrel-t1021-004",
+        "ttp--gunra-double-barrel-t1046",
+        "ttp--gunra-double-barrel-t1055",
+        "ttp--gunra-double-barrel-t1059-001",
+        "ttp--gunra-double-barrel-t1070-001",
+        "ttp--gunra-double-barrel-t1070-004",
+        "ttp--gunra-double-barrel-t1105",
+        "ttp--gunra-double-barrel-t1189",
+        "ttp--gunra-double-barrel-t1203",
+        "ttp--gunra-double-barrel-t1486",
+        "ttp--gunra-double-barrel-t1543-003",
+        "ttp--gunra-double-barrel-t1569-002",
+        "ttp--gunra-double-barrel-t1572"
+      ],
+      "victim_refs": [
+        "victim--gunra-operation-double-barrel-korea-2026"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "AhnLab本文p.49〜57に基づく。3月はGunra感染事例のsource-stated monthであり、資料公開日とは分離した。被害組織名は非公開。Brandoor/COPPERHEDGE型のfile-creation traceは確認されたが関連ファイル自体は回収されていないため、BrandoorをGunraの確定malware capabilityへ追加しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gunra",
+          "name": "Gunra",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--gunra-ransomware"
+          ],
+          "ttp_refs": [
+            "ttp--gunra-double-barrel-t1003",
+            "ttp--gunra-double-barrel-t1021-001",
+            "ttp--gunra-double-barrel-t1021-004",
+            "ttp--gunra-double-barrel-t1046",
+            "ttp--gunra-double-barrel-t1055",
+            "ttp--gunra-double-barrel-t1059-001",
+            "ttp--gunra-double-barrel-t1070-001",
+            "ttp--gunra-double-barrel-t1070-004",
+            "ttp--gunra-double-barrel-t1105",
+            "ttp--gunra-double-barrel-t1189",
+            "ttp--gunra-double-barrel-t1203",
+            "ttp--gunra-double-barrel-t1486",
+            "ttp--gunra-double-barrel-t1543-003",
+            "ttp--gunra-double-barrel-t1569-002",
+            "ttp--gunra-double-barrel-t1572"
+          ],
+          "tool_refs": [
+            "tool--gunra-operation-double-barrel-filezilla",
+            "tool--gunra-operation-double-barrel-openssh",
+            "tool--gunra-psexec",
+            "tool--gunra-socat"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--gunra-operation-double-barrel-network"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--gunra--country--south-korea",
+            "target--gunra--sector--pharmaceuticals"
+          ],
+          "victim_refs": [
+            "victim--gunra-operation-double-barrel-korea-2026"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-30T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-intrusion",
+          "phases": [
+            "Command and Control",
+            "Credential Access",
+            "Defense Evasion",
+            "Discovery",
+            "Execution",
+            "Impact",
+            "Initial Access",
+            "Lateral Movement",
+            "Persistence"
+          ],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--gunra--country--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "stix_object_type": "incident",
+      "activity_refs": [],
+      "grouping_context": null
+    },
+    {
+      "activity_id": "activity--operation-double-barrel-technical-overlap-2026",
+      "name": "Operation Double Barrel技術重複（匿名state-sponsored cluster / Gunra）",
+      "activity_type": "technical-overlap-analysis",
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "AhnLabがOperation Double Barrelと名付けた、匿名のstate-sponsored threat groupによる2026年1月のwatering-hole intrusionと、Gunraによる2026年3月のransomware infectionの技術的重複を保持するGrouping。両者は同じ韓国医療機関サイト、金融セキュリティソフトウェアAの脆弱性、SyncHost.exeへのcode injection、net.tmp/_net.tmp・inet.tmp・uploadmgrの作成/登録pattern、inet.tmpの同一argument、同一SSH鍵fingerprint、OpenSSH tunnel、176.65.128[.]26、jshosting[.]me、四文字へrename後に削除するanti-forensic techniqueを共有した。AhnLabはhigh likelihood of technical linkageと評価する一方、collaboration、shared infrastructure、initial-access broker、operational-resource overlapのいずれかは確定せず、same actorとは結論していない。",
+      "target_refs": [
+        "target--gunra--country--south-korea",
+        "target--gunra--sector--academia",
+        "target--gunra--sector--pharmaceuticals"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "tool_refs": [
+        "tool--gunra-operation-double-barrel-openssh",
+        "tool--gunra-psexec"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "ttp_refs": [
+        "ttp--gunra-double-barrel-t1055",
+        "ttp--gunra-double-barrel-t1070-004",
+        "ttp--gunra-double-barrel-t1189",
+        "ttp--gunra-double-barrel-t1203",
+        "ttp--gunra-double-barrel-t1543-003",
+        "ttp--gunra-double-barrel-t1572"
+      ],
+      "victim_refs": [
+        "victim--gunra-operation-double-barrel-korea-2026"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "Groupingは資料内の比較・重複証拠を同じ分析単位へ収めるためのcontainerであり、包含object間のrelationshipを自動的に主張しない。匿名clusterは名称・国家・組織が示されないためActor/Intrusion Setへ昇格せず、Lazarusや他のCOPPERHEDGE利用者へ同一視しない。Diamondのadversaryはプロファイル側のGunraだけを指し、匿名側の帰属を表さない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gunra",
+          "name": "Gunra",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--gunra-ransomware"
+          ],
+          "ttp_refs": [
+            "ttp--gunra-double-barrel-t1055",
+            "ttp--gunra-double-barrel-t1070-004",
+            "ttp--gunra-double-barrel-t1189",
+            "ttp--gunra-double-barrel-t1203",
+            "ttp--gunra-double-barrel-t1486",
+            "ttp--gunra-double-barrel-t1543-003",
+            "ttp--gunra-double-barrel-t1572"
+          ],
+          "tool_refs": [
+            "tool--gunra-operation-double-barrel-openssh",
+            "tool--gunra-psexec"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--gunra-operation-double-barrel-network"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--gunra--country--south-korea",
+            "target--gunra--sector--academia",
+            "target--gunra--sector--pharmaceuticals"
+          ],
+          "victim_refs": [
+            "victim--gunra-operation-double-barrel-korea-2026"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-30T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "technical-overlap-analysis",
+          "phases": [
+            "Command and Control",
+            "Defense Evasion",
+            "Execution",
+            "Impact",
+            "Initial Access",
+            "Persistence"
+          ],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--gunra--country--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "stix_object_type": "grouping",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "grouping_context": "suspicious-activity"
     }
   ],
   "victim_cases": [
@@ -1160,6 +1608,69 @@
         "source--cisa-aa26-222a-gunra"
       ],
       "analyst_notes": "被害組織名と被害時期は勧告に記載がない。韓国は被害地であり攻撃元ではない。"
+    },
+    {
+      "victim_case_id": "victim--gunra-operation-double-barrel-korea-2026",
+      "name": "被害事例: Operation Double BarrelでGunraに感染した韓国の匿名組織",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "organization",
+      "case_status": "reported",
+      "description": "AhnLabが2026年3月に確認したGunra ransomware感染事例。韓国の医療機関サイトを経由したwatering holeから侵入し、データ窃取とfile encryptionに至った。報告の結論は被害組織を韓国の医薬品会社と記載する。AhnLabは同じ176.65.128[.]26が別のGunra攻撃で韓国の教育企業にも使われたと記載するが、組織名と個別の日付は公開していない。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "target_refs": [
+        "target--gunra--country--south-korea",
+        "target--gunra--sector--pharmaceuticals"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "ttp_refs": [
+        "ttp--gunra-double-barrel-t1189",
+        "ttp--gunra-double-barrel-t1203",
+        "ttp--gunra-double-barrel-t1486"
+      ],
+      "affected_assets": [
+        "Windows endpoints",
+        "組織データ",
+        "集中管理ソリューション"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "組織データを収集しFileZillaで持ち出した。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "Gunra ransomwareでfilesを暗号化した。"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "匿名被害組織と、同じIPが使われた教育企業の別事例を同一victimへ統合しない。本caseは本文p.49〜57の2026年3月Gunra感染事例のみを表す。"
     }
   ],
   "targets": {
@@ -1431,6 +1942,28 @@
           "source--cisa-aa26-222a-gunra"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--pharmaceuticals",
+        "name": "医薬品",
+        "description": "AhnLabはOperation Double Barrelで、Gunra ransomware attackが韓国の医薬品会社を標的にしたと明記している。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "watering-holeとして悪用された医療機関サイトと、最終被害組織として記載された医薬品会社を区別する。"
       }
     ],
     "analyst_notes": "標的は勧告が明示する業種と地域のみを登録する。個別の被害組織名は公開されていない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。",
@@ -2455,6 +2988,461 @@
         "source--cisa-aa26-222a-gunra"
       ],
       "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1003",
+      "tactic": "Credential Access",
+      "technique_id": "T1003",
+      "technique_name": "OS Credential Dumping",
+      "observed_behavior": "2026年3月のGunra感染事例で、管理不十分なWindows Server 2003からNTLM hashを窃取した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。既存CISA活動のT1003と証拠境界を混在させないため、source-scoped TTPとして保持する。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1021-001",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1021.001",
+      "technique_name": "Remote Services: Remote Desktop Protocol",
+      "observed_behavior": "2026年3月のGunra感染事例で、窃取した資格情報を使用してRDPで内部移動した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。既存CISA活動のT1021.001と証拠境界を混在させないため、source-scoped TTPとして保持する。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1105",
+      "tactic": "Command and Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "AhnLabが報告したGunra事例で、hotfix.exeへ改名したPsExecからPowerShellを実行し、176.65.128[.]26:443から追加payloadを取得した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "AhnLabはこのdownload patternをmultiple Gunra casesで確認したが、個別の実行月を明示しないためtimeはunknown。既存CISA活動のT1105と証拠境界を混在させない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1486",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "2026年3月のGunra感染事例で、最終的にGunra ransomwareを実行して組織内filesを暗号化した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "既存CISA活動のT1486と証拠境界を混在させないため、source-scoped TTPとして保持する。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1572",
+      "tactic": "Command and Control",
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "observed_behavior": "匿名state-sponsored cluster側の2026年1月事例とGunra側の2026年3月事例でOpenSSH reverse tunnelが確認され、Gunra側ではSocat port forwardingも使用された。両事例のOpenSSHは同一SSH鍵fingerprintを使用した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "同一鍵fingerprintを伴うtunneling patternはtechnical linkage evidenceであり、same actorの証明ではない。既存CISA活動のT1572と証拠境界を混在させない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1021-004",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1021.004",
+      "technique_name": "Remote Services: SSH",
+      "observed_behavior": "2026年3月のGunra感染事例で、OpenSSHを設置してpublic-key loginを行い、SSHを内部移動とremote controlに使用した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1046",
+      "tactic": "Discovery",
+      "technique_id": "T1046",
+      "technique_name": "Network Service Discovery",
+      "observed_behavior": "2026年3月のGunra感染事例で、SSH sessionから内部network rangeをscanした。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1055",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1055",
+      "technique_name": "Process Injection",
+      "observed_behavior": "2026年1月の匿名state-sponsored側と2026年3月のGunra側の双方で、金融セキュリティソフトウェアAのcrash後に正規のSyncHost.exeへmalicious codeをinjectした。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "T1055 sub-techniqueは資料だけでは限定しない。SyncHost.exeは正規processであり、単独では悪性IOCではない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1059-001",
+      "tactic": "Execution",
+      "technique_id": "T1059.001",
+      "technique_name": "Command and Scripting Interpreter: PowerShell",
+      "observed_behavior": "Gunra attackerはhotfix.exeへ改名したPsExecからPowerShell DownloadStringを実行し、176.65.128[.]26:443から追加payloadを取得した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "AhnLabはこのcommand patternをmultiple Gunra casesで確認したが、個別の実行月は明示していないためtimeはunknown。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1070-001",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1070.001",
+      "technique_name": "Indicator Removal: Clear Windows Event Logs",
+      "observed_behavior": "2026年3月のGunra感染事例でsystem event logsを削除した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1070-004",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1070.004",
+      "technique_name": "Indicator Removal: File Deletion",
+      "observed_behavior": "匿名state-sponsored側とGunra側の双方で、malwareをrandomな四文字名へrenameしてから削除するanti-forensic patternを使用した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "同じanti-forensic patternはtechnical linkage evidenceであり、same actorの証明ではない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1189",
+      "tactic": "Initial Access",
+      "technique_id": "T1189",
+      "technique_name": "Drive-by Compromise",
+      "observed_behavior": "匿名state-sponsored側とGunra側の双方で、同じ韓国医療機関websiteをwatering holeとして利用し、選別されたvisitorをvulnerability exploitationへ誘導した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "ATT&CK techniqueへの対応付けは分析者判断。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1203",
+      "tactic": "Execution",
+      "technique_id": "T1203",
+      "technique_name": "Exploitation for Client Execution",
+      "observed_behavior": "2026年1月と3月の両事例で、韓国の金融セキュリティソフトウェアAの同じ脆弱性をexploitしてinitial shellcodeを実行した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "製品名とvulnerability identifierはレポートで匿名化されており、CVEを推定しない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1543-003",
+      "tactic": "Persistence",
+      "technique_id": "T1543.003",
+      "technique_name": "Create or Modify System Process: Windows Service",
+      "observed_behavior": "両事例でloaderをWindows serviceとして登録し、uploadmgrというservice nameを高頻度に使用した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03",
+        "activity--operation-double-barrel-technical-overlap-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "service nameはrandom生成される場合もあり、uploadmgr単独では悪性判定に使わない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-double-barrel-t1569-002",
+      "tactic": "Execution",
+      "technique_id": "T1569.002",
+      "technique_name": "System Services: Service Execution",
+      "observed_behavior": "Gunra attackerはhotfix.exeへrenameしたPsExecからPowerShell commandを実行した。",
+      "activity_refs": [
+        "activity--gunra-operation-double-barrel-incident-2026-03"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infrastructure--gunra-operation-double-barrel-network"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--ahnlab-operation-double-barrel-2026"
+      ],
+      "analyst_notes": "AhnLabはPsExec patternをmultiple Gunra casesで確認したが、個別の実行月を示さないためtimeはunknown。"
     }
   ],
   "sources": [
@@ -2494,6 +3482,43 @@
         "ttp",
         "victim-case"
       ]
+    },
+    {
+      "source_id": "source--ahnlab-operation-double-barrel-2026",
+      "path": "https://image.ahnlab.com/atip/content/file/20260730/[AhnLab]Operation%20Double%20Barrel(ENG)(2026.07.30).pdf",
+      "url": "https://image.ahnlab.com/atip/content/file/20260730/[AhnLab]Operation%20Double%20Barrel(ENG)(2026.07.30).pdf",
+      "title": "APT Group Tracking Report: Operation Double Barrel",
+      "publisher": "AhnLab SEcurity intelligence Center (ASEC)",
+      "published_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-09-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "21615fcb3c88ffde1b6ce0527f8a8232943bc265d3a88f1ecf20cde1a14da1ab",
+      "analyst_notes": "公式ASEC掲載ページ https://asec.ahnlab.com/en/94696/ とPDF本文を直接確認。PDF表紙・公式記事・version historyはいずれもinitial versionを2026-07-30とする。取得したv1.2は2026-08-11にbroken linksだけを更新した版であり、file metadataの8月11日をpublication dateへ転用しない。全66頁のうちGunra/overlapはp.49〜58、IOC appendixはp.61〜65。",
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "assessment",
+        "capability",
+        "infrastructure",
+        "ioc",
+        "relationship-boundary",
+        "targeting",
+        "ttp",
+        "victim-case"
+      ]
     }
   ],
   "assessment": {
@@ -2521,28 +3546,40 @@
           "source--cisa-aa26-222a-gunra"
         ],
         "analyst_notes": ""
+      },
+      {
+        "statement": "AhnLabが比較した2026年1月の匿名state-sponsored threat group事例と2026年3月のGunra感染事例には、同じwatering holeと脆弱性、SyncHost.exe injection、file/service/argument pattern、SSH key fingerprint、network infrastructure、anti-forensic techniqueが重複する。技術的リンクの可能性は高いが、same actor、collaboration、shared infrastructure、initial-access brokerのいずれかは確定できない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--ahnlab-operation-double-barrel-2026"
+        ],
+        "analyst_notes": "AhnLab自身がsame actorとの結論を否定し、追加証拠が必要と明記する。Gunraをstate-sponsoredへ変更せず、匿名clusterをLazarus/COPPERHEDGE利用者へ同一視しない。"
       }
     ],
     "gaps": [
       "個別の被害組織名と各被害の発生時期が公開されていないため、被害規模と時系列を定量化できない。",
       "アフィリエイトごとのクラスタ分離ができておらず、どの侵入がコア運用主体によるものかを区別できない。",
       "Golden Communityブランドでの活動を示す独立した一次資料を未取得のため、alias scopeをoverlappingに留めている。",
-      "勧告が参照するTrend Micro、CYFIRMA、CloudSEK、Breakglass Intelligence各社の報告を原文未確認のため、Linux版の暗号化実装上の欠陥等はプロファイルへ取り込んでいない。"
+      "勧告が参照するTrend Micro、CYFIRMA、CloudSEK、Breakglass Intelligence各社の報告を原文未確認のため、Linux版の暗号化実装上の欠陥等はプロファイルへ取り込んでいない。",
+      "Operation Double Barrelの匿名state-sponsored clusterには安定した名称、帰属国、組織対応がなく、別Actor/Intrusion Setへ昇格できない。",
+      "AhnLab appendixのGunra IOCは個別のfirst/last observedを示さないため、publication dateとは分離してunknownのまま保持する。"
     ],
     "uncertainties": [
       "勧告はGunraをランサムウェアファミリー名としても運用主体名としても用いており、両者の境界が資料上明確でない。",
-      "Contiの流出コード由来という評価は他のConti派生ファミリーとも共通するため、コード類似性のみでのクラスタ同定はできない。"
+      "Contiの流出コード由来という評価は他のConti派生ファミリーとも共通するため、コード類似性のみでのクラスタ同定はできない。",
+      "Operation Double Barrelの重複はcollaboration、shared infrastructure、initial-access broker、operational-resource overlapの複数仮説で説明可能であり、現時点でmechanismを選べない。",
+      "Brandoor/COPPERHEDGE型のfile-creation traceはGunra事例のlogsで確認されたがfilesは回収されておらず、BrandoorをGunraの確定malware capabilityとは扱わない。"
     ],
-    "collection_notes": "共同勧告 AA26-222A(FBI/CISA/DC3/NSA/USSS/KNPA、2026-08-10公開)を一次資料として原文確認した。cisa.govのHTML版は403のため、media.defense.gov上の同一内容PDF(全21ページ)を取得して全文を確認した。IOCはtech-memoに未収録のため本プロファイルでは未取得であり、勧告のSTIX配布物からの取込は別作業とする。",
+    "collection_notes": "共同勧告 AA26-222A(FBI/CISA/DC3/NSA/USSS/KNPA、2026-08-10公開)とAhnLab ASEC Operation Double Barrel（初版2026-07-30、取得v1.2）を一次資料として原文確認した。AhnLabのGunra appendixに区分されたMD5 2件、URL 1件、IPv4 5件に加え、本文がGunraでも使用したと明記するjshosting[.]meのURL/domainを再生成可能なCSVへ収録した。SyncHost.exe、net.tmp/_net.tmp、inet.tmp、uploadmgr、SSH key fingerprint、PsExec/PowerShell pattern等はexact IOCへ混ぜずartifactとして分離した。IOCの個別観測時刻は原文にないためunknownとし、公開日を観測日へ転用しない。",
     "analyst_notes": "プロファイル昇格は2026-08-12の日次チェックでの未一致名検知と利用者承認に基づく。単一ベンダー初報ではなく政府・法執行機関の共同勧告であるため、AGENT.mdの昇格閾値を満たす。"
   },
   "free_text": {
-    "executive_summary": "Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用主体であり、2026年1月にダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始した。ランサムウェアは2022年に流出したContiのソースコードに由来する。インターネット公開のファイアウォール・VPN機器の既知脆弱性悪用を主な初期侵入手段とし、データ窃取後にChaCha20 + RSA-4096で暗号化する。2026年8月10日にFBI・CISA・DC3・NSA・USSS・韓国国家警察庁の共同勧告AA26-222Aが公開された。",
-    "history": "2025年4月にFBIが初観測。同年6〜7月にはTor上のDLSのclearnetミラーdatapub[.]newsを運用した。2025年半ばにLinux版が追加され、クロスプラットフォーム化が進んだ。2026年1月にRaaSアフィリエイトプログラムを開始し、Golden Communityという新ブランドの採用が観測された。2026年3月までにDLSを別の.onionアドレスへ移行し、2026年7月まで当該アドレスが観測されている。",
-    "capability_details": "Windows版ロッカーはマルチスレッド構成で並列暗号化を行い、ChaCha20 + RSA-4096を使用する。暗号化済みファイルには.ENCRTを付与する(2025年7月の1検体では.CRYPT)。FindFirstFileW/FindNextFileWでA〜Zの全ドライブを走査し、C:\\Windows等のシステムディレクトリと.exe/.dll/.sys等を除外する二段フィルタで対象を絞る。IsDebuggerPresentによるデバッガ検知を備え、DNSやHTTPの通信を伴わない自己完結型である。持ち出しにはmain.exe(OneDrive/SharePoint)、7-Zip、RClone、FileZillaを、横展開と資格情報取得にはImpacketとMimikatzを使用する。",
-    "infrastructure_details": "Tor上のDLSと交渉ポータルを中核とし、被害者にはClient IDと初期パスワードが割り当てられる。交渉はTorポータルまたはqToxで行われ、Proton MailとGmailのアドレスも使用される。勧告は2025年初頭以降のIPアドレス・ドメイン、恐喝交渉用メールアドレス、qTox ID、悪性ファイルのSHA256、Fortinet機器上に作成される不正アカウントforticloud-syncを掲載している。個別のIOCは本プロファイルには未取得である。",
-    "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=全世界。日本は確認時に個別国として保持する。\n\n勧告は被害組織が南北アメリカ、欧州、中東、アフリカ、アジア太平洋にまたがると記載する。個別国として明示されているのはKNPAが観測した韓国の事例のみである。",
-    "additional_notes": "本プロファイルは2026-08-12の日次更新チェックで既存プロファイル未一致名(観測25件)として検知され、共同勧告AA26-222Aの原文確認後に昇格した。status: draftから開始する。GunraはBlackByteのcatalog alias「Conti」経由で誤一致していたが、Contiとの関係はコード系譜のみであり、レビューキュー側では不採用としている。"
+    "executive_summary": "Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用主体であり、2026年1月にRaaSアフィリエイトプログラムを開始した。AhnLabは2026年3月の韓国組織へのGunra感染が、同年1月の匿名state-sponsored clusterによるwatering-hole intrusionと、脆弱性、file/service/argument pattern、SSH key、network infrastructureを共有したと報告した。ただしsame actorや国家帰属は立証されず、技術的重複としてのみ保持する。",
+    "history": "2025年4月にFBIが初観測。同年6〜7月にはTor上のDLSのclearnet mirror datapub[.]newsを運用した。2025年半ばにLinux版が追加され、2026年1月にRaaS affiliate programを開始した。AhnLabは2026年1月の匿名cluster事例と3月のGunra感染をOperation Double Barrelとして比較した。DLSは2026年3月までに別の.onion addressへ移行し、2026年7月まで観測されている。",
+    "capability_details": "Windows版lockerはChaCha20 + RSA-4096で暗号化する。CISA共同勧告が記載するImpacket、Mimikatz、main.exe、7-Zip、RClone、FileZilla等に加え、AhnLabの2026年3月事例ではwatering hole、client-software exploit、SyncHost.exe injection、OpenSSH/Socat tunneling、hotfix.exeへrenameしたPsExecとPowerShell、uploadmgr service、RDP/SSH lateral movement、event-log deletionを確認した。Brandoor/COPPERHEDGE型traceはfiles未回収のため確定malware capabilityへ昇格しない。",
+    "infrastructure_details": "Tor上のDLSと交渉portalに加え、AhnLabはOperation Double Barrel関連のGunra network observableを報告した。176.65.128[.]26は匿名clusterのOpenSSH reverse tunnelとGunraのpayload download/C2の双方で、jshosting[.]meは両者のexploit-script distributionで使われた。anyonecdn[.]comと4件の追加IPもappendixのwatering-hole/Gunra両sectionへ掲載される。いずれも非専有として扱い、個別観測時刻はunknownのまま保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=全世界。AhnLabはOperation Double Barrel関連のGunra攻撃で韓国の医薬品会社と教育企業を明記する。watering-holeに悪用された医療機関websiteと最終victim industryを区別する。帰属国は資料に示されていない。",
+    "additional_notes": "GunraはBlackByteのcatalog alias「Conti」経由で誤一致していたが、Contiとの関係はcode lineageのみである。Operation Double Barrelの匿名state-sponsored clusterも安定した名称や国帰属がなく、LazarusやCOPPERHEDGE利用者とのexact identityへ昇格しない。技術的重複はGroupingに閉じ込め、根拠のないcollaborates-with relationshipを生成しない。"
   },
   "associated_entities": [],
   "entity_relationships": [],

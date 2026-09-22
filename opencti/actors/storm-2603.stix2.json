@@ -25,31 +25,31 @@
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
-      "id": "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Exploit Public-Facing Application",
-      "description": "中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
+      "name": "Remote Desktop Software",
+      "description": "Storm-2603がZoho Assist Unattended Agentのインストーラーを展開し、ユーザーがログオンしていない端末への持続的・秘匿的な遠隔操作を試みた。",
       "external_references": [
         {
           "source_name": "mitre-attack",
-          "external_id": "T1190",
-          "url": "https://attack.mitre.org/techniques/T1190/"
+          "external_id": "T1219.002",
+          "url": "https://attack.mitre.org/techniques/T1219/002/"
         },
         {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/",
-          "external_id": "source--daily-5c143f1d91377b49cfcc",
-          "url": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/"
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
         }
       ],
-      "x_profile_object_id": "ttp--activity-rule--af1214636f4d588f7138",
-      "x_tactic": "Initial Access",
+      "x_profile_object_id": "ttp--storm-2603--zoho-assist-t1219-002",
+      "x_tactic": "Command And Control",
       "x_activity_refs": [
-        "activity--daily-b80b607914fb7f62f988"
+        "activity--storm-2603--zoho-assist-incident-2026"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -65,9 +65,689 @@
         "status": "unknown",
         "basis": "not-stated"
       },
-      "x_confidence": "medium",
-      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
-      "confidence": 60,
+      "x_confidence": "high",
+      "x_analyst_notes": "Talosの個別記述からT1219.002へ分析者対応付けした。四半期全体のATT&CK表を一括してStorm-2603へ帰属していない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--224cef0d-50a2-415c-b36f-246442f5ec57",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "OS Credential Dumping: LSASS Memory",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後にMimikatzを使って資格情報を取得したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1003.001",
+          "url": "https://attack.mitre.org/techniques/T1003/001/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-toolshell-credential-dumping",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "Mimikatzの利用記述をT1003.001へ分析者対応付けした。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--23246ec6-8161-4155-8cdc-db18b405c960",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "System Services: Service Execution",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後の横展開にPsExecとImpacketを使用したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1569.002",
+          "url": "https://attack.mitre.org/techniques/T1569/002/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-toolshell-service-execution",
+      "x_tactic": "Lateral Movement",
+      "x_activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoftの具体的なツール利用記述をT1569.002へ分析者対応付けした。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--30eae542-28c0-4bd1-ad66-92dd5061dd5c",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Services: SSH",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がVisual Studio Code Remote - SSHを用いてSSH経由の遠隔アクセスを行ったと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1021.004",
+          "url": "https://attack.mitre.org/techniques/T1021/004/"
+        },
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-parallel-ssh",
+      "x_tactic": "Lateral Movement",
+      "x_activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "正規開発機能の利用であり、MicrosoftやVS Code利用者を攻撃主体と解釈しない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--37cae794-8d2e-436d-a9dc-1f80f20e9af3",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Access Software",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がVelociraptorとZoho Assistを遠隔アクセス・管理に利用したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219",
+          "url": "https://attack.mitre.org/techniques/T1219/"
+        },
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-parallel-remote-access-software",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "正規ツールの利用であり、製品ベンダーや他の利用者を攻撃主体と解釈しない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4b00b461-26ca-467e-a940-5ba88f602670",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Protocol Tunneling",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がCloudflare Tunnelを遠隔アクセス経路として利用したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1572",
+          "url": "https://attack.mitre.org/techniques/T1572/"
+        },
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-parallel-protocol-tunneling",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--storm-2603--parallel-intrusion-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "共有サービス全体を悪性インフラへ昇格しない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--6f6db886-c381-4308-ad23-718d506786fe",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Data Encrypted for Impact",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後にWarlockランサムウェアを展開して暗号化を実行したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1486",
+          "url": "https://attack.mitre.org/techniques/T1486/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-toolshell-encryption-impact",
+      "x_tactic": "Impact",
+      "x_activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "x_malware_refs": [
+        "malware--warlock-ransomware"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "Warlockによる暗号化をT1486へ分析者対応付けした。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exploit Public-Facing Application",
+      "description": "Microsoftは、Storm-2603が2025年7月18日以降にオンプレミスSharePointのToolShell脆弱性（CVE-2025-49706、CVE-2025-49704、CVE-2025-53770）を悪用して初期アクセスを得たと報告した。MicrosoftがStorm-2603へ個別帰属していない被害組織・地域は含めない。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--af1214636f4d588f7138",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftのStorm-2603固有記述だけをT1190へ対応付けた。被害組織・地域や公開サーバー総数をこのアクターへ一括帰属していない。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--c92b2355-57d3-4927-8f3e-8b86f0f0497a",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Domain or Tenant Policy Modification: Group Policy Modification",
+      "description": "Microsoftは、Storm-2603がグループポリシーを用いてWarlockランサムウェアを組織内へ配布したと報告した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1484.001",
+          "url": "https://attack.mitre.org/techniques/T1484/001/"
+        },
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "ttp--storm-2603-toolshell-domain-policy",
+      "x_tactic": "Defense Evasion",
+      "x_activity_refs": [
+        "activity--storm-2603--toolshell-warlock-2025"
+      ],
+      "x_malware_refs": [
+        "malware--warlock-ransomware"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "グループポリシーによる配布をT1484.001へ分析者対応付けした。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--500330ea-284a-4612-8ce2-3ccfc534f75e",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "update.updatemicfosoft.com"
+    },
+    {
+      "type": "domain-name",
+      "spec_version": "2.1",
+      "id": "domain-name--52f925ee-7ede-420a-b1f4-e887e6ddf041",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "value": "msupdate.updatemicfosoft.com"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1875d7b7-cb11-4456-9c12-d9c261983438",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Hunting pivot: domain",
+      "description": "MicrosoftがStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "pattern": "[domain-name:value = 'msupdate.updatemicfosoft.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "hunting-pivot--storm-2603-msupdate-c2",
+      "x_hunting_pivot": true,
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "domain",
+      "x_pivot_value": "msupdate.updatemicfosoft.com",
+      "x_attribution_scope": "actor-specific",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: msupdate.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 0,
+      "x_observation_source_refs": [],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--210ff2b4-8da8-4490-b6ce-1666e7aded60",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Hunting pivot: domain",
+      "description": "Microsoftが4件のweb-shellの通信先とactor-specific hunting queryでStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "pattern": "[domain-name:value = 'update.updatemicfosoft.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "hunting-pivot--storm-2603-update-c2",
+      "x_hunting_pivot": true,
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "domain",
+      "x_pivot_value": "update.updatemicfosoft.com",
+      "x_attribution_scope": "actor-specific",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表とhunting queryだけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: update.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 0,
+      "x_observation_source_refs": [],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--84b30b62-48b2-4a7d-9ebc-f4d671ff3009",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Hunting pivot: ipv4",
+      "description": "MicrosoftがStorm-2603のpost-exploitation C2と明示したIPv4。現在のサービス、証明書、同一ネットワーク上の近接資産を調べるためのピボット。",
+      "pattern": "[ipv4-addr:value = '65.38.121.198']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "hunting-pivot--storm-2603-post-exploitation-c2-ip",
+      "x_hunting_pivot": true,
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "ipv4",
+      "x_pivot_value": "65.38.121.198",
+      "x_attribution_scope": "actor-specific",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "shodan",
+          "query": "net:65.38.121.198/32",
+          "purpose": "現在の公開サービス、証明書、ホスト名を確認し、追加観測との時間的近接性を検証する。",
+          "requires_validation": true,
+          "false_positive_notes": "VPS再割当、共有ホスティング、第三者による再利用があり得る。IP一致だけで現在のサービスや近接IPをStorm-2603へ帰属しない。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 0,
+      "x_observation_source_refs": [],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2603 updatemicfosoft C2 infrastructure",
+      "description": "MicrosoftがStorm-2603 C2と明示するupdate.updatemicfosoft.comとmsupdate.updatemicfosoft.com。前者は4件のweb-shell SHA256の通信先かつactor-specific hunting queryの対象、後者はIOC表がC2 domainとして独立掲載するFQDNである。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "infrastructure--storm-2603-updatemicfosoft-c2",
+      "x_confidence": "high",
+      "x_analyst_notes": "記事公開日とCampaign開始日は個別C2のfirst/last_observedへ転用しない。現在の稼働状態は未確認。",
+      "infrastructure_types": [
+        "domain",
+        "c2"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Storm-2603 post-exploitation C2 65.38.121.198",
+      "description": "MicrosoftのIOC表がStorm-2603のpost-exploitation C2と明示する65.38.121.198。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "infrastructure--storm-2603-post-exploitation-c2",
+      "x_confidence": "high",
+      "x_analyst_notes": "IP再割当・共有ホスティングを考慮し、現在のサービス一致だけでStorm-2603へ帰属しない。記事公開日を観測日へ転用しない。",
+      "infrastructure_types": [
+        "ipv4",
+        "c2"
+      ],
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -75,7 +755,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-21T08:16:06Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -83,78 +763,80 @@
       "aliases": [],
       "description": "Storm-2603の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
-      "external_references": [],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
       "x_profile_id": "actor--storm-2603",
       "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
-        "countries": [],
+        "countries": [
+          "China"
+        ],
         "sponsor_type": "unknown",
         "organizations": [],
-        "assessment": "",
-        "confidence": "unknown",
-        "evidence_refs": [],
-        "analyst_notes": ""
+        "assessment": "Microsoft assesses with medium confidence that Storm-2603 is a China-based threat actor and states that it has not identified links to other known Chinese threat actors.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--microsoft-toolshell-2025"
+        ],
+        "analyst_notes": "China-basedはMicrosoftの明示的な中確度評価として保持する。国家支援、政府組織との関係、動機は同資料から推定しない。"
       },
       "x_free_text": {
         "executive_summary": "Storm-2603の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
         "history": "",
-        "capability_details": "",
-        "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "capability_details": "Microsoftは2025年7月のToolShell CampaignでWarlock展開を明示し、別にStorm-2603による過去のLockBit利用を報告する。LockBitの活動・亜種・時期は不明なためactor-level capabilityに限定し、ToolShell Campaignへ接続しない。",
+        "infrastructure_details": "Microsoft一次記事がStorm-2603へ明示的に対応付けたC2はupdate.updatemicfosoft.com、msupdate.updatemicfosoft.com、65.38.121.198。個別観測日は不明で、現在の稼働状態も未確認。",
+        "targeting_details": "構造化ターゲット監査: Storm-2603固有に確定できる標的国・地域は未特定。中国はMicrosoftの帰属評価であり標的ではない。ToolShellの個別被害組織や地域は、Microsoft資料がStorm-2603へ個別帰属していない限り収録しない。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck_assessment": "matched",
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
-      "type": "location",
+      "type": "ipv4-addr",
       "spec_version": "2.1",
-      "id": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
-      "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "ipv4-addr--5b608881-8c10-4284-babe-6113ddfd6095",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "United States of America",
-      "x_target_category": "countries",
-      "x_profile_object_id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
-      "confidence": 100,
-      "x_opencti_location_type": "Country",
-      "country": "USA",
-      "x_opencti_reference_id": "location--dbac05fd-3616-4d7c-9bcd-e6b867c1f5be",
-      "x_opencti_aliases": [
-        "US",
-        "USA",
-        "米国"
-      ],
-      "latitude": 37.09024,
-      "longitude": -95.712891,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+      "value": "65.38.121.198"
     },
     {
-      "type": "location",
+      "type": "malware",
       "spec_version": "2.1",
-      "id": "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
-      "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "malware--05aa0df1-7dee-48c8-a11d-591b5b006838",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "China",
-      "x_target_category": "countries",
-      "x_profile_object_id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
-      "confidence": 100,
-      "x_opencti_location_type": "Country",
-      "country": "CHN",
-      "x_opencti_reference_id": "location--bce7047c-c986-4601-9395-d46f577ce237",
-      "x_opencti_aliases": [
-        "CHN",
-        "CN",
-        "中国"
+      "name": "LockBit ransomware",
+      "description": "MicrosoftはStorm-2603が過去にLockBitランサムウェアを展開したと報告するが、対象となる活動・亜種・利用時期は示していない。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
       ],
-      "latitude": 35.86166,
-      "longitude": 104.195397,
+      "x_profile_object_id": "malware--storm-2603-lockbit-ransomware",
+      "x_confidence": "high",
+      "x_analyst_notes": "actor-levelの過去利用実績としてのみ保持する。Microsoftが2025年7月18日以降のToolShell Campaignで明示したのはWarlockであり、LockBitを同Campaignのmalware_refsへ接続しない。",
+      "is_family": true,
+      "malware_types": [
+        "ransomware"
+      ],
+      "aliases": [
+        "LockBit"
+      ],
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -192,9 +874,91 @@
     {
       "type": "note",
       "spec_version": "2.1",
+      "id": "note--36163cdf-68c9-4ec2-80ae-3daac2b048eb",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: domain",
+      "content": "MicrosoftがStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "object_refs": [
+        "indicator--1875d7b7-cb11-4456-9c12-d9c261983438",
+        "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--storm-2603-msupdate-c2",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "domain",
+      "x_pivot_value": "msupdate.updatemicfosoft.com",
+      "x_attribution_scope": "actor-specific",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-msupdate-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "MicrosoftのIOC表がmsupdate.updatemicfosoft.comをStorm-2603のC2 domainと明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: msupdate.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
       "id": "note--739cbcff-0222-4c67-8216-06af8a9c6719",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-09-21T01:54:43Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -204,7 +968,215 @@
         "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 0,
+      "x_artifact_observation_count": 1,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--8aae18fa-c9df-4cb0-8976-a42ee3b39589",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: ipv4",
+      "content": "MicrosoftがStorm-2603のpost-exploitation C2と明示したIPv4。現在のサービス、証明書、同一ネットワーク上の近接資産を調べるためのピボット。",
+      "object_refs": [
+        "indicator--84b30b62-48b2-4a7d-9ebc-f4d671ff3009",
+        "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--storm-2603-post-exploitation-c2-ip",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "ipv4",
+      "x_pivot_value": "65.38.121.198",
+      "x_attribution_scope": "actor-specific",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-post-exploitation-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "MicrosoftのIOC表が65.38.121.198をStorm-2603のpost-exploitation C2と明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表だけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "shodan",
+          "query": "net:65.38.121.198/32",
+          "purpose": "現在の公開サービス、証明書、ホスト名を確認し、追加観測との時間的近接性を検証する。",
+          "requires_validation": true,
+          "false_positive_notes": "VPS再割当、共有ホスティング、第三者による再利用があり得る。IP一致だけで現在のサービスや近接IPをStorm-2603へ帰属しない。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--c2936e74-778c-42dd-982b-d0d49c1712dc",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: domain",
+      "content": "Microsoftが4件のweb-shellの通信先とactor-specific hunting queryでStorm-2603 C2と明示した完全修飾ドメイン。現在のDNS・証明書・サービスと同時期の近接インフラを調べるためのピボット。",
+      "object_refs": [
+        "indicator--210ff2b4-8da8-4490-b6ce-1666e7aded60",
+        "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e"
+      ],
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--storm-2603-update-c2",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "domain",
+      "x_pivot_value": "update.updatemicfosoft.com",
+      "x_attribution_scope": "actor-specific",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--storm-2603-update-c2-microsoft",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_ref": "source--microsoft-toolshell-2025",
+          "activity_ref": "activity--storm-2603--toolshell-warlock-2025",
+          "context": "Microsoftが4件のweb-shellの通信先と独自のhunting queryでupdate.updatemicfosoft.comをStorm-2603 C2と明示する。",
+          "count": 1,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_observation_count": 1,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "一次資料の過去のIOC表とhunting queryだけを確認し、受動スキャンは実施していない。",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "censys",
+          "query": "dns.names: update.updatemicfosoft.com",
+          "purpose": "当該FQDNに結び付く証明書・サービス・ホストを確認し、既知活動と時間的に近接する追加インフラ候補を抽出する。",
+          "requires_validation": true,
+          "false_positive_notes": "DNS再登録、sinkhole、共有証明書、後続の無関係な運用があり得る。FQDN一致だけで現在のホストや通信をStorm-2603へ帰属せず、観測時刻・証明書・サービス・追加IOCで裏付ける。"
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Microsoft記事の公開日は観測時刻へ転用していない。継続利用は未検証。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--069445ed-16c3-4000-9900-d6b022fc96ee",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--6f6db886-c381-4308-ad23-718d506786fe",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後にWarlockランサムウェアを展開して暗号化を実行したと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -254,23 +1226,23 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--14490e0a-946a-40e7-b9fb-586ea4bf4cc7",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "relationship--0ce64aff-f0f7-4b54-a81a-eb8c6d1f0c18",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
-      "target_ref": "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
-      "description": "Storm-2603 targets 米国 (profile target category: countries).\n\nEvidence: 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的として明示された国・地域。",
-      "x_confidence": "medium",
+      "target_ref": "attack-pattern--4b00b461-26ca-467e-a940-5ba88f602670",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がCloudflare Tunnelを遠隔アクセス経路として利用したと報告した。",
+      "x_confidence": "high",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441",
-          "url": "https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/"
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
         }
       ],
       "x_first_observed": {
@@ -291,7 +1263,175 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       },
-      "confidence": 60,
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--125744cc-cbd6-46e0-8248-1b4361bd9ae8",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--30eae542-28c0-4bd1-ad66-92dd5061dd5c",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がVisual Studio Code Remote - SSHを用いてSSH経由の遠隔アクセスを行ったと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ebb5123-1969-4505-83da-d0d86b9a3473",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+      "target_ref": "domain-name--52f925ee-7ede-420a-b1f4-e887e6ddf041",
+      "description": "infrastructure--storm-2603-updatemicfosoft-c2 explicitly contains the observable represented by indicator--sha256:5fbb37cc7b7c8df1d43097867aacc70ede20f751f10848d9a18cd8fb3db53d6a.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-toolshell-2025",
+          "value": "2025-07-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-toolshell-2025",
+          "description": "Repository source: profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:5fbb37cc7b7c8df1d43097867aacc70ede20f751f10848d9a18cd8fb3db53d6a",
+      "x_observation_source_refs": [
+        "source--microsoft-toolshell-2025"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--203e8ea3-493a-4bd1-9ee6-89bfa91196b9",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "malware--05aa0df1-7dee-48c8-a11d-591b5b006838",
+      "description": "Storm-2603 uses LockBit ransomware.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2a09bd4c-bdf8-4599-ac38-db9445228bc0",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--6e4d5a36-ac2c-4205-9f22-77a41a20295c",
+      "description": "Storm-2603 uses PsExec.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -299,28 +1439,28 @@
       "spec_version": "2.1",
       "id": "relationship--395611fc-8a78-4c85-8228-3f40521d87f7",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-21T18:40:58Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
       "target_ref": "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
-      "description": "中国拠点Storm-2603がToolShellゼロデイを用いSharePointへWarlockランサムウェアを投入 Shadowserverは脆弱な公開サーバー420台超を発見、これらの脆弱性は7月18日には実際に攻撃に悪用されていることが確認されている 侵入後Mimikatz・PsExec等で横展開しGPOで暗号化ペイロードを配布 CVE-2025-49706/49704/53770が悪用、CISAは連邦機関に即時パッチを命令 NNSAなど米政府機関や欧州中東政府も被害、Microsoftは早急な更新を勧告",
-      "x_confidence": "medium",
+      "description": "Microsoftは、Storm-2603が2025年7月18日以降にオンプレミスSharePointのToolShell脆弱性（CVE-2025-49706、CVE-2025-49704、CVE-2025-53770）を悪用して初期アクセスを得たと報告した。MicrosoftがStorm-2603へ個別帰属していない被害組織・地域は含めない。",
+      "x_confidence": "high",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/",
-          "external_id": "source--daily-5c143f1d91377b49cfcc",
-          "url": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/"
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
       },
       "x_last_observed": {
         "value": null,
@@ -329,34 +1469,79 @@
         "basis": "not-stated"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
+        "first": "source-stated",
         "last": "not-stated",
-        "first_precision": "unknown",
+        "first_precision": "day",
         "last_precision": "unknown"
       },
-      "confidence": 60,
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--830bce43-1bdd-40dd-aaae-dc75fb20ae18",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "relationship--3e1dfe49-10c2-4300-91dd-a089ccc74a1a",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
-      "target_ref": "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
-      "description": "Storm-2603 targets 中国 (profile target category: countries).\n\nEvidence: 活動「ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢」の記述で標的として明示された国・地域。",
-      "x_confidence": "medium",
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+      "target_ref": "domain-name--500330ea-284a-4612-8ce2-3ccfc534f75e",
+      "description": "infrastructure--storm-2603-updatemicfosoft-c2 explicitly contains the observable represented by indicator--sha256:413d69ba1149bfb19494b5b932c2c33d1815972f44c3af0fbe8b1f990089d5e7.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-toolshell-2025",
+          "value": "2025-07-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
-          "external_id": "source--daily-0e75e392e2685f601677",
-          "url": "https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/"
+          "source_name": "local-source",
+          "external_id": "source--microsoft-toolshell-2025",
+          "description": "Repository source: profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:413d69ba1149bfb19494b5b932c2c33d1815972f44c3af0fbe8b1f990089d5e7",
+      "x_observation_source_refs": [
+        "source--microsoft-toolshell-2025"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+      "description": "Storm-2603 uses Zoho Assist Unattended Agent.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        },
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
         }
       ],
       "x_first_observed": {
@@ -377,77 +1562,611 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       },
-      "confidence": 60,
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+      "description": "Storm-2603がZoho Assist Unattended Agentのインストーラーを展開し、ユーザーがログオンしていない端末への持続的・秘匿的な遠隔操作を試みた。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7768322b-1774-46d6-ae32-1e0b2bfd4a11",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+      "description": "Storm-2603 uses Storm-2603 updatemicfosoft C2 infrastructure.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7eb9273f-3857-4ffa-8632-9c4056df9df1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--1c64e59b-10ab-48ef-b776-4c2c4fbc9e99",
+      "description": "Storm-2603 uses Mimikatz.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8ffd24a4-2a84-4c78-bc8d-ec9f979d6eb3",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--37cae794-8d2e-436d-a9dc-1f80f20e9af3",
+      "description": "Microsoft DARTは、並行侵入事例でStorm-2603側がVelociraptorとZoho Assistを遠隔アクセス・管理に利用したと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9c9b91fe-2a29-4ce0-a9da-8694492264bc",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "consists-of",
+      "source_ref": "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
+      "target_ref": "ipv4-addr--5b608881-8c10-4284-babe-6113ddfd6095",
+      "description": "infrastructure--storm-2603-post-exploitation-c2 explicitly contains the observable represented by indicator--sha256:0d210a15f63867ceb5e756f682d53c01ace20e1c5b9e85f4180f42767baaca58.",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_temporal_basis": "report-published-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--microsoft-toolshell-2025",
+          "value": "2025-07-22T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ],
+      "external_references": [
+        {
+          "source_name": "local-source",
+          "external_id": "source--microsoft-toolshell-2025",
+          "description": "Repository source: profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv"
+        }
+      ],
+      "x_profile_indicator_id": "indicator--sha256:0d210a15f63867ceb5e756f682d53c01ace20e1c5b9e85f4180f42767baaca58",
+      "x_observation_source_refs": [
+        "source--microsoft-toolshell-2025"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9f43b69a-1306-42ff-906a-1b483f1d139c",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--c92b2355-57d3-4927-8f3e-8b86f0f0497a",
+      "description": "Microsoftは、Storm-2603がグループポリシーを用いてWarlockランサムウェアを組織内へ配布したと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aa41033a-8697-4c98-a800-aeaf470426c0",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--32c958f0-3abc-4d13-a772-908bfb37829c",
+      "description": "Storm-2603 uses Visual Studio Code Remote - SSH.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cbfc27e6-8e18-42b0-abb7-5f38f78ab5df",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--d1a8f74b-34dc-4832-b656-dd23a997fba5",
+      "description": "Storm-2603 uses Cloudflare Tunnel.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d77341ae-7ea9-4a92-b4f4-45e94e8d65e1",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--f7b2bb7f-5501-44b8-ba2d-330f138a770e",
+      "description": "Storm-2603 uses Impacket.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d8e6d1a9-667e-4a2f-82df-cb4c9a12f590",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--23246ec6-8161-4155-8cdc-db18b405c960",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後の横展開にPsExecとImpacketを使用したと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d9490d1d-034a-4493-81df-3bcbee144c99",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "tool--f1d793e4-6ac6-4144-908f-f67cf4bc14b2",
+      "description": "Storm-2603 uses Velociraptor.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e09663e2-6685-4d39-bed1-6942c19ddd12",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
+      "description": "Storm-2603 uses Storm-2603 post-exploitation C2 65.38.121.198.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f36bae53-acc8-4dcd-a005-cd6adcbd8fe3",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+      "target_ref": "attack-pattern--224cef0d-50a2-415c-b36f-246442f5ec57",
+      "description": "Microsoftは、Storm-2603がToolShell侵入後にMimikatzを使って資格情報を取得したと報告した。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "not-stated",
+        "first_precision": "day",
+        "last_precision": "unknown"
+      },
+      "start_time": "2025-07-18T00:00:00Z",
+      "confidence": 85,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "report",
       "spec_version": "2.1",
-      "id": "report--3df96056-ed7e-4e89-b8aa-e93b7860eeb2",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "report--1e31a51f-e5c0-4a06-9bf0-67bc4d31986f",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Microsoft: SharePointサーバーもランサムウェア攻撃の標的に",
+      "name": "One intrusion, two cyberattackers: Uncovering parallel threat activity",
       "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
       "report_types": [
         "threat-report"
       ],
-      "published": "2025-07-24T00:00:00Z",
+      "published": "2026-06-22T00:00:00Z",
       "object_refs": [
-        "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
-        "relationship--395611fc-8a78-4c85-8228-3f40521d87f7"
+        "attack-pattern--30eae542-28c0-4bd1-ad66-92dd5061dd5c",
+        "attack-pattern--37cae794-8d2e-436d-a9dc-1f80f20e9af3",
+        "attack-pattern--4b00b461-26ca-467e-a940-5ba88f602670",
+        "relationship--0ce64aff-f0f7-4b54-a81a-eb8c6d1f0c18",
+        "relationship--125744cc-cbd6-46e0-8248-1b4361bd9ae8",
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "relationship--8ffd24a4-2a84-4c78-bc8d-ec9f979d6eb3",
+        "relationship--aa41033a-8697-4c98-a800-aeaf470426c0",
+        "relationship--cbfc27e6-8e18-42b0-abb7-5f38f78ab5df",
+        "relationship--d9490d1d-034a-4493-81df-3bcbee144c99",
+        "tool--32c958f0-3abc-4d13-a772-908bfb37829c",
+        "tool--d1a8f74b-34dc-4832-b656-dd23a997fba5",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+        "tool--f1d793e4-6ac6-4144-908f-f67cf4bc14b2"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "external_id": "source--daily-5c143f1d91377b49cfcc",
-          "url": "https://www.bleepingcomputer.com/news/security/microsoft-sharepoint-servers-also-targeted-in-ransomware-attacks/"
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
         }
       ],
       "x_opencti_source_report": true,
-      "x_source_id": "source--daily-5c143f1d91377b49cfcc",
+      "x_source_id": "source--microsoft-storm2603-parallel-intrusion-2026",
       "x_evidence_slice_scope": "actor:actor--storm-2603",
-      "x_source_publisher": "bleepingcomputer.com",
-      "x_source_type": "osint-report",
-      "x_published_precision": "day",
-      "x_published_status": "known",
-      "x_published_basis": "daily-news-file-date",
-      "x_temporal_role": "publication-only"
-    },
-    {
-      "type": "report",
-      "spec_version": "2.1",
-      "id": "report--7326f1e0-df7f-498b-b78d-3416d19d9af1",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Disrupting active exploitation of on-premises SharePoint vulnerabilities",
-      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
-      "report_types": [
-        "threat-report"
-      ],
-      "published": "2025-07-22T00:00:00Z",
-      "object_refs": [
-        "malware--d721d3c8-778b-4669-ac00-b66cf280d4e5",
-        "relationship--0bf96977-5931-4cc2-9a51-b9c7ee780312"
-      ],
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
-      "external_references": [
-        {
-          "source_name": "Microsoft Threat Intelligence",
-          "external_id": "source--microsoft-toolshell-2025",
-          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
-        }
-      ],
-      "x_opencti_source_report": true,
-      "x_source_id": "source--microsoft-toolshell-2025",
-      "x_evidence_slice_scope": "actor:actor--storm-2603",
-      "x_source_publisher": "Microsoft Threat Intelligence",
+      "x_source_publisher": "Microsoft Defender Experts Cybersecurity Incident Response",
       "x_source_type": "vendor-threat-research",
       "x_published_precision": "day",
       "x_published_status": "known",
@@ -457,81 +2176,322 @@
     {
       "type": "report",
       "spec_version": "2.1",
-      "id": "report--ccbee0ed-6a60-49e4-92e6-7ec54ae4130a",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "report--28f174e9-5176-46c8-a6a1-f384af0dcc70",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
+      "name": "IR Trends Q2 2026: Phishing and weaponized remote management tools drive attack chains",
       "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
       "report_types": [
         "threat-report"
       ],
-      "published": "2025-08-05T00:00:00Z",
+      "published": "2026-07-28T00:00:00Z",
       "object_refs": [
-        "relationship--830bce43-1bdd-40dd-aaae-dc75fb20ae18"
+        "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "external_id": "source--daily-0e75e392e2685f601677",
-          "url": "https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/"
+          "source_name": "Cisco Talos Incident Response",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
         }
       ],
       "x_opencti_source_report": true,
-      "x_source_id": "source--daily-0e75e392e2685f601677",
+      "x_source_id": "source--talos-ir-trends-q2-2026",
       "x_evidence_slice_scope": "actor:actor--storm-2603",
-      "x_source_publisher": "bleepingcomputer.com",
-      "x_source_type": "osint-report",
+      "x_source_publisher": "Cisco Talos Incident Response",
+      "x_source_type": "vendor-incident-response",
       "x_published_precision": "day",
       "x_published_status": "known",
-      "x_published_basis": "daily-news-file-date",
+      "x_published_basis": "source-publication",
       "x_temporal_role": "publication-only"
     },
     {
       "type": "report",
       "spec_version": "2.1",
-      "id": "report--f051cb0c-521c-47ec-b8a0-01f33e3e3878",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "report--7326f1e0-df7f-498b-b78d-3416d19d9af1",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
+      "name": "profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv",
       "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
       "report_types": [
         "threat-report"
       ],
-      "published": "2025-07-24T00:00:00Z",
+      "published": "2025-07-22T00:00:00Z",
       "object_refs": [
-        "relationship--14490e0a-946a-40e7-b9fb-586ea4bf4cc7"
+        "attack-pattern--224cef0d-50a2-415c-b36f-246442f5ec57",
+        "attack-pattern--23246ec6-8161-4155-8cdc-db18b405c960",
+        "attack-pattern--6f6db886-c381-4308-ad23-718d506786fe",
+        "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
+        "attack-pattern--c92b2355-57d3-4927-8f3e-8b86f0f0497a",
+        "indicator--1875d7b7-cb11-4456-9c12-d9c261983438",
+        "indicator--210ff2b4-8da8-4490-b6ce-1666e7aded60",
+        "indicator--84b30b62-48b2-4a7d-9ebc-f4d671ff3009",
+        "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+        "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
+        "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
+        "malware--05aa0df1-7dee-48c8-a11d-591b5b006838",
+        "malware--d721d3c8-778b-4669-ac00-b66cf280d4e5",
+        "note--36163cdf-68c9-4ec2-80ae-3daac2b048eb",
+        "note--8aae18fa-c9df-4cb0-8976-a42ee3b39589",
+        "note--c2936e74-778c-42dd-982b-d0d49c1712dc",
+        "relationship--069445ed-16c3-4000-9900-d6b022fc96ee",
+        "relationship--0bf96977-5931-4cc2-9a51-b9c7ee780312",
+        "relationship--1ebb5123-1969-4505-83da-d0d86b9a3473",
+        "relationship--203e8ea3-493a-4bd1-9ee6-89bfa91196b9",
+        "relationship--2a09bd4c-bdf8-4599-ac38-db9445228bc0",
+        "relationship--395611fc-8a78-4c85-8228-3f40521d87f7",
+        "relationship--3e1dfe49-10c2-4300-91dd-a089ccc74a1a",
+        "relationship--7768322b-1774-46d6-ae32-1e0b2bfd4a11",
+        "relationship--7eb9273f-3857-4ffa-8632-9c4056df9df1",
+        "relationship--9c9b91fe-2a29-4ce0-a9da-8694492264bc",
+        "relationship--9f43b69a-1306-42ff-906a-1b483f1d139c",
+        "relationship--d77341ae-7ea9-4a92-b4f4-45e94e8d65e1",
+        "relationship--d8e6d1a9-667e-4a2f-82df-cb4c9a12f590",
+        "relationship--e09663e2-6685-4d39-bed1-6942c19ddd12",
+        "relationship--f36bae53-acc8-4dcd-a005-cd6adcbd8fe3",
+        "tool--1c64e59b-10ab-48ef-b776-4c2c4fbc9e99",
+        "tool--6e4d5a36-ac2c-4205-9f22-77a41a20295c",
+        "tool--f7b2bb7f-5501-44b8-ba2d-330f138a770e"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
         {
-          "source_name": "bleepingcomputer.com",
-          "external_id": "source--daily-c9fa26bbe8d21f50b441",
-          "url": "https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/"
+          "source_name": "local-source",
+          "external_id": "source--microsoft-toolshell-2025",
+          "description": "Repository source: profiles/storm-2603/osint-observables/microsoft-toolshell-2025.csv"
         }
       ],
       "x_opencti_source_report": true,
-      "x_source_id": "source--daily-c9fa26bbe8d21f50b441",
+      "x_source_id": "source--microsoft-toolshell-2025",
       "x_evidence_slice_scope": "actor:actor--storm-2603",
-      "x_source_publisher": "bleepingcomputer.com",
-      "x_source_type": "osint-report",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
       "x_published_precision": "day",
       "x_published_status": "known",
-      "x_published_basis": "daily-news-file-date",
+      "x_published_basis": "source-publication",
       "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--1c64e59b-10ab-48ef-b776-4c2c4fbc9e99",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Mimikatz",
+      "description": "MicrosoftがStorm-2603固有のToolShell侵入チェーンで資格情報取得に使用したと報告した公開セキュリティツール。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-mimikatz",
+      "x_confidence": "high",
+      "x_analyst_notes": "公開ツールの悪用であり、ツール開発者を攻撃主体と解釈しない。",
+      "tool_types": [
+        "credential-dumping"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--32c958f0-3abc-4d13-a772-908bfb37829c",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Visual Studio Code Remote - SSH",
+      "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側のSSH経由遠隔アクセスに使用されたと報告した正規開発機能。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-vscode-remote-ssh",
+      "x_confidence": "high",
+      "x_analyst_notes": "正規製品機能の悪用であり、MicrosoftやVS Code利用者を攻撃主体と解釈しない。",
+      "tool_types": [
+        "remote-development",
+        "remote-access"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--6e4d5a36-ac2c-4205-9f22-77a41a20295c",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "PsExec",
+      "description": "MicrosoftがStorm-2603固有のToolShell侵入チェーンで横展開に使用したと報告した正規管理ツール。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-psexec",
+      "x_confidence": "high",
+      "x_analyst_notes": "正規管理ツールであり、Sysinternals/Microsoftを攻撃主体と解釈しない。",
+      "tool_types": [
+        "remote-execution"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--d1a8f74b-34dc-4832-b656-dd23a997fba5",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Cloudflare Tunnel",
+      "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側の遠隔アクセス経路として確認した正規トンネリングサービス／クライアント。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-cloudflare-tunnel",
+      "x_confidence": "high",
+      "x_analyst_notes": "共有正規サービスであり、Cloudflare rootや任意のTunnel利用を悪性Indicatorにしない。",
+      "tool_types": [
+        "tunneling"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Zoho Assist Unattended Agent",
+      "description": "正規のリモート監視・管理ツール。Microsoft DARTの並行侵入事例とCisco Talos IRの別の単一インシデントで、Storm-2603側の遠隔操作手段として展開された。製品ベンダーを攻撃主体と解釈しない。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        },
+        {
+          "source_name": "Cisco Talos Incident Response",
+          "description": "Source: https://blog.talosintelligence.com/ir-trends-q2-2026/",
+          "external_id": "source--talos-ir-trends-q2-2026",
+          "url": "https://blog.talosintelligence.com/ir-trends-q2-2026/"
+        }
+      ],
+      "x_profile_object_id": "tool--zoho-assist-unattended-agent",
+      "x_confidence": "high",
+      "x_analyst_notes": "MicrosoftとTalosの2資料は別事例であり統合しない。いずれも正確な利用日が明示されないため期間はunknownとする。",
+      "tool_types": [
+        "remote-access"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--f1d793e4-6ac6-4144-908f-f67cf4bc14b2",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Velociraptor",
+      "description": "Microsoft DARTが2026年の並行侵入事例でStorm-2603側の導入を確認した正規DFIR・endpoint visibilityツール。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Defender Experts Cybersecurity Incident Response",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/",
+          "external_id": "source--microsoft-storm2603-parallel-intrusion-2026",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/06/22/one-intrusion-two-cyberattackers-uncovering-parallel-threat-activity/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-velociraptor",
+      "x_confidence": "high",
+      "x_analyst_notes": "正規ツールの悪用であり、記事公開日を利用日へ転用しない。",
+      "tool_types": [
+        "endpoint-visibility",
+        "remote-administration"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--f7b2bb7f-5501-44b8-ba2d-330f138a770e",
+      "created": "2026-09-21T18:40:58Z",
+      "modified": "2026-09-21T18:40:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Impacket",
+      "description": "MicrosoftがStorm-2603固有のToolShell後侵入活動で使用を明示した公開Pythonネットワークプロトコル・ツールキット。",
+      "external_references": [
+        {
+          "source_name": "Microsoft Threat Intelligence",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/",
+          "external_id": "source--microsoft-toolshell-2025",
+          "url": "https://www.microsoft.com/en-us/security/blog/2025/07/22/disrupting-active-exploitation-of-on-premises-sharepoint-vulnerabilities/"
+        }
+      ],
+      "x_profile_object_id": "tool--storm-2603-impacket",
+      "x_confidence": "high",
+      "x_analyst_notes": "公開ツールキットであり、単独では帰属根拠にしない。",
+      "tool_types": [
+        "network-protocol-toolkit",
+        "remote-execution"
+      ],
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--215dd3c1-6414-49a7-82d3-7c7884adb4ef",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-21T22:28:38Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -540,22 +2500,65 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-09-21T22:28:38Z",
       "object_refs": [
+        "attack-pattern--200c584a-5fd6-4083-9d38-f94659eeeba1",
+        "attack-pattern--224cef0d-50a2-415c-b36f-246442f5ec57",
+        "attack-pattern--23246ec6-8161-4155-8cdc-db18b405c960",
+        "attack-pattern--30eae542-28c0-4bd1-ad66-92dd5061dd5c",
+        "attack-pattern--37cae794-8d2e-436d-a9dc-1f80f20e9af3",
+        "attack-pattern--4b00b461-26ca-467e-a940-5ba88f602670",
+        "attack-pattern--6f6db886-c381-4308-ad23-718d506786fe",
         "attack-pattern--c3c28226-e371-4241-8545-83d42acfcb2e",
+        "attack-pattern--c92b2355-57d3-4927-8f3e-8b86f0f0497a",
+        "domain-name--500330ea-284a-4612-8ce2-3ccfc534f75e",
+        "domain-name--52f925ee-7ede-420a-b1f4-e887e6ddf041",
+        "indicator--1875d7b7-cb11-4456-9c12-d9c261983438",
+        "indicator--210ff2b4-8da8-4490-b6ce-1666e7aded60",
+        "indicator--84b30b62-48b2-4a7d-9ebc-f4d671ff3009",
+        "infrastructure--78b0d09b-f923-4d5e-a782-c9a6a8ae8710",
+        "infrastructure--889fc1f1-8b3b-4d86-b960-9a412644a0dd",
         "intrusion-set--df53f1d1-0832-47b2-ad8b-4b8bdbc92f9e",
-        "location--1e2f47e6-76f9-41c5-9b50-1719265113af",
-        "location--a4cc2b9f-074f-4a5a-a071-a1208ce27273",
+        "ipv4-addr--5b608881-8c10-4284-babe-6113ddfd6095",
+        "malware--05aa0df1-7dee-48c8-a11d-591b5b006838",
         "malware--d721d3c8-778b-4669-ac00-b66cf280d4e5",
+        "note--36163cdf-68c9-4ec2-80ae-3daac2b048eb",
         "note--739cbcff-0222-4c67-8216-06af8a9c6719",
+        "note--8aae18fa-c9df-4cb0-8976-a42ee3b39589",
+        "note--c2936e74-778c-42dd-982b-d0d49c1712dc",
+        "relationship--069445ed-16c3-4000-9900-d6b022fc96ee",
         "relationship--0bf96977-5931-4cc2-9a51-b9c7ee780312",
-        "relationship--14490e0a-946a-40e7-b9fb-586ea4bf4cc7",
+        "relationship--0ce64aff-f0f7-4b54-a81a-eb8c6d1f0c18",
+        "relationship--125744cc-cbd6-46e0-8248-1b4361bd9ae8",
+        "relationship--1ebb5123-1969-4505-83da-d0d86b9a3473",
+        "relationship--203e8ea3-493a-4bd1-9ee6-89bfa91196b9",
+        "relationship--2a09bd4c-bdf8-4599-ac38-db9445228bc0",
         "relationship--395611fc-8a78-4c85-8228-3f40521d87f7",
-        "relationship--830bce43-1bdd-40dd-aaae-dc75fb20ae18",
-        "report--3df96056-ed7e-4e89-b8aa-e93b7860eeb2",
+        "relationship--3e1dfe49-10c2-4300-91dd-a089ccc74a1a",
+        "relationship--3e7958e8-60c3-42d8-8924-174b90489a64",
+        "relationship--5b2411ad-8ac1-496f-b98d-5c59239374e1",
+        "relationship--7768322b-1774-46d6-ae32-1e0b2bfd4a11",
+        "relationship--7eb9273f-3857-4ffa-8632-9c4056df9df1",
+        "relationship--8ffd24a4-2a84-4c78-bc8d-ec9f979d6eb3",
+        "relationship--9c9b91fe-2a29-4ce0-a9da-8694492264bc",
+        "relationship--9f43b69a-1306-42ff-906a-1b483f1d139c",
+        "relationship--aa41033a-8697-4c98-a800-aeaf470426c0",
+        "relationship--cbfc27e6-8e18-42b0-abb7-5f38f78ab5df",
+        "relationship--d77341ae-7ea9-4a92-b4f4-45e94e8d65e1",
+        "relationship--d8e6d1a9-667e-4a2f-82df-cb4c9a12f590",
+        "relationship--d9490d1d-034a-4493-81df-3bcbee144c99",
+        "relationship--e09663e2-6685-4d39-bed1-6942c19ddd12",
+        "relationship--f36bae53-acc8-4dcd-a005-cd6adcbd8fe3",
+        "report--1e31a51f-e5c0-4a06-9bf0-67bc4d31986f",
+        "report--28f174e9-5176-46c8-a6a1-f384af0dcc70",
         "report--7326f1e0-df7f-498b-b78d-3416d19d9af1",
-        "report--ccbee0ed-6a60-49e4-92e6-7ec54ae4130a",
-        "report--f051cb0c-521c-47ec-b8a0-01f33e3e3878"
+        "tool--1c64e59b-10ab-48ef-b776-4c2c4fbc9e99",
+        "tool--32c958f0-3abc-4d13-a772-908bfb37829c",
+        "tool--6e4d5a36-ac2c-4205-9f22-77a41a20295c",
+        "tool--d1a8f74b-34dc-4832-b656-dd23a997fba5",
+        "tool--dcf50eb6-469b-4944-9d81-e5a833a33463",
+        "tool--f1d793e4-6ac6-4144-908f-f67cf4bc14b2",
+        "tool--f7b2bb7f-5501-44b8-ba2d-330f138a770e"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "x_opencti_bundle_scope": "actor",

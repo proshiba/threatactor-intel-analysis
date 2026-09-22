@@ -1,0 +1,210 @@
+{
+  "type": "bundle",
+  "id": "bundle--633b3a66-89b8-4947-9922-90bbef082699",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--b01dc7d5-3cf5-463a-a1e4-e658916d9fad",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ted / curlRAT toolkit evidence collection",
+      "description": "activity_claim が candidate / attribution-uncertain であっても実行主体でない事例。集約サイト(ThreatFox、maltrail)のタグ付けを一次資料の帰属として扱わないこと。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Rapid7",
+          "external_id": "source--standalone-unattributed-ted-curlrat-toolkit-evidence-0",
+          "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/"
+        }
+      ],
+      "x_profile_object_id": "activity--unattributed-ted-curlrat-toolkit-evidence",
+      "x_standalone_activity": true,
+      "x_ledger_cluster_id": "unknown-cluster--ted-curlrat",
+      "x_curation_decision": "Rapid7 attributes only to DPRK APTs at medium confidence; similarities to APT37, Kimsuky and Lazarus are not exported as actor relationships.",
+      "x_ioc_promotion_policy": "none",
+      "x_unstructured_observables_promoted": false,
+      "x_attribution": {
+        "state": "unattributed",
+        "actor_type": "state-aligned-espionage-toolkit",
+        "notes": "Rapid7は「The toolkit is attributed with medium confidence to DPRK APTs」と述べるにとどまり、名前付きグループへは帰属していない。APT37は暗号方式・ハードコードされたC2一覧の類似(ThreatFox/maltrail由来)、Kimsukyは初期侵入のtradecraftの整合、Lazarusは時期の重なりとして言及されるのみで、いずれも実行主体としての記述ではない。クラスタ指定子はベンダーから付与されていないため、ツールキット名で仮に台帳へ登録する。"
+      },
+      "x_first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "inferred",
+        "basis": "source-relative-period"
+      },
+      "x_last_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "inferred",
+        "basis": "source-relative-period"
+      },
+      "x_time_basis": "Rapid7が最古の痕跡を2025年半ば、活動終端を2026年初頭までと記載するため年精度で保持する。記事公開日2026-09-04、日次収集日2026-09-08、HAProxyのコンパイル時刻を活動期間へ転用しない。",
+      "context": "malware-analysis",
+      "object_refs": [
+        "note--3c82956f-4540-40fc-ac59-edcf72d65637"
+      ],
+      "x_structured_ioc_indicator_count": 0,
+      "x_structured_ioc_source_observation_count": 0,
+      "x_non_promoted_feature_count": 0
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--3c82956f-4540-40fc-ac59-edcf72d65637",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "DPRK APTs: Ted Backdoor and curlRAT Target South Korean Media and Automotive Sectors",
+      "content": "HAProxyのフィルタプラグインとして動作するTedバックドアと、curlRATを中核とするLinux向けツールキット。SSHキーロガーおよびcrond/agetty/atd/sshd/polkitdのトロイ化バイナリで永続化する。初期侵入は外部公開のグループウェアポータルまたはメールサーバーが想定されるが、原文でも確定していない。\n\nActivity period: 最も古い痕跡は2025年半ば。HAProxyビルドのコンパイル時刻は2024-11-22以降。活動は2026年初頭まで及ぶ。コンパイル時刻はOSINT_RULESに従い観測日へ流用しない。\n\nTargets: 韓国のメディア業界および自動車業界。\n\nAttribution caveat: Rapid7は「The toolkit is attributed with medium confidence to DPRK APTs」と述べるにとどまり、名前付きグループへは帰属していない。APT37は暗号方式・ハードコードされたC2一覧の類似(ThreatFox/maltrail由来)、Kimsukyは初期侵入のtradecraftの整合、Lazarusは時期の重なりとして言及されるのみで、いずれも実行主体としての記述ではない。クラスタ指定子はベンダーから付与されていないため、ツールキット名で仮に台帳へ登録する。",
+      "object_refs": [
+        "grouping--b01dc7d5-3cf5-463a-a1e4-e658916d9fad"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Rapid7",
+          "external_id": "source--standalone-unattributed-ted-curlrat-toolkit-evidence-0",
+          "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/"
+        }
+      ],
+      "x_standalone_activity_id": "activity--unattributed-ted-curlrat-toolkit-evidence",
+      "x_source_id": "source--standalone-unattributed-ted-curlrat-toolkit-evidence-0",
+      "x_source_publication_only": "2026-09-04",
+      "x_ledger_observation": {
+        "observed_on_basis": "原典は最古の痕跡を2025年半ば、活動を2026年初頭までとする広い期間のみを示す。公開日2026-09-04は個別観測日へ転用しない。",
+        "publisher": "Rapid7",
+        "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+        "title": "DPRK APTs: Ted Backdoor and curlRAT Target South Korean Media and Automotive Sectors",
+        "published_at": "2026-09-04",
+        "source_type": "primary-report",
+        "reliability": "vendor-direct-observation",
+        "activity_period": "最も古い痕跡は2025年半ば。HAProxyビルドのコンパイル時刻は2024-11-22以降。活動は2026年初頭まで及ぶ。コンパイル時刻はOSINT_RULESに従い観測日へ流用しない。",
+        "targets": "韓国のメディア業界および自動車業界。",
+        "malware": [
+          "Ted backdoor",
+          "curlRAT",
+          "SSH keylogger",
+          "トロイ化システムバイナリ(crond, agetty, atd, sshd, polkitd)"
+        ],
+        "summary": "HAProxyのフィルタプラグインとして動作するTedバックドアと、curlRATを中核とするLinux向けツールキット。SSHキーロガーおよびcrond/agetty/atd/sshd/polkitdのトロイ化バイナリで永続化する。初期侵入は外部公開のグループウェアポータルまたはメールサーバーが想定されるが、原文でも確定していない。",
+        "verified_by_analyst": "原文をHTTP 200で取得して確認。帰属文が「medium confidence to DPRK APTs」であり名前付きグループを実行主体としていないこと、APT37・Kimsuky・Lazarusの言及がいずれも類似・可能性の指摘にとどまることを確認した。"
+      },
+      "x_unresolved_questions": [
+        "単一ベンダー(Rapid7)の初報のみで昇格閾値は未達。",
+        "ベンダーによるクラスタ指定子が付与されておらず、台帳名はツールキット名に依存している。",
+        "初期侵入経路(グループウェアポータルまたはメールサーバー)が原文でも未確定であり、既知クラスタとの突合材料が乏しい。"
+      ],
+      "x_related_profiles_are_unpromoted": [
+        {
+          "slug": "apt37",
+          "relation": "similarity-only-not-attributed",
+          "notes": "原文は「the usage of simple xor-based encryption, custom substitution cipher...is associated to APT37」「list of C2s hardcoded is associated with APT37」と暗号方式とC2一覧の類似を述べるのみ。帰属根拠はThreatFox/maltrailという集約サイト由来であり、Rapid7自身による帰属ではない。誤統合を防ぐため記録する。"
+        },
+        {
+          "slug": "kimsuky",
+          "relation": "similarity-only-not-attributed",
+          "notes": "原文は初期侵入面について「consistent with documented Kimsuky tradecraft」と述べるのみで、当該侵入経路自体が未確認である。"
+        },
+        {
+          "slug": "lazarus",
+          "relation": "similarity-only-not-attributed",
+          "notes": "原文は「Operation SyncHole, a concurrent Lazarus campaign」として時期の重なりに触れるのみ。"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--74b1f775-f82a-45b7-8f1f-42c79b9e7cc2",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DPRK APTs: Ted Backdoor and curlRAT Target South Korean Media and Automotive Sectors",
+      "description": "Source publication container. Its published time is not an Activity observation or Relationship validity time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-04T00:00:00Z",
+      "object_refs": [
+        "grouping--b01dc7d5-3cf5-463a-a1e4-e658916d9fad",
+        "note--3c82956f-4540-40fc-ac59-edcf72d65637"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Rapid7",
+          "external_id": "source--standalone-unattributed-ted-curlrat-toolkit-evidence-0",
+          "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--standalone-unattributed-ted-curlrat-toolkit-evidence-0",
+      "x_source_publisher": "Rapid7",
+      "x_source_type": "primary-report",
+      "x_source_reliability": "vendor-direct-observation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only",
+      "x_standalone_activity_id": "activity--unattributed-ted-curlrat-toolkit-evidence"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--5fe3bd01-988e-4ae8-a399-ff58c6eaff05",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Standalone Activity / Ted / curlRAT toolkit evidence collection",
+      "description": "Rapid7 attributes only to DPRK APTs at medium confidence; similarities to APT37, Kimsuky and Lazarus are not exported as actor relationships.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-22T00:00:00Z",
+      "object_refs": [
+        "grouping--b01dc7d5-3cf5-463a-a1e4-e658916d9fad",
+        "note--3c82956f-4540-40fc-ac59-edcf72d65637",
+        "report--74b1f775-f82a-45b7-8f1f-42c79b9e7cc2"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "grouping",
+      "x_activity_id": "activity--unattributed-ted-curlrat-toolkit-evidence",
+      "x_standalone_activity": true,
+      "x_temporal_role": "bundle-generation-time",
+      "x_generated_at": "2026-09-22T00:00:00Z"
+    }
+  ]
+}

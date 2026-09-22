@@ -467,9 +467,74 @@ class PrimarySourceCorrectionTests(unittest.TestCase):
         }
         self.assertNotIn("activity--daily-e8fd6208405a17b2c79d", storm_activities)
         self.assertNotIn("activity--daily-aacbe5410f1223b930a5", storm_activities)
-        toolshell = storm_activities["activity--daily-b80b607914fb7f62f988"]
+        self.assertNotIn("activity--daily-b80b607914fb7f62f988", storm_activities)
+        toolshell = storm_activities[
+            "activity--storm-2603--toolshell-warlock-2025"
+        ]
         self.assertEqual(toolshell["victim_refs"], [])
+        self.assertEqual(
+            set(toolshell["infrastructure_refs"]),
+            {
+                "infrastructure--storm-2603-post-exploitation-c2",
+                "infrastructure--storm-2603-updatemicfosoft-c2",
+            },
+        )
         self.assertNotIn("NNSA", toolshell["description"])
+        malware = {
+            item["id"]: item for item in storm["capabilities"]["malware"]
+        }
+        lockbit = malware["malware--storm-2603-lockbit-ransomware"]
+        self.assertEqual(lockbit["first_observed"]["status"], "unknown")
+        self.assertNotIn(lockbit["id"], toolshell["malware_refs"])
+        infrastructure = {
+            item["id"]: item
+            for item in storm["capabilities"]["infrastructure"]
+        }
+        self.assertIn(
+            "update.updatemicfosoft.com",
+            infrastructure["infrastructure--storm-2603-updatemicfosoft-c2"][
+                "description"
+            ],
+        )
+        source_ids = {item["source_id"] for item in storm["sources"]}
+        self.assertFalse(
+            {
+                "source--daily-0e75e392e2685f601677",
+                "source--daily-5c143f1d91377b49cfcc",
+                "source--daily-c9fa26bbe8d21f50b441",
+            }
+            & source_ids
+        )
+        microsoft_source = next(
+            item
+            for item in storm["sources"]
+            if item["source_id"] == "source--microsoft-toolshell-2025"
+        )
+        self.assertIn("hunting", microsoft_source["claims_supported"])
+        self.assertIn("19 exact indicators", microsoft_source["analyst_notes"])
+        pivots = {item["value"]: item for item in storm["hunting_pivots"]}
+        self.assertIn("update.updatemicfosoft.com", pivots)
+        ledger = json.loads(
+            (
+                ROOT
+                / "profiles"
+                / "storm-2603"
+                / "daily-observations.json"
+            ).read_text(encoding="utf-8")
+        )
+        superseded_records = {
+            "daily-record--aacbe5410f1223b930a5ab56",
+            "daily-record--b80b607914fb7f62f9889fd0",
+            "daily-record--e8fd6208405a17b2c79dc068",
+        }
+        self.assertEqual(
+            {
+                item["record_id"]: item["review_status"]
+                for item in ledger["records"]
+                if item["record_id"] in superseded_records
+            },
+            {record_id: "rejected" for record_id in superseded_records},
+        )
         self.assertIn("activity--storm-2603--parallel-intrusion-2026", storm_activities)
         zirconium = self.load_profile("zirconium")
         zirconium_ids = {item["activity_id"] for item in zirconium["activities"]}

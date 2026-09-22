@@ -297,10 +297,16 @@ def time_from_record(
 ) -> dict[str, Any]:
     field_map = metadata.get("field_map", {})
     observed_column = field_map.get("observed_at")
-    if observed_column and record["fields"].get(observed_column):
-        return normalize_time(
-            record["fields"][observed_column], basis=f"column:{observed_column}"
-        )
+    if observed_column:
+        if record["fields"].get(observed_column):
+            return normalize_time(
+                record["fields"][observed_column], basis=f"column:{observed_column}"
+            )
+        # A mapped-but-empty date is an explicit absence of observation time.
+        # Do not scrape a campaign year, publication year, or source title from
+        # the rest of the CSV row and silently promote it to an IOC timestamp.
+        default = metadata.get("default_observed_at", unknown_time())
+        return default if default.get("status") != "unknown" else unknown_time()
     match = DATE_RE.search(record["text"])
     if match:
         year, month, day = match.groups()
@@ -809,6 +815,128 @@ def expand_sources(
     return expanded
 
 
+def coalesce_dataset_sources(
+    source_items: list[dict[str, Any]], repository_root: Path
+) -> list[dict[str, Any]]:
+    """Build one Source metadata row per identity while retaining every input.
+
+    Multiple evidence files may intentionally share a Source identity. They
+    remain separate in ``source_items`` so every path is ingested, while this
+    function validates and coalesces only the metadata emitted in
+    ``iocs.json.sources``. Semantic disagreements are rejected before any
+    evidence file is opened.
+    """
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for index, item in enumerate(source_items):
+        source_id = item.get("source_id")
+        if not isinstance(source_id, str) or not source_id:
+            raise ValueError(
+                f"expanded source[{index}] requires a non-empty source_id"
+            )
+        grouped[source_id].append(item)
+
+    rows: list[dict[str, Any]] = []
+    for source_id, items in grouped.items():
+        paths = sorted(
+            {
+                item["resolved_path"]
+                .relative_to(repository_root)
+                .as_posix()
+                for item in items
+            }
+        )
+        publication_points = [
+            normalize_time(item.get("published_at"), basis="source-publication")
+            for item in items
+        ]
+        meaningful_publications = {
+            json.dumps(point, ensure_ascii=False, sort_keys=True): point
+            for point in publication_points
+            if point.get("status") != "unknown" and point.get("value")
+        }
+        if len(meaningful_publications) > 1:
+            raise ValueError(
+                f"Source {source_id} has conflicting published_at metadata"
+            )
+        published_at = (
+            next(iter(meaningful_publications.values()))
+            if meaningful_publications
+            else publication_points[0]
+        )
+
+        def merge_scalar(
+            field: str, *, fallback: str, unknown_values: set[str]
+        ) -> str:
+            def normalized_value(item: dict[str, Any]) -> str:
+                value = item.get(field)
+                return "" if value is None else str(value)
+
+            values = {
+                normalized_value(item)
+                for item in items
+                if normalized_value(item).casefold() not in unknown_values
+            }
+            if len(values) > 1:
+                raise ValueError(
+                    f"Source {source_id} has conflicting {field} metadata: "
+                    f"{', '.join(sorted(values))}"
+                )
+            if values:
+                return next(iter(values))
+            explicit_unknown = next(
+                (
+                    normalized_value(item)
+                    for item in items
+                    if field in item and normalized_value(item)
+                ),
+                "",
+            )
+            return explicit_unknown or fallback
+
+        confidence = merge_scalar(
+            "confidence",
+            fallback="medium",
+            unknown_values={"", "unknown"},
+        )
+        tlp = merge_scalar(
+            "tlp",
+            fallback="TLP:CLEAR",
+            unknown_values={"", "unknown"},
+        )
+        notes = sorted(
+            {
+                str(item.get("analyst_notes", "")).strip()
+                for item in items
+                if str(item.get("analyst_notes", "")).strip()
+            }
+        )
+        for item in items:
+            item["published_at"] = dict(published_at)
+            item["confidence"] = confidence
+            item["tlp"] = tlp
+            item["analyst_notes"] = " | ".join(notes)
+
+        analyst_notes = " | ".join(notes)
+        row = {
+            "source_id": source_id,
+            "path": paths[0],
+            "published_at": dict(published_at),
+            "confidence": confidence,
+            "tlp": tlp,
+            "analyst_notes": analyst_notes,
+        }
+        if len(paths) > 1:
+            row["evidence_paths"] = paths
+            path_note = "evidence_paths=" + json.dumps(
+                paths, ensure_ascii=False, separators=(",", ":")
+            )
+            row["analyst_notes"] = " | ".join(
+                value for value in (analyst_notes, path_note) if value
+            )
+        rows.append(row)
+    return rows
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path)
@@ -845,6 +973,7 @@ def main() -> int:
     )
 
     source_items = expand_sources(manifest, repository_root)
+    dataset_sources = coalesce_dataset_sources(source_items, repository_root)
     indicator_observations: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
     indicator_raw: dict[tuple[str, str, str], str] = {}
     indicator_dispositions: dict[tuple[str, str, str], set[str]] = defaultdict(set)
@@ -1047,19 +1176,7 @@ def main() -> int:
         "schema_version": "1.0.0",
         "actor_ref": actor_ref,
         "generated_at": utc_now(),
-        "sources": [
-            {
-                "source_id": item["source_id"],
-                "path": item["resolved_path"].relative_to(repository_root).as_posix(),
-                "published_at": normalize_time(
-                    item.get("published_at"), basis="source-publication"
-                ),
-                "confidence": item.get("confidence", "medium"),
-                "tlp": item.get("tlp", "TLP:CLEAR"),
-                "analyst_notes": item.get("analyst_notes", ""),
-            }
-            for item in source_items
-        ],
+        "sources": dataset_sources,
         "indicators": indicators,
         "ingestion": {
             "source_count": len(source_items),

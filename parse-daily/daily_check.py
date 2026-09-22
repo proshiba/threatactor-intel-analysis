@@ -70,13 +70,14 @@ def parse_point(field) -> datetime | None:
 def latest_activity(profile: dict) -> tuple[datetime | None, str]:
     """アクターの最終活動時期と、その根拠フィールドを返す。
 
-    攻撃期間が不明でも reported_at は残っている（RULES.md 4.）ため、
-    期間・報告日の両方を見て一番新しいものを採る。
+    ``reported_at`` は資料の公開・収集時刻であり、攻撃活動の時刻ではない。
+    古い事件の新しい起訴記事などを「直近の活動」へ誤昇格させないため、
+    活動期間と actor.last_seen だけを候補にする。
     """
     best: datetime | None = None
     basis = ""
     for activity in profile.get("activities") or []:
-        for key in ("last_observed", "first_observed", "reported_at"):
+        for key in ("last_observed", "first_observed"):
             point = parse_point(activity.get(key))
             if point and (best is None or point > best):
                 best, basis = point, f"activity.{key}"

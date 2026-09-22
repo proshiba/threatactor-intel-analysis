@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -23,8 +23,7 @@
       ],
       "description": "[TeamPCP](https://attack.mitre.org/groups/G1056) is a financially-motivated, cloud-native threat group that has been active since at least September 2025. Initially focused on ransomware and cryptocurrency theft, [TeamPCP](https://attack.mitre.org/groups/G1056) shifted in early 2026 to systematic, worm-driven credential theft and software supply chain attacks targeting Continuous Integration and Continuous Delivery (CI/CD) workflows. [TeamPCP](https://attack.mitre.org/groups/G1056) has monetized access through extortion and through partnerships with ransomware actors including Vect and CipherForce.(Citation: Wiz TeamPCP Profile MAY 2026)(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Trend Micro TeamPCP MAY 2026)",
       "goals": [
-        "資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。",
-        "Financially motivated intrusion or fraud."
+        "資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。"
       ],
       "external_references": [
         {
@@ -113,9 +112,10 @@
           "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-g1056"
+            "source--mitre-attack-g1056",
+            "source--gtig-ai-threat-tracker-2026-05"
           ],
-          "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056."
+          "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。MITRE ATT&CKもG1056のAssociated Groupとして収録する。"
         }
       ],
       "x_attribution": {
@@ -134,8 +134,8 @@
         "executive_summary": "TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで、インターネットへ露出したRay、Docker、Redis、React環境をワーム型に侵害し、2026年にはGitHub ActionsとPyPIを経由するオープンソースサプライチェーン攻撃へ拡大した。Oligo Securityは基盤の連続性から活動を2020年まで遡及している。",
         "history": "2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。",
         "capability_details": "第1段階はndt.shなどのシェルスクリプト、資格情報窃取はSANDCLOCK、収益化はランサムウェア展開と恐喝グループとの提携による。SentinelLabsが報告したPCPJackはTeamPCPの基盤を排除する別主体であり、混同しない。",
-        "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/および/files/という特徴的な配置パスが複数キャンペーンで再利用されている。個別のIOCはiocs.jsonに保存する。",
-        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。",
+        "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/・/ep9TS2/ndt.shおよび/files/という大文字小文字を含む特徴的な配置パスが複数キャンペーンで再利用されている。exact IOCはiocs.json、scheme未記載のhost/pathとwildcardはartifacts.csvおよびhunting_pivotsに保存する。",
+        "targeting_details": "構造化ターゲット監査: 標的国・地域は個別に確認できないため未登録。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。インターネット規模の探索から地域範囲を推定しない。",
         "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
       },
       "x_osint_crosscheck": {
@@ -501,6 +501,308 @@
       }
     },
     {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--45348411-40f2-458c-b579-8b3f7af00026",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ruben Ian Thomson",
+      "aliases": [],
+      "description": "Australian and South African national whom Australian and U.S. authorities allege participated in TeamPCP activity. The allegations have not been adjudicated.",
+      "threat_actor_types": [
+        "hacker"
+      ],
+      "resource_level": "individual",
+      "x_opencti_type": "Threat-Actor-Individual",
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        },
+        {
+          "source_name": "U.S. Attorney's Office, Northern District of California",
+          "description": "Source: https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+          "external_id": "source--doj-teampcp-thomson-indictment-2026",
+          "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain"
+        }
+      ],
+      "x_profile_object_id": "threat-actor-individual--ruben-ian-thomson",
+      "x_entity_type": "threat-actor-individual",
+      "x_countries": [
+        "Australia",
+        "South Africa"
+      ],
+      "x_entity_roles": [
+        "alleged-teampcp-member",
+        "alleged-leader"
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--ef0661dd-df09-430b-9e1a-3f48dd43af8a",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "arrest: Ruben Ian Thomson",
+      "content": "Arrested in Western Australia in the AFP/FBI/WAPF operation.",
+      "object_refs": [
+        "threat-actor--45348411-40f2-458c-b579-8b3f7af00026"
+      ],
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "U.S. Attorney's Office, Northern District of California",
+          "description": "Source: https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+          "external_id": "source--doj-teampcp-thomson-indictment-2026",
+          "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain"
+        }
+      ],
+      "x_profile_legal_action_id": "legal-action--ruben-ian-thomson-arrest-2026-au",
+      "x_legal_action_type": "arrest",
+      "x_legal_authority": "Australian Federal Police",
+      "x_legal_action_date": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "arrest-date"
+      },
+      "x_legal_status": "completed",
+      "x_analyst_notes": "Arrest is recorded as an event; it does not establish guilt."
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--26f0d78f-a7c0-4637-871e-278f1bc0c571",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "charge: Ruben Ian Thomson",
+      "content": "Charged in Australia with eight alleged offences described by the AFP.",
+      "object_refs": [
+        "threat-actor--45348411-40f2-458c-b579-8b3f7af00026"
+      ],
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        }
+      ],
+      "x_profile_legal_action_id": "legal-action--ruben-ian-thomson-charge-2026-au",
+      "x_legal_action_type": "charge",
+      "x_legal_authority": "Australian Federal Police / Australian courts",
+      "x_legal_action_date": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "charge-date"
+      },
+      "x_legal_status": "alleged",
+      "x_analyst_notes": "Charges are allegations and are not convictions."
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--7337d6cf-5155-486b-a8f5-810660c3e9b0",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "indictment: Ruben Ian Thomson",
+      "content": "Federally indicted for alleged conspiracy to violate the Computer Fraud and Abuse Act and obtaining information from a protected computer.",
+      "object_refs": [
+        "threat-actor--45348411-40f2-458c-b579-8b3f7af00026"
+      ],
+      "external_references": [
+        {
+          "source_name": "U.S. Attorney's Office, Northern District of California",
+          "description": "Source: https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+          "external_id": "source--doj-teampcp-thomson-indictment-2026",
+          "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain"
+        }
+      ],
+      "x_profile_legal_action_id": "legal-action--ruben-ian-thomson-indictment-2026-us",
+      "x_legal_action_type": "indictment",
+      "x_legal_authority": "U.S. District Court for the Northern District of California",
+      "x_legal_action_date": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "indictment-filed-date"
+      },
+      "x_legal_status": "alleged",
+      "x_analyst_notes": "The indictment was filed on August 25 and unsealed on August 26; only Thomson is named in the U.S. case."
+    },
+    {
+      "type": "threat-actor",
+      "spec_version": "2.1",
+      "id": "threat-actor--e51dbfa4-2277-4347-8a17-3b99cbd785a3",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Louis Michael Gaebler",
+      "aliases": [],
+      "description": "Western Australian resident whom Australian authorities allege participated in TeamPCP activity. Public residence information is not treated as nationality.",
+      "threat_actor_types": [
+        "hacker"
+      ],
+      "resource_level": "individual",
+      "x_opencti_type": "Threat-Actor-Individual",
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        }
+      ],
+      "x_profile_object_id": "threat-actor-individual--louis-michael-gaebler",
+      "x_entity_type": "threat-actor-individual",
+      "x_countries": [],
+      "x_entity_roles": [
+        "alleged-teampcp-member"
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--238b059e-abff-42bb-b257-676b014c5eb6",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "arrest: Louis Michael Gaebler",
+      "content": "Arrested in Western Australia in the AFP/FBI/WAPF operation.",
+      "object_refs": [
+        "threat-actor--e51dbfa4-2277-4347-8a17-3b99cbd785a3"
+      ],
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        }
+      ],
+      "x_profile_legal_action_id": "legal-action--louis-michael-gaebler-arrest-2026-au",
+      "x_legal_action_type": "arrest",
+      "x_legal_authority": "Australian Federal Police",
+      "x_legal_action_date": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "arrest-date"
+      },
+      "x_legal_status": "completed",
+      "x_analyst_notes": "Arrest is recorded as an event; it does not establish guilt."
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--0be2db24-8971-4020-a444-67b83a33bd34",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "charge: Louis Michael Gaebler",
+      "content": "Charged in Australia with six alleged offences described by the AFP.",
+      "object_refs": [
+        "threat-actor--e51dbfa4-2277-4347-8a17-3b99cbd785a3"
+      ],
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        }
+      ],
+      "x_profile_legal_action_id": "legal-action--louis-michael-gaebler-charge-2026-au",
+      "x_legal_action_type": "charge",
+      "x_legal_authority": "Australian Federal Police / Australian courts",
+      "x_legal_action_date": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "charge-date"
+      },
+      "x_legal_status": "alleged",
+      "x_analyst_notes": "Charges are allegations and are not convictions. No U.S. indictment is asserted for Gaebler."
+    },
+    {
       "type": "malware",
       "spec_version": "2.1",
       "id": "malware--86f06a20-a3c3-4541-8c39-34308f05a381",
@@ -689,7 +991,7 @@
       "spec_version": "2.1",
       "id": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -705,7 +1007,7 @@
       ],
       "x_profile_object_id": "infra--masscan-cloud",
       "x_confidence": "high",
-      "x_analyst_notes": "",
+      "x_analyst_notes": "このobjectはmasscan.cloud、matrix.masscan.cloud、natalstatus.orgと、その配信・C2系譜へ直接結び付くIP・pathだけを包含する。ShadowRay/IronErnの運用ノードと2026年OSS攻撃のCTステージングdomainは別Infrastructureで管理する。",
       "infrastructure_types": [
         "domain",
         "c2",
@@ -713,130 +1015,65 @@
       ]
     },
     {
-      "type": "campaign",
+      "type": "infrastructure",
       "spec_version": "2.1",
-      "id": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "infrastructure--f484a05a-dfe0-44d3-9b1f-507eb4eaae69",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
-      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "name": "ShadowRay 2.0 / IronErn 運用ノード 103.127.134.124",
+      "description": "侵害済みRayクラスタからのreverse shellを受信し、同時期にIronErn関連GitLabアカウントの認証元として使われた運用ノード。Oligoはこの重複をShadowRay 2.0とIronErn identitiesの直接的な運用上の接点としている。masscan.cloud基盤そのものへの所属は示されていないため別objectとする。",
       "external_references": [
         {
-          "source_name": "oligo.security",
+          "source_name": "Oligo Security",
           "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
+          "external_id": "source--oligo-teampcp-2026",
           "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         }
       ],
-      "x_profile_object_id": "activity--daily-5aa545c901df820c7aa2",
-      "x_activity_type": "infrastructure-operation",
-      "x_stix_object_type": "campaign",
+      "x_profile_object_id": "infra--teampcp-shadowray-ironern-control",
       "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--5aa545c901df820c7aa23b26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--teampcp",
-          "name": "TeamPCP",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--shadowray-2-0-payloads"
-          ],
-          "ttp_refs": [
-            "ttp--teampcp-t1059-004-ndt-sh",
-            "ttp--teampcp-t1190-exposed-services",
-            "ttp--teampcp-t1486-ransomware"
-          ]
-        },
-        "infrastructure": {
-          "infrastructure_refs": [
-            "infra--masscan-cloud"
-          ]
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--829e65b1ac18ce5ea420",
-            "victim--teampcp-exposed-cloud-services"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "basis": "source-stated",
-            "precision": "year",
-            "status": "known",
-            "value": "2020-01-01T00:00:00Z"
-          },
-          "last_observed": {
-            "basis": "source-stated",
-            "precision": "month",
-            "status": "known",
-            "value": "2026-04-01T00:00:00Z"
-          },
-          "reported_at": {
-            "value": "2026-08-08T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "infrastructure-operation",
-          "phases": [
-            "Execution",
-            "Impact",
-            "Initial Access"
-          ],
-          "results": [
-            "account-compromise",
-            "credential-theft",
-            "encryption",
-            "supply-chain"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-48f251212f832ab9b6df",
-          "source--oligo-teampcp-2026",
-          "source--sentinellabs-pcpjack-2026"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      },
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "first_seen": "2020-01-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z"
+      "x_analyst_notes": "IPの2つの役割は一次資料のtelemetryとGitLab提供データに基づく。共有ホスティング一般からの推定ではないが、masscan.cloud infrastructureへの包含は推定しない。",
+      "infrastructure_types": [
+        "c2",
+        "account-management"
+      ]
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TeamPCP 2026年OSS攻撃ステージング基盤",
+      "description": "2026年3月のOSSサプライチェーン侵害を支えたscan.aquasecurity.orgとcheckmarx.zoneのステージング基盤。Oligoが示す2026-03-17と2026-03-22はCertificate Transparencyのfirst-seenであり、攻撃実行日または関係期間には転用しない。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_object_id": "infra--teampcp-oss-staging-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "CTログの日付はdescriptionとobservable contextに保持するが、時間相関可能なInfrastructure観測時刻にはしない。",
+      "infrastructure_types": [
+        "staging",
+        "domain"
+      ]
     },
     {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -854,6 +1091,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -887,7 +1130,7 @@
         },
         "infrastructure": {
           "infrastructure_refs": [
-            "infra--masscan-cloud"
+            "infra--teampcp-oss-staging-2026"
           ]
         },
         "victim": {
@@ -938,6 +1181,7 @@
         "evidence_refs": [
           "source--gtig-adversarial-ai-2026",
           "source--gtig-ai-threat-tracker-2026-05",
+          "source--oligo-teampcp-2026",
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
@@ -962,35 +1206,6 @@
       },
       "first_seen": "2026-02-01T00:00:00Z",
       "last_seen": "2026-03-01T00:00:00Z"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "全世界",
-      "identity_class": "organization",
-      "description": "一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。",
-      "external_references": [
-        {
-          "source_name": "Oligo Security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--oligo-teampcp-2026",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        },
-        {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
-          "external_id": "source--gtig-ai-threat-tracker-2026-05",
-          "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
-        }
-      ],
-      "x_target_category": "regions",
-      "x_confidence": "medium"
     },
     {
       "type": "identity",
@@ -1218,71 +1433,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
-      "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
-      "identity_class": "organization",
-      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_profile_object_id": "victim--activity-rule--829e65b1ac18ce5ea420",
-      "x_disclosure_status": "anonymous",
-      "x_victim_type": "unknown",
-      "x_case_status": "reported",
-      "x_target_refs": [],
-      "x_malware_refs": [],
-      "x_ttp_refs": [
-        "ttp--teampcp-t1059-004-ndt-sh",
-        "ttp--teampcp-t1190-exposed-services",
-        "ttp--teampcp-t1486-ransomware"
-      ],
-      "x_affected_assets": [
-        "エンドポイント",
-        "開発環境／ソースコード"
-      ],
-      "x_impacts": [
-        {
-          "impact_type": "supply-chain",
-          "description": "攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_confidence": "high",
-      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1347,8 +1500,8 @@
         "status": "known",
         "basis": "source-publication"
       },
-      "x_confidence": "high",
-      "x_analyst_notes": "被害組織名は一次資料に記載がないため集約事例として保存する。"
+      "x_confidence": "medium",
+      "x_analyst_notes": "被害組織名は一次資料に記載がないため集約事例として保存する。このvictim caseはOligoが複数キャンペーンを横断して示した集約であり、単一被害や単一運用者の事例とは扱わない。"
     },
     {
       "type": "identity",
@@ -2977,7 +3130,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2999,7 +3152,7 @@
       "x_profile_object_id": "ttp--teampcp-t1059-004-ndt-sh",
       "x_tactic": "Execution",
       "x_activity_refs": [
-        "activity--daily-5aa545c901df820c7aa2"
+        "activity--teampcp-oligo-lineage-2020-2026"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [
@@ -3025,7 +3178,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3047,7 +3200,7 @@
       "x_profile_object_id": "ttp--teampcp-t1190-exposed-services",
       "x_tactic": "Initial Access",
       "x_activity_refs": [
-        "activity--daily-5aa545c901df820c7aa2"
+        "activity--teampcp-oligo-lineage-2020-2026"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -3123,7 +3276,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3151,7 +3304,7 @@
       "x_profile_object_id": "ttp--teampcp-t1486-ransomware",
       "x_tactic": "Impact",
       "x_activity_refs": [
-        "activity--daily-5aa545c901df820c7aa2"
+        "activity--teampcp-oligo-lineage-2020-2026"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -3217,6 +3370,239 @@
       },
       "x_confidence": "high",
       "x_analyst_notes": ""
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Oligoが関連付けた2020–2026年の複数活動・基盤系譜",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
+        "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
+        "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+        "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
+        "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
+        "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+        "infrastructure--f484a05a-dfe0-44d3-9b1f-507eb4eaae69",
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_object_id": "activity--teampcp-oligo-lineage-2020-2026",
+      "x_activity_type": "historical-activity-cluster",
+      "x_stix_object_type": "grouping",
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "一次資料(Oligo Security, 2026-08-05公開)を原文で確認した。OligoはShadowRay 2.0をTeamPCPへ関連付け、TA-NATALSTATUS/IronErnから続く基盤・手法の系譜を2020年まで遡及する。ただし複数キャンペーンを横断し、同一運用者・密接な協力・共有基盤のどれが連続性を説明するか確定していないため、単一CampaignではなくGrouping、確度mediumで表現する。2026年4月はmasscan.cloudの名前解決変更という資料内観測であり、公開日とは分離する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--shadowray-2-0-payloads"
+          ],
+          "ttp_refs": [
+            "ttp--teampcp-t1059-004-ndt-sh",
+            "ttp--teampcp-t1190-exposed-services",
+            "ttp--teampcp-t1486-ransomware"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--masscan-cloud",
+            "infra--teampcp-oss-staging-2026",
+            "infra--teampcp-shadowray-ironern-control"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--teampcp-exposed-cloud-services"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "source-stated",
+            "precision": "year",
+            "status": "known",
+            "value": "2020-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "source-stated",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "historical-activity-cluster",
+          "phases": [
+            "Execution",
+            "Impact",
+            "Initial Access"
+          ],
+          "results": [
+            "account-compromise",
+            "credential-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aa7cb51b-cfb0-4c86-bcef-b0b25b2207cd",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "related-to",
+      "source_ref": "threat-actor--45348411-40f2-458c-b579-8b3f7af00026",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Australian and U.S. authorities allege that Thomson participated in TeamPCP; ABC reports investigators described him as an alleged leader.",
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        },
+        {
+          "source_name": "U.S. Attorney's Office, Northern District of California",
+          "description": "Source: https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+          "external_id": "source--doj-teampcp-thomson-indictment-2026",
+          "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain"
+        }
+      ],
+      "x_profile_relationship_id": "entity-relationship--ruben-ian-thomson-alleged-member-of-teampcp",
+      "x_profile_relationship_type": "alleged-member-of",
+      "x_confidence": "high",
+      "x_analyst_notes": "The relationship is an allegation and does not establish membership or leadership as adjudicated fact.",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "relationship-period-not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "relationship-period-not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "relationship-period-not-stated",
+        "last": "relationship-period-not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--12a1db51-5974-42ca-a950-8265c1c7e4c0",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "related-to",
+      "source_ref": "threat-actor--e51dbfa4-2277-4347-8a17-3b99cbd785a3",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Australian authorities allege that Gaebler participated in TeamPCP.",
+      "external_references": [
+        {
+          "source_name": "Australian Federal Police",
+          "description": "Source: https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "external_id": "source--afp-teampcp-arrests-2026",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+        },
+        {
+          "source_name": "ABC News Australia",
+          "description": "Source: https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+          "external_id": "source--abc-teampcp-arrests-2026",
+          "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796"
+        }
+      ],
+      "x_profile_relationship_id": "entity-relationship--louis-michael-gaebler-alleged-member-of-teampcp",
+      "x_profile_relationship_type": "alleged-member-of",
+      "x_confidence": "high",
+      "x_analyst_notes": "The relationship is an allegation and does not establish membership as adjudicated fact.",
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "relationship-period-not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "relationship-period-not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "relationship-period-not-stated",
+        "last": "relationship-period-not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      }
     },
     {
       "type": "relationship",
@@ -3509,36 +3895,73 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--afd6d066-0bee-4a03-a13d-27b85ff0565e",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "relationship--424d8ebd-684e-487c-b911-6340f64e4b7f",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
+      "relationship_type": "uses",
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
-      "target_ref": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
-      "description": "TeamPCP targets 全世界 (profile target category: regions).",
-      "x_confidence": "medium",
+      "target_ref": "infrastructure--f484a05a-dfe0-44d3-9b1f-507eb4eaae69",
+      "description": "TeamPCP uses ShadowRay 2.0 / IronErn 運用ノード 103.127.134.124.",
+      "x_confidence": "high",
       "external_references": [
         {
           "source_name": "Oligo Security",
           "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
           "external_id": "source--oligo-teampcp-2026",
           "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        },
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2025-11-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_temporal_basis": {
+        "first": "source-stated",
+        "last": "source-stated",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "start_time": "2025-10-15T00:00:00Z",
+      "stop_time": "2025-11-16T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9eabc192-abd5-461a-b94b-6c17153effa4",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
+      "description": "TeamPCP uses TeamPCP 2026年OSS攻撃ステージング基盤.",
+      "x_confidence": "high",
+      "external_references": [
         {
-          "source_name": "Google Threat Intelligence Group",
-          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
-          "external_id": "source--gtig-ai-threat-tracker-2026-05",
-          "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         }
       ],
       "x_first_observed": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
-        "basis": "not-stated"
+        "basis": "certificate-transparency-first-seen-not-activity-time"
       },
       "x_last_observed": {
         "value": null,
@@ -3547,7 +3970,7 @@
         "basis": "not-stated"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
+        "first": "certificate-transparency-first-seen-not-activity-time",
         "last": "not-stated",
         "first_precision": "unknown",
         "last_precision": "unknown"
@@ -3786,303 +4209,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--62be941f-207c-4655-8754-e180e2c852f8",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 is attributed or linked to TeamPCP.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--29caa6d0-e1e0-4f5b-bd6b-515c138505e3",
-      "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1059-004-ndt-sh.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c59d6ce1-9c7a-4053-963d-d275195d0c00",
-      "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1190-exposed-services.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--f832b9f0-0416-434b-b382-02623b08d317",
-      "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1486-ransomware.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7bd1fdbe-19d4-4c09-863f-1dd0d34f7b75",
-      "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--activity-rule--829e65b1ac18ce5ea420.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3e7c337f-ac6c-4616-93a8-4b55f63c69f7",
-      "created": "2026-08-12T01:51:50Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
-      "target_ref": "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
-      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--teampcp-exposed-cloud-services.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "oligo.security",
-          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
-          "external_id": "source--daily-48f251212f832ab9b6df",
-          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
-        }
-      ],
-      "x_first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
-        "status": "known",
-        "value": "2020-01-01T00:00:00Z"
-      },
-      "x_last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
-        "status": "known",
-        "value": "2026-04-01T00:00:00Z"
-      },
-      "x_temporal_basis": {
-        "first": "source-stated",
-        "last": "source-stated",
-        "first_precision": "year",
-        "last_precision": "month"
-      },
-      "x_reported_at": {
-        "value": "2026-08-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "start_time": "2020-01-01T00:00:00Z",
-      "stop_time": "2026-04-01T00:00:00Z"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--a3cd563c-aee3-479c-a4a7-b2708198783b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4103,6 +4232,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4143,7 +4278,7 @@
       "spec_version": "2.1",
       "id": "relationship--5a6cf06d-80ad-4950-b271-96cdf6252149",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4164,6 +4299,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4204,7 +4345,7 @@
       "spec_version": "2.1",
       "id": "relationship--fc17149b-6ec3-44d0-9c56-b4b7b3cb5c60",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4225,6 +4366,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4265,7 +4412,7 @@
       "spec_version": "2.1",
       "id": "relationship--1519a847-db81-4df2-9618-e83efd9f9a59",
       "created": "2026-09-21T03:50:40Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4286,6 +4433,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4324,16 +4477,16 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a8f01f7a-1c9b-4345-ae81-14607a849430",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "relationship--a55710fe-ffa3-4851-bbe6-087e4bb2e1c2",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
-      "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
-      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses infra--masscan-cloud.",
+      "target_ref": "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses infra--teampcp-oss-staging-2026.",
       "x_confidence": "high",
       "external_references": [
         {
@@ -4347,6 +4500,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4387,7 +4546,7 @@
       "spec_version": "2.1",
       "id": "relationship--9e07657e-5237-4e40-95db-78218ff6956a",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4408,6 +4567,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4448,7 +4613,7 @@
       "spec_version": "2.1",
       "id": "relationship--710c6ce8-691c-4476-b9c4-c54fe826c399",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4469,6 +4634,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4509,7 +4680,7 @@
       "spec_version": "2.1",
       "id": "relationship--f46ea036-eaef-4f98-a889-dafb531fb933",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4530,6 +4701,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4570,7 +4747,7 @@
       "spec_version": "2.1",
       "id": "relationship--0f9f9271-5f82-4c00-8959-52cef761e897",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4591,6 +4768,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4631,7 +4814,7 @@
       "spec_version": "2.1",
       "id": "relationship--8f9c04b2-860f-4ea3-a529-e031181c8cf4",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4652,6 +4835,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -6353,9 +6542,2826 @@
     {
       "type": "note",
       "spec_version": "2.1",
+      "id": "note--59e6cf98-49e4-43f0-9771-48153a483d0b",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: certificate-transparency-record-set",
+      "content": "Oligoが示した4件のCertificate Transparencyレコードを、対象ドメインとissuerを組み合わせて追跡するためのpivot。数値はcrt.shのレコードIDであり、証明書fingerprint、serial、公開鍵hashではない。issuer E6単独は汎用的なため帰属根拠にしない。",
+      "object_refs": [
+        "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
+        "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
+        "indicator--baddb151-0693-404d-8932-0401d70b5e59",
+        "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--teampcp-masscan-ct-records",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "certificate-transparency-record-set",
+      "x_pivot_value": "crt.sh IDs 18348750576, 18348751301, 18349037873, 18349038225; masscan.cloud / matrix.masscan.cloud; issuer Let's Encrypt E6; CT first seen 2025-05-11",
+      "x_attribution_scope": "shared",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--teampcp-masscan-ct-records-2025",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "certificate-transparency-first-seen-not-activity-time"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "Oligo table lists four crt.sh record IDs for masscan.cloud and matrix.masscan.cloud with Let's Encrypt E6 and CT first-seen 2025-05-11. The CT timestamp is retained in context and is not converted into an attack-observation time.",
+          "count": 4,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "ct-first-seen-is-not-activity-observation"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "ct-first-seen-is-not-activity-observation"
+      },
+      "x_observation_count": 4,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "One source-backed CT table containing four record IDs; no current CT or passive-DNS search was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "other",
+          "query": "crt.sh IDs IN (18348750576,18348751301,18349037873,18349038225) OR (name IN (masscan.cloud,matrix.masscan.cloud) AND issuer contains \"E6\")",
+          "purpose": "Resolve the exact historical certificates and inspect SANs or fingerprints without mistaking record IDs for digests.",
+          "requires_validation": true,
+          "false_positive_notes": "Let's Encrypt E6 is generic. Require the exact CT ID or domain plus certificate material and corroborate against the dated TeamPCP infrastructure before attribution."
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "CT first-seen 2025-05-11 is certificate-log timing, not an attack date. No certificate-fingerprint Indicator is created."
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a75617e2-ea25-4cdd-84f2-3894b99de466",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Hunting pivot: wildcard-domain-family",
+      "description": "Oligoがwildcardで報告したフィッシング／試験用サブドメイン族。wildcard文字列そのものをexact domain IOCにはせず、観測した完全修飾hostnameを別途検証する候補生成用patternとして保持する。",
+      "pattern": "[domain-name:value MATCHES '^[^.]+\\.(bank-phish|test-phish|zendesk)\\.masscan\\.cloud$']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-02T00:00:00Z",
+      "indicator_types": [
+        "anomalous-activity"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_object_id": "hunting-pivot--teampcp-masscan-wildcard-phishing",
+      "x_hunting_pivot": true,
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "wildcard-domain-family",
+      "x_pivot_value": "*.bank-phish.masscan.cloud; *.test-phish.masscan.cloud; *.zendesk.masscan.cloud",
+      "x_attribution_scope": "actor-specific",
+      "x_first_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-first-observed"
+      },
+      "x_last_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-first-observed"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_observation_count": 3,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "One source reports three wildcard families. No live DNS, CT, or passive scan was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "other",
+          "query": "lower(fqdn) matches ^[^.]+\\.(bank-phish|test-phish|zendesk)\\.masscan\\.cloud$",
+          "purpose": "Generate exact child-host candidates from DNS, CT, proxy, or SIEM telemetry.",
+          "requires_validation": true,
+          "false_positive_notes": "Do not convert the wildcard itself into an IOC. Validate each exact hostname, observation time, content, resolution, and continued control before linking it to TeamPCP."
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "The source table marks the three wildcard families' status as unknown; active_status therefore remains unknown."
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--1cd21a2e-1ed5-41f1-aa79-d8a89896da67",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: wildcard-domain-family",
+      "content": "Oligoがwildcardで報告したフィッシング／試験用サブドメイン族。wildcard文字列そのものをexact domain IOCにはせず、観測した完全修飾hostnameを別途検証する候補生成用patternとして保持する。",
+      "object_refs": [
+        "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
+        "indicator--a75617e2-ea25-4cdd-84f2-3894b99de466",
+        "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--teampcp-masscan-wildcard-phishing",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "wildcard-domain-family",
+      "x_pivot_value": "*.bank-phish.masscan.cloud; *.test-phish.masscan.cloud; *.zendesk.masscan.cloud",
+      "x_attribution_scope": "actor-specific",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--teampcp-masscan-wildcards-2026-01-02",
+          "observed_at": {
+            "value": "2026-01-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-first-observed"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "Oligo lists three wildcard families as first observed on 2026-01-02; the report does not enumerate exact child hostnames.",
+          "count": 3,
+          "count_basis": "documented-observables"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-first-observed"
+      },
+      "x_last_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-first-observed"
+      },
+      "x_observation_count": 3,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "single-observation",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "One source reports three wildcard families. No live DNS, CT, or passive scan was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "other",
+          "query": "lower(fqdn) matches ^[^.]+\\.(bank-phish|test-phish|zendesk)\\.masscan\\.cloud$",
+          "purpose": "Generate exact child-host candidates from DNS, CT, proxy, or SIEM telemetry.",
+          "requires_validation": true,
+          "false_positive_notes": "Do not convert the wildcard itself into an IOC. Validate each exact hostname, observation time, content, resolution, and continued control before linking it to TeamPCP."
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "The source table marks the three wildcard families' status as unknown; active_status therefore remains unknown."
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--e4741830-8579-4f19-8848-8620b44cda75",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Hunting pivot: uri-path-lineage",
+      "content": "TA-NATALSTATUS、ShadowRay 2.0、TeamPCP関連活動を横断して報告された、大文字小文字を含む配置pathとpayload名の組合せ。単独のファイル名や/files/は一般的になり得るため、既知host・port・時刻との組合せで確認する。",
+      "object_refs": [
+        "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
+        "indicator--44899d9d-98e1-4d8e-8123-531651d70dfc",
+        "indicator--5ae21779-37bf-4f89-8c88-5eeef16309a8",
+        "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
+        "indicator--baddb151-0693-404d-8932-0401d70b5e59",
+        "indicator--c4f181f9-5d78-4f5b-af51-cbba3f762f56",
+        "indicator--cfae5f25-4048-4f63-9ee2-7f05d6651307",
+        "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--teampcp-deployment-path-lineage",
+      "x_pivot_category": "infrastructure",
+      "x_pivot_type": "uri-path-lineage",
+      "x_pivot_value": "/EP9ts2/; /ep9TS2/ndt.sh; /files/netsh; /files/keyen.sh",
+      "x_attribution_scope": "shared",
+      "x_observations": [
+        {
+          "observation_id": "pivot-observation--teampcp-ep9ts2-2025-06",
+          "observed_at": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated-month"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "103.79.77.16 served /ep9TS2/ndt.sh in the wild during June 2025.",
+          "count": 1,
+          "count_basis": "documented-observables"
+        },
+        {
+          "observation_id": "pivot-observation--teampcp-ep9ts2-2025-07-26",
+          "observed_at": {
+            "value": "2025-07-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-command-date"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "A compromised Ray cluster logged wget https://matrix.masscan.cloud/ep9TS2/ndt.sh on 2025-07-26.",
+          "count": 1,
+          "count_basis": "documented-events"
+        },
+        {
+          "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-21",
+          "observed_at": {
+            "value": "2025-09-21T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-payload-date"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "67.217.57.240:666/files/netsh appears in the dated payload-evolution table.",
+          "count": 1,
+          "count_basis": "documented-events"
+        },
+        {
+          "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-26",
+          "observed_at": {
+            "value": "2025-09-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-payload-date"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "67.217.57.240:666/files/netsh appears again in the dated payload-evolution table.",
+          "count": 1,
+          "count_basis": "documented-events"
+        },
+        {
+          "observation_id": "pivot-observation--teampcp-files-netsh-2025-09-28",
+          "observed_at": {
+            "value": "2025-09-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-payload-date"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "67.217.57.240:666/files/netsh appears a third time in the dated payload-evolution table.",
+          "count": 1,
+          "count_basis": "documented-events"
+        },
+        {
+          "observation_id": "pivot-observation--teampcp-files-keyen-2025-10-02",
+          "observed_at": {
+            "value": "2025-10-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated-payload-date"
+          },
+          "source_ref": "source--oligo-teampcp-2026",
+          "activity_ref": "activity--teampcp-oligo-lineage-2020-2026",
+          "context": "67.217.57.240:666/files/keyen.sh appears in the dated payload-evolution table.",
+          "count": 1,
+          "count_basis": "documented-events"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated-month"
+      },
+      "x_last_observed": {
+        "value": "2025-10-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-payload-date"
+      },
+      "x_observation_count": 6,
+      "x_source_count": 1,
+      "x_activity_count": 1,
+      "x_continuity": {
+        "assessment": "reused",
+        "active_status": "unknown",
+        "evaluated_at": "2026-09-22T00:00:00Z",
+        "basis": "Oligo documents the path lineage on multiple dates and hosts from June through October 2025. No current telemetry or passive scan was performed.",
+        "passive_scan_performed": false,
+        "checks": []
+      },
+      "x_hunt_queries": [
+        {
+          "platform": "siem",
+          "query": "url.path IN (\"/ep9TS2/ndt.sh\",\"/files/netsh\",\"/files/keyen.sh\") OR command_line contains \"/EP9ts2/\"",
+          "purpose": "Find the reported deployment-path lineage in proxy, web, process, or command telemetry.",
+          "requires_validation": true,
+          "false_positive_notes": "Path fragments and filenames can be shared. Require a known TeamPCP-linked host, port 666, payload behavior, or temporal overlap before attribution."
+        }
+      ],
+      "x_confidence": "high",
+      "x_analyst_notes": "Case is preserved because the report uses both /EP9ts2/ and /ep9TS2/ndt.sh forms."
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d8e46584-7ac4-4d02-bd79-fabf6e3cc6c1",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: auth.masscan.cloud",
+      "pattern": "[domain-name:value = 'auth.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-10-31T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2bf67b22a6bf0c3f4afd5ce9be497da954926ee098685b1b7da31e8b0e8ed7ae",
+          "observed_at": {
+            "value": "2025-10-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 7
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "auth.masscan.cloud domain 2025-10-31 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud phishing Exact malicious subdomain first observed 2025-10-31; authentication and credential phishing",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "auth.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4a642aba-f32d-4cab-94de-cb7719b5f02c",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d8e46584-7ac4-4d02-bd79-fabf6e3cc6c1",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7054fccb-cef4-476e-8e73-c1fdcbd87f73",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: checkmarx.zone",
+      "pattern": "[domain-name:value = 'checkmarx.zone']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-10T02:40:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 2,
+      "x_seen_in_multiple_campaigns": true,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026",
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--teampcp-oss-staging-2026"
+      ],
+      "x_roles": [
+        "staging"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:23b85136659945021a2691608f40f904ab08d7c89a0f997cbe60362b1e9e7bdc",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 14
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026",
+            "activity--teampcp-oss-supply-chain-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--teampcp-oss-staging-2026"
+          ],
+          "roles": [
+            "staging"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "checkmarx.zone domain activity--teampcp-oligo-lineage-2020-2026|activity--teampcp-oss-supply-chain-2026 infra--teampcp-oss-staging-2026 staging Certificate-transparency first-seen 2026-03-22 for this exact staging domain; certificate-transparency-first-seen-not-activity-time",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "checkmarx.zone"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aeae056f-a8f2-40c3-8bba-8f3058f7e16a",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7054fccb-cef4-476e-8e73-c1fdcbd87f73",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2dddf067-11e3-426f-a3d4-4cb7c212d417",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: checkout.masscan.cloud",
+      "pattern": "[domain-name:value = 'checkout.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-11-19T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7619ff807e3aabebc2f84cf72a14726465f4bf8627b378d8a0adf9a1e1e1fbce",
+          "observed_at": {
+            "value": "2025-11-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 8
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "checkout.masscan.cloud domain 2025-11-19 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud phishing Exact malicious subdomain first observed 2025-11-19; checkout-page phishing",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "checkout.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-11-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-11-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5b098c8b-173f-4451-8438-391e0b31ba87",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2dddf067-11e3-426f-a3d4-4cb7c212d417",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3cf3040d-294a-4e6a-817b-0e3ccc6da5d0",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail.masscan.cloud",
+      "pattern": "[domain-name:value = 'mail.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-12-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "email-infrastructure"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8ae12b443a25d23554b38f1b90ced3cfbeb1699f0af16e524a5b1b3ed32da345",
+          "observed_at": {
+            "value": "2025-12-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 10
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "email-infrastructure"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "mail.masscan.cloud domain 2025-12-29 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud email-infrastructure Exact malicious subdomain first observed 2025-12-29; email infrastructure",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "mail.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-12-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-12-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--33b626c0-470f-49b0-9692-d6d94d71ed5e",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3cf3040d-294a-4e6a-817b-0e3ccc6da5d0",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: masscan.cloud",
+      "pattern": "[domain-name:value = 'masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-07-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "c2",
+        "delivery",
+        "infrastructure"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:392f0a124c57da80c9c551cdf8488f7ff441eb2cc705a5935e248de0c20bb431",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 2
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "infrastructure"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "masscan.cloud domain activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud infrastructure Certificate-transparency first-seen 2025-05-11 for the base domain; certificate-transparency-first-seen-not-activity-time",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "masscan.cloud"
+        },
+        {
+          "observation_id": "observation--sha256:557dcf498e4b42d7253a579fd856b18b30af739cb57d5d83bbdbc1847bc8bdc8",
+          "observed_at": {
+            "value": "2025-07-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 3
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "masscan.cloud domain 2025-07-26 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery Oligo payload-evolution table identifies masscan.cloud/ep9TS2/ndt.sh on 2025-07-26",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--180e4181-d983-4e85-9480-1bf8fcc0c205",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--baddb151-0693-404d-8932-0401d70b5e59",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: matrix.masscan.cloud",
+      "pattern": "[domain-name:value = 'matrix.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-07-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "c2",
+        "delivery",
+        "infrastructure"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8f4e19291b9edfa435198a8f004946b4731b128f81392241ac5ac11329a66f29",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 4
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "infrastructure"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "matrix.masscan.cloud domain activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud infrastructure Certificate-transparency first-seen 2025-05-11 for the exact subdomain; certificate-transparency-first-seen-not-activity-time",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "matrix.masscan.cloud"
+        },
+        {
+          "observation_id": "observation--sha256:4670ff1e3b3620c27695d07df592e5a85e1482f31e716020ed03a3d735ddb12c",
+          "observed_at": {
+            "value": "2025-07-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 5
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "matrix.masscan.cloud domain 2025-07-26 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery Exact host in the wget command recorded from a compromised Ray cluster on 2025-07-26",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "matrix.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--57ce0109-6f2c-407d-970d-5a36d6b2563d",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--baddb151-0693-404d-8932-0401d70b5e59",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5ae21779-37bf-4f89-8c88-5eeef16309a8",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: natalstatus.org",
+      "pattern": "[domain-name:value = 'natalstatus.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-10T02:40:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e5f5055fb2f053210769df0173c92f3e3c2235ccb52b5ee72a98c80dd6a3365c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 6
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "natalstatus.org domain activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2 Oligo identifies natalstatus.org as historical primary backend but gives no exact observation date for this domain row",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "natalstatus.org"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--98f0e997-4bd4-421d-8d35-7deede46b9f6",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5ae21779-37bf-4f89-8c88-5eeef16309a8",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a3a35745-56e1-4961-9fa6-f66224f9af37",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: pay.masscan.cloud",
+      "pattern": "[domain-name:value = 'pay.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-11-19T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3b6c9f7ea90a25a7b201d430124cc68a17dac21e5f976bcd9d132e07d89493c9",
+          "observed_at": {
+            "value": "2025-11-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 9
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "pay.masscan.cloud domain 2025-11-19 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud phishing Exact malicious subdomain first observed 2025-11-19; payment phishing",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "pay.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-11-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-11-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--172c4320-9a98-42ab-bdef-5fa4b8e5c59b",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a3a35745-56e1-4961-9fa6-f66224f9af37",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8d6f9156-5194-475c-9f1a-528737f4df82",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: pcp.masscan.cloud",
+      "pattern": "[domain-name:value = 'pcp.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-04-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "redirect"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:fbe89cc16c6041f7743120fd1185012cbe73f58faeca363812894749206d2479",
+          "observed_at": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 12
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "redirect"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "pcp.masscan.cloud domain 2026-04 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud redirect Oligo observed this exact subdomain redirecting to the TeamPCP Telegram channel during April 2026",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "pcp.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5bdc38b6-30bb-41d0-b713-763a1a9a3959",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8d6f9156-5194-475c-9f1a-528737f4df82",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--166e2912-b5f8-4ade-901b-34257faccdd1",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: scan.aquasecurity.org",
+      "pattern": "[domain-name:value = 'scan.aquasecurity.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-10T02:40:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 2,
+      "x_seen_in_multiple_campaigns": true,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026",
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--teampcp-oss-staging-2026"
+      ],
+      "x_roles": [
+        "staging"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2133a44810b1217760ee005ec9a001ba58da8e383deab0fccfd4e7db0f25eac2",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 13
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026",
+            "activity--teampcp-oss-supply-chain-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--teampcp-oss-staging-2026"
+          ],
+          "roles": [
+            "staging"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "scan.aquasecurity.org domain activity--teampcp-oligo-lineage-2020-2026|activity--teampcp-oss-supply-chain-2026 infra--teampcp-oss-staging-2026 staging Certificate-transparency first-seen 2026-03-17 for this exact staging domain; certificate-transparency-first-seen-not-activity-time",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "scan.aquasecurity.org"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5643ab5b-90ef-4279-971d-a1e63c2c75e7",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--166e2912-b5f8-4ade-901b-34257faccdd1",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--925a780c-9aed-4986-a22a-7ca2d8fb2084",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: test.masscan.cloud",
+      "pattern": "[domain-name:value = 'test.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-02T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "testing-infrastructure"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:17f9eadfb653439b0d92b52798736575654044c157520d746ca4e978e0f2b4cb",
+          "observed_at": {
+            "value": "2026-01-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 11
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "testing-infrastructure"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "test.masscan.cloud domain 2026-01-02 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud testing-infrastructure Exact malicious subdomain first observed 2026-01-02; infrastructure testing",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "test.masscan.cloud"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2026-01-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5da2d0b5-9647-4773-9a70-70722e6602fe",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--925a780c-9aed-4986-a22a-7ca2d8fb2084",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1c0b983c-f9bc-41af-9f9f-0d664bde4f34",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.127.134.124",
+      "pattern": "[ipv4-addr:value = '103.127.134.124']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--teampcp-shadowray-ironern-control"
+      ],
+      "x_roles": [
+        "account-management",
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e37cf24b14a4f9fdc0b7e723029351628c9e32c264248a14f8a106ab6f355073",
+          "observed_at": {
+            "value": "2025-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 26
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--teampcp-shadowray-ironern-control"
+          ],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "103.127.134.124 ipv4 2025-10-15 activity--teampcp-oligo-lineage-2020-2026 infra--teampcp-shadowray-ironern-control c2 Address receiving reverse shells from Victim 1 from 2025-10-15 through 2025-11-02",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "103.127.134.124"
+        },
+        {
+          "observation_id": "observation--sha256:8dd1cc89a5bb221ba8f6a7ea26170baa2b81668e32e5f02ba48460adc7000f49",
+          "observed_at": {
+            "value": "2025-11-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 27
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--teampcp-shadowray-ironern-control"
+          ],
+          "roles": [
+            "account-management"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "103.127.134.124 ipv4 2025-11-02 activity--teampcp-oligo-lineage-2020-2026 infra--teampcp-shadowray-ironern-control account-management IronErn-related GitLab accounts authenticated from this address during 2025-11-02 through 2025-11-04",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "103.127.134.124"
+        },
+        {
+          "observation_id": "observation--sha256:3cba9c0165f75dff2784b02c85667c373f45ac0d1d2249f5d6112ab3c5c5a078",
+          "observed_at": {
+            "value": "2025-11-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 28
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--teampcp-shadowray-ironern-control"
+          ],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "103.127.134.124 ipv4 2025-11-16 activity--teampcp-oligo-lineage-2020-2026 infra--teampcp-shadowray-ironern-control c2 Address received reverse shells from Victim 2 on 2025-11-16",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "103.127.134.124"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-11-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--93b72b3b-4798-4f79-ba16-6c54042e89f1",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1c0b983c-f9bc-41af-9f9f-0d664bde4f34",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--44899d9d-98e1-4d8e-8123-531651d70dfc",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.79.77.16",
+      "pattern": "[ipv4-addr:value = '103.79.77.16']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-06-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "delivery"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7f9bb0acaf3504d601aea1a374f8e7424e4bf56c0cfb0c2b76590a3531f46f99",
+          "observed_at": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 15
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "103.79.77.16 ipv4 2025-06 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud delivery Host documented in the wild during June 2025 serving the distinctive /ep9TS2/ndt.sh path",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "103.79.77.16"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c3c7545e-3154-4e1f-b28d-f3398a83fe52",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--44899d9d-98e1-4d8e-8123-531651d70dfc",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6f9fea2f-55c0-48d3-b079-106b508c3a5e",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 104.164.55.217",
+      "pattern": "[ipv4-addr:value = '104.164.55.217']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-08-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "delivery"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d491a8b71008584debb9249d2c10e3df164a61e5500ebd5724668b39a27e27dc",
+          "observed_at": {
+            "value": "2025-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 16
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "104.164.55.217 ipv4 2025-08-01 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud delivery URLhaus-associated address for malware distribution from matrix.masscan.cloud beginning 2025-08-01",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "104.164.55.217"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--03d60877-2de0-46a1-b2b6-b5296ce3cbdd",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6f9fea2f-55c0-48d3-b079-106b508c3a5e",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--23f92ea2-8ecf-4c61-a31f-9bacf27971f4",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 213.139.205.74",
+      "pattern": "[ipv4-addr:value = '213.139.205.74']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-10T02:40:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "passive-dns"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1d9fa814d0ca244bd66bc4ae8259b790b49719bf11d2611cba6103501d88c606",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 17
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "passive-dns"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "213.139.205.74 ipv4 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud passive-dns Historical passive-DNS resolution for masscan.cloud; the report gives no exact observation date",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "213.139.205.74"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_valid_from_basis": "stix-required-created-fallback",
+      "x_time_correlation_eligible": false,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3ebba742-aed7-4b65-879d-ddc3d1d74a37",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--23f92ea2-8ecf-4c61-a31f-9bacf27971f4",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--66e6084f-17c4-4b22-870a-72c40855373a",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 44.252.85.168",
+      "pattern": "[ipv4-addr:value = '44.252.85.168']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "delivery",
+        "passive-dns"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:204307fc7688432e14bd7bb0aee087dc2cd07ebb896916604634c024531a40d4",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 24
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "44.252.85.168 ipv4 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud delivery Payload host sharing the /files/ layout; the report gives no exact payload-serving date",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "44.252.85.168"
+        },
+        {
+          "observation_id": "observation--sha256:12af09b45a6f902132c7a95ad0cfbc962920ec08859efe5804dcf5fe1fa2873a",
+          "observed_at": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 25
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "passive-dns"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "44.252.85.168 ipv4 2026-02 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud passive-dns Oligo states that masscan.cloud resolved to this address during February 2026",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "44.252.85.168"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cfc7beca-a533-48b6-b176-d8a4d2a54655",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--66e6084f-17c4-4b22-870a-72c40855373a",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cfae5f25-4048-4f63-9ee2-7f05d6651307",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 67.217.57.240",
+      "pattern": "[ipv4-addr:value = '67.217.57.240']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-09-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 6,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "c2",
+        "delivery",
+        "passive-dns"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:815d35c7ac56765a5dafc34b2a7a9d153ce29fe4f6194aa89b68c64e0c234af7",
+          "observed_at": {
+            "value": "2025-09-21T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 18
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2025-09-21 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery TeamPCP C2 and payload host observed in the dated payload and reverse-shell timeline",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        },
+        {
+          "observation_id": "observation--sha256:2fb3a1349dad048c83bae4ac67454ea24917bcf726bac899e23bc3712ba80726",
+          "observed_at": {
+            "value": "2025-09-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 19
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2025-09-26 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery TeamPCP C2 and /files/netsh payload host appears again in the dated payload timeline",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        },
+        {
+          "observation_id": "observation--sha256:56ed2ff29152dbc15741becb0e4d908a34accbf5f4e8d28124fd21cedf73729b",
+          "observed_at": {
+            "value": "2025-09-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 20
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2025-09-28 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery TeamPCP C2 and /files/netsh payload host appears a third time in the dated payload timeline",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        },
+        {
+          "observation_id": "observation--sha256:9be0434ec200431166a87a982aef0a9d6132b41bc80b5191cc7dba817ab962c2",
+          "observed_at": {
+            "value": "2025-10-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 21
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2025-10-02 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|delivery TeamPCP C2 served /files/keyen.sh in the dated payload timeline",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        },
+        {
+          "observation_id": "observation--sha256:c9c7857b16cab0d13d9185589d811206c6a56a009c5fd957331a52207bde2ad3",
+          "observed_at": {
+            "value": "2025-11-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 22
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2025-11-02 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2 Oligo states that long-lived reverse shells connected to this address remained active through 2025-11-02",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        },
+        {
+          "observation_id": "observation--sha256:16e23b2c7063f987700687830d8ea1138ec5a99d5d81aaf929f842991770fb73",
+          "observed_at": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 23
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "c2",
+            "passive-dns"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "67.217.57.240 ipv4 2026-02 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud c2|passive-dns Oligo states that masscan.cloud again resolved to this address during February 2026",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "67.217.57.240"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0bea25b6-bd06-4a02-8ca4-40b7b4ac2c46",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cfae5f25-4048-4f63-9ee2-7f05d6651307",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c4f181f9-5d78-4f5b-af51-cbba3f762f56",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://matrix.masscan.cloud/ep9TS2/ndt.sh",
+      "pattern": "[url:value = 'https://matrix.masscan.cloud/ep9TS2/ndt.sh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-07-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_roles": [
+        "delivery"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:08eb479202441789f391cd1a93e35c54ba26fa9660f10cc016207d34c7404888",
+          "observed_at": {
+            "value": "2025-07-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "column:observed_at"
+          },
+          "source_published_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--oligo-teampcp-2026",
+          "source_path": "actor_profile/evidence/teampcp-oligo-2026-08-05.csv",
+          "source_location": {
+            "row": 29
+          },
+          "campaign_refs": [
+            "activity--teampcp-oligo-lineage-2020-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ],
+          "roles": [
+            "delivery"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "https://matrix.masscan.cloud/ep9TS2/ndt.sh url 2025-07-26 activity--teampcp-oligo-lineage-2020-2026 infra--masscan-cloud delivery Exact HTTPS URL from the wget command logged on a compromised Ray cluster",
+          "analyst_notes": "Oligo 2026-08-05本文と時系列表を手動構造化。IOCの日時は本文が各observableへ明示した場合だけ設定した。CT first-seenは攻撃実行日ではなく証明書透明性ログ上の観測、passive DNSはDNS観測、URLhaus日は同サービス上の配布観測である。schemeが示されないhost/pathはURLを推測せずartifactへ保存した。*.bank-phish、*.test-phish、*.zendeskはwildcard hunt patternでありexact Indicatorにしない。CT record ID 4件とissuer E6は証明書fingerprintではない。6.6.6.6は2026年4月の再編後の名前解決先としてのみ記述され、悪性運用を直接裏付けないためIOCから除外した。",
+          "raw_value": "https://matrix.masscan.cloud/ep9TS2/ndt.sh"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_last_observed": {
+        "value": "2025-07-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "column:observed_at"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--oligo-teampcp-2026",
+          "value": "2026-08-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e8ee5e9b-c6e5-4966-9b2e-dbdb0c60a300",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c4f181f9-5d78-4f5b-af51-cbba3f762f56",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
       "id": "note--79187d10-97fd-45e5-992f-ebaac2259b9f",
-      "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6365,14 +9371,14 @@
         "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 0
+      "x_artifact_observation_count": 20
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--d1dcd276-3e72-4de8-91ac-208726e53c0a",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T00:00:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6381,9 +9387,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-09-22T00:00:00Z",
       "object_refs": [
         "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+        "threat-actor--45348411-40f2-458c-b579-8b3f7af00026",
+        "threat-actor--e51dbfa4-2277-4347-8a17-3b99cbd785a3",
         "malware--86f06a20-a3c3-4541-8c39-34308f05a381",
         "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
         "malware--483c419f-de7b-492e-a5ee-504ca59c9535",
@@ -6391,16 +9399,15 @@
         "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
         "malware--3c6d17fb-e577-40ba-a9d6-3824b11e3526",
         "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
-        "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+        "infrastructure--f484a05a-dfe0-44d3-9b1f-507eb4eaae69",
+        "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
         "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
-        "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
         "identity--b8671f95-b83a-4f29-805f-52df2db7a49c",
         "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
         "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
         "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
         "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
-        "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
         "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
         "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
         "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
@@ -6443,7 +9450,27 @@
         "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
         "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
         "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
-        "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1"
+        "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
+        "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
+        "indicator--a75617e2-ea25-4cdd-84f2-3894b99de466",
+        "indicator--d8e46584-7ac4-4d02-bd79-fabf6e3cc6c1",
+        "indicator--7054fccb-cef4-476e-8e73-c1fdcbd87f73",
+        "indicator--2dddf067-11e3-426f-a3d4-4cb7c212d417",
+        "indicator--3cf3040d-294a-4e6a-817b-0e3ccc6da5d0",
+        "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
+        "indicator--baddb151-0693-404d-8932-0401d70b5e59",
+        "indicator--5ae21779-37bf-4f89-8c88-5eeef16309a8",
+        "indicator--a3a35745-56e1-4961-9fa6-f66224f9af37",
+        "indicator--8d6f9156-5194-475c-9f1a-528737f4df82",
+        "indicator--166e2912-b5f8-4ade-901b-34257faccdd1",
+        "indicator--925a780c-9aed-4986-a22a-7ca2d8fb2084",
+        "indicator--1c0b983c-f9bc-41af-9f9f-0d664bde4f34",
+        "indicator--44899d9d-98e1-4d8e-8123-531651d70dfc",
+        "indicator--6f9fea2f-55c0-48d3-b079-106b508c3a5e",
+        "indicator--23f92ea2-8ecf-4c61-a31f-9bacf27971f4",
+        "indicator--66e6084f-17c4-4b22-870a-72c40855373a",
+        "indicator--cfae5f25-4048-4f63-9ee2-7f05d6651307",
+        "indicator--c4f181f9-5d78-4f5b-af51-cbba3f762f56"
       ],
       "x_schema_version": "1.4.0"
     }

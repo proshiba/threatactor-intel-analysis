@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-21T15:42:48Z",
+  "generated_at": "2026-09-21T23:44:05Z",
   "actor_ref": "actor--apt28",
   "actor_name": "APT28",
-  "profile_updated_at": "2026-09-21T13:20:00Z",
+  "profile_updated_at": "2026-09-21T22:43:14Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -28,7 +28,7 @@
       "malware": 20,
       "activity_linked_malware": 1,
       "tools": 11,
-      "targets": 23,
+      "targets": 22,
       "motivations": 0
     },
     "external_lead_counts": {
@@ -216,6 +216,10 @@
               "ttp--mitre-campaign--d14c4fb33f8705c58af6",
               "ttp--mitre-campaign--d1e1947460c7e3d276b5",
               "ttp--mitre-campaign--dd688b066bae0bcda3af"
+            ],
+            "tool_refs": [
+              "tool--cipher-exe",
+              "tool--mitre--s0108"
             ]
           },
           "infrastructure": {
@@ -279,6 +283,10 @@
         "stix_object_type": "campaign",
         "activity_refs": [],
         "grouping_context": null,
+        "tool_refs": [
+          "tool--cipher-exe",
+          "tool--mitre--s0108"
+        ],
         "claim_assessments": [
           {
             "claim_id": "claim--555b91e34475e3555578da49",
@@ -294,6 +302,16 @@
           }
         ],
         "malware": [],
+        "tools": [
+          {
+            "id": "tool--cipher-exe",
+            "name": "cipher.exe"
+          },
+          {
+            "id": "tool--mitre--s0108",
+            "name": "netsh"
+          }
+        ],
         "targets": [],
         "victims": [],
         "techniques": [
@@ -418,8 +436,8 @@
         },
         "description": "APT28がSignalチャットを利用し、ウクライナ政府機関を標的に新たなマルウェア攻撃を実施。 CERT-UAが2024年3月に最初の攻撃を発見し、2025年5月に政府メールへの不正アクセスを確認。 マルウェアローダ「Covenant」がマクロ付き文書「Акт.doc」で配布され、DLLとWAVファイルをダウンロード。BeardShellとSlimAgentというマルウェアを動かす。 「BeardShell」はPowerShellスクリプトをダウンロード・復号化し実行し、Icedrive API経由でC2へ通信。 「SlimAgent」はスクリーンショットを取得してAES/RSAで暗号化し、別ツール経由でC2に送信。",
         "target_refs": [
-          "target--country--ukraine",
-          "target--sector--government"
+          "target--sector--government",
+          "target--targeting-audit--country--74218c66e8ad54bb574d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -456,8 +474,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine",
-              "target--sector--government"
+              "target--sector--government",
+              "target--targeting-audit--country--74218c66e8ad54bb574d"
             ],
             "victim_refs": [
               "victim--activity-rule--4f814ba410cbff3d2838"
@@ -493,7 +511,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine"
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": []
             }
@@ -524,12 +542,12 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
-            "name": "ウクライナ"
-          },
-          {
             "id": "target--sector--government",
             "name": "Government"
+          },
+          {
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
+            "name": "ウクライナ"
           }
         ],
         "victims": [
@@ -576,10 +594,10 @@
         "description": "Recorded FutureのInsikt Groupは、2025年9月末から2026年4月初旬にBlueDeltaがルーマニア、スペイン、トルコの政府・外交・防衛関連組織を狙った攻撃を確認した。 攻撃では外交テーマなどのマクロ有効Word文書をスピアフィッシングで送り、軽量なWindowsバッチ型バックドア「HOOKEDGE」を展開して永続化した。 HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 Insikt Groupはコード、TTP、インフラ、標的傾向から、中程度の確度でロシアGRU系BlueDelta（APT28／Fancy Bear／Forest Blizzard）の活動と評価している。",
         "target_refs": [
           "target--activity-rule--sector--b94dc560a327b601965d",
-          "target--country--romania",
-          "target--country--turkey",
           "target--sector--government",
-          "target--targeting-audit--country--26a12be8931da14e6e50"
+          "target--targeting-audit--country--26a12be8931da14e6e50",
+          "target--targeting-audit--country--7fac2abcaf7f63746b35",
+          "target--targeting-audit--country--fd036f755ca98d440fb5"
         ],
         "malware_refs": [
           "malware--daily-a2706b008c9d9f2ded81"
@@ -615,10 +633,10 @@
           "victim": {
             "target_refs": [
               "target--activity-rule--sector--b94dc560a327b601965d",
-              "target--country--romania",
-              "target--country--turkey",
               "target--sector--government",
-              "target--targeting-audit--country--26a12be8931da14e6e50"
+              "target--targeting-audit--country--26a12be8931da14e6e50",
+              "target--targeting-audit--country--7fac2abcaf7f63746b35",
+              "target--targeting-audit--country--fd036f755ca98d440fb5"
             ],
             "victim_refs": [
               "victim--activity-rule--8d86f0d5dccd6738b121"
@@ -654,9 +672,9 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--romania",
-                "target--country--turkey",
-                "target--targeting-audit--country--26a12be8931da14e6e50"
+                "target--targeting-audit--country--26a12be8931da14e6e50",
+                "target--targeting-audit--country--7fac2abcaf7f63746b35",
+                "target--targeting-audit--country--fd036f755ca98d440fb5"
               ],
               "target_region_refs": []
             }
@@ -696,20 +714,20 @@
             "name": "防衛・軍事"
           },
           {
-            "id": "target--country--romania",
-            "name": "ルーマニア"
-          },
-          {
-            "id": "target--country--turkey",
-            "name": "トルコ"
-          },
-          {
             "id": "target--sector--government",
             "name": "Government"
           },
           {
             "id": "target--targeting-audit--country--26a12be8931da14e6e50",
             "name": "スペイン"
+          },
+          {
+            "id": "target--targeting-audit--country--7fac2abcaf7f63746b35",
+            "name": "トルコ"
+          },
+          {
+            "id": "target--targeting-audit--country--fd036f755ca98d440fb5",
+            "name": "ルーマニア"
           }
         ],
         "victims": [
@@ -744,8 +762,8 @@
         },
         "description": "ロシア軍情報機関GRUと結び付けられる国家支援型のAPT28が、ウクライナ政府機関を狙う攻撃でZimbra Collaboration Suiteの脆弱性を悪用していた。 問題のCVE-2025-66376は保存型XSSで、2025年11月上旬に修正済みだが、認証不要の攻撃者が悪用してRCEやメールアカウント侵害に至る可能性がある。 CISAはこの脆弱性を既知悪用脆弱性カタログへ追加し、米連邦文民機関に対して2週間以内にサーバーを保護するよう命じた。 Seqrite Labsによれば、この攻撃は「Operation GhostMail」と呼ばれ、標的の一つにはウクライナ国家水路庁が含まれていた。 攻撃メールは添付や不審リンクを含まず、HTML本文内の難読化JavaScriptだけで資格情報、セッショントークン、2FAバックアップコード、過去90日分のメールを窃取した。",
         "target_refs": [
-          "target--country--ukraine",
-          "target--sector--government"
+          "target--sector--government",
+          "target--targeting-audit--country--74218c66e8ad54bb574d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -780,8 +798,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine",
-              "target--sector--government"
+              "target--sector--government",
+              "target--targeting-audit--country--74218c66e8ad54bb574d"
             ],
             "victim_refs": [
               "victim--activity-rule--f90ccf54d8b95b5c4f2d"
@@ -819,7 +837,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine"
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": []
             }
@@ -850,12 +868,12 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
-            "name": "ウクライナ"
-          },
-          {
             "id": "target--sector--government",
             "name": "Government"
+          },
+          {
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
+            "name": "ウクライナ"
           }
         ],
         "victims": [
@@ -896,7 +914,7 @@
         },
         "description": "CERT-UAによればAPT28は2025年12月、ウクライナおよび複数のEU諸国を標的に、細工したLNKファイル内でCVE-2026-21513とCVE-2026-21510を組み合わせ、SmartScreen等を回避してリモートDLLを実行した。AkamaiはこのAPT28エクスプロイトを2026年1月に検知した。後続のCVE-2026-32202は不完全な修正から生じた別脆弱性であり、MicrosoftはAPT28との関連証拠を確認していない。",
         "target_refs": [
-          "target--country--ukraine"
+          "target--targeting-audit--country--74218c66e8ad54bb574d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -928,7 +946,7 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine"
+              "target--targeting-audit--country--74218c66e8ad54bb574d"
             ],
             "victim_refs": [
               "victim--activity-rule--00277baa4211a83e77d8"
@@ -961,7 +979,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine"
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": []
             }
@@ -994,7 +1012,7 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
             "name": "ウクライナ"
           }
         ],
@@ -1187,7 +1205,7 @@
         },
         "description": "ロシア政府支援のAPT28は、長期的なスパイ活動のために、オープンソースのCovenantを大幅に改変した独自版を使用していると報じられた。 ESETは、APT28が2024年4月以降にBeardShellとCovenantの2種類のインプラントを使い、ウクライナ軍関係者を長期監視していたと分析した。 最近の攻撃では、Microsoft OfficeのCVE-2026-21509を悪用する悪性DOCファイルを通じて、ウクライナの中央行政機関が標的になったとされる。 調査の端緒は、キー入力、クリップボード、画面キャプチャーを取得できるSlimAgentが、ウクライナ政府システム上で見つかったことだった。 改変版Covenantには、端末特性に結び付く識別子、検知回避向けの実行制御、クラウドベース通信の追加があり、2025年7月以降はFilenも使われた。",
         "target_refs": [
-          "target--country--ukraine"
+          "target--targeting-audit--country--74218c66e8ad54bb574d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -1218,7 +1236,7 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine"
+              "target--targeting-audit--country--74218c66e8ad54bb574d"
             ],
             "victim_refs": [
               "victim--activity-rule--3f67b12db0d14a137881"
@@ -1253,7 +1271,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine"
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": []
             }
@@ -1284,7 +1302,7 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
             "name": "ウクライナ"
           }
         ],
@@ -1321,10 +1339,9 @@
         "description": "APT28は、政府・NGOを装ったフィッシングキャンペーンを展開 IBM X-Forceが報告、様々なドキュメントを餌に使用 ウクライナ政府やポーランド機関等を標的にカスタムバックドアを展開 「search-ms:」URIを利用し、WebDAVサーバーからマルウェアをダウンロードさせる MASEPIE, OCEANMAP, STEELHOOK等のマルウェアを使用し情報窃取",
         "target_refs": [
           "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
-          "target--country--poland",
-          "target--country--ukraine",
-          "target--country--united-states",
           "target--sector--government",
+          "target--targeting-audit--country--12429f69cb83a6f20422",
+          "target--targeting-audit--country--74218c66e8ad54bb574d",
           "target--targeting-audit--region--0a6dd71287620a124734",
           "target--targeting-audit--region--3235de4bd3e541b78894"
         ],
@@ -1358,10 +1375,9 @@
           "victim": {
             "target_refs": [
               "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
-              "target--country--poland",
-              "target--country--ukraine",
-              "target--country--united-states",
               "target--sector--government",
+              "target--targeting-audit--country--12429f69cb83a6f20422",
+              "target--targeting-audit--country--74218c66e8ad54bb574d",
               "target--targeting-audit--region--0a6dd71287620a124734",
               "target--targeting-audit--region--3235de4bd3e541b78894"
             ],
@@ -1396,9 +1412,8 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--poland",
-                "target--country--ukraine",
-                "target--country--united-states"
+                "target--targeting-audit--country--12429f69cb83a6f20422",
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": [
                 "target--targeting-audit--region--0a6dd71287620a124734",
@@ -1436,20 +1451,16 @@
             "name": "非営利・市民社会"
           },
           {
-            "id": "target--country--poland",
+            "id": "target--sector--government",
+            "name": "Government"
+          },
+          {
+            "id": "target--targeting-audit--country--12429f69cb83a6f20422",
             "name": "ポーランド"
           },
           {
-            "id": "target--country--ukraine",
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
             "name": "ウクライナ"
-          },
-          {
-            "id": "target--country--united-states",
-            "name": "米国"
-          },
-          {
-            "id": "target--sector--government",
-            "name": "Government"
           },
           {
             "id": "target--targeting-audit--region--0a6dd71287620a124734",
@@ -1492,7 +1503,7 @@
         },
         "description": "ロシアのAPT28がWindowsプリントスプーラーの脆弱性(CVE-2022-38028)を悪用 未知のツール「GooseEgg」を使用して特権昇格と情報窃盗 Microsoftが修正済みの脆弱性を悪用していると警告 攻撃はウクライナや西欧の組織が標的 GooseEggは他のマルウェアの起動やコマンド実行を可能に",
         "target_refs": [
-          "target--country--ukraine"
+          "target--targeting-audit--country--74218c66e8ad54bb574d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -1523,7 +1534,7 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine"
+              "target--targeting-audit--country--74218c66e8ad54bb574d"
             ],
             "victim_refs": [
               "victim--activity-rule--63fa59976c0fe677f01b"
@@ -1556,7 +1567,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine"
+                "target--targeting-audit--country--74218c66e8ad54bb574d"
               ],
               "target_region_refs": []
             }
@@ -1587,7 +1598,7 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
             "name": "ウクライナ"
           }
         ],
@@ -1775,8 +1786,7 @@
         },
         "description": "ロシアのAPT28（Fancy Bear）が、米国企業のWi-Fiネットワークを遠隔から侵害。 「隣接ネットワーク攻撃」という攻撃を用い、数千マイル離れた場所からアメリカの企業のWiFiネットワークに侵入。 近隣の建物の脆弱な組織を侵害し、これを経由して標的のWi-Fiにアクセス。 攻撃者は、標的の無線ネットワークへの橋渡し役となる、近くの建物の組織に目をつけた。別の組織に侵入し、有線と無線の両方の接続を持つデュアルホームデバイスをネットワーク上で探すアイデア。このデバイスを使い、攻撃者はその無線アダプターを使って標的の企業WiFiに接続。 2022年2月、Volexity社がワシントンD.C.の顧客ネットワークでこの攻撃を発見。 元々は標的の公開サーバへのパスワードスプレー攻撃をしたが、MFAが有効であったため失敗。しかしWi-FiではMFAは無効だったため、この攻撃を使い標的のWi-Fi資格情報を取得し、侵入。",
         "target_refs": [
-          "target--activity-rule--country--72caf60a2fbce4a1be7a",
-          "target--country--united-states"
+          "target--targeting-audit--country--f5aa88aedca7c4d6965d"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -1811,8 +1821,7 @@
           },
           "victim": {
             "target_refs": [
-              "target--activity-rule--country--72caf60a2fbce4a1be7a",
-              "target--country--united-states"
+              "target--targeting-audit--country--f5aa88aedca7c4d6965d"
             ],
             "victim_refs": [
               "victim--activity-rule--49967a74cfacaf36fc89"
@@ -1847,8 +1856,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--activity-rule--country--72caf60a2fbce4a1be7a",
-                "target--country--united-states"
+                "target--targeting-audit--country--f5aa88aedca7c4d6965d"
               ],
               "target_region_refs": []
             }
@@ -1879,11 +1887,7 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-            "name": "ロシア"
-          },
-          {
-            "id": "target--country--united-states",
+            "id": "target--targeting-audit--country--f5aa88aedca7c4d6965d",
             "name": "米国"
           }
         ],
@@ -2072,9 +2076,8 @@
         },
         "description": "ロシアGRUに関連するAPT28がポーランド政府機関を標的 大規模フィッシングキャンペーンで攻撃、偽のリンクを使用 被害者がリンクをクリックすると悪意のある実行ファイルがダウンロードされる APT28は過去にも多数の高プロファイルなサイバー攻撃を行っている NATOとEUはAPT28の長期間のサイバー間諜活動を非難",
         "target_refs": [
-          "target--activity-rule--country--72caf60a2fbce4a1be7a",
-          "target--country--poland",
-          "target--sector--government"
+          "target--sector--government",
+          "target--targeting-audit--country--12429f69cb83a6f20422"
         ],
         "malware_refs": [],
         "infrastructure_refs": [],
@@ -2109,9 +2112,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--activity-rule--country--72caf60a2fbce4a1be7a",
-              "target--country--poland",
-              "target--sector--government"
+              "target--sector--government",
+              "target--targeting-audit--country--12429f69cb83a6f20422"
             ],
             "victim_refs": [
               "victim--activity-rule--940ab9848967274fdb1b"
@@ -2146,8 +2148,7 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--activity-rule--country--72caf60a2fbce4a1be7a",
-                "target--country--poland"
+                "target--targeting-audit--country--12429f69cb83a6f20422"
               ],
               "target_region_refs": []
             }
@@ -2178,16 +2179,12 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-            "name": "ロシア"
-          },
-          {
-            "id": "target--country--poland",
-            "name": "ポーランド"
-          },
-          {
             "id": "target--sector--government",
             "name": "Government"
+          },
+          {
+            "id": "target--targeting-audit--country--12429f69cb83a6f20422",
+            "name": "ポーランド"
           }
         ],
         "victims": [
@@ -2227,9 +2224,7 @@
           "basis": "daily-news-file-date"
         },
         "description": "国際法執行機関と民間企業は、MikroTik や TP-Link ルーターのローカル通信を乗っ取り、Microsoft 資格情報を盗む FrostArmada を妨害した。 この作戦は主に SOHO ルーターの DNS 設定を書き換え、攻撃者管理の VPS を DNS リゾルバ化して認証トラフィックを AitM プロキシへ転送していた。 被害者側で見える兆候は主に無効な TLS 証明書警告だけで、これを無視すると Microsoft ログイン情報や OAuth トークンが中間点で収集された。 2025年12月時点で 120 か国 18,000 台に感染が拡大し、政府機関、法執行機関、IT・ホスティング事業者、自前サーバー運用組織が主な標的とされた。 Microsoft、Black Lotus Labs、FBI、米司法省、ポーランド政府の連携で攻撃インフラは停止され、記事は証明書ピンニングや公開面の縮小を推奨している。",
-        "target_refs": [
-          "target--country--poland"
-        ],
+        "target_refs": [],
         "malware_refs": [],
         "infrastructure_refs": [],
         "confidence": "medium",
@@ -2258,9 +2253,7 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [
-              "target--country--poland"
-            ],
+            "target_refs": [],
             "victim_refs": [
               "victim--activity-rule--82f26dc841b6fb191451"
             ]
@@ -2293,9 +2286,7 @@
               "source_countries": [
                 "Russia"
               ],
-              "target_country_refs": [
-                "target--country--poland"
-              ],
+              "target_country_refs": [],
               "target_region_refs": []
             }
           },
@@ -2323,12 +2314,7 @@
           }
         ],
         "malware": [],
-        "targets": [
-          {
-            "id": "target--country--poland",
-            "name": "ポーランド"
-          }
-        ],
+        "targets": [],
         "victims": [
           {
             "id": "victim--activity-rule--82f26dc841b6fb191451",
@@ -2361,8 +2347,8 @@
         },
         "description": "ロシア国家支援のAPT28（Fancy Bear）が「RoundPress」と呼ばれるサイバースパイ活動を展開。 Roundcube、Horde、MDaemon、Zimbraなどのウェブメールサーバーのゼロデイおよび既知のXSS脆弱性を悪用。 被害者がメールを開くだけで、JavaScriptが実行され、メール内容が攻撃者に送信される。 ギリシャ、ウクライナ、セルビア、カメルーンなどの政府機関や軍事組織、防衛企業が標的。 攻撃は2023年から始まり、2024年に新たなエクスプロイトを採用して継続中。",
         "target_refs": [
-          "target--country--ukraine",
           "target--targeting-audit--country--2958e5242a8b9525701a",
+          "target--targeting-audit--country--74218c66e8ad54bb574d",
           "target--targeting-audit--country--7c49db2288d7bd5abff5",
           "target--targeting-audit--country--edef43a2d8834237d751"
         ],
@@ -2399,8 +2385,8 @@
           },
           "victim": {
             "target_refs": [
-              "target--country--ukraine",
               "target--targeting-audit--country--2958e5242a8b9525701a",
+              "target--targeting-audit--country--74218c66e8ad54bb574d",
               "target--targeting-audit--country--7c49db2288d7bd5abff5",
               "target--targeting-audit--country--edef43a2d8834237d751"
             ],
@@ -2439,8 +2425,8 @@
                 "Russia"
               ],
               "target_country_refs": [
-                "target--country--ukraine",
                 "target--targeting-audit--country--2958e5242a8b9525701a",
+                "target--targeting-audit--country--74218c66e8ad54bb574d",
                 "target--targeting-audit--country--7c49db2288d7bd5abff5",
                 "target--targeting-audit--country--edef43a2d8834237d751"
               ],
@@ -2473,12 +2459,12 @@
         "malware": [],
         "targets": [
           {
-            "id": "target--country--ukraine",
-            "name": "ウクライナ"
-          },
-          {
             "id": "target--targeting-audit--country--2958e5242a8b9525701a",
             "name": "カメルーン"
+          },
+          {
+            "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
+            "name": "ウクライナ"
           },
           {
             "id": "target--targeting-audit--country--7c49db2288d7bd5abff5",
@@ -3774,20 +3760,40 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--apt28-nearest-neighbor-campaign",
+            "activity_name": "APT28 Nearest Neighbor Campaign",
+            "first_observed": {
+              "value": "2022-02-01T05:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "last_observed": {
+              "value": "2024-11-01T04:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-02-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2024-11-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--forfiles",
@@ -4052,20 +4058,40 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--apt28-nearest-neighbor-campaign",
+            "activity_name": "APT28 Nearest Neighbor Campaign",
+            "first_observed": {
+              "value": "2022-02-01T05:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "last_observed": {
+              "value": "2024-11-01T04:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-02-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2024-11-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--responder",
@@ -4292,14 +4318,14 @@
     ],
     "targets": [
       {
-        "id": "target--country--ukraine",
+        "id": "target--targeting-audit--country--74218c66e8ad54bb574d",
         "name": "ウクライナ",
-        "description": "Targeting text mentions ukraine.",
+        "description": "活動「APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "value": "2024-03-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period; activity-period"
+          "basis": "activity-description-explicit-period"
         },
         "last_observed": {
           "value": "2026-01-31T00:00:00Z",
@@ -4318,10 +4344,10 @@
           "source--daily-e4e1690a6e0a90a04bc2",
           "source--daily-f296ca3b0e389a7fa9d4"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--106c5baad5d9a85eebcefab0",
+            "claim_id": "claim--0b6b14b5b95f2444e2fa4ec8",
             "category": "target-country",
             "verification_status": "supported",
             "confidence": "medium",
@@ -4552,9 +4578,9 @@
         ]
       },
       {
-        "id": "target--country--turkey",
+        "id": "target--targeting-audit--country--7fac2abcaf7f63746b35",
         "name": "トルコ",
-        "description": "Targeting text mentions turkey.",
+        "description": "活動「BlueDelta、防衛・外交組織をHOOKEDGEで標的化」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
           "precision": "month",
@@ -4571,10 +4597,10 @@
         "evidence_refs": [
           "source--daily-6bb5f30d0037bd12215d"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--388c33466102d61822786568",
+            "claim_id": "claim--676523c8cb4f73954d516045",
             "category": "target-country",
             "verification_status": "partially-supported",
             "confidence": "medium",
@@ -4632,9 +4658,9 @@
         ]
       },
       {
-        "id": "target--country--poland",
+        "id": "target--targeting-audit--country--12429f69cb83a6f20422",
         "name": "ポーランド",
-        "description": "Targeting text mentions poland.",
+        "description": "活動「ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -4650,20 +4676,18 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-7aa505bacba82f6edc63",
-          "source--daily-80bc2958ff74558cec03",
           "source--daily-e4e1690a6e0a90a04bc2"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--4def04650200266f496770fa",
+            "claim_id": "claim--d5ec4e87551ea4f82e8acd7a",
             "category": "target-country",
             "verification_status": "partially-supported",
             "confidence": "medium",
             "statement": "APT28 targets country ポーランド.",
             "evidence_refs": [
               "source--daily-7aa505bacba82f6edc63",
-              "source--daily-80bc2958ff74558cec03",
               "source--daily-e4e1690a6e0a90a04bc2"
             ],
             "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
@@ -4672,15 +4696,14 @@
         ],
         "category": "countrie",
         "activity_refs": [
-          "activity--daily-2f6e828f7ef9f7f9d20c",
           "activity--daily-3cc292e429bde2aa787b",
           "activity--daily-dbbe0ebb0054d04d7142"
         ]
       },
       {
-        "id": "target--country--romania",
+        "id": "target--targeting-audit--country--fd036f755ca98d440fb5",
         "name": "ルーマニア",
-        "description": "Targeting text mentions romania.",
+        "description": "活動「BlueDelta、防衛・外交組織をHOOKEDGEで標的化」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
           "precision": "month",
@@ -4697,10 +4720,10 @@
         "evidence_refs": [
           "source--daily-6bb5f30d0037bd12215d"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--106dc07648ef917838be7181",
+            "claim_id": "claim--3372cb9b6a22d084af0622be",
             "category": "target-country",
             "verification_status": "partially-supported",
             "confidence": "medium",
@@ -4718,52 +4741,9 @@
         ]
       },
       {
-        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
-        "name": "ロシア",
-        "description": "活動「ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張」の記述で標的として明示された国・地域。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-7aa505bacba82f6edc63",
-          "source--daily-f49400c70df01a232fe3"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--2f08402cf39d72642415da44",
-            "category": "target-country",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "APT28 targets country ロシア.",
-            "evidence_refs": [
-              "source--daily-7aa505bacba82f6edc63",
-              "source--daily-f49400c70df01a232fe3"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "countrie",
-        "activity_refs": [
-          "activity--daily-3cc292e429bde2aa787b",
-          "activity--daily-c63f469830d482d2fcb5"
-        ]
-      },
-      {
-        "id": "target--country--united-states",
+        "id": "target--targeting-audit--country--f5aa88aedca7c4d6965d",
         "name": "米国",
-        "description": "Targeting text mentions united states.",
+        "description": "MITRE ATT&CKのGroup概要でAPT28の標的国として明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -4778,23 +4758,19 @@
         },
         "confidence": "high",
         "evidence_refs": [
-          "source--daily-e4e1690a6e0a90a04bc2",
           "source--daily-f49400c70df01a232fe3",
-          "source--mitre-attack-19-1",
           "source--mitre-attack-19-2"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。",
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。",
         "claim_assessments": [
           {
-            "claim_id": "claim--12d47ae64c0b288242abf00d",
+            "claim_id": "claim--937705944bd1d8a1b401e5b5",
             "category": "target-country",
             "verification_status": "supported",
             "confidence": "high",
             "statement": "APT28 targets country 米国.",
             "evidence_refs": [
-              "source--daily-e4e1690a6e0a90a04bc2",
               "source--daily-f49400c70df01a232fe3",
-              "source--mitre-attack-19-1",
               "source--mitre-attack-19-2"
             ],
             "verification_rationale": "Evidence tier=knowledge-base; attribution and infrastructure geography are not targeting evidence.",
@@ -4803,8 +4779,7 @@
         ],
         "category": "countrie",
         "activity_refs": [
-          "activity--daily-c63f469830d482d2fcb5",
-          "activity--daily-dbbe0ebb0054d04d7142"
+          "activity--daily-c63f469830d482d2fcb5"
         ]
       },
       {
@@ -4890,7 +4865,7 @@
       {
         "id": "target--targeting-audit--region--f3253a83e19c91e5e886",
         "name": "東欧",
-        "description": "ウクライナ、チェコ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "description": "ウクライナ、チェコ、ポーランド、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -4912,12 +4887,10 @@
           "source--daily-6bb5f30d0037bd12215d",
           "source--daily-7aa505bacba82f6edc63",
           "source--daily-7ba97251f8ecb9b8c790",
-          "source--daily-80bc2958ff74558cec03",
           "source--daily-bc559406ecce56eed6a1",
           "source--daily-ddc816726b2dc0d3951a",
           "source--daily-e4e1690a6e0a90a04bc2",
-          "source--daily-f296ca3b0e389a7fa9d4",
-          "source--daily-f49400c70df01a232fe3"
+          "source--daily-f296ca3b0e389a7fa9d4"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。",
         "claim_assessments": [
@@ -4935,12 +4908,10 @@
               "source--daily-6bb5f30d0037bd12215d",
               "source--daily-7aa505bacba82f6edc63",
               "source--daily-7ba97251f8ecb9b8c790",
-              "source--daily-80bc2958ff74558cec03",
               "source--daily-bc559406ecce56eed6a1",
               "source--daily-ddc816726b2dc0d3951a",
               "source--daily-e4e1690a6e0a90a04bc2",
-              "source--daily-f296ca3b0e389a7fa9d4",
-              "source--daily-f49400c70df01a232fe3"
+              "source--daily-f296ca3b0e389a7fa9d4"
             ],
             "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
             "counterevidence": []
@@ -4974,7 +4945,6 @@
           "source--daily-6bb5f30d0037bd12215d",
           "source--daily-7aa505bacba82f6edc63",
           "source--daily-7ba97251f8ecb9b8c790",
-          "source--daily-80bc2958ff74558cec03",
           "source--daily-bc559406ecce56eed6a1",
           "source--daily-ddc816726b2dc0d3951a",
           "source--daily-e4e1690a6e0a90a04bc2",
@@ -4996,7 +4966,6 @@
               "source--daily-6bb5f30d0037bd12215d",
               "source--daily-7aa505bacba82f6edc63",
               "source--daily-7ba97251f8ecb9b8c790",
-              "source--daily-80bc2958ff74558cec03",
               "source--daily-bc559406ecce56eed6a1",
               "source--daily-ddc816726b2dc0d3951a",
               "source--daily-e4e1690a6e0a90a04bc2",
@@ -16273,7 +16242,7 @@
   },
   "claim_audit_counts": {
     "supported": 251,
-    "partially-supported": 51
+    "partially-supported": 50
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {

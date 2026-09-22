@@ -1,0 +1,210 @@
+{
+  "type": "bundle",
+  "id": "bundle--8b396137-1e40-4728-890a-768d295e4871",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "incident",
+      "spec_version": "2.1",
+      "id": "incident--29553a09-7ff5-4616-adfd-ea8445ef2252",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "XEntry Team Mexico BitLocker extortion incident",
+      "description": "単一Incidentとして保持する。BitLockerをmalware、RMM製品を攻撃者専用toolとして扱わず、legitimate capability/toolの悪用として分類した。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky Security Services (Securelist)",
+          "external_id": "source--standalone-unattributed-xentry-mexico-bitlocker-incident-0",
+          "url": "https://securelist.com/new-extortion-scheme-printers-bitlocker/120718/"
+        }
+      ],
+      "x_profile_object_id": "activity--unattributed-xentry-mexico-bitlocker-incident",
+      "x_standalone_activity": true,
+      "x_ledger_cluster_id": "unknown-cluster--xentry-team",
+      "x_curation_decision": "Kaspersky reports one Mexico victim incident. XEntry Team is only an operator label in the ransom note; the separate Colombia incident is excluded.",
+      "x_ioc_promotion_policy": "none",
+      "x_unstructured_observables_promoted": false,
+      "x_attribution": {
+        "state": "unattributed",
+        "actor_type": "unknown-extortion-operator",
+        "notes": "XEntry Teamは被害端末と身代金メモに現れたoperator labelで、確立したグループ像や国家帰属はない。単一のメキシコ事案をCampaignや継続的Threat Actorへ昇格しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-relative-period"
+      },
+      "x_last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_time_basis": "Kasperskyはメキシコ事案が5月に発覚し、その約3か月前に侵入者がアクセスを発見・検証したと記載する。日付精度は月であり、公開日2026-07-21を活動期間へ転用しない。",
+      "x_structured_ioc_indicator_count": 0,
+      "x_structured_ioc_source_observation_count": 0,
+      "x_non_promoted_feature_count": 0
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--3af1a057-3e29-404a-b868-ba44b159c0b3",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "A new extortion cocktail: office printers, small ransoms, and BitLocker",
+      "content": "初期侵入はインターネット公開MSSQLの設定不備と、GitHubへ安全でない形で公開されたDB資格情報の取得による。xp_cmdshell経由でOSコマンドを実行し、web shell作成、RMM配備、GPO・scheduled taskによるBitLocker暗号化へ進んだ。業務用プリンタは侵入経路ではなく、暗号化後に身代金メモを出力する通知チャネルとして使われた。\n\nActivity period: メキシコ事案は2026年5月。侵入者は検知の約3か月前にアクセスを発見・検証し、5月初旬にスキャンとRMM展開、5月中旬にGPOでBitLocker有効化・暗号化を展開した。正確な日付は示されない。\n\nTargets: メキシコの単一組織。Kasperskyが同記事で扱う6月のコロンビア事案は別Incidentであり、XEntry Teamへ帰属しない。\n\nAttribution caveat: XEntry Teamは被害端末と身代金メモに現れたoperator labelで、確立したグループ像や国家帰属はない。単一のメキシコ事案をCampaignや継続的Threat Actorへ昇格しない。",
+      "object_refs": [
+        "incident--29553a09-7ff5-4616-adfd-ea8445ef2252"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky Security Services (Securelist)",
+          "external_id": "source--standalone-unattributed-xentry-mexico-bitlocker-incident-0",
+          "url": "https://securelist.com/new-extortion-scheme-printers-bitlocker/120718/"
+        }
+      ],
+      "x_standalone_activity_id": "activity--unattributed-xentry-mexico-bitlocker-incident",
+      "x_source_id": "source--standalone-unattributed-xentry-mexico-bitlocker-incident-0",
+      "x_source_publication_only": "2026-07-21",
+      "x_ledger_observation": {
+        "observed_on": "2026-05",
+        "publisher": "Kaspersky Security Services (Securelist)",
+        "url": "https://securelist.com/new-extortion-scheme-printers-bitlocker/120718/",
+        "title": "A new extortion cocktail: office printers, small ransoms, and BitLocker",
+        "published_at": "2026-07-21",
+        "source_type": "primary-incident-response-report",
+        "reliability": "vendor-direct-observation",
+        "activity_period": "メキシコ事案は2026年5月。侵入者は検知の約3か月前にアクセスを発見・検証し、5月初旬にスキャンとRMM展開、5月中旬にGPOでBitLocker有効化・暗号化を展開した。正確な日付は示されない。",
+        "targets": "メキシコの単一組織。Kasperskyが同記事で扱う6月のコロンビア事案は別Incidentであり、XEntry Teamへ帰属しない。",
+        "malware": [],
+        "tools": [
+          {
+            "name": "Microsoft BitLocker",
+            "classification": "legitimate-built-in-encryption-capability",
+            "usage_status": "confirmed-abuse",
+            "role": "GPOとscheduled taskで有効化し、各ディスクを暗号化"
+          },
+          {
+            "name": "ManageEngine Endpoint Central",
+            "classification": "legitimate-rmm-tool",
+            "usage_status": "confirmed-abuse",
+            "role": "永続化と最終段階の管理"
+          },
+          {
+            "name": "Mesh Agent",
+            "classification": "legitimate-rmm-tool",
+            "usage_status": "confirmed-abuse",
+            "role": "scheduled taskと追加RMM展開"
+          },
+          {
+            "name": "Tactical RMM",
+            "classification": "legitimate-rmm-tool",
+            "usage_status": "confirmed-abuse",
+            "role": "scheduled taskとBitLocker操作"
+          }
+        ],
+        "summary": "初期侵入はインターネット公開MSSQLの設定不備と、GitHubへ安全でない形で公開されたDB資格情報の取得による。xp_cmdshell経由でOSコマンドを実行し、web shell作成、RMM配備、GPO・scheduled taskによるBitLocker暗号化へ進んだ。業務用プリンタは侵入経路ではなく、暗号化後に身代金メモを出力する通知チャネルとして使われた。",
+        "verified_by_analyst": "Kaspersky原文を確認し、メキシコ事案とコロンビア事案の分離、MSSQL初期侵入、プリンタの役割、BitLockerと3種RMMの正規機能・正規ツール悪用を照合した。"
+      },
+      "x_unresolved_questions": [
+        "XEntry Team labelの継続利用、運用人数、他事案との関係は不明。",
+        "記事は2件の身代金メモの表現・通知手法の類似が関連を示す可能性に触れるが、明確な接続を確認していない。コロンビア事案をXEntry Teamへ結び付けない。"
+      ],
+      "x_related_profiles_are_unpromoted": []
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--71103af9-4dd3-491d-9045-eeff8edc8232",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "A new extortion cocktail: office printers, small ransoms, and BitLocker",
+      "description": "Source publication container. Its published time is not an Activity observation or Relationship validity time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-21T00:00:00Z",
+      "object_refs": [
+        "incident--29553a09-7ff5-4616-adfd-ea8445ef2252",
+        "note--3af1a057-3e29-404a-b868-ba44b159c0b3"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky Security Services (Securelist)",
+          "external_id": "source--standalone-unattributed-xentry-mexico-bitlocker-incident-0",
+          "url": "https://securelist.com/new-extortion-scheme-printers-bitlocker/120718/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--standalone-unattributed-xentry-mexico-bitlocker-incident-0",
+      "x_source_publisher": "Kaspersky Security Services (Securelist)",
+      "x_source_type": "primary-incident-response-report",
+      "x_source_reliability": "vendor-direct-observation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only",
+      "x_standalone_activity_id": "activity--unattributed-xentry-mexico-bitlocker-incident"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--71337c6c-553a-43b9-a22b-2a8fc733af6e",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Standalone Activity / XEntry Team Mexico BitLocker extortion incident",
+      "description": "Kaspersky reports one Mexico victim incident. XEntry Team is only an operator label in the ransom note; the separate Colombia incident is excluded.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-22T00:00:00Z",
+      "object_refs": [
+        "incident--29553a09-7ff5-4616-adfd-ea8445ef2252",
+        "note--3af1a057-3e29-404a-b868-ba44b159c0b3",
+        "report--71103af9-4dd3-491d-9045-eeff8edc8232"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "incident",
+      "x_activity_id": "activity--unattributed-xentry-mexico-bitlocker-incident",
+      "x_standalone_activity": true,
+      "x_temporal_role": "bundle-generation-time",
+      "x_generated_at": "2026-09-22T00:00:00Z"
+    }
+  ]
+}

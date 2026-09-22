@@ -1,0 +1,326 @@
+{
+  "type": "bundle",
+  "id": "bundle--391d0feb-5ea1-44b2-a968-740f256af06b",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--076186ff-7b67-4324-b854-b60d4e479f21",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Project CAV3RN technical cluster",
+      "description": "旧エントリがProject CAV3RNを『運用者』と表現していた主体混同を修正。Grouping相当の技術クラスタとして保持し、actor関係はsource-scoped Relationshipに限定する。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-0",
+          "url": "https://securelist.com/project-cav3rn-cyberespionage-framework-using-outlook-and-dns/120757/"
+        },
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-1",
+          "url": "https://securelist.com/project-cav3rn-continues/120991/"
+        }
+      ],
+      "x_profile_object_id": "activity--unattributed-project-cav3rn-technical-cluster",
+      "x_standalone_activity": true,
+      "x_ledger_cluster_id": "unknown-cluster--project-cav3rn",
+      "x_curation_decision": "Project CAV3RN is a technical framework cluster, not an actor. Kaspersky's OilRig association remains low confidence in Notes only.",
+      "x_ioc_promotion_policy": "none",
+      "x_unstructured_observables_promoted": false,
+      "x_attribution": {
+        "state": "low-confidence-associated",
+        "actor_type": "not-an-actor-technical-cluster",
+        "notes": "Project CAV3RNはKasperskyの技術クラスタ／モジュール型フレームワーク名でありアクター名ではない。KasperskyはOilRig(APT34)との関連をlow confidenceで維持するが、直接のコード再利用もインフラ重複もないと明記する。Cavern Manticoreとalias/exact identityで統合しない。"
+      },
+      "x_first_observed": {
+        "value": "2025-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-08-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated-c2-response"
+      },
+      "x_time_basis": "Kasperskyがクラスタを追跡している最初の月と、2026年8月初旬の追跡で得たC2応答に含まれる2026-08-03の日時。フレームワーク運用者の活動寿命ではなく技術クラスタの観測境界である。2026-05-19は解析モジュールのビルドtimestampであり、攻撃観測日には用いない。",
+      "context": "malware-analysis",
+      "object_refs": [
+        "note--60853814-7f44-46c2-93cd-55eec926c925",
+        "note--b1d82440-c45a-4f4e-848e-5cdd70be3e96"
+      ],
+      "x_structured_ioc_indicator_count": 0,
+      "x_structured_ioc_source_observation_count": 0,
+      "x_non_promoted_feature_count": 0
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--60853814-7f44-46c2-93cd-55eec926c925",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Project CAV3RN continues: Google Apps Script as C2 relay and DNS-based C2 channel selection",
+      "content": "DNS A応答で直接HTTPSとGoogle Apps Script relayを選択し、DNSでdeployment IDを検証・差し替えるC2モジュールとDLL broker。公開日やドメイン登録日を攻撃観測日として扱わない。\n\nActivity period: 2026年8月初旬に未文書化の新規コンポーネントを確認。記事中のC2応答は2026-08-03。studiotikva[.]comは2026-05-12再登録、2026-05-19再委任。\n\nTargets: イスラエル国内の組織。個別の被害組織名は記載なし。\n\nAttribution caveat: Project CAV3RNはKasperskyの技術クラスタ／モジュール型フレームワーク名でありアクター名ではない。KasperskyはOilRig(APT34)との関連をlow confidenceで維持するが、直接のコード再利用もインフラ重複もないと明記する。Cavern Manticoreとalias/exact identityで統合しない。",
+      "object_refs": [
+        "grouping--076186ff-7b67-4324-b854-b60d4e479f21"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-1",
+          "url": "https://securelist.com/project-cav3rn-continues/120991/"
+        }
+      ],
+      "x_standalone_activity_id": "activity--unattributed-project-cav3rn-technical-cluster",
+      "x_source_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-1",
+      "x_source_publication_only": "2026-08-11",
+      "x_ledger_observation": {
+        "observed_on": "2026-08-03",
+        "publisher": "Kaspersky GReAT (Securelist)",
+        "url": "https://securelist.com/project-cav3rn-continues/120991/",
+        "title": "Project CAV3RN continues: Google Apps Script as C2 relay and DNS-based C2 channel selection",
+        "published_at": "2026-08-11",
+        "source_type": "primary-report",
+        "reliability": "vendor-direct-observation",
+        "activity_period": "2026年8月初旬に未文書化の新規コンポーネントを確認。記事中のC2応答は2026-08-03。studiotikva[.]comは2026-05-12再登録、2026-05-19再委任。",
+        "targets": "イスラエル国内の組織。個別の被害組織名は記載なし。",
+        "malware": [
+          "GoogleService.dll (.NET 8 NativeAOT communication module)",
+          "rnp.dll (local inter-component broker)"
+        ],
+        "tools": [],
+        "services": [
+          {
+            "name": "Google Apps Script",
+            "classification": "legitimate-cloud-service",
+            "usage_status": "confirmed-abuse",
+            "role": "transaction単位で選択されるC2 relay"
+          }
+        ],
+        "techniques": [
+          "DNS A応答によるC2 channel selection",
+          "Google Apps Scriptを介したHTTPS relay",
+          "DNSによるdeployment ID検証・差し替え"
+        ],
+        "summary": "DNS A応答で直接HTTPSとGoogle Apps Script relayを選択し、DNSでdeployment IDを検証・差し替えるC2モジュールとDLL broker。公開日やドメイン登録日を攻撃観測日として扱わない。",
+        "verified_by_analyst": "Kaspersky原文を確認し、2026-08-11公開、early August tracking、2026-08-03 C2 response、モジュールとインフラの役割を照合した。"
+      },
+      "x_unresolved_questions": [
+        "KasperskyのOilRig関連はlow confidenceであり、APT34/OilRigへ統合しない。",
+        "Project CAV3RN technical clusterとCavern Manticore actor labelは報告対象のフレームワークが重なるが、語義が異なるため別IDを維持する。"
+      ],
+      "x_related_profiles_are_unpromoted": [
+        {
+          "slug": "apt34",
+          "relation": "source-scoped-low-confidence-association",
+          "confidence": "low",
+          "basis": "Kaspersky 2026-07-21。OilRigに既知のMicrosoft-hosted service利用等との行動類似。ただし原文は直接のコード再利用とインフラ重複がないと明記する。"
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--b1d82440-c45a-4f4e-848e-5cdd70be3e96",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "New Project CAV3RN module abuses Outlook calendar events for C2 and DNS AAAA records for configuration recovery",
+      "content": "Outlook calendar eventをC2に使い、認証失敗時はDNS AAAA応答から設定を復旧する通信モジュール。KasperskyはOilRigとのlow-confidence関連を、Microsoft-hosted service、attachment-based exchange、cloud C2復旧という行動類似から評価するが、直接のコード再利用とインフラ重複はない。\n\nActivity period: Kasperskyは2025年12月から追跡。2026年4月下旬にcontroller/plugin型へ移行し、custom DNS delegationは2026-05-02、解析モジュールのtimestampは2026-05-19。\n\nTargets: イスラエル国内の組織。新モジュールはイスラエル法律事務所の侵害済みMicrosoft 365 mailboxを使用。\n\nAttribution caveat: Project CAV3RNはKasperskyの技術クラスタ／モジュール型フレームワーク名でありアクター名ではない。KasperskyはOilRig(APT34)との関連をlow confidenceで維持するが、直接のコード再利用もインフラ重複もないと明記する。Cavern Manticoreとalias/exact identityで統合しない。",
+      "object_refs": [
+        "grouping--076186ff-7b67-4324-b854-b60d4e479f21"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-0",
+          "url": "https://securelist.com/project-cav3rn-cyberespionage-framework-using-outlook-and-dns/120757/"
+        }
+      ],
+      "x_standalone_activity_id": "activity--unattributed-project-cav3rn-technical-cluster",
+      "x_source_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-0",
+      "x_source_publication_only": "2026-07-21",
+      "x_ledger_observation": {
+        "observed_on_basis": "原典はこの報告に対応する単一の攻撃観測日を示していない。2026-05-19は解析モジュールのtimestampとして別フィールドへ分離する。",
+        "module_timestamp": "2026-05-19",
+        "publisher": "Kaspersky GReAT (Securelist)",
+        "url": "https://securelist.com/project-cav3rn-cyberespionage-framework-using-outlook-and-dns/120757/",
+        "title": "New Project CAV3RN module abuses Outlook calendar events for C2 and DNS AAAA records for configuration recovery",
+        "published_at": "2026-07-21",
+        "source_type": "primary-report",
+        "reliability": "vendor-direct-observation",
+        "activity_period": "Kasperskyは2025年12月から追跡。2026年4月下旬にcontroller/plugin型へ移行し、custom DNS delegationは2026-05-02、解析モジュールのtimestampは2026-05-19。",
+        "targets": "イスラエル国内の組織。新モジュールはイスラエル法律事務所の侵害済みMicrosoft 365 mailboxを使用。",
+        "malware": [
+          "Project CAV3RN .NET NativeAOT communication module"
+        ],
+        "tools": [],
+        "services": [
+          {
+            "name": "Microsoft Graph / Outlook calendar",
+            "classification": "legitimate-cloud-service",
+            "usage_status": "confirmed-abuse",
+            "role": "calendar eventを介したC2"
+          }
+        ],
+        "techniques": [
+          "Outlook calendar eventを介したC2",
+          "DNS AAAA応答からの設定復旧"
+        ],
+        "summary": "Outlook calendar eventをC2に使い、認証失敗時はDNS AAAA応答から設定を復旧する通信モジュール。KasperskyはOilRigとのlow-confidence関連を、Microsoft-hosted service、attachment-based exchange、cloud C2復旧という行動類似から評価するが、直接のコード再利用とインフラ重複はない。",
+        "verified_by_analyst": "Kaspersky原文を確認し、追跡開始、構造変更、OilRigへのlow-confidence評価、no direct code reuse / no infrastructure overlapを照合した。"
+      },
+      "x_unresolved_questions": [
+        "KasperskyのOilRig関連はlow confidenceであり、APT34/OilRigへ統合しない。",
+        "Project CAV3RN technical clusterとCavern Manticore actor labelは報告対象のフレームワークが重なるが、語義が異なるため別IDを維持する。"
+      ],
+      "x_related_profiles_are_unpromoted": [
+        {
+          "slug": "apt34",
+          "relation": "source-scoped-low-confidence-association",
+          "confidence": "low",
+          "basis": "Kaspersky 2026-07-21。OilRigに既知のMicrosoft-hosted service利用等との行動類似。ただし原文は直接のコード再利用とインフラ重複がないと明記する。"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3ad9b454-5af1-44e3-a0db-010245ad9a0f",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Project CAV3RN continues: Google Apps Script as C2 relay and DNS-based C2 channel selection",
+      "description": "Source publication container. Its published time is not an Activity observation or Relationship validity time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-11T00:00:00Z",
+      "object_refs": [
+        "grouping--076186ff-7b67-4324-b854-b60d4e479f21",
+        "note--60853814-7f44-46c2-93cd-55eec926c925"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-1",
+          "url": "https://securelist.com/project-cav3rn-continues/120991/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-1",
+      "x_source_publisher": "Kaspersky GReAT (Securelist)",
+      "x_source_type": "primary-report",
+      "x_source_reliability": "vendor-direct-observation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only",
+      "x_standalone_activity_id": "activity--unattributed-project-cav3rn-technical-cluster"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d3baa9c2-279f-47cf-8a70-844545f44706",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "New Project CAV3RN module abuses Outlook calendar events for C2 and DNS AAAA records for configuration recovery",
+      "description": "Source publication container. Its published time is not an Activity observation or Relationship validity time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-21T00:00:00Z",
+      "object_refs": [
+        "grouping--076186ff-7b67-4324-b854-b60d4e479f21",
+        "note--b1d82440-c45a-4f4e-848e-5cdd70be3e96"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "external_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-0",
+          "url": "https://securelist.com/project-cav3rn-cyberespionage-framework-using-outlook-and-dns/120757/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--standalone-unattributed-project-cav3rn-technical-cluster-0",
+      "x_source_publisher": "Kaspersky GReAT (Securelist)",
+      "x_source_type": "primary-report",
+      "x_source_reliability": "vendor-direct-observation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only",
+      "x_standalone_activity_id": "activity--unattributed-project-cav3rn-technical-cluster"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--28677c9f-5212-49d4-8ab4-47f539f4f26c",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Standalone Activity / Project CAV3RN technical cluster",
+      "description": "Project CAV3RN is a technical framework cluster, not an actor. Kaspersky's OilRig association remains low confidence in Notes only.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-22T00:00:00Z",
+      "object_refs": [
+        "grouping--076186ff-7b67-4324-b854-b60d4e479f21",
+        "note--60853814-7f44-46c2-93cd-55eec926c925",
+        "note--b1d82440-c45a-4f4e-848e-5cdd70be3e96",
+        "report--3ad9b454-5af1-44e3-a0db-010245ad9a0f",
+        "report--d3baa9c2-279f-47cf-8a70-844545f44706"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "grouping",
+      "x_activity_id": "activity--unattributed-project-cav3rn-technical-cluster",
+      "x_standalone_activity": true,
+      "x_temporal_role": "bundle-generation-time",
+      "x_generated_at": "2026-09-22T00:00:00Z"
+    }
+  ]
+}

@@ -11,9 +11,11 @@ opencti/
 ├── actors/
 │   └── <actor-slug>.stix2.json
 ├── campaigns/
-│   └── <actor-slug>/<activity-id>.stix2.json
+│   ├── <actor-slug>/<activity-id>.stix2.json
+│   └── unattributed/<activity-id>.stix2.json
 └── activities/
-    └── <actor-slug>/<activity-id>.stix2.json
+    ├── <actor-slug>/<activity-id>.stix2.json
+    └── unattributed/<activity-id>.stix2.json
 ```
 
 - `actors/`: アクター本体、アクター全体のマルウェア・ツール・インフラ・TTP・標的、
@@ -23,6 +25,9 @@ opencti/
   関係を含む自己完結Bundleです。
 - `activities/`: 主オブジェクトがIncidentまたはGroupingのActivityを収録します。
   Groupingの包含は分析集合を意味し、包含オブジェクト間のRelationshipを暗黙に作りません。
+- `campaigns/unattributed/`と`activities/unattributed/`: 根拠はあるがActorへ昇格できない
+  Standalone Activityです。`actor_profile/standalone-activity-curation.json`で明示的に
+  採用した対象だけを出力し、Intrusion Set、Threat Actor、Activity→Actor関係は含めません。
 - `manifest.json`: 全ファイル、表示名、元Profile/Activity ID、オブジェクト数、サイズ、
   解決できなかったアクター関係を列挙します。
 
@@ -66,4 +71,5 @@ python3 actor_profile/scripts/build_opencti_bundles.py --prune
 ```
 
 このディレクトリは生成物です。修正は`profiles/<actor>/actor-profile.json`、`iocs.json`、
-または生成スクリプトへ行ってください。
+Standalone Activityの場合は`actor_profile/standalone-activity-curation.json`と参照先の
+`parse-daily/unknown-clusters.json`、それ以外は生成スクリプトへ行ってください。

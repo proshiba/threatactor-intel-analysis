@@ -625,6 +625,13 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
                 f"$.activities[{index}].grouping_context",
                 "non-Grouping activity must use null grouping_context",
             )
+        if stix_type != "grouping" and activity.get("activity_refs"):
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].activity_refs",
+                "only Grouping may contain other activities through activity_refs",
+            )
         validate_observation_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
         validate_observation_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
         validate_time_order(
@@ -641,6 +648,9 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in activity.get("malware_refs", []):
             if ref not in capability_ids.get("malware", set()):
                 issue(issues, "error", f"$.activities[{index}].malware_refs", f"dangling malware reference: {ref}")
+        for ref in activity.get("tool_refs", []):
+            if ref not in capability_ids.get("tools", set()):
+                issue(issues, "error", f"$.activities[{index}].tool_refs", f"dangling tool reference: {ref}")
         for ref in activity.get("infrastructure_refs", []):
             if ref not in capability_ids.get("infrastructure", set()):
                 issue(issues, "error", f"$.activities[{index}].infrastructure_refs", f"dangling infrastructure reference: {ref}")

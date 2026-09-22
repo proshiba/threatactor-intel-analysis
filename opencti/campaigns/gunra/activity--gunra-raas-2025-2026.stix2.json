@@ -1720,7 +1720,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--b28d3877-f14e-4258-ab5e-ed2606454c1e",
       "created": "2026-08-12T01:57:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-22T08:15:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1768,12 +1768,12 @@
         "analyst_notes": "韓国国家警察庁(KNPA)が共同署名機関に含まれ韓国内の被害事例を提供しているが、これは被害地であって攻撃元ではない。"
       },
       "x_free_text": {
-        "executive_summary": "Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用主体であり、2026年1月にダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始した。ランサムウェアは2022年に流出したContiのソースコードに由来する。インターネット公開のファイアウォール・VPN機器の既知脆弱性悪用を主な初期侵入手段とし、データ窃取後にChaCha20 + RSA-4096で暗号化する。2026年8月10日にFBI・CISA・DC3・NSA・USSS・韓国国家警察庁の共同勧告AA26-222Aが公開された。",
-        "history": "2025年4月にFBIが初観測。同年6〜7月にはTor上のDLSのclearnetミラーdatapub[.]newsを運用した。2025年半ばにLinux版が追加され、クロスプラットフォーム化が進んだ。2026年1月にRaaSアフィリエイトプログラムを開始し、Golden Communityという新ブランドの採用が観測された。2026年3月までにDLSを別の.onionアドレスへ移行し、2026年7月まで当該アドレスが観測されている。",
-        "capability_details": "Windows版ロッカーはマルチスレッド構成で並列暗号化を行い、ChaCha20 + RSA-4096を使用する。暗号化済みファイルには.ENCRTを付与する(2025年7月の1検体では.CRYPT)。FindFirstFileW/FindNextFileWでA〜Zの全ドライブを走査し、C:\\Windows等のシステムディレクトリと.exe/.dll/.sys等を除外する二段フィルタで対象を絞る。IsDebuggerPresentによるデバッガ検知を備え、DNSやHTTPの通信を伴わない自己完結型である。持ち出しにはmain.exe(OneDrive/SharePoint)、7-Zip、RClone、FileZillaを、横展開と資格情報取得にはImpacketとMimikatzを使用する。",
-        "infrastructure_details": "Tor上のDLSと交渉ポータルを中核とし、被害者にはClient IDと初期パスワードが割り当てられる。交渉はTorポータルまたはqToxで行われ、Proton MailとGmailのアドレスも使用される。勧告は2025年初頭以降のIPアドレス・ドメイン、恐喝交渉用メールアドレス、qTox ID、悪性ファイルのSHA256、Fortinet機器上に作成される不正アカウントforticloud-syncを掲載している。個別のIOCは本プロファイルには未取得である。",
-        "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=全世界。日本は確認時に個別国として保持する。\n\n勧告は被害組織が南北アメリカ、欧州、中東、アフリカ、アジア太平洋にまたがると記載する。個別国として明示されているのはKNPAが観測した韓国の事例のみである。",
-        "additional_notes": "本プロファイルは2026-08-12の日次更新チェックで既存プロファイル未一致名(観測25件)として検知され、共同勧告AA26-222Aの原文確認後に昇格した。status: draftから開始する。GunraはBlackByteのcatalog alias「Conti」経由で誤一致していたが、Contiとの関係はコード系譜のみであり、レビューキュー側では不採用としている。"
+        "executive_summary": "Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用主体であり、2026年1月にRaaSアフィリエイトプログラムを開始した。AhnLabは2026年3月の韓国組織へのGunra感染が、同年1月の匿名state-sponsored clusterによるwatering-hole intrusionと、脆弱性、file/service/argument pattern、SSH key、network infrastructureを共有したと報告した。ただしsame actorや国家帰属は立証されず、技術的重複としてのみ保持する。",
+        "history": "2025年4月にFBIが初観測。同年6〜7月にはTor上のDLSのclearnet mirror datapub[.]newsを運用した。2025年半ばにLinux版が追加され、2026年1月にRaaS affiliate programを開始した。AhnLabは2026年1月の匿名cluster事例と3月のGunra感染をOperation Double Barrelとして比較した。DLSは2026年3月までに別の.onion addressへ移行し、2026年7月まで観測されている。",
+        "capability_details": "Windows版lockerはChaCha20 + RSA-4096で暗号化する。CISA共同勧告が記載するImpacket、Mimikatz、main.exe、7-Zip、RClone、FileZilla等に加え、AhnLabの2026年3月事例ではwatering hole、client-software exploit、SyncHost.exe injection、OpenSSH/Socat tunneling、hotfix.exeへrenameしたPsExecとPowerShell、uploadmgr service、RDP/SSH lateral movement、event-log deletionを確認した。Brandoor/COPPERHEDGE型traceはfiles未回収のため確定malware capabilityへ昇格しない。",
+        "infrastructure_details": "Tor上のDLSと交渉portalに加え、AhnLabはOperation Double Barrel関連のGunra network observableを報告した。176.65.128[.]26は匿名clusterのOpenSSH reverse tunnelとGunraのpayload download/C2の双方で、jshosting[.]meは両者のexploit-script distributionで使われた。anyonecdn[.]comと4件の追加IPもappendixのwatering-hole/Gunra両sectionへ掲載される。いずれも非専有として扱い、個別観測時刻はunknownのまま保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=全世界。AhnLabはOperation Double Barrel関連のGunra攻撃で韓国の医薬品会社と教育企業を明記する。watering-holeに悪用された医療機関websiteと最終victim industryを区別する。帰属国は資料に示されていない。",
+        "additional_notes": "GunraはBlackByteのcatalog alias「Conti」経由で誤一致していたが、Contiとの関係はcode lineageのみである。Operation Double Barrelの匿名state-sponsored clusterも安定した名称や国帰属がなく、LazarusやCOPPERHEDGE利用者とのexact identityへ昇格しない。技術的重複はGroupingに閉じ込め、根拠のないcollaborates-with relationshipを生成しない。"
       },
       "x_osint_crosscheck_assessment": "no-match",
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
@@ -5456,8 +5456,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--1030f3ce-1797-40e6-a470-350a9e0ff41c",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-22T08:15:00Z",
+      "modified": "2026-09-22T08:15:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5606,8 +5606,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--1c29ab41-af8b-4930-ad3b-4e58c3b5f7cf",
-      "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-22T08:15:00Z",
+      "modified": "2026-09-22T08:15:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5616,7 +5616,7 @@
       "report_types": [
         "campaign"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-09-22T08:15:00Z",
       "object_refs": [
         "attack-pattern--108543cc-faf2-464b-99a2-0a15c51f7c15",
         "attack-pattern--1777fb58-ae56-49c6-b752-cac0bf764901",

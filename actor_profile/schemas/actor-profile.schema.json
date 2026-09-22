@@ -386,6 +386,7 @@
         "description": {"type": "string"},
         "target_refs": {"type": "array", "items": {"type": "string"}},
         "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "tool_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
         "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
         "ttp_refs": {"type": "array", "items": {"type": "string"}},
         "victim_refs": {"type": "array", "items": {"type": "string"}},
@@ -393,7 +394,38 @@
         "confidence": {"$ref": "#/$defs/confidence"},
         "evidence_refs": {"$ref": "#/$defs/referenceArray"},
         "analyst_notes": {"type": "string"}
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["stix_object_type"],
+            "properties": {
+              "stix_object_type": {"enum": ["campaign", "incident"]}
+            }
+          },
+          "then": {
+            "properties": {
+              "grouping_context": {"type": "null"},
+              "activity_refs": {"maxItems": 0}
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["stix_object_type"],
+            "properties": {
+              "stix_object_type": {"const": "grouping"}
+            }
+          },
+          "then": {
+            "properties": {
+              "grouping_context": {
+                "enum": ["suspicious-activity", "malware-analysis", "unspecified"]
+              }
+            }
+          }
+        }
+      ]
     },
     "activityDiamond": {
       "type": "object",
@@ -417,6 +449,7 @@
           "required": ["malware_refs", "ttp_refs"],
           "properties": {
             "malware_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "tool_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
             "ttp_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
           }
         },
