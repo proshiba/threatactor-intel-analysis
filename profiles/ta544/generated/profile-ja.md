@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta544`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ TA544の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Storm-0302 | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
 

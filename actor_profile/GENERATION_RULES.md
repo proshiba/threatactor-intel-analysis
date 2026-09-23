@@ -233,6 +233,21 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 同一プロファイル内で正規化後に同じになるaliasは、先に現れた根拠付き表記を残して
 materialization時に重複排除します。
 
+OpenCTI向け生成では、`scope: exact`かつ`confidence: high`だけをIntrusion Setの標準
+`aliases`へ出力します。OpenCTIは`name OR alias`を重複排除へ使用するため、
+`overlapping`等を標準aliasに平坦化すると別クラスタが誤統合されます。非同一性aliasは
+`x_alias_assessments`とprofile-scoped Noteへ出力し、名称、vendor、scope、confidence、
+`evidence_refs`、留保を保持します。`x_opencti_aliases`はscopeを表現する標準属性ではなく、
+非exact名称の退避先として使用しません。
+
+alias生成・移行は次をfail closedで検証します。
+
+1. 必須6フィールドと列挙値がschemaに一致すること。
+2. canonical名との自己alias、正規化後の重複、出典切れがないこと。
+3. active profile横断でcanonical名とOpenCTI同一性aliasが衝突しないこと。
+4. Actor名がSoftware/Malware、Campaign/Operation、Organization、Individualではないこと。
+5. 公式mappingの対応を別ベンダーの帰属・活動・能力へ推移させないこと。
+
 ## 8. Claim auditからの昇格条件
 
 `unresolved`または`partially-supported`は「誤り」とは限りませんが、
@@ -376,6 +391,9 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] unresolved/partial claimを確定値へ昇格していない
 - [ ] actor-specific evidence_refが重要主張に付いている
 - [ ] canonical/alias重複候補を確認した
+- [ ] 同じSTIX IDの意味内容を変更した場合、`updated_at`と生成物の`modified`を進めた
+- [ ] 同じSTIX IDの`created`を旧版から変更していない
+- [ ] 同じ`id` + `modified`で異なる意味内容を生成していない
 - [ ] 回帰テストを追加または実行した
 - [ ] 生成物と集計を再生成した
 

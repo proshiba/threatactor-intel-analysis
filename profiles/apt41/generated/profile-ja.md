@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt41`
 - 状態: review
-- 更新日時: 2026-09-21T22:28:38Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -20,7 +20,7 @@ APT41の標準化プロファイル。リポジトリ内の専用資料2件とMI
 |---|---|---|---|---|---|
 | BARIUM | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-2` | Curated merge into the canonical MITRE Group profile. |
 | Brass Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
-| HOODOO |  | vendor | 高 | `source--gtig-apt41-toughprogress-2025` |  |
+| HOODOO | Google Threat Intelligence Group | exact | 高 | `source--gtig-apt41-toughprogress-2025` | GTIG attributes the documented activity to APT41/HOODOO, explicitly using HOODOO as its name for APT41. This supports an exact alias within the naming vendor's taxonomy. |
 | SPIRE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Wicked Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 

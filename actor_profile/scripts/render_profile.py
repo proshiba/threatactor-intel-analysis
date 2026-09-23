@@ -17,6 +17,108 @@ from stix_modeling import activity_stix_object_type
 TLP_CLEAR = "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
 
 
+def opencti_identity_aliases(actor: dict[str, Any]) -> list[str]:
+    """Return aliases that are safe to use as OpenCTI identity keys.
+
+    OpenCTI uses an Intrusion Set's name or alias as contributing properties
+    for deduplication. A scoped cross-vendor overlap is useful intelligence,
+    but it is not safe evidence that two Intrusion Sets are the same entity.
+    Only high-confidence exact aliases therefore enter the native STIX field.
+    """
+
+    return [
+        item["name"]
+        for item in actor.get("aliases", [])
+        if item.get("scope") == "exact"
+        and item.get("confidence") == "high"
+    ]
+
+
+def actor_alias_evidence_refs(actor: dict[str, Any]) -> list[str]:
+    """Return stable, de-duplicated evidence references for all alias claims."""
+
+    return list(
+        dict.fromkeys(
+            source_id
+            for item in actor.get("aliases", [])
+            for source_id in item.get("evidence_refs", [])
+        )
+    )
+
+
+def non_identity_alias_assessments(actor: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return alias assessments that must not trigger entity deduplication."""
+
+    return [
+        item
+        for item in actor.get("aliases", [])
+        if not (
+            item.get("scope") == "exact"
+            and item.get("confidence") == "high"
+        )
+    ]
+
+
+def alias_assessment_note(
+    profile: dict[str, Any],
+    *,
+    actor_ref: str,
+    source_by_id: dict[str, dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Materialize non-identity names as a searchable, sourced STIX Note."""
+
+    assessments = non_identity_alias_assessments(profile["actor"])
+    if not assessments:
+        return None
+    evidence_refs = list(
+        dict.fromkeys(
+            source_id
+            for item in assessments
+            for source_id in item.get("evidence_refs", [])
+        )
+    )
+    lines = [
+        (
+            "These scoped names are research and correlation aids. They are "
+            "not native Intrusion Set aliases and must not be used alone to "
+            "merge OpenCTI entities."
+        ),
+        "",
+    ]
+    for item in assessments:
+        lines.append(
+            "- {name} | vendor={vendor} | scope={scope} | "
+            "confidence={confidence} | evidence={evidence}".format(
+                name=item["name"],
+                vendor=item.get("vendor", ""),
+                scope=item.get("scope", "unknown"),
+                confidence=item.get("confidence", "unknown"),
+                evidence=", ".join(item.get("evidence_refs", [])) or "none",
+            )
+        )
+    return stix_base(
+        "note",
+        f"alias-assessments:{profile['profile_id']}",
+        profile["updated_at"],
+        {
+            "abstract": (
+                f"Scoped alias assessments for "
+                f"{profile['actor']['canonical_name']}"
+            ),
+            "content": "\n".join(lines),
+            "object_refs": [actor_ref],
+            "external_references": external_refs(
+                evidence_refs, source_by_id
+            ),
+            "x_profile_object_id": (
+                f"alias-assessments--{profile['profile_id']}"
+            ),
+            "x_alias_assessments": assessments,
+            "x_opencti_identity_alias_policy": "exact-and-high-only",
+        },
+    )
+
+
 def md_escape(value: Any) -> str:
     return str(value or "").replace("|", "\\|").replace("\n", "<br>")
 
@@ -874,19 +976,27 @@ def render_stix(
     objects: list[dict[str, Any]] = []
     source_by_id = {item["source_id"]: item for item in profile["sources"]}
     actor = profile["actor"]
+    actor_evidence_refs = list(
+        dict.fromkeys(
+            [
+                *profile["attribution"].get("evidence_refs", []),
+                *actor_alias_evidence_refs(actor),
+            ]
+        )
+    )
     intrusion = stix_base(
         "intrusion-set",
         profile["profile_id"],
         now,
         {
             "name": actor["canonical_name"],
-            "aliases": [item["name"] for item in actor["aliases"]],
+            "aliases": opencti_identity_aliases(actor),
             "description": actor.get("description") or profile["free_text"]["executive_summary"],
             "first_seen": actor["first_seen"].get("value"),
             "last_seen": actor["last_seen"].get("value"),
             "goals": [item["description"] for item in profile["motivations"]],
             "external_references": external_refs(
-                profile["attribution"].get("evidence_refs", []), source_by_id
+                actor_evidence_refs, source_by_id
             ),
             "x_profile_id": profile["profile_id"],
             "x_profile_status": profile["status"],
@@ -905,6 +1015,13 @@ def render_stix(
     if crosscheck:
         intrusion["x_osint_crosscheck"] = crosscheck
     objects.append(intrusion)
+    scoped_alias_note = alias_assessment_note(
+        profile,
+        actor_ref=intrusion["id"],
+        source_by_id=source_by_id,
+    )
+    if scoped_alias_note:
+        objects.append(scoped_alias_note)
 
     object_id_by_profile_id: dict[str, str] = {
         profile["profile_id"]: intrusion["id"]

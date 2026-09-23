@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--strongpity`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -18,6 +18,7 @@ PROMETHIUMの標準化プロファイル。リポジトリ内の専用資料1件
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
+| Magenta Dust | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 | StrongPity | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | MITRE ATT&CK lists StrongPity as an Associated Group for G0056, but also states that the name has been used for both the group and its malware. It is therefore retained as an overlapping actor name, not as an exact software-to-actor identity assertion. |
 
 ## 帰属

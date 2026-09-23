@@ -23,13 +23,17 @@ from build_opencti_bundles import (  # noqa: E402
     campaign_dependency_profile_ids,
     normalize_shared_object_versions,
     prepare_profile_objects,
+    preserve_object_versions,
     profile_scoped_stix_id,
     producer_identity,
     repository_producer_identity,
+    validate_actor_identity_keys,
     validate_bundle,
     validate_shared_object_definitions,
 )
 from render_profile import (  # noqa: E402
+    alias_assessment_note,
+    opencti_identity_aliases,
     relationship_time_properties,
     stix_base,
     stix_id,
@@ -451,6 +455,153 @@ class OpenCTIBundleTests(unittest.TestCase):
         self.assertEqual(producer["created"], PRODUCER_CREATED)
         self.assertEqual(producer["modified"], PRODUCER_MODIFIED)
         self.assertNotEqual(producer["modified"], NOW)
+
+    def test_rebuild_preserves_created_and_unchanged_modified(self) -> None:
+        object_id = stix_id("report", "version-test")
+        previous_object = stix_base(
+            "report",
+            "version-test",
+            CREATED,
+            {"name": "Version test", "object_refs": []},
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["created"] = NOW
+        current_object["modified"] = NOW
+        current_bundle = {"type": "bundle", "objects": [current_object]}
+        previous_bundle = {"type": "bundle", "objects": [previous_object]}
+
+        preserve_object_versions(current_bundle, previous_bundle)
+
+        rebuilt = current_bundle["objects"][0]
+        self.assertEqual(rebuilt["id"], object_id)
+        self.assertEqual(rebuilt["created"], CREATED)
+        self.assertEqual(rebuilt["modified"], CREATED)
+
+    def test_semantic_change_requires_newer_modified(self) -> None:
+        previous_object = stix_base(
+            "report",
+            "version-change-test",
+            CREATED,
+            {"name": "Old name", "object_refs": []},
+        )
+        current_object = copy.deepcopy(previous_object)
+        current_object["name"] = "New name"
+        current_object["created"] = NOW
+        current_bundle = {"type": "bundle", "objects": [current_object]}
+        previous_bundle = {"type": "bundle", "objects": [previous_object]}
+
+        with self.assertRaisesRegex(
+            ValueError, "semantic content changed without a newer modified"
+        ):
+            preserve_object_versions(current_bundle, previous_bundle)
+
+        current_object["modified"] = NOW
+        preserve_object_versions(current_bundle, previous_bundle)
+        self.assertEqual(current_object["created"], CREATED)
+        self.assertEqual(current_object["modified"], NOW)
+
+    def test_only_exact_high_aliases_are_opencti_identity_keys(self) -> None:
+        aliases = [
+            {
+                "name": "Exact High",
+                "vendor": "Example",
+                "scope": "exact",
+                "confidence": "high",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "Verified rename.",
+            },
+            {
+                "name": "Exact Medium",
+                "vendor": "Example",
+                "scope": "exact",
+                "confidence": "medium",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "Identity is not yet high confidence.",
+            },
+            {
+                "name": "Overlap Name",
+                "vendor": "Other vendor",
+                "scope": "overlapping",
+                "confidence": "high",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "Cluster boundaries differ.",
+            },
+        ]
+        actor = {"canonical_name": "Example Actor", "aliases": aliases}
+
+        self.assertEqual(opencti_identity_aliases(actor), ["Exact High"])
+
+        profile = copy.deepcopy(self.profile)
+        profile["actor"]["aliases"] = aliases
+        note = alias_assessment_note(
+            profile,
+            actor_ref=stix_id("intrusion-set", profile["profile_id"]),
+            source_by_id={
+                item["source_id"]: item for item in profile["sources"]
+            },
+        )
+        self.assertIsNotNone(note)
+        assert note is not None
+        self.assertEqual(note["type"], "note")
+        self.assertEqual(
+            [item["name"] for item in note["x_alias_assessments"]],
+            ["Exact Medium", "Overlap Name"],
+        )
+        self.assertIn("Overlap Name", note["content"])
+        self.assertEqual(
+            note["external_references"][0]["external_id"],
+            "source--example",
+        )
+
+    def test_bundle_validator_rejects_non_identity_native_alias(self) -> None:
+        bundle = copy.deepcopy(fixture_bundle(self.profile))
+        actor = next(
+            item for item in bundle["objects"]
+            if item["type"] == "intrusion-set"
+        )
+        actor["aliases"] = ["Unsafe Overlap"]
+        actor["x_alias_assessments"] = [
+            {
+                "name": "Unsafe Overlap",
+                "vendor": "Example",
+                "scope": "overlapping",
+                "confidence": "high",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "Not exact identity.",
+            }
+        ]
+
+        errors = validate_bundle(bundle)
+
+        self.assertTrue(
+            any("contains a non-identity alias" in item for item in errors),
+            errors,
+        )
+
+    def test_actor_identity_keys_must_be_unique_across_active_profiles(self) -> None:
+        left = fixture_profile()
+        left["actor"]["aliases"] = [
+            {
+                "name": "Shared Exact Name",
+                "vendor": "Example",
+                "scope": "exact",
+                "confidence": "high",
+                "evidence_refs": ["source--example"],
+                "analyst_notes": "Verified rename.",
+            }
+        ]
+        right = related_profile()
+        right["actor"]["canonical_name"] = "Shared_Exact-Name"
+        errors = validate_actor_identity_keys(
+            [
+                {"slug": "left", "profile": left},
+                {"slug": "right", "profile": right},
+            ]
+        )
+
+        self.assertEqual(len(errors), 1)
+        self.assertIn("actor--example", errors[0])
+        self.assertIn("actor--related", errors[0])
 
     def test_opencti_target_types_are_preserved_without_fake_organizations(self) -> None:
         country = next(

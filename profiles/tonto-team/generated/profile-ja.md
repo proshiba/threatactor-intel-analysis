@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--tonto-team`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -20,6 +20,7 @@ Tonto Teamの標準化プロファイル。リポジトリ内の専用資料1件
 |---|---|---|---|---|---|
 | BRONZE HUNTLEY | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | CactusPete | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Copper Typhoon | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 | Earth Akhlut | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Karma Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | LONE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |

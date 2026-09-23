@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lilac-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ Lilac Typhoonの標準化プロファイル。リポジトリ内の専用資料1
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| DEV-0234 | Microsoft | exact | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this former Microsoft element or DEV designation to the current Microsoft actor name. Exactness is limited to Microsoft's naming taxonomy and does not transfer claims from other vendors. |
 
 ## 帰属
 

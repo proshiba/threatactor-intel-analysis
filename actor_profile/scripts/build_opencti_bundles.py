@@ -14,13 +14,16 @@ import json
 import re
 import unicodedata
 from collections import Counter, defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 from common import load_json, write_json_atomic
 from render_profile import (
     TLP_CLEAR,
+    actor_alias_evidence_refs,
     external_refs,
+    opencti_identity_aliases,
     relationship_time_properties,
     stix_base,
     stix_id,
@@ -69,7 +72,7 @@ NETWORK_OBSERVABLE_TYPES = {
 
 def normalized_actor_key(value: str) -> str:
     normalized = unicodedata.normalize("NFKC", value or "").casefold()
-    return re.sub(r"[^\w]+", "", normalized, flags=re.UNICODE)
+    return "".join(character for character in normalized if character.isalnum())
 
 
 def confidence_score(value: Any) -> int:
@@ -574,14 +577,29 @@ def actor_stub(
     profile: dict[str, Any], producer_ref: str
 ) -> dict[str, Any]:
     actor = profile["actor"]
+    source_by_id = {
+        item["source_id"]: item for item in profile.get("sources", [])
+    }
+    evidence_refs = list(
+        dict.fromkeys(
+            [
+                *profile.get("attribution", {}).get("evidence_refs", []),
+                *actor_alias_evidence_refs(actor),
+            ]
+        )
+    )
     extra: dict[str, Any] = {
         "name": actor["canonical_name"],
-        "aliases": [item["name"] for item in actor.get("aliases", [])],
+        "aliases": opencti_identity_aliases(actor),
         "description": actor.get("description") or profile["free_text"].get(
             "executive_summary", ""
         ),
+        "external_references": external_refs(
+            evidence_refs, source_by_id
+        ),
         "x_profile_id": profile["profile_id"],
         "x_profile_status": profile["status"],
+        "x_alias_assessments": actor.get("aliases", []),
         "created_by_ref": producer_ref,
     }
     for output_key, source_key in (
@@ -609,10 +627,40 @@ def build_actor_index(
         profile = record["profile"]
         actor = profile["actor"]
         by_name[normalized_actor_key(actor["canonical_name"])].append(record)
-        for alias in actor.get("aliases", []):
-            if alias.get("scope") == "exact":
-                by_name[normalized_actor_key(alias["name"])].append(record)
+        for alias in opencti_identity_aliases(actor):
+            by_name[normalized_actor_key(alias)].append(record)
     return by_profile_id, by_name
+
+
+def validate_actor_identity_keys(
+    records: list[dict[str, Any]],
+) -> list[str]:
+    """Reject OpenCTI identity keys shared by multiple active profiles."""
+
+    owners: dict[str, dict[str, set[str]]] = defaultdict(
+        lambda: {"profiles": set(), "names": set()}
+    )
+    for record in records:
+        profile = record["profile"]
+        if profile.get("status") == "deprecated":
+            continue
+        actor = profile["actor"]
+        for name in [
+            actor["canonical_name"],
+            *opencti_identity_aliases(actor),
+        ]:
+            key = normalized_actor_key(name)
+            owners[key]["profiles"].add(profile["profile_id"])
+            owners[key]["names"].add(name)
+    return [
+        (
+            "OpenCTI actor identity key is shared across profiles: "
+            f"{', '.join(sorted(item['names']))} -> "
+            f"{', '.join(sorted(item['profiles']))}"
+        )
+        for item in owners.values()
+        if len(item["profiles"]) > 1
+    ]
 
 
 def resolve_actor(
@@ -892,6 +940,69 @@ def finalize_bundle(
         "id": stix_id("bundle", key),
         "objects": ordered,
     }
+
+
+def preserve_object_versions(
+    bundle: dict[str, Any],
+    previous_bundle: dict[str, Any] | None,
+) -> None:
+    """Preserve STIX creation metadata and reject invalid version updates.
+
+    OpenCTI bundles are tracked release artifacts and therefore also serve as
+    the version baseline for stable object IDs. Rebuilding a bundle must not
+    rewrite ``created`` merely because the owning profile was updated. When
+    the semantic content is unchanged, ``modified`` is retained as well. A
+    semantic change with a non-increasing ``modified`` value is rejected so a
+    generator-policy change cannot silently produce two definitions for the
+    same STIX version.
+    """
+
+    if not previous_bundle:
+        return
+    previous_by_id = {
+        item["id"]: item
+        for item in previous_bundle.get("objects", [])
+        if isinstance(item, dict) and item.get("id")
+    }
+    for item in bundle.get("objects", []):
+        previous = previous_by_id.get(item.get("id"))
+        if not previous:
+            continue
+        if previous.get("created"):
+            item["created"] = previous["created"]
+        current_semantic = {
+            key: value
+            for key, value in item.items()
+            if key not in {"created", "modified"}
+        }
+        previous_semantic = {
+            key: value
+            for key, value in previous.items()
+            if key not in {"created", "modified"}
+        }
+        if current_semantic == previous_semantic:
+            if previous.get("modified"):
+                item["modified"] = previous["modified"]
+            continue
+        previous_modified = previous.get("modified")
+        current_modified = item.get("modified")
+        if not previous_modified or not current_modified:
+            raise ValueError(
+                "stable unversioned STIX object changed semantic content: "
+                f"{item.get('id', 'unknown')}"
+            )
+        previous_time = datetime.fromisoformat(
+            previous_modified.replace("Z", "+00:00")
+        )
+        current_time = datetime.fromisoformat(
+            current_modified.replace("Z", "+00:00")
+        )
+        if current_time <= previous_time:
+            raise ValueError(
+                "STIX object semantic content changed without a newer "
+                f"modified value: {item.get('id', 'unknown')} "
+                f"({previous_modified} -> {current_modified})"
+            )
 
 
 def build_actor_bundle(
@@ -1377,6 +1488,18 @@ def validate_bundle(
             errors.append(f"{obj_id} does not declare STIX 2.1")
         if obj.get("type") == "report":
             reports.append(obj)
+        if (
+            obj.get("type") == "intrusion-set"
+            and "x_alias_assessments" in obj
+        ):
+            expected_aliases = opencti_identity_aliases(
+                {"aliases": obj.get("x_alias_assessments", [])}
+            )
+            if obj.get("aliases", []) != expected_aliases:
+                errors.append(
+                    f"{obj_id}.aliases contains a non-identity alias or "
+                    "omits an exact/high alias"
+                )
         if obj.get("type") in activity_counts and obj.get("x_profile_object_id"):
             activity_counts[obj["type"]] += 1
     external_ids = {TLP_CLEAR}
@@ -1594,6 +1717,9 @@ def main() -> int:
     records = load_records(catalog_path, profiles_root, set())
     if not records:
         raise SystemExit("no actor profiles selected")
+    identity_key_errors = validate_actor_identity_keys(records)
+    if identity_key_errors:
+        raise ValueError(identity_key_errors[0])
     modified = max(record["profile"]["updated_at"] for record in records)
     producer = repository_producer_identity()
     for record in records:
@@ -1628,6 +1754,11 @@ def main() -> int:
         actor_bundle, unresolved = build_actor_bundle(
             record, producer, by_profile_id, by_name
         )
+        actor_path = output_root / "actors" / f"{slug}.stix2.json"
+        preserve_object_versions(
+            actor_bundle,
+            load_json(actor_path) if actor_path.exists() else None,
+        )
         actor_errors = validate_bundle(actor_bundle, expected_scope="actor")
         actor_errors.extend(
             validate_shared_object_definitions(
@@ -1636,7 +1767,6 @@ def main() -> int:
         )
         if actor_errors:
             raise ValueError(f"invalid actor bundle {slug}: {actor_errors[:10]}")
-        actor_path = output_root / "actors" / f"{slug}.stix2.json"
         write_json_atomic(actor_path, actor_bundle)
         actor_size = actor_path.stat().st_size
         if actor_size > args.max_bundle_bytes:
@@ -1666,6 +1796,19 @@ def main() -> int:
         for activity in profile.get("activities", []):
             primary_type = activity_stix_object_type(activity)
             activity_bundle = build_activity_bundle(record, activity, producer)
+            output_section = (
+                "campaigns" if primary_type == "campaign" else "activities"
+            )
+            activity_path = (
+                output_root
+                / output_section
+                / slug
+                / safe_activity_filename(activity["activity_id"])
+            )
+            preserve_object_versions(
+                activity_bundle,
+                load_json(activity_path) if activity_path.exists() else None,
+            )
             activity_errors = validate_bundle(
                 activity_bundle, expected_scope=primary_type
             )
@@ -1680,15 +1823,6 @@ def main() -> int:
                     f"{slug}/{activity['activity_id']}: "
                     f"{activity_errors[:10]}"
                 )
-            output_section = (
-                "campaigns" if primary_type == "campaign" else "activities"
-            )
-            activity_path = (
-                output_root
-                / output_section
-                / slug
-                / safe_activity_filename(activity["activity_id"])
-            )
             write_json_atomic(activity_path, activity_bundle)
             activity_size = activity_path.stat().st_size
             if activity_size > args.max_bundle_bytes:
@@ -1728,15 +1862,6 @@ def main() -> int:
                 producer=producer,
             )
             primary_type = entry["stix_object_type"]
-            bundle_errors = validate_bundle(bundle, expected_scope=primary_type)
-            bundle_errors.extend(
-                validate_shared_object_definitions(bundle, shared_object_definitions)
-            )
-            if bundle_errors:
-                raise ValueError(
-                    f"invalid standalone {primary_type} bundle "
-                    f"{entry['activity_id']}: {bundle_errors[:10]}"
-                )
             output_section = (
                 "campaigns" if primary_type == "campaign" else "activities"
             )
@@ -1746,6 +1871,19 @@ def main() -> int:
                 / "unattributed"
                 / safe_activity_filename(entry["activity_id"])
             )
+            preserve_object_versions(
+                bundle,
+                load_json(activity_path) if activity_path.exists() else None,
+            )
+            bundle_errors = validate_bundle(bundle, expected_scope=primary_type)
+            bundle_errors.extend(
+                validate_shared_object_definitions(bundle, shared_object_definitions)
+            )
+            if bundle_errors:
+                raise ValueError(
+                    f"invalid standalone {primary_type} bundle "
+                    f"{entry['activity_id']}: {bundle_errors[:10]}"
+                )
             write_json_atomic(activity_path, bundle)
             activity_size = activity_path.stat().st_size
             if activity_size > args.max_bundle_bytes:

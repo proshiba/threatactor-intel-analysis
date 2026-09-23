@@ -79,10 +79,87 @@ BOUNDARY_REMOVALS = {
     "ember-bear": {"Saint Bear"},
 }
 
+# Microsoft publishes the first value as its current threat-actor name. The
+# additional values below are limited to names already isolated as actor-name
+# leads in this repository and re-confirmed in Microsoft's official mapping.
+# Former Microsoft element/DEV designators are exact only inside Microsoft's
+# taxonomy. Current cross-vendor mappings remain ``overlapping``. Software,
+# malware, campaign and operation names are intentionally absent.
+MICROSOFT_EXACT_RENAMES = {
+    "cotton-sandstorm": ["NEPTUNIUM"],
+    "cuboid-sandstorm": ["DEV-0228"],
+    "denim-tsunami": ["DEV-0291"],
+    "lace-tempest": ["DEV-0950"],
+    "lilac-typhoon": ["DEV-0234"],
+    "pearl-sleet": ["LAWRENCIUM"],
+    "phlox-tempest": ["DEV-0796"],
+    "pumpkin-sandstorm": ["DEV-0146"],
+    "ruby-sleet": ["CERIUM"],
+    "sunglow-blizzard": ["DEV-0665"],
+    "velvet-tempest": ["DEV-0504"],
+    "wisteria-tsunami": ["DEV-0605"],
+}
+
 MICROSOFT_MAPPINGS = {
+    "apt12": ["Hexagon Typhoon", "Calc Team"],
+    "apt17": ["Heart Typhoon", "AURORA PANDA", "Hidden Lynx"],
+    "apt18": ["Satin Typhoon", "Wekby"],
+    "apt26": ["Taffeta Typhoon", "TURBINE PANDA", "JerseyMikes"],
+    "apt3": ["Brocade Typhoon"],
+    "apt4": ["Salmon Typhoon", "MAVERICK PANDA"],
+    "apt5": ["tabcteng"],
+    "aquatic-panda": ["Charcoal Typhoon"],
+    "arid-viper": ["Pinstripe Lightning"],
+    "cl-sta-0969": ["Pepper Typhoon"],
+    "cotton-sandstorm": ["Vice Leaker"],
+    "dev-0343": ["Gray Sandstorm"],
+    "dragonfly": ["Koala Team"],
+    "fin6": ["Storm-0538"],
+    "fin8": ["Storm-0288"],
+    "menupass": ["Purple Typhoon"],
+    "moustachedbouncer": ["Storm-1125"],
+    "platinum": ["Fallow Squall"],
+    "storm-0062": ["Shadow Typhoon"],
+    "storm-0558": ["Antique Typhoon"],
+    "storm-1516": ["Neva Flood"],
+    "storm-1679": ["Oka Flood"],
+    "strongpity": ["Magenta Dust"],
+    "ta544": ["Storm-0302"],
+    "teampcp": ["Storm-2999"],
+    "tick": ["Swirl Typhoon"],
+    "toddycat": ["Storm-0247"],
+    "tonto-team": ["Copper Typhoon"],
+    "unc215": ["Linen Typhoon"],
+    "unc2596": ["Storm-0671"],
     "unc5792": ["Frontier Blizzard"],
     "unc6040": ["Storm-2581"],
     "unc6240": ["Storm-3127"],
+    "volatile-cedar": ["Amethyst Rain"],
+    "wizard-spider": ["Storm-0230"],
+}
+
+MICROSOFT_ENTITY_BOUNDARY_EXCLUSIONS = {
+    "Bisonal",
+    "ChChes",
+    "COVENANT",
+    "DarkSeoul",
+    "Deadwood",
+    "DSIRF",
+    "ELECTRICFISH",
+    "Evilgrab",
+    "Hainan Xiandun Technology Company",
+    "Havex",
+    "Hydraq",
+    "Lumma Stealer",
+    "Mabna Institute",
+    "Operation Pawn Storm",
+    "RomCom",
+    "ScanBox",
+    "Tdrop2 campaign",
+    "TRISIS",
+    "Triton",
+    "Uroburos",
+    "ZeroCleare",
 }
 
 MITRE_19_2_MAPPINGS = {
@@ -152,6 +229,7 @@ SOURCES: dict[str, dict[str, Any]] = {
         "title": "Updated Cyber Threat Actor Naming System",
         "publisher": "Google Threat Intelligence Group",
         "published_at": time_value("2026-07-24"),
+        "accessed_at": "2026-09-23T11:24:50Z",
         "language": "en",
         "source_type": "official-vendor-actor-mapping",
         "tlp": "TLP:CLEAR",
@@ -160,6 +238,32 @@ SOURCES: dict[str, dict[str, Any]] = {
         "actor_scope": "exact",
         "claims_supported": ["identity", "alias"],
         "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries.",
+    },
+    MICROSOFT_SOURCE_ID: {
+        "source_id": MICROSOFT_SOURCE_ID,
+        "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+        "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+        "title": "Microsoft Threat Actor Naming Mapping",
+        "publisher": "Microsoft",
+        "published_at": unknown_time(),
+        "accessed_at": "2026-09-21T02:39:13Z",
+        "language": "en",
+        "source_type": "official-vendor-actor-mapping",
+        "tlp": "TLP:CLEAR",
+        "reliability": "high",
+        "sha256": "71d663ef7164927121e8b609951559fcb125798601adacb3b2ee32b9f3c1b4cb",
+        "actor_scope": "mixed",
+        "claims_supported": [
+            "identity-crosscheck",
+            "alias",
+            "relationship-lead",
+        ],
+        "analyst_notes": (
+            "Pinned official Microsoft mapping. The current-name field and "
+            "reviewed previous Microsoft designators support alias records; "
+            "other-vendor names remain scoped overlap unless separate primary "
+            "evidence establishes exact identity."
+        ),
     },
     "source--mandiant-fin11-ta505-boundary-2020": {
         "source_id": "source--mandiant-fin11-ta505-boundary-2020",
@@ -200,6 +304,7 @@ SOURCES: dict[str, dict[str, Any]] = {
         "title": "MITRE ICS ATT&CK 19.2 compact local index",
         "publisher": "MITRE",
         "published_at": time_value("2026-08-05"),
+        "accessed_at": "2026-09-23T11:24:50Z",
         "language": "en",
         "source_type": "structured-knowledge-base",
         "tlp": "TLP:CLEAR",
@@ -232,6 +337,7 @@ SOURCES: dict[str, dict[str, Any]] = {
         "title": "TeamPCP, Group G1056",
         "publisher": "MITRE ATT&CK",
         "published_at": time_value("2026-07-31"),
+        "accessed_at": "2026-09-23T11:24:50Z",
         "language": "en",
         "source_type": "structured-knowledge-base",
         "tlp": "TLP:CLEAR",
@@ -248,6 +354,7 @@ SOURCES: dict[str, dict[str, Any]] = {
         "title": "ShinyHunters, Group G1057",
         "publisher": "MITRE ATT&CK",
         "published_at": time_value("2026-07-31"),
+        "accessed_at": "2026-09-23T11:24:50Z",
         "language": "en",
         "source_type": "structured-knowledge-base",
         "tlp": "TLP:CLEAR",
@@ -309,6 +416,7 @@ SOURCES: dict[str, dict[str, Any]] = {
         "title": "CERT-UA UAC-0020 (Vermin) reporting",
         "publisher": "CERT-UA",
         "published_at": unknown_time(),
+        "accessed_at": None,
         "language": "uk",
         "source_type": "government-cert-article-index",
         "tlp": "TLP:CLEAR",
@@ -316,16 +424,19 @@ SOURCES: dict[str, dict[str, Any]] = {
         "sha256": None,
         "actor_scope": "overlapping",
         "claims_supported": ["identity", "alias"],
-        "analyst_notes": "CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact.",
+        "analyst_notes": "CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact. The local index does not preserve the original retrieval timestamp, so accessed_at remains explicitly null.",
     },
 }
 
 
-def merge_source(profile: dict[str, Any], source_id: str) -> None:
+def merge_source(
+    profile: dict[str, Any], source_id: str, *, refresh: bool = False
+) -> None:
     source = SOURCES[source_id]
     for index, existing in enumerate(profile["sources"]):
         if existing["source_id"] == source_id:
-            profile["sources"][index] = source
+            if refresh:
+                profile["sources"][index] = source
             return
     profile["sources"].append(source)
 
@@ -359,6 +470,7 @@ def merge_alias(
             }
         )
         return
+    already_supported = source_id in existing.get("evidence_refs", [])
     existing["evidence_refs"] = list(
         dict.fromkeys([*existing.get("evidence_refs", []), source_id])
     )
@@ -368,9 +480,13 @@ def merge_alias(
         existing.get("scope") == "unknown" and scope != "unknown"
     ):
         existing["scope"] = scope
-    if vendor and vendor not in existing.get("vendor", ""):
+    if not already_supported and vendor and vendor not in existing.get("vendor", ""):
         existing["vendor"] = " / ".join(x for x in (existing.get("vendor"), vendor) if x)
-    if note and note not in existing.get("analyst_notes", ""):
+    if (
+        not already_supported
+        and note
+        and note not in existing.get("analyst_notes", "")
+    ):
         existing["analyst_notes"] = " ".join(
             x for x in (existing.get("analyst_notes", ""), note) if x
         )
@@ -411,6 +527,8 @@ def add_relationship(
         "evidence_refs": [source_id],
         "analyst_notes": "Primary-source-verified taxonomy boundary; this relationship must not be converted into an exact alias.",
     }
+    if any(item == record for item in left.get("relationships", [])):
+        return
     left["relationships"] = [
         item
         for item in left.get("relationships", [])
@@ -434,10 +552,14 @@ def main() -> int:
     catalog = load_json(args.catalog)
     catalog_by_slug = {item["slug"]: item for item in catalog["actors"]}
     profiles: dict[str, dict[str, Any]] = {}
+    original_profiles: dict[str, str] = {}
 
     def profile(slug: str) -> dict[str, Any]:
         if slug not in profiles:
             profiles[slug] = load_json(args.profiles_root / slug / "actor-profile.json")
+            original_profiles[slug] = json.dumps(
+                profiles[slug], ensure_ascii=False, sort_keys=True
+            )
         return profiles[slug]
 
     def catalog_alias(slug: str, name: str) -> None:
@@ -455,7 +577,7 @@ def main() -> int:
     )
     for new_name, (slug, previous_names) in GTIG_MAPPINGS.items():
         current = profile(slug)
-        merge_source(current, GTIG_SOURCE_ID)
+        merge_source(current, GTIG_SOURCE_ID, refresh=True)
         scope = "overlapping" if slug == "uac-0020" else "exact"
         alias_source = (
             "source--cert-ua-uac0020-index" if slug == "uac-0020" else GTIG_SOURCE_ID
@@ -494,8 +616,47 @@ def main() -> int:
             )
             catalog_alias(slug, old_name)
 
+    vermin = profile("uac-0020")
+    merge_source(vermin, "source--cert-ua-uac0020-index", refresh=True)
+    merge_alias(
+        vermin,
+        name="Vermin",
+        vendor="CERT-UA",
+        scope="overlapping",
+        confidence="high",
+        source_id="source--cert-ua-uac0020-index",
+        note=(
+            "CERT-UA article titles identify UAC-0020 as Vermin. The name "
+            "remains overlapping because cross-vendor collection boundaries "
+            "are not established as exact identity."
+        ),
+    )
+    catalog_alias("uac-0020", "Vermin")
+
+    microsoft_exact_note = (
+        "Microsoft's official mapping links this former Microsoft element or "
+        "DEV designation to the current Microsoft actor name. Exactness is "
+        "limited to Microsoft's naming taxonomy and does not transfer claims "
+        "from other vendors."
+    )
+    for slug, aliases in MICROSOFT_EXACT_RENAMES.items():
+        current = profile(slug)
+        merge_source(current, MICROSOFT_SOURCE_ID, refresh=True)
+        for name in aliases:
+            merge_alias(
+                current,
+                name=name,
+                vendor="Microsoft",
+                scope="exact",
+                confidence="high",
+                source_id=MICROSOFT_SOURCE_ID,
+                note=microsoft_exact_note,
+            )
+            catalog_alias(slug, name)
+
     for slug, aliases in MICROSOFT_MAPPINGS.items():
         current = profile(slug)
+        merge_source(current, MICROSOFT_SOURCE_ID, refresh=True)
         for name in aliases:
             merge_alias(
                 current,
@@ -511,7 +672,7 @@ def main() -> int:
     for slug, (group_id, aliases) in MITRE_19_2_MAPPINGS.items():
         current = profile(slug)
         source_id = f"source--mitre-attack-{group_id.casefold()}"
-        merge_source(current, source_id)
+        merge_source(current, source_id, refresh=True)
         catalog_by_slug[slug]["mitre_group_id"] = group_id
         for name in aliases:
             merge_alias(
@@ -643,8 +804,9 @@ def main() -> int:
         relationship_type = relationship_types[0] if relationship_types else "overlaps-with"
         left = profile(left_slug)
         right = profile(right_slug)
-        merge_source(left, source_id)
-        merge_source(right, source_id)
+        refresh_source = source_id == "source--mitre-attack-ics-19-2"
+        merge_source(left, source_id, refresh=refresh_source)
+        merge_source(right, source_id, refresh=refresh_source)
         for current, target_name in ((left, right["actor"]["canonical_name"]), (right, left["actor"]["canonical_name"])):
             current["relationships"] = [
                 item
@@ -686,17 +848,22 @@ def main() -> int:
             )
         ]
 
+    updated_at = utc_now()
+    updated_profiles = 0
     for slug, current in profiles.items():
         current["actor"]["aliases"].sort(key=lambda item: normalized_name(item["name"]))
-        current["updated_at"] = utc_now()
+        if json.dumps(current, ensure_ascii=False, sort_keys=True) == original_profiles[slug]:
+            continue
+        current["updated_at"] = updated_at
         write_json_atomic(args.profiles_root / slug / "actor-profile.json", current)
+        updated_profiles += 1
     for actor in catalog["actors"]:
         actor["aliases"] = sorted(
             dict.fromkeys(actor.get("aliases", [])), key=lambda name: normalized_name(name)
         )
     catalog["actors"].sort(key=lambda item: item["slug"])
     write_json_atomic(args.catalog, catalog)
-    print(json.dumps({"profiles_updated": len(profiles), "gtig_mappings": len(GTIG_MAPPINGS), "catalog_actors": len(catalog["actors"])}))
+    print(json.dumps({"profiles_updated": updated_profiles, "gtig_mappings": len(GTIG_MAPPINGS), "catalog_actors": len(catalog["actors"])}))
     return 0
 
 
