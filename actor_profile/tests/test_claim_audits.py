@@ -45,6 +45,9 @@ class ClaimAuditTests(unittest.TestCase):
         sources = {
             "gov": {"source_type": "government-joint-advisory"},
             "vendor": {"source_type": "vendor-technical-report"},
+            "official-mapping": {
+                "source_type": "official-vendor-actor-mapping"
+            },
             "aggregation": {"source_type": "structured-osint-aggregation"},
             "gov-encyclopedia": {
                 "source_type": "government-threat-actor-encyclopedia",
@@ -53,6 +56,9 @@ class ClaimAuditTests(unittest.TestCase):
         }
         self.assertEqual(evidence_tier(["gov"], sources), "authoritative")
         self.assertEqual(evidence_tier(["vendor"], sources), "research")
+        self.assertEqual(
+            evidence_tier(["official-mapping"], sources), "research"
+        )
         self.assertEqual(evidence_tier(["aggregation"], sources), "aggregation")
         self.assertEqual(
             evidence_tier(["gov-encyclopedia"], sources), "aggregation"

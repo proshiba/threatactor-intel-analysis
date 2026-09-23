@@ -155,6 +155,19 @@ python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 
 異なるベンダークラスタを、名称一覧だけを根拠に`exact`へ統合しない。
 
+OpenCTI/STIXの標準`aliases`は検索用の自由語彙ではなく、OpenCTIがIntrusion Setの
+重複排除に使う同一性キーである。このため、標準`aliases`へ出力できるのは
+`scope: exact`かつ`confidence: high`の名称だけとする。`exact`でも確度がmedium/lowの名称、
+および`overlapping`、`broader`、`narrower`、`unknown`は
+`x_alias_assessments`と根拠付きNoteへ保持し、`aliases`または`x_opencti_aliases`へ入れない。
+同じ正規化aliasが複数のactive profileの同一性キーになる場合は生成を失敗させる。
+
+aliasが存在しないことは有効な状態である。大文字小文字、空白、ハイフンだけを機械的に
+変えた名称や、集約資料・workbookだけの候補を、件数を埋めるためにalias化しない。
+ベンダー公式mappingでも、旧称、他社対応名、Software、Campaign、Organizationが混在し得る。
+同一ベンダーの明示的renameはそのtaxonomy内の`exact`にできるが、他社対応名は原則
+`overlapping`とし、entity種別と既存profile衝突を確認する。
+
 一方、公式ATT&CKの同一Group IDと命名元ベンダー資料で単なるrenameであることを確認した
 名称は、別のcanonical profileを作らず既存profileの`exact` aliasとして保持する。
 同一性の確認には名前一致だけでなく、Group IDとactor-specificな原典を必要とする。

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0020`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -19,6 +19,7 @@ UAC-0020の標準化プロファイル。リポジトリ内の専用資料1件�
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | TEMP.Vermin | Google Threat Intelligence Group | overlapping | 高 | `source--cert-ua-uac0020-index` | CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact. |
+| Vermin | CERT-UA | overlapping | 高 | `source--cert-ua-uac0020-index` | CERT-UA article titles identify UAC-0020 as Vermin. The name remains overlapping because cross-vendor collection boundaries are not established as exact identity. |
 | VERMIN RELIC | Google Threat Intelligence Group / CERT-UA / Google Threat Intelligence Group | overlapping | 高 | `source--gtig-unified-actor-naming-2026`, `source--cert-ua-uac0020-index` | CERT-UA titles identify UAC-0020 as Vermin; GTIG separately tracks TEMP.Vermin and renamed it VERMIN RELIC. The cross-vendor mapping remains overlapping, not exact. |
 
 ## 帰属

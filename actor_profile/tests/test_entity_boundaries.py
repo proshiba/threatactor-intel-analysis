@@ -7,7 +7,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "actor_profile" / "scripts"))
 
-from apply_verified_alias_updates import merge_alias  # noqa: E402
+from apply_verified_alias_updates import (  # noqa: E402
+    MICROSOFT_ENTITY_BOUNDARY_EXCLUSIONS,
+    MICROSOFT_EXACT_RENAMES,
+    MICROSOFT_MAPPINGS,
+    merge_alias,
+)
 
 
 class EntityBoundaryTests(unittest.TestCase):
@@ -564,6 +569,51 @@ class EntityBoundaryTests(unittest.TestCase):
             for item in self.load_profile("carberb")["actor"]["aliases"]
         }
         self.assertEqual(carberp_aliases["Carberb"]["scope"], "exact")
+
+    def test_reviewed_microsoft_alias_curation_is_present_and_scoped(self) -> None:
+        for slug, names in MICROSOFT_EXACT_RENAMES.items():
+            aliases = {
+                item["name"]: item
+                for item in self.load_profile(slug)["actor"]["aliases"]
+            }
+            for name in names:
+                self.assertEqual(aliases[name]["scope"], "exact", (slug, name))
+                self.assertEqual(aliases[name]["confidence"], "high", (slug, name))
+                self.assertIn(
+                    "source--osint-microsoft-threat-actor-mapping",
+                    aliases[name]["evidence_refs"],
+                    (slug, name),
+                )
+
+        for slug, names in MICROSOFT_MAPPINGS.items():
+            aliases = {
+                item["name"]: item
+                for item in self.load_profile(slug)["actor"]["aliases"]
+            }
+            for name in names:
+                self.assertEqual(
+                    aliases[name]["scope"], "overlapping", (slug, name)
+                )
+                self.assertEqual(aliases[name]["confidence"], "high", (slug, name))
+
+        curated_names = {
+            name
+            for names in [
+                *MICROSOFT_EXACT_RENAMES.values(),
+                *MICROSOFT_MAPPINGS.values(),
+            ]
+            for name in names
+        }
+        self.assertFalse(
+            curated_names & MICROSOFT_ENTITY_BOUNDARY_EXCLUSIONS
+        )
+
+        vermin = {
+            item["name"]: item
+            for item in self.load_profile("uac-0020")["actor"]["aliases"]
+        }["Vermin"]
+        self.assertEqual(vermin["scope"], "overlapping")
+        self.assertIn("source--cert-ua-uac0020-index", vermin["evidence_refs"])
 
     def test_cyberav3ngers_absorbs_exact_unc5691_identity(self) -> None:
         cyber = self.load_profile("cyberav3ngers")

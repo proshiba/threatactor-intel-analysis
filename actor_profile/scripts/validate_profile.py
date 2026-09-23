@@ -8,6 +8,7 @@ import csv
 import ipaddress
 import json
 import re
+import unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,6 +41,15 @@ NON_ACTIVITY_OBSERVATION_BASIS = re.compile(
     r")",
     re.IGNORECASE,
 )
+ALIAS_FIELDS = {
+    "name",
+    "vendor",
+    "scope",
+    "confidence",
+    "evidence_refs",
+    "analyst_notes",
+}
+ALIAS_SCOPES = {"exact", "overlapping", "broader", "narrower", "unknown"}
 
 
 @dataclass
@@ -209,6 +219,180 @@ def check_evidence_refs(
             issue(issues, "error", location, f"dangling evidence reference: {ref}")
 
 
+def normalized_actor_name(value: str) -> str:
+    """Return the comparison key used for canonical and alias names."""
+
+    normalized = unicodedata.normalize("NFKC", value).casefold()
+    return "".join(character for character in normalized if character.isalnum())
+
+
+def validate_actor_aliases(
+    actor: dict[str, Any],
+    source_ids: set[str],
+    issues: list[Issue],
+) -> None:
+    """Validate evidence-bearing actor aliases and their identity boundaries."""
+
+    aliases = actor.get("aliases", [])
+    if not isinstance(aliases, list):
+        issue(issues, "error", "$.actor.aliases", "aliases must be an array")
+        return
+
+    canonical_name = actor.get("canonical_name")
+    canonical_key = (
+        normalized_actor_name(canonical_name)
+        if isinstance(canonical_name, str)
+        else None
+    )
+    alias_names: dict[str, int] = {}
+    for index, alias in enumerate(aliases):
+        location = f"$.actor.aliases[{index}]"
+        if not isinstance(alias, dict):
+            issue(issues, "error", location, "alias must be an object")
+            continue
+
+        missing = ALIAS_FIELDS - set(alias)
+        for key in sorted(missing):
+            issue(issues, "error", location, f"missing alias field: {key}")
+        unexpected = set(alias) - ALIAS_FIELDS
+        for key in sorted(unexpected):
+            issue(issues, "error", location, f"unexpected alias field: {key}")
+
+        if "name" in alias:
+            name = alias["name"]
+            if not isinstance(name, str):
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.name",
+                    "alias name must be a string",
+                )
+            elif not name.strip():
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.name",
+                    "alias name must not be empty",
+                )
+            else:
+                name_key = normalized_actor_name(name)
+                if canonical_key is not None and name_key == canonical_key:
+                    issue(
+                        issues,
+                        "error",
+                        f"{location}.name",
+                        "alias duplicates the canonical actor name after normalization",
+                    )
+                if name_key in alias_names:
+                    issue(
+                        issues,
+                        "error",
+                        f"{location}.name",
+                        "duplicate alias after normalization",
+                    )
+                else:
+                    alias_names[name_key] = index
+
+        if "vendor" in alias and not isinstance(alias["vendor"], str):
+            issue(
+                issues,
+                "error",
+                f"{location}.vendor",
+                "alias vendor must be a string",
+            )
+
+        if "scope" in alias:
+            scope = alias["scope"]
+            if not isinstance(scope, str):
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.scope",
+                    "alias scope must be a string",
+                )
+            elif scope not in ALIAS_SCOPES:
+                issue(issues, "error", f"{location}.scope", "invalid alias scope")
+            elif scope == "unknown":
+                issue(issues, "warning", location, "alias scope is unknown")
+
+        if "confidence" in alias:
+            confidence = alias["confidence"]
+            if not isinstance(confidence, str):
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.confidence",
+                    "alias confidence must be a string",
+                )
+            elif confidence not in CONFIDENCE:
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.confidence",
+                    "invalid confidence",
+                )
+
+        if "evidence_refs" in alias:
+            evidence_refs = alias["evidence_refs"]
+            if not isinstance(evidence_refs, list):
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.evidence_refs",
+                    "alias evidence_refs must be an array",
+                )
+                evidence_refs = None
+        else:
+            evidence_refs = None
+        if isinstance(evidence_refs, list):
+            if not evidence_refs:
+                issue(
+                    issues,
+                    "error",
+                    f"{location}.evidence_refs",
+                    "alias evidence_refs must not be empty",
+                )
+            seen_refs: set[str] = set()
+            valid_refs = True
+            for ref_index, ref in enumerate(evidence_refs):
+                ref_location = f"{location}.evidence_refs[{ref_index}]"
+                if not isinstance(ref, str):
+                    issue(
+                        issues,
+                        "error",
+                        ref_location,
+                        "evidence reference must be a string",
+                    )
+                    valid_refs = False
+                    continue
+                if not ref.startswith("source--"):
+                    issue(
+                        issues,
+                        "error",
+                        ref_location,
+                        "evidence reference must start with source--",
+                    )
+                    valid_refs = False
+                if ref in seen_refs:
+                    issue(
+                        issues,
+                        "error",
+                        ref_location,
+                        "duplicate evidence reference",
+                    )
+                seen_refs.add(ref)
+            if valid_refs:
+                check_evidence_refs(alias, location, source_ids, issues)
+
+        if "analyst_notes" in alias and not isinstance(alias["analyst_notes"], str):
+            issue(
+                issues,
+                "error",
+                f"{location}.analyst_notes",
+                "alias analyst_notes must be a string",
+            )
+
+
 def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, set[str]]:
     required = {
         "schema_version", "profile_id", "name", "status", "created_at", "updated_at",
@@ -244,15 +428,7 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     validate_time_order(
         actor.get("first_seen"), actor.get("last_seen"), "$.actor", issues
     )
-    alias_names: set[str] = set()
-    for index, alias in enumerate(actor.get("aliases", [])):
-        lowered = alias.get("name", "").lower()
-        if lowered in alias_names:
-            issue(issues, "error", f"$.actor.aliases[{index}]", "duplicate alias")
-        alias_names.add(lowered)
-        if alias.get("scope") == "unknown":
-            issue(issues, "warning", f"$.actor.aliases[{index}]", "alias scope is unknown")
-        check_evidence_refs(alias, f"$.actor.aliases[{index}]", source_ids, issues)
+    validate_actor_aliases(actor, source_ids, issues)
 
     attribution = profile.get("attribution", {})
     if attribution.get("confidence") not in CONFIDENCE:

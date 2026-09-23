@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-09-22T00:00:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -23,6 +23,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | PCPCat | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | MITRE ATT&CK lists PCPCat as an Associated Group for G1056. ATT&CK explicitly treats associated names as overlap signals rather than exact equivalence, so this alias remains overlapping. |
 | SHADOW-WATER-058 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
 | ShellForce | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2`, `source--mitre-attack-g1056` | Official MITRE ATT&CK associated-group name for G1056. |
+| Storm-2999 | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 | TA-NATALSTATUS |  | overlapping | 中 | `source--oligo-teampcp-2026` | Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。 |
 | UNC6780 | MITRE ATT&CK | exact | 高 | `source--mitre-attack-g1056`, `source--gtig-ai-threat-tracker-2026-05` | GTIGが「the cyber crime threat actor "TeamPCP" (aka UNC6780)」と同一主体として明記している。MITRE ATT&CKもG1056のAssociated Groupとして収録する。 |
 

@@ -336,17 +336,15 @@
       "spec_version": "2.1",
       "id": "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-23T11:09:18Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT41",
       "aliases": [
         "BARIUM",
-        "Brass Typhoon",
         "HOODOO",
-        "SPIRE CASTLE",
-        "Wicked Panda"
+        "SPIRE CASTLE"
       ],
       "description": "[APT41](https://attack.mitre.org/groups/G0096) is a threat group that researchers have assessed as Chinese state-sponsored espionage group that also conducts financially-motivated operations. Active since at least 2012, [APT41](https://attack.mitre.org/groups/G0096) has been observed targeting various industries, including but not limited to healthcare, telecom, technology, finance, education, retail and video game industries in 14 countries.(Citation: apt41_mandiant) Notable behaviors include using a wide range of malware and tools to complete mission objectives. [APT41](https://attack.mitre.org/groups/G0096) overlaps at least partially with public reporting on groups including BARIUM and [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: FireEye APT41 Aug 2019)(Citation: Group IB APT 41 June 2021)\n",
       "goals": [
@@ -358,6 +356,23 @@
           "source_name": "MITRE",
           "description": "Source: actor_profile/reference/attack-enterprise-19.1.json",
           "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/",
+          "external_id": "source--gtig-apt41-toughprogress-2025",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+          "external_id": "source--gtig-unified-actor-naming-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
         }
       ],
       "x_profile_id": "actor--apt41",
@@ -385,13 +400,13 @@
         },
         {
           "name": "HOODOO",
-          "scope": "vendor",
-          "source": "Google Threat Intelligence Group",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
             "source--gtig-apt41-toughprogress-2025"
           ],
-          "analyst_notes": ""
+          "analyst_notes": "GTIG attributes the documented activity to APT41/HOODOO, explicitly using HOODOO as its name for APT41. This supports an exact alias within the naming vendor's taxonomy."
         },
         {
           "name": "SPIRE CASTLE",
@@ -837,7 +852,7 @@
       "spec_version": "2.1",
       "id": "report--176f42e4-d823-45a6-874d-dedbff440083",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-23T12:16:55Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -849,6 +864,7 @@
       "published": "2025-05-29T00:00:00Z",
       "object_refs": [
         "identity--c1f24a70-25eb-41a9-af40-f4a9d45a856b",
+        "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33",
         "relationship--00c41551-6a31-4277-adba-88702a8c076a"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
@@ -903,6 +919,42 @@
       "x_published_precision": "day",
       "x_published_status": "known",
       "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3408092e-2c24-4a9c-8ed1-92419d7f393c",
+      "created": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-23T12:16:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Updated Cyber Threat Actor Naming System",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-24T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "external_id": "source--gtig-unified-actor-naming-2026",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--gtig-unified-actor-naming-2026",
+      "x_evidence_slice_scope": "campaign:actor--apt41:activity--daily-40d3fccba30099d66f39",
+      "x_source_publisher": "Google Threat Intelligence Group",
+      "x_source_type": "official-vendor-actor-mapping",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
       "x_temporal_role": "publication-only"
     },
     {
@@ -1030,9 +1082,45 @@
     {
       "type": "report",
       "spec_version": "2.1",
+      "id": "report--e9e9717f-abf0-41b2-89ce-b73187d6aa76",
+      "created": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-23T12:16:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--ffa8374a-c95a-4cc9-a308-3c5ec4ad8d33"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--apt41:activity--daily-40d3fccba30099d66f39",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
       "id": "report--202661de-e2a3-4a75-93e2-07b22fca11d2",
       "created": "2026-09-21T22:28:38Z",
-      "modified": "2026-09-21T22:28:38Z",
+      "modified": "2026-09-23T12:16:55Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1041,7 +1129,7 @@
       "report_types": [
         "campaign"
       ],
-      "published": "2026-09-21T22:28:38Z",
+      "published": "2026-09-23T12:16:55Z",
       "object_refs": [
         "attack-pattern--e7a5b266-2eee-4418-830c-8eb5a5d3ad07",
         "attack-pattern--f8a0f560-e9b0-47b9-93c4-b5a6c5b66813",
@@ -1059,9 +1147,11 @@
         "relationship--9ebc48be-a168-4888-8683-c708010be066",
         "report--176f42e4-d823-45a6-874d-dedbff440083",
         "report--1c5efd0d-25d3-4463-9992-450ae1806ba1",
+        "report--3408092e-2c24-4a9c-8ed1-92419d7f393c",
         "report--3c241d2d-511d-4fd1-9bc2-bf6c089e5800",
         "report--adb29391-8d96-42dc-b2c9-c3546a84b81a",
-        "report--c8554777-1540-4022-bed2-e58a51c77566"
+        "report--c8554777-1540-4022-bed2-e58a51c77566",
+        "report--e9e9717f-abf0-41b2-89ce-b73187d6aa76"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "x_opencti_bundle_scope": "campaign",

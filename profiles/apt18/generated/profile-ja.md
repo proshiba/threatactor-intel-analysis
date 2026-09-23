@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt18`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -19,8 +19,10 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Dynamite Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Satin Typhoon | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 | TG-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Threat Group-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Wekby | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
 

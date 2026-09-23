@@ -53,6 +53,26 @@ APT活動を直接結ぶ原典がある場合だけ作ります。企業その�
 `first_observed` / `last_observed`やCampaign期間には使用しません。起訴状が別途、行為期間を
 明示している場合だけ、その記述を根拠として活動・関係期間へ保存します。
 
+### 1.2 Actor aliasとOpenCTI名寄せ
+
+OpenCTIはIntrusion Setの`name OR alias`をID contributing propertyとして扱うため、
+標準STIX `aliases`は同一entityの名寄せキーです。本リポジトリでは次の二層に分けます。
+
+| 正規alias評価 | OpenCTI/STIX出力 | 用途 |
+|---|---|---|
+| `scope: exact`かつ`confidence: high` | Intrusion Set `aliases`、`x_alias_assessments` | 自動名寄せ可能な同一名称 |
+| 上記以外 | `x_alias_assessments`、根拠付きAlias Assessment `Note` | 検索、相関、分析者レビュー。自動統合は禁止 |
+
+Noteはcanonical Intrusion Setを`object_refs`で参照し、名称、vendor、scope、confidence、
+evidence ID、留保を本文とカスタム属性へ保持します。aliasを支える全Sourceは
+External Referenceとして辿れるようにします。`x_opencti_aliases`へ非exact名称を入れても
+scopeや留保を表現できないため、代替の退避先としては使用しません。
+
+公式mappingの「Other names」は無条件に取り込みません。現在名、同一ベンダー旧名、他社名、
+マルウェア、Campaign、企業名等をentity種別ごとに確認します。同一ベンダーの明示的な旧称は
+そのtaxonomy内でのみexactにでき、他社対応名は原則overlappingです。aliasがないActorは
+空配列のままにし、検索件数のための表記揺れや未検証名を作りません。
+
 ## 2. Activityの明示判定
 
 各Activityは、意味を説明する`activity_type`とは別に、必ず次を持ちます。
@@ -280,6 +300,14 @@ vendorの帰属評価があっても、curationされたStandalone Bundleには`
 同名や同じATT&CK technique IDだけで一つのSDOへ上書き統合しない。逆にCountry、根拠付きで
 同一と確認された関連entity、IP/domain等のatomic SCOのように意図的に共有するobjectは、
 profile固有の説明やcampaign参照を本体へ埋め込まず、RelationshipやNoteへ保持する。
+
+既存の安定STIX IDを維持したまま、alias、description、external reference、Relationship等の
+意味内容を変更する場合は、変更元profileの`updated_at`を進めてから再生成し、出力objectの
+`modified`が旧版より新しくなることを検証する。同じ`id`と`modified`の組み合わせへ異なる
+意味内容を出力してはならない。生成規則の変更で既存objectの意味内容が変わる場合も、影響する
+全profileを同じ版管理対象として扱う。同一IDの`created`は旧版から必ず保持し、意味内容が
+同一なら`modified`も保持する。既存Bundleを版管理baselineとして再生成時に照合し、意味内容の
+変更に対して`modified`が増加していなければfail closedにする。
 
 Actor Relationshipの終点を別Bundleへ収録するときは簡略stubを作らず、対象Actorの正規な
 Intrusion Set objectを再利用する。Bundle自己完結化のためにNoteの`object_refs`をsliceごとに

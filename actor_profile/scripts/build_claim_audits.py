@@ -60,6 +60,12 @@ def evidence_tier(refs: list[str], source_by_id: dict[str, dict[str, Any]]) -> s
     def source_tier(source: dict[str, Any]) -> str:
         source_type = source.get("source_type", "")
         publisher = source.get("publisher", "")
+        # A naming vendor's own actor mapping is primary evidence for that
+        # vendor's names and rename history. It is not an aggregation merely
+        # because the source type contains the word "mapping". Cross-vendor
+        # identity scope is still preserved on each alias record.
+        if source_type == "official-vendor-actor-mapping":
+            return "research"
         # Aggregations stay leads even when a government body publishes them
         # or their publisher string mentions an upstream knowledge base.
         if any(

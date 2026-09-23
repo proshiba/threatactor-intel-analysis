@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-09-23T12:16:55Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -18,6 +18,7 @@ APT3の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
+| Brocade Typhoon | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 | Buckeye | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Gothic Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Pirpi | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
