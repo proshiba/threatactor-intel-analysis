@@ -54,7 +54,7 @@ PRODUCER_MODIFIED = "2026-09-21T13:20:00Z"
 # A representation-only change (for example adding an explicit based-on SRO)
 # must advance modified on affected generated objects without pretending that
 # every source profile received new OSINT on the same day.
-OPENCTI_MODEL_MODIFIED = "2026-09-24T05:31:26Z"
+OPENCTI_MODEL_MODIFIED = "2026-09-24T14:03:24Z"
 DEFAULT_OPENCTI_COUNTRY_INDEX = Path(
     "actor_profile/reference/opencti-country-index.json"
 )
@@ -93,6 +93,11 @@ OPENCTI_MAIN_OBSERVABLE_TYPES = {
     "x509-certificate": "X509-Certificate",
 }
 ATOMIC_OBSERVABLE_TYPES = set(OPENCTI_MAIN_OBSERVABLE_TYPES)
+UNVERSIONED_OBSERVABLE_ROLE_FIELDS = {
+    "x_opencti_labels",
+    "x_ioc_roles",
+    "x_ioc_role_scope",
+}
 PATTERN_VALUE_IOC_TYPES = {
     "domain-name": "domain",
     "email-addr": "email",
@@ -119,6 +124,7 @@ PATTERN_X509_SERIAL_TERM = re.compile(
     r"x509-certificate:serial_number\s*=\s*"
     r"'(?P<value>(?:\\.|[^'])*)'"
 )
+IOC_ROLE_LABEL = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 
 def normalized_actor_key(value: str) -> str:
@@ -199,7 +205,45 @@ def repository_producer_identity() -> dict[str, Any]:
     return producer_identity(PRODUCER_CREATED, PRODUCER_MODIFIED)
 
 
-def observable_object(indicator: dict[str, Any]) -> dict[str, Any] | None:
+def ioc_role_labels(roles: Any) -> list[str]:
+    """Return evidence-backed IOC roles that are safe as OpenCTI labels.
+
+    Roles are deliberately not guessed from the Observable type, actor, or
+    surrounding Campaign.  Only the structured ``roles`` values carried by an
+    IOC observation are eligible.  Free text is rejected rather than silently
+    turned into a broad or misleading label.
+    """
+
+    if not isinstance(roles, list):
+        return []
+    result: set[str] = set()
+    for raw in roles:
+        value = unicodedata.normalize("NFKC", str(raw)).strip().casefold()
+        if len(value) <= 64 and IOC_ROLE_LABEL.fullmatch(value):
+            result.add(value)
+    return sorted(result)
+
+
+def apply_observable_roles(
+    observable: dict[str, Any], roles: Any
+) -> dict[str, Any]:
+    """Attach corpus-scoped, evidence-backed role labels to an Observable."""
+
+    role_labels = ioc_role_labels(roles)
+    if role_labels:
+        # SCOs do not have a standard STIX ``labels`` property. OpenCTI's
+        # importer supports this explicit extension on Observables.
+        observable["x_opencti_labels"] = role_labels
+        observable["x_ioc_roles"] = role_labels
+        observable["x_ioc_role_scope"] = "corpus-observed-uses"
+    return observable
+
+
+def observable_object(
+    indicator: dict[str, Any],
+    *,
+    roles: list[str] | None = None,
+) -> dict[str, Any] | None:
     """Create one stable atomic SCO represented by a canonical IOC."""
 
     indicator_type = indicator.get("type")
@@ -226,7 +270,10 @@ def observable_object(indicator: dict[str, Any]) -> dict[str, Any] | None:
         result["hashes"] = {algorithm: value}
     else:
         result["value"] = value
-    return result
+    return apply_observable_roles(
+        result,
+        indicator.get("roles", []) if roles is None else roles,
+    )
 
 
 def _unescape_stix_pattern_value(value: str) -> str:
@@ -235,6 +282,7 @@ def _unescape_stix_pattern_value(value: str) -> str:
 
 def observable_objects_from_indicator_pattern(
     indicator: dict[str, Any],
+    observable_role_index: dict[str, list[str]] | None = None,
 ) -> list[dict[str, Any]]:
     """Extract exact atomic SCOs from a reviewed Hunting Pivot pattern.
 
@@ -306,8 +354,47 @@ def observable_objects_from_indicator_pattern(
                 }
         if not observable:
             return []
+        if observable_role_index and observable["id"] in observable_role_index:
+            apply_observable_roles(
+                observable, observable_role_index[observable["id"]]
+            )
         observables[observable["id"]] = observable
     return [observables[object_id] for object_id in sorted(observables)]
+
+
+def build_observable_role_index(
+    records: list[dict[str, Any]],
+    standalone_bundles: list[dict[str, Any]] | None = None,
+) -> dict[str, list[str]]:
+    """Aggregate roles for shared atomic SCOs across the complete corpus.
+
+    Atomic SCO IDs are intentionally reused between actor and Activity
+    bundles.  Their label sets must therefore be corpus-wide and byte-identical
+    rather than depending on whichever profile happened to be imported first.
+    """
+
+    roles_by_id: dict[str, set[str]] = defaultdict(set)
+    for record in records:
+        for indicator in record.get("iocs", {}).get("indicators", []):
+            if indicator.get("disposition") == "rejected":
+                continue
+            observable = observable_object(indicator, roles=[])
+            if observable:
+                roles_by_id[observable["id"]].update(
+                    ioc_role_labels(indicator.get("roles", []))
+                )
+    for bundle in standalone_bundles or []:
+        for observable in bundle.get("objects", []):
+            if observable.get("type") not in ATOMIC_OBSERVABLE_TYPES:
+                continue
+            roles_by_id[observable["id"]].update(
+                ioc_role_labels(observable.get("x_ioc_roles", []))
+            )
+    return {
+        object_id: sorted(roles)
+        for object_id, roles in roles_by_id.items()
+        if roles
+    }
 
 
 PROFILE_SCOPED_OBJECT_TYPES = {
@@ -486,6 +573,7 @@ def prepare_profile_objects(
     full_bundle: dict[str, Any],
     producer_ref: str,
     country_index: dict[str, dict[str, Any]] | None = None,
+    observable_role_index: dict[str, list[str]] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, str]]:
     """Normalize rendered objects for OpenCTI and return rewritten target IDs."""
 
@@ -661,7 +749,17 @@ def prepare_profile_objects(
     for indicator in iocs.get("indicators", []):
         if indicator.get("disposition") == "rejected":
             continue
-        observable = observable_object(indicator)
+        base_observable = observable_object(indicator, roles=[])
+        if not base_observable:
+            continue
+        observable = observable_object(
+            indicator,
+            roles=(
+                observable_role_index.get(base_observable["id"], [])
+                if observable_role_index is not None
+                else indicator.get("roles", [])
+            ),
+        )
         if not observable:
             continue
         indicator_ref = stix_id("indicator", indicator["indicator_id"])
@@ -677,6 +775,11 @@ def prepare_profile_objects(
         rendered_indicator["x_opencti_main_observable_type"] = (
             OPENCTI_MAIN_OBSERVABLE_TYPES[observable["type"]]
         )
+        local_roles = ioc_role_labels(indicator.get("roles", []))
+        if local_roles:
+            rendered_indicator["labels"] = sorted(
+                set(rendered_indicator.get("labels", [])) | set(local_roles)
+            )
         rendered_indicator["modified"] = opencti_modified(profile)
         observable_by_id[observable["id"]] = observable
         observation_source_ids = sorted(
@@ -717,6 +820,17 @@ def prepare_profile_objects(
         indicator_relation["x_observation_source_refs"] = (
             observation_source_ids
         )
+        if local_roles:
+            role_source_ids = sorted(
+                {
+                    item.get("source_id")
+                    for item in indicator.get("observations", [])
+                    if ioc_role_labels(item.get("roles", []))
+                    and item.get("source_id")
+                }
+            )
+            indicator_relation["x_ioc_roles"] = local_roles
+            indicator_relation["x_ioc_role_source_refs"] = role_source_ids
         indicator_relations[indicator_relation["id"]] = indicator_relation
         for infrastructure_ref in indicator.get("infrastructure_refs", []):
             source_ref = profile_object_ids.get(infrastructure_ref)
@@ -755,7 +869,7 @@ def prepare_profile_objects(
         ):
             continue
         observables = observable_objects_from_indicator_pattern(
-            rendered_indicator
+            rendered_indicator, observable_role_index
         )
         if not observables:
             continue
@@ -1169,6 +1283,7 @@ def finalize_bundle(
 ) -> dict[str, Any]:
     unique: dict[str, dict[str, Any]] = {producer["id"]: producer}
     for obj in objects:
+        complete_opencti_relationship_time_range(obj)
         unique[obj["id"]] = obj
     unique[report["id"]] = report
     ordered = [unique[producer["id"]]]
@@ -1183,6 +1298,45 @@ def finalize_bundle(
         "id": stix_id("bundle", key),
         "objects": ordered,
     }
+
+
+def complete_opencti_relationship_time_range(obj: dict[str, Any]) -> bool:
+    """Complete a Relationship time pair required by OpenCTI imports.
+
+    Canonical temporal provenance remains in ``x_first_observed`` and
+    ``x_last_observed``.  When an actual last observation is unavailable, the
+    duplicated stop time is explicitly marked as an OpenCTI compatibility
+    fallback and must not be interpreted as an observed relationship end.
+    """
+
+    if obj.get("type") != "relationship":
+        return False
+    start_time = obj.get("start_time")
+    if not start_time or obj.get("stop_time"):
+        return False
+
+    last_observed = obj.get("x_last_observed")
+    last_value = (
+        last_observed.get("value")
+        if isinstance(last_observed, dict)
+        else None
+    )
+    if last_value and last_value < start_time:
+        raise ValueError(
+            f"{obj.get('id', 'relationship')} has last_observed before "
+            "start_time"
+        )
+    if last_value:
+        obj["stop_time"] = last_value
+    else:
+        obj["stop_time"] = start_time
+        obj["x_stop_time_is_fallback"] = True
+        obj["x_stop_time_basis"] = "opencti-required-start-time-fallback"
+
+    obj["modified"] = max(
+        str(obj.get("modified", "")), OPENCTI_MODEL_MODIFIED
+    )
+    return True
 
 
 def preserve_object_versions(
@@ -1230,6 +1384,27 @@ def preserve_object_versions(
         previous_modified = previous.get("modified")
         current_modified = item.get("modified")
         if not previous_modified or not current_modified:
+            current_without_roles = {
+                key: value
+                for key, value in current_semantic.items()
+                if key not in UNVERSIONED_OBSERVABLE_ROLE_FIELDS
+            }
+            previous_without_roles = {
+                key: value
+                for key, value in previous_semantic.items()
+                if key not in UNVERSIONED_OBSERVABLE_ROLE_FIELDS
+            }
+            if (
+                item.get("type") in ATOMIC_OBSERVABLE_TYPES
+                and previous.get("type") == item.get("type")
+                and current_without_roles == previous_without_roles
+            ):
+                # SCOs have no created/modified version properties. A controlled
+                # OpenCTI representation migration may add or update only the
+                # non-contributing role-label metadata while preserving the
+                # observable value/hash and deterministic ID. Any other
+                # unversioned semantic change still fails closed below.
+                continue
             raise ValueError(
                 "stable unversioned STIX object changed semantic content: "
                 f"{item.get('id', 'unknown')}"
@@ -1829,6 +2004,33 @@ def validate_bundle(
             errors.append(f"{obj_id} does not declare STIX 2.1")
         if obj.get("type") == "report":
             reports.append(obj)
+        if obj.get("type") == "relationship":
+            start_time = obj.get("start_time")
+            stop_time = obj.get("stop_time")
+            if start_time and not stop_time:
+                errors.append(
+                    f"{obj_id} has start_time without required stop_time"
+                )
+            if obj.get("x_stop_time_is_fallback") is True:
+                if not start_time or stop_time != start_time:
+                    errors.append(
+                        f"{obj_id} fallback stop_time must equal start_time"
+                    )
+                if obj.get("x_stop_time_basis") != (
+                    "opencti-required-start-time-fallback"
+                ):
+                    errors.append(
+                        f"{obj_id} has an invalid stop_time fallback basis"
+                    )
+                last_observed = obj.get("x_last_observed")
+                if (
+                    isinstance(last_observed, dict)
+                    and last_observed.get("value")
+                ):
+                    errors.append(
+                        f"{obj_id} marks stop_time as fallback despite a "
+                        "known last observation"
+                    )
         if (
             obj.get("type") == "intrusion-set"
             and "x_alias_assessments" in obj
@@ -1880,6 +2082,37 @@ def validate_bundle(
                 "atomic Observable"
             )
             continue
+        target_roles = ioc_role_labels(target.get("x_ioc_roles", []))
+        if target.get("x_opencti_labels", []) != target_roles:
+            errors.append(
+                f"{target['id']} OpenCTI labels do not match its IOC roles"
+            )
+        if target_roles and target.get("x_ioc_role_scope") != (
+            "corpus-observed-uses"
+        ):
+            errors.append(
+                f"{target['id']} has IOC roles without corpus role scope"
+            )
+        source_roles = ioc_role_labels(
+            source.get("x_ioc_roles", source.get("x_roles", []))
+        )
+        if source_roles:
+            if not set(source_roles).issubset(set(source.get("labels", []))):
+                errors.append(
+                    f"{source['id']} labels omit structured IOC roles"
+                )
+            if obj.get("x_ioc_roles") != source_roles:
+                errors.append(
+                    f"{obj['id']} does not preserve Indicator IOC roles"
+                )
+            if not obj.get("x_ioc_role_source_refs"):
+                errors.append(
+                    f"{obj['id']} has IOC roles without role evidence refs"
+                )
+            if not set(source_roles).issubset(set(target_roles)):
+                errors.append(
+                    f"{target['id']} labels omit a directly asserted IOC role"
+                )
         generated_based_on_by_indicator[source["id"]].append(obj)
     for obj in objects:
         declared_type = obj.get("x_opencti_main_observable_type")
@@ -2127,6 +2360,25 @@ def main() -> int:
         *(record["profile"]["updated_at"] for record in records),
     )
     producer = repository_producer_identity()
+    # Standalone Activities are part of the same Observable namespace even
+    # during a targeted actor rebuild. Build a read-only preview first so role
+    # labels on a shared SCO are the corpus-wide union in every bundle.
+    standalone_curation, standalone_records = load_standalone_records(
+        standalone_curation_path, unknown_cluster_ledger_path
+    )
+    standalone_updated_at = standalone_curation["updated_at"]
+    standalone_previews = [
+        build_standalone_activity_bundle(
+            record=standalone_record,
+            updated_at=standalone_updated_at,
+            producer=producer,
+            model_modified_at=OPENCTI_MODEL_MODIFIED,
+        )[0]
+        for standalone_record in standalone_records
+    ]
+    observable_role_index = build_observable_role_index(
+        records, standalone_previews
+    )
     for record in records:
         objects, rewrites = prepare_profile_objects(
             record["profile"],
@@ -2134,6 +2386,7 @@ def main() -> int:
             record["full_bundle"],
             producer["id"],
             country_index,
+            observable_role_index,
         )
         record["objects"] = objects
         record["id_rewrites"] = rewrites
@@ -2260,17 +2513,16 @@ def main() -> int:
     # heterogeneous ledger entry. The curation file is an explicit allowlist;
     # unknown-clusters.json is never traversed as an export queue.
     if not wanted:
-        standalone_curation, standalone_records = load_standalone_records(
-            standalone_curation_path, unknown_cluster_ledger_path
-        )
-        standalone_updated_at = standalone_curation["updated_at"]
         for standalone_record in standalone_records:
             bundle, entry = build_standalone_activity_bundle(
                 record=standalone_record,
                 updated_at=standalone_updated_at,
                 producer=producer,
                 model_modified_at=OPENCTI_MODEL_MODIFIED,
+                observable_role_index=observable_role_index,
             )
+            for obj in bundle.get("objects", []):
+                complete_opencti_relationship_time_range(obj)
             primary_type = entry["stix_object_type"]
             output_section = (
                 "campaigns" if primary_type == "campaign" else "activities"

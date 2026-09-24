@@ -247,6 +247,20 @@ class StandaloneActivityStixTests(unittest.TestCase):
                     self.assertEqual(len(matches), 1)
                     target = by_id[matches[0]["target_ref"]]
                     self.assertIn(target["type"], supported_observable_types)
+                    self.assertTrue(indicator["labels"])
+                    self.assertEqual(
+                        target["x_opencti_labels"], indicator["labels"]
+                    )
+                    self.assertEqual(
+                        target["x_ioc_roles"], indicator["x_ioc_roles"]
+                    )
+                    self.assertEqual(
+                        matches[0]["x_ioc_roles"], indicator["x_ioc_roles"]
+                    )
+                    self.assertEqual(
+                        matches[0]["x_ioc_role_source_refs"],
+                        [indicator["x_source_id"]],
+                    )
                     self.assertIn(
                         indicator["x_opencti_main_observable_type"],
                         {"Domain-Name", "IPv4-Addr", "StixFile", "Url"},

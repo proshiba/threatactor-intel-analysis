@@ -149,6 +149,27 @@ Activityへ補完しません。GroupingではToolを`object_refs`へ含めら�
 IPが重複したことだけから上記を推定してはいけません。ファイルハッシュはマルウェアや検体の
 Observableであり、Infrastructureの構成要素へ自動変換しません。
 
+### 3.1 Observableの役割ラベル
+
+`iocs.json`のIndicator/Observationに根拠付きで保存された`roles`は、OpenCTIで検索・絞り込み
+できるよう次へ出力します。
+
+- Indicator: STIX標準`labels`と`x_roles`
+- Observable (SCO): OpenCTI拡張`x_opencti_labels`と`x_ioc_roles`
+- `based-on` Relationship: `x_ioc_roles`と`x_ioc_role_source_refs`
+
+OpenCTI公式connectorとPython clientはObservableの`x_opencti_labels`または`labels`をOpenCTIの
+Labelへ取り込む。本リポジトリではSCOのSTIX境界を明確にするため`x_opencti_labels`を使用する。
+参考実装: [ThreatFox connector](https://github.com/OpenCTI-Platform/connectors/blob/master/external-import/threatfox/src/__main__.py)、
+[OpenCTI Python client importer](https://github.com/OpenCTI-Platform/client-python/blob/master/pycti/utils/opencti_stix2.py)。
+
+役割は原典またはレビュー済み構造化表が明示した場合だけ付ける。Observable型や
+`Infrastructure ──consists-of──> Observable`、Campaign内共存から`c2`等を推測しない。
+同じSCO IDが複数Actor/Activity Bundleへ現れる場合、Observableのlabelはコーパス全体で確認した
+役割の和集合を用い、全Bundleでbyte同一にする。個別Activity/Sourceの主張はIndicatorと
+`based-on`へ保持する。Observable上の`c2` labelは過去を含む観測用途であり、現在稼働中、
+常にC2、または特定Actor専用という意味ではない。
+
 ## 4. 時間情報と相関
 
 時間は「何の時刻か」を分離します。
@@ -161,7 +182,21 @@ Observableであり、Infrastructureの構成要素へ自動変換しません�
 
 Relationshipの`start_time` / `stop_time`は、その関係が実際に観測された期間です。
 レポート公開日、アクセス日、リポジトリ追加日、profile更新日は入れません。同日しか
-判明しない場合は`start_time`だけを設定し、同値の`stop_time`を作りません。
+判明しない場合も、OpenCTI取込互換性のため`start_time`と同値の`stop_time`を設定します。
+`start_time`を出力するRelationshipは、必ず`stop_time`も出力します。
+
+開始だけが判明し、実際の終了時刻が不明な場合は、`stop_time = start_time`を暫定値として
+設定し、`x_stop_time_is_fallback: true`と
+`x_stop_time_basis: opencti-required-start-time-fallback`を併記します。この場合も
+`x_last_observed`はunknownのまま保持します。暫定`stop_time`は関係が同時点で終了したという
+OSINT主張ではなく、OpenCTI取込のための互換値です。期間相関では`x_last_observed`と
+fallbackフラグを優先し、暫定値を実観測の終了日時として扱いません。
+
+> **互換性上の注意:** STIX 2.1標準は両方の時刻を出す場合に`stop_time`が`start_time`より
+> 後であることを要求します。本規則の同値補完は対象OpenCTI環境の取込要件を優先する明示的な
+> 互換モードであり、厳密なSTIX validatorでは拒否され得ます。厳密準拠が必要な外部配布では、
+> このOpenCTI向けBundleと別のexport profileを用意し、観測事実と互換値を混同しません。
+> 参考: [OASIS STIX 2.1 Relationship（5.1）](https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html)。
 
 Infrastructure–Observable関係には次の補助値を出力します。
 
@@ -335,6 +370,11 @@ profile固有の説明やcampaign参照を本体へ埋め込まず、Relationshi
 同一なら`modified`も保持する。既存Bundleを版管理baselineとして再生成時に照合し、意味内容の
 変更に対して`modified`が増加していなければfail closedにする。
 
+STIX SCOには`created` / `modified`がないため、同じ安定IDのObservableで許可する表現移行は
+`x_opencti_labels`、`x_ioc_roles`、`x_ioc_role_scope`だけの追加・更新に限定する。値、hash、
+証明書属性、marking等が変わる場合は従来どおりfail closedとし、role label変更を口実に許可しない。
+この限定移行は`OPENCTI_MODEL_MODIFIED`を進め、回帰テストとルール更新を伴う場合だけ行う。
+
 Actor Relationshipの終点を別Bundleへ収録するときは簡略stubを作らず、対象Actorの正規な
 Intrusion Set objectを再利用する。Bundle自己完結化のためにNoteの`object_refs`をsliceごとに
 削る場合は、内容が異なるNoteへ同じSTIX IDを再利用せずslice固有IDを使う。全Bundle生成時は
@@ -411,6 +451,8 @@ allowlistへ追加する場合は、生成テストも同時に更新します�
 17. generic issuer/ASN/service/portとShodan/Censys queryにanalyst validationを要求したか。
 18. PatternなしPivotをNoteだけにし、PatternありPivotをIndicator + Noteへ変換したか。
 19. 生成、schema検証、STIX parse、参照切れ検証を実行したか。
+20. 根拠付きIOC roleをIndicator/Observable labelへ反映し、役割不明IOCを推測で埋めていないか。
+21. 共有Observableのrole labelをコーパス全体で統一し、文脈別根拠を`based-on`へ残したか。
 
 ### 禁止する自動変換
 

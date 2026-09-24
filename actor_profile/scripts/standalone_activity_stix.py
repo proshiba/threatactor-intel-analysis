@@ -39,6 +39,7 @@ OPENCTI_MAIN_OBSERVABLE_TYPES = {
     "sha256": "StixFile",
     "url": "Url",
 }
+IOC_ROLE_LABEL = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 
 def _source_id(activity_id: str, index: int, suffix: str = "") -> str:
@@ -198,7 +199,22 @@ def _indicator_key(activity_id: str, kind: str, value: str) -> str:
     return f"standalone-indicator:{activity_id}:{kind}:{value}"
 
 
-def _observable(kind: str, value: str) -> dict[str, Any]:
+def _role_labels(roles: Any) -> list[str]:
+    if not isinstance(roles, list):
+        return []
+    return sorted(
+        {
+            str(role).strip().casefold()
+            for role in roles
+            if len(str(role).strip()) <= 64
+            and IOC_ROLE_LABEL.fullmatch(str(role).strip().casefold())
+        }
+    )
+
+
+def _observable(
+    kind: str, value: str, roles: list[str] | None = None
+) -> dict[str, Any]:
     """Create the stable atomic SCO represented by a standalone Indicator."""
 
     stix_type = STANDALONE_OBSERVABLE_TYPES[kind]
@@ -212,6 +228,11 @@ def _observable(kind: str, value: str) -> dict[str, Any]:
         result["hashes"] = {"SHA-256": value}
     else:
         result["value"] = value
+    role_labels = _role_labels(roles or [])
+    if role_labels:
+        result["x_opencti_labels"] = role_labels
+        result["x_ioc_roles"] = role_labels
+        result["x_ioc_role_scope"] = "corpus-observed-uses"
     return result
 
 
@@ -224,6 +245,7 @@ def _indicator(
     producer_ref: str,
     source_id: str,
     role: str,
+    role_labels: list[str],
     observed_at: dict[str, Any] | None,
     source_row_count: int = 1,
 ) -> dict[str, Any]:
@@ -234,7 +256,8 @@ def _indicator(
         "basis": "not-stated-for-individual-observable",
     }
     valid_from = point.get("value") or updated_at
-    return stix_base(
+    normalized_roles = _role_labels(role_labels)
+    result = stix_base(
         "indicator",
         _indicator_key(activity["activity_id"], kind, value),
         updated_at,
@@ -258,6 +281,7 @@ def _indicator(
             "x_indicator_type": kind,
             "x_indicator_value": value,
             "x_indicator_role": role,
+            "x_ioc_roles": normalized_roles,
             "x_source_id": source_id,
             "x_source_scoped_observation_count": source_row_count,
             "x_first_observed": point,
@@ -272,6 +296,9 @@ def _indicator(
             ),
         },
     )
+    if normalized_roles:
+        result["labels"] = normalized_roles
+    return result
 
 
 def _bigbear_indicators(
@@ -305,7 +332,8 @@ def _bigbear_indicators(
                 _indicator(
                     kind=kind, value=value, activity=activity,
                     updated_at=updated_at, producer_ref=producer_ref,
-                    source_id=source_id, role=role, observed_at=None,
+                    source_id=source_id, role=role,
+                    role_labels=[role], observed_at=None,
                 )
             )
     if observations != 48 or len(result) != 48:
@@ -361,7 +389,12 @@ def _secflow_indicators(
         key = (kind, value)
         current = accumulated.setdefault(
             key,
-            {"count": 0, "roles": [], "observed_at": date_by_ip.get(value)},
+            {
+                "count": 0,
+                "roles": [],
+                "role_labels": {"infrastructure"},
+                "observed_at": date_by_ip.get(value),
+            },
         )
         current["count"] += 1
         current["roles"].append(str(raw))
@@ -374,7 +407,12 @@ def _secflow_indicators(
         key = ("sha256", value)
         if key in accumulated:
             raise ValueError(f"duplicate SecFlow SHA-256: {value}")
-        accumulated[key] = {"count": 1, "roles": [str(raw)], "observed_at": None}
+        accumulated[key] = {
+            "count": 1,
+            "roles": [str(raw)],
+            "role_labels": {"payload"},
+            "observed_at": None,
+        }
 
     result = [
         _indicator(
@@ -385,6 +423,7 @@ def _secflow_indicators(
             producer_ref=producer_ref,
             source_id=source_id,
             role=" | ".join(metadata["roles"]),
+            role_labels=sorted(metadata["role_labels"]),
             observed_at=metadata["observed_at"],
             source_row_count=metadata["count"],
         )
@@ -448,6 +487,7 @@ def build_standalone_activity_bundle(
     updated_at: str,
     producer: dict[str, Any],
     model_modified_at: str | None = None,
+    observable_role_index: dict[str, list[str]] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Build one actor-free and reference-complete standalone bundle."""
 
@@ -537,7 +577,13 @@ def build_standalone_activity_bundle(
     based_on_relationships: list[dict[str, Any]] = []
     for indicator in indicators:
         kind = indicator["x_indicator_type"]
-        observable = _observable(kind, indicator["x_indicator_value"])
+        unlabelled = _observable(kind, indicator["x_indicator_value"])
+        roles = indicator.get("x_ioc_roles", [])
+        if observable_role_index is not None:
+            roles = observable_role_index.get(unlabelled["id"], roles)
+        observable = _observable(
+            kind, indicator["x_indicator_value"], roles
+        )
         observables_by_id[observable["id"]] = observable
         indicator["x_opencti_main_observable_type"] = (
             OPENCTI_MAIN_OBSERVABLE_TYPES[kind]
@@ -564,6 +610,8 @@ def build_standalone_activity_bundle(
                     "x_standalone_indicator_id": indicator["id"],
                     "x_standalone_activity_id": activity["activity_id"],
                     "x_source_id": indicator["x_source_id"],
+                    "x_ioc_roles": indicator.get("x_ioc_roles", []),
+                    "x_ioc_role_source_refs": [indicator["x_source_id"]],
                 },
             )
         )

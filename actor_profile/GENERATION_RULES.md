@@ -352,6 +352,13 @@ heuristic抽出済みの値を原典レビューで誤分類と確認した場�
 7. 同じPivot値の共有はActor同一性・協力・帰属を意味しない。必要ならGroupingへ観測集合として
    含めるが、追加証拠なしにActor Relationshipを生成しない。
 
+通常IOCのrole labelも同じ証拠境界に従う。生成処理は`iocs.json`のIndicator/Observationに
+構造化された`roles`だけをIndicatorの`labels`とObservableの`x_opencti_labels`へ変換する。
+値の型、Infrastructure/Campaignとの共存、Actor一般のTTP、文脈中の曖昧な単語から`c2`、
+`payload`等を補完しない。自由文はlabel化せず、原典の文脈またはanalyst notesへ残す。
+共有SCOのlabelは全profileとStandalone Activityの和集合を事前計算し、部分生成でも同じSTIX IDが
+同じ定義になるようにする。各Indicator固有のroleとSource参照は`based-on` Relationshipにも残す。
+
 STIX生成では、安全な`stix_pattern`があるPivotをIndicatorとNoteの両方へ変換し、観測・件数・
 continuity・query・留保をNoteにも完全に残す。exact equalityで値を実体化できるpatternは
 対応SCOと`based-on`も生成する。patternが`null`の複合特徴、per-device生成証明書、再現不能な
@@ -382,7 +389,12 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
 - [ ] 非rejectedの原子的IOCについて、Indicatorと対応Observableを直接`based-on`で結び、
       Infrastructureの有無に依存させていない
+- [ ] 根拠付きIOC roleをIndicator/Observableのlabelへ反映し、`based-on`にroleとSource参照を残した
+- [ ] 型や共存関係だけからC2/payload等のroleを推測していない
+- [ ] 共有Observableのrole labelをコーパス全体で統一した
 - [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
+- [ ] Relationshipへ`start_time`を出す場合は`stop_time`も出し、終了不明の同値補完へ
+      `x_stop_time_is_fallback`とbasisを付けた
 - [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
 - [ ] 単発IOCを理由なくHunting Pivotへ複製していない
 - [ ] Pivotのcount basisとsource/activity countを別々に集計した

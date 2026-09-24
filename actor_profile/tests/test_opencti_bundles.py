@@ -14,12 +14,14 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from build_opencti_bundles import (  # noqa: E402
+    OPENCTI_MODEL_MODIFIED,
     PRODUCER_CREATED,
     PRODUCER_MODIFIED,
     build_actor_bundle,
     build_actor_index,
     build_activity_bundle,
     build_campaign_bundle,
+    build_observable_role_index,
     campaign_dependency_profile_ids,
     normalize_shared_object_versions,
     observable_object,
@@ -221,6 +223,7 @@ def fixture_bundle(profile: dict[str, object]) -> dict[str, object]:
             "x_campaign_refs": [],
             "x_malware_refs": ["malware--example"],
             "x_infrastructure_refs": [],
+            "x_roles": ["c2"],
             "x_observations": [{"source_id": "source--ioc"}],
         },
     )
@@ -237,6 +240,7 @@ def fixture_bundle(profile: dict[str, object]) -> dict[str, object]:
             "x_campaign_refs": ["activity--example-operation"],
             "x_malware_refs": ["malware--example"],
             "x_infrastructure_refs": ["infra--example"],
+            "x_roles": ["phishing"],
             "x_observations": [{"source_id": "source--ioc"}],
         },
     )
@@ -429,9 +433,11 @@ class OpenCTIBundleTests(unittest.TestCase):
                     "disposition": "confirmed",
                     "campaign_refs": [],
                     "infrastructure_refs": [],
+                    "roles": ["c2"],
                     "observations": [
                         {
                             "source_id": "source--ioc",
+                            "roles": ["c2"],
                             "observed_at": point(),
                             "source_published_at": point(NOW),
                         }
@@ -445,9 +451,11 @@ class OpenCTIBundleTests(unittest.TestCase):
                     "disposition": "candidate",
                     "campaign_refs": ["activity--example-operation"],
                     "infrastructure_refs": ["infra--example"],
+                    "roles": ["phishing"],
                     "observations": [
                         {
                             "source_id": "source--ioc",
+                            "roles": ["phishing"],
                             "observed_at": point(),
                             "source_published_at": point(NOW),
                         }
@@ -518,6 +526,29 @@ class OpenCTIBundleTests(unittest.TestCase):
         preserve_object_versions(current_bundle, previous_bundle)
         self.assertEqual(current_object["created"], CREATED)
         self.assertEqual(current_object["modified"], NOW)
+
+    def test_unversioned_observable_allows_only_role_label_migration(self) -> None:
+        indicator = {
+            "type": "domain",
+            "normalized_value": "roles.example",
+        }
+        previous = observable_object(indicator, roles=[])
+        current = observable_object(indicator, roles=["c2"])
+        assert previous is not None and current is not None
+
+        preserve_object_versions(
+            {"objects": [current]}, {"objects": [previous]}
+        )
+        self.assertEqual(current["x_opencti_labels"], ["c2"])
+
+        invalid = copy.deepcopy(current)
+        invalid["value"] = "changed.example"
+        with self.assertRaisesRegex(
+            ValueError, "stable unversioned STIX object changed"
+        ):
+            preserve_object_versions(
+                {"objects": [invalid]}, {"objects": [previous]}
+            )
 
     def test_shared_versions_are_restored_before_bundle_slicing(self) -> None:
         previous = stix_base(
@@ -733,13 +764,21 @@ class OpenCTIBundleTests(unittest.TestCase):
             unscoped_indicator["x_opencti_main_observable_type"],
             "Domain-Name",
         )
-        self.assertTrue(
-            any(
+        self.assertEqual(unscoped_indicator["labels"], ["c2"])
+        self.assertEqual(unscoped_observable["x_opencti_labels"], ["c2"])
+        self.assertEqual(unscoped_observable["x_ioc_roles"], ["c2"])
+        based_on = next(
+            item
+            for item in bundle["objects"]
+            if (
                 item.get("relationship_type") == "based-on"
                 and item.get("source_ref") == unscoped_indicator["id"]
                 and item.get("target_ref") == unscoped_observable["id"]
-                for item in bundle["objects"]
             )
+        )
+        self.assertEqual(based_on["x_ioc_roles"], ["c2"])
+        self.assertEqual(
+            based_on["x_ioc_role_source_refs"], ["source--ioc"]
         )
         self.assertFalse(
             any(
@@ -759,7 +798,8 @@ class OpenCTIBundleTests(unittest.TestCase):
             relation["x_profile_relationship_type"], "taxonomy-overlaps-with"
         )
         self.assertEqual(relation["start_time"], CREATED)
-        self.assertNotIn("stop_time", relation)
+        self.assertEqual(relation["stop_time"], CREATED)
+        self.assertNotIn("x_stop_time_is_fallback", relation)
         self.assertEqual(relation["x_first_observed"], point(CREATED))
         self.assertEqual(relation["x_last_observed"], point(CREATED))
         self.assertEqual(
@@ -770,6 +810,60 @@ class OpenCTIBundleTests(unittest.TestCase):
                 "first_precision": "day",
                 "last_precision": "day",
             },
+        )
+
+    def test_actor_relationship_unknown_end_gets_marked_opencti_fallback(
+        self,
+    ) -> None:
+        profile = copy.deepcopy(self.profile)
+        profile["relationships"][0]["last_observed"] = {
+            **point(),
+            "basis": "relationship-end-not-stated",
+        }
+        record = {**self.record, "profile": profile}
+        related = {"slug": "related", "profile": related_profile()}
+        by_id, by_name = build_actor_index([record, related])
+
+        bundle, unresolved = build_actor_bundle(
+            record, self.producer, by_id, by_name
+        )
+
+        self.assertEqual(unresolved, [])
+        relation = next(
+            item
+            for item in bundle["objects"]
+            if item.get("x_profile_relationship_id")
+            == "relationship--example-related"
+        )
+        self.assertEqual(relation["start_time"], CREATED)
+        self.assertEqual(relation["stop_time"], CREATED)
+        self.assertTrue(relation["x_stop_time_is_fallback"])
+        self.assertEqual(
+            relation["x_stop_time_basis"],
+            "opencti-required-start-time-fallback",
+        )
+        self.assertIsNone(relation["x_last_observed"]["value"])
+        self.assertGreaterEqual(relation["modified"], OPENCTI_MODEL_MODIFIED)
+
+    def test_bundle_validator_rejects_start_without_stop_time(self) -> None:
+        related = {"slug": "related", "profile": related_profile()}
+        by_id, by_name = build_actor_index([self.record, related])
+        bundle, _ = build_actor_bundle(
+            self.record, self.producer, by_id, by_name
+        )
+        relation = next(
+            item
+            for item in bundle["objects"]
+            if item.get("x_profile_relationship_id")
+            == "relationship--example-related"
+        )
+        relation.pop("stop_time")
+
+        errors = validate_bundle(bundle, expected_scope="actor")
+
+        self.assertTrue(
+            any("start_time without required stop_time" in item for item in errors),
+            errors,
         )
 
     def test_actor_relationship_unknown_period_is_machine_readable(self) -> None:
@@ -1118,6 +1212,38 @@ class OpenCTIBundleTests(unittest.TestCase):
         assert observable is not None
         self.assertEqual(observable["type"], "file")
         self.assertEqual(observable["hashes"], {"SHA-256": "a" * 64})
+
+    def test_shared_observable_roles_are_corpus_wide_union(self) -> None:
+        first = {
+            "type": "domain",
+            "normalized_value": "shared.example",
+            "disposition": "confirmed",
+            "roles": ["c2"],
+        }
+        second = {
+            **first,
+            "roles": ["delivery", "free text is not a label"],
+        }
+        records = [
+            {"iocs": {"indicators": [first]}},
+            {"iocs": {"indicators": [second]}},
+        ]
+
+        role_index = build_observable_role_index(records)
+        unlabelled = observable_object(first, roles=[])
+        assert unlabelled is not None
+        observable = observable_object(
+            first, roles=role_index[unlabelled["id"]]
+        )
+
+        assert observable is not None
+        self.assertEqual(
+            observable["x_opencti_labels"], ["c2", "delivery"]
+        )
+        self.assertEqual(observable["x_ioc_roles"], ["c2", "delivery"])
+        self.assertEqual(
+            observable["x_ioc_role_scope"], "corpus-observed-uses"
+        )
 
     def test_exact_hunting_pattern_creates_direct_observables(self) -> None:
         first_hash = "A" * 64
