@@ -408,6 +408,18 @@ TLDとして実在するため、列挙すると本物のドメインを取り�
 同じIOCが同じ資料の別ページにあれば別観測として保存する。完全に同一の資料位置・値だけを
 重複排除する。
 
+IOCの`roles`は、原典またはレビュー済み構造化表がその値の用途を明示する場合だけ保存する。
+IP/domainだからC2、hashだからpayload、Campaignに含まれるからphishing等の型・包含による
+推測は禁止する。役割は小文字の機械可読slug（`c2`、`payload`、`phishing-sender`等）とし、
+自由文や原典行全体をroleへ入れない。複数Observationで異なる役割が確認された場合は、
+Indicatorの`roles`をその和集合とし、各Observationにはその資料が直接支持する役割だけを残す。
+
+OpenCTI出力ではIndicatorの標準`labels`とObservableの`x_opencti_labels`へ根拠付きroleを反映する。
+同じatomic Observableは複数profileで共有されるため、Observable側のrole labelはコーパス全体の
+観測用途の和集合とする。これは「いずれかの根拠付き観測でその用途だった」ことを表し、
+永続的な悪性、現在の稼働、特定Actorへの排他的帰属を意味しない。文脈ごとのroleと根拠Sourceは
+Indicatorおよび`Indicator ──based-on──> Observable` Relationshipへ保持する。
+
 ### 8.3 取りこぼし防止
 
 抽出した候補は捨てず、確証がないものは`disposition: "candidate"`として保存する。
@@ -563,8 +575,10 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 - TTP: `attack-pattern`
 - Activity: 明示した`stix_object_type`に従い`campaign`、`incident`、`grouping`
 - Targets/attribution organizations: `identity`
-- IOC: `indicator`
-- Hunting Pivot: STIX patternがある場合は`indicator`と`note`、ない場合は`note`のみ
+- IOC: `indicator`と対応する原子的SCO。OpenCTI取込用Bundleでは同じ正規IOCレコードから
+  生成した両者を`Indicator ──based-on──> Observable`で直接結ぶ
+- Hunting Pivot: STIX patternがある場合は`indicator`と`note`、ない場合は`note`のみ。
+  exact値を安全に実体化できるpatternでは対応SCOと`based-on`も生成する
 - 観測: `observed-data`と`note`、またはIndicatorの外部参照
 - 関係: `relationship`
 
@@ -605,12 +619,21 @@ Incident/Grouping Bundleへ分割する。
 - アクター関係の対象をcanonical名、Profile ID、根拠付き`exact` aliasで一意に解決できない場合、
   新しいIntrusion Setを推測生成しない。元関係は`Note`とmanifestへ残す。
 - Activity割当済みIOCは該当Activity Bundleへ、未割当IOCはActor Bundleへ収録する。
-- Network Observableは値ごとの安定SCOとして出力し、明示的な`infrastructure_refs`がある場合だけ
-  Infrastructureから`consists-of`を結ぶ。実観測日時がないRelationshipへ公開日由来の
-  `start_time`/`stop_time`を付けない。
+- 非rejectedの原子的IOCは値ごとの安定SCOとして出力し、対応Indicatorから`based-on`を直接結ぶ。
+  Network Observableに明示的な`infrastructure_refs`がある場合だけ、別途Infrastructureから
+  `consists-of`を結ぶ。ファイルハッシュはFile SCOへ変換するがInfrastructureへ自動所属させない。
+  実観測日時がない`consists-of` Relationshipへ公開日由来の`start_time`/`stop_time`を付けない。
+- Relationshipへ`start_time`を出力する場合はOpenCTI取込互換性のため`stop_time`も必須とする。
+  実際の終了時刻が不明なら`stop_time = start_time`とし、暫定補完フラグとbasisを付ける。
+  `x_last_observed`はunknownのまま保持し、暫定値を実観測の終了日時として解釈しない。
 - 公開日が判明するSourceは原典Reportとして`Report.published`を保持する。公開日不明のSourceへ
   profile更新日時等を代入しない。
 - OpenCTI既定の50 MiB取込上限を下回るよう、生成時の上限は45 MiBとする。
+
+OpenCTI表現規則だけを変更した場合、全profileが同日に新しいOSINTを得たかのように
+`updated_at`を一括変更しない。`build_opencti_bundles.py`の`OPENCTI_MODEL_MODIFIED`を進め、
+意味内容が変わるIndicator、Relationship、Report等の`modified`だけを進める。既存IDの
+`created`は旧版から保持し、意味内容が不変なobjectの`modified`も不要に変更しない。
 
 ## 12. 検証の重大度
 

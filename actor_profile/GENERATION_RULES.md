@@ -352,9 +352,17 @@ heuristic抽出済みの値を原典レビューで誤分類と確認した場�
 7. 同じPivot値の共有はActor同一性・協力・帰属を意味しない。必要ならGroupingへ観測集合として
    含めるが、追加証拠なしにActor Relationshipを生成しない。
 
+通常IOCのrole labelも同じ証拠境界に従う。生成処理は`iocs.json`のIndicator/Observationに
+構造化された`roles`だけをIndicatorの`labels`とObservableの`x_opencti_labels`へ変換する。
+値の型、Infrastructure/Campaignとの共存、Actor一般のTTP、文脈中の曖昧な単語から`c2`、
+`payload`等を補完しない。自由文はlabel化せず、原典の文脈またはanalyst notesへ残す。
+共有SCOのlabelは全profileとStandalone Activityの和集合を事前計算し、部分生成でも同じSTIX IDが
+同じ定義になるようにする。各Indicator固有のroleとSource参照は`based-on` Relationshipにも残す。
+
 STIX生成では、安全な`stix_pattern`があるPivotをIndicatorとNoteの両方へ変換し、観測・件数・
-continuity・query・留保をNoteにも完全に残す。patternが`null`の複合特徴、per-device生成証明書、
-再現不能な設計特徴はNoteだけにし、架空のfingerprintや広すぎるpatternを作らない。
+continuity・query・留保をNoteにも完全に残す。exact equalityで値を実体化できるpatternは
+対応SCOと`based-on`も生成する。patternが`null`の複合特徴、per-device生成証明書、再現不能な
+設計特徴はNoteだけにし、wildcardや複合patternから架空のSCO、fingerprintを作らない。
 この生成ロジックを変更するときは、単発IOCとの分離、count集計、unknown active status、
 generic pivot、Indicator/Note境界の回帰テストを同じ変更へ含める。
 
@@ -379,7 +387,14 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] 法的措置日を活動日・entity関係期間へコピーしていない
 - [ ] ActivityごとにCampaign / Incident / Groupingを明示し、全件Campaign化していない
 - [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
+- [ ] 非rejectedの原子的IOCについて、Indicatorと対応Observableを直接`based-on`で結び、
+      Infrastructureの有無に依存させていない
+- [ ] 根拠付きIOC roleをIndicator/Observableのlabelへ反映し、`based-on`にroleとSource参照を残した
+- [ ] 型や共存関係だけからC2/payload等のroleを推測していない
+- [ ] 共有Observableのrole labelをコーパス全体で統一した
 - [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
+- [ ] Relationshipへ`start_time`を出す場合は`stop_time`も出し、終了不明の同値補完へ
+      `x_stop_time_is_fallback`とbasisを付けた
 - [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
 - [ ] 単発IOCを理由なくHunting Pivotへ複製していない
 - [ ] Pivotのcount basisとsource/activity countを別々に集計した
@@ -392,6 +407,8 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] actor-specific evidence_refが重要主張に付いている
 - [ ] canonical/alias重複候補を確認した
 - [ ] 同じSTIX IDの意味内容を変更した場合、`updated_at`と生成物の`modified`を進めた
+- [ ] OpenCTI表現だけを変更した場合は正規OSINTの`updated_at`を偽装せず、
+      `OPENCTI_MODEL_MODIFIED`と影響する生成objectの`modified`を進めた
 - [ ] 同じSTIX IDの`created`を旧版から変更していない
 - [ ] 同じ`id` + `modified`で異なる意味内容を生成していない
 - [ ] 回帰テストを追加または実行した

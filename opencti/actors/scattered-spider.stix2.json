@@ -4461,6 +4461,24 @@
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--ae48097c-ac4d-4824-a530-919e87272f24",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "hashes": {
+        "SHA-256": "b6e82a4e6d8b715588bf4252f896e40b766ef981d941d0968f29a3a444f68fef"
+      },
+      "x_opencti_labels": [
+        "malicious-driver"
+      ],
+      "x_ioc_roles": [
+        "malicious-driver"
+      ],
+      "x_ioc_role_scope": "corpus-observed-uses"
+    },
+    {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--31ef8dd0-53e9-4825-86c9-9dbc73f821f3",
@@ -4777,7 +4795,7 @@
       "spec_version": "2.1",
       "id": "indicator--aaffed96-8761-4eed-b7f1-246576f6e872",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-24T05:31:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4842,7 +4860,8 @@
       "x_analyst_notes": "",
       "confidence": 0,
       "x_observation_source_refs": [],
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_main_observable_type": "StixFile"
     },
     {
       "type": "intrusion-set",
@@ -9566,6 +9585,34 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--b5445c8a-2bb4-44e9-ac36-6b6c6baa377e",
+      "created": "2026-09-24T05:31:26Z",
+      "modified": "2026-09-24T05:31:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "based-on",
+      "source_ref": "indicator--aaffed96-8761-4eed-b7f1-246576f6e872",
+      "target_ref": "file--ae48097c-ac4d-4824-a530-919e87272f24",
+      "description": "This reviewed Hunting Pivot Indicator directly represents the exact atomic Observable in its STIX pattern.",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "CrowdStrike",
+          "description": "Source: https://www.crowdstrike.com/en-us/blog/scattered-spider-attempts-to-avoid-detection-with-bring-your-own-vulnerable-driver-tactic/",
+          "external_id": "source--crowdstrike-scattered-spider-byovd-2023",
+          "url": "https://www.crowdstrike.com/en-us/blog/scattered-spider-attempts-to-avoid-detection-with-bring-your-own-vulnerable-driver-tactic/"
+        }
+      ],
+      "x_profile_hunting_pivot_id": "hunting-pivot--scattered-spider-iqvw64-malicious-driver",
+      "x_observation_source_refs": [
+        "source--crowdstrike-scattered-spider-byovd-2023"
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--ba76245b-8293-4902-bd84-200108c9dcb9",
       "created": "2026-07-25T15:23:01Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -10822,7 +10869,7 @@
       "spec_version": "2.1",
       "id": "report--461bf553-f94a-421d-aa8c-595f5ac6c9a3",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-24T05:31:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10834,7 +10881,8 @@
       "published": "2023-01-10T00:00:00Z",
       "object_refs": [
         "indicator--aaffed96-8761-4eed-b7f1-246576f6e872",
-        "note--2d5f41ff-ff66-4679-a72a-4b8b9ed6aa78"
+        "note--2d5f41ff-ff66-4679-a72a-4b8b9ed6aa78",
+        "relationship--b5445c8a-2bb4-44e9-ac36-6b6c6baa377e"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -11811,7 +11859,7 @@
       "spec_version": "2.1",
       "id": "report--23bb40df-9963-421c-96b5-81e62cad7c32",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-24T05:31:26Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11919,6 +11967,7 @@
         "attack-pattern--f95df921-c71a-4665-81e9-ee935788bf11",
         "attack-pattern--fa30f77c-93cd-4f59-8371-731549b44548",
         "attack-pattern--fd591d36-2cc8-4d8b-a451-2ad35f49f471",
+        "file--ae48097c-ac4d-4824-a530-919e87272f24",
         "identity--31ef8dd0-53e9-4825-86c9-9dbc73f821f3",
         "identity--5df3be46-3ffc-40d8-b05f-9d5ae6af3fc6",
         "identity--64e8a4fb-3181-42d3-a985-5d797d8cafaa",
@@ -12033,6 +12082,7 @@
         "relationship--b039e843-f6ec-44af-a3de-c7432a2e09cf",
         "relationship--b0f34b9d-a1b5-4e36-9f45-19a707eb8d3b",
         "relationship--b3fc27b3-d170-403d-bb1b-6a0552492f74",
+        "relationship--b5445c8a-2bb4-44e9-ac36-6b6c6baa377e",
         "relationship--ba76245b-8293-4902-bd84-200108c9dcb9",
         "relationship--bb8a396b-3044-45c8-bdfa-a9f43a502940",
         "relationship--bddddea6-4324-4982-b64b-43034be4a03e",

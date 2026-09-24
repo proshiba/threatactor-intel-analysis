@@ -27,6 +27,19 @@ ALLOWED_ACTIVITY_TYPES = {"campaign", "incident", "grouping"}
 ALLOWED_GROUPING_CONTEXTS = {"suspicious-activity", "malware-analysis", "unspecified"}
 ALLOWED_PRECISIONS = {"second", "day", "month", "year", "range", "unknown"}
 ALLOWED_TIME_STATUSES = {"known", "inferred", "unknown"}
+STANDALONE_OBSERVABLE_TYPES = {
+    "domain": "domain-name",
+    "ipv4": "ipv4-addr",
+    "sha256": "file",
+    "url": "url",
+}
+OPENCTI_MAIN_OBSERVABLE_TYPES = {
+    "domain": "Domain-Name",
+    "ipv4": "IPv4-Addr",
+    "sha256": "StixFile",
+    "url": "Url",
+}
+IOC_ROLE_LABEL = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 
 def _source_id(activity_id: str, index: int, suffix: str = "") -> str:
@@ -186,6 +199,43 @@ def _indicator_key(activity_id: str, kind: str, value: str) -> str:
     return f"standalone-indicator:{activity_id}:{kind}:{value}"
 
 
+def _role_labels(roles: Any) -> list[str]:
+    if not isinstance(roles, list):
+        return []
+    return sorted(
+        {
+            str(role).strip().casefold()
+            for role in roles
+            if len(str(role).strip()) <= 64
+            and IOC_ROLE_LABEL.fullmatch(str(role).strip().casefold())
+        }
+    )
+
+
+def _observable(
+    kind: str, value: str, roles: list[str] | None = None
+) -> dict[str, Any]:
+    """Create the stable atomic SCO represented by a standalone Indicator."""
+
+    stix_type = STANDALONE_OBSERVABLE_TYPES[kind]
+    result: dict[str, Any] = {
+        "type": stix_type,
+        "spec_version": "2.1",
+        "id": stix_id(stix_type, f"observable:{kind}:{value}"),
+        "object_marking_refs": [TLP_CLEAR],
+    }
+    if kind == "sha256":
+        result["hashes"] = {"SHA-256": value}
+    else:
+        result["value"] = value
+    role_labels = _role_labels(roles or [])
+    if role_labels:
+        result["x_opencti_labels"] = role_labels
+        result["x_ioc_roles"] = role_labels
+        result["x_ioc_role_scope"] = "corpus-observed-uses"
+    return result
+
+
 def _indicator(
     *,
     kind: str,
@@ -195,6 +245,7 @@ def _indicator(
     producer_ref: str,
     source_id: str,
     role: str,
+    role_labels: list[str],
     observed_at: dict[str, Any] | None,
     source_row_count: int = 1,
 ) -> dict[str, Any]:
@@ -205,7 +256,8 @@ def _indicator(
         "basis": "not-stated-for-individual-observable",
     }
     valid_from = point.get("value") or updated_at
-    return stix_base(
+    normalized_roles = _role_labels(role_labels)
+    result = stix_base(
         "indicator",
         _indicator_key(activity["activity_id"], kind, value),
         updated_at,
@@ -227,7 +279,9 @@ def _indicator(
             ],
             "x_standalone_activity_id": activity["activity_id"],
             "x_indicator_type": kind,
+            "x_indicator_value": value,
             "x_indicator_role": role,
+            "x_ioc_roles": normalized_roles,
             "x_source_id": source_id,
             "x_source_scoped_observation_count": source_row_count,
             "x_first_observed": point,
@@ -242,6 +296,9 @@ def _indicator(
             ),
         },
     )
+    if normalized_roles:
+        result["labels"] = normalized_roles
+    return result
 
 
 def _bigbear_indicators(
@@ -275,7 +332,8 @@ def _bigbear_indicators(
                 _indicator(
                     kind=kind, value=value, activity=activity,
                     updated_at=updated_at, producer_ref=producer_ref,
-                    source_id=source_id, role=role, observed_at=None,
+                    source_id=source_id, role=role,
+                    role_labels=[role], observed_at=None,
                 )
             )
     if observations != 48 or len(result) != 48:
@@ -331,7 +389,12 @@ def _secflow_indicators(
         key = (kind, value)
         current = accumulated.setdefault(
             key,
-            {"count": 0, "roles": [], "observed_at": date_by_ip.get(value)},
+            {
+                "count": 0,
+                "roles": [],
+                "role_labels": {"infrastructure"},
+                "observed_at": date_by_ip.get(value),
+            },
         )
         current["count"] += 1
         current["roles"].append(str(raw))
@@ -344,7 +407,12 @@ def _secflow_indicators(
         key = ("sha256", value)
         if key in accumulated:
             raise ValueError(f"duplicate SecFlow SHA-256: {value}")
-        accumulated[key] = {"count": 1, "roles": [str(raw)], "observed_at": None}
+        accumulated[key] = {
+            "count": 1,
+            "roles": [str(raw)],
+            "role_labels": {"payload"},
+            "observed_at": None,
+        }
 
     result = [
         _indicator(
@@ -355,6 +423,7 @@ def _secflow_indicators(
             producer_ref=producer_ref,
             source_id=source_id,
             role=" | ".join(metadata["roles"]),
+            role_labels=sorted(metadata["role_labels"]),
             observed_at=metadata["observed_at"],
             source_row_count=metadata["count"],
         )
@@ -417,11 +486,14 @@ def build_standalone_activity_bundle(
     record: dict[str, Any],
     updated_at: str,
     producer: dict[str, Any],
+    model_modified_at: str | None = None,
+    observable_role_index: dict[str, list[str]] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     """Build one actor-free and reference-complete standalone bundle."""
 
     activity = record["curation"]
     cluster = record["cluster"]
+    generated_modified = max(updated_at, model_modified_at or updated_at)
     source_records = _source_records(activity, cluster)
     sources_by_id = {item["source_id"]: item["observation"] for item in source_records}
     activity_ref = stix_id(activity["stix_object_type"], activity["activity_id"])
@@ -501,6 +573,48 @@ def build_standalone_activity_bundle(
             primary_source["observation"], activity, updated_at,
             producer["id"], primary_source["source_id"],
         )
+    observables_by_id: dict[str, dict[str, Any]] = {}
+    based_on_relationships: list[dict[str, Any]] = []
+    for indicator in indicators:
+        kind = indicator["x_indicator_type"]
+        unlabelled = _observable(kind, indicator["x_indicator_value"])
+        roles = indicator.get("x_ioc_roles", [])
+        if observable_role_index is not None:
+            roles = observable_role_index.get(unlabelled["id"], roles)
+        observable = _observable(
+            kind, indicator["x_indicator_value"], roles
+        )
+        observables_by_id[observable["id"]] = observable
+        indicator["x_opencti_main_observable_type"] = (
+            OPENCTI_MAIN_OBSERVABLE_TYPES[kind]
+        )
+        indicator["modified"] = generated_modified
+        based_on_relationships.append(
+            stix_base(
+                "relationship",
+                f"{indicator['id']}:based-on:{observable['id']}",
+                generated_modified,
+                {
+                    "relationship_type": "based-on",
+                    "source_ref": indicator["id"],
+                    "target_ref": observable["id"],
+                    "description": (
+                        "The Indicator directly represents this atomic "
+                        "Observable from the same reviewed standalone source row."
+                    ),
+                    "confidence": indicator["confidence"],
+                    "created_by_ref": producer["id"],
+                    "external_references": indicator[
+                        "external_references"
+                    ],
+                    "x_standalone_indicator_id": indicator["id"],
+                    "x_standalone_activity_id": activity["activity_id"],
+                    "x_source_id": indicator["x_source_id"],
+                    "x_ioc_roles": indicator.get("x_ioc_roles", []),
+                    "x_ioc_role_source_refs": [indicator["x_source_id"]],
+                },
+            )
+        )
     primary["x_structured_ioc_indicator_count"] = ioc_counts["indicator_count"]
     primary["x_structured_ioc_source_observation_count"] = ioc_counts[
         "source_observation_count"
@@ -509,7 +623,7 @@ def build_standalone_activity_bundle(
         "non_promoted_feature_count"
     ]
 
-    relationships: list[dict[str, Any]] = []
+    relationships: list[dict[str, Any]] = [*based_on_relationships]
     if activity["stix_object_type"] in {"campaign", "incident"}:
         for indicator in indicators:
             relationships.append(
@@ -534,7 +648,14 @@ def build_standalone_activity_bundle(
                 )
             )
 
-    knowledge: list[dict[str, Any]] = [primary, *notes, *indicators, *relationships]
+    observables = list(observables_by_id.values())
+    knowledge: list[dict[str, Any]] = [
+        primary,
+        *notes,
+        *observables,
+        *indicators,
+        *relationships,
+    ]
     if activity["stix_object_type"] == "grouping":
         primary["object_refs"] = sorted(
             obj["id"] for obj in knowledge if obj["id"] != primary["id"]
@@ -560,36 +681,41 @@ def build_standalone_activity_bundle(
             source_note_ids[source_id],
             *(obj["id"] for obj in indicators_by_source[source_id]),
             *(obj["id"] for obj in relationships_by_source[source_id]),
+            *(
+                obj["target_ref"]
+                for obj in relationships_by_source[source_id]
+                if obj.get("relationship_type") == "based-on"
+            ),
         }
-        source_reports.append(
-            stix_base(
-                "report",
-                f"standalone-source-report:{activity['activity_id']}:{source_id}",
-                updated_at,
-                {
-                    "name": source.get("title") or source_id,
-                    "description": (
-                        "Source publication container. Its published time is not an "
-                        "Activity observation or Relationship validity time."
-                    ),
-                    "report_types": ["threat-report"],
-                    "published": published,
-                    "object_refs": sorted(refs),
-                    "created_by_ref": producer["id"],
-                    "external_references": [_external_reference(source_id, source)],
-                    "x_opencti_source_report": True,
-                    "x_source_id": source_id,
-                    "x_source_publisher": source.get("publisher") or "unknown",
-                    "x_source_type": source.get("source_type") or "unknown",
-                    "x_source_reliability": source.get("reliability") or "unknown",
-                    "x_published_precision": "day",
-                    "x_published_status": "known",
-                    "x_published_basis": "source-stated",
-                    "x_temporal_role": "publication-only",
-                    "x_standalone_activity_id": activity["activity_id"],
-                },
-            )
+        source_report = stix_base(
+            "report",
+            f"standalone-source-report:{activity['activity_id']}:{source_id}",
+            updated_at,
+            {
+                "name": source.get("title") or source_id,
+                "description": (
+                    "Source publication container. Its published time is not an "
+                    "Activity observation or Relationship validity time."
+                ),
+                "report_types": ["threat-report"],
+                "published": published,
+                "object_refs": sorted(refs),
+                "created_by_ref": producer["id"],
+                "external_references": [_external_reference(source_id, source)],
+                "x_opencti_source_report": True,
+                "x_source_id": source_id,
+                "x_source_publisher": source.get("publisher") or "unknown",
+                "x_source_type": source.get("source_type") or "unknown",
+                "x_source_reliability": source.get("reliability") or "unknown",
+                "x_published_precision": "day",
+                "x_published_status": "known",
+                "x_published_basis": "source-stated",
+                "x_temporal_role": "publication-only",
+                "x_standalone_activity_id": activity["activity_id"],
+            },
         )
+        source_report["modified"] = generated_modified
+        source_reports.append(source_report)
     knowledge.extend(source_reports)
 
     container = stix_base(
@@ -612,6 +738,7 @@ def build_standalone_activity_bundle(
             "x_generated_at": updated_at,
         },
     )
+    container["modified"] = generated_modified
     objects_by_id = {producer["id"]: producer}
     objects_by_id.update({obj["id"]: obj for obj in knowledge})
     objects_by_id[container["id"]] = container
@@ -633,6 +760,8 @@ def build_standalone_activity_bundle(
         "name": activity["name"],
         "stix_object_type": activity["stix_object_type"],
         "structured_ioc_indicator_count": ioc_counts["indicator_count"],
+        "structured_ioc_observable_count": len(observables),
+        "structured_ioc_based_on_count": len(based_on_relationships),
         "structured_ioc_source_observation_count": ioc_counts[
             "source_observation_count"
         ],
