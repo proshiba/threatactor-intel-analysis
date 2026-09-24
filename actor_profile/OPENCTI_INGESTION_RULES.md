@@ -112,10 +112,26 @@ Campaign ──uses────> Tool
 Campaign ──uses────> Infrastructure
 Campaign ──targets─> Country / Sector / Victim
 Infrastructure ──consists-of─> IP / Domain / URL / Email / Certificate SCO
+Indicator ──based-on─> IP / Domain / URL / Email / Certificate / File SCO
 ```
 
 同じIP等は値ごとに一つの安定SCO IDを使います。異なるInfrastructureやCampaignで同じ
 値が観測された場合、SCOを複製せず、それぞれの根拠付きRelationshipを作ります。
+
+OpenCTI取込用Bundleでは、非rejectedの原子的IOCをIndicatorと対応SCOの両方へ変換し、
+同じ`iocs.json`レコードから生成した両者を必ず
+`Indicator ──based-on──> Observable`で直接結びます。これはIndicatorがどの値を検出するかを
+OpenCTI上で明示するための対応関係であり、Infrastructureへの所属とは独立です。
+`infrastructure_refs`がなくても`based-on`は生成し、`infrastructure_refs`がある場合は
+`Infrastructure ──consists-of──> Observable`を併存させます。ファイルハッシュはFile SCOへ
+変換して`based-on`を結びますが、Infrastructureの構成要素には自動変換しません。
+
+Grouping Bundleでも、同一の正規IOCレコードから生成済みの`based-on`と、同じレコードの
+`infrastructure_refs`で明示された`consists-of`は保持できます。これはGroupingの共包含から
+推論したRelationshipではありません。GroupingにIndicator、Infrastructure、Observableが
+一緒に含まれることだけを根拠に、`based-on`、`uses`、`consists-of`等を新規生成しては
+いけません。また、`based-on`はObservableがあらゆる文脈で悪性であること、Actorへの帰属、
+Infrastructureの運用主体を意味しません。
 
 正規RMM、OS標準機能、ペンテストフレームワーク等はMalwareへ変換せずToolとして保持し、
 一次資料が当該Activityでの利用を明示した場合だけ`activity.tool_refs`から
@@ -210,6 +226,10 @@ STIX/OpenCTIでは次のように変換する。
 - 証明書fingerprintのIndicatorは`certificate-fingerprint`と明示された`hash_algorithm`から
   X.509 patternを生成する。SHA-1 thumbprintをfile SHA-1として出力せず、algorithm不明値や
   serialを推測でSHA-256 fingerprintへ変換しない。
+- exact equalityだけ、または同じObservable型のexact equalityを`OR`で列挙したpatternは、
+  各値を安定SCOへ変換してIndicatorから`based-on`を結ぶ。複数hashのIndicatorは各File SCOへ
+  1本ずつ結ぶ。`MATCHES` wildcard、複合predicate、値を一意に実体化できないpatternから
+  架空のSCOを作らない。
 - Actor単位BundleからActivityを分離する場合、そのBundle内のNoteはActor側に存在する参照だけを
   保持する。Activity参照はActivity単位Bundle側に残し、Bundle外を指す`object_refs`を作らない。
 
@@ -265,6 +285,9 @@ opencti/
   束ねる必要がある場合は別のGroupingを作り、明示的な`part-of`等を主張する場合は
   そのRelationship自体の根拠を別途保持する。
 - 推奨順は`actors`、`campaigns`、`activities`。各Bundleは単独でも参照解決できる。
+- Activity割当済みIOCは該当Activity Bundleへ、未割当IOCはActor Bundleへ収録する。
+  いずれもIndicator、対応する原子的SCO、両者の`based-on`を同じBundleへ含め、参照切れや
+  Infrastructure経由でしか検出対象を辿れない状態を許可しない。
 
 全Bundleに含めるproducer Identityは、actorやCampaignの最終更新時刻ではなく、producer
 Identity自身のメタデータ版を示す固定の`created` / `modified`を使う。actorを1件更新した
@@ -288,6 +311,9 @@ curationには安定Activity ID、Campaign / Incident / Groupingの判断、時�
 ledger observation、IOC昇格方針と判断理由を保存する。名前付きoperator、自己申告handle、
 vendorの帰属評価があっても、curationされたStandalone Bundleには`intrusion-set`、
 `threat-actor`、Activity→Actor Relationshipを生成しない。
+
+Standalone Activityで明示的に昇格したstructured IOCも例外ではありません。Indicatorだけを
+出力せず、対応する安定SCOと直接の`based-on`を同じBundleおよび根拠Source Reportへ含めます。
 
 未検証の自己主張はGrouping + Noteに限定し、主張された期間を
 `first_observed` / `last_observed`へ転用しない。Groupingの`object_refs`は証拠集合だけを表し、

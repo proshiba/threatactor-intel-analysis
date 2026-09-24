@@ -22,7 +22,10 @@ from build_opencti_bundles import (  # noqa: E402
     build_campaign_bundle,
     campaign_dependency_profile_ids,
     normalize_shared_object_versions,
+    observable_object,
+    observable_objects_from_indicator_pattern,
     prepare_profile_objects,
+    preserve_prepared_object_versions,
     preserve_object_versions,
     profile_scoped_stix_id,
     producer_identity,
@@ -419,6 +422,22 @@ class OpenCTIBundleTests(unittest.TestCase):
             ],
             "indicators": [
                 {
+                    "indicator_id": "indicator--unscoped",
+                    "type": "domain",
+                    "value": "unscoped.example",
+                    "normalized_value": "unscoped.example",
+                    "disposition": "confirmed",
+                    "campaign_refs": [],
+                    "infrastructure_refs": [],
+                    "observations": [
+                        {
+                            "source_id": "source--ioc",
+                            "observed_at": point(),
+                            "source_published_at": point(NOW),
+                        }
+                    ],
+                },
+                {
                     "indicator_id": "indicator--scoped",
                     "type": "domain",
                     "value": "scoped.example",
@@ -499,6 +518,30 @@ class OpenCTIBundleTests(unittest.TestCase):
         preserve_object_versions(current_bundle, previous_bundle)
         self.assertEqual(current_object["created"], CREATED)
         self.assertEqual(current_object["modified"], NOW)
+
+    def test_shared_versions_are_restored_before_bundle_slicing(self) -> None:
+        previous = stix_base(
+            "relationship",
+            "shared-version-before-slicing",
+            CREATED,
+            {
+                "relationship_type": "consists-of",
+                "source_ref": stix_id("infrastructure", "shared-source"),
+                "target_ref": stix_id("domain-name", "shared-target"),
+            },
+        )
+        current = copy.deepcopy(previous)
+        current["created"] = NOW
+        current["modified"] = NOW
+        records = [
+            {"objects": [copy.deepcopy(current)]},
+            {"objects": [copy.deepcopy(current)]},
+        ]
+
+        preserve_prepared_object_versions(records, {previous["id"]: previous})
+
+        self.assertEqual(records[0]["objects"][0], previous)
+        self.assertEqual(records[1]["objects"][0], previous)
 
     def test_only_exact_high_aliases_are_opencti_identity_keys(self) -> None:
         aliases = [
@@ -675,6 +718,36 @@ class OpenCTIBundleTests(unittest.TestCase):
         names = {item.get("name") for item in bundle["objects"]}
         self.assertIn("domain: unscoped.example", names)
         self.assertNotIn("domain: scoped.example", names)
+        unscoped_indicator = next(
+            item
+            for item in bundle["objects"]
+            if item.get("name") == "domain: unscoped.example"
+        )
+        unscoped_observable = next(
+            item
+            for item in bundle["objects"]
+            if item.get("type") == "domain-name"
+            and item.get("value") == "unscoped.example"
+        )
+        self.assertEqual(
+            unscoped_indicator["x_opencti_main_observable_type"],
+            "Domain-Name",
+        )
+        self.assertTrue(
+            any(
+                item.get("relationship_type") == "based-on"
+                and item.get("source_ref") == unscoped_indicator["id"]
+                and item.get("target_ref") == unscoped_observable["id"]
+                for item in bundle["objects"]
+            )
+        )
+        self.assertFalse(
+            any(
+                item.get("type") == "domain-name"
+                and item.get("value") == "scoped.example"
+                for item in bundle["objects"]
+            )
+        )
         relation = next(
             item
             for item in bundle["objects"]
@@ -953,6 +1026,29 @@ class OpenCTIBundleTests(unittest.TestCase):
                 for item in bundle["objects"]
             )
         )
+        scoped_indicator = next(
+            item
+            for item in bundle["objects"]
+            if item.get("name") == "domain: scoped.example"
+        )
+        scoped_observable = next(
+            item
+            for item in bundle["objects"]
+            if item.get("type") == "domain-name"
+            and item.get("value") == "scoped.example"
+        )
+        self.assertEqual(
+            scoped_indicator["x_opencti_main_observable_type"],
+            "Domain-Name",
+        )
+        self.assertTrue(
+            any(
+                item.get("relationship_type") == "based-on"
+                and item.get("source_ref") == scoped_indicator["id"]
+                and item.get("target_ref") == scoped_observable["id"]
+                for item in bundle["objects"]
+            )
+        )
         tool = next(
             item
             for item in bundle["objects"]
@@ -995,6 +1091,115 @@ class OpenCTIBundleTests(unittest.TestCase):
         self.assertEqual(source_report["published"], NOW)
         self.assertEqual(source_report["x_temporal_role"], "publication-only")
         self.assertIn(relation["id"], source_report["object_refs"])
+        indicator = next(
+            item
+            for item in bundle["objects"]
+            if item.get("name") == "domain: scoped.example"
+        )
+        self.assertTrue(
+            any(
+                item.get("relationship_type") == "based-on"
+                and item.get("source_ref") == indicator["id"]
+                and item.get("target_ref") == observable["id"]
+                for item in bundle["objects"]
+            )
+        )
+
+    def test_file_hash_ioc_creates_file_observable(self) -> None:
+        observable = observable_object(
+            {
+                "type": "sha256",
+                "value": "a" * 64,
+                "normalized_value": "a" * 64,
+            }
+        )
+
+        self.assertIsNotNone(observable)
+        assert observable is not None
+        self.assertEqual(observable["type"], "file")
+        self.assertEqual(observable["hashes"], {"SHA-256": "a" * 64})
+
+    def test_exact_hunting_pattern_creates_direct_observables(self) -> None:
+        first_hash = "A" * 64
+        second_hash = "B" * 64
+        pivot = stix_base(
+            "indicator",
+            "hunting-pivot--multi-hash",
+            NOW,
+            {
+                "name": "Hunting pivot: multi-hash",
+                "pattern": (
+                    f"[file:hashes.'SHA-256' = '{first_hash}' OR "
+                    f"file:hashes.'SHA-256' = '{second_hash}']"
+                ),
+                "pattern_type": "stix",
+                "valid_from": CREATED,
+                "x_profile_object_id": "hunting-pivot--multi-hash",
+                "x_hunting_pivot": True,
+                "x_confidence": "high",
+            },
+        )
+        observables = observable_objects_from_indicator_pattern(pivot)
+
+        self.assertEqual(len(observables), 2)
+        self.assertEqual(
+            {next(iter(item["hashes"].values())) for item in observables},
+            {first_hash.lower(), second_hash.lower()},
+        )
+
+        full_bundle = fixture_bundle(self.profile)
+        full_bundle["objects"].append(pivot)
+        objects, _ = prepare_profile_objects(
+            self.profile,
+            self.record["iocs"],
+            full_bundle,
+            self.producer["id"],
+            COUNTRY_INDEX,
+        )
+        exported_pivot = next(
+            item
+            for item in objects
+            if item.get("x_profile_object_id") == "hunting-pivot--multi-hash"
+        )
+        relations = [
+            item
+            for item in objects
+            if item.get("relationship_type") == "based-on"
+            and item.get("source_ref") == exported_pivot["id"]
+        ]
+        self.assertEqual(len(relations), 2)
+        self.assertEqual(
+            exported_pivot["x_opencti_main_observable_type"], "StixFile"
+        )
+
+    def test_wildcard_hunting_pattern_does_not_invent_observable(self) -> None:
+        observables = observable_objects_from_indicator_pattern(
+            {
+                "x_hunting_pivot": True,
+                "pattern": (
+                    "[domain-name:value MATCHES "
+                    "'^[^.]+\\\\.example\\\\.com$']"
+                ),
+            }
+        )
+
+        self.assertEqual(observables, [])
+
+    def test_validator_rejects_indicator_without_based_on_observable(self) -> None:
+        activity = self.profile["activities"][0]
+        bundle = build_activity_bundle(self.record, activity, self.producer)
+        bundle["objects"] = [
+            item
+            for item in bundle["objects"]
+            if item.get("relationship_type") != "based-on"
+        ]
+
+        errors = validate_bundle(bundle, expected_scope="campaign")
+
+        self.assertTrue(
+            any("exactly one generated based-on" in item for item in errors),
+            errors,
+        )
 
     def test_incident_bundle_uses_explicit_primary_type(self) -> None:
         record = copy.deepcopy(self.record)
@@ -1068,8 +1273,14 @@ class OpenCTIBundleTests(unittest.TestCase):
             if item.get("name") == "domain: scoped.example"
         )
         self.assertIn(scoped_indicator["id"], grouping["object_refs"])
-        self.assertFalse(
-            any(item.get("type") == "relationship" for item in bundle["objects"])
+        relations = [
+            item
+            for item in bundle["objects"]
+            if item.get("type") == "relationship"
+        ]
+        self.assertEqual(
+            sorted(item.get("relationship_type") for item in relations),
+            ["based-on", "consists-of"],
         )
 
     def test_parent_grouping_keeps_child_grouping_definition_identical(self) -> None:

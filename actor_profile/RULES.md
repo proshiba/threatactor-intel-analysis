@@ -563,8 +563,10 @@ CSVの配列列（`campaign_refs`等）はJSON配列文字列として保存す�
 - TTP: `attack-pattern`
 - Activity: 明示した`stix_object_type`に従い`campaign`、`incident`、`grouping`
 - Targets/attribution organizations: `identity`
-- IOC: `indicator`
-- Hunting Pivot: STIX patternがある場合は`indicator`と`note`、ない場合は`note`のみ
+- IOC: `indicator`と対応する原子的SCO。OpenCTI取込用Bundleでは同じ正規IOCレコードから
+  生成した両者を`Indicator ──based-on──> Observable`で直接結ぶ
+- Hunting Pivot: STIX patternがある場合は`indicator`と`note`、ない場合は`note`のみ。
+  exact値を安全に実体化できるpatternでは対応SCOと`based-on`も生成する
 - 観測: `observed-data`と`note`、またはIndicatorの外部参照
 - 関係: `relationship`
 
@@ -605,12 +607,18 @@ Incident/Grouping Bundleへ分割する。
 - アクター関係の対象をcanonical名、Profile ID、根拠付き`exact` aliasで一意に解決できない場合、
   新しいIntrusion Setを推測生成しない。元関係は`Note`とmanifestへ残す。
 - Activity割当済みIOCは該当Activity Bundleへ、未割当IOCはActor Bundleへ収録する。
-- Network Observableは値ごとの安定SCOとして出力し、明示的な`infrastructure_refs`がある場合だけ
-  Infrastructureから`consists-of`を結ぶ。実観測日時がないRelationshipへ公開日由来の
-  `start_time`/`stop_time`を付けない。
+- 非rejectedの原子的IOCは値ごとの安定SCOとして出力し、対応Indicatorから`based-on`を直接結ぶ。
+  Network Observableに明示的な`infrastructure_refs`がある場合だけ、別途Infrastructureから
+  `consists-of`を結ぶ。ファイルハッシュはFile SCOへ変換するがInfrastructureへ自動所属させない。
+  実観測日時がない`consists-of` Relationshipへ公開日由来の`start_time`/`stop_time`を付けない。
 - 公開日が判明するSourceは原典Reportとして`Report.published`を保持する。公開日不明のSourceへ
   profile更新日時等を代入しない。
 - OpenCTI既定の50 MiB取込上限を下回るよう、生成時の上限は45 MiBとする。
+
+OpenCTI表現規則だけを変更した場合、全profileが同日に新しいOSINTを得たかのように
+`updated_at`を一括変更しない。`build_opencti_bundles.py`の`OPENCTI_MODEL_MODIFIED`を進め、
+意味内容が変わるIndicator、Relationship、Report等の`modified`だけを進める。既存IDの
+`created`は旧版から保持し、意味内容が不変なobjectの`modified`も不要に変更しない。
 
 ## 12. 検証の重大度
 

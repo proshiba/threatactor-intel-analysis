@@ -203,6 +203,55 @@ class StandaloneActivityStixTests(unittest.TestCase):
         )
         self.assertEqual(len({obj["pattern"] for obj in indicators}), 48)
 
+    def test_structured_iocs_have_direct_based_on_observables(self) -> None:
+        supported_observable_types = {
+            "domain-name",
+            "file",
+            "ipv4-addr",
+            "url",
+        }
+        for activity_id in (
+            "activity--unattributed-bigbear-2-0",
+            "activity--unattributed-secflow-ai-agent-campaign",
+        ):
+            with self.subTest(activity_id=activity_id):
+                bundle = self.bundles[activity_id]
+                by_id = {obj["id"]: obj for obj in bundle["objects"]}
+                indicators = [
+                    obj for obj in bundle["objects"] if obj["type"] == "indicator"
+                ]
+                relationships = [
+                    obj
+                    for obj in bundle["objects"]
+                    if obj.get("relationship_type") == "based-on"
+                ]
+                self.assertEqual(len(relationships), len(indicators))
+                self.assertEqual(
+                    self.metadata[activity_id][
+                        "structured_ioc_observable_count"
+                    ],
+                    len(indicators),
+                )
+                self.assertEqual(
+                    self.metadata[activity_id][
+                        "structured_ioc_based_on_count"
+                    ],
+                    len(indicators),
+                )
+                for indicator in indicators:
+                    matches = [
+                        relation
+                        for relation in relationships
+                        if relation["source_ref"] == indicator["id"]
+                    ]
+                    self.assertEqual(len(matches), 1)
+                    target = by_id[matches[0]["target_ref"]]
+                    self.assertIn(target["type"], supported_observable_types)
+                    self.assertIn(
+                        indicator["x_opencti_main_observable_type"],
+                        {"Domain-Name", "IPv4-Addr", "StixFile", "Url"},
+                    )
+
     def test_secflow_exact_values_and_wildcard_boundary(self) -> None:
         activity_id = "activity--unattributed-secflow-ai-agent-campaign"
         bundle = self.bundles[activity_id]

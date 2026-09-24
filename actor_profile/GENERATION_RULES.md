@@ -353,8 +353,9 @@ heuristic抽出済みの値を原典レビューで誤分類と確認した場�
    含めるが、追加証拠なしにActor Relationshipを生成しない。
 
 STIX生成では、安全な`stix_pattern`があるPivotをIndicatorとNoteの両方へ変換し、観測・件数・
-continuity・query・留保をNoteにも完全に残す。patternが`null`の複合特徴、per-device生成証明書、
-再現不能な設計特徴はNoteだけにし、架空のfingerprintや広すぎるpatternを作らない。
+continuity・query・留保をNoteにも完全に残す。exact equalityで値を実体化できるpatternは
+対応SCOと`based-on`も生成する。patternが`null`の複合特徴、per-device生成証明書、再現不能な
+設計特徴はNoteだけにし、wildcardや複合patternから架空のSCO、fingerprintを作らない。
 この生成ロジックを変更するときは、単発IOCとの分離、count集計、unknown active status、
 generic pivot、Indicator/Note境界の回帰テストを同じ変更へ含める。
 
@@ -379,6 +380,8 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] 法的措置日を活動日・entity関係期間へコピーしていない
 - [ ] ActivityごとにCampaign / Incident / Groupingを明示し、全件Campaign化していない
 - [ ] Groupingの`object_refs`から未立証Relationshipを生成していない
+- [ ] 非rejectedの原子的IOCについて、Indicatorと対応Observableを直接`based-on`で結び、
+      Infrastructureの有無に依存させていない
 - [ ] Source公開日を観測時刻やRelationship期間へコピーしていない
 - [ ] IOC共有を時刻なしの強い相関・同一Actor根拠として扱っていない
 - [ ] 単発IOCを理由なくHunting Pivotへ複製していない
@@ -392,6 +395,8 @@ profile namespaceの安定IDにし、共有するCountry・entity・atomic SCO�
 - [ ] actor-specific evidence_refが重要主張に付いている
 - [ ] canonical/alias重複候補を確認した
 - [ ] 同じSTIX IDの意味内容を変更した場合、`updated_at`と生成物の`modified`を進めた
+- [ ] OpenCTI表現だけを変更した場合は正規OSINTの`updated_at`を偽装せず、
+      `OPENCTI_MODEL_MODIFIED`と影響する生成objectの`modified`を進めた
 - [ ] 同じSTIX IDの`created`を旧版から変更していない
 - [ ] 同じ`id` + `modified`で異なる意味内容を生成していない
 - [ ] 回帰テストを追加または実行した
