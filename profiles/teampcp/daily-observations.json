@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--teampcp",
-  "updated_at": "2026-08-12T01:50:04Z",
+  "updated_at": "2026-09-28T06:44:40Z",
   "records": [
     {
       "record_id": "daily-record--5aa545c901df820c7aa23b26",
@@ -523,6 +523,72 @@
         }
       },
       "source_commit": "967228fd1ffbba0fdfb3bf8d73983f85296d7668"
+    },
+    {
+      "record_id": "daily-record--b966215077c933ccc5f5ed12",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "teampcp",
+        "canonical_name": "TeamPCP",
+        "matched_term": "TeamPCP",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "TeamPCP"
+      },
+      "activity": {
+        "title": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+        "summary": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
+        "news_date": "2026-09-23",
+        "news_url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+        "primary_url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+        "activity_reference": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+        "news_path": "daily-news/news/2026_07-09/20260923.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "source_path": "daily-news/news/2026_07-09/20260923.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用(一次資料が実行主体を明記)。CrowdSec 原文をcurlでHTTP 200を取得して確認した(JSON-LD datePublished 2026-09-18T17:20:09、dateModified 2026-09-21T13:59:16、本文表示も「Sep 18, 2026」)。tech-memo 2026-09-23 のIOC収集ログは公開日を2026-09-16と記載しているが、これは攻撃者がフォーラムへ投稿した日(原文の「Sept 16th, 2026 – 17h45 : Publication on the forum」)であって資料の公開日ではない。原文のJSON-LDに従い reported_at は2026-09-18とした。CrowdSecは被害組織自身であり、自社インシデントを直接観測した一次資料である。帰属の切り分けが本件の要点である。原文がTeamPCP(Threat Actor UNC6780)の実行として明示するのはTanStack npmリポジトリの侵害(2026-05-11)とMistral AIリポジトリ侵害の犯行主張(2026-05-22)であり、CrowdSecの非公開リポジトリ約170件の複製は「one of the founders of BreachForum and a member, diencracked <diencracked@cock.li> downloaded the content of ~170 private CrowdSec GitHub repositories」と別主体の行為として記述されている。2026-08-17のAWS SNSトークンの権限確認(攻撃元IP 23.234.84.102)についても原文は実行主体を帰属していない。したがって活動はTanStack侵害に限定し、下流の資格情報悪用をTeamPCPの観測期間へ繰り入れない。既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、GitHub Actions / PyPI / npm / Docker Hub)および activity--teampcp-oligo-lineage-2020-2026 とは期間・資料が異なるため別活動として保持する。IOCは1件(2026-08-17観測の攻撃元IP)がIOC CSVに存在するが、これは上記のとおり未帰属の下流悪用であり本活動へ結び付けない。原文中の部分マスクIP 178.249.214.XX は値が不完全でIOC化していない。",
+      "activity_claim": {
+        "assessment": "strong-subject",
+        "actor_role": "operator",
+        "match_location": "body",
+        "evidence_text": "- 2026年5月、TeamPCP（UNC6780）がTanStackのnpmリポジトリを侵害し、42パッケージへ認証情報窃取マルウェアShai Huludを仕込んだ。",
+        "reasons": [
+          "要約の同一文でアクターが活動の実行主体として明記されている"
+        ],
+        "suggested_confidence": "medium"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-05-11T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-05-11T00:00:00Z"
+        }
+      },
+      "reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "source_commit": "951655087a7e24754057074c9f1050d3a9d74364"
     }
   ]
 }

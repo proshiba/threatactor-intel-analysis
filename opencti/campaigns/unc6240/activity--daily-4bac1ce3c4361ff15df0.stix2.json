@@ -1,0 +1,675 @@
+{
+  "type": "bundle",
+  "id": "bundle--036ddac9-de7b-4d02-87a4-ef8f14e5d55c",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "created": "2026-07-25T00:00:00Z",
+      "modified": "2026-09-21T13:20:00Z",
+      "name": "Threat Actor Intelligence Profiles",
+      "description": "Open-source threat actor intelligence exported by proshiba/threatactor-intel-analysis.",
+      "identity_class": "organization",
+      "confidence": 100,
+      "external_references": [
+        {
+          "source_name": "GitHub",
+          "url": "https://github.com/proshiba/threatactor-intel-analysis"
+        }
+      ],
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Web Shell",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003/"
+        },
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--cbac2364237f89bcec89",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--daily-4bac1ce3c4361ff15df0"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+      "created": "2026-09-28T06:44:40Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "description": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4bac1ce3c4361ff15df0",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--4bac1ce3c4361ff15df0486a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: scope-review-required。 レビュー: 採用(一次資料が実行主体を明記)。Mandiant / Google Threat Intelligence Group の原文(2026-09-25公開)をWebFetchで取得して確認した。原文は「Mandiant and Google Threat Intelligence Group (GTIG) have identified renewed mass exploitation of CVE-2026-35273 by UNC6240 (ShinyHunters)」と記し、UNC6240 の命名元である Mandiant 自身が本キャンペーンの実行主体として明記している。製品・exploitの開発元ではなく攻撃実行主体としての記述であり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。活動期間は原文が明示する観測日だけを用いた。first_observed は「between May 27 and June 9, 2026」のゼロデイ悪用開始日、last_observed は「In September 2026 intrusions」の月次表記を月初へ正規化した値である。原文が言及する Oracle の帯域外セキュリティアラート(2026-06-10)は対応側の日付であり活動期間へ含めない。確認した技術要素: WAFの文字列照合を回避するためパス先頭の「P」を「%50」へ置換し、WebLogic側の復号後に脆弱なPSEMHUB処理へ到達させる。事前に複数のPOSTで脆弱性を確認したのちコマンド実行とJSPウェブシェル設置を行う。ウェブシェルは x.jsp(クロスプラットフォームのコマンド実行)、u.jsp / u2.jsp(分割アップロードと実行)、tunnel.jsp / tunnel.jspx(Neo-reGeorg)。侵害後は C++バックドア SIDEEYE(trojanized Ple64.exe として配備)と正規RMMの MeshAgent を使用する。標的は「higher education, technology, IT services, healthcare, agriculture, transportation, and government」へ拡大し、世界で数十台にウェブシェルが確認されている。未解決点: 同一アクターによるFBI侵害とデータ窃取の主張(2026-09-23 BleepingComputer)は本原文に一切記載がなく、GTIG は確認していない。当該主張は別レコードとして不採用にしており、本活動の根拠にも含めない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6240",
+          "name": "UNC6240",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--cbac2364237f89bcec89"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--4c801f57d8327659d8b8"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-27T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-09-01T00:00:00Z"
+          },
+          "reported_at": {
+            "basis": "source-publication",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-25T00:00:00Z"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Persistence"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-5c00545fe1f3f0beba17"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "first_seen": "2026-05-27T00:00:00Z",
+      "last_seen": "2026-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--cbc87cbe-5894-4e63-9dfb-a83df442b83e",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "identity_class": "organization",
+      "description": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--4c801f57d8327659d8b8",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--cbac2364237f89bcec89"
+      ],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "created": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-23T11:09:18Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6240",
+      "aliases": [],
+      "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) is a cyber criminal collective that has been active since at least 2019 operating under the ShinyCorp persona. [ShinyHunters](https://attack.mitre.org/groups/G1057) has targeted multiple industries and geographic regions gathering legitimate credentials and personally identifiable information (PII) for resale or extortion of victims. [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). Public reporting has mentioned a variety of names for operations [ShinyHunters](https://attack.mitre.org/groups/G1057) members have reportedly conducted with members of other groups, including “Scattered Lapsus Hunters,” “Scattered Lapsus Shiny Hunters,” and “SLSH.”(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)(Citation: SOCRadar_ShinyHunters_Mar2024)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: Intel471_SH_Aug2021)(Citation: FBI_SHLMS_May2026)(Citation: Google_SHOracle_Jun2026)(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: Google Salesforce JUN 2025)",
+      "goals": [],
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "MITRE ATT&CK",
+          "description": "Source: https://attack.mitre.org/groups/G1057/",
+          "external_id": "source--mitre-attack-g1057",
+          "url": "https://attack.mitre.org/groups/G1057/"
+        },
+        {
+          "source_name": "Microsoft",
+          "description": "Source: actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+          "external_id": "source--osint-microsoft-threat-actor-mapping",
+          "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+        }
+      ],
+      "x_profile_id": "actor--unc6240",
+      "x_profile_status": "draft",
+      "x_alias_assessments": [
+        {
+          "name": "Bling Libra",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2",
+            "source--mitre-attack-g1057"
+          ],
+          "analyst_notes": "Official MITRE ATT&CK associated-group name for G1057."
+        },
+        {
+          "name": "ShinyHunters",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-2",
+            "source--mitre-attack-g1057"
+          ],
+          "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057."
+        },
+        {
+          "name": "Storm-3127",
+          "vendor": "Microsoft",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--osint-microsoft-threat-actor-mapping"
+          ],
+          "analyst_notes": "Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ."
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "",
+        "confidence": "unknown",
+        "evidence_refs": [],
+        "analyst_notes": ""
+      },
+      "x_free_text": {
+        "executive_summary": "UNC6240の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "history": "",
+        "capability_details": "",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+      },
+      "x_osint_crosscheck_assessment": "matched",
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20d0423d-9bcd-4b1c-943d-904b781eb7e9",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+      "target_ref": "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 uses ttp--activity-rule--cbac2364237f89bcec89.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--39caf6fd-7f8e-4f4d-bf5d-837489662882",
+      "created": "2026-09-28T06:44:40Z",
+      "modified": "2026-09-28T06:44:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 is attributed or linked to UNC6240.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--459ea717-f705-4a73-aec5-e7b1cba3bc37",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+      "target_ref": "identity--cbc87cbe-5894-4e63-9dfb-a83df442b83e",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 affected victim--activity-rule--4c801f57d8327659d8b8.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "target_ref": "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--5e50b7f2-8847-4259-9466-965ac14d9b2d",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-25T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+        "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+        "identity--cbc87cbe-5894-4e63-9dfb-a83df442b83e",
+        "relationship--20d0423d-9bcd-4b1c-943d-904b781eb7e9",
+        "relationship--39caf6fd-7f8e-4f4d-bf5d-837489662882",
+        "relationship--459ea717-f705-4a73-aec5-e7b1cba3bc37",
+        "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-5c00545fe1f3f0beba17",
+      "x_evidence_slice_scope": "campaign:actor--unc6240:activity--daily-4bac1ce3c4361ff15df0",
+      "x_source_publisher": "cloud.google.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--a22fe1c2-7077-48a2-828f-5fcb35b09bec",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-08-05T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "external_id": "source--mitre-attack-19-2",
+          "description": "Repository source: actor_profile/reference/attack-index.json"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-19-2",
+      "x_evidence_slice_scope": "campaign:actor--unc6240:activity--daily-4bac1ce3c4361ff15df0",
+      "x_source_publisher": "MITRE",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "upstream-release",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c0763600-6a71-4560-9e89-e1f82738e762",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters, Group G1057",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-07-31T00:00:00Z",
+      "object_refs": [
+        "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "MITRE ATT&CK",
+          "external_id": "source--mitre-attack-g1057",
+          "url": "https://attack.mitre.org/groups/G1057/"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--mitre-attack-g1057",
+      "x_evidence_slice_scope": "campaign:actor--unc6240:activity--daily-4bac1ce3c4361ff15df0",
+      "x_source_publisher": "MITRE ATT&CK",
+      "x_source_type": "structured-knowledge-base",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1e985a7e-3322-4ae9-8bd3-a3d77a4623c1",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6240 / ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "description": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+      "report_types": [
+        "campaign"
+      ],
+      "published": "2026-09-28T06:44:51Z",
+      "object_refs": [
+        "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+        "campaign--d45ddf12-595a-48c7-8816-4ae817f7279b",
+        "identity--cbc87cbe-5894-4e63-9dfb-a83df442b83e",
+        "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+        "relationship--20d0423d-9bcd-4b1c-943d-904b781eb7e9",
+        "relationship--39caf6fd-7f8e-4f4d-bf5d-837489662882",
+        "relationship--459ea717-f705-4a73-aec5-e7b1cba3bc37",
+        "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f",
+        "report--5e50b7f2-8847-4259-9466-965ac14d9b2d",
+        "report--a22fe1c2-7077-48a2-828f-5fcb35b09bec",
+        "report--c0763600-6a71-4560-9e89-e1f82738e762"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "x_opencti_bundle_scope": "campaign",
+      "x_profile_id": "actor--unc6240",
+      "x_activity_id": "activity--daily-4bac1ce3c4361ff15df0"
+    }
+  ]
+}

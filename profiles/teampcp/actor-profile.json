@@ -4,7 +4,7 @@
   "name": "TeamPCP",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-09-23T12:16:55Z",
+  "updated_at": "2026-09-28T06:45:54Z",
   "languages": [
     "ja"
   ],
@@ -548,6 +548,102 @@
   },
   "activities": [
     {
+      "activity_id": "activity--daily-b966215077c933ccc5f5",
+      "name": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+      "activity_type": "malware-campaign",
+      "stix_object_type": "incident",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--714184e3704040bde582"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-cd3414e27772e05da66f"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--b966215077c933ccc5f5ed12 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: strong-subject。 レビュー: 採用(一次資料が実行主体を明記)。CrowdSec 原文をcurlでHTTP 200を取得して確認した(JSON-LD datePublished 2026-09-18T17:20:09、dateModified 2026-09-21T13:59:16、本文表示も「Sep 18, 2026」)。tech-memo 2026-09-23 のIOC収集ログは公開日を2026-09-16と記載しているが、これは攻撃者がフォーラムへ投稿した日(原文の「Sept 16th, 2026 – 17h45 : Publication on the forum」)であって資料の公開日ではない。原文のJSON-LDに従い reported_at は2026-09-18とした。CrowdSecは被害組織自身であり、自社インシデントを直接観測した一次資料である。帰属の切り分けが本件の要点である。原文がTeamPCP(Threat Actor UNC6780)の実行として明示するのはTanStack npmリポジトリの侵害(2026-05-11)とMistral AIリポジトリ侵害の犯行主張(2026-05-22)であり、CrowdSecの非公開リポジトリ約170件の複製は「one of the founders of BreachForum and a member, diencracked <diencracked@cock.li> downloaded the content of ~170 private CrowdSec GitHub repositories」と別主体の行為として記述されている。2026-08-17のAWS SNSトークンの権限確認(攻撃元IP 23.234.84.102)についても原文は実行主体を帰属していない。したがって活動はTanStack侵害に限定し、下流の資格情報悪用をTeamPCPの観測期間へ繰り入れない。既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、GitHub Actions / PyPI / npm / Docker Hub)および activity--teampcp-oligo-lineage-2020-2026 とは期間・資料が異なるため別活動として保持する。IOCは1件(2026-08-17観測の攻撃元IP)がIOC CSVに存在するが、これは上記のとおり未帰属の下流悪用であり本活動へ結び付けない。原文中の部分マスクIP 178.249.214.XX は値が不完全でIOC化していない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--714184e3704040bde582"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-11T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-11T00:00:00Z"
+          },
+          "reported_at": {
+            "basis": "source-publication",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-18T00:00:00Z"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-cd3414e27772e05da66f"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--teampcp-oligo-lineage-2020-2026",
       "name": "Oligoが関連付けた2020–2026年の複数活動・基盤系譜",
       "activity_type": "historical-activity-cluster",
@@ -583,6 +679,7 @@
         "ttp--teampcp-t1486-ransomware"
       ],
       "victim_refs": [
+        "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
         "victim--teampcp-exposed-cloud-services"
       ],
       "confidence": "medium",
@@ -617,6 +714,7 @@
         "victim": {
           "target_refs": [],
           "victim_refs": [
+            "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
             "victim--teampcp-exposed-cloud-services"
           ]
         },
@@ -648,7 +746,8 @@
           "results": [
             "account-compromise",
             "credential-theft",
-            "encryption"
+            "encryption",
+            "supply-chain"
           ],
           "direction": {
             "source_countries": [],
@@ -860,7 +959,111 @@
       "evidence_refs": [
         "source--gtig-adversarial-ai-2026",
         "source--gtig-ai-threat-tracker-2026-05",
+        "source--oligo-teampcp-2026",
         "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--714184e3704040bde582",
+      "name": "被害事例: TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
+      "activity_refs": [
+        "activity--daily-b966215077c933ccc5f5"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "エンドポイント"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。"
+        },
+        {
+          "impact_type": "supply-chain",
+          "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-cd3414e27772e05da66f"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
+      "name": "被害事例: Oligoが関連付けた2020–2026年の複数活動・基盤系譜",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "activity_refs": [
+        "activity--teampcp-oligo-lineage-2020-2026"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--teampcp-t1059-004-ndt-sh",
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1486-ransomware"
+      ],
+      "affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
@@ -1011,6 +1214,7 @@
         "evidence_refs": [
           "source--gtig-adversarial-ai-2026",
           "source--gtig-ai-threat-tracker-2026-05",
+          "source--oligo-teampcp-2026",
           "source--sentinellabs-pcpjack-2026"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
@@ -1108,7 +1312,7 @@
     ],
     "roles": [],
     "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "標的国・地域の明示がないため登録しない。インターネット公開サービスを探索することは、特定の地域範囲を明示した根拠にはならない。[targeting-scope-audit-v1] OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
+    "analyst_notes": "標的国・地域の明示がないため登録しない。インターネット公開サービスを探索することは、特定の地域範囲を明示した根拠にはならない。[targeting-scope-audit-v1] OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
     {
@@ -2237,6 +2441,129 @@
   ],
   "sources": [
     {
+      "source_id": "source--abc-teampcp-arrests-2026",
+      "path": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+      "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
+      "title": "Two WA men charged after investigation into alleged cybercrime syndicate TeamPCP",
+      "publisher": "ABC News Australia",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "public-broadcaster-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "ABC identifies Ruben Ian Thomson and Louis Michael Gaebler. Its report attributes the alleged TeamPCP leadership description to investigators; it does not establish guilt."
+    },
+    {
+      "source_id": "source--afp-teampcp-arrests-2026",
+      "path": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+      "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+      "title": "Two WA men charged following AFP, FBI, WAPF disruption of alleged global cybercrime syndicate",
+      "publisher": "Australian Federal Police",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "government-legal-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "AFP states that two Western Australian men were arrested and charged on 2026-08-26. Residence and arrest location are not treated as nationality.",
+      "archive_url": "https://web.archive.org/web/20260831071008/https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
+    },
+    {
+      "source_id": "source--daily-cd3414e27772e05da66f",
+      "path": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+      "title": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+      "publisher": "crowdsec.net",
+      "published_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260923.md; source commit: 951655087a7e24754057074c9f1050d3a9d74364; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--doj-teampcp-thomson-indictment-2026",
+      "path": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+      "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
+      "title": "Australian Man Indicted For ‘TeamPCP’ Cyberattacks On Software Supply Chain",
+      "publisher": "U.S. Attorney's Office, Northern District of California",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-22T00:00:00Z",
+      "language": "en",
+      "source_type": "government-legal-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "identity",
+        "legal-action",
+        "relationship"
+      ],
+      "analyst_notes": "The release states that Thomson's indictment was filed on 2026-08-25 and unsealed on 2026-08-26. Only the filed date is used as action_date."
+    },
+    {
+      "source_id": "source--gtig-adversarial-ai-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-10T16:00:55Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting"
+      ],
+      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。2026-05-11のGTIG AI Threat Tracker(source--gtig-ai-threat-tracker-2026-05)の後継報告であり、同一のOSSサプライチェーン作戦の継続を扱う。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
+    },
+    {
       "source_id": "source--gtig-ai-threat-tracker-2026-05",
       "path": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
       "title": "GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access",
@@ -2266,6 +2593,59 @@
         "ttp",
         "victim-case"
       ]
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
+      "source_id": "source--mitre-attack-g1056",
+      "path": "https://attack.mitre.org/groups/G1056/",
+      "url": "https://attack.mitre.org/groups/G1056/",
+      "title": "TeamPCP, Group G1056",
+      "publisher": "MITRE ATT&CK",
+      "published_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-23T11:24:50Z",
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "Official ATT&CK Group G1056 associated-group names."
     },
     {
       "source_id": "source--oligo-teampcp-2026",
@@ -2329,6 +2709,32 @@
       "analyst_notes": "Pinned official Microsoft mapping. The current-name field and reviewed previous Microsoft designators support alias records; other-vendor names remain scoped overlap unless separate primary evidence establishes exact identity."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--osint-misp-threat-actor",
       "path": "actor_profile/reference/osint/misp-threat-actor.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
@@ -2384,190 +2790,6 @@
         "ttp",
         "victim-case"
       ]
-    },
-    {
-      "source_id": "source--gtig-adversarial-ai-2026",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
-      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": "2026-09-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-stated"
-      },
-      "accessed_at": "2026-09-10T16:00:55Z",
-      "language": "en",
-      "source_type": "vendor-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "activity",
-        "capability",
-        "targeting"
-      ],
-      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。2026-05-11のGTIG AI Threat Tracker(source--gtig-ai-threat-tracker-2026-05)の後継報告であり、同一のOSSサプライチェーン作戦の継続を扱う。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
-    },
-    {
-      "source_id": "source--mitre-attack-g1056",
-      "path": "https://attack.mitre.org/groups/G1056/",
-      "url": "https://attack.mitre.org/groups/G1056/",
-      "title": "TeamPCP, Group G1056",
-      "publisher": "MITRE ATT&CK",
-      "published_at": {
-        "value": "2026-07-31T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-23T11:24:50Z",
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "identity",
-        "alias"
-      ],
-      "analyst_notes": "Official ATT&CK Group G1056 associated-group names."
-    },
-    {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    {
-      "source_id": "source--afp-teampcp-arrests-2026",
-      "path": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
-      "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
-      "title": "Two WA men charged following AFP, FBI, WAPF disruption of alleged global cybercrime syndicate",
-      "publisher": "Australian Federal Police",
-      "published_at": {
-        "value": "2026-08-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-22T00:00:00Z",
-      "language": "en",
-      "source_type": "government-legal-release",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "legal-action",
-        "relationship"
-      ],
-      "analyst_notes": "AFP states that two Western Australian men were arrested and charged on 2026-08-26. Residence and arrest location are not treated as nationality.",
-      "archive_url": "https://web.archive.org/web/20260831071008/https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
-    },
-    {
-      "source_id": "source--abc-teampcp-arrests-2026",
-      "path": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
-      "url": "https://www.abc.net.au/news/2026-08-27/two-wa-men-charged-after-investigation-into-alleged-cybercrime/107084796",
-      "title": "Two WA men charged after investigation into alleged cybercrime syndicate TeamPCP",
-      "publisher": "ABC News Australia",
-      "published_at": {
-        "value": "2026-08-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-22T00:00:00Z",
-      "language": "en",
-      "source_type": "public-broadcaster-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "legal-action",
-        "relationship"
-      ],
-      "analyst_notes": "ABC identifies Ruben Ian Thomson and Louis Michael Gaebler. Its report attributes the alleged TeamPCP leadership description to investigators; it does not establish guilt."
-    },
-    {
-      "source_id": "source--doj-teampcp-thomson-indictment-2026",
-      "path": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
-      "url": "https://www.justice.gov/usao-ndca/pr/australian-man-indicted-teampcp-cyberattacks-software-supply-chain",
-      "title": "Australian Man Indicted For ‘TeamPCP’ Cyberattacks On Software Supply Chain",
-      "publisher": "U.S. Attorney's Office, Northern District of California",
-      "published_at": {
-        "value": "2026-08-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-22T00:00:00Z",
-      "language": "en",
-      "source_type": "government-legal-release",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "legal-action",
-        "relationship"
-      ],
-      "analyst_notes": "The release states that Thomson's indictment was filed on 2026-08-25 and unsealed on 2026-08-26. Only the filed date is used as action_date."
     }
   ],
   "assessment": {
@@ -2620,7 +2842,7 @@
     "history": "2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。",
     "capability_details": "第1段階はndt.shなどのシェルスクリプト、資格情報窃取はSANDCLOCK、収益化はランサムウェア展開と恐喝グループとの提携による。SentinelLabsが報告したPCPJackはTeamPCPの基盤を排除する別主体であり、混同しない。",
     "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/・/ep9TS2/ndt.shおよび/files/という大文字小文字を含む特徴的な配置パスが複数キャンペーンで再利用されている。exact IOCはiocs.json、scheme未記載のhost/pathとwildcardはartifacts.csvおよびhunting_pivotsに保存する。",
-    "targeting_details": "構造化ターゲット監査: 標的国・地域は個別に確認できないため未登録。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。インターネット規模の探索から地域範囲を推定しない。",
+    "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。インターネット規模の探索から地域範囲を推定しない。",
     "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
   },
   "associated_entities": [

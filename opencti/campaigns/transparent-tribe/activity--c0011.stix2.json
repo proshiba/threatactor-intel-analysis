@@ -403,7 +403,7 @@
       "spec_version": "2.1",
       "id": "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -448,8 +448,9 @@
         },
         "victim": {
           "target_refs": [
-            "target--country--india",
-            "target--sector--government"
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--sector--government",
+            "target--targeting-audit--country--23019752235a8a31cf00"
           ],
           "victim_refs": [
             "victim--activity-rule--d28e41b1d16aa4dca383"
@@ -486,7 +487,7 @@
           "direction": {
             "source_countries": [],
             "target_country_refs": [
-              "target--country--india"
+              "target--targeting-audit--country--23019752235a8a31cf00"
             ],
             "target_region_refs": []
           }
@@ -525,7 +526,7 @@
       "spec_version": "2.1",
       "id": "identity--1d8b5d0e-b15b-4895-8866-827f0bb6c3d5",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -544,7 +545,7 @@
       "x_victim_type": "unknown",
       "x_case_status": "reported",
       "x_target_refs": [
-        "target--country--india",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
         "target--sector--government"
       ],
       "x_malware_refs": [
@@ -588,6 +589,31 @@
       "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。",
       "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d000b02e-3f9a-4a38-985c-35622ce0405d",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "教育・研究",
+      "identity_class": "class",
+      "description": "活動「C0011」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium",
+      "x_profile_object_id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+      "confidence": 60,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -713,15 +739,15 @@
     {
       "type": "location",
       "spec_version": "2.1",
-      "id": "location--40121f79-e29b-4652-947c-2c30d8262cbb",
-      "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "id": "location--3de92893-a37f-4c49-a273-0cc232c5db26",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "India",
       "x_target_category": "countries",
-      "x_profile_object_id": "target--country--india",
+      "x_profile_object_id": "target--targeting-audit--country--23019752235a8a31cf00",
       "confidence": 100,
       "x_opencti_location_type": "Country",
       "country": "IND",
@@ -770,67 +796,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
-      "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--89541b04-cd09-4ce2-80ef-f3b55f091bcc",
-      "target_ref": "location--40121f79-e29b-4652-947c-2c30d8262cbb",
-      "description": "Transparent Tribe targets インド (profile target category: countries).\n\nEvidence: Targeting text mentions india.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "zscaler.com",
-          "description": "Source: https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
-          "external_id": "source--daily-08ae19a58641703181dc",
-          "url": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and"
-        },
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/",
-          "external_id": "source--daily-b5bf76c5ef95da099eb5",
-          "url": "https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/"
-        },
-        {
-          "source_name": "MITRE",
-          "description": "Source: actor_profile/reference/attack-enterprise-19.1.json",
-          "external_id": "source--mitre-attack-19-1"
-        },
-        {
-          "source_name": "MITRE",
-          "description": "Source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-2"
-        }
-      ],
-      "x_first_observed": {
-        "value": "2021-12-01T06:00:00.000Z",
-        "precision": "second",
-        "status": "known",
-        "basis": "mitre-attack; activity-period"
-      },
-      "x_last_observed": {
-        "value": "2026-09-01T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
-      },
-      "x_temporal_basis": {
-        "first": "mitre-attack; activity-period",
-        "last": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period",
-        "first_precision": "second",
-        "last_precision": "day"
-      },
-      "start_time": "2021-12-01T06:00:00.000Z",
-      "stop_time": "2026-09-01T00:00:00Z",
-      "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--046a1247-863b-4c80-9372-c25f14aa3218",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -870,6 +835,106 @@
       "start_time": "2021-12-01T06:00:00.000Z",
       "stop_time": "2022-07-01T05:00:00.000Z",
       "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--087dbed5-d8ed-4905-99c4-c5189b219fb9",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--89541b04-cd09-4ce2-80ef-f3b55f091bcc",
+      "target_ref": "location--3de92893-a37f-4c49-a273-0cc232c5db26",
+      "description": "Transparent Tribe targets インド (profile target category: countries).\n\nEvidence: MITRE ATT&CKのGroup概要でTransparent Tribeの標的国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "zscaler.com",
+          "description": "Source: https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+          "external_id": "source--daily-08ae19a58641703181dc",
+          "url": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/",
+          "external_id": "source--daily-b5bf76c5ef95da099eb5",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"",
+        "first_precision": "second",
+        "last_precision": "day"
+      },
+      "start_time": "2021-12-01T06:00:00.000Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--08a0acf8-d28a-440c-8cb8-9e6b720f2cf3",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--89541b04-cd09-4ce2-80ef-f3b55f091bcc",
+      "target_ref": "identity--d000b02e-3f9a-4a38-985c-35622ce0405d",
+      "description": "Transparent Tribe targets 教育・研究 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign; activity-period",
+        "last": "mitre-attack-campaign; activity-period",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "start_time": "2021-12-01T06:00:00.000Z",
+      "stop_time": "2022-07-01T05:00:00.000Z",
+      "confidence": 60,
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
     },
     {
@@ -1357,73 +1422,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
-      "target_ref": "location--40121f79-e29b-4652-947c-2c30d8262cbb",
-      "description": "C0011 targets target--country--india.\n\nEvidence: Targeting text mentions india.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-2"
-        },
-        {
-          "source_name": "zscaler.com",
-          "description": "Source: https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
-          "external_id": "source--daily-08ae19a58641703181dc",
-          "url": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and"
-        },
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Source: https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/",
-          "external_id": "source--daily-b5bf76c5ef95da099eb5",
-          "url": "https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/"
-        },
-        {
-          "source_name": "MITRE",
-          "description": "Source: actor_profile/reference/attack-enterprise-19.1.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_first_observed": {
-        "value": "2021-12-01T06:00:00.000Z",
-        "precision": "second",
-        "status": "known",
-        "basis": "mitre-attack-campaign"
-      },
-      "x_last_observed": {
-        "value": "2022-07-01T05:00:00.000Z",
-        "precision": "second",
-        "status": "known",
-        "basis": "mitre-attack-campaign"
-      },
-      "x_temporal_basis": {
-        "first": "mitre-attack-campaign",
-        "last": "mitre-attack-campaign",
-        "first_precision": "second",
-        "last_precision": "second"
-      },
-      "x_reported_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "earliest-evidence-source-published-at"
-      },
-      "start_time": "2021-12-01T06:00:00.000Z",
-      "stop_time": "2022-07-01T05:00:00.000Z",
-      "confidence": 85,
-      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb",
       "created": "2026-07-29T23:12:01Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1514,6 +1512,56 @@
         "last": "mitre-attack-campaign; activity-period",
         "first_precision": "second",
         "last_precision": "second"
+      },
+      "start_time": "2021-12-01T06:00:00.000Z",
+      "stop_time": "2022-07-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9666a02b-e439-4514-9207-9f0f203a07d2",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
+      "target_ref": "identity--d000b02e-3f9a-4a38-985c-35622ce0405d",
+      "description": "C0011 targets target--activity-rule--sector--e7608f51421ca8b1e297.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
       },
       "start_time": "2021-12-01T06:00:00.000Z",
       "stop_time": "2022-07-01T05:00:00.000Z",
@@ -1677,6 +1725,68 @@
           "source_name": "MITRE",
           "description": "Source: actor_profile/reference/attack-index.json",
           "external_id": "source--mitre-attack-19-2"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack-campaign"
+      },
+      "x_temporal_basis": {
+        "first": "mitre-attack-campaign",
+        "last": "mitre-attack-campaign",
+        "first_precision": "second",
+        "last_precision": "second"
+      },
+      "x_reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "start_time": "2021-12-01T06:00:00.000Z",
+      "stop_time": "2022-07-01T05:00:00.000Z",
+      "confidence": 85,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cad3d13a-a785-4953-8382-e76e24529395",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
+      "target_ref": "location--3de92893-a37f-4c49-a273-0cc232c5db26",
+      "description": "C0011 targets target--targeting-audit--country--23019752235a8a31cf00.\n\nEvidence: MITRE ATT&CKのGroup概要でTransparent Tribeの標的国として明示されている。",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-2"
+        },
+        {
+          "source_name": "zscaler.com",
+          "description": "Source: https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+          "external_id": "source--daily-08ae19a58641703181dc",
+          "url": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/",
+          "external_id": "source--daily-b5bf76c5ef95da099eb5",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/"
         }
       ],
       "x_first_observed": {
@@ -1951,11 +2061,11 @@
       "spec_version": "2.1",
       "id": "report--259e3efd-3726-4169-9522-fa82b626a543",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+      "name": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
       "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
       "report_types": [
         "threat-report"
@@ -1963,14 +2073,14 @@
       "published": "2026-09-19T00:00:00Z",
       "object_refs": [
         "identity--e0d3b2a2-0030-447c-adc3-e27099ad9f78",
-        "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
-        "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd",
-        "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb"
+        "relationship--087dbed5-d8ed-4905-99c4-c5189b219fb9",
+        "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb",
+        "relationship--cad3d13a-a785-4953-8382-e76e24529395"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
         {
-          "source_name": "zscaler.com",
+          "source_name": "local-source",
           "external_id": "source--daily-08ae19a58641703181dc",
           "url": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and"
         }
@@ -1978,8 +2088,8 @@
       "x_opencti_source_report": true,
       "x_source_id": "source--daily-08ae19a58641703181dc",
       "x_evidence_slice_scope": "campaign:actor--transparent-tribe:activity--c0011",
-      "x_source_publisher": "zscaler.com",
-      "x_source_type": "osint-report",
+      "x_source_publisher": "",
+      "x_source_type": "unknown",
       "x_published_precision": "day",
       "x_published_status": "known",
       "x_published_basis": "daily-news-file-date",
@@ -1990,7 +2100,7 @@
       "spec_version": "2.1",
       "id": "report--3daddbba-5baf-4a17-a9e2-7ea63114d7dd",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2001,8 +2111,8 @@
       ],
       "published": "2025-05-13T00:00:00Z",
       "object_refs": [
-        "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
-        "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd"
+        "relationship--087dbed5-d8ed-4905-99c4-c5189b219fb9",
+        "relationship--cad3d13a-a785-4953-8382-e76e24529395"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
       "external_references": [
@@ -2027,7 +2137,7 @@
       "spec_version": "2.1",
       "id": "report--9df29d75-696d-4980-9eb3-a106a0534814",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2039,8 +2149,6 @@
       "published": "2026-05-12T00:00:00Z",
       "object_refs": [
         "identity--e0d3b2a2-0030-447c-adc3-e27099ad9f78",
-        "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
-        "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd",
         "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb"
       ],
       "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
@@ -2066,7 +2174,7 @@
       "spec_version": "2.1",
       "id": "report--e95152c9-f744-4e78-9fb2-1cd2854c5376",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2087,11 +2195,13 @@
         "attack-pattern--f7be3a50-1513-47cd-9ea0-8d40d1425d51",
         "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
         "identity--1d8b5d0e-b15b-4895-8866-827f0bb6c3d5",
+        "identity--d000b02e-3f9a-4a38-985c-35622ce0405d",
         "identity--e0d3b2a2-0030-447c-adc3-e27099ad9f78",
         "intrusion-set--89541b04-cd09-4ce2-80ef-f3b55f091bcc",
         "malware--6b3ca207-bc49-4b5e-807f-7f4642f56ee1",
-        "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
         "relationship--046a1247-863b-4c80-9372-c25f14aa3218",
+        "relationship--087dbed5-d8ed-4905-99c4-c5189b219fb9",
+        "relationship--08a0acf8-d28a-440c-8cb8-9e6b720f2cf3",
         "relationship--0e4931d8-6dda-4d09-8a45-4e2482a0fe78",
         "relationship--1190f626-8f6d-42ef-b24f-1ca637bd5e58",
         "relationship--36570f32-6ce7-4f4d-8d3d-b38e26be23d9",
@@ -2102,13 +2212,14 @@
         "relationship--72cab50a-d35d-4367-9791-fd72c55c8718",
         "relationship--7fe19303-b68c-4a59-8160-77ca0f0145c6",
         "relationship--8262de15-b3db-4ff2-bba7-f02f5ee8d6f6",
-        "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd",
         "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb",
         "relationship--90940d8c-faf9-4afb-aa33-eaae30f084c9",
+        "relationship--9666a02b-e439-4514-9207-9f0f203a07d2",
         "relationship--a75a1107-971b-4e72-9ff7-0351344d394c",
         "relationship--a914810b-a53b-4f3e-a4ba-c6fee0cbfd3a",
         "relationship--b8ea0c87-dfd7-49ca-9ae7-853c995280a2",
         "relationship--c14436d1-45b7-4ec5-9254-7ecf8c58d609",
+        "relationship--cad3d13a-a785-4953-8382-e76e24529395",
         "relationship--cc2661d8-3798-445e-acb2-8bb40a39f705",
         "relationship--cdefcbf1-207a-4574-8ca1-0c4c6ee108e5",
         "relationship--d46b4ed3-0f1f-40c3-a245-f501322a2532",
@@ -2138,7 +2249,7 @@
       "spec_version": "2.1",
       "id": "report--7417402e-1482-4079-856a-d731f86587a4",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2147,7 +2258,7 @@
       "report_types": [
         "campaign"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-09-28T06:45:54Z",
       "object_refs": [
         "attack-pattern--077c9e37-d353-415e-8f7c-8ea8fd62a991",
         "attack-pattern--1fb1ba89-0374-4143-902a-d89850502864",
@@ -2159,12 +2270,14 @@
         "attack-pattern--f7be3a50-1513-47cd-9ea0-8d40d1425d51",
         "campaign--2b411485-89b8-4195-9a49-b914fa9ecd5a",
         "identity--1d8b5d0e-b15b-4895-8866-827f0bb6c3d5",
+        "identity--d000b02e-3f9a-4a38-985c-35622ce0405d",
         "identity--e0d3b2a2-0030-447c-adc3-e27099ad9f78",
         "intrusion-set--89541b04-cd09-4ce2-80ef-f3b55f091bcc",
-        "location--40121f79-e29b-4652-947c-2c30d8262cbb",
+        "location--3de92893-a37f-4c49-a273-0cc232c5db26",
         "malware--6b3ca207-bc49-4b5e-807f-7f4642f56ee1",
-        "relationship--01c415af-ffc9-4fe3-a58f-dfb205c4faa3",
         "relationship--046a1247-863b-4c80-9372-c25f14aa3218",
+        "relationship--087dbed5-d8ed-4905-99c4-c5189b219fb9",
+        "relationship--08a0acf8-d28a-440c-8cb8-9e6b720f2cf3",
         "relationship--0e4931d8-6dda-4d09-8a45-4e2482a0fe78",
         "relationship--1190f626-8f6d-42ef-b24f-1ca637bd5e58",
         "relationship--36570f32-6ce7-4f4d-8d3d-b38e26be23d9",
@@ -2175,13 +2288,14 @@
         "relationship--72cab50a-d35d-4367-9791-fd72c55c8718",
         "relationship--7fe19303-b68c-4a59-8160-77ca0f0145c6",
         "relationship--8262de15-b3db-4ff2-bba7-f02f5ee8d6f6",
-        "relationship--847df148-ce60-48f2-9487-e5de5bf44cbd",
         "relationship--8cb2638c-8e1d-4735-8caa-aa56a96332bb",
         "relationship--90940d8c-faf9-4afb-aa33-eaae30f084c9",
+        "relationship--9666a02b-e439-4514-9207-9f0f203a07d2",
         "relationship--a75a1107-971b-4e72-9ff7-0351344d394c",
         "relationship--a914810b-a53b-4f3e-a4ba-c6fee0cbfd3a",
         "relationship--b8ea0c87-dfd7-49ca-9ae7-853c995280a2",
         "relationship--c14436d1-45b7-4ec5-9254-7ecf8c58d609",
+        "relationship--cad3d13a-a785-4953-8382-e76e24529395",
         "relationship--cc2661d8-3798-445e-acb2-8bb40a39f705",
         "relationship--cdefcbf1-207a-4574-8ca1-0c4c6ee108e5",
         "relationship--d46b4ed3-0f1f-40c3-a245-f501322a2532",

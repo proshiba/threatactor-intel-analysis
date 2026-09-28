@@ -767,6 +767,111 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--19ceeed9-8580-46a2-9395-3d593d83d05b",
+      "created": "2026-09-28T06:44:40Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "description": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4bac1ce3c4361ff15df0",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--4bac1ce3c4361ff15df0486a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: scope-review-required。 レビュー: 採用(一次資料が実行主体を明記)。Mandiant / Google Threat Intelligence Group の原文(2026-09-25公開)をWebFetchで取得して確認した。原文は「Mandiant and Google Threat Intelligence Group (GTIG) have identified renewed mass exploitation of CVE-2026-35273 by UNC6240 (ShinyHunters)」と記し、UNC6240 の命名元である Mandiant 自身が本キャンペーンの実行主体として明記している。製品・exploitの開発元ではなく攻撃実行主体としての記述であり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。活動期間は原文が明示する観測日だけを用いた。first_observed は「between May 27 and June 9, 2026」のゼロデイ悪用開始日、last_observed は「In September 2026 intrusions」の月次表記を月初へ正規化した値である。原文が言及する Oracle の帯域外セキュリティアラート(2026-06-10)は対応側の日付であり活動期間へ含めない。確認した技術要素: WAFの文字列照合を回避するためパス先頭の「P」を「%50」へ置換し、WebLogic側の復号後に脆弱なPSEMHUB処理へ到達させる。事前に複数のPOSTで脆弱性を確認したのちコマンド実行とJSPウェブシェル設置を行う。ウェブシェルは x.jsp(クロスプラットフォームのコマンド実行)、u.jsp / u2.jsp(分割アップロードと実行)、tunnel.jsp / tunnel.jspx(Neo-reGeorg)。侵害後は C++バックドア SIDEEYE(trojanized Ple64.exe として配備)と正規RMMの MeshAgent を使用する。標的は「higher education, technology, IT services, healthcare, agriculture, transportation, and government」へ拡大し、世界で数十台にウェブシェルが確認されている。未解決点: 同一アクターによるFBI侵害とデータ窃取の主張(2026-09-23 BleepingComputer)は本原文に一切記載がなく、GTIG は確認していない。当該主張は別レコードとして不採用にしており、本活動の根拠にも含めない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6240",
+          "name": "UNC6240",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--cbac2364237f89bcec89"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--4c801f57d8327659d8b8"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-27T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-09-01T00:00:00Z"
+          },
+          "reported_at": {
+            "basis": "source-publication",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-25T00:00:00Z"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Persistence"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-5c00545fe1f3f0beba17"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "first_seen": "2026-05-27T00:00:00Z",
+      "last_seen": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--c1405f24-0c45-498b-9dae-00aec301e660",
       "created": "2026-07-27T11:04:38Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -861,6 +966,106 @@
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "incident",
+      "spec_version": "2.1",
+      "id": "incident--fb9b809a-64eb-4a8e-8f85-5f546f44aefe",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫",
+      "description": "恐喝グループShinyHuntersはClopランサムウェアのデータリークサイトへ侵入し、Torサイトを改ざんした。BleepingComputerも改ざんとファイル設置を確認している。 ShinyHuntersは、Grav CMSの未認証ファイルアップロード脆弱性を悪用し、最初にメッセージを記載した小さなテキストファイルをClopのサーバーへ配置したと主張している。 その後、サーバーへの完全アクセスを取得し、ソースコード、Grav CMSプラグイン、システムログ、Tor onionサービスの秘密鍵を窃取したと主張した。 BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。 ShinyHuntersはClopとの対立への報復だと説明し、窃取したとするデータを材料にClopへ72時間以内の連絡を要求して恐喝する意向を示している。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "external_id": "source--daily-9112ec33d6152498bf06",
+          "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-a3aa636f41a370335570",
+      "x_activity_type": "ransomware-extortion",
+      "x_stix_object_type": "incident",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--a3aa636f41a37033557026cb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: scope-review-required。 レビュー: 採用(第三者による独立確認あり)。BleepingComputer 原文(datePublished 2026-09-19T09:48:32-04:00、2026-09-21追補)をcurlでHTTP 200を取得して確認した。攻撃者の自称にとどまらない独立確認が3系統ある。(1) BleepingComputer が Clop の Tor サイトからアップロードされたファイルを直接ダウンロードでき、改ざんページ(ShinyHunters のロゴである Umbreon のASCIIアート)が Clop のインフラから配信されていることを確認している。(2) Grav CMS 開発元が、ShinyHunters が BleepingComputer へ提供した悪用手法の記述について「Yes, it's a legitimate flaw, and the threat actor's description is accurate」と確認している(2026-09-25続報)。(3) Clop 自身が Grav の未更新による自サーバー侵害を認め、リークサイトを新しいonionアドレスへ移転した(同続報)。実行主体は改ざんページとリークサイト掲載により ShinyHunters 自身が名乗り、被害側の Clop も相手方として認識している。一方で、ソースコード・Grav CMSプラグイン・システムログ・Tor onionサービス秘密鍵の窃取は攻撃者の主張のみであり、BleepingComputer は独立確認できていない。Clop は「the server contained nothing but content」として価値ある運用・財務データの窃取を否定しており、両論が対立している。このためレコードの confidence は medium とし、窃取範囲は確定表現にしない。活動期間は原文が明示する日のみを用いた。2026-09-26 のニュースファイル収録分(一次ソースが Grav の GHSA-hmcx-ch82-3fv2)は同一インシデントの続報であるため別活動にせず、当該レコードは不採用として本活動へ集約した。続報で判明した技術詳細(CVE-2026-42608、Clop側が Grav 1.7.43 を使用、__unique_form_id__ へディレクトリトラバーサル列を与えて tmp/forms 外へ書き込む未認証パストラバーサル、修正版 Grav 1.7.53.4)は本活動の根拠に含める。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6240",
+          "name": "UNC6240",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--1c23f1ac1358269f4c63"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-18T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-21T00:00:00Z"
+          },
+          "reported_at": {
+            "basis": "source-publication",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-19T00:00:00Z"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9112ec33d6152498bf06"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-21T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-19T00:00:00Z"
       }
     },
     {
@@ -1050,6 +1255,127 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--5a17e01e-79ef-470f-bb99-ba5a4c390723",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫",
+      "identity_class": "organization",
+      "description": "恐喝グループShinyHuntersはClopランサムウェアのデータリークサイトへ侵入し、Torサイトを改ざんした。BleepingComputerも改ざんとファイル設置を確認している。 ShinyHuntersは、Grav CMSの未認証ファイルアップロード脆弱性を悪用し、最初にメッセージを記載した小さなテキストファイルをClopのサーバーへ配置したと主張している。 その後、サーバーへの完全アクセスを取得し、ソースコード、Grav CMSプラグイン、システムログ、Tor onionサービスの秘密鍵を窃取したと主張した。 BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。 ShinyHuntersはClopとの対立への報復だと説明し、窃取したとするデータを材料にClopへ72時間以内の連絡を要求して恐喝する意向を示している。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "external_id": "source--daily-9112ec33d6152498bf06",
+          "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--1c23f1ac1358269f4c63",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "サーバー",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-21T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-19T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--92b2991e-3249-4a13-95cd-4501b886d4ad",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "identity_class": "organization",
+      "description": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--4c801f57d8327659d8b8",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--cbac2364237f89bcec89"
+      ],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46",
       "created": "2026-07-29T15:20:25Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1105,6 +1431,52 @@
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--28fc93a8-f363-428a-910a-bdf40010a4d8",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Web Shell",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003/"
+        },
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--cbac2364237f89bcec89",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--daily-4bac1ce3c4361ff15df0"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -3169,6 +3541,153 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--4be9ee47-746f-452b-9119-ae40f62b1f70",
+      "created": "2026-09-28T06:44:40Z",
+      "modified": "2026-09-28T06:44:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--19ceeed9-8580-46a2-9395-3d593d83d05b",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 is attributed or linked to UNC6240.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a1e08446-337d-4179-887a-a9b7c253ddf0",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--19ceeed9-8580-46a2-9395-3d593d83d05b",
+      "target_ref": "attack-pattern--28fc93a8-f363-428a-910a-bdf40010a4d8",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 uses ttp--activity-rule--cbac2364237f89bcec89.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4dcc1703-cf93-404b-98b1-2b1625f28183",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--19ceeed9-8580-46a2-9395-3d593d83d05b",
+      "target_ref": "identity--92b2991e-3249-4a13-95cd-4501b886d4ad",
+      "description": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 affected victim--activity-rule--4c801f57d8327659d8b8.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--dd859a80-3558-412f-8e4d-5b08b9b0484d",
       "created": "2026-07-27T11:04:38Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3259,6 +3778,104 @@
         "status": "known",
         "basis": "daily-news-file-date"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b39e684c-2132-41cf-b054-2a425bb26a88",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "incident--fb9b809a-64eb-4a8e-8f85-5f546f44aefe",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 is attributed or linked to UNC6240.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "external_id": "source--daily-9112ec33d6152498bf06",
+          "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-21T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "last": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-19T00:00:00Z"
+      },
+      "start_time": "2026-09-18T00:00:00Z",
+      "stop_time": "2026-09-21T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6178ec98-598c-4657-b4eb-b95c1fb2d830",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "incident--fb9b809a-64eb-4a8e-8f85-5f546f44aefe",
+      "target_ref": "identity--5a17e01e-79ef-470f-bb99-ba5a4c390723",
+      "description": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 affected victim--activity-rule--1c23f1ac1358269f4c63.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Source: https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "external_id": "source--daily-9112ec33d6152498bf06",
+          "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-21T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+        "last": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-19T00:00:00Z"
+      },
+      "start_time": "2026-09-18T00:00:00Z",
+      "stop_time": "2026-09-21T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -3403,6 +4020,49 @@
         "basis": "daily-news-file-date"
       },
       "start_time": "2025-05-29T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f702dbee-7177-4fd2-b7ce-149331d8549e",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "target_ref": "attack-pattern--28fc93a8-f363-428a-910a-bdf40010a4d8",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -5248,8 +5908,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--75a83978-c2e5-47d8-9ce2-f90399f69902",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5322,8 +5982,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2700e988-7c99-4c90-85e1-4f9037ceb397",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5338,8 +5998,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--96d477a8-4a31-4e2b-8992-122334107333",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5412,8 +6072,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f2f826dd-f5d7-4698-b09d-3cc4f3ceeba9",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5428,8 +6088,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--46f8b1b2-6aa0-4aa6-a9ee-db6ddc782144",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5502,8 +6162,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--24370431-c137-46b0-a1a7-0882622d6d1b",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5576,8 +6236,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a6f65297-8cb5-422e-83b2-cc0fc4c8e2fe",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5710,8 +6370,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2af5731b-2c65-4025-bcfb-b8201bc5a905",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5726,8 +6386,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a515bd5c-c891-4f25-b09e-c3eae03b1b88",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5890,8 +6550,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--40f92f7c-6d98-4d4c-8e61-a8b64bbb551a",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5906,8 +6566,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--368e429c-bd01-42b5-ac0f-79ee6a089727",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6070,8 +6730,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--22110d55-21ed-4f7d-b73b-6b5af4e1c2e3",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6086,8 +6746,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f58343c1-d789-4831-bd2b-1158d4bdd4e3",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6160,8 +6820,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cded1a73-fae8-456b-a294-13d3543851d5",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6176,8 +6836,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--504bd1ad-2e5f-44b5-aef1-34877ae835cf",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6280,8 +6940,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a0770163-7bb3-4985-94a3-439b1ba3f102",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6296,8 +6956,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f5ef2009-9bae-4cdf-b9d4-2a9dba07df4b",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6370,8 +7030,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e5468ef5-ba62-433d-954d-58d01ddcb18d",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T04:38:04Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6386,8 +7046,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f335fbf0-ad78-41db-8fa1-bd5d8f8e0b27",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6460,8 +7120,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--47d7d03a-4a9d-490d-8180-b696e6ab63b7",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6534,8 +7194,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e302ec2c-6646-4f6d-803f-eb18401a0f9b",
-      "created": "2026-09-20T12:20:06Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6608,8 +7268,8 @@
       "type": "note",
       "spec_version": "2.1",
       "id": "note--09eecdbe-6ebd-471e-967a-430b30905102",
-      "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-21T01:54:44Z",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6626,7 +7286,7 @@
       "spec_version": "2.1",
       "id": "report--f2a9c8ea-8041-4d4a-84d2-50d9c0c55c84",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6635,15 +7295,20 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-09-28T06:44:51Z",
       "object_refs": [
         "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
         "tool--22a33100-6d24-461e-866b-cb60f701afb3",
+        "campaign--19ceeed9-8580-46a2-9395-3d593d83d05b",
         "campaign--c1405f24-0c45-498b-9dae-00aec301e660",
+        "incident--fb9b809a-64eb-4a8e-8f85-5f546f44aefe",
         "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
         "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
         "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
+        "identity--5a17e01e-79ef-470f-bb99-ba5a4c390723",
+        "identity--92b2991e-3249-4a13-95cd-4501b886d4ad",
         "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46",
+        "attack-pattern--28fc93a8-f363-428a-910a-bdf40010a4d8",
         "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
         "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
         "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
