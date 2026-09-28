@@ -790,6 +790,54 @@
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
+      "id": "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Web Shell",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1505.003",
+          "url": "https://attack.mitre.org/techniques/T1505/003/"
+        },
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--cbac2364237f89bcec89",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--daily-4bac1ce3c4361ff15df0"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
       "id": "attack-pattern--67664e4d-5aa4-40e1-b089-1ce0eeb1c613",
       "created": "2026-09-20T13:48:01Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -5489,6 +5537,51 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "target_ref": "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+      "description": "攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-27T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日; activity-period",
+        "last": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した; activity-period",
+        "first_precision": "day",
+        "last_precision": "month"
+      },
+      "start_time": "2026-05-27T00:00:00Z",
+      "stop_time": "2026-09-01T00:00:00Z",
+      "confidence": 60,
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--c049130b-3776-46b9-a2d1-4432be59be4a",
       "created": "2026-09-20T13:48:01Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -6448,6 +6541,43 @@
       "x_temporal_role": "publication-only"
     },
     {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--f0156817-1348-4c29-93fd-7daa9c4f4515",
+      "created": "2026-09-28T06:44:51Z",
+      "modified": "2026-09-28T06:44:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+      "description": "Source report represented from canonical provenance. Its publication time is not an observation or relationship time.",
+      "report_types": [
+        "threat-report"
+      ],
+      "published": "2026-09-25T00:00:00Z",
+      "object_refs": [
+        "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
+        "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f"
+      ],
+      "created_by_ref": "identity--bd43e677-a948-44f1-863a-2f1fe0e14560",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "external_id": "source--daily-5c00545fe1f3f0beba17",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft"
+        }
+      ],
+      "x_opencti_source_report": true,
+      "x_source_id": "source--daily-5c00545fe1f3f0beba17",
+      "x_evidence_slice_scope": "actor:actor--unc6240",
+      "x_source_publisher": "cloud.google.com",
+      "x_source_type": "osint-report",
+      "x_published_precision": "day",
+      "x_published_status": "known",
+      "x_published_basis": "source-publication",
+      "x_temporal_role": "publication-only"
+    },
+    {
       "type": "tool",
       "spec_version": "2.1",
       "id": "tool--7e6c386a-75ce-4620-80a5-3a51f5442bc1",
@@ -6508,7 +6638,7 @@
       "spec_version": "2.1",
       "id": "report--caef70f8-8313-4542-91ca-64ccd3da6f30",
       "created": "2026-09-21T13:20:00Z",
-      "modified": "2026-09-24T05:31:26Z",
+      "modified": "2026-09-28T06:44:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6517,7 +6647,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-09-28T06:44:51Z",
       "object_refs": [
         "attack-pattern--00d5bbbc-afad-41a2-b65b-245a5f92335c",
         "attack-pattern--01f69d0f-4d2d-4cc9-8408-9a517edc2a76",
@@ -6536,6 +6666,7 @@
         "attack-pattern--53856972-de7b-4558-8d1f-816e5648794e",
         "attack-pattern--538c39ee-066f-460b-ae69-a814cbec9a8d",
         "attack-pattern--58a6ab94-ac99-4ed2-b6fb-e2cb10cb3f44",
+        "attack-pattern--5fa555d1-fb92-460c-9964-b0cd4d6557b8",
         "attack-pattern--67664e4d-5aa4-40e1-b089-1ce0eeb1c613",
         "attack-pattern--8a6bd617-07bb-46ae-b69a-ba66691d918f",
         "attack-pattern--8e288348-5d28-460d-a6b6-e8203e87aa5a",
@@ -6654,6 +6785,7 @@
         "relationship--bb7fdc8b-50ec-437b-949c-47692de20029",
         "relationship--bb8fe6aa-9c8e-4c54-acf4-89dce94ef5ba",
         "relationship--be96f3be-c3bd-4580-9147-5143c593d8ed",
+        "relationship--bf2cebd5-73a7-423c-bb7c-ac68f632487f",
         "relationship--c049130b-3776-46b9-a2d1-4432be59be4a",
         "relationship--c08ee188-92cc-4ab4-96ef-e5dffd168016",
         "relationship--c265561b-cc03-4dca-b16d-9e38856b8655",
@@ -6676,6 +6808,7 @@
         "report--78584618-704c-4203-aaf2-fa0a03feef3f",
         "report--9a957127-8557-4ace-ba13-5da855815d6e",
         "report--cc827245-1bfa-45b8-b0fa-de8c6f0c74ed",
+        "report--f0156817-1348-4c29-93fd-7daa9c4f4515",
         "tool--7e6c386a-75ce-4620-80a5-3a51f5442bc1",
         "url--0fc88ad8-761b-4ef3-80ba-03ca98fb9ab0",
         "url--40aad8fd-28f6-4c5c-9f00-ba95c6662578",

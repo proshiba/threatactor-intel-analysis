@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6240`
 - 状態: draft
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-09-28T06:44:51Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -148,14 +148,18 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 | malware-campaign | 2026-05-27 | 2026-09 | 2026-09-25 |  |  | ttp--activity-rule--cbac2364237f89bcec89 | victim--activity-rule--4c801f57d8327659d8b8 | ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。 | 高 | `source--daily-5c00545fe1f3f0beba17` |
 | Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | ransomware-extortion | 不明 | 不明 | 2026-02-02 |  |  |  | victim--activity-rule--08fecf1c5b48c6bc87e9 | Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。 | 中 | `source--daily-02e1336153d9062de8f2` |
+| ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | ransomware-extortion | 2026-09-18 | 2026-09-21 | 2026-09-19 |  |  |  | victim--activity-rule--1c23f1ac1358269f4c63 | 恐喝グループShinyHuntersはClopランサムウェアのデータリークサイトへ侵入し、Torサイトを改ざんした。BleepingComputerも改ざんとファイル設置を確認している。 ShinyHuntersは、Grav CMSの未認証ファイルアップロード脆弱性を悪用し、最初にメッセージを記載した小さなテキストファイルをClopのサーバーへ配置したと主張している。 その後、サーバーへの完全アクセスを取得し、ソースコード、Grav CMSプラグイン、システムログ、Tor onionサービスの秘密鍵を窃取したと主張した。 BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。 ShinyHuntersはClopとの対立への報復だと説明し、窃取したとするデータを材料にClopへ72時間以内の連絡を要求して恐喝する意向を示している。 | 中 | `source--daily-9112ec33d6152498bf06` |
 | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | ransomware-extortion | 2025-05-29 | 2025-05-29 | 2025-08-26 | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | victim--activity-rule--dd9c7a0f1e6caf1b0984 | サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 侵害は2025年5月29日発生、翌30日に検知・封じ込めを実施と説明。 氏名・住所・生年月日・運転免許番号・SSN下4桁などが流出。 8月22日から影響者へ通知、メイン州AGに通知サンプル提出。 攻撃はSalesforce悪用で、vishingと悪性OAuth連携→データ窃取・恐喝。 | 中 | `source--daily-8012423fa9a259605e9c` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 | UNC6240 | 情報なし | T1505.003 Web Shell | 情報なし | 情報なし | 被害事例: ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 | 高 |
 | Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | UNC6240 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 中 |
+| ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | UNC6240 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | 中 |
 | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | UNC6240 | 情報なし | 情報なし | 情報なし | 金融 | Salesforce攻撃後にFarmers Insurance | 中 |
 
 
@@ -173,12 +177,15 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | メール／メールアカウント, クラウド／SaaS | data-theft: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 不明 | 不明 | 2026-02-02 | 中 | `source--daily-02e1336153d9062de8f2` |
+| 被害事例: ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | 非公開 | anonymous | unknown | reported |  |  |  | サーバー, 開発環境／ソースコード | data-theft: BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。<br>encryption: ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | 2026-09-18 | 2026-09-21 | 2026-09-19 | 中 | `source--daily-9112ec33d6152498bf06` |
+| 被害事例: ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--cbac2364237f89bcec89 | サーバー | data-theft: ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。 | 2026-05-27 | 2026-09 | 2026-09-25 | 高 | `source--daily-5c00545fe1f3f0beba17` |
 | 被害事例: Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | Salesforce攻撃後にFarmers Insurance | named | organization | reported | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | クラウド／SaaS | data-theft: サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 | 2025-05-29 | 2025-05-29 | 2025-08-26 | 中 | `source--daily-8012423fa9a259605e9c` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Persistence | T1505.003 | Web Shell | 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。 |  | activity--daily-4bac1ce3c4361ff15df0 | 2026-05-27 | 2026-09 | 中 | `source--daily-5c00545fe1f3f0beba17` |
 | Discovery | T1016 | System Network Configuration Discovery | [ShinyHunters](https://attack.mitre.org/groups/G1057) has collected machine names and IP addresses by parsing the process scheduler configuration file psappsrv.cfg.(Citation: Google_SHOracle_Jun2026)     |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Discovery | T1018 | Remote System Discovery | [ShinyHunters](https://attack.mitre.org/groups/G1057) has enumerated the internal subnet using ` cat /etc/hosts \| grep -E "[redacted_victim_string]"`.(Citation: Google_SHOracle_Jun2026)     |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Stealth | T1036.005 | Match Legitimate Resource Name or Location | [ShinyHunters](https://attack.mitre.org/groups/G1057) has disguised MeshCentral agent binaries as Microsoft Azure services, e.g. meshagent32-azure-ops.exe, meshagent64-azure-ops.exe, and meshagent64-v2.exe.(Citation: Google_SHOracle_Jun2026)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -255,19 +262,21 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-02e1336153d9062de8f2 | Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | bleepingcomputer.com | 2026-02-02 | https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-5c00545fe1f3f0beba17 | ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開 | cloud.google.com | 2026-09-25 | https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft | osint-report | TLP:CLEAR | 中 |
 | source--daily-8012423fa9a259605e9c | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | bleepingcomputer.com | 2025-08-26 | https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-9112ec33d6152498bf06 | ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫 | bleepingcomputer.com | 2026-09-19 | https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/ | osint-report | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-shinyhunters-saas-clusters-2026 | Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft | Mandiant / Google Threat Intelligence Group | 2026-01-30 | https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft | vendor-threat-research | TLP:CLEAR | 高 |
+| source--gtig-unc6040-salesforce-vishing-2025 | The Cost of a Call: From Voice Phishing to Data Extortion | Google Threat Intelligence Group | 2025-06-04 | https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion | vendor-threat-research | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-g1057 | ShinyHunters, Group G1057 | MITRE ATT&CK | 2026-07-31 | https://attack.mitre.org/groups/G1057/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc6240--2c7acfc0f73ec191 | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--unc6240--ddfed6d1e692a60c | cybersecurity forecast 2026 en |  | 2026 | summary/2025/cybersecurity-forecast-2026-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc6240--df2a78f9305a5534 | unc6240 |  | 不明 | actor_profile/evidence/unc6240.csv | structured-data | TLP:CLEAR | 中 |
-| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--mitre-attack-g1057 | ShinyHunters, Group G1057 | MITRE ATT&CK | 2026-07-31 | https://attack.mitre.org/groups/G1057/ | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--gtig-unc6040-salesforce-vishing-2025 | The Cost of a Call: From Voice Phishing to Data Extortion | Google Threat Intelligence Group | 2025-06-04 | https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion | vendor-threat-research | TLP:CLEAR | 高 |
-| source--gtig-shinyhunters-saas-clusters-2026 | Vishing for Access: Tracking the Expansion of ShinyHunters-Branded SaaS Data Theft | Mandiant / Google Threat Intelligence Group | 2026-01-30 | https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

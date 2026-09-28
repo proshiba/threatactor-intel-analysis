@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-23T11:09:18Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -156,7 +156,7 @@
         "history": "2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。",
         "capability_details": "第1段階はndt.shなどのシェルスクリプト、資格情報窃取はSANDCLOCK、収益化はランサムウェア展開と恐喝グループとの提携による。SentinelLabsが報告したPCPJackはTeamPCPの基盤を排除する別主体であり、混同しない。",
         "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/・/ep9TS2/ndt.shおよび/files/という大文字小文字を含む特徴的な配置パスが複数キャンペーンで再利用されている。exact IOCはiocs.json、scheme未記載のhost/pathとwildcardはartifacts.csvおよびhunting_pivotsに保存する。",
-        "targeting_details": "構造化ターゲット監査: 標的国・地域は個別に確認できないため未登録。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。インターネット規模の探索から地域範囲を推定しない。",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。インターネット規模の探索から地域範囲を推定しない。",
         "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
       },
       "x_osint_crosscheck": {
@@ -1208,6 +1208,106 @@
       ]
     },
     {
+      "type": "incident",
+      "spec_version": "2.1",
+      "id": "incident--5f032f0b-b68b-426f-8f66-721fb4836480",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+      "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
+      "external_references": [
+        {
+          "source_name": "crowdsec.net",
+          "description": "Source: https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "external_id": "source--daily-cd3414e27772e05da66f",
+          "url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b966215077c933ccc5f5",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "incident",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--b966215077c933ccc5f5ed12 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: strong-subject。 レビュー: 採用(一次資料が実行主体を明記)。CrowdSec 原文をcurlでHTTP 200を取得して確認した(JSON-LD datePublished 2026-09-18T17:20:09、dateModified 2026-09-21T13:59:16、本文表示も「Sep 18, 2026」)。tech-memo 2026-09-23 のIOC収集ログは公開日を2026-09-16と記載しているが、これは攻撃者がフォーラムへ投稿した日(原文の「Sept 16th, 2026 – 17h45 : Publication on the forum」)であって資料の公開日ではない。原文のJSON-LDに従い reported_at は2026-09-18とした。CrowdSecは被害組織自身であり、自社インシデントを直接観測した一次資料である。帰属の切り分けが本件の要点である。原文がTeamPCP(Threat Actor UNC6780)の実行として明示するのはTanStack npmリポジトリの侵害(2026-05-11)とMistral AIリポジトリ侵害の犯行主張(2026-05-22)であり、CrowdSecの非公開リポジトリ約170件の複製は「one of the founders of BreachForum and a member, diencracked <diencracked@cock.li> downloaded the content of ~170 private CrowdSec GitHub repositories」と別主体の行為として記述されている。2026-08-17のAWS SNSトークンの権限確認(攻撃元IP 23.234.84.102)についても原文は実行主体を帰属していない。したがって活動はTanStack侵害に限定し、下流の資格情報悪用をTeamPCPの観測期間へ繰り入れない。既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、GitHub Actions / PyPI / npm / Docker Hub)および activity--teampcp-oligo-lineage-2020-2026 とは期間・資料が異なるため別活動として保持する。IOCは1件(2026-08-17観測の攻撃元IP)がIOC CSVに存在するが、これは上記のとおり未帰属の下流悪用であり本活動へ結び付けない。原文中の部分マスクIP 178.249.214.XX は値が不完全でIOC化していない。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--714184e3704040bde582"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-11T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-05-11T00:00:00Z"
+          },
+          "reported_at": {
+            "basis": "source-publication",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-18T00:00:00Z"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-cd3414e27772e05da66f"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      }
+    },
+    {
       "type": "campaign",
       "spec_version": "2.1",
       "id": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
@@ -1351,7 +1451,7 @@
       "spec_version": "2.1",
       "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1370,6 +1470,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -1489,7 +1595,7 @@
       "spec_version": "2.1",
       "id": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1508,6 +1614,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -1567,6 +1679,129 @@
         "basis": "source-publication"
       },
       "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d5df9428-b281-4c7a-ac76-47bb6233c39b",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+      "identity_class": "organization",
+      "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
+      "external_references": [
+        {
+          "source_name": "crowdsec.net",
+          "description": "Source: https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "external_id": "source--daily-cd3414e27772e05da66f",
+          "url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--714184e3704040bde582",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "エンドポイント"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。"
+        },
+        {
+          "impact_type": "supply-chain",
+          "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a532c420-b490-4879-a185-3c29ee5d8695",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Oligoが関連付けた2020–2026年の複数活動・基盤系譜",
+      "identity_class": "organization",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--teampcp-t1059-004-ndt-sh",
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1486-ransomware"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -3515,7 +3750,7 @@
       "spec_version": "2.1",
       "id": "grouping--d6b0a59b-2a21-4426-847f-54b6f3107bc6",
       "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3526,6 +3761,7 @@
         "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
         "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
         "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+        "identity--a532c420-b490-4879-a185-3c29ee5d8695",
         "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
         "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
         "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
@@ -3590,6 +3826,7 @@
         "victim": {
           "target_refs": [],
           "victim_refs": [
+            "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
             "victim--teampcp-exposed-cloud-services"
           ]
         },
@@ -3621,7 +3858,8 @@
           "results": [
             "account-compromise",
             "credential-theft",
-            "encryption"
+            "encryption",
+            "supply-chain"
           ],
           "direction": {
             "source_countries": [],
@@ -4120,7 +4358,7 @@
       "spec_version": "2.1",
       "id": "relationship--f8dc784e-c523-4984-870c-e891225e46f6",
       "created": "2026-09-10T16:10:19Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4141,6 +4379,12 @@
           "description": "Source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
           "external_id": "source--gtig-ai-threat-tracker-2026-05",
           "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
         },
         {
           "source_name": "SentinelOne (SentinelLabs)",
@@ -4344,6 +4588,102 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--df4cecb4-a676-40a0-a223-3cc3911fc9ee",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "incident--5f032f0b-b68b-426f-8f66-721fb4836480",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入 is attributed or linked to TeamPCP.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "crowdsec.net",
+          "description": "Source: https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "external_id": "source--daily-cd3414e27772e05da66f",
+          "url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "last": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "start_time": "2026-05-11T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bdbb0069-11a6-4e60-946a-d297311ede67",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "incident--5f032f0b-b68b-426f-8f66-721fb4836480",
+      "target_ref": "identity--d5df9428-b281-4c7a-ac76-47bb6233c39b",
+      "description": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入 affected victim--activity-rule--714184e3704040bde582.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "crowdsec.net",
+          "description": "Source: https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "external_id": "source--daily-cd3414e27772e05da66f",
+          "url": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-05-11T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
+        "last": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-18T00:00:00Z"
+      },
+      "start_time": "2026-05-11T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -7070,8 +7410,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d8e46584-7ac4-4d02-bd79-fabf6e3cc6c1",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7164,8 +7504,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4a642aba-f32d-4cab-94de-cb7719b5f02c",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7180,8 +7520,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7054fccb-cef4-476e-8e73-c1fdcbd87f73",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7276,8 +7616,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--aeae056f-a8f2-40c3-8bba-8f3058f7e16a",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7292,8 +7632,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2dddf067-11e3-426f-a3d4-4cb7c212d417",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7386,8 +7726,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5b098c8b-173f-4451-8438-391e0b31ba87",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7402,8 +7742,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3cf3040d-294a-4e6a-817b-0e3ccc6da5d0",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7496,8 +7836,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--33b626c0-470f-49b0-9692-d6d94d71ed5e",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7512,8 +7852,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b1081bc9-1f31-4e62-988d-9585dc822b05",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7652,8 +7992,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--180e4181-d983-4e85-9480-1bf8fcc0c205",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7668,8 +8008,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--baddb151-0693-404d-8932-0401d70b5e59",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7808,8 +8148,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--57ce0109-6f2c-407d-970d-5a36d6b2563d",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7824,8 +8164,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5ae21779-37bf-4f89-8c88-5eeef16309a8",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7918,8 +8258,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--98f0e997-4bd4-421d-8d35-7deede46b9f6",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7934,8 +8274,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a3a35745-56e1-4961-9fa6-f66224f9af37",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8028,8 +8368,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--172c4320-9a98-42ab-bdef-5fa4b8e5c59b",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8044,8 +8384,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--8d6f9156-5194-475c-9f1a-528737f4df82",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8138,8 +8478,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5bdc38b6-30bb-41d0-b713-763a1a9a3959",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8154,8 +8494,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--166e2912-b5f8-4ade-901b-34257faccdd1",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8250,8 +8590,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5643ab5b-90ef-4279-971d-a1e63c2c75e7",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8266,8 +8606,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--925a780c-9aed-4986-a22a-7ca2d8fb2084",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8360,8 +8700,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5da2d0b5-9647-4773-9a70-70722e6602fe",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8376,8 +8716,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1c0b983c-f9bc-41af-9f9f-0d664bde4f34",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8557,8 +8897,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93b72b3b-4798-4f79-ba16-6c54042e89f1",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8573,8 +8913,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--44899d9d-98e1-4d8e-8123-531651d70dfc",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8667,8 +9007,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c3c7545e-3154-4e1f-b28d-f3398a83fe52",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8683,8 +9023,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6f9fea2f-55c0-48d3-b079-106b508c3a5e",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8777,8 +9117,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--03d60877-2de0-46a1-b2b6-b5296ce3cbdd",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8793,8 +9133,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--23f92ea2-8ecf-4c61-a31f-9bacf27971f4",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8887,8 +9227,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3ebba742-aed7-4b65-879d-ddc3d1d74a37",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8903,8 +9243,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--66e6084f-17c4-4b22-870a-72c40855373a",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9041,8 +9381,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cfc7beca-a533-48b6-b176-d8a4d2a54655",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9057,8 +9397,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--cfae5f25-4048-4f63-9ee2-7f05d6651307",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9373,8 +9713,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0bea25b6-bd06-4a02-8ca4-40b7b4ac2c46",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9389,8 +9729,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--c4f181f9-5d78-4f5b-af51-cbba3f762f56",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9483,8 +9823,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e8ee5e9b-c6e5-4966-9b2e-dbdb0c60a300",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9499,8 +9839,8 @@
       "type": "note",
       "spec_version": "2.1",
       "id": "note--79187d10-97fd-45e5-992f-ebaac2259b9f",
-      "created": "2026-09-22T00:00:00Z",
-      "modified": "2026-09-22T00:00:00Z",
+      "created": "2026-09-28T06:45:54Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9517,7 +9857,7 @@
       "spec_version": "2.1",
       "id": "report--d1dcd276-3e72-4de8-91ac-208726e53c0a",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-09-28T06:45:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9526,7 +9866,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-09-28T06:45:54Z",
       "object_refs": [
         "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
         "threat-actor--45348411-40f2-458c-b579-8b3f7af00026",
@@ -9540,6 +9880,7 @@
         "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
         "infrastructure--f484a05a-dfe0-44d3-9b1f-507eb4eaae69",
         "infrastructure--8a41d2be-86b9-4a41-ba9e-403e4cfcd464",
+        "incident--5f032f0b-b68b-426f-8f66-721fb4836480",
         "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
         "identity--b8671f95-b83a-4f29-805f-52df2db7a49c",
@@ -9547,6 +9888,8 @@
         "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
         "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
         "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
+        "identity--d5df9428-b281-4c7a-ac76-47bb6233c39b",
+        "identity--a532c420-b490-4879-a185-3c29ee5d8695",
         "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
         "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
         "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",

@@ -1,8 +1,74 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--unc6240",
-  "updated_at": "2026-07-27T11:04:38Z",
+  "updated_at": "2026-09-28T06:44:40Z",
   "records": [
+    {
+      "record_id": "daily-record--4bac1ce3c4361ff15df0486a",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "unc6240",
+        "canonical_name": "UNC6240",
+        "matched_term": "ShinyHunters",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "ShinyHunters"
+      },
+      "activity": {
+        "title": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+        "summary": "ShinyHuntersは、修正済みのOracle PeopleSoft脆弱性CVE-2026-35273を再び悪用している。標的は更新を適用せず、WAFによる遮断に頼っていたサーバーだ。 攻撃ではパスの先頭文字「P」を「%50」に変えるなどし、WAFの文字列照合を回避する。WebLogicはその文字を復号し、脆弱なPSEMHUBの処理へリクエストを渡す。 攻撃者はまず複数のPOSTリクエストで脆弱性を確認し、その後コマンド実行やJSPウェブシェルの設置を行った。Googleは世界の数十台でウェブシェルを確認している。 侵害後にはSIDEEYEバックドア、Neo-reGeorgによる通信トンネル、正規の遠隔管理ツールMeshAgentが使われた。対象業種は教育、医療、政府などに広がる。 ShinyHuntersはFBI JobsにもこのWAF回避を使ったと認めたが、主張するデータ窃取や「別の新たなゼロデイ脆弱性」は記事時点で確認されていない。",
+        "news_date": "2026-09-28",
+        "news_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-uses-waf-bypass-trick-in-oracle-peoplesoft-attacks/",
+        "primary_url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+        "activity_reference": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+        "news_path": "daily-news/news/2026_07-09/20260928.md"
+      },
+      "confidence": "high",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "source_path": "daily-news/news/2026_07-09/20260928.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用(一次資料が実行主体を明記)。Mandiant / Google Threat Intelligence Group の原文(2026-09-25公開)をWebFetchで取得して確認した。原文は「Mandiant and Google Threat Intelligence Group (GTIG) have identified renewed mass exploitation of CVE-2026-35273 by UNC6240 (ShinyHunters)」と記し、UNC6240 の命名元である Mandiant 自身が本キャンペーンの実行主体として明記している。製品・exploitの開発元ではなく攻撃実行主体としての記述であり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。活動期間は原文が明示する観測日だけを用いた。first_observed は「between May 27 and June 9, 2026」のゼロデイ悪用開始日、last_observed は「In September 2026 intrusions」の月次表記を月初へ正規化した値である。原文が言及する Oracle の帯域外セキュリティアラート(2026-06-10)は対応側の日付であり活動期間へ含めない。確認した技術要素: WAFの文字列照合を回避するためパス先頭の「P」を「%50」へ置換し、WebLogic側の復号後に脆弱なPSEMHUB処理へ到達させる。事前に複数のPOSTで脆弱性を確認したのちコマンド実行とJSPウェブシェル設置を行う。ウェブシェルは x.jsp(クロスプラットフォームのコマンド実行)、u.jsp / u2.jsp(分割アップロードと実行)、tunnel.jsp / tunnel.jspx(Neo-reGeorg)。侵害後は C++バックドア SIDEEYE(trojanized Ple64.exe として配備)と正規RMMの MeshAgent を使用する。標的は「higher education, technology, IT services, healthcare, agriculture, transportation, and government」へ拡大し、世界で数十台にウェブシェルが確認されている。未解決点: 同一アクターによるFBI侵害とデータ窃取の主張(2026-09-23 BleepingComputer)は本原文に一切記載がなく、GTIG は確認していない。当該主張は別レコードとして不採用にしており、本活動の根拠にも含めない。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "title",
+        "evidence_text": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "GTIG/Mandiant: \"exploited CVE-2026-35273 as a zero-day between May 27 and June 9, 2026\" のゼロデイ悪用開始日",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-05-27T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "GTIG/Mandiant: \"In September 2026 intrusions, UNC6240 continued to use IT-themed infrastructure associated with MeshAgent\"。月のみの明示のため月初へ正規化した",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-09-01T00:00:00Z"
+        }
+      },
+      "reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-25T00:00:00Z"
+      },
+      "source_commit": "951655087a7e24754057074c9f1050d3a9d74364"
+    },
     {
       "record_id": "daily-record--84bdaed82f947b4fb050d07d",
       "review_status": "approved",
@@ -48,6 +114,72 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--a3aa636f41a37033557026cb",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "unc6240",
+        "canonical_name": "UNC6240",
+        "matched_term": "ShinyHunters",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "ShinyHunters"
+      },
+      "activity": {
+        "title": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫",
+        "summary": "恐喝グループShinyHuntersはClopランサムウェアのデータリークサイトへ侵入し、Torサイトを改ざんした。BleepingComputerも改ざんとファイル設置を確認している。 ShinyHuntersは、Grav CMSの未認証ファイルアップロード脆弱性を悪用し、最初にメッセージを記載した小さなテキストファイルをClopのサーバーへ配置したと主張している。 その後、サーバーへの完全アクセスを取得し、ソースコード、Grav CMSプラグイン、システムログ、Tor onionサービスの秘密鍵を窃取したと主張した。 BleepingComputerはサーバー改ざんを独自確認した一方、ログ、ソースコード、onion秘密鍵の窃取については独立して確認できていない。 ShinyHuntersはClopとの対立への報復だと説明し、窃取したとするデータを材料にClopへ72時間以内の連絡を要求して恐喝する意向を示している。",
+        "news_date": "2026-09-21",
+        "news_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+        "primary_url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+        "activity_reference": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+        "news_path": "daily-news/news/2026_07-09/20260921.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "source_path": "daily-news/news/2026_07-09/20260921.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用(第三者による独立確認あり)。BleepingComputer 原文(datePublished 2026-09-19T09:48:32-04:00、2026-09-21追補)をcurlでHTTP 200を取得して確認した。攻撃者の自称にとどまらない独立確認が3系統ある。(1) BleepingComputer が Clop の Tor サイトからアップロードされたファイルを直接ダウンロードでき、改ざんページ(ShinyHunters のロゴである Umbreon のASCIIアート)が Clop のインフラから配信されていることを確認している。(2) Grav CMS 開発元が、ShinyHunters が BleepingComputer へ提供した悪用手法の記述について「Yes, it's a legitimate flaw, and the threat actor's description is accurate」と確認している(2026-09-25続報)。(3) Clop 自身が Grav の未更新による自サーバー侵害を認め、リークサイトを新しいonionアドレスへ移転した(同続報)。実行主体は改ざんページとリークサイト掲載により ShinyHunters 自身が名乗り、被害側の Clop も相手方として認識している。一方で、ソースコード・Grav CMSプラグイン・システムログ・Tor onionサービス秘密鍵の窃取は攻撃者の主張のみであり、BleepingComputer は独立確認できていない。Clop は「the server contained nothing but content」として価値ある運用・財務データの窃取を否定しており、両論が対立している。このためレコードの confidence は medium とし、窃取範囲は確定表現にしない。活動期間は原文が明示する日のみを用いた。2026-09-26 のニュースファイル収録分(一次ソースが Grav の GHSA-hmcx-ch82-3fv2)は同一インシデントの続報であるため別活動にせず、当該レコードは不採用として本活動へ集約した。続報で判明した技術詳細(CVE-2026-42608、Clop側が Grav 1.7.43 を使用、__unique_form_id__ へディレクトリトラバーサル列を与えて tmp/forms 外へ書き込む未認証パストラバーサル、修正版 Grav 1.7.53.4)は本活動の根拠に含める。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "title",
+        "evidence_text": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "BleepingComputer: \"The attack began Friday night when ShinyHunters exploited ... Grav CMS\"。記事公開は2026-09-19(土)であり、直前の金曜は2026-09-18",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-18T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "BleepingComputer 2026-09-21追補: ShinyHunters がリークサイト上で恐喝の日次更新を継続し、要求額の増額と追加要求を提示していることを確認した日",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-21T00:00:00Z"
+        }
+      },
+      "reported_at": {
+        "basis": "source-publication",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-19T00:00:00Z"
+      },
+      "source_commit": "951655087a7e24754057074c9f1050d3a9d74364"
     },
     {
       "record_id": "daily-record--e5ea0ab20b6a80de211f0d13",

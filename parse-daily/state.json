@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
-  "last_scanned_date": "2026-09-19",
+  "last_scanned_commit": "951655087a7e24754057074c9f1050d3a9d74364",
+  "last_scanned_date": "2026-09-28",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -3727,6 +3727,233 @@
         }
       ],
       "analyst_notes": "本エントリは 2026-09-20T07:20:00Z のエントリと同じ走査窓を扱った並行作業の追補である。同日に2つのセッションが同じ日次チェックを実行し、PR #53 が先に main へマージされたため、本ブランチ(PR #54)側では重複部分を main の内容へ寄せて解決した。具体的には transparent-tribe の適用結果、contagious-interview と unc4899 への取込、SilkParasite の台帳登録は main の版を採用し、review-decisions.json の重複キー2件(transparent-tribe の Zscaler 記事、indigozebra の Hunt.io 記事)は main の判断を残した。本ブランチ固有の成果は、profiles/famoussparrow の作成(台帳エントリは merged)、IOC一覧と記事を1活動へ集約するための config.json の別名追加、および validate_daily.py と enrich_activity_intelligence.py の2つの修正である。並行実行の検知が事後になった点は運用上の課題として記録する。同じ走査窓を複数セッションが処理すると、同一資料が異なる経路(日次キュー / osint-updates)で二重に反映されうる。state.json の last_scanned_date は 2026-09-19 のままで変更していない。"
+    },
+    {
+      "completed_at": "2026-09-28T07:10:00Z",
+      "window": {
+        "since": "2026-09-19",
+        "until": "2026-09-28"
+      },
+      "source_commit": "951655087a7e24754057074c9f1050d3a9d74364",
+      "statistics": {
+        "news_files": 8,
+        "articles": 74,
+        "review_records": 13,
+        "approved_records": 4,
+        "rejected_records": 9,
+        "pending_records": 0,
+        "applied_records": 4,
+        "ioc_observations": 22,
+        "unmatched_actor_values": 312,
+        "materialization_window": "2026-09-20以降ちょうど1週間、日次取込が停止していた分をまとめて処理した走査である。前回エントリ(2026-09-20T08:20:00Z)以降にincremental_scansのエントリ・台帳追記・日次取込コミットはいずれも存在せず、未反映のまま残っていた過去の実行結果は無い。承認4件のうちtransparent-tribeの1件は2026-09-20に反映済みの持ち越しレコードで、再適用は冪等である。enrich_activity_intelligence.py・enrich_targeting_scope.py・materialize_activity_diamonds.py・render_profile.pyは--actorでunc6240、teampcp、transparent-tribeに限定して実行した。activity-intelligence-report.jsonとprofiles/targeting-audit.jsonは--actor併用で全体が3プロファイルへ切り詰められるため、--applyなしの全件実行で作り直した。build_opencti_bundles.py --pruneとbuild_actor_research_dossiers.py、ui/build_data.py、ui/build_portal_index.pyは全件で実行した。"
+      },
+      "applied": [
+        {
+          "actor": "unc6240",
+          "name": "ShinyHunters、WAF回避を使ってOracle PeopleSoftへの攻撃を再開",
+          "source": "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-renewed-mass-exploitation-campaign-targeting-oracle-peoplesoft",
+          "decision": "採用(confidence: high)。Mandiant / GTIG原文(2026-09-25公開)をWebFetchで取得して確認した。原文が「renewed mass exploitation of CVE-2026-35273 by UNC6240 (ShinyHunters)」とUNC6240の命名元自身の言葉で実行主体を明記している。活動期間は原文が明示する観測日のみを用い、first_observed=2026-05-27(ゼロデイ悪用開始日、day)、last_observed=2026-09(月初へ正規化、month)とした。Oracleの帯域外アラート2026-06-10は対応側の日付のため期間へ含めない。公開日2026-09-25はreported_at(basis: source-publication)へ分離した。stix_object_typeは世界規模の大量悪用のためcampaign(既定値どおり)。"
+        },
+        {
+          "actor": "unc6240",
+          "name": "ShinyHunters、Clopのリークサイトをハッキングし、ランサムウェア集団を恐喝すると脅迫",
+          "source": "https://www.bleepingcomputer.com/news/security/shinyhunters-hacks-clop-leak-site-threatens-to-extort-ransomware-gang/",
+          "decision": "採用(confidence: medium)。原文(datePublished 2026-09-19T09:48:32-04:00、2026-09-21追補)をcurlで取得して確認した。BleepingComputerによる設置ファイルの直接取得と改ざん確認、Grav CMS開発元による悪用手法の正確性確認、Clop自身の侵害認否という3系統の独立確認がある。一方で窃取範囲は攻撃者の主張のみでClopが否定しており、両論を残しconfidenceをmediumとした。期間はfirst_observed=2026-09-18(原文「began Friday night」。公開日09-19は土曜)、last_observed=2026-09-21。stix_object_typeは1組織1サーバーへの個別侵害のためincidentへcuration(既定値campaignから変更)。"
+        },
+        {
+          "actor": "teampcp",
+          "name": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
+          "source": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
+          "decision": "採用(confidence: medium)。原文をcurlで取得して確認した(JSON-LD datePublished 2026-09-18T17:20:09、表示も Sep 18, 2026)。tech-memo 2026-09-23のIOC収集ログが記す公開日2026-09-16は攻撃者のフォーラム投稿日であり資料の公開日ではないため、reported_atは2026-09-18とした。原文がTeamPCP(UNC6780)の実行として明示するのはTanStack npm侵害(2026-05-11)とMistral AIリポジトリ侵害の犯行主張(2026-05-22)のみで、CrowdSecの非公開リポジトリ約170件の複製はBreachForumsの創設者の一人とメンバーdiencrackedの行為として別記され、2026-08-17のAWS SNSトークン権限確認は未帰属である。したがって活動をTanStack侵害に限定し、下流の資格情報悪用を観測期間へ繰り入れずIOC 1件も結び付けない。activity_overridesでタイトル・要約をTeamPCP帰属分へ限定した。stix_object_typeは単一リポジトリへの個別侵害のためincidentへcuration。"
+        },
+        {
+          "actor": "transparent-tribe",
+          "name": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+          "source": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+          "decision": "持ち越しの再適用(2026-09-20に反映済み)。今回の走査窓が2026-09-19を含むため再びキューへ現れた。IDは安定値から生成されるため重複は生じない。ただし再適用でactivity--daily-f67a995b730f22598f48のttp_refs/victim_refsが一旦失われ、profile validatorがactivity backlink missingを4件報告した。enrich_activity_intelligence.pyの実行で復元され最終的にerrors=0となっている。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "unc6240",
+          "name": "ShinyHunters、Grav CMSのパストラバーサル脆弱性を悪用してClopのリークサイトに侵入",
+          "source": "https://github.com/getgrav/grav/security/advisories/GHSA-hmcx-ch82-3fv2",
+          "decision": "不採用(同一インシデントの重複)。activity_referenceが脆弱性アドバイザリであり、記事自体は2026-09-21収録分の続報。承認すると同じインシデントから2つ目のActivityが生成されるため、続報の技術詳細(CVE-2026-42608、Grav 1.7.43、__unique_form_id__へのパストラバーサル、修正版1.7.53.4、Clopの新onion移転)は採用側の活動へ集約した。"
+        },
+        {
+          "actor": "unc6240",
+          "name": "ShinyHunters、PeopleSoftゼロデイ侵害でFBIをハッキングしデータを窃取したと主張",
+          "source": "https://www.bleepingcomputer.com/news/security/shinyhunters-claims-fbi-hack-data-theft-in-peoplesoft-zero-day-breach/",
+          "decision": "不採用(犯行主張のみ・第三者確認なし)。BleepingComputerが独自確認したのはFBI求人サイトの改ざんのみで、ゼロデイ・横展開・窃取データ量は独立検証されていない。同一アクターのPeopleSoft悪用を扱うGTIG原文(2026-09-25)にFBIへの言及は一切なく、ベンダー側の裏付けも無い。犯行主張のみを根拠とする活動の扱いは方針未決であり、FLHSMV/DAVIDの先行判断と同じ保留的不採用とする。"
+        },
+        {
+          "actor": "unc4899",
+          "name": "「こちらに電話するな、APIから連絡する」：TraderTraitorのバックドア、暗号資産と無関係な被害組織でも再出現",
+          "source": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "decision": "不採用(反映済みの重複)。2026-09-20にosint-updates経由でactivity--unc4899-tradertraitor-india-it-services-2026として反映済み。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "BragJack攻撃、悪意ある拡張機能を通じてAIブラウザエージェントを乗っ取る",
+          "source": "https://forever.security/blog/bragjack-hijacking-5-browsers-via-built-in-ai-assistants/",
+          "decision": "不採用(名称衝突)。alias「CHROMIUM」とブラウザエンジン名の衝突。excluded_name_collisionsへ記録した。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "開発文書の例示ドメインがClickFix攻撃の誘導ページに",
+          "source": "https://www.manifold.security/blog/third-party-com-placeholder-clickfix",
+          "decision": "不採用(名称衝突)。同上。excluded_name_collisionsへ記録した。"
+        },
+        {
+          "actor": "wizard-spider",
+          "name": "Ryukランサムウェアのメンバー、禁錮24カ月の判決",
+          "source": "https://www.justice.gov/usao-or/pr/armenian-national-extradited-united-states-sentenced-federal-prison-ransomware-extortion",
+          "decision": "不採用(法執行記事であり攻撃Activityではない)。一致語の根拠文は背景説明中の過去言及。schema 1.4のassociated_entities(threat-actor-individual)とlegal_actionsへ反映すべき別レビュー候補だが、一次資料である米司法省プレスリリースをjustice.govのボット検証(HTTP 401)により取得できず、量刑日・罪状認否日・身柄引渡日・被害組織の正式名を政府資料で確認できないため作成していない。"
+        }
+      ],
+      "pending": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--carbo506",
+          "action": "added",
+          "status": "tracking",
+          "note": "ThreatDown 2026-09-22。CARBONATOボットネット運用者のTelegramハンドル。IOC 8観測。ベンダー追跡名ではない点を明記した。"
+        },
+        {
+          "cluster_id": "unknown-cluster--unkk",
+          "action": "added",
+          "status": "tracking",
+          "note": "Group-IB 2026-09-23。RemControl Androidバンキングトロジャンの運用者。IOC 29観測。Medusa UNKNとの関連は示唆に留まる。"
+        },
+        {
+          "cluster_id": "unknown-cluster--exvicy",
+          "action": "added",
+          "status": "tracking",
+          "note": "Sekoia TDR 2026-09-21。ClickFix配布フレームワークExvicyのMaaS運用者@Exvicy。IOC 106観測。フレームワーク名と運用者を分離して登録した。"
+        },
+        {
+          "cluster_id": "unknown-cluster--storm-2992",
+          "action": "added",
+          "status": "tracking",
+          "note": "Microsoft 2026-09-22。EvilTokens PhaaSの開発・サポート主体。tech-memo 2026-09-23に記事はあるがStorm-2992の語は一次ソース側にしか現れずIOCも無いため、daily_check.pyの2系統いずれでも未検知だった。"
+        },
+        {
+          "cluster_id": "unknown-cluster--jadepuffer",
+          "action": "added",
+          "status": "tracking",
+          "note": "Microsoft 2026-09-25。Storm-3168はMicrosoftによるJADEPUFFERの追跡名。tech-memo未収録で一次情報源巡回でのみ検知。Sysdigの2026年7月初報は未取得。"
+        },
+        {
+          "cluster_id": "unknown-cluster--storm-2570",
+          "action": "added",
+          "status": "tracking",
+          "note": "Microsoft 2026-09-24。Qilin/DragonForce/Anubis/BERTを渡り歩くアフィリエイト。tech-memo未収録。原文にIOCなし。"
+        },
+        {
+          "cluster_id": "unknown-cluster--red-heron",
+          "action": "observation-added",
+          "status": "tracking",
+          "note": "GreyNoise 2026-09-21(tech-memo 2026-09-23収録)の第2観測を追加しlast_seenを2026-09-23へ更新した。Acronis TRUと合わせ独立した一次資料が2本となり昇格閾値に到達する。GreyNoiseの評価は「same or related」で同一性の断定ではないため、プロファイル昇格は提案に留め指示を待つ。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "Exvicy",
+          "observations": 106,
+          "source": "https://www.sekoia.com/blog/exvicy-a-copycat-of-the-errtraffic-malware-distribution-framework",
+          "note": "unknown-cluster--exvicyとして台帳へ登録。IOC CSVのactor列はフレームワーク名を採用しているが、台帳ではフレームワークと運用者を分離した。"
+        },
+        {
+          "value": "UNKK",
+          "observations": 29,
+          "source": "https://www.group-ib.com/blog/remcontrol-android-banking-trojan/",
+          "note": "unknown-cluster--unkkとして台帳へ登録。"
+        },
+        {
+          "value": "Carbo506",
+          "observations": 8,
+          "source": "https://www.threatdown.com/blog/carbonato/",
+          "note": "unknown-cluster--carbo506として台帳へ登録。"
+        },
+        {
+          "value": "Graphalgo",
+          "observations": 7,
+          "source": "https://www.aikido.dev/blog/graphalgo-terraform-go-modules",
+          "note": "台帳へは登録しない。ReversingLabsが2026年2月に命名したキャンペーン名で同社はLazarusへ帰属しており(tech-memo 2026-02-13に既出)、未帰属クラスタではない。Aikidoの2026-09-22報告自体は帰属を行わず根拠はマルウェア重複のみであるため、重複だけでLazarusの活動と断定しない。ReversingLabs原文の確認を経てlazarus/contagious-interviewへの反映可否を判断する別レビュー候補として残す。"
+        },
+        {
+          "value": "Red Heron (medium confidence)",
+          "observations": 9,
+          "source": "https://www.greynoise.io/blog/open-season-on-kapibala-attacker-steals-government-records-wordpress-exploitation",
+          "note": "unknown-cluster--red-heronへ第2観測として追加。"
+        },
+        {
+          "value": "TraderTraitor (UNC4899, PUKCHONG, Jade Sleet)",
+          "observations": 38,
+          "note": "config.jsonのactor_value_aliasesへUNC4899への写像を追加した。原典が単一のexact対応を明示する複合表記である。"
+        },
+        {
+          "value": "TeamPCP (UNC6780)",
+          "observations": 1,
+          "note": "config.jsonのactor_value_aliasesへTeamPCPへの写像を追加した。"
+        },
+        {
+          "value": "SilkParasite",
+          "observations": 114,
+          "note": "unknown-cluster--silkparasiteとして登録済み(2026-09-20)。変更なし。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-25",
+          "result": "該当あり(3件)。2026-09-25 Storm-3168(JADEPUFFER関連のAzureサービスプリンシパル悪用)、2026-09-24 Storm-2570(複数RaaSを渡り歩くアフィリエイト)、2026-09-22 EvilTokens(開発主体Storm-2992)。いずれもtech-memoのdaily-newsに未収録か、収録されていてもアクター指定子が一次ソース側にしか現れずdaily_check.pyでは検知できなかった。3件とも原文を確認しunknown-clusters.jsonへ登録した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-25",
+          "result": "該当あり(1件・キュー経由で反映済み)。2026-09-25のShinyHunters PeopleSoft大量悪用を原文確認しUNC6240へ反映した。他の命名アクター記事(GTIG AI Threat Tracker 2026-09-08、Distinct Clusters Target Individuals of Interest to Russia、BREEZE COMET、UNC6671 Rebrands)はいずれも既反映。一覧ページに公開日が表示されない状態が続いている。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-09",
+          "result": "該当なし。前回走査以降の新規公開は2026-09-25(consulting myths)、2026-09-21(AWS IAM)、2026-09-18(AgentCore Harness)で、いずれも命名アクターもCL-/TGR-クラスタも含まない。命名クラスタを含む最新は2026-09-09のCL-CRI-1171で台帳既出。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし。前回走査以降の新規公開は2026-09-24(consultancy offer)、2026-09-22(CAIRN、The Closed Quorum)で、CLOSEDQUORUMはマルウェア名であり実行主体の命名はない。命名アクターを含む最新は2026-09-17の日本のランサムウェア動向(The Gentlemen / Qilin)で、いずれも台帳既出。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし。一覧の最新は2026-09-17のSparroWock(FamousSparrow)で2026-09-20に反映済み。前回走査以降の新規公開はない。研究記事が/en/business-security/等の別セクションへ載る死角は未解消。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-09-18",
+          "result": "該当なし。一覧の最新は2026-09-18のTraderTraitorで2026-09-20に反映済み。前回走査以降の新規公開はない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-24",
+          "result": "該当なし。前回走査以降の新規公開はMacSync(2026-09-24、tech-memo 2026-09-26収録済み)とPAYLOAD(2026-09-21)。PAYLOADはランサムウェアファミリ名かつGPO名で、原文(Kaspersky GERT、中東の製造業、2026年4月のインシデント)はアクターを命名も帰属もしていないため台帳へ登録しない。NightEagle(09-16)、MovieReaper(09-17)、Hacking Cat(09-11)、Toy Ghouls(09-04)は既出。"
+        },
+        {
+          "publisher": "Kaspersky Securelist（ロシア語版）",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-09-24",
+          "result": "該当なし。.com と同一の記事構成で、.ru 限定の新規公開はない。MacSync(2026-09-24)、PAYLOAD(2026-09-21)まで確認した。"
+        }
+      ],
+      "analyst_notes": "1週間の空白後のまとめ走査。作業上の知見を3点残す。(1) apply_review_queue.py の再適用は冪等だが、既反映のActivityのttp_refs / victim_refs は一旦失われ enrich_activity_intelligence.py の実行で復元される。apply直後のprofile validatorのactivity backlink missingはこの中間状態であり、enrich工程まで実行して初めてerrors=0になる。(2) enrich_activity_intelligence.py の --report と enrich_targeting_scope.py は --actor と併用すると、全体集計であるactor_profile/activity-intelligence-report.json と profiles/targeting-audit.json を対象アクター分だけへ書き換えてしまう(774→3、775→3)。--actorで限定適用する場合は、これら2ファイルを --apply なしの全件実行で作り直す必要がある。(3) STIX種別をcurationで変更した場合、apply_review_queue.py が既に描画した generated/profile.stix2.json は旧種別のまま残るため、build_opencti_bundles.py が「incident bundle must contain its one declared primary activity」で失敗する。migrate_stix_modeling.py の後に render_profile.py を --iocs / --artifacts 付きで再実行する。--iocs を省略するとIndicatorが描画されず「canonical IOC has no rendered Indicator」で失敗する。なお enrich系を全775プロファイルへ --actor なしで適用すると、apt33とapt37が同一のcountry identityを異なるexternal_referencesで出力し build_opencti_bundles.py が「shared STIX ID has conflicting semantics」で失敗する。HEAD時点では再現しないため、全件enrichの副作用として別途調査が必要である。"
     }
   ],
   "abandoned_branch_reconciliation": {
