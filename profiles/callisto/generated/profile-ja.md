@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-10-12T09:14:53Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -119,6 +119,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--daily-45053606527c84c6ce52 | CosmicPulse | Callisto Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2026-01 | 2026-08 | 高 | `source--daily-b49ec0347b9e3a649f9d` |
 | malware--spica | Spica | [Spica](https://attack.mitre.org/software/S1140) is a custom backdoor written in Rust that has been used by [Star Blizzard](https://attack.mitre.org/groups/G1033) since at least 2023.(Citation: Google TAG COLDRIVER January 2024)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -163,12 +164,14 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 | phishing-campaign | 2026-01 | 2026-08 | 2026-10-01 |  | malware--daily-45053606527c84c6ce52 | ttp--activity-rule--79eb5c35f426b4cab7b9, ttp--activity-rule--f89a12fa9a6b37d623fc | victim--activity-rule--368fc15f76f81a9d56d5 | Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、少なくとも13件の大規模なフィッシング活動を行ったと報告した。ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。 攻撃者は最初のメールに返信した相手へ、パスワード付きのRARまたはZIPを送る。送信には侵害したWebサイト上で作成したアカウントも使い、会議への招待などを装って添付ファイルを開かせた。 RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。従来のClickFixより被害者に求める操作を減らしている。 4月に確認されたMSIは、端末情報の送信と遠隔DLLの実行、WebDAVの準備、CosmicPulseの取得を担う3つのタスクを作成した。タスク名は正規のネットワーク管理機能を装っていた。 7月の攻撃では、ZIP内のRARにあるLNKからPDFを取得し、PDFに隠したBase64形式のコードを実行してMSIを導入した。Microsoftは関連するIOCと、プロセスやタスクを調べるハンティングクエリを公開している。 | 高 | `source--daily-b49ec0347b9e3a649f9d` |
 | Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--sector--e7608f51421ca8b1e297, target--targeting-audit--region--08d97b9230a613ff9537 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 | Callisto Group | CosmicPulse | T1204.004 Malicious Copy and Paste, T1053.005 Scheduled Task | 情報なし | 情報なし | 被害事例: Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 | 高 |
 | Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | Callisto Group | 情報なし | T1105 Ingress Tool Transfer, T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | 教育・研究, NATO加盟国 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 中 |
 
 
@@ -186,6 +189,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 | 非公開 | aggregate | multiple-organizations | reported |  | malware--daily-45053606527c84c6ce52 | ttp--activity-rule--79eb5c35f426b4cab7b9, ttp--activity-rule--f89a12fa9a6b37d623fc | メール／メールアカウント, エンドポイント |  | 2026-01 | 2026-08 | 2026-10-01 | 高 | `source--daily-b49ec0347b9e3a649f9d` |
 | 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b |  | data-theft: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 不明 | 不明 | 2025-05-09 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -195,6 +199,8 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | Command And Control | T1105 | Ingress Tool Transfer | スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 | Execution | T1204.004 | Malicious Copy and Paste | このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 | Execution | T1059.001 | PowerShell | このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Execution | T1204.004 | Malicious Copy and Paste | 従来のClickFixより被害者に求める操作を減らしている。 |  | activity--daily-04c084ae54d70ce98309 | 2026-01 | 2026-08 | 中 | `source--daily-b49ec0347b9e3a649f9d` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。 | malware--daily-45053606527c84c6ce52 | activity--daily-04c084ae54d70ce98309 | 2026-01 | 2026-08 | 中 | `source--daily-b49ec0347b9e3a649f9d` |
 | Execution | T1059.007 | JavaScript | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used JavaScript to redirect victim traffic from an adversary controlled server to a server hosting the Evilginx phishing framework.(Citation: StarBlizzard)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used stolen credentials to sign into victim email accounts.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Collection | T1114.002 | Remote Email Collection | [Star Blizzard](https://attack.mitre.org/groups/G1033) has remotely accessed victims' email accounts to steal messages and attachments.(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -220,8 +226,8 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## IOC／artifact概要
 
-- IOC値: 109件
-- IOC観測: 139件
+- IOC値: 137件
+- IOC観測: 167件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
@@ -249,21 +255,22 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | source--callisto--9ec82e2a9bfd4c83 | Nisos Research Coldriver Group |  | 不明 | Calisto/Nisos-Research-Coldriver-Group.pdf | report | TLP:CLEAR | 中 |
 | source--callisto--f45614e65d3b5aba | BlueCharlie Continues to Deploy New Infrastructure in 2023 |  | 2023 | Calisto/BlueCharlie_Continues_to_Deploy_New_Infrastructure_in_2023.pdf | report | TLP:CLEAR | 中 |
 | source--daily-000ea03bc7f9b3f702ec | Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | bleepingcomputer.com | 2025-05-09 | https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/ | osint-report | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--daily-b49ec0347b9e3a649f9d | Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 | microsoft.com | 2026-10-01 | https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/ | osint-report | TLP:CLEAR | 中 |
+| source--doj-star-blizzard-center18-2023 | Two Russian Nationals Working with Russia's Federal Security Service Charged with Global Computer Intrusion Campaign | U.S. Department of Justice | 2023-12-07 | https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer | government-legal | TLP:CLEAR | 高 |
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--doj-star-blizzard-center18-2023 | Two Russian Nationals Working with Russia's Federal Security Service Charged with Global Computer Intrusion Campaign | U.S. Department of Justice | 2023-12-07 | https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer | government-legal | TLP:CLEAR | 高 |
-| source--treasury-star-blizzard-sanctions-2023 | United States and the United Kingdom Sanction Members of Russian State Intelligence-Sponsored Advanced Persistent Threat Group | U.S. Department of the Treasury | 2023-12-07 | https://home.treasury.gov/news/press-releases/jy1962 | government-sanctions | TLP:CLEAR | 高 |
 | source--ncsc-star-blizzard-center18-2023 | UK and allies expose Russian intelligence services for cyber campaign of attempted political interference | UK National Cyber Security Centre | 2023-12-07 | https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference | government-assessment | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--treasury-star-blizzard-sanctions-2023 | United States and the United Kingdom Sanction Members of Russian State Intelligence-Sponsored Advanced Persistent Threat Group | U.S. Department of the Treasury | 2023-12-07 | https://home.treasury.gov/news/press-releases/jy1962 | government-sanctions | TLP:CLEAR | 高 |
 
 ## 自由記述
 

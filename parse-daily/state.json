@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "951655087a7e24754057074c9f1050d3a9d74364",
-  "last_scanned_date": "2026-09-28",
+  "last_scanned_commit": "527918454fa24715403903ea92964bc3a0a8d224",
+  "last_scanned_date": "2026-10-12",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -3954,6 +3954,24 @@
         }
       ],
       "analyst_notes": "1週間の空白後のまとめ走査。作業上の知見を3点残す。(1) apply_review_queue.py の再適用は冪等だが、既反映のActivityのttp_refs / victim_refs は一旦失われ enrich_activity_intelligence.py の実行で復元される。apply直後のprofile validatorのactivity backlink missingはこの中間状態であり、enrich工程まで実行して初めてerrors=0になる。(2) enrich_activity_intelligence.py の --report と enrich_targeting_scope.py は --actor と併用すると、全体集計であるactor_profile/activity-intelligence-report.json と profiles/targeting-audit.json を対象アクター分だけへ書き換えてしまう(774→3、775→3)。--actorで限定適用する場合は、これら2ファイルを --apply なしの全件実行で作り直す必要がある。(3) STIX種別をcurationで変更した場合、apply_review_queue.py が既に描画した generated/profile.stix2.json は旧種別のまま残るため、build_opencti_bundles.py が「incident bundle must contain its one declared primary activity」で失敗する。migrate_stix_modeling.py の後に render_profile.py を --iocs / --artifacts 付きで再実行する。--iocs を省略するとIndicatorが描画されず「canonical IOC has no rendered Indicator」で失敗する。なお enrich系を全775プロファイルへ --actor なしで適用すると、apt33とapt37が同一のcountry identityを異なるexternal_referencesで出力し build_opencti_bundles.py が「shared STIX ID has conflicting semantics」で失敗する。HEAD時点では再現しないため、全件enrichの副作用として別途調査が必要である。"
+    },
+    {
+      "completed_at": "2026-10-12T10:40:00Z",
+      "window": {
+        "since": "2026-09-28",
+        "until": "2026-10-12"
+      },
+      "source_commit": "527918454fa24715403903ea92964bc3a0a8d224",
+      "statistics": {
+        "news_files": 13,
+        "articles": 121,
+        "review_records": 17,
+        "approved_records": 4,
+        "applied_records": 4,
+        "rejected_records": 13,
+        "ioc_observations": 43
+      },
+      "notes": "9/28以降の未取り込み分の一括レビュー(バックログ反映)。一次情報源の公開一覧巡回は期間中の日次ルーチンが毎日実施済みのため本走査では省略し、ルーチンが別ブランチへ退避していた未帰属クラスタ台帳の追記19本をunknown-clusters.jsonへ統合した。"
     }
   ],
   "abandoned_branch_reconciliation": {

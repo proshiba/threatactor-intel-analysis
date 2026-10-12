@@ -729,6 +729,11 @@ def actor_attribution_context(
         # 「北朝鮮を背景とするサイバー攻撃グループ」のように、国名に
         # 「を背景とする／した」が続く形は支援国側の記述であり被害国ではない。
         or re.search(r"^\s*を背景と(?:する|した|し)", after)
+        # 「ロシアの国家支援を受けるStar Blizzard」のように、国名に
+        # 「の国家支援／政府支援を受ける」が続き、その先がラテン文字の
+        # アクター名でも帰属文脈である。被害側の「ウクライナの支援を受ける
+        # 組織」を巻き込まないよう、無修飾の「支援を受ける」は対象にしない。
+        or re.search(r"^\s*の(?:国家|政府)支援を受け(?:る|た)", after)
         # 「北朝鮮IT労働者」は当該国が送り出す実行主体側の呼称である。
         # 「日本のIT労働者」のような被害側の表現を巻き込まないよう、
         # 助詞「の」を挟まない連結形だけを帰属文脈として扱う。
@@ -1413,6 +1418,14 @@ def add_victim_case(
     activity: dict[str, Any],
     rules: dict[str, Any],
 ) -> str | None:
+    # アナリストが作成した被害事例が既にこの活動へ結び付いている場合は、
+    # 同じ活動本文からの自動集約事例を重ねて作らない(RULES.md 4.2)。
+    # curated caseが正であり、自動生成は空白を埋める補助に限る。
+    if any(
+        not ref.startswith(GENERATED_VICTIM_PREFIX)
+        for ref in activity.get("victim_refs", [])
+    ):
+        return None
     text = activity_text(profile, activity, rules)
     impacts = matching_impacts(text, rules["impacts"])
     if not has_case_signal(activity, text, impacts):

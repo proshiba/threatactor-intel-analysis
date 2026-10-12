@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-28T06:50:36Z",
+  "generated_at": "2026-10-12T11:10:25Z",
   "actor_ref": "actor--callisto",
   "actor_name": "Callisto Group",
-  "profile_updated_at": "2026-09-23T12:16:55Z",
+  "profile_updated_at": "2026-10-12T09:14:53Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -18,15 +18,15 @@
       "attribution": "lead-only"
     },
     "canonical_counts": {
-      "activities": 1,
-      "dated_activities": 0,
+      "activities": 2,
+      "dated_activities": 1,
       "relationships": 0,
       "associated_entities": 3,
       "entity_relationships": 4,
       "hunting_pivots": 0,
       "hunting_pivot_observations": 0,
-      "malware": 1,
-      "activity_linked_malware": 0,
+      "malware": 2,
+      "activity_linked_malware": 1,
       "tools": 0,
       "targets": 2,
       "motivations": 1
@@ -478,6 +478,152 @@
     "hunting_pivots": [],
     "activity_timeline": [
       {
+        "activity_id": "activity--daily-04c084ae54d70ce98309",
+        "name": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+        "activity_type": "phishing-campaign",
+        "stix_object_type": "campaign",
+        "grouping_context": null,
+        "activity_refs": [],
+        "first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Microsoft: Between January and August 2026"
+        },
+        "last_observed": {
+          "value": "2026-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Microsoft: Between January and August 2026"
+        },
+        "reported_at": {
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        },
+        "description": "Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、少なくとも13件の大規模なフィッシング活動を行ったと報告した。ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。 攻撃者は最初のメールに返信した相手へ、パスワード付きのRARまたはZIPを送る。送信には侵害したWebサイト上で作成したアカウントも使い、会議への招待などを装って添付ファイルを開かせた。 RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。従来のClickFixより被害者に求める操作を減らしている。 4月に確認されたMSIは、端末情報の送信と遠隔DLLの実行、WebDAVの準備、CosmicPulseの取得を担う3つのタスクを作成した。タスク名は正規のネットワーク管理機能を装っていた。 7月の攻撃では、ZIP内のRARにあるLNKからPDFを取得し、PDFに隠したBase64形式のコードを実行してMSIを導入した。Microsoftは関連するIOCと、プロセスやタスクを調べるハンティングクエリを公開している。",
+        "target_refs": [],
+        "malware_refs": [
+          "malware--daily-45053606527c84c6ce52"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [
+          "ttp--activity-rule--79eb5c35f426b4cab7b9",
+          "ttp--activity-rule--f89a12fa9a6b37d623fc"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--368fc15f76f81a9d56d5"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b49ec0347b9e3a649f9d"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--04c084ae54d70ce983093985 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog 2026-09-29)を確認。Star Blizzardを実行主体とするRedFlick配信手法のフィッシング・マルウェア配布活動(2026年1〜8月、13件以上のキャンペーン、100超の組織、主に米英。ウクライナ支援のNGO・シンクタンク・政府・金融が標的)。Star BlizzardはCISAがFSB Centre 18配下と帰属する露国家アクターで、callistoプロファイルのoverlapping alias(SEABORGIUM改名)。turla/Secret Blizzardの前例に従い手動確認の上で対応付け。侵害サイトのアカウント悪用は「assesses with high confidence」と明記。RedFlickはマルウェアでなく配信手法名。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--callisto",
+            "name": "Callisto Group",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--daily-45053606527c84c6ce52"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--79eb5c35f426b4cab7b9",
+              "ttp--activity-rule--f89a12fa9a6b37d623fc"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [],
+            "victim_refs": [
+              "victim--activity-rule--368fc15f76f81a9d56d5"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "Microsoft: Between January and August 2026"
+            },
+            "last_observed": {
+              "value": "2026-08-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "Microsoft: Between January and August 2026"
+            },
+            "reported_at": {
+              "value": "2026-10-01T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "daily-news-file-date"
+            },
+            "activity_type": "phishing-campaign",
+            "phases": [
+              "Execution",
+              "Persistence",
+              "Privilege Escalation"
+            ],
+            "results": [],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--daily-b49ec0347b9e3a649f9d"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c718ef5ff973ba00c970648b",
+            "category": "activity",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "Callisto Group conducted or is associated with Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化: Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、少なくとも13件の大規模なフィッシング活動を行ったと報告した。ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。 攻撃者は最初のメールに返信した相手へ、パスワード付きのRARまたはZIPを送る。送信には侵害したWebサイト上で作成したアカウントも使い、会議への招待などを装って添付ファイルを開かせた。 RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。従来のClickFixより被害者に求める操作を減らしている。 4月に確認されたMSIは、端末情報の送信と遠隔DLLの実行、WebDAVの準備、CosmicPulseの取得を担う3つのタスクを作成した。タスク名は正規のネットワーク管理機能を装っていた。 7月の攻撃では、ZIP内のRARにあるLNKからPDFを取得し、PDFに隠したBase64形式のコードを実行してMSIを導入した。Microsoftは関連するIOCと、プロセスやタスクを調べるハンティングクエリを公開している。",
+            "evidence_refs": [
+              "source--daily-b49ec0347b9e3a649f9d"
+            ],
+            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--daily-45053606527c84c6ce52",
+            "name": "CosmicPulse"
+          }
+        ],
+        "targets": [],
+        "victims": [
+          {
+            "id": "victim--activity-rule--368fc15f76f81a9d56d5",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--79eb5c35f426b4cab7b9",
+            "technique_id": "T1204.004",
+            "name": "Malicious Copy and Paste"
+          },
+          {
+            "id": "ttp--activity-rule--f89a12fa9a6b37d623fc",
+            "technique_id": "T1053.005",
+            "name": "Scheduled Task"
+          }
+        ]
+      },
+      {
         "activity_id": "activity--daily-99b5ac281926f2b2c7f5",
         "name": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定",
         "activity_type": "phishing-campaign",
@@ -641,6 +787,80 @@
       }
     ],
     "malware_usage": [
+      {
+        "id": "malware--daily-45053606527c84c6ce52",
+        "name": "CosmicPulse",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "Callisto Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Microsoft: Between January and August 2026"
+        },
+        "last_observed": {
+          "value": "2026-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Microsoft: Between January and August 2026"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b49ec0347b9e3a649f9d"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f59d89a80e3ddb8b15a14d4a",
+            "category": "capability-malware",
+            "verification_status": "partially-supported",
+            "confidence": "high",
+            "statement": "Callisto Group uses or has used CosmicPulse.",
+            "evidence_refs": [
+              "source--daily-b49ec0347b9e3a649f9d"
+            ],
+            "verification_rationale": "Evidence tier=repository.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--daily-04c084ae54d70ce98309",
+            "activity_name": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+            "first_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "Microsoft: Between January and August 2026"
+            },
+            "last_observed": {
+              "value": "2026-08-01T00:00:00Z",
+              "precision": "month",
+              "status": "known",
+              "basis": "Microsoft: Between January and August 2026"
+            },
+            "evidence_refs": [
+              "source--daily-b49ec0347b9e3a649f9d"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
       {
         "id": "malware--spica",
         "name": "Spica",
@@ -1718,7 +1938,7 @@
   },
   "claim_audit_counts": {
     "supported": 44,
-    "partially-supported": 7
+    "partially-supported": 12
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -1838,135 +2058,58 @@
         "victim-case"
       ]
     },
-    "source--osint-etda-threat-group-cards": {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
+    "source--daily-b49ec0347b9e3a649f9d": {
+      "source_id": "source--daily-b49ec0347b9e3a649f9d",
+      "path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+      "title": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+      "publisher": "microsoft.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
+      "language": "unknown",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261001.md; source commit: 527918454fa24715403903ea92964bc3a0a8d224; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. 原文は2026-10-12に取得して確認。Star Blizzard(callistoのoverlapping alias)名義の活動報告。",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+      "accessed_at": "2026-10-12T00:00:00Z",
+      "actor_scope": "overlapping",
       "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+        "activity",
+        "capability",
+        "targeting",
+        "ttp"
+      ]
     },
-    "source--osint-microsoft-threat-actor-mapping": {
-      "source_id": "source--osint-microsoft-threat-actor-mapping",
-      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
-      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
-      "title": "Microsoft Threat Actor Naming Mapping",
-      "publisher": "Microsoft",
+    "source--doj-star-blizzard-center18-2023": {
+      "source_id": "source--doj-star-blizzard-center18-2023",
+      "path": "https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer",
+      "title": "Two Russian Nationals Working with Russia's Federal Security Service Charged with Global Computer Intrusion Campaign",
+      "publisher": "U.S. Department of Justice",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2023-12-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
       },
-      "accessed_at": "2026-07-25T13:43:09Z",
       "language": "en",
-      "source_type": "official-vendor-actor-mapping",
+      "source_type": "government-legal",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
-      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
-      "actor_scope": "unknown",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
       "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
+        "identity",
+        "legal-action",
+        "relationship"
       ],
-      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
-    },
-    "source--osint-misp-microsoft-activity-group": {
-      "source_id": "source--osint-misp-microsoft-activity-group",
-      "path": "actor_profile/reference/osint/misp-microsoft-activity-group.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/microsoft-activity-group.json",
-      "title": "MISP Galaxy Microsoft Activity Group",
-      "publisher": "MISP Project / Microsoft",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "528ebc0d377df42b9c5e1bd42e96cb9e1287123018cf8c44e55905f2c03ed949",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=23. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--osint-misp-mitre-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "c053ac5606be5035a164421e5053c8e04ac243533287678aa7c2603473c406c3",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--osint-misp-threat-actor": {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "analyst_notes": "The conduct is alleged in an indictment and is not recorded as a conviction. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer"
     },
     "source--gtig-unified-actor-naming-2026": {
       "source_id": "source--gtig-unified-actor-naming-2026",
@@ -1992,113 +2135,6 @@
         "alias"
       ],
       "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
-    },
-    "source--osint-gtig-threat-actor-naming": {
-      "source_id": "source--osint-gtig-threat-actor-naming",
-      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
-    },
-    "source--osint-misp-mitre-enterprise-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--osint-misp-tidal-groups": {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--target-audit-etda-threat-group-cards": {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -2156,11 +2192,11 @@
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
-    "source--doj-star-blizzard-center18-2023": {
-      "source_id": "source--doj-star-blizzard-center18-2023",
-      "path": "https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer",
-      "title": "Two Russian Nationals Working with Russia's Federal Security Service Charged with Global Computer Intrusion Campaign",
-      "publisher": "U.S. Department of Justice",
+    "source--ncsc-star-blizzard-center18-2023": {
+      "source_id": "source--ncsc-star-blizzard-center18-2023",
+      "path": "https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference",
+      "title": "UK and allies expose Russian intelligence services for cyber campaign of attempted political interference",
+      "publisher": "UK National Cyber Security Centre",
       "published_at": {
         "value": "2023-12-07T00:00:00Z",
         "precision": "day",
@@ -2168,7 +2204,7 @@
         "basis": "source-publication"
       },
       "language": "en",
-      "source_type": "government-legal",
+      "source_type": "government-assessment",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
@@ -2176,11 +2212,247 @@
       "actor_scope": "direct",
       "claims_supported": [
         "identity",
-        "legal-action",
         "relationship"
       ],
-      "analyst_notes": "The conduct is alleged in an indictment and is not recorded as a conviction. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
-      "url": "https://www.justice.gov/archives/opa/pr/two-russian-nationals-working-russias-federal-security-service-charged-global-computer"
+      "analyst_notes": "NCSC explicitly says Star Blizzard is also known as Callisto Group and assesses it almost certainly subordinate to FSB Centre 18. The 2015-through-2023 targeting period is not used as the subordination relationship period. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference"
+    },
+    "source--osint-etda-threat-group-cards": {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    "source--osint-gtig-threat-actor-naming": {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
+    },
+    "source--osint-microsoft-threat-actor-mapping": {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:43:09Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
+    },
+    "source--osint-misp-microsoft-activity-group": {
+      "source_id": "source--osint-misp-microsoft-activity-group",
+      "path": "actor_profile/reference/osint/misp-microsoft-activity-group.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/microsoft-activity-group.json",
+      "title": "MISP Galaxy Microsoft Activity Group",
+      "publisher": "MISP Project / Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "528ebc0d377df42b9c5e1bd42e96cb9e1287123018cf8c44e55905f2c03ed949",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=23. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-mitre-enterprise-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-mitre-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "c053ac5606be5035a164421e5053c8e04ac243533287678aa7c2603473c406c3",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-threat-actor": {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--target-audit-etda-threat-group-cards": {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     "source--treasury-star-blizzard-sanctions-2023": {
       "source_id": "source--treasury-star-blizzard-sanctions-2023",
@@ -2205,38 +2477,11 @@
         "legal-action",
         "relationship"
       ],
-      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
       "url": "https://home.treasury.gov/news/press-releases/jy1962"
-    },
-    "source--ncsc-star-blizzard-center18-2023": {
-      "source_id": "source--ncsc-star-blizzard-center18-2023",
-      "path": "https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference",
-      "title": "UK and allies expose Russian intelligence services for cyber campaign of attempted political interference",
-      "publisher": "UK National Cyber Security Centre",
-      "published_at": {
-        "value": "2023-12-07T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "government-assessment",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "identity",
-        "relationship"
-      ],
-      "analyst_notes": "NCSC explicitly says Star Blizzard is also known as Callisto Group and assesses it almost certainly subordinate to FSB Centre 18. The 2015-through-2023 targeting period is not used as the subordination relationship period. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit.",
-      "url": "https://www.ncsc.gov.uk/news/uk-and-allies-expose-cyber-campaign-attempted-political-interference"
     }
   },
   "research_gaps": [
-    "Canonical activities exist, but their observation periods are unknown.",
-    "Malware is actor-linked only; campaign-specific use periods are unknown.",
     "No canonical cross-actor relationship is structured.",
     "Attribution remains unknown or unstructured."
   ]

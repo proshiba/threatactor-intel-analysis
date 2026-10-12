@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-28T06:50:36Z",
+  "generated_at": "2026-10-12T11:10:25Z",
   "actor_ref": "actor--contagious-interview",
   "actor_name": "Contagious Interview",
-  "profile_updated_at": "2026-09-23T12:16:55Z",
+  "profile_updated_at": "2026-10-12T09:12:00Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -18,8 +18,8 @@
       "attribution": "lead-only"
     },
     "canonical_counts": {
-      "activities": 15,
-      "dated_activities": 3,
+      "activities": 16,
+      "dated_activities": 4,
       "relationships": 2,
       "associated_entities": 0,
       "entity_relationships": 0,
@@ -28,7 +28,7 @@
       "malware": 7,
       "activity_linked_malware": 5,
       "tools": 0,
-      "targets": 4,
+      "targets": 3,
       "motivations": 2
     },
     "external_lead_counts": {
@@ -628,6 +628,133 @@
           {
             "id": "victim--activity-rule--4980b713f99d02bb9b2a",
             "name": "anonymous"
+          }
+        ],
+        "techniques": []
+      },
+      {
+        "activity_id": "activity--daily-c858a700273c134e5fd0",
+        "name": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用",
+        "activity_type": "infrastructure-operation",
+        "stix_object_type": "campaign",
+        "grouping_context": null,
+        "activity_refs": [],
+        "first_observed": {
+          "value": "2026-06-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "ransom-isac: 最初のビーコン取引"
+        },
+        "last_observed": {
+          "value": "2026-09-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+        },
+        "reported_at": {
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        },
+        "description": "Ransom-ISACは、XCTDHの2026年9月の検体に新しい「HashHiding」機能を確認した。Ethereumの通常の送金トランザクションで、送金先アドレスの先頭6バイトにC2のIPv4アドレスとポートを埋め込む。 従来のXCTDHはTRONとAptosを索引、BSCをマルウェアの保存先に使っていた。新たなEthereum経路が運ぶのはペイロードではなくC2の接続先で、攻撃者はマルウェアを変更せずに接続先を切り替えられる。 攻撃者のシグナル用ウォレットでは、6月23日から9月21日までに2,655件の送金が観測された。C2はこの間に4回切り替わり、最後に確認された接続先は181[.]214[.]149[.]148の443番ポートだった。 HashHidingは既存の接続経路が失敗した場合だけ動く予備機能ではなく、RATの起動時から並行して動作する。ハードコードされたIP、従来の複数ブロックチェーン経路と合わせ、三つの接続先取得経路を維持する。 感染はTelegram上の偽求人から悪意あるGitHubリポジトリやnpmパッケージへ誘導する形で始まる。後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。",
+        "target_refs": [
+          "target--mitre-group--sector--9344745b7aeff4dbe6af"
+        ],
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "ttp_refs": [],
+        "victim_refs": [
+          "victim--activity-rule--2d57a99f6cade038d366"
+        ],
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f9ad40c2a45e0f2f241b"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--c858a700273c134e5fd08dde から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 原文(ransom-isac.org)を確認。DPRK帰属キャンペーンとしてHashHiding(Ethereum送金先アドレスへC2のIP:Port 6バイトを埋め込む手法)を分析。2025年10月の活動とBSCコントラクトとXORキーが共通し「confirm the same operator」と明記。2025-10の活動(NullReceiver、opensourcemalware)は本プロファイルへ反映済みのContagious Interview帰属活動であり、同一運用者の技術的連続性が具体的。YARAルールもDPRK Contagious Interviewとラベル。既知グループとの関係詳述はPart 3へ持ち越しとされるため確度はmediumに留める。DEV#POPPER.jsは配布されるNode.js製RATの名称。 activity_typeは自動推定が出典ドメインの'ransom'に反応してransomware-extortionとなったため、同系統のNullReceiver活動と同じinfrastructure-operationへ上書き。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--contagious-interview",
+            "name": "Contagious Interview",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [],
+            "ttp_refs": []
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--mitre-group--sector--9344745b7aeff4dbe6af"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--2d57a99f6cade038d366"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2026-06-23T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "ransom-isac: 最初のビーコン取引"
+            },
+            "last_observed": {
+              "value": "2026-09-21T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+            },
+            "reported_at": {
+              "value": "2026-10-01T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "daily-news-file-date"
+            },
+            "activity_type": "infrastructure-operation",
+            "phases": [],
+            "results": [
+              "credential-theft"
+            ],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-f9ad40c2a45e0f2f241b"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--34b2c24ce3c1057ccfb34df1",
+            "category": "activity",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
+            "statement": "Contagious Interview conducted or is associated with XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用: Ransom-ISACは、XCTDHの2026年9月の検体に新しい「HashHiding」機能を確認した。Ethereumの通常の送金トランザクションで、送金先アドレスの先頭6バイトにC2のIPv4アドレスとポートを埋め込む。 従来のXCTDHはTRONとAptosを索引、BSCをマルウェアの保存先に使っていた。新たなEthereum経路が運ぶのはペイロードではなくC2の接続先で、攻撃者はマルウェアを変更せずに接続先を切り替えられる。 攻撃者のシグナル用ウォレットでは、6月23日から9月21日までに2,655件の送金が観測された。C2はこの間に4回切り替わり、最後に確認された接続先は181[.]214[.]149[.]148の443番ポートだった。 HashHidingは既存の接続経路が失敗した場合だけ動く予備機能ではなく、RATの起動時から並行して動作する。ハードコードされたIP、従来の複数ブロックチェーン経路と合わせ、三つの接続先取得経路を維持する。 感染はTelegram上の偽求人から悪意あるGitHubリポジトリやnpmパッケージへ誘導する形で始まる。後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。",
+            "evidence_refs": [
+              "source--daily-f9ad40c2a45e0f2f241b"
+            ],
+            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [],
+        "targets": [
+          {
+            "id": "target--mitre-group--sector--9344745b7aeff4dbe6af",
+            "name": "暗号資産・Web3"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--2d57a99f6cade038d366",
+            "name": "aggregate"
           }
         ],
         "techniques": []
@@ -1288,9 +1415,7 @@
           "basis": "daily-news-file-date"
         },
         "description": "Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。",
-        "target_refs": [
-          "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
-        ],
+        "target_refs": [],
         "malware_refs": [],
         "infrastructure_refs": [],
         "confidence": "high",
@@ -1323,9 +1448,7 @@
             "infrastructure_refs": []
           },
           "victim": {
-            "target_refs": [
-              "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
-            ],
+            "target_refs": [],
             "victim_refs": [
               "victim--activity-rule--ba353bbe87673efbe856"
             ]
@@ -1388,12 +1511,7 @@
           }
         ],
         "malware": [],
-        "targets": [
-          {
-            "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
-            "name": "非営利・市民社会"
-          }
-        ],
+        "targets": [],
         "victims": [
           {
             "id": "victim--activity-rule--ba353bbe87673efbe856",
@@ -3090,46 +3208,6 @@
         ]
       },
       {
-        "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
-        "name": "非営利・市民社会",
-        "description": "活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-828c717719b991a7c676"
-        ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
-        "claim_assessments": [
-          {
-            "claim_id": "claim--48bb772b0d768b8c499e77d3",
-            "category": "target-sector",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "Contagious Interview targets sector 非営利・市民社会.",
-            "evidence_refs": [
-              "source--daily-828c717719b991a7c676"
-            ],
-            "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
-            "counterevidence": []
-          }
-        ],
-        "category": "sector",
-        "activity_refs": [
-          "activity--daily-4b5096b05e14d4f33652"
-        ]
-      },
-      {
         "id": "target--mitre-group--sector--9344745b7aeff4dbe6af",
         "name": "暗号資産・Web3",
         "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities.",
@@ -3140,14 +3218,15 @@
           "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始; activity-period"
         },
         "last_observed": {
-          "value": "2026-07-01T00:00:00Z",
-          "precision": "month",
+          "value": "2026-09-21T00:00:00Z",
+          "precision": "day",
           "status": "known",
-          "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了; activity-period"
+          "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--daily-3b508815c5f991656dcb",
+          "source--daily-f9ad40c2a45e0f2f241b",
           "source--mitre-attack-19-2",
           "source--npa-waterplum-joint-advisory-2026-09"
         ],
@@ -3161,6 +3240,7 @@
             "statement": "Contagious Interview targets sector 暗号資産・Web3.",
             "evidence_refs": [
               "source--daily-3b508815c5f991656dcb",
+              "source--daily-f9ad40c2a45e0f2f241b",
               "source--mitre-attack-19-2",
               "source--npa-waterplum-joint-advisory-2026-09"
             ],
@@ -3171,6 +3251,7 @@
         "category": "sector",
         "activity_refs": [
           "activity--daily-a92114fe11ac7118f546",
+          "activity--daily-c858a700273c134e5fd0",
           "activity--waterplum-it-engineer-targeting-2026"
         ]
       }
@@ -3925,7 +4006,7 @@
   },
   "claim_audit_counts": {
     "supported": 80,
-    "partially-supported": 34
+    "partially-supported": 35
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -4288,6 +4369,35 @@
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
+    "source--crowdstrike-famous-chollima": {
+      "source_id": "source--crowdstrike-famous-chollima",
+      "path": "https://www.crowdstrike.com/adversaries/famous-chollima/",
+      "url": "https://www.crowdstrike.com/adversaries/famous-chollima/",
+      "title": "FAMOUS CHOLLIMA | Adversary profile",
+      "publisher": "CrowdStrike",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "vendor-adversary-profile",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "原文を確認(アクセス日 2026-08-12)。「The adversary primarily conducts operations to illicitly obtain freelance or full-time equivalent (FTE) work to earn a salary that can be funneled to North Korea.」と定義し、community identifiersにContagious Interviewを含む。ベンダー独自のクラスタ定義であり、政府帰属とは分離して扱う。",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "relationship"
+      ]
+    },
     "source--daily-25f950d9ddf02f2d5ba4": {
       "source_id": "source--daily-25f950d9ddf02f2d5ba4",
       "path": "https://www.jamf.com/blog/flexibleferret-malware-continues-to-adapt/",
@@ -4648,167 +4758,90 @@
         "victim-case"
       ]
     },
-    "source--osint-etda-threat-group-cards": {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
+    "source--daily-f9ad40c2a45e0f2f241b": {
+      "source_id": "source--daily-f9ad40c2a45e0f2f241b",
+      "path": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+      "title": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用",
+      "publisher": "ransom-isac.org",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
-    },
-    "source--osint-misp-mitre-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "c053ac5606be5035a164421e5053c8e04ac243533287678aa7c2603473c406c3",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--osint-misp-threat-actor": {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    "source--crowdstrike-famous-chollima": {
-      "source_id": "source--crowdstrike-famous-chollima",
-      "path": "https://www.crowdstrike.com/adversaries/famous-chollima/",
-      "url": "https://www.crowdstrike.com/adversaries/famous-chollima/",
-      "title": "FAMOUS CHOLLIMA | Adversary profile",
-      "publisher": "CrowdStrike",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": {
-        "value": "2026-08-12T00:00:00Z",
+        "value": "2026-10-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "analyst-access"
+        "basis": "daily-news-file-date"
       },
-      "language": "en",
-      "source_type": "vendor-adversary-profile",
+      "language": "unknown",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "原文を確認(アクセス日 2026-08-12)。「The adversary primarily conducts operations to illicitly obtain freelance or full-time equivalent (FTE) work to earn a salary that can be funneled to North Korea.」と定義し、community identifiersにContagious Interviewを含む。ベンダー独自のクラスタ定義であり、政府帰属とは分離して扱う。",
-      "actor_scope": "unknown",
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261001.md; source commit: 527918454fa24715403903ea92964bc3a0a8d224; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. 原文は2026-10-12に取得して確認。DEV#POPPER(overlapping alias)経由の照合。同一運用者の技術的連続性で関連付け。",
+      "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+      "accessed_at": "2026-10-12T00:00:00Z",
+      "actor_scope": "overlapping",
       "claims_supported": [
-        "relationship"
+        "activity",
+        "targeting",
+        "victim-case"
       ]
     },
-    "source--npa-waterplum-joint-advisory-2026-09": {
-      "source_id": "source--npa-waterplum-joint-advisory-2026-09",
-      "path": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
-      "url": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
-      "title": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
-      "publisher": "警察庁 国家サイバー統括室 (NPA/NCO)",
+    "source--gitlab-contagious-interview-clickfix-2025": {
+      "source_id": "source--gitlab-contagious-interview-clickfix-2025",
+      "path": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
+      "url": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
+      "title": "Tech Note - BeaverTail variant distributed via malicious repositories and ClickFix lure",
+      "publisher": "GitLab Threat Intelligence",
       "published_at": {
-        "value": "2026-09-18T00:00:00Z",
+        "value": "2025-09-17T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "document"
+        "basis": "source-publication"
       },
-      "accessed_at": "2026-09-20T00:00:00Z",
-      "language": "ja",
-      "source_type": "government-advisory",
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "GitLab directly observed the ClickFix infrastructure and BeaverTail/InvisibleFerret samples from May 2025 and associates their operators with identifiers including Contagious Interview and Famous Chollima."
+    },
+    "source--gtig-unc5342-etherhiding-2025": {
+      "source_id": "source--gtig-unc5342-etherhiding-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
+      "title": "DPRK Adopts EtherHiding: Nation-State Malware Hiding on Blockchains",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2025-10-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
       "actor_scope": "overlapping",
       "claims_supported": [
-        "alias",
         "activity",
-        "malware",
-        "victim-geography",
-        "attribution-claim",
-        "uncertainty"
+        "attribution",
+        "relationship",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
       ],
-      "analyst_notes": "警察庁・NCO・FBI・DC3・ASD/ACSC・BND・BfV による共同注意喚起。情報源優先順位の第1位(政府機関・法執行機関)に該当する。PDF原文を取得して本文を直接確認した。tech-memo daily-news には 2026-09-19 付で掲載されているが、WaterPlum が既存プロファイルの canonical name / alias のいずれにも未登録であったためレビューキューにレコードが生成されなかった。"
-    },
-    "source--osint-misp-mitre-enterprise-intrusion-set": {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "analyst_notes": "GTIG tracks UNC5342 as the threat actor incorporating EtherHiding into the social-engineering campaign Palo Alto Networks named Contagious Interview. MITRE separately models Contagious Interview as Group G1052, so the repository preserves both records with a taxonomy relationship."
     },
     "source--mitre-attack-19-1": {
       "source_id": "source--mitre-attack-19-1",
@@ -4866,64 +4899,138 @@
       ],
       "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
-    "source--gtig-unc5342-etherhiding-2025": {
-      "source_id": "source--gtig-unc5342-etherhiding-2025",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/dprk-adopts-etherhiding",
-      "title": "DPRK Adopts EtherHiding: Nation-State Malware Hiding on Blockchains",
-      "publisher": "Google Threat Intelligence Group",
+    "source--npa-waterplum-joint-advisory-2026-09": {
+      "source_id": "source--npa-waterplum-joint-advisory-2026-09",
+      "path": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+      "url": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+      "title": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
+      "publisher": "警察庁 国家サイバー統括室 (NPA/NCO)",
       "published_at": {
-        "value": "2025-10-16T00:00:00Z",
+        "value": "2026-09-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "source-publication"
+        "basis": "document"
       },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "vendor-threat-research",
+      "accessed_at": "2026-09-20T00:00:00Z",
+      "language": "ja",
+      "source_type": "government-advisory",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
       "sha256": null,
       "actor_scope": "overlapping",
       "claims_supported": [
+        "alias",
         "activity",
-        "attribution",
-        "relationship",
-        "capability",
-        "targeting",
-        "ttp",
-        "ioc"
+        "malware",
+        "victim-geography",
+        "attribution-claim",
+        "uncertainty"
       ],
-      "analyst_notes": "GTIG tracks UNC5342 as the threat actor incorporating EtherHiding into the social-engineering campaign Palo Alto Networks named Contagious Interview. MITRE separately models Contagious Interview as Group G1052, so the repository preserves both records with a taxonomy relationship."
+      "analyst_notes": "警察庁・NCO・FBI・DC3・ASD/ACSC・BND・BfV による共同注意喚起。情報源優先順位の第1位(政府機関・法執行機関)に該当する。PDF原文を取得して本文を直接確認した。tech-memo daily-news には 2026-09-19 付で掲載されているが、WaterPlum が既存プロファイルの canonical name / alias のいずれにも未登録であったためレビューキューにレコードが生成されなかった。"
     },
-    "source--gitlab-contagious-interview-clickfix-2025": {
-      "source_id": "source--gitlab-contagious-interview-clickfix-2025",
-      "path": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
-      "url": "https://gitlab-com.gitlab.io/gl-security/security-tech-notes/threat-intelligence-tech-notes/north-korean-malware-sept-2025/",
-      "title": "Tech Note - BeaverTail variant distributed via malicious repositories and ClickFix lure",
-      "publisher": "GitLab Threat Intelligence",
+    "source--osint-etda-threat-group-cards": {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
       "published_at": {
-        "value": "2025-09-17T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
-      "accessed_at": "2026-09-21T00:00:00Z",
+      "accessed_at": "2026-07-25T13:52:47Z",
       "language": "en",
-      "source_type": "vendor-threat-research",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    "source--osint-misp-mitre-enterprise-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
       "tlp": "TLP:CLEAR",
       "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
       "claims_supported": [
-        "activity",
-        "attribution",
-        "capability",
-        "targeting",
-        "ttp",
-        "ioc"
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
       ],
-      "analyst_notes": "GitLab directly observed the ClickFix infrastructure and BeaverTail/InvisibleFerret samples from May 2025 and associates their operators with identifiers including Contagious Interview and Famous Chollima."
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-mitre-intrusion-set": {
+      "source_id": "source--osint-misp-mitre-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "c053ac5606be5035a164421e5053c8e04ac243533287678aa7c2603473c406c3",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-threat-actor": {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   },
   "research_gaps": [

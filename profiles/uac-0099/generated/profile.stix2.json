@@ -179,6 +179,34 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MATCHBOIL",
+      "description": "UAC-0099との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-462500b151ebf5435c0a",
+      "x_confidence": "high",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "loader"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--03457fea-7cb0-437c-b0d4-bca46151aca5",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -237,7 +265,7 @@
       "spec_version": "2.1",
       "id": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -270,7 +298,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
           "ttp_refs": []
         },
         "infrastructure": {
@@ -347,7 +377,7 @@
       "spec_version": "2.1",
       "id": "campaign--80e3ab99-d387-4456-b171-a954b4904bfc",
       "created": "2026-07-26T06:00:44Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -376,6 +406,7 @@
         "capability": {
           "malware_refs": [
             "malware--daily-0067ca7bc8c9a3dd3e9d",
+            "malware--daily-462500b151ebf5435c0a",
             "malware--daily-75ab18d562d78bfce191",
             "malware--daily-8759c33e657f191deae0"
           ],
@@ -454,6 +485,118 @@
         "status": "known",
         "basis": "daily-news-file-date"
       }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新",
+      "description": "ESETは、ウクライナを標的とするUAC-0099が使うC#製ダウンローダー「MATCHBOIL」の変化を分析した。確認した検体は2024年4月から2026年4月に及ぶ。 攻撃では標的型メールのリンクからアーカイブを取得させ、利用者にVBScriptを実行させる。MATCHBOILはC2から追加ペイロードを取得・設置し、タスクやレジストリで永続化する。 新しい検体では難読化に.NET Reactorを使い、サンドボックスやデバッガーの検知、偽のアプリ画面の表示、2分間隔でのC2通信などを追加した。 ESETが観測した被害組織はウクライナ国内で、運輸、製造、エネルギー分野など幅広い業界の組織が対象となっている。取得される追加ペイロードには、バックドア「MATCHWOK」が多く見られた。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-914a95f629a6558c7376",
+      "x_activity_type": "malware-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--914a95f629a6558c73769de5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(ESET WeLiveSecurity)を確認。MATCHBOILをUAC-0099のダウンローダーとして直接分析(2024-04〜2026-04の検体、被害はすべてウクライナ国内: 運輸2025-07〜08、製造2025-12、エネルギー2026-06)。実行主体はUAC-0099そのもの(CERT-UA命名のexact)。UAC-0099のロシア利益への整合はESET評価でmedium confidenceだが、これはアクターの帰属国評価であり本活動のアクター帰属とは別。タイマー実行化・.NET Reactor難読化・サンドボックス回避強化・DLL化などの機能更新を記録。 activity_typeは自動推定のinfrastructure-operationから、同プロファイルのNotepad++プラグイン活動と同じmalware-campaignへ上書き(ローダーの配布・進化の分析のため)。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--uac-0099",
+          "name": "UAC-0099",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--000bc4be0156741668df"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--75b4f39c8fbe9bb2f8a4"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+          },
+          "last_observed": {
+            "value": "2026-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+          },
+          "reported_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-25ac3dba172a1ff5a117"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-04-01T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z"
     },
     {
       "type": "campaign",
@@ -575,7 +718,7 @@
       "spec_version": "2.1",
       "id": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -583,6 +726,12 @@
       "identity_class": "organization",
       "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された国・地域。",
       "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        },
         {
           "source_name": "welivesecurity.com",
           "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
@@ -639,7 +788,7 @@
       "spec_version": "2.1",
       "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -647,6 +796,12 @@
       "identity_class": "organization",
       "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
       "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        },
         {
           "source_name": "welivesecurity.com",
           "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
@@ -666,9 +821,32 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "organization",
+      "description": "活動「UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -676,6 +854,12 @@
       "identity_class": "organization",
       "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
       "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        },
         {
           "source_name": "welivesecurity.com",
           "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
@@ -697,7 +881,7 @@
       "spec_version": "2.1",
       "id": "identity--5c60509e-2860-40d7-ba44-10548feeaddc",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -721,6 +905,7 @@
       ],
       "x_malware_refs": [
         "malware--daily-0067ca7bc8c9a3dd3e9d",
+        "malware--daily-462500b151ebf5435c0a",
         "malware--daily-75ab18d562d78bfce191",
         "malware--daily-8759c33e657f191deae0"
       ],
@@ -756,7 +941,7 @@
       "spec_version": "2.1",
       "id": "identity--f7ed45ea-b2eb-404f-a08c-9022f25e54ab",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -786,7 +971,9 @@
         "target--activity-rule--sector--b8d6639a1884e2bacaa4",
         "target--activity-rule--sector--fb803c0a91ed53ea76f9"
       ],
-      "x_malware_refs": [],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
       "x_ttp_refs": [],
       "x_affected_assets": [],
       "x_impacts": [],
@@ -804,6 +991,67 @@
       },
       "x_reported_at": {
         "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--31671120-6338-4879-b95c-096f26cbca81",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新",
+      "identity_class": "organization",
+      "description": "ESETは、ウクライナを標的とするUAC-0099が使うC#製ダウンローダー「MATCHBOIL」の変化を分析した。確認した検体は2024年4月から2026年4月に及ぶ。 攻撃では標的型メールのリンクからアーカイブを取得させ、利用者にVBScriptを実行させる。MATCHBOILはC2から追加ペイロードを取得・設置し、タスクやレジストリで永続化する。 新しい検体では難読化に.NET Reactorを使い、サンドボックスやデバッガーの検知、偽のアプリ画面の表示、2分間隔でのC2通信などを追加した。 ESETが観測した被害組織はウクライナ国内で、運輸、製造、エネルギー分野など幅広い業界の組織が対象となっている。取得される追加ペイロードには、バックドア「MATCHWOK」が多く見られた。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--75b4f39c8fbe9bb2f8a4",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--000bc4be0156741668df"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
@@ -875,6 +1123,52 @@
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--da67b5aa-6243-4789-ae58-14d430a00179",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "新しい検体では難読化に.NET Reactorを使い、サンドボックスやデバッガーの検知、偽のアプリ画面の表示、2分間隔でのC2通信などを追加した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--000bc4be0156741668df",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -973,7 +1267,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--f41e52c4-6eb5-4c5d-81a3-18676125d6e3",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -999,6 +1293,7 @@
       ],
       "x_malware_refs": [
         "malware--daily-0067ca7bc8c9a3dd3e9d",
+        "malware--daily-462500b151ebf5435c0a",
         "malware--daily-75ab18d562d78bfce191"
       ],
       "x_infrastructure_refs": [],
@@ -1107,6 +1402,49 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--282099e2-e357-4719-9efb-ee44a33ffa23",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
+      "description": "UAC-0099 uses MATCHBOIL.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--a42b62a1-36b8-4138-a11c-1bf47424c4fc",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1191,7 +1529,7 @@
       "spec_version": "2.1",
       "id": "relationship--1eabf0a9-b441-4740-bda7-60ad8cab4ce3",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1201,6 +1539,12 @@
       "description": "UAC-0099 targets ウクライナ (profile target category: countries).",
       "x_confidence": "medium",
       "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        },
         {
           "source_name": "welivesecurity.com",
           "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
@@ -1227,25 +1571,25 @@
         }
       ],
       "x_first_observed": {
-        "value": "2025-06-01T00:00:00Z",
+        "value": "2024-04-01T00:00:00Z",
         "precision": "month",
         "status": "known",
-        "basis": "activity-description-explicit-period; activity-period"
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
       },
       "x_last_observed": {
-        "value": "2025-09-01T00:00:00Z",
+        "value": "2026-06-01T00:00:00Z",
         "precision": "month",
         "status": "known",
-        "basis": "activity-description-explicit-period; activity-period"
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
       },
       "x_temporal_basis": {
-        "first": "activity-description-explicit-period; activity-period",
-        "last": "activity-description-explicit-period; activity-period",
+        "first": "ESET: コンパイル時刻で2024年4月の検体から; activity-period",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period",
         "first_precision": "month",
         "last_precision": "month"
       },
-      "start_time": "2025-06-01T00:00:00Z",
-      "stop_time": "2025-09-01T00:00:00Z"
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -1295,7 +1639,7 @@
       "spec_version": "2.1",
       "id": "relationship--a2ff6930-8424-4deb-bd02-b2707cfbba2d",
       "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1307,51 +1651,10 @@
       "external_references": [
         {
           "source_name": "welivesecurity.com",
-          "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
-          "external_id": "source--daily-81099d020901332dd638",
-          "url": "https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/"
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
         },
-        {
-          "source_name": "x.com",
-          "description": "Source: https://x.com/ESETresearch/status/2092885120562741652",
-          "external_id": "source--daily-d7f23202e68f653b1ad9",
-          "url": "https://x.com/ESETresearch/status/2092885120562741652"
-        }
-      ],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--98359c32-f31f-4c31-a8fe-b3873baf4351",
-      "created": "2026-09-02T13:05:31Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
-      "target_ref": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
-      "description": "UAC-0099 targets エネルギー (profile target category: sectors).",
-      "x_confidence": "medium",
-      "external_references": [
         {
           "source_name": "welivesecurity.com",
           "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
@@ -1366,23 +1669,123 @@
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
       },
       "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
+        "first": "ESET: コンパイル時刻で2024年4月の検体から; activity-period",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--22e17e2a-6959-4086-9db5-91db77731145",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "UAC-0099 targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から; activity-period",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--98359c32-f31f-4c31-a8fe-b3873baf4351",
+      "created": "2026-09-02T13:05:31Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
+      "description": "UAC-0099 targets エネルギー (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        },
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
+          "external_id": "source--daily-81099d020901332dd638",
+          "url": "https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/"
+        },
+        {
+          "source_name": "x.com",
+          "description": "Source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9",
+          "url": "https://x.com/ESETresearch/status/2092885120562741652"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から; activity-period",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -1397,6 +1800,59 @@
       "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
       "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
       "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 is attributed or linked to UAC-0099.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
+          "external_id": "source--daily-81099d020901332dd638",
+          "url": "https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/"
+        },
+        {
+          "source_name": "x.com",
+          "description": "Source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9",
+          "url": "https://x.com/ESETresearch/status/2092885120562741652"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--da479896-ed34-4d69-af5d-ecd901077ca5",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 uses malware--daily-462500b151ebf5435c0a.",
       "x_confidence": "high",
       "external_references": [
         {
@@ -1746,6 +2202,53 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--8c02b1e8-9b25-4bdc-91bc-0e33d9ed21c1",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--80e3ab99-d387-4456-b171-a954b4904bfc",
+      "target_ref": "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
+      "description": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール uses malware--daily-462500b151ebf5435c0a.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "cert.gov.ua",
+          "description": "Source: https://cert.gov.ua/article/6318634",
+          "external_id": "source--daily-b6ba84745cdc81a329c5",
+          "url": "https://cert.gov.ua/article/6318634"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_temporal_basis": {
+        "first": "not-stated",
+        "last": "not-stated",
+        "first_precision": "unknown",
+        "last_precision": "unknown"
+      },
+      "x_reported_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--b4d16edf-fdee-4a4b-ade6-dc92a8b15278",
       "created": "2026-07-26T06:00:44Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -2024,6 +2527,398 @@
         "status": "known",
         "basis": "daily-news-file-date"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0926c6ad-175d-4787-8ef7-94a9078bd21d",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 is attributed or linked to UAC-0099.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--60ef9c25-b051-4318-a961-cd17d47c6930",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 uses malware--daily-462500b151ebf5435c0a.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43cc201e-0c4a-4fe1-8c64-9fcddde9902f",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 targets target--activity-rule--country--36f1b9323d5faab92f39.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1a03aea2-fbb5-4285-8579-037ab9aab354",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20e6e3f1-4cbb-43bf-8574-c5e0c146916f",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9d8eb9ec-70d1-4c95-8c56-246cb9b19e0e",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 targets target--activity-rule--sector--fb803c0a91ed53ea76f9.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d85b4186-7a2b-47fb-ad71-4d71fc932e27",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "attack-pattern--da67b5aa-6243-4789-ae58-14d430a00179",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 uses ttp--activity-rule--000bc4be0156741668df.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bd030152-49a6-451f-ad04-ef64a9e455b5",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
+      "target_ref": "identity--31671120-6338-4879-b95c-096f26cbca81",
+      "description": "UAC-0099のダウンローダー「MATCHBOIL」、2024年から2026年にかけて機能を更新 affected victim--activity-rule--75b4f39c8fbe9bb2f8a4.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -2322,6 +3217,49 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--0899fd1a-c912-445d-80f7-f0a1c5538de3",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "attack-pattern--da67b5aa-6243-4789-ae58-14d430a00179",
+      "description": "新しい検体では難読化に.NET Reactorを使い、サンドボックスやデバッガーの検知、偽のアプリ画面の表示、2分間隔でのC2通信などを追加した。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Source: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "external_id": "source--daily-25ac3dba172a1ff5a117",
+          "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "ESET: コンパイル時刻で2024年4月の検体から; activity-period",
+        "last": "ESET: 確認された被害は2026年6月のエネルギー企業まで; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2024-04-01T00:00:00Z",
+      "stop_time": "2026-06-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--0f4c85ba-477f-44d6-a9e3-b91951b57135",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -2488,6 +3426,1701 @@
       "stop_time": "2025-09-01T00:00:00Z"
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8e6a21d3-6773-450c-97dd-aecc49be3d3b",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: b6569b0050b864c4a0d32326954bc2d3852a3958",
+      "pattern": "[file:hashes.'SHA-1' = 'b6569b0050b864c4a0d32326954bc2d3852a3958']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:61b89efb17b4f1a0b3bdb7bcb34c41e86bbdab624998d22f5e5c76e58e868a62",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 840
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "b6569b0050b864c4a0d32326954bc2d3852a3958",
+          "context_excerpt": "AI generated. SHA1 of PlannerLibrary.dll, the MATCHBOIL DLL with C&C and persistence logic.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9545893d-60a8-4569-a629-4551476aa1f2",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8e6a21d3-6773-450c-97dd-aecc49be3d3b",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d47f1064-fb51-4d90-8a06-6f0f0c8295df",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: a926889bab31f3c34663d18c05c4e862ef367028",
+      "pattern": "[file:hashes.'SHA-1' = 'a926889bab31f3c34663d18c05c4e862ef367028']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9eceaf113b9fdaf377126aec3d6dfe243e5b723f55948c74a6e7572c7cea1ca7",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 841
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "a926889bab31f3c34663d18c05c4e862ef367028",
+          "context_excerpt": "AI generated. SHA1 of AnimalUpdater.exe, a MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7772c4ba-4985-4cdf-98a3-4633fb7db1ef",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d47f1064-fb51-4d90-8a06-6f0f0c8295df",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5a7f262e-5fdf-4106-93e2-920cd55586d0",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 026f892630d0a4fe854a75984695ba99af0022c4",
+      "pattern": "[file:hashes.'SHA-1' = '026f892630d0a4fe854a75984695ba99af0022c4']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e8982ec11871635386688bfcfbcc410fe65729273efe448b8fe68a13ecf4dab8",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 842
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "026f892630d0a4fe854a75984695ba99af0022c4",
+          "context_excerpt": "AI generated. SHA1 of bootloader.exe, a MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ab14de19-ac56-44c6-a6eb-23c7a2f39b06",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5a7f262e-5fdf-4106-93e2-920cd55586d0",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0edeead0-088e-4e71-aea8-b9c3739ecd3e",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: f886b615cb9e23ead2718ff2a61155acfb04ce9e",
+      "pattern": "[file:hashes.'SHA-1' = 'f886b615cb9e23ead2718ff2a61155acfb04ce9e']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9040b8f895ee03d1a766750c00098331782e2c7c1e5ac29cb64de7c2d821e760",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 843
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "f886b615cb9e23ead2718ff2a61155acfb04ce9e",
+          "context_excerpt": "AI generated. SHA1 of PlannerAssistantManager.exe, a MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--24dbc3cc-2966-4259-a60b-330c9812722c",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0edeead0-088e-4e71-aea8-b9c3739ecd3e",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3f0426e7-3fbd-4b5d-a7cc-8b38b3a3456e",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 1e2c4aac30edff86cd9a30bd08b199bcd3d0ccce",
+      "pattern": "[file:hashes.'SHA-1' = '1e2c4aac30edff86cd9a30bd08b199bcd3d0ccce']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:029c18356121a70f2c909b0ca8202bd9fcaac9029fd3f360e47e20c4b96cd078",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 844
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "1e2c4aac30edff86cd9a30bd08b199bcd3d0ccce",
+          "context_excerpt": "AI generated. SHA1 of PlannerAssistantManager.exe, a MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d380691d-be4e-432f-89c0-b90691eeb8fb",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3f0426e7-3fbd-4b5d-a7cc-8b38b3a3456e",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d02c9e4e-7f2c-4929-9bab-71c3009d2dd6",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: c85d28f7d272ce2bbbfb9dae71d21bf25b8d00fc",
+      "pattern": "[file:hashes.'SHA-1' = 'c85d28f7d272ce2bbbfb9dae71d21bf25b8d00fc']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7dd8dcbdfbaada00cc9d2f48821722f62f55716e8f6e000e2a8c3b1e93f4c3af",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 845
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "c85d28f7d272ce2bbbfb9dae71d21bf25b8d00fc",
+          "context_excerpt": "AI generated. SHA1 of RegularExpressionExplorer.exe, a MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5030af0-4947-4d8e-a9bf-3a22b0790201",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d02c9e4e-7f2c-4929-9bab-71c3009d2dd6",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d7474aea-5bde-44c6-b0f8-112d615f77a7",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 6d72b56b86fd5ed9bd188c8c88cfc69476f836e7",
+      "pattern": "[file:hashes.'SHA-1' = '6d72b56b86fd5ed9bd188c8c88cfc69476f836e7']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3ff9491757228a0f995d06850230a62444528c1113d0f20b45e8a483e16110b5",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 846
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "6d72b56b86fd5ed9bd188c8c88cfc69476f836e7",
+          "context_excerpt": "AI generated. SHA1 of HelpersLibraries.dll, the DLL version of the MATCHBOIL downloader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17dae120-bcd2-482f-a3f1-820b54907678",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d7474aea-5bde-44c6-b0f8-112d615f77a7",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--32437579-81a4-440a-9a80-b9646e7921b3",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 050926727cdd74f0b3a8a098e60b76d10fb06b14",
+      "pattern": "[file:hashes.'SHA-1' = '050926727cdd74f0b3a8a098e60b76d10fb06b14']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:87bde5f6511b9f3487c8f04ce9fac651cf4d61d09a3448da3d73312e8b4ec28e",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 847
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "050926727cdd74f0b3a8a098e60b76d10fb06b14",
+          "context_excerpt": "AI generated. SHA1 of a MATCHBOIL DLL variant executed by a custom C# loader.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--60321627-8a55-481d-817c-0cc28cbcd0bf",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--32437579-81a4-440a-9a80-b9646e7921b3",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f08f11d8-3d32-45ae-a437-5b01852cdca7",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: b0393048f166d67cb7a2cdfae978b300af7b76b4",
+      "pattern": "[file:hashes.'SHA-1' = 'b0393048f166d67cb7a2cdfae978b300af7b76b4']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e93361025cfab4ed8fdd263d26749bbccaf5adf5f495c35ef8e4cfcf0b2684cf",
+          "observed_at": {
+            "value": "2026-10-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 848
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "b0393048f166d67cb7a2cdfae978b300af7b76b4",
+          "context_excerpt": "AI generated. SHA1 of a MATCHBOIL sample referenced through the report's VirusTotal sample link.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b28cd08c-49a4-4ba7-8842-ac8ea8c3f140",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f08f11d8-3d32-45ae-a437-5b01852cdca7",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--76df4d5b-6e8c-4641-8ff7-367415406d4d",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: virtualdailyplanner.pro",
+      "pattern": "[domain-name:value = 'virtualdailyplanner.pro']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-11-10T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e5b46c4b70ee6622dfbdb616818338c90362ba8738539cbcf0505e5eea02ad3c",
+          "observed_at": {
+            "value": "2025-11-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 849
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "virtualdailyplanner.pro",
+          "context_excerpt": "AI generated. MATCHBOIL C&C server hidden behind Cloudflare.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-11-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2025-11-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30d67b53-2f32-4139-813f-66fed14c6442",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--76df4d5b-6e8c-4641-8ff7-367415406d4d",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9fae64e5-b87b-45d7-92c1-55699cfb5be7",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: telemetry-conf.com",
+      "pattern": "[domain-name:value = 'telemetry-conf.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-08-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:744be843c93b3214a948dca284269bac5c5b7271e9a711727fa5361482d630bf",
+          "observed_at": {
+            "value": "2025-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 850
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "telemetry-conf.com",
+          "context_excerpt": "AI generated. MATCHBOIL C&C server hidden behind Cloudflare.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2025-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37cfc79e-cc07-4909-8cf1-031f278a02fe",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9fae64e5-b87b-45d7-92c1-55699cfb5be7",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--214adaa5-b04e-405f-b503-6f8b558d2855",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 64.95.10.223",
+      "pattern": "[ipv4-addr:value = '64.95.10.223']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-03T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e4fcc8560d6be14d9dbd9a17aa4c9e5aa015e3c13a9adcad6de582529b6b25d1",
+          "observed_at": {
+            "value": "2026-03-03T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 851
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "64.95.10.223",
+          "context_excerpt": "AI generated. VPS used as a MATCHBOIL C&C server.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-03-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f4edb33-c80a-4b28-b9e9-f044692c0c89",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--214adaa5-b04e-405f-b503-6f8b558d2855",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0815fef6-3634-4075-b185-cdb0ed11ae6a",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: flycloud-service.com",
+      "pattern": "[domain-name:value = 'flycloud-service.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-03T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4cd06a76ae34204b9ae2a4762f95b8675841b2ae116ec406d4c1341e638e67f6",
+          "observed_at": {
+            "value": "2026-03-03T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 852
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "flycloud-service.com",
+          "context_excerpt": "AI generated. MATCHBOIL C&C domain hosted on a VPS.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-03-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-03-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--356eed0f-c095-4f4b-baea-f0eee5378b10",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0815fef6-3634-4075-b185-cdb0ed11ae6a",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4ab05b9e-1d9d-437c-b09e-7b1bbc041c00",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 64.95.13.210",
+      "pattern": "[ipv4-addr:value = '64.95.13.210']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-05-07T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b0316e4520021f9f7905ebb7bb0fecd97de4fb9041fdd53168266330926b4388",
+          "observed_at": {
+            "value": "2025-05-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 853
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "64.95.13.210",
+          "context_excerpt": "AI generated. VPS used as a MATCHBOIL C&C server.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2025-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--021620e7-a611-438a-9957-f30f922c25e5",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4ab05b9e-1d9d-437c-b09e-7b1bbc041c00",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--376f5c8f-7ca9-4a9d-be93-d2a122778506",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: airarticlegenerate.com",
+      "pattern": "[domain-name:value = 'airarticlegenerate.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-05-07T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-914a95f629a6558c7376"
+      ],
+      "x_malware_refs": [
+        "malware--daily-462500b151ebf5435c0a"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9ba618579f3cf7a7a192aacaa103b4b8b2865ae78d36fc2f0db1100f171ce571",
+          "observed_at": {
+            "value": "2025-05-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "source_path": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261010.csv",
+            "row": 854
+          },
+          "campaign_refs": [
+            "activity--daily-914a95f629a6558c7376"
+          ],
+          "malware_refs": [
+            "malware--daily-462500b151ebf5435c0a"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "airarticlegenerate.com",
+          "context_excerpt": "AI generated. MATCHBOIL C&C domain hosted on a VPS.",
+          "analyst_notes": "actor field: UAC-0099; actor_attribute: russia; reference: https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2025-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-25ac3dba172a1ff5a117",
+          "value": "2026-10-10T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9044e31a-98b5-48b5-b9c8-510fe4f5dd81",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--376f5c8f-7ca9-4a9d-be93-d2a122778506",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--8c686840-0fa5-4331-aefc-b71ceeb93c5a",
@@ -2509,7 +5142,7 @@
       "spec_version": "2.1",
       "id": "report--736e3f3d-58ca-4c86-b85d-58864bbd5125",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2518,26 +5151,46 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-10-12T09:12:01Z",
       "object_refs": [
         "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
         "malware--f264b0a9-ab35-464c-affb-44396a4eafe1",
+        "malware--0e6b0fae-caf7-4e05-af54-709a701d971f",
         "malware--03457fea-7cb0-437c-b0d4-bca46151aca5",
         "malware--ec5371e3-8515-4354-b81a-4408197ce5c3",
         "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
         "campaign--80e3ab99-d387-4456-b171-a954b4904bfc",
+        "campaign--4fed3d3d-21ce-47a6-a07e-be37b052be12",
         "campaign--49e0cb5b-01ea-450e-b405-710b2732a4f2",
         "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
         "identity--8d3cc8dc-c314-462e-98d3-3309722bd967",
         "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
         "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
         "identity--5c60509e-2860-40d7-ba44-10548feeaddc",
         "identity--f7ed45ea-b2eb-404f-a08c-9022f25e54ab",
+        "identity--31671120-6338-4879-b95c-096f26cbca81",
         "identity--d75c536b-1e7c-4500-924e-a5099a6bfd47",
+        "attack-pattern--da67b5aa-6243-4789-ae58-14d430a00179",
         "attack-pattern--d9f9c196-e951-401f-913c-0e3fd5dda607",
         "attack-pattern--07bb87a2-6cd5-48fa-bbaf-37363305806e",
         "attack-pattern--f41e52c4-6eb5-4c5d-81a3-18676125d6e3",
-        "attack-pattern--0186f435-1243-418d-9754-eed16f4408b3"
+        "attack-pattern--0186f435-1243-418d-9754-eed16f4408b3",
+        "indicator--8e6a21d3-6773-450c-97dd-aecc49be3d3b",
+        "indicator--d47f1064-fb51-4d90-8a06-6f0f0c8295df",
+        "indicator--5a7f262e-5fdf-4106-93e2-920cd55586d0",
+        "indicator--0edeead0-088e-4e71-aea8-b9c3739ecd3e",
+        "indicator--3f0426e7-3fbd-4b5d-a7cc-8b38b3a3456e",
+        "indicator--d02c9e4e-7f2c-4929-9bab-71c3009d2dd6",
+        "indicator--d7474aea-5bde-44c6-b0f8-112d615f77a7",
+        "indicator--32437579-81a4-440a-9a80-b9646e7921b3",
+        "indicator--f08f11d8-3d32-45ae-a437-5b01852cdca7",
+        "indicator--76df4d5b-6e8c-4641-8ff7-367415406d4d",
+        "indicator--9fae64e5-b87b-45d7-92c1-55699cfb5be7",
+        "indicator--214adaa5-b04e-405f-b503-6f8b558d2855",
+        "indicator--0815fef6-3634-4075-b185-cdb0ed11ae6a",
+        "indicator--4ab05b9e-1d9d-437c-b09e-7b1bbc041c00",
+        "indicator--376f5c8f-7ca9-4a9d-be93-d2a122778506"
       ],
       "x_schema_version": "1.4.0"
     }

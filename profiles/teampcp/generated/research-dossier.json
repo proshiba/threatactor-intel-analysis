@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-28T06:50:36Z",
+  "generated_at": "2026-10-12T11:10:25Z",
   "actor_ref": "actor--teampcp",
   "actor_name": "TeamPCP",
-  "profile_updated_at": "2026-09-28T06:45:54Z",
+  "profile_updated_at": "2026-10-12T11:06:24Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -18,8 +18,8 @@
       "attribution": "canonical-present"
     },
     "canonical_counts": {
-      "activities": 3,
-      "dated_activities": 3,
+      "activities": 2,
+      "dated_activities": 2,
       "relationships": 0,
       "associated_entities": 2,
       "entity_relationships": 2,
@@ -751,7 +751,6 @@
           "ttp--teampcp-t1486-ransomware"
         ],
         "victim_refs": [
-          "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
           "victim--teampcp-exposed-cloud-services"
         ],
         "confidence": "medium",
@@ -786,7 +785,6 @@
           "victim": {
             "target_refs": [],
             "victim_refs": [
-              "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
               "victim--teampcp-exposed-cloud-services"
             ]
           },
@@ -818,8 +816,7 @@
             "results": [
               "account-compromise",
               "credential-theft",
-              "encryption",
-              "supply-chain"
+              "encryption"
             ],
             "direction": {
               "source_countries": [],
@@ -854,10 +851,6 @@
         "malware": [],
         "targets": [],
         "victims": [
-          {
-            "id": "victim--activity-rule--8eec3a1a4b0c5b1aac6c",
-            "name": "aggregate"
-          },
           {
             "id": "victim--teampcp-exposed-cloud-services",
             "name": "aggregate"
@@ -1069,125 +1062,6 @@
             "name": "Credentials In Files"
           }
         ]
-      },
-      {
-        "activity_id": "activity--daily-b966215077c933ccc5f5",
-        "name": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
-        "activity_type": "malware-campaign",
-        "stix_object_type": "incident",
-        "grouping_context": null,
-        "activity_refs": [],
-        "first_observed": {
-          "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
-          "precision": "day",
-          "status": "known",
-          "value": "2026-05-11T00:00:00Z"
-        },
-        "last_observed": {
-          "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
-          "precision": "day",
-          "status": "known",
-          "value": "2026-05-11T00:00:00Z"
-        },
-        "reported_at": {
-          "basis": "source-publication",
-          "precision": "day",
-          "status": "known",
-          "value": "2026-09-18T00:00:00Z"
-        },
-        "description": "CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
-        "target_refs": [],
-        "malware_refs": [],
-        "infrastructure_refs": [],
-        "ttp_refs": [],
-        "victim_refs": [
-          "victim--activity-rule--714184e3704040bde582"
-        ],
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-cd3414e27772e05da66f"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--b966215077c933ccc5f5ed12 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなく、レビュー済みの一次資料公開日。 主体判定: strong-subject。 レビュー: 採用(一次資料が実行主体を明記)。CrowdSec 原文をcurlでHTTP 200を取得して確認した(JSON-LD datePublished 2026-09-18T17:20:09、dateModified 2026-09-21T13:59:16、本文表示も「Sep 18, 2026」)。tech-memo 2026-09-23 のIOC収集ログは公開日を2026-09-16と記載しているが、これは攻撃者がフォーラムへ投稿した日(原文の「Sept 16th, 2026 – 17h45 : Publication on the forum」)であって資料の公開日ではない。原文のJSON-LDに従い reported_at は2026-09-18とした。CrowdSecは被害組織自身であり、自社インシデントを直接観測した一次資料である。帰属の切り分けが本件の要点である。原文がTeamPCP(Threat Actor UNC6780)の実行として明示するのはTanStack npmリポジトリの侵害(2026-05-11)とMistral AIリポジトリ侵害の犯行主張(2026-05-22)であり、CrowdSecの非公開リポジトリ約170件の複製は「one of the founders of BreachForum and a member, diencracked <diencracked@cock.li> downloaded the content of ~170 private CrowdSec GitHub repositories」と別主体の行為として記述されている。2026-08-17のAWS SNSトークンの権限確認(攻撃元IP 23.234.84.102)についても原文は実行主体を帰属していない。したがって活動はTanStack侵害に限定し、下流の資格情報悪用をTeamPCPの観測期間へ繰り入れない。既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、GitHub Actions / PyPI / npm / Docker Hub)および activity--teampcp-oligo-lineage-2020-2026 とは期間・資料が異なるため別活動として保持する。IOCは1件(2026-08-17観測の攻撃元IP)がIOC CSVに存在するが、これは上記のとおり未帰属の下流悪用であり本活動へ結び付けない。原文中の部分マスクIP 178.249.214.XX は値が不完全でIOC化していない。",
-        "diamond_model": {
-          "adversary": {
-            "actor_ref": "actor--teampcp",
-            "name": "TeamPCP",
-            "attribution_countries": [],
-            "organization_refs": []
-          },
-          "capability": {
-            "malware_refs": [],
-            "ttp_refs": []
-          },
-          "infrastructure": {
-            "infrastructure_refs": []
-          },
-          "victim": {
-            "target_refs": [],
-            "victim_refs": [
-              "victim--activity-rule--714184e3704040bde582"
-            ]
-          },
-          "meta_features": {
-            "first_observed": {
-              "basis": "CrowdSec: \"May 11th, 2026 : TeamPCP compromises a famous NPM package repository named TanStack\"",
-              "precision": "day",
-              "status": "known",
-              "value": "2026-05-11T00:00:00Z"
-            },
-            "last_observed": {
-              "basis": "CrowdSec: 原文がTeamPCPの実行として明示する日はTanStack侵害の2026-05-11のみ。後続の2026-05-22のリポジトリ複製と2026-08-17のAWSトークン権限確認は別主体または未帰属であり、TeamPCPの観測期間へ含めない",
-              "precision": "day",
-              "status": "known",
-              "value": "2026-05-11T00:00:00Z"
-            },
-            "reported_at": {
-              "basis": "source-publication",
-              "precision": "day",
-              "status": "known",
-              "value": "2026-09-18T00:00:00Z"
-            },
-            "activity_type": "malware-campaign",
-            "phases": [],
-            "results": [
-              "credential-theft",
-              "supply-chain"
-            ],
-            "direction": {
-              "source_countries": [],
-              "target_country_refs": [],
-              "target_region_refs": []
-            }
-          },
-          "confidence": "medium",
-          "evidence_refs": [
-            "source--daily-cd3414e27772e05da66f"
-          ],
-          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-        },
-        "claim_assessments": [
-          {
-            "claim_id": "claim--95a679b6d918d801eda6e4e4",
-            "category": "activity",
-            "verification_status": "partially-supported",
-            "confidence": "medium",
-            "statement": "TeamPCP conducted or is associated with TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入: CrowdSecは自社の侵害インシデント報告の中で、発端となったTanStackサプライチェーン攻撃の時系列を公開した。原文は「May 11th, 2026: TeamPCP compromises a famous NPM package repository named TanStack」と記し、42パッケージが認証情報・トークン窃取に特化したマルウェア「Shai Hulud」でバックドア化されたとする。原文はまた、TeamPCPが2026-05-22にMistral AIの一部リポジトリへの侵害についても犯行を主張したと記録している。CrowdSec自身の非公開リポジトリ約170件の複製(2026-05-22 05:52:29〜06:01:33 UTC)は、原文がBreachForumsの創設者の一人とメンバーdiencrackedによる行為として別個に記述しており、TeamPCPの実行としては記載されていない。",
-            "evidence_refs": [
-              "source--daily-cd3414e27772e05da66f"
-            ],
-            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
-            "counterevidence": []
-          }
-        ],
-        "malware": [],
-        "targets": [],
-        "victims": [
-          {
-            "id": "victim--activity-rule--714184e3704040bde582",
-            "name": "anonymous"
-          }
-        ],
-        "techniques": []
       }
     ],
     "malware_usage": [
@@ -1836,8 +1710,7 @@
     "assessments": []
   },
   "claim_audit_counts": {
-    "supported": 95,
-    "partially-supported": 2
+    "supported": 94
   },
   "evidence_catalog": {
     "source--abc-teampcp-arrests-2026": {
@@ -1892,24 +1765,6 @@
       ],
       "analyst_notes": "AFP states that two Western Australian men were arrested and charged on 2026-08-26. Residence and arrest location are not treated as nationality.",
       "archive_url": "https://web.archive.org/web/20260831071008/https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global"
-    },
-    "source--daily-cd3414e27772e05da66f": {
-      "source_id": "source--daily-cd3414e27772e05da66f",
-      "path": "https://www.crowdsec.net/blog/tanstack-supply-chain-attack-analysis",
-      "title": "TeamPCP、TanStackのnpmリポジトリを侵害し42パッケージへShai Huludを混入",
-      "publisher": "crowdsec.net",
-      "published_at": {
-        "basis": "source-publication",
-        "precision": "day",
-        "status": "known",
-        "value": "2026-09-18T00:00:00Z"
-      },
-      "language": "unknown",
-      "source_type": "osint-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260923.md; source commit: 951655087a7e24754057074c9f1050d3a9d74364; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     "source--doj-teampcp-thomson-indictment-2026": {
       "source_id": "source--doj-teampcp-thomson-indictment-2026",

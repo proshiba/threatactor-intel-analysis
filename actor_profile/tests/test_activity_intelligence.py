@@ -531,6 +531,44 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("米国", countries)
         self.assertNotIn("中国", countries)
 
+    def test_state_backing_ukeru_phrase_is_not_a_victim_country(self) -> None:
+        """「ロシアの国家支援を受けるStar Blizzard」は帰属文脈であり被害国ではない。
+
+        2026-10のRedFlick取込でロシアがcallistoの標的国へ流用された回帰ケース。
+        続く語がラテン文字のアクター名でも「の国家支援を受ける」で帰属側と判定する。
+        """
+        profile = self.profile("Star Blizzard")
+        activity = self.activity(
+            "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+            (
+                "Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、"
+                "少なくとも13件の大規模なフィッシング活動を行ったと報告した。"
+                "ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("ロシア", countries)
+
+    def test_plain_support_ukeru_phrase_keeps_victim_side_country(self) -> None:
+        """無修飾の「Xの支援を受ける組織」は被害側の記述であり、Xを除外しない。
+
+        「国家支援／政府支援を受ける」だけを帰属文脈とし、支援国が標的記述に
+        現れる形(ウクライナ支援団体が標的等)を巻き込まないことの否定側テスト。
+        """
+        profile = self.profile("Star Blizzard")
+        activity = self.activity(
+            "ウクライナを支援する組織への攻撃",
+            "攻撃者はウクライナの支援を受ける組織と、ウクライナの政府機関を標的にした。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ウクライナ", countries)
+
     def test_government_backing_phrase_is_not_a_country_or_sector_target(
         self,
     ) -> None:
@@ -1085,6 +1123,42 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertEqual(profile["victim_cases"][0]["case_status"], "disputed")
         self.assertEqual(profile["victim_cases"][0]["victim_name"], "Example Corp")
         self.assertIn(victim_id, activity["victim_refs"])
+
+    def test_curated_victim_case_suppresses_generated_aggregate(self) -> None:
+        """アナリスト作成の被害事例が結び付いた活動へ自動集約事例を重ねない。
+
+        teampcpのOligo系譜grouping(curatedのexposed-cloud-services事例あり)へ
+        enrichがvictim--activity-rule--…の集約事例を追加で生成した回帰ケース。
+        """
+        profile = self.profile("TeamPCP")
+        activity = self.activity(
+            "Oligoが関連付けた複数活動・基盤系譜",
+            "複数の組織の公開クラウドサービスが侵害され、被害が確認された。",
+            activity_type="intrusion",
+        )
+        activity["victim_refs"] = ["victim--teampcp-exposed-cloud-services"]
+
+        victim_id = add_victim_case(profile, activity, self.rules)
+
+        self.assertIsNone(victim_id)
+        self.assertEqual(profile["victim_cases"], [])
+        self.assertEqual(
+            activity["victim_refs"], ["victim--teampcp-exposed-cloud-services"]
+        )
+
+    def test_generated_victim_case_still_updates_its_own_activity(self) -> None:
+        """既存refが自動生成のものだけなら、再実行での更新は妨げない。"""
+        profile = self.profile("Akira")
+        activity = self.activity(
+            "複数組織への侵害",
+            "攻撃者は複数の企業を侵害し、データを窃取した。",
+            activity_type="intrusion",
+        )
+        first = add_victim_case(profile, activity, self.rules)
+        self.assertIsNotNone(first)
+        profile["victim_cases"] = []
+        second = add_victim_case(profile, activity, self.rules)
+        self.assertEqual(first, second)
 
     def test_publication_date_is_removed_from_observation_field(self) -> None:
         activity = self.activity(

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--contagious-interview",
-  "updated_at": "2026-08-07T10:34:10Z",
+  "updated_at": "2026-10-12T09:00:06Z",
   "records": [
     {
       "record_id": "daily-record--019e5cc3a9bb7ac76a1aeaf6",
@@ -621,6 +621,67 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--c858a700273c134e5fd08dde",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "contagious-interview",
+        "canonical_name": "Contagious Interview",
+        "matched_term": "DEV#POPPER",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "DEV#POPPER"
+      },
+      "activity": {
+        "title": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用",
+        "summary": "Ransom-ISACは、XCTDHの2026年9月の検体に新しい「HashHiding」機能を確認した。Ethereumの通常の送金トランザクションで、送金先アドレスの先頭6バイトにC2のIPv4アドレスとポートを埋め込む。 従来のXCTDHはTRONとAptosを索引、BSCをマルウェアの保存先に使っていた。新たなEthereum経路が運ぶのはペイロードではなくC2の接続先で、攻撃者はマルウェアを変更せずに接続先を切り替えられる。 攻撃者のシグナル用ウォレットでは、6月23日から9月21日までに2,655件の送金が観測された。C2はこの間に4回切り替わり、最後に確認された接続先は181[.]214[.]149[.]148の443番ポートだった。 HashHidingは既存の接続経路が失敗した場合だけ動く予備機能ではなく、RATの起動時から並行して動作する。ハードコードされたIP、従来の複数ブロックチェーン経路と合わせ、三つの接続先取得経路を維持する。 感染はTelegram上の偽求人から悪意あるGitHubリポジトリやnpmパッケージへ誘導する形で始まる。後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。",
+        "news_date": "2026-10-01",
+        "news_url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+        "primary_url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+        "activity_reference": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+        "news_path": "daily-news/news/2026_10-12/20261001.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "source_path": "daily-news/news/2026_10-12/20261001.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "原文(ransom-isac.org)を確認。DPRK帰属キャンペーンとしてHashHiding(Ethereum送金先アドレスへC2のIP:Port 6バイトを埋め込む手法)を分析。2025年10月の活動とBSCコントラクトとXORキーが共通し「confirm the same operator」と明記。2025-10の活動(NullReceiver、opensourcemalware)は本プロファイルへ反映済みのContagious Interview帰属活動であり、同一運用者の技術的連続性が具体的。YARAルールもDPRK Contagious Interviewとラベル。既知グループとの関係詳述はPart 3へ持ち越しとされるため確度はmediumに留める。DEV#POPPER.jsは配布されるNode.js製RATの名称。 activity_typeは自動推定が出典ドメインの'ransom'に反応してransomware-extortionとなったため、同系統のNullReceiver活動と同じinfrastructure-operationへ上書き。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "body",
+        "evidence_text": "js製RAT「DEV#POPPER.",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_type": "infrastructure-operation",
+      "activity_period": {
+        "first_observed": {
+          "value": "2026-06-23T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "ransom-isac: 最初のビーコン取引"
+        },
+        "last_observed": {
+          "value": "2026-09-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+        }
+      },
+      "source_commit": "527918454fa24715403903ea92964bc3a0a8d224"
     },
     {
       "record_id": "daily-record--e98674dd97bf22866f7f9dd6",
