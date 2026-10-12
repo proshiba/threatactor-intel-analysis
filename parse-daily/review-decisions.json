@@ -161,6 +161,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
     "review_status": "approved"
   },
+  "apt28|https://blog.virustotal.com/2026/10/internet-scanning-in-vt.html": {
+    "review_status": "rejected",
+    "review_notes": "VirusTotalの新機能(公開IPv4ポート情報での探索)紹介記事。APT28はコレクション名の例示として登場するのみで、攻撃活動の報告ではない(non-operational)。"
+  },
   "apt28|https://thehackernews.com/2024/03/apt28-hacker-group-targeting-europe.html": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的",
@@ -687,6 +691,32 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は、ロシアの連邦保安庁（FSB）と関連するColdRiver（別名：Star Blizzard、Callisto Group、Seaborgium）である。",
     "review_status": "approved"
   },
+  "callisto|https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      }
+    },
+    "review_notes": "原文(Microsoft Security Blog 2026-09-29)を確認。Star Blizzardを実行主体とするRedFlick配信手法のフィッシング・マルウェア配布活動(2026年1〜8月、13件以上のキャンペーン、100超の組織、主に米英。ウクライナ支援のNGO・シンクタンク・政府・金融が標的)。Star BlizzardはCISAがFSB Centre 18配下と帰属する露国家アクターで、callistoプロファイルのoverlapping alias(SEABORGIUM改名)。turla/Secret Blizzardの前例に従い手動確認の上で対応付け。侵害サイトのアカウント悪用は「assesses with high confidence」と明記。RedFlickはマルウェアでなく配信手法名。",
+    "capability_decisions": [
+      {
+        "name": "CosmicPulse",
+        "status": "approved",
+        "review_notes": "Microsoftが本文で直接分析したStar Blizzard開発のPython製カスタムバックドア。CPL形式downloader(NOROBOT/BAITSWITCH)が取得・実行する。固有名。"
+      }
+    ]
+  },
   "calypso|https://cyberint.com/blog/dark-web/noodle-rat-a-recipe-for-cross-platform-espionage/": {
     "confidence": "low",
     "review_notes": "不採用(過去事例への言及)。原文(Cyberint / Check Point Exposure Management、datePublished 2026-09-14)を curl で HTTP 200 を取得して確認した(WebFetch は 403)。本稿は Noodle RAT というマルウェアファミリの解説であり、新規の侵害・キャンペーン・被害者・観測期間を一切提示していない。「actively used by Chinese-speaking threat actors since at least mid-2016」等の記述は Trend Micro の2024年6月研究「Noodle RAT: Reviewing the New Backdoor Used by Chinese-Speaking Groups」の再掲であり、Cyberint 自身の直接観測ではない二次まとめである。記事末尾の IOC 表の「Date Added 2026-09-13」はフィードへの取込日であって観測日ではなく、活動期間へ転用しない。根拠文は「Groups like Iron Tiger, Calypso APT, Rocke, and Cloud Snooper have deployed it.」の一文のみで、過去のツール利用グループの列挙である。AGENT.md の「過去事例への言及は自動承認しない」に該当し、実質 historical-reference である。activity_claim の assessment も candidate(名前一致はあるが実行主体を示す表現が不足)であった。Calypso は直近活動(2026-05-22)があるため観点1・2の交差として最優先確認対象に挙がったが、本稿は新規報告ではないため活動レコードを作成しない。",
@@ -731,6 +761,26 @@
     "confidence": "medium",
     "review_notes": "同一活動(NullReceiver、悪意あるnpmパッケージ経由のブロックチェーン型C2、IOC 166.88.134.62)は2026-08-04のコミット(PR #19)で既にContagious Interviewプロファイルへ適用済み。本レコードはキュー再生成による重複表示であり、追加適用は不要。",
     "review_status": "rejected"
+  },
+  "contagious-interview|https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      }
+    },
+    "review_notes": "原文(ransom-isac.org)を確認。DPRK帰属キャンペーンとしてHashHiding(Ethereum送金先アドレスへC2のIP:Port 6バイトを埋め込む手法)を分析。2025年10月の活動とBSCコントラクトとXORキーが共通し「confirm the same operator」と明記。2025-10の活動(NullReceiver、opensourcemalware)は本プロファイルへ反映済みのContagious Interview帰属活動であり、同一運用者の技術的連続性が具体的。YARAルールもDPRK Contagious Interviewとラベル。既知グループとの関係詳述はPart 3へ持ち越しとされるため確度はmediumに留める。DEV#POPPER.jsは配布されるNode.js製RATの名称。 activity_typeは自動推定が出典ドメインの'ransom'に反応してransomware-extortionとなったため、同系統のNullReceiver活動と同じinfrastructure-operationへ上書き。",
+    "activity_type": "infrastructure-operation"
   },
   "contagious-interview|https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems": {
     "confidence": "high",
@@ -871,6 +921,10 @@
     "confidence": "low",
     "review_notes": "原文(Chromium security docs)を確認したが、Earth Luscaへの言及はない。Google ChromeのAI活用バグ修正に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
     "review_status": "rejected"
+  },
+  "earth-lusca|https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/": {
+    "review_status": "rejected",
+    "review_notes": "CastleStealer(インフォスティーラー)の記事。「Chromium系ブラウザ」というブラウザ名がalias CHROMIUMに機械的一致した名称衝突。Earth Luscaへの言及はない。"
   },
   "earth-lusca|https://forever.security/blog/bragjack-hijacking-5-browsers-via-built-in-ai-assistants/": {
     "confidence": "low",
@@ -1223,6 +1277,10 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。",
     "review_status": "approved"
+  },
+  "jewelbug|https://blog.talosintelligence.com/china-nexus-uat-11587-targets-government-and-policy-organizations-across-asia-with-antino-backdoor/": {
+    "review_status": "rejected",
+    "review_notes": "Talosの実行主体は独自クラスタUAT-11587。本文は「Jewelbugの諜報活動との重なりも確認したが、同一の活動群とは断定していない」と明記しており、重複表現のみでjewelbugへの帰属ではない(AGENT.md: 類似・重複は含めない)。UAT-11587は未帰属クラスタ台帳で継続観察。"
   },
   "jewelbug|https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage": {
     "confidence": "low",
@@ -2555,6 +2613,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。",
     "review_status": "approved"
   },
+  "uac-0099|https://cdn.sanity.io/files/ch6z6vqj/production/6841312eb734e41b43e14eeb5a9474df8a6c77d0.pdf": {
+    "review_status": "rejected",
+    "review_notes": "原文(Trend Micro Earth Sirrushレポート、34頁PDF)を確認。帰属節は「we assess with high confidence that the activity described here belongs to a single tracked intrusion set, Earth Sirrush, which overlaps with CERT-UA's UAC-0099」であり、Trend自身が一貫してoverlap表現を使いUAC-0099との同一性を主張していない。Earth Sirrush(旧SHADOW-EARTH-065)は未帰属クラスタ台帳で継続観察し、uac-0099とはoverlaps-with関係の記録対象とする。なお同レポート6章が参照するCERT-UA 2026-07勧告(LUNCHPOKE/BURNYBEAR/MATCHBOIL.V2)はUAC-0099名義であり、別途CERT-UA原典から取り込む余地がある。"
+  },
   "uac-0099|https://cert.gov.ua/article/6318634": {
     "capability_decisions": [
       {
@@ -2581,6 +2643,33 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。",
     "review_status": "approved"
+  },
+  "uac-0099|https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "value": "2024-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: コンパイル時刻で2024年4月の検体から"
+      },
+      "last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET: 確認された被害は2026年6月のエネルギー企業まで"
+      }
+    },
+    "review_notes": "原文(ESET WeLiveSecurity)を確認。MATCHBOILをUAC-0099のダウンローダーとして直接分析(2024-04〜2026-04の検体、被害はすべてウクライナ国内: 運輸2025-07〜08、製造2025-12、エネルギー2026-06)。実行主体はUAC-0099そのもの(CERT-UA命名のexact)。UAC-0099のロシア利益への整合はESET評価でmedium confidenceだが、これはアクターの帰属国評価であり本活動のアクター帰属とは別。タイマー実行化・.NET Reactor難読化・サンドボックス回避強化・DLL化などの機能更新を記録。 activity_typeは自動推定のinfrastructure-operationから、同プロファイルのNotepad++プラグイン活動と同じmalware-campaignへ上書き(ローダーの配布・進化の分析のため)。",
+    "capability_decisions": [
+      {
+        "name": "MATCHBOIL",
+        "status": "approved",
+        "review_notes": "CERT-UAが2025-08に命名しESETが本文で直接分析したUAC-0099固有のダウンローダー。偽旗・一般分類ではない。"
+      }
+    ],
+    "activity_type": "malware-campaign"
   },
   "uac-0099|https://x.com/ESETresearch/status/2092885120562741652": {
     "capability_decisions": [],
@@ -2897,6 +2986,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃にはShinyHuntersやUNC5537（Scattered Spider）などのAPTグループが関与していた。",
     "review_status": "approved"
   },
+  "unc5537|https://www.suspectfile.com/shinyhunters-six-years-of-cybercrime-expert-analysis-and-ransomware-group-perspectives/": {
+    "review_status": "rejected",
+    "review_notes": "同上(回顧記事)。UNC5537への新規活動の帰属はない。"
+  },
   "unc5792|https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai": {
     "review_notes": "不採用(既反映)。GTIG原文(2026-09-08)の当該内容は、UNC5792 プロファイルへ手動で activity--unc5792--ai-telegram-monitoring(AIを組み込んだ自動ボットによるTelegramチャンネル監視、出典 source--gtig-adversarial-ai-2026)として反映済みである。本レコードは UNC5792 のプロファイル昇格後に同じ一次資料から再生成されたもので、取り込むと同一活動の二重登録になる。またtech-memoが収録している記事見出し「攻撃者、広範な認証情報窃取のためAIフレームワークを構築」は BleepingComputer による原文全体(12アクター)の二次要約であり、UNC5792 単独の活動名としても適切でない。",
     "review_status": "rejected"
@@ -2949,6 +3042,10 @@
     "confidence": "high",
     "review_notes": "GTIG一次資料で再検証。Salesforceへの音声フィッシングとデータ窃取はUNC6040、後続のShinyHunters名義の恐喝はUNC6240として別々に追跡されている。二次記事の『ShinyHunters(UNC6040)』という同一視を除去し、活動期間は推測しない。",
     "review_status": "approved"
+  },
+  "unc6040|https://www.suspectfile.com/shinyhunters-six-years-of-cybercrime-expert-analysis-and-ransomware-group-perspectives/": {
+    "review_status": "rejected",
+    "review_notes": "同上(回顧記事)。strong-subject判定はタイトルの名称一致によるもので、新規の攻撃活動の報告ではない。"
   },
   "unc6240|https://adapthealth.com/blogs/notices/adapthealth-notice-of-cybersecurity-incident-1": {
     "review_notes": "不採用(原文にアクター名の記載がない)。一致は本文抽出の名前候補経由。AdaptHealth の通知原文(2026-08-14付)を確認したところ、脅威アクター名は一切記載されていない。通知は2026-06-05の攻撃・2026-06-15の発見とし、影響人数の記載もない。tech-memo の要約「7月のサイバー攻撃で410万人」は通知原文の記載と一致せず、ShinyHunters/UNC6240 を当該侵害へ結び付ける根拠は原文にない。",
@@ -3043,9 +3140,37 @@
     "review_notes": "採用(第三者による独立確認あり)。BleepingComputer 原文(datePublished 2026-09-19T09:48:32-04:00、2026-09-21追補)をcurlでHTTP 200を取得して確認した。攻撃者の自称にとどまらない独立確認が3系統ある。(1) BleepingComputer が Clop の Tor サイトからアップロードされたファイルを直接ダウンロードでき、改ざんページ(ShinyHunters のロゴである Umbreon のASCIIアート)が Clop のインフラから配信されていることを確認している。(2) Grav CMS 開発元が、ShinyHunters が BleepingComputer へ提供した悪用手法の記述について「Yes, it's a legitimate flaw, and the threat actor's description is accurate」と確認している(2026-09-25続報)。(3) Clop 自身が Grav の未更新による自サーバー侵害を認め、リークサイトを新しいonionアドレスへ移転した(同続報)。実行主体は改ざんページとリークサイト掲載により ShinyHunters 自身が名乗り、被害側の Clop も相手方として認識している。一方で、ソースコード・Grav CMSプラグイン・システムログ・Tor onionサービス秘密鍵の窃取は攻撃者の主張のみであり、BleepingComputer は独立確認できていない。Clop は「the server contained nothing but content」として価値ある運用・財務データの窃取を否定しており、両論が対立している。このためレコードの confidence は medium とし、窃取範囲は確定表現にしない。活動期間は原文が明示する日のみを用いた。2026-09-26 のニュースファイル収録分(一次ソースが Grav の GHSA-hmcx-ch82-3fv2)は同一インシデントの続報であるため別活動にせず、当該レコードは不採用として本活動へ集約した。続報で判明した技術詳細(CVE-2026-42608、Clop側が Grav 1.7.43 を使用、__unique_form_id__ へディレクトリトラバーサル列を与えて tmp/forms 外へ書き込む未認証パストラバーサル、修正版 Grav 1.7.53.4)は本活動の根拠に含める。",
     "review_status": "approved"
   },
+  "unc6240|https://www.courtlistener.com/docket/74942095/parties/united-states-v-dobrovsky/": {
+    "review_status": "rejected",
+    "review_notes": "起訴記録(docket)。法執行記事であり攻撃活動ではない。被疑者とアクターの関係も報道段階。"
+  },
+  "unc6240|https://www.fbi.gov/video-repository/shinyhunters-arrested-092926.mp4/view": {
+    "review_status": "rejected",
+    "review_notes": "FBIによる出頭呼びかけ動画。法執行の広報であり攻撃活動ではない。"
+  },
   "unc6240|https://www.microsoft.com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/": {
     "review_notes": "不採用(実行主体でない)。Microsoft原文(2026-09-09)を確認した。本稿の主題は初期アクセス側のクラスタであり、「Storm-3121 conducts initial access activity leading to ShinyHunters and Falcon extortion.」と記載される。ShinyHunters は初期アクセスを受け取る下流の恐喝ブランドとして言及されるだけで、記述されているパスキー装いの社会工学からクラウドデータ窃取までの侵入活動の実行主体ではない。活動は2026年5月以降観測とされる。Storm-3121 と Storm-3032 は unknown-clusters.json へ登録済み。Storm-3121 から ShinyHunters への受け渡しは一次資料が明示する運用関係だが、関係の追加は活動の採用とは別に判断する。",
     "review_status": "rejected"
+  },
+  "unc6240|https://www.reuters.com/world/middle-east/key-shinyhunters-hacker-detained-jordan-is-cooperating-sources-say-2026-10-03/": {
+    "review_status": "rejected",
+    "review_notes": "関係者「Rey」のヨルダン拘束とFBI協力の報道。法執行記事であり攻撃活動ではない。"
+  },
+  "unc6240|https://www.suspectfile.com/shinyhunters-six-years-of-cybercrime-expert-analysis-and-ransomware-group-perspectives/": {
+    "review_status": "rejected",
+    "review_notes": "6年間の変遷をまとめた回顧記事(historical-reference)。新規の攻撃活動の報告ではない。記事自身がUNC5537/UNC6040/UNC6240の区別と名称だけの一括認定への戒めを主題とする。"
+  },
+  "unc6240|https://www.suspectfile.com/shinyhunters-vs-cl0p-the-attack-on-the-site-the-dispute-and-qilins-position/": {
+    "review_status": "rejected",
+    "review_notes": "ShinyHuntersによるCl0pリークサイト侵害の主張と集団間対立の記事。一次URLはHTTP 403で原文検証不可。攻撃者の自己主張のみで第三者確認がなく、被害も犯罪インフラ間の抗争。case_statusでいうallegedに相当し、日次自動取込の対象としない。"
+  },
+  "unc6240|https://x.com/FBIDirectorKash/status/2108566367011999780": {
+    "review_status": "rejected",
+    "review_notes": "FBIによる新たな逮捕の発表。法執行記事であり攻撃活動ではない。"
+  },
+  "unc6240|https://x.com/Pol_Ops_Int/status/2104607979559342174": {
+    "review_status": "rejected",
+    "review_notes": "オランダ警察によるShinyHunters捜査の逮捕確認。法執行記事であり攻撃活動ではない(AGENT.md: 法執行記事は自動承認しない)。アクターの状勢情報としては継続観察に留める。"
   },
   "unc6240|https://x.com/flhsmv/status/2098239548660514979": {
     "review_notes": "不採用(実行主体が公式には帰属されていない)。ただし先行判断の未解決点を一段進める情報を含むため記録する。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に侵害を公式に確認し、「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」「The data breach was quickly mitigated and no further breach has occurred or is ongoing.」と述べ、経路はPlant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものの悪用と説明した。すなわち侵害の事実そのものは政府機関により確認された。一方でFLHSMVは実行主体を「international cybercriminal organization」とのみ表現し、ShinyHunters を名指ししていない。件数についても、ShinyHunters が主張する20万件超を州当局は確認していない(「FLHSMV has not disclosed how many records were accessed or stolen during the breach and has not confirmed ShinyHunters' claim that more than 200,000 records were taken」)。先行の判断 unc6240|.../shinyhunters-hackers-claim-breach-of-florida-david-dmv-database/ は「犯行主張のみ・第三者確認なし」を不採用理由としていたが、確認されたのは侵害の発生であって帰属ではない。したがって犯行主張のみを根拠とする活動の扱いという未決の方針は解消しておらず、本レコードも採用しない。profiles/unc6240 の assessment.uncertainties に記録済みの未解決点へ、この公式確認の事実を追記した。",

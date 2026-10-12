@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-10-12T09:14:53Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1347,6 +1347,34 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--708beef9-82be-4c41-a2f0-8388bdda240c",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CosmicPulse",
+      "description": "Callisto Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-45053606527c84c6ce52",
+      "x_confidence": "high",
+      "x_analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--8a42d7d3-6621-42ca-a888-0cce5ff7cf0a",
       "created": "2026-07-25T15:22:55Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -1372,6 +1400,114 @@
       "aliases": [
         "Spica"
       ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:14:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+      "description": "Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、少なくとも13件の大規模なフィッシング活動を行ったと報告した。ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。 攻撃者は最初のメールに返信した相手へ、パスワード付きのRARまたはZIPを送る。送信には侵害したWebサイト上で作成したアカウントも使い、会議への招待などを装って添付ファイルを開かせた。 RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。従来のClickFixより被害者に求める操作を減らしている。 4月に確認されたMSIは、端末情報の送信と遠隔DLLの実行、WebDAVの準備、CosmicPulseの取得を担う3つのタスクを作成した。タスク名は正規のネットワーク管理機能を装っていた。 7月の攻撃では、ZIP内のRARにあるLNKからPDFを取得し、PDFに隠したBase64形式のコードを実行してMSIを導入した。Microsoftは関連するIOCと、プロセスやタスクを調べるハンティングクエリを公開している。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-04c084ae54d70ce98309",
+      "x_activity_type": "phishing-campaign",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--04c084ae54d70ce983093985 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog 2026-09-29)を確認。Star Blizzardを実行主体とするRedFlick配信手法のフィッシング・マルウェア配布活動(2026年1〜8月、13件以上のキャンペーン、100超の組織、主に米英。ウクライナ支援のNGO・シンクタンク・政府・金融が標的)。Star BlizzardはCISAがFSB Centre 18配下と帰属する露国家アクターで、callistoプロファイルのoverlapping alias(SEABORGIUM改名)。turla/Secret Blizzardの前例に従い手動確認の上で対応付け。侵害サイトのアカウント悪用は「assesses with high confidence」と明記。RedFlickはマルウェアでなく配信手法名。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--callisto",
+          "name": "Callisto Group",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--79eb5c35f426b4cab7b9",
+            "ttp--activity-rule--f89a12fa9a6b37d623fc"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--368fc15f76f81a9d56d5"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "Microsoft: Between January and August 2026"
+          },
+          "last_observed": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "Microsoft: Between January and August 2026"
+          },
+          "reported_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b49ec0347b9e3a649f9d"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-01-01T00:00:00Z",
+      "last_seen": "2026-08-01T00:00:00Z"
     },
     {
       "type": "campaign",
@@ -1529,6 +1665,64 @@
       ],
       "x_target_category": "sectors",
       "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--31e440da-4a8a-45c6-830a-7a4611b8dd4e",
+      "created": "2026-10-12T09:14:53Z",
+      "modified": "2026-10-12T09:14:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+      "identity_class": "organization",
+      "description": "Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、少なくとも13件の大規模なフィッシング活動を行ったと報告した。ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。 攻撃者は最初のメールに返信した相手へ、パスワード付きのRARまたはZIPを送る。送信には侵害したWebサイト上で作成したアカウントも使い、会議への招待などを装って添付ファイルを開かせた。 RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。従来のClickFixより被害者に求める操作を減らしている。 4月に確認されたMSIは、端末情報の送信と遠隔DLLの実行、WebDAVの準備、CosmicPulseの取得を担う3つのタスクを作成した。タスク名は正規のネットワーク管理機能を装っていた。 7月の攻撃では、ZIP内のRARにあるLNKからPDFを取得し、PDFに隠したBase64形式のコードを実行してMSIを導入した。Microsoftは関連するIOCと、プロセスやタスクを調べるハンティングクエリを公開している。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--368fc15f76f81a9d56d5",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--79eb5c35f426b4cab7b9",
+        "ttp--activity-rule--f89a12fa9a6b37d623fc"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "エンドポイント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
       "type": "identity",
@@ -1725,6 +1919,100 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--bbc1f53d-6e3e-481d-8700-da776d9a4688",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "従来のClickFixより被害者に求める操作を減らしている。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--79eb5c35f426b4cab7b9",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--18510c5e-4ef9-4f26-b372-638fbe000ce5",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--f89a12fa9a6b37d623fc",
+      "x_tactic": "Execution, Persistence, Privilege Escalation",
+      "x_activity_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
@@ -2882,6 +3170,49 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--6a4f9484-dc88-4197-8e97-8897bdfd307d",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "target_ref": "malware--708beef9-82be-4c41-a2f0-8388bdda240c",
+      "description": "Callisto Group uses CosmicPulse.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--ca31371f-12ed-4050-a139-3ce23aeeba97",
       "created": "2026-07-25T15:22:55Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3000,6 +3331,251 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8da9cd7e-a210-4581-b2f5-87c1fb46e09f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 is attributed or linked to Callisto Group.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--13e03ab0-77c2-4315-ab69-7b9a96e6c8a8",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "target_ref": "malware--708beef9-82be-4c41-a2f0-8388bdda240c",
+      "description": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 uses malware--daily-45053606527c84c6ce52.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--421d0cd9-200f-4b93-ab55-d7811c097d77",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "target_ref": "attack-pattern--bbc1f53d-6e3e-481d-8700-da776d9a4688",
+      "description": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 uses ttp--activity-rule--79eb5c35f426b4cab7b9.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a20f1933-4a24-4e15-b608-69d282f2bcbf",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "target_ref": "attack-pattern--18510c5e-4ef9-4f26-b372-638fbe000ce5",
+      "description": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 uses ttp--activity-rule--f89a12fa9a6b37d623fc.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6375c422-76a2-4953-91c4-400ab2d834ca",
+      "created": "2026-10-12T09:14:53Z",
+      "modified": "2026-10-12T09:14:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
+      "target_ref": "identity--31e440da-4a8a-45c6-830a-7a4611b8dd4e",
+      "description": "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化 affected victim--activity-rule--368fc15f76f81a9d56d5.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026",
+        "last": "Microsoft: Between January and August 2026",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -3452,6 +4028,92 @@
         "first_precision": "unknown",
         "last_precision": "unknown"
       }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--396cc176-b35b-48e0-9da8-59c1c4a7fe69",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "target_ref": "attack-pattern--bbc1f53d-6e3e-481d-8700-da776d9a4688",
+      "description": "従来のClickFixより被害者に求める操作を減らしている。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026; activity-period",
+        "last": "Microsoft: Between January and August 2026; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72ff9e05-f638-415e-9a92-d2a0aebd4958",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "target_ref": "attack-pattern--18510c5e-4ef9-4f26-b372-638fbe000ce5",
+      "description": "RedFlickは、被害者の一度の操作を起点にMSIを導入し、スケジュールタスクを通じてPython製バックドアCosmicPulseを配布する手法。",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Source: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "external_id": "source--daily-b49ec0347b9e3a649f9d",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Microsoft: Between January and August 2026; activity-period"
+      },
+      "x_temporal_basis": {
+        "first": "Microsoft: Between January and August 2026; activity-period",
+        "last": "Microsoft: Between January and August 2026; activity-period",
+        "first_precision": "month",
+        "last_precision": "month"
+      },
+      "start_time": "2026-01-01T00:00:00Z",
+      "stop_time": "2026-08-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -15164,6 +15826,3170 @@
       "external_references": []
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--90861070-57d9-4bd3-8947-7c0445e8175f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 9707a8694e954e9ee13e839d6e5905ce626c0837c7c90da6d1025bfbe152866b",
+      "pattern": "[file:hashes.'SHA-256' = '9707a8694e954e9ee13e839d6e5905ce626c0837c7c90da6d1025bfbe152866b']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:31f27094ec69300272597fa44473a9746b4abbb6736dc4e5cf12766b3fa99e01",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 151
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "9707a8694e954e9ee13e839d6e5905ce626c0837c7c90da6d1025bfbe152866b",
+          "context_excerpt": "AI generated. SHA256 of the password-protected ZIP attachment (Documents.zip) from the January campaign, listed in the Microsoft IOC table.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bb332b23-d053-40ea-84a8-a661309510b1",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--90861070-57d9-4bd3-8947-7c0445e8175f",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--47b20152-c2a8-45c2-a074-1bcf7b537862",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 1f2096ff906915fbf80778f0636446206197351f7e271af97936eeb6f32c179d",
+      "pattern": "[file:hashes.'SHA-256' = '1f2096ff906915fbf80778f0636446206197351f7e271af97936eeb6f32c179d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e912e1c1b3c1c713e84901ae9ea25cb2ae01292625d2803cd6f9dd2b44564073",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 152
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "1f2096ff906915fbf80778f0636446206197351f7e271af97936eeb6f32c179d",
+          "context_excerpt": "AI generated. SHA256 of the VHDX file (Documents.vhdx) from the January campaign, listed in the Microsoft IOC table.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8d057405-7ab9-4676-bfa6-feea984a988d",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--47b20152-c2a8-45c2-a074-1bcf7b537862",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5f1e940b-769d-4410-926c-e5c0cf12cf15",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 699e92a9e0edf7835879d5697bc67138c0b137117f459caf1a44df357407cad9",
+      "pattern": "[file:hashes.'SHA-256' = '699e92a9e0edf7835879d5697bc67138c0b137117f459caf1a44df357407cad9']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8ee6ef507b43718f691d6a5c907c622981d337f0a7860950c9e46a2ca4c0ac79",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 153
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "699e92a9e0edf7835879d5697bc67138c0b137117f459caf1a44df357407cad9",
+          "context_excerpt": "AI generated. SHA256 of the RAR attachment used in the June campaign, listed in the Microsoft IOC table.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea4ffdf3-7ca8-4854-bb10-f58a8cd2a046",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5f1e940b-769d-4410-926c-e5c0cf12cf15",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bbb7ae7f-1395-4707-bee7-eead02f11d57",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 24b6e36a09eb2acfc2a95478ca685acb7593b1689be6a4a639fe0d222393cfa7",
+      "pattern": "[file:hashes.'SHA-256' = '24b6e36a09eb2acfc2a95478ca685acb7593b1689be6a4a639fe0d222393cfa7']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:efb7ab27265e56713ee3a15e43f1ffd78b98f42f5f034a091365c260cfae6312",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 154
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "24b6e36a09eb2acfc2a95478ca685acb7593b1689be6a4a639fe0d222393cfa7",
+          "context_excerpt": "AI generated. SHA256 of the RAR attachment used in the July campaign, listed in the Microsoft IOC table.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--95e97cde-91ff-42b8-9b27-11473dc3bcd1",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bbb7ae7f-1395-4707-bee7-eead02f11d57",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c9526143-ebd7-4f04-8257-c208f768440f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: dd98dbc1a55afe6fd0ed2ed53a79c76f6bde15081a0060422185b74eb1799ee4",
+      "pattern": "[file:hashes.'SHA-256' = 'dd98dbc1a55afe6fd0ed2ed53a79c76f6bde15081a0060422185b74eb1799ee4']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2807ef8ccf57d3a4d9d89abd2a0731c8a32b0e092182d3fe692c89452238051c",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 155
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "dd98dbc1a55afe6fd0ed2ed53a79c76f6bde15081a0060422185b74eb1799ee4",
+          "context_excerpt": "AI generated. SHA256 of the ZIP file used in the August campaign, listed in the Microsoft IOC table.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d9144d91-db96-42c4-bfc1-92217b921b3e",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c9526143-ebd7-4f04-8257-c208f768440f",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4fa850db-6e0f-41dd-98e6-803a58867930",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: etia.ca",
+      "pattern": "[domain-name:value = 'etia.ca']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f402969d4a0b31d98989c01abd0659d3713a99e95711efb772cdea75c15a63cc",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 156
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "etia.ca",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (January 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2d1d07b0-7167-4fa6-81d1-3c0a3f841cbe",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4fa850db-6e0f-41dd-98e6-803a58867930",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dfb8f09c-2025-41d7-90d9-eaf73d3f67c5",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.245.231.248",
+      "pattern": "[ipv4-addr:value = '103.245.231.248']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:769d03330526a4fb25adfdea2edf124a5bb0f9fe0e01d83fa0a7e05e760c858c",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 157
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.245.231.248",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (January 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--95986666-14b6-42d6-a674-13040ec339fe",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--dfb8f09c-2025-41d7-90d9-eaf73d3f67c5",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e582f0f6-c25b-41e6-8729-c4e0f1f7bea1",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: groy.cc",
+      "pattern": "[domain-name:value = 'groy.cc']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:df3302b3739711b1300cd4e38d943915d0bc688f94ca7392ee337baf4b39fd17",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 158
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "groy.cc",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (February 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9068ca8a-0240-4cbe-aa01-21138b9d1fcc",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e582f0f6-c25b-41e6-8729-c4e0f1f7bea1",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9c00fc1a-8109-4dfa-a9bc-3010a83a1463",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 2.57.241.246",
+      "pattern": "[ipv4-addr:value = '2.57.241.246']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:871353ec1a61d3a94980cf0b16b261876525b490ee476145f3151b5efa935e10",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 159
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "2.57.241.246",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (February 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--66bcc0e7-196f-472c-a5f2-880324d92a42",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9c00fc1a-8109-4dfa-a9bc-3010a83a1463",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a7a85006-14b4-40b4-8c65-334efb1e5192",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: gliderrompercycl.com",
+      "pattern": "[domain-name:value = 'gliderrompercycl.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0451348c6d35674ae19ceaf5ffbd147f0359cc4a742d4ea4ec069cdcc3f1bda8",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 160
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "gliderrompercycl.com",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse backdoor download host.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6a1ce428-e88b-4946-ad47-47c3303a1c9e",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a7a85006-14b4-40b4-8c65-334efb1e5192",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1869eabf-aeca-45e9-8174-6e874eee4662",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: muvb.net",
+      "pattern": "[domain-name:value = 'muvb.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f173103862f2e08d3e39672609161cb85986a12c69924c35dd02de621832d7d2",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 161
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "muvb.net",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (February 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f304429b-54bb-489f-af8f-62e4cf943b4f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1869eabf-aeca-45e9-8174-6e874eee4662",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dfebea97-4e27-40b3-a533-933b9e51bf8c",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 89.125.209.168",
+      "pattern": "[ipv4-addr:value = '89.125.209.168']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:026f4d4d10f0085ea331a24c919a4cee52786731125215d9264c5b9c13f50527",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 162
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "89.125.209.168",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (February 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b01c6a14-5a66-42dc-8731-bd4aa7b0ef38",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--dfebea97-4e27-40b3-a533-933b9e51bf8c",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7d8e2bb4-512d-4df5-901c-eb574cbd6f8d",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: divekickspolic.org",
+      "pattern": "[domain-name:value = 'divekickspolic.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:cc45fd4440d71a7123e9c479c02396c68eaf5702f7c3cf96902dbd3f7a2ad211",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 163
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "divekickspolic.org",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse backdoor download host.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--87a232e0-981d-406a-a42b-ce5f429160dd",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7d8e2bb4-512d-4df5-901c-eb574cbd6f8d",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a5e54958-7681-44ef-af26-d574ba2ad3c5",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: matjk.click",
+      "pattern": "[domain-name:value = 'matjk.click']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8ce46b57f0c319b887ed06c2a181b7bf8c96b08d429ee92238174c684d6f99ab",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 164
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "matjk.click",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (March 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c5f3c649-4a12-4ba7-b83c-21fc68bcb09f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a5e54958-7681-44ef-af26-d574ba2ad3c5",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--19eb873e-40c2-4525-bea5-e37a6b0ebec9",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: bpdaersa.click",
+      "pattern": "[domain-name:value = 'bpdaersa.click']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:37cba3117964440fc288e626acb599007ee493230795222eca1fd61219c3860f",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 165
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "bpdaersa.click",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (March 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dd92c6ba-dfc1-40dc-864e-fb064dc79a70",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--19eb873e-40c2-4525-bea5-e37a6b0ebec9",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--514a08b6-4963-453a-a4f5-804abb78f5fa",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.245.231.79",
+      "pattern": "[ipv4-addr:value = '103.245.231.79']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:71f2cd38300d5637063a642659d9f8a139d2479e94d959268a795eef0bc9ca46",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 166
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.245.231.79",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (March 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6826c596-fc7e-4955-b8fc-3aaddb4f5550",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--514a08b6-4963-453a-a4f5-804abb78f5fa",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1b9a8d9b-c48c-454e-be34-008a7b680ed5",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: stuseamandesilt.org",
+      "pattern": "[domain-name:value = 'stuseamandesilt.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a58cd70ac5279c1fa6f04a618d3285cbea833d45fb89dfebf2dea43e79ccf41d",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 167
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "stuseamandesilt.org",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse backdoor download host.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d18cf8fb-e807-469b-93a1-347964ba1d1f",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1b9a8d9b-c48c-454e-be34-008a7b680ed5",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--651baa96-7a47-40cc-a6bd-87aedea4579a",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: itechx.tel",
+      "pattern": "[domain-name:value = 'itechx.tel']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:97a91cf1fe1de9ff31c65a7d44224b1fdb0b272808da16e2a6f0a39ecf4ee105",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 168
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "itechx.tel",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (April 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9babc72d-a231-4be0-8652-f7bd9cedfd66",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--651baa96-7a47-40cc-a6bd-87aedea4579a",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a57d1181-4823-4d46-8df9-3bddf3e085ec",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 45.84.59.66",
+      "pattern": "[ipv4-addr:value = '45.84.59.66']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:fd96c442d6768d91bedfd6644c3b6482332617f937009b09c02f178c90437921",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 169
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "45.84.59.66",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (April 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7109382c-d610-4229-9faf-88a939d21985",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a57d1181-4823-4d46-8df9-3bddf3e085ec",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--11582757-6e23-4db3-a8a6-e80b0b0d1b44",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.245.213.217",
+      "pattern": "[ipv4-addr:value = '103.245.213.217']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9b97deaa6f17285fa90767fc5fd0f3a9e1c769fa143779a610bd103d94bac093",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 170
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.245.213.217",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: C2 contacted by the scheduled tasks shown in the report figure.",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--491ab70b-b3f0-4364-83bb-0d78baafab9e",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--11582757-6e23-4db3-a8a6-e80b0b0d1b44",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5c827af4-1480-4523-b408-050a4cc3e8de",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: guach.net",
+      "pattern": "[domain-name:value = 'guach.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:20e9c50eed28470718046b4ba7acf393947bccc256847389417625d5606ff747",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 171
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "guach.net",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick PowerShell code host (June 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a1a697a6-82a7-4ea1-be5a-b82fa1c0dfb1",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5c827af4-1480-4523-b408-050a4cc3e8de",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a4ccc8c8-0e64-443e-9dd2-5f8c74f7f362",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: ruten.observer",
+      "pattern": "[domain-name:value = 'ruten.observer']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2e6fe9b41f49f0c8e490d947f6fc02615fdf9c8fef21af6bc619d7b15927e03a",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 172
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "ruten.observer",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (June-July 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--917ac18d-8cc0-49fe-a12e-8fd9c8b6d6ca",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a4ccc8c8-0e64-443e-9dd2-5f8c74f7f362",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d123f0af-0324-4c27-8efc-6b765dcc0203",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: byveo.org",
+      "pattern": "[domain-name:value = 'byveo.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:79cf1e3b6f29387d5bc9f510d3b2224154261b51af4e1923cbbf0cebf9b3b928",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 173
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "byveo.org",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick PowerShell code host (July 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f69506b-76d5-4786-af5b-e7f12835473c",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d123f0af-0324-4c27-8efc-6b765dcc0203",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d9456578-faff-4bcd-9898-84b8177812ea",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: secure-dns-hub.com",
+      "pattern": "[domain-name:value = 'secure-dns-hub.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:67e097edefda36a4d4fc0294a8592884ed8d27f9d2050d508038db4c017dc2e1",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 174
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "secure-dns-hub.com",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (July 2026 onward).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b3e99a50-fa1a-4e75-8a6a-bde8ab31b20d",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d9456578-faff-4bcd-9898-84b8177812ea",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3b45cfe5-5a96-478f-a8fc-ca96bab7eef4",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.160.59.97",
+      "pattern": "[ipv4-addr:value = '103.160.59.97']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c36d64889b0f33a55974d4773c288e74dab76e7729865a7d325e5ae7d08f0b05",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 175
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.160.59.97",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (July 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2543d697-0492-4766-871b-38188b6aeb16",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3b45cfe5-5a96-478f-a8fc-ca96bab7eef4",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9e8b50ec-440d-4f5f-916f-b14218839044",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: qumel.link",
+      "pattern": "[domain-name:value = 'qumel.link']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:be54711fdea40ab49938ff375ffe4ce7351f4400ca74323884f7ea074c1f4475",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 176
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "qumel.link",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (July 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07af71b4-5077-416b-925a-5aeddced92ab",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9e8b50ec-440d-4f5f-916f-b14218839044",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--018bd877-8652-4163-8be7-d73332f5067e",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: cyrna.top",
+      "pattern": "[domain-name:value = 'cyrna.top']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d76ad7434feb5e8266b7f859ec0764b8c40761370def3e950a3bb5c59d74491c",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 177
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "cyrna.top",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: RedFlick MSI installer host (August 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--964335d3-7061-4529-a778-481f727fb903",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--018bd877-8652-4163-8be7-d73332f5067e",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6d883501-7bb8-429d-92b1-e60585baec72",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: drasw.club",
+      "pattern": "[domain-name:value = 'drasw.club']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-04c084ae54d70ce98309"
+      ],
+      "x_malware_refs": [
+        "malware--daily-45053606527c84c6ce52"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:fc792eb0e7a933c6e725fa749aa34c7cdae2c2c16927bd9c934822aa0f87f16d",
+          "observed_at": {
+            "value": "2026-09-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "527918454fa24715403903ea92964bc3a0a8d224",
+            "path": "daily-news/iocs/2026_10-12/20261001.csv",
+            "row": 178
+          },
+          "campaign_refs": [
+            "activity--daily-04c084ae54d70ce98309"
+          ],
+          "malware_refs": [
+            "malware--daily-45053606527c84c6ce52"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "drasw.club",
+          "context_excerpt": "AI generated. Star Blizzard infrastructure: CosmicPulse downloader DLL host (August 2026).",
+          "analyst_notes": "actor field: Star Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-b49ec0347b9e3a649f9d",
+          "value": "2026-10-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9b86d73e-e1e4-4f4c-af3d-654759acaf2c",
+      "created": "2026-10-12T09:00:05Z",
+      "modified": "2026-10-12T09:00:05Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6d883501-7bb8-429d-92b1-e60585baec72",
+      "target_ref": "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--e29f56a7-aece-4cdb-83bd-cdf75202ded1",
@@ -15185,7 +19011,7 @@
       "spec_version": "2.1",
       "id": "report--ddd7c5b2-1c7b-4a40-b97c-090c9a81f51e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-10-12T09:14:53Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -15194,20 +19020,25 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-10-12T09:14:53Z",
       "object_refs": [
         "intrusion-set--a7f8acec-b3b1-41a0-9822-7511d8220e4e",
         "identity--f26b9066-24b0-46db-bb00-70c53e68b657",
         "threat-actor--1cb4f27a-9167-4b7a-af06-d2d61f02749c",
         "threat-actor--150989d7-5700-4371-8fde-ee3c4900dbd0",
+        "malware--708beef9-82be-4c41-a2f0-8388bdda240c",
         "malware--8a42d7d3-6621-42ca-a888-0cce5ff7cf0a",
+        "campaign--cffe0722-759d-4a81-b7cb-8fd529f24ba9",
         "campaign--f5fd7be2-7796-4b3b-9948-0b20e04f2bde",
         "identity--4fe62a37-8a4d-49d1-842d-b36d32bee11a",
         "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+        "identity--31e440da-4a8a-45c6-830a-7a4611b8dd4e",
         "identity--51a8630f-4966-4de9-b5ca-833868ab67f6",
         "attack-pattern--95c84095-9e4d-4370-a706-62608823b3e6",
         "attack-pattern--16e79d23-399f-4130-92e8-6430341b2350",
         "attack-pattern--5dc26162-b45e-4ad2-afd7-dc9e5ad21f97",
+        "attack-pattern--bbc1f53d-6e3e-481d-8700-da776d9a4688",
+        "attack-pattern--18510c5e-4ef9-4f26-b372-638fbe000ce5",
         "attack-pattern--2043edb8-d735-4900-9162-bbb068bcf09f",
         "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
         "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
@@ -15338,7 +19169,35 @@
         "indicator--2889f499-1d03-4b61-a011-6c238452f548",
         "indicator--99312fdd-4cf6-45c7-bdec-c0cad734118a",
         "indicator--04c766d5-fcef-42a7-bf0a-2458278ad013",
-        "indicator--dab52596-27b7-4515-b6a6-7c6daac84676"
+        "indicator--dab52596-27b7-4515-b6a6-7c6daac84676",
+        "indicator--90861070-57d9-4bd3-8947-7c0445e8175f",
+        "indicator--47b20152-c2a8-45c2-a074-1bcf7b537862",
+        "indicator--5f1e940b-769d-4410-926c-e5c0cf12cf15",
+        "indicator--bbb7ae7f-1395-4707-bee7-eead02f11d57",
+        "indicator--c9526143-ebd7-4f04-8257-c208f768440f",
+        "indicator--4fa850db-6e0f-41dd-98e6-803a58867930",
+        "indicator--dfb8f09c-2025-41d7-90d9-eaf73d3f67c5",
+        "indicator--e582f0f6-c25b-41e6-8729-c4e0f1f7bea1",
+        "indicator--9c00fc1a-8109-4dfa-a9bc-3010a83a1463",
+        "indicator--a7a85006-14b4-40b4-8c65-334efb1e5192",
+        "indicator--1869eabf-aeca-45e9-8174-6e874eee4662",
+        "indicator--dfebea97-4e27-40b3-a533-933b9e51bf8c",
+        "indicator--7d8e2bb4-512d-4df5-901c-eb574cbd6f8d",
+        "indicator--a5e54958-7681-44ef-af26-d574ba2ad3c5",
+        "indicator--19eb873e-40c2-4525-bea5-e37a6b0ebec9",
+        "indicator--514a08b6-4963-453a-a4f5-804abb78f5fa",
+        "indicator--1b9a8d9b-c48c-454e-be34-008a7b680ed5",
+        "indicator--651baa96-7a47-40cc-a6bd-87aedea4579a",
+        "indicator--a57d1181-4823-4d46-8df9-3bddf3e085ec",
+        "indicator--11582757-6e23-4db3-a8a6-e80b0b0d1b44",
+        "indicator--5c827af4-1480-4523-b408-050a4cc3e8de",
+        "indicator--a4ccc8c8-0e64-443e-9dd2-5f8c74f7f362",
+        "indicator--d123f0af-0324-4c27-8efc-6b765dcc0203",
+        "indicator--d9456578-faff-4bcd-9898-84b8177812ea",
+        "indicator--3b45cfe5-5a96-478f-a8fc-ca96bab7eef4",
+        "indicator--9e8b50ec-440d-4f5f-916f-b14218839044",
+        "indicator--018bd877-8652-4163-8be7-d73332f5067e",
+        "indicator--6d883501-7bb8-429d-92b1-e60585baec72"
       ],
       "x_schema_version": "1.4.0"
     }

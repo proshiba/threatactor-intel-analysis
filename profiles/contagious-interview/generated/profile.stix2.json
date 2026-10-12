@@ -1771,7 +1771,7 @@
       "spec_version": "2.1",
       "id": "campaign--e5083166-b580-4790-b216-ad1e0d383292",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1808,9 +1808,7 @@
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
-          ],
+          "target_refs": [],
           "victim_refs": [
             "victim--activity-rule--ba353bbe87673efbe856"
           ]
@@ -2798,6 +2796,109 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用",
+      "description": "Ransom-ISACは、XCTDHの2026年9月の検体に新しい「HashHiding」機能を確認した。Ethereumの通常の送金トランザクションで、送金先アドレスの先頭6バイトにC2のIPv4アドレスとポートを埋め込む。 従来のXCTDHはTRONとAptosを索引、BSCをマルウェアの保存先に使っていた。新たなEthereum経路が運ぶのはペイロードではなくC2の接続先で、攻撃者はマルウェアを変更せずに接続先を切り替えられる。 攻撃者のシグナル用ウォレットでは、6月23日から9月21日までに2,655件の送金が観測された。C2はこの間に4回切り替わり、最後に確認された接続先は181[.]214[.]149[.]148の443番ポートだった。 HashHidingは既存の接続経路が失敗した場合だけ動く予備機能ではなく、RATの起動時から並行して動作する。ハードコードされたIP、従来の複数ブロックチェーン経路と合わせ、三つの接続先取得経路を維持する。 感染はTelegram上の偽求人から悪意あるGitHubリポジトリやnpmパッケージへ誘導する形で始まる。後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。",
+      "external_references": [
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-c858a700273c134e5fd0",
+      "x_activity_type": "infrastructure-operation",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--c858a700273c134e5fd08dde から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 原文(ransom-isac.org)を確認。DPRK帰属キャンペーンとしてHashHiding(Ethereum送金先アドレスへC2のIP:Port 6バイトを埋め込む手法)を分析。2025年10月の活動とBSCコントラクトとXORキーが共通し「confirm the same operator」と明記。2025-10の活動(NullReceiver、opensourcemalware)は本プロファイルへ反映済みのContagious Interview帰属活動であり、同一運用者の技術的連続性が具体的。YARAルールもDPRK Contagious Interviewとラベル。既知グループとの関係詳述はPart 3へ持ち越しとされるため確度はmediumに留める。DEV#POPPER.jsは配布されるNode.js製RATの名称。 activity_typeは自動推定が出典ドメインの'ransom'に反応してransomware-extortionとなったため、同系統のNullReceiver活動と同じinfrastructure-operationへ上書き。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--sector--9344745b7aeff4dbe6af"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--2d57a99f6cade038d366"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-06-23T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "ransom-isac: 最初のビーコン取引"
+          },
+          "last_observed": {
+            "value": "2026-09-21T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+          },
+          "reported_at": {
+            "value": "2026-10-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f9ad40c2a45e0f2f241b"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "x_last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2026-06-23T00:00:00Z",
+      "last_seen": "2026-09-21T00:00:00Z"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
       "created": "2026-07-27T11:04:31Z",
       "modified": "2026-09-21T13:20:00Z",
@@ -3087,32 +3188,9 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
-      "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "非営利・市民社会",
-      "identity_class": "organization",
-      "description": "活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。",
-      "external_references": [
-        {
-          "source_name": "socket.dev",
-          "description": "Source: https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems",
-          "external_id": "source--daily-828c717719b991a7c676",
-          "url": "https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--60988064-b642-43b7-88c0-37787ed2421f",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3125,6 +3203,12 @@
           "description": "Source: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
           "external_id": "source--daily-3b508815c5f991656dcb",
           "url": "https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique"
+        },
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
         },
         {
           "source_name": "MITRE",
@@ -3195,6 +3279,65 @@
       },
       "x_reported_at": {
         "value": "2025-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1bb3444b-2b57-4556-bea7-4d032e621895",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用",
+      "identity_class": "organization",
+      "description": "Ransom-ISACは、XCTDHの2026年9月の検体に新しい「HashHiding」機能を確認した。Ethereumの通常の送金トランザクションで、送金先アドレスの先頭6バイトにC2のIPv4アドレスとポートを埋め込む。 従来のXCTDHはTRONとAptosを索引、BSCをマルウェアの保存先に使っていた。新たなEthereum経路が運ぶのはペイロードではなくC2の接続先で、攻撃者はマルウェアを変更せずに接続先を切り替えられる。 攻撃者のシグナル用ウォレットでは、6月23日から9月21日までに2,655件の送金が観測された。C2はこの間に4回切り替わり、最後に確認された接続先は181[.]214[.]149[.]148の443番ポートだった。 HashHidingは既存の接続経路が失敗した場合だけ動く予備機能ではなく、RATの起動時から並行して動作する。ハードコードされたIP、従来の複数ブロックチェーン経路と合わせ、三つの接続先取得経路を維持する。 感染はTelegram上の偽求人から悪意あるGitHubリポジトリやnpmパッケージへ誘導する形で始まる。後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。",
+      "external_references": [
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--2d57a99f6cade038d366",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--mitre-group--sector--9344745b7aeff4dbe6af"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "後続ではNode.js製RAT「DEV#POPPER.js」と、認証情報を収集する「OmniStealer」が配布される。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "x_last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
@@ -3618,7 +3761,7 @@
       "spec_version": "2.1",
       "id": "identity--1d1ad382-93c1-436b-9970-03498ee6e965",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3637,9 +3780,7 @@
       "x_disclosure_status": "aggregate",
       "x_victim_type": "multiple-organizations",
       "x_case_status": "reported",
-      "x_target_refs": [
-        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
-      ],
+      "x_target_refs": [],
       "x_malware_refs": [],
       "x_ttp_refs": [
         "ttp--activity-rule--6b786b9be7290d0da343",
@@ -6900,50 +7041,9 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a14a3d63-9d2b-4be4-97a1-20dadb8833d1",
-      "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
-      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
-      "description": "Contagious Interview targets 非営利・市民社会 (profile target category: sectors).",
-      "x_confidence": "medium",
-      "external_references": [
-        {
-          "source_name": "socket.dev",
-          "description": "Source: https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems",
-          "external_id": "source--daily-828c717719b991a7c676",
-          "url": "https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems"
-        }
-      ],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      }
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--40272530-f1b4-4381-af72-8af54f84cac5",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-10-12T09:00:17Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6958,6 +7058,12 @@
           "description": "Source: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
           "external_id": "source--daily-3b508815c5f991656dcb",
           "url": "https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique"
+        },
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
         },
         {
           "source_name": "MITRE",
@@ -6978,19 +7084,19 @@
         "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始; activity-period"
       },
       "x_last_observed": {
-        "value": "2026-07-01T00:00:00Z",
-        "precision": "month",
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了; activity-period"
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続; activity-period"
       },
       "x_temporal_basis": {
         "first": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始; activity-period",
-        "last": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了; activity-period",
+        "last": "ransom-isac: 最後に確認されたビーコン。公開時点で継続; activity-period",
         "first_precision": "month",
-        "last_precision": "month"
+        "last_precision": "day"
       },
       "start_time": "2025-12-01T00:00:00Z",
-      "stop_time": "2026-07-01T00:00:00Z"
+      "stop_time": "2026-09-21T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -7428,53 +7534,6 @@
       "source_ref": "campaign--e5083166-b580-4790-b216-ad1e0d383292",
       "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
       "description": "北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 is attributed or linked to Contagious Interview.",
-      "x_confidence": "high",
-      "external_references": [
-        {
-          "source_name": "socket.dev",
-          "description": "Source: https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems",
-          "external_id": "source--daily-828c717719b991a7c676",
-          "url": "https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems"
-        }
-      ],
-      "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "x_temporal_basis": {
-        "first": "not-stated",
-        "last": "not-stated",
-        "first_precision": "unknown",
-        "last_precision": "unknown"
-      },
-      "x_reported_at": {
-        "value": "2026-04-09T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      }
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1a8e9f52-c858-47a8-9447-8e56072d2837",
-      "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-09-21T13:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--e5083166-b580-4790-b216-ad1e0d383292",
-      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
-      "description": "北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 targets target--activity-rule--sector--d406c8e5b7fa7aeff7d2.",
       "x_confidence": "high",
       "external_references": [
         {
@@ -9298,6 +9357,153 @@
         "basis": "source-publication"
       },
       "start_time": "2025-05-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d0995412-9f0e-4f74-8c58-aab5500adca7",
+      "created": "2026-10-12T09:00:06Z",
+      "modified": "2026-10-12T09:00:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用 is attributed or linked to Contagious Interview.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "x_last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      },
+      "x_temporal_basis": {
+        "first": "ransom-isac: 最初のビーコン取引",
+        "last": "ransom-isac: 最後に確認されたビーコン。公開時点で継続",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-23T00:00:00Z",
+      "stop_time": "2026-09-21T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1d4b8290-c7e1-464e-a08f-58cdb16e0cdb",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
+      "target_ref": "identity--60988064-b642-43b7-88c0-37787ed2421f",
+      "description": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用 targets target--mitre-group--sector--9344745b7aeff4dbe6af.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "x_last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      },
+      "x_temporal_basis": {
+        "first": "ransom-isac: 最初のビーコン取引",
+        "last": "ransom-isac: 最後に確認されたビーコン。公開時点で継続",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-23T00:00:00Z",
+      "stop_time": "2026-09-21T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--55623859-fece-4645-aa7e-d99f1f829abd",
+      "created": "2026-10-12T09:00:17Z",
+      "modified": "2026-10-12T09:00:17Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
+      "target_ref": "identity--1bb3444b-2b57-4556-bea7-4d032e621895",
+      "description": "XCTDH、Ethereumの送金先アドレスにC2を隠すHashHidingを採用 affected victim--activity-rule--2d57a99f6cade038d366.",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "ransom-isac.org",
+          "description": "Source: https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/",
+          "external_id": "source--daily-f9ad40c2a45e0f2f241b",
+          "url": "https://ransom-isac.org/blog/xctdh-adopts-hash-hiding/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-06-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最初のビーコン取引"
+      },
+      "x_last_observed": {
+        "value": "2026-09-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "ransom-isac: 最後に確認されたビーコン。公開時点で継続"
+      },
+      "x_temporal_basis": {
+        "first": "ransom-isac: 最初のビーコン取引",
+        "last": "ransom-isac: 最後に確認されたビーコン。公開時点で継続",
+        "first_precision": "day",
+        "last_precision": "day"
+      },
+      "x_reported_at": {
+        "value": "2026-10-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2026-06-23T00:00:00Z",
+      "stop_time": "2026-09-21T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -14702,7 +14908,7 @@
       "spec_version": "2.1",
       "id": "report--18120405-d5f0-4eab-b859-51696e7c9a2d",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-09-23T12:16:55Z",
+      "modified": "2026-10-12T09:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14711,7 +14917,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-23T12:16:55Z",
+      "published": "2026-10-12T09:12:00Z",
       "object_refs": [
         "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
         "malware--13467814-c037-4e30-80c4-d1e517fb452c",
@@ -14734,13 +14940,14 @@
         "campaign--2e4412f4-5142-453a-82e0-30feeab37f95",
         "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
         "campaign--6fb5ce7c-3178-4ed3-9066-f9730a6520cc",
+        "campaign--c819c5ab-c37d-4db9-bf9d-10abcac7ebcf",
         "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
         "campaign--adc32ff7-5f62-4e54-890f-8ddcb3b07f72",
         "identity--ce779dc4-787c-4ab2-9633-ddd394505807",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
-        "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
         "identity--60988064-b642-43b7-88c0-37787ed2421f",
         "identity--b6b5a402-fec8-49ac-9d0e-a895bce17305",
+        "identity--1bb3444b-2b57-4556-bea7-4d032e621895",
         "identity--0b4a7c15-01df-476a-adf6-74375091b487",
         "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
         "identity--1403f5d2-af58-4c52-9adc-db6e556fb7e2",
