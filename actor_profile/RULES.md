@@ -142,6 +142,10 @@ python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 被害組織名、国、産業、影響は情報源が明示した範囲だけを記録する。複数組織をまとめた
 統計は、架空の単一被害者へ変換せず`aggregate`として保持する。
 
+自動生成(`victim--activity-rule--`)の被害事例は空白を埋める補助である。アナリストが
+作成した被害事例が同じActivityへ既に結び付いている場合、enrichは同じ活動本文から
+自動集約事例を重ねて生成しない。curated caseを正とする。
+
 ## 5. Alias規則
 
 各aliasには以下を持たせる。

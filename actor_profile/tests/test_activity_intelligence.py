@@ -1124,6 +1124,42 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertEqual(profile["victim_cases"][0]["victim_name"], "Example Corp")
         self.assertIn(victim_id, activity["victim_refs"])
 
+    def test_curated_victim_case_suppresses_generated_aggregate(self) -> None:
+        """アナリスト作成の被害事例が結び付いた活動へ自動集約事例を重ねない。
+
+        teampcpのOligo系譜grouping(curatedのexposed-cloud-services事例あり)へ
+        enrichがvictim--activity-rule--…の集約事例を追加で生成した回帰ケース。
+        """
+        profile = self.profile("TeamPCP")
+        activity = self.activity(
+            "Oligoが関連付けた複数活動・基盤系譜",
+            "複数の組織の公開クラウドサービスが侵害され、被害が確認された。",
+            activity_type="intrusion",
+        )
+        activity["victim_refs"] = ["victim--teampcp-exposed-cloud-services"]
+
+        victim_id = add_victim_case(profile, activity, self.rules)
+
+        self.assertIsNone(victim_id)
+        self.assertEqual(profile["victim_cases"], [])
+        self.assertEqual(
+            activity["victim_refs"], ["victim--teampcp-exposed-cloud-services"]
+        )
+
+    def test_generated_victim_case_still_updates_its_own_activity(self) -> None:
+        """既存refが自動生成のものだけなら、再実行での更新は妨げない。"""
+        profile = self.profile("Akira")
+        activity = self.activity(
+            "複数組織への侵害",
+            "攻撃者は複数の企業を侵害し、データを窃取した。",
+            activity_type="intrusion",
+        )
+        first = add_victim_case(profile, activity, self.rules)
+        self.assertIsNotNone(first)
+        profile["victim_cases"] = []
+        second = add_victim_case(profile, activity, self.rules)
+        self.assertEqual(first, second)
+
     def test_publication_date_is_removed_from_observation_field(self) -> None:
         activity = self.activity(
             "旧形式の活動",

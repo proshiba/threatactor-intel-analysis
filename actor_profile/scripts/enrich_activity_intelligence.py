@@ -1418,6 +1418,14 @@ def add_victim_case(
     activity: dict[str, Any],
     rules: dict[str, Any],
 ) -> str | None:
+    # アナリストが作成した被害事例が既にこの活動へ結び付いている場合は、
+    # 同じ活動本文からの自動集約事例を重ねて作らない(RULES.md 4.2)。
+    # curated caseが正であり、自動生成は空白を埋める補助に限る。
+    if any(
+        not ref.startswith(GENERATED_VICTIM_PREFIX)
+        for ref in activity.get("victim_refs", [])
+    ):
+        return None
     text = activity_text(profile, activity, rules)
     impacts = matching_impacts(text, rules["impacts"])
     if not has_case_signal(activity, text, impacts):
