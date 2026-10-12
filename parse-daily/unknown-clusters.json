@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-28T00:00:00Z",
+  "generated_at": "2026-10-12T01:30:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -5034,6 +5034,297 @@
         "Storm-#### は Microsoft の一時的指定子であり、後日改称または既知アフィリエイトクラスタへ統合される可能性がある。"
       ],
       "analyst_notes": "2026-09-28の日次チェックで、一次情報源巡回（Microsoft Security Blog）により検知。RaaSアフィリエイトは「どのランサムウェアを展開したか」ではなく侵害後TTPで束ねられるため、ランサムウェアファミリ名の一致を根拠に既存プロファイルへ寄せない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--flax-typhoon",
+      "primary_name": "Flax Typhoon（Integrity Technology Group が支援する活動群）",
+      "aliases": [],
+      "entity_type": "grouping",
+      "status": "tracking",
+      "first_seen": "2017",
+      "last_seen": "unknown",
+      "time_basis": "共同勧告AA26-281Aは「As early as 2017, these threat actors have also used a malicious application known as “MicroScan.”」と記し、初期アクセスについては別に「Since at least mid-January 2021, the threat actors have gained access to victim networks and cloud-based services」と述べる。first_seen は前者の下限年とし、精度はyearである。活動終期の記載はないため last_seen は unknown とする。公開日2026-10-08を観測日・活動期間へ転用しない。勧告IOC表はIOCごとにFirst Seen / Last Seen列を持つが、アスタリスク付きのLast Seen値は原文の注記どおりWHOIS登録失効日であり観測日ではない。勧告は別途「Several of the observed IOCs date back to as early as 2016.」とも注記する。",
+      "tracking_detected_on": "2026-10-12",
+      "detected_via": "2026-10-12の日次チェックの「既存プロファイルに一致しない名前（IOC CSVのactor列）」に Flax Typhoon が803観測で最多として現れた。803行すべてが tech-memo 2026-10-10 のIOC CSV 1ファイル由来で、797行が共同勧告 https://www.ic3.gov/CSA/2026/261008.pdf、6行がDOJプレスリリースを参照する。既存775プロファイル、本台帳、excluded_name_collisions のいずれにも Flax Typhoon は存在しない。volt-typhoon プロファイルには Raptor Train を扱う日次Activityの description 本文に「Flax Typhoon」の語が現れるが alias ではなく、Volt Typhoon と同一クラスタでもない。レビューキューにはレコードが生成されていない（照合先プロファイルが無いため unmatched_actor_values へ落ちる系統）。",
+      "attribution": {
+        "state": "attributed-by-government",
+        "actor_type": "state-linked-espionage-intrusion-set",
+        "notes": "FBI・CISA・NSA・NCSC-UK・ASD's ACSC・Canadian Centre for Cyber Security・日本の警察庁(NPA)および内閣サイバーセキュリティ機構相当のNational Cybersecurity Office(NCO)・NCSC-NZ・スペインCNIの10機関による共同勧告 AA26-281A「Chinese Government-linked Cyber Threat Actors Combine Automated and Hands-on Hacking Tools to Steal Sensitive Data」（2026-10-08公開）が、Integrity Technology Group（中国所在の営利企業で中国政府との結び付きがあると記述）が支援する攻撃者群として記述する。**重要**: 勧告は本活動を Flax Typhoon へ帰属させていない。原文は「Notably, the threat actors enabled by Integrity Tech use TTPs consistent with the cyber activity publicly known as Flax Typhoon, Ethereal Panda, and Red Juliett, among others.」とし、直後に「However, these threat actors may also perform activity not associated with Integrity Tech.」および「Cybersecurity companies have different methods of tracking and attributing cyber actors and these may not be a 1:1 correlation to the US Government's methodology」と明記する。すなわちTTPの一致であって exact identity ではないため、Ethereal Panda / Red Juliett を aliases へ昇格しない。DOJプレスリリース 26-1155（2026-10-08）は見出しで Flax Typhoon の語を用い、ツールの運用者を「malicious cyber actors working for Integrity Technology Group」と記す（Ethereal Panda / Red Juliett の記載はDOJ側には無く、両名はBleepingComputerの二次報道と勧告本文の記述による）。Integrity Technology Group は organization であり、Intrusion Set の exact alias にしない（OSINT_RULES.md 企業節）。国家支援の判断は勧告自身の直接記述のみを根拠とし、IOCの所在地やASNからは推定していない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "FBI / CISA / NSA / NCSC-UK / ASD's ACSC / Canadian Centre for Cyber Security / 警察庁(NPA) / NCO / NCSC-NZ / スペインCNI",
+          "url": "https://www.ic3.gov/CSA/2026/261008.pdf",
+          "title": "Chinese Government-linked Cyber Threat Actors Combine Automated and Hands-on Hacking Tools to Steal Sensitive Data (AA26-281A)",
+          "published_at": "2026-10-08",
+          "source_type": "government-advisory",
+          "reliability": "government-law-enforcement",
+          "activity_period": "MicroScanの使用は「as early as 2017」。初期アクセスは「since at least mid-January 2021」。終期の明示は無い。IOC表はIOC単位のFirst Seen / Last Seenを持ち、アスタリスク付きLast SeenはWHOIS登録失効日である旨を原文が注記する。公開日2026-10-08は観測日ではない。",
+          "targets": "米国の重要インフラ分野として Government Services and Facilities、Critical Manufacturing、Healthcare and Public Health、Information Technology を挙げ、さらに米国の法執行機関、教育、宗教団体、および東南アジア・アフリカ・北米の組織を標的としたと記す。",
+          "malware": [],
+          "tools": [
+            "MicroScan（Python製Webアプリ。1,300以上のペネトレーションテスト用スクリプトを含む）",
+            "OSSスキャナ: BBScan、dirsearch、Fscan、ksubdomain、masscan、NMAP、OneForAll、ShuiZe、wpscan",
+            "大規模ボットネットおよびVPN基盤、LOTL技法、CNEツールリポジトリ"
+          ],
+          "summary": "Integrity Technology Group が支援する中国政府関連の攻撃者群が、自動スキャン・大規模ボットネット・手作業の侵害を組み合わせて世界中の組織から機微データを窃取しているとする共同勧告。スキャン、XSS、Microsoft ExchangeへのパスワードスプレーによりCVEを悪用し、VPNソフトウェアで持続性を確立し、スクリプトでメールと認証情報を持ち出す。悪用が観測されたCVEは CVE-2014-6278、CVE-2015-3306、CVE-2015-5477、CVE-2016-3081、CVE-2019-11510、CVE-2021-22205、CVE-2021-3199、CVE-2023-22894。スキャン対象ポートは21、22、53、80、443、1080。IOCはAppendix AのTable 10〜15およびSTIX XML/JSONで提供される。",
+          "verified_by_analyst": "原文PDF（58ページ、Product ID AA26-281A）を取得し pdftotext で全文を確認した（アクセス日2026-10-12）。公開日、共著10機関、Threat Actor Background節のFlax Typhoon / Ethereal Panda / Red Julietへの「TTPs consistent」表現と1:1否定の注記、MicroScanの2017年下限、初期アクセスの2021年1月中旬下限、標的分野・地域、CVE一覧、IOC表のFirst Seen / Last Seen列とWHOIS失効日注記を直接確認している。"
+        },
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "U.S. Department of Justice / FBI",
+          "url": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-vulnerability-scanning-and-spear-phishing-tools-operated",
+          "title": "Justice Department and FBI Seize Vulnerability Scanning and Spear Phishing Tools Operated by Flax Typhoon Actors Associated with Integrity Technology Group",
+          "published_at": "2026-10-08",
+          "source_type": "government-advisory",
+          "reliability": "government-law-enforcement",
+          "activity_period": "原文はツールの運用期間・使用期間を一切述べない。2024年9月のMirai系ボットネット妨害に言及するが、本件ツールの使用期間とは結び付けていない。押収・裁判所許可の実施日も記載がなく、ペンシルベニア州西部地区で裁判所文書がunsealされた旨のみ記す。したがって法的措置日はunknownであり、公開日2026-10-08を行為日へ代用しない。",
+          "targets": "MicroScan: サウスカロライナ州の米電力会社、多国籍NGO、日本とポーランドの空港、台湾の天然ガス・電力会社、台湾の大学2校。FishHub: 台湾の大学約20校が被害として確認された。",
+          "malware": [
+            "FishHub（スピアフィッシングおよびマルウェア配布ツール）"
+          ],
+          "tools": [
+            "Microscan（脆弱性スキャン・偵察）",
+            "Miraiの変種に感染したIoT機器のボットネット"
+          ],
+          "summary": "DOJとFBIが、Integrity Technology Group に関係する攻撃者が運用したMicroscanとFishHubのアクセス・配布に使われたドメインを裁判所の許可を得て押収したと発表した。原文が挙げるドメインは c0cc[.]cc（Microscanへのアクセス）と 98aicai[.]com、98aicode[.]com、outlook3650[.]com、youtubecard[.]com、linkedinns[.]net（FishHubのマルウェア配布）の計6件で、原文は総数を明示していない。個人・企業に対する起訴・訴追・制裁の発表はない。",
+          "verified_by_analyst": "原文を取得して確認した（アクセス日2026-10-12）。公開日2026-10-08、Microscan / FishHubのツール名、列挙された6ドメイン、被害組織、起訴・制裁の発表が無いこと、押収日・裁判所許可日の記載が無いことを直接確認した。tech-memoの二次報道（BleepingComputer）は押収ドメインを7件とし 98aiblog[.]com（SoftEther VPN関連）を追加で挙げるが、この7件目はDOJプレスリリース本文では確認できていない。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "volt-typhoon",
+          "relation": "name-collision-do-not-merge",
+          "note": "volt-typhoon プロファイルの日次Activity（英NCSCのプロキシ網警告、2026-04-24収集）の description 本文に「例としてRaptor Trainは2024年に世界で26万台超を感染させ、Flax Typhoonと中国企業Integrity Technology Groupに関連付けられた。」として Flax Typhoon の語が現れる。これは第三者クラスタへの文脈言及であり、Volt Typhoon の alias ではない。Flax Typhoon と Volt Typhoon は別クラスタであり、Typhoon命名規則の共通だけで統合しない。"
+        }
+      ],
+      "related_organizations": [
+        {
+          "name": "Integrity Technology Group (Integrity Tech)",
+          "entity_type": "organization",
+          "note": "共同勧告は「a China-based for-profit company with links to the Chinese government」と記し、サイバーツールの取得・開発・販売、インフラの取得とホスティング、ネットワーク侵害を行う人員を雇用しているとする。DOJは「Integrity Tech has contracts with the PRC government」と記す。会社がAPT活動を支援・実行したとの記載があっても、会社名をIntrusion Setのexact aliasにしない（OSINT_RULES.md）。本台帳では organization として分離して記録し、雇用・請負・membershipは別claimとして扱う。本プレスリリースでは同社への起訴・制裁の発表はない。"
+        }
+      ],
+      "unresolved_questions": [
+        "勧告は Flax Typhoon / Ethereal Panda / Red Juliett を「TTPs consistent with」の対象として挙げるだけで 1:1 対応を否定している。一方で tech-memo のIOC CSVは803行すべての actor 列に「Flax Typhoon」を入れており、原典より強い帰属になっている。プロファイル昇格時にこの差を解消する必要がある（主体は「Integrity Techが支援する活動群」であり、Flax Typhoon は公開呼称の一つ）。",
+        "DOJは Flax Typhoon の語を見出しで用いるが、Ethereal Panda / Red Juliett には言及しない。両名の根拠は勧告本文のTTP一致記述と二次報道のみであり、命名元ベンダー（CrowdStrike / Recorded Future）の一次資料を確認していない。",
+        "IOC CSVの803行のうち70行が date 列に公開日2026-10-08を入れている。勧告IOC表のFirst Seen列が空の行と推測されるが未確認であり、取込時に観測日として採用してはならない。残り733行は2012-09-22〜2025-06-20の範囲で勧告のFirst Seen由来とみられる。",
+        "勧告IOC表のLast Seen列はアスタリスク付きの値がWHOIS登録失効日である。IOC単位の last_observed を作る場合、アスタリスク付き値を観測日として採用しない仕組みが必要。",
+        "昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は満たしている（10機関共同勧告＋DOJ）。ただしプロファイル作成は本ルーチンの禁止事項であり、提案に留める。slug・canonical name をどちらに置くか（Flax Typhoon か Integrity Tech支援活動群か）は指示待ち。",
+        "MicroScan / Microscan、FishHub は Capability / tool であって Actor ではない。Malware / Software として分離し、同名でActorへ統合しない。"
+      ],
+      "analyst_notes": "2026-10-12の日次チェックで検知。IOC観測数803は当日の未一致名称の中で最多であり、根拠も10機関共同勧告とDOJという最上位の情報源クラスであるため、本走査で最優先の発見である。ただし原典はActor名への1:1帰属を明示的に否定しており、IOC CSVのactor列の「Flax Typhoon」は原典より強い。RULES.mdの非交渉ガードレール（alias一致だけでexact identityへ昇格しない、vendorや企業の使用をそのvendor自身による攻撃と解釈しない、unresolved / partially-supportedの主張を追加根拠なしに確定値へ昇格しない）に従い、本台帳では「Integrity Technology Group が支援する活動群」を実体、Flax Typhoon を公開呼称として記録する。プロファイル昇格は提案に留める。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uat-11587",
+      "primary_name": "UAT-11587",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "2025-09",
+      "last_seen": "2026-07",
+      "time_basis": "原文は「Talos observed UAT-11587 activity from September 2025 through July 2026.」と明示する。精度はmonth。公開日2026-09-30を活動期間へ転用しない。",
+      "tracking_detected_on": "2026-10-12",
+      "detected_via": "2026-10-12の日次チェックの「既存プロファイルに一致しない名前（IOC CSVのactor列）」に UAT-11587 が149観測で2番目に多く現れた。あわせてレビューキューの pending レコード（jewelbug、alias「Jewelbug」scope: exact、news-body一致、assessment: candidate）が同じTalos記事を参照していた。既存775プロファイル、本台帳、excluded_name_collisions のいずれにも UAT-11587 は存在しない。",
+      "attribution": {
+        "state": "china-nexus-high-confidence-per-vendor",
+        "actor_type": "cyber-espionage",
+        "notes": "Cisco Talos は「Talos assesses with high confidence that UAT-11587 is China-nexus.」と記し、技術的・運用的証拠の総合によるものとして単一指標には依拠しないと述べる。諜報目的の情報収集については moderate confidence と区別して評価している。中国政府による指揮・国家支援の断定は原文に無く、本台帳でも推定しない。Talos は自身の指定子以外の alias を与えていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/china-nexus-uat-11587-targets-government-and-policy-organizations-across-asia-with-antino-backdoor/",
+          "title": "China-nexus UAT-11587 targets government and policy organizations across Asia with Antino backdoor",
+          "published_at": "2026-09-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2025-09から2026-07（原文明示）。精度month。",
+          "targets": "台湾、インド、フィリピン、カンボジア、パキスタン、タイ、ミャンマー、シリア（moderate-to-high confidence）。分野は国防・軍・国家安全保障、行政府、外務・外交、司法・法執行・国境／内務、立法機関、政府IT、シンクタンク・大学・研究機関、市民社会・人権・公共政策組織。原文は「eight Asian countries」と記すがシリアは地理的にアジア域外の扱いに差があり、国名の列挙を正とする。",
+          "malware": [
+            "Antino（Rust製Windowsバックドア。32/64bit。Microsoft Graph、Outlook、OneDriveをC2に利用）",
+            "slc.dll（AntinoのDLL。署名済みバイナリによるサイドロード）",
+            "TestAssembly.dll（.NET製ダウンローダー／ランチャー）"
+          ],
+          "tools": [
+            "GatherOsState.exe（Microsoft署名済みWindows ADKバイナリをDLLサイドローディングに悪用）",
+            "HTA / WSFステージャ、JScriptオーケストレータ、BinaryFormatter逆シリアル化ガジェットチェーン（mshta.exe経由）",
+            "Windows Scripted Diagnostics（sdiageng.dll / sdiagnhost.exe）によるPowerShellのプロキシ実行と持続化"
+          ],
+          "summary": "中国関連と評価されるUAT-11587が、アジア8カ国の政府・政策機関をRust製バックドアAntinoで標的にした諜報活動。署名済み正規バイナリによるDLLサイドローディングとWindows Scripted Diagnosticsの悪用で持続化し、C2にMicrosoft Graph / Outlook / OneDriveを使う。",
+          "verified_by_analyst": "原文を確認した（アクセス日2026-10-12）。公開日2026-09-30、high confidenceのChina-nexus評価文、活動期間2025-09〜2026-07の明示、標的8カ国と分野一覧、Antino / slc.dll / TestAssembly.dll、Jewelbugとの関係記述、UNC6384との低確度オーバーラップ記述を直接確認している。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "jewelbug",
+          "relation": "overlap-assessed",
+          "note": "Talos は「Talos identified overlaps between UAT-11587 and the Antino-related espionage activity attributed to Jewelbug.」と記す一方、UAT-11587 を別個の activity set として追跡すると明言し、「Talos could not independently verify a connection between the espionage campaign and Jewelbug's financially motivated activity.」と、Jewelbug側の金銭目的活動との結び付きは独立確認できなかったとする。Jewelbug は Symantec の activity set 名であり、本記事の主題ではない。したがって exact identity ではなく overlap として保持する。この記述を根拠に本記事のActivityを jewelbug プロファイルへ採用してはならない（レビューキューの該当pendingレコードは不採用が妥当）。"
+        },
+        {
+          "slug": "mustang-panda",
+          "relation": "low-confidence-link",
+          "note": "Talos は UNC6384（mustang-panda の scope: overlapping alias）に言及するが、共有された単一のCloudFrontディストリビューションを理由とし、配布層のオーバーラップの可能性として low confidence と明記する。alias ではなく、統合根拠にもしない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Cisco Talos 単独の初報であり、昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。Symantec の Jewelbug 記事は別クラスタを扱う別資料であり、UAT-11587 の独立確認にはならない。",
+        "Jewelbug との overlap の範囲が未確定。Antino関連の諜報活動は重なるが、Jewelbug側の金銭目的活動（Symantecが報じたSEO事業経由のアクセス・配布・インフラ供給）との関係はTalosが独立確認できていない。将来 jewelbug プロファイルへ統合する場合も exact ではなく overlaps-with / broader / narrower のいずれかで保持する必要がある。",
+        "IOC CSVに149観測があるが、本走査ではIOC値の原文突合を行っていない。取込時に observed_at の根拠（原文が観測日を明示しているか）を行単位で確認する必要がある。",
+        "UAT-#### は Talos の一時的追跡指定子であり、後日改称または既知クラスタへ統合される可能性がある。"
+      ],
+      "analyst_notes": "2026-10-12の日次チェックで検知。日次チェックは同じTalos記事を jewelbug プロファイルの candidate レコードとして提示したが、原文確認の結果、記事の主題は UAT-11587 であり Jewelbug は別ベンダーの別 activity set として overlap の文脈で言及されるにすぎない。AGENT.mdの「名前一致は発見用途に限り自動承認しない」「既存プロファイルにない名前は無理に近いアクターへ寄せない」に従い、UAT-11587 を独立クラスタとして台帳へ記録し、jewelbug への寄せ付けは行わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uat-11985",
+      "primary_name": "UAT-11985",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "2026（mid-2026）",
+      "last_seen": "unknown",
+      "time_basis": "原文は「In mid-2026, Talos observed an APT spear-phishing campaign」と述べるのみで、個別の観測日も終期も示さない。first_seen は原文表現のまま「2026年半ば」の精度で保持し、last_seen は unknown とする。公開日2026-10-08を活動期間へ転用しない。",
+      "tracking_detected_on": "2026-10-12",
+      "detected_via": "2026-10-12の日次チェックの一次情報源巡回（parse-daily/config.json の external_sources、Cisco Talos の公開一覧）で検知した。tech-memo の daily-news には未収録であり、日次チェックの2系統（IOC CSVのactor列、本文からの未登録アクター名候補）のいずれにも現れなかった。既存775プロファイル、本台帳、excluded_name_collisions のいずれにも UAT-11985 は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Talos は「Cisco Talos identified an advanced persistent threat (APT) spear-phishing campaign」と記すが、国家への帰属は行っていない。原文が述べるのは標的側の言語特性（「strongly suggesting targeting of Chinese-speaking users」）と、フィッシングキットのUIについての「Talos assesses with moderate confidence that the user interface was originally developed in Simplified Chinese.」であり、いずれも開発者・標的に関する記述で攻撃者の出身国の帰属ではない。目的は認証情報窃取とされる。既知の命名グループやaliasとの結び付けは原文に無い。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/uat-11985/",
+          "title": "UAT-11985: AI-assisted event lures delivering real-time Google AitM phishing",
+          "published_at": "2026-10-08",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は「In mid-2026」とのみ述べ、first / last の観測日を示さない。",
+          "targets": "台湾。台湾の研究機関に所属する個人。分野は研究・学術・政策機関。攻撃者は Taiwan European Union Centre、NCCU Institute of International Relations、Taiwan Research Institute を騙った。フィッシングキットは簡体字中国語・繁体字中国語・英語のロケールに対応する。",
+          "malware": [],
+          "tools": [
+            "Google のサインインを騙る adversary-in-the-middle (AitM) フィッシングキット（データ持ち出しにHTTP POST、リアルタイム制御にWebSocketを使用。マルウェアファミリ名・フレームワーク名の命名は原文に無い）",
+            "イベントを題材にしたメール、偽のGoogle Formsページ、第三者ホスティング先へのリダイレクト、改変したイベントポスター上のQRコード（quishing）",
+            "Base64文字列配列とシャッフルループによる難読化JavaScript"
+          ],
+          "summary": "AIの支援を受けたイベント題材のルアーで、Googleサインインを騙るリアルタイムAitMフィッシングへ誘導する標的型キャンペーン。台湾の研究機関関係者を狙い、認証情報窃取を主目的とする。検知名は ClamAV「Html.Phishing.UAT11985-10060614-0」、Snort2 1:67198、Snort3 7:31。IOCはCisco TalosのGitHub（2026/10/uat-11985.txt）で公開されるが、原文は件数を示さない。",
+          "verified_by_analyst": "原文を確認した（アクセス日2026-10-12）。公開日2026-10-08、APTスピアフィッシングとしての記述、国家帰属を行っていないこと、UI開発言語のmoderate confidence評価、「In mid-2026」のみの期間記述、台湾の研究機関という標的、騙られた3組織、AitMキットの技術要素、検知名、IOCのGitHub公開を直接確認している。既知グループ・aliasとの結び付けが原文に存在しないことも確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "jewelbug",
+          "relation": "context-only-not-attributed",
+          "note": "記事の関連コンテンツ欄に同じTalosの UAT-11587 記事（jewelbug と overlap が報じられたクラスタ、本台帳 unknown-cluster--uat-11587）が並ぶが、原文は UAT-11985 と UAT-11587 を結び付けていない。レコメンド欄の並列を根拠に統合・関連付けしない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Cisco Talos 単独の初報であり、昇格閾値は未達。",
+        "原文に観測日・活動終期が無く、活動期間は「2026年半ば」の下限しか得られない。GitHubのIOCファイル（2026/10/uat-11985.txt）を取得すれば指標単位の情報が得られる可能性があるが、本走査では未取得。",
+        "UAT-11587 と同じ Talos の UAT-#### 系列で、いずれも台湾・アジアの政策研究機関を標的とするが、原文は両者を結び付けていない。命名規則の連番と標的の類似だけで統合しない。",
+        "UAT-#### は Talos の一時的追跡指定子であり、後日改称または既知クラスタへ統合される可能性がある。"
+      ],
+      "analyst_notes": "2026-10-12の日次チェックで、一次情報源巡回（Cisco Talos）により検知。tech-memo の daily-news に未収録のため、巡回が無ければ検知できなかった事例である（2026-09-15 の Acronis TRU / Red Heron、2026-09-28 の Microsoft / Storm-2570 と同系統）。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cyberxero",
+      "primary_name": "CyberXero",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "2026-07",
+      "last_seen": "unknown",
+      "time_basis": "原文は最初のインフラ観測を2026年7月とする。活動終期は示されず、公開時点（2026-10-06）で活動継続中と述べるにとどまるため last_seen は unknown とする。公開日およびtech-memoの収集日2026-10-08を活動期間へ転用しない。",
+      "tracking_detected_on": "2026-10-12",
+      "detected_via": "2026-10-12の日次チェックの「既存プロファイルに一致しない名前（IOC CSVのactor列）」に CyberXero が13観測で現れた。既存775プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-initial-access-broker",
+        "language_indicator": "原文はロシア語話者と記述する。言語は帰属そのものではない。",
+        "notes": "SOCRadar は CyberXero を「the underground-forum alias of a financially motivated Initial Access Broker (IAB)」と記す。既知グループや国家支援との結び付けは原文に無く、ウクライナを狙った選択的な活動の目的についても「remains unresolved」とする。最も説明が付く仮説として未特定の買い手へのアクセス売却を挙げるが、売却の確認はないと明記する。したがって動機・買い手・国家関与はいずれも unresolved として保持し、ロシア語話者という記述から国家支援を推定しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "SOCRadar",
+          "url": "https://socradar.io/blog/cyberxero-ai-iab-ukraine-critical-infrastructure/",
+          "title": "CyberXero: AI-Powered Initial Access Broker Targeting Ukraine's Critical Infrastructure",
+          "published_at": "2026-10-06",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "最初のインフラ観測は2026-07。終期の明示は無く、公開時点で活動継続中とされる。",
+          "targets": "ウクライナ、ポーランド、中国、パキスタン。分野はエネルギー・公益、EC、通信、政府。被害組織名の明示は無く、ハルキウの地域暖房事業者、送電系統運用者、国内最大手の民間エネルギー持株会社として記述される。確認されたデータは62万8,000人超のウクライナ個人に関するもので、全世界で40超の組織が影響を受けたとする。",
+          "malware": [],
+          "tools": [
+            "wp2shell（CVE-2026-63030、CVE-2026-60137 を悪用）",
+            "WSO webshell、Cobalt Strike 4.9.1、PentAGI",
+            "Claude Code エージェント51個のswarm（攻撃者側の構成。Anthropicの正規サービスの悪用であり、提供元による攻撃ではない）",
+            "masscan、nuclei、wpscan、通知用Telegram bot、VLESS/Xray プロキシ",
+            "その他悪用CVE: CVE-2026-4815、CVE-2015-1397、MS17-010"
+          ],
+          "summary": "ロシア語話者の初期アクセスブローカーと記述されるCyberXeroの活動分析。公開されたままの作業ディレクトリからAIのセッションログ、攻撃スクリプト、窃取データが得られた。WordPress・ECサイトへの世界規模の自動攻撃と、ウクライナの電力・公益事業者への選択的偵察を並行する二系統の活動。インフラは3つのASN・2地域にまたがる8ノードで、主端末と構築用サーバーはZomro NL (AS204601)、Cobalt Strike Team ServerとRedis悪用ノードはTencent Cloud (AS45090)、CryptoPayゲートウェイは AS202799 に置かれていた。",
+          "verified_by_analyst": "原文を確認した（アクセス日2026-10-12）。公開日2026-10-06、IABとしての導入文、既知グループ・国家支援との結び付けが無いこと、目的が unresolved と明記されること、2026-07の初回インフラ観測、標的4カ国と分野、被害規模の数値、ツールとインフラのASN構成を直接確認している。tech-memo側の収集日は2026-10-08であり、公開日2026-10-06と区別している。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "SOCRadar 単独の初報であり、昇格閾値は未達。",
+        "CyberXero は地下フォーラムのハンドルであり、運用者が個人か複数かは不明。原文も単一主体とは断定していない。ハンドル一致だけで他クラスタへ統合しない。",
+        "ウクライナの重要インフラを狙った選択的活動の最終目的（アクセス売却先）は原文が unresolved とする。IABとしての売却と、仮に国家側の買い手が存在した場合の関係は未確認であり、推定しない。",
+        "インフラ所在ASN（Zomro NL、Tencent Cloud）を攻撃者の所在地や帰属国へ流用しない。",
+        "IOC CSVに13観測があるが、本走査ではIOC値の原文突合を行っていない。"
+      ],
+      "analyst_notes": "2026-10-12の日次チェックで検知。正規のAIコーディングサービスを攻撃側のオーケストレーションに悪用した事例だが、OSINT_RULES.md / RULES.md のガードレールどおり、サービス提供元による攻撃とは解釈しない。ロシア語話者・Tencent Cloud利用のいずれからも国家支援を推定しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--storm-3069",
+      "primary_name": "Storm-3069",
+      "aliases": [],
+      "entity_type": "actor-cluster",
+      "status": "tracking",
+      "first_seen": "unknown",
+      "last_seen": "unknown",
+      "time_basis": "Microsoftは Storm-3069 自体の観測期間を示さない。原文が述べる「at least October 2025」はマルウェアNeedyMantisの活動下限であり、Microsoftは全NeedyMantis活動が同一主体に帰属するとは判断していない（「has not determined whether all observed activity is attributable to the same threat actor」）ため、Storm-3069 の活動期間へ転用しない。IOC表のFirst Seen / Last Seen（2025-10-03、2026-05-21、2026-05-23）は検体の観測日であり、Storm-3069の活動期間として原文に紐づけられていない。公開日2026-09-28を観測日へ転用しない。",
+      "tracking_detected_on": "2026-10-12",
+      "detected_via": "2026-10-12の日次チェックの「既存プロファイルに一致しない名前（IOC CSVのactor列）」に Storm-3069 が5観測で現れた。既存775プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "supply-chain-cybercrime",
+        "notes": "Microsoft は Storm-3069 を「designator for activity associated with the DAEMON Tools supply chain compromise」と記し、活動は中国を拠点とすると評価する一方、「it has not attributed Storm-3069 to a Chinese nation-state actor」と明記する。確信度の記載は無い。標的は「aligns with Chinese interests」とされるが、これも国家主体の断定ではない。Storm-#### はMicrosoftの一時的指定子である。NeedyMantis の利用者として確認された主体は Storm-3069 だが、Microsoft は Storm-3069 以外のNeedyMantis活動も報告し、全活動の同一帰属は未確定とする。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "Microsoft Threat Intelligence",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/09/28/needymantis-unpacking-a-post-compromise-malware-family-used-in-targeted-operations/",
+          "title": "NeedyMantis: Unpacking a post-compromise malware family used in targeted operations",
+          "published_at": "2026-09-28",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "Storm-3069 の観測期間は原文に無い。NeedyMantis は「at least October 2025」以降。IOC表の検体観測日は2025-10-03、2026-05-21、2026-05-23。DAEMON Tools サプライチェーン侵害の発生日は原文に記載が無い。",
+          "targets": "通信事業者、大学、医療系非営利組織、政府間組織、政府請負企業。国名の記載は無い。原文は標的が中国の関心と整合すると述べるが、これを帰属の確定として扱わない。",
+          "malware": [
+            "NeedyMantis（モジュール型の侵害後マルウェア。DLLサイドローディングで起動し、暗号化された独自アーカイブから多段ローダーを展開。C2にHTTPSとWebSocketを使い、XOR・圧縮・RC4を組み合わせる）"
+          ],
+          "tools": [
+            "正規ソフトウェアを悪用したDLLサイドローディング"
+          ],
+          "summary": "Microsoftが、少なくとも2025年10月から使われているモジュール型の侵害後マルウェアNeedyMantisを分析した。KasperskyのDAEMON Toolsサプライチェーン侵害調査の指標を追跡する過程で発見された。NeedyMantisの利用が確認された主体は Storm-3069（DAEMON Tools侵害に関連する活動の指定子）で、サプライチェーン侵害と関連付けられている。IOCは SHA-256 3件（WinSparkle.dll ローダー、WinSparkle / libcurl のカスタムアーカイブ）とホスト名 corp.tripswithengine[.]com。",
+          "verified_by_analyst": "原文を確認した（アクセス日2026-10-12）。公開日2026-09-28、Storm-3069 に言及する各文、中国拠点との評価と国家主体への帰属を行っていない旨の明記、NeedyMantisの「at least October 2025」下限、Storm-3069自体の観測期間が示されないこと、全NeedyMantis活動の同一帰属が未確定である旨、標的分野、IOC表のFirst Seen / Last Seenを直接確認している。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Microsoft 単独の初報であり、昇格閾値は未達。Kaspersky の DAEMON Tools 侵害調査が独立した一次資料になり得るが、本走査では未取得・未確認であり、同調査が Storm-3069 相当の主体を命名しているかも未確認。",
+        "Storm-3069 自体の活動期間が原文に無い。NeedyMantis の下限2025-10を Storm-3069 の活動期間へ流用しない。",
+        "NeedyMantis は Malware であって Actor ではない。Microsoft は Storm-3069 以外のNeedyMantis活動も報告し全活動の同一帰属を未確定とするため、NeedyMantis の観測を一律に Storm-3069 へ結び付けない。",
+        "DAEMON Tools サプライチェーン侵害の発生日・被害範囲が原文に無い。侵害された正規ソフトウェアのベンダーを攻撃主体と解釈しない。",
+        "Storm-#### は Microsoft の一時的指定子であり、後日改称または既知クラスタへ統合される可能性がある。"
+      ],
+      "analyst_notes": "2026-10-12の日次チェックで検知。Microsoft が中国拠点との評価と国家主体への帰属の不在を明示的に書き分けているため、台帳側も state を unattributed に留める（RULES.md: 国・originから国家支援を推定しない）。"
     }
   ],
   "excluded_name_collisions": [
