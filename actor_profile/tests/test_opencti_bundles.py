@@ -1552,5 +1552,132 @@ class OpenCTIBundleTests(unittest.TestCase):
                 self.assertTrue(item["name"])
 
 
+class SharedIdentityReferenceMergeTests(unittest.TestCase):
+    """profile横断で共有されるtarget identityのevidence参照の統合。
+
+    同じ国・セクターのidentityはプロファイルごとに別のevidence referenceを
+    持ち得る(例: apt33はMITRE由来、apt37は日次取込由来)。差分がexternal_references
+    だけなら和集合へ統合し、それ以外の意味差は従来どおり拒否する。
+    PR #62反映後のapt33/apt37で実際に発生した衝突の回帰テスト。
+    """
+
+    @staticmethod
+    def _identity(references: list[dict]) -> dict:
+        return {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
+            "created": "2026-01-01T00:00:00Z",
+            "modified": "2026-01-02T00:00:00Z",
+            "name": "south korea",
+            "identity_class": "group",
+            "description": "Targeting text mentions south korea.",
+            "external_references": [dict(ref) for ref in references],
+        }
+
+    def test_identity_differing_only_in_references_is_unioned(self) -> None:
+        mitre_ref = {"source_name": "MITRE", "external_id": "source--mitre-attack-19-1"}
+        daily_ref = {
+            "source_name": "bleepingcomputer.com",
+            "external_id": "source--daily-24c4e22a7b0cd08d6063",
+            "url": "https://www.bleepingcomputer.com/example/",
+        }
+        first = self._identity([mitre_ref])
+        second = self._identity([daily_ref, mitre_ref])
+        records = [
+            {"objects": [first]},
+            {"objects": [second]},
+        ]
+
+        normalize_shared_object_versions(records)
+
+        self.assertEqual(first["external_references"], second["external_references"])
+        self.assertEqual(len(first["external_references"]), 2)
+        sources = {ref["external_id"] for ref in first["external_references"]}
+        self.assertEqual(
+            sources,
+            {"source--mitre-attack-19-1", "source--daily-24c4e22a7b0cd08d6063"},
+        )
+
+    def test_identity_with_profile_specific_description_drops_description(self) -> None:
+        """セクターidentityのdescriptionは引用元活動名を含むプロファイル固有文。
+
+        共有IDは名前由来の決定的生成なので同一実体。食い違うdescriptionは
+        どちらかを勝たせず落とす(apt34/patchwork等9プロファイルの
+        「非営利・市民社会」で実際に発生した衝突の回帰テスト)。
+        """
+        first = self._identity([])
+        second = self._identity([])
+        first["description"] = "活動「Juicy Mix」の記述で標的として明示された産業。"
+        second["description"] = "活動「別の活動」の記述で標的として明示された産業。"
+        records = [{"objects": [first]}, {"objects": [second]}]
+
+        normalize_shared_object_versions(records)
+
+        self.assertNotIn("description", first)
+        self.assertNotIn("description", second)
+
+    def test_identity_with_agreeing_description_keeps_it(self) -> None:
+        first = self._identity([])
+        second = self._identity([])
+        records = [{"objects": [first]}, {"objects": [second]}]
+        normalize_shared_object_versions(records)
+        self.assertEqual(first["description"], "Targeting text mentions south korea.")
+
+    def test_identity_claim_confidence_is_dropped_when_profiles_disagree(self) -> None:
+        """x_confidenceは各プロファイルの標的主張の確度で、共有実体の属性ではない。
+
+        copykittens(high)とbitter(medium)の「サウジアラビア」identityで実際に
+        発生した衝突の回帰テスト。
+        """
+        first = self._identity([])
+        second = self._identity([])
+        first["x_confidence"] = "high"
+        first["confidence"] = 85
+        second["x_confidence"] = "medium"
+        second["confidence"] = 60
+        records = [{"objects": [first]}, {"objects": [second]}]
+
+        normalize_shared_object_versions(records)
+
+        self.assertNotIn("x_confidence", first)
+        self.assertNotIn("x_confidence", second)
+        self.assertNotIn("confidence", first)
+        self.assertNotIn("confidence", second)
+
+    def test_identity_display_name_resolves_to_majority_label(self) -> None:
+        """正規化キー由来の同一IDに表示名の揺れがある場合は多数決で決める。
+
+        「Defense」17件 vs 「Defense and Military」1件(apt28)で実際に発生した
+        衝突の回帰テスト。最頻、同数なら短い方・辞書順で決定的に選ぶ。
+        """
+        objects = [self._identity([]) for _ in range(3)]
+        objects[0]["name"] = "Defense"
+        objects[1]["name"] = "Defense"
+        objects[2]["name"] = "Defense and Military"
+        records = [{"objects": [obj]} for obj in objects]
+
+        normalize_shared_object_versions(records)
+
+        self.assertEqual({obj["name"] for obj in objects}, {"Defense"})
+
+    def test_non_identity_shared_conflict_is_still_rejected(self) -> None:
+        base = {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--00000000-0000-4000-8000-000000000001",
+            "created": "2026-01-01T00:00:00Z",
+            "modified": "2026-01-01T00:00:00Z",
+            "name": "Shared technique",
+            "external_references": [{"source_name": "a", "external_id": "x"}],
+        }
+        import copy as _copy
+        other = _copy.deepcopy(base)
+        other["external_references"] = [{"source_name": "b", "external_id": "y"}]
+        records = [{"objects": [base]}, {"objects": [other]}]
+        with self.assertRaises(ValueError):
+            normalize_shared_object_versions(records)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -531,6 +531,44 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("米国", countries)
         self.assertNotIn("中国", countries)
 
+    def test_state_backing_ukeru_phrase_is_not_a_victim_country(self) -> None:
+        """「ロシアの国家支援を受けるStar Blizzard」は帰属文脈であり被害国ではない。
+
+        2026-10のRedFlick取込でロシアがcallistoの標的国へ流用された回帰ケース。
+        続く語がラテン文字のアクター名でも「の国家支援を受ける」で帰属側と判定する。
+        """
+        profile = self.profile("Star Blizzard")
+        activity = self.activity(
+            "Star Blizzard、RedFlickを使うフィッシングとマルウェア配布を強化",
+            (
+                "Microsoftは、ロシアの国家支援を受けるStar Blizzardが2026年1月以降、"
+                "少なくとも13件の大規模なフィッシング活動を行ったと報告した。"
+                "ウクライナ支援に関わる組織などを狙い、米英を中心に100超の組織が影響を受けた。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("ロシア", countries)
+
+    def test_plain_support_ukeru_phrase_keeps_victim_side_country(self) -> None:
+        """無修飾の「Xの支援を受ける組織」は被害側の記述であり、Xを除外しない。
+
+        「国家支援／政府支援を受ける」だけを帰属文脈とし、支援国が標的記述に
+        現れる形(ウクライナ支援団体が標的等)を巻き込まないことの否定側テスト。
+        """
+        profile = self.profile("Star Blizzard")
+        activity = self.activity(
+            "ウクライナを支援する組織への攻撃",
+            "攻撃者はウクライナの支援を受ける組織と、ウクライナの政府機関を標的にした。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ウクライナ", countries)
+
     def test_government_backing_phrase_is_not_a_country_or_sector_target(
         self,
     ) -> None:

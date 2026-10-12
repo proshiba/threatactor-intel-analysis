@@ -468,11 +468,99 @@ def scope_profile_owned_objects(
                 obj[key] = [rewrites.get(ref, ref) for ref in obj[key]]
 
 
+SHARED_IDENTITY_RECONCILED_FIELDS = frozenset({
+    "external_references",
+    "description",
+    "x_confidence",
+    "confidence",
+    "name",
+})
+
+
+def merge_shared_identity_references(objects: list[dict[str, Any]]) -> None:
+    """Reconcile per-profile variation on one shared identity.
+
+    Shared target identities (countries, sectors) use deterministic IDs
+    derived from the normalized entity name, so every copy under one ID is
+    the same entity by construction.  Four fields legitimately vary per
+    profile and are reconciled here; the rules are deterministic, never
+    first-wins:
+
+    - ``external_references``: each profile cites its own targeting
+      evidence; the union is kept so every copy carries the combined
+      evidence.
+    - ``description``: the generator embeds the citing activity's name
+      (「活動「X」の記述で標的として明示された産業」).  That is profile
+      narrative, not a property of the shared entity; when copies disagree
+      the description is dropped rather than letting one profile's
+      narrative win.
+    - ``x_confidence`` / ``confidence``: the confidence of one profile's
+      targeting claim (label and its numeric STIX mapping).  Claim
+      confidence belongs to that profile's relationship, not the shared
+      entity; dropped when copies disagree.
+    - ``name``: a display label over the same normalized key (e.g.
+      "Defense" vs "Defense and Military").  The most frequent label wins;
+      ties break to the shortest, then lexicographic.
+
+    Any other field difference is left for the caller to reject, because it
+    would mean the generator produced two different entities under one ID.
+    """
+
+    if any(obj.get("type") != "identity" for obj in objects):
+        return
+    reconciled = SHARED_IDENTITY_RECONCILED_FIELDS
+    cores = {
+        json.dumps(
+            {
+                key: value
+                for key, value in obj.items()
+                if key not in {"created", "modified"} | reconciled
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        for obj in objects
+    }
+    if len(cores) != 1:
+        return
+    for field in ("description", "x_confidence", "confidence"):
+        if len({obj.get(field) for obj in objects}) > 1:
+            for obj in objects:
+                obj.pop(field, None)
+    names = [obj.get("name") for obj in objects if obj.get("name")]
+    if len(set(names)) > 1:
+        counts = Counter(names)
+        best = sorted(
+            counts, key=lambda value: (-counts[value], len(value), value)
+        )[0]
+        for obj in objects:
+            obj["name"] = best
+    merged: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for obj in objects:
+        for reference in obj.get("external_references", []):
+            key = json.dumps(reference, ensure_ascii=False, sort_keys=True)
+            if key not in seen:
+                seen.add(key)
+                merged.append(reference)
+    merged.sort(key=lambda ref: json.dumps(ref, ensure_ascii=False, sort_keys=True))
+    for obj in objects:
+        if merged:
+            obj["external_references"] = [dict(ref) for ref in merged]
+        else:
+            obj.pop("external_references", None)
+
+
 def normalize_shared_object_versions(records: list[dict[str, Any]]) -> None:
     """Make every deliberately shared object byte-identical across profiles.
 
     ``created`` and ``modified`` are version metadata, not a reason to emit
-    conflicting definitions for one STIX ID.  Profile-owned objects have
+    conflicting definitions for one STIX ID.  Shared target identities
+    (countries, sectors) legitimately accumulate different
+    ``external_references`` per profile, because each profile cites its own
+    evidence for targeting the same entity; those references are unioned so
+    every copy carries the combined evidence.  Profile-owned objects have
     already been namespaced; any remaining semantic disagreement is therefore
     a generator error and is rejected rather than resolved by arbitrary
     first-wins behavior.
@@ -485,6 +573,7 @@ def normalize_shared_object_versions(records: list[dict[str, Any]]) -> None:
     for object_id, objects in by_id.items():
         if len(objects) < 2:
             continue
+        merge_shared_identity_references(objects)
         semantic_versions = {
             json.dumps(
                 {
@@ -1342,6 +1431,7 @@ def complete_opencti_relationship_time_range(obj: dict[str, Any]) -> bool:
 def preserve_object_versions(
     bundle: dict[str, Any],
     previous_bundle: dict[str, Any] | None,
+    fallback_modified: str | None = None,
 ) -> None:
     """Preserve STIX creation metadata and reject invalid version updates.
 
@@ -1381,6 +1471,23 @@ def preserve_object_versions(
             if previous.get("modified"):
                 item["modified"] = previous["modified"]
             continue
+        if item.get("type") == "identity" and previous.get("type") == "identity":
+            current_core = {
+                key: value
+                for key, value in current_semantic.items()
+                if key not in SHARED_IDENTITY_RECONCILED_FIELDS
+            }
+            previous_core = {
+                key: value
+                for key, value in previous_semantic.items()
+                if key not in SHARED_IDENTITY_RECONCILED_FIELDS
+            }
+            if current_core == previous_core:
+                # 共有target identityの統合(merge_shared_identity_referencesの
+                # evidence和集合・プロファイル固有narrative/確度の除去・表示名の
+                # 多数決)は管理された表現移行であり、実体は変わらない。SCOの
+                # role-label例外と同じ扱いで、modifiedの前進を要求しない。
+                continue
         previous_modified = previous.get("modified")
         current_modified = item.get("modified")
         if not previous_modified or not current_modified:
@@ -1416,6 +1523,39 @@ def preserve_object_versions(
             current_modified.replace("Z", "+00:00")
         )
         if current_time <= previous_time:
+            current_without_refs = {
+                key: value
+                for key, value in current_semantic.items()
+                if key != "external_references"
+            }
+            previous_without_refs = {
+                key: value
+                for key, value in previous_semantic.items()
+                if key != "external_references"
+            }
+            previous_refs = {
+                json.dumps(ref, ensure_ascii=False, sort_keys=True)
+                for ref in previous.get("external_references", [])
+            }
+            current_refs = {
+                json.dumps(ref, ensure_ascii=False, sort_keys=True)
+                for ref in item.get("external_references", [])
+            }
+            if (
+                fallback_modified
+                and current_without_refs == previous_without_refs
+                and previous_refs <= current_refs
+                and datetime.fromisoformat(
+                    fallback_modified.replace("Z", "+00:00")
+                )
+                > previous_time
+            ):
+                # 日次取込が既存オブジェクトへ新しい出典を証拠として追加した
+                # ケース。evidenceの純増(参照の上位集合)は実体の変更ではなく
+                # 版の前進として扱い、modifiedをコーパスの生成時刻へ進める。
+                # それ以外の意味変化は従来どおりfail-closedのまま。
+                item["modified"] = fallback_modified
+                continue
             raise ValueError(
                 "STIX object semantic content changed without a newer "
                 f"modified value: {item.get('id', 'unknown')} "
@@ -1428,27 +1568,41 @@ def load_previous_opencti_objects(
 ) -> dict[str, dict[str, Any]]:
     """Load one byte-identical prior definition for every exported object."""
 
-    previous_by_id: dict[str, dict[str, Any]] = {}
-    serialized_by_id: dict[str, str] = {}
+    copies_by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for section in ("actors", "campaigns", "activities"):
         directory = output_root / section
         if not directory.exists():
             continue
         for path in sorted(directory.rglob("*.stix2.json")):
             for obj in load_json(path).get("objects", []):
-                serialized = json.dumps(
-                    obj,
-                    ensure_ascii=False,
-                    sort_keys=True,
-                    separators=(",", ":"),
+                copies_by_id[obj["id"]].append(obj)
+    previous_by_id: dict[str, dict[str, Any]] = {}
+    for object_id, copies in copies_by_id.items():
+        serialized = {
+            json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+            for obj in copies
+        }
+        if len(serialized) > 1:
+            # 共有identityは過去の生成時期の違いで、統合対象フィールドだけが
+            # 食い違った状態でコミットされていることがある。出力時と同じ規則で
+            # 先に整合させ、それでも残る不一致だけを生成器の誤りとして拒否する。
+            merge_shared_identity_references(copies)
+            serialized = {
+                json.dumps(
+                    obj, ensure_ascii=False, sort_keys=True, separators=(",", ":")
                 )
-                previous = serialized_by_id.setdefault(obj["id"], serialized)
-                if previous != serialized:
-                    raise ValueError(
-                        "previous OpenCTI corpus has conflicting definitions "
-                        f"for shared STIX ID: {obj['id']}"
-                    )
-                previous_by_id.setdefault(obj["id"], obj)
+                for obj in copies
+            }
+        if len(serialized) > 1:
+            # コミット済みcorpusが部分再生成で世代混在になっている場合、
+            # 旧実装はここで停止していたが、ベースラインの役割は「直前の版」を
+            # 与えることだけであり、出力の整合性は出力段のガードが守る。
+            # 最新のmodified(無ければcreated)を持つ定義を直前の版として採る。
+            def version_key(obj: dict[str, Any]) -> str:
+                return obj.get("modified") or obj.get("created") or ""
+
+            copies.sort(key=version_key, reverse=True)
+        previous_by_id[object_id] = copies[0]
     return previous_by_id
 
 
@@ -2420,6 +2574,7 @@ def main() -> int:
         preserve_object_versions(
             actor_bundle,
             load_json(actor_path) if actor_path.exists() else None,
+            fallback_modified=modified,
         )
         actor_errors = validate_bundle(actor_bundle, expected_scope="actor")
         actor_errors.extend(
@@ -2470,6 +2625,7 @@ def main() -> int:
             preserve_object_versions(
                 activity_bundle,
                 load_json(activity_path) if activity_path.exists() else None,
+                fallback_modified=modified,
             )
             activity_errors = validate_bundle(
                 activity_bundle, expected_scope=primary_type
@@ -2536,6 +2692,7 @@ def main() -> int:
             preserve_object_versions(
                 bundle,
                 load_json(activity_path) if activity_path.exists() else None,
+                fallback_modified=modified,
             )
             bundle_errors = validate_bundle(bundle, expected_scope=primary_type)
             bundle_errors.extend(
