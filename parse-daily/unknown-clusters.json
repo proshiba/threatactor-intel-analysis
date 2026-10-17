@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-12T09:30:00Z",
+  "generated_at": "2026-10-17T01:30:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -756,6 +756,70 @@
       "analyst_notes": "2026-09-28の日次チェックで、一次情報源巡回（Microsoft Security Blog）により検知。RaaSアフィリエイトは「どのランサムウェアを展開したか」ではなく侵害後TTPで束ねられるため、ランサムウェアファミリ名の一致を根拠に既存プロファイルへ寄せない。"
     },
     {
+      "cluster_id": "unknown-cluster--uat-6275",
+      "primary_name": "UAT-6275",
+      "aliases": [
+        {
+          "name": "Silent Lynx",
+          "scope": "overlapping",
+          "vendor": "Seqrite",
+          "note": "原文: 「It overlaps with Silent Lynx (first reported by Seqrite).」Talos は overlap と記すのみで exact identity を主張していない。Talos の公開IOCファイル名が uat-6275-silent-lynx.txt である点も同じ重複関係の表現であり、名称等価の宣言ではない。"
+        },
+        {
+          "name": "TAG-193",
+          "scope": "source-reported",
+          "vendor": "Recorded Future",
+          "note": "原文は Recorded Future が同一の活動を TAG-193 として追跡すると記す。別ベンダーの追跡名であり、本台帳では検証済みの等価性としては扱わない。"
+        }
+      ],
+      "status": "tracking",
+      "entity_type": "actor-cluster",
+      "first_seen": "2025-06",
+      "last_seen": "2026-08",
+      "time_basis": "原文の明示記述「In activity observed from June 2025 through August 2026」に基づく月精度。公開日2026-10-14、IOC CSVの収集日2026-10-15、IOCリストのコミット日はいずれも活動観測日ではないため転用しない。",
+      "detected_via": "2系統で検知した。(1) tech-memo daily-news 2026-10-15 のIOC CSVの actor 列に `UAT-6275` が301観測（参照先は Cisco Talos の公開IOCリスト https://github.com/Cisco-Talos/IOCs/blob/main/2026/10/uat-6275-silent-lynx.txt 、301行）。(2) 一次情報源巡回（Cisco Talos 公開一覧）で原記事を特定した。記事本体は tech-memo daily-news に未収録であり、IOC CSVにはIOCリストのURLだけが現れるため、巡回を行わなければ原文根拠を取得できなかった。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも UAT-6275 / Silent Lynx / TAG-193 は存在しない。",
+      "attribution": {
+        "state": "kazakhstan-nexus-medium-confidence-per-vendor",
+        "actor_type": "cyber-espionage",
+        "notes": "原文: 「Talos assesses with medium confidence that UAT-6275 has a Kazakhstan nexus.」根拠としてインフラへのアクセス、言語痕跡、検体の投稿元、稼働時間分析、地域的victimologyが挙げられる。nexus の評価であって国家機関による支援・指揮の記述ではなく、本台帳は標的国・インフラ所在地から国家支援を推定しない（AGENTS.md ガードレール）。UAT-#### は Cisco Talos の未帰属追跡指定子である。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/break-the-silence-kazakhstan-nexus-uat-6275-targets-cis-government-organizations/",
+          "title": "Break the silence: Kazakhstan-nexus UAT-6275 targets CIS government organizations",
+          "published_at": "2026-10-14",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文明示: 「In activity observed from June 2025 through August 2026」。",
+          "targets": "CIS諸国の政府機関。原文が挙げる国はカザフスタン、キルギス、タジキスタン、トルクメニスタン、ウズベキスタン、アルメニア、アゼルバイジャン、ロシア、ベラルーシ。分野は外交、経済開発、農業、環境管理に携わる政府機関、および水資源・エネルギー。日本の被害記載はない。",
+          "malware": [
+            "Chvost（リバースシェル）",
+            "Laplas（リバースシェル）",
+            "PickleShell（リバースシェル）"
+          ],
+          "tools": [
+            "配信: PS2EXE でパッケージ化した PowerShell 実行ファイル、マクロ有効 Word 文書、GitHub でホストした PowerShell スクリプト",
+            "エクスプロイト: CVE-2025-8088 を悪用する細工済み WinRAR アーカイブ、FortiWeb CVE-2025-25257 の公開PoC（Linux対応ツールと併存）",
+            "持続化: スケジュールタスク、スタートアップフォルダへの配置"
+          ],
+          "ioc_reference": "https://github.com/Cisco-Talos/IOCs/blob/main/2026/10/uat-6275-silent-lynx.txt （301行。ddns.me / zapto.org / servehttp.com 等のDDNSドメインと、Microsoft・Red Hat・Debian のアップデート配信を騙るホスト名が中心）",
+          "summary": "2025年6月から2026年8月にかけてCIS諸国の政府機関を狙った諜報活動。DDNSドメインを多用し、Windows Update や Red Hat / Debian のアップデート配信を騙るホスト名でC2を運用する。Talos は Kazakhstan nexus を medium confidence で評価し、Silent Lynx との重複と YoroTrooper との広義クラスタ同一性を述べつつ、いずれも別指定子として追跡を継続している。",
+          "verified_by_analyst": "原文（Cisco Talos、2026-10-14公開）を直接確認した（アクセス日2026-10-17）。公開日、Kazakhstan nexus の medium confidence 表現、Silent Lynx / TAG-193 / YoroTrooper との関係記述、標的国・分野、活動期間「June 2025 through August 2026」、マルウェア3種とエクスプロイトを確認している。公開IOCファイル（301行、12.4KB）の存在と先頭行も確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "YoroTrooper との関係は原文が「We assess that UAT-6275 and YoroTrooper likely belong to the same broader activity cluster.」と述べる一方、「Talos still tracks them separately because it has not seen direct indicator or toolset overlap between them.」として別追跡を継続する。likely / broader activity cluster という留保付きの評価であり、exact identity への昇格根拠にならない。本リポジトリには YoroTrooper / SturgeonPhisher のプロファイルが存在しない（actor-census.json に ESET APT Activity Report の文脈抜粋として「SturgeonPhisher (also known as YoroTrooper)」が1件現れるのみ）ため、related_profiles は空とする。",
+        "Silent Lynx（Seqrite 初報）の原文を未取得。overlap の範囲が部分なのか大半なのかを判定する一次資料が必要。",
+        "Cisco Talos 単独の初報であり、昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。Recorded Future の TAG-193 報告を取得できれば2本目になり得る。",
+        "IOC CSVの301観測は Talos の公開IOCリストの転記であり、個別IOCの観測日は原典に明示されていない。IOC CSVの date 列（2026-10-14）は資料公開日であって観測日ではないため、採用時は observed_at を unknown に維持する必要がある。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。daily_check.py は IOC CSV の actor 列から UAT-6275 を未一致として報告したが、記事本体が tech-memo に無いため一次情報源巡回を行わなければ原文根拠を得られなかった事例である。Kazakhstan nexus は Talos 自身の medium confidence 評価であり、本台帳が標的地域やインフラ所在地から導いたものではない。"
+    },
+    {
       "cluster_id": "unknown-cluster--heartlesssoul",
       "primary_name": "HeartlessSoul",
       "aliases": [],
@@ -1090,6 +1154,62 @@
         "IOC CSVに149観測があるが、台帳はプロファイルではないためIOCを保存しない。昇格時にtech-memo 2026-10-01 のIOC CSVから取り込む必要がある。"
       ],
       "analyst_notes": "2026-10-01の日次チェックで、IOC CSVのactor列の未一致名として検知。daily_check.py は同記事をjewelbug の candidate レコードとしても提示したが、原文が明示的に別クラスタとして追跡すると述べているため、プロファイルへ寄せず台帳へ登録した。「名前が記事に出ること」と「実行主体として帰属されること」の分離が必要な典型例である。"
+    },
+    {
+      "cluster_id": "unknown-cluster--ghostaction",
+      "primary_name": "GhostAction（キャンペーン名。運用者は未命名）",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "campaign",
+      "first_seen": "2025-09",
+      "last_seen": "2026-10-09",
+      "time_basis": "2025年9月の初報（817リポジトリ／327開発者から3,000超のシークレット）を起点とし、2026年の再活動は2026-09-04〜05に現在の持ち出し先が初観測、2026-10-08に2波の自動掃引、2026-10-09時点で約378リポジトリに悪意あるワークフローが残存、という原文の明示日に基づく。公開日2026-10-09は最終観測日と一致するが、公開日として別に保持する。",
+      "detected_via": "tech-memo daily-news 2026-10-12 のIOC CSVの actor 列に `GhostAction` が7観測。記事本文も同日の daily-news に収録されている。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも GhostAction は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "supply-chain-cybercrime",
+        "notes": "原文: 「GhostAction is a supply chain campaign against GitHub repositories.」StepSecurity は実行主体を命名も帰属もせず「the attacker」とのみ記す。GhostAction はキャンペーン名であってアクター指定子ではないため、本エントリは entity_type を campaign とする。2025年と2026年で持ち出し先インフラが別であるため同一運用者と断定できないが、同一の手口・同一のワークフロー偽装名が継続しており、将来いずれかのアクターへ結び付き得るクラスタとして記録する。原文は窃取された認証情報が「circulate among multiple actors」とも述べており、下流の悪用者を本キャンペーンの実行主体と同一視しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "StepSecurity",
+          "url": "https://www.stepsecurity.io/blog/ghostaction-returns",
+          "title": "GhostAction Returns",
+          "published_at": "2026-10-09",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2025年9月（初報）、2026-09-04〜05（現在の持ち出し先の初観測、解析した最古の感染リポジトリは2026-09-05）、2026-10-08 13:20〜13:44 UTC（27リポジトリへ投入）および 21:10〜21:26 UTC（279フォークを含む318リポジトリへ投入）、2026-10-09時点で約378リポジトリに残存。",
+          "targets": "GitHub のオープンソースリポジトリと保守担当者。2026-10-08の波ではオープンソース保守担当者2人のアカウントが悪用され、計345リポジトリへ悪意あるワークフローが追加された。原文が名前を挙げる被害リポジトリは uber/athenadriver（攻撃者サーバーからの受信応答を確認）と kitao/pyxel（攻撃者によるワークフロー手動再実行の記録）。2025年の初報では817リポジトリ／327開発者から3,000超のシークレットが窃取された。日本の被害記載はない。",
+          "malware": [],
+          "tools": [
+            "「Security Audit」を装う GitHub Actions ワークフロー（設定済み Actions シークレットに加え、作業ツリーと全ブランチ・タグのGit履歴からクラウド・AIサービス等の認証情報を探索し外部送信する）",
+            "侵害した GitHub PAT またはセッション（ワークフロー投入に使用）"
+          ],
+          "iocs": [
+            "193.32.204.199（2026年の活動で使用された送信先。ポート80と3000）",
+            "hxxp://193.32.204.199/?c=monami（名前付きActionsシークレットがあるリポジトリからの送信先）",
+            "hxxp://193.32.204.199/?c=new（Git履歴等から収集した情報の送信先）",
+            "hxxp://193.32.204.199:3000/api/workflow/receive?inj=<id>（別の受信エンドポイント。idは可変）",
+            "bold-dhawan.45-139-104-115.plesk.page（2025年の活動で使用された送信先）",
+            "carte-avantage.com（2025年の活動で使用された送信先）",
+            "45.139.104.115（過去の活動で使用されたC2）",
+            "170.39.218.2（過去の活動で使用されたC2）",
+            "探索用の特徴: ワークフロー内の文字列 AKIA_CTX_START、c=monami"
+          ],
+          "summary": "GitHub リポジトリを狙うサプライチェーンキャンペーンの再活動。保守担当者のアカウントを悪用し「Security Audit」を装うワークフローを投入して、Actionsシークレットと全ブランチのGit履歴から認証情報を窃取する。2025年9月の初報から手口を継続しつつ、Git履歴の走査という拡張を加えている。原文時点で窃取した公開用認証情報を使った悪意あるパッケージ公開は確認されていない。",
+          "verified_by_analyst": "原文（StepSecurity、2026-10-09公開）を直接確認した（アクセス日2026-10-17）。GhostAction がキャンペーン名である定義文、実行主体の命名・帰属が存在しないこと、2025年9月の規模、2026-09-04〜05および2026-10-08の日付と件数、2026-10-09時点の残存リポジトリ数を確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "StepSecurity 単独の初報であり、昇格閾値は未達。2025年9月の初報も同社によるものとみられ、独立した一次資料が必要。",
+        "2025年の活動と2026年の活動が同一運用者によるものかは原文が断定していない。送信先インフラは別であり、手口とワークフロー偽装名の一致のみが根拠である。",
+        "窃取された認証情報が複数のアクター間で流通するため、下流の悪用事案を本キャンペーンの実行主体へ帰属しない。",
+        "GhostAction はキャンペーン名であり、実行主体を指す指定子が存在しない。プロファイル昇格を検討する場合は、実行主体を命名した一次資料が必要。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。IOC CSVの actor 列にキャンペーン名が入っている事例であり、アクター指定子ではない点を entity_type と attribution.notes に明記した。"
     },
     {
       "cluster_id": "unknown-cluster--storm-3069",
@@ -1579,6 +1699,60 @@
       "analyst_notes": "2026-10-01の日次チェックで、IOC CSVのactor列の未一致名として検知。daily_check.py は同記事を contagious-interview の alias「DEV#POPPER」一致として提示したが、一致箇所は記事中のRAT名「DEV#POPPER.js」であり実行主体ではない。同名マルウェアとアクター呼称の衝突であり、excluded_name_collisions ではなく実体側のキャンペーンとして台帳へ登録した（Gryxa / Earth Lusca の CHROMIUM 衝突と同じ扱い方である）。"
     },
     {
+      "cluster_id": "unknown-cluster--cl-unk-1211",
+      "primary_name": "CL-UNK-1211",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "actor-cluster",
+      "first_seen": "2025-10",
+      "last_seen": "2026-04",
+      "time_basis": "原文が示す観測期間「October 2025 to April 2026」に基づく月精度。公開日2026-10-15は活動観測日ではないため転用しない。",
+      "detected_via": "一次情報源巡回（Palo Alto Networks Unit 42、2026-10-15公開）。tech-memo daily-news には未収録であり、daily_check.py の2系統（IOC CSVのactor列／本文の実行主体表現）いずれでも検知できなかった。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも CL-UNK-1211 / SysGoRAT は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "unknown",
+        "notes": "CL-UNK-#### は Unit 42 の帰属フレームワークにおいて affiliation 未確定を示す指定子である。原文は国家支援か犯罪かを「affiliation with either nation-state or cybercrime activity we have not yet determined」として未決とし、活動が情報収集を支援するものと記述するが、国家の関与は確認していない。標的が政府機関であることから国家支援を推定しない（AGENTS.md ガードレール）。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/",
+          "title": "AI-Powered Espionage Campaign Targets Government Linux Infrastructure",
+          "published_at": "2026-10-15",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文明示: 「October 2025 to April 2026」。",
+          "targets": "政府機関および国家関連インフラ。主に Linux サーバーとデータベース環境。日本の被害記載はない。",
+          "malware": [
+            "SysGoRAT（Go製の独自マルチプラットフォームRAT。初出時のファイル名は sys-control-client）",
+            "独自シェルバックドア",
+            "独自およびオープンソースのPHPウェブシェル（原文で命名なし）"
+          ],
+          "tools": [
+            "CVE-2025-55182（React2Shell）向けの独自スキャナ",
+            "GSocket リバースシェル（gs-netcat）",
+            "LinPEAS",
+            "PwnKit（CVE-2021-4034）",
+            "revsocks",
+            "pysoxy"
+          ],
+          "iocs": [],
+          "summary": "政府機関のLinuxサーバーとデータベース環境を狙った諜報活動。Go製の独自RAT SysGoRAT を中核に、React2Shell 脆弱性スキャナや権限昇格・トンネリングのOSSツールを組み合わせる。Unit 42 は affiliation 未確定として CL-UNK-1211 の指定子で追跡する。",
+          "verified_by_analyst": "原文（Unit 42、2026-10-15公開）を直接確認した（アクセス日2026-10-17）。CL-UNK-1211 の指定子、UNK が affiliation 未確定を意味すること、国家支援を確認していない旨、観測期間 2025-10〜2026-04、標的、SysGoRAT を含むマルウェア・ツール群を確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Unit 42 単独の初報であり、昇格閾値は未達。",
+        "原文の表題は「AI-Powered」だが、AI利用の具体的根拠と確度を本走査では未検証。AI利用は能力評価であって帰属根拠ではない。",
+        "標的国が原文に明示されているか未確認。「government entities and state-affiliated infrastructure」という記述に留まる範囲では国名を補わない。",
+        "CL-UNK-#### は Unit 42 の未確定クラスタ指定子であり、後日 CL-STA-/CL-CRI- 等へ再分類される可能性がある。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックの一次情報源巡回で検知。tech-memo 未収録の新規公開を拾えた事例である。"
+    },
+    {
       "cluster_id": "unknown-cluster--cl-sta-1178",
       "primary_name": "CL-STA-1178（キャンペーン名 Blinder Tunnel）",
       "aliases": [
@@ -1939,6 +2113,32 @@
           ],
           "summary": "AIの支援を受けたイベント題材のルアーで、Googleサインインを騙るリアルタイムAitMフィッシングへ誘導する標的型キャンペーン。台湾の研究機関関係者を狙い、認証情報窃取を主目的とする。検知名は ClamAV「Html.Phishing.UAT11985-10060614-0」、Snort2 1:67198、Snort3 7:31。IOCはCisco TalosのGitHub（2026/10/uat-11985.txt）で公開されるが、原文は件数を示さない。",
           "verified_by_analyst": "原文を確認した（アクセス日2026-10-12）。公開日2026-10-08、APTスピアフィッシングとしての記述、国家帰属を行っていないこと、UI開発言語のmoderate confidence評価、「In mid-2026」のみの期間記述、台湾の研究機関という標的、騙られた3組織、AitMキットの技術要素、検知名、IOCのGitHub公開を直接確認している。既知グループ・aliasとの結び付けが原文に存在しないことも確認した。"
+        },
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/uat-11985/",
+          "title": "UAT-11985: AI-assisted event lures delivering real-time Google AitM phishing",
+          "published_at": "2026-10-08",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は「In mid-2026」とのみ述べ、first / last の観測日を示さない。last_seen は unknown のまま維持する。",
+          "targets": "台湾の研究機関関係者。既存観測と同一の原典であり標的の記述に変化はない。",
+          "malware": [],
+          "tools": [
+            "Google のサインインを騙る adversary-in-the-middle (AitM) フィッシングキット",
+            "イベントを題材にしたメール、偽の参加登録ページ、改変したイベントポスター上のQRコード（quishing）"
+          ],
+          "iocs": [
+            "hxxps://google[.]morelessty[.]com",
+            "hxxps://jmlh[.]morelessty[.]com/",
+            "hxxps://google[.]centerhoti[.]com/",
+            "hxxps://google[.]natrlyi[.]com/",
+            "hxxps://accounts[.]natrlyi[.]com/"
+          ],
+          "summary": "tech-memo daily-news 2026-10-17 が同じ Talos 記事（2026-10-08公開）を収録し、IOC CSVの actor 列にも `UAT-11985` が5観測現れた。新規の一次資料ではなく、既登録の原典が tech-memo 経由でも捕捉されたことを示す再観測である。IOC 5件は原典の公開IOCリスト由来で、本観測で初めて構造化データとして現れた。",
+          "verified_by_analyst": "原典URLと公開日が既登録の観測と同一であることを確認した（アクセス日2026-10-17）。独立した2本目の一次資料ではないため、昇格閾値の判定には算入しない。"
         }
       ],
       "related_profiles": [
@@ -7518,6 +7718,23 @@
           "tools": [],
           "summary": "ドイツ当局が、日本から引き渡されたロシア国籍の人物を Qilin ランサムウェアグループの中核メンバーだった疑いで逮捕した。容疑者は観光客として来日した際にドイツの逮捕状に基づき日本で拘束された（報道では2026年5月、大阪市内のホテル）。役割は捜査上の疑いであり、氏名・有罪判決の情報は報道に無い。",
           "verified_by_analyst": "一次ソースのPDF（警察庁 2026-10-08リリース）は本チェックでは未取得。tech-memo 2026-10-10 のニュース本文で、引き渡し公表・逮捕・容疑者の役割が捜査上の疑いであること・氏名と有罪判決の情報が無いことを確認した。原文未取得のため本観測は low reliability として扱い、昇格判断には用いない。"
+        },
+        {
+          "observed_on": "2026-10-12",
+          "publisher": "SuspectFile",
+          "url": "https://www.suspectfile.com/shinyhunters-six-years-of-cybercrime-expert-analysis-and-ransomware-group-perspectives/",
+          "title": "ShinyHuntersの6年間――専門家とランサムウェア集団が語る変遷",
+          "published_at": "2026-10-12",
+          "published_at_precision": "day",
+          "source_type": "secondary-report",
+          "reliability": "media-interview",
+          "activity_period": "本観測は Qilin の攻撃活動の報告ではない。活動期間へ転用できる記述はない。",
+          "targets": "記載なし。記事の主題は ShinyHunters の名称変遷であり、Qilin は取材対象として登場するに留まる。",
+          "malware": [],
+          "tools": [],
+          "iocs": [],
+          "summary": "non-operational な言及。記事は ShinyHunters の6年間を扱い、取材を受けたランサムウェアグループ Qilin と Anubis が知名度の追求と捜査リスクについて見解を述べる。記事自身が「両集団の評価や今後の予測は、独立して検証された事実ではない」と注記している。Qilin の新規攻撃活動、被害組織、インフラ、TTPの報告は含まれない。",
+          "verified_by_analyst": "tech-memo daily-news 2026-10-12 の収録記事として本文を確認した（アクセス日2026-10-17）。daily_check.py は本記事から `Qilin` を unmatched_name_candidates（本文の実行主体表現由来）として報告したが、原文における Qilin は取材対象であって当該記事が報じる攻撃の実行主体ではない。台帳既出クラスタへの観測として記録するが、攻撃活動ではないため last_seen は更新しない。"
         }
       ],
       "related_profiles": [],
@@ -8285,6 +8502,68 @@
       "analyst_notes": "2026-10-03の日次チェックで検知。自然人レベルの運用者ハンドルがクラスタ名より先に高確度で同定された事例であり、台帳では Operation Master を primary_name、masterblack を narrower alias とした（unknown-cluster--rognar、unknown-cluster--gtg-50014-frkoo と同じ扱い）。OSINT_RULES.md の「自然人は氏名、表記、handle、役割を原文で確認し、同姓同名やhandle一致だけで統合しない」に従い、将来 associated_entities へ反映する場合も threat-actor-individual として分離する。"
     },
     {
+      "cluster_id": "unknown-cluster--uta0576",
+      "primary_name": "UTA0576",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "actor-cluster",
+      "first_seen": "2026-10-03",
+      "last_seen": "2026-10-07",
+      "time_basis": "原文は悪用開始を2026-10-03、Volexity の調査開始を2026-10-05とする。関連ホストが OpenVPN サーバーを稼働させていた期間は2026-09-30〜2026-10-07で、これはインフラ観測であり侵害活動そのものの期間ではない。last_seen は原文が示す最終の観測日（2026-10-07）に留める。Defused が2026-10-01から悪用の兆候を確認したとする報道があるが、Volexity 原文の記述ではないため採用しない。",
+      "detected_via": "tech-memo daily-news 2026-10-14 および 2026-10-15 のIOC CSVの actor 列に `UTA0576` が2観測。本文でも Volexity の追跡名として記載される。一次情報源巡回でも Volexity 原文を確認した。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも UTA0576 は存在しない（本台帳の unknown-cluster--uta0560 は別指定子であり、原文に両者を結び付ける記述はない）。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "unknown",
+        "notes": "原文は「a previously unknown threat actor that Volexity tracks as UTA0576」と記し、国家・既知グループへの帰属を行わない。動機については標的を根拠に諜報ではなく犯罪的動機である可能性を low confidence で評価する。攻撃者が exploit 開発と侵入後活動に大規模言語モデルを用いたことを medium confidence で評価する。SonicWall SMA に対して類似のLDAPパケットキャプチャ技法を用いた UTA0533 に言及するが、UTA0576 を UTA0533 や他の既知グループへ帰属していない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Volexity",
+          "url": "https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/",
+          "title": "A Series of Unauthenticated Events: Chained Exploitation of Ivanti Connect Secure Zero-Days",
+          "published_at": "2026-10-13",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "悪用開始 2026-10-03。Volexity の調査開始 2026-10-05。関連ホストの OpenVPN 稼働 2026-09-30〜2026-10-07。",
+          "targets": "Volexity の Network Security Monitoring 顧客1組織。組織名・業種は原文で明かされていない。侵入後は Active Directory 認証情報、LAPS パスワード、BitLocker 回復キーを狙い、横展開の準備段階とみられる。日本の被害記載はない。",
+          "malware": [],
+          "tools": [
+            "mk.py / rr.py（Kerberoasting 機能を持つ独自 Kerberos ツール）",
+            "ml.py / rq5.py（独自 Python LDAP ツール）",
+            "h.py（認証情報を収集するパケットキャプチャ解析ツール）",
+            "sp_run.py（パスワードスプレー補助）",
+            "dsstatmond（リネームした tcpdump バイナリ）",
+            "Perl / Bash / Python による多段エクスプロイトチェーン"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2026-104935（Ivanti Connect Secure の認証回避とRCE。2026-10-13修正。CISA KEV 登録済み）",
+            "権限昇格脆弱性（原文時点でCVE未採番・未修正。Ivanti が後続リリースで対応予定と記載）"
+          ],
+          "iocs": [
+            "108.165.147.64（攻撃元IP。VPS。OpenVPN サーバー稼働 2026-09-30〜2026-10-07）",
+            "リクエストパス /dana-na/auth/url_default/welcome.cgi",
+            "ヘッダ X-DSCGI-PATH: /home/webserver/htdocs/dana/fb/smb/wu.cgi、/home/runtime/tmp/<MD5(filename)>",
+            "/tmp/ml.py、/tmp/rq5.py、/tmp/mk.py、/tmp/rr.py、/tmp/pu.txt、/tmp/sp_out.txt、/tmp/spray_hits.json",
+            "/data/.icscap/h.py、/data/.icscap/dsstatmond、/data/.icscap/cap0",
+            "/home/runtime/tmp/ics-root-run-inband-*.pl",
+            "/home/lib/libdsplibs.so（メモリ上のみでパッチ）"
+          ],
+          "summary": "Ivanti Connect Secure のゼロデイを連鎖させ、認証なしで root 権限のコード実行に至った侵入。マルウェアやWebシェルを常設せず、コマンドごとに脆弱性を再悪用し、ログを改変してメモリ上で実行する運用を取る。マルウェアファミリの命名は原文にない。",
+          "verified_by_analyst": "原文（Volexity、2026-10-13公開）を直接確認した（アクセス日2026-10-17）。「previously unknown threat actor」という位置づけ、国家帰属の不在、犯罪的動機の low confidence 評価、LLM 利用の medium confidence 評価、UTA0533 への言及が帰属ではないこと、CVE-2026-104935 と未採番の権限昇格脆弱性、悪用開始日2026-10-03、OpenVPN 稼働期間、ツール群とIOCを確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "UTA0533（SonicWall SMA に対し類似のLDAPパケットキャプチャ技法を使用）との関係。原文は技法の類似を述べるのみで帰属も重複も主張していないため、結び付けない。",
+        "Volexity 単独の初報であり、昇格閾値は未達。ただし CISA が CVE-2026-104935 を KEV へ登録し連邦民間機関に2026-10-16までの対処を指示しているため、政府機関資料は脆弱性側には存在する。CISA のアラートは UTA0576 を Volexity の観測として引用するに留まり、政府による独立した帰属ではない。",
+        "権限昇格脆弱性は原文時点でCVE未採番・未修正。後日の採番と修正状況の追跡が必要。",
+        "攻撃者のLLM利用は medium confidence の能力評価であって帰属根拠ではない。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。IOC CSVの actor 列と記事本文の双方に現れた。CVE-2026-104935 を悪用した便乗攻撃が今後発生した場合、それらを UTA0576 の活動として一括せず、原文が UTA0576 に帰属した侵入だけを本クラスタに残す。"
+    },
+    {
       "cluster_id": "unknown-cluster--earth-sirrush",
       "primary_name": "Earth Sirrush",
       "aliases": [
@@ -8555,6 +8834,168 @@
         "侵害が実在するか、主体・被害組織・継続性のすべてが未検証。"
       ],
       "analyst_notes": "独立した裏付けが得られるまでActivity化・Threat Actor化しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--storm-3119",
+      "primary_name": "Storm-3119（YAM Store）",
+      "aliases": [
+        {
+          "name": "YAM Store",
+          "scope": "source-reported",
+          "vendor": "Microsoft",
+          "note": "原文は Storm-3119 を YAM Store の運用に対する追跡指定子として用いる。YAM Store は販売サービスの名称であり、Microsoft はこれを同一の活動として記述している。"
+        }
+      ],
+      "status": "tracking",
+      "entity_type": "actor-cluster",
+      "first_seen": "unknown",
+      "last_seen": "unknown",
+      "time_basis": "原文は Microsoft の調査が「over the past year」に及ぶと述べるのみで、Storm-3119 自体の活動開始日・終了日を示さない。2026年1月以降10億件超という数値は Storm-2990 のフィッシングキットが媒介した送信量であって Storm-3119 の活動期間ではないため転用しない。公開日2026-10-14も活動観測日ではない。",
+      "detected_via": "tech-memo daily-news 2026-10-15 のIOC CSVの actor 列に `Storm-3119` が1観測。一次情報源巡回（Microsoft Security Blog 公開一覧）でも同記事を確認した。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも Storm-3119 / YAM Store は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "initial-access-broker",
+        "notes": "Storm-#### は Microsoft の未帰属・開発中クラスタ指定子である。原文は YAM Store を「an initial access broker (IAB) that sells infrastructure using compromised or fraudulently obtained environments」と定義する。中国語を使う犯罪エコシステムとの評価が記事全体にあるが、これは運用者全員の国籍・国家支援を確定するものではなく、本台帳はそこから国家支援を推定しない（AGENTS.md ガードレール）。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Microsoft Threat Intelligence",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/14/the-hidden-network-inside-the-phishing-infrastructure-ecosystem-powering-global-cybercrime/",
+          "title": "The hidden network: Inside the phishing infrastructure ecosystem powering global cybercrime",
+          "published_at": "2026-10-14",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は調査範囲を「over the past year」とのみ述べ、Storm-3119 の活動期間を明示しない。",
+          "targets": "直接の標的は Microsoft 365 および Azure for Education のテナント。奪取または不正取得したテナントのアカウント・ライセンス・ストレージを下流の運用者（Storm-2990 のキット利用者を含む）へ転売する。最終的な被害は下流のフィッシングを通じて生じる。",
+          "malware": [],
+          "tools": [
+            "侵害または不正取得した Microsoft 365 / Azure for Education テナント（販売商材）",
+            "架空の非営利団体を装うドメイン（フィッシングメールの信頼性を高める用途）"
+          ],
+          "iocs": [
+            "jewishchoice.org（Microsoft は Storm-3119 が架空の非営利団体のために設置した可能性が高いと評価するフィッシング関連ドメイン）"
+          ],
+          "summary": "侵害・不正取得したクラウドテナントを基盤として販売するイニシャルアクセスブローカー。フィッシングキット開発クラスタ Storm-2990 の利用者を含む下流運用者へ、アカウント・ライセンス・ストレージを供給する。米裁判所命令に基づく Microsoft と Health-ISAC によるドメイン差押え、関連アカウント2万件超の無効化、詐欺ドメイン10万件のブロックが実施された。",
+          "verified_by_analyst": "原文（Microsoft Security Blog、2026-10-14公開）を直接確認した（アクセス日2026-10-17）。Storm-3119 = YAM Store の定義文、IAB としての位置づけ、Storm-2990 との供給関係、Storm-3119 と Storm-2990 以外のアクター指定子が記事に存在しないことを確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Microsoft 単独の初報であり、昇格閾値は未達。ただし米裁判所命令に基づく差押えが行われており、公開された裁判資料を取得できれば法執行側の一次資料になり得る。",
+        "差押え・アカウント無効化は法執行および民事措置であって攻撃Activityではない。採用する場合も公開日・措置日を活動期間へ転用せず、entity の legal_actions として分離する必要がある（parse-daily/AGENT.md 法執行ルーティング）。",
+        "Storm-3119 の活動開始時期が原文に無く、first_seen / last_seen を確定できない。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。Storm-3119 は供給側（IAB）、Storm-2990 は開発側として原文が明確に分離しているため、同一記事に登場することを根拠に両者を統合しない。日本は下流フィッシングの主要標的の一つとして原文に挙げられている。"
+    },
+    {
+      "cluster_id": "unknown-cluster--storm-2990",
+      "primary_name": "Storm-2990",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "actor-cluster",
+      "first_seen": "unknown",
+      "last_seen": "unknown",
+      "time_basis": "原文は「since January 2026」にキットの運用者が10億件超のフィッシングメール・SMSを媒介したと述べるが、これは送信量の集計開始時点であって Storm-2990 の活動開始日ではない。CoGUI と Haozi は先行して販売され、Iron Man System は2026年6月から宣伝が始まったと記されるのみで、クラスタ自体の期間は明示されない。公開日2026-10-14も活動観測日ではない。",
+      "detected_via": "一次情報源巡回（Microsoft Security Blog、2026-10-14公開）および tech-memo daily-news 2026-10-15 の記事本文。IOC CSVの actor 列には現れず、daily_check.py の unmatched_name_candidates にも現れなかったため、原文確認を経てのみ検知できた。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも Storm-2990 / CoGUI / Haozi / Iron Man System は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "phishing-kit-developer-cluster",
+        "notes": "原文: 「the cluster of activity and the developers behind all three phishing kits as Storm-2990」。Storm-#### は Microsoft の未帰属・開発中クラスタ指定子である。中国語を使う犯罪エコシステムとの評価は運用者全員の国籍・国家支援を確定するものではない。キットの開発主体と、キットを購入して実際にフィッシングを行う運用者は別であり、キットの利用をもって Storm-2990 の実行とみなさない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "Microsoft Threat Intelligence",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/10/14/the-hidden-network-inside-the-phishing-infrastructure-ecosystem-powering-global-cybercrime/",
+          "title": "The hidden network: Inside the phishing infrastructure ecosystem powering global cybercrime",
+          "published_at": "2026-10-14",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文明示は「since January 2026」の送信量集計のみ。Iron Man System は2026年6月から宣伝開始。クラスタの活動期間は示されない。",
+          "targets": "原文が挙げる標的分野は医療、金融サービス、卸売流通、IT。標的国は日本、米国、オーストラリア、インド。2026年1月以降、150カ国・7万5,000超の組織へ10億件超のフィッシングメール・SMSが送られたとされる。日本は主要標的の一つとして明示され、Microsoft 顧客宛てに7億5,000万件超の悪意あるメッセージが送られたと報じられている。",
+          "malware": [],
+          "tools": [
+            "CoGUI フィッシングキット（別称 NX、FA）",
+            "Haozi フィッシングキット（別称 Phoenix）",
+            "Iron Man System フィッシングキット（2026年6月から宣伝開始）"
+          ],
+          "iocs": [],
+          "summary": "3種のフィッシングキット（CoGUI、Haozi、Iron Man System）の開発主体と関連活動をまとめた Microsoft の追跡クラスタ。キットは料金未払い・配送トラブル・アカウント確認等を装い、認証情報と決済情報を窃取する。基盤は Storm-3119（YAM Store）が供給する侵害済みテナントに依存する。",
+          "verified_by_analyst": "原文（Microsoft Security Blog、2026-10-14公開）を直接確認した（アクセス日2026-10-17）。Storm-2990 の定義文、対象3キットと別称、Iron Man System の宣伝開始時期、標的分野・標的国、記事中のアクター指定子が Storm-2990 と Storm-3119 の2件のみであることを確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Microsoft 単独の初報であり、昇格閾値は未達。原文は Proofpoint と PhishEye を引用し Resecurity をパートナーとして挙げるが、これらは独立した一次資料として未取得。CoGUI については Proofpoint の先行報告が存在する可能性があり、取得できれば2本目になり得る。",
+        "キット開発者クラスタと、キットを購入した個々のフィッシング運用者の境界。原文は開発側を Storm-2990 とするため、キット由来のフィッシング事案すべてを Storm-2990 の活動として扱わない。",
+        "日本が主要標的として明示されているが、国内の被害組織を特定する一次資料は未取得。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。IOC CSVにも unmatched_name_candidates にも現れず、記事本文と原文の読み込みでのみ拾えた取りこぼし事例である。daily_check.py の2系統では、IOCを伴わずかつ日本語の指示語に直接続かない形で現れるアクター名は検知できない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--skynox7",
+      "primary_name": "skynox7（GreyNoise のキャンペーン表題。ベンダー付与のアクター指定子ではない）",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "campaign",
+      "first_seen": "unknown",
+      "last_seen": "unknown",
+      "time_basis": "原文はキャンペーンの開始日・期間を明示しない。公開日2026-10-15およびIOC CSVの date 列（2026-10-15）は収集・公開の時点であって観測日ではないため転用しない。",
+      "detected_via": "tech-memo daily-news 2026-10-16 のIOC CSVの actor 列に `skynox7` が8観測。記事本文も同日の daily-news に収録されるが、本文には skynox7 の語が現れず、原文の表題で初めて確認できた。既存787プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも skynox7 は存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-cybercrime",
+        "notes": "GreyNoise は実行主体を命名も帰属もせず「malicious cyber actor (MCA)」とのみ記す。skynox7 は原文IOC表で「Pawns Payout Account」として挙げられるメールアドレス skynox7@proton.me 由来の文字列であり、GreyNoise はこれを記事表題のラベルとして用いている。ベンダーが付与したアクター指定子ではないため、primary_name にその旨を明記する。Pawns.app および提携先 IPRoyal は被害端末へ無断導入された正規のトラフィック共有サービスであり、これらの事業者を攻撃の実行主体とみなさない（AGENTS.md ガードレール: vendorや製品の使用を、そのvendor自身による攻撃と解釈しない）。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-10-17",
+          "publisher": "GreyNoise",
+          "url": "https://www.greynoise.io/blog/proxyjacking-edge-devices-residential-proxies",
+          "title": "skynox7: Proxyjacking Edge Devices Into Residential Proxies",
+          "published_at": "2026-10-15",
+          "published_at_precision": "day",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は期間を明示しない。",
+          "targets": "インターネットに公開されたエッジ機器。34カ国で少なくとも143台が侵害された。対象機器は D-Link ShareCenter NAS、Ubiquiti UniFi Video NVR、SAP NetWeaver Visual Composer、および Hikvision / Dahua の録画機器（後者は悪用脆弱性が特定されていない）。日本の被害記載はない。",
+          "malware": [],
+          "tools": [
+            "Pawns.app プロキシウェア（被害端末へ所有者の同意なく導入。原文は無断導入でない限りマルウェアとは限らないと注記する）",
+            "SSH公開鍵認証の設定（再アクセス用のバックアップ経路として一部機器に設定）"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2024-3272（D-Link ShareCenter NAS）",
+            "CVE-2024-3273（D-Link ShareCenter NAS）",
+            "CVE-2021-44228（Ubiquiti UniFi Video NVR）",
+            "CVE-2025-31324（SAP NetWeaver Visual Composer）"
+          ],
+          "iocs": [
+            "209.99.190.80（エッジ機器の悪用元IP）",
+            "skynox7@proton.me（Pawns の報酬受取アカウント）",
+            "SHA256 e3dedf983c572d3e646a9b70fe9b41be497a3a2e5342c36dd3bd37cef7ebeffd",
+            "SHA256 fdc18f4287c1c6a285c664d3ce0f17d3479bc246bc6c163eb90b1a84adb453a7",
+            "SHA256 4fd7fa22776dbfde7ddaf02a4f904564593e2ed69f87cbb7bbd6c206a874ecf7",
+            "SHA256 26abd52f207739556282023e82873424795abc5e527771205a40749f90c01f6e",
+            "SHA256 df27938d26c1c9421ff307aafcb87131521e05f5d87ecaaab4a32ece3335fee4",
+            "SHA256 2c12a3193b1528cd0a88d4fcfa0c060404de4c2bbe1fecb3fc3fa347f04e0165",
+            "SHA256 71f2924a549a8f79a48ff332b071a12cd0b01e9ba643e9f8ed7b72b6d382325d"
+          ],
+          "summary": "既知脆弱性でエッジ機器を侵害し、所有者に無断で Pawns.app プロキシウェアを導入して回線をレジデンシャルプロキシとして提供し報酬を得るプロキシジャッキング活動。34カ国143台以上で確認された。報酬受取アカウント skynox7@proton.me が運用の共通点として挙げられている。",
+          "verified_by_analyst": "原文（GreyNoise、2026-10-15公開）を直接確認した（アクセス日2026-10-17）。skynox7 が Pawns 報酬受取アカウントのメールアドレス由来のラベルであること、GreyNoise が実行主体を命名・帰属していないこと、143台／34カ国、4件のCVEと対象製品、SSH公開鍵による持続化、IOC7ハッシュ・1IP・1メールアドレスを確認した。Pawns.app のバイナリ自体は無断導入でない限りマルウェアではないという原文の注記も確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "GreyNoise 単独の初報であり、昇格閾値は未達。",
+        "skynox7 は報酬受取アカウント由来のラベルであり、単一の運用者を示すか複数の運用者が同一アカウントを共有するかは原文が述べていない。実体の単位が未確定であるため、プロファイル昇格はアクターを命名した一次資料を待つ。",
+        "活動期間が原文に無く、first_seen / last_seen を確定できない。",
+        "Hikvision / Dahua 機器に対する初期侵入経路（悪用脆弱性）が特定されていない。"
+      ],
+      "analyst_notes": "2026-10-17の日次チェックで検知。IOC CSVの actor 列に原文表題のラベルがそのまま入っていた事例である。報酬受取アカウントのハンドルをアクター名として扱わず、実体の単位が未確定である旨を primary_name と unresolved_questions に残した。"
     }
   ],
   "excluded_name_collisions": [
@@ -8695,6 +9136,12 @@
       "matched_term": "CHROMIUM",
       "article": "https://flashpoint.io/blog/castlestealer-an-emerging-infostealer-growing-more-sophisticated/",
       "reason": "ブラウザエンジン Chromium との衝突。根拠文は「Chromium系ブラウザのログイン情報、Cookie、拡張機能のデータに加え、Firefox、Steam、Discord、Telegram、ウォレット関連ファイルなどを収集する。」で、インフォスティーラー CastleStealer が窃取対象とするブラウザの種類を指す。原文（Flashpoint、2026-10-08公開）を直接確認し、Earth Lusca の言及が存在しないこと、Chromium は「Chromium-based browsers」という形容としてのみ現れること（例: 「For Chromium-based browsers, CastleStealer collects login data, cookies.」）、および CastleStealer の運用主体となる脅威アクター・グループが一切命名されていないこと（「threat actors」「its operators」という一般名詞のみ）を確認した。追跡対象としない。"
+    },
+    {
+      "matched_profile": null,
+      "matched_term": "Adception (AcSig toolkit)",
+      "article": "https://pushsecurity.com/blog/adception-malvertising-another-search-engines-search-results",
+      "reason": "技術名とツールキット名であり実行主体の命名ではない。tech-memo daily-news 2026-10-12 のIOC CSVの actor 列に `Adception (AcSig toolkit)` が11観測現れたが、原文（Push Security、2026-10-09公開）を直接確認したところ、Adception は Google 広告から正規の Bing クリック追跡URLを経由させる「a crafty redirect and cloaking technique」の呼称であり、AcSig は「the same criminal ClickFix toolkit which we track internally as AcSig」として Push が内部追跡するツールキットの呼称である。Push は実行主体を命名も帰属もせず「attackers」「criminal ClickFix toolkit」とのみ記す。ツールキットは複数の運用者が利用し得るため、ツールキット名を運用者クラスタの指定子として扱わない。既存プロファイルの alias 一致ではないため matched_profile は null。追跡対象としない。実行主体を命名した一次資料が出た場合のみ、その指定子で別途登録を検討する。"
     }
   ],
   "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-10の日次チェックで6件を追加した。CL-CRI-1171(Unit 42 2026-09-09。PPI型感染サービス。tech-memo未収録)、Ted / curlRAT ツールキット(Rapid7 2026-09-04。運用者未命名。apt37/kimsukyのレコードは類似言及のみで不採用とし実体を台帳へ登録)、Storm-3121 と Storm-3032(Microsoft 2026-09-09。tech-memo未収録。既存の unc6240 / unc6671 の恐喝ブランド生態系と接続するが同一性は未確認)、UNC6508 と UNC5792(GTIG 2026-09-08)。unknown-cluster--shinyhunters は profiles/unc6240 へ統合し status を merged とした。GTIG原文が「UNC6240 (also known as ShinyHunters)」と明示しており、本台帳が提案していた新規プロファイル作成は実行すれば unc6240 の重複を生んでいた。既存プロファイルに一致しない名前を見つけた際は canonical name だけでなくベンダー別名の対応付けを一次資料で確認する。unknown-cluster--city-forum の related_profiles が実在しない slug「shinyhunters」を指していたため unc6240 へ修正した。Toy Ghouls へ第2観測(Securelist 2026-09-04)と別名 Feral Wolf を追加した。GTIG 2026-09-08 は tech-memo が BleepingComputer の二次要約で収録しており、当該要約は12アクターのうち UNC5792 のみに言及していた。二次要約経由の収録は原文のアクター名を取りこぼすため、一次情報源の公開一覧チェックを継続する。 2026-09-10の追加作業で UNC6508 と UNC5792 を利用者の判断により profiles/ へ昇格させ、台帳エントリは status: merged として保持した。昇格作業の過程で、当日の登録時には「単一ベンダーのみ」と評価していた2件が、いずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存活動が参照するFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり、単独で昇格閾値を満たす。新規クラスタを台帳へ登録する際は、当日の一次情報源だけでなく、actor_profile/reference/osint 配下の参照データセットと既存プロファイルの source 群も照合する。 2026-09-14の日次チェックで、一次情報源チェックのRSS機械照合により Cisco Talos の2026-09-09公開「Active exploitation of Cisco Secure Firewall Management Center vulnerabilities」を検知し、UAT-11823・UAT-11988・UAT-12197 を追加した。本稿は tech-memo に2026-09-11の二次要約として収録されIOC CSV にも actor 値が存在したが、2026-09-12の走査では Talos の確認範囲が2026-09-08までで取りこぼしていた。一覧ページの目視では公開日の取りこぼしが生じるため、RSSによる機械照合を継続する。あわせて Anthropic 脅威インテリジェンスレポート2026年9月の残る未登録クラスタ(GTG-10007、GTG-50020、GTG-50021、GTG-50029、GTG-84005)を追加した。GTG-20006 は apt29 の活動として反映済み、GTG-50014 は2026-09-14に登録済みのため対象外とした。 2026-09-14に任意フィールド entity_type を導入した。省略時は従来どおり集団(group)を意味し、企業実体には organization、単独の個人には individual を付す。GTG-84005 を organization、GTG-50029 を individual とした。あわせて攻撃に関与する組織を組織側から一意に管理する台帳 actor_profile/organizations.json を新設し、GTG-84005 の企業実体 BBS Bilisim Teknolojileri を organization--bbs-bilisim として登録して related_organizations で相互参照した。組織は複数のアクターに関与しうるため、アクター単位の属性である attribution.organizations だけでは組織側から逆引きできない。i-Soon のように流出資料が多数のクラスタへ結び付く対象を扱うための土台である。 2026-09-16の日次チェックで4件を追加した。HEAVYGRAM／CHOSEN BRICK(FBI FLASH と 英NCSC/FBI/蘭AIVD 合同アドバイザリの2資料、ともに2026-09-15公開。MOIS へ帰属されるが命名済みグループ指定子がないため、被害者像が重なる Domestic Kitten / Sima / Charming Kitten へ寄せずに台帳登録した。政府機関の言及という昇格閾値は満たすが、アクター指定子の不在を理由に昇格を保留している)、Vectra(旧 Nyxel。VectraRAT の MaaS 運用者。自称ブランドであり国籍は未特定)、BambooToken(Lumen が既知クラスタへの相関付けを明示的に否定)、PasteSwitch(ADAMnetworks が命名した ClickFix 配信オペレーション。運用者が未命名のため actor_type を unknown として登録した。arrayref の前例に従い、アクター指定子の不在を理由に不登録としない)。unknown-cluster--cve-2026-59310-vcenter へ CISA KEV の ransomware 欄更新(Known)を第2観測として追加した。名称衝突として Hellsing APT の alias「Asia」と Lumen 記事URL の across-asia スラッグを excluded_name_collisions へ記録した。同一 alias による URL 断片衝突はこれで4件目である。本走査で判明した構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがあり、2026-09-15分の CSV は前回走査時点で未作成だった。そのため PasteSwitch(234観測)と JeetBot(12観測)は翌日の走査で初めて現れた。IOC CSV の actor 列経路は前日分を翌日に再走査しないと取りこぼす。 同日、判断保留としていた JeetBot を利用者の判断により entity_type: organization として登録した(B案)。挙動は無許可の Twitch OAuth セッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく公開の場で営業する商用ボットサービス事業者である。企業実体は actor_profile/curated-organizations.json の organization--jeetbot へ分離し、related_organizations で相互参照した。GTG-84005 / BBS Bilisim Teknolojileri と同じ構成である。組織レジストリの organization_type_vocabulary には、自社の一般利用者が被害者となる事業者を表す commercial-service-operator を新設した。 2026-09-18の日次チェックで、一次情報源の公開一覧巡回により3件を反映した。unknown-cluster--gold-sherwood と unknown-cluster--the-gentlemen-affiliate へ Cisco Talos(2026-09-17)の観測を追加し、unknown-cluster--qilin と unknown-cluster--moviereaper を新規追加した。いずれも tech-memo daily-news に未収録で daily_check.py --run-scan では検知できず、公開一覧の巡回でのみ拾えた事例である。同日、Kaspersky Securelist.ru の2026-08-28公開分から GOFFEE(別名 Paper Werewolf)の取りこぼしを検知し、独立した一次資料2本(Kaspersky 2025-04-10 / BI.ZONE 2024-12-25)を確認のうえ profiles/goffee へ新規プロファイルとして作成した。securelist.ru を巡回対象へ加えたのは2026-09-14の走査からであり、それ以前の公開分は未確認のまま残っている。 2026-09-20の日次チェックでFamousSparrow(ESET 2026-09-17)とSilkParasite(Bitdefender 2026-08-19 / Hunt.io 2026-09-16)を追加した。どちらもIOC CSVのactor列に観測が蓄積していながら台帳未登録であり、unmatched_actor_valuesの上位名称と本台帳の突き合わせを日次手順へ組み込む必要がある。FamousSparrowはsalt-typhoonとの誤統合防止のexplicitly-refutedを主目的として記録した。 2026-09-22の放置ブランチ再検証で、knaithe/KnYuan・XEntry・Project CAV3RN・Cavern Manticore・BigBear 2.0・SecFlow・QUICSILVER・CameraSwarm・TheHatman・HeartlessSoulを根拠と実体境界に応じて台帳へ追加し、Toy Ghoulsはprofiles/toy-ghoulsへ統合した。過去の「追跡対象外」「判断待ち」は当時点の判断履歴であり、現在状態は各cluster entryを正とする。 2026-09-28の日次チェックで6クラスタを追加した。Carbo506（ThreatDown。CARBONATOボットネット運用者のTelegramハンドル。IOC 8観測。ベンダー追跡名ではない点を明記）、UNKK（Group-IB。RemControl Androidバンキングトロジャンの運用者。IOC 29観測。Medusa UNKN との関連は示唆に留まる）、@Exvicy（Sekoia TDR。ClickFix配布フレームワーク Exvicy のMaaS運用者。IOC 106観測。フレームワーク名と運用者を分離して登録）、Storm-2992（Microsoft。EvilTokens PhaaS の開発・サポート主体。tech-memo 2026-09-23 に記事はあるが Storm-2992 の語は一次ソース側にしか現れず、IOC も無いため daily_check.py の2系統いずれでも未検知だった）、JADEPUFFER／Storm-3168（Microsoft 2026-09-25。tech-memo 未収録。一次情報源巡回でのみ検知）、Storm-2570（Microsoft 2026-09-24。tech-memo 未収録。複数RaaSを渡り歩くアフィリエイト）。Red Heron へ GreyNoise の第2観測を追加し last_seen を 2026-09-23 へ更新した。独立した一次資料が2本となり昇格閾値に到達するため、プロファイル昇格を提案として報告する。 追跡対象外と判断した名前: Graphalgo（ReversingLabs が2026年2月に命名したキャンペーン名であり、同社は Lazarus へ帰属している。未帰属クラスタではないため台帳へは登録せず、既存プロファイルへの反映候補として別途報告する。Aikido の2026-09-22報告自体は帰属を行っていないため、マルウェア重複だけで Lazarus の活動と断定しないこと）、PAYLOAD（Kaspersky GERT 2026-09-21。ランサムウェアファミリ名およびGPO名であり、原文はアクターを命名も帰属もしていない）。 2026-10-12: 日次ルーチンが9/29〜10/12に別ブランチへpushした台帳追記14本を統合(重複観測はURL+観測日で排除)。"
