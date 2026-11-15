@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-0940`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-11-15T09:02:08Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -137,12 +137,14 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | cyber-espionage | 不明 | 不明 | 2024-11-01 |  |  | ttp--activity-rule--34c7b2c43f3e860d3bc6, ttp--activity-rule--3843caa70d7480d4e7bb | victim--activity-rule--dbe9d7537d95d92bd57e | 中国のハッカーがSOHOルーターなどを乗っ取って構築したQuad7ボットネットを使用し、認証情報を窃取。 パスワードスプレー攻撃で認証情報を収集し、複数の中国のハッカー集団によって使用。特に「Storm-0940」と呼ばれる攻撃者がQuad7から認証情報を使用して攻撃しているのが確認された。 攻撃者は侵害したSOHOルーターなどに対して、telnetとSOCKS5プロキシサーバーを設置。 パスワードスプレーで得た認証情報で組織内に侵入し、さらにネットワーク内で権限を拡大しデータを抽出。 SOHOルーターなどをどうやって侵害しているかは不明。Sekoiaのハニーポットへの侵入では、未公開の脆弱性を利用していた。 攻撃の最終的な目標は、標的のネットワークからデータを抜き取ること。これは、サイバースパイ活動が目的である可能性が高い。 | 中 | `source--daily-1cd41f481ad33e011f4b` |
+| ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 | campaign | 2026-09 | 2026-10-14 | 2026-10-23 |  |  | ttp--activity-rule--29fb9fefdd41362c1628 | victim--activity-rule--006693e85e7a9e4e672a | Microsoftは、中国国家と連携するStorm-0940が、2026年9月初旬からAIエージェント型侵入テスト基盤ARTEXを攻撃に悪用していると報告。一部では3時間未満でクラウドの特権アクセスに到達した。 同社はConnectWiseのサプライチェーン侵害を同攻撃者に帰属。盗んだアプリ認証情報と顧客が既に付与した権限を使い、対話型のユーザーログインを介さずアクセスした。 ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。攻撃者はMicrosoft Graph経由の探索やアプリ認証情報の追加を行い、元の接続を修復した後にも残る永続化を試みた。 ConnectWise関連の侵入試行は2,250超のテナントに及んだ。別途、10月10～14日のパスワードスプレーでは15万件超の認証失敗が発生したが、この活動による認証成功は確認されなかった。 対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。Microsoft製品の脆弱性を悪用した事案ではなく、侵害された外部アプリの信頼と権限が悪用された。 | 高 | `source--daily-13f72bf8c14aa9230704` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | Storm-0940 | 情報なし | T1110.003 Password Spraying, T1090 Proxy | 情報なし | 情報なし | 被害事例: マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | 中 |
+| ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 | Storm-0940 | 情報なし | T1110.003 Password Spraying | 情報なし | 情報なし | 被害事例: ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 | 高 |
 
 
 
@@ -156,19 +158,21 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--29fb9fefdd41362c1628 | メール／メールアカウント, クラウド／SaaS | data-theft: 対象アプリの存在や認証成功だけでは、データ閲覧・持ち出しを断定できない。 | 2026-09 | 2026-10-14 | 2026-10-23 | 高 | `source--daily-13f72bf8c14aa9230704` |
 | 被害事例: マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--34c7b2c43f3e860d3bc6, ttp--activity-rule--3843caa70d7480d4e7bb | サーバー, ネットワーク機器 | credential-theft: マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取<br>espionage: これは、サイバースパイ活動が目的である可能性が高い。 | 不明 | 不明 | 2024-11-01 | 中 | `source--daily-1cd41f481ad33e011f4b` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Credential Access | T1110.003 | Password Spraying | ARTEXは偵察、スキャン、パスワードスプレー、OAuth悪用などを支援。 |  | activity--daily-b7c3a21f41756f2f74f5 | 2026-09 | 2026-10-14 | 中 | `source--daily-13f72bf8c14aa9230704` |
 | Credential Access | T1110.003 | Password Spraying | パスワードスプレー攻撃で認証情報を収集し、複数の中国のハッカー集団によって使用。 |  | activity--daily-2b566a7bbc5026664971 | 不明 | 不明 | 中 | `source--daily-1cd41f481ad33e011f4b` |
 | Command And Control | T1090 | Proxy | 攻撃者は侵害したSOHOルーターなどに対して、telnetとSOCKS5プロキシサーバーを設置。 |  | activity--daily-2b566a7bbc5026664971 | 不明 | 不明 | 中 | `source--daily-1cd41f481ad33e011f4b` |
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 6件
+- IOC観測: 6件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
@@ -191,6 +195,7 @@ Aliasなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-13f72bf8c14aa9230704 | ARTEXを悪用するStorm-0940、ConnectWise経由でMicrosoft 365テナントへ侵入 | microsoft.com | 2026-10-23 | https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-1cd41f481ad33e011f4b | マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | bleepingcomputer.com | 2024-11-01 | https://www.bleepingcomputer.com/news/security/microsoft-chinese-hackers-use-quad7-botnet-to-steal-credentials/ | osint-report | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |

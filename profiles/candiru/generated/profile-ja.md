@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--candiru`
 - 状態: draft
-- 更新日時: 2026-09-21T13:20:00Z
+- 更新日時: 2026-11-15T09:02:08Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -134,23 +134,32 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 | cyber-espionage | 2024 | 2025 | 2026-10-17 | target--activity-rule--sector--5403aec9c83d6a925f61, target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  |  | victim--activity-rule--f59d8cd27581f6f4e91f | Citizen Labは、Al Jazeeraの端末に標的型広告経由でCandiruスパイウェアを感染させた「AdFection」を確認した。広告をクリックする必要はなく、端末上に表示されるだけで攻撃が進行する。 イスラエル企業Discover-Techは、主要な広告ネットワークで配信枠を購入し、広告にJavaScriptを埋め込んだ。接続元IPや広告識別子などで標的を選別し、対象端末にだけ追加コードを返していた。 Al Jazeeraが提供した証拠には、2024～2025年に少なくとも45台を標的とした攻撃が含まれる。通信ログでは広告基盤からCandiruの検証サーバー、続いてC2への接続が確認された。 侵害されたWindows端末から回収したDLLは、既知検体とのコードやインフラの共通点から、高い確信度でCandiruに帰属された。同社の監視ツールは過去にも記者や活動家らへの攻撃に使われている。 2026年3～6月の広告入札は37.7億件、落札は4.42億件に上り、関連スクリプト付き広告は75,373のアプリと120,768のサイトに掲載された。ただし、これらは感染件数を示さない。 | 高 | `source--daily-ab07ef22a949312f9e64` |
 
 ### 活動別ダイヤモンドモデル
 
-活動別ダイヤモンドモデルなし
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 | Candiru | 情報なし | 情報なし | 情報なし | メディア・報道, 非営利・市民社会 | 被害事例: 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 | 高 |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | メディア・報道 | 活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。 | 2024 | 2025 | 中 | `source--daily-ab07ef22a949312f9e64` |
+| sectors | 非営利・市民社会 | 活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。 | 2024 | 2025 | 中 | `source--daily-ab07ef22a949312f9e64` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--5403aec9c83d6a925f61, target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  |  | サーバー, エンドポイント |  | 2024 | 2025 | 2026-10-17 | 高 | `source--daily-ab07ef22a949312f9e64` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -164,8 +173,8 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 222件
-- IOC観測: 333件
+- IOC値: 228件
+- IOC観測: 344件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 2件（`artifacts.csv`）
@@ -192,6 +201,7 @@ Aliasなし
 | source--candiru--230b73087475fed0 | Candiru product |  | 不明 | Candiru/Candiru_product.pdf | report | TLP:CLEAR | 中 |
 | source--candiru--806053148fe55022 | README |  | 不明 | Candiru/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--candiru--80a5eb8801038e0a | Tracking Candiru’s DevilsTongue Spyware in Multiple Countries |  | 不明 | Candiru/Tracking Candiru’s DevilsTongue Spyware in Multiple Countries.pdf | report | TLP:CLEAR | 中 |
+| source--daily-ab07ef22a949312f9e64 | 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 | citizenlab.ca | 2026-10-17 | https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/ | osint-report | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 

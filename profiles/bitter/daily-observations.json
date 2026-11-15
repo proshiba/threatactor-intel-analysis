@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--bitter",
-  "updated_at": "2026-07-27T11:04:30Z",
+  "updated_at": "2026-11-15T08:50:09Z",
   "records": [
     {
       "record_id": "daily-record--3d87dd146a5797f63b602e4f",
@@ -94,6 +94,375 @@
         "suggested_confidence": "high"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--e9be13aa9fe6ec1966a730c0",
+      "review_status": "approved",
+      "suggested_action": "approve",
+      "actor": {
+        "slug": "bitter",
+        "canonical_name": "BITTER",
+        "matched_term": "BITTER",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "ioc-actor-field",
+        "raw_value": "BITTER (high confidence)"
+      },
+      "activity": {
+        "title": "BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開",
+        "summary": "FortiGuard Labsは、南アジアの組織を狙い、スクリプトと独自の遠隔操作マルウェアPapRATでアクセスを維持する攻撃を分析した。誘導ファイル名、C2通信、メタデータなどからBITTERの活動と高い確度で評価している。 第1の感染経路はLNKからWindows標準のftp.exeを悪用してスクリプトを実行する。curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 第2の経路はVHDX内のLNKから囮の表計算ファイルとMSIを起動し、PapRATを展開する。第3の経路はURLショートカットからWebDAV上のLNKとMSIへ誘導し、PapRAT経由でWmRATも配布する。 C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。C2設定はXORで符号化されている。 Rust版はHTTPS通信を実装し、初回42秒の待機後に5秒間隔で命令を取得する。文字列の反転とROT-3で定数を隠し、PowerShell実行、待機、終了を追加して命令数を11種類へ拡張した。",
+        "news_date": "2026-11-03",
+        "news_url": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+        "primary_url": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+        "activity_reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+        "news_path": "daily-news/news/2026_10-12/20261103.md"
+      },
+      "confidence": "high",
+      "iocs": [
+        {
+          "row": 263,
+          "type": "domain",
+          "raw_type": "domain",
+          "value": "netmansrvdns.com",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "WmRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. C2 hostname used by the WmRAT secondary payload.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-5a368b6af9aaabe6c7bd"
+          ]
+        },
+        {
+          "row": 264,
+          "type": "domain",
+          "raw_type": "domain",
+          "value": "rappellingaart.com",
+          "observed_date": "2026-11-02",
+          "category": "payload-hosting",
+          "roles": [
+            "payload-hosting"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "PapRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. WebDAV server hosting the LNK and MSI files that deploy PapRAT.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-7ef36c269474f791ee94"
+          ]
+        },
+        {
+          "row": 265,
+          "type": "domain",
+          "raw_type": "domain",
+          "value": "www.chestergreenfarming.com",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "PapRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. Decoded C2 hostname of the PapRAT sample deployed in the third attack chain.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-7ef36c269474f791ee94"
+          ]
+        },
+        {
+          "row": 266,
+          "type": "url",
+          "raw_type": "url",
+          "value": "https://techtalkhelp.com/talk.log",
+          "observed_date": "2026-11-02",
+          "category": "payload-hosting",
+          "roles": [
+            "payload-hosting"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. Staging URL serving the talk.log script that fetches further commands.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 267,
+          "type": "url",
+          "raw_type": "url",
+          "value": "http://www.rivingtonclarks.com/beautiQuewonders/banaNa.php",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "PapRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. C2 URL of the C++ build of PapRAT.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-7ef36c269474f791ee94"
+          ]
+        },
+        {
+          "row": 268,
+          "type": "url",
+          "raw_type": "url",
+          "value": "https://www.rivingtonclarks.com/banana/",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "PapRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. C2 URL decoded from the Rust build of PapRAT.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-7ef36c269474f791ee94"
+          ]
+        },
+        {
+          "row": 269,
+          "type": "url",
+          "raw_type": "url",
+          "value": "https://goodnfortunes.com/ucl.php",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. Destination that receives the host and process information collected by the scripts.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 270,
+          "type": "url",
+          "raw_type": "url",
+          "value": "https://felixfuturenext.com/Epistemological/",
+          "observed_date": "2026-11-02",
+          "category": "unknown",
+          "roles": [
+            "unknown"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. URL listed in the vendor IOC section with no role described in the report body.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 271,
+          "type": "url",
+          "raw_type": "url",
+          "value": "http://gomescareerplans.com/docs",
+          "observed_date": "2026-11-02",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. Server contacted by the scheduled task to retrieve additional commands.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 272,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "a3081df333ca7f18bd90d10a45125ab5011dcf9d2806feae2935f09cab07da4c",
+          "observed_date": "2026-11-02",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. SHA256 of a malicious LNK file listed under LNK in the vendor IOC section.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 273,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "e3992f8c945b0761242377cba32d91b0a390c7cecd79478439843d93e6d2b76b",
+          "observed_date": "2026-11-02",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. SHA256 of a malicious LNK file listed under LNK in the vendor IOC section.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 274,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "ccefbdec2718d864d9d33c743aabfcef88a8d7904d1c598bfcf15cf5f3591c88",
+          "observed_date": "2026-11-02",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "unknown",
+          "malware_type": "unknown",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. SHA256 of a malicious LNK file listed under LNK in the vendor IOC section.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": []
+        },
+        {
+          "row": 275,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "569a21b519aaac8c92f653d708ab6ef34e3f38ea967f47e041d1e2425f6a4b33",
+          "observed_date": "2026-11-02",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "PapRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. SHA256 of a PapRAT sample listed in the vendor IOC section.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-7ef36c269474f791ee94"
+          ]
+        },
+        {
+          "row": 276,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "411c0b9a2f98b927d806a685faf0c1ab1005647b4816157008892347fb88546b",
+          "observed_date": "2026-11-02",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BITTER (high confidence)",
+          "actor_attribute": "south-asia (suspected)",
+          "malware": "WmRAT",
+          "malware_type": "RAT",
+          "reference": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "description": "AI generated. SHA256 of the WmRAT secondary payload listed in the vendor IOC section.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261103.csv",
+          "malware_refs": [
+            "malware--daily-5a368b6af9aaabe6c7bd"
+          ]
+        }
+      ],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+          "source_path": "daily-news/news/2026_10-12/20261103.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [
+        {
+          "name": "PapRAT",
+          "status": "approved",
+          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
+          "review_notes": "承認。Fortinet原文が第2・第3の感染経路でMSIインストーラ経由で導入される独自RATとして解析。C++版（平文HTTP・8種コマンド）とRust版（HTTPS・文字列反転とROT-3）を記述。"
+        },
+        {
+          "name": "WmRAT",
+          "status": "approved",
+          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
+          "review_notes": "承認。Fortinet原文が「PapRAT also delivers WmRAT」としてPapRATのDWWダウンロードコマンド経由の二次ペイロード配布を記述。"
+        }
+      ],
+      "review_notes": "採用。Fortinet原文を確認した。「we attribute this activity to BITTER with high confidence」と明示（誘導ファイル名・C2通信・メタデータ根拠）。標的は南アジアに集中（telemetry）。政府・エネルギー・エンジニアリングはグループの一般的傾向としての記述であり本キャンペーンのセクターとしては明示されていないため流用しない。活動期間は「over the past several months」のみで明示日付がなくunknownとし、公開日（2026-11-02）を期間へ転用しない。LNK+ftp.exe、VHDX内LNK+囮表計算+MSI、URLショートカット+WebDAVの3経路を原文で確認。マルウェア展開を主題とするためactivity_typeを自動値infrastructure-operationからmalware-campaignへ変更。",
+      "activity_claim": {
+        "assessment": "structured-actor-field",
+        "actor_role": "operator",
+        "match_location": "ioc-actor-field",
+        "evidence_text": "BITTER (high confidence)",
+        "reasons": [
+          "tech-memo IOC CSVの構造化actor列に記載されている"
+        ],
+        "suggested_confidence": "high"
+      },
+      "activity_type": "malware-campaign",
+      "activity_period": {
+        "first_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        },
+        "last_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--eefbf765e8e0809844c2b072",

@@ -552,6 +552,44 @@ class ActivityIntelligenceTests(unittest.TestCase):
         countries = {item["name"] for item in profile["targets"]["countries"]}
         self.assertNotIn("ロシア", countries)
 
+    def test_espionage_group_modifier_is_not_a_victim_country(self) -> None:
+        """「ロシアの諜報集団Swallowtail」は帰属文脈であり被害国ではない。
+
+        2026-11のSwallowtail取込でロシアがapt28の標的国へ流用された回帰ケース。
+        国名に「の諜報集団／諜報グループ」が続き、その先がラテン文字のアクター名
+        でも帰属側と判定する。
+        """
+        profile = self.profile("Swallowtail")
+        activity = self.activity(
+            "ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+            (
+                "Symantecは、ロシアの諜報集団Swallowtailが"
+                "NATO加盟2カ国の法執行機関や造船企業を標的にした活動を確認した。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("ロシア", countries)
+
+    def test_espionage_agency_phrase_keeps_victim_side_country(self) -> None:
+        """「ウクライナの諜報機関」は被害側の組織表現であり、ウクライナを除外しない。
+
+        「の諜報+主体語（集団・グループ等）」だけを帰属文脈とし、主体語を持たない
+        被害側の組織表現を巻き込まないことの否定側テスト。
+        """
+        profile = self.profile("Swallowtail")
+        activity = self.activity(
+            "ウクライナの諜報機関を狙う攻撃",
+            "攻撃者はウクライナの諜報機関と、ウクライナの政府機関を標的にした。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("ウクライナ", countries)
+
     def test_plain_support_ukeru_phrase_keeps_victim_side_country(self) -> None:
         """無修飾の「Xの支援を受ける組織」は被害側の記述であり、Xを除外しない。
 

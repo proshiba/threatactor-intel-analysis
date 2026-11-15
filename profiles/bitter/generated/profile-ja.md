@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--bitter`
 - 状態: draft
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-11-15T09:02:08Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -98,6 +98,8 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--daily-5a368b6af9aaabe6c7bd | WmRAT | BITTERとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 高 | `source--daily-77315d6b7a6b8ce93784` |
+| malware--daily-7ef36c269474f791ee94 | PapRAT | BITTERとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 高 | `source--daily-77315d6b7a6b8ce93784` |
 | malware--zxxz | ZxxZ | [ZxxZ](https://attack.mitre.org/software/S1013) is a trojan written in Visual C++ that has been used by [BITTER](https://attack.mitre.org/groups/G1002) since at least August 2021, including against Bangladeshi government personnel.(Citation: Cisco Talos Bitter Bangladesh May 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
@@ -149,16 +151,18 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | target--country--saudi-arabia, target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0, target--targeting-audit--country--c2ef45f6da30d424fc31, target--targeting-audit--region--862f6013670d5c6f487e, target--targeting-audit--region--9e3521a2792ed327b1cb | malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | victim--activity-rule--508a2f4c32d7ef8c0bbc | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
+| Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0, target--targeting-audit--country--2f279f636f8ccddb6e2f, target--targeting-audit--country--c2ef45f6da30d424fc31, target--targeting-audit--region--862f6013670d5c6f487e, target--targeting-audit--region--9e3521a2792ed327b1cb | malware--daily-5a368b6af9aaabe6c7bd, malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | victim--activity-rule--508a2f4c32d7ef8c0bbc | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
 | 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | phishing-campaign | 不明 | 不明 | 2024-12-19 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--45b05f79fd85ee2358d0, target--targeting-audit--country--c2ef45f6da30d424fc31, target--targeting-audit--region--0dc2733b78ea437b40cb, target--targeting-audit--region--9e3521a2792ed327b1cb |  | ttp--activity-rule--772f5d41013df2be715c, ttp--activity-rule--907ca6412a3b822a13c2, ttp--activity-rule--ad9fc7270c8c42da0122, ttp--activity-rule--e0f8b1e9d8bb8e85fe7b, ttp--activity-rule--e63d3626e7d5417a6e78 | victim--activity-rule--c0e702423a9d88afe0ac | サイバースパイ集団「Bitter」が、新たなマルウェア「MiyaRAT」を使用し、トルコの防衛組織を標的に攻撃を行っている。 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 アーカイブ内のLNKファイルを開くと、PowerShellコードが実行され、MiyaRATが展開される。 マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 Bitterは、2013年から活動している南アジアのサイバースパイ集団で、主にアジアの政府や重要組織を標的としている。 | 高 | `source--daily-f0b4d93d130c33f27095` |
+| BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開 | malware-campaign | 不明 | 不明 | 2026-11-03 | target--targeting-audit--region--9e3521a2792ed327b1cb | malware--daily-5a368b6af9aaabe6c7bd, malware--daily-7ef36c269474f791ee94 | ttp--activity-rule--1968d1ca30b79d89dc40, ttp--activity-rule--6dc0cbbd27d5a42f19bd, ttp--activity-rule--e11248a1b180ee0efb8c, ttp--activity-rule--ef6ac041643e9e3840cf | victim--activity-rule--f1bed97336dd297292e7 | FortiGuard Labsは、南アジアの組織を狙い、スクリプトと独自の遠隔操作マルウェアPapRATでアクセスを維持する攻撃を分析した。誘導ファイル名、C2通信、メタデータなどからBITTERの活動と高い確度で評価している。 第1の感染経路はLNKからWindows標準のftp.exeを悪用してスクリプトを実行する。curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 第2の経路はVHDX内のLNKから囮の表計算ファイルとMSIを起動し、PapRATを展開する。第3の経路はURLショートカットからWebDAV上のLNKとMSIへ誘導し、PapRAT経由でWmRATも配布する。 C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。C2設定はXORで符号化されている。 Rust版はHTTPS通信を実装し、初回42秒の待機後に5秒間隔で命令を取得する。文字列の反転とROT-3で定数を隠し、PowerShell実行、待機、終了を追加して命令数を11種類へ拡張した。 | 高 | `source--daily-77315d6b7a6b8ce93784` |
 | BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | phishing-campaign | 不明 | 不明 | 2026-04-15 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--45b05f79fd85ee2358d0, target--targeting-audit--country--644c154ae833181f89e5, target--targeting-audit--country--ed9198d0b4c1bb141bb6, target--targeting-audit--region--8a8ac2787db5bca4da91, target--targeting-audit--region--c476bcb2d69139b4c47d |  |  | victim--activity-rule--85aa4730c9f9c6b836c9 | Lookoutは、Access Nowの調査協力を通じて、中東の市民社会関係者を狙う継続的なスピアフィッシングとAndroidスパイウェア配布を分析し、2022年以降続く諜報活動と評価した。 Android向けProSpyはSignal、ToTok、Botimを装い、連絡先、SMS、端末情報、文書、画像、音声、動画、アーカイブ、バックアップなどを収集してC2へ送信する。 攻撃は偽のSNS・メッセージ相手やApple Supportを装う接触から始まり、iOS利用者にはiCloudやSignal連携のフィッシング、Android利用者には悪性APK配布が使われた。 研究では複数のC2、配布サイト、フィッシング基盤が確認され、被害対象にはエジプトやレバノンの市民社会関係者のほか、政府関係者とみられる標的も含まれる。 Lookoutは、被害者像、インフラ、マルウェアの共通点から、この活動を南アジア系BITTER APTと関係するハック・フォー・ハイヤー作戦の可能性が高いと中程度の確度で評価した。 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Bitterハッカーグループ、サイバー作戦を拡大 | BITTER | ZxxZ | T1566.001 Spearphishing Attachment | 情報なし | サウジアラビア, 中国, 政府・行政, トルコ, 南米, 南アジア | 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 高 |
+| Bitterハッカーグループ、サイバー作戦を拡大 | BITTER | WmRAT, ZxxZ | T1566.001 Spearphishing Attachment | 情報なし | 中国, 政府・行政, サウジアラビア, トルコ, 南米, 南アジア | 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 高 |
 | 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | BITTER | 情報なし | T1560.001 Archive via Utility, T1113 Screen Capture, T1053.005 Scheduled Task, T1566.001 Spearphishing Attachment, T1082 System Information Discovery | 情報なし | 防衛・軍事, 政府・行政, トルコ, アジア, 南アジア | 被害事例: 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | 高 |
+| BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開 | BITTER | WmRAT, PapRAT | T1053.005 Scheduled Task, T1083 File and Directory Discovery, T1071.001 Web Protocols, T1057 Process Discovery | 情報なし | 南アジア | 被害事例: BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開 | 高 |
 | BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | BITTER | 情報なし | 情報なし | 情報なし | 非営利・市民社会, 政府・行政, レバノン, エジプト, 中東, 北アフリカ | 被害事例: BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | 高 |
 
 
@@ -168,16 +172,16 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | エジプト | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
-| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
+| countries | サウジアラビア | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
 | countries | トルコ | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095` |
 | countries | バングラデシュ | MITRE ATT&CKのGroup概要でBITTERの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
-| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| countries | パキスタン | MITRE ATT&CKのGroup概要でBITTERの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | countries | レバノン | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
 | countries | 中国 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-d3ece976544c2d6909ce`, `source--mitre-attack-19-2` |
 | regions | アジア | 活動「'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | regions | 中東 | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095` |
 | regions | 北アフリカ | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的地域として北アフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
-| regions | 南アジア | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
+| regions | 南アジア | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-77315d6b7a6b8ce93784`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--mitre-attack-19-2` |
 | regions | 南米 | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域として南米が明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
 | sectors | 防衛・軍事 | 活動「'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | sectors | 非営利・市民社会 | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
@@ -191,20 +195,25 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 非公開 | anonymous | unknown | reported | target--country--saudi-arabia, target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0 | malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | メール／メールアカウント | espionage: Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 | 不明 | 不明 | 2025-06-06 | 高 | `source--daily-d3ece976544c2d6909ce` |
+| 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 非公開 | anonymous | unknown | reported | target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0 | malware--daily-5a368b6af9aaabe6c7bd, malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | メール／メールアカウント | espionage: Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 | 不明 | 不明 | 2025-06-06 | 高 | `source--daily-d3ece976544c2d6909ce` |
 | 被害事例: BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--45b05f79fd85ee2358d0 |  |  | エンドポイント, モバイル端末 |  | 不明 | 不明 | 2026-04-15 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
 | 被害事例: 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--45b05f79fd85ee2358d0 |  | ttp--activity-rule--772f5d41013df2be715c, ttp--activity-rule--907ca6412a3b822a13c2, ttp--activity-rule--ad9fc7270c8c42da0122, ttp--activity-rule--e0f8b1e9d8bb8e85fe7b, ttp--activity-rule--e63d3626e7d5417a6e78 | メール／メールアカウント |  | 不明 | 不明 | 2024-12-19 | 高 | `source--daily-f0b4d93d130c33f27095` |
+| 被害事例: BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開 | 非公開 | aggregate | multiple-organizations | reported |  | malware--daily-5a368b6af9aaabe6c7bd, malware--daily-7ef36c269474f791ee94 | ttp--activity-rule--1968d1ca30b79d89dc40, ttp--activity-rule--6dc0cbbd27d5a42f19bd, ttp--activity-rule--e11248a1b180ee0efb8c, ttp--activity-rule--ef6ac041643e9e3840cf | エンドポイント, OT／ICS |  | 不明 | 不明 | 2026-11-03 | 高 | `source--daily-77315d6b7a6b8ce93784` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Initial Access | T1566.001 | Spearphishing Attachment | 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 |  | activity--daily-3d87dd146a5797f63b60 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 |  | activity--daily-e9be13aa9fe6ec1966a7 | 不明 | 不明 | 中 | `source--daily-77315d6b7a6b8ce93784` |
+| Discovery | T1083 | File and Directory Discovery | C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。 | malware--daily-7ef36c269474f791ee94 | activity--daily-e9be13aa9fe6ec1966a7 | 不明 | 不明 | 中 | `source--daily-77315d6b7a6b8ce93784` |
 | Collection | T1560.001 | Archive via Utility | 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | Collection | T1113 | Screen Capture | MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | Initial Access | T1566.001 | Spearphishing Attachment | 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Command And Control | T1071.001 | Web Protocols | C++版PapRATは平文HTTPでC2へ定期接続し、コマンド実行、ファイル送受信・削除、ドライブやディレクトリの列挙、画面取得など8種類の命令に対応する。 | malware--daily-7ef36c269474f791ee94 | activity--daily-e9be13aa9fe6ec1966a7 | 不明 | 不明 | 中 | `source--daily-77315d6b7a6b8ce93784` |
 | Discovery | T1082 | System Information Discovery | MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Discovery | T1057 | Process Discovery | curlとスケジュールタスクで追加命令を取得し、端末情報や実行プロセス、ウイルス対策製品などを収集・送信する。 |  | activity--daily-e9be13aa9fe6ec1966a7 | 不明 | 不明 | 中 | `source--daily-77315d6b7a6b8ce93784` |
 | Stealth | T1027.013 | Encrypted/Encoded File | [BITTER](https://attack.mitre.org/groups/G1002) has used a RAR SFX dropper to deliver malware.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Stealth | T1036.004 | Masquerade Task or Service | [BITTER](https://attack.mitre.org/groups/G1002) has disguised malware as a Windows Security update service.(Citation: Cisco Talos Bitter Bangladesh May 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [BITTER](https://attack.mitre.org/groups/G1002) has used scheduled tasks for persistence and execution.(Citation: Cisco Talos Bitter Bangladesh May 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -229,8 +238,8 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 ## IOC／artifact概要
 
-- IOC値: 454件
-- IOC観測: 609件
+- IOC値: 468件
+- IOC観測: 623件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 46件
 - 非IOC artifact観測: 40件（`artifacts.csv`）
@@ -253,6 +262,7 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--bitdefender-bitter-android-2020 | BitterAPT Revisited: The Untold Evolution of an Android Espionage Tool | Bitdefender | 2020-06-18 | https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool | vendor-research | TLP:CLEAR | 高 |
 | source--bitter--2cfec8a10f89e0b3 | Rotten Apple An Invasive Threat Actor Targeting Civil Society in Lebanon |  | 不明 | bitter/2026/Rotten-Apple_-An-Invasive-Threat-Actor-Targeting-Civil-Society-in-Lebanon.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--4b3b9e7d26c1cf64 | Quarterly Adversarial Threat Report Q2 2022 |  | 2022 | bitter/2022/Quarterly-Adversarial-Threat-Report-Q2-2022.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--717acb7afca6cd59 | README |  | 不明 | bitter/2022/README.MD | repository-notes | TLP:CLEAR | 中 |
@@ -262,19 +272,19 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | source--bitter--d98102cdd748dedd | Espionage for repression forensic analysis of a cross border hack for hire campaign targeting civil society in MENA 2026 |  | 2026 | bitter/2026/Espionage-for-repression-forensic-analysis-of-a-cross-border-hack-for-hire-campaign-targeting-civil-society-in-MENA-2026.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--f28edd1d5cabb4e9 | Inf |  | 不明 | bitter/Inf.MD | repository-notes | TLP:CLEAR | 中 |
 | source--daily-1dd0fd6a374bf37bcc74 | BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | lookout.com | 2026-04-15 | https://www.lookout.com/threat-intelligence/article/bitter-hack-for-hire | osint-report | TLP:CLEAR | 中 |
+| source--daily-77315d6b7a6b8ce93784 | BITTER、南アジアを狙う攻撃で新たな遠隔操作マルウェアPapRATを展開 | fortinet.com | 2026-11-03 | https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat | osint-report | TLP:CLEAR | 中 |
 | source--daily-d3ece976544c2d6909ce | Bitterハッカーグループ、サイバー作戦を拡大 | thehackernews.com | 2025-06-06 | https://thehackernews.com/2025/06/bitter-hacker-group-expands-cyber.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-f0b4d93d130c33f27095 | 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | bleepingcomputer.com | 2024-12-19 | https://www.bleepingcomputer.com/news/security/bitter-cyberspies-target-defense-orgs-with-new-miyarat-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--bitdefender-bitter-android-2020 | BitterAPT Revisited: The Untold Evolution of an Android Espionage Tool | Bitdefender | 2020-06-18 | https://www.bitdefender.com/en-us/blog/labs/bitterapt-revisited-the-untold-evolution-of-an-android-espionage-tool | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

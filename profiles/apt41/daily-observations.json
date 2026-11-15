@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--apt41",
-  "updated_at": "2026-07-27T11:17:22Z",
+  "updated_at": "2026-11-15T08:50:09Z",
   "records": [
     {
       "record_id": "daily-record--207ba8f2eb504435e5e41a44",
@@ -278,6 +278,118 @@
         "suggested_confidence": "high"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--80bdb1418911a0edf32c9bbc",
+      "review_status": "approved",
+      "suggested_action": "approve",
+      "actor": {
+        "slug": "apt41",
+        "canonical_name": "APT41",
+        "matched_term": "APT41",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "ioc-actor-field",
+        "raw_value": "APT41 (medium confidence)"
+      },
+      "activity": {
+        "title": "BlackX UEFIブートキット、Baton Drop脆弱性でSecure Bootを回避",
+        "summary": "Kasperskyは2026年初頭、中央アジアの外交機関を狙う諜報活動でBlackX UEFIブートキットを発見した。標的は主にタジキスタン、ウズベキスタン、トルクメニスタンで、APT41の関与を中程度の確度で評価した。 BlackXはBaton Drop脆弱性CVE-2022-21894を悪用し、独自のMachine Owner Keyを登録して任意のEFIファイルを読み込む。実装はBlackLotusに酷似するが、カーネルドライバーや後続ペイロードは異なる。 悪意あるドライバーはセキュリティ関連プロセスやレジストリコールバックを無効化し、ETWを改変する。一部処理はKaspersky・Avast製品の検出時に動作するが、Kasperskyは自社製品には有効でないと説明した。 後続のRATはGoogle Drive、OneDrive、Yandex.DiskをC2に利用する。別のOxiDLLRunnerはDLLサイドローディングで起動し、Rust製ペイロードが外部ドメインからDLLプラグインを取得する。 被害端末はWindows更新済みだったが、追加のSecure Boot失効措置が未適用だった。脆弱な起動コンポーネントの署名証明書は、期限切れだけでは読み込みを阻止できず、明示的なブロックが必要とされる。",
+        "news_date": "2026-10-26",
+        "news_url": "https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/",
+        "primary_url": "https://securelist.com/uefi-bootkit-blackx/121539/",
+        "activity_reference": "https://securelist.com/uefi-bootkit-blackx/121539/",
+        "news_path": "daily-news/news/2026_10-12/20261026.md"
+      },
+      "confidence": "medium",
+      "iocs": [
+        {
+          "row": 17,
+          "type": "domain",
+          "raw_type": "domain",
+          "value": "www.archivetj.com",
+          "observed_date": "2026-10-22",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "APT41 (medium confidence)",
+          "actor_attribute": "china",
+          "malware": "OxiDLLRunner",
+          "malware_type": "loader",
+          "reference": "https://securelist.com/uefi-bootkit-blackx/121539/",
+          "description": "AI generated. C2 domain for the Rust payload that retrieves DLL plugins, listed in the primary source.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261026.csv",
+          "malware_refs": [
+            "malware--daily-3a443ce4fc6e4f9a93d7"
+          ]
+        },
+        {
+          "row": 18,
+          "type": "md5",
+          "raw_type": "file_hash_md5",
+          "value": "af8a983b9ada07eae1259bf2953abd40",
+          "observed_date": "2026-10-22",
+          "category": "abusefile",
+          "roles": [
+            "abusefile"
+          ],
+          "actor": "APT41 (medium confidence)",
+          "actor_attribute": "china",
+          "malware": "OxiDLLRunner",
+          "malware_type": "loader",
+          "reference": "https://securelist.com/uefi-bootkit-blackx/121539/",
+          "description": "AI generated. MD5 of the legitimate jcef_helper.exe renamed to googleupdate.exe and abused for DLL sideloading.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_10-12/20261026.csv",
+          "malware_refs": [
+            "malware--daily-3a443ce4fc6e4f9a93d7"
+          ]
+        }
+      ],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://securelist.com/uefi-bootkit-blackx/121539/",
+          "source_path": "daily-news/news/2026_10-12/20261026.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [
+        {
+          "name": "OxiDLLRunner",
+          "status": "approved",
+          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
+          "review_notes": "承認。Kaspersky原文が本キャンペーンでブートキット経由配布の観測ペイロードの一つとして記述し、OLLVM難読化はAPT41帰属根拠の一つに挙げられている。DLLサイドローディングで起動しRust製ペイロードが外部ドメインからDLLプラグインを取得する。"
+        }
+      ],
+      "review_notes": "採用。Kaspersky原文を確認した。「we have attributed this attack to the APT41 threat actor with medium confidence」と明示されたmedium confidenceの単一ベンダー帰属であり、レコードのconfidenceをmediumに保持して確定帰属へ昇格しない。標的は中央アジア（タジキスタン・ウズベキスタン・トルクメニスタン）の外交機関。BlackXはBaton Drop（CVE-2022-21894）悪用の UEFIブートキットで、独自MOK登録・BlackLotus類似実装・セキュリティ製品無効化ドライバー・Google Drive/OneDrive/Yandex.DiskをC2とするRATを原文で確認。活動期間は原文に開始日の明示がなく、発見時点（2026年初頭）の展開継続のみを年精度で保持。",
+      "activity_claim": {
+        "assessment": "structured-actor-field",
+        "actor_role": "operator",
+        "match_location": "ioc-actor-field",
+        "evidence_text": "APT41 (medium confidence)",
+        "reasons": [
+          "tech-memo IOC CSVの構造化actor列に記載されている"
+        ],
+        "suggested_confidence": "medium"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "value": null
+        },
+        "last_observed": {
+          "basis": "Kaspersky: 2026年初頭の特定時点で攻撃者が「still deploying BlackX」と記述。年精度で2026年中の活動継続を観測。開始時期は原文に明示なし。",
+          "precision": "year",
+          "status": "known",
+          "value": "2026-01-01T00:00:00Z"
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--81f1ddfc42d0f495f6a5d650",

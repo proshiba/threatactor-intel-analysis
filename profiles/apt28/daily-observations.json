@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--apt28",
-  "updated_at": "2026-08-30T07:46:05Z",
+  "updated_at": "2026-11-15T08:50:07Z",
   "records": [
     {
       "record_id": "daily-record--0f72c95430fca300155d93dd",
@@ -186,6 +186,66 @@
         "suggested_confidence": "low"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--56423ecf193ab6389a7fd89b",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "apt28",
+        "canonical_name": "APT28",
+        "matched_term": "Swallowtail",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "Swallowtail"
+      },
+      "activity": {
+        "title": "ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+        "summary": "Symantecは、Swallowtail（APT28／Fancy Bear／Forest Blizzard）がNATO加盟2カ国の法執行機関、軍用航空機エンジンメーカー、海軍艦艇の造船企業を標的にした活動を確認した。 造船企業では7月24日、メール添付のマクロ付きWord文書からHookedgeに感染した。画面外の極小Edgeウィンドウでwebhook[.]siteから指令を取得し、実行結果を返すことで正規ブラウザーと共有サービスをC2に悪用した。 攻撃者は後に専用IPへ通信先を変更し、持ち込んだSSH鍵で逆向きの動的トンネルを構築した。別途、端末をループバックの偽サーバーへ認証させ、NTLM認証応答を収集するPowerShellも実行した。 未報告の反射型ローダーld.exeは、実行時に渡された鍵で暗号化ファイルをメモリ上で復号して実行する。復号対象のEvents.datは回収できず、最終ペイロードの機能は不明。 活動は少なくとも2カ月に及び、9月24日にもランチャーが観測された。後半の観測が既存タスクの継続か攻撃者の再活動かは判断できず、バックドア導入後の認証情報窃取やトンネル利用まで調査する必要がある。",
+        "news_date": "2026-10-22",
+        "news_url": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+        "primary_url": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+        "activity_reference": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+        "news_path": "daily-news/news/2026_10-12/20261022.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+          "source_path": "daily-news/news/2026_10-12/20261022.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用。Symantec原文を確認した。原文は「Swallowtail (aka APT28, Fancy Bear, Forest Blizzard)」「a Russian espionage group」と記載し、Swallowtail（scope: overlappingのalias）を本プロファイルのクラスタ境界（APT28/Fancy Bear/Forest Blizzard）と明示的に等置している。標的はNATO加盟2カ国の法執行機関・軍用航空機エンジン製造企業・海軍造船企業（国名は原文も明示せず）。造船企業の侵入は少なくとも2カ月継続し、7/24の初感染、7/27・28・31、8月下旬のローダー再観測、9/24の直近活動が記載される。Hookedge backdoorの展開を原文で確認（HOOKEDGEはRecorded Future報告由来の既存capabilityとして登録済みで、本レコードにcapability候補はない）。NTLM認証応答収集PowerShell、反射型ローダーld.exe（最終ペイロード未回収・機能不明）の記述を保持。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "title",
+        "evidence_text": "ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-07-24T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-24T00:00:00Z"
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--5dcc47bbe40c7a401a803d35",

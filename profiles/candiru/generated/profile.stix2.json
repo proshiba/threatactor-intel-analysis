@@ -161,6 +161,210 @@
       }
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃",
+      "description": "Citizen Labは、Al Jazeeraの端末に標的型広告経由でCandiruスパイウェアを感染させた「AdFection」を確認した。広告をクリックする必要はなく、端末上に表示されるだけで攻撃が進行する。 イスラエル企業Discover-Techは、主要な広告ネットワークで配信枠を購入し、広告にJavaScriptを埋め込んだ。接続元IPや広告識別子などで標的を選別し、対象端末にだけ追加コードを返していた。 Al Jazeeraが提供した証拠には、2024～2025年に少なくとも45台を標的とした攻撃が含まれる。通信ログでは広告基盤からCandiruの検証サーバー、続いてC2への接続が確認された。 侵害されたWindows端末から回収したDLLは、既知検体とのコードやインフラの共通点から、高い確信度でCandiruに帰属された。同社の監視ツールは過去にも記者や活動家らへの攻撃に使われている。 2026年3～6月の広告入札は37.7億件、落札は4.42億件に上り、関連スクリプト付き広告は75,373のアプリと120,768のサイトに掲載された。ただし、これらは感染件数を示さない。",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-ec4d7a840a430c64b5de",
+      "x_activity_type": "cyber-espionage",
+      "x_stix_object_type": "campaign",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--ec4d7a840a430c64b5de97e6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。Citizen Lab原文を確認した。Al Jazeera端末への標的型広告経由ゼロクリック感染（AdFection）を「with high confidence to Candiru's spyware delivered via Discover-Tech's ads」と帰属し、回収DLLは2021年捕捉の既知Candiruチェーンの新版として高確信度で帰属されている。広告事業者Discover-Techは「on behalf of mercenary spyware vendor Candiru」と記述され、配信パイプラインがCandiruの代理として運用された。candiruプロファイルは傭兵スパイウェアベンダーそのもののアクターであり、本件は第三者によるvendor製品の使用ではなく、Candiruの検証サーバー・C2を含む攻撃チェーンと代理配信基盤の帰属である（vendor製品使用をvendor自身の攻撃と解釈しない規則に抵触しない）。最終顧客（運用委託元の政府等）は原文でも特定されておらず、推定しない。Discover-Techはunknown-clusters.jsonのdiscover-techクラスタに記録済み。2026年3〜6月の広告入札統計は感染件数を示さないという原文の但し書きを保持する。",
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--candiru",
+          "name": "Candiru",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--5403aec9c83d6a925f61",
+            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--f59d8cd27581f6f4e91f"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+            "precision": "year",
+            "status": "known",
+            "value": "2024-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+            "precision": "year",
+            "status": "known",
+            "value": "2025-01-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-ab07ef22a949312f9e64"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "first_seen": "2024-01-01T00:00:00Z",
+      "last_seen": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "メディア・報道",
+      "identity_class": "organization",
+      "description": "活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "非営利・市民社会",
+      "identity_class": "organization",
+      "description": "活動「標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1042d0e4-818a-459b-a676-da5b62f4a93d",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃",
+      "identity_class": "organization",
+      "description": "Citizen Labは、Al Jazeeraの端末に標的型広告経由でCandiruスパイウェアを感染させた「AdFection」を確認した。広告をクリックする必要はなく、端末上に表示されるだけで攻撃が進行する。 イスラエル企業Discover-Techは、主要な広告ネットワークで配信枠を購入し、広告にJavaScriptを埋め込んだ。接続元IPや広告識別子などで標的を選別し、対象端末にだけ追加コードを返していた。 Al Jazeeraが提供した証拠には、2024～2025年に少なくとも45台を標的とした攻撃が含まれる。通信ログでは広告基盤からCandiruの検証サーバー、続いてC2への接続が確認された。 侵害されたWindows端末から回収したDLLは、既知検体とのコードやインフラの共通点から、高い確信度でCandiruに帰属された。同社の監視ツールは過去にも記者や活動家らへの攻撃に使われている。 2026年3～6月の広告入札は37.7億件、落札は4.42億件に上り、関連スクリプト付き広告は75,373のアプリと120,768のサイトに掲載された。ただし、これらは感染件数を示さない。",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--f59d8cd27581f6f4e91f",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "サーバー",
+        "エンドポイント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--f2869783-2e60-4f4f-8373-9a6980476f95",
@@ -374,6 +578,288 @@
       },
       "x_confidence": "medium",
       "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c7d0b67e-bf55-424f-89fa-d8fc398c17a2",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "target_ref": "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
+      "description": "Candiru targets メディア・報道 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d198ecb-e325-418f-b718-6744a895be02",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "description": "Candiru targets 非営利・市民社会 (profile target category: sectors).",
+      "x_confidence": "medium",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。; activity-period",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。; activity-period",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a92b244c-fe66-4b06-898e-ccb8204c940c",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 is attributed or linked to Candiru.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e117c303-d290-4cc0-916d-777451fffe01",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+      "target_ref": "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
+      "description": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 targets target--activity-rule--sector--5403aec9c83d6a925f61.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e5a83de0-7997-418a-bdb3-017dfc33a9e9",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "description": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 targets target--activity-rule--sector--d406c8e5b7fa7aeff7d2.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bee258fc-5d42-431a-9e16-f225364e1593",
+      "created": "2026-11-15T08:50:53Z",
+      "modified": "2026-11-15T08:50:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+      "target_ref": "identity--1042d0e4-818a-459b-a676-da5b62f4a93d",
+      "description": "標的型広告の表示だけでCandiruスパイウェアに感染するゼロクリック攻撃 affected victim--activity-rule--f59d8cd27581f6f4e91f.",
+      "x_confidence": "high",
+      "external_references": [
+        {
+          "source_name": "citizenlab.ca",
+          "description": "Source: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "external_id": "source--daily-ab07ef22a949312f9e64",
+          "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "precision": "year",
+        "status": "known",
+        "value": "2024-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "precision": "year",
+        "status": "known",
+        "value": "2025-01-01T00:00:00Z"
+      },
+      "x_temporal_basis": {
+        "first": "Citizen Lab: 「The attacks took place in 2024 and 2025」。年精度のみ明示。",
+        "last": "Citizen Lab: 同上。2025年中の攻撃を含む。少なくとも45台のAl Jazeera端末が標的。",
+        "first_precision": "year",
+        "last_precision": "year"
+      },
+      "x_reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "start_time": "2024-01-01T00:00:00Z",
+      "stop_time": "2025-01-01T00:00:00Z"
     },
     {
       "type": "relationship",
@@ -6970,7 +7456,7 @@
       "spec_version": "2.1",
       "id": "indicator--6b17b0f1-d668-4fd7-8032-076f06f4e545",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:50:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6978,19 +7464,23 @@
       "pattern": "[domain-name:value = 'fearevolve.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T09:00:29Z",
+      "valid_from": "2026-10-15T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [],
+      "x_roles": [
+        "c2"
+      ],
       "x_observations": [
         {
           "observation_id": "observation--sha256:d82feef10f85cafcbb261d01d1a37bb0572417bb890070d9fdaf2b836ed1f2f1",
@@ -7051,23 +7541,68 @@
           "context_excerpt": "CYBER THREAT ANALYSIS electric-prime[.]com elifluousscintillam[.]com eminententwine[.]com exhibitexpanse[.]com fallaciousessential[.]net fearevolve[.]com fileswaper[.]com finalsalami[.]com flexibleelevator[.]com foamdirection[.]com forecastgarden[.]com goatsandals[.]com golfconcert[.]com groundbreakinginitative[.]com guitarcalculate[.]com hostilefauna[.]com isolatelecture[.]com jellybat[.]net jobmarcher[.]com journeyjest[.]net kartingrumble[.]com labyrinthextravagance[.]org leafconfuse[.]net les",
           "analyst_notes": "",
           "raw_value": "fearevolve[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:81332f6a2051060289c320e51276134851771ffd5b699390501c6e127c4bad13",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 34
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "fearevolve.com",
+          "context_excerpt": "AI generated. C2 domain hardcoded in the Candiru DLL recovered from an infected device.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
-      "x_valid_from_basis": "stix-required-created-fallback",
-      "x_time_correlation_eligible": false,
-      "x_report_published_fallback": []
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
     },
     {
       "type": "relationship",
@@ -8710,7 +9245,7 @@
       "spec_version": "2.1",
       "id": "indicator--1f9f9a82-bb97-4a21-9916-ca7af26dbfa3",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:50:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8718,19 +9253,23 @@
       "pattern": "[domain-name:value = 'jobmarcher.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T09:00:29Z",
+      "valid_from": "2026-10-15T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [],
+      "x_roles": [
+        "c2"
+      ],
       "x_observations": [
         {
           "observation_id": "observation--sha256:96e7842349627f01826a14040f0017e19722b5d92c668321dfe2ea32257e0c53",
@@ -8791,23 +9330,68 @@
           "context_excerpt": "CYBER THREAT ANALYSIS electric-prime[.]com elifluousscintillam[.]com eminententwine[.]com exhibitexpanse[.]com fallaciousessential[.]net fearevolve[.]com fileswaper[.]com finalsalami[.]com flexibleelevator[.]com foamdirection[.]com forecastgarden[.]com goatsandals[.]com golfconcert[.]com groundbreakinginitative[.]com guitarcalculate[.]com hostilefauna[.]com isolatelecture[.]com jellybat[.]net jobmarcher[.]com journeyjest[.]net kartingrumble[.]com labyrinthextravagance[.]org leafconfuse[.]net les",
           "analyst_notes": "",
           "raw_value": "jobmarcher[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:c30acfe6b8a8fd80707d61c905bfda0f1aa385c0a74af7bf63cd6d027a9cbb9d",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 35
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "jobmarcher.com",
+          "context_excerpt": "AI generated. C2 domain hardcoded in the Candiru DLL recovered from an infected device.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
-      "x_valid_from_basis": "stix-required-created-fallback",
-      "x_time_correlation_eligible": false,
-      "x_report_published_fallback": []
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
     },
     {
       "type": "relationship",
@@ -10270,7 +10854,7 @@
       "spec_version": "2.1",
       "id": "indicator--4597189c-7354-45fb-9d99-2bdb9c922ea6",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:50:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10278,19 +10862,23 @@
       "pattern": "[domain-name:value = 'outdooutcome.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T09:00:29Z",
+      "valid_from": "2026-10-15T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [],
+      "x_roles": [
+        "c2"
+      ],
       "x_observations": [
         {
           "observation_id": "observation--sha256:fa77fabd827706730df14ed1877a690903b97aae701574cc1c637d880d9b0411",
@@ -10351,23 +10939,68 @@
           "context_excerpt": "CYBER THREAT ANALYSIS electric-prime[.]com elifluousscintillam[.]com eminententwine[.]com exhibitexpanse[.]com fallaciousessential[.]net fearevolve[.]com fileswaper[.]com finalsalami[.]com flexibleelevator[.]com foamdirection[.]com forecastgarden[.]com goatsandals[.]com golfconcert[.]com groundbreakinginitative[.]com guitarcalculate[.]com hostilefauna[.]com isolatelecture[.]com jellybat[.]net jobmarcher[.]com journeyjest[.]net kartingrumble[.]com labyrinthextravagance[.]org leafconfuse[.]net les",
           "analyst_notes": "",
           "raw_value": "outdooutcome[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:c35531cd24f289881a71f335d8de12fcbd3ed0c98a4308f3dc0949e07f9548ba",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 38
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "outdooutcome.com",
+          "context_excerpt": "AI generated. Candiru profiling server matching the Fingerprint C1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
-      "x_valid_from_basis": "stix-required-created-fallback",
-      "x_time_correlation_eligible": false,
-      "x_report_published_fallback": []
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
     },
     {
       "type": "relationship",
@@ -12910,7 +13543,7 @@
       "spec_version": "2.1",
       "id": "indicator--5dc9edd9-1d94-42f1-989d-32710e6a967f",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:50:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12918,19 +13551,23 @@
       "pattern": "[domain-name:value = 'suggestutterly.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T09:00:29Z",
+      "valid_from": "2026-10-15T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [],
+      "x_roles": [
+        "c2"
+      ],
       "x_observations": [
         {
           "observation_id": "observation--sha256:a6a06a18e64d6d131fde5848be72888f672148b0124b52c4154907fa77c67f8f",
@@ -12991,23 +13628,68 @@
           "context_excerpt": "CYBER THREAT ANALYSIS electric-prime[.]com elifluousscintillam[.]com eminententwine[.]com exhibitexpanse[.]com fallaciousessential[.]net fearevolve[.]com fileswaper[.]com finalsalami[.]com flexibleelevator[.]com foamdirection[.]com forecastgarden[.]com goatsandals[.]com golfconcert[.]com groundbreakinginitative[.]com guitarcalculate[.]com hostilefauna[.]com isolatelecture[.]com jellybat[.]net jobmarcher[.]com journeyjest[.]net kartingrumble[.]com labyrinthextravagance[.]org leafconfuse[.]net les",
           "analyst_notes": "",
           "raw_value": "suggestutterly[.]com"
+        },
+        {
+          "observation_id": "observation--sha256:0d253680f612d3bbb73e0e59efa0a401971aa9415a4181ab030d86f4bf9c41f8",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 39
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "suggestutterly.com",
+          "context_excerpt": "AI generated. Candiru profiling server matching the Fingerprint C1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
-      "x_valid_from_basis": "stix-required-created-fallback",
-      "x_time_correlation_eligible": false,
-      "x_report_published_fallback": []
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
     },
     {
       "type": "relationship",
@@ -23770,7 +24452,7 @@
       "spec_version": "2.1",
       "id": "indicator--ca613d55-1a9e-4bcb-891a-2bfd584f2e66",
       "created": "2026-09-21T01:54:42Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T08:50:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -23778,19 +24460,23 @@
       "pattern": "[file:hashes.'SHA-256' = '255869de85e2a171993fc5eb8a556d873a1b8966e040f6f55926f2fa2d595cc8']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T09:00:29Z",
+      "valid_from": "2026-10-15T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
+      "x_observation_count": 3,
+      "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [],
+      "x_roles": [
+        "payload"
+      ],
       "x_observations": [
         {
           "observation_id": "observation--sha256:06e1d5947ae876592ceabc70311214517905c96e19661b8b57c00e4ea86942d3",
@@ -23851,23 +24537,68 @@
           "context_excerpt": "CYBER THREAT ANALYSIS 208[.]76[.]221[.]167 208[.]76[.]223[.]59 208[.]85[.]18[.]104 213[.]252[.]232[.]129 213[.]252[.]232[.]141 216[.]128[.]178[.]12 216[.]238[.]77[.]17 216[.]238[.]80[.]164 216[.]238[.]86[.]164 216[.]238[.]91[.]249 217[.]69[.]10[.]11 217[.]69[.]10[.]11 217[.]69[.]6[.]58 DevilsTongue Hash (SHA256): 255869de85e2a171993fc5eb8a556d873a1b8966e040f6f55926f2fa2d595cc8 25 CTA20250805 Recorded Future ® | www.recordedfuture.com",
           "analyst_notes": "",
           "raw_value": "255869de85e2a171993fc5eb8a556d873a1b8966e040f6f55926f2fa2d595cc8"
+        },
+        {
+          "observation_id": "observation--sha256:b3fb7bfeb05a2ef8115d9909305ec042822ab4d4e7d42b23dddbc82d424ebe7f",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 42
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "255869de85e2a171993fc5eb8a556d873a1b8966e040f6f55926f2fa2d595cc8",
+          "context_excerpt": "AI generated. SHA256 of a Windows DLL recovered from an infected Al Jazeera device and attributed to Candiru.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
         }
       ],
       "x_first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
       "x_last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
       },
-      "x_valid_from_basis": "stix-required-created-fallback",
-      "x_time_correlation_eligible": false,
-      "x_report_published_fallback": []
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
     },
     {
       "type": "relationship",
@@ -23880,6 +24611,660 @@
       ],
       "relationship_type": "indicates",
       "source_ref": "indicator--ca613d55-1a9e-4bcb-891a-2bfd584f2e66",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--10bc08c1-2314-4e4f-9dc9-68c02d7fcdab",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: keyadapter.com",
+      "pattern": "[domain-name:value = 'keyadapter.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1c89e83a978c4305616067bc32513c89c18f9229474efe491c149ea5426b8155",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 32
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "keyadapter.com",
+          "context_excerpt": "AI generated. Validator server matching the Candiru Fingerprint V1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e808f00e-ba3b-41ea-be5d-c420a214fbe9",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--10bc08c1-2314-4e4f-9dc9-68c02d7fcdab",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a8dc66e3-dcc1-451e-8b49-82493dbc958b",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: sharethere.net",
+      "pattern": "[domain-name:value = 'sharethere.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6a0889fb65c344ead41bb78b0ad1772822e526f7d243c3bc7402311df0966628",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 33
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "sharethere.net",
+          "context_excerpt": "AI generated. Validator server matching the Candiru Fingerprint V1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--579a4fb9-98db-48ff-a5e8-6574d5891150",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a8dc66e3-dcc1-451e-8b49-82493dbc958b",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--122dd99d-1ac1-4319-9976-953943083d7a",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: insightenterprisells.com",
+      "pattern": "[domain-name:value = 'insightenterprisells.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:469edf7a901e1101e0d997608cd7dffaca15bc7aed3aea9a547bc05fa15d1000",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 36
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "insightenterprisells.com",
+          "context_excerpt": "AI generated. C2 domain matching the Candiru Fingerprint C1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e0bdaba7-4590-41ce-a07f-86024728acc3",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--122dd99d-1ac1-4319-9976-953943083d7a",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a19175fb-2742-4d7c-8928-12a4734da3f4",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: plasticbells.com",
+      "pattern": "[domain-name:value = 'plasticbells.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b27fe9a48393cef3374999410e0cdd9e9f2513677941950bb2fbf714328a00d7",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 37
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "plasticbells.com",
+          "context_excerpt": "AI generated. C2 domain matching the Candiru Fingerprint C1 scanning pattern.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bf019dca-41ac-42c3-b088-617c505a3f0a",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a19175fb-2742-4d7c-8928-12a4734da3f4",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d89be139-ebd7-4e1f-9d06-fb614591a9c8",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: sincereaccertain.com",
+      "pattern": "[domain-name:value = 'sincereaccertain.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload-hosting"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6e65808aeeb849850b7fb09704d12eedf12d15fdc7b24ca8104048a4738102cf",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 40
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload-hosting"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "sincereaccertain.com",
+          "context_excerpt": "AI generated. URL distributor domain used for Candiru-linked malicious advertising campaigns.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5ca4f663-f1f7-48db-99d8-8bfd6305a3a0",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d89be139-ebd7-4e1f-9d06-fb614591a9c8",
+      "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium",
+      "external_references": []
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--430fbd06-31c9-429f-be5e-5c93551b5512",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: d1fcoizt7mje85.cloudfront.net",
+      "pattern": "[domain-name:value = 'd1fcoizt7mje85.cloudfront.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-10-15T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-ec4d7a840a430c64b5de"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload-hosting"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9c8cfa8849a418d245c603838a83e0ac24b243b2156303a9f27a09c9831b00ae",
+          "observed_at": {
+            "value": "2026-10-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "source_path": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177",
+            "path": "daily-news/iocs/2026_10-12/20261017.csv",
+            "row": 41
+          },
+          "campaign_refs": [
+            "activity--daily-ec4d7a840a430c64b5de"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload-hosting"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "d1fcoizt7mje85.cloudfront.net",
+          "context_excerpt": "AI generated. CloudFront distribution sharing an ad campaign ID with the Candiru-linked URL distributor.",
+          "analyst_notes": "actor field: Candiru; actor_attribute: israel; reference: https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_last_observed": {
+        "value": "2026-10-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "x_valid_from_basis": "first-observed",
+      "x_time_correlation_eligible": true,
+      "x_report_published_fallback": [
+        {
+          "source_id": "source--daily-ab07ef22a949312f9e64",
+          "value": "2026-10-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--05103ae6-70ef-46af-8baa-01d28d746816",
+      "created": "2026-11-15T08:50:10Z",
+      "modified": "2026-11-15T08:50:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--430fbd06-31c9-429f-be5e-5c93551b5512",
       "target_ref": "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium",
@@ -23907,7 +25292,7 @@
       "spec_version": "2.1",
       "id": "report--c99ea750-f991-4552-8a80-555c2487494f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-09-21T13:20:00Z",
+      "modified": "2026-11-15T09:02:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -23916,9 +25301,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-21T13:20:00Z",
+      "published": "2026-11-15T09:02:08Z",
       "object_refs": [
         "intrusion-set--4f68ab55-4ff2-4ef6-9a9f-81af17afcc6e",
+        "campaign--3cacc9bb-c025-4913-a00d-484bcad8b8a6",
+        "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
+        "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+        "identity--1042d0e4-818a-459b-a676-da5b62f4a93d",
         "attack-pattern--f2869783-2e60-4f4f-8373-9a6980476f95",
         "attack-pattern--713e8077-a9ee-4ec5-bca8-9943fb3ed523",
         "attack-pattern--7e5ce61e-2acc-405c-9610-43d16c6a64b1",
@@ -24145,7 +25534,13 @@
         "indicator--fd76721d-9032-4a01-8ea1-dcb5f2e439b4",
         "indicator--b6952df5-ea07-498d-8071-ad0339467326",
         "indicator--1a7fef6c-30ed-4c43-a8e7-881948380388",
-        "indicator--ca613d55-1a9e-4bcb-891a-2bfd584f2e66"
+        "indicator--ca613d55-1a9e-4bcb-891a-2bfd584f2e66",
+        "indicator--10bc08c1-2314-4e4f-9dc9-68c02d7fcdab",
+        "indicator--a8dc66e3-dcc1-451e-8b49-82493dbc958b",
+        "indicator--122dd99d-1ac1-4319-9976-953943083d7a",
+        "indicator--a19175fb-2742-4d7c-8928-12a4734da3f4",
+        "indicator--d89be139-ebd7-4e1f-9d06-fb614591a9c8",
+        "indicator--430fbd06-31c9-429f-be5e-5c93551b5512"
       ],
       "x_schema_version": "1.4.0"
     }

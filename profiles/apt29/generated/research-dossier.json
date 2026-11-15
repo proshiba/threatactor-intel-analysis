@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-10-12T11:10:25Z",
+  "generated_at": "2026-11-15T09:04:06Z",
   "actor_ref": "actor--apt29",
   "actor_name": "APT29",
-  "profile_updated_at": "2026-10-12T11:06:19Z",
+  "profile_updated_at": "2026-11-15T09:02:08Z",
   "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
   "coverage": {
     "dimensions": {
@@ -18,8 +18,8 @@
       "attribution": "canonical-present"
     },
     "canonical_counts": {
-      "activities": 17,
-      "dated_activities": 6,
+      "activities": 18,
+      "dated_activities": 7,
       "relationships": 0,
       "associated_entities": 0,
       "entity_relationships": 0,
@@ -247,6 +247,9 @@
               "ttp--mitre-campaign--8d0c3ef35c6b78c974ca",
               "ttp--mitre-campaign--f1623a8396ba4e8e44e4",
               "ttp--mitre-campaign--fa1fdfa1bf3835fb4054"
+            ],
+            "tool_refs": [
+              "tool--psexec"
             ]
           },
           "infrastructure": {
@@ -302,6 +305,9 @@
         "stix_object_type": "campaign",
         "activity_refs": [],
         "grouping_context": null,
+        "tool_refs": [
+          "tool--psexec"
+        ],
         "claim_assessments": [
           {
             "claim_id": "claim--395dc0c7fb1de0fe1d18ffd8",
@@ -332,6 +338,12 @@
           {
             "id": "malware--regduke",
             "name": "RegDuke"
+          }
+        ],
+        "tools": [
+          {
+            "id": "tool--psexec",
+            "name": "PsExec"
           }
         ],
         "targets": [],
@@ -599,6 +611,10 @@
               "ttp--mitre-campaign--f6913436435eb02c01f2",
               "ttp--mitre-campaign--f77f47cdd527932a702f",
               "ttp--mitre-campaign--fcda76405153f86ebd4c"
+            ],
+            "tool_refs": [
+              "tool--adfind",
+              "tool--mimikatz"
             ]
           },
           "infrastructure": {
@@ -682,6 +698,10 @@
         "stix_object_type": "campaign",
         "activity_refs": [],
         "grouping_context": null,
+        "tool_refs": [
+          "tool--adfind",
+          "tool--mimikatz"
+        ],
         "claim_assessments": [
           {
             "claim_id": "claim--69a140bdaf6d698a53c2d2bd",
@@ -732,6 +752,16 @@
           {
             "id": "malware--trailblazer",
             "name": "TrailBlazer"
+          }
+        ],
+        "tools": [
+          {
+            "id": "tool--adfind",
+            "name": "AdFind"
+          },
+          {
+            "id": "tool--mimikatz",
+            "name": "Mimikatz"
           }
         ],
         "targets": [
@@ -1744,6 +1774,166 @@
             "id": "ttp--activity-rule--4b703096e6ee5c321f92",
             "technique_id": "T1204.004",
             "name": "Malicious Copy and Paste"
+          }
+        ]
+      },
+      {
+        "activity_id": "activity--daily-73cc25666a7d9eccdad3",
+        "name": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+        "activity_type": "cyber-espionage",
+        "stix_object_type": "campaign",
+        "grouping_context": null,
+        "activity_refs": [],
+        "first_observed": {
+          "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-27T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-03T00:00:00Z"
+        },
+        "reported_at": {
+          "value": "2026-11-05T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-news-file-date"
+        },
+        "description": "Sekoiaは、侵害した正規サイトや偽サイトを通じてiOS・Android端末を狙う水飲み場攻撃を分析し、中～高程度の確度でAPT29へ帰属した。サイト閲覧後、追加の利用者操作なしに既知脆弱性の攻撃チェーンが実行される。 攻撃者は正規サイトへのJavaScript挿入に加え、America250やロンドンのホテルを装うサイトを使用した。訪問者の端末とブラウザのバージョンを識別し、C2から対応する攻撃チェーンを配信した。 ウクライナのWeb分析サービスPlerdyも侵害され、8月27日～9月3日にSEOトラッカーが改変された。同トラッカーは主にウクライナの数千サイトで読み込まれていたが、端末の感染台数は示されていない。 iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。 分析されたペイロードに永続化機能はなく、再起動で活動を停止できるが、侵害サイトへの再訪で再感染する可能性がある。悪用された脆弱性はすべて修正済みで、最新のセキュリティ更新の適用が推奨される。",
+        "target_refs": [
+          "target--activity-rule--country--36f1b9323d5faab92f39",
+          "target--activity-rule--sector--570d54d1d21fab6540a9"
+        ],
+        "malware_refs": [],
+        "infrastructure_refs": [],
+        "ttp_refs": [
+          "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+          "ttp--activity-rule--ce8fe6f4d89af65dfa39"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--ac8b51b10600da1c9b6a"
+        ],
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-172c9516eb85d9143e6c"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--73cc25666a7d9eccdad31740 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 採用。Sekoia原文を確認した。「we assess with moderate to high confidence that this campaign was conducted by APT29」（または少なくともそのサブグループ）と帰属。侵害した正規サイトへのJavaScript挿入とAmerica250・ロンドンのホテルを装う偽サイトで、iOS 16.7/18.5とAndroid Chrome 139-145（143除く）の既知脆弱性チェーンを配信する水飲み場攻撃。ウクライナのWeb分析サービスPlerdyの侵害（8/27-9/3）で主にウクライナの数千サイト（軍・防衛関連含む）にトラッカー改変が波及。被害は欧州・米国にも分布。AndroSnitchはAndroidチェーン最終段として解析されたが被害端末上での実行確認は示されておらず、capability候補も生成されていないため取り込まない。インフラ作成日（2026年4〜8月）は観測日に転用しない。確信度はmoderate-to-highの帰属に基づきmedium。モバイル端末からの情報窃取を目的とするためactivity_typeを自動値infrastructure-operationからcyber-espionageへ変更。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--apt29",
+            "name": "APT29",
+            "attribution_countries": [
+              "Russia"
+            ],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [],
+            "ttp_refs": [
+              "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+              "ttp--activity-rule--ce8fe6f4d89af65dfa39"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39",
+              "target--activity-rule--sector--570d54d1d21fab6540a9"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--ac8b51b10600da1c9b6a"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。",
+              "precision": "day",
+              "status": "known",
+              "value": "2026-08-27T00:00:00Z"
+            },
+            "last_observed": {
+              "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。",
+              "precision": "day",
+              "status": "known",
+              "value": "2026-09-03T00:00:00Z"
+            },
+            "reported_at": {
+              "value": "2026-11-05T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "daily-news-file-date"
+            },
+            "activity_type": "cyber-espionage",
+            "phases": [
+              "Credential Access",
+              "Initial Access"
+            ],
+            "results": [
+              "credential-theft",
+              "data-theft"
+            ],
+            "direction": {
+              "source_countries": [
+                "Russia"
+              ],
+              "target_country_refs": [
+                "target--activity-rule--country--36f1b9323d5faab92f39"
+              ],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-172c9516eb85d9143e6c"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--63181947a191e6b514feeca6",
+            "category": "activity",
+            "verification_status": "partially-supported",
+            "confidence": "medium",
+            "statement": "APT29 conducted or is associated with APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取: Sekoiaは、侵害した正規サイトや偽サイトを通じてiOS・Android端末を狙う水飲み場攻撃を分析し、中～高程度の確度でAPT29へ帰属した。サイト閲覧後、追加の利用者操作なしに既知脆弱性の攻撃チェーンが実行される。 攻撃者は正規サイトへのJavaScript挿入に加え、America250やロンドンのホテルを装うサイトを使用した。訪問者の端末とブラウザのバージョンを識別し、C2から対応する攻撃チェーンを配信した。 ウクライナのWeb分析サービスPlerdyも侵害され、8月27日～9月3日にSEOトラッカーが改変された。同トラッカーは主にウクライナの数千サイトで読み込まれていたが、端末の感染台数は示されていない。 iOS向け攻撃はSafariのCookieに加え、一部のチェーンでWhatsApp・Telegramのデータベース、Keychain認証情報、位置情報、写真を窃取した。Android向けはAndroSnitchでChromeの認証情報や履歴、Wi-Fi認証情報などを収集した。 分析されたペイロードに永続化機能はなく、再起動で活動を停止できるが、侵害サイトへの再訪で再感染する可能性がある。悪用された脆弱性はすべて修正済みで、最新のセキュリティ更新の適用が推奨される。",
+            "evidence_refs": [
+              "source--daily-172c9516eb85d9143e6c"
+            ],
+            "verification_rationale": "Evidence tier=repository; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [],
+        "targets": [
+          {
+            "id": "target--activity-rule--country--36f1b9323d5faab92f39",
+            "name": "ウクライナ"
+          },
+          {
+            "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+            "name": "小売・ホスピタリティ"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--ac8b51b10600da1c9b6a",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--b3b416aa3c4bf9d1a36a",
+            "technique_id": "T1189",
+            "name": "Drive-by Compromise"
+          },
+          {
+            "id": "ttp--activity-rule--ce8fe6f4d89af65dfa39",
+            "technique_id": "T1555.003",
+            "name": "Credentials from Web Browsers"
           }
         ]
       },
@@ -5655,20 +5845,40 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--solarwinds-compromise",
+            "activity_name": "SolarWinds Compromise",
+            "first_observed": {
+              "value": "2019-08-01T05:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "last_observed": {
+              "value": "2021-01-01T06:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-08-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2021-01-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--bloodhound",
@@ -5937,20 +6147,40 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--solarwinds-compromise",
+            "activity_name": "SolarWinds Compromise",
+            "first_observed": {
+              "value": "2019-08-01T05:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "last_observed": {
+              "value": "2021-01-01T06:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-08-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2021-01-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--net",
@@ -6050,20 +6280,40 @@
             "counterevidence": []
           }
         ],
-        "activity_observations": [],
+        "activity_observations": [
+          {
+            "activity_id": "activity--operation-ghost",
+            "activity_name": "Operation Ghost",
+            "first_observed": {
+              "value": "2013-09-01T04:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "last_observed": {
+              "value": "2019-10-01T04:00:00.000Z",
+              "precision": "second",
+              "status": "known",
+              "basis": "mitre-attack-campaign"
+            },
+            "evidence_refs": [
+              "source--mitre-attack-19-2"
+            ]
+          }
+        ],
         "derived_first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-09-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
         "derived_last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2019-10-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
         },
-        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+        "temporal_assessment": "activity-linked"
       },
       {
         "id": "tool--roadtools",
@@ -6408,19 +6658,20 @@
         "name": "ウクライナ",
         "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-27T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-03T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-172c9516eb85d9143e6c",
           "source--daily-833e8d72019628e85850",
           "source--daily-b028cfa41afc98a11bc6",
           "source--daily-d957d6c999575906f6dc"
@@ -6434,6 +6685,7 @@
             "confidence": "medium",
             "statement": "APT29 targets country ウクライナ.",
             "evidence_refs": [
+              "source--daily-172c9516eb85d9143e6c",
               "source--daily-833e8d72019628e85850",
               "source--daily-b028cfa41afc98a11bc6",
               "source--daily-d957d6c999575906f6dc"
@@ -6445,6 +6697,7 @@
         "category": "countrie",
         "activity_refs": [
           "activity--daily-6f3cf1424f54165adb62",
+          "activity--daily-73cc25666a7d9eccdad3",
           "activity--daily-dd52061aebd9904407ad",
           "activity--daily-fcbe40d185eea24da148"
         ]
@@ -6945,6 +7198,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-172c9516eb85d9143e6c",
           "source--daily-27037377b2315277772d",
           "source--daily-333754fe19b5747a8958",
           "source--daily-833e8d72019628e85850",
@@ -6963,6 +7217,7 @@
             "confidence": "high",
             "statement": "APT29 targets region 欧州.",
             "evidence_refs": [
+              "source--daily-172c9516eb85d9143e6c",
               "source--daily-27037377b2315277772d",
               "source--daily-333754fe19b5747a8958",
               "source--daily-833e8d72019628e85850",
@@ -6987,19 +7242,20 @@
         "name": "小売・ホスピタリティ",
         "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Sekoia: Plerdy SEO Trackerの侵害・改変は「Between 27 August and 3 September 2026」。明示された唯一の観測窓の始点。; activity-period",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-27T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "同上。観測窓の終点。キャンペーン全体の終期は原文に明示なし（発見は2026年10月中旬）。; activity-period",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-03T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-172c9516eb85d9143e6c",
           "source--daily-d957d6c999575906f6dc"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
@@ -7011,6 +7267,7 @@
             "confidence": "medium",
             "statement": "APT29 targets sector 小売・ホスピタリティ.",
             "evidence_refs": [
+              "source--daily-172c9516eb85d9143e6c",
               "source--daily-d957d6c999575906f6dc"
             ],
             "verification_rationale": "Evidence tier=repository; attribution and infrastructure geography are not targeting evidence.",
@@ -7019,7 +7276,8 @@
         ],
         "category": "sector",
         "activity_refs": [
-          "activity--daily-6f3cf1424f54165adb62"
+          "activity--daily-6f3cf1424f54165adb62",
+          "activity--daily-73cc25666a7d9eccdad3"
         ]
       },
       {
@@ -15214,7 +15472,7 @@
   },
   "claim_audit_counts": {
     "supported": 358,
-    "partially-supported": 31
+    "partially-supported": 35
   },
   "evidence_catalog": {
     "source--actor-mapping-workbook": {
@@ -15577,6 +15835,31 @@
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
     },
+    "source--censys-apt29-wellmess-infrastructure-2020": {
+      "source_id": "source--censys-apt29-wellmess-infrastructure-2020",
+      "path": "https://censys.com/blog/advanced-persistent-infrastructure-tracking",
+      "title": "Advanced Persistent Infrastructure Tracking",
+      "publisher": "Censys",
+      "published_at": {
+        "value": "2020-12-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "Direct internet-scan research; legacy Censys field syntax is retained as historical evidence and must be translated before use. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://censys.com/blog/advanced-persistent-infrastructure-tracking"
+    },
     "source--daily-084ae64a7546312e25bb": {
       "source_id": "source--daily-084ae64a7546312e25bb",
       "path": "https://www.bleepingcomputer.com/news/security/teamviewer-links-corporate-cyberattack-to-russian-state-hackers/",
@@ -15599,6 +15882,33 @@
       "actor_scope": "unknown",
       "claims_supported": [
         "activity",
+        "victim-case"
+      ]
+    },
+    "source--daily-172c9516eb85d9143e6c": {
+      "source_id": "source--daily-172c9516eb85d9143e6c",
+      "path": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+      "title": "APT29関連の水飲み場攻撃、修正済み脆弱性を連鎖悪用してiOS・Androidから情報窃取",
+      "publisher": "sekoia.com",
+      "published_at": {
+        "value": "2026-11-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261105.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Sekoia原文を取得して確認した（アクセス日2026-11-15）。「moderate to high confidence…APT29 or at least one of its subgroups」の帰属（サブグループ含みの境界）とPlerdy侵害窓8/27-9/3を原文で確認。",
+      "url": "https://www.sekoia.com/blog/poisoned-source-apt29-watering-holes-targets-mobile-devices-with-n-day-exploits",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "ttp",
         "victim-case"
       ]
     },
@@ -15943,6 +16253,31 @@
       ],
       "analyst_notes": "2026-08-21の日次チェックで一次情報源チェック(Google Threat Intelligence 公開一覧)から検知し、原文を取得して確認した一次資料。公開日はページ内メタタグ published_time 2026-08-20T20:50:16+0000 および JSON-LD datePublished 2026-08-20 で確認した。本資料は本プロファイルに対して(1)GTIGの新呼称ICE RELIC(=旧APT29)、(2)ChocoShell=CHERRYPIEの同一視、(3)UNC6293およびUNC7005とのサブクラスタ関係(いずれもmoderate confidence)を支持する。一方で、既存のactivity--captivecrunch-travel-wifi-2026が依拠するMicrosoftの帰属(Storm-2945はMidnight Blizzardの運用サブクラスタ)とはクラスタ境界の評価が異なるため、既存の活動・帰属は上書きせずclaim-audit.jsonへ両論を残した。actor_scopeは、GTIGが「ICE RELIC (formerly APT29)」と本プロファイルの正規名との同一性を明記しているためexactとした。"
     },
+    "source--gtig-unified-actor-naming-2026": {
+      "source_id": "source--gtig-unified-actor-naming-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Updated Cyber Threat Actor Naming System",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-23T11:24:50Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
+    },
     "source--microsoft-apt29-rdp-2024": {
       "source_id": "source--microsoft-apt29-rdp-2024",
       "path": "https://www.microsoft.com/en-us/security/blog/2024/10/29/midnight-blizzard-conducts-large-scale-spear-phishing-campaign-using-rdp-files/",
@@ -16001,6 +16336,87 @@
       ],
       "analyst_notes": "日次監視レポートで検知され、アナリストが原文を確認した上で採用を承認した一次資料。直接の再取得はHTTP 503で失敗したため、承認済みレポート記載内容に基づき追記した(accessed_atは再取得試行時刻)。Microsoftは本活動を「Storm-2945」と呼び、Midnight Blizzard内の運用サブクラスタと明記している。Midnight BlizzardはMidnight Blizzard=APT29(本プロファイル)として既にaliasに含まれており、アクター同定自体は本追記の対象外(既存レビューで確定済み)。Storm-2945をAPT29の新規aliasとして追加するかどうかは本追記のスコープ外とし、行っていない。公開日(2026-07-31T00:00:00Z)は攻撃観測日と区別し、活動のreported_atにのみ用いる。本文は活動が2026年5月以降継続していると明記しているため、活動のfirst_observedは2026-05(precision: month, basis: source-stated)とし、個別インシデントの終了時期は明記されないためlast_observedはunknownのままとした。"
     },
+    "source--mitre-attack-19-1": {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    "source--mitre-attack-19-2": {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    "source--ncsc-apt29-wellmess-2020": {
+      "source_id": "source--ncsc-apt29-wellmess-2020",
+      "path": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf",
+      "title": "Advisory: APT29 targets COVID-19 vaccine development",
+      "publisher": "NCSC, CISA, NSA and CSE",
+      "published_at": {
+        "value": "2020-07-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "accessed_at": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "hunting-pivot",
+        "infrastructure"
+      ],
+      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
+      "url": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf"
+    },
     "source--osint-etda-threat-group-cards": {
       "source_id": "source--osint-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
@@ -16026,6 +16442,32 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    "source--osint-gtig-threat-actor-naming": {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
     },
     "source--osint-microsoft-threat-actor-mapping": {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -16157,57 +16599,6 @@
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
-    "source--gtig-unified-actor-naming-2026": {
-      "source_id": "source--gtig-unified-actor-naming-2026",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Updated Cyber Threat Actor Naming System",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": "2026-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-23T11:24:50Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias"
-      ],
-      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
-    },
-    "source--osint-gtig-threat-actor-naming": {
-      "source_id": "source--osint-gtig-threat-actor-naming",
-      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
-    },
     "source--osint-misp-tidal-groups": {
       "source_id": "source--osint-misp-tidal-groups",
       "path": "actor_profile/reference/osint/misp-tidal-groups.json",
@@ -16237,6 +16628,32 @@
         "motivation-lead"
       ],
       "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--sec-solarwinds-disclosure-enforcement-2024": {
+      "source_id": "source--sec-solarwinds-disclosure-enforcement-2024",
+      "path": "https://www.sec.gov/newsroom/press-releases/2024-174",
+      "url": "https://www.sec.gov/newsroom/press-releases/2024-174",
+      "title": "SEC Charges Four Companies With Misleading Cyber Disclosures",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "published_at": {
+        "value": "2024-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "government-press-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "victim-case",
+        "attribution-context"
+      ],
+      "analyst_notes": "The SEC names Unisys, Avaya, Check Point, and Mimecast and describes the intruder only as the threat actor likely behind the SolarWinds Orion hack. It supports the enforcement aftermath, not a fresh APT29 intrusion or a standalone exact-attribution claim."
     },
     "source--target-audit-etda-threat-group-cards": {
       "source_id": "source--target-audit-etda-threat-group-cards",
@@ -16287,138 +16704,6 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    "source--mitre-attack-19-1": {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-enterprise-19.1.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
-    },
-    "source--mitre-attack-19-2": {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
-    },
-    "source--sec-solarwinds-disclosure-enforcement-2024": {
-      "source_id": "source--sec-solarwinds-disclosure-enforcement-2024",
-      "path": "https://www.sec.gov/newsroom/press-releases/2024-174",
-      "url": "https://www.sec.gov/newsroom/press-releases/2024-174",
-      "title": "SEC Charges Four Companies With Misleading Cyber Disclosures",
-      "publisher": "U.S. Securities and Exchange Commission",
-      "published_at": {
-        "value": "2024-10-22T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "government-press-release",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "activity",
-        "victim-case",
-        "attribution-context"
-      ],
-      "analyst_notes": "The SEC names Unisys, Avaya, Check Point, and Mimecast and describes the intruder only as the threat actor likely behind the SolarWinds Orion hack. It supports the enforcement aftermath, not a fresh APT29 intrusion or a standalone exact-attribution claim."
-    },
-    "source--censys-apt29-wellmess-infrastructure-2020": {
-      "source_id": "source--censys-apt29-wellmess-infrastructure-2020",
-      "path": "https://censys.com/blog/advanced-persistent-infrastructure-tracking",
-      "title": "Advanced Persistent Infrastructure Tracking",
-      "publisher": "Censys",
-      "published_at": {
-        "value": "2020-12-07T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "vendor-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "hunting-pivot",
-        "infrastructure"
-      ],
-      "analyst_notes": "Direct internet-scan research; legacy Censys field syntax is retained as historical evidence and must be translated before use. The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://censys.com/blog/advanced-persistent-infrastructure-tracking"
-    },
-    "source--ncsc-apt29-wellmess-2020": {
-      "source_id": "source--ncsc-apt29-wellmess-2020",
-      "path": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf",
-      "title": "Advisory: APT29 targets COVID-19 vaccine development",
-      "publisher": "NCSC, CISA, NSA and CSE",
-      "published_at": {
-        "value": "2020-07-16T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "language": "en",
-      "source_type": "government-advisory",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "accessed_at": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "hunting-pivot",
-        "infrastructure"
-      ],
-      "analyst_notes": "The original access timestamp was not preserved; accessed_at is null rather than inferred from a later audit. Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred.",
-      "url": "https://media.defense.gov/2020/jul/16/2002457639/-1/-1/0/ncsc_apt29_advisory-quad-official-20200709-1810.pdf"
     }
   },
   "research_gaps": [

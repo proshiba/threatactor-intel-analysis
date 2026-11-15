@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--contagious-interview",
-  "updated_at": "2026-10-12T09:00:06Z",
+  "updated_at": "2026-11-15T08:50:10Z",
   "records": [
     {
       "record_id": "daily-record--019e5cc3a9bb7ac76a1aeaf6",
@@ -682,6 +682,67 @@
         }
       },
       "source_commit": "527918454fa24715403903ea92964bc3a0a8d224"
+    },
+    {
+      "record_id": "daily-record--d372aa00a072885d3153a36f",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "contagious-interview",
+        "canonical_name": "Contagious Interview",
+        "matched_term": "DeceptiveDevelopment",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "DeceptiveDevelopment"
+      },
+      "activity": {
+        "title": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+        "summary": "ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。偽の採用課題を起点に、利用者へ被害を広げるサプライチェーン侵害へ活動を拡大している。 感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。変更を隠すためコミット履歴を書き換える場合もあり、複数のパッケージ配布基盤に影響が及んだ。 後続ではPython製OmniStealerとNode.js製DEV#POPPER RATを確認した。ブラウザー情報や開発者の秘密情報を盗み、VS Code、Cursor、Discordへのコード追加で再実行を図る。 NullReceiver方式ではEthereum取引の送金先からC2のIPを取得する。攻撃者は新たな取引だけで接続先を変更でき、実在開発者の改ざん済みリポジトリでは隠しVS Codeタスクが処理を起動した。 偽課題の配布には自前運用のGitea、後続ペイロードにはJSONホスティングやIPFS関連サービスを利用した。研究者は、感染拡大と基盤停止への耐性を高める動きと評価している。",
+        "news_date": "2026-10-31",
+        "news_url": "https://cybersecuritynews.com/north-korean-hackers-2/",
+        "primary_url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+        "activity_reference": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+        "news_path": "daily-news/news/2026_10-12/20261031.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+          "source_path": "daily-news/news/2026_10-12/20261031.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用。ESETのWeLiveSecurity記事（APT Activity Report Q2 2026–Q3 2026）を確認した。DeceptiveDevelopmentが偽採用課題を起点とする手口から、開発者の認証情報（Git認証情報・SSH鍵・アクセストークン）を窃取して公開・非公開リポジトリへ悪性コードを注入する広範なソフトウェアサプライチェーン侵害へ拡大したことを原文で確認。コミット履歴の書き換えと複数パッケージ配布基盤への影響を記述。DeceptiveDevelopmentはscope: overlappingのalias（MITRE ATT&CK登録）だが、ESETは命名以来この指定子を偽求人・偽面接ルアーの北朝鮮系クラスタ（本プロファイルの追跡対象）に用いており、本プロファイルには同系統報告の採用前例が複数ある。OmniStealer・DEV#POPPER RAT・NullReceiverはtech-memo要約に現れるがランディング記事では確認できず（詳細は報告書本体）、capability候補も生成されていないため取り込まない。偽面接ルアーの語に引きずられた自動分類phishing-campaignを、リポジトリ改ざんによるマルウェア混入を主題とするmalware-campaignへ変更。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "body",
+        "evidence_text": "- ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_type": "malware-campaign",
+      "activity_period": {
+        "first_observed": {
+          "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-04-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "同上。報告対象期間の終端（2026年9月）。",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-09-01T00:00:00Z"
+        }
+      },
+      "source_commit": "49d1727dcda33d25fd5c27d19951b282cdcf8177"
     },
     {
       "record_id": "daily-record--e98674dd97bf22866f7f9dd6",

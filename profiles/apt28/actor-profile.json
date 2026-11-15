@@ -4,7 +4,7 @@
   "name": "APT28",
   "status": "review",
   "created_at": "2026-07-25T09:00:03Z",
-  "updated_at": "2026-09-23T12:16:55Z",
+  "updated_at": "2026-11-15T09:02:08Z",
   "languages": [
     "ja"
   ],
@@ -375,6 +375,32 @@
         "analyst_notes": ""
       },
       {
+        "id": "malware--daily-a2706b008c9d9f2ded81",
+        "name": "HOOKEDGE",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "APT28との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-6bb5f30d0037bd12215d"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
+      {
         "id": "malware--dealerschoice",
         "name": "DealersChoice",
         "aliases": [
@@ -514,32 +540,6 @@
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": ""
-      },
-      {
-        "id": "malware--daily-a2706b008c9d9f2ded81",
-        "name": "HOOKEDGE",
-        "aliases": [],
-        "types": [
-          "backdoor"
-        ],
-        "description": "APT28との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
-        "first_observed": {
-          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
-          "precision": "month",
-          "status": "known",
-          "value": "2025-09-01T00:00:00Z"
-        },
-        "last_observed": {
-          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
-          "precision": "month",
-          "status": "known",
-          "value": "2026-07-01T00:00:00Z"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-6bb5f30d0037bd12215d"
-        ],
-        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--jhuhugit",
@@ -1914,6 +1914,117 @@
       "grouping_context": "suspicious-activity"
     },
     {
+      "activity_id": "activity--daily-56423ecf193ab6389a7f",
+      "name": "ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+      "activity_type": "cyber-espionage",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-07-24T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-24T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Symantecは、Swallowtail（APT28／Fancy Bear／Forest Blizzard）がNATO加盟2カ国の法執行機関、軍用航空機エンジンメーカー、海軍艦艇の造船企業を標的にした活動を確認した。 造船企業では7月24日、メール添付のマクロ付きWord文書からHookedgeに感染した。画面外の極小Edgeウィンドウでwebhook[.]siteから指令を取得し、実行結果を返すことで正規ブラウザーと共有サービスをC2に悪用した。 攻撃者は後に専用IPへ通信先を変更し、持ち込んだSSH鍵で逆向きの動的トンネルを構築した。別途、端末をループバックの偽サーバーへ認証させ、NTLM認証応答を収集するPowerShellも実行した。 未報告の反射型ローダーld.exeは、実行時に渡された鍵で暗号化ファイルをメモリ上で復号して実行する。復号対象のEvents.datは回収できず、最終ペイロードの機能は不明。 活動は少なくとも2カ月に及び、9月24日にもランチャーが観測された。後半の観測が既存タスクの継続か攻撃者の再活動かは判断できず、バックドア導入後の認証情報窃取やトンネル利用まで調査する必要がある。",
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--targeting-audit--region--132443f4958001c0749f"
+      ],
+      "malware_refs": [
+        "malware--daily-a2706b008c9d9f2ded81"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--c57b1f3e6ee41eb97adc"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1e87ad629526cfa9017d"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--56423ecf193ab6389a7fd89b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 採用。Symantec原文を確認した。原文は「Swallowtail (aka APT28, Fancy Bear, Forest Blizzard)」「a Russian espionage group」と記載し、Swallowtail（scope: overlappingのalias）を本プロファイルのクラスタ境界（APT28/Fancy Bear/Forest Blizzard）と明示的に等置している。標的はNATO加盟2カ国の法執行機関・軍用航空機エンジン製造企業・海軍造船企業（国名は原文も明示せず）。造船企業の侵入は少なくとも2カ月継続し、7/24の初感染、7/27・28・31、8月下旬のローダー再観測、9/24の直近活動が記載される。Hookedge backdoorの展開を原文で確認（HOOKEDGEはRecorded Future報告由来の既存capabilityとして登録済みで、本レコードにcapability候補はない）。NTLM認証応答収集PowerShell、反射型ローダーld.exe（最終ペイロード未回収・機能不明）の記述を保持。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt28",
+          "name": "APT28",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-a2706b008c9d9f2ded81"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--targeting-audit--region--132443f4958001c0749f"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--c57b1f3e6ee41eb97adc"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-07-24T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-09-24T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--targeting-audit--region--132443f4958001c0749f"
+            ]
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-1e87ad629526cfa9017d"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-5dcc47bbe40c7a401a80",
       "name": "フランス、ロシアのAPT28による12件のサイバー攻撃を非難",
       "activity_type": "phishing-campaign",
@@ -3170,6 +3281,28 @@
     ],
     "regions": [
       {
+        "id": "target--targeting-audit--region--132443f4958001c0749f",
+        "name": "NATO加盟国",
+        "description": "活動「ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に」の記述で標的地域としてNATO加盟国が明示されている。",
+        "first_observed": {
+          "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-07-24T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-09-24T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-1e87ad629526cfa9017d"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
         "id": "target--targeting-audit--region--0a6dd71287620a124734",
         "name": "アジア",
         "description": "活動「APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的」の記述で標的地域としてアジアが明示されている。",
@@ -3305,7 +3438,7 @@
       {
         "id": "target--activity-rule--sector--b94dc560a327b601965d",
         "name": "防衛・軍事",
-        "description": "活動「フランス、ロシアのAPT28による12件のサイバー攻撃を非難」の記述で標的として明示された産業。",
+        "description": "活動「ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に」の記述で標的として明示された産業。",
         "first_observed": {
           "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化; activity-period",
           "precision": "month",
@@ -3313,13 +3446,14 @@
           "value": "2025-09-01T00:00:00Z"
         },
         "last_observed": {
-          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用; activity-period",
-          "precision": "month",
+          "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。; activity-period",
+          "precision": "day",
           "status": "known",
-          "value": "2026-07-01T00:00:00Z"
+          "value": "2026-09-24T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-1e87ad629526cfa9017d",
           "source--daily-239915c4cbbd5198fbc4",
           "source--daily-6bb5f30d0037bd12215d"
         ],
@@ -8785,6 +8919,32 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--akamai-apt28-cve-2026-21510",
+      "path": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
+      "url": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
+      "title": "A Shortcut to Coercion: Incomplete Patch of APT28's Zero-Day Leads to CVE-2026-32202",
+      "publisher": "Akamai Security Research",
+      "published_at": {
+        "value": "2026-04-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-published-date"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-technical-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "vulnerability"
+      ],
+      "analyst_notes": "Akamai distinguishes the APT28 exploitation of CVE-2026-21510/21513 from the later incomplete-patch vulnerability CVE-2026-32202."
+    },
+    {
       "source_id": "source--apt28--055e2004871aad49",
       "path": "APT28/history-report-pdf/20180713_CSE_APT28_X-Agent_Op-Roman Holiday-Report_v6_1.pdf",
       "title": "20180713 CSE APT28 X Agent Op Roman Holiday Report v6 1",
@@ -9352,6 +9512,32 @@
       ]
     },
     {
+      "source_id": "source--daily-1e87ad629526cfa9017d",
+      "path": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+      "title": "ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+      "publisher": "security.com",
+      "published_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261022.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Symantec原文を取得して確認した（アクセス日2026-11-15）。原文が「Swallowtail (aka APT28, Fancy Bear, Forest Blizzard)」とクラスタ境界を明示的に等置。",
+      "url": "https://www.security.com/threat-intelligence/swallowtail-russia-nato-targets",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
+    },
+    {
       "source_id": "source--daily-239915c4cbbd5198fbc4",
       "path": "https://www.bleepingcomputer.com/news/security/france-ties-russian-apt28-hackers-to-12-cyberattacks-on-french-orgs/",
       "title": "フランス、ロシアのAPT28による12件のサイバー攻撃を非難",
@@ -9696,6 +9882,87 @@
       "analyst_notes": ""
     },
     {
+      "source_id": "source--gtig-unified-actor-naming-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Updated Cyber Threat Actor Naming System",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-23T11:24:50Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
+    },
+    {
       "source_id": "source--mitre-live-sandworm-2024",
       "path": "https://attack.mitre.org/groups/G0034/",
       "url": "https://attack.mitre.org/groups/G0034/",
@@ -9745,6 +10012,32 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -9903,57 +10196,6 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
-      "source_id": "source--gtig-unified-actor-naming-2026",
-      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Updated Cyber Threat Actor Naming System",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": "2026-07-24T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-23T11:24:50Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias"
-      ],
-      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
-    },
-    {
-      "source_id": "source--osint-gtig-threat-actor-naming",
-      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
-      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
-      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
-      "publisher": "Google Threat Intelligence Group",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
-    },
-    {
       "source_id": "source--osint-misp-tidal-groups",
       "path": "actor_profile/reference/osint/misp-tidal-groups.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
@@ -9982,32 +10224,6 @@
         "motivation-lead"
       ],
       "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--akamai-apt28-cve-2026-21510",
-      "path": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
-      "url": "https://www.akamai.com/blog/security-research/incomplete-patch-apt28s-zero-day-cve-2026-32202",
-      "title": "A Shortcut to Coercion: Incomplete Patch of APT28's Zero-Day Leads to CVE-2026-32202",
-      "publisher": "Akamai Security Research",
-      "published_at": {
-        "value": "2026-04-23T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-published-date"
-      },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "vendor-technical-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "activity",
-        "targeting",
-        "vulnerability"
-      ],
-      "analyst_notes": "Akamai distinguishes the APT28 exploitation of CVE-2026-21510/21513 from the later incomplete-patch vulnerability CVE-2026-32202."
     },
     {
       "source_id": "source--target-audit-etda-threat-group-cards",
@@ -10083,62 +10299,6 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-enterprise-19.1.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
-    },
-    {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -10176,7 +10336,7 @@
     "history": "Russian Doll; Bundestag; TV5 Monde \"Cyber Caliphate\"; EFF Attack; DNC Hack; OpOlympics; Burisma\n\n2026年4月、米司法省とFBIは、APT28（GRU第26165部隊）がDNSハイジャックに利用していた侵害済みSOHOルーターネットワークの米国内部分を無力化したと発表した。",
     "capability_details": "Downdelph, reGeorg, OLDBAIT, Fysbis, XAgentOSX, CORESHELL, XTunnel, JHUHUGIT, DealersChoice, Drovorub, Zebrocy, USBStealer, LoJax, LAMEHUG, CHOPSTICK, Cannon, HIDEDRV, Komplex, ADVSTORESHELL, SOURFACE, Sofacy, XAgent, WinIDS, Foozer, DownRange, Sedreco Dropper, Sednit, Sedkit, HideDrv (Rootkit), SeduUploader, Net, certutil, Forfiles, Winexe, Responder, Mimikatz, Koadic, cipher.exe, Tor, Wevtutil",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、カメルーン、ギリシャ、スペイン、セルビア、チェコ、トルコ、ドイツ、ポーランド、ルーマニア、米国。標的地域=アジア、南欧、東欧、欧州。日本は確認時に個別国として保持する。\n\nUnited States government, Romania, Poland, Jordan, Ukraine, Turkey",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、カメルーン、ギリシャ、スペイン、セルビア、チェコ、トルコ、ドイツ、ポーランド、ルーマニア、米国。標的地域=NATO加盟国、アジア、南欧、東欧、欧州。日本は確認時に個別国として保持する。\n\nUnited States government, Romania, Poland, Jordan, Ukraine, Turkey",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -10775,6 +10935,59 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-bc559406ecce56eed6a1"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--c57b1f3e6ee41eb97adc",
+      "name": "被害事例: ロシアの諜報集団Swallowtail、NATO加盟2カ国の防衛関連組織を標的に",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Symantecは、Swallowtail（APT28／Fancy Bear／Forest Blizzard）がNATO加盟2カ国の法執行機関、軍用航空機エンジンメーカー、海軍艦艇の造船企業を標的にした活動を確認した。 造船企業では7月24日、メール添付のマクロ付きWord文書からHookedgeに感染した。画面外の極小Edgeウィンドウでwebhook[.]siteから指令を取得し、実行結果を返すことで正規ブラウザーと共有サービスをC2に悪用した。 攻撃者は後に専用IPへ通信先を変更し、持ち込んだSSH鍵で逆向きの動的トンネルを構築した。別途、端末をループバックの偽サーバーへ認証させ、NTLM認証応答を収集するPowerShellも実行した。 未報告の反射型ローダーld.exeは、実行時に渡された鍵で暗号化ファイルをメモリ上で復号して実行する。復号対象のEvents.datは回収できず、最終ペイロードの機能は不明。 活動は少なくとも2カ月に及び、9月24日にもランチャーが観測された。後半の観測が既存タスクの継続か攻撃者の再活動かは判断できず、バックドア導入後の認証情報窃取やトンネル利用まで調査する必要がある。",
+      "activity_refs": [
+        "activity--daily-56423ecf193ab6389a7f"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d"
+      ],
+      "malware_refs": [
+        "malware--daily-a2706b008c9d9f2ded81"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "サーバー",
+        "エンドポイント"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "後半の観測が既存タスクの継続か攻撃者の再活動かは判断できず、バックドア導入後の認証情報窃取やトンネル利用まで調査する必要がある。"
+        }
+      ],
+      "first_observed": {
+        "basis": "Symantec: 造船企業で2026-07-24にマクロ付きWord文書が開かれHookedgeに感染（最古の日付付き事象）。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-07-24T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Symantec: 「The most recent activity noted is September 24, 2026」。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-09-24T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1e87ad629526cfa9017d"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

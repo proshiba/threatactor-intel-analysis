@@ -4,7 +4,7 @@
   "name": "Volt Typhoon",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-23T12:16:55Z",
+  "updated_at": "2026-11-15T09:02:09Z",
   "languages": [
     "ja"
   ],
@@ -608,6 +608,118 @@
     "analyst_notes": ""
   },
   "activities": [
+    {
+      "activity_id": "activity--daily-32b9188cf8f6784462f0",
+      "name": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "activity_type": "infrastructure-operation",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。",
+      "target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "target--mitre-group--country--f4393d9017c8437438b5"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--c725e3d8aad2a887ff1c"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-80facae04c59c1bd916e"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--32b9188cf8f6784462f07831 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 採用。Lumen Black Lotus Labs原文を確認した。Silent TrainをVolt Typhoonの中継・隠蔽基盤として直接帰属（「Volt Typhoon's Silent Train is a covert network designed to gain and maintain access」）し、約3年間追跡。VeloCloud Orchestratorのゼロデイ（CVE-2026-16812）、N-able N-centralの未公開脆弱性チェーン（CVE-2025-8875/8876）、Quest KACEのゼロデイ疑い（moderate confidence）を観測。Cisco Catalyst SD-WANは公表済み重大脆弱性の悪用でありゼロデイとは記述されない（tech-memo要約の「ゼロデイ悪用を観測した」一括記述を原文に基づき補正）。Versa Directorは2024年中頃に公知。海外中継はIntelbrasモデム、米国内経由はNetgear Orbi、2025年初頭からは1〜3カ月保持の侵害済み企業システムを併用するハイブリッド構成。既定の自動分類infrastructure-operationが実態に一致するため変更しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--volt-typhoon",
+          "name": "Volt Typhoon",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--932f4928d5e1ec28e2df",
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+            "target--mitre-group--country--f4393d9017c8437438b5"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--c725e3d8aad2a887ff1c"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+            "precision": "month",
+            "status": "known",
+            "value": "2023-11-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-07-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+              "target--mitre-group--country--f4393d9017c8437438b5"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
     {
       "activity_id": "activity--daily-4cbde0098db405c6a66a",
       "name": "Volt Typhoon、FBIによる妨害後にマルウェアボットネットを再構築",
@@ -1274,6 +1386,28 @@
   "targets": {
     "countries": [
       {
+        "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "name": "中国",
+        "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
         "id": "target--mitre-group--country--f4393d9017c8437438b5",
         "name": "米国",
         "description": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam.",
@@ -1284,14 +1418,15 @@
           "value": "2022-01-01T00:00:00Z"
         },
         "last_observed": {
-          "value": "2024-01-01T05:00:00.000Z",
-          "precision": "second",
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
           "status": "known",
-          "basis": "mitre-attack-campaign; activity-period"
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--daily-0c44ac5482af2d245bb8",
+          "source--daily-80facae04c59c1bd916e",
           "source--mitre-attack-19-2"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
@@ -1300,24 +1435,47 @@
     "regions": [],
     "sectors": [
       {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
         "name": "IT・ソフトウェア",
         "description": "活動「中国のVolt TyphoonハッカーがVersaのゼロデイを悪用してISPとMSPを侵害」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-640ce5a9037301fa77ea"
+          "source--daily-640ce5a9037301fa77ea",
+          "source--daily-80facae04c59c1bd916e"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
@@ -1340,6 +1498,72 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-640ce5a9037301fa77ea"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "name": "エネルギー",
+        "description": "活動「Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2023-11-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-80facae04c59c1bd916e"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       }
@@ -4510,6 +4734,32 @@
       ]
     },
     {
+      "source_id": "source--daily-80facae04c59c1bd916e",
+      "path": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+      "title": "Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "publisher": "lumen.com",
+      "published_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261029.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. Lumen原文を取得して確認した（アクセス日2026-11-15）。Silent TrainのVolt Typhoon帰属と2023-11〜2026-07の観測期間を原文で確認。",
+      "url": "https://www.lumen.com/blog/en-us/silent-train-volt-typhoon-operational-framework",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
+    },
+    {
       "source_id": "source--daily-872ddba47fdd29dd0925",
       "path": "https://www.bleepingcomputer.com/news/security/uk-warns-of-chinese-hackers-using-botnets-of-hijacked-consumer-devices-to-evade-detection/",
       "title": "英国、中国系ハッカーが検知回避のためプロキシネットワークを利用していると警告",
@@ -4560,6 +4810,62 @@
         "ttp",
         "victim-case"
       ]
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-enterprise-19.1.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -4640,6 +4946,32 @@
       "analyst_notes": "Dataset version=23. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
       "source_id": "source--osint-misp-mitre-intrusion-set",
       "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
@@ -4690,6 +5022,61 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     {
       "source_id": "source--volt-typhoon--002b0193611949f5",
@@ -5248,143 +5635,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
-      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
-      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
-      "publisher": "MISP Project / MITRE ATT&CK",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T11:55:34Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-enterprise-19.1.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Frozen historical ATT&CK release retained for Groups that are no longer current. Deprecated status is not interpreted as proof that the real-world actor ceased to exist."
-    },
-    {
-      "source_id": "source--mitre-attack-19-2",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-08-05T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "exact",
-      "claims_supported": [
-        "identity",
-        "alias",
-        "relationship",
-        "activity",
-        "malware",
-        "targeting",
-        "ttp"
-      ],
-      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -5404,7 +5654,7 @@
     "history": "",
     "capability_details": "VersaMem, Net, certutil, Impacket, ipconfig, Tasklist, FRP, netstat, netsh, Systeminfo, Nltest, Mimikatz, Ping, cmd, Reg, Wevtutil, PsExec",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=中国、米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -5597,6 +5847,56 @@
       "confidence": "low",
       "evidence_refs": [
         "source--daily-0c44ac5482af2d245bb8"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--c725e3d8aad2a887ff1c",
+      "name": "被害事例: Volt Typhoon、「Silent Train」でゼロデイ攻撃の発信元を隠蔽",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "LumenのBlack Lotus Labsは、中国国家支援型Volt Typhoonが使う中継基盤Silent Trainを約3年間追跡した。必要に応じて機器を侵害し、中継経路を入れ替えて重要標的への攻撃を隠蔽する。 米国外のVPSから侵害済みのルーターなどを経由して攻撃する構成で、海外の中継にはIntelbrasモデム、米国内の経由地点にはNetgear Orbiを使用したと報告している。 VeloCloud Orchestrator、Cisco Catalyst SD-WAN、N-able N-central、Versa Directorへのゼロデイ悪用を観測した。Quest KACEについてもゼロデイの疑いがあり、集中管理基盤から顧客環境へアクセスを広げる。 中継機器にはSSH接続に必要な最小限のツールや鍵を配置し、通常8時間未満のセッション終了後に削除する。2025年初頭からは、1～3カ月保持する侵害済み企業システムも併用していた。 標的は通信、政府、防衛、教育、電力などの重要インフラやMSPなど。カリフォルニア、テキサス、ハワイへの集中と中国標準時に沿う活動から、重要標的を選ぶ慎重な運用と評価されている。",
+      "activity_refs": [
+        "activity--daily-32b9188cf8f6784462f0"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "target--mitre-group--country--f4393d9017c8437438b5"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "ネットワーク機器"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "basis": "Lumen: 「We first observed consistent Silent Train activity in November 2023」。",
+        "precision": "month",
+        "status": "known",
+        "value": "2023-11-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Lumen: 観測図（Figure 11）が2023年11月〜2026年7月をカバー。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-80facae04c59c1bd916e"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

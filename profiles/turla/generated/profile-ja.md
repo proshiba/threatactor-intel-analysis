@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--turla`
 - 状態: draft
-- 更新日時: 2026-09-23T12:16:55Z
+- 更新日時: 2026-11-15T09:02:09Z
 - 構造バージョン: 1.4.0
 
 ## エグゼクティブサマリー
@@ -118,6 +118,12 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | malware--carbon | Carbon | [Carbon](https://attack.mitre.org/software/S0335) is a sophisticated, second-stage backdoor and framework that can be used to steal sensitive information from victims. [Carbon](https://attack.mitre.org/software/S0335) has been selectively used by [Turla](https://attack.mitre.org/groups/G0010) to target government and foreign affairs-related organizations in Central Asia.(Citation: ESET Carbon Mar 2017)(Citation: Securelist Turla Oct 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--comrat | ComRAT | [ComRAT](https://attack.mitre.org/software/S0126) is a second stage implant suspected of being a descendant of [Agent.btz](https://attack.mitre.org/software/S0092) and used by [Turla](https://attack.mitre.org/groups/G0010). The first version of [ComRAT](https://attack.mitre.org/software/S0126) was identified in 2007, but the tool has undergone substantial development for many years since.(Citation: Symantec Waterbug)(Citation: NorthSec 2015 GData Uroburos Tools)(Citation: ESET ComRAT May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--crutch | Crutch | [Crutch](https://attack.mitre.org/software/S0538) is a backdoor designed for document theft that has been used by [Turla](https://attack.mitre.org/groups/G0010) since at least 2015.(Citation: ESET Crutch December 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--daily-179fd765cc44d00780d8 | CerealLoader | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
+| malware--daily-315563032ff2683f7583 | CerealHermit | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
+| malware--daily-36258fa03655598c7981 | CerealIron | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
+| malware--daily-3d005fa665948fccc23e | CerealMoth | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
+| malware--daily-8922844bbbb0bc4e55c3 | CerealSprinter | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
+| malware--daily-95d9fef0212a79305176 | CerealRunner | Turlaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-eacab060a5426f098bf1` |
 | malware--diamondback | DIAMONDBACK | GTIGがTurlaの独自ツールキットとしてSTOCKSTAY・KAZUARと併記している。 | 不明 | 不明 | 中 | `source--gtig-stockstay-turla-2026` |
 | malware--epic | Epic | [Epic](https://attack.mitre.org/software/S0091) is a backdoor that has been used by [Turla](https://attack.mitre.org/groups/G0010). (Citation: Kaspersky Turla) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--gazer | Gazer | [Gazer](https://attack.mitre.org/software/S0168) is a backdoor used by [Turla](https://attack.mitre.org/groups/G0010) since at least 2016. (Citation: ESET Gazer Aug 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
@@ -194,19 +200,23 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| Turla Cerealツールセットの公開IOC一覧（ESET malware-iocリポジトリ） | reported-activity | 不明 | 不明 | 2026-11-11 |  | malware--daily-179fd765cc44d00780d8, malware--daily-315563032ff2683f7583, malware--daily-36258fa03655598c7981, malware--daily-3d005fa665948fccc23e, malware--daily-8922844bbbb0bc4e55c3, malware--daily-95d9fef0212a79305176 |  |  | ESETがmalware-iocリポジトリのturlaフォルダで公開したCerealツールセットのSHA-1一覧。CerealLoader（Microsoft.Exchange.Data.Transport.ni.dll等への偽装名を含む）、CerealRunner、CerealSprinter、CerealHermit、CerealIron、CerealMoth、bootstrapper DLL（x86/x64、Win32/Agent.AIOQ）の検体ハッシュを含む。WeLiveSecurity記事「Exchange for breakfast: Turla's Cereal tricks are not for kids」のIOC補完であり、活動本体は同記事のActivityとして採用済み。 | 中 | `source--daily-eacab060a5426f098bf1` |
 | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | infrastructure-operation | 不明 | 不明 | 2026-05-18 |  | malware--kazuar | ttp--activity-rule--23f91b330aff86b4e245, ttp--activity-rule--a065ec3abbf8e6d486d8 | victim--activity-rule--5d49c32b8b1bf735cbd0 | ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 Microsoftの分析では、新しいKazuarはKernel、Bridge、Workerの3モジュールで構成され、感染環境内で役割を分担する。 Kernelはリーダーを選出し、非リーダー端末をサイレント化することで、C2との外部通信を減らして検知面を縮小する。 Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 Kazuarは150種類の設定項目を持ち、AMSI、ETW、WLDPのバイパスなど多様な回避機能も備えている。 | 高 | `source--daily-0e103138b331cf8b266a` |
 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | cyber-espionage | 不明 | 不明 | 2024-12-05 | target--activity-rule--country--48cc6b4cc2919459aec9, target--mitre-group--sector--8b0d895cbce29b8afc51, target--targeting-audit--country--7baa960dc1a31085ebc9 | malware--tinyturla |  | victim--activity-rule--fd84357d12102a31bedc | ロシアの国家支援グループTurlaが、パキスタンのAPT「Storm-0156」のインフラを乗っ取り、スパイ活動を実行。 Turlaは、Storm-0156の脅威アクターの既存のC2サーバーを利用し、Storm-0156が侵害していたアフガニスタンやインド政府機関を対象に攻撃を展開。 攻撃には、TinyTurlaバックドア、TwoDashバックドア、MiniPocketダウンローダーなどが使用された。 Storm-0156のマルウェアツール(CrimsonRATマルウェアとWainscotなど)や盗まれた認証情報も収集されていた。 Turlaは外国の標的からのデータの傍受、解読、収集を担当するロシア連邦保安庁（FSB）のCenter 16とつながりのある、ロシア国家が支援するハッキンググループ。高度なサイバー攻撃に長い歴史を持ち、世界中の政府や組織を標的にしている。 | 高 | `source--daily-7b8d62bd6d4144728793` |
+| Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 | cyber-espionage | 2025-11-28 | 2026-01-15 | 2026-11-11 |  | malware--daily-315563032ff2683f7583, malware--daily-95d9fef0212a79305176 |  |  | ESETは、ロシア国家支援グループTurlaが、新たな.NET製ツール群Cerealで政府機関のExchangeサーバーを監視していたと報告した。2025年末にカザフスタンで発見し、その後ルーマニアでも確認した。 CerealBoxはExchangeのEdgeTransport.exeへコード注入され、既存のトランスポートエージェントの処理を乗っ取る。これにより新しいエージェントを登録せず、通常のメール配送を妨げることなく本文などを検査できる。 攻撃者は送受信者や件名、DOC・DOCX・PDFなどの添付条件に一致するメールを選別した。ルーマニアではNATOやEUの代表者とのやり取りを選択的に収集していた。 CerealNeuronは正規のExchangeサービスに似せたパスで暗号化Web要求を待ち受け、CerealRunner内のコードをメモリ上で実行する。メール取得、AD照会、認証情報抽出、ファイル操作などに対応する。 外部C2は観測されず、侵害したExchange自体が制御点となっていた。暗号化ファイルから命令を読むCerealHermitも確認され、ESETは小さなディスク上の痕跡と高度な隠蔽を備えた長期諜報用基盤と評価している。 | 高 | `source--daily-bc8d2dcf4f5426ed94e8` |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | cyber-espionage | 2024-03 | 2024-04 | 2024-12-12 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--227d97728274c9a45564 | malware--epic |  | victim--activity-rule--9899cfc7ca4bd10c1940 | ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。 MicrosoftとLumenの報告によれば、Turlaはパキスタンの脅威アクター「Storm-0156」のマルウェアとサーバーをハイジャックして使用している。 2024年3月から4月にかけて、TurlaはAmadeyボットネットや他のロシアのハッキンググループ「Storm-1837」のインフラを利用して、ウクライナのシステムに独自のマルウェア「Tavdig」や「KazuarV2」を展開した。 Microsoftは、TurlaがAmadeyのマルウェア・アズ・ア・サービス（MaaS）を使用したのか、またはAmadeyのコマンド・アンド・コントロール（C2）パネルに密かにアクセスしたのかは不明としている。 この手法は、Turlaが他のハッカーグループの背後に隠れて活動する一例である。 | 中 | `source--daily-785ae8d632612c179b8d` |
-| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | cyber-espionage | 2022-12 | 2025-11 | 2026-06-25 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--8b0d895cbce29b8afc51, target--targeting-audit--country--b79c8cdc24f6db0641a0 | malware--diamondback, malware--kazuar, malware--stockstay, malware--wildday | ttp--turla-stockstay-t1090-proxy, ttp--turla-stockstay-t1203-winrar, ttp--turla-stockstay-t1566-001, ttp--turla-stockstay-t1572-websocket | victim--activity-rule--48105cd9cb10230243b9, victim--turla-stockstay-ukraine-italy | Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。 | 高 | `source--gtig-stockstay-turla-2026` |
+| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | cyber-espionage | 2022-12 | 2025-11 | 2026-06-25 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--8b0d895cbce29b8afc51, target--targeting-audit--country--b79c8cdc24f6db0641a0 | malware--diamondback, malware--kazuar, malware--stockstay, malware--wildday | ttp--turla-stockstay-t1090-proxy, ttp--turla-stockstay-t1203-winrar, ttp--turla-stockstay-t1566-001, ttp--turla-stockstay-t1572-websocket | victim--turla-stockstay-ukraine-italy | Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。 | 高 | `source--gtig-stockstay-turla-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| Turla Cerealツールセットの公開IOC一覧（ESET malware-iocリポジトリ） | Turla | CerealLoader, CerealHermit, CerealIron, CerealMoth, CerealSprinter, CerealRunner | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | Turla | Kazuar | T1083 File and Directory Discovery, T1113 Screen Capture | 情報なし | 情報なし | 被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | 高 |
 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | Turla | TinyTurla | 情報なし | 情報なし | インド, 政府・行政, アフガニスタン | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 高 |
+| Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 | Turla | CerealHermit, CerealRunner | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | Turla | Epic | 情報なし | 情報なし | ウクライナ, 防衛・軍事 | 被害事例: ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | 中 |
-| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | Turla | DIAMONDBACK, Kazuar, STOCKSTAY, WILDDAY | T1090 Proxy, T1203 Exploitation for Client Execution, T1566.001 Spearphishing Attachment, T1572 Protocol Tunneling | 情報なし | ウクライナ, 政府・行政, イタリア | 被害事例: STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動, ウクライナの政府・軍組織およびイタリアの外交関連組織(集約) | 高 |
+| STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | Turla | DIAMONDBACK, Kazuar, STOCKSTAY, WILDDAY | T1090 Proxy, T1203 Exploitation for Client Execution, T1566.001 Spearphishing Attachment, T1572 Protocol Tunneling | 情報なし | ウクライナ, 政府・行政, イタリア | ウクライナの政府・軍組織およびイタリアの外交関連組織(集約) | 高 |
 
 
 
@@ -217,7 +227,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | countries | アフガニスタン | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
 | countries | イタリア | 活動「STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動」の記述で標的・被害国として明示されている。 | 2022-12 | 2025-11 | 中 | `source--gtig-stockstay-turla-2026` |
 | countries | インド | 活動「ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
-| countries | ウクライナ | 活動「ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に」の記述で標的として明示された国・地域。 | 2022-12 | 2025-11 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026` |
+| countries | ウクライナ | 活動「STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動」の記述で標的として明示された国・地域。 | 2022-12 | 2025-11 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026` |
 | regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7b8d62bd6d4144728793` |
 | regions | 欧州 | イタリア、ウクライナで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-785ae8d632612c179b8d`, `source--gtig-stockstay-turla-2026` |
 | sectors | 防衛・軍事 | They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies. | 2024-03 | 2024-04 | 高 | `source--daily-785ae8d632612c179b8d`, `source--mitre-attack-19-2` |
@@ -231,7 +241,6 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--diamondback, malware--kazuar, malware--stockstay, malware--wildday | ttp--turla-stockstay-t1090-proxy, ttp--turla-stockstay-t1203-winrar, ttp--turla-stockstay-t1566-001, ttp--turla-stockstay-t1572-websocket |  |  | 2022-12 | 2025-11 | 2026-06-25 | 高 | `source--gtig-stockstay-turla-2026` |
 | 被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | 非公開 | anonymous | unknown | reported |  | malware--kazuar | ttp--activity-rule--23f91b330aff86b4e245, ttp--activity-rule--a065ec3abbf8e6d486d8 | メール／メールアカウント, エンドポイント | data-theft: Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。<br>espionage: ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 | 不明 | 不明 | 2026-05-18 | 高 | `source--daily-0e103138b331cf8b266a` |
 | 被害事例: ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--227d97728274c9a45564 | malware--epic |  | サーバー | espionage: ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。 | 2024-03 | 2024-04 | 2024-12-12 | 中 | `source--daily-785ae8d632612c179b8d` |
 | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--48cc6b4cc2919459aec9, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--tinyturla |  | サーバー | espionage: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 不明 | 不明 | 2024-12-05 | 高 | `source--daily-7b8d62bd6d4144728793` |
@@ -364,8 +373,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 117件
-- IOC観測: 151件
+- IOC値: 135件
+- IOC観測: 169件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 62件
 - 非IOC artifact観測: 81件（`artifacts.csv`）
@@ -393,15 +402,28 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--cisa-snake-turla-center16-2023 | Hunting Russian Intelligence 'Snake' Malware | CISA, FBI, NSA, NCSC and partner agencies | 2023-05-09 | https://www.cisa.gov/sites/default/files/2023-05/aa23-129a_snake_malware_2.pdf | government-advisory | TLP:CLEAR | 高 |
 | source--daily-0e103138b331cf8b266a | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | microsoft.com | 2026-05-18 | https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-785ae8d632612c179b8d | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | bleepingcomputer.com | 2024-12-12 | https://www.bleepingcomputer.com/news/security/russian-cyber-spies-hide-behind-other-hackers-to-target-ukraine/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-7b8d62bd6d4144728793 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | bleepingcomputer.com | 2024-12-05 | https://www.bleepingcomputer.com/news/security/russian-turla-hackers-hijack-pakistani-apt-servers-for-cyber-espionage-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-bc8d2dcf4f5426ed94e8 | Turla、新マルウェアCerealで政府機関のExchangeメールを傍受 | welivesecurity.com | 2026-11-11 | https://www.welivesecurity.com/en/eset-research/exchange-for-breakfast-turlas-cereal-tricks-are-not-for-kids/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-eacab060a5426f098bf1 | Turla Cerealツールセットの公開IOC一覧（ESET malware-iocリポジトリ） — IOC補助資料 | github.com | 不明 | https://github.com/eset/malware-ioc/tree/master/turla | osint-report | TLP:CLEAR | 中 |
+| source--doj-center16-dragonfly-indictment-2022 | Four Russian Government Employees Charged in Two Historical Hacking Campaigns Targeting Critical Infrastructure Worldwide | U.S. Department of Justice | 2022-03-24 | https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting | government-legal | TLP:CLEAR | 高 |
+| source--doj-operation-medusa-2023 | Justice Department Announces Court-Authorized Disruption of Snake Malware Network Controlled by Russia's Federal Security Service | U.S. Department of Justice | 2023-05-09 | https://www.justice.gov/usao-edny/pr/justice-department-announces-court-authorized-disruption-snake-malware-network | government-operation | TLP:CLEAR | 高 |
+| source--gtig-stockstay-turla-2026 | STOCKSTAY Another Day: The Latest Addition to Turla's Intelligence Gathering Apparatus | Google Threat Intelligence Group | 2026-06-25 | https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering | vendor-research-report | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--turla--381349fb0cea34f0 | Penquins Moonlit Maze AppendixB |  | 不明 | Turla/2017/Penquins_Moonlit_Maze_AppendixB.pdf | report | TLP:CLEAR | 中 |
 | source--turla--3d5a4d35095a89d3 | README |  | 不明 | Turla/2014/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--6e90d1ef9571f3b1 | IOC |  | 不明 | Turla/IOC.TXT | text-data | TLP:CLEAR | 中 |
@@ -409,17 +431,6 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--turla--c3043639afceaf63 | aa23 129a snake malware 2 |  | 不明 | Turla/aa23-129a_snake_malware_2.pdf | report | TLP:CLEAR | 中 |
 | source--turla--e6c93c546a97e314 | README |  | 不明 | Turla/2017/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--f0c7ef1fbe87f2c6 | Malware Technical Insight  Turla “Penquin x64” |  | 不明 | Turla/Malware Technical Insight _Turla “Penquin_x64”.pdf | report | TLP:CLEAR | 中 |
-| source--gtig-stockstay-turla-2026 | STOCKSTAY Another Day: The Latest Addition to Turla's Intelligence Gathering Apparatus | Google Threat Intelligence Group | 2026-06-25 | https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering | vendor-research-report | TLP:CLEAR | 高 |
-| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--cisa-snake-turla-center16-2023 | Hunting Russian Intelligence 'Snake' Malware | CISA, FBI, NSA, NCSC and partner agencies | 2023-05-09 | https://www.cisa.gov/sites/default/files/2023-05/aa23-129a_snake_malware_2.pdf | government-advisory | TLP:CLEAR | 高 |
-| source--doj-operation-medusa-2023 | Justice Department Announces Court-Authorized Disruption of Snake Malware Network Controlled by Russia's Federal Security Service | U.S. Department of Justice | 2023-05-09 | https://www.justice.gov/usao-edny/pr/justice-department-announces-court-authorized-disruption-snake-malware-network | government-operation | TLP:CLEAR | 高 |
-| source--doj-center16-dragonfly-indictment-2022 | Four Russian Government Employees Charged in Two Historical Hacking Campaigns Targeting Critical Infrastructure Worldwide | U.S. Department of Justice | 2022-03-24 | https://www.justice.gov/usao-dc/pr/four-russian-government-employees-charged-two-historical-hacking-campaigns-targeting | government-legal | TLP:CLEAR | 高 |
 
 ## 自由記述
 

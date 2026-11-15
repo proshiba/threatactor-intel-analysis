@@ -4,7 +4,7 @@
   "name": "Contagious Interview",
   "status": "review",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-10-12T09:12:00Z",
+  "updated_at": "2026-11-15T09:02:08Z",
   "languages": [
     "ja"
   ],
@@ -1814,6 +1814,105 @@
       }
     },
     {
+      "activity_id": "activity--daily-d372aa00a072885d3153",
+      "name": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+      "activity_type": "malware-campaign",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。偽の採用課題を起点に、利用者へ被害を広げるサプライチェーン侵害へ活動を拡大している。 感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。変更を隠すためコミット履歴を書き換える場合もあり、複数のパッケージ配布基盤に影響が及んだ。 後続ではPython製OmniStealerとNode.js製DEV#POPPER RATを確認した。ブラウザー情報や開発者の秘密情報を盗み、VS Code、Cursor、Discordへのコード追加で再実行を図る。 NullReceiver方式ではEthereum取引の送金先からC2のIPを取得する。攻撃者は新たな取引だけで接続先を変更でき、実在開発者の改ざん済みリポジトリでは隠しVS Codeタスクが処理を起動した。 偽課題の配布には自前運用のGitea、後続ペイロードにはJSONホスティングやIPFS関連サービスを利用した。研究者は、感染拡大と基盤停止への耐性を高める動きと評価している。",
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--cc516ee68469ee47c5cd"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-a11d7f9e28599f142241"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--d372aa00a072885d3153a36f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 採用。ESETのWeLiveSecurity記事（APT Activity Report Q2 2026–Q3 2026）を確認した。DeceptiveDevelopmentが偽採用課題を起点とする手口から、開発者の認証情報（Git認証情報・SSH鍵・アクセストークン）を窃取して公開・非公開リポジトリへ悪性コードを注入する広範なソフトウェアサプライチェーン侵害へ拡大したことを原文で確認。コミット履歴の書き換えと複数パッケージ配布基盤への影響を記述。DeceptiveDevelopmentはscope: overlappingのalias（MITRE ATT&CK登録）だが、ESETは命名以来この指定子を偽求人・偽面接ルアーの北朝鮮系クラスタ（本プロファイルの追跡対象）に用いており、本プロファイルには同系統報告の採用前例が複数ある。OmniStealer・DEV#POPPER RAT・NullReceiverはtech-memo要約に現れるがランディング記事では確認できず（詳細は報告書本体）、capability候補も生成されていないため取り込まない。偽面接ルアーの語に引きずられた自動分類phishing-campaignを、リポジトリ改ざんによるマルウェア混入を主題とするmalware-campaignへ変更。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--cc516ee68469ee47c5cd"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "同上。報告対象期間の終端（2026年9月）。",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-09-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-10-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-a11d7f9e28599f142241"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-e98674dd97bf22866f7f",
       "name": "OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加",
       "activity_type": "malware-campaign",
@@ -2066,21 +2165,22 @@
         "name": "IT・ソフトウェア",
         "description": "活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-04-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "同上。報告対象期間の終端（2026年9月）。; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-09-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-2a32ed98e1bd6d1661b4",
           "source--daily-47e80e1dc37b49447e5b",
+          "source--daily-a11d7f9e28599f142241",
           "source--daily-b84641d39a296b1d232d",
           "source--daily-cdb23aca8de000a4d647",
           "source--daily-d00e6abeb3390b2c40e7"
@@ -4356,6 +4456,32 @@
       ]
     },
     {
+      "source_id": "source--daily-a11d7f9e28599f142241",
+      "path": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+      "title": "北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+      "publisher": "welivesecurity.com",
+      "published_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261031.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. ESET WeLiveSecurity記事を取得して確認した（アクセス日2026-11-15）。DeceptiveDevelopmentはoverlapping alias（MITRE ATT&CK登録）であり、リポジトリ改ざんへの拡大を記事で確認。OmniStealer等の個別名はランディング記事に現れず報告書本体由来。",
+      "url": "https://www.welivesecurity.com/en/eset-research/eset-apt-activity-report-q2-2026-q3-2026/",
+      "accessed_at": "2026-11-15T00:00:00Z",
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-case"
+      ]
+    },
+    {
       "source_id": "source--daily-b84641d39a296b1d232d",
       "path": "https://thehackernews.com/2024/08/north-korean-hackers-target-developers.html",
       "title": "北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に",
@@ -5325,6 +5451,56 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-828c717719b991a7c676"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--cc516ee68469ee47c5cd",
+      "name": "被害事例: 北朝鮮系攻撃者、開発者の認証情報を盗みGitHubやソフトウェアパッケージへマルウェアを混入",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "ESETによると、北朝鮮系DeceptiveDevelopmentは2026年4～9月、開発者から盗んだ認証情報で公開・非公開リポジトリを改ざんした。偽の採用課題を起点に、利用者へ被害を広げるサプライチェーン侵害へ活動を拡大している。 感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。変更を隠すためコミット履歴を書き換える場合もあり、複数のパッケージ配布基盤に影響が及んだ。 後続ではPython製OmniStealerとNode.js製DEV#POPPER RATを確認した。ブラウザー情報や開発者の秘密情報を盗み、VS Code、Cursor、Discordへのコード追加で再実行を図る。 NullReceiver方式ではEthereum取引の送金先からC2のIPを取得する。攻撃者は新たな取引だけで接続先を変更でき、実在開発者の改ざん済みリポジトリでは隠しVS Codeタスクが処理を起動した。 偽課題の配布には自前運用のGitea、後続ペイロードにはJSONホスティングやIPFS関連サービスを利用した。研究者は、感染拡大と基盤停止への耐性を高める動きと評価している。",
+      "activity_refs": [
+        "activity--daily-d372aa00a072885d3153"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "感染端末からGit認証情報、SSH鍵、アクセストークンを窃取し、本人になりすまして悪性コードを追加する。"
+        }
+      ],
+      "first_observed": {
+        "basis": "ESET APT Activity Report Q2 2026–Q3 2026: 報告対象期間（2026年4〜9月）内の活動としてリポジトリ改ざんを記述。tech-memo要約も「2026年4〜9月」と明記。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "同上。報告対象期間の終端（2026年9月）。",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-09-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-10-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-a11d7f9e28599f142241"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

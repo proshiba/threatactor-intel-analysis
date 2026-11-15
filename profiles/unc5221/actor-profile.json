@@ -4,7 +4,7 @@
   "name": "UNC5221",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-21T13:20:00Z",
+  "updated_at": "2026-11-15T09:02:09Z",
   "languages": [
     "ja"
   ],
@@ -297,6 +297,101 @@
       "grouping_context": null
     },
     {
+      "activity_id": "activity--daily-94cbe6031d634a353dc2",
+      "name": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "activity_type": "cyber-espionage",
+      "stix_object_type": "campaign",
+      "grouping_context": null,
+      "activity_refs": [],
+      "first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "reported_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "BeyondTrustは、Remote Support（RS）26.2.3以前に影響する認証回避の脆弱性CVE-2026-102764を修正した。認証されていない遠隔の攻撃者が、対象機器でファイル操作を行える。 Mandiantは、中国との関連が疑われる諜報アクターARMORY CASTLE（旧UNC5221）が、2026年8月下旬から本脆弱性をゼロデイとして悪用していた証拠を確認した。 攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。ログを削除し、侵害した管理者認証情報で内部システムへ横展開した。 root権限の取得により、機器が保存・仲介する認証情報へのアクセスや、再起動・設定リセット後も残るファイルの改変が可能になった。Mandiantは、悪用期間中に公開されていた脆弱な機器の調査を求めている。 SaaS環境には修正済みだが、自動更新を有効にしていない自社運用環境は手動対応が必要。Privileged Remote Accessでは悪用方法は確認されていないものの、共通コードを使うため予防的な修正が提供された。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--791c96ceb07a4f2920da"
+      ],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3d7ecedf875a40701af6"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--94cbe6031d634a353dc207d9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attribution-uncertain。 レビュー: 採用。一次ソース（BeyondTrust BT26-05）は取得時に403で原文を確認できなかった（明記）。tech-memo要約に加え、The Record・CyberScoop・CSO Online・BleepingComputer等の独立した二次報道で、Mandiant/GTIGが追跡するARMORY CASTLE（旧UNC5221、別名Warp Panda）によるCVE-2026-102764（Remote Support 26.2.3以前、CVSS 9.3）のゼロデイ悪用をBeyondTrustがmoderate-to-high confidenceで帰属したことを確認した。悪用開始は2026-08-29。root権限取得・認証情報窃取・横展開が報じられている。SAWFLYウェブシェルとBARECLAWトンネラーの名称はtech-memo要約由来で二次報道からは確認できなかったため、capability候補は生成されておらず取り込まない。確信度は「moderate to high」の帰属とUNC5221照合（exact、ニュース本文）を考慮しmediumとする。ARMORY CASTLEはMandiantによるUNC5221の改称であり、unc5221プロファイルのaliasへ追加する提案として報告する（本取込では追加しない）。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5221",
+          "name": "UNC5221",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--791c96ceb07a4f2920da"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-29T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-10-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3d7ecedf875a40701af6"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-9ac4b7d72f47c1e3e402",
       "name": "Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取",
       "activity_type": "cyber-espionage",
@@ -422,6 +517,10 @@
       },
       "description": "EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。",
       "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
         "target--targeting-audit--region--180d1b3625871cf9d7dd",
         "target--targeting-audit--region--5fdf840a1b32be12ea15",
         "target--targeting-audit--region--fa76e62075b99f42c3b7"
@@ -460,6 +559,10 @@
         },
         "victim": {
           "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--260bd106ff4950e5430d",
+            "target--activity-rule--sector--4221b5fbb827488c6eaa",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
             "target--targeting-audit--region--180d1b3625871cf9d7dd",
             "target--targeting-audit--region--5fdf840a1b32be12ea15",
             "target--targeting-audit--region--fa76e62075b99f42c3b7"
@@ -608,12 +711,134 @@
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--260bd106ff4950e5430d",
+        "name": "医療・ヘルスケア",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "name": "金融",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "name": "運輸・航空・海運",
+        "description": "活動「UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-05-15T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9c44f6340b9488e0ae9a",
+          "source--eclecticiq-unc5221-epmm-2025"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
     "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正から収録する。ETDA、MISP、旧ワークブック等の集約値はexternal research leadに隔離する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
     "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値と旧ワークブック値は原典確認前にcanonicalへ昇格しない。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--791c96ceb07a4f2920da",
+      "tactic": "Persistence",
+      "technique_id": "T1505.003",
+      "technique_name": "Web Shell",
+      "observed_behavior": "攻撃者は侵入後、SUID権限の設定によってroot権限を獲得し、SAWFLYウェブシェルとBARECLAWトンネラーを展開した。",
+      "activity_refs": [
+        "activity--daily-94cbe6031d634a353dc2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "BeyondTrustのタイムライン（二次報道で確認）: 2026-08-29にBeyondTrustホスト型Remote Supportインスタンス1件とself-hosted appliance 1件へのゼロデイ悪用。tech-memo要約の「8月下旬から」と整合。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-29T00:00:00Z"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3d7ecedf875a40701af6"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--activity-rule--d804599bbb259da95aad",
       "tactic": "Initial Access",
@@ -662,6 +887,31 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    {
+      "source_id": "source--daily-3d7ecedf875a40701af6",
+      "path": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+      "title": "BeyondTrust、8月からゼロデイ攻撃で悪用されたRemote Supportの脆弱性を修正",
+      "publisher": "beyondtrust.com",
+      "published_at": {
+        "value": "2026-10-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_10-12/20261017.md; source commit: 49d1727dcda33d25fd5c27d19951b282cdcf8177; 出典信頼性はアクター帰属確度と分離して評価。 Legacy source metadata: the original retrieval timestamp is unavailable; accessed_at is explicitly null rather than inferred. 一次ソース（BT26-05）は2026-11-15のアクセス時に403で取得できず、原文未確認。The Record・CyberScoop等の独立二次報道でARMORY CASTLE（旧UNC5221）への帰属と2026-08-29からの悪用を確認した。ARMORY CASTLEはMandiantによる同一クラスタの改称。",
+      "url": "https://www.beyondtrust.com/trust-center/security-advisories/bt26-05",
+      "accessed_at": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "ttp"
+      ]
     },
     {
       "source_id": "source--daily-851d3853332e52ad741a",
@@ -764,6 +1014,35 @@
       ]
     },
     {
+      "source_id": "source--eclecticiq-unc5221-epmm-2025",
+      "path": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+      "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
+      "title": "China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager Mobile (CVE-2025-4428) Vulnerability",
+      "publisher": "EclecticIQ",
+      "published_at": {
+        "value": "2025-05-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-21T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "attribution",
+        "capability",
+        "targeting",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "EclecticIQ attributes the exploitation observed from May 15 with high confidence to UNC5221 and documents KrustyLoader, Sliver, and AWS S3 use."
+    },
+    {
       "source_id": "source--osint-etda-threat-group-cards",
       "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
       "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
@@ -814,6 +1093,86 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     },
     {
       "source_id": "source--unc5221--0f7d918e38c7c2d3",
@@ -1066,115 +1425,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-tidal-groups",
-      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
-      "title": "MISP Galaxy TIDAL Groups",
-      "publisher": "MISP Project / TIDAL Cyber",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-09-20T13:47:46Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead",
-        "activity-lead",
-        "malware-lead",
-        "targeting-lead",
-        "motivation-lead"
-      ],
-      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
-    },
-    {
-      "source_id": "source--target-audit-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor victim geography fields",
-      "publisher": "MISP Project / Council on Foreign Relations",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
-    },
-    {
-      "source_id": "source--eclecticiq-unc5221-epmm-2025",
-      "path": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
-      "url": "https://blog.eclecticiq.com/china-nexus-threat-actor-actively-exploiting-ivanti-endpoint-manager-mobile-cve-2025-4428-vulnerability",
-      "title": "China-Nexus Threat Actor Actively Exploiting Ivanti Endpoint Manager Mobile (CVE-2025-4428) Vulnerability",
-      "publisher": "EclecticIQ",
-      "published_at": {
-        "value": "2025-05-21T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-publication"
-      },
-      "accessed_at": "2026-09-21T00:00:00Z",
-      "language": "en",
-      "source_type": "vendor-threat-research",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "actor_scope": "direct",
-      "claims_supported": [
-        "activity",
-        "attribution",
-        "capability",
-        "targeting",
-        "ttp",
-        "ioc"
-      ],
-      "analyst_notes": "EclecticIQ attributes the exploitation observed from May 15 with high confidence to UNC5221 and documents KrustyLoader, Sliver, and AWS S3 use."
     }
   ],
   "assessment": {
@@ -1200,41 +1450,49 @@
   "victim_cases": [
     {
       "victim_case_id": "victim--activity-rule--2777d9aa01e356b0a630",
-      "name": "被害事例: Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用",
+      "name": "被害事例: UNC5221、Ivanti EPMM脆弱性チェーンを広域悪用",
       "victim_name": null,
       "disclosure_status": "anonymous",
       "victim_type": "unknown",
       "case_status": "reported",
-      "description": "中国系ハッカーが、Ivanti Endpoint Manager Mobile（EPMM）のリモートコード実行脆弱性（CVE-2025-4428）を悪用。 この脆弱性は、特別に細工されたAPIリクエストにより、バージョン12.5.0.0以前のEPMMでコード実行が可能。 Ivantiは、認証バイパスの脆弱性（CVE-2025-4427）とともに、2025年5月13日にこれらの脆弱性を修正。 EclecticIQの研究者は、2025年5月15日以降、CVE-2025-4428が広範に悪用されていることを確認。 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。",
+      "description": "EclecticIQは、2025年5月15日以降にCVE-2025-4427/4428を連鎖させたIvanti EPMM悪用を観測し、高い確度でUNC5221へ帰属した。標的は欧州、北米、APACの医療、通信、航空、政府、金融に及び、KrustyLoaderを介してSliverを展開し、AWS S3を配布基盤に使用した。",
       "activity_refs": [
         "activity--daily-fd8d76592cb438a30641"
       ],
-      "target_refs": [],
-      "malware_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4"
+      ],
+      "malware_refs": [
+        "malware--krustyloader",
+        "malware--sliver"
+      ],
       "ttp_refs": [],
       "affected_assets": [
-        "エンドポイント"
+        "クラウド／SaaS"
       ],
       "impacts": [],
       "first_observed": {
         "value": "2025-05-15T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "activity-description-explicit-period"
+        "basis": "source-stated"
       },
       "last_observed": {
-        "value": "2025-05-15T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2025-05-23T00:00:00Z",
+        "value": "2025-05-21T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
         "source--daily-9c44f6340b9488e0ae9a",
         "source--eclecticiq-unc5221-epmm-2025"
